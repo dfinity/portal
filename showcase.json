@@ -4657,7 +4657,10 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "stats": "1000+ users",
-    "logo": "/img/showcase/officex_logo.webp"
+    "logo": "/img/showcase/officex_logo.webp",
+    "screenshots": [
+      "/img/showcase/officex_screenshot.webp"
+    ]
   },
   {
     "id": "anda",
@@ -5171,17 +5174,17 @@
   },
   {
     "name": "Coreledger",
-    "logo": "/img/showcase/token_economy_operating_system_logo.png",
+    "logo": "/img/showcase/coreledger.webp",
     "id": "coreledger",
     "tags": [
       "Tools / Infrastructure"
     ],
     "website": "https://coreledger.net/",
-    "description": "A tool used directly by any business to build products and software on the blockchain.",
+    "description": "Build and launch blockchain-powered products quickly and effortlessly with our plug-and-play, blockchain-agnostic infrastructure. Designed for businesses of all sizes, our platform makes it easy to integrate blockchain technology into your software—without the complexity.",
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
-  },
+  }, 
   {
     "id": "BlockID",
     "name": "BlockID",
@@ -5212,6 +5215,26 @@
     "display": "Normal"
   },
   {
+    "id": "ic-explorer",
+    "name": "ICExplorer",
+    "oneLiner": "Empowering AI with Data on Chain, Fueling Innovation",
+    "website": "https://www.icexplorer.io",
+    "tags": [
+      "AI", 
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/Token-Explorer-Hi/ic-data",
+    "twitter": "https://x.com/ICExplorer_io",
+    "description": "Empowering AI with Data on Chain, Fueling Innovation.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "stats": "50,000+ users",
+    "logo": "/img/showcase/ic-explorer_logo.png",
+    "screenshots": [
+      "/img/showcase/ic-explorer_screenshot.jpg"
+    ]
+  },
+  {
     "id": "alice",
     "name": "ALICE",
     "display": "Normal",
@@ -5223,5 +5246,18 @@
     "description": "Alice is a DAO-governed AI agent that operates entirely on-chain, leveraging LLMs like DeepSeek for decision-making, integrating both static rules and dynamic, real-time data to enable intelligent and adaptable operations, autonomously managing token activities.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/alice-logo.webp"
+  },
+  {
+   "name": "FRYS",
+    "logo": "/img/showcase/friescoin_logo.jpg",
+    "id": "friescoin",
+    "tags": [
+      "NFT", 
+      "DeFi"
+    ],
+    "website": "https://friescoin.xyz/",
+    "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
+    "twitter": "https://x.com/FriesCoin",
+    "usesInternetIdentity": false
   }
 ]

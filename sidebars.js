@@ -698,7 +698,7 @@ build: [
 defi: [
       {
         type: "doc",
-        label: "Developing DeFi applications",
+        label: "DeFi on ICP",
         id: "defi/overview",
       },
       {

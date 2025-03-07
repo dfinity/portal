@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, ckbtc, bitcoin]
+keywords: [advanced, tutorial, developer liftoff, ckbtc, bitcoin, icp bitcoin integration, btc, ckbtc, local bitcoin development, develop bitcoin locally, example btc dapp]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -75,30 +75,32 @@ Before you start, verify that you have set up your developer environment accordi
 To develop a Bitcoin dapp locally, first a local Bitcoin network instance must be running. This allows developers to mine blocks quickly and facilitates testing without having to rely on the slow Bitcoin testnet or the Bitcoin mainnet.
 
 
-- #### Step 1: Download [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
-- #### Step 2: Unpack the `.tar.gz` file: `tar -xfz bitcoin-25.0-x86_64-apple-darwin.tar.gz`
-- #### Step 3: Create a directory named `data` inside the unpacked folder: `cd bitcoin-25.0 && mkdir data`
-- #### Step 4: Create a file called `bitcoin.conf` at the root of the unpacked folder and add the following contents:
+- #### Step 1: Download [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
+- #### Step 2: Unpack the `.tar.gz` file: `tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz`. Don't use any other approach of unpacking the file, as it may lead to issues.
+- #### Step 3: Create a directory named `data` inside the unpacked folder: cd bitcoin-27.0 && mkdir data
+- #### Step 4:
 
 
-To get started, first download the [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
+To get started, first download the [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
 
 Then, unpack the `.tar.gz` file with the command:
 
 ```bash
-tar -xfz bitcoin-25.0-x86_64-apple-darwin.tar.gz
+tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz
 ```
+
+It is not recommended to use another approach of unpacking the file, as it may lead to issues.
 
 Navigate into the newly unpacked directory and create a new empty directory called `data`:
 
 ```bash
-cd bitcoin-25.0
+cd bitcoin-27.0
 mkdir data
 ```
 
-Then, while still in the root directory of `bitcoin-25.0`, open the `bitcoin.conf` file and insert the following content at the beginning of the file:
+Then, while still in the root directory of `bitcoin-27.0`, replace the content of the file called `bitcoin.conf` with the following contents:
 
-```bash
+```
 # Enable regtest mode. This is required to set up a private bitcoin network.
 regtest=1
 
@@ -120,7 +122,7 @@ Then, start the local Bitcoin instance with the command:
 The above command uses port `18444`, assuming it is available on your machine. If this port isn't available, specify a different port in the `--port` argument.
 :::
 
-Once running, the Bitcoin instance will take a moment to spin up and synchronize block headers. Once synchronized, it is ready to use. The output will take up the entirety of the terminal window.
+Once running, the Bitcoin instance will take a moment to spin up and synchronize block headers. Once finished, it is ready to use. The output will take up the entirety of the terminal window.
 
 ### Cloning the `basic_bitcoin` example
 
@@ -133,14 +135,10 @@ git clone https://github.com/dfinity/examples/
 cd examples/motoko/basic_bitcoin
 ```
 
-:::info
-A Rust version of this project exists at `examples/rust/basic_bitcoin`.
-:::
-
 Then, start the local replica with the command:
 
 ```bash
-dfx start --clean --background
+dfx start --clean
 ```
 
 Once the local replica has been started, it should return output that indicates it has connected to the local Bitcoin node:
@@ -178,27 +176,14 @@ Dashboard: http://localhost:49497/_/dashboard
 ```
 
 :::caution
-If you receive the error message "Failed to connect to 127.0.0.1:18444
-Connecting to the stream timed out." This indicates that `dfx` isn't able to connect to your local Bitcoin instance. This error may occur if you used a port other than `18444` but did not edit the `dfx.json` file to reflect your custom port.
+If you receive the error message "Failed to connect to 127.0.0.1:18444 Connecting to the stream timed out." This indicates that `dfx` isn't able to connect to your local Bitcoin instance. This error may occur if you used a port other than `18444` but did not edit the `dfx.json` file to reflect your custom port.
 :::
 
 The output will take up the terminal window, so open another terminal window and navigate back into the `examples/motoko/basic_bitcoin` directory.
 
-This project uses [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules), which must be initialized using the command:
-
-```bash
-git submodule update --init --recursive
-```
-
-Then, install the `llvm`, `binaryen`, and `cmake` packages. If you're running on Mac, you can use [Homebrew](https://brew.sh/) to install them:
-
-```bash
-brew install llvm binaryen cmake
-```
-
 ### Deploying the example canister
 
-Now you can deploy your Bitcoin canister! To deploy the canister locally, run the command:
+To deploy the Bitcoin example canister locally, run the command:
 
 ```bash
 dfx deploy basic_bitcoin --argument '(variant { regtest })'
@@ -229,7 +214,8 @@ To generate a `P2PKH` address, make the following call to the canister's method 
 dfx canister call basic_bitcoin get_p2pkh_address
 ```
 
-This command will return the generated `P2PKH` address:
+<details>
+<summary>Output</summary>
 
 ```bash
 ("mmucK4F2UhnjGU9V9rhKjTsjyrUzMCyKnt")
@@ -237,9 +223,10 @@ This command will return the generated `P2PKH` address:
 
 Your output will be different since each ECDSA public key is unique.
 
-Alternatively, you can use the Candid UI. To use this method, open the Candid UI URL that was returned in the previous step when you deployed the `basic_bitcoin` canister.
 
-In the Candid UI, find the `get_p2pkh_address` method, then select the `Call` button under it.
+</details>
+
+Alternatively, you can use the Candid UI by opening the Candid UI URL that was returned in the deployment output. Find the `get_p2pkh_address` method, then select the `Call` button under it:
 
 ![Generating a Bitcoin address](../_attachments/Candid_BTC.png)
 
@@ -258,10 +245,8 @@ To receive BTC on your local network, you need to mine blocks since BTC is minte
 For example, to mine a block and have the canister receive the BTC reward, use the command:
 
 ```bash
-./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 BTC_ADDRESS
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 $(dfx canister call basic_bitcoin get_p2pkh_address)
 ```
-
-Replace `BTC_ADDRESS` with the generated `P2PKH` address you got in the last step.
 
 If successful, you'll receive the hash of the block that was just mined, which resembles the following:
 
@@ -289,25 +274,19 @@ dfx canister call basic_bitcoin get_balance '("BTC_ADDRESS")'
 
 Replace `BTC_ADDRESS` with your generated `P2PKH` address. Your balance should be `5_000_000_00`, which is equal to 50 BTC.
 
-```bash
-(5_000_000_000 : nat64)
-```
-
 :::caution
 Remember that this is a local deployment. The BTC you mine here is only valid on your local Bitcoin network for testing purposes and cannot be spent or used anywhere else.
 :::
 
 ### Sending BTC
 
-Previously, you mined a single block and received a reward of 50 BTC for that block. One prerequisite to sending this BTC to someone else, however, is that the first 100 additional blocks must be mined. This is known as the Coinbase maturity rule.
+One prerequisite to sending BTC, however, is that the first 100 additional blocks of the network must be mined. Since this is a local instance, your network has only mined one block. This is known as the Coinbase maturity rule.
 
 To mine 100 additional blocks, run the command:
 
 ```bash
-./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 100 BTC_ADDRESS
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 100 $(dfx canister call basic_bitcoin get_p2pkh_address)
 ```
-
-Replace `BTC_ADDRESS` with your generated `P2PKH` address.
 
 You should receive output and `dfx` log entries similar to the ones you got for mining a single block.
 
@@ -321,12 +300,12 @@ dfx canister call basic_bitcoin send_from_p2pkh '(record { destination_address =
 Note that this command sends BTC in 'satoshi.' 1 BTC is equivalent to 100_000_000 satoshi.
 :::
 
-This command will create a transaction and send it to the local Bitcoin instance running. After running this command, you now need to mine a block so that the transaction you just sent becomes a part of the blockchain. Without mining a block, the transaction is not recorded onchain.
+This command will create a transaction and send it to the local Bitcoin instance running. You now need to mine a block so that the transaction you just sent becomes a part of the blockchain. Without mining a block, the transaction is not recorded onchain.
 
-In the `bitcoind` directory, run the following command to mine another block:
+In the `bitcoind` directory, mine another block:
 
 ```bash
-./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 BTC_ADDRESS
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 $(dfx canister call basic_bitcoin get_p2pkh_address)
 ```
 
 Now, you can check that the address `n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S` has a balance of 1 BTC:

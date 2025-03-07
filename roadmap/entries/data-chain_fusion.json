@@ -27,7 +27,7 @@
       "milestone_id": "Helium"
     },
     {
-      "title": "Chain Fusion Supports Solana",
+      "title": "Chain Fusion supports Solana",
       "is_milestone": true,
       "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
       "milestone_id": "Helium",
@@ -36,7 +36,7 @@
       "eta_to_render": "May 2025"
     },
     {
-      "title": "Dogecoin Integration",
+      "title": "Dogecoin integration",
       "is_milestone": true,
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
@@ -56,18 +56,7 @@
       "milestone_id": "Meridian"
     },
     {
-      "title": "EVM in a canister",
-      "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "Threshold ECDSA — Throughput improvements",
+      "title": "Threshold ECDSA — throughput improvements",
       "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
       "status": "future",
       "forum": "",

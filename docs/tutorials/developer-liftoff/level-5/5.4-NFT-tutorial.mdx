@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, nfts]
+keywords: [advanced, tutorial, developer liftoff, nfts, icrc7, icrc37, non fungible tokens, non-fungible token, nft collection]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -82,6 +82,10 @@ This collection will contain 5 NFTs that each use a different image stored in th
 
 ### Prerequisites
 
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
 Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
 
 ### Setting up the project
@@ -91,12 +95,6 @@ Open a terminal window and run the following commands to download the NFT exampl
 ```bash
 git clone https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 cd icrc_nft.mo
-```
-
-Next, start `dfx` with the command:
-
-```
-dfx start --clean --background
 ```
 
 Then, create two new identities to be used with the NFT canister: `alice` and `icrc7_deployer`. The `alice` identity will be used to demonstrate the approve workflow, and `icrc7_deployer` will be used as the canister's admin controller.
@@ -162,6 +160,7 @@ This configuration sets the following parameters for your collection:
 Run the `dfx deploy` command with the following init arguments:
 
 ```bash
+dfx start --clean --background
 dfx deploy icrc7 --argument 'record {icrc7_args = null; icrc37_args =null; icrc3_args =null;}' --mode reinstall
 ```
 
@@ -187,25 +186,55 @@ To verify the NFT collection has been initialized correctly, query some informat
 ```bash
 ## Get collection name:
 dfx canister call icrc7 icrc7_name  --query
+```
 
+<details>
+<summary>Output</summary>
+
+```bash
 ("Developer Liftoff Astronauts")
+```
 
+</details>
+
+```bash
 ## Get the collection symbol:
 dfx canister call icrc7 icrc7_symbol  --query
 
-("DEVS")
+<details>
+<summary>Output</summary>
 
+```
+("DEVS")
+```
+
+</details>
+
+```bash
 ## Get the collection description:
 dfx canister call icrc7 icrc7_description  --query
+```
 
+<details>
+<summary>Output</summary>
+
+```bash
 (opt "ICP Developer Liftoff Astronauts")
+```
 
+```bash
 ## Get the collection logo:
 dfx canister call icrc7 icrc7_logo  --query
+```
 
+<details>
+<summary>Output</summary>
+
+```bash
 (opt "https://internetcomputer.org/img/ethdenver/astronaut.webp")
 ```
 
+</details>
 
 ### Mint NFTs in the collection
 
@@ -308,7 +337,8 @@ dfx canister call icrc7 icrcX_mint "(
 )"
 ```
 
-If successful, you will receive the output:
+<details>
+<summary>Output</summary>
 
 ```bash
 (
@@ -322,6 +352,8 @@ If successful, you will receive the output:
 )
 ```
 
+</details>
+
 ### Query information about the minted tokens
 
 To verify that the NFTs have been minted properly, query some information about the tokens:
@@ -331,18 +363,22 @@ To verify that the NFTs have been minted properly, query some information about 
 dfx canister call icrc7 icrc7_total_supply  --query
 ```
 
-This should return the number of tokens that you minted. In this example, that should be 5:
+<details>
+<summary>Output</summary>
 
 ```bash
 (5 : nat)
 ```
+
+</details>
 
 ```bash
 ## Get supported standards:
 dfx canister call icrc7 icrc10_supported_standards  --query
 ```
 
-This will return all supported token standards, in this case, ICRC-7 and ICRC-37:
+<details>
+<summary>Output</summary>
 
 ```bash
 (
@@ -358,6 +394,8 @@ This will return all supported token standards, in this case, ICRC-7 and ICRC-37
   },
 )
 ```
+
+</details>
 
 ```bash
 ## List the owner of all tokens:
@@ -391,10 +429,14 @@ dfx canister call icrc7 icrc7_owner_of '(vec {0;1;2;3;4})' --query
 
 You can see that the canister's principal owns all of the minted tokens. To see if your admin principal is approved to spend tokens, make the following canister call:
 
+<details>
+<summary>Output</summary>
+
 ```bash
 dfx canister call icrc7 icrc37_is_approved "(vec{record { spender=record {owner = principal \"$ADMIN_PRINCIPAL\"; subaccount = null;}; from_subaccount=null; token_id=0;}})" --query
 ```
 
+</details>
 
 This should return `(vec { true })`.
 
@@ -483,9 +525,10 @@ To view all transactions with the NFT collection, run the command:
 dfx canister call icrc7 icrc3_get_blocks "(vec {record {start =0; length = 1000}})" --query
 ```
 
-This will return long output, such as:
+<details>
+<summary>Output</summary>
 
-```
+```bash
 (
   record {
     log_length = 8 : nat;
@@ -550,6 +593,8 @@ This will return long output, such as:
                 ...
 ```
 
+</details>
+
 ## Resources
 
 - [List of NFT collections on ICP](https://dab.ooo/nfts/).
@@ -571,6 +616,3 @@ This will return long output, such as:
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 
 <TutorialFooter />
-## Next steps
-
-- [5.5 Creating an auction dapp](/docs/tutorials/developer-liftoff/level-5/5.5-auction-tutorial)

@@ -48,7 +48,7 @@
       "eta_to_render": "November 2024"
     },
     {
-      "title": "Increase Stable Memory Limit to 500GiB",
+      "title": "Increase stable memory limit to 500GiB",
       "overview": "Increasing the stable memory limit of a canister to 500GiB.",
       "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
       "proposal": "",
@@ -109,7 +109,7 @@
       "milestone_id": "Stellarator"
     },
     {
-      "title": "Increased Storage Capacity and Throughput",
+      "title": "Increased storage capacity and throughput",
       "is_milestone": true,
       "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
       "milestone_id": "Stellarator",
@@ -129,7 +129,7 @@
       "in_beta": false
     },
     {
-      "title": "Increase Stable Memory Limit to 32GiB",
+      "title": "Increase stable memory limit to 32GiB",
       "overview": "Increasing the stable memory limit of a canister from 8GiB to 32 GiB.",
       "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
       "proposal": "",
@@ -141,7 +141,7 @@
       "imported": true
     },
     {
-      "title": "HTTPS Outcalls from Canisters",
+      "title": "HTTPS Outcalls from canisters",
       "overview": "Enables canisters to make calls to HTTP(S)-based servers. Trustless integration with Web2.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-general-integration-proposal/9383",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35639",
@@ -177,7 +177,7 @@
       "imported": true
     },
     {
-      "title": "Increase Stable Memory Limit to 48GiB",
+      "title": "Increase stable memory limit to 48GiB",
       "overview": "Increasing the stable memory limit of a canister from 32GiB to 48 GiB.",
       "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
       "proposal": "",
@@ -188,7 +188,7 @@
       "in_beta": false
     },
     {
-      "title": "Increase Stable Memory Limit to 96GiB",
+      "title": "Increase stable memory limit to 96GiB",
       "overview": "Increasing the stable memory limit of a canister from 48GiB to 96GiB.",
       "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
       "proposal": "",
@@ -199,7 +199,7 @@
       "in_beta": false
     },
     {
-      "title": "Bazel-based Build System",
+      "title": "Bazel-based build system",
       "overview": "Reducing build and testing times through a Bazel-based build system. More aggressive caching. Only perform necessary steps.",
       "forum": "",
       "proposal": "",
@@ -235,7 +235,7 @@
       "imported": true
     },
     {
-      "title": "High-replication Subnets",
+      "title": "High-replication subnets",
       "overview": "Subnets with higher replication factor than app subnets. Initially ~30 nodes. For highly security-critical dapps such as financial applications.",
       "forum": "https://forum.dfinity.org/t/introducing-the-first-fiduciary-subnet/17594",
       "proposal": "",
@@ -259,7 +259,7 @@
       "imported": true
     },
     {
-      "title": "Canister Timers",
+      "title": "Canister timers",
       "overview": "Timer API to schedule tasks to be run on a canister. Improves on heartbeat API by configuring the frequency.",
       "forum": "https://forum.dfinity.org/t/heartbeat-improvements-timers-community-consideration/14201/",
       "proposal": "https://dashboard.internetcomputer.org/proposal/88293",
@@ -271,7 +271,7 @@
       "imported": true
     },
     {
-      "title": "Network Scalability: State Sync, Certification, and XNet",
+      "title": "Network scalability: state sync, certification, and XNet",
       "overview": "Improving network scalability in terms of state sync, certification, and XNet calls",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387/3",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35648",
@@ -283,7 +283,7 @@
       "imported": true
     },
     {
-      "title": "Subnet Splitting MVP",
+      "title": "Subnet splitting MVP",
       "overview": "Subnet splitting allows a subnet and its canisters and state to be split into two subnets with minimal interruption of canisters on the subnet.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-subnet-splitting-proposal/9402/4",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35672",
@@ -295,7 +295,7 @@
       "imported": true
     },
     {
-      "title": "Deterministic Time Slicing",
+      "title": "Deterministic time slicing",
       "overview": "A single message execution can span multiple IC rounds. Important for canister upgrades or inherently long-lasting computations.",
       "forum": "https://forum.dfinity.org/t/deterministic-time-slicing/10635",
       "proposal": "",
@@ -319,7 +319,7 @@
       "imported": true
     },
     {
-      "title": "Improved I/O Handling in State Manager",
+      "title": "Improved I/O handling in state manager",
       "overview": "Improvements of interaction with the disk in the state manager. This includes reducing the number of interactions or taking them out of the state machine loop.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387",
       "proposal": "",
@@ -353,7 +353,7 @@
       "in_beta": false
     },
     {
-      "title": "Reassigning Nodes to Different Subnets",
+      "title": "Reassigning nodes to different subnets",
       "overview": "Allowing nodes to be reassigned from one subnet to another subnet through NNS proposals, without redeploying.",
       "forum": "",
       "proposal": "",
@@ -365,7 +365,7 @@
       "imported": true
     },
     {
-      "title": "Observability Solution for Nodes",
+      "title": "Observability solution for nodes",
       "overview": "Consensus-verified onchain data of node behaviour. Enables monitoring availability of nodes and penalizing non-performing nodes.",
       "forum": "",
       "proposal": "",

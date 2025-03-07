@@ -3,6 +3,17 @@
   "categoryDescription": "",
   "elements": [
     {
+      "title": "EVM in a canister",
+      "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
       "title": "Direct Bitcoin Integration",
       "overview": "Native integration with the Bitcoin blockchain. Trustless reading from and writing to the Bitcoin network from canister smart contracts.",
       "forum": "https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147",
