@@ -33,27 +33,19 @@
       "title": "Motoko coding fine-tuned model",
       "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
       "status": "in_progress",
-      "milestone_id": "Beacon"
+      "milestone_id": "Vertex"
     },
     {
       "title": "Model benchmarks for Motoko coding",
       "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
       "status": "in_progress",
-      "milestone_id": "Beacon"
+      "milestone_id": "Vertex"
     },
     {
       "title": "Caffeine integration",
       "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
       "status": "in_progress",
-      "milestone_id": "Beacon"
-    },
-    {
-      "title": "AI Model for Motoko code generation",
-      "description": "This milestone is the first step towards improving the capability of Large Language Models to effectively generate code in the Motoko programming language.",
-      "status": "in_progress",
-      "is_milestone": true,
-      "milestone_id": "Beacon",
-      "eta_to_render": "April 2025"
+      "milestone_id": "Vertex"
     },
     {
       "title": "Caffeine platform",
