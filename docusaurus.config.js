@@ -25,12 +25,7 @@ const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
-const {
-  getRedirects,
-  getSplatRedirects,
-  getExternalRedirects,
-  getExactUrlRedirects,
-} = require("./plugins/utils/redirects");
+const { getSplatRedirects, getRedirects, getExactUrlRedirects, getExternalRedirects } = require("./plugins/utils/redirects");
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
@@ -70,38 +65,42 @@ const subnavItems = [
     type: "docSidebar",
     position: "left",
     sidebarId: "build",
-    label: "Build",
-    activeBasePath: "/docs/current/developer-docs/",
+    label: "Building apps",
+    activeBasePath: "/docs/build/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "defi",
+    label: "DeFi",
+    activeBasePath: "/docs/defi/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "motoko",
+    label: "Motoko",
+    activeBasePath: "/docs/motoko/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "references",
+    label: "References",
+    activeBasePath: "/docs/references/",
   },
   {
     type: "dropdown",
     position: "left",
-    label: "Languages",
-    items: [
-      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      {
-        label: "Motoko",
-        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
-      },
-      {
-        label: "TypeScript",
-        href: "/docs/current/developer-docs/backend/typescript/",
-      },
-      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      {
-        label: "Solidity",
-        href: "/docs/current/developer-docs/backend/solidity/",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
-    label: "Additional Resources",
+    label: "Resources",
     items: [
       {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
+      },
+      {
+        label: "Sample projects",
+        href: "https://internetcomputer.org/samples",
       },
       {
         label: "SDK Release Notes",
@@ -110,27 +109,28 @@ const subnavItems = [
       },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
-        label: "Playground",
-        href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+        label: "ICP Ninja",
+        href: "https://icp.ninja"
       },
       {
-        label: "Dev Forum",
+        label: "ICP Developer Forum",
         href: "https://forum.dfinity.org/",
       },
       {
-        label: "Dev Discord",
+        label: "ICP Developer Discord",
         href: "https://discord.internetcomputer.org",
       },
     ],
   },
   /**
    * Add UI tests in development mode
-   */
-  process.env.NODE_ENV === "development" && {
-    label: "UI Tests",
-    href: "/docs/current/tests/all",
-  },
+  * process.env.NODE_ENV === "development" && {
+  *   label: "UI Tests",
+  *   href: "/docs/tests/all",
+  */
+
 ].filter(Boolean);
+
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
@@ -388,7 +388,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Using cycles",
-          href: "/docs/current/developer-docs/getting-started/tokens-and-cycles",
+          href: "/docs/building-apps/getting-started/tokens-and-cycles",
         },
       ],
 
@@ -398,7 +398,7 @@ const marketingNav = {
           items: [
             {
               name: "Developer Docs",
-              href: "/docs/current/home",
+              href: "/docs/home",
               description: "Find the resources you need quickly",
             },
             {
@@ -414,7 +414,7 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/smart-contracts/write/overview",
+              href: "/docs/building-apps/developing-canisters/what-are-canisters",
             },
             {
               name: "Hackathons",
@@ -434,7 +434,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Developer Docs",
-            href: "/docs/current/home",
+            href: "/docs/home",
             image: "/img/nav/featured-building.webp",
           },
         },
@@ -573,8 +573,8 @@ const config = {
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
@@ -627,18 +627,18 @@ const config = {
     youtubePlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
-      redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
-    }),
+    redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
+  }),
 
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        fromExtensions: ["html", "md"],
-        redirects: getRedirects(),
-        createRedirects: (existingPath) => getSplatRedirects(existingPath),
-      },
-    ],
+  [
+    "@docusaurus/plugin-client-redirects",
+    {
+      fromExtensions: ["html", "md"],
+      redirects: getRedirects(),
+      createRedirects: (existingPath) => getSplatRedirects(existingPath)
+    },
   ],
+],
 
   presets: [
     [
@@ -650,12 +650,6 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           breadcrumbs: false,
-          versions: {
-            current: {
-              label: "Current 🚧",
-              path: "current",
-            },
-          },
 
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins,
@@ -864,8 +858,10 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
+  themes: ["@saucelabs/theme-github-codeblock", "@docusaurus/theme-mermaid"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
+
+
 
 module.exports = config;

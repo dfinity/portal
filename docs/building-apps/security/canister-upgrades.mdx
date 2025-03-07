@@ -1,0 +1,53 @@
+---
+keywords: [security, concept, upgrade, panic, timer]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: Canister upgrades
+
+<MarkdownChipRow labels={["Security", "Best practices"]} />
+
+## Be careful with panics during upgrades
+
+### Security concern
+
+If a canister traps or panics in `pre_upgrade`, this can lead to permanently blocking the canister, resulting in a situation where upgrades fail or are no longer possible at all.
+
+### Recommendation
+
+- Avoid using `pre_upgrade` hooks if possible. Panics in the `pre_upgrade` hook prevent upgrades, and since the `pre_upgrade` hook is controlled by the old code, it can permanently block upgrading.
+
+- Panic in the `post_upgrade` hook if the state is invalid so that one can retry the upgrade and try to fix the invalid state. Panics in the `post_upgrade` hook abort the upgrade, but one can retry with new code.
+
+- [Test the upgrade hooks](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+- See also the section on upgrades in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) (though focused on Motoko).
+
+- See [current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), section "Bugs in `pre_upgrade` hooks."
+
+## Reinstantiate timers during upgrades
+
+### Security concern
+
+Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](/docs/references/ic-interface-spec#global-timer) states this as follows:
+
+> "The timer is also deactivated upon changes to the canister's Wasm module (calling install_code or uninstall_code methods of the management canister or if the canister runs out of cycles). In particular, the function canister_global_timer won't be scheduled again unless the canister sets the global timer again (using the System API function ic0.global_timer_set)."
+
+Upgrade is a mode of `install_code`, and hence the timers are deactivated during an upgrade.
+
+This could result in a vulnerability in certain cases where security controls or other critical features rely on these timers to function. For example, a DEX that relies on timers to update the exchange rates of currencies could be vulnerable to arbitraging opportunities if the rates are no longer updated.
+
+Since global timers are used internally by the Motoko `Timer` mechanism, the same holds true for the Motoko Timer. As explained in the [pull request](https://github.com/dfinity/motoko/pull/3542) under "The upgrade story," the global timer gets discarded on upgrade, and the timers need to be set up in the `post_upgrade` hook.
+
+This behavior is different when [using Motoko](https://github.com/dfinity/motoko/pull/3542) and implementing `system func timer`. The `timer` function will be called after an upgrade. In case your canister was using timers for recurring tasks, the `timer` function would likely set the global timer again for a later time. However, the time between invocations of `timer` would not be consistent as the upgrade triggered an "unexpected" call to `timer`.
+
+Using the Rust CDK, the recurring timer is also lost on upgrade as explained in the API documentation of [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).
+
+### Recommendation
+
+- In Motoko canisters, global timers should be set up in the actor initializer for canister installation or reinstallation. Canister-wide timers should be set in the `post_upgrade` hook for upgrades, as timers do not survive upgrades and must be explicitly set up thereafter.
+
+- See the Motoko documentation on [recurringTimer](/docs/motoko/main/base/Timer).
+
+- See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).

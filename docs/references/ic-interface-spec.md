@@ -13,7 +13,7 @@ This document describes this *external* view of the Internet Computer, i.e. the 
 
 :::note
 
-While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see the [developer docs](https://internetcomputer.org/docs/current/home) for suitable documentation.
+While this document describes the external interface and behavior of the Internet Computer, it is not intended as end-user or end-developer documentation. Most developers will interact with the Internet Computer through additional tooling like the SDK, Canister Development Kits and Motoko. Please see the [developer docs](https://internetcomputer.org/docs/home) for suitable documentation.
 
 :::
 
@@ -1110,9 +1110,9 @@ hash_of_map({ request_type: "call", sender: 0x04, ingress_expiry: 16855704000000
 
 ### Reject codes {#reject-codes}
 
-An API request or inter-canister call that is pending in the IC will eventually result in either a *reply* (indicating success, and carrying data) or a *reject* (indicating an error of some sorts). A reject contains a *rejection code* that classifies the error and a hopefully helpful *reject message* string.
+An API request or inter-canister call that is pending in the IC will eventually result in either a *reply* (indicating success, and carrying data) or a *reject* (indicating an error of some sorts). A reject contains a *reject code* that classifies the error and a hopefully helpful *reject message* string.
 
-Rejection codes are member of the following enumeration:
+Reject codes are member of the following enumeration:
 
 -   `SYS_FATAL` (1): Fatal system error, retry unlikely to be useful.
 
@@ -1128,7 +1128,7 @@ The symbolic names of this enumeration are used throughout this specification, b
 
 The error message is guaranteed to be a string, i.e. not arbitrary binary data.
 
-When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: If the IC responds with a `SYS_FATAL` reject, then it really was the IC issuing this reject.
+When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: the reject code is always fixed by the protocol, i.e., the canister cannot freely specify the reject code.
 
 ### Error codes {#error-codes}
 
@@ -1613,7 +1613,7 @@ Eventually, the canister will want to respond to the original call, either by re
 
 -   `ic0.msg_reply_data_append : (src : I, size : I) → ()`; `I ∈ {i32, i64}`
 
-    Appends data it to the (initially empty) data reply. Traps if the total appended data exceeds the [maximum response size](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits#resource-constraints-and-limits).
+    Appends data it to the (initially empty) data reply. Traps if the total appended data exceeds the [maximum response size](https://internetcomputer.org/docs/developer-docs/backend/resource-limits#resource-constraints-and-limits).
 
     This traps if the current call already has been or does not need to be responded to.
 
@@ -1741,7 +1741,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
 -   `ic0.call_data_append : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
-    Appends the specified bytes to the argument of the call. Initially, the argument is empty. Traps if the total appended data exceeds the [maximum inter-canister call payload](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits#resource-constraints-and-limits).
+    Appends the specified bytes to the argument of the call. Initially, the argument is empty. Traps if the total appended data exceeds the [maximum inter-canister call payload](https://internetcomputer.org/docs/developer-docs/backend/resource-limits#resource-constraints-and-limits).
 
     This may be called multiple times between `ic0.call_new` and `ic0.call_perform`.
 
@@ -1781,9 +1781,9 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing.
 
-    If the function returns `0` as the `err_code`, the IC was able to enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
+    The returned `err_code` is always one of `0` and `2`. An `err_code` of `0` means that no error occurred and that the IC could enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
 
-    If the function returns a non-zero value, the call cannot (and will not be) performed. This can happen due to a lack of resources within the IC, but also if it would reduce the current cycle balance to a level below where the canister would be frozen.
+    A non-zero value of `err_code` (`2`) indicates that the call could not be performed and the semantics of that value are the same as for the corresponding `SYS_FATAL` [reject code](#reject-codes). The non-zero value of `err_code` (`2`) could arise due to a lack of resources within the IC, but also if the call would reduce the current cycle balance to a level below where the canister would be frozen. No callbacks are executed in this case.
 
     After `ic0.call_perform` and before the next call to `ic0.call_new`, all other `ic0.call_*` function calls trap.
 
@@ -1901,7 +1901,7 @@ The 32-bit stable memory System API (`ic0.stable_size`, `ic0.stable_grow`, `ic0.
 
 Canisters have the ability to store and retrieve data from a secondary memory. The purpose of this *stable memory* is to provide space to store data beyond upgrades. The interface mirrors roughly the memory-related instructions of WebAssembly, and tries to be forward compatible with exposing this feature as an additional memory.
 
-The stable memory is initially empty and can be grown up to the [Wasm stable memory limit](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits#resource-constraints-and-limits) (provided the subnet has capacity).
+The stable memory is initially empty and can be grown up to the [Wasm stable memory limit](https://internetcomputer.org/docs/developer-docs/backend/resource-limits#resource-constraints-and-limits) (provided the subnet has capacity).
 
 -   `ic0.stable_size : () → (page_count : i32)`
 
@@ -2725,7 +2725,7 @@ Replica-signed queries may improve security because the recipient can verify the
 
 The Bitcoin API exposed by the management canister is DEPRECATED.
 Developers should interact with the Bitcoin canisters (`ghsi2-tqaaa-aaaan-aaaca-cai` for Bitcoin mainnet and `g4xu7-jiaaa-aaaan-aaaaq-cai` for Bitcoin testnet) directly.
-Information about Bitcoin and the IC Bitcoin integration can be found in the [Bitcoin developer guides](https://developer.bitcoin.org/devguide/) and  the [Bitcoin integration documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works).
+Information about Bitcoin and the IC Bitcoin integration can be found in the [Bitcoin developer guides](https://developer.bitcoin.org/devguide/) and  the [Bitcoin integration documentation](https://internetcomputer.org/docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works).
 
 ### IC method `bitcoin_get_utxos` {#ic-bitcoin_get_utxos}
 

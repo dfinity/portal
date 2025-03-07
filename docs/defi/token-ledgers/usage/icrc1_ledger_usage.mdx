@@ -1,0 +1,212 @@
+---
+keywords: [intermediate, tokens, icrc, icrc-1, icrc-2, icrc-3, icrc tokens, tutorial, ledger, using icrc ledger, icrc ledger, using ledger]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Using an ICRC-1 ledger
+
+<MarkdownChipRow labels={["Intermediate" , "Ledgers"]} />
+
+There are three primary methods used to interact with an ICRC-1 ledger:
+
+- `dfx canister`: The generic canister call from `dfx` used to call a canister's methods.
+
+- `ic-cdk`: Inter-canister calls for the ICRC-1 ledger.
+
+- [`ledger-icrc-js`](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc): A library for interfacing with an ICRC-1 ledger on the Internet Computer.
+
+## Interact with an ICRC-1 canister using `dfx canister call`
+
+### ICRC-1
+
+Use the following command syntax to interact with an ICRC-1 ledger via `dfx canister`:
+
+```
+dfx canister call <canister-id> <method-name> <arguments>
+```
+
+For example, to fetch the token symbol of an ICRC-1 ledger, call the `icrc1_symbol` method:
+
+```
+dfx canister call ss2fx-dyaaa-aaaar-qacoq-cai icrc1_symbol '()'
+```
+
+Whether your ICRC-1 ledger will have all available methods enabled will depend on if you choose to support any of the extensions of ICRC-1 (ICRC-2, ICRC-3,...).
+
+You can always check which standards are supported by a certain ICRC-1 ledger by calling:
+
+```
+dfx canister call <canister-id> icrc1_supported_standards '()'
+```
+
+You can find all available methods for your ICRC-1 ledger within the ICRC-1 ledger canister's Candid file or, if your ICRC-1 ledger has been deployed to the mainnet, view your ICRC-1 ledger canister [on the dashboard](https://dashboard.internetcomputer.org/canisters). An example of an ICRC-1 ledger deployed on the mainnet that you can reference is the [ckETH ledger canister](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
+
+View the [`dfx canister call` documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) for more information on calling canister methods.
+
+
+### ICRC-2
+
+For ledgers that support ICRC-2, you can call ICRC-2 methods. ICRC-2 methods include those for `approve` workflows. For specifics, see the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve).
+
+View the [`dfx canister call` documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) for more information on calling canister methods.
+
+## Interacting with an ICRC-1 ledger from your web application (`ledger-icrc-js`)
+
+[View references and examples on how to use the `ledger-icrc-js` library to interact with ICRC-1 ledgers](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc).
+
+## Interacting with an ICRC-1 ledger from another canister (inter-canister calls via `ic-cdk`)
+
+When calling into arbitrary ICRC-1 ledgers, we recommend you use [bounded wait (aka best-effort response) calls](/docs/references/async-code). These calls ensure that your canister does not get stuck waiting for a response from the ledger.
+
+Here sample code to fetch the transfer fee from an ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister. The example includes retry logic to handle errors when possible.
+
+```rust
+pub enum GetFeeError {
+    /// The ledger didn't implement the ICRC-1 API correctly, e.g., returning an invalid response.
+    Icrc1ApiViolation(String),
+    /// A CDK CallError that we cannot recover from synchronously.
+    FatalCallError(CallFailed),
+}
+
+/// Obtain the fee that the ledger canister charges for a transfer.
+/// This functiuon will keep retrying to fetch the fees for as long possible, and for as long as the
+/// `should_retry` predicate returns true. Note that using a predicate that just always returns
+/// `true` can keep your canister in a retry loop, and potentially unable to upgrade. The
+/// recommended way is to set a limit on the number of retries, use a timeout, or abort when the
+/// caller canister enters the stopping state.
+pub async fn icrc1_get_fee<P>(ledger: Principal, should_retry: &P) -> Result<NumTokens, GetFeeError>
+where
+    P: Fn() -> bool,
+{
+    loop {
+        match Call::bounded_wait(ledger, "icrc1_fee").await {
+            Ok(res) => match res.candid() {
+                Ok(fee) => return Ok(fee),
+                Err(msg) => {
+                    return Err(GetFeeError::Icrc1ApiViolation(format!(
+                        "Unable to decode the fee: {:?}; failed with error {:?}",
+                        res, msg
+                    )))
+                }
+            },
+            // The system rejected our call, but it is possible to retry immediately.
+            // Since obtaining the fees is idempotent, it's always safe to retry.
+            Err(err) if err.is_immediately_retryable() && should_retry() => continue,
+            // The system rejected our call, but it is not possible to retry immediately.
+            Err(err) => return Err(GetFeeError::FatalCallError(err)),
+        }
+    }
+}
+```
+
+Here's sample code for transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](https://internetcomputer.org/docs/references/icrc1-standard#transaction-deduplication-) of ICRC-1 ledgers. However, if the transaction keeps failing beyond the deduplication window, the transaction state will be unknown and you will need to perform manual recovery.
+
+```rust
+pub enum TransferErrorCause {
+    Icrc1ApiViolation(String),
+    FatalCallError(CallFailed),
+    LedgerError(TransferError),
+}
+
+pub enum Icrc1TransferError {
+    // The transfer didn't happen.
+    TransferFailed(TransferErrorCause),
+    // The transfer may have happened.
+    UnknownState(TransferErrorCause),
+}
+
+/// Transfer the tokens on the specified ledger. The caller must ensure that:
+/// 1. The `created_at` time of the `TransferArg` is set.
+/// 2. The transaction described by the `TransferArg` has not yet been executed by the ledger.
+///    Otherwise, the function may return `Ok` even if the transfer didn't happen.
+pub async fn icrc1_transfer<P>(
+    ledger: Principal,
+    arg: TransferArg,
+    should_retry: &P,
+) -> Result<BlockIndex, Icrc1TransferError>
+where
+    P: Fn() -> bool,
+{
+    assert!(
+        arg.created_at_time.is_some(),
+        "The created_at_time must be set in the TransferArg"
+    );
+
+    let mut no_unknowns = true;
+    loop {
+        match Call::bounded_wait(ledger, "icrc1_transfer")
+            .with_arg(&arg)
+            // Use the longest timeout supported by the system, as we'll retry later anyways.
+            .change_timeout(u32::MAX)
+            .await
+        {
+            Ok(res) => match res.candid() {
+                Ok(Ok(i)) => return Ok(i),
+                Ok(Err(e)) => match e {
+                    // Since the assumption is that the transaction didn't happen before the call,
+                    // treat a duplicate error as a success.
+                    TransferError::Duplicate { duplicate_of } => return Ok(duplicate_of),
+                    e if no_unknowns => {
+                        return Err(Icrc1TransferError::TransferFailed(
+                            TransferErrorCause::LedgerError(e),
+                        ))
+                    }
+                    // Unknown state. To recover, you can query the ledger blocks to see if the
+                    // transaction was executed.
+                    e => {
+                        return Err(Icrc1TransferError::UnknownState(
+                            TransferErrorCause::LedgerError(e),
+                        ))
+                    }
+                },
+                Err(e) => {
+                    return Err(Icrc1TransferError::TransferFailed(
+                        TransferErrorCause::Icrc1ApiViolation(e.to_string()),
+                    ))
+                }
+            },
+            // Since the ICRC1 transfer is idempotent, it's always safe to retry.
+            Err(e) if e.is_immediately_retryable() && should_retry() => {
+                // If the reject wasn't clean, mark the state as unknown.
+                if !e.is_clean_reject() {
+                    no_unknowns = false;
+                }
+                continue;
+            }
+            Err(e) if e.is_clean_reject() && no_unknowns => {
+                return Err(Icrc1TransferError::TransferFailed(
+                    TransferErrorCause::FatalCallError(e),
+                ))
+            }
+            Err(e) => {
+                return Err(Icrc1TransferError::UnknownState(
+                    TransferErrorCause::FatalCallError(e),
+                ))
+            }
+        }
+    }
+}
+```
+
+You can find all available methods for your ICRC-1 ledger within the ICRC-1 ledger canister's Candid file or, if your ICRC-1 ledger has been deployed to the mainnet, view your ICRC-1 ledger canister [on the dashboard](https://dashboard.internetcomputer.org/canisters). An example of an ICRC-1 ledger deployed on the mainnet that you can reference is the [ckETH ledger canister](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
+
+
+### `icrc-ledger-types` Rust crate
+
+To interact with the ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used.
+This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e., ICRC-2, ICRC-3,...).
+
+The crate can be installed with the command:
+
+```
+cargo add icrc-ledger-types
+```
+
+Or, it can be added to the `Cargo.toml` file:
+
+```
+icrc-ledger-types = "0.1.1"
+```
+
+[View the documentation for this crate](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/).

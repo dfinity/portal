@@ -1,0 +1,96 @@
+---
+keywords: [beginner, tutorial, maintain canisters, limits, resource limits, message limit, instruction limit, wasm stable memory limit, memory limit, heap memory limit, stable memory limit]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import { Tooltip } from "/src/components/Tooltip/Tooltip";
+
+# Canister resource limits
+
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
+
+The Internet Computer uses WebAssembly as the platform for executing messages of canisters.
+Since WebAssembly is [Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness), it can express different kinds of computations, including non-terminating computations.
+The Internet Computer protects against non-terminating computations by limiting the number of WebAssembly instructions and other resources per message execution.
+The limits depend on the message type as shown in the following table.
+
+## Resource constraints and limits
+
+| Message resource limits                                                              | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Message queue limit, messages per <GlossaryTooltip>canister</GlossaryTooltip>                                           | 500         |
+| Maximum ingress message payload                                                      | 2MiB         |
+| Maximum cross-net inter-canister message payload                                     | 2MiB         |
+| Maximum same-<GlossaryTooltip>subnet</GlossaryTooltip> inter-canister request payload (may be deprecated at some point) | 10MiB        |
+| Maximum response size (replicated execution)                                         | 2MiB         |
+| Maximum response size (non-replicated execution, i.e., in query calls)                | 3MiB         |
+
+| Instruction resource limits                                                          | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Instruction limit, instructions per update call/heartbeat/timer                      | 40 Billion  |
+| Instruction limit, instructions per query call                                      | 5 Billion   |
+| Instruction limit, instructions per canister install/upgrade                         | 300 Billion |
+| Instruction limit, instructions per inspect_message                                  | 200 Million |
+| Instruction limit, instructions per round per execution thread                       | 7 Billion   |
+
+| <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Subnet capacity (total memory available per subnet)                                  | 1TiB        |
+| Maximum number of snapshots per canister                                              | 1           |
+
+| Memory resource limits                                                               | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Wasm heap memory, per canister                                                       | 4GiB        |
+| Wasm stable memory, per canister                                                     | 500GiB      |
+| Wasm stable memory, data access per replicated message                               | 2GiB        |
+| Wasm stable memory, data written per replicated message                              | 2GiB        |
+| Wasm stable memory, data access per upgrade message                                  | 8GiB        |
+| Wasm stable memory, data written per upgrade message                                 | 8GiB        |
+| Wasm stable memory, data access per (replicated) query                               | 1GiB        |
+| Wasm stable memory, data written per (replicated) query                              | 1GiB        |
+
+| Wasm module limits                                                                   | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Wasm total size, per canister                                                        | 100MiB      |
+| Wasm code section, per canister                                                      | 10MiB       |
+| Wasm custom sections, per subnet                                                     | 2GiB        |
+| Wasm custom sections, per canister                                                   | 1MiB        |
+| Wasm custom sections, sections per canister                                          | 16          |
+
+| Query call resource limits                                                           | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Query calls execution threads, per replica node                                      | 4           |
+| Query calls execution threads, per canister                                          | 2           |
+
+| Update call resource limits                                                          | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Update calls execution threads, per subnet                                           | 4           |
+| Update calls execution threads, per canister                                         | 1           |
+
+## Performance limits
+
+The block rate varies from 0.75 blocks per second to 1.5 blocks per second depending on the subnet and the number of nodes in the subnet.
+
+Up to 1000 messages can be included in a block.
+Since ICP decouples message reception from message execution, the messages included in a block are not guaranteed to be executed in the same block.
+Messages for different canisters may be executed in parallel on multiple threads.
+ICP currently has 4 execution threads, and each thread can execute up to 1000 messages.
+Another limiting factor in execution throughput is the number of executed Wasm instructions.
+ICP currently targets 2B instructions per block.
+
+## Additional notes
+
+The expiration time of an ingress message is specified by the [agent](/docs/building-apps/interact-with-canisters/agents/overview) making the request and can be up to 5 minutes.
+
+The Internet Computer Protocol may reject WebAssembly modules for reasons such as:
+
+- They declare more than 50_000 functions.
+- They declare more than 1_000 globals.
+- They declare a function with more than 1_000_000 Wasm instructions.
+- They declare more than 16 exported custom sections (the custom section names with the prefix icp:).
+- The number of all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 1_000.
+- The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20_000.
+- The total size of the exported custom sections exceeds 1MiB.
+
+More information regarding these restrictions can be found in the [Internet Computer interface specification](/docs/references/ic-interface-spec#system-api-module).

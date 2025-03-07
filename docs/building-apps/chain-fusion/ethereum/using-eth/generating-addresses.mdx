@@ -1,0 +1,53 @@
+---
+keywords: [advanced, ethereum, addresses, eth address ]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Generating an Ethereum address
+
+<MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
+
+On Ethereum, there are two types of addresses: wallet addresses for holding assets and contract addresses. Wallet addresses are public accounts that can send and receive ETH tokens. Contract addresses refer to a smart contract that has been executed on Ethereum and the transactions associated with that contract.
+
+Wallet and contract addresses can be queried using the [EVM RPC canister](../evm-rpc/evm-rpc-canister.mdx).
+
+## Canister ETH addresses
+
+To create an ETH address for your canister, first you will need to obtain an ECDSA public key associated with your canister. You can get this key by calling the `ecdsa_public_key` API method of the management canister:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L24-L38
+
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L26-L41
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+Then, convert the public key bytes to an Ethereum address. An example in Rust can be found below:
+
+```rust reference
+https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/packages/ic-evm-utils/src/evm_signer.rs#L105-L119
+```
+
+## Resources
+
+You can use this address to make Ethereum transactions from your canister.
+
+[Learn how to sign Ethereum transactions](signing-transactions.mdx).

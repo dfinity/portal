@@ -3,6 +3,17 @@
   "categoryDescription": "",
   "elements": [
     {
+      "title": "EVM in a canister",
+      "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
       "title": "Direct Bitcoin Integration",
       "overview": "Native integration with the Bitcoin blockchain. Trustless reading from and writing to the Bitcoin network from canister smart contracts.",
       "forum": "https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147",
@@ -19,7 +30,7 @@
       "overview": "Threshold ECDSA protocol suite based on multi-party computation (MPC). Enables trustless integrations with ECDSA-based chains.",
       "forum": "https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152",
       "proposal": "https://dashboard.internetcomputer.org/proposal/21340",
-      "docs": "https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa/",
+      "docs": "https://internetcomputer.org/docs/building-apps/network-features/signatures/t-ecdsa",
       "eta": "2022",
       "status": "deployed",
       "is_community": false,

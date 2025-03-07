@@ -1,0 +1,83 @@
+---
+keywords: [intermediate, ethereum, eth, icp]
+---
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Understanding ICP for Ethereum developers
+
+<MarkdownChipRow labels={["Intermediate", "Ethereum"]} />
+
+This guide is designed to help Ethereum developers understand the core concepts of ICP, focusing on the terminology and functionalities that differ between the two protocols. While the underlying concepts might be similar, ICP utilizes different terms to describe them.
+
+For a feature comparison between the two protocols, refer to the [quick comparison between ICP and Ethereum](/docs/building-apps/essentials/network-overview#quick-comparison-with-ethereum).
+
+## Terminology mapping
+This table summarizes the key terminology differences between Ethereum and ICP:
+
+| Ethereum term | ICP term | Notes |
+|---------------|----------|-------|
+| Smart contract | Canister |       |
+| Gas            | Cycles   |       |
+| Shard          | Subnet   |       |
+| Node           | Replica  |       |
+| Account        | Principal |       |
+| DAO            | SNS       | An SNS refers to a DAO using ICP's [unique framework](/docs/building-apps/governing-apps/overview) However, ICP DAOs can launch without using this framework.|
+| Message        | Memo      | On Ethereum, you can encode data, often referred to as a message, as a hexadecimal in the optional `data` field of any transaction. Some tools allow you to input text, which they then convert to hexadecimal in the background. On ICP, you can encode data as an arbitrary blob, provided it is less than 32 bytes, in the optional `memo` field of any [ICRC1 transaction](/docs/references/icrc1-standard/#icrc1_transfer). |
+
+In addition, ICP has implemented similar token standards as Ethereum:
+
+| Ethereum standard | ICP standard |
+|-------------------|--------------|
+| ERC-20            |[ICRC-1/ICRC-2](../../../../references/icrc1-standard) |
+| ERC-721           | [ICRC-7](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md) |
+
+
+## Smart contracts
+
+Both Ethereum and ICP allow developers to deploy programs that run onchain. These programs are referred to as smart contracts on Ethereum and canister smart contracts, or simply just [canisters](/docs/building-apps/essentials/canisters), on ICP.
+
+This comparison provides an overview of the key differences in smart contract development on Ethereum and ICP.
+
+### Key differences
+
+#### Creation
+**Ethereum**: Smart contracts are written in Solidity and deployed immutably onto the blockchain.
+**ICP**: Canisters can be written in any language that compiles into [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm, including [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/motoko/main/getting-started/motoko-introduction), and [Python](https://demergent-labs.github.io/kybra/).
+
+#### Accounts
+**Ethereum**: On Ethereum, there are two main types of accounts: externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.
+
+**ICP**: Similar to EOA accounts, [several wallets support ICP](https://support.dfinity.org/hc/en-us/articles/4405480810644-Which-wallets-can-store-ICP-utility-tokens).
+
+Similar to the concept of contract accounts, ICP canisters themselves can hold ICP and ICRC1/ICRC2 tokens on ICP. The canister ID serves as a principal or unique identifier that allows you to send tokens to. ICP canisters can generate multiple ECDSA-based public keys using [Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa).
+
+#### Deployment
+**Ethereum**: Developers typically use development frameworks like Hardhat or Truffle to compile and deploy their smart contracts.
+**ICP**: Developers use `dfx`, which is a similar development environment. [`dfx`](/docs/building-apps/getting-started/install#installing-dfx-via-dfxvm) is a command-line tool that interacts with the IC SDK and allows developers to compile and deploy their canisters.
+
+#### Testing
+
+**Ethereum**: Developers can utilize testnets such as Sepolia for deploying and testing smart contracts before deploying to the mainnet.
+
+**ICP**: Currently, testing is done in the local environment. A [playground environment](/docs/building-apps/developing-canisters/deploy/) on the mainnet is available for canisters, but deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their smart contracts than on Ethereum.
+
+
+#### Paying for gas
+
+**Ethereum**: Users pay for gas fees directly using the crypto wallet they connect to the dapp.
+**ICP**: Using the [reverse gas model](/docs/building-apps/essentials/gas-cost#the-reverse-gas-model), the dapp developers, not the users, pay for the gas fees. The reverse gas model aims to provide a smoother user experience by eliminating upfront fees.
+
+#### Updates
+**Ethereum**: Smart contracts are immutable. To update functionalities, developers need to create a new smart contract and migrate data.
+**ICP**: Developers can create upgradeable or non-upgradable (also known as "blackholed") canisters. Upgradable canisters allow updates by reinstalling the code or deploying a new version. Non-upgradable canisters are similar to Ethereum smart contracts.
+
+#### Consensus
+
+**Ethereum**: Ethereum uses [proof of stake](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) as its consensus mechanism.
+**ICP**: The IC consensus protocol provides cryptographically guaranteed finality. The approach on ICP solves the drawbacks of probabilistic finality used in Bitcoin-like protocols, including slow finality times. ICP ensures faster and more secure transaction finality.
+
+## Resources
+
+- The Internet Computer for Ethereum Developers [blog post](https://medium.com/dfinity/the-internet-computer-for-ethereum-developers-3331b50db31b) by Dominic Wörner
+
+- [Internet Computer Guide for Ethereum Developers](https://github.com/jennifertrin/ICEthereumGuide) by Jennifer Tran

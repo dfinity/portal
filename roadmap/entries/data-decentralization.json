@@ -14,38 +14,61 @@
       "in_beta": false
     },
     {
-      "title": "SEV-SNP-protected API Boundary Nodes",
-      "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
-      "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "eta": "",
-      "milestone_id": "Levitron",
-      "status": "upcoming",
-      "is_community": true,
-      "in_beta": false,
-      "imported": true
-    },
-    {
-      "title": "Public API Boundary Node logs and metrics",
-      "overview": "Anyone can analyze the API boundary node access logs to gain insights into app usage patterns etc.",
+      "title": "Public API boundary node logs and metrics",
+      "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
       "forum": "",
       "proposal": "",
-      "milestone_id": "Levitron",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
+      "milestone_id": "Levitron"
     },
     {
       "title": "Decentralized access logs and metrics",
       "is_milestone": true,
       "milestone_id": "Levitron",
-      "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
+      "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
       "status": "in_progress",
-      "eta": "",
       "eta_to_render": ""
+    },
+    {
+      "title": "Privacy-preserving logs",
+      "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
+      "status": "in_progress",
+      "milestone_id": "Levitron"
+    },
+    {
+      "title": "Generation 3 node hardware and rewards",
+      "is_milestone": true,
+      "milestone_id": "Knot",
+      "description": "Define the next generation node hardware, refine reward calculations, and improve network topology to enhance network performance, efficiency, and decentralization.",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Node reward enhancements",
+      "overview": "Enhance the node reward calculation to better align with the demand and supply dynamics of computing resources.",
+      "status": "future",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Generation 3 node hardware",
+      "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
+      "status": "future",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Target topology enhancements",
+      "overview": "Improve the node target topology to further increase the decentralization of the network.",
+      "status": "future",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Performance-based node provider rewards",
+      "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
+      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "milestone_id": "Knot"
     },
     {
       "title": "Subnet rental",
@@ -69,7 +92,7 @@
       "in_beta": false
     },
     {
-      "title": "Off-chain observability stack for Node Providers",
+      "title": "Off-chain observability stack for node providers",
       "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
       "forum": "",
       "proposal": "",
@@ -81,9 +104,9 @@
       "imported": true
     },
     {
-      "title": "Performance-based node provider rewards",
-      "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
-      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
+      "title": "Support public contributions to the dfinity/ic GitHub repository",
+      "overview": "The dfinity/ic GitHub repository, which provides an implementation for the Internet Computer Protocol, was made public in July 2024. This allowed the community to see all branches and Pull Requests that were created by the DFINITY Foundation and thus increased transparency. There’s more and more demand from the community to be able to make contributions to this repository. Currently this process is cumbersome and this feature is about streamlining the process and making it more user friendly. This milestone aims to create a process and technical means to support public contributions to the ic repository. It includes ensuring that no secrets can be leaked via DFINITY’s CI processes, no unauthorised access can be gained to DFINITY’s internal infrastructure and that no bad or malicious code can be merged",
+      "forum": "",
       "proposal": "",
       "docs": "",
       "eta": "",
@@ -92,7 +115,7 @@
       "in_beta": false
     },
     {
-      "title": "HTTP Asset Caching",
+      "title": "HTTP asset caching",
       "overview": "Building on response verification v2, HTTP gateways support caching of static assets such as HTML pages, JavaScript code, and images.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
@@ -110,20 +133,20 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "upcoming",
+      "status": "future",
       "is_community": false,
       "in_beta": false,
       "imported": true
     },
     {
-      "title": "SEV-SNP-protected HTTP Gateway",
+      "title": "SEV-SNP-protected HTTP gateway",
       "overview": "Trusted execution (AMD SEV-SNP) enables trustless HTTP gateways, empowering users to remotely attest that the correct software image is running.",
       "forum": "",
       "proposal": "",
       "docs": "",
       "is_community": false,
       "in_beta": false,
-      "status": "upcoming"
+      "status": "future"
     },
     {
       "title": "CDN canisters on edge infrastructure",
@@ -145,18 +168,6 @@
       "status": "future",
       "is_community": true,
       "in_beta": false
-    },
-    {
-      "title": "Node Provider Remuneration V3",
-      "overview": "Improves the V2 remuneration model by considering things like different multipliers per region, nodes per data center, penalties, or remuneration based on metrics such as cycles burnt.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": true,
-      "in_beta": false,
-      "imported": true
     },
     {
       "title": "Strengthened node provider checks and audits",
@@ -213,28 +224,6 @@
       "is_community": false,
       "in_beta": false,
       "imported": true
-    },
-    {
-      "title": "Gen 3 Replica Node Hardware Specification",
-      "overview": "Specification of the Gen 3 hardware for the third generation of ICP nodes.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Rewards-driven DRE",
-      "overview": "Rewards-driven decentralized reliability (DRE) and capacity management on ICP.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
     }
   ]
 }

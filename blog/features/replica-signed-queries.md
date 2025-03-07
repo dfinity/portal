@@ -25,7 +25,7 @@ To support replica-signed queries, the query response format has been changed. T
 
 If the call is replied to, the `reply` field is included. If the call is rejected, the `error_code`, `reject_code`, and `reject_message` fields will be included in the response.
 
-If the query call resulted in a reply, the response is a CBOR (see [CBOR](/docs/current/references/ic-interface-spec#cbor)) map with the following fields:
+If the query call resulted in a reply, the response is a CBOR (see [CBOR](/docs/references/ic-interface-spec#cbor)) map with the following fields:
 
 - `status (text)`: "replied".
 
@@ -37,15 +37,15 @@ If the call resulted in a reject, the response is a CBOR map with the following 
 
 - `status (text)`: "rejected".
 
-- `reject_code (nat)`: The reject code (see Reject codes: /docs/current/references/ic-interface-spec#reject-codes).
+- `reject_code (nat)`: The reject code (see Reject codes: /docs/references/ic-interface-spec#reject-codes).
 
 - `reject_message (text)`: a textual diagnostic message.
 
-- `error_code (text)`: an optional implementation-specific textual error code (see Error codes: /docs/current/references/ic-interface-spec#error-codes).
+- `error_code (text)`: an optional implementation-specific textual error code (see Error codes: /docs/references/ic-interface-spec#error-codes).
 
 - `signatures ([+ node-signature])`: a list containing one node signature for the returned query response.
 
-The query's signature (whose type is denoted as node-signature) is a [CBOR](/docs/current/references/ic-interface-spec#cbor) (see CBOR) map with the following fields:
+The query's signature (whose type is denoted as node-signature) is a [CBOR](/docs/references/ic-interface-spec#cbor) (see CBOR) map with the following fields:
 
 - `timestamp (nat)`: the timestamp of the signature.
 

@@ -1,0 +1,201 @@
+---
+hide_table_of_contents: true
+---
+
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { OsType, useOs } from "/src/hooks/useOs";
+
+# Quick start
+
+<MarkdownChipRow labels={["Beginner"]} />
+
+Build Web3, DeFi, fully network-resident social media, games, enterprise apps,
+and just about anything else you can imagine. Your projects are immune to cyberattacks and unstoppable.
+
+**Open your terminal and deploy in minutes using these steps.**
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+#### Prerequisites
+
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
+<div>
+</div>
+<input type="checkbox"/> Install the <a href="https://github.com/libunwind/libunwind">libunwind</a> package. On Debian/Ubuntu: <code>sudo apt install libunwind-dev</code>.
+
+---------
+
+#### 1. Install the IC SDK.
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+#### 2. Create a new project.
+
+```
+dfx new hello --type motoko --frontend react
+```
+
+This generates a simple "Hello, [name]!" application that uses [Motoko](/docs/motoko/main/getting-started/motoko-introduction), React, and TypeScript.
+
+
+#### 3. Deploy the project.
+
+```
+cd hello
+dfx deploy --playground
+```
+
+#### 4. Interact with the app.
+
+Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
+
+*Congratulations, you just created your first internet-native app!*
+
+:::info
+
+You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
+
+:::
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+#### Prerequisites
+
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended.
+<div>
+</div>
+<input type="checkbox"/> Apple silicon machines (M1, M2, etc): Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
+
+---------
+
+#### 1. Install the IC SDK.
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+#### 2. Create a new project.
+
+```
+dfx new hello --type motoko --frontend react
+```
+
+This generates a simple "Hello, [name]!" application that uses [Motoko](/docs/motoko/main/getting-started/motoko-introduction), React, and TypeScript.
+
+
+#### 3. Deploy the project.
+
+```
+cd hello
+dfx deploy --playground
+```
+
+#### 4. Interact with the app.
+
+Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
+
+*Congratulations, you just created your first internet-native app!*
+
+:::info
+
+You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
+
+:::
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+#### Prerequisites
+
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
+<input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
+<div>
+</div>
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and install a Linux distribution (i.e., Ubuntu) using Windows Subsystem for Linux: <code>wsl --install -d ubuntu</code>
+<div>
+</div>
+<input type="checkbox"/> Open the WSL Linux environment. Run all of the following commands within this environment.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">install Node.js</a> within your WSL Linux environment.
+
+---------
+
+#### 1. Install the IC SDK.
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+#### 2. Create a new project.
+
+```
+dfx new hello --type motoko --frontend react
+```
+
+This generates a simple "Hello, [name]!" application that uses [Motoko](/docs/motoko/main/getting-started/motoko-introduction), React, and TypeScript.
+
+
+#### 3. Deploy the project.
+
+```
+cd hello
+dfx deploy --playground
+```
+
+#### 4. Interact with the app.
+
+Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
+
+*Congratulations, you just created your first internet-native app!*
+
+:::info
+
+You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
+
+:::
+
+</TabItem>
+
+</AdornedTabs>
+
+#### Possible next steps
+
+- Learn more about this example [application's architecture](app-architecture.mdx).
+
+- Take a look at curated example code in [ICP Ninja](https://icp.ninja), a web-based IDE that allows you to deploy to the mainnet with a few clicks.
+
+- Fork the [ICP example repo](https://github.com/dfinity/examples) that includes various code examples in different languages.
+
+- Continue setting up your local development environment by creating a [developer identity](/docs/building-apps/getting-started/identities) and [getting tokens](/docs/building-apps/getting-started/tokens-and-cycles) for more dapp deployments.
+
+- Learn more about [canister smart contracts](/docs/building-apps/developing-canisters/write) and how to [deploy and manage them](/docs/building-apps/developing-canisters/deploy).

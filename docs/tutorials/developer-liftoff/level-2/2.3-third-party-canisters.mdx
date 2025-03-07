@@ -19,7 +19,7 @@ Third-party canisters are canisters that provide a public service at a static <G
 
 `dfx` enables a **dependency** workflow, where a canister can be configured to pull third-party canisters that it depends on into the local environment. This can be useful for developers who are looking to test the accuracy of their integration with the third-party canister and perform tests without paying cycles or using production environments. It also drastically simplifies the local deployment of canisters like the II canister, since you don't need to obtain the Wasm and Candid files for the canisters yourself—`dfx`` takes care of it in the background for you.
 
-In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import/).
+In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/building-apps/advanced/using-third-party-canisters).
 
 ## Pulling third-party canister dependencies
 
@@ -27,7 +27,7 @@ Let's take a look at a basic example of pulling a third-party canister as a depe
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -105,9 +105,9 @@ First, open the `dfx.json` file in your project's directory. You need to configu
       "args": "",
       "packtool": ""
     }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -170,7 +170,7 @@ The output will include a local Candid UI URL for both the `dependencies_backend
 Installing code for canister dependencies_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
 Deployed canisters.
 URLs:
-  Backend canister via Candid interface:
+    Backend canister via Candid interface:
     dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
     internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
 ```
@@ -183,7 +183,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -205,4 +205,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 Next, let's take a deeper dive into an introduction of Candid and the role that it plays in development on ICP.
 
-- [2.4 Introduction to Candid](/docs/current/tutorials/developer-liftoff/level-2/2.4-intro-candid).
+- [2.4 Introduction to Candid](/docs/tutorials/developer-liftoff/level-2/2.4-intro-candid).

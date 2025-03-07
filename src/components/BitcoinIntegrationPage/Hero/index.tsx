@@ -30,7 +30,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
           </motion.p>
           <motion.div variants={transitions.item} className="flex gap-4 mt-8">
             <Link
-              to="/docs/current/references/bitcoin-how-it-works"
+              to="/docs/references/bitcoin-how-it-works"
               className="button-white text-center mb-6 md:mb-8 whitespace-nowrap"
             >
               Build

@@ -1,0 +1,80 @@
+---
+keywords: [intermediate, governance, concept, nns, proposals, nns proposals]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Proposal lifecycle
+
+<MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
+
+A proposal is a suggestion to evolve and update the Internet Computer protocol. NNS DAO participants can submit proposals, make suggestions on how the ICP should evolve, and vote on proposals that others have submitted.
+
+Based on the majority decision, a proposal is either adopted or rejected. If a proposal is adopted, it is automatically executed fully onchain, without the need for manual intervention.
+
+While other blockchains take weeks or months to upgrade and typically require substantial manual work and coordination to do so, ICP upgrades itself every week (https://dashboard.internetcomputer.org/releases). Its ability to upgrade and iterate is a comparative "superpower."
+
+
+## Proposal lifecycle
+
+A proposal's lifecycle starts when it is submitted by a governance participants. Then, other governance participants form a decision and vote on the proposal. Based on these votes, the governance canister derives a proposal decision, i.e., the proposal is either adopted or rejected.
+
+If the proposal is rejected, usually nothing happens. If the proposal is adopted, the agreed upon decision is automatically executed by the governance canister.
+
+### Proposal submission
+
+Any eligible neuron can make and submit a proposal. To avoid being inundated by useless proposals, a user submitting a proposal has to pay a fee of 10 ICP when submitting a proposal that they will receive back if the proposal is adopted, but not if the proposal is rejected.
+
+After a proposal is submitted, the proposal is created and stored in the governance canister. The governance canister computes and stores additional information with each proposal.
+
+Then, the governance canister looks at all neurons and creates an empty ballot for each eligible neuron that has a
+dissolve delay of at least 6 months, storing the neuron's voting power in this moment. This means that at the time of the proposal's submission, a neuron snapshot is taken and all neurons can vote on the proposal with the voting power that they have at that moment.
+
+:::info
+This results in the following, potentially unintuitive cases:
+* If a neuron is created after a proposal was submitted, it is not eligible to vote on this proposal.
+* If a neuron had a dissolve delay of less than 6 months when a proposal was submitted, it cannot vote on the proposal, even if the neuron's dissolve delay is increased again.
+* If a neuron had a dissolve delay of 6 months when a proposal was submitted, it can vote on the proposal during the full voting period, even if by the time of voting the neuron's dissolve delay decreased slightly below 6 months.
+
+:::
+
+The sum of all of the neurons' voting powers determines the total voting power associated with a given proposal. In
+addition to creating all ballots, when a new proposal is created, the proposer's ballot is set to a “Yes” vote. This reflects that the proposal already has the support of the user submitting it.
+
+Moreover, each proposal has an associated **voting period**, which determines the period of time over which votes for this proposal are accepted.
+
+For more information on how to submit a proposal, refer to [How to submit a proposal](/docs/building-apps/governing-apps/nns/concepts/proposals/proposal-submit).
+
+### Proposal decision
+After a proposal is submitted and added to the governance canister, other users who control neurons can [vote on the
+proposal](/docs/building-apps/governing-apps/nns/concepts/proposals/direct-voting). The governance canister stores a
+neuron's choice in the empty ballot where the neuron's voting power has been recorded. In this way, the proposal always contains the information of the total voting power of "Yes" and "No" votes.
+
+A proposal can be decided in two ways:
+
+1. **Absolute majority before the voting period ends**: At any point, even before the voting period ends, if an absolute majority (more than half of the total voting power stored in the proposal) has voted "Yes", then the proposal is adopted, and if an absolute majority has voted "No", then the proposal is rejected.
+2. **Simple majority at the voting period’s end**: When the voting period ends, if a simple majority (more than half of the cast votes) has voted "Yes" and the number of these "Yes"-votes constitute at least 3% of the total voting power, then the proposal is adopted. Otherwise, the proposal is rejected.
+
+### Wait-for-quiet
+What also plays into this is an algorithm called **wait-for-quiet** that dynamically adjusts the deadline. The idea
+of wait-for-quiet is to decide proposals quickly when all voters agree, but increase the time that neurons can vote
+for proposals that are controversial. That means that the voting period can be dynamically increased, depending on the neurons’ votes. In particular, each time a proposal’s outcome is turned (either a "Yes"-majority is turned to a "No"-majority or vice versa), the proposal’s deadline is increased. Currently, a proposal's initial voting period is 4 days and can be increased by at most another 4 days. That is, the voting period that is taken into account for the above rules can be between 4 and 8 days, depending on the voting activity.
+
+### Proposal execution
+Technically, a proposal defines a method on a canister that will be called if the proposal is adopted with [some parameters](./proposal-submit.mdx).
+
+When a proposal is adopted, the defined method on the specified canister is automatically called with the given parameters. This is done automatically by the governance canister and does not require any manual intervention.
+A proposal's execution may be successful, in which case the proposal is labeled as `executed`, or it may fail, in which case the proposal is labeled as `failed`.
+
+When a proposal is rejected, most of the time nothing happens. In very few cases, some cleanup work is initiated.
+Therefore, `rejected` is also a possible final proposal state.
+
+:::info
+A proposal is adopted or rejected as soon as a decision can be made, which might be before the voting deadline.
+To ensure that neurons can still take their time to vote and get rewards, neurons that vote after the proposals' decision but before the voting period's deadline still get rewards.
+See [staking and voting rewards](/docs/building-apps/governing-apps/nns/concepts/neurons/staking-voting-rewards) for more information on rewards.
+:::
+
+### Reward distribution
+After a proposal is in a final state of either executed, failed, or rejected, the governance canister will take it into account for the next reward round.
+After the rewards are distributed, a proposal has been through the full lifecycle. The proposal's details may be emptied by the governance canister to save space.

@@ -1,0 +1,115 @@
+---
+keywords: [advanced, concept, simd, ai, performance, computations]
+---
+
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# WebAssembly SIMD
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+ICP supports deterministic WebAssembly SIMD support. This is a significant milestone for smart contracts demanding top onchain performance, such as artificial intelligence (AI), image processing (NFTs), games, scientific decentralized applications (dapps), and more.
+
+However, a significant performance boost is also possible for "classical" blockchain operations implemented in canisters. For example, reward distribution or cryptographic operations might benefit from the new WebAssembly SIMD instructions.
+
+### What is WebAssembly SIMD?
+
+WebAssembly SIMD (single instruction, multiple data) is a set of more than 200 deterministic vector instructions defined in the [WebAssembly core specification](https://webassembly.github.io/spec/core/syntax/instructions.html#vector-instructions). This parallel processing significantly accelerates specific tasks within canisters running on ICP.
+
+The SIMD functionality is available on every ICP node.
+
+### Developer benefits
+
+WebAssembly SIMD support enables a new level of performance on ICP. Developers can:
+
+- **Optimize code for computationally heavy tasks:** Identify areas within their canisters that can benefit from SIMD instructions and tailor their code for accelerated performance.
+- **Unlock new possibilities:** Explore novel functionalities and complex applications that were previously limited by processing power.
+- **Build a future-proof foundation:** Positions developers at the forefront of blockchain innovation.
+
+## Using WebAssembly SIMD
+
+There are two main ways to benefit from WebAssembly SIMD in a smart contract:
+
+1. **Loop auto-vectorization:** Just enabling the WebAssembly SIMD and recompiling the project might be enough to get a significant performance boost. This is usually simple, error-proof, and can be a one-line change. This is often the recommended first step, but the result depends heavily on the used algorithms, libraries, and compilers.
+
+2. **SIMD intrinsics:** Some computation-heavy functions may be rewritten using direct SIMD instructions. This exposes the full SIMD potential, but in many cases some core canister algorithms must be completely rewritten using new instructions.
+
+## Using loop auto-vectorization
+
+To leverage the loop auto-vectorization, the WebAssembly SIMD instructions should be enabled globally for the entire workspace or locally for specific functions within the canister. Once the instructions are available to the compiler, it automatically converts some normal loops into loops with parallel computations.
+
+While the change is easy and error-proof, the result in practice depends on many factors, like the algorithm itself, the compiler optimization level and options, project dependencies, etc.
+
+### Example
+
+To enable WebAssembly SIMD instructions globally for the whole workspace and all its dependencies:
+
+<AdornedTabs groupId="languages">
+<TabItem value="rust" label="Rust" default>
+
+Create the `.cargo/config.toml` file with the following content:
+
+```toml
+[build]
+target = ["wasm32-unknown-unknown"]
+
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "target-feature=+simd128"]
+```
+
+</TabItem>
+</AdornedTabs>
+
+To enable WebAssembly SIMD instructions just for a specific function within a canister:
+
+<AdornedTabs groupId="languages">
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/simd/mat_mat_mul/src/lib.rs#L111-L113
+```
+
+</TabItem>
+</AdornedTabs>
+
+:::info
+WebAssembly SIMD instructions may be enabled by default in future `dfx` versions, so enabling it for a specific function within a canister might have no effect.
+:::
+
+## Using WebAssembly SIMD intrinsics
+
+WebAssembly SIMD instructions are available as platform-specific intrinsics for the `wasm32` platform. To use the intrinsics, the WebAssembly SIMD instructions should be enabled as described in the previous section.
+
+### Example
+
+<AdornedTabs groupId="languages">
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/simd/mat_mat_mul/src/lib.rs#L106-L139
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Frequently asked questions
+
+### How to measure performance speedup of a canister?
+
+ICP provides the `ic0.performance_counter` [system API call](/docs/references/ic-interface-spec#system-api-performance-counter) to measure a canister's performance.
+
+There is also the `canbench` [benchmarking framework](https://github.com/dfinity/canbench).
+
+### Are there any libraries for artificial intelligence (AI) inferences?
+
+The Sonos `tract` is a tiny, self-contained TensorFlow and ONNX inference [Rust library](https://github.com/sonos/tract). DFINITY [contributed WebAssembly SIMD support](https://github.com/sonos/tract/pull/1420) to the library. The library is used in some DFINITY AI [demos](https://www.youtube.com/watch?v=6qLvIXiCGcM) and [examples](https://github.com/dfinity/examples/tree/master/rust/image-classification).
+
+## Resources and examples
+
+* [WebAssembly SIMD Rust example](https://github.com/dfinity/examples/tree/master/rust/simd) compares the performance of a naive, optimized, auto-vectorized, and SIMD intrinsic matrix multiplication running on ICP.
+* [WebAssembly core specification](https://webassembly.github.io/spec/core/syntax/instructions.html#vector-instructions) for SIMD instructions.

@@ -76,17 +76,14 @@ import T "mo:matchers/Testable";
 actor {
     let it = C.Tester({ batchSize = 8 });
     public shared func test() : async Text {
-
         it.should("greet me", func () : async C.TestResult = async {
           let greeting = await Canister.greet("Bob");
           M.attempt(greeting, M.equals(T.text("Hello, Bob!")))
         });
-
         it.shouldFailTo("greet my friend", func () : async () = async {
           let greeting = await Canister.greet("George");
           ignore greeting
         });
-
         await it.runAll()
         // await it.run()
     }
@@ -149,7 +146,7 @@ Now, let's take a look at creating a project and setting up end-to-end (e2e) tes
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -174,7 +171,7 @@ You will be prompted to select the language that your backend canister will use.
 `dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
 :::
 
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend':
 
 ```
   ? Select a frontend framework: ›
@@ -183,12 +180,13 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
-❯ No frontend canister
+❯ No frontend
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
+  ? Add extra features (space to select, enter to confirm) ›
   ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
@@ -333,7 +331,6 @@ The test should be successful and return output such as:
    Start at  16:24:03
    Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
 
-
  PASS  Waiting for file changes...
        press h to show help, press q to quit
 ```
@@ -381,7 +378,6 @@ Then, run the test again with the `npm test` command. This time, the output shou
       Tests  2 passed (2)
    Start at  16:27:26
    Duration  247ms (transform 32ms, setup 0ms, collect 66ms, tests 62ms, environment 0ms, prepare 39ms)
-
 
  PASS  Waiting for file changes...
        press h to show help, press q to quit
@@ -458,7 +454,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -480,4 +476,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 To wrap up level 2 of the developer liftoff, you'll dive into Motoko level 2 and learn more about Motoko's fundamentals.
 
-- [2.6 Motoko level 2](/docs/current/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
+- [2.6 Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).

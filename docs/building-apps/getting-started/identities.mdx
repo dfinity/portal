@@ -1,0 +1,103 @@
+---
+keywords: [beginner, getting started, tutorial, accounts, developer account]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Developer identities
+
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
+
+A developer **identity** is essential to developing canisters. Developer identities are basically a private/public key pair. Instead of using the public key as an identifier for the identity, a so-called principal is derived from the public key. The terms **identity** and **principal** are often used interchangeably. For better memorability, every developer identity in `dfx` has a name. The public key of an identity can be distributed openly as it will be used to encrypt messages. The private key must be kept secret and stored securely.
+
+## What are developer identities used for?
+
+When a canister is created and deployed, the developer identity/principal that created the canister is automatically set as a **controller** of that canister. A controller has permission to manage the canister, including:
+
+- Starting and stopping the canister.
+
+- Installing and upgrading canister code.
+
+- Viewing the canister's status and logs.
+
+- Configuring the settings of the canister, such as setting the resource allocation or adding additional controllers.
+
+If you are working on a project collaboratively with others, your identity's principal can be added as a controller of that project's canisters.
+
+Once a canister is deployed, it will consume resources such as storage and compute. Canisters must pay for these resources using **cycles**. Your developer identity is used to mint and transfer cycles to your canisters.
+
+## Create an identity
+
+By default, `dfx` will create and use the `default` identity. This identity is not stored securely. It is recommended you create your own personal identity.
+
+First, use `dfx` to list all current identities. If none exist, it will automatically create the `default` identity.
+
+```
+dfx identity list
+```
+
+Create a new developer identity with the command:
+
+```
+dfx identity new IDENTITY_NAME
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Your seed phrase for identity 'IDENTITY_NAME': hotel knock any token tooth deal fossil salmon coral idea tip weapon cotton save fiction major arrive history library clerk depth poet path guide
+Write it down in a safe place, as this information can be used to reconstruct your key in case of emergency.
+Created identity: "IDENTITY_NAME".
+```
+
+</details>
+
+Identities created with `dfx` are global; they are not confined to a specific project's context.
+
+Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
+
+### Storing the developer identity's private key
+
+The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem`. This file should be backed up to a secure location.
+
+By default, `dfx` will store your identity in the local keyring/keychain. If a keyring/keychain is unavailable, it will prompt you to choose a password, then store your private key locally in a password-protected PEM file at `~/.config/dfx/identity/IDENTITY_NAME/identity.pem.encrypted`.
+
+Make sure you switch to the newly created identity as explained below.
+
+### Backup and recover
+
+When you create a new identity with `dfx identity new`, a seed phrase will be returned in the command's output. This seed phrase is only shown once and can be used to recover your identity if necessary. Therefore, this seed phrase should be backed up to a secure location, such as a password manager like 1Password or an offline location, such as written on a piece of paper.
+
+To recover an identity, use `dfx identity import --seed-file seedphrase.txt`, where `seedphrase.txt` contains the seed phrase shown when you created your identity.
+
+If you didn't save the seed phrase, you can use `dfx identity export` to display the private key. There is no way to get the seed phrase from a private key; therefore, you'd need to back up this file the same way you would any other important, secure file.
+
+## Using your developer identity
+
+At any point in time, one identity is active and used by `dfx`. Get the name of the currently active identity by running:
+
+```
+dfx identity whoami
+```
+
+To get the principal of the currently active identity, run:
+
+```
+dfx identity get-principal
+```
+
+Your developer identity will have a principal identifier in the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe`. 
+
+To list all available identities, run:
+
+```
+dfx identity list
+```
+
+To switch to actively using another developer identity, run:
+
+```
+dfx identity use IDENTITY_NAME
+```
