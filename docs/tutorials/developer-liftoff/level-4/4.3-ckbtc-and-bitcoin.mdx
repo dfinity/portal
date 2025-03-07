@@ -14,27 +14,23 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/LmoE3-jzwmo?si=-ODc1BYFu_HSLhTA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-One of the key features of the Internet Computer is known as **chain-key cryptography**. Chain-key cryptography is a feature that encompasses several cryptographic mechanisms that enable novel workflows and functionalities such as chain-key tokens. Chain-key tokens are not wrapped tokens; they are twin tokens that are backed 1:1 with the original token (BTC, ETH) that use chain-key cryptography to transfer and use the original tokens with fewer fees and higher transfer speeds than using the token's native blockchain network.
+Chain-key cryptography is a feature that encompasses several cryptographic mechanisms that enable novel workflows and functionalities such as chain-key tokens. Chain-key tokens are not wrapped tokens; they are twin tokens that are backed 1:1 by the original token (BTC, ETH). They use chain-key cryptography to enable token transfers with cheaper fees and higher transfer speeds than using the original token's native blockchain network.
 
 Currently, ICP supports an integration with the Bitcoin network that includes the chain-key bitcoin (ckBTC) token. Other chain-key tokens include ckETH and variations of ckERC20 tokens, such as ckUSDC and ckLINK.
 
-:::info
-In this tutorial and other pages of ICP developer documentation, note the use of the lowercase version of **bitcoin**, which refers to the token BTC, and the use of the uppercase version **Bitcoin**, which refers to the Bitcoin network itself. This capitalization distinction is in accordance with the Bitcoin style guide.
-:::
-
 ## Bitcoin integration architecture
+
+ICP's direct integration with Bitcoin uses a novel protocol for chain-key signatures based on **threshold signatures**. [Threshold ECDSA](/docs/references/t-sigs-how-it-works/) and threshold Schnorr are protocol suites that include several features like [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/references/t-sigs-how-it-works/#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/references/t-sigs-how-it-works//#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
+
+On a high level, subnets that have ECDSA and Schnorr enabled hold a master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA or Schnorr keys. It is important to know that an ECDSA or Schnorr private key only exists in a secret-shared form during its lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
+
+The Developer Liftoff will dive deeper into threshold signatures in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/references/t-sigs-how-it-works/).
+
+On the protocol level, the [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration) and chain-key signatures each expose an API on the management canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA and Schnorr signature APIs can be used for other workflows, such as the integration with other blockchains like Ethereum.
 
 Through ICP's integration with the Bitcoin network, canisters deployed on ICP are able to receive, hold, and send bitcoin. Each of these functions utilizes transactions on the Bitcoin network and allows canisters to act as if they are users on the Bitcoin network.
 
-At the core of this integration is a novel protocol for chain-key signatures that is based on **threshold ECDSA**. [Threshold ECDSA](/docs/references/t-sigs-how-it-works/) is a protocol suite that includes several features that include [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/references/t-sigs-how-it-works//#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/references/t-sigs-how-it-works//#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
-
-On a high level, subnets that have ECDSA enabled hold a threshold ECDSA master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA keys. It is important to know that an ECDSA private key only exists in a secret-shared form during its lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
-
-The Developer Liftoff will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/references/t-sigs-how-it-works/).
-
-On the protocol level, the [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration) and chain-key ECDSA each expose an API on the management canister. Remember that the management canister isn't a canister but a facade that is used to enable functionality for management operations such as starting or stopping a canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA signature API can be used for other workflows, such as the integration with other blockchains like Ethereum.
-
-For a canister to make a Bitcoin transaction, a request must be sent to a Bitcoin-enabled subnet. On that subnet, a Bitcoin canister is implemented as a typical NNS-managed canister that is accessible through the management canister Bitcoin API. The Bitcoin canister holds ICP's onchain Bitcoin state, which includes the UTXO set, the most recent Bitcoin blocks, and the current outgoing transactions being sent to the Bitcoin network. When a canister submits a transaction to the Bitcoin management canister API, the transaction is queued to be submitted to the Bitcoin network. To send transactions to the Bitcoin network, an adapter connects to the nodes of the Bitcoin network and functions similarly to a traditional Bitcoin node. In every subnet round, the Bitcoin adapter obtains the pending transactions and queues them for being submitted asynchronously.
+For a canister to make a Bitcoin transaction, a request must be sent to a Bitcoin-enabled subnet. On that subnet, a Bitcoin canister is implemented as a typical NNS-managed canister that is accessible through the management canister's Bitcoin API. The Bitcoin canister holds ICP's onchain Bitcoin state, which includes the UTXO set, the most recent Bitcoin blocks, and the current queue of outgoing transactions being sent to the Bitcoin network. When a canister submits a transaction to the Bitcoin API, the transaction is queued to be submitted to the Bitcoin network. An adapter connects to the nodes of the Bitcoin network and functions similarly to a traditional Bitcoin node. In every subnet round, the Bitcoin adapter obtains the pending transactions and queues them for being submitted asynchronously.
 
 ## What is ckBTC?
 
@@ -44,39 +40,46 @@ In comparison to traditional BTC, ckBTC has much faster transfers at a much chea
 
 The functionality of ckBTC is provided through the combination of two canisters:
 
-- The ckBTC minter: The minter is responsible for minting and burning ckBTC. New ckBTC tokens are minted whenever the ckBTC minter receives bitcoin and burns ckBTC tokens whenever an owner of ckBTC tokens requests a withdrawal of bitcoin.
+- The ckBTC minter: Responsible for minting and burning ckBTC. New ckBTC tokens are minted whenever the ckBTC minter receives bitcoin, while ckBTC tokens are burned whenever there is a request to withdraw bitcoin.
 
-- The ckBTC ledger: The ledger is responsible for transferring ckBTC between accounts and keeping a record of account balances.
+- The ckBTC ledger: Responsible for transferring ckBTC between accounts and keeping a record of account balances.
 
 ## Bitcoin use cases on ICP
 
 The ICP's Bitcoin integration enables use cases such as:
 
-- ckBTC: An ICRC-2 compliant 'twin token' using chain-key cryptography that is backed 1:1 by bitcoins.
-
 - Decentralization swaps: ckBTC can be used to buy tokens in an SNS decentralization swap.
 
-- Bitcoin smart contracts: Canisters can hold bitcoin directly on the Bitcoin network, allowing powerful smart contracts to offer Bitcoin functionality. For example, onchain Bitcoin wallets that use biometric authentication would allow users to complete Bitcoin transactions within the application without managing a Bitcoin private key.
+- Bitcoin smart contracts: Powerful smart contracts can offer Bitcoin functionality. For example, onchain Bitcoin wallets that use biometric authentication would allow users to complete Bitcoin transactions within the application without managing a Bitcoin private key.
 
 - Trading bitcoin: ckBTC can be traded directly on decentralized exchanges for bitcoin without third-party custody of the assets.
 
 ## Deploying a Bitcoin dapp
 
-In this tutorial, you'll be deploying an example application using a local instance of the Bitcoin network and then simulating Bitcoin transactions using it. This example showcases ICP's Bitcoin integration; however, it does not use ckBTC.
+In this tutorial, you'll deploy an example application using a local instance of the Bitcoin network, then simulate Bitcoin transactions using it. This example showcases ICP's Bitcoin integration; however, it does not use ckBTC.
 
 :::info
-Developing with ckBTC uses a different workflow, which will be showcased in a future variation of the Developer Liftoff series focused entirely on ckBTC.
+Developing with ckBTC uses a different workflow, which will be showcased in a future variation of this series focused entirely on ckBTC.
 :::
 
-For this tutorial, you'll take a look at developing and testing a Bitcoin dapp using `dfx`, which supports both the Bitcoin API and the ECDSA API.
-
 ### Prerequisites
+
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
 
 Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
 
 ### Setting up a local Bitcoin network
 
-To develop a Bitcoin dapp locally, first a local Bitcoin network instance must be running. A local Bitcoin network allows developers to mine blocks quickly, which facilitates testing without having to rely on the slow Bitcoin testnet or the Bitcoin mainnet.
+To develop a Bitcoin dapp locally, first a local Bitcoin network instance must be running. This allows developers to mine blocks quickly and facilitates testing without having to rely on the slow Bitcoin testnet or the Bitcoin mainnet.
+
+
+- #### Step 1: Download [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
+- #### Step 2: Unpack the `.tar.gz` file: `tar -xfz bitcoin-25.0-x86_64-apple-darwin.tar.gz`
+- #### Step 3: Create a directory named `data` inside the unpacked folder: `cd bitcoin-25.0 && mkdir data`
+- #### Step 4: Create a file called `bitcoin.conf` at the root of the unpacked folder and add the following contents:
+
 
 To get started, first download the [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
 
@@ -341,8 +344,3 @@ dfx canister call basic_bitcoin get_balance '("n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 
 <TutorialFooter />
-## Next steps
-
-Next, you'll explore ICP's governance and token staking:
-
-- [4.4 NNS governance and staking](/docs/tutorials/developer-liftoff/level-4/4.4-nns-governance).

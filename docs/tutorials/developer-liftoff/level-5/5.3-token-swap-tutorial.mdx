@@ -522,10 +522,10 @@ export USER_A=$(dfx identity get-principal --identity user_a)
 export USER_B=$(dfx identity get-principal --identity user_b)
 ```
 
-Next, switch to your DevJourney identity and save its principal as the environmental variable `OWNER`:
+Next, switch to your DevLiftoff identity and save its principal as the environmental variable `OWNER`:
 
 ```bash
-dfx identity use DevJourney
+dfx identity use DevLiftoff
 export OWNER=$(dfx identity get-principal)
 ```
 
@@ -569,7 +569,7 @@ In this command, `token_a` is created with the following configuration:
 
 - `token_name`: Defines the token's name as 'Token A.'
 - `token_symbol`: Defines the token's symbol as 'A.'
-- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevJourney identity.
+- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevLiftoff identity.
 - `initial_balances`: Defines the initial balance of tokens as '100_000_000_000'.
     - `owner`: Defines the owner of the initial token balance (100_000_000_000) as the `USER_A` environmental variable. This variable holds the principal of the user_a identity.
 - `transfer_fee`: Defines the transfer fee as '10_000'.
@@ -619,7 +619,7 @@ In this command, `token_b` is created with the following configuration:
 
 - `token_name`: Defines the token's name as 'Token B.'
 - `token_symbol`: Defines the token's symbol as 'B.'
-- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevJourney identity.
+- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevLiftoff identity.
 - `initial_balances`: Defines the initial balance of tokens as '100_000_000_000'.
     - `owner`: Defines the owner of the initial token balance (100_000_000_000) as the `USER_B` environmental variable. This variable holds the principal of the user_a identity.
 - `transfer_fee`: Defines the transfer fee as '10_000'.
