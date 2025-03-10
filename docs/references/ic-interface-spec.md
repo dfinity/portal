@@ -1505,8 +1505,15 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.time : () -> (timestamp : i64);                                                   // *
     ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
     ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
-    ic0.is_controller: (src : I, size : I) -> ( result: i32);                             // * s
-    ic0.in_replicated_execution: () -> (result: i32);                                     // * s
+    ic0.is_controller : (src : I, size : I) -> ( result : i32);                           // * s
+    ic0.in_replicated_execution : () -> (result : i32);                                   // * s
+    
+    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
+    ic0.cost_create_canister : (dst : I) -> ();                                           // * s
+    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
+    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
+    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
+    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
@@ -2050,6 +2057,50 @@ When executing a query or composite query method via a query call (i.e. in non-r
     If this `certificate` includes a subnet delegation, then the id of the current canister will be included in the delegation's canister id range.
 
     This traps if `ic0.data_certificate_present()` returns `0`.
+
+### Cycle cost calculation {#system-api-cycle-cost}
+
+Inter-canister calls have an implicit cost, and some calls to the management canister require the caller to attach cycles to the call explicitly.  
+The various cost factors may change over time, so the following system calls give the canister programmatic, up-to-date information about the costs.
+
+These system calls return costs in Cycles, represented by 128 bits, which will be written to the heap memory starting at offset `dst`. Note that the cost calculation is only correct for correct inputs, e.g., a method name length argument should not exceed 20'000, because such an argument would be rejected by `ic0.call_new`. The cost API will still return a number in this case, but it would not have a real meaning. 
+
+-   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
+
+    This system call returns the amount of cycles that a canister needs to be above the freezing threshold in order to successfully make an inter-canister call. This includes the base cost for an inter-canister call, the cost for each byte transmitted in the request, the cost for the transmission of the largest possible response, and the cost for executing the largest possible response callback. The last two are cost _reservations_, which must be possible for a call to succeed, but they will be partially refunded if the real response and callback are smaller. So the cost of the actual inter-canister call may be less than this system call predicts, but it cannot be more. 
+    `method_name_size` is the byte length of the method name, and `payload_size` is the byte length of the argument to the method. 
+
+-   `ic0.cost_create_canister : (dst : I) -> ()`; `I ∈ {i32, i64}`
+
+    The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor.
+
+-   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
+
+    The cost of a canister http outcall via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
+    - url
+    - headers - i.e., the sum of the lengths of all keys and values 
+    - body
+    - transform - i.e., the sum of the transform method name length and the length of the transform context
+    
+    `max_res_bytes` is the maximum response length the caller wishes to accept (the caller should provide the default value of `2,000,000` if no maximum response length is provided in the actual request to the management canister). 
+
+-   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+
+-   `ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+
+-   `ic0.cost_vetkd_derive_encrypted_key(src : I, size : I, vetkd_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+
+    These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
+    - `ecdsa_curve: 0 → secp256k1`
+    - `algorithm: 0 → bip340secp256k1, 1 → ed25519`
+    - `vetkd_curve: 0 → bls12_381`
+
+    See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information.
+
+    These system calls trap if `src` + `size` or `dst` + 16 exceed the size of the WebAssembly memory. Otherwise, they return an `i32` with the following meaning:
+    - `0`: Success. The result can be found at the memory address `dst`.
+    - `1`: Invalid curve or algorithm. Memory at `dst` is left unchanged.
+    - `2`: Invalid key name for the given combination of signing scheme and (valid) curve/algorithm. Memory at `dst` is left unchanged.
 
 ### Debugging aids
 
@@ -7663,6 +7714,54 @@ ic0.in_replicated_execution<es>() : i32 =
   if es.params.sysenv.certificate = NoCertificate
   then return 1
   else return 0
+
+I ∈ {i32, i64}
+ic0.cost_call<es>(method_name_size: i64, payload_size: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_create_canister<es>(dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
+  key_name = copy_from_canister<es>(src, size)
+  if ecdsa_curve ∉ known_curves then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
+  copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
+
+I ∈ {i32, i64}
+ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_algorithms = arbitrary()
+  key_name = copy_from_canister<es>(src, size)
+  if algorithm ∉ known_algorithms then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
+  copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
+
+I ∈ {i32, i64}
+ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
+  key_name = copy_from_canister<es>(src, size)
+  if vetkd_curve ∉ known_curves then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
+  copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
 
 I ∈ {i32, i64}
 ic0.debug_print<es>(src : I, size : I) =
