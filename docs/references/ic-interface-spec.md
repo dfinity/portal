@@ -2348,7 +2348,9 @@ Indicates various information about the canister. It contains:
 
 -   A SHA256 hash of the module installed on the canister. This is `null` if the canister is empty.
 
--   The actual memory usage of the canister.
+-   The actual memory usage of the canister, representing the total memory consumed by the canister.
+
+-   A record containing detailed breakdown of memory usage into individual components (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
 
 -   The cycle balance of the canister.
 
@@ -2367,6 +2369,26 @@ Indicates various information about the canister. It contains:
     * `response_payload_bytes_total`: the total number of query and composite query response payload (reply data or reject message) bytes.
 
 Only the controllers of the canister or the canister itself can request its status.
+
+#### Memory Metrics {#ic-canister_status-memory_metrics}
+
+    * `wasm_memory_size`: Represents the Wasm memory usage of the canister, i.e. the heap memory used by the canister's WebAssembly code.
+
+    * `stable_memory_size`: Represents the stable memory usage of the canister.
+
+    * `global_memory_size`: Represents the memory usage of the global variables that the canister is using.
+
+    * `wasm_binary_size`: Represents the memory occupied by the Wasm binary that is currently installed on the canister. This is the size of the binary uploaded via `install_code` or `install_chunked_code`, e.g., the compressed size if the uploaded binary is gzipped.
+
+    * `custom_sections_size`: Represents the memory used by custom sections defined by the canister, which may include additional metadata or configuration data.
+
+    * `canister_history_size`: Represents the memory used for storing the canister's history.
+
+    * `wasm_chunk_store_size`: Represents the memory used by the Wasm chunk store of the canister.
+
+    * `snapshots_size`: Represents the memory consumed by all snapshots that belong to this canister.
+
+All sizes are expressed in bytes.
 
 ### IC method `canister_info` {#ic-canister_info}
 
@@ -4770,6 +4792,8 @@ The controllers of a canister can obtain detailed information about the canister
 
 The `Memory_usage` is the (in this specification underspecified) total size of storage in bytes.
 
+The `Memory_metrics` are the (in this specification underspecified) detailed metrics on the memory consumption of the canister (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
+
 The `idle_cycles_burned_per_day` is the idle consumption of resources in cycles per day.
 
 Conditions  
@@ -4809,6 +4833,7 @@ S with
             then null
             else opt (SHA-256(S.canisters[A.canister_id].raw_module));
           memory_size = Memory_usage;
+          memory_metrics = Memory_metrics;
           cycles = S.balances[A.canister_id];
           reserved_cycles = S.reserved_balances[A.canister_id]
           idle_cycles_burned_per_day = idle_cycles_burned_rate(
