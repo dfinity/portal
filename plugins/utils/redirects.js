@@ -793,6 +793,7 @@ const redirects = `
   /docs/developers-guide/working-with-canisters /docs/building-apps/canister-management/settings
   /docs/developers-guide/quickstart.html /docs/building-apps/getting-started/quickstart
   /docs/developers-guide/concepts/canisters-code.html /docs/building-apps/essentials/canisters
+  /docs/developers-guide/first-app/installation.html /docs/building-apps/getting-started/install
 
 
   ## Quickstart
@@ -838,6 +839,15 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/building-apps/chain-fusion/ethereum/evm-rpc/ /docs/building-apps/chain-fusion/ethereum/evm-rpc/overview
+  /docs/building-apps/developing-canisters/creates /docs/building-apps/developing-canisters/create
+  /docs/current/developer-docs/setup/download-install /docs/building-apps/getting-started/install
+  /docs/current/developer-docs/smart-contracts/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/motoko/version /docs/building-apps/getting-started/install  
+  /docs/references/ /docs/references/ic-interface-spec
+  /ecosystem.json /ecosystem
+  /ethereum /chainfusion
+  /img/ /docs/home
   /docs/defi /docs/defi/overview
   /docs/download.html /docs/home
   /docs/ic-identity-guide/what-is-ic-identity.html /docs/home
