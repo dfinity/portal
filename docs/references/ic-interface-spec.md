@@ -596,6 +596,8 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
   - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister.
 
+  Note that you can only trust valid IC certificates in IC responses since malicious replicas could spoof their responses.
+
   So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
   At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call.
