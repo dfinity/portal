@@ -814,6 +814,12 @@ const redirects = `
 
   ## Samples
   /docs/samples/codelabs/data-persistence /samples
+  /docs/current/developer-docs/daos/nns/ /docs/building-apps/governing-apps/nns/overview
+  /docs/current/developer-docs/defi/tokens/icrc-1/ /docs/defi/token-standards/
+  /docs/current/developer-docs/integrations/http-requests /docs/building-apps/network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/integrations/nns/nns-app-quickstart /docs/building-apps/governing-apps/nns/overview
+  /docs/language-guide/compiler-ref.html /docs/motoko/main/reference/language-manual
+  /docs/current/motoko/main/motokolimbajul /docs/motoko/main/getting-started/motoko-introduction
   /docs/samples/codelabs/minimalistic-motoko-dapp /samples
   /docs/samples/codelabs/minimalistic-rust-dapp /samples
   /docs/samples/codelabs /samples
