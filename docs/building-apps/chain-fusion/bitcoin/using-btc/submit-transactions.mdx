@@ -12,9 +12,21 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method. The following snippet shows how to send a signed transaction to the Bitcoin network.
+To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method.
 
+:::info
 
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local replica with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+:::
+
+The following snippet shows how to send a signed transaction to the Bitcoin network:
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>

@@ -24,6 +24,19 @@ To read information from the Bitcoin network's state, the Bitcoin integration AP
 
 Standard Bitcoin addresses (P2PKH, P2SH, P2WPKH, etc.) are supported.
 
+:::info
+
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local replica with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+
+:::
+
 ## Bitcoin networks
 
 Both the Bitcoin testnet and mainnet networks are supported. The network can be specified as a parameter in each function.
