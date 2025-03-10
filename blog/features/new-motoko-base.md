@@ -156,7 +156,7 @@ persistent actor {
 
 ### Hashing
 
-We removed 64-bit hashing functionality from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles from a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case. 
+We removed 32-bit hashing from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles from a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case. 
 
 ### Range functions
 
