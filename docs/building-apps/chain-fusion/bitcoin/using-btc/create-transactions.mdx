@@ -24,6 +24,16 @@ creates new UTXOs. In order to create a Bitcoin transaction, you need to:
 
 The following snippet shows how to get the available UTXOs corresponding to `own_address`. Note that a canister can control many addresses, and each of them can have multiple UTXOs associated with it.
 
+:::info
+
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local replica with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+:::
+
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
