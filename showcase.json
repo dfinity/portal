@@ -5259,5 +5259,22 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
+  },
+  {
+   "name": "IC News",
+    "logo": "/img/showcase/icnews_logo.svg",
+    "id": "icnews",
+    "tags": [
+      "AI News", 
+      "News",
+      "Social Media"
+    ],
+    "website": "https://ic.news",
+    "description": "Community-Driven On-Chain News, Powered by Internet Computer",
+    "twitter": "https://x.com/ic_news_",
+    "screenshots": [
+      "/img/showcase/icnews_screenshot.png"
+    ],
+    "usesInternetIdentity": true,
   }
 ]
