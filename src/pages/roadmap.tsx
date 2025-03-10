@@ -387,11 +387,11 @@ const RoadmapPage: React.FC = () => {
           </div>
 
           <div className="container-12 relative">
-            <div className="absolute w-[115%] sm:w-7/12 left-1/12 translate-y-5/12 -translate-x-[10%] bottom-1/2 md:left-0 md:w-6/12 md:bottom-0 md:translate-x-[110%] md:translate-y-1/12">
+            <div className="absolute w-[80%] sm:w-7/12 left-2/12 translate-y-3/12 sm:translate-y-6/12 -translate-x-[10%] bottom-1/2 md:left-0 md:w-4/12 md:bottom-0 md:translate-x-[175%] md:-translate-y-[35%]">
               <img
                 className="w-full"
-                src="/img/roadmap/roadmap-viz.webp"
-                alt=""
+                src="/img/roadmap/roadmap.svg"
+                alt="roadmap"
               />
             </div>
           </div>

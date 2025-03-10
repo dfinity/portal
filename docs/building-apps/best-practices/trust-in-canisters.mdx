@@ -1,0 +1,60 @@
+---
+keywords: [concept, canister, trust, how to trust canisters, trusting canister, can you trust a canister, how to verify canister]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# Trust in canisters
+
+<MarkdownChipRow labels={["Beginner" , "Education", "Concept"]} />
+
+Applications that provide DeFi or other valuable transactions, such as the ability to transfer assets, require that users trust the application to act honestly and reliably. How can one ensure that it is safe to entrust assets to a canister?
+
+Users must have confidence that:
+
+1.  The canister does what it is supposed to do.
+
+2.  The canister behavior will not unexpectedly change.
+
+## Confidence that the canister does what it is supposed to do
+
+The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected or claimed functionality and only this functionality.
+
+Second, ensure that the Wasm module the canister runs has been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/docs/building-apps/best-practices/reproducible-builds).
+
+Additionally, developers can utilize the [canister history](/docs/building-apps/canister-management/history) feature to track changes to the canister's Wasm module hash.
+
+## Confidence that the canister behavior will not unexpectedly change
+
+Canister smart contracts are deployed and managed by controllers. A controller's level of decentralization can range from being managed by a single person or team of people up to being managed by the NNS, an SNS, or another kind of onchain DAO. Among other capabilities, the controllers can change the code for the canisters that they control because the canister code is **mutable**. The controllers have complete control over the assets, like ICP tokens or bitcoins, held by the canister they manage. This feature brings canisters closer to typical software and makes them suitable for a broad range of applications where software logic can be changed on an as-needed basis.
+
+For critical applications like those used in DeFi, centralized mutability can be dangerous. The controller could change a benign canister into a canister that steals assets.
+
+:::info
+Canister controllers, if not voluntarily decentralized, have complete control over the user assets held by the canister, such as any ICP tokens or bitcoin held by the canister on the user's behalf. The controller, if malicious, can steal these assets. In other words, as a user, if you interact with a canister that deals with your assets, inspect the canister to know how it handles them. If you determine that the canister is storing assets in its subaccounts, ensure that the canister controller is decentralized.
+:::
+
+## Black hole canisters
+
+A similar effect can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g., by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
+
+Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister has only itself as a controller but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is [thoroughly documented](https://github.com/ninegua/ic-blackhole). Note that the repository linked here mentions canister immutability, but this is a red herring.
+
+## Verifying a canister's controllers
+
+A user can verify the list of controllers for a canister using [`dfx canister info`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-info):
+
+```
+dfx canister info <canister-id> --network ic
+```
+
+A user can also obtain the list of a canister's controllers via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information), which includes the list of controllers. A canister cannot obtain this information.
+
+If a canister does not have any controllers, it cannot be changed and is thus immutable. It can only be uninstalled by the NNS via NNS proposal, assuming the integrity of the platform is maintained.
+
+## Control by distributed governance
+
+A more complex but powerful approach is to give control over the canister to a decentralized autonomous organization (DAO). It is possible to hand the control over to an [SNS DAO that is built into the platform](/docs/building-apps/governing-apps/overview) or to build a custom governance. The advantage of the latter is that the governance of the canister can be tailored specifically to the canister or project that the canister is a part of. One can imagine different levels of complexity and control that such a governance mechanism may implement. In both cases, the trust requirements are moved to the DAO controlling the canister, where all of the considerations regarding code inspection and reproducibility apply.
+

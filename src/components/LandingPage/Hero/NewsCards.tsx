@@ -4,17 +4,18 @@ import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import React from "react";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
+import { target } from "@site/docs/references/samples/motoko/cert-var/webpack.config";
 
 const cardsData = [
   {
     news: {
       linkLabel: "Join event",
-      title: "World Computer Day",
-      dateHuman: "January 21, 2025, 10AM–10PM",
+      title: "ETHDenver 2025",
+      dateHuman: "February 23 – March 2",
       press: "",
-      details: `A day exploring the World Computer, AI, Web3 and the self-writing internet.`,
-      url: "https://worldcomputer.com/davos2025",
-      imageUrl: "/img/home/news-cards/news-1.webp",
+      details: `Unifying Web3 + AI`,
+      url: "/ethdenver",
+      imageUrl: "/img/home/news-cards/card-ethDenver.png",
     }
   },
   {
@@ -63,30 +64,30 @@ export const NewsCard: React.FC<{
         src={news.imageUrl}
         alt={news.title}
       ></img>
-      <div className={`px-6 pt-8 pb-6 flex flex-col flex-1 ${
+      <div className={`px-6 pt-8 pb-6 flex justify-between flex-col flex-1 ${
         inverted ? 'text-white' : ''
       }`}>
-        <h3 className={`tw-heading-5 mb-1 ${clampText && "line-clamp-2"}`}>
-          {news.title}
-        </h3>
-        <div className="flex-1"></div>
-
-        {news.press || news.dateHuman && (
-          <div className={`tw-paragraph-sm text-black/60 ${
-            inverted ? 'text-white/60' : 'text-black/60'
-          }`}>
-            {news.dateHuman} {news.press && "by " + news.press}
-          </div>
-        )}
-        {news.details && (
-          <div
-            className={`tw-paragraph-sm mb-6 ${
+        <div>
+          <h3 className={`tw-heading-5 mb-1 ${clampText && "line-clamp-2"}`}>
+            {news.title}
+          </h3>
+          {news.press || news.dateHuman && (
+            <div className={`tw-paragraph-sm text-black/60 ${
               inverted ? 'text-white/60' : 'text-black/60'
-            } ${clampText && "line-clamp-3"}`}
-          >
-            {news.details}
-          </div>
-        )}
+            }`}>
+              {news.dateHuman} {news.press && "by " + news.press}
+            </div>
+          )}
+          {news.details && (
+            <div
+              className={`tw-paragraph-sm mb-6 ${
+                inverted ? 'text-white/60' : 'text-black/60'
+              } ${clampText && "line-clamp-3"}`}
+            >
+              {news.details}
+            </div>
+          )}
+        </div>
         <div className="">
           <Link 
             href={news.url} 

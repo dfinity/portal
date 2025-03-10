@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/wVa4I7pLAcs?si=nyNpubeiI54numjB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-Now that you've covered both the ICP ledger and the NNS, it's time to take a look at a CLI tool that can be used to interact with both. Quill is a ledger and governance toolkit that provides support for self-custody of ICP or ckBTC tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**.
+Now that you've covered both the ICP ledger and the NNS, it's time to take a look at a CLI tool that can be used to interact with both. Quill is a ledger and governance toolkit that provides support for self-custody of ICP or ckBTC tokens and functionality to interact with the NNS, SNSes, and ICP ledger from a **cold wallet**.
 
 To hold tokens or digital assets, there are three types of wallet options you can use:
 
@@ -26,7 +26,7 @@ To hold tokens or digital assets, there are three types of wallet options you ca
 
 Each of these options has its benefits, but there is an equal tradeoff between convenience and security. For example, while cold wallets are quite secure since they do not have access to the internet and are safe from malicious cyber attacks, they are not convenient to use since there must be additional steps taken to move the assets to a hot wallet or centralized wallet in order to spend and trade the assets. The opposite is true for hot wallets; while they are convenient to use, they are susceptible to attacks.
 
-[Read more about different types of self-custody wallet options in the documentation](/docs/current/developer-docs/defi/wallets/overview/).
+[Read more about different types of self-custody wallet options in the documentation](/docs/defi/overview).
 
 In this tutorial, you'll take a look at how to use quill for workflows like interacting with the ICP ledger, sending or receiving ckBTC, and interacting with the NNS and neurons.
 
@@ -272,7 +272,7 @@ Do you want to send this message? [y/N]
 
 Quill can be used with the NNS and any SNS that has been launched on ICP.
 
-In the previous module, [4.4 NNS governance and staking](/docs/current/tutorials/developer-liftoff/level-4/4.4-nns-governance), you took a look at how to interact with the NNS and neurons through the NNS dapp. Now, let's look at how to use quill instead.
+In the previous module, [4.4 NNS governance and staking](/docs/tutorials/developer-liftoff/level-4/4.4-nns-governance), you took a look at how to interact with the NNS and neurons through the NNS dapp. Now, let's look at how to use quill instead.
 
 First, let's get some information about a neuron. You'll need a neuron's ID, which you can find on the NNS dapp, as you took a look at in the last module:
 
@@ -431,7 +431,7 @@ quill get-proposal-info 131693
 
 ## Resources
 
-- [Quill CLI reference](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent/)
+- [Quill CLI reference](https://github.com/dfinity/quill/)
 
 ## Need help?
 
@@ -439,7 +439,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -461,4 +461,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 To finish the level 4 developer liftoff section, you'll wrap up with Motoko level 4:
 
-- [4.6 Motoko level 4](/docs/current/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4).
+- [4.6 Motoko level 4](/docs/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4).

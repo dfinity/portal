@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/b9_PsPQ24tE?si=0w2pIVuSJFhRWAeX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-Motoko is a programming language that has been developed and optimized for creating programs built on the Internet Computer. In this module, you'll cover the fundamental basics of Motoko that you'll use when you build your [first dapp](/docs/current/tutorials/developer-liftoff/level-1/1.3-first-dapp).
+Motoko is a programming language that has been developed and optimized for creating programs built on the Internet Computer. In this module, you'll cover the fundamental basics of Motoko that you'll use when you build your [first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp).
 
 ## Basic concepts and terms
 
@@ -41,7 +41,7 @@ Motoko's program syntax uses declarations and expressions. Programs consist of a
 
 For example, the following code snippet consists of two **declarations** for the variables `x` and `y`, followed by an **expression**. This forms a single **program**.
 
-```motoko
+```motoko no-repl
 let x = 1; /// declaration
 let y = x + 1; /// declaration
 x * y + x; /// expression
@@ -51,7 +51,7 @@ In this snippet, the program's type is `Nat` (natural number), since when the pr
 
 Now, let's build upon this small snippet. If you introduce a block with enclosing braces `do {` and `}` and another variable `z`, you can amend your original program as follows:
 
-```motoko
+```motoko no-repl
 let z = do {
   let x = 1;
   let y = x + 1;
@@ -73,13 +73,13 @@ To import the base library, the `import` keyword can be used at the start of you
 
 For example, to import a local module named 'Debug,' you can use the following import statement:
 
-```motoko no-repl
+```motoko no-repl no-repl
 import Debug "mo:base/Debug";
 ```
 
 Then, to use this imported library, you can call the module with a line of code such as:
 
-```motoko no-repl
+```motoko no-repl no-repl
 Debug.print("hello world");
 ```
 
@@ -87,7 +87,7 @@ In this demonstration, you import Motoko code, indicated by the `mo:` prefix, th
 
 Additionally, you can import Motoko code and other modules using their relative paths. For example, if you have a Motoko program named `types.mo` that you'd like to import into your Motoko file, you can use the following import declaration:
 
-```motoko no-repl
+```motoko no-repl no-repl
 import Types "./types";
 ```
 
@@ -99,7 +99,7 @@ A declaration in Motoko is used to introduce immutable variables, mutable state,
 
 To demonstrate declarations and expressions, recall our first sample project from above:
 
-```motoko
+```motoko no-repl
 let x = 1;
 let y = x + 1;
 x * y + x;
@@ -119,7 +119,7 @@ Type `Nat` refers to 'Natural numbers,' which consist of values such as `0, 1, 2
 
 Motoko permits standard arithmetic operations as one would expect, such as:
 
-```motoko
+```motoko no-repl
 let x = 42 + (1 * 37) / 12: Nat
 ```
 
@@ -131,7 +131,7 @@ Blocks are only allowed as sub-expressions of **control flow expressions**. Cont
 
 So, going back to the example, since there are no control flow expressions in our program, such as `if` or `loop`, you must use the `do  { ... }` expression:
 
-```motoko
+```motoko no-repl
 do {
   let x = 1;
   let y = x + 1;
@@ -143,7 +143,7 @@ Using the `do { ... }` expression allows our code to remain a functioning progra
 
 Next, you can use a block expression to produce a value within a larger, compound expression, such as:
 
-```motoko
+```motoko no-repl
 100 +
   (do {
      let x = 1;
@@ -154,9 +154,9 @@ Next, you can use a block expression to produce a value within a larger, compoun
 
 You can see that nesting blocks preserves the autonomy of each separate declaration list and its variable names. Language theorists refer to this as **lexical scoping**, where variables' scopes may nest but do not interfere with one another as they nest.
 
-To further demonstrate this, consider the following example:
+To further demonstrate this, consider the following example that uses the `ignore` keyword to discard the return value of the `do` block:
 
-```motoko
+```motoko no-repl
 let x = 40; let y = 2;
 ignore do {
   let x = 1;
@@ -166,7 +166,7 @@ ignore do {
 x + y
 ```
 
-In this example, the final expression `x + y` has a value of `42`, since it refers to the first declarations of `x` and `y`, prior to the block expression definition. This is because the block expression's declarations do not interfere with the other declarations within the program.
+In this example, the final expression `x + y` has a value of `42`, since it refers to the first declarations of `x` and `y`, prior to the ignored block expression definition. This is because the block expression's declarations do not interfere with the other declarations within the program.
 
 Aside from program clarity, the brief benefit of lexical scoping is program security, since it can be used to build compositionally secure systems. Motoko specifically has very strong composition properties, since nesting programs within another program cannot arbitrarily redefine your variables to have other meanings.
 
@@ -178,7 +178,7 @@ Recall from our previous modules that an actor is *a process with encapsulated s
 
 To define an actor, the following syntax is used:
 
-```motoko
+```motoko no-repl
 actor {
 
     //actor code goes here
@@ -190,7 +190,7 @@ This actor definition is empty, meaning it does not define any data or send and 
 
 So, to take our previous example and encapsulate it within an actor definition, our code would be:
 
-```motoko
+```motoko no-repl
 actor {
   let x = 40; let y = 2;
   ignore do {
@@ -240,7 +240,7 @@ Additionally, Motoko supports the following user-defined non-primitive value for
 
 Earlier, recall that you printed a value using the imported `Debug` library:
 
-```motoko
+```motoko no-repl
 import Debug "mo:base/Debug";
 Debug.print("hello world");
 ```
@@ -253,7 +253,7 @@ Next, let's look at transforming a Motoko value into a human-readable text strin
 
 The `debug_show` primitive value permits converting a large class of values into type `Text` values. For example, let's convert three values of type `Text`, `Nat`, and `Text` into human-readable text:
 
-```motoko
+```motoko no-repl
 import Debug "mo:base/Debug";
 Debug.print(debug_show(("hello", 42, "world")))
 ```
@@ -270,7 +270,7 @@ This transformation function can be used to print most Motoko data types as text
 
 To wrap things up, let's take a look at how text arguments can be passed into a function. First, consider the following code example:
 
-```motoko
+```motoko no-repl
 actor {
 public func location(city : Text) : async Text {
     return "Hello, " # city # "!";
@@ -286,13 +286,19 @@ If this example is used in a live canister, the canister can be called, and an i
 dfx canister call location_hello_backend location "San Francisco"
 ```
 
-In this example call, there is a space in between 'San' and 'Francisco,' so the argument must be enclosed in quotes. The output of this canister call will be:
+In this example call, there is a space between 'San' and 'Francisco,' so the argument must be enclosed in quotes. 
+
+:::info
+Input passed to a function can be in its plaintext format `"San Francisco"` or in its Candid format `'("San Francisco")'`. 
+:::
+
+The output of this canister call will be:
 
 ```bash
 ("Hello, San Francisco!")
 ```
 
-Alternatively, if no space is used in the argument, it can be passed without quotes, since [Candid](/docs/current/developer-docs/smart-contracts/candid/candid-howto/) will infer the data type as `Text`, such as:
+Alternatively, if no space is used in the argument, it can be passed without quotes, since [Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts) will infer the data type as `Text`, such as:
 
 ```bash
 dfx canister call location_hello_backend location Paris
@@ -310,7 +316,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -332,4 +338,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Now that you've covered the basics of Motoko, let's put these concepts all together in practice by developing your first dapp!
 
-- [1.3 Developing your first dapp](/docs/current/tutorials/developer-liftoff/level-1/1.3-first-dapp).
+- [1.3 Developing your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp).

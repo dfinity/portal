@@ -352,7 +352,7 @@
       "Chain Fusion"
     ],
     "twitter": "https://x.com/oisy",
-    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s chain fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg",
     "screenshots": [
@@ -2288,11 +2288,11 @@
   },
   {
     "name": "Verity",
-    "description": "Verity (fka CCAMP) is a network and framework for creating verifiable data flows. It connects private data from multiple sources and verifies it on any blockchain. Build your own Oracles or use existing ones for secure off-chain data access. Verity's MPC layer enables shared computation between the Internet Computer (IC) and ZK processes, using the IC as a co-processor.",
+    "description": "Verity (formerly CCAMP) is a server-side zkTLS protocol designed for creating verifiable data pipelines. It enhances the Internet Computer (IC) as a co-processor, reducing the cost of data sourcing for indexing and processing.",
     "website": "https://go.usher.so/ccamp",
     "logo": "/img/showcase/ccamp_logo.webp",
     "display": "Normal",
-    "id": "ccamp",
+    "id": "verity",
     "tags": [
       "Bitcoin",
       "Tools / Infrastructure",
@@ -2300,10 +2300,10 @@
       "Chain Fusion"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/usherlabs/ccamp",
+    "github": "https://github.com/usherlabs/verity-dp",
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
-    "submittableId": "36108625"
+    "submittableId": "45961889"
   },
   {
     "name": "Isotopic Game Store",
@@ -3428,7 +3428,7 @@
       "SocialFi",
       "Creator Economy"
     ],
-    "description": "A platform that enables Twitter (X) accounts to boost post engagement by rewarding interacting users with ICP and select ICRC tokens.",
+    "description": "Amplify is a SocialFi platform that boosts social engagement of creators/projects on OpenChat and Taggr; rewards interacting users with ICRC tokens.",
     "usesInternetIdentity": false,
     "website": "https://amplify-icp.com/",
     "twitter": "https://twitter.com/Amplify_ICP",
@@ -3935,12 +3935,13 @@
       "SocialFi",
       "Creator Economy"
     ],
-    "description": "Introducing CANI (Can I Play), the pioneering, fully onchain NFT broadcast station. Submit your audio or video content, reach a global audience, and receive recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
+    "description": "CANI combines decades of music industry expertise with blockchain innovation to revolutionise the creator economy.",
     "usesInternetIdentity": true,
-    "github": "https://github.com/orgs/Canistore",
-    "twitter": "https://twitter.com/canistore",
+    "website": "https://canistore.io/",
+    "github": "https://github.com/Canistore/CANI_DAPP",
+    "twitter": "https://x.com/canistore",
     "display": "Normal",
-    "logo": "/img/showcase/CaniPlay_logo.png",
+    "logo": "/img/showcase/cani_icon.svg",
     "submittableId": "41319392"
   },
   {
@@ -4359,7 +4360,8 @@
     "tags": [
       "Bitcoin",
       "DeFi",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Chain Fusion"
     ],
     "twitter": "https://x.com/tap_protocol",
     "website": "https://www.tap-protocol.com"
@@ -4655,7 +4657,10 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "stats": "1000+ users",
-    "logo": "/img/showcase/officex_logo.webp"
+    "logo": "/img/showcase/officex_logo.webp",
+    "screenshots": [
+      "/img/showcase/officex_screenshot.webp"
+    ]
   },
   {
     "id": "anda",
@@ -4682,7 +4687,7 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/pickpump_logo.svg"
-  }, 
+  },
   {
     "id": "investafarm",
     "name": "InvestaFarm",
@@ -4864,7 +4869,7 @@
       "Creator Economy"
     ],
     "website": "https://e7bx6-iiaaa-aaaag-qm7oq-cai.icp0.io/board/Partnrship",
-    "description": "A platform bridging the gap between technical and non-technical team members through fractionalization of development work and micro-payments.",
+    "description": "A project management and DevOps platform with an integrated escrow wallet system for secure payments with third-party developers and partners.",
     "twitter": "https://x.com/partnrship",
     "usesInternetIdentity": true,
     "display": "Normal"
@@ -5168,16 +5173,91 @@
     "display": "Normal"
   },
   {
-    "name": "Token Economy Operating System",
-    "logo": "/img/showcase/token_economy_operating_system_logo.png",
+    "name": "Coreledger",
+    "logo": "/img/showcase/coreledger.webp",
     "id": "coreledger",
     "tags": [
       "Tools / Infrastructure"
     ],
     "website": "https://coreledger.net/",
-    "description": "A tool used directly by any business to build products and software on the blockchain.",
+    "description": "Build and launch blockchain-powered products quickly and effortlessly with our plug-and-play, blockchain-agnostic infrastructure. Designed for businesses of all sizes, our platform makes it easy to integrate blockchain technology into your software—without the complexity.",
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  }, 
+  {
+    "id": "BlockID",
+    "name": "BlockID",
+    "logo": "/img/showcase/blockid_-_one_id_infinite_trust_logo.png",
+    "tags": [
+      "DeFi",
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "website": "https://blockid.cc",
+    "github": "https://github.com/ICTO-Labs/BlockID",
+    "description": "A decentralized identity and reputation protocol built on the Internet Computer.",
+    "twitter": "https://x.com/icto_app",
+    "usesInternetIdentity": true,
+    "display": "Normal"
+  },
+  {
+    "id": "IC-Solana-Gateway",
+    "name": "IC-Solana Gateway",
+    "logo": "/img/showcase/ic-solana_gateway_logo.png",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/mfactory-lab/ic-solana",
+    "description": "A solution that connects ICP with Solana. Includes an RPC canister that enables communication with the Solana blockchain and a wallet canister managing addresses and for securely signing transactions on Solana.",
+    "usesInternetIdentity": true,
+    "display": "Normal"
+  },
+  {
+    "id": "ic-explorer",
+    "name": "ICExplorer",
+    "oneLiner": "Empowering AI with Data on Chain, Fueling Innovation",
+    "website": "https://www.icexplorer.io",
+    "tags": [
+      "AI", 
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/Token-Explorer-Hi/ic-data",
+    "twitter": "https://x.com/ICExplorer_io",
+    "description": "Empowering AI with Data on Chain, Fueling Innovation.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "stats": "50,000+ users",
+    "logo": "/img/showcase/ic-explorer_logo.png",
+    "screenshots": [
+      "/img/showcase/ic-explorer_screenshot.jpg"
+    ]
+  },
+  {
+    "id": "alice",
+    "name": "ALICE",
+    "display": "Normal",
+    "website": "https://alice.fun/",
+    "twitter": "https://x.com/alicedotfun",
+    "tags": [
+      "AI"
+    ],
+    "description": "Alice is a DAO-governed AI agent that operates entirely on-chain, leveraging LLMs like DeepSeek for decision-making, integrating both static rules and dynamic, real-time data to enable intelligent and adaptable operations, autonomously managing token activities.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/alice-logo.webp"
+  },
+  {
+   "name": "FRYS",
+    "logo": "/img/showcase/friescoin_logo.jpg",
+    "id": "friescoin",
+    "tags": [
+      "NFT", 
+      "DeFi"
+    ],
+    "website": "https://friescoin.xyz/",
+    "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
+    "twitter": "https://x.com/FriesCoin",
+    "usesInternetIdentity": false
   }
 ]

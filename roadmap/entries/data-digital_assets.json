@@ -1,91 +1,132 @@
 {
   "categoryName": "Digital Assets",
-  "categoryDescription": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
+  "categoryDescription": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of Web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
   "elements": [
     {
-      "title": "Solana Integration",
-      "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
+      "title": "Enterprise-grade ledgers",
+      "description": "This milestone extends the ICRC suite of ledger standards to meet enterprise requirements, unlocking key use cases such as stablecoins, Utopia, and the tokenization of real-world assets, driving the future of trustless digital asset management on the Internet Computer.",
       "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Helios"
-    },
-    {
-      "title": "In-Wallet Swaps",
-      "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Helios"
-    },
-    {
-      "title": "Promote Chain-Key Tokens",
-      "overview": "With improved screens, flows, and helper texts for chain fusion conversions, OISY will provide users with the right information at the right places to make informed decisions to easily convert native tokens into their chain fusion twins or vice versa.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Helios"
-    },
-    {
-      "title": "OISY Wallet v1.0 - The official Launch",
-      "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
       "is_milestone": true,
-      "milestone_id": "Helios",
+      "milestone_id": "Nexus",
+      "eta_to_render": ""
+    },
+    {
+      "title": "CMTAT ledger",
+      "overview": "Building a secure and scalable ledger on the Internet Computer with transparent access control management. By adhering to the CMTAT standard, management access remains verifiable and auditable, ensuring regulatory compliance.",
       "status": "in_progress",
-      "eta": "",
-      "eta_to_render": "January 2025"
+      "milestone_id": "Nexus"
     },
     {
-      "title": "Orbit Multi custody wallet for ICP",
-      "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Poloidal"
-    },
-    {
-      "title": "Secure canister management",
-      "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Poloidal"
-    },
-    {
-      "title": "Orbit supports ICRC-1",
-      "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Poloidal"
-    },
-    {
-      "title": "The Orbit Multi-Custody Asset Framework",
-      "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
+      "title": "Expanded Orbit framework",
+      "description": "Orbit is a secure solution for digital assets and smart contract management, and this milestone will broaden its asset management capabilities by enabling seamless integration of native tokens from other blockchains, starting with ETH and ERC-20. This will create a unified platform for treasury management, allowing users to securely sign and send transactions across multiple chains. Additionally, we will introduce automatic smart contract upgrades, ensuring that users always have access to the latest security updates and features with minimal manual intervention.",
+      "status": "future",
       "is_milestone": true,
-      "milestone_id": "Poloidal",
-      "status": "in_progress",
-      "eta": "",
-      "eta_to_render": "February 2025"
+      "milestone_id": "Echelon",
+      "eta_to_render": ""
     },
+    {
+      "title": "ETH and ERC-20 integration",
+      "overview": "Users will be able to sign and send ETH transactions through their Orbit Station, leveraging the Internet Computer EVM RPC canister.",
+      "status": "future",
+      "milestone_id": "Echelon"
+    },
+    {
+      "title": "Automatic upgrades",
+      "overview": "A streamlined update system will allow users to subscribe for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
+      "status": "future",
+      "milestone_id": "Echelon"
+    },
+    {
+      "title": "Off app notifications",
+      "overview": "Orbit’s core approval policies operate asynchronously, facilitating collaboration across multiple users. To enhance this experience, we will introduce more notification options, ensuring users stay informed and engaged with pending approvals or updates.",
+      "status": "future",
+      "milestone_id": "Echelon"
+    },
+    {
+      "title": "Orbit Wallet v1",
+      "description": "To further improve Orbit’s usability and accessibility, we will enhance the user experience through intuitive approval flows, a revamped onboarding, and a comprehensive documentation hub. These improvements will ensure the Orbit App is efficient for both individual users and teams managing their digital assets management needs.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Neutron",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Documentation hub",
+      "overview": "A knowledge base providing in-depth guidance on Orbit’s core concepts, approval policies, and example configurations, structured under the Orbit System Configuration & Approval Policy (OSCAP) framework.",
+      "status": "future",
+      "milestone_id": "Neutron"
+    },
+    {
+      "title": "Onboarding",
+      "overview": "A more guided, interactive onboarding flow will help new users quickly configure their Orbit Station, set up approval policies, and integrate assets with minimal friction.",
+      "status": "future",
+      "milestone_id": "Neutron"
+    },
+    {
+      "title": "UX improvements",
+      "overview": "A revamped configuration flow will simplify the setup of Orbit Station, making it easier for users of all technical levels to integrate smart contracts and manage assets.",
+      "status": "future",
+      "milestone_id": "Neutron"
+    },
+    {
+      "title": "Decentralized marketplace for sovereign apps",
+      "description": "A new foundation for a decentralized software marketplace is built, providing developers with a clear path to adoption for their applications without reliance on centralized platforms. By integrating transparent deployment flows and seamless discovery tools, this initiative lays the groundwork for a sovereign software ecosystem where developers can easily package and distribute their applications, and users retain full control over their installed apps.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Dynamo",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Developer packaging & submission tools",
+      "overview": "Tools to streamline app packaging, validation, and deployment, ensuring a smooth onboarding experience for developers.",
+      "status": "future",
+      "milestone_id": "Dynamo"
+    },
+    {
+      "title": "App manager",
+      "overview": "A dashboard where users can manage installed applications, providing an intuitive way to access and control their apps.",
+      "status": "future",
+      "milestone_id": "Dynamo"
+    },
+    {
+      "title": "Core marketplace framework",
+      "overview": "A decentralized app catalog where developers can publish applications with metadata (version, description, screenshots). Users can search, filter, and explore categorized apps effortlessly.",
+      "status": "future",
+      "milestone_id": "Dynamo"
+    },
+    {
+      "title": "First sovereign productivity apps",
+      "overview": "A set of initial applications designed to showcase the power of sovereign software, serving as reference for future developers.",
+      "status": "future",
+      "milestone_id": "Dynamo"
+    },
+    {
+      "title": "Zero to Degen-Hero",
+      "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Apex",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Ledgers as a first class citizen on ICP",
+      "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Faster institutional integrations of new tokens",
+      "overview": "Support multi-token Rosetta",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Fiat on-ramp",
+      "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+
     {
       "title": "Rosetta for ICRC ledgers",
       "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
@@ -109,7 +150,7 @@
       "in_beta": false
     },
     {
-      "title": "ICRC-4: Batch transfers for fungible tokens standard",
+      "title": "ICRC-4: batch transfers for fungible tokens standard",
       "overview": "Extension standard for ICRC-1 defining batch transfers for ICRC-1 tokens. Batching transactions improves throughput and can reduce cost.",
       "forum": "",
       "proposal": "",

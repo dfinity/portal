@@ -71,7 +71,7 @@ To demonstrate how to use the HTTP `GET` outcall, you'll create a simple caniste
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -153,7 +153,7 @@ Following the `import Types "Types";` line, now let's insert the code to define 
 ```motoko no-repl title="src/https_get_backend/main.mo"
 actor {
 
-    // Create a function that transform's the raw content into an HTTP payload.
+    // Create a function that transforms the raw content into an HTTP payload.
     public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
       let transformed : Types.CanisterHttpResponsePayload = {
           status = raw.response.status;
@@ -221,7 +221,7 @@ actor {
     // Now, you need to add some cycles to your call, since cycles to pay for the call must be transferred with the call.
     // The way Cycles.add() works is that it adds those cycles to the next asynchronous call.
     // "Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call".
-    // See: https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request
+    // See: /docs/references/ic-interface-spec#ic-http_request
 
     Cycles.add(20_949_972_000);
 
@@ -590,7 +590,7 @@ actor {
     // Now, you need to add some cycles to your call, since cycles to pay for the call must be transferred with the call.
     // The way Cycles.add() works is that it adds those cycles to the next asynchronous call
     // "Function add(amount) indicates the additional amount of cycles to be transferred in the next remote call"
-    // See: https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request
+    // See: /docs/references/ic-interface-spec#ic-http_request
 
     Cycles.add(21_850_258_000);
 
@@ -829,7 +829,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -851,4 +851,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, let's dive deeper into certified variables:
 
-- [3.3 Certified variables](/docs/current/tutorials/developer-liftoff/level-3/3.3-certified-data).
+- [3.3 Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).

@@ -1257,7 +1257,7 @@ const communityProjects: SampleItem[] = [
   },
   {
     index: 76,
-    title: "MOPS",
+    title: "Mops",
     body: "Motoko package manager with onchain package registry",
     links: {
       github: "https://github.com/ZenVoich/mops",
@@ -2082,9 +2082,7 @@ const communityProjects: SampleItem[] = [
     languages: ["python", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/showcase/BR-DAO_logo.svg",
-  },
-
-
+  }
 ];
 
 export default communityProjects;

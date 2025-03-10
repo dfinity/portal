@@ -45,6 +45,7 @@ html[data-theme='dark']:root,
   --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
   --ic0-docs-background: white;
   --ifm-color-content: #000;
+  --doc-sidebar-width: 350px !important;
 }
 
 html.docs-wrapper[data-theme='dark'] {

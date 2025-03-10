@@ -4,7 +4,7 @@ export const dfinityToolingItems = [
     tags: ["CLI", "development", "operations"],
     description:
       "Create, deploy, and manage your dapps for the Internet Computer platform.",
-    links: { docs: "/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/" },
+    links: { docs: "/docs/building-apps/developer-tools/dfx/" },
   },
   {
     title: "Motoko VS Code",
@@ -240,7 +240,7 @@ export const communityToolingItems = [
     links: { external: "https://internetcomputerservices.com/" },
   },
   {
-    title: "MOPS",
+    title: "Mops",
     tags: ["CLI", "website", "development"],
     description: "An onchain package manager for Motoko.",
     links: {
@@ -298,7 +298,7 @@ export const communityToolingItems = [
     links: {
       github: "https://github.com/ic4j/ic4j-maven-plugin",
     },
-  }, 
+  },
 {
     title: "icpp-pro",
     tags: [ "C++", "development", "CDK" ],

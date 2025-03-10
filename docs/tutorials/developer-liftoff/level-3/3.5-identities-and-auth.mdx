@@ -16,27 +16,27 @@ import '/src/components/CenterImages/center.scss';
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/BsTlPMn6SR8?si=oNH36Um1fH6ueKFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module where you obtained a cycles coupon, [1.4: acquiring and using cycles](/docs/current/tutorials/developer-liftoff/level-1/1.4-using-cycles), you created a **developer identity** that has a **cycles balance**. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
+When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module, [1.4: acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles), you created a **developer identity** that has a **cycles balance**. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
 
-These three types of authentication are used for interacting with canisters and cycles, but what about interacting with applications or websites built on ICP? For that, end-users can use **Internet Identity**, ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local computer's hardware. Through this simple and flexible authentication method, developers can provide end users with a frictionless way to authenticate and use their application.
+Devleoper identities and ledger accounts are two types of authentication that are used for interacting with canisters and cycles, but what about interacting with applications or websites built on ICP? For that, end-users can use **Internet Identity**, ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local computer's hardware. Through this simple and flexible authentication method, developers can provide end users with a frictionless way to authenticate and use their applications.
 
 ## Types of identity
 
-First, let's clearly define the difference between the different types of identity and authentication on the Internet Computer. As you've already covered some of these in previous modules, some of this will be a review.
+First, let's clearly define the identity and authentication terminology on the Internet Computer.
 
-- **Developer identity**: created using `dfx`. It contains a private/public key pair and has a `principal` data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
+- **Developer identity**: Created using `dfx`. It contains a private/public key pair and has a `principal` data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
 
-- **Principals**: generic identifiers that are used for users, canisters, and potentially other future concepts. There is intentionally no way to tell canister principal IDs and user principal IDs apart. You can learn more in the IC [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#principal).
+- **Principals**: generic identifiers that are used for users, canisters, and potentially other future concepts. There is intentionally no way to tell canister principal IDs and user principal IDs apart. You can learn more in the IC [specification](/docs/references/ic-interface-spec#principal).
 
-- **Principal identifiers**: principals associated with a user principal ID. Principal identifiers are related to account identifiers but use a different format. Each principal identity can control multiple accounts in the ICP (and other) ledgers.
+- **Principal identifiers**: Principals associated with a user principal ID. Principal identifiers are related to account identifiers but use a different format. Each principal identity can control multiple accounts in the ICP (and other) ledgers.
 
-- **Account identifier**: the identifier associated with your ICP ledger account, as specified in the [ledger](/docs/current/developer-docs/defi/tokens/token-standards/) specification.
+- **Account identifier**: the identifier associated with your ICP ledger account, as specified in the [ledger](/docs/defi/token-standards/) specification.
 
-- **Wallets**: used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use the cycles ledger to send cycles to and from canisters.
+- **Wallets**: Used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use the cycles ledger to send cycles to and from canisters.
 
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead it uses a **passkey** that is stored in your local device's hardware.
 
-In this guide, you'll primarily look at how to use Internet Identity, as the other forms of identity have been covered in previous modules.
+In this guide, you'll learn how to use Internet Identity.
 
 ## Internet Identity
 
@@ -52,7 +52,7 @@ A different identity is issued for each app a user authenticates to and cannot b
 
 Internet Identity uses an implementation of the WebAuthn API that runs within a single canister that serves both the II frontend application code and handles the requests that are sent by the frontend code. The app's authentication service issues 'delegations' on the user's behalf, which are signed with private cryptographic material created by the WebAuth API that is owned by the user. This private material never leaves the user's device, as it is stored in the local hardware securely. Then, the II frontend uses the WebAuthn API to sign the delegation with the cryptographic material.
 
-For more details on how the Internet Identity architecture works, please refer to the [official Internet Identity Specification](https://internetcomputer.org/docs/current/references/ic-interface).
+For more details on how the Internet Identity architecture works, please refer to the [official Internet Identity Specification](/docs/references/ic-interface).
 
 ### What is a passkey?
 
@@ -100,7 +100,7 @@ Now let's look at a simple example of how to integrate Internet Identity into th
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -205,7 +205,7 @@ init();
 
 ### Pulling the Internet Identity canister
 
-Now, if you noticed, you didn't create a canister for the Internet Identity service. That's because, if you take a look at this project's `dfx.json` file, you **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered in [2.3: Using third-party canisters](/docs/current/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
+Now, if you noticed, you didn't create a canister for the Internet Identity service. That's because, if you take a look at this project's `dfx.json` file, you **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered in [2.3: Using third-party canisters](/docs/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
 
 ```json title="dfx.json"
 {
@@ -265,58 +265,9 @@ Now let's deploy this project locally. First, pull the II canister using `dfx de
 dfx deps pull
 ```
 
-This command will return output such as:
-
-```
-$ Fetching dependencies of canister rdmx6-jaaaa-aaaaa-aaadq-cai...
-Found 1 dependencies:
-rdmx6-jaaaa-aaaaa-aaadq-cai
-Pulling canister rdmx6-jaaaa-aaaaa-aaadq-cai...
-WARN: Canister rdmx6-jaaaa-aaaaa-aaadq-cai has different hash between on chain and download.
-on chain: a3b50a3b35c487b9e5e9cd0174845d83fe15d5bb5d78e507647ed2272777568f
-download: 197d0423178a6ae2785c924b962648e2b47e6ccb2a25e98d9220d9f3ce5eebf7
-```
-
-Open the `deps/pull.json` file and modify the `wasm_hash` value with the `download` value from the previous output:
-
-```json title="deps/pull.json"
-{
-  "canisters": {
-    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
-      "name": "ii",
-      "wasm_hash": "197d0423178a6ae2785c924b962648e2b47e6ccb2a25e98d9220d9f3ce5eebf7",
-      "init_guide": "Use '(null)' for sensible defaults. See the candid interface for more details.",
-      "init_arg": null,
-      "candid_args": "(opt InternetIdentityInit)",
-      "gzip": true
-    }
-  }
-}
-```
-
-Then, you need to initialize the canister. By running the `dfx deps init` command, it'll show that our II canister requires an init argument:
-
+Then, you need to initialize the canister. By running the `dfx deps init` command:
 ```bash
 dfx deps init
-```
-
-```bash
-WARN: The following canister(s) require an init argument. Please run `dfx deps init <NAME/PRINCIPAL>` to set them individually:
-rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity)
-```
-
-This output shows you that the Internet Identity canister requires an init argument but doesn't include what that init argument is. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that includes more information:
-
-```bash
-Error: Canister rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity) requires an init argument. The following info might be helpful:
-init => Use '(null)' for sensible defaults. See the Candid interface for more details.
-candid:args => (opt InternetIdentityInit)
-```
-
-From this error message, you can see that the `(null)` value can be passed to the init command to use the defaults. To do so, run the command:
-
-```bash
-dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument null
 ```
 
 Then, you can deploy the II canister and the other canisters in the project with the command:
@@ -368,7 +319,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -390,4 +341,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, you'll take a look at Motoko level 3:
 
-- [3.6 Motoko level 3](/docs/current/tutorials/developer-liftoff/level-3/3.6-motoko-lvl3).
+- [3.6 Motoko level 3](/docs/tutorials/developer-liftoff/level-3/3.6-motoko-lvl3).

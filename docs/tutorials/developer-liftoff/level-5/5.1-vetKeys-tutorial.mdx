@@ -124,7 +124,7 @@ This example uses an insecure implementation of the proposed vetKD system API. T
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Cloning the `encrypted-notes-dapp-vetkd` example
 
@@ -297,7 +297,7 @@ shared({ caller = initializer }) actor class() {
 
     // Next, define private fields.
     // Stable actor fields are automatically retained across canister upgrades.
-    // You can learn more about upgrades in the Motoko docs: https://internetcomputer.org/docs/current/motoko/main/canister-maintenance/upgrades/
+    // You can learn more about upgrades in the Motoko docs: https://internetcomputer.org/docs/motoko/main/canister-maintenance/upgrades/
 
     // As a design choice, this canister uses globally unique note identifiers for all users.
     // This identifier is a stable variable, which allows the value to persist across canister upgrades.
@@ -347,7 +347,7 @@ shared({ caller = initializer }) actor class() {
 
     // Remember that shared functions, such as those specified with [shared], are accessible to remote callers.
     // The extra parameter [caller] is the caller's principal.
-    // You can refer to the Motoko docs for more information: https://internetcomputer.org/docs/current/motoko/main/writing-motoko/actors-async
+    // You can refer to the Motoko docs for more information: https://internetcomputer.org/docs/motoko/main/writing-motoko/actors-async
 
     // The following shared function adds new note for this [caller].
     // This function may be called only by those users that have at least one device registered via [register_device].
@@ -398,7 +398,7 @@ shared({ caller = initializer }) actor class() {
     // Thus, this example avoids using queries throughout this dapp, ensuring that the result of the functions gets through consensus.
     // Otherwise, this function could act maliciously, such that it may omit some notes if it got executed by a malicious node.
     // To make the dapp more efficient, one could use an approach in which both queries and updates are combined.
-    // You can learn more in the documentation here: https://internetcomputer.org/docs/current/concepts/canisters-code#query-and-update-methods
+    // You can learn more in the documentation here: /docs/building-apps/essentials/canisters#query-and-update-methods
     //
     // This function returns:
     //      Future of array of EncryptedNote
@@ -587,7 +587,7 @@ src/frontend
         └── notifications.ts
 ```
 
-This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/current/developer-docs/web-apps/application-frontends/overview/).
+This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/building-apps/frontends/using-an-asset-canister).
 
 ### Starting a local replica
 
@@ -642,7 +642,7 @@ local Internet Identity: http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:8000
 
 Navigate to this URL in a web browser and create at least one local Internet Identity that you will use with the encrypted notes dapp.
 
-Need a reminder on how to create an Internet Identity? Review the [3.5 Identities and authentication](/docs/current/tutorials/developer-liftoff/level-3/3.5-identities-and-auth) level of the developer liftoff.
+Need a reminder on how to create an Internet Identity? Review the [3.5 Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth) level of the developer liftoff.
 
 ### Deploying the vetKD system API canister
 
@@ -768,11 +768,11 @@ Then, you can see the note has been saved in the 'Your notes' section:
 
 ## Resources
 
-- [vetKeys documentation](/docs/current/developer-docs/smart-contracts/encryption/vetkeys).
+- [vetKeys documentation](/docs/building-apps/network-features/encryption/vetkeys).
 
-- [vetKeys technology overview](/docs/current/references/vetkeys-overview).
+- [vetKeys technology overview](/docs/references/vetkeys-overview).
 
-- [vetKeys example](/docs/current/developer-docs/smart-contracts/encryption/using-vetkeys).
+- [vetKeys example](/docs/building-apps/network-features/encryption/using-vetkeys).
 
 - [vetKeys discussion forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
 
@@ -789,7 +789,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -809,4 +809,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 ## Next steps
 
-- [5.2 Deploying an ETH starter project on ICP](/docs/current/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial)
+- [5.2 Deploying an ETH starter project on ICP](/docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial)

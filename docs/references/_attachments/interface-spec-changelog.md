@@ -1,5 +1,9 @@
 ## Changelog {#changelog}
 
+### 0.34.0 (2025-03-07) {#0_34_0}
+* New canister method `canister_on_low_wasm_memory` invoked when the canister is low on main memory according to a new `wasm_memory_threshold` in canister settings.
+* New system APIs `ic0.cost_call`, `ic0.cost_create_canister`, `ic0.cost_http_request`, `ic0.cost_sign_with_ecdsa`, `ic0.cost_sign_with_schnorr`, and `ic0.cost_vetkd_derive_encrypted_key` for cycles cost calculation.
+
 ### 0.33.0 (2025-02-12) {#0_33_0}
 * New system API `ic0.subnet_self_size` and `ic0.subnet_self_copy`.
 

@@ -19,7 +19,7 @@ Third-party canisters are canisters that provide a public service at a static <G
 
 `dfx` enables a **dependency** workflow, where a canister can be configured to pull third-party canisters that it depends on into the local environment. This can be useful for developers who are looking to test the accuracy of their integration with the third-party canister and perform tests without paying cycles or using production environments. It also drastically simplifies the local deployment of canisters like the II canister, since you don't need to obtain the Wasm and Candid files for the canisters yourself—`dfx`` takes care of it in the background for you.
 
-In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import/).
+In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/building-apps/advanced/using-third-party-canisters).
 
 ## Pulling third-party canister dependencies
 
@@ -27,7 +27,7 @@ Let's take a look at a basic example of pulling a third-party canister as a depe
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -54,7 +54,7 @@ You will be prompted to select the language that your backend canister will use.
 `dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
 :::
 
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'None':
 
 ```
   ? Select a frontend framework: ›
@@ -63,7 +63,7 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
-❯ No frontend canister
+❯ None
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -105,9 +105,9 @@ First, open the `dfx.json` file in your project's directory. You need to configu
       "args": "",
       "packtool": ""
     }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -129,16 +129,18 @@ The `deps/` folder is also created in your project's root folder. The `deps/pull
 
 ```json title="deps/pulled.json"
 {
-  "canisters": {
-    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
-      "name": "internet_identity",
-      "wasm_hash": "07869792e0841765e24014a2cb23e4a53d3147be6051bfc4966565017cd5fb2c",
-      "init_guide": "Use '(null)' for sensible defaults. See the candid interface for more details.",
-      "candid_args": "(opt InternetIdentityInit)",
-      "gzip": true
+"canisters":{
+    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
+        "name": "internet_identity"
+        "wasm_hash": "aad8c68dcfe77df9140581097ad4bb82d1eb6da036d228c1a21dfd25a6558ca2" ,
+        "wasm_hash_download": "aad8c68dcfe77df9140581097ad4bb82dleb6da036d228c1a21dfd25a6558ca2" ,
+        "init_guide": "Use '(null)'. for sensible defaults. See the candid interface for more details.",
+        "init_arg": "(opt record { captcha_config = opt record {-max_unsolved_captchas= 50:nat64; captcha_trigger = variant {Static = variant {CaptchaDisabled}}}})",
+        "candid_args": "(opt InternetIdentityInit)",
+        "gzip": • true
     }
   }
-}%
+}
 ```
 
 
@@ -148,27 +150,6 @@ Next, you'll set the `init` arguments for the dependency canisters using the `df
 
 ```bash
 dfx deps init
-```
-
-This will show that our II canister requires an `init` argument:
-
-```bash
-WARN: The following canister(s) require an init argument. Please run `dfx deps init <NAME/PRINCIPAL>` to set them individually:
-rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity)
-```
-
-This output shows you that the Internet Identity canister requires an `init` argument, but it doesn't give you any additional information. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that shows you more details:
-
-```bash
-Error: Canister rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity) requires an init argument. The following info might be helpful:
-init => Use '(null)' for sensible defaults. See the candid interface for more details.
-candid:args => (opt InternetIdentityInit)
-```
-
-In this error, you can see that to use the canister's defaults, you can use a `null` value as the `init` argument. To pass this value as an `init` argument, run the command:
-
-```bash
-dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument null
 ```
 
 Now it's time to deploy our pulled dependency canister. Run the command:
@@ -189,7 +170,7 @@ The output will include a local Candid UI URL for both the `dependencies_backend
 Installing code for canister dependencies_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
 Deployed canisters.
 URLs:
-  Backend canister via Candid interface:
+    Backend canister via Candid interface:
     dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
     internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
 ```
@@ -202,7 +183,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -224,4 +205,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 Next, let's take a deeper dive into an introduction of Candid and the role that it plays in development on ICP.
 
-- [2.4 Introduction to Candid](/docs/current/tutorials/developer-liftoff/level-2/2.4-intro-candid).
+- [2.4 Introduction to Candid](/docs/tutorials/developer-liftoff/level-2/2.4-intro-candid).

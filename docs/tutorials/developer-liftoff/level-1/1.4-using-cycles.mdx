@@ -17,9 +17,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/eynEk3Bz7QY?si=EBRlMgOyjHQKkPy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-If you recall from the previous module, [Internet Computer terminology](/docs/current/tutorials/developer-liftoff/level-0/ic-terms), cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
+If you recall from the previous module, [Internet Computer terminology](/docs/tutorials/developer-liftoff/level-0/ic-terms), cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
 
-To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
+To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](/docs/references/glossary#x) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
 Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to other canisters, and create canisters with cycles.
 
@@ -29,7 +29,7 @@ A developer's cycles balance is associated with the <GlossaryTooltip>principal</
 Recall that a principal is an entity that can be authenticated by ICP.
 :::
 
-Canisters each have their own cycles balance and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in its balance, or if you're creating a new canister, you will need to proxy the call through the cycles ledger to attach the required cycles. To ensure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
+Canisters each have their own cycles balance and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in its balance or if you're creating a new canister, you will need to proxy the call through the cycles ledger to attach the required cycles. To ensure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
 
 For local canister execution, operations performed using cycles are done in the background. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly registered and transferred into them. Production canisters can also have principals configured to act as **custodians**, who have permission to access the cycles wallet balance, wallet information, and send and receive cycles for the canister.
 
@@ -37,20 +37,20 @@ In this tutorial, you'll learn how to obtain cycles. Then, in the next tutorial,
 
 ## Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ## Creating a developer identity
 
 When you initially use `dfx`, a default developer identity is created. This identity is a `principal` data type, often referred to as your **principal identifier**. This identity is similar to a Bitcoin or Ethereum wallet address that you would use to interact with those ecosystems.
 
-However, your developer identity principal is not the same as your account identifier that is specified in the [ledger](/docs/current/developer-docs/defi/tokens/token-standards/). Your identity principal and your account identifier are related, but they use different formats.
+However, your developer identity principal is not the same as your account identifier that is specified in the [ledger](/docs/defi/token-standards/). Your identity principal and your account identifier are related, but they use different formats.
 
 :::info
 Your developer identity is a private/public key pair, while your principal identity is derived from the public key.
 
 Each principal can control multiple accounts in the ICP (and other) ledgers.
 
-You can learn more in the IC [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#principal).
+You can learn more in the IC [specification](/docs/references/ic-interface-spec#principal).
 :::
 
 In this tutorial, you'll create a new identity principal with `dfx`, which you'll use to obtain and manage cycles.
@@ -104,7 +104,7 @@ Cycles can be obtained by converting ICP tokens into cycles. There are a few way
 - Receiving a grant of ICP tokens through the DFINITY Foundation.
 - Receiving ICP tokens in return for providing resources as a node provider.
 
-You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating in DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
+You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
 :::tip
 Each developer identity has both a **principal** and a **ledger account identifier**.
@@ -130,7 +130,7 @@ dfx ledger balance --network=ic
 
 Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to convert, hold, send, and receive cycles.
 
-The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where 1 trillion cycles equals 1 XDR.
+The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR.
 
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
@@ -146,7 +146,7 @@ dfx cycles convert --amount AMOUNT --network=ic
 
 :::info Calculating how many cycles you need
 
-The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-docs/gas-cost/) or use the [cycles pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples).
+The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/cost-estimations-and-examples).
 
 :::
 
@@ -158,7 +158,7 @@ dfx cycles balance --network=ic
 
 ## Resources
 To further explore cycle management, please see the following articles:
-- **[Converting ICP tokens into cycles](/docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles/)**.
+- **[Converting ICP tokens into cycles](/docs/building-apps/getting-started/tokens-and-cycles)**.
 
 ## Need help?
 
@@ -166,7 +166,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -188,4 +188,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 In this tutorial, you set up our identity and acquired free cycles from the cycles faucet. Now that you have cycles, you can deploy your first dapp on the mainnet.
 
-- [1.5 Deploying canisters](/docs/current/tutorials/developer-liftoff/level-1/1.5-deploying-canisters).
+- [1.5 Deploying canisters](/docs/tutorials/developer-liftoff/level-1/1.5-deploying-canisters).

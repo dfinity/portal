@@ -15,31 +15,6 @@
       "imported": true
     },
     {
-      "title": "Canister snapshots",
-      "overview": "Allow for canister snapshots to be created on chain. Snapshots can be exported to and imported from off-chain storage.",
-      "status": "deployed",
-      "forum": "https://forum.dfinity.org/t/canister-backup-and-restore-community-consideration/22597",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q2 2024",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium"
-    },
-    {
-      "title": "Canister logging",
-      "overview": "New APIs for writing and reading canister runtime logs. The logs survive upgrades and traps and ensure developers are able to record key error data.",
-      "forum": "https://forum.dfinity.org/t/canister-logging/21300",
-      "proposal": "",
-      "docs": "",
-      "eta": "2024-08-28",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium",
-      "imported": true
-    },
-    {
       "title": "Canister lifecycle hooks",
       "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
       "forum": "https://forum.dfinity.org/t/canister-lifecycle-hooks/17089",
@@ -53,39 +28,7 @@
       "imported": true
     },
     {
-      "title": "Standardized canister response codes",
-      "overview": "Standardize canister response codes, particularly error codes, to enable better composability of services from canister smart contracts.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium"
-    },
-    {
-      "title": "Actionable error messages and backtraces",
-      "overview": "Improve error messages by providing more actionable information to developers such as backtraces, error codes, and links to the documentation explaining how to fix the error.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium"
-    },
-    {
-      "title": "Canister DevOps",
-      "is_milestone": true,
-      "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
-      "milestone_id": "Beryllium",
-      "eta": "",
-      "status": "deployed",
-      "eta_to_render": "November 2024"
-    },
-    {
-      "title": "Coding and Development in ICP Ninja",
+      "title": "Coding and development in ICP Ninja",
       "is_milestone": true,
       "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
       "milestone_id": "Coulomb",
@@ -99,13 +42,13 @@
       "status": "deployed",
       "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
       "proposal": "",
-      "docs": "https://internetcomputer.org/docs/current/developer-docs/developer-tools/ide/icp-ninja",
+      "docs": "https://internetcomputer.org/docs/building-apps/developer-tools/icp-ninja",
       "is_community": false,
       "in_beta": true,
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Developer Productivity Enhancements",
+      "title": "Developer productivity enhancements",
       "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
       "status": "deployed",
       "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
@@ -116,7 +59,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "AI Learning Assistant",
+      "title": "AI learning assistant",
       "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
       "status": "deployed",
       "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
@@ -127,9 +70,9 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Landing Page Revamp",
+      "title": "Landing page revamp",
       "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -138,7 +81,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Project Sharing",
+      "title": "Project sharing",
       "overview": "Projects can be shared with others by generating a link.",
       "status": "in_progress",
       "forum": "",
@@ -160,7 +103,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Saving Projects",
+      "title": "Saving projects",
       "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
       "status": "in_progress",
       "forum": "",
@@ -171,7 +114,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Exporting Projects to GitHub",
+      "title": "Exporting projects to GitHub",
       "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
       "status": "in_progress",
       "forum": "",
@@ -220,13 +163,58 @@
       "milestone_id": "Thorium"
     },
     {
-      "title": "Canister Resource Management",
+      "title": "Canister resource management",
       "is_milestone": true,
       "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
       "milestone_id": "Thorium",
       "eta": "",
       "status": "in_progress",
       "eta_to_render": ""
+    },
+
+    {
+      "title": "Amazing first time developer experience with ICP Ninja",
+      "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Atlas",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Open Caffeine projects",
+      "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Generate a project with AI",
+      "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "More sample projects to get you started",
+      "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Community published projects",
+      "overview": "Show your coding skills to the community by publishing your project to the gallery.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Structured learning through mini tutorials",
+      "overview": "Add tutorials that teach ICP programming concepts and design patterns.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Dark mode",
+      "overview": "Introduce dark mode for the app",
+      "status": "future",
+      "milestone_id": "Atlas"
     },
     {
       "title": "dfx ergonomics",
@@ -297,17 +285,6 @@
       "in_beta": false
     },
     {
-      "title": "Specify placement subnet for new canisters",
-      "overview": "When creating a new canister, the subnet on which it should be placed can be specified.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
       "title": "Verifiable canisters",
       "overview": "Tools for devs, such as TLA+, to help them verify the correctness of their canisters.",
       "forum": "",
@@ -336,7 +313,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false
     },
@@ -349,17 +326,6 @@
       "eta": "",
       "status": "future",
       "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Protocol Interface Specification evolution",
-      "overview": "Improving version interoperability between different versions of the Internet Computer Protocol Specification.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
       "in_beta": false
     },
     {
@@ -436,16 +402,6 @@
       "in_beta": false
     },
     {
-      "title": "Easily upload files to ICP",
-      "overview": "Upload files to the IC with a few lines of code.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
       "title": "Motoko-written interactive Web UIs running in Wasm",
       "overview": "Implementing interactive Web UIs with Motoko, executing in the browser in Wasm. Analogous to .NET's Blazor.",
       "forum": "",
@@ -459,28 +415,6 @@
     {
       "title": "Motoko editor support V2",
       "overview": "Improved Motoko support in VSCode, e.g., outline view, unused declaration warnings, organizing imports, Prettier 3 support, and AI-driven coding assistance.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Motoko package manager shipped with dfx",
-      "overview": "Integrating the Mops package manager with dfx to improve DX.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "More Motoko libraries",
-      "overview": "Implementing, or funding the implementation of, additional Motoko libraries of frequently requested functionality.",
       "forum": "",
       "proposal": "",
       "docs": "",

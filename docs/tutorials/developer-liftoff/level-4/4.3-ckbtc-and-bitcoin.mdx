@@ -26,11 +26,11 @@ In this tutorial and other pages of ICP developer documentation, note the use of
 
 Through ICP's integration with the Bitcoin network, canisters deployed on ICP are able to receive, hold, and send bitcoin. Each of these functions utilizes transactions on the Bitcoin network and allows canisters to act as if they are users on the Bitcoin network.
 
-At the core of this integration is a novel protocol for chain-key signatures that is based on **threshold ECDSA**. [Threshold ECDSA](/docs/current/references/t-sigs-how-it-works/) is a protocol suite that includes several features that include [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/current/references/t-sigs-how-it-works//#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/current/references/t-sigs-how-it-works//#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
+At the core of this integration is a novel protocol for chain-key signatures that is based on **threshold ECDSA**. [Threshold ECDSA](/docs/references/t-sigs-how-it-works/) is a protocol suite that includes several features that include [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/references/t-sigs-how-it-works//#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/references/t-sigs-how-it-works//#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
 
 On a high level, subnets that have ECDSA enabled hold a threshold ECDSA master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA keys. It is important to know that an ECDSA private key only exists in a secret-shared form during its lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
 
-The developer liftoff will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/current/references/t-sigs-how-it-works/).
+The developer liftoff will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/references/t-sigs-how-it-works/).
 
 On the protocol level, the [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration) and chain-key ECDSA each expose an API on the management canister. Remember that the management canister isn't a canister but a facade that is used to enable functionality for management operations such as starting or stopping a canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA signature API can be used for other workflows, such as the integration with other blockchains like Ethereum.
 
@@ -72,7 +72,7 @@ For this tutorial, you'll take a look at developing and testing a Bitcoin dapp u
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Setting up a local Bitcoin network
 
@@ -335,7 +335,7 @@ dfx canister call basic_bitcoin get_balance '("n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8
 ## Resources
 
 - [ckBTC wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
-- [ckBTC developer documentation page](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview/).
+- [ckBTC developer documentation page](/docs/defi/chain-key-tokens/ckbtc/overview).
 - [Bitcoin integration GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
 ## Need help?
@@ -344,7 +344,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -366,4 +366,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, you'll explore ICP's governance and token staking:
 
-- [4.4 NNS governance and staking](/docs/current/tutorials/developer-liftoff/level-4/4.4-nns-governance).
+- [4.4 NNS governance and staking](/docs/tutorials/developer-liftoff/level-4/4.4-nns-governance).

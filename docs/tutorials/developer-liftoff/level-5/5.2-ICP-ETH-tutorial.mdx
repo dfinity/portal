@@ -29,7 +29,7 @@ The Bitcoin integration is a direct integration, meaning there are nodes running
   />
 </div>
 
-The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use/) and [threshold ECDSA signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa/). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
+The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) and [threshold ECDSA signatures](/docs/building-apps/network-features/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
 
 Through ICP's chain-key cryptography feature, the ETH integration also includes chain-key tokens, similar to the design of ckBTC. The ETH integration expands the possibilities of chain-key tokens to include ckETH and ckERC-20 tokens, including ckUSDC, ckEURC, and ckUSDT.
 
@@ -45,13 +45,13 @@ This starter project is comprised of three canisters:
 
 - The backend canister, written in Motoko, that uses the Motoko package manager Mops and mo-dev, a live development server for Motoko.
 
-- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import/).
+- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/building-apps/advanced/using-third-party-canisters).
 
 We'll dive deeper into the project's files in the [exploring the project's files](#exploring-the-projects-files) section below.
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Downloading the starter project's files
 
@@ -148,7 +148,7 @@ actor {
 
 This backend code has a single function that retrieves the latest block from the Ethereum mainnet. It configures the RPC service to make the call through the Cloudflare RPC provider and attaches cycles to the call. By default, the EVM RPC canister replicates this call across at least three providers to decentralize the RPC call and verify that the results returned from each provider match one another. This backend code checks to make sure the result returned matches the result of the other RPC services.
 
-This tutorial will not dive into the frontend's configuration. [Learn more about frontend canisters](/docs/current/developer-docs/web-apps/application-frontends/overview/).
+This tutorial will not dive into the frontend's configuration. [Learn more about frontend canisters](/docs/building-apps/frontends/using-an-asset-canister).
 
 ### Deploying the project
 
@@ -345,13 +345,13 @@ Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully subm
 
 - [View the full Github repo for this starter project](https://github.com/rvanasa/vite-react-motoko/tree/evm-rpc).
 
-- [How it works: EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works).
+- [How it works: EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/how-it-works).
 
-- [Using the EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister).
+- [Using the EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
-- [Costs of RPC requests](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/costs).
+- [Costs of RPC requests](/docs/building-apps/chain-fusion/ethereum/evm-rpc/costs).
 
-- [Samples using the EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/samples).
+- [Samples using the EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
 ## Need help?
 
@@ -359,7 +359,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -379,4 +379,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 ## Next steps
 
-- [5.3 Creating a decentralized token swap](/docs/current/tutorials/developer-liftoff/level-5/5.3-token-swap-tutorial)
+- [5.3 Creating a decentralized token swap](/docs/tutorials/developer-liftoff/level-5/5.3-token-swap-tutorial)

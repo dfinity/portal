@@ -1,1 +1,0 @@
-../../../../submodules/response-verfication/examples/http-certification/custom-assets/README.md
