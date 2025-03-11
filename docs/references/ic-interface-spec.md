@@ -2123,7 +2123,7 @@ The optional `settings` parameter can be used to set the following settings:
 
     Must be a number between 86400 (or equivalent of 1 day in seconds) and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
 
-    Values between 1 day and 2 weeks, or more formally any value in the range [1, 14) days, can only be set if the special `allow-unsafe-settings` is used in the relevant management canister APIs.
+    Values between 1 day and 2 weeks, or more formally any value that is at least 1 day and less than 14 days, can only be set if the special `allow-unsafe-settings` is used in the relevant management canister APIs.
 
     A canister is considered frozen whenever the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass, given the canister's current size and the IC's current cost for storage.
 
