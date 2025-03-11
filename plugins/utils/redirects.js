@@ -845,6 +845,15 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/building-apps/developer-tools/cdks/rust/candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
+  /docs/concepts/glossary /docs/references/glossary
+  /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger /docs/defi/token-ledgers/setup/icrc1_ledger_setup
+  /docs/current/motoko/main/about-motoko/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
+  /docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/developer-docs/integrations/icrc-1/ /docs/defi/token-ledgers/setup/icrc1_ledger_setup
+  /docs/motoko/reference/language-manual /docs/motoko/main/reference/language-manual
+  /docs/references/ic-interface /docs/references/ic-interface-spec
   /docs/building-apps/chain-fusion/ethereum/evm-rpc/ /docs/building-apps/chain-fusion/ethereum/evm-rpc/overview
   /docs/building-apps/developing-canisters/creates /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/setup/download-install /docs/building-apps/getting-started/install
