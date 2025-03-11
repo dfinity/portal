@@ -5174,13 +5174,13 @@
   },
   {
     "name": "Coreledger",
-    "logo": "/img/showcase/token_economy_operating_system_logo.png",
+    "logo": "/img/showcase/coreledger.webp",
     "id": "coreledger",
     "tags": [
       "Tools / Infrastructure"
     ],
     "website": "https://coreledger.net/",
-    "description": "A tool used directly by any business to build products and software on the blockchain.",
+    "description": "Build and launch blockchain-powered products quickly and effortlessly with our plug-and-play, blockchain-agnostic infrastructure. Designed for businesses of all sizes, our platform makes it easy to integrate blockchain technology into your software—without the complexity.",
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
