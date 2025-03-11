@@ -855,6 +855,7 @@ const redirects = `
   /ethereum /chainfusion
   /img/ /docs/home
   /docs/defi /docs/defi/overview
+  /docs/current/tokenomics/nns/nns-staking-voting-rewards/ /docs/building-apps/governing-apps/nns/overview
   /docs/download.html /docs/home
   /docs/ic-identity-guide/what-is-ic-identity.html /docs/home
   /docs/language-guide/style.html /docs/motoko/main/getting-started/motoko-introduction
