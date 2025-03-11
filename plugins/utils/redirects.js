@@ -845,6 +845,7 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /whitepaper.pdf /The%20Internet%20Computer%20for%20Geeks.pdf
   /docs/building-apps/chain-fusion/ethereum/evm-rpc/ /docs/building-apps/chain-fusion/ethereum/evm-rpc/overview
   /docs/building-apps/developing-canisters/creates /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/setup/download-install /docs/building-apps/getting-started/install
