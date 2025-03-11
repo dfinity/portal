@@ -12,7 +12,8 @@ Replace `static/moc-interpreter-0.14.0.js` with `static/moc_interpreter-0.14.1.j
 
 Edit `static/load_moc.ts` to use the correct version of the interpreter and base libs.
 
-Finally, edit `docs/motoko/version.md` to report the current version of Motoko.
+(Obsolete: Finally, edit `docs/motoko/version.md` to report the current version of Motoko.)
+
 ```
 git add -u
 git commit -m "chore: updating motoko doc"

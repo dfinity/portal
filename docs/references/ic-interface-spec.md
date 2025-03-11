@@ -1134,7 +1134,7 @@ The symbolic names of this enumeration are used throughout this specification, b
 
 The error message is guaranteed to be a string, i.e. not arbitrary binary data.
 
-When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: If the IC responds with a `SYS_FATAL` reject, then it really was the IC issuing this reject.
+When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: the reject code is always fixed by the protocol, i.e., the canister cannot freely specify the reject code.
 
 ### Error codes {#error-codes}
 
@@ -1268,6 +1268,8 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 
 -   If it exports a function called `canister_heartbeat`, the function must have type `() -> ()`.
 
+-   If it exports a function called `canister_on_low_wasm_memory`, the function must have type `() -> ()`.
+
 -   If it exports a function called `canister_global_timer`, the function must have type `() -> ()`.
 
 -   If it exports any functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` for some `name`, the functions must have type `() -> ()`.
@@ -1319,6 +1321,8 @@ The canister provides entry points which are invoked by the IC under various cir
 -   The canister may export functions with name `canister_query <name>` and type `() -> ()`.
 
 -   The canister may export functions with name `canister_composite_query <name>` and type `() -> ()`.
+
+-   The canister may export a function with the name `canister_on_low_wasm_memory` and type `() -> ()`.
 
 -   The canister table may contain functions of type `(env : I) -> ()` which may be used as callbacks for inter-canister calls and composite query methods.
     The value of `I ∈ {i32, i64}` specifying whether the imported functions have 32-bit or 64-bit pointers
@@ -1394,6 +1398,17 @@ Once the function `canister_global_timer` is scheduled, the canister's global ti
 
 While an implementation will likely try to keep the interval between the value of the global timer and the time-stamp of the `canister_global_timer` invocation within a few seconds, this is not formally part of this specification.
 
+:::
+
+#### On Low Wasm Memory {#on-low-wasm-memory}
+
+A canister can export a function with the name `canister_on_low_wasm_memory`, which is scheduled whenever the canister's remaining wasm memory size in bytes falls from at least a threshold `t` to strictly less than `t`.
+The threshold `t` can be defined in the field `wasm_memory_threshold` in the [canister's settings](#ic-update_settings) and by default it is set to 0.
+
+:::note
+
+While the above function is scheduled immediately once the condition above is triggered, it may not necessarily be executed immediately if the canister does not have enough cycles.
+If the canister gets frozen immediately after the function is scheduled for execution, the function will run once the canister's unfrozen _if_ the canister's remaining wasm memory size in bytes remains strictly less than the threshold `t`.
 :::
 
 #### Callbacks
@@ -1499,8 +1514,15 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.time : () -> (timestamp : i64);                                                   // *
     ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
     ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
-    ic0.is_controller: (src : I, size : I) -> ( result: i32);                             // * s
-    ic0.in_replicated_execution: () -> (result: i32);                                     // * s
+    ic0.is_controller : (src : I, size : I) -> ( result : i32);                           // * s
+    ic0.in_replicated_execution : () -> (result : i32);                                   // * s
+    
+    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
+    ic0.cost_create_canister : (dst : I) -> ();                                           // * s
+    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
+    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
+    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
+    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
@@ -1551,7 +1573,7 @@ The comment after each function lists from where these functions may be invoked:
 
 -   `F`: from `canister_inspect_message`
 
--   `T`: from *system task* (`canister_heartbeat` or `canister_global_timer`)
+-   `T`: from *system task* (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`)
 
 -   `*` = `I G U RQ NRQ CQ Ry Rt CRy CRt C CC F T` (NB: Not `(start)`)
 
@@ -2061,6 +2083,50 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
     This traps if `ic0.data_certificate_present()` returns `0`.
 
+### Cycle cost calculation {#system-api-cycle-cost}
+
+Inter-canister calls have an implicit cost, and some calls to the management canister require the caller to attach cycles to the call explicitly.  
+The various cost factors may change over time, so the following system calls give the canister programmatic, up-to-date information about the costs.
+
+These system calls return costs in Cycles, represented by 128 bits, which will be written to the heap memory starting at offset `dst`. Note that the cost calculation is only correct for correct inputs, e.g., a method name length argument should not exceed 20'000, because such an argument would be rejected by `ic0.call_new`. The cost API will still return a number in this case, but it would not have a real meaning. 
+
+-   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
+
+    This system call returns the amount of cycles that a canister needs to be above the freezing threshold in order to successfully make an inter-canister call. This includes the base cost for an inter-canister call, the cost for each byte transmitted in the request, the cost for the transmission of the largest possible response, and the cost for executing the largest possible response callback. The last two are cost _reservations_, which must be possible for a call to succeed, but they will be partially refunded if the real response and callback are smaller. So the cost of the actual inter-canister call may be less than this system call predicts, but it cannot be more. 
+    `method_name_size` is the byte length of the method name, and `payload_size` is the byte length of the argument to the method. 
+
+-   `ic0.cost_create_canister : (dst : I) -> ()`; `I ∈ {i32, i64}`
+
+    The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor.
+
+-   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
+
+    The cost of a canister http outcall via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
+    - url
+    - headers - i.e., the sum of the lengths of all keys and values 
+    - body
+    - transform - i.e., the sum of the transform method name length and the length of the transform context
+    
+    `max_res_bytes` is the maximum response length the caller wishes to accept (the caller should provide the default value of `2,000,000` if no maximum response length is provided in the actual request to the management canister). 
+
+-   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+
+-   `ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+
+-   `ic0.cost_vetkd_derive_encrypted_key(src : I, size : I, vetkd_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+
+    These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
+    - `ecdsa_curve: 0 → secp256k1`
+    - `algorithm: 0 → bip340secp256k1, 1 → ed25519`
+    - `vetkd_curve: 0 → bls12_381`
+
+    See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information.
+
+    These system calls trap if `src` + `size` or `dst` + 16 exceed the size of the WebAssembly memory. Otherwise, they return an `i32` with the following meaning:
+    - `0`: Success. The result can be found at the memory address `dst`.
+    - `1`: Invalid curve or algorithm. Memory at `dst` is left unchanged.
+    - `2`: Invalid key name for the given combination of signing scheme and (valid) curve/algorithm. Memory at `dst` is left unchanged.
+
 ### Debugging aids
 
 In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
@@ -2174,6 +2240,13 @@ The optional `settings` parameter can be used to set the following settings:
     Default value: 0 (i.e., no explicit limit).
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
+
+-   `wasm_memory_threshold` (`nat`)
+
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
+    if the remaining wasm memory size of the canister is below the threshold, execution of the ["on low wasm memory" hook](#on-low-wasm-memory) is scheduled.
+
+    Default value: 0 (i.e., the "on low wasm memory" hook is never scheduled).
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
@@ -2296,9 +2369,13 @@ Indicates various information about the canister. It contains:
 
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
+    -   The "low wasm memory" threshold, which is used to determine when the [canister_on_low_wasm_memory](#on-low-wasm-memory) function is executed.
+
 -   A SHA256 hash of the module installed on the canister. This is `null` if the canister is empty.
 
--   The actual memory usage of the canister.
+-   The actual memory usage of the canister, representing the total memory consumed by the canister.
+
+-   A record containing detailed breakdown of memory usage into individual components (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
 
 -   The cycle balance of the canister.
 
@@ -2317,6 +2394,26 @@ Indicates various information about the canister. It contains:
     * `response_payload_bytes_total`: the total number of query and composite query response payload (reply data or reject message) bytes.
 
 Only the controllers of the canister or the canister itself can request its status.
+
+#### Memory Metrics {#ic-canister_status-memory_metrics}
+
+    * `wasm_memory_size`: Represents the Wasm memory usage of the canister, i.e. the heap memory used by the canister's WebAssembly code.
+
+    * `stable_memory_size`: Represents the stable memory usage of the canister.
+
+    * `global_memory_size`: Represents the memory usage of the global variables that the canister is using.
+
+    * `wasm_binary_size`: Represents the memory occupied by the Wasm binary that is currently installed on the canister. This is the size of the binary uploaded via `install_code` or `install_chunked_code`, e.g., the compressed size if the uploaded binary is gzipped.
+
+    * `custom_sections_size`: Represents the memory used by custom sections defined by the canister, which may include additional metadata or configuration data.
+
+    * `canister_history_size`: Represents the memory used for storing the canister's history.
+
+    * `wasm_chunk_store_size`: Represents the memory used by the Wasm chunk store of the canister.
+
+    * `snapshots_size`: Represents the memory consumed by all snapshots that belong to this canister.
+
+All sizes are expressed in bytes.
 
 ### IC method `canister_info` {#ic-canister_info}
 
@@ -3291,6 +3388,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
       composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
       heartbeat : (Env) -> SystemTaskFunc
       global_timer : (Env) -> SystemTaskFunc
+      on_low_wasm_memory : (Env) -> SystemTaskFunc
       callbacks : (Callback, Response, Deadline, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
       composite_callbacks : (Callback, Response, Env) -> UpdateFunc
       inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
@@ -3359,6 +3457,7 @@ EntryPoint
   | Callback Callback Response RefundedCycles
   | Heartbeat
   | GlobalTimer
+  | OnLowWasmMemory
 Message
   = CallMessage {
       origin : CallOrigin;
@@ -3516,6 +3615,10 @@ CanisterLog = {
   timestamp_nanos : Nat;
   content : Blob;
 }
+OnLowWasmMemoryHookStatus
+  = ConditionNotSatisfied
+  | Ready
+  | Executed
 QueryStats = {
   timestamp : Timestamp;
   num_instructions : Nat;
@@ -3552,6 +3655,8 @@ S = {
   reserved_balances: CanisterId ↦ Nat;
   reserved_balance_limits: CanisterId ↦ Nat;
   wasm_memory_limit: CanisterId ↦ Nat;
+  wasm_memory_threshold: CanisterId ↦ Nat;
+  on_low_wasm_memory_hook_status: CanisterId ↦ OnLowWasmMemoryHookStatus;
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;
   canister_log_visibility: CanisterId ↦ CanisterLogVisibility;
@@ -3657,6 +3762,8 @@ The initial state of the IC is
   reserved_balances = ();
   reserved_balance_limits = ();
   wasm_memory_limit = ();
+  wasm_memory_threshold = ();
+  on_low_wasm_memory_hook_status = ();
   certified_data = ();
   canister_history = ();
   canister_log_visibility = ();
@@ -4076,9 +4183,84 @@ S with
 
 ```
 
+*Call context creation: On low wasm memory*
+
+If `S.on_low_wasm_memory_hook_status[C]` is `Ready` for a canister `C`, the IC will create the corresponding call context and set `S.on_low_wasm_memory_hook_status[C]` to `Executed`.
+
+Conditions
+
+```html
+
+S.canisters[C] ≠ EmptyCanister
+S.canister_status[C] = Running
+S.on_low_wasm_memory_hook_status[C] = Ready
+liquid_balance(S, C) ≥ MAX_CYCLES_PER_MESSAGE
+Ctxt_id ∉ dom(S.call_contexts)
+
+```
+
+State after
+
+```html
+
+S with
+    messages =
+      FuncMessage {
+        call_context = Ctxt_id;
+        receiver = C;
+        entry_point = OnLowWasmMemory;
+        queue = Queue { from = System; to = C };
+      }
+      · S.messages
+    call_contexts[Ctxt_id] = {
+      canister = C;
+      origin = FromSystemTask;
+      needs_to_respond = false;
+      deleted = false;
+      available_cycles = 0;
+    }
+    on_low_wasm_memory_hook_status[C] = Executed
+    balances[C] = S.balances[C] - MAX_CYCLES_PER_MESSAGE
+
+```
+
 The IC can execute any message that is at the head of its queue, i.e. there is no older message with the same abstract `queue` field. The actual message execution, if successful, may enqueue further messages and --- if the function returns a response --- record this response. The new call and response messages are enqueued at the end.
 
 Note that new messages are executed only if the canister is Running and is not frozen.
+
+#### Scheduling on low wasm memory hook {#rule-on-low-wasm-memory}
+
+This transition is executed immediately after [Message execution](#rule-message-execution) and IC Management Canister execution (update call).
+
+Conditions
+
+```html
+Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
+  memory_usage_raw_module(S.canisters[C].raw_module) +
+  memory_usage_canister_history(S.canister_history[C]) +
+  memory_usage_chunk_store(S.chunk_store[C]) +
+  memory_usage_snapshot(S.snapshots[C])
+
+if S.memory_allocation[C] = 0:
+  Wasm_memory_capacity = S.wasm_memory_limit[C]
+else:
+  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.store.mem|), S.wasm_memory_limit[C])
+
+if Wasm_memory_capacity < |S.canisters[C].wasm_state.store.mem| + S.wasm_memory_threshold[C]:
+  if S.on_low_wasm_memory_hook_status[C] = ConditionNotSatisfied:
+    On_low_wasm_memory_hook_status = Ready
+  else:
+    On_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[C]
+else:
+  On_low_wasm_memory_hook_status = ConditionNotSatisfied
+```
+
+State after
+
+```html
+S with
+  on_low_wasm_memory_hook_status[C] = On_low_wasm_memory_hook_status
+```
 
 #### Message execution {#rule-message-execution}
 
@@ -4101,6 +4283,8 @@ Conditions
 
 S.messages = Older_messages · FuncMessage M · Younger_messages
 (M.queue = Unordered) or (∀ CallMessage M' | FuncMessage M' ∈ Older_messages. M'.queue ≠ M.queue)
+(∀ FuncMessage M' ∈ Older_messages · Younger_messages. M'.receiver ≠ M.receiver or M.entry_point ≠ OnLowWasmMemory)
+S.on_low_wasm_memory_hook_status[M.receiver] ≠ Ready
 S.canisters[M.receiver] ≠ EmptyCanister
 Mod = S.canisters[M.receiver].module
 Ctxt = S.call_contexts[M.call_context]
@@ -4159,6 +4343,12 @@ or
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = 0
 )
+or
+( M.entry_point = OnLowWasmMemory
+  F = system_task_as_update(Mod.on_low_wasm_memory, Env)
+  New_canister_version = S.canister_version[M.receiver] + 1
+  Wasm_memory_limit = 0
+)
 
 R = F(S.canisters[M.receiver].wasm_state)
 
@@ -4198,11 +4388,12 @@ if
     New_reserved_balance,
     Min_balance
   ) ≥ 0
-  (S.memory_allocation[M.receiver] = 0) or (memory_usage_wasm_state(res.new_state) +
+  Total_memory_usage = memory_usage_wasm_state(res.new_state) +
     memory_usage_raw_module(S.canisters[M.receiver].raw_module) +
     memory_usage_canister_history(S.canister_history[M.receiver]) +
     memory_usage_chunk_store(S.chunk_store[M.receiver]) +
-    memory_usage_snapshot(S.snapshots[M.receiver]) ≤ S.memory_allocation[M.receiver])
+    memory_usage_snapshot(S.snapshots[M.receiver])
+  (S.memory_allocation[M.receiver] = 0) or (Total_memory_usage ≤ S.memory_allocation[M.receiver])
   (Wasm_memory_limit = 0) or |res.new_state.store.mem| <= Wasm_memory_limit
   (res.response = NoResponse) or Ctxt.needs_to_respond
 then
@@ -4514,6 +4705,10 @@ if A.settings.wasm_memory_limit is not null:
   New_wasm_memory_limit = A.settings.wasm_memory_limit
 else:
   New_wasm_memory_limit = 0
+if A.settings.wasm_memory_threshold is not null:
+  New_wasm_memory_threshold = A.settings.wasm_memory_threshold
+else:
+  New_wasm_memory_threshold = 0
 
 Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation, null, EmptyCanister.wasm_state)
 New_balance = M.transferred_cycles - Cycles_reserved
@@ -4559,6 +4754,8 @@ S' = S with
     reserved_balances[Canister_id] = New_reserved_balance
     reserved_balance_limits[Canister_id] = New_reserved_balance_limit
     wasm_memory_limit[Canister_id] = New_wasm_memory_limit
+    wasm_memory_threshold[Canister_id] = New_wasm_memory_threshold
+    on_low_wasm_memory_hook_status[Canister_id] = ConditionNotSatisfied
     certified_data[Canister_id] = ""
     query_stats[Canister_id] = []
     canister_history[Canister_id] = New_canister_history
@@ -4610,11 +4807,17 @@ M.method_name = 'update_settings'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
+Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
+  memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
+  memory_usage_canister_history(New_canister_history) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
+  memory_usage_snapshot(S.snapshots[A.canister_id])
+
 if New_memory_allocation > 0:
-  memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
-    memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
-    memory_usage_canister_history(New_canister_history) +
-    memory_usage_snapshot(S.snapshots[A.canister_id]) ≤ New_memory_allocation
+  Total_memory_usage ≤ New_memory_allocation
+
+if New_wasm_memory_limit > 0:
+  |S.canisters[A.canister_id].wasm_state.store.mem| ≤ New_wasm_memory_limit
 
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
@@ -4636,6 +4839,10 @@ if A.settings.wasm_memory_limit is not null:
   New_wasm_memory_limit = A.settings.wasm_memory_limit
 else:
   New_wasm_memory_limit = S.wasm_memory_limit[A.canister_id]
+if A.settings.wasm_memory_threshold is not null:
+  New_wasm_memory_threshold = A.settings.wasm_memory_threshold
+else:
+  New_wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id]
 
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, New_compute_allocation, New_memory_allocation, S.snapshots[A.canister_id], S.canisters[A.canister_id].wasm_state)
 New_balance = S.balances[A.canister_id] - Cycles_reserved
@@ -4680,6 +4887,7 @@ S' = S with
     reserved_balances[A.canister_id] = New_reserved_balance
     reserved_balance_limits[A.canister_id] = New_reserved_balance_limit
     wasm_memory_limit[A.canister_id] = New_wasm_memory_limit
+    wasm_memory_threshold[A.canister_id] = New_wasm_memory_threshold
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
@@ -4697,6 +4905,8 @@ S' = S with
 The controllers of a canister can obtain detailed information about the canister.
 
 The `Memory_usage` is the (in this specification underspecified) total size of storage in bytes.
+
+The `Memory_metrics` are the (in this specification underspecified) detailed metrics on the memory consumption of the canister (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
 
 The `idle_cycles_burned_per_day` is the idle consumption of resources in cycles per day.
 
@@ -4730,12 +4940,14 @@ S with
             freezing_threshold = S.freezing_threshold[A.canister_id];
             reserved_cycles_limit = S.reserved_balance_limit[A.canister_id];
             wasm_memory_limit = S.wasm_memory_limit[A.canister_id];
+            wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id];
           }
           module_hash =
             if S.canisters[A.canister_id] = EmptyCanister
             then null
             else opt (SHA-256(S.canisters[A.canister_id].raw_module));
           memory_size = Memory_usage;
+          memory_metrics = Memory_metrics;
           cycles = S.balances[A.canister_id];
           reserved_cycles = S.reserved_balances[A.canister_id]
           idle_cycles_burned_per_day = idle_cycles_burned_rate(
@@ -4953,12 +5165,14 @@ liquid_balance(S, A.canister_id) ≥ MAX_CYCLES_PER_MESSAGE
 
 liquid_balance(S', A.canister_id) ≥ 0
 
+Total_memory_usage = memory_usage_wasm_state(New_state) +
+  memory_usage_raw_module(A.wasm_module) +
+  memory_usage_canister_history(New_canister_history) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
+  memory_usage_snapshot(S.snapshots[A.canister_id])
+
 if S.memory_allocation[A.canister_id] > 0:
-  memory_usage_wasm_state(New_state) +
-    memory_usage_raw_module(A.wasm_module) +
-    memory_usage_canister_history(New_canister_history) +
-    memory_usage_chunk_store(New_chunk_store) +
-    memory_usage_snapshot(S.snapshots[A.canister_id]) ≤ S.memory_allocation[A.canister_id]
+  Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
 
@@ -5116,12 +5330,14 @@ liquid_balance(S, A.canister_id) ≥ MAX_CYCLES_PER_MESSAGE
 
 liquid_balance(S', A.canister_id) ≥ 0
 
+Total_memory_usage = memory_usage_wasm_state(New_state) +
+  memory_usage_raw_module(A.wasm_module) +
+  memory_usage_canister_history(New_canister_history) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
+  memory_usage_snapshot(S.snapshots[A.canister_id])
+
 if S.memory_allocation[A.canister_id] > 0:
-  memory_usage_wasm_state(New_state) +
-    memory_usage_raw_module(A.wasm_module) +
-    memory_usage_canister_history(New_canister_history) +
-    memory_usage_chunk_store(S[A.canister_id].chunk_store) +
-    memory_usage_snapshot(S.snapshots[A.canister_id]) ≤ S.memory_allocation[A.canister_id]
+  Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
 
@@ -5538,6 +5754,8 @@ S with
     reserved_balances[A.canister_id] = (deleted)
     reserved_balance_limits[A.canister_id] = (deleted)
     wasm_memory_limit[A.canister_id] = (deleted)
+    wasm_memory_threshold[A.canister_id] = (deleted)
+    on_low_wasm_memory_hook_status[A.canister_id] = (deleted)
     certified_data[A.canister_id] = (deleted)
     canister_history[A.canister_id] = (deleted)
     canister_log_visibility[A.canister_id] = (deleted)
@@ -5727,6 +5945,10 @@ if A.settings.wasm_memory_limit is not null:
   New_wasm_memory_limit = A.settings.wasm_memory_limit
 else:
   New_wasm_memory_limit = 0
+if A.settings.wasm_memory_threshold is not null:
+  New_wasm_memory_threshold = A.settings.wasm_memory_threshold
+else:
+  New_wasm_memory_threshold = 0
 
 Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation,  null, EmptyCanister.wasm_state)
 if A.amount is not null:
@@ -5774,6 +5996,8 @@ S' = S with
     reserved_balances[Canister_id] = New_reserved_balance
     reserved_balance_limits[Canister_id] = New_reserved_balance_limit
     wasm_memory_limit[Canister_id] = New_wasm_memory_limit
+    wasm_memory_threshold[Canister_id] = New_wasm_memory_threshold
+    on_low_wasm_memory_hook_status[Canister_id] = ConditionNotSatisfied
     certified_data[Canister_id] = ""
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
@@ -7116,6 +7340,32 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
 ```
 
+-   The function `on_low_wasm_memory` of the `CanisterModule` is defined if the WebAssembly program exports a function `func` named `canister_on_low_wasm_memory`, and has value
+    ```
+    on_low_wasm_memory = λ (sysenv) → λ wasm_state →
+      let es = ref {empty_execution_state with
+        wasm_state = wasm_state;
+        params = empty_params with { arg = NoArg; caller = ic_principal; sysenv }
+        balance = sysenv.balance
+        context = T
+      }
+      try func<es>() with Trap then Trap {cycles_used = es.cycles_used;}
+      discard_pending_call<es>()
+      Return {
+        new_state = es.wasm_state;
+        new_calls = es.calls;
+        new_certified_data = es.certified_data;
+        new_global_timer = es.new_global_timer;
+        cycles_used = es.cycles_used;
+      }
+    ```
+
+    otherwise it is
+
+    ```html
+    on_low_wasm_memory = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
+    ```
+
 -   The function `callbacks` of the `CanisterModule` is defined as follows
     ```
     I ∈ {i32, i64}
@@ -7647,6 +7897,54 @@ ic0.in_replicated_execution<es>() : i32 =
   if es.params.sysenv.certificate = NoCertificate
   then return 1
   else return 0
+
+I ∈ {i32, i64}
+ic0.cost_call<es>(method_name_size: i64, payload_size: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_create_canister<es>(dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
+  key_name = copy_from_canister<es>(src, size)
+  if ecdsa_curve ∉ known_curves then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
+  copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
+
+I ∈ {i32, i64}
+ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_algorithms = arbitrary()
+  key_name = copy_from_canister<es>(src, size)
+  if algorithm ∉ known_algorithms then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
+  copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
+
+I ∈ {i32, i64}
+ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
+  key_name = copy_from_canister<es>(src, size)
+  if vetkd_curve ∉ known_curves then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
+  copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
 
 I ∈ {i32, i64}
 ic0.debug_print<es>(src : I, size : I) =
