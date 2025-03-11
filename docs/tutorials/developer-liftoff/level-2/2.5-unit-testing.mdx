@@ -137,14 +137,20 @@ Light Replica is a community-developed project designed to provide a local testi
 
 Now, let's take a look at creating a project and setting up end-to-end (e2e) testing.
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
+</TabItem>
+</AdornedTabs>
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:

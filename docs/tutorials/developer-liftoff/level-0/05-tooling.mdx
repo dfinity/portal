@@ -10,29 +10,28 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
+Developer tools come in different formats, like command-line tools or web-based development environments.
+
 :::caution
 The video corresponding to this tutorial is outdated.
 :::
 
-To build decentralized applications for ICP, you will need to use the ICP developer tools. Developer tools come in different formats, like command-line tools, web-based development environments, and specialized canister development kits.
-
-In this Developer Liftoff series, you will primarily use ICP Ninja, a web-based IDE that enables you to develop from any device, anywhere, and deploy your project to the mainnet temporarily for free. Certain tutorial segments will use a local developer environment and the CLI tool `dfx`.
+In this Developer Liftoff series, you will primarily use ICP Ninja, a web-based IDE that enables you to develop from any device, anywhere, and deploy your project to the mainnet temporarily for free. Certain tutorials will use a local developer environment and the CLI tool `dfx`.
 
 ## ICP Ninja
 
-ICP Ninja is a web-based development environment that doesn't require downloading tools or configuring a developer environment. Through ICP Ninja, you can deploy applications to the mainnet for free. Although applications deployed through ICP Ninja are temporary and will be removed after 20 minutes, they do not cost [cycles](/docs/building-apps/getting-started/tokens-and-cycles), making ICP Ninja a valuable tool for getting started quickly.
+ICP Ninja is a web-based development environment that doesn't require downloading tools or configuring a developer environment. Through ICP Ninja, you can deploy applications to the mainnet for free. Applications deployed through ICP Ninja are temporary and will be removed after 20 minutes; however they do not cost [cycles](/docs/building-apps/getting-started/tokens-and-cycles), making ICP Ninja a valuable tool for getting started quickly.
 
 ### How does ICP Ninja work?
 
 When canisters are deployed from ICP Ninja, they temporarily borrow resources from a canister pool and are allotted a small amount of <GlossaryTooltip>cycles</GlossaryTooltip> that can be used during the canister's deployment. The canister pool is referred to as the "playground" network, and developers using `dfx` in a local environment can deploy canisters to this temporary canister pool through the CLI flag `--playground`.
 
-Deploying to the playground is ICP's equivalent of deploying to a testnet network. Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
+Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
 
 Using the playground, either through ICP Ninja or the CLI, is a great way to be able to deploy a canister quickly for short, small-scale testing or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles.
 
-Since the playground is designed for testing purposes, there are several restrictions imposed on canisters that have been deployed to the playground that you should be aware of. These restrictions are:
+Since the playground is designed for testing purposes, it has several restrictions that you should be aware of. These restrictions are:
 
-- Cycle transfer instructions are silently ignored; you cannot transfer cycles to or from your canister on the playground. This means that you cannot use functions such as HTTPS outcalls or threshold ECDSA, since these functions require attached cycles.
 - Wasm files can't be gzipped.
 - Wasm files for deployed canisters will be analyzed to remove any potentially expensive or malicious operations.
 - Canisters can use at most 1GB of memory.
@@ -43,7 +42,7 @@ Since the playground is designed for testing purposes, there are several restric
 
 The IC SDK is used to develop applications in a local development environment, then deploy them to ICP. It is comprised of:
 
-- `dfx`: Command-line tool for creating and managing projects, developers identities, and using cycles.
+- `dfx`: Command-line tool for creating and managing projects, developer identities, and using cycles.
 
 - `dfxvm`: A version manager for `dfx`.
 
@@ -66,26 +65,6 @@ To deploy canisters to the mainnet or make calls to canisters already deployed o
 ### `dfxvm`
 
 [`dfxvm`](/docs/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
-
-## Canister development kits (CDKs)
-
-A canister development kit (CDK) is an adapter used by `dfx` to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters. Each CDK includes build scripts that compile backend code to an ICP-compatible Wasm module.
-
-[Motoko](/docs/motoko/main/getting-started/motoko-introduction) is ICP's native programming language. It is installed with the IC SDK.
-
-The [Rust CDK](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
-
-There are several community-contributed and maintained CDKs for languages such as:
-
-- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/).
-
-- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle//).
-
-- [Bitfinity EVM for Solidity](https://docs.bitfinity.network/).
-
-- [C++ CDK](https://docs.icpp.world/).
-
-More information about programming languages can be found in the previous module, [0.4: Introduction to languages](04-intro-languages.mdx)
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 

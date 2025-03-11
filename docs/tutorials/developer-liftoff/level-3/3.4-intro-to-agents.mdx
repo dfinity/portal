@@ -42,10 +42,10 @@ Each call to the mainnet needs to have a cryptographic identity attached to it. 
 The following types of identity signatures can be attached to calls:
 
 - [Ed25519](https://ed25519.cr.yp.to/) and [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) signatures.
-    - Plain signatures are supported for the schemes.
+  - Plain signatures are supported for the schemes.
 - [Ed25519](https://ed25519.cr.yp.to/) or [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) on curve P-256 (also known as [secp256r1](https://neuromancer.sk/std/secg/secp256r1)).
-    - Using SHA-256 as a hash function.
-    - Using the Koblitz curve in [secp256k1](https://en.bitcoin.it/wiki/Secp256k1).
+  - Using SHA-256 as a hash function.
+  - Using the Koblitz curve in [secp256k1](https://en.bitcoin.it/wiki/Secp256k1).
 
 When an agent encodes these identities as a principal, they attach a suffix byte that indicates whether the identity is anonymous or self-authenticating. An anonymous identity will use a suffix byte of `4`, which resolves to `2vxsx-fae`, while self-authenticating identities that use one of the curves above use a suffix of `2`.
 
@@ -56,29 +56,34 @@ Currently, there are two agents developed by DFINITY: the [ICP JavaScript/TypeSc
 Additionally, there are several community-supported agents, including:
 
 - .NET
-  - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
+    - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
 - Dart
-  - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
+    - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
 - Go
-  - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
+    - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
 - Java
-  - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
+    - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
 - C
-  - [`agent-c` by Zondax](https://github.com/Zondax/icp-client-cpp) (C Wrapper for IC Rust Agent)
+    - [`agent-c` by Zondax](https://github.com/Zondax/icp-client-cpp) (C Wrapper for IC Rust Agent)
 - Elixir
-  - [`icp_agent`](https://github.com/diodechain/icp_agent)
+    - [`icp_agent`](https://github.com/diodechain/icp_agent)
 
 ## Using the JavaScript agent
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
-
+</TabItem>
+</AdornedTabs>
 ### Creating a new project
 
 To get started, open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and clone the sample code's repository:
@@ -149,7 +154,7 @@ In this file, the `idlFactory` function is defined. This handles the structuring
 
 In this example, the `idlFactory` represents a service with a `generate` method using the same two arguments you defined before (type `Nat` and type `Text`), though it includes a third argument of an empty array, which represents additional annotations that the function may be tagged with, such as 'query'.
 
-### Creating the JavaScript agent
+### Creating the agent
 
 Now, let's put all of these different pieces together in the `src/declarations/random_maze/index.js` file:
 

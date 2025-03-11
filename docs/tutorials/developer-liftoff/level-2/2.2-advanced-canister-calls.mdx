@@ -120,14 +120,20 @@ For example, consider a scenario where you want to create a social media dapp th
 
 In this example, you have two canisters: a **publisher** and a **subscriber**. The 'Subscriber' canister sends an inter-canister call to the 'Publisher' canister that indicates it would like to subscribe to a 'topic,' which is a key-value pair. Then, the 'Publisher' canister can publish information to that topic, notifying the subscriber of the published information.
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
+</TabItem>
+</AdornedTabs>
 ### Creating a new project
 
 To get started, you'll be cloning the DFINITY example repo, which contains this tutorial's example plus several others. You'll be using the `motoko/pub-sub` folder. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the commands:

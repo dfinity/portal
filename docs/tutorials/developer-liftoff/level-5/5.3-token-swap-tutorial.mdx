@@ -34,15 +34,20 @@ In this example, the token swap canister simply swaps all deposits for two users
 
 This example will use ICRC-2 tokens. To learn more about ICRC tokens, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
-
+</TabItem>
+</AdornedTabs>
 ### Cloning the `icrc2-swap` example
 
 To get started, open a new terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to clone the DFINITY examples repo and navigate into the `icrc2-swap` directory:

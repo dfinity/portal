@@ -13,13 +13,15 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Now that you've covered the fundamentals of ICP, it's time to start developing your first application. To get started quickly and seamlessly, you'll use [ICP Ninja](https://icp.ninja), which was introduced in the previous module, [0.5: Introduction to tooling](05-tooling.mdx).
 
-Projects on ICP have an default architecture of two canisters: a frontend canister and a backend canister. The **frontend canister** is essentially a web server. It stores the web assets for the application’s user interface and interacts with the backend through the use of an **agent**. The **backend canister** stores the application’s data and provides endpoints to access and modify the data. Backend canisters can be written in a variety of different languages (Motoko, Rust, TypeScript, and more) through the use of canister development kits (CDKs).
+:::caution
+The video corresponding to this tutorial is outdated.
+:::
 
-## Opening a new project
+Projects on ICP have a default architecture of two canisters: a frontend canister and a backend canister. The **frontend canister** is essentially a web server. It stores the web assets for the application’s user interface and interacts with the backend through the use of an **agent**. The **backend canister** stores the application’s data and provides endpoints to access and modify the data. Backend canisters can be written in a variety of different languages (Motoko, Rust, TypeScript, and more) through the use of canister development kits (CDKs).
 
-To create a new project using ICP Ninja, navigate to the [ICP Ninja homepage](https://icp.ninja) and select a template project or select "New project" to start from the default "Hello, world!" project.
+## Hello, world!
 
-This tutorial will use the Motoko ["Hello, world!" example](https://icp.ninja/projects/hello-world).
+This tutorial will use the Motoko ["Hello, world!" example](https://icp.ninja/projects/hello-world) on ICP Ninja.
 
 Let's review the project's file structure:
 
@@ -44,14 +46,14 @@ The `dfx.json` file in the root directory defines the canisters that make up the
 {
   "canisters": {
     "backend": {
-      "main": "backend/app.mo",
-      "type": "motoko",
+      "main": "backend/app.mo", # Defines the backend canister's source code file
+      "type": "motoko",   # Defines the type of canister
       "args": "--enhanced-orthogonal-persistence"
     },
     "frontend": {
-      "dependencies": ["backend"],
+      "dependencies": ["backend"], # Defines a dependency of the backend canister
       "frontend": {
-        "entrypoint": "frontend/index.html"
+        "entrypoint": "frontend/index.html" # Defines the file that should be opened by default for the frontend
       },
       "source": ["frontend/dist"],
       "type": "assets"
@@ -186,13 +188,13 @@ When the agent makes a call to the backend canister, it uses these declaration f
 
 In this example, the user interface includes a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a request to the `backend` canister's `greet` method that includes the user's text input. The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method.
 
-## Viewing the app on the mainnet
+## Viewing the dapp on the mainnet
 
 In the deployment output, there are two canister URLs. Open the second URL to view the frontend of your application deployed on the mainnet. You should see a very simple "Enter your name" input box. Insert your name, then click the "Click me!" button. You will see the response, `"Hello, <name>!"`, indicating that your text input was successfully received and processed by the backend's `greet` method.
 
 Want to share your new dapp with a friend? Simply send them the frontend canister's URL, such as: `https://7azie-saaaa-aaaab-qbmba-cai.icp1.io`
 
-Continue developing with this app, pick another ICP Ninja template to explore, or create a new project to get started building your next project!
+Continue developing with this dapp, pick another ICP Ninja template to explore, or create a new project to get started building your next project!
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 

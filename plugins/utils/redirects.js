@@ -838,6 +838,13 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/intro-canisters
+  /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
+  /docs/tutorials/developer-liftoff/level-0/intro-languages /docs/tutorials/developer-liftoff/level-0/tooling
+  /docs/tutorials/developer-liftoff/level-0/intro-dfx /docs/tutorials/developer-liftoff/level-0/first-dapp
+  /docs/tutorials/developer-liftoff/level-1/1.1-live-demo /docs/tutorials/developer-liftoff/level-1/1.1-motoko-lvl1
+  /docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1 /docs/tutorials/developer-liftoff/level-1/1.2-dev-env
+  /docs/tutorials/developer-liftoff/level-1/1.3-first-dapp /docs/tutorials/developer-liftoff/level-1/1.3-intro-dfx
   /docs/defi /docs/defi/overview
   /docs/download.html /docs/home
   /docs/ic-identity-guide/what-is-ic-identity.html /docs/home

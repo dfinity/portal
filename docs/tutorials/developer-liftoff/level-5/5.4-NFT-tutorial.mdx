@@ -80,14 +80,20 @@ This example project uses the Motoko Mops packages for ICRC-3, ICRC-7, and ICRC-
 
 This collection will contain 5 NFTs that each use a different image stored in their metadata with their own unique NFT identifier.
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
+</TabItem>
+</AdornedTabs>
 ### Setting up the project
 
 Open a terminal window and run the following commands to download the NFT example project and navigate inside the project's directory:
@@ -226,6 +232,8 @@ dfx canister call icrc7 icrc7_description  --query
 ## Get the collection logo:
 dfx canister call icrc7 icrc7_logo  --query
 ```
+
+</details>
 
 <details>
 <summary>Output</summary>

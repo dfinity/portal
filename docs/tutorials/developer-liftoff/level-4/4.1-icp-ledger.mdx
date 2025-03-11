@@ -59,14 +59,20 @@ To deploy the ICP ledger canister locally, there are two workflows:
 
 The ICP ledger canister running on the mainnet is not meant to be used for other token deployments. To develop a new token or ledger, the ICRC ledger can be used, which will be covered in a [future module](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
+</TabItem>
+</AdornedTabs>
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:

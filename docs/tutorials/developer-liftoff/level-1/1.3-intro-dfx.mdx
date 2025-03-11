@@ -5,7 +5,7 @@ keywords: [beginner, tutorial, developer liftoff, introduction, dfx, what is dfx
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# 0.6 Introduction to dfx
+# 1.3 Introduction to dfx
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
@@ -17,7 +17,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 `dfx` is a command line tool used for creating, managing, and deploying dapps onto ICP. While other tools, like ICP Ninja, can be used for getting started and deploying dapps quickly, `dfx` is the only tool that can be used to manage an application's canisters. Canister management includes adjusting the canister's settings, modifying the canister's controller list, or topping up the canister's cycles balance.
 
-The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at the basic usage of the command, and then you'll get started creating your first project using dfx.
+The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at the basic usage of the command, and then you'll get started creating your first project using `dfx`.
 
 ## Basic usage
 
@@ -29,7 +29,7 @@ dfx [subcommand] [flag]
 
 ### Subcommands
 
-The following is a list of the essential `dfx` subcommands that you'll be using throughout the Developer Liftoff series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/building-apps/developer-tools/dfx/dfx-parent/).
+The following is a list of the essential `dfx` subcommands that you'll be using throughout the Developer Liftoff series. For the full list of all possible subcommands, check out the [`dfx` reference documentation](/docs/building-apps/developer-tools/dfx/dfx-parent/).
 
 - `build`: Used to build the <GlossaryTooltip>canister</GlossaryTooltip> output from the project's source code.
 - `canister`: Used to manage deployed canisters.
@@ -39,19 +39,19 @@ The following is a list of the essential `dfx` subcommands that you'll be using 
 - `identity`: Used to create and manage identities.
 - `info`: Used to display information, such as version or port values.
 - `ledger`: Used to interact with accounts within the ledger canister.
-- `new`: Used to create a new project. By default, creates a Motoko project.
+- `new`: Used to create a new project.
 - `ping`: Used to test network connectivity to the mainnet or the local canister execution environment.
 - `quickstart`: Used to perform an initial one-time identity and wallet setup.
 - `start`: Used to start the local canister execution environment for the current project.
 - `stop`: Used to stop the local canister execution environment.
-- `upgrade`: Used to upgrade the version of dfx installed.
+- `upgrade`: Used to upgrade the version of `dfx` installed.
 
 ### Flags
 
 - `-h`, `--help`: Used to display usage information.
 - `-q`, `--quiet`: Used to suppress informational messages.
 - `-v`, `--verbose`: Used to display detailed information about operations.
-- `-V`, `--version`: Used to display the version of dfx installed.
+- `-V`, `--version`: Used to display the version of `dfx` installed.
 
 ### Options
 
@@ -59,7 +59,7 @@ For the full list of options, see the [reference documentation](/docs/building-a
 
 ## Creating a new project with dfx
 
-All dapps on ICP start off as **projects**. Projects are created using the `dfx new` command. To get started, you'll use the default app to demonstrate how to create a project. This example project will use the same project structure as the Hello, world! app explored in [0.6: Deploying your first app](../level-0/06-first-dapp.mdx)
+All dapps on ICP start off as **projects**. Projects are created using the `dfx new` command. To get started, you'll use the default app to demonstrate how to create a project. This example project will use the same project structure as the "Hello, world!" app explored in [0.6: Deploying your first app](../level-0/06-first-dapp.mdx)
 
 ### Step 1: Open a terminal window on your local computer.
 
@@ -71,10 +71,10 @@ Ensure that you are in your working directory, `developer_liftoff`.
 dfx new hello_world --type=motoko --frontend=react
 ```
 
-This will create a new project using the default Motoko backend and React frontend. To create a project using the Rust project template, the flag `--type=rust` can be used instead. Other frontend frameworks such as Svelte are also available, or `--no-frontend` can be used to create a project with only a backend canister.
+This will create a new project using the default Motoko backend and React frontend. To create a project using the Rust project template, the flag `--type=rust` can be used instead. Other frontend frameworks such as Svelte are also available or `--no-frontend` can be used to create a project with only a backend canister.
 
 :::info
-When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts.
+When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to ensure that project names are valid within Motoko, JavaScript, and other contexts.
 :::
 
 ### Step 3: Then, navigate into the new project's directory with the command:
@@ -115,13 +115,13 @@ hello_world/
 This structure looks very similar to the [ICP Ninja example](../level-0/06-first-dapp.mdx) but there are a few differences:
 
 - `src/`: The source directory that contains all of your dapp's source files.
-- `hello_world_backend`: The source directory that contains your dapp's backend code files. Rather than just 'backend', the project's name is appended to the name of the backend folder.
-- `hello_world_frontend`: The source directory that contains your dapp's frontend code files. Rather than just 'frontend', the project's name is appended to the name of the frontend folder.
+- `hello_world_backend`: The source directory that contains your dapp's backend code files. Rather than just 'backend,' the project's name is appended to the name of the backend folder.
+- `hello_world_frontend`: The source directory that contains your dapp's frontend code files. Rather than just 'frontend,' the project's name is appended to the name of the frontend folder.
 - `hello_world_backend/main.mo`: The default template Motoko file that can be modified or replaced to include your dapp's core programming logic. In the ICP Ninja example, this was called `app.mo`.
 
 ## Reviewing the default program code
 
-New Motoko projects created by `dfx` will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/hello_world_backend/main.mo` file in a code or text editor. The code will resemble the following:
+New Motoko projects created by `dfx` will always include a default `main.mo` file. To take a look at the file's default contents, open the `src/hello_world_backend/main.mo` file in a code or text editor. The code will resemble the following:
 
 ```motoko title="src/hello_world_backend/main.mo"
 actor {
@@ -131,7 +131,7 @@ actor {
 };
 ```
 
-This 'Hello, world!' program is a simplified version of the project deployed via [ICP Ninja](https://icp.ninja) in the previous module [0.6: Deploying your first dapp](../level-0/06-first-dapp.mdx).
+This "Hello, world!" program is a simplified version of the project deployed via [ICP Ninja](https://icp.ninja) in the previous module [0.6: Deploying your first dapp](../level-0/06-first-dapp.mdx).
 
 ## Create and deploy via dfx
 
@@ -183,7 +183,7 @@ URLs:
 
 ## Interact with the canister
 
-Once the canister has been deployed, you can open the Candid interface URL, which will resemble the interface that you used to interact with [deployed dapp in module 0.6: Deploying your first dapp](../level-0/06-first-dapp.mdx) through ICP Ninja.
+Once the canister has been deployed, you can open the Candid interface URL, which will resemble the interface that you used to interact with [the deployed dapp in module 0.6: Deploying your first dapp](../level-0/06-first-dapp.mdx) through ICP Ninja.
 
 Alternatively, you can interact with the canister's public methods directly from the command line. For example, to call the `greet` method via the CLI, use the command:
 

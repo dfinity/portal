@@ -16,36 +16,36 @@ import TutorialFooter from "@site/src/components/TutorialFooter/";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/mwbRRk9T5Nw?si=NtENTs0fdoAZ_abL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-Smart contracts on ICP are known as **canisters**. A <GlossaryTooltip>canister</GlossaryTooltip> contains both program source code and its corresponding state. A canister's source code is compiled into a WebAssembly module and is associated with a module of stable memory. Then, that WebAssembly module is installed into the canister and deployed to the network. Once deployed, end users or other canisters can interact with the canister's public methods.
+Smart contracts on ICP are known as **canisters**. A canister contains both program source code and its corresponding state. A canister's source code is compiled into a WebAssembly (Wasm) module, and then that module is installed into the canister. Once a canister has a Wasm module installed, it can be deployed to the network for end users or other canisters to interact with.
 
-### Why code is compiled into WebAssembly
+:::info Why is canister code compiled into WebAssembly?
 
 WebAssembly is a low-level computer instruction format. It abstracts a program's execution cleanly over most modern hardware. WebAssembly is portable and broadly supported for programs that run on the internet, making it a natural fit for dapps intended to run on ICP.
 
-## Architecture
+:::
 
-Canisters have additional components alongside their Wasm code and memory module. These components are outlined in the diagram below.
+## Canister architecture
+
+Canisters have additional components alongside their Wasm code. These components are outlined in the diagram below.
 
 <div class="text--center">
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
 </div>
 
-### Languages
-
 Canisters can be developed in a variety of existing languages, such as Rust, JavaScript, Python, and TypeScript.
-There is also an SDK for Motoko, a language specifically for canister development on ICP with a focus on programming in a distributed asynchronous environment.
+There is also an SDK for Motoko, a language specifically designed for canister development on ICP with a focus on programming in a distributed asynchronous environment.
 
 You'll dive further into Motoko and other languages in the next section, [introduction to languages](/docs/tutorials/developer-liftoff/level-0/intro-languages).
 
 ## Types of canisters
 
-- **Backend canisters**: The backend of an application is the portion that does not come in direct contact with the application's end users. It hosts the application's primary source code and functionality. It does not contain user interface assets such as HTML or CSS. When a project is created with `dfx`, the file structure for a default backend canister is created within the project's directory.
+- **Backend canisters**: The backend of an application hosts the application's primary source code and functionality. Backend canisters can be written in Motoko, Rust, Python, or other programming languages. When a project is created with `dfx`, the file structure for a default backend canister is created within the project's directory.
 
-- **Frontend canisters**: The frontend of an application is the user interface. Frontend assets typically contain things such as CSS, HTML, JavaScript, or React elements. Frontend canisters are compiled into Wasm using an implementation of the **asset canister**. When a project is created with `dfx`, the file structure for a default frontend canister is created within the project's directory.
+- **Frontend canisters**: The frontend of an application is the user interface. Frontend assets typically contain CSS, HTML, JavaScript, or React elements. Frontend canisters are compiled into Wasm using an implementation of the **asset canister**. When a project is created with `dfx`, the file structure for a default frontend canister is created within the project's directory.
 
-- **Custom canisters**: Custom canisters are canisters that don't fit into the frontend or backend canister type definitions. These may include a mix of backend and frontend functionalities, or they may be used for specific, individual functionalities within the dapp.
+- **Custom canisters**: Custom canisters don't fit into the frontend or backend canister type definitions. These may include a mix of backend and frontend functionalities, or they may be used for specific, individual functionalities within the dapp.
 
-## Using a single or multiple canister architecture
+## Project architecture
 
 When designing a dapp, one of the first decisions you should make is how to structure it. Should it be within a single canister, or should it consist of multiple canisters?
 
@@ -57,21 +57,19 @@ It also may be beneficial to separate different reusable services into their own
 
 ## Canister communication
 
-Canisters communicate with other canisters through the use of asynchronous messages. Each message is executed in isolation, which allows for increased levels of concurrent execution. Canister messages are either requests or replies to other messages. When a canister processes a message, the result of that process could be a change to the canister's state, a reply message sent to another canister, or even the creation of a new canister.
+Canisters communicate with other canisters through the use of asynchronous messages. Each message is executed in isolation, which allows for increased levels of concurrent execution. Canister messages are either outgoing requests or replies to incoming messages. When a canister processes a message, the result of that process could be a change to the canister's state, a reply message sent to another canister, or even the creation of a new canister.
 
 If a canister processes a request that requires the canister to send additional requests to other canisters, the canister may wait for the replies from the other canisters before producing a reply to the original request. If a canister fails to respond (referred to as 'trapping'), the requesting canister's state is rolled back to the point right after it made the last outgoing request.
 
-Canisters can also communicate with external entities, such as end users or external services, through update calls and query calls. Update calls can modify the state of the canister, while query calls cannot. Updates are used to write changes to the state of the canister, while queries are used to read information from the canister's state.
-
 ## Canister controllers
 
-Canisters are managed by **controllers**, which may be a centralized entity, a decentralized entity, or a single individual. Controllers can be a single user, a group of users, or another canister. If a canister has no controller, it is immutable. A canister can have multiple controllers.
+Canisters are managed by **controllers**, which may be a single user, a group of users, or another canister. If a canister has no controller, it is immutable. A canister can have multiple controllers.
 
-A controller is the only entity that has permission to update and manage the canister through workflows like deploying the canister or starting and stopping the canister. Controllers can also change the canister's parameters, add or remove additional controllers, or delete the canister.
+A controller is the only entity that has permission to manage the canister through workflows like deploying the canister or starting and stopping the canister. Controllers can also change the canister's parameters, add or remove additional controllers, or delete the canister.
 
-Additionally, controllers can upgrade the canister code by installing a new Wasm module to replace the current module. This allows developers to change, update, and continue developing their app after it has been initially deployed.
+Additionally, controllers can upgrade the canister code by installing a new Wasm module to replace the current module. This allows developers to change, update, and continue developing their dapp after it has been initially deployed.
 
-## Cycles and resource charges
+## Canister fees
 
 A canister's controller is responsible for ensuring the canister contains enough **<GlossaryTooltip>cycles</GlossaryTooltip>**. Cycles are used to pay for the canister's resources, such as memory, computational power, and network bandwidth. Each operation that is performed by a canister has a cost of cycles. A canister has a local cycles balance used to store the canister's cycles.
 

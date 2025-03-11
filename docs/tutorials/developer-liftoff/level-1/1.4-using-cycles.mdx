@@ -27,13 +27,20 @@ A developer's cycles balance is associated with their developer identity.
 
 Canisters each have their own cycles balance and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in its balance or if you're creating a new canister, you will need to proxy the call through the cycles ledger to attach the required cycles. To ensure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
 
-For local canister execution, operations performed using cycles are done in the background and cycles are fabricated. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly transferred into them. Production canisters can also have principals configured to act as **custodians**, who have permission to access the canister's cycles balance, wallet information, and send and receive cycles for the canister.
+For local canister execution, operations performed using cycles are done in the background, and cycles are fabricated. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly transferred into them. Production canisters can also have principals configured to act as **custodians**, who have permission to access the canister's cycles balance and wallet information and send and receive cycles for the canister.
 
 In this tutorial, you'll learn how to obtain cycles. Then, in the next tutorial, you'll deploy a canister to the mainnet using those cycles.
 
-## Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
 
 ## Creating a developer identity
 
