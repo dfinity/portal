@@ -19,7 +19,7 @@ Have ideas or questions? [Join the discussion](https://forum.dfinity.org/t/lets-
 
 ## Dissolve delay API change
 
-An upcoming API change regarding neuron minimum dissolve delay will take effect March 17, 2025. This change may affect clients that use neurons, specifically the constraint on the minimum dissolve delay required for neurons to propose or vote.
+An upcoming API change regarding neuron minimum dissolve delay will take effect on March 17, 2025. This change may affect clients that use neurons, specifically the constraint on the minimum dissolve delay required for neurons to propose or vote.
 
 If you have an NNS downstream client that executes neuron-related functions, it is recommended that you check if your client relies on the minimum delay constant. If so, start reading its value from the network economics API (`NetworkEconomics.VotingPowerEconomics.neuron_minimum_dissolve_delay_to_vote_seconds`) when it becomes available.
 
