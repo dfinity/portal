@@ -339,7 +339,7 @@ type sign_with_schnorr_result = record {
 
 type vetkd_public_key_args = record {
     canister_id : opt canister_id;
-    derivation_domain : blob;
+    context : blob;
     key_id : record { curve : vetkd_curve; name : text };
 };
 
@@ -347,14 +347,14 @@ type vetkd_public_key_result = record {
     public_key : blob;
 };
 
-type vetkd_derive_encrypted_key_args = record {
-    derivation_id : blob;
-    encryption_public_key : blob;
-    derivation_domain : blob;
+type vetkd_derive_key_args = record {
+    input : blob;
+    context : blob;
+    transport_public_key : blob;
     key_id : record { curve : vetkd_curve; name : text };
 };
 
-type vetkd_derive_encrypted_key_result = record {
+type vetkd_derive_key_result = record {
     encrypted_key : blob;
 };
 
@@ -462,7 +462,7 @@ service ic : {
 
     // Threshold key derivation
     vetkd_public_key : (vetkd_public_key_args) -> (vetkd_public_key_result);
-    vetkd_derive_encrypted_key : (vetkd_derive_encrypted_key_args) -> (vetkd_derive_encrypted_key_result);
+    vetkd_derive_key : (vetkd_derive_key_args) -> (vetkd_derive_key_result);
 
     // bitcoin interface
     bitcoin_get_balance : (bitcoin_get_balance_args) -> (bitcoin_get_balance_result);
