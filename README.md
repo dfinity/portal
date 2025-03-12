@@ -95,7 +95,7 @@ docs
 ├── motoko // Motoko documentation - submodule
 ├── references // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer liftoff, hackathon prep course, etc).
+├── tutorials // tutorial series (Developer Liftoff, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs

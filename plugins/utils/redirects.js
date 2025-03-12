@@ -845,6 +845,13 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/intro-canisters
+  /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
+  /docs/tutorials/developer-liftoff/level-0/intro-languages /docs/tutorials/developer-liftoff/level-0/tooling
+  /docs/tutorials/developer-liftoff/level-0/intro-dfx /docs/tutorials/developer-liftoff/level-0/first-dapp
+  /docs/tutorials/developer-liftoff/level-1/1.1-live-demo /docs/tutorials/developer-liftoff/level-1/1.1-motoko-lvl1
+  /docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1 /docs/tutorials/developer-liftoff/level-1/1.2-dev-env
+  /docs/tutorials/developer-liftoff/level-1/1.3-first-dapp /docs/tutorials/developer-liftoff/level-1/1.3-intro-dfx
   /docs/building-apps/developer-tools/cdks/rust/candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/concepts/glossary /docs/references/glossary
   /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger /docs/defi/token-ledgers/setup/icrc1_ledger_setup
