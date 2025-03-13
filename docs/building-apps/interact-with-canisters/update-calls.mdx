@@ -13,7 +13,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 To interact with a <GlossaryTooltip>canister</GlossaryTooltip>'s methods, there are two primary types of calls that can be used: update calls and query calls.
 
-**Update calls** can make modifications to a canister's state, while **query calls** cannot. Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
+**Update calls** can make modifications to a canister's state, while **query calls** cannot. Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through consensus. This makes them slower than query calls. They can be synchronous or asynchronous. 
 
 :::danger
 Update calls do not go through consensus on the local replica.
@@ -26,7 +26,6 @@ A query call can be called both an update and a query, whereas update methods ca
 | Slow (1-2s) | Fast (200-400ms) |
 | Can modify state | Can't modify state |
 | Goes through consensus | Does not go through consensus |
-| Synchronous response | Synchronous response |
 | Executed on all nodes of a subnet | Executed on a single node |
 | Cost cycles | Free |
 
