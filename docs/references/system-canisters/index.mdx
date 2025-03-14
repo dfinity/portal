@@ -52,28 +52,25 @@ View the [cycles ledger specification](https://github.com/dfinity/cycles-ledger/
 
 ## Cycles minting
 
-Often referred to as the CMC (short for cycles minting canister).
+The cycles minting canister (CMC) has canister ID [`rkp4c-7iaaa-aaaaa-aaaca-cai`](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai).
 
-The CMC converts ICP to [cycles](/docs/building-apps/essentials/gas-cost). Cycles are used up by canisters as they do work (simply storing data counts as doing work, even when no code in the canister is running). In this conversion, ICP is destroyed, and cycles are created. Thus, this operation is referred to as cycles "minting".
+Cycles are used by canisters to pay for the resources they use, such as data storage, compute power, or network bandwidth. The CMC converts ICP into [cycles](/docs/building-apps/essentials/gas-cost) by burning ICP and creating cycles. This operation is referred to as cycles "minting."
 
-The CMC has canister ID [`rkp4c-7iaaa-aaaaa-aaaca-cai`](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai).
 
 The CMC canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
 
-In general, you must do a couple things to use this canister:
+### Using the CMC 
 
-1. Send ICP to the CMC (by calling the ICP ledger canister).
-2. Tell the CMC about the ICP that was sent.
-
+To use the CMC, you must first send ICP to the CMC by calling the ICP ledger canister, then tell the CMC about the ICP that was sent.
 When minting cycles, the ICP transfer parameters must meet the following requirements:
 
-1. `subaccount` - Matches the recipient of the new cycles. More on this below.
-2. `memo` - Indicates what type of operation will be performed using the ICP.
+1. `subaccount`: The recipient of the new cycles. More on this below.
+2. `memo`: Indicates what type of operation will be performed using the ICP.
 
 The subaccount corresponding to a recipient principal is constructed as follows:
 
-1. Start with an arry of length 32 with all elements set to 0.
-2. The first byte is set to the length of the principal (as a blob, not in the string format).
+1. Start with an array of length `32` with all elements set to `0`.
+2. The first byte is set to the length of the principal as a `blob`.
 3. The principal bytes are copied into the remaining bytes of the subaccount.
 
 For example, to send 4.2 ICP to CMC such that `principal "mcj7w-qq3pa-zsxyt-fjs6f-4s7px-mrq3c-i6wmj-ciqw6-7q4aj-odhgc-4ae"` will end up getting the newly created cycles, ICP could be sent to the CMC like this:
@@ -101,7 +98,7 @@ dfx canister --ic call $ICP_LEDGER_CANSITER_ID icrc1_transfer "(record {
 })"
 ```
 
-This transaction will be recorded in a block whose index is printed by the above command. For example, suppose the block index is `123_456_789`. This is used in step 2, which can be performed as follows:
+This transaction will be recorded in a block whose index is returned by the above command. For example, suppose the block index is `123_456_789`. This index used in the next step:
 
 ```bash
 dfx canister --ic call $CYCLES_MINTING_CANISTER_ID notify_mint_cycles '(record {
@@ -109,7 +106,7 @@ dfx canister --ic call $CYCLES_MINTING_CANISTER_ID notify_mint_cycles '(record {
 })'
 ```
 
-After the above command, the destination principal has a higher cycles balance. To read the balance, the cycles ledger canister can be queried like so:
+The destination principal now has a higher cycles balance. To read the balance, the cycles ledger canister can be queried:
 
 ```bash
 CYCLES_LEDGER_CANISTER_ID=um5iw-rqaaa-aaaaq-qaaba-cai
