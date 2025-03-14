@@ -31,7 +31,7 @@ const RoadmapIgnition: FC = () => {
       </div>
       <div className="p-1 relative z-3">
         <div className="grid gap-1 grid-cols-1 md:grid-cols-4">
-          <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222] h-full">
+          <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222] md:h-full">
             <div>
               <header className="flex gap-2 justify-between self-stretch">
                 <h5 className="tw-heading-6">LLM Canister MVP</h5>
@@ -74,7 +74,7 @@ const RoadmapIgnition: FC = () => {
             <div className="flex gap-2 pr-20 mt-2"></div>
           </article>
 
-          <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222]  h-full">
+          <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222]  md:h-full">
             <div>
               <header className="flex gap-2 justify-between self-stretch">
                 <h5 className="tw-heading-6">LLM Developer Experience</h5>
@@ -114,7 +114,7 @@ const RoadmapIgnition: FC = () => {
             </div>
             <div className="flex gap-2 pr-20 mt-2"></div>
           </article>
-          <article className="flex flex-col justify-between px-6 pt-6 pb-12 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222] h-full">
+          <article className="flex flex-col justify-between px-6 pt-6 pb-12 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222] md:h-full">
             <div>
               <header className="flex gap-2 justify-between self-stretch">
                 <h5 className="tw-heading-6">LLM Workers</h5>
