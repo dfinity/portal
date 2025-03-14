@@ -596,7 +596,7 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
   - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister.
 
-  Note that you can only trust valid IC certificates in IC responses since malicious replicas could spoof their responses.
+  From this point on you may receive a response from the IC about the status of your call. Only valid IC certificates in responses should be trusted, since responses come from a single replica that can be either honest or malicious. Note that a lack of a valid certificate doesn't mean that the responding replica is malicious; examples of responses that are expected to come without a certificate (and thus aren't necessarily trustworthy) include responses signalling that the message hasn't been accepted, and responses saying that the request is accepted for further processing.
 
   So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
