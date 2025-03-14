@@ -41,6 +41,18 @@ As mentioned above, a Bitcoin address is derived from a public key or a script. 
 An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
 demonstrates how to generate a `P2PKH` address from a canister's public key.
 
+:::info
+
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local replica with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+:::
+
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 

@@ -34,6 +34,16 @@ Each of these API endpoints can be executed programmatically within a smart cont
 Working with Bitcoin data structures like addresses, UTXOs, and transactions can be cumbersome. The good news is that popular libraries like [`rust-bitcoin`](https://github.com/rust-bitcoin/rust-bitcoin) and [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib) can be used within canisters.
 :::
 
+## Using `dfx`'s Bitcoin integration support
+
+To develop and test a canister locally that uses the Bitcoin integration, you can start the local replica with `dfx start --enable-bitcoin`. Alternatively, you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
 ## Using a local instance of the Bitcoin testnet
 
 You can also develop and test your canister against a local instance of the Bitcoin testnet running in your developer environment. [Learn more in the Bitcoin developing locally](local-development.mdx) documentation.

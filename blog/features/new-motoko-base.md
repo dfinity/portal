@@ -11,7 +11,7 @@ image: /img/blog/new-motoko-base.jpg
 
 * [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
 * [GitHub repository](https://github.com/dfinity/new-motoko-base)
-* [ICP Ninja starter project](https://icp.ninja/s/kwKkw)
+* [Online starter project](https://icp.ninja/s/kwKkw)
 
 The Motoko team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
 
@@ -57,7 +57,7 @@ Check out [this article](https://learn.microsoft.com/en-us/dotnet/standard/linq/
 
 We chose implementations with good all-round performance, deferring specialized implementations to the [Mops](https://mops.one/) package ecosystem. We also updated function names for consistency and familiarity from other languages such as JS, Python, Java, and Rust.
 
-Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [MR Research AG](https://github.com/research-ag)):
+Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [Andrii Stepanov and Timo Hanke](https://github.com/research-ag)):
 
 ```motoko no-repl
 import List "mo:base/List";
@@ -97,27 +97,27 @@ persistent actor {
 We also included an efficient [stable BTree map implementation](https://github.com/canscale/StableHeapBTreeMap) (big thanks to [Byron Becker](https://github.com/ByronBecker)):
 
 ```motoko no-repl
-import PureMap "mo:base/pure/Map";
+import Map "mo:base/Map";
 import Text "mo:base/Text";
 import Array "mo:base/Array";
 
 persistent actor {
-  var map = PureMap.empty<Text, Nat>();
-  map := PureMap.add(map, Text.compare, "key", 123);
-  assert PureMap.size(map) == 1;
-  assert Array.fromIter(PureMap.entries(map)) == [("key", 123)];
+  let map = Map.empty<Text, Nat>();
+  Map.add(map, Text.compare, "key", 123);
+  assert Map.size(map) == 1;
+  Array.fromIter(Map.entries(map)) == [("key", 123)];
 }
 ```
 
 Here's the complete list of data structures in the new base library:
 
 * `List` (adapted from [`vector`](https://mops.one/vector) Mops package)
-* `Map`
+* `Map` (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
 * `Queue`
 * `Set`
 * `Stack`
 * `pure/List`
-* `pure/Map` (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
+* `pure/Map`
 * `pure/Queue`
 * `pure/Set`
 
@@ -156,7 +156,7 @@ persistent actor {
 
 ### Hashing
 
-We removed 64-bit hashing functionality from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles from a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case. 
+We removed 32-bit hashing from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles from a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case. 
 
 ### Range functions
 
@@ -230,7 +230,7 @@ actor {
 }
 ```
 
-Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [MR Research AG](https://github.com/research-ag)):
+Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Andrii Stepanov and Timo Hanke](https://github.com/research-ag)):
 
 ```motoko no-repl
 import Random "mo:base/Random";

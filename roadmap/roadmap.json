@@ -4,14 +4,14 @@
     "description": "All computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
     "milestones": [
       {
-        "name": "Load Balancing & increased compute capacity",
+        "name": "Load balancing & increased compute capacity",
         "milestone_id": "Flux",
         "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and taking checkpoints asynchronously. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
         "eta": null,
         "status": "in_progress",
         "elements": [
           {
-            "title": "Asynchronous Checkpointing",
+            "title": "Asynchronous checkpointing",
             "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
             "forum": "",
             "proposal": "",
@@ -35,13 +35,13 @@
             "milestone_id": "Flux"
           },
           {
-            "title": "Canister Snapshots can be imported and exported",
+            "title": "Canister snapshots can be imported and exported",
             "overview": "With canister snapshots, it became possible for controllers to take a full snapshot of their canister, allowing it to revert back to this state at a later point in time. This feature is an extension to the canister snapshot functionality, allowing controllers to retrieve snapshots and upload snapshots. This would enable storing canister snapshots in a canister or off-chain, using snapshots for testing purposes in a local environment, or loading a state snapshot of canister A into another canister B. The latter can be useful for testing purposes and is also a building block towards canister migration.",
             "status": "in_progress",
             "milestone_id": "Flux"
           },
           {
-            "title": "Enhance Subnet Capacity for Active Canisters",
+            "title": "Enhance subnet capacity for active canisters",
             "overview": "Increase the maximum number of concurrently active canisters supported by a subnet. This will be achieved through optimizations to the canister scheduling algorithm, improvements to canister sandbox management, and increased memory efficiency within canister sandboxes. This enhancement is crucial for ICP scaling and more predictable handling of peak loads.",
             "status": "deployed",
             "milestone_id": "Flux"
@@ -49,7 +49,7 @@
         ]
       },
       {
-        "name": "Integrity of Node State",
+        "name": "Integrity of node state",
         "milestone_id": "Magnetosphere",
         "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
         "eta": null,
@@ -62,7 +62,7 @@
             "milestone_id": "Magnetosphere"
           },
           {
-            "title": "Remote Attestation for Users",
+            "title": "Remote attestation for users",
             "overview": "Allowing users to verify that an API boundary node is running trusted software inside a genuine trusted execution environment.",
             "status": "in_progress",
             "milestone_id": "Magnetosphere"
@@ -70,7 +70,7 @@
         ]
       },
       {
-        "name": "Load Balancing via subnet splitting",
+        "name": "Load balancing via subnet splitting",
         "milestone_id": "Fission",
         "description": "This milestone introduces subnet splitting, which allows one subnet to split into two, each subnet hosting half of the workload of the original subnet. Whenever a subnet is overloaded, the NNS can decide to split the subnet, which helps balance load across multiple subnets and avoids overloaded subnets. The first subnet split on ICP mainnet will mark the completion of this milestone.",
         "eta": null,
@@ -130,14 +130,14 @@
         ]
       },
       {
-        "name": "Increased Storage Capacity and Throughput",
+        "name": "Increased storage capacity and throughput",
         "milestone_id": "Stellarator",
         "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
         "eta": "November 2024",
         "status": "deployed",
         "elements": [
           {
-            "title": "Increase Stable Memory Limit to 500GiB",
+            "title": "Increase stable memory limit to 500GiB",
             "overview": "Increasing the stable memory limit of a canister to 500GiB.",
             "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
             "proposal": "",
@@ -217,7 +217,7 @@
             "in_beta": false
           },
           {
-            "title": "Increase Stable Memory Limit to 32GiB",
+            "title": "Increase stable memory limit to 32GiB",
             "overview": "Increasing the stable memory limit of a canister from 8GiB to 32 GiB.",
             "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
             "proposal": "",
@@ -229,7 +229,7 @@
             "imported": true
           },
           {
-            "title": "HTTPS Outcalls from Canisters",
+            "title": "HTTPS Outcalls from canisters",
             "overview": "Enables canisters to make calls to HTTP(S)-based servers. Trustless integration with Web2.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-general-integration-proposal/9383",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35639",
@@ -265,7 +265,7 @@
             "imported": true
           },
           {
-            "title": "Increase Stable Memory Limit to 48GiB",
+            "title": "Increase stable memory limit to 48GiB",
             "overview": "Increasing the stable memory limit of a canister from 32GiB to 48 GiB.",
             "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
             "proposal": "",
@@ -276,7 +276,7 @@
             "in_beta": false
           },
           {
-            "title": "Increase Stable Memory Limit to 96GiB",
+            "title": "Increase stable memory limit to 96GiB",
             "overview": "Increasing the stable memory limit of a canister from 48GiB to 96GiB.",
             "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
             "proposal": "",
@@ -287,7 +287,7 @@
             "in_beta": false
           },
           {
-            "title": "Bazel-based Build System",
+            "title": "Bazel-based build system",
             "overview": "Reducing build and testing times through a Bazel-based build system. More aggressive caching. Only perform necessary steps.",
             "forum": "",
             "proposal": "",
@@ -323,7 +323,7 @@
             "imported": true
           },
           {
-            "title": "High-replication Subnets",
+            "title": "High-replication subnets",
             "overview": "Subnets with higher replication factor than app subnets. Initially ~30 nodes. For highly security-critical dapps such as financial applications.",
             "forum": "https://forum.dfinity.org/t/introducing-the-first-fiduciary-subnet/17594",
             "proposal": "",
@@ -347,7 +347,7 @@
             "imported": true
           },
           {
-            "title": "Canister Timers",
+            "title": "Canister timers",
             "overview": "Timer API to schedule tasks to be run on a canister. Improves on heartbeat API by configuring the frequency.",
             "forum": "https://forum.dfinity.org/t/heartbeat-improvements-timers-community-consideration/14201/",
             "proposal": "https://dashboard.internetcomputer.org/proposal/88293",
@@ -359,7 +359,7 @@
             "imported": true
           },
           {
-            "title": "Network Scalability: State Sync, Certification, and XNet",
+            "title": "Network scalability: state sync, certification, and XNet",
             "overview": "Improving network scalability in terms of state sync, certification, and XNet calls",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387/3",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35648",
@@ -371,7 +371,7 @@
             "imported": true
           },
           {
-            "title": "Subnet Splitting MVP",
+            "title": "Subnet splitting MVP",
             "overview": "Subnet splitting allows a subnet and its canisters and state to be split into two subnets with minimal interruption of canisters on the subnet.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-subnet-splitting-proposal/9402/4",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35672",
@@ -383,7 +383,7 @@
             "imported": true
           },
           {
-            "title": "Deterministic Time Slicing",
+            "title": "Deterministic time slicing",
             "overview": "A single message execution can span multiple IC rounds. Important for canister upgrades or inherently long-lasting computations.",
             "forum": "https://forum.dfinity.org/t/deterministic-time-slicing/10635",
             "proposal": "",
@@ -407,7 +407,7 @@
             "imported": true
           },
           {
-            "title": "Improved I/O Handling in State Manager",
+            "title": "Improved I/O handling in state manager",
             "overview": "Improvements of interaction with the disk in the state manager. This includes reducing the number of interactions or taking them out of the state machine loop.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-scalability-proposal/9387",
             "proposal": "",
@@ -441,7 +441,7 @@
             "in_beta": false
           },
           {
-            "title": "Reassigning Nodes to Different Subnets",
+            "title": "Reassigning nodes to different subnets",
             "overview": "Allowing nodes to be reassigned from one subnet to another subnet through NNS proposals, without redeploying.",
             "forum": "",
             "proposal": "",
@@ -453,7 +453,7 @@
             "imported": true
           },
           {
-            "title": "Observability Solution for Nodes",
+            "title": "Observability solution for nodes",
             "overview": "Consensus-verified onchain data of node behaviour. Enables monitoring availability of nodes and penalizing non-performing nodes.",
             "forum": "",
             "proposal": "",
@@ -804,19 +804,19 @@
         "status": "in_progress",
         "elements": [
           {
-            "title": "LLM Canister MVP",
+            "title": "LLM canister MVP",
             "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
             "status": "deployed",
             "milestone_id": "Ignition"
           },
           {
-            "title": "LLM Developer Experience",
+            "title": "LLM developer experience",
             "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
             "status": "in_progress",
             "milestone_id": "Ignition"
           },
           {
-            "title": "LLM Workers",
+            "title": "LLM workers",
             "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
             "status": "future",
             "milestone_id": "Ignition"
@@ -941,7 +941,7 @@
     "description": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multi-chain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
     "milestones": [
       {
-        "name": "Chain Fusion Supports Solana",
+        "name": "Chain Fusion supports Solana",
         "milestone_id": "Helium",
         "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
         "eta": "May 2025",
@@ -974,7 +974,7 @@
         ]
       },
       {
-        "name": "Dogecoin Integration",
+        "name": "Dogecoin integration",
         "milestone_id": "Meridian",
         "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
         "eta": null,
@@ -1170,7 +1170,7 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Threshold ECDSA — Throughput improvements",
+            "title": "Threshold ECDSA — throughput improvements",
             "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
             "status": "future",
             "forum": "",
@@ -1323,7 +1323,7 @@
     "description": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
     "milestones": [
       {
-        "name": "vetKeys for Decentralized Key Management",
+        "name": "vetKeys for decentralized key management",
         "milestone_id": "Niobium",
         "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
         "eta": null,
@@ -1358,14 +1358,14 @@
         ]
       },
       {
-        "name": "Confidentiality of Canister States",
+        "name": "Confidentiality of canister states",
         "milestone_id": "Containment",
         "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
         "eta": null,
         "status": "future",
         "elements": [
           {
-            "title": "Encrypted Canister State",
+            "title": "Encrypted canister state",
             "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
             "status": "in_progress",
             "milestone_id": "Containment"
@@ -1410,7 +1410,7 @@
             "in_beta": false
           },
           {
-            "title": "SEV Support for Replica Nodes",
+            "title": "SEV Support for replica nodes",
             "overview": "Enabling the SEV-SNP trusted computing technology for the Replica VM to protect sensitive data from unauthorized access.",
             "forum": "https://forum.dfinity.org/t/amd-sev-virtual-machine-support/6156",
             "proposal": "https://forum.dfinity.org/t/long-term-r-d-tee-enhanced-ic-proposal/9384/4",
@@ -1481,14 +1481,14 @@
         "status": "in_progress",
         "elements": [
           {
-            "title": "Public API Boundary Node logs and metrics",
+            "title": "Public API boundary node logs and metrics",
             "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
             "forum": "",
             "proposal": "",
             "milestone_id": "Levitron"
           },
           {
-            "title": "Privacy-Preserving Logs",
+            "title": "Privacy-preserving logs",
             "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
             "status": "in_progress",
             "milestone_id": "Levitron"
@@ -1496,26 +1496,26 @@
         ]
       },
       {
-        "name": "Generation 3 Node Hardware and Rewards",
+        "name": "Generation 3 node hardware and rewards",
         "milestone_id": "Knot",
         "description": "Define the next generation node hardware, refine reward calculations, and improve network topology to enhance network performance, efficiency, and decentralization.",
         "eta": null,
         "status": "in_progress",
         "elements": [
           {
-            "title": "Node Reward Enhancements",
+            "title": "Node reward enhancements",
             "overview": "Enhance the node reward calculation to better align with the demand and supply dynamics of computing resources.",
             "status": "future",
             "milestone_id": "Knot"
           },
           {
-            "title": "Generation 3 Node Hardware",
+            "title": "Generation 3 node hardware",
             "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
             "status": "future",
             "milestone_id": "Knot"
           },
           {
-            "title": "Target Topology Enhancements",
+            "title": "Target topology enhancements",
             "overview": "Improve the node target topology to further increase the decentralization of the network.",
             "status": "future",
             "milestone_id": "Knot"
@@ -1778,7 +1778,7 @@
             "in_beta": false
           },
           {
-            "title": "Off-chain observability stack for Node Providers",
+            "title": "Off-chain observability stack for node providers",
             "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
             "forum": "",
             "proposal": "",
@@ -1801,7 +1801,7 @@
             "in_beta": false
           },
           {
-            "title": "HTTP Asset Caching",
+            "title": "HTTP asset caching",
             "overview": "Building on response verification v2, HTTP gateways support caching of static assets such as HTML pages, JavaScript code, and images.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
@@ -1825,7 +1825,7 @@
             "imported": true
           },
           {
-            "title": "SEV-SNP-protected HTTP Gateway",
+            "title": "SEV-SNP-protected HTTP gateway",
             "overview": "Trusted execution (AMD SEV-SNP) enables trustless HTTP gateways, empowering users to remotely attest that the correct software image is running.",
             "forum": "",
             "proposal": "",
@@ -2254,7 +2254,7 @@
             "milestone_id": ""
           },
           {
-            "title": "Verifiable Credentials Billing",
+            "title": "Verifiable Credentials billing",
             "overview": "Billing for provisioning of verifiable credentials. Enables a business model for identity providers.",
             "forum": "",
             "proposal": "",
@@ -2364,56 +2364,14 @@
     "description": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of Web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
     "milestones": [
       {
-        "name": "The Orbit Multi-Custody Asset Framework",
-        "milestone_id": "Poloidal",
-        "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-        "eta": "February 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Orbit Multi custody wallet for ICP",
-            "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Poloidal"
-          },
-          {
-            "title": "Secure canister management",
-            "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Poloidal"
-          },
-          {
-            "title": "Orbit supports ICRC-1",
-            "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Poloidal"
-          }
-        ]
-      },
-      {
-        "name": "Enterprise-grade Ledgers",
+        "name": "Enterprise-grade ledgers",
         "milestone_id": "Nexus",
         "description": "This milestone extends the ICRC suite of ledger standards to meet enterprise requirements, unlocking key use cases such as stablecoins, Utopia, and the tokenization of real-world assets, driving the future of trustless digital asset management on the Internet Computer.",
         "eta": null,
         "status": "in_progress",
         "elements": [
           {
-            "title": "CMTAT Ledger",
+            "title": "CMTAT ledger",
             "overview": "Building a secure and scalable ledger on the Internet Computer with transparent access control management. By adhering to the CMTAT standard, management access remains verifiable and auditable, ensuring regulatory compliance.",
             "status": "in_progress",
             "milestone_id": "Nexus"
@@ -2421,14 +2379,14 @@
         ]
       },
       {
-        "name": "Expanded Orbit Framework",
+        "name": "Expanded Orbit framework",
         "milestone_id": "Echelon",
         "description": "Orbit is a secure solution for digital assets and smart contract management, and this milestone will broaden its asset management capabilities by enabling seamless integration of native tokens from other blockchains, starting with ETH and ERC-20. This will create a unified platform for treasury management, allowing users to securely sign and send transactions across multiple chains. Additionally, we will introduce automatic smart contract upgrades, ensuring that users always have access to the latest security updates and features with minimal manual intervention.",
         "eta": null,
         "status": "future",
         "elements": [
           {
-            "title": "ETH and ERC-20 Integration",
+            "title": "ETH and ERC-20 integration",
             "overview": "Users will be able to sign and send ETH transactions through their Orbit Station, leveraging the Internet Computer EVM RPC canister.",
             "status": "future",
             "milestone_id": "Echelon"
@@ -2455,7 +2413,7 @@
         "status": "future",
         "elements": [
           {
-            "title": "Documentation Hub",
+            "title": "Documentation hub",
             "overview": "A knowledge base providing in-depth guidance on Orbit’s core concepts, approval policies, and example configurations, structured under the Orbit System Configuration & Approval Policy (OSCAP) framework.",
             "status": "future",
             "milestone_id": "Neutron"
@@ -2467,7 +2425,7 @@
             "milestone_id": "Neutron"
           },
           {
-            "title": "UX Improvements",
+            "title": "UX improvements",
             "overview": "A revamped configuration flow will simplify the setup of Orbit Station, making it easier for users of all technical levels to integrate smart contracts and manage assets.",
             "status": "future",
             "milestone_id": "Neutron"
@@ -2475,32 +2433,32 @@
         ]
       },
       {
-        "name": "Decentralized Marketplace for Sovereign Apps",
+        "name": "Decentralized marketplace for sovereign apps",
         "milestone_id": "Dynamo",
         "description": "A new foundation for a decentralized software marketplace is built, providing developers with a clear path to adoption for their applications without reliance on centralized platforms. By integrating transparent deployment flows and seamless discovery tools, this initiative lays the groundwork for a sovereign software ecosystem where developers can easily package and distribute their applications, and users retain full control over their installed apps.",
         "eta": null,
         "status": "future",
         "elements": [
           {
-            "title": "Developer Packaging & Submission Tools",
+            "title": "Developer packaging & submission tools",
             "overview": "Tools to streamline app packaging, validation, and deployment, ensuring a smooth onboarding experience for developers.",
             "status": "future",
             "milestone_id": "Dynamo"
           },
           {
-            "title": "App Manager",
+            "title": "App manager",
             "overview": "A dashboard where users can manage installed applications, providing an intuitive way to access and control their apps.",
             "status": "future",
             "milestone_id": "Dynamo"
           },
           {
-            "title": "Core Marketplace Framework",
+            "title": "Core marketplace framework",
             "overview": "A decentralized app catalog where developers can publish applications with metadata (version, description, screenshots). Users can search, filter, and explore categorized apps effortlessly.",
             "status": "future",
             "milestone_id": "Dynamo"
           },
           {
-            "title": "First Sovereign Productivity Apps",
+            "title": "First sovereign productivity apps",
             "overview": "A set of initial applications designed to showcase the power of sovereign software, serving as reference for future developers.",
             "status": "future",
             "milestone_id": "Dynamo"
@@ -2615,6 +2573,48 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Helios"
+          }
+        ]
+      },
+      {
+        "name": "The Orbit multi-custody asset framework",
+        "milestone_id": "Poloidal",
+        "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
+        "eta": "March 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Orbit Multi custody wallet for ICP",
+            "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Poloidal"
+          },
+          {
+            "title": "Secure canister management",
+            "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Poloidal"
+          },
+          {
+            "title": "Orbit supports ICRC-1",
+            "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Poloidal"
           }
         ]
       },
@@ -2739,7 +2739,7 @@
             "in_beta": false
           },
           {
-            "title": "ICRC-4: Batch transfers for fungible tokens standard",
+            "title": "ICRC-4: batch transfers for fungible tokens standard",
             "overview": "Extension standard for ICRC-1 defining batch transfers for ICRC-1 tokens. Batching transactions improves throughput and can reduce cost.",
             "forum": "",
             "proposal": "",
@@ -2857,7 +2857,7 @@
             "milestone_id": "Neon"
           },
           {
-            "title": "Periodic Followee Confirmation",
+            "title": "Periodic followee confirmation",
             "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
             "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
             "forum": "https://forum.dfinity.org/t/periodic-confirmation-design/34215",
@@ -3045,7 +3045,7 @@
         "status": "future",
         "elements": [
           {
-            "title": "Root of Trust Integration",
+            "title": "Root of trust integration",
             "overview": "The Orbit control panel and core user interface are placed under NNS control. New versions of Orbit must be “blessed” by the NNS, ensuring a community-vetted approach to upgrades and governance.",
             "status": "future",
             "milestone_id": "Nucleus"
@@ -3178,7 +3178,30 @@
         "eta": "none",
         "elements": [
           {
-            "title": "NNS FE Dapp Re-write",
+            "title": "Update of SNS ledger parameters",
+            "overview": "Enables parameters of SNS ledgers, such as the SNS token name, to be updated through SNS upgrade proposals.",
+            "description": "",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Increase reward for SNS launch proposals to 20",
+            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
+            "description": "",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "NNS FE dapp re-write",
             "overview": "Replacing Flutter with Svelte for the NNS Frontend dapp. Significant speed and UX improvements expected.",
             "description": "The NNS FE dapp introduced at genesis was built on Flutter with mediocre usability. This feature replaces Flutter with Svelte — a technology stack better suited for the Internet Computer. The replacement led to significant improvements in dapp speed and user interface.",
             "forum": "https://forum.dfinity.org/t/nns-dapp-towards-new-ui-ux-including-test-link/13952",
@@ -3204,7 +3227,7 @@
             "imported": true
           },
           {
-            "title": "Carbon Footprint and Sustainability Policy",
+            "title": "Carbon footprint and sustainability Policy",
             "overview": "Conducting a carbon footprint / environmental impact assessment of ICP. Footprint of a subnet, source of electricity, total environmental cost of a tx on ICP.",
             "description": "This roadmap item is based on the community proposal 55487. Step 1: Conduct a carbon footprint / environmental impact assessment — either through internal resources or hiring an external consultant to answer basic questions about what the carbon footprint of running an IC Subnet is, where that electricity is sourced, and what the total cost per transaction is on the IC blockchain. Based on the learnings define more activities. Update: The Internet Computer Footprint Report is now available [here](https://assets.carboncrowd.io/reports/ICF.pdf). Step 2: “Energy consumption” reporting panel to the IC Network Status dashboard.  Update: Power/Energy consumption is now reported in real time on the IC Dashboard homepage, as well as individually for given nodes, see example node [here](https://dashboard.internetcomputer.org/node/25p5a-3yzir-ifqqt-5lggj-g4nxg-v2qe2-vxw57-qkxtd-wjohn-kfbfp-bqe). Carbon Crowd also launched a [Sustainability Dashboard](https://app.carboncrowd.io/).",
             "forum": "https://forum.dfinity.org/t/sustainability-nns-proposal/11976",
@@ -3230,7 +3253,7 @@
             "imported": true
           },
           {
-            "title": "Community Fund",
+            "title": "Community fund",
             "overview": "A first version of a community fund that provides means for the NNS community to have a \"treasury\" to invest in projects on ICP.",
             "description": "This feature implements a first version of a community fund that provides means for the NNS community to have a \"treasury\" to invest in projects on the Internet Computer. In this first version neurons which have enabled the “community fund” feature may expose their maturity to the decisions of the NNS to invest in SNS decentalization swaps. Note: This feature has been renamed to “Neuron's Fund” later.",
             "forum": "https://forum.dfinity.org/t/community-fund-revised-design-proposal/14691",
@@ -3269,7 +3292,7 @@
             "imported": true
           },
           {
-            "title": "Neurons' Fund Enhancements: Matched Funding",
+            "title": "Neurons' fund enhancements: matched funding",
             "overview": "Enhancing the Neuron's Fund, e.g., to scale with swap participation by the community or having a 10% cap on participation.",
             "description": "Based on collected experience and community feedback from recent SNS launches and forum discussions, we propose four enhancements to the Community Fund framework: Introduction of a ‘Matched Funding’ scheme: Instead of a fixed ICP amount, the fund’s contribution to SNS swaps should scale in line with direct participation, i.e., match the funding of the Neuron's Fund with the organic funding received during the SNS launch, allowing for a more accurate reflection of market signals. Implementation of a 10% Participation Cap: To streamline adjustments when neurons opt out during SNS proposal voting, we suggest a cap in relationship to the totals funds available. This ensures the fund’s contribution to a single SNS never exceeds 10% of the total available funds at the proposal execution time. Consequently, this automatically adjusts the fund’s participation if neurons opt out. Renaming of the ‘Community Fund’ to ‘Neurons’ Fund’: This change aims to clarify misconceptions about the fund. It emphasizes that the fund comprises neurons owned by private individuals who are exposing their maturity to promising SNS DAOs. It is suggested to release this cosmetic change next week. Reduction of the Maximum Swap Duration: A potential fund contribution is tied up and cannot be utilized for other SNS launches for the duration of the swap. To prevent a potentially unsuccessful swap from blocking a fund contribution for an extended period, we propose shortening the maximum swap duration from the current 90 days to 14 days.",
             "forum": "",
@@ -3295,7 +3318,7 @@
             "imported": true
           },
           {
-            "title": "Node Provider Remuneration V2",
+            "title": "Node provider remuneration V2",
             "overview": "The remuneration scheme v2 improves on the original v1 scheme by reducing remuneration for regions having already many nodes and reducing also for additional nodes of a node provider.",
             "description": "For the further growth of the IC network, the NNS agreed on a new replica hardware specification. The new specification is generic, i.e. not vendor specific. It is ready for upcoming ICP improvements. For example, it supports VM memory encryption and attestation which will further increase the security of dapps running on ICP. The new specification results in different captical expenses for the independent node providers running replica nodes. Consequently, a new NP reward structure (remuneration) is required. Based on feedback and discussion within the community, this remuneration is based on: — Higher rewards for the first nodes of a new NP in order to attract more NPs in an effort to improve ownership decentralization. — More refined rewards for nodes in new geographies, like South America, Africa, Asia and Australia, to stimulate further geographical decentralization. IC wiki: https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration",
             "forum": "",
@@ -3331,29 +3354,6 @@
             "is_community": false,
             "in_beta": false,
             "imported": true
-          },
-          {
-            "title": "Update of SNS ledger parameters",
-            "overview": "Enables parameters of SNS ledgers, such as the SNS token name, to be updated through SNS upgrade proposals.",
-            "description": "",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "deployed",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Increase reward for SNS launch proposals to 20",
-            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
-            "description": "",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
           },
           {
             "title": "NNS FE Dapp Re-write",
@@ -3672,7 +3672,7 @@
     "description": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
     "milestones": [
       {
-        "name": "Coding and Development in ICP Ninja",
+        "name": "Coding and development in ICP Ninja",
         "milestone_id": "Coulomb",
         "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
         "eta": "March 2025",
@@ -3690,7 +3690,7 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "Developer Productivity Enhancements",
+            "title": "Developer productivity enhancements",
             "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
             "status": "deployed",
             "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
@@ -3701,7 +3701,7 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "AI Learning Assistant",
+            "title": "AI learning assistant",
             "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
             "status": "deployed",
             "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
@@ -3712,7 +3712,7 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "Landing Page Revamp",
+            "title": "Landing page revamp",
             "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
             "status": "deployed",
             "forum": "",
@@ -3723,7 +3723,7 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "Project Sharing",
+            "title": "Project sharing",
             "overview": "Projects can be shared with others by generating a link.",
             "status": "in_progress",
             "forum": "",
@@ -3745,7 +3745,7 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "Saving Projects",
+            "title": "Saving projects",
             "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
             "status": "in_progress",
             "forum": "",
@@ -3756,7 +3756,7 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "Exporting Projects to GitHub",
+            "title": "Exporting projects to GitHub",
             "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
             "status": "in_progress",
             "forum": "",
@@ -3769,7 +3769,7 @@
         ]
       },
       {
-        "name": "Canister Resource Management",
+        "name": "Canister resource management",
         "milestone_id": "Thorium",
         "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
         "eta": null,
@@ -3937,17 +3937,6 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Specify placement subnet for new canisters",
-            "overview": "When creating a new canister, the subnet on which it should be placed can be specified.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "deployed",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
             "title": "Motoko package manager shipped with dfx",
             "overview": "Integrating the Mops package manager with dfx to improve DX.",
             "forum": "",
@@ -3956,6 +3945,17 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Specify placement subnet for new canisters",
+            "overview": "When creating a new canister, the subnet on which it should be placed can be specified.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
             "in_beta": false
           },
           {

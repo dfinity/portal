@@ -4657,7 +4657,10 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "stats": "1000+ users",
-    "logo": "/img/showcase/officex_logo.webp"
+    "logo": "/img/showcase/officex_logo.webp",
+    "screenshots": [
+      "/img/showcase/officex_screenshot.webp"
+    ]
   },
   {
     "id": "anda",
@@ -5171,16 +5174,33 @@
   },
   {
     "name": "Coreledger",
-    "logo": "/img/showcase/token_economy_operating_system_logo.png",
+    "logo": "/img/showcase/coreledger.webp",
     "id": "coreledger",
     "tags": [
       "Tools / Infrastructure"
     ],
     "website": "https://coreledger.net/",
-    "description": "A tool used directly by any business to build products and software on the blockchain.",
+    "description": "Build and launch blockchain-powered products quickly and effortlessly with our plug-and-play, blockchain-agnostic infrastructure. Designed for businesses of all sizes, our platform makes it easy to integrate blockchain technology into your software—without the complexity.",
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "name": "BeProActive",
+    "description": "The dApp helps you to track your daily workouts and share them with the community and your friends.",
+    "website": "https://beproactive.at",
+    "logo": "/img/showcase/beproactive_logo.webp",
+    "screenshots": [
+      "/img/showcase/beproactive_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "beproactive",
+    "oneLiner": "Track and share your daily workouts with the community and friends.",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/samlinux-development/beProActive"
   }, 
   {
     "id": "BlockID",
@@ -5210,6 +5230,26 @@
     "description": "A solution that connects ICP with Solana. Includes an RPC canister that enables communication with the Solana blockchain and a wallet canister managing addresses and for securely signing transactions on Solana.",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "id": "ic-explorer",
+    "name": "ICExplorer",
+    "oneLiner": "Empowering AI with Data on Chain, Fueling Innovation",
+    "website": "https://www.icexplorer.io",
+    "tags": [
+      "AI", 
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/Token-Explorer-Hi/ic-data",
+    "twitter": "https://x.com/ICExplorer_io",
+    "description": "Empowering AI with Data on Chain, Fueling Innovation.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "stats": "50,000+ users",
+    "logo": "/img/showcase/ic-explorer_logo.png",
+    "screenshots": [
+      "/img/showcase/ic-explorer_screenshot.jpg"
+    ]
   },
   {
     "id": "alice",
