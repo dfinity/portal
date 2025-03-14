@@ -173,6 +173,7 @@ type node_metrics = record {
 type create_canister_args = record {
     settings : opt canister_settings;
     sender_canister_version : opt nat64;
+    allow_unsafe_settings: opt bool;
 };
 
 type create_canister_result = record {
@@ -183,6 +184,7 @@ type update_settings_args = record {
     canister_id : principal;
     settings : canister_settings;
     sender_canister_version : opt nat64;
+    allow_unsafe_settings: opt bool;
 };
 
 type upload_chunk_args = record {
