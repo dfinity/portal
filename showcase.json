@@ -5184,6 +5184,23 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "name": "BeProActive",
+    "description": "The dApp helps you to track your daily workouts and share them with the community and your friends.",
+    "website": "https://beproactive.at",
+    "logo": "/img/showcase/beproactive_logo.webp",
+    "screenshots": [
+      "/img/showcase/beproactive_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "beproactive",
+    "oneLiner": "Track and share your daily workouts with the community and friends.",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/samlinux-development/beProActive"
   }, 
   {
     "id": "BlockID",
