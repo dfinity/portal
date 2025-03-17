@@ -592,19 +592,24 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 1.  A user submits a call via the [HTTPS Interface](#http-interface) and the call is received by a replica (a node belonging to an IC subnet). The receiving replica decides whether it accepts the call. An honest replica does so by checking that the target canister is not frozen and
 
-  - checking that the target canister is not empty and running and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
+  - checking that the target canister is not empty, checking that the target canister is running, and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
 
-  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister.
+  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister
+    (or that the call targets the [IC Provisional API](#ic-provisional-api) on a development instance).
 
-  From this point on you may receive a response from the IC about the status of your call. Only valid IC certificates in responses should be trusted, since responses come from a single replica that can be either honest or malicious. Note that a lack of a valid certificate doesn't mean that the responding replica is malicious; examples of responses that are expected to come without a certificate (and thus aren't necessarily trustworthy) include responses signalling that the message hasn't been accepted, and responses saying that the request is accepted for further processing.
+  Moreover, the signature must be valid and created with a correct key.
+
+  Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
+
+  From this point on the user may receive a response from the IC about the status of the call. Only valid IC certificates in responses should be trusted, since responses come from a single replica that can be either honest or malicious. Note that a lack of a valid IC certificate doesn't necessarily mean that the responding replica is malicious; examples of responses that are expected to come without a certificate (and thus aren't necessarily trustworthy) include responses signalling that the message hasn't been accepted, and responses saying that the request is accepted for further processing.
 
   So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
-  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call.
+  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`.
 
   The above steps are formalized in this [transition](#api-request-submission).
 
-2.  Once the IC starts processing the call, its (certified) status is set to `processing`. Now the user has the guarantee that the call will have some effect.
+2.  Once the IC starts processing the call, its (certified) status is set to `processing`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call. Now the user has the guarantee that the call will have some effect.
 
 3.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
 
@@ -3851,13 +3856,14 @@ and if the replica accepts the call and subsequently the IC subnet (as a whole) 
 
 This can only happen if the target canister is not frozen and
 
-- the target canister is not empty and running and ingress message inspection succeeds for calls to a regular canister;
+- the target canister is not empty, the target canister is running, and ingress message inspection succeeds for calls to a regular canister;
 
-- the management canister method can be called via ingress messages and the caller is a controller of the target canister for calls to the management canister.
+- the management canister method can be called via ingress messages and the caller is a controller of the target canister for calls to the management canister
+  (or the call targets the [IC Provisional API](#ic-provisional-api) on a development instance).
 
 Moreover, the signature must be valid and created with a correct key. Due to this check, the envelope is discarded after this point.
 
-Finally, the target canister's time must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
+Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
 Submitted request
 `E : Envelope`
