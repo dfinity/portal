@@ -6,15 +6,16 @@ import React from "react";
 import VideoCard from "../../Common/VideoCard";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import VideoSlider from "../VideoSlider";
 
 function Index() {
   return (
     <AnimateSpawn
       el={motion.section}
       variants={transitions.container}
-      className="container-10 mt-48 flex gap-8 md:gap-1/10 items-center flex-col md:flex-row mb-20 md:mb-40"
+      className="container-10 mt-48 flex gap-8 md:gap-1/10 items-center flex-col md:flex-row mb-20 md:mb-40 "
     >
-      <div>
+      <div className="relative">
         <motion.h2
           variants={transitions.item}
           className="tw-heading-5 md:tw-heading-3 text-gradient mb-0 md:w-9/12"
@@ -24,6 +25,7 @@ function Index() {
           markets using Ordinals as collateral, or Web3 SocialFi services
           allowing satoshis to be sent via chat messages.
         </motion.h2>
+
         <AnimateSpawn
           variants={transitions.container}
           className="bg-white flex flex-col md:flex-row mb-6 mt-12 md:mt-40 md:mb-12 rounded-xl overflow-hidden"
