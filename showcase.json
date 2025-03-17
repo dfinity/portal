@@ -36,6 +36,21 @@
     "logo": "/img/showcase/bitfinity_evm.svg"
   },
   {
+    "id": "tap-protocol",
+    "name": "Tap Protocol",
+    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
+    "logo": "/img/showcase/tapprotocol_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure",
+      "Chain Fusion"
+    ],
+    "twitter": "https://x.com/tap_protocol",
+    "website": "https://www.tap-protocol.com"
+  },
+  {
     "id": "icpswap",
     "name": "ICPSwap",
     "website": "https://icpswap.com",
@@ -461,21 +476,6 @@
     "website": "https://trax.so/",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/trax_logo.webp"
-  },
-  {
-    "id": "tap-protocol",
-    "name": "Tap Protocol",
-    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
-    "logo": "/img/showcase/tapprotocol_logo.svg",
-    "display": "Normal",
-    "tags": [
-      "Bitcoin",
-      "DeFi",
-      "Tools / Infrastructure",
-      "Chain Fusion"
-    ],
-    "twitter": "https://x.com/tap_protocol",
-    "website": "https://www.tap-protocol.com"
   },
   {
     "name": "Diode Collab",
