@@ -5278,19 +5278,6 @@
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
   },
-  {
-    "name": "Odin.Fun",
-     "logo": "/img/showcase/odin.webp",
-     "id": "odin",
-     "tags": [
-       "Chain Fusion", 
-       "Bitcoin"
-     ],
-     "website": "https://odin.fun/",
-     "description": "Odin.Fun is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Buy and sell along the AMM curve just as quick as the bonding curve. Everything is lightning fast and updates in real-time.",
-     "twitter": "https://x.com/Odin_GodOfRunes",
-     "usesInternetIdentity": false
-   },
    {
     "name": "Liquidium",
      "logo": "/img/showcase/liquidium.webp",
