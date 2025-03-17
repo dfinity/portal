@@ -36,6 +36,21 @@
     "logo": "/img/showcase/bitfinity_evm.svg"
   },
   {
+    "id": "tap-protocol",
+    "name": "Tap Protocol",
+    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
+    "logo": "/img/showcase/tapprotocol_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure",
+      "Chain Fusion"
+    ],
+    "twitter": "https://x.com/tap_protocol",
+    "website": "https://www.tap-protocol.com"
+  },
+  {
     "id": "icpswap",
     "name": "ICPSwap",
     "website": "https://icpswap.com",
@@ -461,6 +476,34 @@
     "website": "https://trax.so/",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/trax_logo.webp"
+  },
+  {
+    "name": "Diode Collab",
+    "logo": "/img/showcase/diode_collab_logo.png",
+    "id": "diode-collab",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "website": "https://diode.io",
+    "github": "https://github.com/diodechain/zone_availability_canister",
+    "description": "A decentralized full self-custody alternative for team collaboration applications such as Discord, Slack, and Teams.",
+    "twitter": "https://x.com/diode_chain",
+    "usesInternetIdentity": false,
+    "display": "Normal"
+  },
+  {
+    "id": "IC-Solana-Gateway",
+    "name": "IC-Solana Gateway",
+    "logo": "/img/showcase/ic-solana_gateway_logo.png",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/mfactory-lab/ic-solana",
+    "description": "A solution that connects ICP with Solana. Includes an RPC canister that enables communication with the Solana blockchain and a wallet canister managing addresses and for securely signing transactions on Solana.",
+    "usesInternetIdentity": true,
+    "display": "Normal"
   },
   {
     "id": "w3ns",
@@ -4351,21 +4394,7 @@
     "website": "https://medblock.id",
     "submittableId": "44389918"
   },
-  {
-    "id": "tap-protocol",
-    "name": "Tap Protocol",
-    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
-    "logo": "/img/showcase/tapprotocol_logo.svg",
-    "display": "Normal",
-    "tags": [
-      "Bitcoin",
-      "DeFi",
-      "Tools / Infrastructure",
-      "Chain Fusion"
-    ],
-    "twitter": "https://x.com/tap_protocol",
-    "website": "https://www.tap-protocol.com"
-  },
+
   {
     "id": "ic-toolkit",
     "name": "IC Toolkit",
@@ -5099,21 +5128,6 @@
     "display": "Normal"
   },
   {
-    "name": "Diode Collab",
-    "logo": "/img/showcase/diode_collab_logo.png",
-    "id": "diode-collab",
-    "tags": [
-      "Chain Fusion",
-      "Tools / Infrastructure"
-    ],
-    "website": "https://diode.io",
-    "github": "https://github.com/diodechain/zone_availability_canister",
-    "description": "A decentralized full self-custody alternative for team collaboration applications such as Discord, Slack, and Teams.",
-    "twitter": "https://x.com/diode_chain",
-    "usesInternetIdentity": false,
-    "display": "Normal"
-  },
-  {
     "name": "icRamp",
     "logo": "/img/showcase/icramp_logo.png",
     "id": "icramp",
@@ -5219,19 +5233,6 @@
     "display": "Normal"
   },
   {
-    "id": "IC-Solana-Gateway",
-    "name": "IC-Solana Gateway",
-    "logo": "/img/showcase/ic-solana_gateway_logo.png",
-    "tags": [
-      "Chain Fusion",
-      "Tools / Infrastructure"
-    ],
-    "github": "https://github.com/mfactory-lab/ic-solana",
-    "description": "A solution that connects ICP with Solana. Includes an RPC canister that enables communication with the Solana blockchain and a wallet canister managing addresses and for securely signing transactions on Solana.",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
     "id": "ic-explorer",
     "name": "ICExplorer",
     "oneLiner": "Empowering AI with Data on Chain, Fueling Innovation",
@@ -5276,5 +5277,18 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
-  }
+  },
+   {
+    "name": "Liquidium",
+     "logo": "/img/showcase/liquidium.webp",
+     "id": "liquidium",
+     "tags": [
+       "Chain Fusion", 
+       "Bitcoin"
+     ],
+     "website": "https://liquidium.fi/",
+     "description": "Borrow Bitcoin against Ordinals, Runes, and BRC-20. Lend and earn up to 380% APY.",
+     "twitter": "https://x.com/LiquidiumFi",
+     "usesInternetIdentity": false
+   }
 ]
