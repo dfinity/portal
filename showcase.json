@@ -65,6 +65,21 @@
     "submittableId": ""
   },
   {
+    "name": "Liquidium",
+    "logo": "/img/showcase/liquidium.webp",
+    "id": "liquidium",
+    "tags": ["Chain Fusion", "Bitcoin"],
+    "display": "Large",
+    "website": "https://liquidium.fi/",
+    "description": "Borrow Bitcoin against Ordinals, Runes, and BRC-20. Lend and earn up to 380% APY.",
+    "twitter": "https://x.com/LiquidiumFi",
+    "screenshots": [
+      "/img/showcase/liquidium-screenshot-1.webp",
+      "/img/showcase/liquidium-screenshot-2.webp"
+    ],
+    "usesInternetIdentity": false
+  },
+  {
     "id": "orally-network",
     "name": "Orally",
     "tags": ["Tools / Infrastructure", "DeFi"],
@@ -467,16 +482,7 @@
     "video": "/img/showcase/boom-dao-video.mp4",
     "videoContentType": "video/mp4"
   },
-  {
-    "name": "Liquidium",
-    "logo": "/img/showcase/liquidium.webp",
-    "id": "liquidium",
-    "tags": ["Chain Fusion", "Bitcoin"],
-    "website": "https://liquidium.fi/",
-    "description": "Borrow Bitcoin against Ordinals, Runes, and BRC-20. Lend and earn up to 380% APY.",
-    "twitter": "https://x.com/LiquidiumFi",
-    "usesInternetIdentity": false
-  },
+
   {
     "id": "plethora",
     "name": "Plethora",
