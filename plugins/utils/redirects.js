@@ -855,7 +855,7 @@ const redirects = `
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
   /docs/references/ic-interface /docs/references/ic-interface-spec
   /docs/current/tokenomics/token-holders/nns-app-quickstart/#stake-icp-utility-tokens-in-a-neuron /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
-  /docs/current/tokenomics/token-holders/nns-app-quickstart#what-you-can-do-after-creating-a-neuron /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
+  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
   /docs/current/references/cli-reference/dfx-ledger/#dfx-ledger-create-canister /docs/building-apps/developer-tools/dfx/dfx-ledger
   /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
   /docs/current/samples/host-a-website/ /samples
