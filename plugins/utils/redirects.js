@@ -845,6 +845,21 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /BTC /bitcoin-integration
+  /chain-fusion /chainfusion
+  /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
+  /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
+  /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
+  /docs/references/ic-interface /docs/references/ic-interface-spec
+  /docs/current/tokenomics/token-holders/nns-app-quickstart/#stake-icp-utility-tokens-in-a-neuron /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
+  /docs/current/tokenomics/token-holders/nns-app-quickstart#what-you-can-do-after-creating-a-neuron /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
+  /docs/current/references/cli-reference/dfx-ledger/#dfx-ledger-create-canister /docs/building-apps/developer-tools/dfx/dfx-ledger
+  /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
+  /docs/current/samples/host-a-website/ /samples
+  /features/serve-web-content/ /capabilities
   /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/intro-canisters
   /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
   /docs/tutorials/developer-liftoff/level-0/intro-languages /docs/tutorials/developer-liftoff/level-0/tooling
