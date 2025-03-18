@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer liftoff, package managers, mops, vessel]
+keywords: [intermediate, tutorial, developer liftoff, package managers, mops, using mops, icp ninja, ]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -14,99 +14,62 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/KBMLOor1ink?si=ea3FtVLtkHUKL_y7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-[Mops](https://mops.one) and [Vessel](https://github.com/dfinity/vessel) are package managers for Motoko. In this guide, you'll explore how to download and install Mops and Vessel, then how to import and use different libraries that have been downloaded through a package manager.
+[Mops](https://mops.one) is a package manager for Motoko. In this guide, you'll explore how to download and install Mops, then how to import and use different libraries through it.
 
 ## What is a package manager?
 
-A **package manager** is a collection of tools that automates installing, upgrading, configuring, and removing software packages or libraries. They help efficiently manage the dependencies of a project. In relation to Motoko, Mops and Vessel provide workflows for libraries to be downloaded, upgraded, and imported into Motoko code files. Mops supports over 60 libraries for Motoko, spanning several different functionalities such as utility, encoding, cryptography, data structure libraries, and more.
+A **package manager** is a collection of tools that automates installing, upgrading, configuring, and removing software packages or libraries. They help efficiently manage the dependencies of a project. Mops and Vessel are two package managers for Motoko. Mops supports over 100 libraries for Motoko, spanning several different functionalities such as utility, encoding, cryptography, data structure libraries, and more.
 
-Package managers help simplify things such as update management since they provide an easy way to update all libraries within your project.
+## Using Mops with ICP Ninja
 
-## Installing Mops
+ICP Ninja supports adding Mops packages to projects. For example, open the [Flying Ninja project](https://icp.ninja/projects/flying-ninja) and view the `mops.toml` file to see the packages used within the project:
 
-Mops utilizes a fully onchain package registry. To install Mops, first be sure to have set up your developer environment and installed the IC SDK and Node.js, as described in the previous module, [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env). Mops is supported in `dfx` versions `0.10.0` and higher.
+```toml
+# Motoko dependencies (https://mops.one/)
+
+[dependencies]
+base = "0.14.1"
+```
+
+Simply edit this file with any Mops packages you'd like to use within your project. For example:
+
+```toml
+time = "1.0.7"
+```
+
+In the project's `dfx.json` file, you will see Mops configured as the package manager through the following line:
+
+```json title="dfx.json"
+...
+{
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
+}
+...
+```
+
+## Using Mops in a local environment
+
+To install Mops, first be sure to have set up your developer environment and installed the IC SDK and Node.js, as described in the previous module, 0.3: Developer environment setup. Mops is supported in dfx versions 0.10.0 and higher.
 
 Then, to install Mops, run the command:
 
-```bash
+```
 npm i -g ic-mops
 ```
 
-## Installing Vessel
-
-To install Vessel, download the Vessel binary from [the GitHub release page](https://github.com/dfinity/vessel/releases), with a command such as:
-
-```bash
-wget https://github.com/dfinity/vessel/releases/download/v0.6.4/vessel-macos
-```
-
-Then, rename `vessel-macos` to `vessel`:
-
-```bash
-mv vessel-macos vessel
-```
-
-Change the file's permissions to include execute permissions:
-
-```bash
-chmod +x vessel
-```
-
-Finally, to initialize Vessel, run `vessel init` in your project's root folder.
-
-## Using Mops
-
-### Creating a new project
-
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
+Create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
 
 ```
 dfx start --clean --background
-dfx new mops_example
-```
-
-You will be prompted to select the language that your backend canister will use. Select 'Motoko':
-
-```
-? Select a backend language: ›
-❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
-
-```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-❯ No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-Then, navigate into the new project directory:
-
-```
+dfx new mops_example --type=motoko --no-frontend
 cd mops_example
 ```
 
-### Configuring your project to use Mops
+### Configuring your local project to use Mops
 
 Then, open the `dfx.json` file within your project. Add Mops as a `packtool` in the file by adding the following line:
 
@@ -178,26 +141,11 @@ mops install
 
 If you develop a package that you'd like to publish so other developers can use it, you can publish it to the Mops registry! For instructions on publishing a package to Mops, check out the [Mops documentation](https://github.com/ZenVoich/mops#publish-a-package).
 
-## Using Vessel
-
-To pull a package using Vessel, edit the `vessel.dhall` file to include what packages your project will import.
-
-Then, edit your `dfx.json` file to use the `packtool` of `vessel sources`:
-
-```json title="dfx.json"
-"defaults": {
-  "build": {
-    "packtool": "vessel sources"
-  }
-}
-```
 
 
 ## Importing packages into your Motoko code
 
-Once a package has been installed, whether it was installed using Mops or Vessel, you can import it into your Motoko code file using the line `import PackageName "mo:<package_name>";`.
-
-You've used this command in previous Motoko code examples to import packages such as the Motoko `base` library. For example, recall the `characterCount` actor code from the previous module [2.6: Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2):
+Once a package has been installed, you can import it into your Motoko code file using the line `import PackageName "mo:<package_name>";`, such as:
 
 ```motoko title="src/character_count/main.mo"
 import Text "mo:base/Text";
@@ -212,33 +160,6 @@ actor characterCount {
 };
 ```
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-Next, let's dive into using HTTPS outcalls:
-
-- [3.2 HTTPS outcalls](/docs/tutorials/developer-liftoff/level-3/3.2-https-outcalls).
-
+<TutorialFooter />
