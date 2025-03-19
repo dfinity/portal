@@ -16,7 +16,7 @@ function BitcoinIntegration() {
 
   return (
     <Layout
-      title="ICP as a Bitcoin L2"
+      title="Build on BTC"
       description="Leveraging Chain Fusion technology, ICP canister smart contracts can directly read and write to the Bitcoin network. This establishes ICP as the industry's premier orchestration layer, enabling dapps to natively interact with the Bitcoin blockchain."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
