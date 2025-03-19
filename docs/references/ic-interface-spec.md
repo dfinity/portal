@@ -590,23 +590,34 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 #### Asynchronous canister calling {#http-async-call-overview}
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#http-interface) and the call is received by a replica (a node belonging to an IC subnet). The receiving replica decides whether it accepts the call. An honest replica does so by checking that the target canister is not frozen and
 
-2.  For a certain amount of time, the IC behaves as if it does not know about the call.
+  - checking that the target canister is not empty, checking that the target canister is running, and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
 
-3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
+  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister
+    (or that the call targets the [IC Provisional API](#ic-provisional-api) on a development instance).
 
-4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
+  Moreover, the signature must be valid and created with a correct key.
 
-5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
+  Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
-6.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
+  From this point on the user may receive a response from the IC about the status of the call. Only valid IC certificates in responses should be trusted, since responses come from a single replica that can be either honest or malicious. Note that a lack of a valid IC certificate doesn't necessarily mean that the responding replica is malicious; examples of responses that are expected to come without a certificate (and thus aren't necessarily trustworthy) include responses signalling that the message hasn't been accepted, and responses saying that the request is accepted for further processing.
 
-7.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+  So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
-8.  In the case that the call has been retained for long enough, but the request has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`.
 
-9.  Once the expiry time is past, the IC can prune the call and its response, and completely forget about it.
+  The above steps are formalized in this [transition](#api-request-submission).
+
+2.  Once the IC starts processing the call, its (certified) status is set to `processing`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call. Now the user has the guarantee that the call will have some effect.
+
+3.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
+
+4.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-request-status) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+
+5.  In case of high load on the IC, even if the call has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+
+6.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-request-status) and thus completely forget about it.
 
 This yields the following interaction diagram:
 ```plantuml
@@ -642,16 +653,21 @@ The characteristic property of the `processing` state is that *the initial effec
 A call may be rejected by the IC or the canister. In either case, there is no guarantee about how much processing of the call has happened.
 
 To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call's `ingress_expiry` field.
+If a subnet's time strictly exceeds the call's `ingress_expiry` field, the subnet's time exceeds the call's `ingress_expiry` field by at most 5 minutes, and the call's status is unknown to the IC (i.e., it was never in state `received`, `processing`, `replied`, `rejected`, or `done`), then the call will never be in one of these states.
 
-Calls must stay in `replied` or `rejected` long enough for polling users to catch the response.
+Calls should stay in `replied` or `rejected` for 5 minutes so that polling users can catch the response under good networking conditions
+and low load on the IC. However, in case of high load on the IC, the IC can transition the call to `done` at any time.
 
 When asking the IC about the state or call of a request, the user uses the request id (see [Request ids](#request-id)) to read the request status (see [Request status](#state-tree-request-status)) from the state tree (see [Request: Read state](#http-read-state)).
 
 #### Synchronous canister calling {#http-sync-call-overview}
 
-A synchronous update call, also known as a "call and await", is a type of update call where the replica will attempt to respond to the HTTPS request with a certificate of the call status. If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) to determine the result of the call. A terminal state means the call has completed its execution.
+A synchronous update call, also known as a "call and await", is a type of update call where the replica will attempt to respond to the HTTPS request with a certificate of the call status. 
+On the replica, a synchronous call request goes through the same states (`received`, `processing`, `replied`, `rejected`, or `done`) as the ones depicted for the [asynchronous API](#http-async-call-overview).
+If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) 
+to determine the result of the call. A terminal state means the call has completed its execution.
 
-The synchronous call endpoint is useful for users as it removes the networking overhead of polling the IC to determine the status of their call.
+The synchronous call endpoint is useful for users as it reduces the networking overhead of polling the IC to determine the status of their call. 
 
 The replica will maintain the HTTPS connection for the request and will respond once the call status transitions to a terminal state. 
 
@@ -663,7 +679,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -705,7 +721,7 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -751,7 +767,7 @@ In order to read parts of the [The system state tree](#state-tree), the user mak
 
 -   `request_type` (`text`): Always `read_state`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). `ingress_expiry` refers to this request's expiry, not the expiry of any call request referenced in this read state request.
 
 -   `paths` (sequence of paths): A list of at most 1000 paths, where a path is itself a sequence of at most 127 blobs.
 
@@ -976,7 +992,7 @@ All requests coming in via the HTTPS interface need to be either *anonymous* or 
 
 -   `nonce` (`blob`, optional): Arbitrary user-provided data of length at most 32 bytes, typically randomly generated. This can be used to create distinct requests with otherwise identical fields.
 
--   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. These rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp.
+-   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition call requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. The acceptance rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp. Note that the `ingress_expiry` of a `read_state` request is independent of the `ingress_expiry` of an earlier `call` request, they do *not* need to be the same.
 
 -   `sender` (`Principal`, required): The user who issued the request.
 
@@ -3832,15 +3848,22 @@ is_effective_canister_id(Request {canister_id = ic_principal, method = install_c
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
-#### API Request submission
 
-After a node accepts a request via `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`, the request gets added to the IC state as `Received`.
+#### API Request submission {#api-request-submission}
 
-This may only happen if the signature is valid and is created with a correct key. Due to this check, the envelope is discarded after this point.
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`
+and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
-Requests that have expired are dropped here.
+This can only happen if the target canister is not frozen and
 
-Ingress message inspection is applied, and messages that are not accepted by the canister are dropped.
+- the target canister is not empty, the target canister is running, and ingress message inspection succeeds for calls to a regular canister;
+
+- the management canister method can be called via ingress messages and the caller is a controller of the target canister for calls to the management canister
+  (or the call targets the [IC Provisional API](#ic-provisional-api) on a development instance).
+
+Moreover, the signature must be valid and created with a correct key. Due to this check, the envelope is discarded after this point.
+
+Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
 Submitted request
 `E : Envelope`
@@ -3854,6 +3877,7 @@ E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
 E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
 is_effective_canister_id(E.content, ECID)
+liquid_balance(S, E.content.canister_id) ≥ 0
 ( E.content.canister_id = ic_principal
   E.content.arg = candid({canister_id = CanisterId, …})
   E.content.sender ∈ S.controllers[CanisterId]
@@ -3889,7 +3913,6 @@ is_effective_canister_id(E.content, ECID)
     status = simple_status(S.canister_status[E.content.canister_id]);
     canister_version = S.canister_version[E.content.canister_id];
   }
-  liquid_balance(S, E.content.canister_id) ≥ 0
   S.canisters[E.content.canister_id].module.inspect_message
     (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Env) = Return {status = Accept;}
 )
@@ -6228,9 +6251,9 @@ S with
 
 NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
-#### Request clean up
+#### Update call request clean up
 
-The IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
+The IC will keep the data for a replied or rejected update `call` request around for a certain, implementation defined amount of time, to allow users to poll for the data with `read_state` requests . After that time, the data of the request will be dropped:
 
 Conditions  
 
