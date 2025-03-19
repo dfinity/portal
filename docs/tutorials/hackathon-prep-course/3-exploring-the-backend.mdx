@@ -10,6 +10,44 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
+
+## Backend
+
+Now, let's review the `backend/app.mo` file to learn about the application's functions.
+
+```motoko title="backend/app.mo" no-repl
+
+// First define an actor named HelloWorld.
+// An actor is an object that can hold state and interact with the world through messages.
+persistent actor HelloWorld {
+  // Store the greeting in a stable variable such that it gets persisted over canister upgrades.
+  var greeting : Text = "Hello, ";
+
+  // This update method stores the greeting prefix in stable memory.
+  // Update methods alter the canister's state and data.
+  // This method specifically will update the text stored in the `greeting` variable.
+  public func setGreeting(prefix : Text) : async () {
+    greeting := prefix;
+  };
+
+  // This query method returns the currently persisted greeting with the given name.
+  // Query methods do not alter the canister's state or data. They can be thought of as 'ready-only' operations.
+  // This query method will return the text stored in greeting, followed by the text passed to the method.
+  public query func greet(name : Text) : async Text {
+    // The method’s body returns Text concatenating 'Hello ,' the input value 'name', and an exclamation mark.
+    return greeting # name # "!";
+  };
+};
+```
+
+:::info
+If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
+:::
+
+
+
+
+
 In the previous tutorial, you deployed a sample full-stack dapp using the `vite-react-motoko` example boilerplate. This tutorial builds off of that previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp), it is recommended that you complete it prior to starting this tutorial.
 
 Previously, you learned that the frontend UI interacts with the backend canister's method `counter`. When the UI button is clicked, the backend canister's method `counter` increases the value of `count` by an increment of 1. In this tutorial, you'll explore the backend code to learn more about the `counter` method.
