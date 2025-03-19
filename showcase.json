@@ -5332,18 +5332,6 @@
     "display": "Normal"
   },
   {
-    "id": "satslink",
-    "name": "satslink",
-    "logo": "/img/showcase/satslink_logo.svg",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "twitter": "https://x.com/sama_network",
-    "description": "An innovative privacy communication VPN application based on Sama Network and designed for Web3 users. ",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
     "id": "bq-labs",
     "name": "BQ Labs",
     "logo": "/img/showcase/bq_labs_logo.svg",
@@ -5360,6 +5348,7 @@
     "display": "Normal"
   },
   {
+    "id": "icp-chainvault",
     "name": "ICP-ChainVault",
     "logo": "/img/showcase/icp-chainvault_logo.svg",
     "tags": [
@@ -5374,6 +5363,7 @@
     "display": "Normal"
   },
   {
+    "id": "mutual-link",
     "name": "Mutual link",
     "logo": "/img/showcase/mutual_link_logo.svg",
     "tags": [
@@ -5386,6 +5376,7 @@
     "display": "Normal"
   },
   {
+    "id": "bitcoin-gift-cards",
     "name": "Bitcoin Gift Cards",
     "logo": "/img/showcase/bitcoin_gift_cards_logo.svg",
     "tags": [
