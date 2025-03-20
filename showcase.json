@@ -14,6 +14,29 @@
     "github": "https://github.com/modclub-app"
   },
   {
+  "name": "Odin.fun",
+  "description": "Odin.Fun is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Buy and sell along the AMM curve just as quick as the bonding curve. ",
+  "website": "https://odin.fun/",
+  "logo": "/img/showcase/odinfun_logo.webp",
+  "screenshots": [
+    "/img/showcase/odinfun_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "odinfun",
+  "oneLiner": "odin",
+  "stats": "stats",
+  "tags": [
+    "Bitcoin",
+    "Ethereum"
+  ],
+  "usesInternetIdentity": false,
+  "github": "",
+  "twitter": "https://x.com/Odin_GodOfRunes",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
     "id": "bitfinity-evm",
     "name": "Bitfinity EVM",
     "website": "https://bitfinity.network/",
@@ -45,24 +68,6 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpswap_logo.webp",
     "screenshots": ["/img/showcase/icpswap_screenshot_0.webp"]
-  },
-  {
-    "name": "Odin.fun",
-    "description": "Odin.Fun is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Lightning fast experience leveraging ICP's Chain Fusion.",
-    "website": "https://odin.fun/",
-    "logo": "/img/showcase/odinfun_logo.webp",
-    "screenshots": ["/img/showcase/odinfun_screenshot.webp"],
-    "video": "",
-    "display": "Large",
-    "id": "odinfun",
-    "oneLiner": "Runes launchpad powered by Chain Fusion.",
-    "stats": "2,000+ BTC Volume",
-    "tags": ["Bitcoin", "Chain Fusion"],
-    "usesInternetIdentity": false,
-    "github": "",
-    "twitter": "https://x.com/Odin_GodOfRunes",
-    "youtube": "",
-    "submittableId": ""
   },
   {
     "name": "Liquidium",
