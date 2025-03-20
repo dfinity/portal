@@ -4237,7 +4237,7 @@ Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
   memory_usage_raw_module(S.canisters[C].raw_module) +
   memory_usage_canister_history(S.canister_history[C]) +
   memory_usage_chunk_store(S.chunk_store[C]) +
-  memory_usage_snapshot(S.snapshots[C])
+  memory_usage_snapshots(S.snapshots[C])
 
 if S.memory_allocation[C] = 0:
   Wasm_memory_capacity = S.wasm_memory_limit[C]
@@ -6010,7 +6010,7 @@ S' = S with
         response = Reply (candid({
           id = Snapshot_id;
           taken_at_timestamp = S.time[A.canister_id];
-          total_size = memory_usage_snapshot([Snapshot_id → New_snapshot]);
+          total_size = memory_usage_snapshots([Snapshot_id → New_snapshot]);
         }));
         refunded_cycles = M.transferred_cycles;
       }
