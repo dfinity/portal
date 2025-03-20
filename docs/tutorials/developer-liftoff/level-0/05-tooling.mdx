@@ -1,0 +1,71 @@
+---
+keywords: [beginner, tutorial, developer liftoff, live demo, icp ninja, ninja, web ide, playground, dev tools, developer tools, tooling ]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import '/src/components/CenterImages/center.scss';
+
+# 0.5 Introduction to tooling
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+Developer tools come in different formats, like command-line tools or web-based development environments.
+
+:::caution
+The video corresponding to this tutorial is outdated.
+:::
+
+In this Developer Liftoff series, you will primarily use ICP Ninja, a web-based IDE that enables you to develop from any device, anywhere, and deploy your project to the mainnet temporarily for free. Certain tutorials will use a local developer environment and the CLI tool `dfx`.
+
+## ICP Ninja
+
+ICP Ninja is a web-based development environment that doesn't require downloading tools or configuring a developer environment. Through ICP Ninja, you can deploy applications to the mainnet for free. Applications deployed through ICP Ninja are temporary and will be removed after 20 minutes; however they do not cost [cycles](/docs/building-apps/getting-started/tokens-and-cycles), making ICP Ninja a valuable tool for getting started quickly.
+
+### How does ICP Ninja work?
+
+When canisters are deployed from ICP Ninja, they temporarily borrow resources from a canister pool and are allotted a small amount of <GlossaryTooltip>cycles</GlossaryTooltip> that can be used during the canister's deployment. The canister pool is referred to as the "playground" network, and developers using `dfx` in a local environment can deploy canisters to this temporary canister pool through the CLI flag `--playground`.
+
+Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
+
+Using the playground, either through ICP Ninja or the CLI, is a great way to be able to deploy a canister quickly for short, small-scale testing or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles.
+
+Since the playground is designed for testing purposes, it has several restrictions that you should be aware of. These restrictions are:
+
+- Wasm files can't be gzipped.
+- Wasm files for deployed canisters will be analyzed to remove any potentially expensive or malicious operations.
+- Canisters can use at most 1GB of memory.
+- Canisters can call the management canister to manage themselves without being the controller.
+- Deployed canisters expire after 20 minutes.
+
+## IC SDK
+
+The IC SDK is used to develop applications in a local development environment, then deploy them to ICP. It is comprised of:
+
+- `dfx`: Command-line tool for creating and managing projects, developer identities, and using cycles.
+
+- `dfxvm`: A version manager for `dfx`.
+
+- `moc`: The Motoko compiler for Motoko canister development.
+
+The IC SDK is natively supported on Linux or macOS 12.* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
+
+### `dfx`
+
+[`dfx`](/docs/building-apps/developer-tools/dfx/) is the primary tool used by developers for developing ICP projects. `dfx` supports [local development](/docs/building-apps/developing-canisters/deploy) and local deployment through a local instance of the ICP replica that can be used to deploy and test canisters on your local machine.
+
+To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands.
+
+- [Install `dfx`](/docs/building-apps/getting-started/install).
+
+- [`dfx` documentation](/docs/building-apps/developer-tools/dfx/).
+
+- [IC SDK GitHub repo](https://github.com/dfinity/sdk).
+
+### `dfxvm`
+
+[`dfxvm`](/docs/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
