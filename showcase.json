@@ -4178,5 +4178,27 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
+  },
+  {
+    "id": "bookie",
+    "name": "Bookie",
+    "description": "The Decentralised BTC Betting Exchange. \nBest Odds, 0% Fees & Crazy Bonuses - Built on ICP. ",
+    "website": "https://www.bookie.win/",
+    "logo": "/img/showcase/bookie_logo.webp",
+    "screenshots": [
+      "/img/showcase/bookie_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "The Decentralised BTC Betting Exchange",
+    "stats": "5,000+ Users",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/bookiedex",
+    "youtube": "https://www.youtube.com/@Bookiewin"
   }
 ]
