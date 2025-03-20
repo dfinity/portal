@@ -1,0 +1,73 @@
+---
+keywords: [beginner, tutorial, developer liftoff, introduction, languages, motoko, rust, candid, rust cdk, motoko for icp, community cdks, what languages can be used for canisters]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 0.4 Introduction to languages
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/sZxbRAwYYMw?si=GufwOp4xBqa2F4JA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
+
+Many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK provides a programming language with the necessary features and tools required to create and manage canisters. The [IC SDK](/docs/building-apps/getting-started/install) natively supports the [Motoko](/docs/motoko/main/getting-started/motoko-introduction) and [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) CDKs. Additionally, there are several community-created CDKs for additional languages, such as [Python](https://demergent-labs.github.io/kybra/) and [TypeScript](https://demergent-labs.github.io/azle/), that can be installed separately.
+
+It is possible to write different canisters in a project in different languages. Canisters can communicate with one another using an interface description language (IDL) called [Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts), enabling canisters in different languages to share and exchange information.
+
+## Motoko
+
+Motoko is a language that has been specifically designed by DFINITY for ICP canister development. It supports the unique features and workflows on ICP while providing a robust yet familiar programming environment. Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers that have a background in application-layer languages, such as JavaScript, Ruby, Python, or Solidity.
+
+Since Motoko has been developed and designed for ICP, this Developer Liftoff series will use Motoko for all tutorials and code walkthroughs.
+
+## Rust
+
+Rust is supported on ICP through the Rust CDK. Rust is a good choice for developers who are already familiar with Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem.
+
+Many of the tutorials in this Developer Liftoff series are available in a Rust variation that displays identical functionality. These will be linked where applicable for those that want to follow along with Rust, though not all tutorials will have a Rust version.
+
+## Candid
+
+Candid is an interface description language with the primary purpose of describing the public interface of a service. In reference to ICP, a service is a program deployed in the form of a canister. Each canister has a Candid file that defines its public interfaces. Every interface has a sequence of argument and result types and can include annotations that are specific to ICP. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
+
+Candid is language-agnostic, allowing for interoperability between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
+
+Candid has a variety of features that make it a particularly good choice for developing dapps on the Internet Computer. These features include:
+
+- Candid's implementations map the Candid value directly to the values and types of the host language, meaning developers do not construct or deconstruct some abstract Candid value.
+- Candid defines rules for how interfaces can be upgraded simply.
+- Candid is a higher-order language, meaning it can receive more than plain data, such as references to methods and services.
+- Candid has native support for specific ICP features, such as query annotation.
+
+## Community-developed CDKs
+
+There are several CDKs that have been contributed by the ICP community.
+
+### Python
+
+Python is a popular language for web development, AI functions, and data analysis. It is readable and versatile.
+
+Python is available through the [Kybra CDK](https://demergent-labs.github.io/kybra) developed by [Demergent Labs](https://github.com/demergent-labs).
+
+### TypeScript
+
+TypeScript is available through the [Azle CDK](https://demergent-labs.github.io/azle) developed by [Demergent Labs](https://github.com/demergent-labs).
+
+### Solidity
+
+Solidity is an object-oriented language used for writing and implementing smart contracts on blockchain platforms, with the most widely known being the Ethereum network.
+
+Solidity is supported on ICP through [Bitfinity](https://docs.bitfinity.network/), developed by the [Bitfinity EVM team](https://bitfinity.network/), which provides a way to create EVM-based smart contracts.
+
+### C++
+
+C++ is available through the [icpp-pro CDK](https://docs.icpp.world/) developed by icpp World.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

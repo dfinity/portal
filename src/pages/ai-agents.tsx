@@ -324,11 +324,8 @@ function AIPage() {
             </motion.h2>
 
             <div className="flex md:flex-row flex-col gap-6">
-              <div className="md:w-1/2">
+              <div className="">
                 <RoadmapIgnition />
-              </div>
-              <div className="md:w-1/2">
-                <RoadmapVortex />
               </div>
             </div>
           </AnimateSpawn>
