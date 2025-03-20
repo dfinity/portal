@@ -14,6 +14,16 @@
     "github": "https://github.com/modclub-app"
   },
   {
+    "id": "icghost",
+    "name": "ICGhost",
+    "website": "https://yadjb-mqaaa-aaaan-qaqlq-cai.icp0.io/",
+    "tags": ["DeFi", "DAO"],
+    "description": "The First Decentralized Meme Coin on IC",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/icghost.png"
+  },
+  {
     "id": "bitfinity-evm",
     "name": "Bitfinity EVM",
     "website": "https://bitfinity.network/",
