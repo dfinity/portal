@@ -793,6 +793,7 @@ const redirects = `
   /docs/developers-guide/working-with-canisters /docs/building-apps/canister-management/settings
   /docs/developers-guide/quickstart.html /docs/building-apps/getting-started/quickstart
   /docs/developers-guide/concepts/canisters-code.html /docs/building-apps/essentials/canisters
+  /docs/developers-guide/first-app/installation.html /docs/building-apps/getting-started/install
 
 
   ## Quickstart
@@ -813,6 +814,12 @@ const redirects = `
 
   ## Samples
   /docs/samples/codelabs/data-persistence /samples
+  /docs/current/developer-docs/daos/nns/ /docs/building-apps/governing-apps/nns/overview
+  /docs/current/developer-docs/defi/tokens/icrc-1/ /docs/defi/token-standards/
+  /docs/current/developer-docs/integrations/http-requests /docs/building-apps/network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/integrations/nns/nns-app-quickstart /docs/building-apps/governing-apps/nns/overview
+  /docs/language-guide/compiler-ref.html /docs/motoko/main/reference/language-manual
+  /docs/current/motoko/main/motokolimbajul /docs/motoko/main/getting-started/motoko-introduction
   /docs/samples/codelabs/minimalistic-motoko-dapp /samples
   /docs/samples/codelabs/minimalistic-rust-dapp /samples
   /docs/samples/codelabs /samples
@@ -838,7 +845,47 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /BTC /bitcoin-integration
+  /chain-fusion /chainfusion
+  /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
+  /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
+  /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
+  /docs/references/ic-interface /docs/references/ic-interface-spec
+  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
+  /docs/current/references/cli-reference/dfx-ledger/ /docs/building-apps/developer-tools/dfx/dfx-ledger
+  /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
+  /docs/current/samples/host-a-website/ /samples
+  /features/serve-web-content/ /capabilities
+  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/intro-canisters
+  /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
+  /docs/tutorials/developer-liftoff/level-0/intro-languages /docs/tutorials/developer-liftoff/level-0/tooling
+  /docs/tutorials/developer-liftoff/level-0/intro-dfx /docs/tutorials/developer-liftoff/level-0/first-dapp
+  /docs/tutorials/developer-liftoff/level-1/1.1-live-demo /docs/tutorials/developer-liftoff/level-1/1.1-motoko-lvl1
+  /docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1 /docs/tutorials/developer-liftoff/level-1/1.2-dev-env
+  /docs/tutorials/developer-liftoff/level-1/1.3-first-dapp /docs/tutorials/developer-liftoff/level-1/1.3-intro-dfx
+  /docs/building-apps/developer-tools/cdks/rust/candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
+  /docs/concepts/glossary /docs/references/glossary
+  /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger /docs/defi/token-ledgers/setup/icrc1_ledger_setup
+  /docs/current/motoko/main/about-motoko/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
+  /docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/developer-docs/integrations/icrc-1/ /docs/defi/token-ledgers/setup/icrc1_ledger_setup
+  /docs/motoko/reference/language-manual /docs/motoko/main/reference/language-manual
+  /docs/references/ic-interface /docs/references/ic-interface-spec
+  /docs/building-apps/chain-fusion/ethereum/evm-rpc/ /docs/building-apps/chain-fusion/ethereum/evm-rpc/overview
+  /docs/building-apps/developing-canisters/creates /docs/building-apps/developing-canisters/create
+  /docs/current/developer-docs/setup/download-install /docs/building-apps/getting-started/install
+  /docs/current/developer-docs/smart-contracts/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/motoko/version /docs/building-apps/getting-started/install  
+  /docs/references/ /docs/references/ic-interface-spec
+  /ecosystem.json /ecosystem
+  /ethereum /chainfusion
+  /img/ /docs/home
   /docs/defi /docs/defi/overview
+  /docs/current/tokenomics/nns/nns-staking-voting-rewards/ /docs/building-apps/governing-apps/nns/overview
   /docs/download.html /docs/home
   /docs/ic-identity-guide/what-is-ic-identity.html /docs/home
   /docs/language-guide/style.html /docs/motoko/main/getting-started/motoko-introduction

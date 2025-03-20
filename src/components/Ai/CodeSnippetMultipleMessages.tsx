@@ -7,20 +7,19 @@ import CodeBlockString from "@site/src/theme/CodeBlock/Content/String";
 const codeSnippets: Record<string, string> = {
   motoko: `import LLM "mo:llm";
 
-  await LLM.chat(#Llama3_1_8B, [
-    {
-      role = #system_;
-      content = "You are a helpful assistant.";
-    },
-    {
-      role = #user;
-      content = "How big is the sun?";
-    }
-  ]);
-  `,
+await LLM.chat(#Llama3_1_8B, [
+  {
+    role = #system_;
+    content = "You are a helpful assistant.";
+  },
+  {
+    role = #user;
+    content = "How big is the sun?";
+  }
+]);`,
   rust: `use ic_llm::{Model, ChatMessage, Role};
 
-  ic_llm::chat(
+ic_llm::chat(
   Model::Llama3_1_8B,
   vec![
       ChatMessage {
@@ -32,9 +31,20 @@ const codeSnippets: Record<string, string> = {
           content: "How big is the sun?".to_string(),
       },
   ],
-  )
-  .await;
-  `,
+)
+.await;`,
+  typescript: `import * as llm from "@dfinity/llm";
+
+await llm.chat(llm.Model.Llama3_1_8B, [
+  {
+    content: "You are a helpful assistant.",
+    role: llm.Role.System,
+  },
+  {
+    content: "How big is the sun?",
+    role: llm.Role.User,
+  }
+]);`
 };
 
 const customStyles = {
@@ -65,6 +75,15 @@ export function CodeSnippetMultipleMessages() {
                 showLineNumbers={true}
               >
                 {codeSnippets.motoko}
+              </CodeBlockString>
+            </TabItem>
+            <TabItem value="typescript" label="Typescript" default>
+              <CodeBlockString
+                language="typescript"
+                className="text-left"
+                showLineNumbers={true}
+              >
+                {codeSnippets.typescript}
               </CodeBlockString>
             </TabItem>
             <TabItem value="rust" label="Rust">
