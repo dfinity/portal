@@ -177,7 +177,7 @@ const marketingNav = {
             },
             {
               name: "Learn Hub",
-              href: "learn.internetcomputer.org",
+              href: "https://learn.internetcomputer.org",
               description: "Expand your ICP knowledge",
             },
             {
