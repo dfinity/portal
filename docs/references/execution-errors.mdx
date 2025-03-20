@@ -10,24 +10,21 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 A list of possible errors returned when executing canisters.
 
-## Errors
-
-
 ### Method not found
 The canister was called with a method name not exported by that canister.
 
 An example of this error is:
 ```
-  Canister has no update method 'foobar'.
+  Canister has no update method 'foobar'.
 ```
 
 To fix this error, consider:
 
 - Checking that the method name exactly matches the name exported by the callee.
-- Checking that the method type (update, query, etc...) is the same as the type of the exported method.
+- Checking that the method type (update, query, etc.) is the same as the type of the exported method.
 - The canister code of the callee has not been modified to a version that deprecates the method.
 
-For further information on calling canisters see the [smart contract docs](../developer-docs/smart-contracts/call/overview) and the [IC spec](./ic-interface-spec#system-api-requests).
+For further information on calling canisters, see the [smart contract docs](../building-apps/interact-with-canisters/advanced-calls) and the [IC spec](./ic-interface-spec#system-api-requests).
 
 
 ### Instruction limit exceeded
@@ -35,12 +32,12 @@ The canister reached the maximum number of allowed instructions before completin
 
 An example of this error is:
 ```
-  Canister exceeded the instruction limit for single message execution.
+  Canister exceeded the instruction limit for single message execution.
 ```
 
 Instruction limits differ depending on the message type and can be found in the [documentation on resource limits][limits].
 
-To fix this error, consider using tools such as the [performance counter API](/docs/current/references/samples/rust/performance_counters/) or [canbench][canbench] to determine which sections of code are using significant instructions and optimize them.
+To fix this error, consider using tools such as the [performance counter API](/docs/references/samples/rust/performance_counters/) or [canbench][canbench] to determine which sections of code are using significant instructions and optimize them.
 
 
 ### Trapped
@@ -48,7 +45,7 @@ The canister encountered a WebAssembly trap.
 
 An example of this error is:
 ```
-  Canister trapped: <WebAssembly error>
+  Canister trapped: <WebAssembly error>
 ```
 
 Some examples of WebAssembly operations that will trap are out-of-bounds accesses, integer division by zero, the `unreachable` instruction, etc. Further information can be found in the [WebAssembly documentation](https://webassembly.github.io/spec/core/index.html).
@@ -61,27 +58,27 @@ The canister aborted execution by calling the `ic0.trap` API.
 
 An example of this error is:
 ```
-  Canister called `ic0.trap` with message: <Canister error message>
+  Canister called `ic0.trap` with message: <Canister error message>
 ```
 
-When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
+When encountering an error, canisters may choose to fail with an error message by calling the [`ic0.trap` API](/docs/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDKs will insert calls to this API when panicking.
 
 To fix this error, consider testing the canister to see if certain inputs can trigger panics.
 
 
 ### Wasm module not found
-The canister exists, but has no Wasm module installed.
+The canister exists but has no Wasm module installed.
 
 An example of this error is:
 ```
-  Attempted to execute a message, but the canister contains no Wasm module.
+  Attempted to execute a message, but the canister contains no Wasm module.
 ```
 
-Canisters can [exist without having Wasm code installed](/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](/docs/current/references/ic-interface-spec#ic-uninstall_code).
+Canisters can [exist without having Wasm code installed](/docs/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed or if it has been [uninstalled](/docs/references/ic-interface-spec#ic-uninstall_code).
 
-To better diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module the "Module hash" field will be non-null.
+To better diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module, the "Module hash" field will be non-null.
 
-To fix this error, consitder installing code using [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy), or the APIs for [`install_code`](/docs/current/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/docs/current/references/ic-interface-spec#ic-install_chunked_code).
+To fix this error, consider installing code using [`dfx deploy`](/docs/building-apps/developer-tools/dfx/dfx-deploy), or the APIs for [`install_code`](/docs/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/docs/references/ic-interface-spec#ic-install_chunked_code).
 
 
 ### Out of memory
@@ -89,32 +86,35 @@ The canister was tried to request more memory than its allocation allowed during
 
 An example of this error is:
 ```
-  Canister exceeded its allowed memory allocation.
+  Canister exceeded its allowed memory allocation.
 ```
 
-There are [system wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
+There are [system-wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
 
-In addition, canisters may reserve memory using the [`memory-allocation` setting][memory-allocation-setting]. In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
+In addition, canisters may reserve memory using the [`memory-allocation` setting][memory-allocation-setting]. In this case the canister is guaranteed to be able to use up to the allocated memory but will receive an "Out of memory" error when trying to use more than the allocated amount.
 
-To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
+To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
 To fix this error, consider:
 
-  - If the canister has reached its current memory allocation, try allocating more memory.
-  - If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
-  - If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak. [canbench][canbench] can help with profiling memory usage.
-  - If the subnet is full, try moving the canister to a subnet which has more memory available.
+- If the canister has reached its current memory allocation, try allocating more memory.
+
+- If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
+
+- If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak. [canbench][canbench] can help with profiling memory usage.
+
+- If the subnet is full, try moving the canister to a subnet that has more memory available.
 
 
 ### Reserved pages for old Motoko
-The canister is running an older version of Motoko which requires reserving some additional pages on the Wasm heap for upgrading and tried to allocate those reserved pages.
+The canister is running an older version of Motoko, which requires reserving some additional pages on the Wasm heap for upgrading and trying to allocate those reserved pages.
 
 An example of this error is:
 ```
-  Canister tried to allocate pages reserved for upgrading older versions of Motoko.
+  Canister tried to allocate pages reserved for upgrading older versions of Motoko.
 ```
 
-Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
+Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/building-apps/developer-tools/dfx/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
 
 To fix this error, upgrade to the [latest version of `dfx`](https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation) which will use a newer version of Motoko.
 
@@ -124,7 +124,7 @@ The canister tried to perform a large copy that cannot be performed in a single 
 
 An example of this error is:
 ```
-  Canister attempted to perform a large memory operation that used N instructions and exceeded the slice limit M.
+  Canister attempted to perform a large memory operation that used N instructions and exceeded the slice limit M.
 ```
 
 In order to maintain a consistent block rate, there is a limit on the number of operations ICP can perform within a single round. A single large copy (possibly to or from stable memory, or within the main heap) could be too large to execute within a single round and cannot be automatically broken up into smaller copies.
@@ -137,7 +137,7 @@ The amount of data that the canister tried to read or write from stable memory e
 
 An example of this error is:
 ```
-  Canister exceeded memory access limits: Exceeded the limit for the number of modified pages in the stable memory in a single message execution: limit: 8388608 KB.
+  Canister exceeded memory access limits: Exceeded the limit for the number of modified pages in the stable memory in a single message execution: limit: 8388608 KB.
 ```
 
 Although the stable memory of a canister can hold 100s of GiBs of data, each individual message needs to execute within a round and so is limited to reading and writing only a portion of that data. Current limits can be found in the page on [ICP limits][limits].
@@ -148,14 +148,14 @@ To fix this error, break up operations that read or write large regions of stabl
 ### Insufficient cycles in memory grow
 The canister does not have enough cycles to grow its memory.
 
-An exmaple of this error is:
+An example of this error is:
 ```
-  Canister cannot grow memory by 65536 bytes due to insufficient cycles.
+  Canister cannot grow memory by 65536 bytes due to insufficient cycles.
 ```
 
-Since canister's need to pay for their memory each round, growing the memory requires that the canister have enough cycles to pay for the increased usage.
+Since canisters need to pay for their memory each round, growing the memory requires that the canister have enough cycles to pay for the increased usage.
 
-To fix this error, top up the canister with more cycles on decrease its [freezing threshold][setting-freezing-threshold].
+To fix this error, top up the canister with more cycles to decrease its [freezing threshold][setting-freezing-threshold].
 
 
 ### Reserved cycles limit exceeded in memory grow
@@ -163,27 +163,27 @@ Growing the canister's memory would require reserving more cycles than allowed b
 
 An example of this error is:
 ```
-  Canister cannot grow memory by 65536 bytes due to its reserved cycles limit. The current limit (5000000000) would be exceeded by 1000000.
+  Canister cannot grow memory by 65536 bytes due to its reserved cycles limit. The current limit (5000000000) would be exceeded by 1000000.
 ```
 
-When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve and this error indicates that a canister failed to grow its memory because doing so would cause the number of reserved cycles to exceed that limit.
+When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve, and this error indicates that a canister failed to grow its memory because doing so would cause the number of reserved cycles to exceed that limit.
 
-To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
+To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
-To fix this error, consider increasing the canister's reserved cycles limit, or moving to a subnet with lower memory usage.
+To fix this error, consider increasing the canister's reserved cycles limit or moving to a subnet with lower memory usage.
 
 
-### Insufficient cycles in message memory grow
+### Insufficient cycles in message memory growth
 The canister doesn't have enough cycles to allocate the memory required to send a message.
 
 An example of this error is:
 ```
-  Canister cannot grow message memory by 10240 bytes due to insufficient cycles.
+  Canister cannot grow message memory by 10240 bytes due to insufficient cycles.
 ```
 
 Sending a message to another canister requires reserving space in the subnet's memory usage for the message and its response. This error indicates that a canister doesn't have enough cycles to pay for this memory usage without freezing.
 
-To fix this error, top up the canister with more cycles on decrease its [freezing threshold][setting-freezing-threshold].
+To fix this error, top up the canister with more cycles to decrease its [freezing threshold][setting-freezing-threshold].
 
 
 
@@ -192,13 +192,13 @@ The canister tried to grow its Wasm heap memory beyond the limit imposed by its 
 
 An example of this error is:
 ```
-  Canister exceeded its current Wasm memory limit of 2147483648 bytes. The peak Wasm memory usage was 2147485000 bytes. If the canister reaches 4GiB, then it may stop functioning and may become unrecoverable. Please reach out to the canister owner to investigate the reason for the increased memory usage. It might be necessary to move data from the Wasm memory to the stable memory. If such high Wasm memory usage is expected and safe, then the developer can increase the Wasm memory limit in the canister settings.
+  Canister exceeded its current Wasm memory limit of 2147483648 bytes. The peak Wasm memory usage was 2147485000 bytes. If the canister reaches 4GiB, then it may stop functioning and may become unrecoverable. Please reach out to the canister owner to investigate the reason for the increased memory usage. It might be necessary to move data from the Wasm memory to the stable memory. If such high Wasm memory usage is expected and safe, then the developer can increase the Wasm memory limit in the canister settings.
 ```
 
 Canisters may impose limits on the amount of Wasm heap memory they are allowed to use in order to prevent them from using the full 4 GiB. This is desirable because a canister that uses the full 4 GiB may to be able to upgrade if the pre-upgrade hook requires allocating more heap memory.
 
 
-To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's Wasm memory limit. If the memory usage is unexpected, try using [canbench][canbench] to determine if there is a memory leak.
+To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's Wasm memory limit. If the memory usage is unexpected, try using [canbench][canbench] to determine if there is a memory leak.
 
 To fix this error, consider re-architecting the canister to use stable memory instead of heap memory or sharding the data across multiple canisters. Raising the memory limit may be another option if you are certain the canister can use more memory and still be upgradeable.
 
@@ -208,12 +208,12 @@ The canister tried to use a system API call in a message type where it isn't per
 
 An example of this error is:
 ```
-  Canister violated contract: "ic0.call_new" cannot be executed in non replicated query mode.
+  Canister violated contract: "ic0.call_new" cannot be executed in non-replicated query mode.
 ```
 
-Certain system API's are only available in certain types of messages. For an overview of when each system API can be used, see [the ICP spec](/docs/current/references/ic-interface-spec#system-api-imports).
+Certain system APIs are only available in certain types of messages. For an overview of when each system API can be used, see [the ICP spec](/docs/references/ic-interface-spec#system-api-imports).
 
-This error could occur because the canister is trying to do something in a query that is only allowed in a composite query (e.g. making a call) or doing something in a composite query that is only allowed in an update (e.g. setting a timer). If this is the case, consider changing the type of call to one that allows the API.
+This error could occur because the canister is trying to do something in a query that is only allowed in a composite query (e.g., making a call) or doing something in a composite query that is only allowed in an update (e.g., setting a timer). If this is the case, consider changing the type of call to one that allows the API.
 
 
 ### `msg_reply_data_append` payload too large
@@ -221,7 +221,7 @@ The canister tried to reply with a payload that is larger than the maximum allow
 
 An example of this error is:
 ```
-  Canister violated contract: ic0.msg_reply_data_append: application payload size (3000000) cannot be larger than 2097152.
+  Canister violated contract: ic0.msg_reply_data_append: application payload size (3000000) cannot be larger than 2097152.
 ```
 
 The response to a message cannot exceed the [maximum allowed response][limits]. Consider having the canister check the size of a response before replying and truncating it or returning an error if it is too long.
@@ -232,51 +232,51 @@ The canister tried to reject a message with a payload that is larger than the ma
 
 An example of this error is:
 ```
-  Canister violated contract: ic0.msg_reject: application payload size (3000000) cannot be larger than 2097152.
+  Canister violated contract: ic0.msg_reject: application payload size (3000000) cannot be larger than 2097152.
 ```
 
 The string included with a rejection cannot exceed the [maximum allowed response][limits]. Consider having the canister check the size of the reject string before replying and truncating it or returning a different error if it is too long.
 
 
 ### `certified_data_set` payload too large
-The canister tried to set some certified data which exceeds the ICP limit on certified data size.
+The canister tried to set some certified data that exceeds the ICP limit on certified data size.
 
 An example of this error is:
 ```
-  Canister violated contract: ic0_certified_data_set failed because the passed data must be no larger than 32 bytes. Found 100 bytes.
+  Canister violated contract: ic0_certified_data_set failed because the passed data must be no larger than 32 bytes. Found 100 bytes.
 ```
 
 To fix this error, consider certifying just a hash of the data instead of its full contents. Some other ideas can be found on the [forum](https://forum.dfinity.org/t/recommended-usage-of-certifieddata/4370/2).
 
 
-### Canister made a call with too large method name
+### Canister made a call with too large a method name
 The canister tried to execute a call with a method name that is too long.
 
 An example of this error is:
 ```
-  Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
+  Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
 ```
 
-Method names are generally short (similar to function names) so it is likely a bug in the calling canister that creates a name which is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/current/motoko/main/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
+Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/main/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
 
 
-### Canister made a call with too large payload
+### Canister made a call with too large a payload
 The canister tried to make a call with a payload that exceeds ICP message size limits.
 
 An example of this error is:
 ```
-  Canister violated contract: Request to xxx-xxx:foo has a payload size of 20000000, which exceeds the allowed limit of 10485760.
+  Canister violated contract: Request to xxx-xxx:foo has a payload size of 20000000, which exceeds the allowed limit of 10485760.
 ```
 
-To fix this error, try debugging the calling canister to check that it isn't accidentally sending more data in that call than is required. If the payload construction is correct, consider taking the message size [limits][limits] into account and redesign any APIs so that large amounts of data can be transfered across multiple smaller messages.
+To fix this error, try debugging the calling canister to check that it isn't accidentally sending more data in that call than is required. If the payload construction is correct, consider taking the message size [limits][limits] into account and redesigning any APIs so that large amounts of data can be transferred across multiple smaller messages.
 
 
-### Canister made a call with too long timeout
+### Canister made a call with too long a timeout
 The canister tried to make a call with a timeout that exceeds the maximum timeout allowed.
 
 An example of this error is:
 ```
-  Canister violated contract: Request to xxx-xxx:foo has a timeout of {} seconds, which exceeds the allowed timeout duration.
+  Canister violated contract: Request to xxx-xxx:foo has a timeout of {} seconds, which exceeds the allowed timeout duration.
 ```
 
 To fix this error, check that the correct timeout is being set when making the call (noting that the timeout is denoted in seconds). If a very long timeout is really required, consider not setting a timeout at all.
@@ -287,10 +287,10 @@ The canister's Wasm module exceeds the maximum size allowed on ICP.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module size of 200000000 exceeds the maximum allowed size of 104857600.
+  Canister's Wasm module is not valid: Wasm module size of 200000000 exceeds the maximum allowed size of 104857600.
 ```
 
-To fix this error, consider shrinking or optimizing the Wasm module size using [`ic-wasm`][ic-wasm] (shrinking is done by default when using `dfx`). If the canister is still too large consider removing unneeded dependencies or refactoring the logic into multiple canisters that call each other.
+To fix this error, consider shrinking or optimizing the Wasm module size using [`ic-wasm`][ic-wasm] (shrinking is done by default when using `dfx`). If the canister is still too large, consider removing unneeded dependencies or refactoring the logic into multiple canisters that call each other.
 
 
 ### Wasm module duplicate exports
@@ -298,7 +298,7 @@ The canister is exporting multiple methods with the same name.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module has an invalid export section. Duplicate function 'foo' exported multiple times with different call types: update, query, or composite_query.
+  Canister's Wasm module is not valid: Wasm module has an invalid export section. Duplicate function 'foo' exported multiple times with different call types: update, query, or composite_query.
 ```
 
 To fix this error, change the name of one of the duplicated exports.
@@ -309,21 +309,21 @@ The canister exports more methods than the maximum allowed by ICP.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module has an invalid export section. The number of exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 1000.
+  Canister's Wasm module is not valid: Wasm module has an invalid export section. The number of exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 1000.
 ```
 
 There are some [limits][limits] on how a canister's Wasm modules can declare methods. To fix this error, consider consolidating the logic of multiple methods into a single method with an additional argument or an enum argument to distinguish which backend code to run. Or, consider separating the logic across multiple canisters.
 
 
 ### Wasm module sum of exported name lengths too large
-The sum of the name lengths of all exported methods methods of the canister is too large.
+The sum of the name lengths of all exported methods of the canister is too large.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module has an invalid export section. The sum of `<name>` lengths in exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 20000.
+  Canister's Wasm module is not valid: Wasm module has an invalid export section. The sum of `<name>` lengths in exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 20000.
 ```
 
-There is a [limit][limits] on the total size of exported names for a single canister. To fix this error, consider choosing shorted method names.
+There is a [limit][limits] on the total size of exported names for a single canister. To fix this error, consider choosing shorter method names.
 
 
 ### Wasm module too many functions
@@ -331,7 +331,7 @@ The canister's Wasm module contains more functions than ICP allows.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module defined 60000 functions which exceeds the maximum number allowed 50000.
+  Canister's Wasm module is not valid: Wasm module defined 60000 functions, which exceeds the maximum number allowed 50000.
 ```
 
 One of the [limits][limits] imposed by ICP is on the number of functions each Wasm module may define. In order to stay below the limit, consider using [`ic-wasm`][ic-wasm] to remove unused functions. If the limit is still exceeded, consider splitting the logic across multiple canisters.
@@ -342,36 +342,36 @@ The canister's Wasm module contains more globals than ICP allows.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module defined 1200 globals which exceeds the maximum number allowed 1000.
+  Canister's Wasm module is not valid: Wasm module defined 1200 globals which exceeds the maximum number allowed 1000.
 ```
 
 One of the [limits][limits] imposed by ICP is on the number of globals each Wasm module may define.
 
-To fix this error, consider grouping globals together into a larger global structure which can be stored in the Wasm heap memory.
+To fix this error, consider grouping globals together into a larger global structure that can be stored in the Wasm heap memory.
 
 
 ### Wasm module function complexity too high
-The canister's Wasm module contains a function which ICP rejects because it may take too long to compile.
+The canister's Wasm module contains a function that ICP rejects because it may take too long to compile.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module contains a function at index 7 with complexity 1300000 which exceeds the maximum complexity allowed 1000000.
+  Canister's Wasm module is not valid: Wasm module contains a function at index 7 with complexity 1300000 which exceeds the maximum complexity allowed 1000000.
 ```
 
-Certain Wasm instructions (e.g. those involving branching or indirection) may take a long time to compile, so each function is only allowed to use them a limited number of times. This error indicates that there is a large function exceeding these limits.
+Certain Wasm instructions (e.g., those involving branching or indirection) may take a long time to compile, so each function is only allowed to use them a limited number of times. This error indicates that there is a large function exceeding these limits.
 
 To fix this error, consider breaking the large function up into multiple smaller functions.
 
 
 ### Wasm module function too large
-The canister's Wasm module contains a function which is too large.
+The canister's Wasm module contains a function that is too large.
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module contains a function at index 7 of size 1500000 that exceeds the maximum allowed size of 1000000.
+  Canister's Wasm module is not valid: Wasm module contains a function at index 7 of size 1500000 that exceeds the maximum allowed size of 1000000.
 ```
 
-ICP [limits][limits] the number of Wasm instructions that each function body is allowed to contain. This error indicates that there is a large function which exceeds this limit.
+ICP [limits][limits] the number of Wasm instructions that each function body is allowed to contain. This error indicates that there is a large function that exceeds this limit.
 
 To fix this error, consider breaking the large function up into multiple smaller functions.
 
@@ -381,7 +381,7 @@ The total size of all the function bodies in the canister's Wasm module is too l
 
 An example of this error is:
 ```
-  Canister's Wasm module is not valid: Wasm module code section size of 1200000 exceeds the maximum allowed size of 10485760.
+  Canister's Wasm module is not valid: Wasm module code section size of 1200000 exceeds the maximum allowed size of 10485760.
 ```
 
 There is a [limit][limits] on the total size in bytes of the [code section](https://webassembly.github.io/spec/core/binary/modules.html#code-section) of each canister's Wasm module. This section contains the function bodies of all the functions defined by the Wasm module.
@@ -394,12 +394,12 @@ An action failed because it can only be performed by the controller of the canis
 
 An example of this error is:
 ```
-  Only the controllers of the canister {} can control it.
-  Canister's controllers: xxx-xxx yyy-yyy
-  Sender's ID: zzz-zzz
+  Only the controllers of the canister {} can control it.
+  Canister's controllers: xxx-xxx yyy-yyy
+  Sender's ID: zzz-zzz
 ```
 
-Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/references/glossary#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
+Each canister has a number of [controllers](/docs/building-apps/canister-management/control) and certain actions (e.g., updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/references/glossary#p) that is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
 
 
 ### Canister not found
@@ -407,23 +407,23 @@ An action was performed on a canister that does not exist.
 
 An example of this error is:
 ```
-  Canister xxx-xxx not found.
+  Canister xxx-xxx not found.
 ```
 
-To fix this error, double check that the canister exists. One method is to search for its canister ID on the [dashboard](https://dashboard.internetcomputer.org). If this error is encountered when testing locally with `dfx`, make sure the canister is listed in your project's `dfx.json` file and has been deployed with `dfx deploy`.
+To fix this error, double-check that the canister exists. One method is to search for its canister ID on the [dashboard](https://dashboard.internetcomputer.org). If this error is encountered when testing locally with `dfx`, make sure the canister is listed in your project's `dfx.json` file and has been deployed with `dfx deploy`.
 
 
 ### Canister not empty
-There was an attempt to install code on a canister which already has code installed.
+There was an attempt to install code on a canister that already has code installed.
 
 An example of this error is:
 ```
-  Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
+  Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
 ```
 
-[Installing](/docs/current/developer-docs/smart-contracts/install) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created, and therefore fails if the canister already has an installed Wasm module.
+[Installing](/docs/building-apps/developing-canisters/what-are-canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
 
-If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/current/developer-docs/smart-contracts/maintain/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#reinstall-a-canister) mode can be used.
+If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](/docs/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
 
 
 ### Subnet compute capacity oversubscribed
@@ -431,10 +431,10 @@ There is not enough compute capacity remaining on the subnet to satisfy a comput
 
 An example of this error is:
 ```
-  Canister requested a compute allocation of 20% which cannot be satisfied because the Subnet's remaining compute capacity is 10%.
+  Canister requested a compute allocation of 20% which cannot be satisfied because the Subnet's remaining compute capacity is 10%.
 ```
 
-Canisters have a [compute allocation][compute-allocation] setting which can be used to guarantee the canister will run periodically. This error occurs when the requested allocation cannot be met because other canisters on the subnet have already requested all of the currently available compute resources.
+Canisters have a [compute allocation][compute-allocation] setting that can be used to guarantee the canister will run periodically. This error occurs when the requested allocation cannot be met because other canisters on the subnet have already requested all of the currently available compute resources.
 
 To fix this error, consider moving the canister to another subnet or decreasing the compute allocation on other controlled canisters deployed to the current subnet.
 
@@ -444,36 +444,36 @@ There is not enough memory remaining on the subnet to satisfy a memory allocatio
 
 An example of this error is:
 ```
-  Canister requested 4 GiB of memory but only 2 GiB are available in the subnet.
+  Canister requested 4 GiB of memory but only 2 GiB are available in the subnet.
 ```
 
-Canisters have a [memory allocation][memory-allocation-setting] setting which can be used to guarantee the canister can grow its memory up to a given size. This error occurs when other canisters on the subnet have already used up too much memory for the request to be satisfied.
+Canisters have a [memory allocation][memory-allocation-setting] setting that can be used to guarantee the canister can grow its memory up to a given size. This error occurs when other canisters on the subnet have already used up too much memory for the request to be satisfied.
 
 To fix this error, consider moving the canister to another subnet or trying to reduce the memory usage of other controlled canisters on the current subnet.
 
 
 ### Subnet custom section memory capacity oversubscribed
-There is not enough memory on the subnet for Wasm custom sections to allow a Wasm module be installed.
+There is not enough memory on the subnet for Wasm custom sections to allow a Wasm module to be installed.
 
 An example of this error is:
 ```
-  Canister requested 10 MiB of Wasm custom sections memory but only 1 MiB are available in the subnet.
+  Canister requested 10 MiB of Wasm custom sections memory but only 1 MiB are available in the subnet.
 ```
 
 Subnets separately track memory that is used to store the custom sections of canister Wasm modules. This error means that there is not enough available memory to install the custom sections of a new Wasm module.
 
-If custom sections are not required for this canister, the error could be fixed by removing the custom sections (e.g. using [`wasm-strip`](https://github.com/WebAssembly/wabt)). Otherwise consider moving the canister to another subnet or uninstalling other controlled canisters on the subnet that may be using up custom section space.
+If custom sections are not required for this canister, the error could be fixed by removing the custom sections (e.g., using [`wasm-strip`](https://github.com/WebAssembly/wabt)). Otherwise, consider moving the canister to another subnet or uninstalling other controlled canisters on the subnet that may be using up custom section space.
 
 
 ### Delete canister not stopped
-There was an attempt to delete a canister which is not in the stopped state.
+There was an attempt to delete a canister that is not in the stopped state.
 
 An example of this error is:
 ```
-  Canister xxx-xxx must be stopped before it is deleted.
+  Canister xxx-xxx must be stopped before it is deleted.
 ```
 
-Canisters must be stopped before they can be deleted to ensure no calls are left unresolved. To fix this error, [check the status][dfx-canister-status] of the canister. If it is `Stopping` then wait for all outstanding calls to be resolved and the status to move to `Stopped`. Otherwise, try [stopping][dfx-canister-stop] the canister before deleting it.
+Canisters must be stopped before they can be deleted to ensure no calls are left unresolved. To fix this error, [check the status][dfx-canister-status] of the canister. If it is `Stopping`, then wait for all outstanding calls to be resolved and the status to move to `Stopped`. Otherwise, try [stopping][dfx-canister-stop] the canister before deleting it.
 
 
 ### Delete canister self
@@ -481,34 +481,34 @@ A canister executed a request to delete itself.
 
 An example of this error is:
 ```
-  Canister xxx-xxx cannot delete itself.
+  Canister xxx-xxx cannot delete itself.
 ```
 
 It is impossible for a canister to delete itself, so this request will never succeed.
 
-To fix this error, consider deleting the canister from one of its other [controllers][dfx-canister-status]. If the only controller of the canister is itself, then it cannot be directly deleted. However, if it burns enough cycles it will eventually be frozen (when the balance drops below its freezing threshold). If the cycles balance then drops to zero, the canister will be deleted.
+To fix this error, consider deleting the canister from one of its other [controllers][dfx-canister-status]. If the only controller of the canister is itself, then it cannot be directly deleted. However, if it burns enough cycles, it will eventually be frozen (when the balance drops below its freezing threshold). If the cycles balance then drops to zero, the canister will be deleted.
 
 
 ### Delete canister queue not empty
-There was a request to delete a canister which has non-empty input or output queues.
+There was a request to delete a canister that has non-empty input or output queues.
 
 An example of this error is:
 ```
-  Canister xxx-xxx has messages in its queues and cannot be deleted now. Please retry after some time.
+  Canister xxx-xxx has messages in its queues and cannot be deleted now. Please retry after some time.
 ```
 
 A canister cannot be deleted while it has pending input or output messages because those messages would be lost. To fix this error, wait until the pending messages have been pulled from the queues. To ensure no new messages appear during that time, consider [stopping the canister][dfx-canister-stop].
 
 
 ### Not enough memory allocation given
-The canister does not have enough memory allocation to complete a given request or there was an attempt to lower the canister's memory allocation below the amount it already uses.
+The canister does not have enough memory allocation to complete a given request, or there was an attempt to lower the canister's memory allocation below the amount it already uses.
 
 An example of this error is:
 ```
-  Canister was given 20000000000 memory allocation but at least 30000000000 of memory is needed.
+  Canister was given 20000000000 memory allocation but at least 30000000000 of memory is needed.
 ```
 
-A canister can set a [memory allocation][memory-allocation-setting] which guarantees it will be able to use a given amount of memory, but also limits the canister memory to the allocated amount.
+A canister can set a [memory allocation][memory-allocation-setting] that guarantees it will be able to use a given amount of memory but also limits the canister memory to the allocated amount.
 
 To fix this error, consider increasing the canister's memory allocation, reducing its memory usage, or switching to best-effort memory allocation.
 
@@ -518,7 +518,7 @@ The request to create a canister did not include enough cycles to pay the creati
 
 An example of this error is:
 ```
-  Creating a canister requires a fee of 100000000000 that is deducted from the canister's initial balance but only 1000000 cycles were received with the create_canister request.
+  Creating a canister requires a fee of 100000000000 that is deducted from the canister's initial balance but only 1000000 cycles were received with the create_canister request.
 ```
 
 To fix this error, include enough cycles with the request to meet the creation fee.
@@ -529,7 +529,7 @@ A canister doesn't have enough cycles to execute an install message.
 
 An example of this error is:
 ```
-  Canister installation failed with `Canister xxx-xxx is out of cycles: please top up the canister with at least 10000000000 additional cycles`.
+  Canister installation failed with `Canister xxx-xxx is out of cycles: please top up the canister with at least 10000000000 additional cycles`.
 ```
 
 To fix this error, consider [topping up][topping-up] the canister with additional cycles.
@@ -540,40 +540,40 @@ An install message for the given canister cannot be executed because the caniste
 
 An example of this error is:
 ```
-  Canister xxx-xxx is rate limited because it executed too many instructions in the previous install_code messages. Please retry installation after several minutes.
+  Canister xxx-xxx is rate limited because it executed too many instructions in the previous install_code messages. Please retry installation after several minutes.
 ```
 
 There is a limit on how many instructions a canister can execute for installations in a given time period. To fix this error, consider retrying the installation at a later time.
 
 
 ### Subnet out of canister IDs
-There was an attempt to create a canister on a subnet which cannot hold any more canisters.
+There was an attempt to create a canister on a subnet that cannot hold any more canisters.
 
 An example of this error is:
 ```
-  Could not create canister. Subnet has surpassed its canister ID allocation.
+  Could not create canister. Subnet has surpassed its canister ID allocation.
 ```
 
 To fix this error, consider creating the canister on another subnet.
 
 
 ### Invalid settings
-A canister was created with invalid settings or there was an attempt to change the canister settings to an invalid value.
+A canister was created with invalid settings, or there was an attempt to change the canister settings to an invalid value.
 
 An example of this error is:
 ```
-  Could not validate the settings: Invalid settings: 'controllers' length exceeds maximum size allowed of 10.
+  Could not validate the settings: Invalid settings: 'controllers' length exceeds maximum size allowed of 10.
 ```
 
 To fix this error, apply the described changes to make the settings valid.
 
 
 ### Maximum number of canisters reached
-There was an attempt to create a canister on a subnet which has reached the maximum number of allowed canisters.
+There was an attempt to create a canister on a subnet that has reached the maximum number of allowed canisters.
 
 An example of this error is:
 ```
-  Subnet yyy-yyy has reached the allowed canister limit of 100000 canisters. Retry creating the canister.
+  Subnet yyy-yyy has reached the allowed canister limit of 100000 canisters. Retry creating the canister.
 ```
 
 To fix this error, consider creating the canister on another subnet.
@@ -584,7 +584,7 @@ The canister does not have enough cycles to increase its compute allocation.
 
 An example of this error is:
 ```
-  Cannot increase compute allocation to 50 due to insufficient cycles. At least 1000000000 additional cycles are required.
+  Cannot increase compute allocation to 50 due to insufficient cycles. At least 1000000000 additional cycles are required.
 ```
 
 Canisters need to pay for [compute allocation][compute-allocation] and there was an attempt to increase the compute allocation of a canister beyond what it can currently pay for. To fix this error, consider [topping up][topping-up] the canister.
@@ -595,7 +595,7 @@ The canister does not have enough cycles to increase its memory allocation.
 
 An example of this error is:
 ```
-  Cannot increase memory allocation to 40000000000 due to insufficient cycles. At least 10000000000 additional cycles are required.
+  Cannot increase memory allocation to 40000000000 due to insufficient cycles. At least 10000000000 additional cycles are required.
 ```
 
 Canisters need to pay for [memory allocation][memory-allocation-setting] and there was an attempt to increase the memory allocation of a canister beyond what it can currently pay for. To fix this error, consider [topping up][topping-up] the canister.
@@ -606,10 +606,10 @@ The canister does not have enough cycles to perform an operation that would incr
 
 An example of this error is:
 ```
-  Canister cannot grow memory by 1000000000 bytes due to insufficient cycles. At least 10000000000 additional cycles are required.
+  Canister cannot grow memory by 1000000000 bytes due to insufficient cycles. At least 10000000000 additional cycles are required.
 ```
 
-There are many operations that may increase a canister's memory usage (e.g. uploading a chunk, taking a snapshot, performing an install). This error indicates that some operation on the canister caused its memory to increase beyond what the canister currently has enough cycles to pay for.
+There are many operations that may increase a canister's memory usage (e.g., uploading a chunk, taking a snapshot, performing an install). This error indicates that some operation on the canister caused its memory to increase beyond what the canister currently has enough cycles to pay for.
 
 To fix this error, consider [topping up][topping-up] the canister or otherwise reducing the canister's memory usage.
 
@@ -619,14 +619,14 @@ There was an attempt to increase the canister's memory allocation that would req
 
 An example of this error is:
 ```
-  Cannot increase memory allocation to 50000000000 due to its reserved cycles limit. The current limit (1000000000000) would be exceeded by 301000000.
+  Cannot increase memory allocation to 50000000000 due to its reserved cycles limit. The current limit (1000000000000) would be exceeded by 301000000.
 ```
 
-When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve and this error indicates that a canister failed to increase its [memory allocation][memory-allocation-setting] because doing so would cause the number of reserved cycles to exceed that limit.
+When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve, and this error indicates that a canister failed to increase its [memory allocation][memory-allocation-setting] because doing so would cause the number of reserved cycles to exceed that limit.
 
 To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
-To fix this error, consider increasing the canister's reserved cycles limit, or moving it to a subnet with lower memory usage.
+To fix this error, consider increasing the canister's reserved cycles limit or moving it to a subnet with lower memory usage.
 
 ### Reserved cycles limit is too low
 
@@ -635,20 +635,20 @@ There was an attempt to update the canister's settings and change the reserved c
 An example of this error is:
 
 ```
-  Cannot set the reserved cycles limit 1000 below the reserved cycles balance of the canister 2000.
+  Cannot set the reserved cycles limit 1000 below the reserved cycles balance of the canister 2000.
 ```
 
 To fix this error, increase the reserved cycles limit to be above the reported reserved cycles balance.
 
 ### Wasm chunk store error
-There was an error while executing a method to manipulate the canister's [Wasm chunk store](/docs/current/references/ic-interface-spec#ic-upload_chunk) (e.g. `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
+There was an error while executing a method to manipulate the canister's [Wasm chunk store](/docs/references/ic-interface-spec#ic-upload_chunk) (e.g., `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
 
 An example of this error is:
 ```
-  Error from Wasm chunk store: Cannot upload chunk. At least 10000000 additional cycles are required.
+  Error from Wasm chunk store: Cannot upload chunk. At least 10000000 additional cycles are required.
 ```
 
-To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles, or using the [`stored_chunks` API](/docs/current/references/ic-interface-spec#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
+To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles or using the [`stored_chunks` API](/docs/references/ic-interface-spec#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
 
 
 ### Canister snapshot not found
@@ -656,21 +656,21 @@ A canister snapshot operation was performed with a snapshot ID that doesn't exis
 
 An example of this error is:
 ```
-  Could not find the snapshot ID 125-xxx-xxx for canister xxx-xxx.
+  Could not find the snapshot ID 125-xxx-xxx for canister xxx-xxx.
 ```
 
 To fix this error, consider using the `list_canister_snapshot` API to see which snapshots exist on your canister.
 
 
 ### Canister heap delta rate limited
-The canister has been rate limited which prevents it from taking or loading a snapshot.
+The canister has been rate limited, which prevents it from taking or loading a snapshot.
 
 An example of this error is:
 ```
-  Canister xxx-xxx is heap delta rate limited: current delta debit is 1000005000, but limit is 1000000000.
+  Canister xxx-xxx is heap delta rate limited: current delta debit is 1000005000, but limit is 1000000000.
 ```
 
-Canisters are limited by how much they can write within a given time frame. This error indicates that the canister has recently written a large amount of data and it cannot currently take or load a snapshot because those operations also generate writes to the blockchain state.
+Canisters are limited by how much they can write within a given time frame. This error indicates that the canister has recently written a large amount of data, and it cannot currently take or load a snapshot because those operations also generate writes to the blockchain state.
 
 To fix this error, consider waiting a few seconds before trying the operation again. If the error persists, it may be because the canister is continually writing significant amounts of data and is often being rate limited. In this case, it might make sense to stop the canister before taking or loading a snapshot, or it might make sense to shard the data across multiple canisters so that each one can write less.
 
@@ -680,29 +680,29 @@ A canister snapshot operation was performed with a snapshot ID that doesn't belo
 
 An example of this error is:
 ```
-  The snapshot 125-xxx-xxx does not belong to canister yyy-yyy.
+  The snapshot 125-xxx-xxx does not belong to canister yyy-yyy.
 ```
 
 To fix this error, consider using the `list_canister_snapshot` API to see which snapshots exist on your canister.
 
 
 ### Long execution already in progress
-There was an attempt to load a canister snapshot on a canister that is in the middle of a long running execution.
+There was an attempt to load a canister snapshot on a canister that is in the middle of a long-running execution.
 
 An example of this error is:
 ```
-  The canister xxx-xxx is currently executing a long-running message.
+  The canister xxx-xxx is currently executing a long-running message.
 ```
 
-Snapshots cannot be loaded while a canister is executing a long message. To fix this error, consider waiting a few seconds for the message execution to complete. If the problem persists, it may be because the canister is executing long messages in a loop and a possible fix could be to stop the canister before loading the snapshot.
+Snapshots cannot be loaded while a canister is executing a long message. To fix this error, consider waiting a few seconds for the message execution to complete. If the problem persists, it may be because the canister is executing long messages in a loop, and a possible fix could be to stop the canister before loading the snapshot.
 
 
 ### Missing upgrade option
-There was an upgrade message which was missing some required fields.
+There was an upgrade message that was missing some required fields.
 
 An example of this error is:
 ```
-  Missing upgrade option: Enhanced orthogonal persistence requires the `wasm_memory_persistence` upgrade option.
+  Missing upgrade option: Enhanced orthogonal persistence requires the `wasm_memory_persistence` upgrade option.
 ```
 
 To fix this error, try resending the message with the required fields included.
@@ -713,7 +713,7 @@ There was an upgrade message with an invalid field.
 
 An example of this error is:
 ```
-  Invalid upgrade option: The `wasm_memory_persistence: opt Keep` upgrade option requires that the new canister module supports enhanced orthogonal persistence.
+  Invalid upgrade option: The `wasm_memory_persistence: opt Keep` upgrade option requires that the new canister module supports enhanced orthogonal persistence.
 ```
 
 To fix this error, try resending the message after omitting or modifying the invalid field.
@@ -722,24 +722,24 @@ To fix this error, try resending the message after omitting or modifying the inv
 
 
 
-[canbench]: /docs/current/developer-docs/developer-tools/off-chain/canbench
+[canbench]: /docs/building-apps/advanced/benchmarking
 
-[canister-status-api]: /docs/current/references/ic-interface-spec#ic-canister_status
+[canister-status-api]: /docs/references/ic-interface-spec#ic-canister_status
 
-[compute-allocation]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#allocating-message-processing
+[compute-allocation]:/docs/building-apps/developer-tools/dfx/dfx-canister/#allocating-message-processing
 
 [dashboard-subnets]: https://dashboard.internetcomputer.org/subnets
 
-[dfx-canister-status]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status
+[dfx-canister-status]:/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status
 
-[dfx-canister-stop]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-stop
+[dfx-canister-stop]:/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop
 
 [ic-wasm]: https://github.com/dfinity/ic-wasm
 
-[limits]:/docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
+[limits]:/docs/building-apps/canister-management/resource-limits#resource-constraints-and-limits
 
-[memory-allocation-setting]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8
+[memory-allocation-setting]:/docs/building-apps/developer-tools/dfx/dfx-canister/#options-8
 
-[setting-freezing-threshold]:/docs/current/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
+[setting-freezing-threshold]:/docs/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
 
-[topping-up]:/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister/
+[topping-up]:/docs/building-apps/canister-management/topping-up/

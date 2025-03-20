@@ -1,0 +1,67 @@
+---
+keywords: [cdk, cdks,  azle, kybra, typescript, python, solidity, bitfinity]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Canister development kits (CDKs)
+
+<MarkdownChipRow labels={["Beginner", "Developer tools" ]} />
+
+Canister development kits (CDKs) are used to interface with the IC SDK and provide different programming languages with the necessary functionalities to develop canisters. These functionalities include the ability to create, deploy, call, and manage canisters, both locally deployed and deployed to the mainnet.
+
+CDKs for Motoko and Rust are created and maintained by DFINITY. CDKs for other languages are currently community-contributed and maintained.
+
+## Motoko
+
+Motoko is a programming language designed specially for creating applications on ICP. It natively supports ICP's unique features and architecture such as orthogonal persistence, asynchronous message passing, and actor-based programming.
+
+[Learn more about Motoko](/docs/motoko/main/getting-started/motoko-introduction).
+
+## Rust
+
+The Rust CDK provides the necessary tools and libraries for developers to create, deploy, and manage canisters on the Internet Computer using Rust. It is developed and maintained by DFINITY. The Rust CDK consists of several crates that together support integration with the ICP system API and features like periodic tasks and timers.
+
+[Learn more about Rust CDK](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+
+## Azle
+
+Azle is a CDK developed by [Demergent Labs](https://github.com/demergent-labs) that supports TypeScript and JavaScript canister development. Azle provides a fully comprehensive environment for TypeScript and JavaScript canisters by supporting as many relevant APIs as possible.
+
+### Resources
+
+- [Azle TypeScript/JavaScript CDK documentation](https://demergent-labs.github.io/azle/azle.html).
+
+- [Azle npm package](https://www.npmjs.com/package/azle).
+
+- [Azle GitHub repo](https://github.com/demergent-labs/azle).
+
+## Kybra
+
+Kybra is a CDK developed by [Demergent Labs](https://github.com/demergent-labs) that supports canister development in Python. Kybra provides a fully comprehensive environment for Python canisters by also supporting as many relevant APIs as possible in the same manner that Azle does.
+
+### Resources
+
+- [Kybra Python CDK documentation](https://demergent-labs.github.io/kybra/).
+
+- [Kybra PyPI package](https://pypi.org/project/kybra/).
+
+- [Kybra GitHub repo](https://github.com/demergent-labs/kybra).
+
+## Bitfinity EVM
+
+The Bitfinity EVM is an experimental EVM implementation that provides an RPC interface compatible with the Ethereum JSON-RPC API. While this is not a traditional CDK, it does provide the ability for existing Ethereum tools and libraries to be used to develop Solidity canisters on ICP.
+
+### Resources
+
+- [Bitfinity EVM documentation](https://docs.bitfinity.network/).
+
+## C++ CDK
+
+The C++ CDK known as `icpp-pro` is a canister development kit for the C++ programming language.
+
+### Resources
+
+- [C++ CDK documentation](https://docs.icpp.world/).
+
+- [C++ CDK API reference](https://docs.icpp.world/api-reference.html).

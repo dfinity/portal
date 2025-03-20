@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, tutorial, developer liftoff, cycles, using cycles]
+keywords: [beginner, tutorial, developer liftoff, cycles, using cycles, how to get cycles, how are cycles used, convert icp to cycles, use cycles, get cycles]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -17,110 +17,108 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/eynEk3Bz7QY?si=EBRlMgOyjHQKkPy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-If you recall from the previous module, [Internet Computer terminology](/docs/current/tutorials/developer-liftoff/level-0/ic-terms), cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
+Cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are charged for every action that a canister performs.
 
-To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
+To obtain cycles, the network's utility token, ICP, must be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](/docs/references/glossary#x) to make canister costs predictable and independent of the price of ICP. 1 trillion cycles always correspond to 1 XDR.
 
-Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to other canisters, and create canisters with cycles.
+Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to canisters, and create canisters with cycles.
 
-A developer's cycles balance is associated with the <GlossaryTooltip>principal</GlossaryTooltip> identity.
+A developer's cycles balance is associated with their developer identity.
 
-:::info
-Recall that a principal is an entity that can be authenticated by ICP.
-:::
+Canisters each have their own cycles balance and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in its balance or if you're creating a new canister, you will need to proxy the call through the cycles ledger to attach the required cycles. To ensure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
 
-Canisters each have their own cycles balance and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in its balance, or if you're creating a new canister, you will need to proxy the call through the cycles ledger to attach the required cycles. To ensure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
-
-For local canister execution, operations performed using cycles are done in the background. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly registered and transferred into them. Production canisters can also have principals configured to act as **custodians**, who have permission to access the cycles wallet balance, wallet information, and send and receive cycles for the canister.
+For local canister execution, operations performed using cycles are done in the background, and cycles are fabricated. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly transferred into them. Production canisters can also have principals configured to act as **custodians**, who have permission to access the canister's cycles balance and wallet information and send and receive cycles for the canister.
 
 In this tutorial, you'll learn how to obtain cycles. Then, in the next tutorial, you'll deploy a canister to the mainnet using those cycles.
 
-## Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
 
 ## Creating a developer identity
 
-When you initially use `dfx`, a default developer identity is created. This identity is a `principal` data type, often referred to as your **principal identifier**. This identity is similar to a Bitcoin or Ethereum wallet address that you would use to interact with those ecosystems.
+Developer identities are basically a private/public key pair. The terms **identity** and **principal** are often used interchangeably. For better memorability, every developer identity in `dfx` has a name. The public key of an identity can be distributed openly as it will be used to encrypt messages. The private key must be kept secret and stored securely.
 
-However, your developer identity principal is not the same as your account identifier that is specified in the [ledger](/docs/current/developer-docs/defi/tokens/token-standards/). Your identity principal and your account identifier are related, but they use different formats.
+By default, `dfx` will create and use the `default` identity. This identity is not stored securely. It is recommended you create your own personal identity.
 
-:::info
-Your developer identity is a private/public key pair, while your principal identity is derived from the public key.
+First, use `dfx` to list all current identities. If none exist, it will automatically create the `default` identity.
 
-Each principal can control multiple accounts in the ICP (and other) ledgers.
-
-You can learn more in the IC [specification](https://internetcomputer.org/docs/current/references/ic-interface-spec#principal).
-:::
-
-In this tutorial, you'll create a new identity principal with `dfx`, which you'll use to obtain and manage cycles.
-
-First, ensure that `dfx` is running. If not, use the following command to start it:
-
-```bash
-dfx start --clean --background
+```
+dfx identity list
 ```
 
-Next you will create a new developer identity with the command:
+Create a new developer identity with the command:
 
-```bash
-dfx identity new DevJourney
+```
+dfx identity new DeveloperLiftoff
 ```
 
-::: caution
-This command will return a seed phrase, which will be required to recover your identity if you ever need to. This seed phrase should be backed up so that any cycles associated with your identity are not lost.
-:::
+<details>
+<summary>Output</summary>
 
-Set this identity as the one to be used by `dfx` in the current terminal session with the command:
-
-```bash
-dfx identity use DevJourney
+```
+Your seed phrase for identity 'DeveloperLiftoff': hotel knock any token tooth deal fossil salmon coral idea tip weapon cotton save fiction major arrive history library clerk depth poet path guide
+Write it down in a safe place, as this information can be used to reconstruct your key in case of emergency.
+Created identity: "DeveloperLiftoff".
 ```
 
-You can get the principal ID of this identity with the command:
+</details>
 
-```bash
+Identities created with `dfx` are global; they are not confined to a specific project's context.
+
+Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
+
+## Using your developer identity
+
+At any point in time, one identity is active and used by `dfx`. Get the name of the currently active identity by running:
+
+```
+dfx identity whoami
+```
+
+To get the principal of the currently active identity, run:
+
+```
 dfx identity get-principal
 ```
 
-The principal will resemble the following format:
+Your developer identity will have a principal identifier in the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe`.
 
-```bash
-tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
+To switch to actively using another developer identity, run:
+
+```
+dfx identity use DeveloperLiftoff
 ```
 
 ## Acquiring cycles
 
 :::danger
-Cycles are required to deploy to the mainnet. If you only plan to deploy to your local environment for testing, cycles are not required. The following tutorials will focus on local deployment to assure anyone can complete this tutorial series.
+Cycles are required to deploy to the mainnet. If you only plan to deploy to your local environment for testing, cycles are not required. The following tutorials will focus on either playground deployment or local deployment to assure anyone can complete this tutorial series.
 
 You may skip this tutorial if you do not plan to deploy to the mainnet.
 :::
 
-Cycles can be obtained by converting ICP tokens into cycles. There are a few ways to obtain ICP tokens, such as:
 
-- Purchasing ICP tokens directly through a crypto exchange.
-- Receiving ICP tokens as a reward for participating in the NNS governance.
-- Receiving a grant of ICP tokens through the DFINITY Foundation.
-- Receiving ICP tokens in return for providing resources as a node provider.
-
-You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating in DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
-
-:::tip
 Each developer identity has both a **principal** and a **ledger account identifier**.
 
 A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe` and is used for canister ownership, management, and holding cycles.
 
 A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP.
-:::
 
-First, get your account's ledger account ID:
+First, get your developer identity's ledger account ID:
 
 ```
 dfx ledger account-id
 ```
 
-Then, send ICP tokens to this ledger account ID. You can obtain [ICP tokens](https://internetcomputer.org/icp-tokens) from an [exchange](https://coinmarketcap.com/currencies/internet-computer/markets) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdrawal transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
+Then, send ICP tokens to this ledger account ID. You can obtain [ICP tokens](https://internetcomputer.org/icp-tokens) from an [exchange](https://coinmarketcap.com/currencies/internet-computer/markets). Initiate a withdrawal transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
 
 After you have sent ICP tokens to your ledger account, check the ICP balance.
 
@@ -128,11 +126,7 @@ After you have sent ICP tokens to your ledger account, check the ICP balance.
 dfx ledger balance --network=ic
 ```
 
-Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to convert, hold, send, and receive cycles.
-
-The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where 1 trillion cycles equals 1 XDR.
-
-Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
+Converting ICP to cycles is done through the **cycles ledger**, a system canister that enables developer identities to convert, hold, send, and receive cycles.
 
 :::danger
 These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica.
@@ -146,7 +140,7 @@ dfx cycles convert --amount AMOUNT --network=ic
 
 :::info Calculating how many cycles you need
 
-The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-docs/gas-cost/) or use the [cycles pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples).
+The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/cost-estimations-and-examples).
 
 :::
 
@@ -156,36 +150,6 @@ Lastly, confirm that the ICP was properly converted into cycles by checking the 
 dfx cycles balance --network=ic
 ```
 
-## Resources
-To further explore cycle management, please see the following articles:
-- **[Converting ICP tokens into cycles](/docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles/)**.
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-## Need help?
-
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-In this tutorial, you set up our identity and acquired free cycles from the cycles faucet. Now that you have cycles, you can deploy your first dapp on the mainnet.
-
-- [1.5 Deploying canisters](/docs/current/tutorials/developer-liftoff/level-1/1.5-deploying-canisters).
+<TutorialFooter />

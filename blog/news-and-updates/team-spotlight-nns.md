@@ -42,9 +42,9 @@ For the first installment of this series, we sat down with the Network Nervous S
 *- The NNS canister called “SNS Wasm modules canister” that is responsible for deploying and involved in upgrading the SNS canisters.*
 
 
-**Does the NNS DAO have a role that it plays in the SNS initiative and the launching of new SNSs?**
+**Does the NNS DAO have a role that it plays in the SNS initiative and the launching of new SNSes?**
 
-*The NNS DAO approves and initiates the launch of new SNSs. This means that if someone wants to hand over a dapp’s control to a new SNS, then this process needs approval from the NNS community. You can read more details about this process [here](/docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal).*
+*The NNS DAO approves and initiates the launch of new SNSes. This means that if someone wants to hand over a dapp’s control to a new SNS, then this process needs approval from the NNS community. You can read more details about this process [here](/docs/building-apps/governing-apps/launching/launch-summary-1proposal).*
 
 **Let's talk about the team's roadmap. What is the primary project that the NNS team is working on or focused on currently?**
 

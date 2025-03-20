@@ -27,47 +27,44 @@
       "milestone_id": "Helium"
     },
     {
-      "title": "Chain Fusion Supports Solana",
+      "title": "Chain Fusion supports Solana",
       "is_milestone": true,
       "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
       "milestone_id": "Helium",
       "status": "in_progress",
-      "eta": "Q4 2024",
+      "eta": "",
+      "eta_to_render": "May 2025"
+    },
+    {
+      "title": "Dogecoin integration",
+      "is_milestone": true,
+      "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
+      "milestone_id": "Meridian",
+      "status": "future",
       "eta_to_render": ""
     },
     {
-      "title": "EVM in a canister",
-      "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
+      "title": "Native Dogecoin integration",
+      "overview": "Native Dogecoin integration will extend ICP replicas to also follow the Dogecoin network and collect its UTXO set in a special Dogecoin canister. This allows canisters on ICP to securely read the Dogecoin state. Combined with the existing threshold ECDSA signing functionality, this allows canisters to securely hold and transfer native dogecoin.",
+      "status": "future",
+      "milestone_id": "Meridian"
     },
     {
-      "title": "Threshold ECDSA — Throughput improvements",
+      "title": "ckDOGE",
+      "overview": "Building on the native Dogecoin integration, ckDOGE is a twin token to native Doge, offering fast transaction speeds and low fees. Furthermore, ckDOGE makes it easy to use the Dogecoin integration for canister smart contracts, as it follows the existing ICRC token standards.",
+      "status": "future",
+      "milestone_id": "Meridian"
+    },
+    {
+      "title": "Threshold ECDSA — throughput improvements",
       "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
-      "status": "in_progress",
+      "status": "future",
       "forum": "",
       "proposal": "",
       "docs": "",
       "eta": "future",
       "is_community": true,
       "in_beta": false
-    },
-    {
-      "title": "Chain-key SOL (ckSOL) token",
-      "overview": "Solana's SOL token on ICP in the form of a \"twin token\" called ckSOL (chain-key SOL).",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": ""
     },
     {
       "title": "Oracles with signed responses",
@@ -161,17 +158,6 @@
     {
       "title": "X-chain token minter V3",
       "overview": "A further enhanced version of the X-chain token minter, bringing ICP and ICRC-1 tokens to other blockchain networks such as Ethereum L2s and Solana.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "future",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "ICRC-1 interface for native BTC, ERC20 and others",
-      "overview": "Exposing an ICRC-1 interface to tokens of token standards from other networks, such as BTC or ERC20. This will make X-chain tokens on ICP more easy to use.",
       "status": "future",
       "forum": "",
       "proposal": "",

@@ -10,7 +10,7 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-In the previous tutorial, you deployed a sample full-stack dapp using the `vite-react-motoko` example boilerplate. This tutorial builds off of that previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp), it is recommended that you complete it prior to starting this tutorial.
+In the previous tutorial, you deployed a sample full-stack dapp using the `vite-react-motoko` example boilerplate. This tutorial builds off of that previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp), it is recommended that you complete it prior to starting this tutorial.
 
 Previously, you learned that the frontend UI interacts with the backend canister's method `counter`. When the UI button is clicked, the backend canister's method `counter` increases the value of `count` by an increment of 1. In this tutorial, you'll explore the backend code to learn more about the `counter` method.
 
@@ -73,7 +73,7 @@ actor class Backend() {
 
 Let's breakdown each portion of this code.
 
-First, the code defines an actor called `Backend`. In Motoko, programs consist of an actor expression that is introduced using the keyword `actor`. An actor is a process with encapsulated state that communicates with other running actors. Each canister can only contain one actor. You can learn more about Motoko actors [here](/docs/current/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
+First, the code defines an actor called `Backend`. In Motoko, programs consist of an actor expression that is introduced using the keyword `actor`. An actor is a process with encapsulated state that communicates with other running actors. Each canister can only contain one actor. You can learn more about Motoko actors [here](/docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
 
 ```motoko no-repl title="backend/Backend.mo"
 actor class Backend() {
@@ -111,17 +111,17 @@ public func add(n : Nat) : async () {
 
 You can learn more about Motoko in the following resources:
 
-- [Motoko level 1](/docs/current/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
+- [Motoko level 1](/docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
 
-- [Motoko level 2](/docs/current/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
+- [Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
 
-- [Motoko level 3](/docs/current/tutorials/developer-liftoff/level-3/3.6-motoko-lvl3).
+- [Motoko level 3](/docs/tutorials/developer-liftoff/level-3/3.6-motoko-lvl3).
 
-- [Motoko level 4](/docs/current/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4).
+- [Motoko level 4](/docs/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4).
 
 - [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko.
 
-- [Motoko documentation](/docs/current/motoko/main/getting-started/motoko-introduction).
+- [Motoko documentation](/docs/motoko/main/getting-started/motoko-introduction).
 
 
 ## Learning more about backend canisters
@@ -140,7 +140,7 @@ When developing a project, certain third-party canisters may be beneficial to in
 
 When integrating with third-party canisters, it is important to test the integration locally to assure that the integration is accurate and correct. Performing tests locally is beneficial since tests executed in a local developer environment do not cost cycles, use non-production data, and have a faster completion time when run locally.
 
-To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the [`dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import/) workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
+To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the [`dfx deps`](/docs/building-apps/advanced/using-third-party-canisters) workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
 
 
 ```json title="dfx.json"
@@ -169,7 +169,7 @@ To test the integration with a third-party canister locally, dfx supports pullin
 }
 ```
 
-For more information on using third-party canisters, check out the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
+For more information on using third-party canisters, check out the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
 
 ### Query and update calls
 
@@ -204,7 +204,7 @@ Additionally, there are several other terms regarding calls that you will come a
 
 **Inter-canister calls** are used to make calls between different canisters.
 
-You can learn more about canister calls in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
+You can learn more about canister calls in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
 
 ### Candid service descriptions
 
@@ -240,15 +240,15 @@ For example, in this `vite-react-motoko` example, the CandidUI resembles the fol
 
 ![Candid UI](_attachments/CandidUI.png)
 
-You can learn more about Candid in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.4-intro-candid).
+You can learn more about Candid in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.4-intro-candid).
 
 ### Canister upgrades
 
 Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
 
-The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](/docs/current/tutorials/hackathon-prep-course/managing-canisters).
+The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](/docs/tutorials/hackathon-prep-course/managing-canisters).
 
-You can learn more about upgrading canisters in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters).
+You can learn more about upgrading canisters in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters).
 
 ### Stable memory
 
@@ -262,7 +262,7 @@ A few other important terms regarding memory on ICP include:
 
 - **Stable variables**: A Motoko-specific feature referring to variables defined using the `stable` modifier in a Motoko canister. The value of a stable variable is persisted across canister upgrades. An example of this was shown earlier in this tutorial, with the stable variable defined in the backend canister code, `stable var counter = 0;`.
 
-You can learn more about storage and data persistence in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+You can learn more about storage and data persistence in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
 ### Mops
 
@@ -303,8 +303,8 @@ Then, to install all packages specified in the `mops.toml` file, use the command
 mops install
 ```
 
-You can [learn more about Mops](/docs/current/tutorials/developer-liftoff/level-3/3.1-package-managers).
+You can [learn more about Mops](/docs/tutorials/developer-liftoff/level-3/3.1-package-managers).
 
 ## Next steps
 
-- [4: Exploring the frontend](/docs/current/tutorials/hackathon-prep-course/exploring-the-frontend).
+- [4: Exploring the frontend](/docs/tutorials/hackathon-prep-course/exploring-the-frontend).

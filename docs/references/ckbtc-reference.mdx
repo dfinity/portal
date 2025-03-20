@@ -1,6 +1,6 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# ckBTC API reference
+# ckBTC API
 
 <MarkdownChipRow labels={["Reference"]} />
 
@@ -30,9 +30,9 @@ The ckBTC minter provides the following API endpoints that can be used to intera
 The endpoints are discussed in more detail in the following.
 
 ### `get_btc_address(owner: opt principal, subaccount: opt blob)`
-The provided principal ID and subaccount are concatenated to form the derivation path for the [ecdsa_public_key](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key) function, which returns the derived public key. If no principal ID is provided, then the sender’s principal ID is used. If no subaccount is provided, then the default subaccount (all zeros) is used.
+The provided principal ID and subaccount are concatenated to form the derivation path for the [ecdsa_public_key](/docs/references/ic-interface-spec#ic-ecdsa_public_key) function, which returns the derived public key. If no principal ID is provided, then the sender’s principal ID is used. If no subaccount is provided, then the default subaccount (all zeros) is used.
 
-This public key is encoded as a pay-to-witness-public-key-hash (P2WPKH) Bitcoin address and returned as a text.
+This public key is encoded as a pay-to-witness-public-key-hash (P2WPKH) Bitcoin address and returned as text.
 
 Note that the key derivation is not BIP-32 compliant, where 31 bits are used for each derivation level. Instead, a single derivation is performed based on the full principal ID and subaccount. Since the derivation is deterministic, a canister can derive the Bitcoin address for a given principal ID and subaccount itself.
 
@@ -72,7 +72,7 @@ A user can only retrieve BTC using the `retrieve_btc` endpoint by first transfer
 ### `retrieve_btc_status(block_index: nat64)`
 The status of a BTC retrieval request can be checked using this function. The different possible statuses are:
 
-- `Unknown`: There is no information available on the ckBTC minter because there is no retrieval request associated with the given block index or the retrieval request is old and the corresponding information has already been removed.
+- `Unknown`: There is no information available on the ckBTC minter because there is no retrieval request associated with the given block index, or the retrieval request is old and the corresponding information has already been removed.
 - `Pending`: The BTC retrieval request is queued.
 - `Signing`: The BTC retrieval request is acquiring all signatures to serve the BTC retrieval request.
 - `Sending`: The Bitcoin transaction serving the BTC retrieval request is being sent.

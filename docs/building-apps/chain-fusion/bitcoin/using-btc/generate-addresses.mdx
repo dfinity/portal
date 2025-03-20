@@ -1,0 +1,125 @@
+---
+keywords: [advanced, bitcoin, btc, addresses, signing,btc addresses, signing transactions]
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Generating a Bitcoin address
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
+
+For a canister to receive Bitcoin payments, it must generate a Bitcoin address. In contrast to most other blockchains, Bitcoin doesn't use accounts. Instead, it uses a UTXO model. A UTXO is an unspent transaction output, and a Bitcoin
+transaction spends one or more UTXOs and creates new UTXOs. Each UTXO is associated with a Bitcoin address, which is derived from a public key or a script that defines the conditions under which the UTXO can be spent. A Bitcoin
+address is often used as a single-use invoice instead of a persistent address to increase privacy.
+
+## Bitcoin legacy addresses
+
+These addresses start with a `1` and are called `P2PKH` (Pay to Public Key Hash) addresses. They encode the hash of an ECDSA public key.
+
+There is also another type of legacy address that starts with a `3` called `P2SH` (Pay to Script Hash) that encodes the hash of a
+[script](https://en.bitcoin.it/wiki/Script). The script can define complex conditions such as multisig or timelocks.
+
+## Bitcoin SegWit addresses
+
+SegWit addresses are newer addresses following the [`Bech32`](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
+format that starts with `bc1`. They are cheaper to spend than legacy addresses and solve problems regarding transaction malleability, which is important for advanced use cases like Partially Signed Bitcoin Transactions (PSBT) or the Lightning Network.
+
+SegWit addresses can be of three types:
+
+- `P2WPKH` (Pay to witness public key hash): A SegWit address that encodes the hash of an ECDSA public key.
+- `P2WSH` (Pay to witness script hash): A SegWit address that encodes the hash of a script.
+- `P2TR` (Pay to taproot): A SegWit address that can be unlocked by a Schnorr signature or a script.
+
+
+## Generating addresses with threshold ECDSA
+
+As mentioned above, a Bitcoin address is derived from a public key or a script. To generate a Bitcoin address that can only be spent by a specific canister or a specific caller of a canister, you need to derive the address from a canister's public key.
+
+An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
+demonstrates how to generate a `P2PKH` address from a canister's public key.
+
+:::info
+
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local replica with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+:::
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2pkh.rs#L21-L31
+```
+
+</TabItem>
+</Tabs>
+
+## Generating addresses with threshold Schnorr
+A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/references/ic-interface-spec#ic-schnorr_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) also demonstrates how to generate two different types of `P2TR` addresses, a key-only address and an address allowing spending using a key or script, from a canister's public key.
+
+#### Generating a key-only P2TR address
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L79-L112
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust" default>
+
+```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_key_only.rs#L20-L35
+```
+
+</TabItem>
+</Tabs>
+
+#### Generating a P2TR address
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L87-L120
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust" default>
+
+```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr.rs#L25-L51
+
+```
+
+</TabItem>
+</Tabs>
+
+### Learn more
+
+[Learn more about Bitcoin addresses using
+ECDSA](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash).
+
+Learn more about Bitcoin addresses using Schnorr:
+
+- Taproot signatures [BIP340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki).
+
+- Taproot addresses [BIP341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki).
+
+- Taproot scripts [BIP342](https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki).
+
+[Learn more about the `ecdsa_public_key`
+API](/docs/references/ic-interface-spec#ic-ecdsa_public_key).
+
+[Learn more about the `schnorr_public_key` API](/docs/references/ic-interface-spec#ic-schnorr_public_key).

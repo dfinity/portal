@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, icp eth, ethereum]
+keywords: [advanced, tutorial, developer liftoff, icp eth, ethereum, evm rpc canister, call ethereum, evm block explorer]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -29,184 +29,199 @@ The Bitcoin integration is a direct integration, meaning there are nodes running
   />
 </div>
 
-The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use/) and [threshold ECDSA signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa/). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
+The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) and [threshold ECDSA signatures](/docs/building-apps/network-features/signatures/t-ecdsa).
 
 Through ICP's chain-key cryptography feature, the ETH integration also includes chain-key tokens, similar to the design of ckBTC. The ETH integration expands the possibilities of chain-key tokens to include ckETH and ckERC-20 tokens, including ckUSDC, ckEURC, and ckUSDT.
 
-## Deploying the ETH starter project
+## EVM block explorer example
 
-For this tutorial, a sample boilerplate project will be explored that showcases how to use the EVM RPC canister to query information from the Ethereum network.
-
-### Project technology stack
-
-This starter project is comprised of three canisters:
-
-- The frontend canister, which uses TypeScript, Vite, and React as the core components to create the user interface.
-
-- The backend canister, written in Motoko, that uses the Motoko package manager Mops and mo-dev, a live development server for Motoko.
-
-- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import/).
-
-We'll dive deeper into the project's files in the [exploring the project's files](#exploring-the-projects-files) section below.
-
-### Prerequisites
-
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
-
-### Downloading the starter project's files
-
-To get started, open a new terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to clone the DFINITY `ic-eth-starter` repo:
-
-```bash
-git clone https://github.com/rvanasa/vite-react-motoko.git
-cd vite-react-motoko
-git switch evm-rpc // Switch to the EVM RPC branch of the repo.
-```
+Open the [ICP Ninja EVM block explorer example](https://icp.ninja/projects/who-am-i).
 
 ### Exploring the project's files
 
 First, let's start by looking at the contents of the project's `dfx.json` file. This file will contain the following:
 
-```json title="dfx.json"
+```json
 {
-  "canisters": {
-    "evm_rpc": {
-      "type": "pull",
-      "id": "7hfb6-caaaa-aaaar-qadga-cai"
-    },
-    "backend": {
-      "dependencies": ["evm_rpc"],
-      "type": "motoko",
-      "main": "backend/Backend.mo",
-      "declarations": {
-        "node_compatibility": true
-      }
-    },
-    "frontend": {
-      "dependencies": ["backend"],
-      "type": "assets",
-      "source": ["dist/"]
-    }
-  },
-  "defaults": {
-    "build": {
-      "packtool": "npm run --silent sources"
-    }
-  },
-  "output_env_file": ".env",
-  "version": 2
-}
+  "canisters": {
+    "backend": {
+      "dependencies": ["evm_rpc"],
+      "main": "backend/app.mo",
+      "type": "motoko",
+      "args": "--enhanced-orthogonal-persistence"
+    },
+    "frontend": {
+      "dependencies": ["backend"],
+      "frontend": {
+        "entrypoint": "frontend/index.html"
+      },
+      "source": ["frontend/dist"],
+      "type": "assets"
+    },
+    "evm_rpc": {
+      "candid": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc.did",
+      "type": "custom",
+      "specified_id": "7hfb6-caaaa-aaaar-qadga-cai",
+      "remote": {
+        "id": {
+          "ic": "7hfb6-caaaa-aaaar-qadga-cai"
+        }
+      },
+      "wasm": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc.wasm.gz",
+      "init_arg": "(record {})"
+    }
+  },
+  "output_env_file": ".env",
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
 ```
 
-In this file, you can see the definitions for the project's four canisters:
+In this file, you can see the definitions for the project's three canisters:
 
 - `frontend`: The dapp's frontend canister, which has type "assets" to declare it as an asset canister, and uses the files stored in the `dist` directory. This canister has a dependency on the `backend` canister.
 
-- `backend`: The dapp's backend canister, which has type "motoko" since it uses Motoko source code stored in the file `backend/Backend.mo`. This canister has the dependency of `evm_rpc`.
+- `backend`: The dapp's backend canister, which has type "motoko" since it uses Motoko source code stored in the file `backend/app.mo`. This canister has the dependency of `evm_rpc`.
 
-- `evm_rpc`: This canister is responsible for facilitating communication from the backend canister to RPC services to interact with the Ethereum network. This canister is pulled using `dfx deps` and has canister ID `7hfb6-caaaa-aaaar-qadga-cai`.
+- `evm_rpc`: This canister is responsible for facilitating communication from the backend canister to RPC services to interact with the Ethereum network. This canister has canister ID `7hfb6-caaaa-aaaar-qadga-cai`.
 
-Next, let's take a look at the source code for the backend canister. Open the `backend/Backend.mo` file, which will contain the following content. This code has been annotated with notes to explain the code's logic:
+Next, let's take a look at the source code for the backend canister. Open the `backend/app.mo` file, which will contain the following content. This code has been annotated with notes to explain the code's logic:
 
-```motoko no-repl title="backend/Backend.mo"
+```motoko no-repl title="backend/app.mo"
 import EvmRpc "canister:evm_rpc";
-
+import IC "ic:aaaaa-aa";
+import Sha256 "mo:sha2/Sha256";
+import Base16 "mo:base16/Base16";
 import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
+import Text "mo:base/Text";
 import Cycles "mo:base/ExperimentalCycles";
 
-actor {
+persistent actor EvmBlockExplorer {
+  transient let key_name = "test_key_1"; // Use "key_1" for production and "dfx_test_key" locally
 
-  /// Retrieve the latest block on the Ethereum blockchain.
-  public func getLatestEthereumBlock() : async EvmRpc.Block {
+  public func get_evm_block(height : Nat) : async EvmRpc.Block {
+    // Ethereum Mainnet RPC providers
+    // Read more here: https://internetcomputer.org/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview#supported-json-rpc-providers
+    let services : EvmRpc.RpcServices = #EthMainnet(
+      ?[
+        #Llama,
+        // #Alchemy,
+        // #Cloudflare
+      ]
+    );
 
-    // Select RPC services
-    let services : EvmRpc.RpcServices = #EthMainnet(?[#Cloudflare]);
+    // Base Mainnet RPC providers
+    // Get chain ID and RPC providers from https://chainlist.org/
+    // let services : EvmRpc.RpcServices = #Custom {
+    //   chainId = 8453;
+    //   services = [
+    //     {url = "https://base.llamarpc.com"; headers = null},
+    //     {url = "https://base-rpc.publicnode.com"; headers = null}
+    //   ];
+    // };
 
-    // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
-    Cycles.add<system>(1000000000);
-    let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
+    // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
+    Cycles.add<system>(10_000_000_000);
+    let result = await EvmRpc.eth_getBlockByNumber(services, null, #Number(height));
 
-    switch result {
-      // Consistent, successful results
-      case (#Consistent(#Ok block)) {
-        block;
-      };
-      // Consistent error message
-      case (#Consistent(#Err error)) {
-        Debug.trap("Error: " # debug_show error);
-      };
-      // Inconsistent results between RPC providers
-      case (#Inconsistent(results)) {
-        Debug.trap("Inconsistent results");
-      };
-    };
-  };
+    switch result {
+      // Consistent, successful results.
+      case (#Consistent(#Ok block)) {
+        block;
+      };
+      // All RPC providers return the same error.
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+      };
+      // Inconsistent results between RPC providers. Should not happen if a single RPC provider is used.
+      case (#Inconsistent(results)) {
+        Debug.trap("Inconsistent results" # debug_show results);
+      };
+    };
+  };
+
+  public func get_ecdsa_public_key() : async Text {
+    let { public_key } = await IC.ecdsa_public_key({
+      canister_id = null;
+      derivation_path = [];
+      key_id = { curve = #secp256k1; name = key_name };
+    });
+    Base16.encode(public_key);
+  };
+
+  public func sign_message_with_ecdsa(message : Text) : async Text {
+    let message_hash : Blob = Sha256.fromBlob(#sha256, Text.encodeUtf8(message));
+    Cycles.add<system>(25_000_000_000);
+    let { signature } = await IC.sign_with_ecdsa({
+      message_hash;
+      derivation_path = [];
+      key_id = { curve = #secp256k1; name = key_name };
+    });
+    Base16.encode(signature);
+  };
+
+  public func get_schnorr_public_key() : async Text {
+    let { public_key } = await IC.schnorr_public_key({
+      canister_id = null;
+      derivation_path = [];
+      key_id = { algorithm = #ed25519; name = key_name };
+    });
+    Base16.encode(public_key);
+  };
+
+  public func sign_message_with_schnorr(message : Text) : async Text {
+    Cycles.add<system>(25_000_000_000);
+    let { signature } = await IC.sign_with_schnorr({
+      message = Text.encodeUtf8(message);
+      derivation_path = [];
+      key_id = { algorithm = #ed25519; name = key_name };
+      aux = null;
+    });
+    Base16.encode(signature);
+  };
 };
 ```
 
 #### What this code does
 
-This backend code has a single function that retrieves the latest block from the Ethereum mainnet. It configures the RPC service to make the call through the Cloudflare RPC provider and attaches cycles to the call. By default, the EVM RPC canister replicates this call across at least three providers to decentralize the RPC call and verify that the results returned from each provider match one another. This backend code checks to make sure the result returned matches the result of the other RPC services.
+This backend code has five functions:
 
-This tutorial will not dive into the frontend's configuration. [Learn more about frontend canisters](/docs/current/developer-docs/web-apps/application-frontends/overview/).
+- `get_evm_block`: Returns an Ethereum block according to the inputted block number. It configures the RPC service to make the call through the Llama RPC provider and attaches cycles to the call.
 
-### Deploying the project
+- `get_ecdsa_public_key`: Returns the canister's ECDSA public key.
 
-It's time to deploy the boilerplate project. To do this, first assure that a local replica is running:
+- `sign_message_with_ecdsa`: Signs an inputted message using the canister's ECDSA key.
 
-```bash
-dfx start --clean --background
+- `get_schnorr_public_key`: Returns the canister's Schnorr public key.
+
+- `sign_message_with_schnorr`: Signs an inputted message using the canister's Schnorr key.
+
+To use the dapp, click the "Deploy" button in ICP Ninja, then open application's URL returned in the output log:
+
+```
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://zihhr-qiaaa-aaaab-qblla-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
 ```
 
-Then, pull and deploy the `evm_rpc` canister locally with `dfx deps`:
-
-```bash
-dfx deps pull
-dfx deps init evm_rpc --argument '(record { nodesInSubnet = 31 })'
-dfx deps deploy
-```
-
-Install the program's packages, generate Candid type bindings, and deploy the canisters with the command:
-
-```bash
-npm run setup
-```
-
-In the background, this command runs the commands `npm i && dfx canister create --all && dfx generate backend && dfx deploy`.
-
-Then, you can start the local development server with the command:
-
-```bash
-npm start
-```
-
-This command will return the local URL that the dapp is running at; by default, this will be `http://localhost:3000/`.
-
-### Using the dapp
-
-To use the dapp and query information about the latest Ethereum block, open the local URL that was returned by the `npm start` command, such as `http://localhost:3000`. You'll see the frontend of the dapp:
-
-![ICP ETH 1](../_attachments/ic-eth-1.png)
-
-Click on the "Get latest block" to query the latest block from the Ethereum mainnet.
-
-![ICP ETH 2](../_attachments/ic-eth-2.png)
+Insert a block number, such as `10001` and click on the "Get block" button to query information about that Ethereum block. If no block number is inserted, the latest block from the Ethereum mainnet is returned.
 
 When this button is clicked, the following is happening in the background:
 
-- The frontend canister triggers the `getLatestEthereumBlock()` method of the backend canister.
+- The frontend canister triggers the `get_evm_block` method of the backend canister.
 
-- The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-call) RPC request to an Ethereum JSON-RPC API using the Cloudflare provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
+- The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-call) RPC request to an Ethereum JSON-RPC API using the Llama provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
 
 - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
 
-- The latest block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider, Cloudflare, and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
+- The block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider, and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
 
 - Then, the frontend displays the block information that was returned.
 
-:::info
-In this tutorial, you deployed this starter dapp locally. To deploy this dapp on the mainnet, run `dfx deploy --network ic`.
-:::
+You can also test the buttons for "Get ECDSA public key" or "Get Schnorr public key" buttons to return the canister's public keys, or enter and sign messages with either signature type.
 
 ## Calling the EVM RPC canister from the CLI
 
@@ -248,7 +263,7 @@ If the results from each RPC provider match, the result returned will be 'Consis
 )
 ```
 
-If the results returned are 'inconsistent,' each individual response will be returned:
+If the results returned are 'Inconsistent,' each individual response will be returned:
 
 ```bash
 (
@@ -345,38 +360,14 @@ Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully subm
 
 - [View the full Github repo for this starter project](https://github.com/rvanasa/vite-react-motoko/tree/evm-rpc).
 
-- [How it works: EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works).
+- [How it works: EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/how-it-works).
 
-- [Using the EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister).
+- [Using the EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
-- [Costs of RPC requests](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/costs).
+- [Costs of RPC requests](/docs/building-apps/chain-fusion/ethereum/evm-rpc/costs).
 
-- [Samples using the EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/samples).
+- [Samples using the EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-- [5.3 Creating a decentralized token swap](/docs/current/tutorials/developer-liftoff/level-5/5.3-token-swap-tutorial)
+<TutorialFooter />

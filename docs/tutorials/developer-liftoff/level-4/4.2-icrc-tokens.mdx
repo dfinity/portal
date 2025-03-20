@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, icrc tokens, icrc ledger]
+keywords: [advanced, tutorial, developer liftoff, icrc tokens, icrc ledger, deploy your own token, how to deploy token, create icrc token, icrc1, icrc2]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -89,57 +89,27 @@ The ICRC-1 token standard allows for several optional metadata fields to be spec
 
 Deploying an ICRC-1 ledger canister locally uses the same steps that you used in the last module to deploy the local ICP canister, but you'll use different Wasm and Candid files.
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
 
 ```
 dfx start --clean --background
 dfx new icrc1_ledger_canister
-```
-
-You will be prompted to select the language that your backend canister will use. Select 'Motoko':
-
-```
-? Select a backend language: ›
-❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
-
-```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-❯ No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-Then, navigate into the new project directory:
-
-```
 cd icrc1_ledger_canister
 ```
 
@@ -147,9 +117,9 @@ cd icrc1_ledger_canister
 
 You can access the Wasm and Candid files in the same way that you located the ICP ledger files. Remember that you'll need the latest replica version, which can be found on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect new replica binary revision** field.
 
-Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. In this tutorial you'll use the URL https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz.
+Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. Replace `<VERSION>` with the replica version from the dashboard.
 
-Use the following URL to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/ledger_suite/icrc1/ledger/ledger.did`. In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did.
+Use the following URL to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/ledger_suite/icrc1/ledger/ledger.did`.
 
 Open the `dfx.json` file in the project's directory and replace the existing content with the following:
 
@@ -158,8 +128,8 @@ Open the `dfx.json` file in the project's directory and replace the existing con
   "canisters": {
     "icrc1_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz"
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/ledger_suite/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz"
     }
   },
   "defaults": {
@@ -173,7 +143,7 @@ Open the `dfx.json` file in the project's directory and replace the existing con
 }
 ```
 
-Next, you'll use the `minter` identity you created in the last module, [4.1 Using the ICP ledger](/docs/current/tutorials/developer-liftoff/level-4/4.1-icp-ledger). If you need to export the `minter` identity's principal again, run the commands:
+Next, you'll use the `minter` identity you created in the last module, [4.1 Using the ICP ledger](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger). If you need to export the `minter` identity's principal again, run the commands:
 
 ```bash
 dfx identity use minter
@@ -185,16 +155,16 @@ The environment variable `MINTER_ACCOUNT_ID` is the principal ID responsible for
 Then, export the name and symbol of your token:
 
 ```bash
-export TOKEN_NAME="Dev Journey Token"
-export TOKEN_SYMBOL="DJTK"
+export TOKEN_NAME="Dev Liftoff Token"
+export TOKEN_SYMBOL="DLTK"
 ```
 
 The environment variable `TOKEN_SYMBOL` is the token's ticker symbol, and the `TOKEN_NAME` variable is the token's full name.
 
-Then, set the identity that you want to use to deploy the ledger. In the previous module [4.1 Using the ICP ledger](/docs/current/tutorials/developer-liftoff/level-4/4.1-icp-ledger), you used the `DevJourney` identity, which you'll use again:
+Then, set the identity that you want to use to deploy the ledger. In the previous module [4.1 Using the ICP ledger](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger), you used the `DevLiftoff` identity, which you'll use again:
 
 ```bash
-dfx identity use DevJourney
+dfx identity use DevLiftoff
 export DEPLOY_ID=$(dfx identity get-principal)
 ```
 
@@ -230,13 +200,13 @@ In these commands, the following environment variables are set:
 
 - `CYCLE_FOR_ARCHIVE_CREATION`: The amount of cycles to be sent to the archive canister when it is deployed.
 
-Then, specify which standard(s) you want your ledger to support. For example, to support just the ICRC-1 standard, set the `FEATURE_FLAGS` to false:
+Then, specify which standard(s) you want your ledger to support. The `FEATURE_FLAGS` is used to enable or disable certain ICRC-1 standard extensions. For example, to support just the ICRC-1 standard, set the `FEATURE_FLAGS` to false:
 
 ```bash
 export FEATURE_FLAGS=false
 ```
 
-The `FEATURE_FLAGS` is used to enable or disable certain ICRC-1 standard extensions. If you want to support the ICRC-2 standard extension, then set this flag to true:
+If you want to support the ICRC-2 standard extension, then set this flag to true:
 
 ```bash
 export FEATURE_FLAGS=true
@@ -324,11 +294,14 @@ To get the token symbol of the ICRC-1 ledger, use the command:
 dfx canister call icrc1_ledger_canister icrc1_symbol '()'
 ```
 
-This command returns:
+<details>
+<summary>Output</summary>
 
 ```bash
-("DJTK")
+("DLTK")
 ```
+
+</details>
 
 To return the token's decimals of the ICRC-1 ledger, use the command:
 
@@ -336,11 +309,14 @@ To return the token's decimals of the ICRC-1 ledger, use the command:
 dfx canister call icrc1_ledger_canister icrc1_decimals '()'
 ```
 
-This command returns:
+<details>
+<summary>Output</summary>
 
 ```bash
 (8 : nat8)
 ```
+
+</details>
 
 To return the token's metadata of the ICRC-1 ledger, use the command:
 
@@ -348,19 +324,22 @@ To return the token's metadata of the ICRC-1 ledger, use the command:
 dfx canister call icrc1_ledger_canister icrc1_metadata '()'
 ```
 
-This command returns:
+<details>
+<summary>Output</summary>
 
 ```bash
 (
   vec {
     record { "icrc1:decimals"; variant { Nat = 8 : nat } };
-    record { "icrc1:name"; variant { Text = "Dev Journey Token" } };
-    record { "icrc1:symbol"; variant { Text = "DJTK" } };
+    record { "icrc1:name"; variant { Text = "Dev Liftoff Token" } };
+    record { "icrc1:symbol"; variant { Text = "DLTK" } };
     record { "icrc1:fee"; variant { Nat = 10_000 : nat } };
     record { "icrc1:max_memo_length"; variant { Nat = 32 : nat } };
   },
 )
 ```
+
+</details>
 
 To return the total token supply of the ICRC-1 ledger, use the command:
 
@@ -368,11 +347,16 @@ To return the total token supply of the ICRC-1 ledger, use the command:
 dfx canister call icrc1_ledger_canister icrc1_total_supply '()'
 ```
 
+<details>
+<summary>Output</summary>
+
 This command should return the amount of tokens that you minted using the `PRE_MINTED_TOKENS` variable:
 
 ```bash
 (10_000_000_000 : nat)
 ```
+
+</details>
 
 To return the token's transfer fee of the ICRC-1 ledger, use the command:
 
@@ -380,11 +364,14 @@ To return the token's transfer fee of the ICRC-1 ledger, use the command:
 dfx canister call icrc1_ledger_canister icrc1_fee '()'
 ```
 
-This command returns:
+<details>
+<summary>Output</summary>
 
 ```bash
 (10_000 : nat)
 ```
+
+</details>
 
 To return the minting account principal of the ICRC-1 ledger, use the command:
 
@@ -393,6 +380,9 @@ dfx canister call icrc1_ledger_canister icrc1_minting_account '()'
 ```
 
 This command returns:
+
+<details>
+<summary>Output</summary>
 
 ```bash
 (
@@ -403,11 +393,16 @@ This command returns:
 )
 ```
 
+</details>
+
 To fetch the balance of an account, in this tutorial the `DEPLOY_ID` account, use the command:
 
 ```bash
 dfx canister call icrc1_ledger_canister icrc1_balance_of "(record {owner = principal \"${DEPLOY_ID}\"; })"
 ```
+
+<details>
+<summary>Output</summary>
 
 Since you haven't transferred any tokens, this command returns the amount that you minted in the `PRE_MINTED_TOKENS` variable:
 
@@ -415,18 +410,25 @@ Since you haven't transferred any tokens, this command returns the amount that y
 (10_000_000_000 : nat)
 ```
 
+</details>
+
 To transfer tokens using the ICRC-1 ledger, use the following command:
 
 ```bash
-dfx identity use DevJourney
+dfx identity use DevLiftoff
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
 ```
+
+<details>
+<summary>Output</summary>
 
 This command uses the `DEPLOY_ID` account principal to transfer 10_000 tokens. The output of this command will return:
 
 ```bash
 (variant { Ok = 1 : nat })
 ```
+
+</details>
 
 ### Using ICRC-2 endpoints
 
@@ -439,11 +441,17 @@ For example, to approve 100_000 tokens for the principal `sckqo-e2vyl-4rqqu-5g4w
 dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 100_000; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"
 ```
 
+<details>
+<summary>Output</summary>
+
 This command will return the block index of the transaction, such as:
 
 ```bash
 (variant { Ok = 2 : nat })
 ```
+
+</details>
+
 
 Then, to confirm that this command worked correctly, you check the principal's allowance by running the command:
 
@@ -453,9 +461,14 @@ dfx canister call icrc1_ledger_canister icrc2_allowance "(record { account = rec
 
 This command should reflect the 100_000 tokens you approved previously:
 
+<details>
+<summary>Output</summary>
+
 ```bash
 (record { allowance = 100_000 : nat; expires_at = null })
 ```
+
+</details>
 
 An expiration date can be sent for the approval, such as:
 
@@ -463,11 +476,16 @@ An expiration date can be sent for the approval, such as:
 dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 90_000; from = record{owner = principal \"${DEPLOY_ID}\"}; to= record{owner = principal \"${DEPLOY_ID}\"}; })"
 ```
 
+<details>
+<summary>Output</summary>
+
 This command will return the block index of the transaction, such as:
 
 ```bash
 (variant { Ok = 3 : nat })
 ```
+
+</details>
 
 ### Using the Candid UI
 
@@ -483,36 +501,10 @@ This URL will display the following Candid UI:
 
 ## Resources
 
-- [ic-cdk Rust crate](/docs/current/references/icrc1-standard).
+- [ic-cdk Rust crate](/docs/references/icrc1-standard).
 
 - [ledger-icrc-js](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc).
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-Next, you'll dive into ckBTC:
-
-- [4.3 ckBTC and Bitcoin integration](/docs/current/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin).
+<TutorialFooter />
