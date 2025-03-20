@@ -1487,6 +1487,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.canister_self_size : () -> I;                                                     // *
     ic0.canister_self_copy : (dst : I, offset : I, size : I) -> ();                       // *
     ic0.canister_cycle_balance128 : (dst : I) -> ();                                      // *
+    ic0.canister_liquid_cycle_balance128 : (dst : I) -> ();                               // *
     ic0.canister_status : () -> i32;                                                      // *
     ic0.canister_version : () -> i64;                                                     // *
 
@@ -1782,9 +1783,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This system call traps if there is no call under construction, i.e., if not called between `ic0.call_new` and `ic0.call_perform`.
 
-    This system call traps if trying to transfer more cycles than are in the current balance of the canister.
-
-    This system call traps if the cycle balance of the canister after transferring cycles decreases below the canister's freezing limit.
+    This system call traps if trying to transfer more cycles than returned by `ic0.canister_liquid_cycle_balance128`.
 
 -   `ic0.call_cycles_add128 : (amount_high : i64, amount_low : i64) -> ()`
 
@@ -1798,9 +1797,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This system call traps if there is no call under construction, i.e., if not called between `ic0.call_new` and `ic0.call_perform`.
 
-    This system call traps if trying to transfer more cycles than are in the current balance of the canister.
-
-    This system call traps if the cycle balance of the canister after transferring cycles decreases below the canister's freezing limit.
+    This system call traps if trying to transfer more cycles than returned by `ic0.canister_liquid_cycle_balance128`.
 
 -   `ic0.call_perform  : () -> ( err_code : i32 )`
 
@@ -1826,7 +1823,7 @@ This specification currently does not go into details about which actions cost h
 
 -   `ic0.canister_cycle_balance : () → i64`
 
-    Indicates the current cycle balance of the canister. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
+    Indicates the current cycle balance of the canister. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message and calls finalized via `ic0.call_perform`, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
 
 :::note
 
@@ -1836,7 +1833,11 @@ This call traps if the current balance does not fit into a 64-bit value. Caniste
 
 -   `ic0.canister_cycle_balance128 : (dst : I) → ()`; `I ∈ {i32, i64}`
 
-    Indicates the current cycle balance of the canister by copying the value at the location `dst` in the canister memory. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
+    Indicates the current cycle balance of the canister by copying the value at the location `dst` in the canister memory. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message and calls finalized via `ic0.call_perform`, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
+
+-   `ic0.canister_liquid_cycle_balance128 : (dst : I) → ()`; `I ∈ {i32, i64}`
+
+    Indicates the current amount of cycles that is available for spending in calls and execution by copying the value at the location `dst` in the canister memory. This amount of cycles can be safely attached to a call via `ic0.call_cycles_add128` as long as the memory usage of the canister does not increase for the rest of the current message execution. Hence, it is recommended to never attach the entire `ic0.canister_liquid_cycle_balance128` to a call, but leave some slack based on the expected canister memory usage and freezing threshold.
 
 -   `ic0.msg_cycles_available : () → i64`
 
@@ -7553,6 +7554,11 @@ ic0.canister_cycle_balance128<es>(dst : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   let amount = es.balance
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
+
+I ∈ {i32, i64}
+ic0.canister_liquid_cycle_balance128<es>(dst : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  copy_cycles_to_canister<es>(dst, liquid_balance(es).to_little_endian_bytes())
 
 ic0.canister_status<es>() : i32 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
