@@ -4,89 +4,37 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Reference"]} />
 
-## CMC API Endpoints
-The Cycles Minting Canister (CMC) is a system canister on the Internet Computer responsible for minting and managing cycles. It allows users to convert ICP into cycles, top up existing canisters, and create new canisters with an initial cycle balance. The CMC is controlled directly by the NNS. It is upgraded and configured via NNS proposals and has no independent control authority outside of NNS governance.
+## Overview
+
+The Cycles Minting Canister (CMC) is a system canister on the Internet Computer responsible for converting ICP tokens into **cycles**. It supports:
+
+- Topping up existing canisters
+- Creating new canisters
+- Depositing minted cycles into ledger-managed accounts
+- Fetching exchange rates and subnet configuration
+
+The CMC is governed entirely by the **NNS (Network Nervous System)** and receives configuration updates through proposals.
 
 ## Configuration Parameters
-- **Conversion Rate Source**: The conversion rate used by the CMC is dynamically fetched via HTTPS outcalls from an external source.
-- **Governance Control**: CMC operations are governed by NNS proposals.
+
+- **Conversion Rate Source**: The ICP/XDR exchange rate is **pushed** into the CMC by a dedicated *exchange rate canister*. This data reflects live market pricing and determines the ICP→cycles conversion.
+
+- **Governance Control**: All operations of the CMC — including upgrades, configuration, and authorized callers — are managed through NNS proposals.
+
 
 ## API Endpoints
 The CMC exposes the following API endpoints for interaction:
 
+## API Endpoints
 
-- [`get_icp_xdr_conversion_rate`](#get_icp_xdr_conversion_rate): Returns the latest ICP/XDR exchange rate.
-- [`notify_top_up`](#notify_top_upblock_index-nat-canister_id-principal): Notifies the CMC of an ICP top-up transaction.
-- [`notify_mint_cycles`](#notify_mint_cyclesblock_index-nat-to_subaccount-opt-blob-deposit_memo-opt-blob): Mints cycles into a cycles ledger account.
-- [`create_canister`](#create_canistersettings-opt-canistersettings-subnet_type-opt-text-subnet_selection-opt-subnetselection): Creates a new canister using attached cycles.
+The CMC exposes a set of core methods for converting ICP into cycles and interacting with subnet configuration. These include:
 
-- [`get_subnet_types_to_subnets`](#get_subnet_types_to_subnets): Returns the mapping of subnet types to subnets.
-- [`get_principals_authorized_to_create_canisters_to_subnets`](#get_principals_authorized_to_create_canisters_to_subnets): Returns which principals are authorized to create canisters in which subnets.
-- [`get_default_subnets`](#get_default_subnets): Returns the list of default subnets.
-- [`get_build_metadata`](#get_build_metadata): Returns versioning and build metadata for the CMC canister.
-
-### `create_canister(settings: opt CanisterSettings, subnet_type: opt text, subnet_selection: opt SubnetSelection)`
-Creates a new canister using cycles attached to the call. The caller becomes the controller unless otherwise specified in settings.
-
-- **Parameters:**
-  - `arg: record {`
-    - `settings: opt CanisterSettings`
-    - `subnet_type: opt text` (deprecated)
-    - `subnet_selection: opt SubnetSelection`
-  - `}`
-- **Returns:**
-  - `variant { Ok: principal; Err: CreateCanisterError }`
-
-### `get_icp_xdr_conversion_rate()`
-Returns the current ICP/XDR conversion rate along with certified data.
-
-- **Returns:**
-  - `record { data: IcpXdrConversionRate; hash_tree: blob; certificate: blob }`
-
-### `get_subnet_types_to_subnets()`
-Returns the mapping from subnet types to subnets.
-
-- **Returns:**
-  - `record { data: vec (text, vec principal) }`
-
-### `get_principals_authorized_to_create_canisters_to_subnets()`
-Returns principals and which subnets they are allowed to create canisters on.
-
-- **Returns:**
-  - `record { data: vec (principal, vec principal) }`
-
-### `get_default_subnets()`
-Returns the default subnet list.
-
-- **Returns:**
-  - `vec principal`
-
-### `get_build_metadata()`
-Returns build and version metadata for the CMC.
-
-- **Returns:**
-  - `text`
-
-### `notify_mint_cycles(block_index: nat, canister_id: principal)`
-Notifies the CMC that an ICP transfer has occurred with the intent to mint cycles into the specified canister.
-
-- **Parameters:**
-  - `arg: record {`
-    - `block_index: nat` — The block index of the ICP transfer.
-    - `canister_id: principal` — The principal ID of the canister to receive the minted cycles.
-  - `}`
-- **Returns:**
-  - `Result<Cycles, NotifyError>` — The number of cycles minted on success.
-  - `NotifyError` — If the operation fails due to invalid memo, ownership mismatch, or transaction duplication.
-
-### `notify_top_up(block_index: nat, canister_id: principal)`
-Notifies the CMC that an ICP transfer intended to top up a canister has occurred. The CMC verifies and processes the payment before crediting the cycles to the specified canister.
-
-- **Parameters:**
-  - `arg: record {`
-    - `block_index: nat` — The height of the ledger block containing the top-up transaction.
-    - `canister_id: principal` — The identifier of the canister to be topped up.
-  - `}`
-- **Returns:**
-  - `Result<Cycles, NotifyError>` — The number of cycles credited on success.
-  - `NotifyError` — If the notification fails due to an invalid transaction, old transaction, or other issues.
+- `notify_create_canister`: Processes an ICP payment to create a new canister with a designated controller and optional settings.
+- `notify_top_up`: Tops up an existing canister with cycles, based on a prior ICP transfer.
+- `notify_mint_cycles`: Mints cycles into a cycles ledger account, enabling off-chain or flexible use of cycles.
+- `create_canister`: Creates a canister using cycles directly attached to the call.
+- `get_icp_xdr_conversion_rate`: Returns the current ICP/XDR exchange rate with certification.
+- `get_subnet_types_to_subnets`: Lists available subnets grouped by their types.
+- `get_principals_authorized_to_create_canisters_to_subnets`: Indicates which principals are permitted to create canisters on which subnets.
+- `get_default_subnets`: Returns the fallback subnets for general-purpose canister creation.
+- `get_build_metadata`: Displays internal version and build information for the CMC.
