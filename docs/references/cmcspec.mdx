@@ -35,3 +35,42 @@ The CMC exposes a set of core methods for converting ICP into cycles and interac
 - `get_principals_authorized_to_create_canisters_to_subnets`: Indicates which principals are permitted to create canisters on which subnets.
 - `get_default_subnets`: Returns the subnets for general-purpose canister creation.
 - `get_build_metadata`: Displays internal version and build information for the CMC.
+
+
+
+## `notify_create_canister`
+
+Creates a new canister after verifying an ICP payment recorded in the ICP Ledger.
+If the `subnet_selection field is omitted, the CMC will automatically choose a suitable subnet at random from the available options.
+
+The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **recipient**:
+
+- The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the intended controller's principal.
+- The **memo field** must explicitly indicate the intent to create a canister. This can be expressed as:
+  - A legacy 64-bit unsigned integer memo with value `0x41455243` (ASCII `"CREA"`)
+  - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
+    ```candid
+    "\43\52\45\41\00\00\00\00"
+    ```
+    which represents `"CREA"` padded to 8 bytes.
+
+- **Parameters:**
+  ```candid
+  record {
+    block_index: nat64;              // The ledger block containing the ICP payment
+    controller: principal;           // The principal who will control the new canister
+    settings: opt CanisterSettings;  // Optional settings like controllers, memory limits, etc.
+    subnet_type: opt text;           // Deprecated: legacy subnet selection
+    subnet_selection: opt SubnetSelection; // Preferred subnet selection method
+  }
+  ```
+
+- **Returns:**
+  ```candid
+  variant { Ok: principal; Err: NotifyError }
+  ```
+
+- **Notes:**
+  - The call is idempotent with respect to `block_index`; repeating it returns the same result.
+  - The controller must match the one encoded in the subaccount used for the payment.
+  - Only transactions that follow the exact memo format will be processed successfully.
