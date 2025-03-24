@@ -23,18 +23,15 @@ The CMC is governed entirely by the **NNS (Network Nervous System)** and receive
 
 
 ## API Endpoints
-The CMC exposes the following API endpoints for interaction:
-
-## API Endpoints
 
 The CMC exposes a set of core methods for converting ICP into cycles and interacting with subnet configuration. These include:
 
-- `notify_create_canister`: Processes an ICP payment to create a new canister with a designated controller and optional settings.
-- `notify_top_up`: Tops up an existing canister with cycles, based on a prior ICP transfer.
-- `notify_mint_cycles`: Mints cycles into a cycles ledger account, enabling off-chain or flexible use of cycles.
+- `notify_create_canister`: Processes an ICP payment by minting cycles and using them to create a new canister, assigning control to the specified principal and applying optional settings.
+- `notify_top_up`: Processes an ICP payment by minting cycles and sending them to an existing canister to increase its available balance.
+- `notify_mint_cycles`: Processes an ICP payment by minting cycles and depositing them into a cycles ledger account associated with a subaccount.
 - `create_canister`: Creates a canister using cycles directly attached to the call.
 - `get_icp_xdr_conversion_rate`: Returns the current ICP/XDR exchange rate with certification.
 - `get_subnet_types_to_subnets`: Lists available subnets grouped by their types.
 - `get_principals_authorized_to_create_canisters_to_subnets`: Indicates which principals are permitted to create canisters on which subnets.
-- `get_default_subnets`: Returns the fallback subnets for general-purpose canister creation.
+- `get_default_subnets`: Returns the subnets for general-purpose canister creation.
 - `get_build_metadata`: Displays internal version and build information for the CMC.
