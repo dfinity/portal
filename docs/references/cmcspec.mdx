@@ -37,8 +37,9 @@ The CMC exposes a set of core methods for converting ICP into cycles and interac
 - `get_build_metadata`: Displays internal version and build information for the CMC.
 
 
+## API Reference
 
-## `notify_create_canister`
+### `notify_create_canister`
 
 Creates a new canister after verifying an ICP payment recorded in the ICP Ledger.
 If the `subnet_selection field is omitted, the CMC will automatically choose a suitable subnet at random from the available options.
@@ -74,3 +75,37 @@ The CMC expects the payment to follow a strict structure that encodes both the *
   - The call is idempotent with respect to `block_index`; repeating it returns the same result.
   - The controller must match the one encoded in the subaccount used for the payment.
   - Only transactions that follow the exact memo format will be processed successfully.
+
+
+  ## `notify_top_up`
+
+Tops up an existing canister by minting cycles based on an ICP payment recorded in the ICP Ledger.
+
+The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **target canister**:
+
+- The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal.
+- The **memo field** must explicitly indicate the intent to top up a canister. This can be expressed as:
+  - A legacy 64-bit unsigned integer memo with value `0x544f5055` (ASCII `"TOPU"`)
+  - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
+    ```candid
+    "\54\4f\50\55\00\00\00\00"
+    ```
+    which represents `"TOPU"` padded to 8 bytes.
+
+- **Parameters:**
+  ```candid
+  record {
+    block_index: nat64;     // Block index of the ICP ledger payment
+    canister_id: principal; // Canister to be topped up
+  }
+  ```
+
+- **Returns:**
+  ```candid
+  variant { Ok: nat; Err: NotifyError } // Number of cycles minted and sent
+  ```
+
+- **Notes:**
+  - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see “Shared Logic” section).
+  - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
+  - Only transfers matching the expected structure and memo will be accepted.
