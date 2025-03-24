@@ -1,0 +1,59 @@
+---
+keywords: [beginner, concept, candid, idl]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# What is Candid?
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+Candid is an **interface description language**. Its primary purpose is to describe the public interface of a **service**, usually in the form of a program deployed as a <GlossaryTooltip>canister</GlossaryTooltip> that runs on the Internet Computer. One of the key benefits of Candid is that it is language-agnostic and allows interoperation between canisters written in different programming languages, including Motoko, Rust, and JavaScript.
+
+A Candid service description file (a `.DID` file) can either be written by hand or generated from a service implementation. Candid is a strongly typed system with a set of types that canonically cover most uses. All types are described in detail in the [reference](/docs/references/candid-ref) documentation.
+
+The simplest service description specifies a service with a `ping` method:
+
+```candid
+service : {
+  ping : () -> ();
+}
+```
+
+Every method of a canister has a sequence of argument and result types. A method can also include annotations, like the `query` notation shown in this example:
+
+```candid
+service counter: {
+  "inc": () -> ();
+  "read": () -> (nat) query;
+  "write": (nat) -> ();
+}
+```
+
+In this example, the described service `counter` consists of the following public methods:
+
+- The `inc` method changes the value of a counter. It takes no inputs and returns no output types.
+
+- The `read` method reads the current value of a counter. It takes no input and returns a `Nat` output type.
+
+- The `write` method can be used to set the counter value. It takes an input of `Nat` and returns no output type.
+
+Given this simple interface description, it is possible for you to interact with this `counter` service directly from the command line, through a web-based frontend, or programmatically from a scripting language.
+
+In addition to interoperability, Candid supports the evolution of service interfaces by precisely specifying the changes that can be made without breaking existing clients. For example, you can safely add new optional parameters to a service without losing compatibility for existing clients.
+
+### Why use Candid?
+
+The features that make Candid particularly well-suited for developing dapps for the Internet Computer include the following:
+
+-   Many languages like JSON, XML, and Protobuf only describe how to map individual values to bytes or characters. These data description languages do not describe services as a whole. These languages focus on the data types you want to transfer instead of the methods that make use of those data types.
+
+-   Candid implementations map the Candid value directly to types and values of the host language. With Candid, developers do not construct or deconstruct some abstract `Candid` value.
+
+-   Candid defines rules for how services and their interfaces can be upgraded in a sound and compositional way.
+
+-   Candid is inherently a higher-order language. With Candid, you can pass more than plain data, including references to services and methods. Candid support for safe upgrades takes such higher-order use into account.
+
+-   Candid has built-in support for specific Internet Computer features, such as the `query` annotation.

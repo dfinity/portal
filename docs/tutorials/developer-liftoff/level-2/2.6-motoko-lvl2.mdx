@@ -1,0 +1,162 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, motoko, actor type definitions, async data, actor classes, multiple actors]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 2.6 Motoko level 2
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/uEx8We28-Sk?si=SQ1xGtZgX7Hiarbq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+As you've seen so far, **actors** are the core functionality of canisters written in Motoko. In this tutorial, you'll explore actors further by taking a look at actor type definitions, how actors interact with async data, actor classes, and using multiple actors.
+
+## Actor types
+
+Actors can have different actor types. To demonstrate this, let's look at an example actor that defines a simple counter. This counter simply increments a value by `1`.
+
+```motoko file=../../../references/samples/motoko/counter/src/Main.mo
+
+```
+
+This actor declares three public functions and one field:
+
+- The field `count` is mutable. It is initialized as `0` and implicitly private.
+
+- The function `inc()` asynchronously increments the value of `count`, then returns an `async` type.
+
+- The function `read()` asynchronously reads the value of `count` and returns a type `async Nat`.
+
+- The function `bump()` asynchronously increments and reads the `count` value; this also returns a type `async Nat`.
+
+### Actor type definition
+
+This actor `Counter` has the following type definition:
+
+```motoko no-repl
+actor {
+  inc  : shared () -> async ();
+  read : shared () -> async Nat;
+  bump : shared () -> async Nat;
+}
+```
+
+In this definition, there are three 'members' of the actor that correlate to the three functions within the actor. Each member has the type that they return, such as `async ()` and `async Nat`.
+
+### Shared functions
+
+A **local function** will block the entity making a call to the function until the function has returned a result.
+
+A **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned and can be represented in this tutorial as `f`. A call to `await f` will suspend any other computation in the origin of the call until `f` is complete. Once `f` is returned, the execution of the call's code resumes using the returned `f` result, which can be a value or an error.
+
+A shared function's arguments and return value(s) must also be shared types. This is a subset of data types that includes shared function references, actor references, and immutable data, but does not include references to local functions or mutable data. Since interactions with actors are asynchronous, an actor's functions must return types in the form `async T`, where T is the data type.
+
+Currently, shared functions can only be declared in the body of an actor or actor class.
+
+Shared functions are accessible through remote calls, meaning a user can submit a call to that function. Motoko allows you to omit this modifier when authoring an actor type; thus, this can be simplified as:
+
+```motoko no-repl
+actor {
+  inc  : () -> async ();
+  read : () -> async Nat;
+  bump : () -> async Nat;
+}
+```
+
+
+## Actors and async data
+
+To access the result of an async value, the receiver of the future uses an `await` expression. For example, using the `Counter` example, you can use the result of `Counter.read()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Nat` return value, `n`:
+
+```motoko no-repl
+actor {
+  let a : async Nat = Counter.read();
+  let n : Nat = await a;
+}
+```
+
+In this code, the following happens:
+
+- First, the return value of `Counter.read()` is retrieved immediately; the code does not wait. Since the code does not wait, the value cannot be used as a `Nat` value yet.
+
+- Then, the `Nat` value awaits the result of `a` and extracts the result as a `Nat` value. This line is not executed until `a` has completed, since it uses the `await` expression.
+
+These two lines can be combined into one to await an asynchronous call directly, such as:
+
+```motoko no-repl
+actor {
+  let n : Nat = await Counter.read();
+}
+```
+
+## Actor classes
+
+Actor classes provide the ability for a series of actors to be created programmatically. To define actor classes, a separate classes source file needs to be used. This tutorial will demonstrate how to define and import actor classes using the following example that implements a key-value store that maps keys (type `Nat`) to values (type `Text`). Then, it provides two functions, `insert` and `lookup`, which can be used for working with the key-value store.
+
+To distribute data, the set of keys (`k`) will be partitioned into `n` buckets. For this example, you'll set `n` as a fixed value of `8`.
+
+The bucket index value (`i`) for the value of `k` will be determined by the remainder value of `k` divided by `n`. Then, the `i`th bucket will receive a dedicated actor used to store the text values (`v`) associated with the keys in the bucket.
+
+The actor responsible for bucket `i` is obtained as an instance of the actor class `Bucket(i)`.
+
+### Defining an actor class
+
+Consider the following code that defines an actor class, stored in a file named `Buckets.mo`:
+
+```motoko file=../../../references/samples/motoko/classes/src/map/Buckets.mo
+```
+
+In this example, the following happens:
+
+- A bucket stores the current key-value map in a mutable variable named `map`. This contains an imperative RBTree that is initially empty.
+
+- Then, the `get(k)` function is defined. This is a bucket actor that returns any value stored at `k` and returns `map.get(k)`.
+
+- The `put(k, v)` function is defined. This is a bucket actor that updates the current map to map `k` to `?v` by calling `map.put(k, v)`.
+
+Both the functions `get(k)` and `put(k, v)` use the `class` parameters of `n` and `i` to verify that the key is appropriate for the bucket through the assertion of `((k % n) == i)`.
+
+### Defining an actor within the actor class
+
+Then, you'll implement a coordinating `Map` actor in a file called `Map.mo`:
+
+```motoko file=../../../references/samples/motoko/classes/src/map/Map.mo
+```
+
+In this example, the following happens:
+
+- The `Buckets` actor class is imported as the module `Buckets`.
+
+- The `Map` actor maintains an array of `n` allocated buckets. Each entry in the array is initially a `null` value, with entries populated with Bucket actors on demand.
+
+- When the function `get(k, v)` is called on the `Map` actor:
+
+    - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
+
+    - The function returns `null` if the index value of the bucket does not exist.
+
+    - If the index value exists, it delegates the key to that bucket by calling `bucket.get(k, v)`.
+
+- When the function `put(k, v)` is called on the `Map` actor:
+
+    - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
+
+    - If the bucket does not exist, the bucket is installed using an asynchronous call to the constructor function `Buckets.Bucket(n, i)`. When the result is returned, it records it in the array `buckets`.
+
+    - Then it delegates the insertion of the key-value pair into the bucket by calling `bucket.put(k, v)`.
+
+Want to learn more about actor classes? Take a look at the documentation on [actor class management](/docs/motoko/main/reference/language-manual#actor-class-management) for more information.
+
+## Using multiple actors
+
+Only one actor can be defined in a Motoko file, and a single actor is always compiled into a single canister. To create multiple actors, you'll need to create multiple Motoko files and build multiple canisters.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

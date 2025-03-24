@@ -1,0 +1,221 @@
+---
+keywords: [intermediate, tokens, tutorial, ledger, icp ledger, using the ledger, icp, using icp ledger, use ledger, use icp locally, local icp ledger]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Using the ICP ledger
+
+<MarkdownChipRow labels={["Intermediate" , "Ledgers"]} />
+
+How you interact with the ICP ledger is dependent on whether you want to interact with it from the command line, from your web app, or from another canister. Available workflows and tools include:
+
+- `dfx ledger`: The `dfx` CLI command for interacting with the ICP ledger.
+- `dfx canister`: A generic canister call using `dfx`.
+- [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
+- `ic-cdk`: Inter-canister calls for the ICP ledger.
+
+## Interacting with the ICP ledger via `dfx ledger`
+
+`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality: [`dfx ledger`](/docs/building-apps/developer-tools/dfx/dfx-ledger).
+
+`dfx` does not come with an ICP ledger instance installed by default. To be able to use this command, you will need to install the [ICP ledger locally](/docs/defi/token-ledgers/setup/icp_ledger_setup).
+
+Currently, `dfx ledger` only exposes a subset of the ICP ledger functionality, namely `balance` and `transfer`.
+
+View the [`dfx ledger`](/docs/building-apps/developer-tools/dfx/dfx-ledger) documentation for all available `dfx ledger` commands and flags.
+
+## Interacting with the ICP ledger via `dfx canister`
+
+The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`. If your locally deployed ICP ledger's canister ID is different, you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it.
+
+Use the following command syntax to interact with the ICP ledger via `dfx canister`:
+
+```
+dfx canister call <canister-id> <method-name> <arguments>
+```
+
+For example, to fetch the token symbol of the ICP ledger, call the `symbol` method:
+
+```
+dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai symbol '()'
+```
+
+You can find all available methods listed within the ICP ledger canister's Candid file or view the [mainnet ICP ledger canister on the dashboard](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
+
+[View a more detailed description of the data types used in these commands](/docs/references/ledger#_getting_ledger_blocks).
+
+## Interact with ICP ledger from your web application
+
+In order to simplify working with the ICP ledger from JavaScript applications, you can use the [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
+
+:::info
+To interact with the ICRC-1 endpoints of the ICP ledger, learn more about [interacting with an ICRC-1 ledger](/docs/defi/token-indexes/).
+:::
+
+## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
+
+View the [inter-canister call documentation](/docs/building-apps/developer-tools/cdks/rust/intercanister) to see how you can call one canister from within another.
+
+Here is an example of how to fetch the token name from the ICP ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister:
+
+```rust
+// You will need the canister ID of the ICP ledger: `ryjl3-tyaaa-aaaaa-aaaba-cai`.
+
+let ledger_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+
+// The request object of the `icrc1_name` endpoint is empty.
+let req = ();
+// Since this is a query, use a bounded wait call
+let res: String = ic_cdk::call::Call::bounded_wait(ledger_id, "icrc1_name")
+  .with_args(req)
+  .await
+  // You should add proper error handling here to avoid panicking.
+  .unwrap();
+```
+
+You can find all available methods listed within the ICP ledger canister's Candid file or view the [mainnet ICP ledger canister on the dashboard](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
+
+### `icrc-ledger-types` Rust crate
+
+As explained in [token standards](/docs/defi/token-standards/), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
+
+To interact with the ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used.
+This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e., ICRC-2, ICRC-3,...).
+
+The crate can be installed with the command:
+
+```
+cargo add icrc-ledger-types
+```
+
+Or, it can be added to the `Cargo.toml` file:
+
+```
+icrc-ledger-types = "0.1.1"
+```
+
+[View the documentation for this crate](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/).
+
+### Sending ICP
+
+The recommended way to send ICP is using the ledger's ICRC-1 interface.
+
+```rust
+use candid::Principal;
+use ic_cdk::call::{Call, CallErrorExt};
+use icrc_ledger_types::icrc1::account::{Account, Subaccount};
+use icrc_ledger_types::icrc1::transfer::{BlockIndex, Memo, NumTokens, TransferArg, TransferError};
+
+/// Transfers some ICP to the specified account.
+pub async fn icp_transfer(
+    from_subaccount: Option<Subaccount>,
+    to: Account,
+    memo: Option<Vec<u8>>,
+    amount: NumTokens,
+) -> Result<(), String> {
+    // The ID of the ledger canister on the IC mainnet.
+    const ICP_LEDGER_CANISTER_ID: &str = "ryjl3-tyaaa-aaaaa-aaaba-cai";
+    let icp_ledger = Principal::from_text(ICP_LEDGER_CANISTER_ID).unwrap();
+    let args = TransferArg {
+        // A "memo" is an arbitrary blob that has no meaning to the ledger, but can be used by
+        // the sender or receiver to attach additional information to the transaction.
+        memo: memo.map(|m| Memo::from(m)),
+        to,
+        amount,
+        // The ledger supports subaccounts. You can pick the subaccount of the caller canister's
+        // account to use for transferring the ICP. If you don't specify a subaccount, the default
+        // subaccount of the caller's account is used.
+        from_subaccount,
+        // The ICP ledger canister charges a fee for transfers, which is deducted from the
+        // sender's account. The fee is fixed to 10_000 e8s (0.0001 ICP). You can specify it here,
+        // to ensure that it hasn't changed, or leave it as None to use the current fee.
+        fee: Some(NumTokens::from(10_000_u32)),
+        // The created_at_time is used for deduplication. Not set in this example since it uses
+        // unbounded-wait calls. You should, however, set it if you opt to use bounded-wait
+        // calls, or if you use ingress messages, or if you are worried about bugs in the ICP
+        // ledger.
+        created_at_time: None,
+    };
+
+    // The unbounded-wait call here assumes that you trust the ICP ledger, in particular that it
+    // won't spin forever before producing a response.
+    match Call::unbounded_wait(icp_ledger, "icrc1_transfer")
+        .with_arg(&args)
+        .await
+    {
+        // The transfer call succeeded
+        Ok(res) => match res.candid::<Result<BlockIndex, TransferError>>() {
+            Ok(Ok(_i)) => Ok(()),
+            // The ledger canister returned an error, for example because the caller's balance was
+            // too low.
+            // The transfer didn't happen. Report an error back to the user.
+            // Look up the TransferError type in icrc_ledger_types for more details.
+            Ok(Err(e)) => Err(format!("Ledger returned an error: {:?}", e)),
+            Err(e) => Err(format!(
+                "Should not happen. Error decoding ledger response: {:?}",
+                e
+            )),
+        },
+        // An unclean reject signals that something went wrong with the call, but the system isn't
+        // sure whether the call was executed. Since this was an unbounded-wait call, this
+        // happens either because the ledger explicitly rejected the call, or because it panicked
+        // while processing our request.
+        // The ICP ledger doesn't explicitly reject calls. When using the icrc1 interface, it's also
+        // not intended to panic, but it reports errors at the "user-level", encoded in Candid.
+        // Here, the assumption is that it doesn't panic. However, if you don't want to make that
+        // assumption, you can add your own error handling of that case here.
+        // If you choose to use bounded-wait calls instead of unbounded-wait ones like this example,
+        // an unclean reject can also happen in case of a timeout. You can follow the ICRC-1 example
+        // to see how to handle this case.
+        Err(e) if !e.is_clean_reject() => Err(format!(
+            "Should not happen; error calling ledger canister: {:?}",
+            e
+        )),
+        // A clean reject means that the system can guarantee that the call wasn't executed at all
+        // (not even partially). It's always safe to assume that the transfer didn't happen
+        Err(e) => Err(format!("Error calling ledger canister: {:?}", e)),
+    }
+}
+```
+
+
+### Receiving ICP
+
+If you want a canister to receive payment in ICP, you need to make sure that the canister knows about the payment because a transfer only involves the sender and the ledger canister.
+
+There are currently two main patterns to achieve this. Furthermore, there is a [chartered working group](https://forum.dfinity.org/t/announcing-technical-working-groups/11781) on ledger and tokenization that is focused on defining a standard ledger token interface and payment flows.
+
+#### Direct notification by sender
+
+In this pattern, the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/references/ledger#_getting_ledger_blocks) of the ledger.
+
+The following diagram shows a simplified illustration of this pattern:
+
+```plantuml
+    participant Sender
+    participant "ICP Ledger"
+    participant Receiver
+
+    Sender -> "ICP Ledger": transfer()
+    "ICP Ledger" --> Sender: blockNumber
+    Sender -> Receiver: notify(blockNumber)
+    Receiver -> "ICP Ledger": query_blocks(blockNumber)
+    "ICP Ledger" --> Receiver: block
+    Receiver -> Receiver: verify payment
+```
+
+#### Notification by ICP ledger (currently disabled)
+
+In this pattern, the ledger itself notifies the receiver. Thereby, the receiver can trust the notification immediately. However, this flow is currently disabled because the call to the receiver is not yet implemented as a one-way call.
+
+```plantuml
+    participant Sender
+    participant "ICP Ledger"
+    participant Receiver
+
+    Sender -> "ICP Ledger": transfer()
+    "ICP Ledger" --> Sender: blockNumber
+    Sender -> "ICP Ledger": notify(blockNumber, receiver)
+    "ICP Ledger" -> "Receiver": transaction_notification(details)
+```

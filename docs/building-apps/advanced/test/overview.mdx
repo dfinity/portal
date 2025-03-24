@@ -1,0 +1,65 @@
+---
+keywords: [intermediate, test, tutorial, test code, test canister, pocket ic, pocketic, test projects, replicate mainnet for testing, unit testing, integration testing, e2e testing, e2e, unit, integration]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Testing canisters
+
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
+
+Testing your canister's code during the development process is an important step to verify that the code operates as expected and does not produce bugs, errors, or result in the canister trapping. Before deploying and using the code in a production environment, it should undergo testing.
+
+## Types of testing
+
+There are three types of testing:
+
+- **Unit testing**: Test each individual unit of the code separately, such as a function or calculation.
+
+- **Integration testing**: Test how multiple functions or portions of the code integrate and operate together.
+
+- **End-to-end testing**: Test the application's complete workflow, including the frontend user interface.
+
+### Unit testing
+
+Unit testing refers to testing a single function or component of a piece of code by itself, thus testing a single *unit* of the code. Unit testing does not take into consideration how the single unit functions with other components of the application. The scope of unit testing is more narrow compared to other types of testing and is designed to catch bugs or errors that may occur for each individual unit of the application's code.
+
+In Motoko, the [base library](https://github.com/dfinity/motoko-base/tree/master/test) contains files that can be used for unit testing. Most testing files utilize the Motoko Matchers test library to provide testing functionality. Motoko Matchers also includes a package for executing unit tests within canisters.
+
+For tests that use large datasets or have long-running test batches, Motoko also provides the [BigTest library](https://github.com/matthewhammer/motoko-bigtest).
+
+For Rust unit testing, refer to the guide on [effective Rust containers](https://mmapped.blog/posts/01-effective-rust-canisters).
+
+### Integration testing
+
+Integration testing refers to testing multiple components of an application together to ensure that they operate correctly. Integration testing often includes testing how several functions within a canister interact with one another, how different canisters may send and receive information from each other, or how a canister may obtain and digest external information from HTTPS outcalls. One common form of integration testing is continuous integration (CI) testing. CI testing uses an automated workflow to continuously test several components of an application.
+
+GitHub CI testing is a common workflow used by developers that can be configured to run tests whenever new code is pushed to a repository. [Learn more about CI tests](https://docs.github.com/en/actions/using-workflows).
+
+### End-to-end testing
+
+End-to-end testing refers to testing the entire functionality of an application, including the frontend user interface. This includes testing buttons, input forms, authentication methods, and the overall user journey within the app. End-to-end tests can be simple, such as testing that a frontend canister successfully communicates with a backend canister.
+
+For more information on end-to-end tests, check out the [Developer Liftoff module on testing](/docs/tutorials/developer-liftoff/level-2/2.5-unit-testing#end-to-end-e2e-testing).
+
+## Tools for testing canisters
+
+There are several tools available for testing ICP canisters. Motoko-specific libraries can be found in the section above, [unit testing](#unit-testing). Details about more comprehensive testing suites can be found below.
+
+### PocketIC
+
+PocketIC is a comprehensive testing suite that can be used for testing canisters with custom environments, allowing you to test applications against real-world scenarios that your application may encounter once deployed on the mainnet. PocketIC tests can be written in several languages, including:
+
+- [PocketIC Rust](https://crates.io/crates/pocket-ic)
+- [PocketIC Python](https://pypi.org/project/pocket-ic/)
+- [Pic JS for JavaScript/TypeScript](https://www.npmjs.com/package/@hadronous/pic)
+- [PocketIC GoLang](https://pkg.go.dev/github.com/aviate-labs/agent-go/pocketic)
+
+[Learn more about PocketIC](/docs/building-apps/advanced/test/pocket-ic).
+
+### Light Replica
+
+Light Replica is a community-contributed tool designed to replicate the local testing environment that the Ethereum tools Hardhat or Truffle provide. Light Replica replicates the behavior of a real ICP node by running a local instance of a node, then providing additional logging and functionality to enable canister testing. Light Replica can be used to test any Wasm file as if it were a canister deployed on the mainnet.
+
+[Learn more about Light Replica](https://github.com/icopen/lightic/tree/main).

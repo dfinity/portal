@@ -1,0 +1,105 @@
+---
+keywords: [beginner, governance, concept,  nns, neurons, neuron  what is a neuron]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# What is a neuron?
+
+<MarkdownChipRow labels={["Beginner", "Governance", "Concept" ]} />
+
+In order to participate in the network's governance and receive voting rewards, ICP tokens must first
+be staked in a **neuron**.
+
+Neurons represent governance participants. Each neuron has its own identifier and
+several attributes.
+
+Once a neuron is locked for more than six months, it gains the ability
+both to submit proposals and to vote on them. Voting in turn generates
+voting rewards, based on how active a neuron is in voting on proposals.
+If you vote on every open proposal, you gain the maximum reward.
+
+A neuron can also **follow** other neurons, which causes it to
+automatically vote the same way as the majority of the neurons that it
+follows. In order to keep getting voting rewards, a neuron has to regularly vote directly, set following, or confirm the chosen following settings.
+
+## Why staking matters
+
+Staking is a way of allowing those who support the Internet Computer to
+decide what happens next with the network.
+
+It is possible for proposals to pass with only a
+majority among 3% of the total voting power, meaning that proposals
+stand a chance even if large entities abstain and the majority of the
+network does not vote.
+
+
+## Key concepts
+
+It is important to understand a few key concepts of a neuron.
+Every user can stake ICP utility tokens into a neuron and participate in the NNS DAO.
+
+### Neuron ID and account
+Each neuron has a **neuron ID**, which is an identity selected by the NNS when the neuron is created.
+In addition, each neuron has an associated **account** on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister, and therefore a user cannot move staked tokens.
+
+### Neuron permissions
+The **controller** is a principal that controls the neuron and which cannot be changed. A principal corresponds to the public key of a public-private key pair, and anyone with possession of the corresponding private key will have full control of the neuron. Therefore, the private key of the controller principal should be kept very secure. A principal can control many neurons.
+
+### Hotkeys
+In addition to the controller, a neuron can have **hotkeys**. Hotkeys are principal IDs that can perform actions with limited privileges, namely:
+
+- Voting.
+
+- Following (see below).
+
+- Reading the full information about the neuron, including non-public fields.
+
+- Submit a proposal.
+
+Hotkeys cannot perform other neuron operations, such as increase dissolve delay, start dissolving, or disburse a neuron's stake.
+
+A neuron can have multiple hotkeys, at most 15. One common workflow using hotkeys is to set a hardware wallet as the controller of the neuron, then vote or view neuron information through a software wallet set as a hotkey.
+
+Hotkeys can be added or removed from a neuron using the [NNS dapp](https://nns.ic0.app/) or the [`quill neuron-manage`](https://github.com/dfinity/quill) command.
+
+If your principal is added as a hotkey to a neuron, the neuron and its information will be visible in the [NNS dapp](https://nns.ic0.app/) when you login.
+
+### Voting power
+The NNS is a stake-based governance system, so the main factor for how much **voting power** a neuron has is its stake. In addition, the voting power depends on the following factors.
+
+* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified duration called the **dissolve delay**. This can be thought of as a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on the countdown and waiting for the time to pass. A neuron must have a dissolve delay of at least 6 months to be eligible to vote.
+  * A neuron can be _non-dissolving_ which means that the timer is stopped and the neuron's dissolve delay remains the same.
+  * A neuron can be _dissolving_ which means that the timer is decreasing the neuron's dissolve delay as time passes.
+  * Once the timer has counted down, a neuron is _dissolved_ and the ICP tokens can be unstaked again. This is called **disbursing** a neuron.
+* **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state.
+* **Voting Power adjustment due to activity**: In order to keep the voting power, a neuron has to regularly perform any of the following actions: vote directly, set following, or confirm its current following settings.
+
+The first two factors ensure that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more committed to the long-term interest of the Internet Computer. The last factor ensures that "sleeper" neurons who do not actively participate in the voting process do not automatically participate in voting and get rewards.
+
+Based on these factors, a neuron's voting power can be determined:
+* Principally, by its stake. 1 ICP = the power of 1 vote.
+* By its dissolve delay. 6 months grants a 1.06x voting power bonus, and 8 years grants 2x. All other durations scale linearly between.
+* By its age. 4 years grants a 1.25x bonus, multiplicative with any other bonuses. All other durations between 0 seconds and 4 years scale linearly between.
+* By the voting power adjustments. A neuron who votes directly, sets following, or confirms following once every 6 months gets normal voting power. After 6 months of no action, a neuron’s voting power is linearly decreased for one month until it reaches zero at the end of 7 months without any action. After these 7 months, the neuron’s following settings are fully reset to zero.
+
+This means that the maximum voting power of 2.5 votes per ICP staked is only achievable by locking up your neuron for 8 years, leaving it in that locked-up state for 4 years, and regularly participating in governance by voting, set following, or confirm following. At that time, you will have the most voting power for the stake committed.
+
+To better understand how these factors influence a neuron's voting power and rewards over time, you can simulate some behaviors with the [NNS neuron sandbox](https://klgza-cqaaa-aaaak-qcz5a-cai.icp0.io/). Note that this tool assumes that neurons are active and do not get voting power adjustment.
+
+### Maturity
+When neurons vote, directly or through following, the **maturity** of a neuron increases as it collects voting rewards.
+Each day the network rewards participants by allocating to every voting neuron a portion of the total reward, based both on its voting power at the time proposals were made and the number of proposals it voted on.
+There are different things that a neuron holder can do with maturity:
+* Maturity can be liquidated by **spawning**. This is a process that can be started at any time and will then take seven days. In the end, a **maturity modulation** is applied, and new ICP tokens are minted that can be freely used.
+* Maturity can be staked into **staked maturity** into the neuron. Staked maturity is viewed as part of the neuron's stake and contributes to the neuron's voting power. But, similarly to the neuron's stake, it is also locked until the neuron is dissolved. When a neuron dissolves, its staked maturity is converted back to normal un-staked maturity.
+* Maturity can be **auto-staked**. In order to not have to regularly perform the previous action, a neuron can also choose to auto-stake its maturity. This means that all new maturity will automatically be added to the staked maturity.
+
+For more details on voting rewards and spawn maturity, refer to [voting rewards](/docs/building-apps/governing-apps/nns/concepts/neurons/staking-voting-rewards).
+
+### Neuron visibility
+A neuron can be **public** or **private**.
+If a neuron is private, only its controller and the hotkeys can read the full neuron. Other parties cannot access all the information about the neuron.
+In particular, they cannot access the neuron's ballot. If a neuron is public, anyone can read the full neuron.
+All [known neurons](/docs/building-apps/governing-apps/nns/concepts/neurons/becoming-a-known-neuron) are public.
+

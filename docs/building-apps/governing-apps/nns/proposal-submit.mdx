@@ -1,0 +1,270 @@
+---
+keywords: [advanced, governance, concept, nns, proposals, submitting proposals, submit proposal]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Submitting
+
+<MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
+
+To submit a proposal, it is recommended to use a neuron that can be controlled with a command line tool.
+This guide will show how this can be done using an example of a motion proposal.
+You can find another example for how to submit a proposal on [registering a known neuron]
+(/docs/building-apps/governing-apps/nns/concepts/neurons/becoming-a-known-neuron).
+
+
+## How to submit a motion proposal
+This section explains one way to submit NNS motion proposals by using a few command line tools and a self-custody neuron.
+
+### Background
+To properly follow what is going on, there are a few high-level points worth highlighting:
+
+#### Only Neurons can submit NNS proposals
+
+Neurons with at least 25 ICP and 6 months of dissolve delay can submit NNS proposals. Therefore, the first step is to create such a neuron.
+
+#### The NNS governance canister accepts motion proposals
+
+The governance canister is a canister like any other, so it has a Candid file, it accepts messages, etc. This article describes a way where you can have your local computer send a message to the governance canister (signed on behalf of a neuron) that contains a motion proposal.
+
+### One-time setup
+#### Install `dfx`
+
+* `dfx` is a command line tool that will be used to send messages from your machine to the NNS.
+[Install `dfx`](/docs/building-apps/getting-started/install).
+```
+$ dfx [OPTIONS] <SUBCOMMAND>
+```
+
+#### Install `quill`
+
+* `quill` is a minimalist "governance toolkit". It is a wrapper for crafting and sending messages to the NNS and managing one's neuron. [Install quill](https://github.com/dfinity/quill).
+
+This article will assume that you execute `quill` on your local machine by running:
+```
+quill [OPTIONS] <SUBCOMMAND>
+```
+
+#### Create a neuron via command line tools
+
+#### Create a `private.pem` (private/public keypair) and Ledger `account id`.
+
+Before you start, you need a private/public keypair.
+
+```
+quill generate --pem-file private.pem
+```
+
+:::info
+quill encrypts the identity by default.
+:::
+
+When returned, your `account ID` should look something like this:
+`612ec300g9ec990da900d6ec45919e7d5dbb9fa0dd8e69c54d374df93aa28d57`.
+
+#### Link this private/public keypair to `dfx` so you can use it as an identity.
+
+To use the identity with `dfx`, first you must decrypt the `private.pem` file:
+
+```
+quill decrypt-pem private.pem
+```
+
+Then, import the pem file into `dfx`. In this case, the new identity is called "proposals".
+
+```
+dfx identity import proposals private.pem
+```
+
+If you see the message “creating identity: proposals” in the terminal, this means it worked.
+
+Alternatively, you can also import your identity using the seed file:
+
+```
+dfx identity import --seed-file seed.txt
+```
+
+[Learn more about dfx identities](https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-identity).
+
+#### Send ICP to the previously created `account id`.
+
+You should send at least 25.001 in order to have enough ICP to create a neuron and pay for the ledger transaction fees.
+
+To send ICP to the account, all you need is to input the `account id` in your wallet of choice.
+
+#### Stake a neuron
+
+To stake a neuron using quill, run the following command:
+
+```
+// Craft a message to stake a neuron by choosing an 8-character $NAME and an $AMOUNT to stake
+// Note: you need to stake at LEAST 25 ICP to send proposals as $AMOUNT
+quill --pem-file private.pem neuron-stake --name $NAME --amount $AMOUNT > message.json
+
+// Send the message crafted above.
+quill send message.json
+```
+
+You should see a message with a neuron ID staked. If successful, response will return `neuron ID:
+9_218_890_096_040_352_708`. This means the neuron ID is `9218890096040352708`.
+
+#### Increase neuron dissolve to at least 6 months
+
+Time is measured in seconds on the NNS. One year in seconds equals 31557600 seconds.
+
+```
+// Craft message to increase dissolve delay of neuron to 1 year
+quill --pem-file private.pem neuron-manage 9218890096040352708 --additional-dissolve-delay-seconds 31557600 > message.json
+
+//send message created above to the NNS
+quill send message.json
+```
+
+### How to send a proposal
+
+This sections shows how to create a [motion proposal](https://dashboard.internetcomputer.org/proposal/42626).
+
+#### Craft a proposal in markdown
+
+The IC dashboard and the NNS frontend dapp both render markdown of the `summary` field. It is recommended to use standard markdown for your motion proposal.
+
+Below is an example of using markdown for a NNS motion proposal:
+
+```md
+## Objective
+
+Service nervous systems (SNSes) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
+
+## Background
+
+### Relation to the original SNS design & overall approach
+DFINITY Foundation presented a first proposed [SNS design](https://www.youtube.com/watch?v=L4443aaAP5A) in October 2021.
+
+## Community conversation and timeline
+The NNS team is ready to work on this feature!
+To get the design approved by the community, the following schedule was followed:
+
+* Jan 11-18th: Design discussion on the forum thread
+* Jan 18th: Community conversation about the topic
+* Jan 20th: Developer discussion on Discord
+* today: motion proposal submission proposing the above design
+
+## What is being asked of:
+
+* Vote accept or reject on NNS Motion
+* Participate in technical discussions as the motion moves forward
+```
+
+#### Send proposal via dfx
+
+Below is an example structure of sending an NNS motion proposal with placeholders `$TITLE`, `$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID`. These are not variables and you need to replace them with real values directly within the command:
+
+`rrkah-fqaaa-aaaaa-aaaaq-cai` is the ID of the governance canister on the NNS so this command is sending a message to the `manage_neuron` method of the governance canister of the NNS.
+
+```
+dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron '(record {id = null; command=opt variant {MakeProposal=record {url=""; title=opt "$TITLE";action=opt variant {Motion=record {motion_text="$MOTION_TEXT"}}; summary="
+
+$SUMMARY
+
+"}}; neuron_id_or_subaccount=opt variant {NeuronId=record {id=$NEURON_ID:nat64}}})'
+```
+
+Below is an example NNS motion proposal with`$TITLE`,`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID` filled out:
+
+```
+dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron '(record {id = null; command=opt variant {MakeProposal=record {url=""; title="Open Governance canister for SNS | Design proposal";action=opt variant {Motion=record {motion_text="Present design proposal for Open Governance canister"}}; summary="
+
+## Objective
+
+Service nervous systems (SNSes) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
+
+## Background
+
+### Relation to the original SNS design & overall approach
+DFINITY Foundation presented a first proposed [SNS design](https://www.youtube.com/watch?v=L4443aaAP5A) in October 2021.
+
+## Community conversation & Timeline
+The NNS team is ready to work on this feature!
+To get the design approved by the community, the following schedule was followed:
+
+* Jan 11-18th: Design discussion on the forum thread
+* Jan 18th: Community conversation about the topic
+* Jan 20th: Developer discussion on Discord
+* today: motion proposal submission proposing the above design
+
+## What is asked of the community:
+
+* Vote accept or reject on NNS Motion
+* Participate in technical discussions as the motion moves forward
+
+"}}; neuron_id_or_subaccount=opt variant {NeuronId=record {id=9218890096040352708:nat64}}})'
+```
+
+#### Check dashboard to see proposal was successful
+
+If successful, `dfx` will return an output such as:
+
+```
+(
+  record {
+    2_171_433_291 = opt variant {
+      3_217_030_240 = record {
+        2_744_746_248 = opt record { 23_515 = 42_626 : nat64 };
+      }
+    };
+  },
+)
+```
+
+In this example, `42_626` (or rather `42626`) is the ID of the proposal. Your proposal will have a different ID.
+
+You will be able to see the proposal at the URL `https://dashboard.internetcomputer.org/proposal/42626`.
+
+### Best practices for motion proposals
+
+#### Writing the proposal
+
+The proposal can accept any free form text. Below is a recommended starting template for anyone starting to think about how to write one:
+
+```
+# Example Motion Project Proposal
+
+## 1. Objective
+Lorem Ipsum
+
+## 2. Background
+Lorem Ipsum
+
+## 3. Why this is important
+Lorem Ipsum
+
+## 4. Pros
+Lorem Ipsum
+
+## 5. Cons
+Lorem Ipsum
+
+## 6. Key milestones (if any)
+Lorem Ipsum
+
+## 7. Discussion leads (if any)
+Alice, Bob, etc...
+
+## 8. Security concerns (if any)
+Lorem Ipsum
+
+## 11. What is asked of the community
+
+* Review comments, ask questions, give feedback
+
+* Vote accept or reject on NNS Motion
+
+Developer forum: https://forum.dfinity.org/t/long-term-r-d-tokenomics-proposal/9392/3
+```
+
+#### Communicating the proposal
+
+Once the proposal is live, it will be open to voting for 4 days, and if there is a lot of contesting of votes, that deadline will be automatically extended up to an additional 4 days.
+
+Proposals typically require significant communication and promotion (like in any organization) to make sure enough people vote for it. It is very common for proposals to be promoted 'before' submission so its intended voters are aware of it.

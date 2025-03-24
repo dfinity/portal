@@ -65,7 +65,7 @@ const airtablePlugin = async function () {
           );
           const mockEvents = require("./data/airtable-events-mock.json");
           const mockCourses = require("./data/airtable-courses-mock.json");
-          
+
           cache = {
             events: mockEvents,
             courses: mockCourses,
@@ -156,22 +156,30 @@ async function fetchAirtableRecords({ apiKey, baseId, tableName, viewId }) {
 }
 
 async function processEventsData(records) {
-  records = await Promise.all(records.map(async (record) => {
-    const parsedRecord = parseAirtableData(record);
-    
-    let imageUrl = await fetchShareImage(parsedRecord.eventLink);
-    
-    // If no share image is found, use a default image
-    if (!imageUrl) {
-      imageUrl = getDefaultEventImage(parsedRecord);
-    }
-    
-    return { ...parsedRecord, imageUrl };
-  }));
-
-  const endDatecutoff = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
+  const endDateCutoff = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
+
+  const today = new Date().toISOString().split("T")[0];
+
+  records = await Promise.all(
+    records.map(async (record) => {
+      const parsedRecord = parseAirtableData(record);
+
+      // Only fetch share image for current/future events
+      let imageUrl = null;
+      if (parsedRecord.endDate >= today) {
+        imageUrl = await fetchShareImage(parsedRecord.eventLink);
+      }
+
+      // If no share image is found, use a default image
+      if (!imageUrl) {
+        imageUrl = getDefaultEventImage(parsedRecord);
+      }
+
+      return { ...parsedRecord, imageUrl };
+    })
+  );
 
   records = records.filter((rec) => {
     if (!rec.startDate || new Date(rec.startDate) == "Invalid Date") {
@@ -184,7 +192,7 @@ async function processEventsData(records) {
       return false;
     }
 
-    if (rec.endDate < endDatecutoff) {
+    if (rec.endDate < endDateCutoff) {
       // old event
       return false;
     }
@@ -252,19 +260,19 @@ async function processEventsData(records) {
 }
 
 async function fetchShareImage(url) {
-  if (!url || url === '#') return null;
+  if (!url || url === "#") return null;
 
   try {
     const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
-    
-    let imageUrl = $('meta[property="og:image"]').attr('content');
-    
+
+    let imageUrl = $('meta[property="og:image"]').attr("content");
+
     if (!imageUrl) {
-      imageUrl = $('meta[name="twitter:image"]').attr('content');
+      imageUrl = $('meta[name="twitter:image"]').attr("content");
     }
-    
+
     return imageUrl;
   } catch (error) {
     console.warn(`Failed to fetch share image from ${url}: ${error.message}`);
@@ -272,25 +280,23 @@ async function fetchShareImage(url) {
   }
 }
 
-
 function getDefaultEventImage(event) {
   const defaultImages = [
-    '/img/events/event-01.webp',
-    '/img/events/event-02.webp',
-    '/img/events/event-03.webp',
-    '/img/events/event-04.webp',
-    '/img/events/event-05.webp',
-    '/img/events/event-06.webp',
-    '/img/events/event-07.webp',
-    '/img/events/event-08.webp',
-    '/img/events/event-09.webp',
-    '/img/events/event-10.webp',
-    '/img/events/event-11.webp',
-    '/img/events/event-12.webp',
-    '/img/events/event-13.webp',
-    '/img/events/event-14.webp',
-    '/img/events/event-15.webp',
-
+    "/img/events/event-01.webp",
+    "/img/events/event-02.webp",
+    "/img/events/event-03.webp",
+    "/img/events/event-04.webp",
+    "/img/events/event-05.webp",
+    "/img/events/event-06.webp",
+    "/img/events/event-07.webp",
+    "/img/events/event-08.webp",
+    "/img/events/event-09.webp",
+    "/img/events/event-10.webp",
+    "/img/events/event-11.webp",
+    "/img/events/event-12.webp",
+    "/img/events/event-13.webp",
+    "/img/events/event-14.webp",
+    "/img/events/event-15.webp",
   ];
 
   const index = parseInt(event.id, 36) % defaultImages.length;
@@ -507,6 +513,7 @@ function parseAirtableData(record) {
     websiteCategory: record.fields["Website Category"],
     mode: record.fields["Mode"],
     status: record.fields["Status"],
+    featured: record.fields["Featured on Event Website"] || false,
   };
 }
 

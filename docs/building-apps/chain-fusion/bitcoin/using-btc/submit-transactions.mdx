@@ -1,0 +1,56 @@
+---
+keywords: [advanced, bitcoin, btc, tutorial, submit transactions]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Submitting transactions
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
+
+To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method.
+
+:::info
+
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local replica with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+:::
+
+The following snippet shows how to send a signed transaction to the Bitcoin network:
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L76-L86
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L78-L94
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+## Resources
+
+- [Basic Bitcoin example dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+
+- [Motoko Bitcoin integration algorithms](https://github.com/tgalal/motoko-bitcoin/tree/10cf7f2efbba9bb4d077013db1b990143f193844).
+
+- [Basic Bitcoin example dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).

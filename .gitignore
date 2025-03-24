@@ -29,3 +29,5 @@ stats.py
 unlighthouse.config.ts
 # Local Netlify folder
 .netlify
+/roadmap/roadmap.json
+/roadmap/roadmap.d.ts

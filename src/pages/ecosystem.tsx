@@ -1,26 +1,38 @@
-import Layout from "@theme/Layout";
+import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
 import React, { useEffect, useRef } from "react";
 
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import Download from "../components/Common/Icons/Download";
+import DownloadFile from "@site/plugins/utils/download-file";
+import GithubIcon from "@site/static/img/svgIcons/github.svg";
+import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import { useInView } from "react-intersection-observer";
-import showcaseData from "../../showcase.json";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
-import Tooltip from "../components/Common/Tooltip";
 import { ShowcaseProject } from "../components/ShowcasePage/ShowcaseProject";
+import Tooltip from "../components/Common/Tooltip";
+import TwitterIcon from "@site/static/img/svgIcons/twitter.svg";
+import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
+import clsx from "clsx";
+import showcaseData from "../../showcase.json";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import { useInView } from "react-intersection-observer";
 import { useQueryParam } from "../utils/use-query-param";
 
-import GithubIcon from "@site/static/img/svgIcons/github.svg";
-import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
-import TwitterIcon from "@site/static/img/svgIcons/twitter.svg";
-import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
-import DownloadFile from "@site/plugins/utils/download-file";
-import Download from "../components/Common/Icons/Download";
-
 type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
+
+const tagsNavigation = [
+  'Chain Fusion',
+  'DeFi',
+  'Bitcoin',
+  'Wallet',
+  'AI',
+  'Gaming',
+  'Creator Economy',
+  'Enterprise',
+  'Analytics',
+  'Tools / Infrastructure',
+];
 
 function sortDesktopProjects(
   projects: ShowcaseProject[]
@@ -288,24 +300,23 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
 };
 
 const projects = showcaseData as ShowcaseProject[];
+const reducedTags = projects.reduce((tags, p) => {
+  if (p.tags) {
+    for (const tag of p.tags) {
+      tags[tag] = (tags[tag] || 0) + 1;
+    }
+  }
+  if (p.usesInternetIdentity) {
+    tags["Internet Identity"] = (tags["Internet Identity"] || 0) + 1;
+  }
+  return tags;
+}, {} as Record<string, number>);
 const tags = Object.entries(
-  projects.reduce((tags, p) => {
-    if (p.tags) {
-      for (const tag of p.tags) {
-        tags[tag] = (tags[tag] || 0) + 1;
-      }
-    }
-    if (p.usesInternetIdentity) {
-      tags["Internet Identity"] = (tags["Internet Identity"] || 0) + 1;
-    }
-    return tags;
-  }, {} as Record<string, number>)
+  reducedTags
 )
-  .map(([tag, count]): [string, number] =>
-    tag === "Chainfusion" ? ["Chain Fusion", count] : [tag, count]
-  )
+  .filter(([tag]) => tagsNavigation.includes(tag))
   .sort((a, b) => {
-    const priorityOrder = ["AI", "Chain Fusion", "Bitcoin", "Ethereum"];
+    const priorityOrder = tagsNavigation;
     const indexA = priorityOrder.indexOf(a[0]);
     const indexB = priorityOrder.indexOf(b[0]);
 

@@ -165,9 +165,11 @@ function GlobalEventsPage() {
               bg-[linear-gradient(0deg,#F1EEF5_0%,#F1EEF5_50%,transparent_50%,transparent_100%)]
             "
             >
-              <div className="container-10">
-                <FeaturedCard event={featuredEvent}></FeaturedCard>
-              </div>
+              {featuredEvent && (
+                <div className="container-10">
+                  <FeaturedCard event={featuredEvent}></FeaturedCard>
+                </div>
+              )}
             </div>
           </section>
         </AnimateSpawn>

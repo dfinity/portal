@@ -107,7 +107,7 @@ const Drawer: React.FC<{
   return (
     <div className="">
       {alwaysOpen ? (
-        <div className="text-black tw-heading-5">{title}</div>
+        <></>
       ) : (
         <button
           className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
@@ -159,7 +159,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
   }, [isActive]);
 
   return (
-    <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+    <div className="absolute z-[1000] top-[4.84rem] left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
       <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
         <div className="flex-1 flex">
           {item.sections.length > 1 && (
@@ -467,7 +467,7 @@ const MarketingNav = () => {
             {/* Back button + close button */}
             <div className="flex items-center justify-between">
               <button
-                className="flex items-center gap-6 tw-heading-7 font-circular bg-transparent p-0 text-left border-none text-black"
+                className="flex items-center gap-6 tw-heading-5 font-circular bg-transparent p-0 text-left border-none text-black"
                 onClick={() => setSecondaryMobileNavOpen(false)}
               >
                 <LinkArrowLeft />
@@ -476,7 +476,7 @@ const MarketingNav = () => {
               <CloseButton onClick={closeNav} className="-mr-2" />
             </div>
 
-            <ul className="list-none p-0 flex flex-col gap-6 mt-8 pb-10 mb-0">
+            <ul className="list-none p-0 flex flex-col gap-6 pb-10 mb-0">
               {nav.mainItems[secondaryMobileNavOpen].sections.map(
                 (item, index) => (
                   <li className="p-0" key={item.name}>

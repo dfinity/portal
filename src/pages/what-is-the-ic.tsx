@@ -134,17 +134,7 @@ function WhatIsIcpPage() {
                   Smart contracts on the ICP blockchain can utilize hundreds of
                   gigabytes of memory and compute at the full speed of a modern
                   CPU, which is many orders of magnitude more than Ethereum
-                  smart contracts. For example, the high performance of ICP
-                  smart contracts enables the
-                  <Link
-                    className="link-white"
-                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM"
-                  >
-                    {" "}
-                    demo of an AI inference model running on an ICP smart
-                    contract
-                  </Link>
-                  , which is uniquely possible on ICP.
+                  smart contracts. For example, the Internet Computer is able to run AI models as tamperproof smart contracts, a unique and game-changing advance for decentralized networks and crypto generally.
                 </p>
 
                 <Link
@@ -169,10 +159,7 @@ function WhatIsIcpPage() {
                   Efficiency comparable to traditional IT
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  ICP uses advanced science and technology to host smart
-                  contract software (network-resident blockchain code) that is
-                  millions of times more efficient – enabling it to replace
-                  traditional IT.
+                  ICP uses advanced science and technology to make smart contracts (a new kind of tamperproof and unstoppable network-resident software that blockchains can host) millions of times more efficient – enabling it to be used as an alternative to software running on traditional IT.
                 </p>
 
                 <Link
@@ -183,7 +170,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/developer-docs/cost-estimations-and-examples"
+                  href="/docs/building-apps/essentials/cost-estimations-and-examples"
                 >
                   <DocsIcon /> Learn more about ICP costs
                 </Link>
@@ -194,16 +181,10 @@ function WhatIsIcpPage() {
                 reverse={false}
               >
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  ICP-hosted smart contracts serve web experiences directly to
-                  users
+                  ICP smart contracts can serve web experiences directly to users
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  ICP smart contracts process HTTP, and users interact with them
-                  directly via web experiences they create. Reverse-gas and
-                  secure session technology allows them to function as backend
-                  code, unleashing blockchain in a public cloud role, delivering
-                  end-to-end decentralization and security. The Internet
-                  Computer makes the 'onchain is the new online' paradigm real.
+                  ICP smart contracts process HTTP, and interact with users directly via web experiences they create. Because they pay for their own computation (using a "reverse-gas" model), they can stay in the background in the mode of backend code. This is key to allowing advanced blockchain to play the role of a public serverless cloud, delivering end-to-end decentralization and security. The Internet Computer is the ultimate expression of the "onchain is the new online" paradigm.
                 </p>
 
                 <Link
@@ -214,7 +195,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
+                  href="/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
                 >
                   <DocsIcon /> Deploying your first full-stack dapp
                 </Link>
@@ -236,7 +217,7 @@ function WhatIsIcpPage() {
                   Additionally, the{" "}
                   <Link
                     className="link-white"
-                    href="/docs/current/developer-docs/defi/exchange-rate-canister/"
+                    href="/docs/references/system-canisters/index"
                   >
                     exchange rate canister
                   </Link>{" "}
@@ -258,7 +239,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/references/t-sigs-how-it-works"
+                  href="/docs/references/t-sigs-how-it-works"
                 >
                   <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
                   ICP contracts threshold signing
@@ -269,29 +250,21 @@ function WhatIsIcpPage() {
                 reverse={false}
               >
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  Developer Empowerment
+                  Developer Power-up
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Developers can create truly onchain apps on the Internet
-                  Computer, and place them under the full control of
-                  decentralized governance in an advancement of the open source
-                  paradigm. Moreover, any programming language that can be
-                  compiled to WebAssembly can be used, including Rust,
-                  TypeScript, Python and Motoko, a revolutionary DSL that
-                  leverages the full power of a new 'orthogonal persistence'
-                  paradigm where data lives inside programming abstractions such
-                  as variables and data types.
+                  Developers build within a serverless environment, using any programming language that can compile to Wasm (WebAssembly) byte code. Popular languages include Rust, Motoko and Python. Apps are built using "actor" software units that run in parallel. These run within their own persistent memory pages, creating a system of "orthogonal persistence," where data persists automatically inside developers' abstractions, essentially making logic and data one. ICP provides a modern, next-generation programming environment like none other, which is also internet native.
                 </p>
                 <Link
                   className="button-outline-white text-center mb-6 md:mb-8"
-                  href="/docs/current/developer-docs/getting-started/hello-world"
+                  href="https://icp.ninja"
                 >
-                  Start building
+                  INSTANT WEB IDE
                 </Link>{" "}
                 <br />
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/home"
+                  href="/docs/home"
                 >
                   <DocsIcon /> Developer documentation
                 </Link>
@@ -514,7 +487,7 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Smart contracts serve web assets{" "}
+                  Smart contracts serve web{" "}
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   Users can interact with smart contracts through a standard
@@ -571,7 +544,7 @@ function WhatIsIcpPage() {
             <CardWithDescription
               title="Developer docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="ICP dapps"

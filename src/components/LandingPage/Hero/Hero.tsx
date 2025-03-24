@@ -1,17 +1,18 @@
-import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
-import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
-import transitions from "@site/static/transitions.json";
+import { EthEquivalentTxRate, TotalBlocks } from "./Stats";
+import { QueryClient, QueryClientProvider } from "react-query";
 import React, { useRef } from "react";
+
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import HomeAnimation from "./HomeAnimation";
-import { EthEquivalentTxRate, TotalBlocks } from "./Stats";
-
-import { QueryClient, QueryClientProvider } from "react-query";
 import Link from "@docusaurus/Link";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import TwitterIcon from "../../Common/Icons/TwitterIcon";
+import transitions from "@site/static/transitions.json";
+import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
+import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
+
 const queryClient = new QueryClient();
 
 const Hero: React.FC<{
@@ -57,14 +58,11 @@ const Hero: React.FC<{
                 Applications are immune to cyber attacks and unstoppable,
                 capable of processing tokens, and can run under exclusive DAO
                 control. Build web3 social media, games, DeFi, multi-chain apps,
-                secure front-ends, ledgers, enterprise apps, and AI models. The
-                internet is evolving fast.
+                secure front-ends, ledgers, enterprise apps, and AI models.
+                TCP/IP connected software. ICP hosts software.
               </p>
-              <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
-                <Link
-                  className={"button-white w-max"}
-                  href="/docs/current/home"
-                >
+              <div className="flex flex-row flex-wrap gap-8 mt-8 md:mt-6 items-center">
+                <Link className={"button-white w-max"} href="/docs/home">
                   DEVELOP
                 </Link>
                 <Link
@@ -73,11 +71,12 @@ const Hero: React.FC<{
                 >
                   <LinkArrowRight /> <span>What is ICP</span>
                 </Link>
+
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8"
+                  href="/library"
                 >
-                  <span>Read the ICP Deck</span> <LinkArrowUpRight />
+                  <LinkArrowRight /> <span>Guides, decks and papers</span>
                 </Link>
               </div>
             </div>

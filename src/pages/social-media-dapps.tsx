@@ -392,7 +392,7 @@ function SocialMediaDappsPage() {
                     </li>
                   </ul>
                   <p>
-                    <Link className="link-external" href="/developers">
+                    <Link className="link-external" href="/docs/home">
                       Start coding
                     </Link>
                   </p>
@@ -509,12 +509,12 @@ function SocialMediaDappsPage() {
             <CardWithDescription
               title="Quick start"
               description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
-              href="/docs/current/tutorials/developer-journey/"
+              href="/docs/tutorials/developer-liftoff/"
             ></CardWithDescription>
             <CardWithDescription
               title="Developer docs"
               description="Get to know the Internet Computer and how to build on it."
-              href="/developers"
+              href="/docs/home"
               className="md:col-span-2"
             ></CardWithDescription>
           </AnimateSpawn>

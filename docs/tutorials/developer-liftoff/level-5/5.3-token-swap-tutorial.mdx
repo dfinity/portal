@@ -1,0 +1,396 @@
+---
+keywords: [advanced, tutorial, developer liftoff, token swap, decentralized exchange, icrc tokens, icrc1, icrc2, tokens, swapping tokens, swap icrc tokens]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+
+
+# 5.3 Creating a decentralized token swap
+
+<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/T-TA2llyZxs?si=YttMiRBjQ_AUWwhp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+ICP enables decentralized finance (DeFi) applications through its design that includes complex, onchain computation. One primary example of a DeFi application is a decentralized exchange (DEX). A DEX can be used to buy, sell, trade, and withdraw cryptocurrencies and other digital assets without a centralized authority that authorizes the trades.
+
+## Decentralized token swap canister
+
+In this tutorial, you'll deploy a simple token swap canister that demonstrates the core functionalities that a DEX provides:
+
+- Deposit tokens: Deposit tokens into the canister to be swapped for another token.
+
+- Swap tokens: Swap tokens for other tokens, using a simple 1:1 swap ratio to demonstrate basic functionality.
+
+- Withdraw tokens: After tokens have been swapped, they can be withdrawn from the canister.
+
+Once a user has deposited funds, the tokens deposited can be swapped from one token to another. A trading pair is a set of two assets that can be traded with each other on an exchange. A token swap consists of two tuple values that represent the trading pair, such as [Token1, amount1] and [Token2, amount2].
+
+In this example, the token swap canister simply swaps all deposits for two users. `user_a`'s entire token balance of `token_a` is given to `user_b`, and `user_b`'s entire token balance of `token_b` is given to `user_a`.
+
+This example will use ICRC-2 tokens. To learn more about ICRC tokens, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
+### Cloning the `icrc2-swap` example
+
+To get started, open a new terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to clone the DFINITY examples repo and navigate into the `icrc2-swap` directory:
+
+```bash
+git clone https://github.com/dfinity/examples/
+cd examples/motoko/icrc2-swap
+```
+
+### Reviewing the project's files
+
+In this project, there are two Motoko files in the `src/swap` subdirectory:
+
+- `main.mo`: The token swap canister's source code.
+
+- `ICRC.mo`: Defines an `ICRC` module containing types that are imported into the `main.mo` file.
+
+This project also includes a `test` subdirectory containing TypeScript files that can be used to test the token swap canister's functionality.
+
+Then, open the project's `dfx.json` file to review the project's canisters and configuration:
+
+```json title="dfx.json" file=../../../../submodules/samples/motoko/icrc2-swap/dfx.json
+
+```
+
+In this project's configuration, you can see the definition of three canisters:
+
+- The `swap` canister: This canister provides the deposit, swap, and withdraw functionality for the project's ICRC-2 tokens. It uses the source code found at `src/swap/main.mo`.
+
+- The `token_a` canister: This canister is used to create `token_a`, an ICRC-2 token. This canister uses the most recent ICRC ledger Wasm and Candid files. To learn more about the ICRC Wasm and Candid files, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+
+- The `token_b` canister: The canister is used to create `token_b`, an ICRC-2 token. This canister uses the most recent ICRC ledger Wasm and Candid files. To learn more about the ICRC Wasm and Candid files, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+
+Next, open the `src/swap/main.mo` file and review its contents. This code has been annotated with notes to explain the program's functionality:
+
+```motoko title="src/swap/main.mo" file=../../../../submodules/samples/motoko/icrc2-swap/src/swap/main.mo
+
+```
+
+Next, open the `ICRC.mo` file and review its contents. This file defines several types that are imported in the `main.mo` file:
+
+```motoko no-repl title="src/swap/ICRC.mo" file=../../../../submodules/samples/motoko/icrc2-swap/src/swap/ICRC.mo
+
+```
+
+### Creating identities for `user_a` and `user_b`:
+
+Create new local identities for `user_a` and `user_b` that will be used for the token swap:
+
+```bash
+dfx identity new user_a
+dfx identity new user_b
+```
+
+Then, save the principals for these identities as environmental variables to reference later:
+
+```bash
+export USER_A=$(dfx identity get-principal --identity user_a)
+export USER_B=$(dfx identity get-principal --identity user_b)
+```
+
+Next, switch to your DevLiftoff identity and save its principal as the environmental variable `OWNER`:
+
+```bash
+dfx identity use DevLiftoff
+export OWNER=$(dfx identity get-principal)
+```
+
+### Deploying token_a
+
+Next, deploy `token_a` by deploying the `token_a` canister and passing a series of arguments to the canister to create the token:
+
+```bash
+dfx start --clean --background
+dfx deploy token_a --argument '
+  (variant {
+    Init = record {
+      token_name = "Token A";
+      token_symbol = "A";
+      minting_account = record {
+        owner = principal "'${OWNER}'";
+      };
+      initial_balances = vec {
+        record {
+          record {
+            owner = principal "'${USER_A}'";
+          };
+          100_000_000_000;
+        };
+      };
+      metadata = vec {};
+      transfer_fee = 10_000;
+      archive_options = record {
+        trigger_threshold = 2000;
+        num_blocks_to_archive = 1000;
+        controller_id = principal "'${OWNER}'";
+      };
+      feature_flags = opt record {
+        icrc2 = true;
+      };
+    }
+  })
+'
+```
+
+In this command, `token_a` is created with the following configuration:
+
+- `token_name`: Defines the token's name as 'Token A.'
+- `token_symbol`: Defines the token's symbol as 'A.'
+- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevLiftoff identity.
+- `initial_balances`: Defines the initial balance of tokens as '100_000_000_000'.
+    - `owner`: Defines the owner of the initial token balance (100_000_000_000) as the `USER_A` environmental variable. This variable holds the principal of the user_a identity.
+- `transfer_fee`: Defines the transfer fee as '10_000'.
+- `trigger_threshold`: Defines the trigger threshold as '2000'.
+- `num_blocks_to_archive`: Defines the number of blocks to archive as '1_000'
+- `controller_id`: Defines the controller ID as the `OWNER` environmental variable.
+- `feature_flags`: Defines a feature flag.
+    - `icrc2`: Set as 'true' to define the token using the ICRC-2 standard.
+
+### Deploying token_b
+
+Next, deploy `token_b` by deploying the `token_b` canister and passing a series of arguments to the canister to create the token:
+
+```bash
+dfx deploy token_b --argument '
+  (variant {
+    Init = record {
+      token_name = "Token B";
+      token_symbol = "B";
+      minting_account = record {
+        owner = principal "'${OWNER}'";
+      };
+      initial_balances = vec {
+        record {
+          record {
+            owner = principal "'${USER_B}'";
+          };
+          100_000_000_000;
+        };
+      };
+      metadata = vec {};
+      transfer_fee = 10_000;
+      archive_options = record {
+        trigger_threshold = 2000;
+        num_blocks_to_archive = 1000;
+        controller_id = principal "'${OWNER}'";
+      };
+      feature_flags = opt record {
+        icrc2 = true;
+      };
+    }
+  })
+'
+```
+
+In this command, `token_b` is created with the following configuration:
+
+- `token_name`: Defines the token's name as 'Token B.'
+- `token_symbol`: Defines the token's symbol as 'B.'
+- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevLiftoff identity.
+- `initial_balances`: Defines the initial balance of tokens as '100_000_000_000'.
+    - `owner`: Defines the owner of the initial token balance (100_000_000_000) as the `USER_B` environmental variable. This variable holds the principal of the user_a identity.
+- `transfer_fee`: Defines the transfer fee as '10_000'.
+- `trigger_threshold`: Defines the trigger threshold as '2000'.
+- `num_blocks_to_archive`: Defines the number of blocks to archive as '1_000.'
+- `controller_id`: Defines the controller ID as the `OWNER` environmental variable.
+- `feature_flags`: Defines a feature flag.
+    - `icrc2`: Set as 'true' to define the token using the ICRC-2 standard.
+
+
+### Exporting the token canister IDs as environmental variables
+
+Next, export the token canister IDs as environmental variables:
+
+```bash
+export TOKEN_A=$(dfx canister id token_a)
+export TOKEN_B=$(dfx canister id token_b)
+```
+
+### Deploying the swap canister
+
+Then it's time to deploy the swap canister. Use the following command, which passes the canister IDs for the token canisters as arguments to the swap canister:
+
+```bash
+dfx deploy swap --argument '
+  record {
+    token_a = (principal "'${TOKEN_A}'");
+    token_b = (principal "'${TOKEN_B}'");
+  }
+'
+```
+
+Then, export the canister ID of the swap canister as an environmental variable:
+
+```bash
+export SWAP=$(dfx canister id swap)
+```
+
+### Depositing tokens into the swap canister
+
+Before tokens can be swapped, they must be transferred into the swap canister. Since the tokens in this example use ICRC-2 tokens, this is a two-step process. First, the transfer must be approved. In this example, approve `user_a` to deposit 1.00000000 of `token_a`, and include 0.0001 extra for the transfer fee:
+
+```bash
+dfx canister call --identity user_a token_a icrc2_approve '
+  record {
+    amount = 100_010_000;
+    spender = record {
+      owner = principal "'${SWAP}'";
+    };
+  }
+'
+```
+
+This command should return the following output:
+
+```bash
+(variant { Ok = 1 : nat })
+```
+
+Then, approve `user_b` to deposit 1.00000000 of `token_b`, and include 0.0001 extra for the transfer fee:
+
+```bash
+dfx canister call --identity user_b token_b icrc2_approve '
+  record {
+    amount = 100_010_000;
+    spender = record {
+      owner = principal "'${SWAP}'";
+    };
+  }
+'
+```
+
+This command should return the following output:
+
+```bash
+(variant { Ok = 1 : nat })
+```
+
+Now, you can call the swap canister's deposit method. This method performs the actual token transfer, moving the tokens from the user's wallets into the swap canister. First, deposit `user_a`'s tokens:
+
+```bash
+dfx canister call --identity user_a swap deposit 'record {
+  token = principal "'${TOKEN_A}'";
+  from = record {
+    owner = principal "'${USER_A}'";
+  };
+  amount = 100_000_000;
+}'
+```
+
+Then, deposit `user_b`'s tokens:
+
+```bash
+dfx canister call --identity user_b swap deposit 'record {
+  token = principal "'${TOKEN_B}'";
+  from = record {
+    owner = principal "'${USER_B}'";
+  };
+  amount = 100_000_000;
+}'
+```
+
+### Performing a token swap
+
+Now that both users have deposited their tokens into the swap canister, a token swap can be performed by calling the swap canister's `swap` method:
+
+```bash
+dfx canister call swap swap 'record {
+  user_a = principal "'${USER_A}'";
+  user_b = principal "'${USER_B}'";
+}'
+```
+
+Then, check the balances for each user to confirm that `user_b` holds `token_a`, and `user_a` holds `token_b`:
+
+```bash
+dfx canister call swap balances
+```
+
+The output of this command will resemble the following:
+
+```bash
+(
+  vec {
+    record {
+      principal "3lk6x-5zgc5-jpteg-rvtcd-tukj2-agopr-y5nkn-5ovbc-ru3jm-6zrnr-qqe";
+      100_000_000 : nat;
+    };
+  },
+  vec {
+    record {
+      principal "7nxst-xuaqc-zaq33-5gohe-npp7h-zvrn5-od3zi-b277f-s65tc-jegzq-eqe";
+      100_000_000 : nat;
+    };
+  },
+)
+```
+
+### Withdrawing tokens
+
+Now that the swap has been completed, the users can withdraw their newly received tokens out of the swap canister. First, withdraw `user_a`'s balance of 1.00000000 `token_b` tokens, minus the 0.0001 transfer fee:
+
+```bash
+dfx canister call --identity user_a swap withdraw 'record {
+  token = principal "'${TOKEN_B}'";
+  to = record {
+    owner = principal "'${USER_A}'";
+  };
+  amount = 99_990_000;
+}'
+```
+
+Then, withdraw `user_b`'s balance of 1.00000000 `token_a` tokens, minus the 0.0001 transfer fee:
+
+```bash
+dfx canister call --identity user_b swap withdraw 'record {
+  token = principal "'${TOKEN_A}'";
+  to = record {
+    owner = principal "'${USER_B}'";
+  };
+  amount = 99_990_000;
+}'
+```
+
+### Checking token balances
+
+To confirm everything worked as expected, check the token balance for each user. First, check `user_a`'s balance of `token_a`. This user should have 998.99980000 A:
+
+```bash
+dfx canister call token_a icrc1_balance_of 'record {
+  owner = principal "'${USER_A}'";
+}'
+```
+
+Then, check `user_b`'s balance of `token_b`. This user should have 998.99980000 B:
+
+```bash
+dfx canister call token_b icrc1_balance_of 'record {
+  owner = principal "'${USER_B}'";
+}'
+```
+
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

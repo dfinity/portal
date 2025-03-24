@@ -1,0 +1,413 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, unit testing, e2e testing, integration testing, pocketic, pocket ic, light replica, using pocket ic, how to pocketic]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 2.5 Unit, integration, and end-to-end testing
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/ndUqdwdtBhQ?si=hB8Thi_tMVJC0CIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+Testing code is an important stage of any development workflow. Without proper testing before the code is put into production, bugs and errors that may have been caught during testing can be detrimental to production environments.
+
+There are three primary types of testing:
+
+- **Unit testing:** Tests individual functions and calculations to ensure that they generate data or return the expected result; tests a single *unit* at a time.
+
+- **Integration testing:** Tests several functions, calculations, and portions of the code together; tests how different parts *integrate* with one another. A common form of integration testing is known as *continuous integration* testing, or CI testing.
+
+- **End-to-end (e2e) testing:** Tests the dapp's complete workflow, including buttons, forms, and frontend assets; tests the dapp from *end to end*.
+
+## Motoko unit testing
+
+The Motoko base library contains a series of test files that can be used for unit testing, including tests for individual types, such as `Text`, `Array`, `Func`, etc. [Check out the full library of test files](https://github.com/dfinity/motoko-base/tree/master/test).
+
+Many of these test files import a library called Motoko Matchers, which contains several packages that can be imported and used to provide testing functionalities.
+
+Let's take a look at a simple unit test. This will test the program's error messages:
+
+```motoko no-repl
+import M "mo:matchers/Matchers";
+import T "mo:matchers/Testable";
+import Suite "mo:matchers/Suite";
+
+let suite = Suite.suite("My test suite", [
+    Suite.suite("Nat tests", [
+        Suite.test("10 is 10", 10, M.equals(T.nat(10))),
+        Suite.test("5 is greater than three", 5, M.greaterThan<Nat>(3)),
+    ])
+]);
+Suite.run(suite);
+```
+
+This unit test does the following:
+
+- First, it imports the `Suite`, `Testable`, and `Matchers` packages from the Motoko Matchers project.
+
+    - `Suite` is a package that defines a simple test runner.
+
+    - `Testable` is a package that provides functionality for units to be compared in a test.
+
+    - `Matchers` is a package that provides functionality for composable assertions that can be used in tests.
+
+- Then, it defines a `Suite`, which is used to build a tree of tests to be run.
+
+- In the suite, 2 tests are defined. One tests if the `Nat` value `10` is equal to `10`. The second tests if the `Nat` value of `5` is greater than `3`.
+
+- Lastly, the suite is run with the line `Suite.run(suite)`.
+
+### Canister unit testing
+Motoko Matchers also contains a `Canister` package that can be used to execute unit tests for canisters. Below is an example:
+
+```motoko no-repl
+import Canister "canister:CanisterName";
+import C "mo:matchers/Canister";
+import M "mo:matchers/Matchers";
+import T "mo:matchers/Testable";
+
+actor {
+    let it = C.Tester({ batchSize = 8 });
+    public shared func test() : async Text {
+        it.should("greet me", func () : async C.TestResult = async {
+          let greeting = await Canister.greet("Bob");
+          M.attempt(greeting, M.equals(T.text("Hello, Bob!")))
+        });
+        it.shouldFailTo("greet my friend", func () : async () = async {
+          let greeting = await Canister.greet("George");
+          ignore greeting
+        });
+        await it.runAll()
+        // await it.run()
+    }
+}
+```
+
+This unit test does the following:
+
+- First, it imports a <GlossaryTooltip>canister</GlossaryTooltip> called `CanisterName`. This allows the result of functions within the canister to be tested.
+
+- Then, it imports the `Canister`, `Testable`, and `Matchers` packages from the Motoko Matchers project.
+
+- A `batchSize` is defined; this determines how many times the test will be run.
+
+- Two tests are defined. Both test the result of the canister's `greet` function:
+
+    - The first tests if the canister's greeting function is passed the text 'Bob,' does the result text equal 'Hello, Bob!'?
+
+    - The second tests if the greeting doesn't greet 'Bob' and instead greets 'George,' the greeting should be ignored.
+
+- Then, it runs all tests in the batch, indicated by the `runAll()` call.
+
+Want to look at a more complex, running example? You can take a look at the unit tests that are used in the [invoice canister example](https://github.com/dfinity/invoice-canister/tree/main/test).
+
+Want to learn more about running large, long-running batches of tests? Take a look at the [Motoko BigTest library.](https://github.com/matthewhammer/motoko-bigtest)
+
+## Tests using PocketIC
+
+PocketIC provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP <GlossaryTooltip>replica</GlossaryTooltip>. An example test with PocketIC might look like:
+
+```python
+from pocket_ic import PocketIC
+
+pic = PocketIC()
+canister_id = pic.create_canister()
+
+# use PocketIC to interact with your canisters
+pic.add_cycles(canister_id, 1_000_000)
+response = pic.update_call(canister_id, method="greeting", ...)
+assert(response == 'Hello, PocketIC!')
+```
+
+[Learn more about PocketIC](https://github.com/dfinity/pocketic-py#readme).
+
+## Tests using Light Replica
+
+Light Replica is a community-developed project designed to provide a local testing and development environment similar to Ethereum's Truffle and Hardhat tools. Light Replica creates a local node designed to replicate the behavior of a real ICP node, but includes additional logging and functions to assist with testing. Using this local node, any Wasm file can be tested and interacted with as if it were deployed on a live production node. The Light Replica's codebase includes tests primarily written in Rust and Typescript. It can be beneficial as a tool for Rust development testing, but can be used with any canister that has been compiled into a Wasm file.
+
+[Learn more about Light Replica](https://github.com/icopen/lightic/tree/main).
+
+## End-to-end (e2e) testing
+
+Now, let's take a look at creating a project and setting up end-to-end (e2e) testing.
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
+### Creating a new project
+
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
+
+```
+dfx start --clean --background
+dfx new e2e_tests --type=motoko --no-frontend
+cd e2e_tests
+```
+
+### Setting up the project
+
+Next, install `vitest` and `isomorphic-fetch` with the command:
+
+```bash
+npm install --save-dev vitest isomorphic-fetch
+```
+
+Then, open your `package.json` file and insert `"test": "vitest"` in the `scripts` category, such as:
+
+```json title="package.json"
+...
+  "scripts": {
+    "build": "webpack",
+    "prebuild": "dfx generate",
+    "start": "webpack serve --mode development --env development",
+    "deploy:local": "dfx deploy --network=local",
+    "generate": "dfx generate e2e_tests_backend",
+    "test": "vitest"
+  },
+...
+```
+
+:::info
+Need the full `package.json` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
+:::
+
+Now let's create a folder to contain the test files. It is a common practice to store them in the `./src/tests/` folder of your project, so let's create that folder with the command:
+
+```bash
+mkdir src/tests/
+```
+
+### Creating an agent
+
+:::caution
+You'll be diving a bit into using an **agent** in this portion of the tutorial. This series has briefly mentioned agents, but hasn't fully explored them yet. This series will cover agents in a future tutorial, but for now, it is important to know that an agent is a library used to make calls to ICP public interfaces. You'll be using it to communicate the canister's public methods, defined in the `declarations/e2e_tests_backend/e2e_tests_backend.did.js`, to the file containing the code for the tests.
+:::
+
+Now, you'll create an **agent** that uses the generated declarations files to interact with the backend canister's methods. This file will be called `actor.js`.
+
+Create a new file in `src/tests/` called `actor.js`, then insert the following content:
+
+```js title="src/tests/actor.js"
+import { Actor, HttpAgent } from "@dfinity/agent";
+import fetch from "isomorphic-fetch";
+import canisterIds from ".dfx/local/canister_ids.json";
+import { idlFactory } from "../declarations/e2e_tests_backend/e2e_tests_backend.did.js";
+
+export const createActor = async (canisterId, options) => {
+  const agent = new HttpAgent({ ...options?.agentOptions });
+  await agent.fetchRootKey();
+
+  // Creates an actor using the candid interface and the HttpAgent
+  return Actor.createActor(idlFactory, {
+    agent,
+    canisterId,
+    ...options?.actorOptions,
+  });
+};
+
+export const e2e_tests_backendCanister = canisterIds.e2e_tests_backend.local;
+
+export const e2e_tests_backend = await createActor(e2e_tests_backendCanister, {
+  agentOptions: { host: "http://127.0.0.1:4943", fetch },
+});
+```
+
+This agent file does the following:
+
+- Sets up file handlers by reading the canister IDs from their associated JSON file.
+
+- Fetches the root key since you are testing locally.
+
+- Imports the Candid service descriptions from the declarations file (`../declarations/e2e_tests_backend/e2e_tests_backend.did.js`).
+
+- Creates a default actor.
+
+:::caution
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since it poses severe security concerns for the dapp making the call.
+
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
+
+It is recommended to put this behind a condition so that it only runs locally.
+:::
+
+### Creating a test file
+
+Create a new file in `src/tests/` called `e2e_tests_backend.test.ts`, then insert the following content:
+
+```ts title="src/tests/e2e_tests_backend.test.ts"
+import { expect, test } from "vitest";
+import { Actor, CanisterStatus, HttpAgent } from "@dfinity/agent";
+import { Principal } from "@dfinity/principal";
+import { e2e_tests_backendCanister, e2e_tests_backend } from "./actor";
+
+test("should handle a basic greeting", async () => {
+  const result1 = await e2e_tests_backend.greet("test");
+  expect(result1).toBe("Hello, test!");
+});
+```
+
+In this test file, the following happens:
+
+- The necessary packages are imported.
+
+- The necessary agent functionalities are imported from the `actor.js` file.
+
+- A test method is defined that accepts two arguments: a test name and a function.
+
+- Inside the test method, `expect` is used to check the result of the `greet` function against the expected result.
+
+### Running a basic test
+
+Next let's deploy the canister and run the e2e test with the commands:
+
+```bash
+dfx deploy
+npm test
+```
+
+The test should be successful and return output such as:
+
+```bash
+ ✓ src/tests/e2e_tests_backend.test.ts (1)
+   ✓ should handle a basic greeting
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  16:24:03
+   Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+
+### Running a complex test
+
+Now let's create a more complex test that checks the canister's metadata using the `CanisterStatus` API. Insert the following code at the end of the `src/tests/e2e_tests_backend.test.ts` file:
+
+```ts title="src/tests/e2e_tests_backend.test.ts"
+test("Should contain a candid interface", async () => {
+  const agent = Actor.agentOf(e2e_tests_backend) as HttpAgent;
+  const id = Principal.from(e2e_tests_backendCanister);
+
+  const canisterStatus = await CanisterStatus.request({
+    canisterId: id,
+    agent,
+    paths: ["time", "controllers", "candid"],
+  });
+
+  expect(canisterStatus.get("time")).toBeTruthy();
+  expect(Array.isArray(canisterStatus.get("controllers"))).toBeTruthy();
+  expect(canisterStatus.get("candid")).toMatchInlineSnapshot(`
+    "service : {
+      greet: (text) -> (text) query;
+    }
+    "
+  `);
+});
+```
+
+:::info
+Need the full `src/tests/e2e_tests_backend.test.ts` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
+:::
+
+This test simply checks that our canister's metadata contains a Candid interface.
+
+Then, run the test again with the `npm test` command. This time, the output should reflect 2 successful tests:
+
+```bash
+ ✓ src/tests/e2e_tests_backend.test.ts (2)
+   ✓ should handle a basic greeting
+   ✓ Should contain a candid interface
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  16:27:26
+   Duration  247ms (transform 32ms, setup 0ms, collect 66ms, tests 62ms, environment 0ms, prepare 39ms)
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+
+## Integration testing
+
+CI testing is a common automated testing workflow. One example of CI testing is done through GitHub, where a repository can be configured to run a test every time a change is pushed to the repository's code.
+
+Before you upload your code to GitHub, first edit the `package.json` file. In the `scripts` section of this file, add the following lines:
+
+```json title="package.json"
+"ci": "vitest run",
+"preci": "dfx stop; dfx start --clean --background; dfx deploy"
+```
+
+This tells the code to automatically start `dfx` and deploy the project's canisters before running the test. Then, add a GitHub workflow configuration. To do this, create a `.github` folder with a `workflows` subfolder in your project with the command:
+
+```bash
+mkdir .github
+mkdir .github/workflows
+```
+
+Create a new file `.github/workflows/e2e.yml`, then insert the following content into this file:
+
+```yml title=".github/workflows/e2e.yml"
+name: End to End
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04]
+        ghc: ['8.8.4']
+        spec:
+          - '0.16.1'
+        node:
+          - 16
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: npm install
+
+      - run: echo y | sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+
+      - run: npm run ci
+        env:
+          CI: true
+          REPLICA_PORT: 8000
+```
+
+To learn more about Github workflows, check out the [Github documentation](https://docs.github.com/en/actions/using-workflows).
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

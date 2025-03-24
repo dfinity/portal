@@ -480,7 +480,7 @@ function SnsPage() {
             <CardWithDescription
               title="Launch an SNS DAO"
               description=""
-              href="/docs/current/developer-docs/daos/sns"
+              href="/docs/building-apps/governing-apps/overview"
             />
             <CardWithDescription
               title="FAQ: How to join and participate in an SNS DAO"

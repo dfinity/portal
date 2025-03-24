@@ -1,0 +1,21 @@
+name: Tag Docs PRs
+on:
+  pull_request:
+    paths:
+      - docs/building-apps/**
+      - docs/defi/**
+      - docs/tutorials/**
+
+jobs:
+  docs-tag:
+    name: Tag PR with documentation
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Tag PR with documentation
+      run: |
+        gh pr edit ${{ github.event.pull_request.number }} --add-label documentation
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

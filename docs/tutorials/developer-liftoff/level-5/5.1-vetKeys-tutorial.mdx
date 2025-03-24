@@ -1,0 +1,396 @@
+---
+keywords: [advanced, tutorial, developer liftoff, vetkeys, vetkd, what are vet keys, encrypted data, using encrypted data, what is vetkd]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+
+
+# 5.1 Developing an encrypted notes dapp with vetKeys
+
+<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/9xfl8Lln3_s?si=2Fv9-3vvVt6Efk8K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+Many types of applications rely on secure ways to store user data and keep certain aspects of the dapp private. On a blockchain, transactions are traditionally public, and dapps might rely on the storage within a web browser to store user-side secrets, which can lead to potential security risks.
+
+The vetKeys feature provides developers with more enhanced privacy, encryption, threshold decryption, and security capabilities for their projects and dapps. The goal of vetKeys is to allow developers to retrieve encrypted information from external locations and share it with different users in a private and secure manner.
+
+In this tutorial, you'll learn about how vetKeys enables different workflows and use cases for decentralized applications on ICP, and then you'll create a dapp that uses vetKeys to provide a secure, encrypted note-taking application.
+
+:::caution
+The vetKeys feature is still in development, and the proposed system API can be [reviewed in the proposed PR](https://github.com/dfinity/interface-spec/pull/158).
+:::
+
+## What are vetKeys?
+
+vetKeys stands for Verifiably Encrypted Threshold Keys and enables several cryptographic functionalities on ICP. The feature focuses on facilitating encryption, data privacy, and security. From a high level, the main objective of vetKeys is to provide a threshold key derivation interface, to allow canisters to obtain encrypted threshold signatures, and to allow for symmetric encryption for public key or identity-based encryption.
+
+To understand vetKeys, first let's cover a few fundamental cryptography concepts and some of their disadvantages that vetKeys strives to solve.
+
+### Crypto primitives
+
+In cryptography, most tools are built from crypto _primitives_. Crypto primitives are core building blocks that can be used with their existing functionality, or they can be used to build other, more complex cryptographic protocols or tools. Some examples of crypto primitives are block ciphers such as [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), hash functions such as [SHA3](https://en.wikipedia.org/wiki/SHA-3), or signature schemes such as [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm).
+
+The vetKeys feature introduces a new primitive, vetKD, which extends the functionality of a primitive known as identity-based encryption (IBE). vetKD, or Verifiably Encrypted Threshold Key Derivation, allows encrypted data's decryption keys to be derived on demand.
+
+### Public key encryption (PKE)
+
+Public key encryption is a commonly used form of encryption that allows for data to be communicated confidentially over a public channel by encrypting the data messages. For example, if User 1 wants to send an encrypted message to User 2, a PKE scheme might follow these steps:
+
+- User 2 can generate a public and private key pair using a key generation algorithm.
+
+- User 2 publishes their public key online, such as within a public key infrastructure.
+
+- User 1 can retrieve User 2's public key, then use it to encrypt a plaintext message to User 2 using an encryption algorithm. This will result in a ciphertext, which is the encrypted plaintext of the message after it is processed with an encryption algorithm. User 1 then can send the ciphertext to User 2.
+
+- User 2 can decrypt the ciphertext using their private key and a decryption algorithm. This will result in the decrypted, plaintext message.
+
+Since the standard practice of PKE involves storing a public key on a trusted public key infrastructure and securely managing the secret key, PKE can get complicated and difficult quickly, resulting in developers being discouraged from using cryptography in their applications. vetKeys strives to make this aspect of cryptography easier for developers.
+
+### Identity-based encryption (IBE)
+
+Identity-based encryption addresses some of the pitfalls of PKE, as it allows an arbitrary identifier string (or identity) to be used as a public key that is used to derive the private key. To compare IBE to PKE, consider the following scenario:
+
+- In an IBE scheme, there must be a trusted key deriver (KD) that is used to run the IBE key generation algorithm and generate the master key pair that contains the private and public key based on the identity provided.
+
+- Then, User 1 can run the IBE encryption algorithm to encrypt a plaintext message to User 2 under User 2's identity. This results in a ciphertext, which is then sent to User 2.
+
+- User 2 authenticates to the KD with their identity and requests the private key that corresponds to their identity.
+
+- The KD returns User 2's private key to them.
+
+- User 2 uses their private key to decrypt the ciphertext sent from User 1. This will result in the decrypted, plaintext message.
+
+An important note about IBE is that it requires a central authority (the KD) to derive the decryption key. This is problematic for working with decentralized technologies that do not want to place trust in a central authority. This is another pitfall that vetKeys strives to address.
+
+### vetKD
+
+Within vetKeys, the core piece is the key derivation primitive, or vetKD. The key derivation capabilities provided by vetKD are designed to provide key derivation without relying on a central authority by distributing the trust amongst multiple parties, then requiring that a minimum threshold of all parties collaborate to derive the private key. To do this, first a [distributed key generation (DKG)](https://en.wikipedia.org/wiki/Distributed_key_generation) protocol is used to create master keys in a distributed way, resulting in multiple parties (e.g., nodes in a network) holding shares of the master keys. Later, when a user wants to derive a decryption key (or vetKey) based on their identity, a threshold of nodes derives the user's vetKey from the user's identity and the shares of the master key they hold.
+
+To further understand vetKD, consider the following scenario on ICP:
+
+- Nodes within the network participate in the DKG process to obtain shares of a master secret key and a master public key. Each node may hold a number of key shares, but no node may hold the majority amount of key shares.
+
+- User 1 encrypts a message under User 2's identity and the master public key. The resulting ciphertext is sent to User 2.
+
+- When User 2 wants to decrypt the message, they must authenticate their identity to ICP to retrieve their vetKey to decrypt the ciphertext sent by User 1. They start by using a transport key generation (TKG) algorithm to generate a transport public and private key pair. User 2 then sends the transport public key along with their request to authenticate their identity and derive a vetKey. The transport public key gives the network a way to send User 2 encrypted responses. This is the 'E' in vetKD.
+
+- If User 2's identity authentication passes, the nodes use the DKG algorithm to derive User 2's vetKey using the node's master key shares, then encrypt them using User 2's transport public key. Anyone can use an encryption key share (EKS) verification algorithm to verify that the encrypted key shares contain a legitimate decryption share. This is the 'V' in vetKD. The network's nodes can also combine the encrypted shares to produce the full vetKey for the identity.
+
+- Finally, a recovery algorithm enables User 2 to decrypt the response with their transport private key, which reveals the vetKey corresponding to their identity. User 2 can now decrypt the message sent by User 1.
+
+A crucial point to note is that this allows users to retrieve decryption keys (or vetKeys) from any device, at any time, overcoming one of the core pain points of public key encryption. vetKeys are made possible by leveraging the extremely useful properties of BLS signatures.
+
+### BLS signatures
+
+[BLS signatures](https://en.wikipedia.org/wiki/BLS_digital_signature) are a type of digital signature introduced in 2001. The name BLS comes from the authors of the signature, Dan Boneh, Ben Lynn, and Hovav Shacham. Threshold BLS signatures are widely used across the Internet Computer because they are short, unique, easy to port into a distributed setting, and are fast to compute.
+
+BLS signatures use three algorithms:
+
+- A key generation algorithm that may be distributed or not.
+
+- A signing algorithm.
+
+- A verification algorithm.
+
+In a threshold setting, BLS signatures include a fourth, combination algorithm.
+
+To demonstrate how BLS signatures are used on ICP, consider the following scenario that ICP might use to validate that a message sent to an end-user (User 1) has been sent from ICP:
+
+- Nodes on the network participate in the distributed key generation (DKG) process and obtain private key shares.
+
+- Each node computes a signature share for a message using its share of the signing key.
+
+- The nodes use the combination algorithm to combine the signature shares and produce a single signature that's sent to User 1.
+
+- User 1 uses the verification algorithm to check whether the signature that was sent uses the public key of the Internet Computer, validating that it was signed by the nodes on ICP.
+
+In the scenario of vetKD, the master key of the IBE scheme uses a BLS signature key secret that is shared amongst the nodes. The derived identity is threshold signed, resulting in a signature that acts as a symmetric encryption key.
+
+Each of these components of vetKeys are described further in the [vetKeys primer](https://internetcomputer.org/blog/features/vetkey-primer).
+
+## vetKeys example dapp
+
+In this example, you'll create a dapp that allows you to create notes and encrypt them using vetKeys. The notes will be encrypted with an AES key that is derived from a principal-specific vetKey that the backend canister will obtain using the vetKD system API. This prevents the need for any device management within the dapp.
+
+:::caution
+This example uses an insecure implementation of the proposed vetKD system API. This should not be used in production or for encrypting any sensitive data; this example is for demonstration purposes only.
+:::
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
+### Cloning the `encrypted-notes-dapp-vetkd` example
+
+To get started, open a new terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to clone the DFINITY examples repo and navigate into the `encrypted-notes-dapp-vetkd` directory:
+
+```bash
+git clone https://github.com/dfinity/examples/
+cd examples/motoko/encrypted-notes-dapp-vetkd
+```
+
+### Setting up the project
+
+Since you'll be using the Motoko variation of this project, you will need to set a `$BUILD_END` local environment variable to equal `motoko`:
+
+```bash
+export BUILD_ENV=motoko
+```
+
+Next, run the `pre_deploy.sh` script, which will generate some files specific to the build environment; in this case, these will be files for the Motoko variation:
+
+```bash
+sh ./pre_deploy.sh
+```
+
+Install the project's required npm packages with the command:
+
+```bash
+npm install
+```
+
+### Reviewing the project's files
+
+
+First, start by opening the project's `dfx.json` file to review the project's canisters and configuration:
+
+```json file=../../../../submodules/samples/motoko/encrypted-notes-dapp-vetkd/dfx.json.template
+```
+
+Here, you can see there are five canisters defined:
+
+- `vetkd_system_api`: This canister is responsible for providing the vetKD system API that our dapp will use. It is built from local Candid and Wasm files.
+
+- `encrypted_notes_motoko`: This canister is responsible for the dapp's backend functionality, written in Motoko. This is the backend canister your dapp will use since this tutorial focuses on Motoko development.
+
+- `encrypted_notes_rust`: This canister is responsible for the dapp's backend functionality, written in Rust. This canister will not be deployed in this tutorial, since this tutorial showcases the Motoko development workflow.
+
+- `www`: This canister is responsible for providing the dapp's frontend user interface that you'll use to create encrypted notes from a web browser.
+
+- `internet_identity`: This canister is a local instance of the Internet Identity canister and is built from the Candid and Wasm files from the latest DFINITY Internet Identity release.
+
+You can also see the defined local network, which uses the local address and port `0.0.0.0:8000`. This is the local network that your canisters will be deployed to.
+
+Next, review the `src/encrypted_notes_motoko/main.mo` file, which contains the core functionality for our dapp. This code has been annotated with notes to explain the program's functionality:
+
+:::info
+It is important to note that this backend canister does *not* perform any encryption, since it assumes that the notes are encrypted end-to-end by the front end (at the client side).
+:::
+
+```motoko no-repl title="src/encrypted_notes_motoko/main.mo" file=../../../../submodules/samples/motoko/encrypted-notes-dapp-vetkd/src/encrypted_notes_motoko/main.mo
+
+```
+
+This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/building-apps/frontends/using-an-asset-canister).
+
+### Starting a local replica
+
+Before you can deploy the project's canisters, you'll need to ensure that a local replica is running with the command:
+
+```bash
+dfx start --clean --background
+```
+
+:::info
+If you see the error:
+
+`Error: An error happened during communication with the replica: error sending request for url (http://0.0.0.0:8000/api/v2/status): error trying to connect: tcp connect error: Connection refused (os error 61)`
+
+This error indicates that the port 8000 is occupied. This is because this project's `dfx.json` file is configured to use `0.0.0.0:8000` as the local network for canister deployment.
+
+To resolve this error, ensure that port 8000 is not occupied.
+:::
+
+### Deploying the Internet Identity canister
+
+Next, you'll need to deploy a local instance of the Internet Identity canister. The encrypted notes dapp uses Internet Identity to log in to the dapp. To install and deploy the canister, run the command:
+
+```bash
+dfx deploy internet_identity --argument '(null)'
+```
+
+This canister is defined in the project's `dfx.json` file using the following Candid and Wasm files, which are pulled from the given URLs when the `dfx deploy` command is used:
+
+```json title="dfx.json"
+    "internet_identity": {
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "type": "custom",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+    }
+```
+
+Once the canister is deployed, the canister's local URL will be returned. You can also print this URL with the command:
+
+```bash
+npm run print-dfx-ii
+```
+
+<details>
+<summary>Output</summary>
+
+```bash
+> encrypted-notes-dapp@0.2.0 print-dfx-ii
+> echo local Internet Identity: http://$(dfx canister id internet_identity).localhost:8000
+
+local Internet Identity: http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:8000
+```
+
+</details>
+
+Navigate to this URL in a web browser and create at least one local Internet Identity that you will use with the encrypted notes dapp.
+
+Need a reminder on how to create an Internet Identity? Review the [3.5 Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth) level of the Developer Liftoff.
+
+### Deploying the vetKD system API canister
+
+Next, you will need to install and deploy the vetKD system API canister. For this canister, you want to ensure that `dfx` uses the hard-coded canister ID `s55qq-oqaaa-aaaaa-aaakq-cai` that is included in the backend canister's source code. To ensure that `dfx` uses this canister ID, create and deploy the vetKD system API canister with the command:
+
+```bash
+dfx canister create vetkd_system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
+dfx deploy vetkd_system_api
+```
+
+Remember that this canister is created from a local pre-compiled Wasm file, as defined in the project's `dfx.json` file:
+
+```json title="dfx.json"
+    "vetkd_system_api": {
+      "candid": "vetkd_system_api.did",
+      "type": "custom",
+      "wasm": "vetkd_system_api.wasm"
+    },
+```
+
+This canister provides the following system API that the dapp will use:
+
+```
+  vetkd_public_key : (record {
+    canister_id : opt canister_id;
+    derivation_path : vec blob;
+    key_id : record { curve : vetkd_curve; name : text };
+  }) -> (record { public_key : blob; });
+  vetkd_encrypted_key : (record {
+    public_key_derivation_path : vec blob;
+    derivation_id : blob;
+    key_id : record { curve : vetkd_curve; name : text };
+    encryption_public_key : blob;
+  }) -> (record { encrypted_key : blob; });
+```
+
+You can learn more about the [vetKD API](https://github.com/dfinity/interface-spec/pull/158).
+
+:::caution
+This feature is in development and should not be used in production environments at this time.
+:::
+
+### Deploying the encrypted notes backend canister
+
+Now that your Internet Identity and vetKD system API canisters are running, you can deploy the encrypted notes backend canister using the command:
+
+```bash
+dfx deploy "encrypted_notes_$BUILD_ENV"
+```
+
+
+### Updating the generated canister interface bindings
+
+After deploying the backend canister, you must update the generated canister interface bindings with the command:
+
+```bash
+dfx generate "encrypted_notes_$BUILD_ENV"
+```
+
+### Deploying the frontend canister
+
+Deploy the frontend canister with the command:
+
+```bash
+dfx deploy www
+```
+
+This command will return the following output, indicating that the project's four canisters have been deployed:
+
+```bash
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    www: http://0.0.0.0:8000/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai
+  Backend canister via Candid interface:
+    encryptedNotes_motoko: http://0.0.0.0:8000/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=be2us-64aaa-aaaaa-qaabq-cai
+    internet_identity: http://0.0.0.0:8000/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    vetkd_system_api: http://0.0.0.0:8000/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
+```
+
+
+### Starting the local development server
+
+Now that your project's canisters are running, to interact with the dapp you need to start a local development server using the command:
+
+```bash
+npm run dev
+```
+
+Then, open the URL that is returned from this command. By default, this URL should be http://localhost:3000/.
+
+### Using the dapp
+
+When you open the URL `http://localhost:3000`, you will see the landing page for the 'Encrypted Notes' dapp.
+
+![Encrypted notes 1](../_attachments/notes-vetkd-0.png)
+
+Select the 'Please log in to start writing notes' button to authenticate with your Internet Identity.
+
+![Encrypted notes 2](../_attachments/notes-vetkd-1.png)
+
+Then, select your local Internet Identity to authenticate with.
+
+![Encrypted notes 3](../_attachments/notes-vetkd-2.png)
+
+Once logged in, you'll see the Encrypted Notes dashboard. You will see the option to create a new note and the option to see existing notes under 'Your notes' on the left sidebar menu.
+
+![Encrypted notes 4](../_attachments/notes-vetkd-3.png)
+
+To test the dapp, enter some text in the 'New note' box, then select 'Add note.'
+
+![Encrypted notes 5](../_attachments/notes-vetkd-4.png)
+
+Then, you can see the note has been saved in the 'Your notes' section:
+
+![Encrypted notes 6](../_attachments/notes-vetkd-5.png)
+
+
+## Resources
+
+- [vetKeys documentation](/docs/building-apps/network-features/encryption/vetkeys).
+
+- [vetKeys technology overview](/docs/references/vetkeys-overview).
+
+- [vetKeys example](/docs/building-apps/network-features/encryption/using-vetkeys).
+
+- [vetKeys discussion forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
+
+- [The first Community Conversation](https://youtu.be/baM6jHnmMq8).
+
+- [vetKeys primer blog post](https://internetcomputer.org/blog/features/vetkey-primer).
+
+- [vetKeys research paper](https://eprint.iacr.org/2023/616.pdf).
+
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

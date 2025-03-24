@@ -1,0 +1,1636 @@
+---
+keywords: [intermediate, rosetta, tutorial, data api, fetch network info, fetch balances, fetch transactions, fetch blocks]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# ICRC Rosetta data API reference
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
+
+The following data can be fetched from the data API endpoints for the ICRC Rosetta implementation:
+
+- [Network](#fetch-network-options): Fetch network-specific information, such as the most recent block and what network Rosetta is connected to.
+
+- [Balances](#fetch-account-balances): Fetch the balance of an `account_identifier`.
+
+- [Blocks](#fetch-blocks): Fetch blocks from the ICRC-1 ledger.
+
+- [Transactions](#fetch-block-transactions): Fetch transactions from the ICRC-1 ledger.
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
+<div>
+</div>
+<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
+
+</TabItem>
+</Tabs>
+
+## Fetch account balances
+
+The `account_balance` endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard.
+
+Make sure to use the correct `network_identifier`. For this example, an arbitrary `account_identifier` with the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` and the default subaccount `0000000000000000000000000000000000000000000000000000000000000000` was used.
+
+### Example
+```json
+curl --location '0.0.0.0:8082/account/balance'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "account_identifier": {
+        "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+        "sub_account": {
+            "address": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+    }
+}'
+```
+
+The response will give you the balance of the `account_identifier` at the most recent block.
+
+```bash
+{
+    "block_identifier": {
+        "index": 1357692,
+        "hash": "5f1719c97f981f663f5ca612a24a503734eb87d5fbfc295193ab4a29ae139f3f"
+    },
+    "balances": [
+        {
+            "value": "134469737",
+            "currency": {
+                "symbol": "ckBTC",
+                "decimals": 8
+            }
+        }
+    ]
+}
+```
+
+
+## Fetch blocks
+
+The `block` endpoint allows you to fetch blocks at a certain block height. It is the implementation of the [/block endpoint](https://docs.cdp.coinbase.com/mesh/reference/block) of the Rosetta API standard.
+
+
+
+Make sure to use the correct `network_identifier`. For this example the following arbitrary `block_identifier` is used:
+
+```bash
+"block_identifier": {
+        "index": 1357691,
+        "hash": "0415ed9ea78fed787e125179c99a7d0e599ee6e4cb0d610eed2c791e6e3f5e19"
+    }
+```
+
+The `block_identifier` required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash, or both. For example, you can select a transaction of interest in the [ckBTC dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. The following example only provides the index, but you are free to use the full `block_identifier` or only the hash.
+
+:::caution
+If you are connecting to a different ICRC-1 ledger other than the ckBTC ledger, you cannot use the index and hash from the ckBTC ledger.
+:::
+
+### Example
+The request will resemble the following:
+
+```json
+curl --location '0.0.0.0:8082/block'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "block_identifier": {
+        "index": 1357691
+    }
+}'
+```
+
+The response will give you the transaction within the block; in this case, it is a transfer between accounts. While the operation field shows you the basic information about the operation, the metadata of the transaction reveals information specific to ICRC-1 transactions, such as the `memo`, the `fee_collector_block_index`, and `created_at_time`. The operation name and metadata vary between operation types. It is recommended to try and fetch a block of interest and see how the metadata and operation are formed to acquire an understanding of how the ICRC Rosetta implementation parses the block information for various operation types.
+
+```bash
+{
+    "block": {
+        "block_identifier": {
+            "index": 1357691,
+            "hash": "0415ed9ea78fed787e125179c99a7d0e599ee6e4cb0d610eed2c791e6e3f5e19"
+        },
+        "parent_block_identifier": {
+            "index": 1357690,
+            "hash": "733a2ca495090d99c5e87898d16cc3903a351da436d57e795e01fcaeb37d3ddb"
+        },
+        "timestamp": 1712825491835,
+        "transactions": [
+            {
+                "transaction_identifier": {
+                    "hash": "700481a99b9a10cf4c4d037141ae5f1472fefe1f5be6b43d02577e398da4bdfe"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "lrf2i-zba54-pygwt-tbi75-zvlz4-7gfhh-ylcrq-2zh73-6brgn-45jy5-cae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "230407",
+                            "currency": {
+                                "symbol": "ckBTC",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "-230407",
+                            "currency": {
+                                "symbol": "ckBTC",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "-10",
+                            "currency": {
+                                "symbol": "ckBTC",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "memo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        249,
+                        198
+                    ]
+                }
+            }
+        ],
+        "metadata": {
+            "block_created_at_nano_seconds": 1712825491835944099,
+            "fee_collector_block_index": 39493
+        }
+    }
+}
+```
+
+### Querying block ranges
+One limitation of the `/block` endpoint is that you can only query one block at a time. Depending on your setup, this may be a bottleneck. To alleviate this issue, you can use the `/call` endpoint and parse the method name `query_block_range` to fetch up to 10_000 blocks at a time.
+
+An example call resembles the following:
+```json
+curl --location '0.0.0.0:8082/call'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "method_name": "query_block_range",
+    "parameters":{
+        "highest_block_index":1646155,
+        "number_of_blocks":2
+    }
+}'
+```
+
+The following parameters are used:
+
+- `number_of_blocks`: The amount of blocks you want to fetch. The maximum value for it is `10_000`.
+
+- `highest_block_index`: The block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index.
+If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks]` that have a block index that is smaller or equal to `X`.
+This means that Rosetta does not guarantee that all blocks that you asked for are present in the database, and it does not guarantee that the exact number of blocks you asked for will be returned.
+
+As a result of the call above, you will receive 2 blocks:
+```json
+{
+    "result": {
+        "blocks": [
+            {
+                "block_identifier": {
+                    "hash": "6ea4c7fb1e48342f1a0ea5b2de003968a5a36e541e450ff1602a4a474dc29174",
+                    "index": 1646154
+                },
+                "metadata": {
+                    "block_created_at_nano_seconds": 1720421067709600392,
+                    "fee_collector_block_index": 39493
+                },
+                "parent_block_identifier": {
+                    "hash": "dc94daf067417121d713787499acbf03d2e9a1be9397434b00ed8943f12157c7",
+                    "index": 1646153
+                },
+                "timestamp": 1720421067709,
+                "transactions": [
+                    {
+                        "metadata": {
+                            "memo": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                6,
+                                214
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "account": {
+                                    "address": "dwx4w-plydf-jxgs5-uncbu-mfyds-5vjzm-oohax-gmvja-cypv7-tmbt4-dqe",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "3739"
+                                },
+                                "operation_identifier": {
+                                    "index": 0
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "nm7k6-wyaaa-aaaag-qcasa-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-3739"
+                                },
+                                "operation_identifier": {
+                                    "index": 1
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "nm7k6-wyaaa-aaaag-qcasa-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-10"
+                                },
+                                "metadata": {
+                                    "fee_set_by": "User"
+                                },
+                                "operation_identifier": {
+                                    "index": 2
+                                },
+                                "status": null,
+                                "type": "FEE"
+                            }
+                        ],
+                        "transaction_identifier": {
+                            "hash": "ba6c39964c09fa25df5a8f913105dd3bca5906750df792abec3c2bf8ca5e7edb"
+                        }
+                    }
+                ]
+            },
+            {
+                "block_identifier": {
+                    "hash": "a32007da0adc180b437721d8b6d0ff641671a72a61518169bfec9f9999754731",
+                    "index": 1646155
+                },
+                "metadata": {
+                    "block_created_at_nano_seconds": 1720421077260937639,
+                    "fee_collector_block_index": 39493
+                },
+                "parent_block_identifier": {
+                    "hash": "6ea4c7fb1e48342f1a0ea5b2de003968a5a36e541e450ff1602a4a474dc29174",
+                    "index": 1646154
+                },
+                "timestamp": 1720421077260,
+                "transactions": [
+                    {
+                        "metadata": {
+                            "memo": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                2,
+                                42,
+                                160
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "account": {
+                                    "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "3719"
+                                },
+                                "operation_identifier": {
+                                    "index": 0
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "dwx4w-plydf-jxgs5-uncbu-mfyds-5vjzm-oohax-gmvja-cypv7-tmbt4-dqe",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-3719"
+                                },
+                                "operation_identifier": {
+                                    "index": 1
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "operation_identifier": {
+                                    "index": 2
+                                },
+                                "status": null,
+                                "type": "SPENDER"
+                            },
+                            {
+                                "account": {
+                                    "address": "dwx4w-plydf-jxgs5-uncbu-mfyds-5vjzm-oohax-gmvja-cypv7-tmbt4-dqe",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-10"
+                                },
+                                "metadata": {
+                                    "fee_set_by": "User"
+                                },
+                                "operation_identifier": {
+                                    "index": 3
+                                },
+                                "status": null,
+                                "type": "FEE"
+                            }
+                        ],
+                        "transaction_identifier": {
+                            "hash": "fc3ecc3d72c45e1e7b505c8cb2da0afc1beab9ca23e1873456af0accabd3ebf8"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "idempotent": true
+}
+```
+
+The field `idempotent` indicates whether the query you asked for will return the same result when fetched at a later point in time. This is always true if `highest_block_index` exists in the Rosetta database. Otherwise, it may be the case that at a later point in time, more blocks have been added to the database and can thus be returned as a result.
+
+## Fetch network information
+
+Most endpoints require some information about the network represented as a [`NetworkIdentifier`](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
+
+
+
+### Fetch network list
+The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the `NetworkIdentifier` you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check. You can fetch the endpoint using the following command:
+
+```json
+curl --location '0.0.0.0:8082/network/list' --header 'Content-Type: application/json' --data '{
+    "metadata": {}
+}'
+```
+
+The response will resemble the following:
+
+```bash
+{
+    "network_identifiers": [
+        {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+        }
+    ]
+}
+```
+This example is connected to the ckBTC ledger with the canister ID `mxzaz-hqaaa-aaaar-qaada-cai`.
+You can use this `network_identifier` with other endpoints, which will require you to provide it in the data section of your HTTPS call.
+
+## Fetch network options
+
+This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a `network_identifier`.
+
+```json
+curl --location '0.0.0.0:8082/network/options' --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "metadata": {}
+}'
+```
+
+The response will give you information on the error types, the supported operations, and metadata about the ICP Rosetta node you are running.
+
+```bash
+{
+    "version": {
+        "rosetta_version": "1.4.13",
+        "node_version": "1.0.0"
+    },
+    "allow": {
+        "operation_statuses": [
+            {
+                "status": "COMPLETED",
+                "successful": true
+            }
+        ],
+        "operation_types": [
+            "MINT",
+            "BURN",
+            "TRANSFER",
+            "SPENDER",
+            "APPROVE",
+            "FEE",
+            "FEE_COLLECTOR"
+        ],
+        "errors": [
+            {
+                "code": 1,
+                "message": "Invalid network identifier",
+                "description": "\"Invalid NetworkIdentifier. Expected Identifier: NetworkIdentifier { blockchain: \\\"Internet Computer\\\", network: \\\"mxzaz-hqaaa-aaaar-qaada-cai\\\", sub_network_identifier: None } \"",
+                "retriable": false
+            },
+            {
+                "code": 2,
+                "message": "Unable to find block",
+                "description": "\"Unable to find block\"",
+                "retriable": false
+            },
+            {
+                "code": 3,
+                "message": "Invalid block identifier provided",
+                "description": "\"Unable to find block\"",
+                "retriable": false
+            },
+            {
+                "code": 4,
+                "message": "Failed to build block response",
+                "description": "\"Faild to create a response for fetching blocks.\"",
+                "retriable": false
+            },
+            {
+                "code": 5,
+                "message": "Invalid transaction identifier provided",
+                "description": "Invalid transaction identifier provided.",
+                "retriable": false
+            },
+            {
+                "code": 6,
+                "message": "Mempool transaction not found",
+                "description": "Mempool transaction not found.",
+                "retriable": false
+            },
+            {
+                "code": 7,
+                "message": "Failed trying to parse types.",
+                "description": "\"Failed to parse in between types.\"",
+                "retriable": false
+            },
+            {
+                "code": 8,
+                "message": "The operation TRANSFER is not supported by ICRC Rosetta.",
+                "retriable": false
+            },
+            {
+                "code": 9,
+                "message": "Failed to communicate with the icrc1 ledger.",
+                "description": "\"Rosetta could not communicate with the ICRC-1 Ledger successfully.\"",
+                "retriable": false
+            },
+            {
+                "code": 13,
+                "message": "Unable to find account balance.",
+                "description": "\"The balance for the given account could not be fetched.\"",
+                "retriable": false
+            },
+            {
+                "code": 10,
+                "message": "Error while processing the request.",
+                "description": "\"The input of the user resulted in an error while trying to process the request.\"",
+                "retriable": false
+            },
+            {
+                "code": 11,
+                "message": "Processing of the construction request failed.",
+                "description": "\"An error while processing an construction api endpoint occured.\"",
+                "retriable": false
+            },
+            {
+                "code": 12,
+                "message": "Invalid metadata provided.",
+                "description": "\"The metadata provided by the user is invalid.\"",
+                "retriable": false
+            }
+        ],
+        "historical_balance_lookup": true,
+        "call_methods": [],
+        "balance_exemptions": [],
+        "mempool_coins": false
+    }
+}
+
+```
+
+### Fetch network status
+This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkstatus) returns the current status of the network requested.
+
+```json
+curl --location '0.0.0.0:8082/network/status'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "metadata": {}
+}'
+```
+
+The response gives you information about the genesis block and the tip of the chain. You can use this to fetch blocks from the ICRC Rosetta.
+
+``` bash
+{
+    "current_block_identifier": {
+        "index": 1357691,
+        "hash": "0415ed9ea78fed787e125179c99a7d0e599ee6e4cb0d610eed2c791e6e3f5e19"
+    },
+    "current_block_timestamp": 1712825491835,
+    "genesis_block_identifier": {
+        "index": 0,
+        "hash": "b0e8e9d676e9283877dc50db00cd41cf605568ce1f0a2126cda9dcc6562f3401"
+    },
+    "oldest_block_identifier": {
+        "index": 0,
+        "hash": "b0e8e9d676e9283877dc50db00cd41cf605568ce1f0a2126cda9dcc6562f3401"
+    },
+    "peers": []
+}
+```
+
+## Fetch block transactions
+
+There are two endpoints that allow for querying transactions.
+The `block_transaction` endpoint allows you to fetch a transaction at a certain block height. It is the implementation of the [/block/transaction endpoint](https://docs.cdp.coinbase.com/mesh/reference/blocktransaction) of the Rosetta API standard.
+The `search_transactions` endpoint allows you to query for transactions given a set of parameters. It is the implementation of the [/search/transactions endpoint](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/).
+:::info
+An ICRC-1 ledger block always contains exactly one transaction. The hash of the block as well as the index of the block is guaranteed to be unique, while the hash of the transaction is not.
+:::
+
+
+
+
+Make sure to use the correct `network_identifier`.
+
+### `block/transaction` endpoint
+
+For this example, the following arbitrary `block_identifier` and `transaction_identifier` are used:
+```bash
+"block_identifier": {
+        "index": 1357691,
+        "hash": "0415ed9ea78fed787e125179c99a7d0e599ee6e4cb0d610eed2c791e6e3f5e19"
+    }
+"transaction_identifier": {
+        "hash": "700481a99b9a10cf4c4d037141ae5f1472fefe1f5be6b43d02577e398da4bdfe"
+    }
+```
+
+An example request can be found below:
+
+```json
+curl --location '0.0.0.0:8082/block/transaction'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "block_identifier": {
+        "index": 1357691,
+        "hash": "0415ed9ea78fed787e125179c99a7d0e599ee6e4cb0d610eed2c791e6e3f5e19"
+    },
+    "transaction_identifier": {
+        "hash": "700481a99b9a10cf4c4d037141ae5f1472fefe1f5be6b43d02577e398da4bdfe"
+    }
+}'
+```
+
+The response is similar to that of the block endpoint, as there is only one transaction within a block. If you want to fetch multiple transactions at a time, you may want to have a look at the `/call` endpoint that allows you to query multiple blocks at a time.
+
+```json
+{
+    "transaction": {
+        "transaction_identifier": {
+            "hash": "700481a99b9a10cf4c4d037141ae5f1472fefe1f5be6b43d02577e398da4bdfe"
+        },
+        "operations": [
+            {
+                "operation_identifier": {
+                    "index": 3
+                },
+                "related_operations": [
+                    {
+                        "index": 4
+                    },
+                    {
+                        "index": 5
+                    }
+                ],
+                "type": "TRANSFER",
+                "status": "COMPLETED",
+                "account": {
+                    "address": "lrf2i-zba54-pygwt-tbi75-zvlz4-7gfhh-ylcrq-2zh73-6brgn-45jy5-cae",
+                    "sub_account": {
+                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                },
+                "amount": {
+                    "value": "230407",
+                    "currency": {
+                        "symbol": "ckBTC",
+                        "decimals": 8
+                    }
+                }
+            },
+            {
+                "operation_identifier": {
+                    "index": 4
+                },
+                "related_operations": [
+                    {
+                        "index": 3
+                    },
+                    {
+                        "index": 5
+                    }
+                ],
+                "type": "TRANSFER",
+                "status": "COMPLETED",
+                "account": {
+                    "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                    "sub_account": {
+                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                },
+                "amount": {
+                    "value": "-230407",
+                    "currency": {
+                        "symbol": "ckBTC",
+                        "decimals": 8
+                    }
+                }
+            },
+            {
+                "operation_identifier": {
+                    "index": 5
+                },
+                "related_operations": [
+                    {
+                        "index": 3
+                    },
+                    {
+                        "index": 4
+                    }
+                ],
+                "type": "FEE",
+                "status": "COMPLETED",
+                "account": {
+                    "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                    "sub_account": {
+                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                    }
+                },
+                "amount": {
+                    "value": "-10",
+                    "currency": {
+                        "symbol": "ckBTC",
+                        "decimals": 8
+                    }
+                },
+                "metadata": {
+                    "fee_set_by": "User"
+                }
+            }
+        ],
+        "metadata": {
+            "memo": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                249,
+                198
+            ]
+        }
+    }
+}
+```
+
+### `search/transactions` endpoint
+
+There are several parameters that can be used to query transactions. See the [full specification](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/) to see what query parameters can be used.
+
+For example, if you want to fetch all transactions in a given block (range of maximal 10000 blocks) where a specific account was involved, you can make a request to the `search/transactions` endpoint:
+
+```json
+curl --location '0.0.0.0:8081/search/transactions'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+        "blockchain": "Internet Computer",
+        "network":"2ouva-viaaa-aaaaq-aaamq-cai"
+    },
+     "account_identifier": {
+        "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+        "sub_account":{
+            "address": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+       }
+}'
+```
+
+The response lists all transactions where the given `account_identifier` was involved:
+
+```json
+{
+    "transactions": [
+        {
+            "block_identifier": {
+                "index": 327933,
+                "hash": "bfef612ec9c8734ea5ade23844c0e9299ba51bd588e07f87f4050b69cc05991c"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "a0739cfa2cd7fa64b9408805bac6e36ba8a02fcaf837b3a47a12a8651dec30ec"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "a2teg-wgpcc-sdxre-jeg7v-7cnsd-m773p-7fjwv-b26yv-vucfg-k2ge7-bae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "5736352790",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "-5736352790",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "created_at_time": 1716902391113000000
+                }
+            }
+        },
+        {
+            "block_identifier": {
+                "index": 327931,
+                "hash": "9fc7c296376b7d8479419dade3c9a6976a87c547dce4c530c1bb5937996567ee"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "1854ad9d8beb72950a01b06ca1625259f6f1f3eace8a40f179df77d26c9a27fd"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "5186652790",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "5207ef97240888864d78c5db1d97b304d6e6812d1092b028423407dd9fa983ae"
+                            }
+                        },
+                        "amount": {
+                            "value": "-5186652790",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "5207ef97240888864d78c5db1d97b304d6e6812d1092b028423407dd9fa983ae"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "memo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        102,
+                        85,
+                        217,
+                        237
+                    ]
+                }
+            }
+        },
+        {
+            "block_identifier": {
+                "index": 327928,
+                "hash": "f903a7074fa8bd95a8f19465aaa8d6768701b0374ccc0ec9557c3ab0fc74fe37"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "74288d7265c43b0b9c0d32a0e9d6c03bfc50bf6111b70f65122b6f42e427cdd3"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "dc69a3a296e3e031f660d310cb78448883a5b345bdc6a58243e9942e6c7c1b97"
+                            }
+                        },
+                        "amount": {
+                            "value": "-549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "dc69a3a296e3e031f660d310cb78448883a5b345bdc6a58243e9942e6c7c1b97"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "memo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        102,
+                        85,
+                        217,
+                        222
+                    ]
+                }
+            }
+        },
+        {
+            "block_identifier": {
+                "index": 167448,
+                "hash": "46573be9a81ac00e26703ba90610ab56a31af83cf99e5e1a3f6343e564e17052"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "4b88816bfdd9e9b88f8abd9412ad625b2488316b00080f5cd48fa26ece58ff78"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "shsif-nys7w-xmvyw-vdmdl-nogsj-3hua2-nnm4t-scrwf-7lc55-mxbgn-4ae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "1649300000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "-1649300000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "created_at_time": 1701791593105000000
+                }
+            }
+        },
+        {
+            "block_identifier": {
+                "index": 167447,
+                "hash": "e3b36a8f61437fb40a983b5e57cde1e325bfad3a83064949968000243bdf9eb0"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "f8a0dbd2a91390c68e0ab525863422616225c0fedcaa339db86f4448921cc083"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "52197d5faef60214d4b0f666842664a1306e6bf28296b65bed092d239b34ffb2"
+                            }
+                        },
+                        "amount": {
+                            "value": "-549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "52197d5faef60214d4b0f666842664a1306e6bf28296b65bed092d239b34ffb2"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "memo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        101,
+                        111,
+                        71,
+                        82
+                    ]
+                }
+            }
+        },
+        {
+            "block_identifier": {
+                "index": 167446,
+                "hash": "e65953a4204bd10b1304dac5db0943e5dc43d83af5986f1604987f61b77f4186"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "b09b6133fe6023e20aec81719f734123699e5663193cc0dd74f31935fd318fe0"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "5a1cb3b2b6c9e25e49f626bb94afd43fd0577648fa6c19d7f70b537fab6a68c4"
+                            }
+                        },
+                        "amount": {
+                            "value": "-549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "5a1cb3b2b6c9e25e49f626bb94afd43fd0577648fa6c19d7f70b537fab6a68c4"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "memo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        101,
+                        111,
+                        71,
+                        73
+                    ]
+                }
+            }
+        },
+        {
+            "block_identifier": {
+                "index": 167445,
+                "hash": "aefd96367e28aea604cffe115d483707a41524490c04e7fe6fe96171a37fe664"
+            },
+            "transaction": {
+                "transaction_identifier": {
+                    "hash": "738266fb1ecf7de8db9786df903c2689907274532f0b72997ecbd80b88a334c5"
+                },
+                "operations": [
+                    {
+                        "operation_identifier": {
+                            "index": 3
+                        },
+                        "related_operations": [
+                            {
+                                "index": 4
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "h2upz-svoky-hpfgf-lobao-afowo-h6xs6-4jhj5-26q3u-zimva-as2tg-dae",
+                            "sub_account": {
+                                "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                            }
+                        },
+                        "amount": {
+                            "value": "549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 4
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 5
+                            }
+                        ],
+                        "type": "TRANSFER",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "7fa327c3e414b4d700062f7eb68a1f69da1762f5c7f3496e76bc97dd3367b429"
+                            }
+                        },
+                        "amount": {
+                            "value": "-549800000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        }
+                    },
+                    {
+                        "operation_identifier": {
+                            "index": 5
+                        },
+                        "related_operations": [
+                            {
+                                "index": 3
+                            },
+                            {
+                                "index": 4
+                            }
+                        ],
+                        "type": "FEE",
+                        "status": "COMPLETED",
+                        "account": {
+                            "address": "2jvtu-yqaaa-aaaaq-aaama-cai",
+                            "sub_account": {
+                                "address": "7fa327c3e414b4d700062f7eb68a1f69da1762f5c7f3496e76bc97dd3367b429"
+                            }
+                        },
+                        "amount": {
+                            "value": "-100000",
+                            "currency": {
+                                "symbol": "CHAT",
+                                "decimals": 8
+                            }
+                        },
+                        "metadata": {
+                            "fee_set_by": "User"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "memo": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        101,
+                        111,
+                        71,
+                        64
+                    ]
+                }
+            }
+        }
+    ],
+    "total_count": 7
+}
+```

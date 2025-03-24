@@ -1,0 +1,137 @@
+---
+keywords: [advanced, dfx, init args, multi-canister init args, init arg file, init arg options]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Canister init arguments
+
+<MarkdownChipRow labels={["Intermediate", "dfx workflow"]} />
+
+When installing a canister's code, it may require Candid initialization arguments to be passed with the `dfx canister install` command. Initialization arguments are initial configuration parameters that the canister's installation expects in order to install the code correctly. One example of a canister that requires these Candid initialization arguments is the [ICP ledger canister](/docs/defi/token-ledgers/setup/icp_ledger_setup).
+
+## Using `init_arg`
+
+You can pass Candid initialization arguments to a canister through the CLI command:
+
+```
+dfx canister install canister_name --argument (...)
+```
+
+To use this command, you will need to construct the argument within the CLI, such as:
+
+```
+dfx canister install icp_ledger_canister --argument
+"
+  (variant {
+    Init = record {
+      minting_account = \"$MINTER_ACCOUNT_ID\";
+      initial_values = vec {
+        record {
+          \"$DEFAULT_ACCOUNT_ID\";
+          record {
+            e8s = 10_000_000_000 : nat64;
+          };
+        };
+      };
+      send_whitelist = vec {};
+      transfer_fee = opt record {
+        e8s = 10_000 : nat64;
+      };
+      token_symbol = opt \"LICP\";
+      token_name = opt \"Local ICP\";
+    }
+  })
+"
+```
+
+Alternatively, you can pass these arguments to the canister directly in the `dfx.json` file:
+
+```json
+{
+  "canisters": {
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "init_arg" : "(variant { Init = record { minting_account = "MINTER_ACCOUNT_ID"; initial_values = vec { record { "DEFAULT_ACCOUNT_ID"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt \"LICP\"; token_name = opt \"Local ICP\"; } })"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+## Using an `init_arg_file`
+
+To make managing init arguments easier for large, multi-canister projects, the `init_arg_file` option is supported. It can be used in both the CLI and the `dfx.json` file.
+
+To use the CLI, simply pass the `--argument-file` flag, followed by the relative path to the file from the directory containing the `dfx.json` file:
+:
+
+```
+dfx canister install canister_name --argument-file src/candid/icp_ledger_init.did
+```
+
+An example initialization argument file can be found below:
+
+```did
+(variant {
+  Init = record {
+    minting_account = "MINTER_ACCOUNT_ID";
+    initial_values = vec {
+      record {
+        "DEFAULT_ACCOUNT_ID";
+        record {
+          e8s = 10_000_000_000 : nat64;
+        };
+      };
+    };
+    send_whitelist = vec {};
+    transfer_fee = opt record {
+      e8s = 10_000 : nat64;
+    };
+    token_symbol = opt "LICP";
+    token_name = opt "Local ICP";
+  }
+})
+```
+
+You can also specify the `init_arg_file` for each canister in the `dfx.json` file:
+
+```json
+"canisters": {
+    "icp_ledger": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "init_arg_file": "src/candid/icp_ledger_init.did"
+    },
+    ...
+```
+
+### Important notes
+
+- If the `--argument` or `--argument-file` flags are used on the CLI, any configuration for `init_args` in `dfx.json` will be ignored. The CLI configuration takes precedence.
+
+- Only one `init_arg` and `init_arg_file` can be defined at a time.
+
+- Initialization arguments must be set individually for each canister, either through the CLI or `dfx.json`. To make this easier, `init_arg_file`s can be used, as detailed below.
+
+- When using `dfx.json` or an argument file, values referenced as environment variables within the file will not be passed to the canister.

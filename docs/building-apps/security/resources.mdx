@@ -1,0 +1,41 @@
+---
+keywords: [security, concept, web security, crypto]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: Important resources and further reading
+
+<MarkdownChipRow labels={["Security", "Best practices"]} />
+
+
+Below are resources which cover security best practices for technologies you are likely using in your dapp. These best practices are equally important as our Internet Computer specific guidelines and should be studied carefully. They can be useful to reference when developing secure dapps or executing security reviews.
+
+## General
+* [How to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) by Joachim Breitner
+* [OWASP application security verification standard](https://owasp.org/www-project-application-security-verification-standard/)
+* [OWASP top ten](https://owasp.org/www-project-top-ten/)
+
+## Rust
+* [Secure Rust guidelines](https://anssi-fr.github.io/rust-guide/01_introduction.html), in particular [unsafe code](https://anssi-fr.github.io/rust-guide/04_language.html#unsafe-code), [overflows](https://anssi-fr.github.io/rust-guide/04_language.html#integer-overflows) and [Cargo-audit](https://anssi-fr.github.io/rust-guide/03_libraries.html#cargo-audit)
+  * For overflowing operations, consider using `saturated` or `checked` variants of these operations, such as `saturated_add`, `saturated_sub`, `checked_add` , `checked_sub`, etc. See e.g. the [Rust docs](https://doc.rust-lang.org/std/primitive.u32.html#method.saturating_add) for `u32`.
+
+## Crypto
+* [OWASP cryptographic failures](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/) points out issues related to cryptography, or the lack thereof.
+* [OWASP application security verification standard](https://owasp.org/www-project-application-security-verification-standard/) (see Section V6)
+* **Use the [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API).** Storing key material in the browser storage (such as [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) or [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)) is considered unsafe because these keys can be accessed by JavaScript code, e.g. in an XSS attack. To protect the private key from direct access, use Web Crypto's [generateKey](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey) with `extractable=false`. See also the [encrypted notes example](https://github.com/dfinity/examples/blob/master/motoko/encrypted-notes-dapp/src/frontend/src/lib/crypto.ts#L149-L159).
+
+## Web security
+* Resources for setting security headers:
+  * [securityheaders.com](https://securityheaders.com/)
+  * [Permissions policy generator](https://www.permissionspolicy.com/)
+  * [Content security policy evaluator](https://csp-evaluator.withgoogle.com/) and [strict CSP](https://csp.withgoogle.com/docs/strict-csp.html)
+  * [OWASP secure headers project](https://owasp.org/www-project-secure-headers/)
+* [SSL server test](https://www.ssllabs.com/ssltest/)
+* Don’t use features that could lead to an XSS vulnerability, such as e.g. [@html in Svelte](https://svelte.dev/docs#template-syntax-html).
+* **Log out securely.** Clear all session data (especially [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) and [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)), clear [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API), etc. on logout. Make sure other browser tabs showing the same origin are logged out if the logout is triggered in one tab. This may not happen automatically when the ICP JavaScript agent is used, since the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) keeps the private key in memory once initialized.
+
+## Testing
+These are some useful references for testing canisters which don't necessarily relate to security. However, having good test coverage is essential for developing secure applications.
+* In [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html): [test upgrades](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades), [make code target-independent](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent)
+* Consider [PocketIC](/docs/building-apps/advanced/test/pocket-ic) for canister testing

@@ -75,12 +75,12 @@ dapps on the IC can be governed by an out-of-the-box deployable governance syste
 
 If you want to learn in more detail how the IC works and realizes the vision of a World Computer, read through the sections of the page and the referenced Medium articles, or watch the YouTube videos. If you prefer to have a single source of information, the [White Paper](https://dfinity.org/whitepaper.pdf) is highly recommended. However, note that it is a little technical at times.
 
-[Internet Computer for Geeks – White Paper](https://dfinity.org/whitepaper.pdf)
-[Internet Computer Dashboard](https://dashboard.internetcomputer.org/)
-[Internet Computer Source Code](https://github.com/dfinity/ic)
-[Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
-[Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/current/references/ic-interface-spec)
-[Internet Computer Primer - Deck](https://dfinity.org/deck/)
-[Internet Computer SDK](https://github.com/dfinity/sdk)
+- [Internet Computer for Geeks – White Paper](https://internetcomputer.org/whitepapers/The%20Internet%20Computer%20for%20Geeks.pdf)
+- [Internet Computer Dashboard](https://dashboard.internetcomputer.org/)
+- [Internet Computer Source Code](https://github.com/dfinity/ic)
+- [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
+- [Internet Computer Interface Specification Docs](/docs/references/ic-interface-spec)
+- [Internet Computer Primer - Deck](https://dfinity.org/deck/)
+- [Internet Computer SDK](https://github.com/dfinity/sdk)
 
 [![Watch youtube video](https://i.ytimg.com/vi/YWHTNr8RZHg/maxresdefault.jpg)](https://www.youtube.com/watch?v=YWHTNr8RZHg)

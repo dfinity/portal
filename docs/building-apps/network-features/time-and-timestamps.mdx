@@ -1,0 +1,222 @@
+---
+keywords: [beginner, concept, system time, timestamps, time]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# System time and timestamps
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+System time is a publicly exposed and verified part of the [IC state tree](/docs/references/ic-interface-spec#state-tree). System time is expressed in nanoseconds since `1970-01-01` and indicates the time at which the state is current. It is exposed at `/time`, and all partial state trees include a timestamp.
+
+System time observed by the <GlossaryTooltip>canister</GlossaryTooltip> is monotonically increasing, even across canister upgrades. Since the ICP network is decentralized, the system times of different canisters are unrelated, and there is no notion of a timezone, sometimes resulting in calls appearing to travel back in time.
+
+System time, expressed in nanoseconds, may require conversion into different formats, like DateTime. This guide will detail some of the commonly used conversions.
+
+## Getting system time
+
+Your canister can programmatically get system time to be used within your application.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko">
+
+```motoko no-repl
+import { now } = "mo:base/Time";
+import Debug "mo:base/Debug";
+
+actor {
+    let time = now();
+    Debug.print(debug_show(time));
+};
+
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
+let current_time = IC_API::time();
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle](https://demergent-labs.github.io/azle/timers.html).
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/timers.html).
+
+</AdornedTab>
+</AdornedTabs>
+
+## Conversion packages
+
+For Motoko canisters:
+
+- [`time` Mops package](https://mops.one/time): Supports functions for converting system time into microseconds, milliseconds, string date format, and more.
+
+- [`dateTime` Mops package](https://mops.one/datetime): Supports functions for converting system time into UTC format, local timezone, and fixed timezones.
+
+For Rust canisters:
+
+- [`time`](https://time-rs.github.io/api/time/index.html)
+
+- [`datetimeutils`](https://crates.io/crates/datetimeutils)
+
+## Converting Unix timestamps to DateTime format
+
+The nanosecond format that system time is returned in uses the Unix timestamp format, which is simply the total number of nanoseconds, such as `1721402551`. DateTime format uses the structure `YYYY-MM-DD HH:MM:SS`.
+
+Below are examples showing how to convert Unix timestamps to DateTime format.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko">
+
+```motoko no-repl
+import Time "mo:time/time";
+import DateTime "mo:datetime/DateTime";
+import Debug "mo:base/Debug";
+
+actor {
+    let now = Time.now();
+    let dateTime = DateTime.DateTime(now);
+
+    Debug.print(dateTime.toText());
+};
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
+use crate::types::utils::CalendarDate;
+use time::{Duration, OffsetDateTime};
+
+pub fn calendar_date(timestamp: &u64) -> CalendarDate {
+    CalendarDate::from(&to_date(timestamp).to_calendar_date())
+}
+```
+
+You can also convert Unix time to an `OffsetDateTime` format:
+
+```rust
+
+use crate::types::utils::CalendarDate;
+use time::{Duration, OffsetDateTime};
+
+fn to_date(timestamp: &u64) -> OffsetDateTime {
+    let nanoseconds = *timestamp as i64;
+    let seconds = nanoseconds / 1_000_000_000;
+    let nanos_remainder = nanoseconds % 1_000_000_000;
+
+    OffsetDateTime::from_unix_timestamp(seconds).unwrap() + Duration::nanoseconds(nanos_remainder)
+}
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Calculating the time between two timestamps
+
+For some applications, it may be useful to calculate the time that has passed between two timestamps. Below is an example canister written in Motoko that demonstrates how to use [timers](periodic-tasks-timers.mdx) to generate two timestamps, then creates a function that can be used to calculate the difference:
+
+```motoko no-repl
+import Debug "mo:base/Debug";
+import { setTimer; recurringTimer } = "mo:base/Timer";
+import Time "mo:time/time";
+import DateTime "mo:datetime/DateTime";
+import Int "mo:base/Int";
+
+actor Alarm {
+
+  let N1 = 10;
+  let N2 = 13;
+
+  var now1 = Time.now();
+  var now2 = Time.now();
+
+  private func time1() : async () {
+    var now1 = Time.now();
+    Debug.print(debug_show(now1));
+  };
+
+  private func time2() : async () {
+    var now2 = Time.now();
+    Debug.print(debug_show(now2));
+  };
+
+  ignore setTimer<system>(#seconds N1,
+    func () : async () {
+      ignore recurringTimer<system>(#seconds N1, time1);
+      var now1 = Time.now();
+  });
+
+  ignore setTimer<system>(#seconds N1,
+    func () : async () {
+      ignore recurringTimer<system>(#seconds N2, time2);
+      var now2 = Time.now();
+  });
+
+  public query func calculate(now1 : Int, now2 : Int) : async Int {
+    return (now2 - now1);
+  };
+}
+```
+
+This canister deploys two reoccurring timers: one every 10 seconds and one every 13 seconds. Alter these values to fit your application's requirements.
+
+Once deployed, the timestamps for each timer will be printed to the terminal:
+
+```
+2024-07-19 20:55:43.012377 UTC: [Canister bd3sg-teaaa-aaaaa-qaaba-cai] +1_721_422_543_012_377_000
+2024-07-19 20:55:45.633980 UTC: [Canister bd3sg-teaaa-aaaaa-qaaba-cai] +1_721_422_545_633_980_000
+```
+
+Then, call the canister's `calculate` method and pass these two timestamps:
+
+```
+dfx canister call test23_backend calculate
+```
+
+Pass in the two timestamps in nanoseconds:
+
+```
+1_721_422_543_012_377_000
+1_721_422_545_633_980_000
+```
+
+The difference between these two, in nanoseconds, will be returned:
+
+```
+(2_621_603_000 : int)
+```
+
+## Resources
+
+- [Motoko `Time` documentation](/docs/motoko/main/base/Time/)
+
+- [`time` Mops package](https://mops.one/time)
+
+- [`dateTime` Mops package](https://mops.one/datetime)
+
+- [Rust `time` documentation](https://time-rs.github.io/api/time/index.html)
+
+- [Rust `datetimeutils` documentation](https://crates.io/crates/datetimeutils)
+
+- [Azle `Time` documentation](https://demergent-labs.github.io/azle/the_azle_book.html)
+
+- [Kybra `Time` documentation](https://demergent-labs.github.io/kybra/)
+
+- [`time`](https://time-rs.github.io/api/time/index.html)

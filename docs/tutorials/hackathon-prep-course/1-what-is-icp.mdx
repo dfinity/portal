@@ -11,13 +11,13 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-## Overview
+
 
 The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters** on ICP. Canisters are highly scalable to directly serve user experiences. Each canister on the Internet Computer is hosted on an independent version of the blockchain network called a **subnet**. **Subnets** can seamlessly communicate with each other.
 
 ## Vision of the Internet Computer
 
-The Internet Computer's vision is to extend the public internet with serverless cloud functionality to create a blockchain so powerful, it plays the role of 'Cloud 3.0'.
+The Internet Computer's vision is to extend the public internet with serverless cloud functionality to create a blockchain so powerful, it plays the role of 'Cloud 3.0.'.
 
 Developers can build almost anything using ICP's advanced smart contract capabilities without using traditional IT infrastructure. Users can interact with decentralized applications deployed on ICP directly in their web browser without needing a crypto wallet.
 
@@ -28,7 +28,7 @@ You can learn more about the vision of the Internet Computer in the [ICP deck](h
 
 A subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
 
-Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets, but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
+Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
 
 ![Subnets](./_attachments/subnets.png)
 
@@ -61,15 +61,15 @@ To learn more about chain-key cryptography, check out [this documentation.](/how
 
 ### Seamless user onboarding
 
-Users can be onboarded into the ICP ecosystem seamlessly through dozens of different educational resources in all different formats, lengths, and focuses. Seamless onboarding helps developers get started building on ICP quickly, and provides resources for connecting with other developers to ask questions or help others. Onboarding also helps facilitate widespread adoption and advocation for ICP. A few onboarding resources include:
+Users can be onboarded into the ICP ecosystem seamlessly through dozens of different educational resources in all different formats, lengths, and focuses. Seamless onboarding helps developers get started building on ICP quickly and provides resources for connecting with other developers to ask questions or help others. Onboarding also helps facilitate widespread adoption and advocation for ICP. A few onboarding resources include:
 
 - [ICP.Hubs](https://linktr.ee/icp_hubs_network): Local communities dedicated to promoting adoption and awareness of ICP through education, strategic partnerships, and project acceleration. You can learn more about ICP.Hubs [here].
 
 - [ICP.Labs](https://dfinity.org/icplab): An advanced, tailored program provided by the DFINITY Foundation that's dedicated to onboarding teams and individuals onto ICP.
 
-- [Developer Ladder tutorial series](/docs/current/tutorials/developer-journey/).
+- [Developer Liftoff tutorial series](/docs/tutorials/developer-liftoff/).
 
-- [Developer Ladder video series](https://www.youtube.com/watch?v=3WpP8ux1zX0).
+- [Developer Liftoff video series](https://www.youtube.com/watch?v=3WpP8ux1zX0).
 
 - [ICP Zero to Dapp workshop series](https://youtube.com/playlist?list=PLfEHHr3qexv8hKOJBV1XR10XhUKkyPIBp&si=KqnDuEgJZt51q4e4).
 
@@ -90,7 +90,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 ICP is able to scale infinitely, meaning there is no limit to the amount of canisters it can host, memory it can store, or transactions it can process. This unbounded scalability is achieved through horizontal scaling, where new subnets can be added at any time, without a limit on the maximum number of subnets that can exist.
 
-Infinite scalability is especially beneficial for hosting large scale projects or applications in a fully decentralized manner. You can learn more in the [documentation](/how-it-works/scalability/#infinite-scalability).
+Infinite scalability is especially beneficial for hosting large-scale projects or applications in a fully decentralized manner. You can learn more in the [documentation](/how-it-works/scalability/#infinite-scalability).
 
 ### Cross-chain interoperability
 
@@ -117,9 +117,9 @@ ICP is designed with features that strive to make it future-proof. Some key comp
 
 The term **canister** refers to a smart contract on ICP. Canisters are a computational unit that bundles together both smart contract code and state. They can define functions that can be called by external services or other canisters. Canisters communicate with one another through asynchronous messages. Each message is executed in isolation, allowing for increased levels of concurrent execution.
 
-At a high level, a canister is used to expose methods. A **method** is a piece of code specifying a task which declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
+At a high level, a canister is used to expose methods. A **method** is a piece of code specifying a task that declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
 
-Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/current/developer-docs/getting-started/install/), and there are several community-developed canister development kits such as Python and Typescript.
+Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/building-apps/getting-started/install), and there are several community-developed canister development kits such as Python and Typescript.
 
 A canister is managed by a **controller**, which can be a centralized entity, a decentralized entity such as a DAO, or a canister can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister.
 
@@ -168,11 +168,11 @@ In addition to managing a canister, controllers are also responsible for assurin
 
 Cycles are used to pay for the resources, such as memory, storage, and compute power, that are used by a canister using the Internet Computer Protocol's reverse gas model. When a canister is deployed on the mainnet, cycles are 'charged' for the creation of the canister, then for every action that a canister performs.
 
-To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
+To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](/docs/references/glossary#x) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
 ### Languages
 
-To develop a canister, many developers use the IC SDK, which natively supports Motoko and Rust. However, canisters can be deployed in any language if the code has been compiled into WebAssembly (Wasm) modules using a canister development kit (CDK). A CDK is an adapter used by the IC SDK that provides programming languages with the necessary tools and features required to create and manage canisters. There are several community contributed CDKs for languages such as Python and TypeScript.
+To develop a canister, many developers use the IC SDK, which natively supports Motoko and Rust. However, canisters can be deployed in any language if the code has been compiled into WebAssembly (Wasm) modules using a canister development kit (CDK). A CDK is an adapter used by the IC SDK that provides programming languages with the necessary tools and features required to create and manage canisters. There are several community-contributed CDKs for languages such as Python and TypeScript.
 
 It is possible to create a dapp that uses multiple canisters written in different languages. Canisters that are written in different languages utilize Candid, an interface description language (IDL), to share and exchange information.
 
@@ -194,6 +194,4 @@ Languages that are supported via the IC SDK and community CDKs currently include
 
 ## Next steps
 
-- [2: Deploying your first fullstack dapp](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).
-
-
+- [2: Deploying your first full-stack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).

@@ -1,5 +1,27 @@
 ## Changelog {#changelog}
 
+### 0.35.0 (2025-03-20) {#0_35_0}
+* New system API `ic0.canister_liquid_cycle_balance128` returning the current amount of cycles that is available for spending in calls and execution.
+* A canister can have multiple snapshots.
+
+### 0.34.0 (2025-03-07) {#0_34_0}
+* New canister method `canister_on_low_wasm_memory` invoked when the canister is low on main memory according to a new `wasm_memory_threshold` in canister settings.
+* New system APIs `ic0.cost_call`, `ic0.cost_create_canister`, `ic0.cost_http_request`, `ic0.cost_sign_with_ecdsa`, `ic0.cost_sign_with_schnorr`, and `ic0.cost_vetkd_derive_encrypted_key` for cycles cost calculation.
+* New field `memory_metrics` providing detailed metrics on the memory consumption of a canister in the response of the management canister's `canister_status` endpoint.
+
+### 0.33.0 (2025-02-12) {#0_33_0}
+* New system API `ic0.subnet_self_size` and `ic0.subnet_self_copy`.
+
+### 0.32.0 (2025-01-23) {#0_32_0}
+* Allow accepting and burning cycles in replicated queries.
+
+### 0.31.0 (2025-01-09) {#0_31_0}
+* Add support for Schnorr auxiliary inputs
+
+### 0.30.0 (2024-11-19) {#0_30_0}
+* Add management canister endpoint `subnet_info`.
+* Support for wasm64: 64-bit system API.
+
 ### 0.29.0 (2024-11-14) {#0_29_0}
 * Allow anonymous query and read state requests with invalid `ingress_expiry`.
 * Add allowed viewers variant to canister log visibility.

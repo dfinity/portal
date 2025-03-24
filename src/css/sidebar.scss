@@ -21,7 +21,10 @@ aside[class*="docSidebarContainer_"] {
   }
 
   .theme-doc-sidebar-item-link-level-1.menu__list-item {
-    font-weight: 900;
+    font-weight: 500;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    line-height: 0.75rem;
   }
 
   .theme-doc-sidebar-item-category-level-1 {

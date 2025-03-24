@@ -50,7 +50,7 @@ export const NetworkStats = () => {
           Storage Costs
           <Tooltip
             tooltip="Cost of storing 1 GB for a year in a canister smart contract"
-            className="w-52 whitespace-normal"
+            className="w-max whitespace-normal"
             wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
@@ -64,7 +64,7 @@ export const NetworkStats = () => {
           Cost per Instruction
           <Tooltip
             tooltip="Cost per instruction when executing canister smart contact code"
-            className="w-52 whitespace-normal"
+            className="w-max whitespace-normal"
             wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
@@ -78,7 +78,7 @@ export const NetworkStats = () => {
           Canisters
           <Tooltip
             tooltip="Number of running canister smart contracts"
-            className="w-52 whitespace-normal"
+            className="w-max whitespace-normal"
             wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />

@@ -15,7 +15,7 @@ const FeaturedCard: React.FC<{ event: AirtableEvent }> = ({ event }) => {
         href={event.eventLink}
       >
         <img
-          src="/img/events/featured.webp"
+          src={event.imageUrl || "/img/events/featured.webp"}
           alt={event.eventName}
           className="w-full h-full object-cover"
         />
@@ -33,7 +33,7 @@ const FeaturedCard: React.FC<{ event: AirtableEvent }> = ({ event }) => {
           <p className="text-black/60 tw-paragraph md:tw-lead-sm mb-0 mt-3 line-clamp-3">
             {event.description}
           </p>
-          {event.eventLink && (
+          {event.eventLink && event.eventLink !== "#" && (
             <p className="mt-6 mb-0">
               <Link href={event.eventLink} className="link-primary">
                 Register now <LinkArrowUpRight />
@@ -46,38 +46,61 @@ const FeaturedCard: React.FC<{ event: AirtableEvent }> = ({ event }) => {
   );
 };
 
-export function getFeaturedEvent(events: AirtableEvent[]): AirtableEvent {
+export function getFeaturedEvent(
+  events: AirtableEvent[]
+): AirtableEvent | null {
+  if (!events || events.length === 0) {
+    return null;
+  }
+
   const currentDate = new Date().toISOString().slice(0, 10);
 
-  // has a banner and end date (of format yyyy-mm-dd) is in the future
-  const maybeOngoingOrFutureEventWithBanner = events.find(
-    (event) => event.eventBanner && event.endDate >= currentDate
-  );
+  try {
+    // 1. First priority: Current featured event that hasn't ended
+    const currentFeaturedEvent = events.find(
+      (event) =>
+        event.featured === true && event.endDate && event.endDate >= currentDate
+    );
 
-  if (maybeOngoingOrFutureEventWithBanner) {
-    return maybeOngoingOrFutureEventWithBanner;
+    if (currentFeaturedEvent) {
+      return currentFeaturedEvent;
+    }
+
+    // 2. Second priority: Next upcoming featured event
+    const upcomingFeaturedEvents = events.filter(
+      (event) =>
+        event.featured === true &&
+        event.startDate &&
+        event.startDate > currentDate
+    );
+
+    if (upcomingFeaturedEvents.length > 0) {
+      return upcomingFeaturedEvents.sort((a, b) =>
+        a.startDate.localeCompare(b.startDate)
+      )[0];
+    }
+
+    // Current or upcoming non-featured event
+    const nonEndedEvents = events.filter(
+      (event) => event.endDate && event.endDate >= currentDate
+    );
+
+    if (nonEndedEvents.length > 0) {
+      return nonEndedEvents.sort((a, b) =>
+        a.startDate.localeCompare(b.startDate)
+      )[0];
+    }
+
+    // Final fallback: Most recent event overall
+    const sortedEvents = [...events].sort((a, b) =>
+      b.endDate.localeCompare(a.endDate)
+    );
+
+    return sortedEvents[0];
+  } catch (error) {
+    console.error("Error in getFeaturedEvent:", error);
+    return null;
   }
-
-  // has no banner and in the future
-  const maybeMostRecentEvent = events.find(
-    (event) => event.endDate >= currentDate
-  );
-
-  if (maybeMostRecentEvent) {
-    return maybeMostRecentEvent;
-  }
-
-  // has a banner and the most recent
-  const maybeMostRecentEventWithBanner = [...events]
-    .reverse()
-    .find((event) => event.eventBanner);
-
-  if (maybeMostRecentEventWithBanner) {
-    return maybeMostRecentEventWithBanner;
-  }
-
-  // most recent
-  return events[events.length - 1];
 }
 
 export default FeaturedCard;

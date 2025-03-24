@@ -1,0 +1,71 @@
+---
+keywords: [advanced, concept, random, randomness, onchain randomness, raw_rand]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+# Onchain randomness
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+The Internet Computer provides a secure and verifiable way to generate random numbers directly within canisters. This functionality is exposed through the [raw_rand](/docs/references/ic-interface-spec) method offered by the [management canister](/docs/references/system-canisters/management-canister) and the [Motoko Random module](/docs/motoko/main/base/Random).
+
+The method takes no input and returns 32 pseudo-random bytes to the caller.
+
+## How it works
+Behind the scenes, ICP utilizes a Verifiable Random Function (VRF) to generate randomness.
+
+During each round, the VRF is evaluated with the current input being the number of the round. This process produces a fresh set of random bytes.
+
+These bytes become the seed for a pseudorandom number generator (PRNG) called random tape. The random tape is built using [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology) and is used to create unique random values for each canister that requested randomness in the previous round.
+
+`raw_rand` calls only use the random tape from the next round. This ensures that no one can exploit knowledge of the current round's randomness to predict future outputs. To learn more about the execution layer of ICP, refer to the [execution layer documentation](https://internetcomputer.org/how-it-works/execution-layer/).
+
+To learn more about the technical details of randomness on ICP, watch the [Community Conversations video on randomness](https://www.youtube.com/watch?v=nl5BuiWClD0).
+
+## How to use
+Developers can directly access randomness through the `raw_rand` method in the management canister. See the examples below.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+import IC "ic:aaaaa-aa";
+
+actor {
+  public func random_bytes() : async Blob {
+    await IC.raw_rand();
+  };
+};
+```
+
+In addition to the `raw_rand` method, Motoko offers a [Random module](/docs/motoko/main/base/Random) for generating random numbers.
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
+let (randomBytes,): (Vec<u8>,) = ic_cdk::api::management_canister::main::raw_rand().await?;
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle](https://demergent-labs.github.io/azle/timers.html).
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/timers.html).
+
+</AdornedTab>
+</AdornedTabs>
+

@@ -580,7 +580,7 @@ function EnterprisePage() {
             <CardWithDescription
               title="Developer docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="How it works"
