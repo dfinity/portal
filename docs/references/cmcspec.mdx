@@ -181,3 +181,56 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
   - This method requires cycles to be attached to the call.
   - Returns the principal of the newly created canister.
   - The result is **not idempotent** — calling it again will consume cycles and create a different canister.
+
+
+  ## Shared Logic
+
+### Canister Settings
+
+The `CanisterSettings` record allows configuration of the canister at the time of creation or through governance. Each field is optional and will default to system-provided values if not specified.
+
+```candid
+record {
+  controllers : opt vec principal;          // List of principals allowed to control the canister
+  compute_allocation : opt nat;             // Percentage (0-100) of guaranteed compute capacity
+  memory_allocation : opt nat;              // Memory reserved for the canister, in bytes
+  freezing_threshold : opt nat;             // Number of seconds the canister can go without being topped up before being frozen
+  reserved_cycles_limit : opt nat;          // Reserved minimum cycle balance for execution
+  log_visibility : opt variant {
+    controllers;
+    public;
+  };                                        // Visibility of canister logs
+  wasm_memory_limit : opt nat;              // Cap on wasm memory usage, in bytes
+  wasm_memory_threshold : opt nat;          // Threshold to trigger memory alerts or actions
+}
+```
+
+Unspecified fields are interpreted as:
+- `controllers`: Defaults to the caller of the method
+- Other fields: Use system-wide default configuration values
+
+---
+
+### Encoding a Principal into a Subaccount
+
+Several CMC methods require an ICP payment to be sent to a subaccount that encodes a principal (e.g., the controller of a new canister or the canister being topped up).
+
+To derive this subaccount, the principal is serialized and packed into a 32-byte array using the following logic:
+
+```motoko
+public func principalToSubAccount(id: Principal) : [Nat8] {
+    let p = Blob.toArray(Principal.toBlob(id));
+    Array.tabulate(32, func(i : Nat) : Nat8 {
+        if (i >= p.size() + 1) 0
+        else if (i == 0) (Nat8.fromNat(p.size()))
+        else (p[i - 1])
+    })
+};
+```
+
+This produces a 32-byte subaccount where:
+- The first byte contains the length of the principal
+- The next bytes contain the principal's raw byte encoding
+- The remainder is zero-padded to reach 32 bytes
+
+This convention ensures the CMC can determine which principal or canister an incoming payment was intended for.
