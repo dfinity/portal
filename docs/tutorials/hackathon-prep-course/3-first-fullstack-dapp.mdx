@@ -3,10 +3,8 @@ keywords: [beginner, tutorial, hackathon, hackathon prep course]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import '/src/components/CenterImages/center.scss';
 
-
-# 3: Exploring the backend code
+# 3: Exploring the code
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
@@ -342,6 +340,90 @@ mops install
 ```
 
 You can [learn more about Mops](/docs/tutorials/developer-liftoff/level-3/3.1-package-managers).
+
+## Frontend
+
+
+
+Together, these files enable the frontend canister's user interface, as seen in [2: Deploying your first fullstack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).
+
+## Learning more about frontend canisters
+
+To further understand and develop your own frontend canisters, let's review a few fundamental features, concepts, and workflows that pertain to frontend canisters.
+
+### Agents
+
+When a canister is deployed, locally or on the mainnet, there are two primary methods of interacting with that canister. You can use an API through an agent, or you can use the canister's HTTP interface.
+
+In this `vite-react-motoko` example, a JavaScript agent is used. An agent is a library that is used to make calls to the public interface of the Internet Computer. Agents are primarily responsible for:
+
+- Structuring data: Agents are responsible for structuring the data made in a call into a format that can be processed by the canister.
+
+- Managing authentication: Agents are responsible for attaching a cryptographic identity to the call.
+
+- Decoding data: Once a response has been returned from the canister on the mainnet, the agent takes the certificate from the call's payload and verifies it.
+
+In addition to the JavaScript agent, DFINITY has developed and maintains a Rust agent, and the ICP community supports several agents for .NET, Go, Python, Ruby, and more.
+
+In your `vite-react-motoko` example, the JavaScript agent file is stored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command and contains the following content:
+
+```javascript title="src/declarations/frontend/index.js"
+import { Actor, HttpAgent } from "@dfinity/agent";
+
+// Imports and re-exports candid interface
+import { idlFactory } from "./frontend.did.js";
+export { idlFactory } from "./frontend.did.js";
+
+/* CANISTER_ID is replaced by webpack based on the node environment
+ * Note: canister environment variable will be standardized as
+ * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
+ * beginning in dfx 0.15.0
+ */
+export const canisterId =
+  process.env.CANISTER_ID_FRONTEND ||
+  process.env.FRONTEND_CANISTER_ID;
+
+export const createActor = (canisterId, options = {}) => {
+  const agent = options.agent || new HttpAgent({ ...options.agentOptions });
+
+  if (options.agent && options.agentOptions) {
+    console.warn(
+      "Detected both agent and agentOptions passed to createActor. Ignoring agentOptions and proceeding with the provided agent."
+    );
+  }
+
+  // Fetch root key for certificate validation during development
+  if (process.env.DFX_NETWORK !== "ic") {
+    agent.fetchRootKey().catch((err) => {
+      console.warn(
+        "Unable to fetch root key. Check to ensure that your local replica is running"
+      );
+      console.error(err);
+    });
+  }
+
+  // Creates an actor using the candid interface and the HttpAgent
+  return Actor.createActor(idlFactory, {
+    agent,
+    canisterId,
+    ...options.actorOptions,
+  });
+};
+
+export const frontend = createActor(canisterId);
+```
+
+In this code, the constructor first creates an `HTTPAgent` that wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the local testnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
+
+You can learn more about agents in the documentation [here](/docs/building-apps/interact-with-canisters/agents/overview).
+
+### Serving HTTP content
+
+Canister smart contracts are able to serve HTTP content natively, allowing for dapp frontends to be served directly in a web browser using the canister's URL at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. Frontend canisters can be used to deliver HTML, CSS, and JavaScript pages and answer API requests.
+
+If a canister wants to serve HTTP content, it should implement a method that consumes an HTTP request, which contains a URL, HTTP method, and headers, then outputs an HTTP response that contains a status, headers, and the response body. The canister method can return HTML, CSS, and JavaScript content as part of the HTTP response.
+
+
 
 ## Next steps
 

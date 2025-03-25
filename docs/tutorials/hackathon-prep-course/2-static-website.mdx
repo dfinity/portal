@@ -5,41 +5,41 @@ keywords: [beginner, tutorial, hackathon, hackathon prep course, fullstack dapp,
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 
-# 2: Deploying your first full-stack dapp
+# 2: Creating a static website
+
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-To get started developing on ICP, there are several sample projects, boilerplate templates, and other resources to help you get started. In this tutorial, you'll use ICP Ninja, a web-based IDE that provides you with all the tools necessary to create and deploy a project directly from your web browser. ICP Ninja is great for getting started since it doesn't require downloading the IC SDK or obtaining cycles to start building.
+To get started building on ICP, there are several sample projects and boilerplate templates available for you to use. In this tutorial, you'll use an example project within [ICP Ninja](https://icp.ninja), a web-based IDE that includes all the tools necessary to create and deploy a project directly from your web browser. It doesn't require downloading the IC SDK or obtaining cycles to get started.
 
-## Architecture overview
+## Your first full-stack app
 
-Projects on ICP have a default architecture of two canisters: a frontend canister and a backend canister.
+Projects on ICP have a default architecture of two canisters:
 
-### Frontend canisters
+- A frontend canister: Hosts the user interface and assets such as CSS, HTML, JavaScript, or React elements.
 
-A frontend canister hosts the portion of an application that is used to interact with the application's functions through a user interface. Frontend canisters contain assets such as CSS, HTML, JavaScript, or React elements. You will explore the frontend canister further in a future module, [4: Exploring the frontend](/docs/tutorials/hackathon-prep-course/exploring-the-frontend).
-
-### Backend canisters
-
-A backend canister is the backend of an application. This is typically the portion of the application that does not come in direct contact with the users. It hosts the application's primary source code and functionality and does not contain user interface assets. In this project, the backend canister's code is located at `backend/app.mo` and uses Motoko source code. You will explore the backend canister further in the next module, [3: Exploring the backend](/docs/tutorials/hackathon-prep-course/exploring-the-backend).
+- A backend canister: Hosts the application's primary source code and functionality. Backend source code is written in languages like Motoko, Rust, TypeScript, Python, or C++.
 
 ## Hello, world!
 
-This tutorial will use the Motoko ["Hello, world!" example](https://icp.ninja/projects/hello-world) on ICP Ninja.
+To demonstrate a simple fullstack dapp that
+
+This tutorial will use the Motoko ["Hello, world!" example](https://icp.ninja/projects/hello-world) on ICP Ninja. Once you have opened the example in ICP Ninja, you will see the project's files in the file manager window on the left of the screen.
+
+
 
 Let's review the project's file structure:
 
 ```bash
 ├── backend      # Folder containing the source code of your dapp's backend.
-│   ├──  app.mo  # The default source code file; this is the file you'll be working with in this tutorial.
+│   ├──  app.mo  # The default source code file.
 ├── frontend     # Folder containing the asset files for your dapp's frontend.
 │   ├──  index.html   # Entrypoint file for the frontend.
 │   ├──  package.json
 │   ├──  vite.config.js
 ├── dfx.json     # The configuration file for your Internet Computer dapp.
 ├── mops.toml    # Package configuration file for Motoko.
-├── README.md    # Information about the project.
-├── WELCOME.md   # Information about using ICP Ninja.
+├── README.md    # Information about the project and using ICP Ninja.
 ```
 
 ### dfx.json​
@@ -73,6 +73,10 @@ The `dfx.json` file in the root directory defines the canisters that make up the
 ```
 
 Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+
+## Deploying the project
+
+
 
 ## Going further: additional starter projects
 
