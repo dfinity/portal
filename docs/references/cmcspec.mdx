@@ -79,33 +79,33 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
   ## `notify_top_up`
 
-Tops up an existing canister by minting cycles based on an ICP payment recorded in the ICP Ledger.
+  Tops up an existing canister by minting cycles based on an ICP payment recorded in the ICP Ledger.
 
-The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **target canister**:
+  The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **target canister**:
 
-- The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal.
-- The **memo field** must explicitly indicate the intent to top up a canister. This can be expressed as:
-  - A legacy 64-bit unsigned integer memo with value `0x544f5055` (ASCII `"TOPU"`)
-  - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
+  - The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal.
+  - The **memo field** must explicitly indicate the intent to top up a canister. This can be expressed as:
+    - A legacy 64-bit unsigned integer memo with value `0x50555054` (ASCII `"PUPT"`)
+    - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
+      ```candid
+      "\50\55\50\54\00\00\00\00"
+      ```
+      which represents `"PUPT"` padded to 8 bytes.
+
+  - **Parameters:**
     ```candid
-    "\54\4f\50\55\00\00\00\00"
+    record {
+      block_index: nat64;     // Block index of the ICP ledger payment
+      canister_id: principal; // Canister to be topped up
+    }
     ```
-    which represents `"TOPU"` padded to 8 bytes.
 
-- **Parameters:**
-  ```candid
-  record {
-    block_index: nat64;     // Block index of the ICP ledger payment
-    canister_id: principal; // Canister to be topped up
-  }
-  ```
+  - **Returns:**
+    ```candid
+    variant { Ok: nat; Err: NotifyError } // Number of cycles minted and sent
+    ```
 
-- **Returns:**
-  ```candid
-  variant { Ok: nat; Err: NotifyError } // Number of cycles minted and sent
-  ```
-
-- **Notes:**
-  - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see “Shared Logic” section).
-  - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
-  - Only transfers matching the expected structure and memo will be accepted.
+  - **Notes:**
+    - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see “Shared Logic” section).
+    - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
+    - Only transfers matching the expected structure and memo will be accepted.
