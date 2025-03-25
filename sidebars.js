@@ -599,7 +599,7 @@ build: [
             },
             {
               type: "category",
-              label: "Interacting with the NNS",
+              label: "Concepts",
               items: [
               {
                 type: "category",
