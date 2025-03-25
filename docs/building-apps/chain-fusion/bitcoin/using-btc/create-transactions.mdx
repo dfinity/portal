@@ -17,8 +17,7 @@ creates new UTXOs. In order to create a Bitcoin transaction, you need to:
 1. Get the available UTXOs corresponding to a Bitcoin address controlled by the canister using the `bitcoin_get_utxos` API endpoint.
 2. Calculate an appropriate transaction fee using the `bitcoin_get_current_fee_percentiles` API endpoint.
 3. Select a subset of the available UTXOs to spend that covers the transaction amount and fee.
-4. Create a transaction that spends the selected UTXOs and creates new UTXOs. At
-   least one for the recipient, and in most cases, one to collect the change.
+4. Create a transaction that spends the selected UTXOs and creates new UTXOs. At least one for the recipient, and in most cases, one to collect the change.
 
 ## Get available UTXOs
 
@@ -53,7 +52,7 @@ https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea294345251890972
 </TabItem>
 </Tabs>
 
-An UTXO has the following structure:
+A UTXO has the following structure:
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -108,7 +107,7 @@ To create a transaction that sends `X` satoshis to a destination address, you ne
 
 ## Calculate transaction fee per byte
 
-The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions that were included in the blockchain.
+The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions that were included in the Bitcoin blockchain.
 The following snippet shows how to estimate the fee per byte for a transaction using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the 50th percentile.
 
 <Tabs groupId="language">
