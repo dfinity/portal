@@ -579,10 +579,6 @@ build: [
         {
           type: "category",
           label: "Network Nervous System (NNS)",
-          link: {
-            type: "doc",
-            id: "building-apps/governing-apps/nns/overview",
-          },
           items: [
             {
               type: "category",
@@ -603,16 +599,12 @@ build: [
             },
             {
               type: "category",
-              label: "Concepts",
+              label: "Interacting with the NNS",
               items: [
               {
                 type: "category",
                 label: "Neurons",
                 items: [
-                  "building-apps/governing-apps/nns/concepts/neurons/neuron-overview",
-                  "building-apps/governing-apps/nns/concepts/neurons/neuron-following",
-                  "building-apps/governing-apps/nns/concepts/neurons/staking-voting-rewards",
-                  "building-apps/governing-apps/nns/concepts/neurons/neuron-management",
                   "building-apps/governing-apps/nns/concepts/neurons/becoming-a-known-neuron",
                 ],
               },
@@ -620,22 +612,14 @@ build: [
                 type: "category",
                 label: "Proposals",
                 items: [
-                  "building-apps/governing-apps/nns/concepts/proposals/proposal-overview",
-                  "building-apps/governing-apps/nns/concepts/proposals/direct-voting",
-                  "building-apps/governing-apps/nns/concepts/proposals/proposal-topics",
+
                   "building-apps/governing-apps/nns/concepts/proposals/verify-proposals",
                   "building-apps/governing-apps/nns/concepts/proposals/proposal-submit",
                 ],
               },
-            "building-apps/governing-apps/nns/concepts/neurons-fund",
           ],
         },
         ],
-        },
-        {
-          label: "What is an SNS?",
-          type: "doc",
-          id: "building-apps/governing-apps/overview",
         },
         {
           type: "category",
@@ -646,8 +630,6 @@ build: [
           },
           items: [
             "building-apps/governing-apps/tokenomics/predeployment-considerations",
-            "building-apps/governing-apps/tokenomics/tokenomics-intro",
-            "building-apps/governing-apps/tokenomics/rewards",
             "building-apps/governing-apps/tokenomics/preparation",
             "building-apps/governing-apps/tokenomics/sns-checklist",
           ],
@@ -688,7 +670,6 @@ build: [
             "building-apps/governing-apps/managing/making-proposals",
             "building-apps/governing-apps/managing/cycles-usage",
             "building-apps/governing-apps/managing/sns-asset-canister",
-            "building-apps/governing-apps/managing/managing-nervous-system-parameters",
           ],
         },
       ],

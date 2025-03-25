@@ -30,11 +30,11 @@ The NNS assigns a unique identity to each proposal that it receives.
 
 Each proposal has a **proposal type**, which determines what happens if the proposal is adopted or rejected. This defines which canister method is invoked with which arguments.
 Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following]
-(/docs/building-apps/governing-apps/nns/concepts/neurons/neuron-following) and also determine some other details about
+(https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons) and also determine some other details about
 how the proposal is processed. For example, the voting period and the voting reward weight are defined per topic.
 
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
-For more information on what to consider when verifying the different kinds of proposals, please refer to [verifying proposals](/docs/building-apps/governing-apps/nns/concepts/proposals/proposal-topics).
+For more information on what to consider when verifying the different kinds of proposals, please refer to [verifying proposals](https://learn.internetcomputer.org/hc/en-us/articles/34140518658068-Proposal-Topics-and-Types).
 
 ### Topic: `ProtocolCanisterManagement`
 All proposals to manage [protocol canisters](/docs/references/system-canisters/), which are considered part of the Internet Computer protocol and are essential for its proper functioning.
@@ -52,7 +52,7 @@ All proposals to manage the canisters of service nervous systems (SNS), includin
 
 *  `InstallCode`, `UpdateCanisterSettings`, and `StopOrStartCanister` are the same as in topic
 `ProtocolCanisterManagement` only targeting different canisters.
-* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in [SNS-W](/docs/building-apps/governing-apps/overview#SNS-W).
+* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in [SNS-W](https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-SystemSNS-W).
 * `InsertSnsWasmUpgradePathEntries`: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
 
 
@@ -102,7 +102,7 @@ This topic includes the following proposal types:
 
 ### Topic: `SnsAndCommunityFund`
 
-This topic includes proposals that concern [SNS DAO launches](/docs/building-apps/governing-apps/launching/) and the [Neurons' Fund](/docs/building-apps/governing-apps/nns/concepts/neurons-fund) (formerly called Community Fund).
+This topic includes proposals that concern [SNS DAO launches](/docs/building-apps/governing-apps/launching/) and the [Neurons' Fund](https://learn.internetcomputer.org/hc/en-us/articles/34084179554196-Neurons-Fund-NF) (formerly called Community Fund).
 
 In contrast to other topics, this topic has reward weight 20. This means that participation in this topic is rewarded more.
 
@@ -127,7 +127,7 @@ The following parameters can be changed:
 - **Maximum node provider rewards**: The maximum rewards to be distributed to node providers in a single distribution event (proposal).
 - **Transaction fee**: The transaction fee that must be paid for each ledger transaction.
 - **Maximum number of proposals to keep per topic**: The maximum number of proposals to keep, per topic. When the total number of proposals for a given topic is greater than this number, the oldest proposals that have reached a “final” state may be deleted to save space.
-- **Neurons' Fund economics**: This includes all parameters related to the [Neurons' Fund](/docs/building-apps/governing-apps/nns/concepts/neurons-fund):
+- **Neurons' Fund economics**: This includes all parameters related to the [Neurons' Fund](https://learn.internetcomputer.org/hc/en-us/articles/34084179554196-Neurons-Fund-NF):
   - `max_theoretical_neurons_fund_participation_amount_xdr`: A theoretical limit which should be smaller than any realistic amount of maturity that practically needs to be reserved from the Neurons' Fund for a given SNS swap.
   - `neurons_fund_matched_funding_curve_coefficients`: Defines a threshold specifying the shape of the matching function used by the Neurons' Fund to determine how much to contribute for a given direct participation amount.
   - `minimum_icp_xdr_rate` and `maximum_icp_xdr_rate` are respectively the minimum and maximum value of the ICP/XDR conversion rate used by the Neurons' Fund for converting XDR values into ICP.
