@@ -77,7 +77,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
   - Only transactions that follow the exact memo format will be processed successfully.
 
 
-  ## `notify_top_up`
+  ### `notify_top_up`
 
   Tops up an existing canister by minting cycles based on an ICP payment recorded in the ICP Ledger.
 
@@ -109,3 +109,75 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see “Shared Logic” section).
     - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
     - Only transfers matching the expected structure and memo will be accepted.
+
+    ### `notify_mint_cycles`
+
+    Mints cycles into a **cycles ledger account** based on an ICP payment recorded in the ICP Ledger.
+
+    This method is used for depositing cycles into a ledger-managed subaccount, not directly into a canister. It supports minting only from **ICRC-1-compatible transfers**, and not from legacy `transfer` calls.
+
+    The CMC expects the payment to follow a strict structure that encodes the **intent**:
+
+    - The **destination account** of the ICP transfer must be the CMC's account with a subaccount matching the `to_subaccount` parameter.
+    - The **memo field** must be an ICRC-1-style `blob`, and must equal:
+      ```candid
+       "\4d\49\4e\54\00\00\00\00"
+      ```
+      which represents `"MINT"` padded to 8 bytes (no legacy `u64` memo is accepted).
+
+    - **Parameters:**
+      ```candid
+      record {
+        block_index: nat64;         // Block index of the ICP ledger payment
+        to_subaccount: opt blob;    // 32-byte subaccount to credit in the cycles ledger
+        deposit_memo: opt blob;     // Optional application-specific memo
+      }
+      ```
+
+    - **Returns:**
+      ```candid
+      variant {
+        Ok: record {
+          block_index: nat;  // Block index in the cycles ledger
+          minted: nat;       // Amount of cycles minted
+          balance: nat;      // Final balance of the cycles ledger account
+        };
+        Err: NotifyError;
+      }
+      ```
+
+    - **Notes:**
+      - Only authorized principals may call this method.
+      - The `to_subaccount` must match the subaccount used in the ICP destination address.
+      - Idempotent by `block_index`.
+      - This method only processes transfers with a valid ICRC-1 memo and does not support legacy-style memos.
+
+
+  ### `create_canister`
+
+Creates a new canister using cycles attached directly to the call (not from an ICP ledger payment).
+
+Unlike `notify_create_canister`, this method does not rely on an external ICP transaction. Instead, the calling canister must attach enough cycles to cover the creation cost.
+
+- If `subnet_selection` is omitted, the CMC will select a suitable subnet at random from the available subnets.
+- If `settings` is provided, it will override default configuration for the new canister.
+- If no `settings` are given, the calling principal becomes the sole controller.
+
+- **Parameters:**
+  ```candid
+  record {
+    settings: opt CanisterSettings;         // Optional settings: controller(s), allocations, limits, etc.
+    subnet_type: opt text;                  // (Deprecated) Legacy subnet type selection
+    subnet_selection: opt SubnetSelection;  // Preferred way to select the subnet
+  }
+  ```
+
+- **Returns:**
+  ```candid
+  variant { Ok: principal; Err: CreateCanisterError }
+  ```
+
+- **Notes:**
+  - This method requires cycles to be attached to the call.
+  - Returns the principal of the newly created canister.
+  - The result is **not idempotent** — calling it again will consume cycles and create a different canister.
