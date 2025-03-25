@@ -10,6 +10,110 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 To learn more about ICP, a specific feature or workflow, or get help from other developers, check out the following resources:
 
+## Chain Fusion starter
+
+The Chain Fusion starter project combines several key features of ICP in one boilerplate template. It focuses on ICP's Ethereum and EVM integration through the EVM RPC canister and demonstrates how ICP canisters can be used as coprocessors to process events emitted by smart contracts deployed on an EVM chain.
+
+ICP canister smart contracts can read information from EVM smart contracts in a secure manner through [HTTPS outcalls](https://internetcomputer.org/https-outcalls) or using the [EVM RPC](/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview) canister. Then, to submit transactions to and write to other chains, ICP uses chain-key signatures, i.e., [Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa).
+
+These features eliminate the need for a bridge or other third party to relay messages between ICP and another network. No extra work is needed from the EVM chain, either, as the EVM smart contract only needs to verify that the sender is correct.
+
+![Chain Fusion starter](./_attachments/chain-fusion-starter.png)
+
+:::info
+
+This starter project is a proof of concept and should not be used in production environments.
+
+:::
+
+This project uses two canisters:
+
+- `evm_rpc`: An instance of the EVM RPC canister used to obtain information from an EVM chain.
+
+- `chain_fusion`: A canister that acts as a coprocessor and listens to events emitted by the EVM smart contract, then processes them and sends the results back to the smart contract.
+
+### Prerequisites
+
+If you are installing this project locally, download and install the following tools:
+
+-   [dfx](/docs/building-apps/getting-started/install) `>= 0.18`
+-   [Node.js](https://nodejs.org/en/) `>= 21`
+-   [Foundry](https://github.com/foundry-rs/foundry)
+-   [Caddy](https://caddyserver.com/docs/install#install)
+
+## Deploying the starter project
+
+To deploy this project, the simplest way is to use GitHub Codespaces or a Developer Container.
+
+[GitHub Codespaces](https://codespaces.new/letmejustputthishere/chain-fusion-starter/?quickstart=1) is a cloud-based option, whereas a [Dev Container](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/letmejustputthishere/chain-fusion-starter) relies on Docker and VS Code being installed locally.
+
+Alternatively, you can run the project locally by installing the dependencies above and then running the following commands:
+Alternatively, you can run the project locally by installing the dependencies above and then running the following commands:
+
+```
+git clone https://github.com/letmejustputthishere/chain-fusion-starter.git
+cd chain-fusion-starter
+./deploy.sh
+```
+
+The `deploy.sh` script starts the `anvil` and `dfx` processes, deploys the EVM smart contract, then generates a number of jobs that the smart contract will process. Lastly, it deploys the `chain_fusion` canister to listen for events from that smart contract.
+
+[View the full source code for this project](https://github.com/letmejustputthishere/chain-fusion-starter).
+
+## Creating an NFT collection
+
+Another boilerplate project is the `icrc7_nft` project, which uses Motoko and Mops packages to deploy an NFT collection using the ICRC-3, ICRC-7, and ICRC-37 standards and a single canister called `icrc7` that deploys the collection.
+Another boilerplate project is the `icrc7_nft` project, which uses Motoko and Mops packages to deploy an NFT collection using the ICRC-3, ICRC-7, and ICRC-37 standards and a single canister called `icrc7` that deploys the collection.
+
+- ICRC-3: The standard for transaction logs and archives.
+
+- ICRC-7: The base non-fungible token standard. Read more about the [ICRC-7 standard](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-7).
+
+- ICRC-37: An extension of ICRC-7 that enables an 'approve' functionality. Read more about the [ICRC-37 standard](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37).
+
+### Prerequisites
+
+If you are installing this project locally, download and install the following tools:
+
+-   [dfx](/docs/building-apps/getting-started/install) `>= 0.18`
+
+## Download the project
+
+Set up the project locally by running the following commands:
+Set up the project locally by running the following commands:
+
+```
+git clone https://github.com/PanIndustrial-Org/icrc_nft.mo/tree/main
+cd icrc_nft/example
+./deploy.sh
+```
+
+The `deploy.sh` script executes the following actions:
+
+- Creates the identities `alice` and `bob`, then sets environment variables for each.
+
+- Sets an environment variable for the admin principal.
+
+- Deploys the `icrc7` canister with the init args of `null` for each standard.
+
+- Initializes the canister by calling the `init` method.
+
+- Mints 4 NFTs.
+
+- Calls each of the canister's methods to get information about the collection.
+
+- Transfers a token from the canister to the admin identity.
+
+- Approves the `alice` identity to spend a token, then has `alice` transfer the token to `bob`.
+
+- Approve `bob` to transfer a token, then revoke the approval.
+
+- Returns the transfer and archive logs.
+
+The commands used for each action can be found in the `example/deploy.sh` script.
+
+[View the full source code for this project](https://github.com/PanIndustrial-Org/icrc_nft.mo).
+
 - [ICP developer documentation.](/docs/home)
 
 - [ICP Zero to Dapp Educate Series.](https://www.youtube.com/playlist?list=PLfEHHr3qexv8hKOJBV1XR10XhUKkyPIBp)
