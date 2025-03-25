@@ -110,47 +110,52 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
     - Only transfers matching the expected structure and memo will be accepted.
 
-    ### `notify_mint_cycles`
+    ## `notify_mint_cycles`
 
-    Mints cycles into a **cycles ledger account** based on an ICP payment recorded in the ICP Ledger.
+Mints cycles into a **cycles ledger account** based on an ICP payment recorded in the ICP Ledger.
 
-    This method is used for depositing cycles into a ledger-managed subaccount, not directly into a canister. It supports minting only from **ICRC-1-compatible transfers**, and not from legacy `transfer` calls.
+This method is used to deposit minted cycles into a specific subaccount in the **cycles ledger**. It supports minting from both legacy and ICRC-1-style transfers.
 
-    The CMC expects the payment to follow a strict structure that encodes the **intent**:
+The CMC expects the payment to follow a strict structure that encodes the **intent** and **destination**:
 
-    - The **destination account** of the ICP transfer must be the CMC's account with a subaccount matching the `to_subaccount` parameter.
-    - The **memo field** must be an ICRC-1-style `blob`, and must equal:
-      ```candid
-       "\4d\49\4e\54\00\00\00\00"
-      ```
-      which represents `"MINT"` padded to 8 bytes (no legacy `u64` memo is accepted).
+- The **destination account** must be the CMC’s account with the subaccount matching the `to_subaccount` parameter.
+- The **memo field** must explicitly indicate the intent to mint cycles. This can be:
+  - For legacy `transfer` calls: a `u64` memo with value:
+    ```candid
+    0x544e494d  // ASCII "MINT"
+    ```
+  - For ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`): a `blob` memo equal to:
+    ```candid
+    "\4d\49\4e\54\00\00\00\00"
+    ```
+    which represents `"MINT"` padded to 8 bytes
 
-    - **Parameters:**
-      ```candid
-      record {
-        block_index: nat64;         // Block index of the ICP ledger payment
-        to_subaccount: opt blob;    // 32-byte subaccount to credit in the cycles ledger
-        deposit_memo: opt blob;     // Optional application-specific memo
-      }
-      ```
+- **Parameters:**
+  ```candid
+  record {
+    block_index: nat64;         // Block index of the ICP ledger payment
+    to_subaccount: opt blob;    // 32-byte subaccount to credit in the cycles ledger
+    deposit_memo: opt blob;     // Optional application-specific memo
+  }
+  ```
 
-    - **Returns:**
-      ```candid
-      variant {
-        Ok: record {
-          block_index: nat;  // Block index in the cycles ledger
-          minted: nat;       // Amount of cycles minted
-          balance: nat;      // Final balance of the cycles ledger account
-        };
-        Err: NotifyError;
-      }
-      ```
+- **Returns:**
+  ```candid
+  variant {
+    Ok: record {
+      block_index: nat;  // Block index in the cycles ledger
+      minted: nat;       // Amount of cycles minted
+      balance: nat;      // Final balance of the cycles ledger account
+    };
+    Err: NotifyError;
+  }
+  ```
 
-    - **Notes:**
-      - Only authorized principals may call this method.
-      - The `to_subaccount` must match the subaccount used in the ICP destination address.
-      - Idempotent by `block_index`.
-      - This method only processes transfers with a valid ICRC-1 memo and does not support legacy-style memos.
+- **Notes:**
+  - The caller must be authorized to invoke this method.
+  - The subaccount in the payment must match `to_subaccount` exactly.
+  - This method is idempotent by `block_index`.
+  - Both legacy and ICRC-1 memo formats are accepted if they correctly encode `"MINT"`.
 
 
   ### `create_canister`
