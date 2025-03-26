@@ -48,7 +48,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 - The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the intended controller's principal.
 - The **memo field** must explicitly indicate the intent to create a canister. This can be expressed as:
-  - A legacy 64-bit unsigned integer memo with value `0x41455243` (ASCII `"CREA"`)
+  - A legacy 64-bit unsigned integer memo with value `0x41455243` (ASCII `"AERC"`)
   - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
     ```candid
     "\43\52\45\41\00\00\00\00"
