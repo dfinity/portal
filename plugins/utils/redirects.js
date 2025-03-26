@@ -72,7 +72,7 @@ const redirects = `
   /docs/concepts/concepts-intro.html /docs/building-apps/essentials/network-overview
   /docs/concepts/data-centers /docs/building-apps/essentials/network-overview
   /docs/concepts /docs/building-apps/essentials/network-overview
-  /docs/concepts/governance /docs/building-apps/governing-apps/nns/overview
+  /docs/concepts/governance https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/concepts/index /docs/building-apps/essentials/network-overview
   /docs/concepts/nodes-subnets /docs/building-apps/developing-canisters/create
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
@@ -508,17 +508,17 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/index  /docs/defi/overview
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/defi/rosetta/icp_rosetta/construction_api/staking
-  /docs/current/developer-docs/integrations/sns/sns-intro/ /docs/building-apps/governing-apps/overview
-  /docs/current/developer-docs/integrations/sns/ /docs/building-apps/governing-apps/overview
+  /docs/current/developer-docs/integrations/sns/sns-intro/ https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/developer-docs/integrations/sns/ https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
   /docs/current/developer-docs/integrations/sns/integrating/ /docs/building-apps/governing-apps/launching/integrating
   /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/building-apps/governing-apps/launching/integrating
   /docs/current/developer-docs/integrations/sns/integrating/index-integration /docs/building-apps/governing-apps/launching/integrating
   /docs/current/developer-docs/integrations/sns/integrating/ledger-integration /docs/building-apps/governing-apps/launching/integrating
-  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives /docs/building-apps/governing-apps/overview
-  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/building-apps/governing-apps/overview
-  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/building-apps/governing-apps/overview
-  /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/building-apps/governing-apps/overview
-  /docs/current/developer-docs/daos/overview /docs/building-apps/governing-apps/overview
+  /docs/current/developer-docs/integrations/sns/introduction/dao-alternatives https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/developer-docs/integrations/sns/introduction/sns-architecture https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/developer-docs/integrations/sns/introduction/sns-launch https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/developer-docs/daos/overview https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
   /docs/current/developer-docs/integrations/sns/launching/ /docs/building-apps/governing-apps/launching/
   /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal /docs/building-apps/governing-apps/launching/launch-steps-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/building-apps/governing-apps/launching/launch-steps-1proposal
@@ -527,7 +527,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/managing/cycles-usage /docs/building-apps/governing-apps/managing/cycles-usage
   /docs/current/developer-docs/integrations/sns/managing/making-proposals /docs/building-apps/governing-apps/managing/making-proposals
   /docs/current/developer-docs/integrations/sns/managing/manage-sns-intro /docs/building-apps/governing-apps/managing/manage-sns-intro
-  /docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters /docs/building-apps/governing-apps/managing/managing-nervous-system-parameters
+  /docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters https://learn.internetcomputer.org/hc/en-us/articles/34142964565396-DAO-Settings
   /docs/current/developer-docs/integrations/sns/managing/sns-asset-canister /docs/building-apps/governing-apps/managing/sns-asset-canister
   /docs/current/developer-docs/integrations/sns/testing/testing-before-launch /docs/building-apps/governing-apps/testing/testing-before-launch
   /docs/current/developer-docs/integrations/sns/testing/testing-locally /docs/building-apps/governing-apps/testing/testing-locally
@@ -535,10 +535,10 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/tokenomics/ /docs/building-apps/governing-apps/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/predeployment-considerations  /docs/building-apps/governing-apps/tokenomics/predeployment-considerations
   /docs/current/developer-docs/integrations/sns/tokenomics/preparation /docs/building-apps/governing-apps/tokenomics/preparation
-  /docs/current/developer-docs/integrations/sns/tokenomics/rewards /docs/building-apps/governing-apps/tokenomics/rewards
+  /docs/current/developer-docs/integrations/sns/tokenomics/rewards https://learn.internetcomputer.org/hc/en-us/articles/34143058069396-Rewards
   /docs/current/developer-docs/integrations/sns/tokenomics/sns-checklist /docs/building-apps/governing-apps/tokenomics/sns-checklist
-  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro  /docs/building-apps/governing-apps/tokenomics/tokenomics-intro
-  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/building-apps/governing-apps/tokenomics/tokenomics-intro
+  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics-intro  https://learn.internetcomputer.org/hc/en-us/articles/34088279488660-Tokenomics
+  /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics https://learn.internetcomputer.org/hc/en-us/articles/34088279488660-Tokenomics
   /docs/current/developer-docs/integrations/storage/cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/integrations/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/references/t-sigs-how-it-works
@@ -604,6 +604,35 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
   /docs/current/developer-docs/multichain/ethereum/cketh /docs/defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/overview/ /docs/building-apps/essentials/network-overview
+
+  ## NNS
+
+  /docs/building-apps/governing-apps/nns/overview https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/current/developer-docs/daos/nns/overview https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-following https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-following https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/building-apps/governing-apps/nns/concepts/neurons/staking-voting-rewards https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-management https://learn.internetcomputer.org/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management https://learn.internetcomputer.org/en-us/articles/34084120668692-NNS-Neurons
+  /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-overview https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-overview https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
+  /docs/building-apps/governing-apps/nns/concepts/proposals/direct-voting https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/concepts/proposals/direct-voting https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
+  /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-topics https://learn.internetcomputer.org/hc/en-us/articles/34140518658068-Proposal-Topics-and-Types
+  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics https://learn.internetcomputer.org/hc/en-us/articles/34140518658068-Proposal-Topics-and-Types
+  /docs/building-apps/governing-apps/nns/concepts/neurons-fund https://learn.internetcomputer.org/hc/en-us/articles/34084179554196-Neurons-Fund-NF
+  /docs/current/developer-docs/daos/nns/concepts/neurons-fund https://learn.internetcomputer.org/hc/en-us/articles/34084179554196-Neurons-Fund-NF
+  /docs/building-apps/governing-apps/overview https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/developer-docs/daos/sns/overview https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/building-apps/governing-apps/tokenomics/tokenomics-intro https://learn.internetcomputer.org/hc/en-us/articles/34088279488660-Tokenomics
+  /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro https://learn.internetcomputer.org/hc/en-us/articles/34088279488660-Tokenomics
+  /docs/building-apps/governing-apps/tokenomics/rewards https://learn.internetcomputer.org/hc/en-us/articles/34143058069396-Rewards
+  /docs/current/developer-docs/daos/sns/tokenomics/rewards https://learn.internetcomputer.org/hc/en-us/articles/34143058069396-Rewards
+  /docs/building-apps/governing-apps/managing/managing-nervous-system-parameters https://learn.internetcomputer.org/hc/en-us/articles/34142964565396-DAO-Settings
+  /docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters https://learn.internetcomputer.org/hc/en-us/articles/34142964565396-DAO-Settings
 
   ## Security
   /docs/current/developer-docs/security /docs/building-apps/security/inter-canister-calls
@@ -814,10 +843,10 @@ const redirects = `
 
   ## Samples
   /docs/samples/codelabs/data-persistence /samples
-  /docs/current/developer-docs/daos/nns/ /docs/building-apps/governing-apps/nns/overview
+  /docs/current/developer-docs/daos/nns/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/current/developer-docs/defi/tokens/icrc-1/ /docs/defi/token-standards/
   /docs/current/developer-docs/integrations/http-requests /docs/building-apps/network-features/using-http/https-outcalls/overview
-  /docs/current/developer-docs/integrations/nns/nns-app-quickstart /docs/building-apps/governing-apps/nns/overview
+  /docs/current/developer-docs/integrations/nns/nns-app-quickstart https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/language-guide/compiler-ref.html /docs/motoko/main/reference/language-manual
   /docs/current/motoko/main/motokolimbajul /docs/motoko/main/getting-started/motoko-introduction
   /docs/samples/codelabs/minimalistic-motoko-dapp /samples
@@ -885,7 +914,7 @@ const redirects = `
   /ethereum /chainfusion
   /img/ /docs/home
   /docs/defi /docs/defi/overview
-  /docs/current/tokenomics/nns/nns-staking-voting-rewards/ /docs/building-apps/governing-apps/nns/overview
+  /docs/current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/download.html /docs/home
   /docs/ic-identity-guide/what-is-ic-identity.html /docs/home
   /docs/language-guide/style.html /docs/motoko/main/getting-started/motoko-introduction
@@ -996,21 +1025,20 @@ const redirects = `
   /docs/token-holders/nns-app-quickstart.html /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
   /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
-  /docs/tokenomics/ /docs/building-apps/governing-apps/overview
-  /docs/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
-  /docs/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
-  /docs/tokenomics/index /docs/building-apps/governing-apps/overview
-  /docs/tokenomics/nns/community-fund /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
-  /docs/tokenomics/nns/neurons-fund /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
-  /docs/tokenomics/nns/nns-intro /docs/building-apps/governing-apps/nns/overview
-  /docs/tokenomics/nns/nns-staking-voting-rewards /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
-  /docs/tokenomics/nns/proposal-requirements /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-overview
-  /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
-  /docs/tokenomics/sns/sns-intro-tokens /docs/building-apps/governing-apps/tokenomics/tokenomics-intro
-  /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
-  /docs/tokenomics/token-holders/custody-options-intro /docs/defi/overview
-  /docs/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
-  /docs/tokenomics/token-holders/self-custody-quickstart /docs/defi/overview
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
+  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
+  /docs/current/tokenomics/index https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /docs/current/tokenomics/nns/community-fund https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/tokenomics/nns/neurons-fund https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/tokenomics/nns/nns-intro https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/current/tokenomics/nns/nns-staking-voting-rewards https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/tokenomics/nns/proposal-requirements https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
+  /docs/current/tokenomics/sns/sns-intro-tokens https://learn.internetcomputer.org/hc/en-us/articles/34088279488660-Tokenomics
+  /docs/current/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
+  /docs/current/tokenomics/token-holders/custody-options-intro /docs/defi/overview
+  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
+  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/defi/overview
   /docs/tutorials/ /docs/building-apps/essentials/network-overview
   /docs/tutorials/index /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/production/best-practices /docs/building-apps/best-practices/general
