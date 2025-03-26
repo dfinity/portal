@@ -208,7 +208,26 @@ The current values of fees are `base-fee` = 5M cycles (or $0.00000668305 USD), `
 
 ### HTTPS outcalls
 
-The cost for an HTTPS outcall is calculated using the formula `(3_000_000 + 60_000 * n) * n` for the base fee and `400 * n` each request byte and `800 * n` for each response byte, where `n` is the number of nodes in the subnet.
+The cycles cost of an HTTPS outcall request has both a fixed and variable component.
+The fixed component accounts for the known overhead associated with an HTTPS outcall, whereas the variable component accounts for the resources consumed during the request.
+The cost scales with regard to subnet size.
+
+Currently, these fees are:
+
+```
+total_fee = base_fee + size_fee
+base_fee = (3_000_000 + 60_000 * n) * n
+size_fee = (400 * request_bytes + 800 * max_response_bytes) * n
+```
+
+The `request_bytes` includes the entire request, not just the HTTP body:
+
+```
+request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
+header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
+```
+
+while `max_response_bytes` is either set by the canister or defaults to `2M`.
 
 ## Errors related to cycles
 
