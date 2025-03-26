@@ -1001,7 +1001,6 @@ const redirects = `
   /docs/token-holders/nns-app-quickstart.html /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
   /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
-  /docs/current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
   /docs/current/tokenomics/index https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
