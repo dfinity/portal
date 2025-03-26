@@ -112,7 +112,7 @@ const NewsCards: React.FC = () => {
   return (
     <>
       <AnimateSpawn
-        className="container-12 pt-16 md:pt-24"
+        className="container-12 pt-20 md:pt-40"
         el={motion.section}
         variants={transitions.container}
       >
