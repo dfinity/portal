@@ -28,7 +28,7 @@ jobs:
           git push origin HEAD:automated-submodule-update
 
       - name: Create Pull Request using peter-evans/create-pull-request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Automated submodule update"
