@@ -181,7 +181,7 @@ fn greet(name: String) -> String {
 
 ### Step 2: Add randomness.
 
-A key feature of ICP is its ability to generate [onchain randomness](/docs/building-apps/network-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
+A key feature of ICP is its ability to generate [onchain randomness](/docs/building-apps/network-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
 
 To use randomness in your canister, you need to make a call to the `raw_rand` method of the [management canister](/docs/references/system-canisters/management-canister).
 

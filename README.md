@@ -3,7 +3,7 @@
 # ICP developer portal
 
 The ICP developer portal brings together all the resources needed for developers to build on the
-Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
+Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://learn.internetcomputer.org/) series.
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
@@ -189,7 +189,7 @@ Link to resources that go into further detail and provide a brief summary of the
 
 - The [reference technology overview](/docs/references/bitcoin-how-it-works) pages
 
-- The [how it works](https://internetcomputer.org/how-it-works) section of the website
+- The [how it works](https://learn.internetcomputer.org/) section of the website
 
 - The [core concepts](/docs/building-apps/essentials/canisters) section of the docs
 
@@ -527,39 +527,6 @@ roadmap
 - To mark an item as a community request, set `is_community: true` in the item's metadata.
 
 Each domain folder contains an `index.md` file which adds metadata, like a title, a description, and cover images.
-
-### Changing the 'how it works' content
-
-The 'How it works' page cards and subpages are stored as markdown files inside
-the [how-it-works](https://github.com/dfinity/portal/tree/master/how-it-works) directory.
-
-```
-how-it-works
-├── 1_about
-│   ├── 01-overview-of-the-internet-computer.card.md
-│   ├── 01-overview-of-the-internet-computer.subpage.md
-│   ├── canister-lifecycle.card.md
-│   ├── canister-lifecycle.subpage.md
-│   └── index.md
-├── 2_featured
-│   ├── direct-integration-with-bitcoin.card.md
-│   ├── direct-integration-with-bitcoin.subpage.md
-│   ├── index.md
-│   ├── sns.card.md
-│   ├── threshold-ecdsa-signing.card.md
-│   ├── threshold-ecdsa-signing.subpage.md
-```
-
-The directory contains markdown files ending in `.card.md` and `.subpage.md`.
-
-The `.card.md` files will show up as part of the `/how-it-works page`, under the section they are grouped in (eg.
-Featured).
-
-The `.subpage.md` files will each generate a subpage under `/how-it-works/`, based on the files' metadata and content:
-
-- The `slug` parameter will determine the final URL, eg. the slug `canister-lifecycle` will generate the
-  page `/how-it-works/canister-lifecycle`.
-- The `title`, `abstract` (optional), and `coverImage` will determine how the page looks when shared on social media
 
 ## Adding documentation for community-created agents and CDKs
 
