@@ -27,7 +27,7 @@ The ckBTC minter provides the following API endpoints that can be used to intera
 - [`get_withdrawal_account`](#get_withdrawal_account): Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC when using the `retrieve_btc` endpoint.
 - [`retrieve_btc_status_v2`](#retrieve_btc_status_v2block_index-nat64): Returns the status of a previous `retrieve_btc` call or `retrieve_btc_with_approval` call.
 - [`retrieve_btc_status_v2_by_account`](#retrieve_btc_status_v2_by_accountaccount): Returns the status of all recent `retrieve_btc` or `retrieve_btc_with_approval` calls associated with the provided account.
-- [`retrieve_btc_status`](#retrieve_btc_statusblock_index-nat64): Serves the same purpose as retrieve_btc_status_v2 but returns less status information. This endpoint is considered *deprecated*.
+- [`retrieve_btc_status`](#retrieve_btc_statusblock_index-nat64): Serves the same purpose as `retrieve_btc_status_v2` but returns less status information. This endpoint is considered *deprecated*.
 - [`get_minter_info`](#get_minter_info): Returns information about the ckBTC minter itself.
 - [`get_canister_status`](#get_canister_status): Returns canister status information.
 - [`get_events`](#get_eventsstart-nat64-length-nat64): Returns a set of events at the ckBTC minter.
