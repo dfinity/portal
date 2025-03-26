@@ -27,16 +27,15 @@ The CMC exposes a set of core methods for converting ICP into cycles and interac
 
 - `notify_create_canister`: Processes an ICP payment by minting cycles and using them to create a new canister, assigning control to the specified principal and applying optional settings.
 - `notify_top_up`: Processes an ICP payment by minting cycles and sending them to an existing canister to increase its available balance.
-- `notify_mint_cycles`: Processes an ICP payment by minting cycles and depositing them into a cycles ledger account associated with a subaccount.
+- `notify_mint_cycles`: Processes an ICP payment by minting cycles and depositing them into the caller's cycles ledger account associated with a subaccount.
 - `create_canister`: Creates a canister using cycles directly attached to the call.
 - `get_icp_xdr_conversion_rate`: Returns the current ICP/XDR exchange rate with certification.
-- `get_subnet_types_to_subnets`: Lists available subnets grouped by their types.
+- `get_subnet_types_to_subnets`: Lists publicly available subnets grouped by their types. Only covers subnets that don't have standard settings.
 - `get_principals_authorized_to_create_canisters_to_subnets`: Indicates which principals are permitted to create canisters on which subnets.
-- `get_default_subnets`: Returns the subnets for general-purpose canister creation.
+- `get_default_subnets`: Returns the subnets for general-purpose public canister creation. These subnets typically have standard settings.
 - `get_build_metadata`: Displays internal version and build information for the CMC.
 
 
-## API Reference
 
 ## `notify_create_canister`
 
@@ -58,7 +57,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
   ```candid
   record {
     block_index: nat64;              // The ledger block containing the ICP payment
-    controller: principal;           // The principal who will control the new canister
+    controller: principal;           // The creator of the canister. Must match caller; otherwise, Err is returned. This is also used when checking that the creator is authorized to create canisters in subnets where authorization is required. This is also used when `settings` does not specify `controllers`.
     settings: opt CanisterSettings;  // Optional settings like controllers, memory limits, etc.
     subnet_type: opt text;           // Deprecated: legacy subnet selection
     subnet_selection: opt SubnetSelection; // Preferred subnet selection method
@@ -72,7 +71,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 #### Notes
   - The call is idempotent with respect to `block_index`; repeating it returns the same result.
-  - The controller must match the one encoded in the subaccount used for the payment.
+  - The caller principal must match the one encoded in the subaccount used for the payment.
   - Only transactions that follow the exact memo format will be processed successfully.
 
 
@@ -101,10 +100,10 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 #### Returns
     ```candid
-    variant { Ok: nat; Err: NotifyError } // Number of cycles minted and sent
+    variant { Ok: nat; Err: NotifyError } // Number of cycles minted and deposited
     ```
 
-  - **Notes:**
+#### Notes
     - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see [“Shared logic”](#shared-logic) section).
     - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
     - Only transfers matching the expected structure and memo will be accepted.
@@ -117,8 +116,8 @@ This method is used to deposit minted cycles into a specific subaccount in the [
 
 The CMC expects the payment to follow a strict structure that encodes the **intent** and **destination**:
 
-- The **destination account** must be the CMC’s account with the subaccount matching the `to_subaccount` parameter.
-- The **memo field** must explicitly indicate the intent to mint cycles. This can be:
+- The subaccount used in the transfer must be derived from the caller principal using the standard 32-byte encoding (see “Shared Logic” section).
+- The **ICP transfer's memo field** must explicitly indicate the intent to mint cycles. This can be:
   - For legacy `transfer` calls: a `u64` memo with value:
     ```candid
     0x544e494d  // ASCII "MINT"
@@ -134,7 +133,7 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   record {
     block_index: nat64;         // Block index of the ICP ledger payment
     to_subaccount: opt blob;    // 32-byte subaccount to credit in the cycles ledger
-    deposit_memo: opt blob;     // Optional application-specific memo
+    deposit_memo: opt blob;     // Optional application-specific memo that will be used in the cycles ledger's deposit transaction
   }
   ```
 
@@ -151,8 +150,6 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   ```
 
 #### Notes
-  - The caller must be authorized to invoke this method.
-  - The subaccount in the payment must match `to_subaccount` exactly.
   - This method is idempotent by `block_index`.
   - Both legacy and ICRC-1 memo formats are accepted if they correctly encode `"MINT"`.
 
@@ -163,9 +160,9 @@ Creates a new canister using cycles attached directly to the call (not from an I
 
 Unlike `notify_create_canister`, this method does not rely on an external ICP transaction. Instead, the calling canister must attach enough cycles to cover the creation cost.
 
-- If `subnet_selection` is omitted, the CMC will select a suitable subnet at random from the available subnets.
+- If `subnet_selection` and the (deprecated) `subnet_type` are omitted, the CMC will select a suitable subnet at random from the available subnets.
 - If `settings` is provided, it will override the default configuration for the new canister.
-- If no `settings` are given, the calling principal becomes the sole controller.
+- If no controllers are given in `settings`, the calling principal becomes the sole controller.
 
 #### Parameters
   ```candid
@@ -213,7 +210,6 @@ Unspecified fields are interpreted as:
 - `controllers`: Defaults to the caller of the method.
 - Other fields: Use system-wide default configuration values.
 
----
 
 ## Encoding a principal into a subaccount
 
