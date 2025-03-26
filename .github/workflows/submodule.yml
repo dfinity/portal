@@ -21,13 +21,21 @@ jobs:
       - name: Update submodules to latest commit
         run: git submodule update --remote --force
 
-      - name: Commit changes
+      - name: Check for changes and commit if needed
+        id: check_changes
         run: |
           git add .
-          git commit -m "Automated submodule update"
-          git push origin HEAD:automated-submodule-update
+          # Check if there are any changes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0  # Exit successfully without committing or pushing
+          else
+            git commit -m "Automated submodule update"
+            git push origin HEAD:automated-submodule-update
+          fi
 
       - name: Create Pull Request using peter-evans/create-pull-request
+        if: success()  # Only run if the job succeeded (this step is independent of whether changes were committed)
         uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
