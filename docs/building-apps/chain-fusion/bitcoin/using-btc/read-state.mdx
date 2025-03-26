@@ -110,7 +110,7 @@ Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with you
 
 ## Reading the fee percentile
 
-The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. In order to get fee percentiles of the last 10,000 transactions mined into blocks, call `bitcoin_get_current_fee_percentiles`.
+The transaction fees on the Bitcoin network change dynamically based on the number of pending transactions. In order to get fee percentiles of the last 10_000 transactions mined into blocks, call `bitcoin_get_current_fee_percentiles`.
 
 The function returns 101 numbers that are fees measured in millisatoshi per virtual byte. The `i`-th element of the result corresponds to the `i`-th percentile fee. For example, to get the median fee over the last few blocks, look at the `50`-th element of the result.
 
