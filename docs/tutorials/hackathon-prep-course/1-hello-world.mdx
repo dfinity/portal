@@ -25,6 +25,10 @@ ICP Ninja does, however, impose a few [restrictions](/docs/building-apps/develop
 
 Applications deployed on ICP are composed of one or more canisters. Each canister contains code in the form of a WebAssembly (Wasm) module and state, i.e., the data stored in the canister.
 
+When you design a dapp to be deployed on ICP, one of the first decisions you will make is how your dapp should be structured. Dapps can consist of a single canister, such as only the backend canister; they can consist of a single backend canister and a single frontend canister, or they can consist of several canisters.
+
+Typically, service-based dapps that don't include a frontend UI work well as single canister projects, while projects that involve several reusable services can work well as multi-canister projects.
+
 The default project architecture has two canisters:
 
 - **Backend canister**: Used to store the application’s data and to provide endpoints to access and modify the data. Backend canisters can be written in [a variety of different languages](/docs/building-apps/developer-tools/cdks/) (Motoko, Rust, TypeScript, and more).
@@ -41,7 +45,7 @@ The default project architecture has two canisters:
 
 ### Hello, world! backend only
 
-Let's start with deploying only a backend canister. [Open the ICP Ninja project](https://icp.ninja/s/w2MbP).
+Let's start with deploying only a backend canister. [Open the ICP Ninja "Hello, world!" project](https://icp.ninja/s/w2MbP). [View the ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
 
 It will contain the following files:
 
@@ -119,6 +123,12 @@ In the input box, insert "ICP," then select the "Query". The backend canister wi
 ("Hello, ICP!")
 ```
 
+### Canister upgrades
+
+Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
+
+The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](/docs/tutorials/hackathon-prep-course/managing-canisters).
+
 You can edit the `app.mo` file to return a different greeting, such as:
 
 ```
@@ -127,3 +137,37 @@ return "Hello, " # name # "! This is my first canister on ICP!";
 
 Then click "Deploy" again to upgrade your canister's code. Once deployed, you can test the `greet` method in the Candid API and it should return your new greeting.
 
+[Learn more about upgrading canisters](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters).
+
+## Query and update calls
+
+When calls are made on ICP, there are two primary types: query calls and update calls.
+
+**Query calls** are calls that do not alter the state of a canister, making them 'read-only' operations. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. Query methods can be called in replicated mode as update calls. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
+
+```motoko title="backend/app.mo"
+  public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+```
+
+**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
+
+```motoko title="backend/Backend.mo"
+actor countCharacters {
+    public func test(text : Text) : async Bool {
+        let size = Text.size(text);
+        return size % 2 == 0;
+    };
+};
+```
+
+Additionally, there are several other terms regarding calls that you will come across as an ICP developer, such as:
+
+**Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
+
+**Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
+
+**Inter-canister calls** are used to make calls between different canisters.
+
+[Learn more about canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).

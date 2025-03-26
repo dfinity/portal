@@ -8,285 +8,112 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
+Now that you've deployed a project with just a backend canister, then deployed a project with just a frontend canister, let's put the pieces together and create a fullstack application that has both a frontend and backend.
 
-## Backend
+For this example, open the [ICP Ninja Flying Ninja project](https://icp.ninja/projects/flying-ninja).
 
-Now, let's review the `backend/app.mo` file to learn about the application's functions.
+Flying Ninja is a 2D side-scroller game that showcases how ICP's unique onchain randomness can be used to generate random values; in this example, obstacles the player must avoid. The game also features a leaderboard to track player high scores.
 
-```motoko title="backend/app.mo" no-repl
+The backend canister contains the logic for the game's randomness, leaderboard, and scoring, while the frontend contains the player's ninja icon and obstacles.
 
-// First define an actor named HelloWorld.
-// An actor is an object that can hold state and interact with the world through messages.
-persistent actor HelloWorld {
-  // Store the greeting in a stable variable such that it gets persisted over canister upgrades.
-  var greeting : Text = "Hello, ";
+## `dfx.json` with two canisters
 
-  // This update method stores the greeting prefix in stable memory.
-  // Update methods alter the canister's state and data.
-  // This method specifically will update the text stored in the `greeting` variable.
-  public func setGreeting(prefix : Text) : async () {
-    greeting := prefix;
-  };
-
-  // This query method returns the currently persisted greeting with the given name.
-  // Query methods do not alter the canister's state or data. They can be thought of as 'ready-only' operations.
-  // This query method will return the text stored in greeting, followed by the text passed to the method.
-  public query func greet(name : Text) : async Text {
-    // The method’s body returns Text concatenating 'Hello ,' the input value 'name', and an exclamation mark.
-    return greeting # name # "!";
-  };
-};
-```
-
-:::info
-If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
-:::
-
-
-
-
-
-In the previous tutorial, you deployed a sample full-stack dapp using the `vite-react-motoko` example boilerplate. This tutorial builds off of that previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp), it is recommended that you complete it prior to starting this tutorial.
-
-Previously, you learned that the frontend UI interacts with the backend canister's method `counter`. When the UI button is clicked, the backend canister's method `counter` increases the value of `count` by an increment of 1. In this tutorial, you'll explore the backend code to learn more about the `counter` method.
-
-## Exploring the `vite-motoko-react` backend code
-
-Recall that the `vite-motoko-react` project includes the following files and subdirectories:
-
-```
-├── README.md
-├── backend
-│   ├── Backend.mo
-│   └── tests
-│       ├── Backend.add.test.mo
-│       ├── Backend.get.test.mo
-│       └── Backend.inc.test.mo
-├── dfx.json
-├── mops.toml
-├── package-lock.json
-├── package.json
-├── src
-│   ├── App.css
-│   ├── App.tsx
-│   ├── assets
-│   │   ├── favicon.ico
-│   │   ├── motoko.png
-│   │   ├── motoko_moving.png
-│   │   ├── motoko_shadow.png
-│   │   ├── react.svg
-│   │   └── vite.svg
-│   ├── index.html
-│   ├── index.scss
-│   ├── main.tsx
-│   ├── setupTests.ts
-│   ├── tests
-│   │   └── App.test.tsx
-│   └── vite-env.d.ts
-├── tsconfig.json
-└── vite.config.ts
-```
-
-The backend canister's code, stored at `backend/Backend.mo`, contains the following:
-
-```motoko title="backend/Backend.mo"
-actor class Backend() {
-  stable var counter = 0;
-  // Get the current count
-  public query func get() : async Nat {
-    counter;
-  };
-  // Increment the count by one
-  public func inc() : async () {
-    counter += 1;
-  };
-  // Add `n` to the current count
-  public func add(n : Nat) : async () {
-    counter += n;
-  };
-};
-```
-
-Let's breakdown each portion of this code.
-
-First, the code defines an actor called `Backend`. In Motoko, programs consist of an actor expression that is introduced using the keyword `actor`. An actor is a process with encapsulated state that communicates with other running actors. Each canister can only contain one actor. You can learn more about Motoko actors [here](/docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
-
-```motoko no-repl title="backend/Backend.mo"
-actor class Backend() {
-```
-
-Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor that uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be persisted during canister upgrades. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
-
-```motoko no-repl title="backend/Backend.mo"
-stable var counter = 0;
-```
-
-Next, the code defines a public function called `get()`. The function is modified with the keyword `query`, which defines that calls to this function will use a query call. A query call is used for querying information from a canister's method. This tutorial will go into further detail on query calls in the section [query and update calls](#query-and-update-calls). This function simply returns the value of the `counter` variable.
-
-```motoko no-repl title="backend/Backend.mo"
-public query func get() : async Nat {
-    counter;
-};
-```
-
-In the next portion of the code, a public function called `inc()` is defined. This function increases the value of the `counter` variable by `1` every time the function is called.
-
-```motoko no-repl title="backend/Backend.mo"
-public func inc() : async () {
-    counter += 1;
-};
-```
-
-Lastly, the `add(n : Nat)` function is defined. This function adds `n` to the current count, where `n` is a numerical value passed to the function when it is called. In the frontend UI, the button used to increase the counter value does not use this function; however, it can be called manually from the command line or Candid interface of the backend canister. This tutorial will go into further detail on Candid in the section [Candid](#candid).
-
-```motoko no-repl title="backend/Backend.mo"
-public func add(n : Nat) : async () {
-    counter += n;
-};
-```
-
-You can learn more about Motoko in the following resources:
-
-- [Motoko level 1](/docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
-
-- [Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
-
-- [Motoko level 3](/docs/tutorials/developer-liftoff/level-3/3.6-motoko-lvl3).
-
-- [Motoko level 4](/docs/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4).
-
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko.
-
-- [Motoko documentation](/docs/motoko/main/getting-started/motoko-introduction).
-
-
-## Learning more about backend canisters
-
-To further understand and develop your own backend canisters, let's review a few fundamental features, concepts, and workflows that pertain to backend canisters.
-
-### Single versus multi-canister projects
-
-When you design a dapp to be deployed on ICP, one of the first decisions you will make is how your dapp should be structured. Dapps can consist of a single canister, such as only the backend canister; they can consist of a single backend canister and a single frontend canister, as this sample `vite-react-motoko` starter project does, or they can consist of several canisters.
-
-Typically, service-based dapps that don't include a frontend UI work well as single canister projects, while projects that involve several reusable services can work well as multi-canister projects.
-
-### Importing external canisters
-
-When developing a project, certain third-party canisters may be beneficial to integrate within your project. Third-party canisters refer to canisters created by DFINITY or canisters created by developers in the ICP community that are designed to provide a reusable service. One popular third-party canister that many developers choose to integrate into their project is the Internet Identity canister, which provides ICP's native authentication service.
-
-When integrating with third-party canisters, it is important to test the integration locally to assure that the integration is accurate and correct. Performing tests locally is beneficial since tests executed in a local developer environment do not cost cycles, use non-production data, and have a faster completion time when run locally.
-
-To test the integration with a third-party canister locally, dfx supports pulling a third-party canister from the mainnet via the [`dfx deps`](/docs/building-apps/advanced/using-third-party-canisters) workflow. Using this workflow, you can pull a canister from the mainnet by configuring your project's `dfx.json` file to include a `dependency` of the canister you'll be pulling. Then, define the pullable canister as type `pull` and include the canister's ID on the mainnet. For example, to pull the Internet Identity canister with canister ID of `rdmx6-jaaaa-aaaaa-aaadq-cai`, the following `dfx.json` file can be used:
-
+In this project, note that the `dfx.json` file defines two canisters rather than just one:
 
 ```json title="dfx.json"
 {
-    "canisters": {
-        "example_backend": {
-            "type": "motoko",
-            "main": "src/example_backend/main.mo",
-            "dependencies": [
-                "internet_identity"
-            ]
-        },
-        "internet_identity": {
-            "type": "pull",
-            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "backend": {
+      "main": "backend/app.mo",
+      "type": "motoko",
+      "args": "--enhanced-orthogonal-persistence"
+    },
+    "frontend": {
+      "dependencies": ["backend"],
+      "frontend": {
+        "entrypoint": "frontend/index.html"
+      },
+      "source": ["frontend/dist"],
+      "type": "assets"
+    }
+  },
+  "output_env_file": ".env",
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
 }
 ```
 
-For more information on using third-party canisters, check out the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
+## How does the backend communicate with the frontend?
 
-### Query and update calls
+When a canister is deployed, locally or on the mainnet, there are two primary methods of interacting with that canister. You can use an API through an agent, or you can use the canister's HTTP interface.
 
-When calls are made on ICP, there are two primary types: query calls and update calls.
+In this project, the JavaScript agent is used. An agent is a library that is used to make calls to the public interface of the Internet Computer. Agents are primarily responsible for:
 
-**Query calls** are calls that do not alter the state of a canister, making them 'read-only' operations. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. Query methods can be called in replicated mode as update calls. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
+- Structuring data: Agents are responsible for structuring the data made in a call into a format that can be processed by the canister.
 
-```motoko title="backend/Backend.mo"
-actor countCharacters {
-  public query func get() : async Nat {
-      counter;
-  };
-}
+- Managing authentication: Agents are responsible for attaching a cryptographic identity to the call.
+
+- Decoding data: Once a response has been returned from the canister on the mainnet, the agent takes the certificate from the call's payload and verifies it.
+
+When a user loads the application in their web browser, the browser will fetch the UI from the frontend canister, then the user can interact with it. Each interaction will trigger a message that will be sent to the backend.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-flow.png")}
+    alt="Application flow"
+    width="800"
+  />
+</div>
+
+For example, the `src/frontend/Game.jsx` file defines a React application that includes the game's logic. The portion that communicates with the backend canister is defined as:
+
+```jsx
+import { backend } from 'declarations/backend';
+
+...
+
+  // This is run once when the page is loaded
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+        // fetch the Leaderboard
+        await fetchLeaderboard();
+        // initialize the seed with randomness from ICP
+        const randomness = await backend.getRandomness();
+        const seed = new Uint8Array(randomness);
+
+        // create a new SeededRNG with the first 8 bytes of the seed
+        setRng(new SeededRNG(seed.slice(0, 8)));
+      } catch (error) {
+        console.error('Failed to initialize seed:', error);
+      }
+    };
+
+    initialize();
+  }, []);
 ```
 
-**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
+In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. Declaration files are generated during the build process. If you build this project locally, you will see them; they are not shown in the ICP Ninja file viewer.
 
-```motoko title="backend/Backend.mo"
-actor countCharacters {
-    public func test(text : Text) : async Bool {
-        let size = Text.size(text);
-        return size % 2 == 0;
-    };
-};
+When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then, it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
+
+In this example, the user interface includes randomly generated obstacles once the game is loaded. The UI sends a request to the backend's `getRandomness` method, defined in the `app.mo` file as:
+
+```motoko
+  // Produces secure randomness as a seed to the game.
+  public func getRandomness() : async Blob {
+    await Random.blob();
+  };
 ```
 
-Additionally, there are several other terms regarding calls that you will come across as an ICP developer, such as:
+The `backend` canister processes the request from the agent, then responds with the result of the method.
 
-**Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
+[Learn more about agents](/docs/building-apps/interact-with-canisters/agents/overview).
 
-**Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
-
-**Inter-canister calls** are used to make calls between different canisters.
-
-You can learn more about canister calls in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
-
-### Candid service descriptions
-
-Candid is an interface description language that is used to describe the public interface of a service. On ICP, a service is an application deployed as a canister. The public interfaces of a canister are used to interact with the canister. Candid is used on ICP since it supports the unique features and functions of the protocol.
-
-For example, a simple service description that defines a service without any public methods would look like this:
-
-```candid
-service : {}
-```
-
-A service description that does not have any public methods is not very useful. To add a public method, you can add a simple `ping` method:
-
-```candid
-service : {
-  ping : () -> ();
-}
-```
-
-In this `ping` method, there are no arguments passed to the method, and there are no results returned, so the empty sequence of () is used for both the arguments and the results.
-
-To interact with the service descriptions defined by Candid, you can make calls directly to the canister's defined method, interact with the method through a frontend service (such as an agent), or you can use the CandidUI. CandidUI is a user interface that can be used to interact with a canister's public methods through the web browser. When a backend canister is deployed, the backend canister URL that is returned in the terminal window is the CandidUI URL, indicated by 'via Candid interface':
-
-```bash
-URLs:
-  Frontend canister via browser
-    frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
-  Backend canister via Candid interface:
-    backend: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
-```
-
-For example, in this `vite-react-motoko` example, the CandidUI resembles the following:
-
-![Candid UI](_attachments/CandidUI.png)
-
-You can learn more about Candid in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.4-intro-candid).
-
-### Canister upgrades
-
-Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
-
-The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](/docs/tutorials/hackathon-prep-course/managing-canisters).
-
-You can learn more about upgrading canisters in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters).
-
-### Stable memory
+## Stable memory
 
 Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 500GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade.
 
@@ -296,135 +123,131 @@ A few other important terms regarding memory on ICP include:
 
 - **Stable storage**: A Motoko-specific term referring to the Motoko stable storage feature. Stable storage uses the stable memory feature to persist data across canister upgrades. Stable storage is designed to accommodate changes to both the application data and the Motoko compiler.
 
-- **Stable variables**: A Motoko-specific feature referring to variables defined using the `stable` modifier in a Motoko canister. The value of a stable variable is persisted across canister upgrades. An example of this was shown earlier in this tutorial, with the stable variable defined in the backend canister code, `stable var counter = 0;`.
+- **Persistent actors and stable variables**: Motoko-specific features referring to variables defined as `stable` or actors defined as `persistent` in a Motoko canister. The value of variables defined within a persistent actor are persisted across canister upgrades.
 
-You can learn more about storage and data persistence in the documentation [here](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+In the Flying Ninja example, the actor is defined as `persistent`, therefore all of the data stored in the canister's variables will be persisted across upgrades:
 
-### Mops
+```motoko title="backend/app.mo"
+import Array "mo:base/Array";
+import Int "mo:base/Int";
+import Random "mo:base/Random";
 
-Mops is a package manager for Motoko, supporting over 60 libraries that include different functionalities such as utility, encoding, cryptography, data structure libraries, and more. A package manager is a collection of tools that automates installing, upgrading, configuring, or removing software libraries or packages to help efficiently manage a project's dependencies.
+persistent actor FlyingNinja {
+  type LeaderboardEntry = {
+    name : Text;
+    score : Nat;
+  };
 
-In this `vite-react-motoko` example, you saw that the project's files include a file called `mops.toml`. This file is used to specify the packages that the project uses. In this project, the `mops.toml` file includes the following dependency:
+  private var leaderboard : [LeaderboardEntry] = [];
 
-```title="mops.toml"
-# Motoko dependencies (https://mops.one/)
+  // Returns if a certain score is good enough to warrant an entry on the leaderboard.
+  public query func isHighScore(score : Nat) : async Bool {
+    if (leaderboard.size() < 10) {
+      return true;
+    };
+    // Whenever a new entry is added, the leaderboard is sorted.
+    // We can safely assume that the last entry has the lowest score.
+    return score > leaderboard[leaderboard.size() - 1].score;
+  };
 
-[dependencies]
-base = "0.7.4"
-```
+  // Adds a new entry to the leaderboard if the score is good enough.
+  public func addLeaderboardEntry(name : Text, score : Nat) : async [LeaderboardEntry] {
+    let newEntry : LeaderboardEntry = { name = name; score = score };
 
-Additionally, Mops is defined as the project's package manager in the project's `dfx.json` file, using the `packtool` definition of `mops sources`:
+    // Add the new entry and sort the leaderboard
+    leaderboard := Array.sort<LeaderboardEntry>(
+      Array.append<LeaderboardEntry>(leaderboard, [newEntry]),
+      func(a : LeaderboardEntry, b : LeaderboardEntry) {
+        Int.compare(b.score, a.score);
+      }
+    );
 
-```json title="dfx.json"
-...
-{
-  "defaults": {
-    "build": {
-      "packtool": "mops sources"
-    }
-  }
-}
-...
-```
+    // Keep only the top 10 scores
+    if (leaderboard.size() > 10) {
+      leaderboard := Array.subArray(leaderboard, 0, 10);
+    };
 
-To add additional packages to your project's dependencies, you can use the command `mops add` followed by the package name:
+    return leaderboard;
+  };
 
-```bash
-mops add base
-```
+  // Returns the current leaderboard.
+  public query func getLeaderboard() : async [LeaderboardEntry] {
+    return leaderboard;
+  };
 
-Then, to install all packages specified in the `mops.toml` file, use the command:
-
-```bash
-mops install
-```
-
-You can [learn more about Mops](/docs/tutorials/developer-liftoff/level-3/3.1-package-managers).
-
-## Frontend
-
-
-
-Together, these files enable the frontend canister's user interface, as seen in [2: Deploying your first fullstack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).
-
-## Learning more about frontend canisters
-
-To further understand and develop your own frontend canisters, let's review a few fundamental features, concepts, and workflows that pertain to frontend canisters.
-
-### Agents
-
-When a canister is deployed, locally or on the mainnet, there are two primary methods of interacting with that canister. You can use an API through an agent, or you can use the canister's HTTP interface.
-
-In this `vite-react-motoko` example, a JavaScript agent is used. An agent is a library that is used to make calls to the public interface of the Internet Computer. Agents are primarily responsible for:
-
-- Structuring data: Agents are responsible for structuring the data made in a call into a format that can be processed by the canister.
-
-- Managing authentication: Agents are responsible for attaching a cryptographic identity to the call.
-
-- Decoding data: Once a response has been returned from the canister on the mainnet, the agent takes the certificate from the call's payload and verifies it.
-
-In addition to the JavaScript agent, DFINITY has developed and maintains a Rust agent, and the ICP community supports several agents for .NET, Go, Python, Ruby, and more.
-
-In your `vite-react-motoko` example, the JavaScript agent file is stored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command and contains the following content:
-
-```javascript title="src/declarations/frontend/index.js"
-import { Actor, HttpAgent } from "@dfinity/agent";
-
-// Imports and re-exports candid interface
-import { idlFactory } from "./frontend.did.js";
-export { idlFactory } from "./frontend.did.js";
-
-/* CANISTER_ID is replaced by webpack based on the node environment
- * Note: canister environment variable will be standardized as
- * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
- * beginning in dfx 0.15.0
- */
-export const canisterId =
-  process.env.CANISTER_ID_FRONTEND ||
-  process.env.FRONTEND_CANISTER_ID;
-
-export const createActor = (canisterId, options = {}) => {
-  const agent = options.agent || new HttpAgent({ ...options.agentOptions });
-
-  if (options.agent && options.agentOptions) {
-    console.warn(
-      "Detected both agent and agentOptions passed to createActor. Ignoring agentOptions and proceeding with the provided agent."
-    );
-  }
-
-  // Fetch root key for certificate validation during development
-  if (process.env.DFX_NETWORK !== "ic") {
-    agent.fetchRootKey().catch((err) => {
-      console.warn(
-        "Unable to fetch root key. Check to ensure that your local replica is running"
-      );
-      console.error(err);
-    });
-  }
-
-  // Creates an actor using the candid interface and the HttpAgent
-  return Actor.createActor(idlFactory, {
-    agent,
-    canisterId,
-    ...options.actorOptions,
-  });
+  // Produces secure randomness as a seed to the game.
+  public func getRandomness() : async Blob {
+    await Random.blob();
+  };
 };
-
-export const frontend = createActor(canisterId);
 ```
 
-In this code, the constructor first creates an `HTTPAgent` that wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the local testnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
+[Learn more about storage and data persistence](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
-You can learn more about agents in the documentation [here](/docs/building-apps/interact-with-canisters/agents/overview).
+## Deploy Flying Ninja
 
-### Serving HTTP content
+Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
 
-Canister smart contracts are able to serve HTTP content natively, allowing for dapp frontends to be served directly in a web browser using the canister's URL at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. Frontend canisters can be used to deliver HTML, CSS, and JavaScript pages and answer API requests.
+```
+Building and deploying code onchain:
+→ Reserving canisters onchain
+→ Building backend
+→ Building frontend
+→ Uploading frontend assets
+Backend Internet Computer URL:
+https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp0.io/?id=t46xv-jqaaa-aaaab-qbktq-cai
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://3o7v4-zyaaa-aaaab-qblga-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
+```
 
-If a canister wants to serve HTTP content, it should implement a method that consumes an HTTP request, which contains a URL, HTTP method, and headers, then outputs an HTTP response that contains a status, headers, and the response body. The canister method can return HTML, CSS, and JavaScript content as part of the HTTP response.
+Open the dapp's "Internet Computer URL" in your web browser. This will open the Flying Ninja game, which you can start playing, record your score on the leaderboard, then send to your friends and challenge them to beat your score!
+
+Want to make some changes to the game but not sure how? The ICP Ninja AI Assistant can be used to generate code based on prompts. For example, let's try to add a message that is shown when a user beats the leaderboard's high score. Since this idea will alter the frontend assets, let's look at the `frontend/src/Game.jsx` file and identify where the high score is determined:
+
+```jsx
+  const checkHighScore = async () => {
+    const isHighScore = await backend.isHighScore(BigInt(score));
+    console.log('isHighScore', isHighScore);
+    if (isHighScore) {
+      setShowNameInput(true);
+    }
+  };
+```
+
+Highlight this portion of the code, right click, then select "Ask AI - Modify." In the modify prompt box, insert text such as "When a player gets the high score, tell them 'You win!'" The AI will try to modify this portion of the code to achieve the desired result. In this example, the AI generated the following:
+
+```jsx
+{showNameInput && (
+  <div
+    style={{
+      marginTop: '20px',
+      padding: '20px',
+      border: '2px solid black',
+      borderRadius: '10px'
+    }}
+  >
+    <h2>New High Score!</h2>
+    <h1 style={{ color: 'green', fontSize: '32px' }}>{winMessage}</h1>
+    <p>Enter your name:</p>
+    <input
+      type="text"
+      value={playerName}
+      onChange={(e) => setPlayerName(e.target.value)}
+      style={{ marginBottom: '10px' }}
+    />
+    <button onClick={submitScore}>Submit</button>
+  </div>
+)}
+```
+
+:::caution
+Code generated by the AI Assistant will vary.
+:::
+
+Then insert the generated code into the `frontend/src/Game.jsx` file, upgrade the canister by clicking "Redeploy," and refresh your application to see the changes! If you need help, you can also ask the AI to fix the code by right clicking and selecting "AI Assistant - Fix."
 
 
 
-## Next steps
 
-- [4: Exploring the frontend](/docs/tutorials/hackathon-prep-course/exploring-the-frontend).
+

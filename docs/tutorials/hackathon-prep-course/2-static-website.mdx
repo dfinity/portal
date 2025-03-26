@@ -11,6 +11,10 @@ import '/src/components/CenterImages/center.scss';
 
 To compile frontend assets like CSS and JavaScript into a Wasm module that can be deployed on ICP as a canister, `dfx` uses Rust boilerplate code to create an **asset canister**.
 
+Canister smart contracts are able to serve HTTP content natively, allowing for dapp frontends to be served directly in a web browser using the canister's URL at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. Frontend canisters can be used to deliver HTML, CSS, and JavaScript pages and answer API requests.
+
+If a canister wants to serve HTTP content, it should implement a method that consumes an HTTP request, which contains a URL, HTTP method, and headers, then outputs an HTTP response that contains a status, headers, and the response body. The canister method can return HTML, CSS, and JavaScript content as part of the HTTP response.
+
 :::info
 The terms 'asset canister' and 'frontend canister' are sometimes used interchangeably. **Asset** canister is typically used to describe the Rust code `dfx` uses in the background to compile a project's frontend assets into Wasm. **Frontend** canister is typically used as a general term to describe a project's frontend.
 :::
@@ -27,7 +31,7 @@ In the previous tutorial, you deployed a project with a single backend canister,
 
 ## Crypto blog example
 
-[Open the ICP Ninja My Crypto Blog project](https://icp.ninja/s/GQVBz).
+[Open the ICP Ninja My Crypto Blog project](https://icp.ninja/s/GQVBz). [View the ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
 
 Let's review the project's file structure:
 
@@ -142,6 +146,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 ```
+
+:::info
+If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
+:::
 
 ### Deploy the canister
 

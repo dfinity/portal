@@ -5,24 +5,22 @@ keywords: [beginner, tutorial, hackathon, hackathon prep course]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 
-
 # 8: Deploy and manage canisters from the CLI
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-
-
-Now that you have canisters deployed on the mainnet, it's important to learn how to manage and maintain those canisters. Basic canister management includes obtaining information about a canister, adding an identity as a controller of a canister, topping up a canister, starting and stopping a canister, and deleting a canister.
+Now that you have canisters deployed from the CLI, it's important to learn how to manage and maintain those canisters. Basic canister management includes obtaining information about a canister, adding an identity as a controller of a canister, topping up a canister, starting and stopping a canister, and deleting a canister.
 
 ## Obtaining a canister's ID
 
 Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser, such as when you accessed the frontend of your dapp in the previous tutorial. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
 
-To get the canister ID of the `backend` canister that's been deployed on the mainnet, use the command:
+To get the canister ID of canister that's been deployed on the mainnet, use the command:
 
 ```sh
 dfx canister id backend --network ic
 ```
+
 If you want to get the canister ID for a locally deployed canister, simply omit the `--network ic` flag, such as:
 
 ```sh
@@ -269,8 +267,3 @@ When a canister is deleted, the canister's code, state, and canister ID are remo
 dfx canister --network ic stop --all
 dfx canister --network ic delete --all
 ```
-
-
-## Next steps
-
-- [9: Sample starter projects](/docs/tutorials/hackathon-prep-course/sample-starter-projects).
