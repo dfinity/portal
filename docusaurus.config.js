@@ -25,7 +25,12 @@ const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
-const { getSplatRedirects, getRedirects, getExactUrlRedirects, getExternalRedirects } = require("./plugins/utils/redirects");
+const {
+  getSplatRedirects,
+  getRedirects,
+  getExactUrlRedirects,
+  getExternalRedirects,
+} = require("./plugins/utils/redirects");
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
@@ -110,7 +115,7 @@ const subnavItems = [
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "ICP Ninja",
-        href: "https://icp.ninja"
+        href: "https://icp.ninja",
       },
       {
         label: "ICP Developer Forum",
@@ -124,13 +129,11 @@ const subnavItems = [
   },
   /**
    * Add UI tests in development mode
-  * process.env.NODE_ENV === "development" && {
-  *   label: "UI Tests",
-  *   href: "/docs/tests/all",
-  */
-
+   * process.env.NODE_ENV === "development" && {
+   *   label: "UI Tests",
+   *   href: "/docs/tests/all",
+   */
 ].filter(Boolean);
-
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {
@@ -173,9 +176,9 @@ const marketingNav = {
               description: "Transforming the internet",
             },
             {
-              name: "How it works",
-              href: "/how-it-works",
-              description: "Look into the nitty gritty",
+              name: "Learn Hub",
+              href: "https://learn.internetcomputer.org",
+              description: "Expand your ICP knowledge",
             },
             {
               name: "ICP Dashboard",
@@ -627,18 +630,18 @@ const config = {
     youtubePlugin,
     validateShowcasePlugin,
     externalRedirectsPlugin({
-    redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
-  }),
+      redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
+    }),
 
-  [
-    "@docusaurus/plugin-client-redirects",
-    {
-      fromExtensions: ["html", "md"],
-      redirects: getRedirects(),
-      createRedirects: (existingPath) => getSplatRedirects(existingPath)
-    },
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        fromExtensions: ["html", "md"],
+        redirects: getRedirects(),
+        createRedirects: (existingPath) => getSplatRedirects(existingPath),
+      },
+    ],
   ],
-],
 
   presets: [
     [
@@ -690,12 +693,12 @@ const config = {
         defaultMode: "light",
         respectPrefersColorScheme: true,
       },
-        // github codeblock theme configuration
-        codeblock: {
-          showGithubLink: true,
-          githubLinkLabel: 'View on GitHub',
-          showRunmeLink: false,
-          runmeLinkLabel: 'Checkout via Runme'
+      // github codeblock theme configuration
+      codeblock: {
+        showGithubLink: true,
+        githubLinkLabel: "View on GitHub",
+        showRunmeLink: false,
+        runmeLinkLabel: "Checkout via Runme",
       },
       metadata: [
         {
@@ -748,7 +751,7 @@ const config = {
               {
                 label: "Node Providers",
                 href: "/node-providers",
-                target: '_self',
+                target: "_self",
               },
               {
                 label: "Dashboard",
@@ -861,7 +864,5 @@ const config = {
   themes: ["@saucelabs/theme-github-codeblock", "@docusaurus/theme-mermaid"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
-
-
 
 module.exports = config;
