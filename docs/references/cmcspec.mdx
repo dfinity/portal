@@ -4,25 +4,24 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Reference"]} />
 
-## Overview
 
 The Cycles Minting Canister (CMC) is a system canister on the Internet Computer responsible for converting ICP tokens into **cycles**. It supports:
 
-- Topping up existing canisters
-- Creating new canisters
-- Depositing minted cycles into ledger-managed accounts
-- Fetching exchange rates and subnet configuration
+- Topping up existing canisters.
+- Creating new canisters.
+- Depositing minted cycles into ledger-managed accounts.
+- Fetching exchange rates and subnet configuration.
 
-The CMC is governed entirely by the **NNS (Network Nervous System)** and receives configuration updates through proposals.
+The CMC is governed entirely by the [NNS (Network Nervous System)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview) and receives configuration updates through proposals.
 
-## Configuration Parameters
+## Configuration parameters
 
-- **Conversion Rate Source**: The ICP/XDR exchange rate is **pushed** into the CMC by a dedicated *exchange rate canister*. This data reflects live market pricing and determines the ICP→cycles conversion.
+- **Conversion rate source**: The ICP/XDR exchange rate is **pushed** into the CMC by a dedicated [exchange rate canister](/docs/references/system-canisters/xrc). This data reflects live market pricing and determines the ICP→cycles conversion.
 
-- **Governance Control**: All operations of the CMC — including upgrades, configuration, and authorized callers — are managed through NNS proposals.
+- **Governance control**: All operations of the CMC — including upgrades, configuration, and authorized callers — are managed through NNS proposals.
 
 
-## API Endpoints
+## API endpoints
 
 The CMC exposes a set of core methods for converting ICP into cycles and interacting with subnet configuration. These include:
 
@@ -39,10 +38,10 @@ The CMC exposes a set of core methods for converting ICP into cycles and interac
 
 ## API Reference
 
-### `notify_create_canister`
+## `notify_create_canister`
 
-Creates a new canister after verifying an ICP payment recorded in the ICP Ledger.
-If the `subnet_selection field is omitted, the CMC will automatically choose a suitable subnet at random from the available options.
+Creates a new canister after verifying an ICP payment has been recorded in the ICP Ledger.
+If the `subnet_selection` field is omitted, the CMC will automatically choose a suitable subnet at random from the available options.
 
 The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **recipient**:
 
@@ -55,7 +54,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     ```
     which represents `"CREA"` padded to 8 bytes.
 
-- **Parameters:**
+#### Parameters
   ```candid
   record {
     block_index: nat64;              // The ledger block containing the ICP payment
@@ -66,18 +65,18 @@ The CMC expects the payment to follow a strict structure that encodes both the *
   }
   ```
 
-- **Returns:**
+#### Returns
   ```candid
   variant { Ok: principal; Err: NotifyError }
   ```
 
-- **Notes:**
+#### Notes
   - The call is idempotent with respect to `block_index`; repeating it returns the same result.
   - The controller must match the one encoded in the subaccount used for the payment.
   - Only transactions that follow the exact memo format will be processed successfully.
 
 
-  ### `notify_top_up`
+## `notify_top_up`
 
   Tops up an existing canister by minting cycles based on an ICP payment recorded in the ICP Ledger.
 
@@ -92,7 +91,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
       ```
       which represents `"PUPT"` padded to 8 bytes.
 
-  - **Parameters:**
+#### Parameters
     ```candid
     record {
       block_index: nat64;     // Block index of the ICP ledger payment
@@ -100,21 +99,21 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     }
     ```
 
-  - **Returns:**
+#### Returns
     ```candid
     variant { Ok: nat; Err: NotifyError } // Number of cycles minted and sent
     ```
 
   - **Notes:**
-    - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see “Shared Logic” section).
+    - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see [“Shared logic”](#shared-logic) section).
     - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
     - Only transfers matching the expected structure and memo will be accepted.
 
-    ## `notify_mint_cycles`
+## `notify_mint_cycles`
 
-Mints cycles into a **cycles ledger account** based on an ICP payment recorded in the ICP Ledger.
+Mints cycles into a [cycles ledger account](/docs/defi/token-ledgers/cycles-ledger) based on an ICP payment recorded in the ICP Ledger.
 
-This method is used to deposit minted cycles into a specific subaccount in the **cycles ledger**. It supports minting from both legacy and ICRC-1-style transfers.
+This method is used to deposit minted cycles into a specific subaccount in the [cycles ledger*](/docs/defi/token-ledgers/cycles-ledger) It supports minting from both legacy and ICRC-1-style transfers.
 
 The CMC expects the payment to follow a strict structure that encodes the **intent** and **destination**:
 
@@ -130,7 +129,7 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
     ```
     which represents `"MINT"` padded to 8 bytes
 
-- **Parameters:**
+#### Parameters
   ```candid
   record {
     block_index: nat64;         // Block index of the ICP ledger payment
@@ -139,7 +138,7 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   }
   ```
 
-- **Returns:**
+#### Returns
   ```candid
   variant {
     Ok: record {
@@ -151,24 +150,24 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   }
   ```
 
-- **Notes:**
+#### Notes
   - The caller must be authorized to invoke this method.
   - The subaccount in the payment must match `to_subaccount` exactly.
   - This method is idempotent by `block_index`.
   - Both legacy and ICRC-1 memo formats are accepted if they correctly encode `"MINT"`.
 
 
-  ### `create_canister`
+## `create_canister`
 
 Creates a new canister using cycles attached directly to the call (not from an ICP ledger payment).
 
 Unlike `notify_create_canister`, this method does not rely on an external ICP transaction. Instead, the calling canister must attach enough cycles to cover the creation cost.
 
 - If `subnet_selection` is omitted, the CMC will select a suitable subnet at random from the available subnets.
-- If `settings` is provided, it will override default configuration for the new canister.
+- If `settings` is provided, it will override the default configuration for the new canister.
 - If no `settings` are given, the calling principal becomes the sole controller.
 
-- **Parameters:**
+#### Parameters
   ```candid
   record {
     settings: opt CanisterSettings;         // Optional settings: controller(s), allocations, limits, etc.
@@ -177,22 +176,22 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
   }
   ```
 
-- **Returns:**
+#### Returns
   ```candid
   variant { Ok: principal; Err: CreateCanisterError }
   ```
 
-- **Notes:**
+#### Notes
   - This method requires cycles to be attached to the call.
   - Returns the principal of the newly created canister.
   - The result is **not idempotent** — calling it again will consume cycles and create a different canister.
 
 
-  ## Shared Logic
+## Shared logic
 
-### Canister Settings
+### `CanisterSettings`
 
-The `CanisterSettings` record allows configuration of the canister at the time of creation or through governance. Each field is optional and will default to system-provided values if not specified.
+The `CanisterSettings` record is used to configure the canister at the time of creation or through governance. Each field is optional and will default to system-provided values if not specified.
 
 ```candid
 record {
@@ -211,12 +210,12 @@ record {
 ```
 
 Unspecified fields are interpreted as:
-- `controllers`: Defaults to the caller of the method
-- Other fields: Use system-wide default configuration values
+- `controllers`: Defaults to the caller of the method.
+- Other fields: Use system-wide default configuration values.
 
 ---
 
-### Encoding a Principal into a Subaccount
+## Encoding a principal into a subaccount
 
 Several CMC methods require an ICP payment to be sent to a subaccount that encodes a principal (e.g., the controller of a new canister or the canister being topped up).
 
@@ -234,8 +233,8 @@ public func principalToSubAccount(id: Principal) : [Nat8] {
 ```
 
 This produces a 32-byte subaccount where:
-- The first byte contains the length of the principal
-- The next bytes contain the principal's raw byte encoding
-- The remainder is zero-padded to reach 32 bytes
+- The first byte contains the length of the principal.
+- The next bytes contain the principal's raw byte encoding.
+- The remainder is zero-padded to reach 32 bytes.
 
 This convention ensures the CMC can determine which principal or canister an incoming payment was intended for.
