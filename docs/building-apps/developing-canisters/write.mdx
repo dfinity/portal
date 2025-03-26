@@ -661,7 +661,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 At this point, we have three functions in this code that demonstrate three different ICP features: **onchain randomness**, **timers** for autonomous execution, and **HTTPS outcalls** to obtain data. Let's edit the code to use them in conjunction with one another rather than separately:
 
-1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent [NNS proposal]((/docs/building-apps/governing-apps/nns/overview) at random.
+1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent [NNS proposal]((https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System) at random.
 
 2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.
 
