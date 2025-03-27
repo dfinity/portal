@@ -18,6 +18,7 @@
       "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
       "forum": "",
       "proposal": "",
+      "status": "in_progress",
       "milestone_id": "Levitron"
     },
     {
@@ -26,13 +27,7 @@
       "milestone_id": "Levitron",
       "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
       "status": "in_progress",
-      "eta_to_render": ""
-    },
-    {
-      "title": "Privacy-preserving logs",
-      "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
-      "status": "in_progress",
-      "milestone_id": "Levitron"
+      "eta_to_render": "June 2025"
     },
     {
       "title": "Generation 3 node hardware and rewards",
