@@ -17,8 +17,12 @@ jobs:
       - name: Validate Submodule Commits
         run: |
           # Define latest release commits
-          LATEST_SDK="44ae9ed6b534f75c40b805d199aced867dd479bb" // 0.25.0
-          LATEST_MOTOKO="51fa74671829c59912c37500773cfaba950b0a1b" // 0.14.5
+          
+          # dfx 0.25.0
+          LATEST_SDK="44ae9ed6b534f75c40b805d199aced867dd479bb" 
+
+          # motoko 0.14.5
+          LATEST_MOTOKO="51fa74671829c59912c37500773cfaba950b0a1b" 
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
