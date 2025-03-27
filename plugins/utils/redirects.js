@@ -874,6 +874,11 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/current/developer-docs/interact-with-canisters/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
+  /docs/current/developer-docs/starter-kits /docs/building-apps/getting-started/quickstart
+  /docs/current/developer-docs/web-apps/application-frontends/serving-static-asset /docs/building-apps/frontends/uploading-serving-assets
+  /docs/building-apps/frontends/custom-domains/ /docs/building-apps/frontends/custom-domains/using-custom-domains
+  /docs/current/developer-docs/glossary /docs/references/glossary
   /BTC /bitcoin-integration
   /chain-fusion /chainfusion
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
