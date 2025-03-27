@@ -1,14 +1,15 @@
 ---
-keywords: [beginner, tutorial, hackathon, hackathon prep course]
+keywords: [beginner, tutorial, hackathon, hackathon prep course, fullstack dapp, game, 2d game, create a game, flying ninja, icp ninja, gaming, onchain gaming, gamefi, randomness]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# 3: Deploy your first fullstack dapp: Flying Ninja
+# 3: Deploy your first full-stack dapp: Flying Ninja
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-Now that you've deployed a project with just a backend canister, then deployed a project with just a frontend canister, let's put the pieces together and create a fullstack application that has both a frontend and backend.
+Now that you've deployed a project with just a backend canister and then deployed a project with just a frontend canister, let's put the pieces together and create a full-stack application that has both a frontend and backend.
 
 For this example, open the [ICP Ninja Flying Ninja project](https://icp.ninja/projects/flying-ninja).
 
@@ -20,30 +21,7 @@ The backend canister contains the logic for the game's randomness, leaderboard, 
 
 In this project, note that the `dfx.json` file defines two canisters rather than just one:
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "backend": {
-      "main": "backend/app.mo",
-      "type": "motoko",
-      "args": "--enhanced-orthogonal-persistence"
-    },
-    "frontend": {
-      "dependencies": ["backend"],
-      "frontend": {
-        "entrypoint": "frontend/index.html"
-      },
-      "source": ["frontend/dist"],
-      "type": "assets"
-    }
-  },
-  "output_env_file": ".env",
-  "defaults": {
-    "build": {
-      "packtool": "mops sources"
-    }
-  }
-}
+```json title=dfx.json file=../../references/samples/motoko/flying_ninja/dfx.json
 ```
 
 ## How does the backend communicate with the frontend?
@@ -58,7 +36,7 @@ In this project, the JavaScript agent is used. An agent is a library that is use
 
 - Decoding data: Once a response has been returned from the canister on the mainnet, the agent takes the certificate from the call's payload and verifies it.
 
-When a user loads the application in their web browser, the browser will fetch the UI from the frontend canister, then the user can interact with it. Each interaction will trigger a message that will be sent to the backend.
+When a user loads the application in their web browser, the browser will fetch the UI from the frontend canister, and then the user can interact with it. Each interaction will trigger a message that will be sent to the backend.
 
 <div class="text--center">
   <img
@@ -70,30 +48,7 @@ When a user loads the application in their web browser, the browser will fetch t
 
 For example, the `src/frontend/Game.jsx` file defines a React application that includes the game's logic. The portion that communicates with the backend canister is defined as:
 
-```jsx
-import { backend } from 'declarations/backend';
-
-...
-
-  // This is run once when the page is loaded
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        // fetch the Leaderboard
-        await fetchLeaderboard();
-        // initialize the seed with randomness from ICP
-        const randomness = await backend.getRandomness();
-        const seed = new Uint8Array(randomness);
-
-        // create a new SeededRNG with the first 8 bytes of the seed
-        setRng(new SeededRNG(seed.slice(0, 8)));
-      } catch (error) {
-        console.error('Failed to initialize seed:', error);
-      }
-    };
-
-    initialize();
-  }, []);
+```jsx title="Game.jsx" file=../../references/samples/motoko/flying_ninja/frontend/src/Game.jsx#L52-L71
 ```
 
 In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. Declaration files are generated during the build process. If you build this project locally, you will see them; they are not shown in the ICP Ninja file viewer.
@@ -102,7 +57,7 @@ When the agent makes a call to the backend canister, it uses these declaration f
 
 In this example, the user interface includes randomly generated obstacles once the game is loaded. The UI sends a request to the backend's `getRandomness` method, defined in the `app.mo` file as:
 
-```motoko
+```motoko title="app.mo" file=../../references/samples/motoko/flying_ninja/backend/app.mo#L48-L52
   // Produces secure randomness as a seed to the game.
   public func getRandomness() : async Blob {
     await Random.blob();
@@ -127,59 +82,7 @@ A few other important terms regarding memory on ICP include:
 
 In the Flying Ninja example, the actor is defined as `persistent`, therefore all of the data stored in the canister's variables will be persisted across upgrades:
 
-```motoko title="backend/app.mo"
-import Array "mo:base/Array";
-import Int "mo:base/Int";
-import Random "mo:base/Random";
-
-persistent actor FlyingNinja {
-  type LeaderboardEntry = {
-    name : Text;
-    score : Nat;
-  };
-
-  private var leaderboard : [LeaderboardEntry] = [];
-
-  // Returns if a certain score is good enough to warrant an entry on the leaderboard.
-  public query func isHighScore(score : Nat) : async Bool {
-    if (leaderboard.size() < 10) {
-      return true;
-    };
-    // Whenever a new entry is added, the leaderboard is sorted.
-    // We can safely assume that the last entry has the lowest score.
-    return score > leaderboard[leaderboard.size() - 1].score;
-  };
-
-  // Adds a new entry to the leaderboard if the score is good enough.
-  public func addLeaderboardEntry(name : Text, score : Nat) : async [LeaderboardEntry] {
-    let newEntry : LeaderboardEntry = { name = name; score = score };
-
-    // Add the new entry and sort the leaderboard
-    leaderboard := Array.sort<LeaderboardEntry>(
-      Array.append<LeaderboardEntry>(leaderboard, [newEntry]),
-      func(a : LeaderboardEntry, b : LeaderboardEntry) {
-        Int.compare(b.score, a.score);
-      }
-    );
-
-    // Keep only the top 10 scores
-    if (leaderboard.size() > 10) {
-      leaderboard := Array.subArray(leaderboard, 0, 10);
-    };
-
-    return leaderboard;
-  };
-
-  // Returns the current leaderboard.
-  public query func getLeaderboard() : async [LeaderboardEntry] {
-    return leaderboard;
-  };
-
-  // Produces secure randomness as a seed to the game.
-  public func getRandomness() : async Blob {
-    await Random.blob();
-  };
-};
+```motoko title="app.mo" file=../../references/samples/motoko/flying_ninja/backend/app.mo
 ```
 
 [Learn more about storage and data persistence](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
@@ -205,17 +108,10 @@ Open the dapp's "Internet Computer URL" in your web browser. This will open the 
 
 Want to make some changes to the game but not sure how? The ICP Ninja AI Assistant can be used to generate code based on prompts. For example, let's try to add a message that is shown when a user beats the leaderboard's high score. Since this idea will alter the frontend assets, let's look at the `frontend/src/Game.jsx` file and identify where the high score is determined:
 
-```jsx
-  const checkHighScore = async () => {
-    const isHighScore = await backend.isHighScore(BigInt(score));
-    console.log('isHighScore', isHighScore);
-    if (isHighScore) {
-      setShowNameInput(true);
-    }
-  };
+```jsx title="Game.jsx" file=../../references/samples/motoko/flying_ninja/frontend/src/Game.jsx#L152-L159
 ```
 
-Highlight this portion of the code, right click, then select "Ask AI - Modify." In the modify prompt box, insert text such as "When a player gets the high score, tell them 'You win!'" The AI will try to modify this portion of the code to achieve the desired result. In this example, the AI generated the following:
+Highlight this portion of the code, right-click, then select "Ask AI - Modify." In the modify prompt box, insert text such as "When a player gets the high score, tell them 'You win!'" The AI will try to modify this portion of the code to achieve the desired result. In this example, the AI generated the following:
 
 ```jsx
 {showNameInput && (
@@ -245,7 +141,7 @@ Highlight this portion of the code, right click, then select "Ask AI - Modify." 
 Code generated by the AI Assistant will vary.
 :::
 
-Then insert the generated code into the `frontend/src/Game.jsx` file, upgrade the canister by clicking "Redeploy," and refresh your application to see the changes! If you need help, you can also ask the AI to fix the code by right clicking and selecting "AI Assistant - Fix."
+Then insert the generated code into the `frontend/src/Game.jsx` file, upgrade the canister by clicking "Redeploy," and refresh your application to see the changes! If you need help, you can also ask the AI to fix the code by right-clicking and selecting "AI Assistant - Fix."
 
 
 

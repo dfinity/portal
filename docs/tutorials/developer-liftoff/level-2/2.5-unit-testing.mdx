@@ -171,17 +171,8 @@ npm install --save-dev vitest isomorphic-fetch
 
 Then, open your `package.json` file and insert `"test": "vitest"` in the `scripts` category, such as:
 
-```json title="package.json"
-...
-  "scripts": {
-    "build": "webpack",
-    "prebuild": "dfx generate",
-    "start": "webpack serve --mode development --env development",
-    "deploy:local": "dfx deploy --network=local",
-    "generate": "dfx generate e2e_tests_backend",
-    "test": "vitest"
-  },
-...
+```json title="package.json" reference
+https://github.com/krpeacock/sample-canister-e2e/blob/main/package.json
 ```
 
 :::info
@@ -204,29 +195,8 @@ Now, you'll create an **agent** that uses the generated declarations files to in
 
 Create a new file in `src/tests/` called `actor.js`, then insert the following content:
 
-```js title="src/tests/actor.js"
-import { Actor, HttpAgent } from "@dfinity/agent";
-import fetch from "isomorphic-fetch";
-import canisterIds from ".dfx/local/canister_ids.json";
-import { idlFactory } from "../declarations/e2e_tests_backend/e2e_tests_backend.did.js";
-
-export const createActor = async (canisterId, options) => {
-  const agent = new HttpAgent({ ...options?.agentOptions });
-  await agent.fetchRootKey();
-
-  // Creates an actor using the candid interface and the HttpAgent
-  return Actor.createActor(idlFactory, {
-    agent,
-    canisterId,
-    ...options?.actorOptions,
-  });
-};
-
-export const e2e_tests_backendCanister = canisterIds.e2e_tests_backend.local;
-
-export const e2e_tests_backend = await createActor(e2e_tests_backendCanister, {
-  agentOptions: { host: "http://127.0.0.1:4943", fetch },
-});
+```js title="src/tests/actor.js" reference
+https://github.com/krpeacock/sample-canister-e2e/blob/main/src/e2e/actor.js
 ```
 
 This agent file does the following:
@@ -251,16 +221,8 @@ It is recommended to put this behind a condition so that it only runs locally.
 
 Create a new file in `src/tests/` called `e2e_tests_backend.test.ts`, then insert the following content:
 
-```ts title="src/tests/e2e_tests_backend.test.ts"
-import { expect, test } from "vitest";
-import { Actor, CanisterStatus, HttpAgent } from "@dfinity/agent";
-import { Principal } from "@dfinity/principal";
-import { e2e_tests_backendCanister, e2e_tests_backend } from "./actor";
-
-test("should handle a basic greeting", async () => {
-  const result1 = await e2e_tests_backend.greet("test");
-  expect(result1).toBe("Hello, test!");
-});
+```ts title="src/tests/e2e_tests_backend.test.ts" reference
+https://github.com/krpeacock/sample-canister-e2e/blob/main/src/e2e/hello.test.ts
 ```
 
 In this test file, the following happens:
@@ -301,7 +263,8 @@ The test should be successful and return output such as:
 
 Now let's create a more complex test that checks the canister's metadata using the `CanisterStatus` API. Insert the following code at the end of the `src/tests/e2e_tests_backend.test.ts` file:
 
-```ts title="src/tests/e2e_tests_backend.test.ts"
+```ts title="src/tests/e2e_tests_backend.test.ts" reference
+
 test("Should contain a candid interface", async () => {
   const agent = Actor.agentOf(e2e_tests_backend) as HttpAgent;
   const id = Principal.from(e2e_tests_backendCanister);
@@ -322,10 +285,6 @@ test("Should contain a candid interface", async () => {
   `);
 });
 ```
-
-:::info
-Need the full `src/tests/e2e_tests_backend.test.ts` file? [Check out the repo containing the full project for this tutorial](https://github.com/krpeacock/sample-canister-e2e).
-:::
 
 This test simply checks that our canister's metadata contains a Candid interface.
 

@@ -9,8 +9,40 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
+Continue developing applications by exploring some of ICP's advanced, unique network features.
+
+## Using HTTP
+
+- [HTTPS gateways and incoming requests](/docs/building-apps/network-features/using-http/gateways): Canisters running on ICP can use HTTP requests in two ways: incoming and outgoing. Incoming HTTP requests refer to HTTP requests that are sent to a canister and can be used to retrieve data from a canister or send new data to the canister. Outgoing HTTP requests refer to HTTP requests that the canister sends to other canisters or external services to retrieve data or send new data.
+
+- [HTTP certification](/docs/building-apps/network-features/using-http/http-certification/ic-asset-certification-library): Asset certification is a specialized form of HTTP certification built for certifying static assets in ICP canisters.
+
+- [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview): Canisters can make a request to a URL using HTTPS outcalls. HTTPS outcalls can be used to directly obtain off-chain data or interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure.
+
+## Threshold signatures
+
+- [Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa): The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by nodes.
+
+- [Threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr): Schnorr signatures are a type of digital signature scheme popularly used amongst blockchain networks because they are efficient, simple, and allow for multi-signatures, threshold signatures, and aggregated signatures to be used on the network. On ICP, threshold Schnorr signatures enable canisters to hold a wider range of digital assets and allow for direct integrations with other chains like Solana.
+
+## Verifiable encryption
+
+[vetKeys](/docs/building-apps/network-features/encryption/vetkeys) on the Internet Computer allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on ICP. It is powered by a protocol called vetKD (Verifiably Encrypted Threshold Key Derivation) that allows deriving decryption keys on demand. vetKeys enable a public blockchain to hold secret data.
+
+## Onchain randomness
+
+The Internet Computer provides a secure and verifiable way to [generate random numbers](/docs/building-apps/network-features/randomness) directly within canisters. This functionality is exposed through the raw_rand method offered by the management canister and the Motoko Random module.
+
+## Periodic tasks and timers
+
+Unlike other blockchains, ICP canisters can [automatically execute tasks](/docs/building-apps/network-features/periodic-tasks-timers) after a specified delay or interval.
+
+## WebAssembly SIMD
+
+ICP supports deterministic [WebAssembly SIMD support](/docs/building-apps/network-features/simd). This is a significant milestone for smart contracts demanding top onchain performance, such as artificial intelligence (AI), image processing (NFTs), games, scientific decentralized applications (dapps), and more.
+
+## Verifiable credentials
+
+[Verifiable credentials (VCs)](/docs/building-apps/network-features/verifiable-credentials/overview) are a type of digital credential that enables individuals, organizations, or things (such as devices) to authenticate cryptographically.
 
 
-## Next steps
-
-- [10: Resources to learn more](/docs/tutorials/hackathon-prep-course/resources).
