@@ -169,7 +169,7 @@ const Content: React.FC = () => {
                 ICP advanced capabilities
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Developers can harness the security of Bitcoin as a native asset
+                Developers can harness the security of Bitcoin
                 while also leveraging the unique core features of the
                 <Link
                   className="link-primary !text-white hover:text-white/60"
