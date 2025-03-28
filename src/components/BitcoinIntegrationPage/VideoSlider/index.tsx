@@ -13,13 +13,13 @@ const sliderData = [
   {
     title:
       "The Bitcoin DeFi Renaissance | World Computer Tech Talks | Thomas Locher",
-    url: "https://www.youtube.com/watch?v=VjLbm41vIGg",
     image: "https://img.youtube.com/vi/VjLbm41vIGg/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=VjLbm41vIGg",
   },
   {
     title: "ICP - More than a Bitcoin L2",
-    url: "https://www.youtube.com/watch?v=eTe6IXQJNUs",
     image: "https://img.youtube.com/vi/eTe6IXQJNUs/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=eTe6IXQJNUs",
   },
   {
     title:
