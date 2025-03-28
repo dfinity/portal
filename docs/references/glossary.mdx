@@ -189,13 +189,13 @@ artifacts from the Internet Computer.
 
 #### consensus
 
-In distributed computing, **consensus** is a fault-tolerant mechanism by
+In distributed computing, **consensus** is a [fault-tolerant](https://learn.internetcomputer.org/hc/en-us/articles/34210647901460-Fault-Tolerance) mechanism by
 means of which a number of [nodes](#n) can reach agreement
 about a value or state.
 
 Consensus is a core component of the [replica](#r)
-software. The consensus layer selects [messages](#m)
-from the peer-to-peer artifact pool and pulls messages from the
+software. The [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) layer selects [messages](#m)
+from the [peer-to-peer](https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer) artifact pool and pulls messages from the
 cross-network streams of other [subnets](#s) and
 organizes them into a [batch](#b), which is delivered to
 the [message routing](#m) layer.
@@ -297,7 +297,7 @@ DeFi canister’s services.
 
 #### governance canister
 
-The **governance canister** is a [system canister](#s) that implements the
+The **[governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) canister** is a [system canister](#s) that implements the
 [NNS](#n) governance system, i.e.,
 among others, stores and manages [neurons](#n) and
 [proposals](#p), and implements the NNS
@@ -400,7 +400,7 @@ another or from a user to a canister.
 
 #### message routing
 
-The **message routing** layer receives [batches](#b) from
+The **[message routing](https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing)** layer receives [batches](#b) from
 the [consensus](#c) layer and inducts them into the
 [induction pool](#i). Message routing then
 schedules a set of [canisters](#c) to execute messages
@@ -459,7 +459,7 @@ canisters](#s) (aka "NNS canisters").
 
 A **neuron** is an [ICP](#i) entity that
 can make [proposals](#p) and vote on proposals related
-to the governance of the [Internet
+to the [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) of the [Internet
 Computer](#i).
 
 To provide the stability required for responsible governance, neurons
@@ -532,18 +532,18 @@ Each [canister](#c) has an **output queue** of
 
 #### peer-to-peer (P2P)
 
-In common usage, **peer-to-peer** (P2P) computing or networking is a
+In common usage, **[peer-to-peer](https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer)** (P2P) computing or networking is a
 distributed application architecture that partitions workload across a
 network of equally privileged computer [nodes](#n) so that
 participants can contribute resources such as processing power, disk
 storage, or network bandwidth to handle application workload.
 
-The **peer-to-peer layer** collects and disseminates
+The **[peer-to-peer](https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer) layer** collects and disseminates
 [messages](#m) and artifacts from users and from other
 nodes.
 
 The [nodes](#n) of a [subnet](#s) form a
-dedicated peer-to-peer broadcast network that facilitates the secure
+dedicated [peer-to-peer](https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer) broadcast network that facilitates the secure
 **bounded-time/eventual delivery** broadcast of artifacts (such as
 [ingress messages](#i), control messages, and
 their signature shares). The [consensus](#c) layer

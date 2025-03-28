@@ -24,7 +24,7 @@ One of the first responsibilities of an agent is to structure data. As was discu
 - Authentication, comprised of the `sender`, `nonce`, and `ingress_expiry`.
 - `canister_id`.
 - `method_name`.
-- `request_id`, which is required for update calls. The `request_id` value is the result of hashing the other fields in the request and is used for polling while ICP reaches consensus on the update call. **Polling** is a technique used to check for fresh data over a given interval of time by making repeated API requests to a server.
+- `request_id`, which is required for update calls. The `request_id` value is the result of hashing the other fields in the request and is used for polling while ICP reaches [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) on the update call. **Polling** is a technique used to check for fresh data over a given interval of time by making repeated API requests to a server.
 - `arg`, which contains the rest of the call's payload. The agent assembles the `arg` portion of the call with data from the client application, ensuring that the Candid interface matches the method that it calls.
 
 Each of these components is assembled into a certificate, which is then transformed into a [CBOR-encoded](https://cbor.io/) buffer. The agent takes this certificate and attaches it to the body of the `POST` request. When the canister begins to process the request asynchronously, the agent begins polling the `read_state` requests until the canister returns a response.

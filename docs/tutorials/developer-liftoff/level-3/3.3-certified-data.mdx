@@ -16,7 +16,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 In a previous module, [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly learned about certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
 
-Recall that certified variables are used as a way for queries to return an authenticated response that can be validated and trusted, since query calls do not go through consensus. This is useful for workflows that require additional layers of authentication, such as applications that handle financial data or important records. For users of the application, they can trust that the information they're interacting with and receiving from the application is trustworthy and secure.
+Recall that certified variables are used as a way for queries to return an authenticated response that can be validated and trusted, since query calls do not go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus). This is useful for workflows that require additional layers of authentication, such as applications that handle financial data or important records. For users of the application, they can trust that the information they're interacting with and receiving from the application is trustworthy and secure.
 
 Certified variables are set within an update call to a canister, since an update call changes the canister's state and goes through consensus. Once a certified variable is set, the certification can be read by a query call that returns the certified variable.
 
@@ -26,7 +26,7 @@ Certified variables are part of a broader concept of **certified data.** Certifi
 
 Certified data can be used to certify all the assets of a dapp's frontend, such as the HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, an HTTP gateway can be used to verify that certificate before passing the response off to the client.
 
-In each round of message execution on ICP, the message routing layer generates a new state tree that contains that round's information. The tree contains a root hash that is then used by the nodes in the subnet to create a certificate. This state tree contains several pieces of information, including the certified variables of each canister. An example of what a state tree looks like can be found below:
+In each round of message execution on ICP, the [message routing](https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing) layer generates a new state tree that contains that round's information. The tree contains a root hash that is then used by the nodes in the subnet to create a certificate. This state tree contains several pieces of information, including the certified variables of each canister. An example of what a state tree looks like can be found below:
 
 ```bash
 *root*

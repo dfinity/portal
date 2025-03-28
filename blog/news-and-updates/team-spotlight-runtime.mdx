@@ -23,7 +23,7 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 
 **Could you give a brief overview of how the ICP runtime environment is structured and how it operates?**
 
-*The runtime environment is part of the more general execution environment of ICP. The execution environment receives messages from the message routing layer of ICP. The scheduler in the execution environment decides which messages to run. Each message specifies the target WebAssembly method of the target canister that needs to be invoked in order to process the message. That information is passed to the runtime environment, whose job is to execute the requested WebAssembly method and return the result along with the state changes of the canister.*
+*The runtime environment is part of the more general execution environment of ICP. The execution environment receives messages from the [message routing](https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing) layer of ICP. The scheduler in the execution environment decides which messages to run. Each message specifies the target WebAssembly method of the target canister that needs to be invoked in order to process the message. That information is passed to the runtime environment, whose job is to execute the requested WebAssembly method and return the result along with the state changes of the canister.*
 
 *WebAssembly execution happens inside a canister sandbox process. This is an example of improving security, because it protects the system and other canisters against bugs in the WebAssembly runtime that may be exploited by a malicious canister.*
 

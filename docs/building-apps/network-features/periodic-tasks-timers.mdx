@@ -93,7 +93,7 @@ Despite its superiority over the heartbeats, the CDK timers library has a few kn
 - **Self canister calls:** To isolate the tasks from each other and from the scheduling logic, the CDK timers library initiates a self canister call to execute each task. There are a few implications:
 
     - Normal [inter-canister call costs](/docs/building-apps/essentials/gas-cost) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
-    - The tasks to execute are added at the end of the canister input queue. Depending on the canister and subnet load, the actual execution might be delayed.
+    - The tasks to execute are added at the end of the canister input queue. Depending on the canister and [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) load, the actual execution might be delayed.
 
 - As the canister output queue is limited in size (500 messages at the moment), this implicitly limits the number of tasks that might be scheduled in one round.
 

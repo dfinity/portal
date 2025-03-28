@@ -35,7 +35,7 @@ Even though this architecture is simple, it can scale to thousands of users and 
 ## Canister-per-subnet architecture
 
 ICP scales horizontally via <GlossaryTooltip>subnets</GlossaryTooltip>, so applications can also scale by utilizing more subnets.
-One way to achieve this is to have one or multiple canisters per subnet and then shard data over these canisters to distribute the load.
+One way to achieve this is to have one or multiple canisters per [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) and then shard data over these canisters to distribute the load.
 This is the most scalable architecture and could, in theory, support millions of users and terabytes of data.
 Since the application data and logic are distributed over multiple subnets, this requires expert knowledge of distributed programming.
 The cost of development and maintenance is much higher compared to the single-canister architecture.

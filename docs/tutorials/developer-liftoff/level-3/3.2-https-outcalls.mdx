@@ -84,7 +84,7 @@ In the project's `backend/app.mo` file, the HTTPS outcall is defined through the
       let day = Option.get(Nat.fromText(parts[2]), 1);
 
       // Prepare the https request.
-      // "transform" is used to specify how the HTTP response is processed before consensus tries to agree on a response.
+      // "transform" is used to specify how the HTTP response is processed before [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) tries to agree on a response.
       // This is useful to e.g. filter out timestamps out of headers that will be different across the responses the different replicas receive.
       // You can read more about it here: https://internetcomputer.org/docs/building-apps/network-features/using-http/https-outcalls/overview
       let http_request : IC.http_request_args = {

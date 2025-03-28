@@ -21,7 +21,7 @@ Learn more about [query](/docs/building-apps/interact-with-canisters/query-calls
 
 ## Query calls
 
-Queries don't modify a canister's state and are answered and signed by a single replica. Responses can be obtained within milliseconds, but they are typically not signed by the subnet, meaning a malicious replica or boundary node could arbitrarily modify the response.
+Queries don't modify a canister's state and are answered and signed by a single replica. Responses can be obtained within milliseconds, but they are typically not signed by the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation), meaning a malicious replica or [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) could arbitrarily modify the response.
 
 Some applications may have higher authenticity requirements for query responses. For example, if a dapp queries a proposal description that the user then votes on, it may not be acceptable that the result could be tampered with, as it could trick users to vote in the attacker's favor. As an alternative, you can issue query calls as update calls instead. While that's easy to implement, it makes the calls significantly slower.
 
@@ -33,7 +33,7 @@ Error handling for queries is typically simple: on error, one can simply retry u
 
 ## Update calls
 
-Updates can modify a canister's state and thus must go through consensus, typically taking 1-3 seconds. They return certified responses (signed by the subnet), providing authenticity within the subnet's corruption bounds.
+Updates can modify a canister's state and thus must go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), typically taking 1-3 seconds. They return certified responses (signed by the subnet), providing authenticity within the subnet's corruption bounds.
 
 Update calls can be [synchronous](/docs/references/ic-interface-spec#http-sync-call-overview) or [asynchronous](/docs/references/ic-interface-spec#http-async-call-overview).
 
