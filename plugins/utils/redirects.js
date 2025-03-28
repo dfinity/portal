@@ -110,7 +110,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
   /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/main/base/array /docs/motoko/main/base/Array 
+  /docs/current/motoko/main/base/array /docs/motoko/main/base/Array
   /docs/current/motoko/main/base/buffer /docs/motoko/main/base/Buffer
   /docs/current/motoko/main/base/char /docs/motoko/main/base/Char
   /docs/current/motoko/main/base/experimentalstablememory /docs/motoko/main/base/ExperimentalStableMemory
@@ -165,7 +165,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/icp-ninja
-  /docs/current/developer-docs/developer-tools/dev-tools-overview /docs/building-apps/developer-tools/dev-tools-overview 
+  /docs/current/developer-docs/developer-tools/dev-tools-overview /docs/building-apps/developer-tools/dev-tools-overview
   /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
 
   ## Rust
@@ -615,8 +615,8 @@ const redirects = `
   /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-following https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
   /docs/building-apps/governing-apps/nns/concepts/neurons/staking-voting-rewards https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
   /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-management https://learn.internetcomputer.org/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management https://learn.internetcomputer.org/en-us/articles/34084120668692-NNS-Neurons
+  /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-management https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons
   /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-overview https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
   /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-overview https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
   /docs/building-apps/governing-apps/nns/concepts/proposals/direct-voting https://learn.internetcomputer.org/hc/en-us/articles/34084113508500-Proposals
@@ -874,6 +874,11 @@ const redirects = `
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/current/developer-docs/interact-with-canisters/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
+  /docs/current/developer-docs/starter-kits /docs/building-apps/getting-started/quickstart
+  /docs/current/developer-docs/web-apps/application-frontends/serving-static-asset /docs/building-apps/frontends/uploading-serving-assets
+  /docs/building-apps/frontends/custom-domains/ /docs/building-apps/frontends/custom-domains/using-custom-domains
+  /docs/current/developer-docs/glossary /docs/references/glossary
   /BTC /bitcoin-integration
   /chain-fusion /chainfusion
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
@@ -908,7 +913,7 @@ const redirects = `
   /docs/building-apps/developing-canisters/creates /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/setup/download-install /docs/building-apps/getting-started/install
   /docs/current/developer-docs/smart-contracts/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/motoko/version /docs/building-apps/getting-started/install  
+  /docs/motoko/version /docs/building-apps/getting-started/install
   /docs/references/ /docs/references/ic-interface-spec
   /ecosystem.json /ecosystem
   /ethereum /chainfusion
@@ -950,7 +955,7 @@ const redirects = `
   /developers-guide/tutorials/phonebook.html /samples
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/tokenomics/identity-auth/ /docs/building-apps/authentication/integrate-internet-identity
-  /docs/current/tokenomics/ /how-it-works/tokenomics
+  /docs/current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
   /docs /docs/home
   /docs/current/references/ii-spec /docs/references/ii-spec
   /docs/download /docs/building-apps/getting-started/install
