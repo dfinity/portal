@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-By default, all canisters on the Internet Computer are accessible through the domain `icp0.io` and their canister ID. In addition to that default domain, one can also make a canister accessible under a custom domain using one of the following approaches:
+By default, all canisters on the [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP) are accessible through the domain `icp0.io` and their canister ID. In addition to that default domain, one can also make a canister accessible under a custom domain using one of the following approaches:
 
 - [Register the domain with the boundary nodes](#custom-domains-on-the-boundary-nodes).
 - [Hosting the domain on your own infrastructure](#custom-domains-using-your-own-infrastructure).
@@ -238,7 +238,7 @@ const agent = await HttpAgent.create({ host });
 
 ## Updating a custom domain
 
-In case you want to update the domain to point to a different canister, you first need to update the DNS record of your domain, then notify a boundary node:
+In case you want to update the domain to point to a different canister, you first need to update the DNS record of your domain, then notify a [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure):
 
 - #### Step 1: Update the `TXT` entry to contain the new canister ID for the `_canister-id` subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`).
 

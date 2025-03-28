@@ -9,13 +9,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Advanced", "Developing canisters"]} />
 
-A subnet on ICP is a collection of interacting replicas that run their own, separate instance of the ICP consensus mechanism, effectively creating their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by a root subnet. The root subnet uses chain-key cryptography to delegate its authority to the various subnets.
+A [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) on ICP is a collection of interacting replicas that run their own, separate instance of the ICP [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) mechanism, effectively creating their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by a root subnet. The root subnet uses chain-key cryptography to delegate its authority to the various subnets.
 
 The replica is implemented by a number of software components that, as a bundle, replicate state and computation across all of the nodes in a subnet blockchain.
 
 Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain-key](/docs/references/glossary#c) cryptography to delegate its authority to the various subnets.
 
-Subnets allow ICP to scale indefinitely. The problem with traditional blockchains (and individual subnets) is that they are limited by the computing power of a single node machine because every node has to run everything that happens on the blockchain to participate in the [consensus](/docs/references/glossary#c) algorithm. Running multiple independent subnets in parallel allows the Internet Computer to break through this single-machine barrier.
+Subnets allow ICP to scale indefinitely. The problem with traditional blockchains (and individual subnets) is that they are limited by the computing power of a single node machine because every node has to run everything that happens on the blockchain to participate in the [consensus](/docs/references/glossary#c) algorithm. Running multiple independent subnets in parallel allows the [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP) to break through this single-machine barrier.
 
 Not every canister has the same security, size, or feature requirements, therefore not every subnet has the same configuration. The `system` subnet (which contains the [NNS](/docs/references/glossary#n) and several other critical services), for example, does not charge any cycles for its canisters, because those canisters should be available in all circumstances. Other subnets can have different features enabled or disabled, such as the subnet running the canisters for the Bitcoin integration.
 

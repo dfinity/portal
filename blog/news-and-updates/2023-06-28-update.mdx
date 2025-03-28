@@ -65,7 +65,7 @@ The development and application of a Developer Docs Style Guide, which has been 
 Documentation validation and updates, to assure that each current page of the docs is up to date and showcases the most current version of commands, code blocks, and examples.
 - New HTTPS outcalls tutorials, such as:
 
-    - [HTTPS outcalls: technology overview:](/docs/references/https-outcalls-how-it-works) this page covers the overview of how the technology behind HTTPS outcalls operates. In summary, when a canister makes an outgoing HTTP request using the management canister API, the request is temporarily stored in the replicated state of the subnet. Then, each replica pushes an instance of the received HTTP response from the external web server through ICP’s consensus layer. Through this, each replica on a subnet can agree on the HTTP response that’s been provided by the canister.
+    - [HTTPS outcalls: technology overview:](/docs/references/https-outcalls-how-it-works) this page covers the overview of how the technology behind HTTPS outcalls operates. In summary, when a canister makes an outgoing HTTP request using the management canister API, the request is temporarily stored in the replicated state of the subnet. Then, each replica pushes an instance of the received HTTP response from the external web server through ICP’s [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) layer. Through this, each replica on a subnet can agree on the HTTP response that’s been provided by the canister.
     - [How to use HTTPS outcalls: Intro:](/docs/building-apps/network-features/using-http/https-outcalls/overview) this page provides a high-level overview of the API used to send HTTPS outcalls.
     - [How to use HTTPS outcalls: GET:](/docs/building-apps/network-features/using-http/https-outcalls/get) this page includes a brand new tutorial written by Diego Prats that showcases how to make a GET HTTP request using a sample canister that makes a request to the Coinbase API. This tutorial provides instructions for both Motoko and Rust development workflows.
     - [How to use HTTPS outcalls: POST:](/docs/building-apps/network-features/using-http/https-outcalls/post) this page is another brand new tutorial written by Diego Prats that explains how to make a POST HTTP request using a sample canister that sends a request with JSON information to a free API that is used to verify that the headers and body of the request were sent properly.
@@ -89,7 +89,7 @@ Motoko Dev Server
 
 As we wrap up Q2 this week, we have one more huge release for developers: Motoko Dev Server!
 
-Motoko Dev Server, or mo-dev, is a live-reload server designed to enable flexible, quick building and testing of Motoko services on the Internet Computer blockchain. Mo-dev is designed to be a Web3 version of popular Web2 live-reloading servers, like Next.js, Webpack, and Vite. Features and functionality of mo-dev include:
+Motoko Dev Server, or mo-dev, is a live-reload server designed to enable flexible, quick building and testing of Motoko services on the [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP) blockchain. Mo-dev is designed to be a Web3 version of popular Web2 live-reloading servers, like Next.js, Webpack, and Vite. Features and functionality of mo-dev include:
 - Executing commands.
 - Generating type bindings.
 - Deploying canisters.

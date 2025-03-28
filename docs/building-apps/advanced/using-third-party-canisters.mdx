@@ -266,7 +266,7 @@ You can also specify the canister name or <GlossaryTooltip>principal</GlossaryTo
 
 - #### Why download the Wasm into shared cache instead of a project subfolder?
 
-It is not encouraged to include binary files in version control. On the Internet Computer, every canister only has one latest version running on the mainnet. Service consumers should integrate with that latest version.
+It is not encouraged to include binary files in version control. On the [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP), every canister only has one latest version running on the mainnet. Service consumers should integrate with that latest version.
 
 `dfx deps pull` always gets the latest dependencies instead of locking on a particular run. Every pulled canister has the latest version in the shared cache and can be reused by different projects.
 

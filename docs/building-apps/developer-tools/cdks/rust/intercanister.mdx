@@ -59,7 +59,7 @@ You can type `counter` and press `TAB` on your keyboard to pass the principal of
 
 Here, the counter was increased from `0` to `42`.
 
-As the example notes, panicking when handling call errors is generally a bad idea past trivial examples such as this one. This is due to the nature of the Internet Computer's messaging model.
+As the example notes, panicking when handling call errors is generally a bad idea past trivial examples such as this one. This is due to the nature of the [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP)'s messaging model.
 
 ## IC calls are asynchronous: non-atomic set-then-get
 
@@ -92,7 +92,7 @@ This also holds true for the effects on the caller canister itself. In particula
 For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/docs/references/async-code), [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls).
 
 :::info
-To summarize, the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves scalability, but you need to understand the implications, especially around when and how state is persisted.
+To summarize, the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling), but you need to understand the implications, especially around when and how state is persisted.
 :::
 
 ## Unbounded-wait calls: semantics and error cases
@@ -210,7 +210,7 @@ To summarize, you can transfer cycles to the callee by attaching them to a bound
 
 More details on how inter-canister calls execute and how the different call types work is provided in the documentation on [inter-canister calls and async code](/docs/references/async-code). Also consult the documentation on [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls). To allow your callers to handle call errors robustly, follow the [best practice](/docs/building-apps/best-practices/idempotency) document on retries and idempotency.
 
-As noted in our examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same subnet as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
+As noted in our examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
 
 For a real-life example of how to handle errors when calling canisters, see the [ICRC-1 examples](/docs/defi/token-ledgers/usage/icrc1_ledger_usage)
 
