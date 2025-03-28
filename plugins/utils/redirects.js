@@ -117,7 +117,7 @@ const redirects = `
   /docs/current/motoko/main/base/list /docs/motoko/main/base/List
   /docs/current/motoko/main/base/option /docs/motoko/main/base/Option
   /docs/current/motoko/main/base/principal /docs/motoko/main/base/Principal
-  /docs/current/motoko/main/base/random docs/motoko/main/base/Random
+  /docs/current/motoko/main/base/random /docs/motoko/main/base/Random
   /docs/current/motoko/main/base/text /docs/motoko/main/base/Text
   /docs/current/motoko/main/base/time /docs/motoko/main/base/Time
   /docs/current/motoko/main/base/trie /docs/motoko/main/base/Trie
