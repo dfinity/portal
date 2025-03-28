@@ -824,39 +824,30 @@
         ]
       },
       {
-        "name": "AI Model for Motoko code generation",
-        "milestone_id": "Beacon",
-        "description": "This milestone is the first step towards improving the capability of Large Language Models to effectively generate code in the Motoko programming language.",
-        "eta": "April 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Motoko coding fine-tuned model",
-            "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
-            "status": "in_progress",
-            "milestone_id": "Beacon"
-          },
-          {
-            "title": "Model benchmarks for Motoko coding",
-            "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
-            "status": "in_progress",
-            "milestone_id": "Beacon"
-          },
-          {
-            "title": "Caffeine integration",
-            "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
-            "status": "in_progress",
-            "milestone_id": "Beacon"
-          }
-        ]
-      },
-      {
         "name": "Caffeine alpha launch – dawn of the self-writing internet",
         "milestone_id": "Vertex",
         "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
         "eta": null,
         "status": "in_progress",
         "elements": [
+          {
+            "title": "Motoko coding fine-tuned model",
+            "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
+            "status": "in_progress",
+            "milestone_id": "Vertex"
+          },
+          {
+            "title": "Model benchmarks for Motoko coding",
+            "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
+            "status": "in_progress",
+            "milestone_id": "Vertex"
+          },
+          {
+            "title": "Caffeine integration",
+            "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
+            "status": "in_progress",
+            "milestone_id": "Vertex"
+          },
           {
             "title": "Caffeine platform",
             "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
@@ -944,7 +935,7 @@
         "name": "Chain Fusion supports Solana",
         "milestone_id": "Helium",
         "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
-        "eta": "May 2025",
+        "eta": "June 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1477,7 +1468,7 @@
         "name": "Decentralized access logs and metrics",
         "milestone_id": "Levitron",
         "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
-        "eta": null,
+        "eta": "June 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1485,12 +1476,16 @@
             "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
             "forum": "",
             "proposal": "",
+            "status": "in_progress",
             "milestone_id": "Levitron"
           },
           {
             "title": "Privacy-preserving logs",
             "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
-            "status": "in_progress",
+            "forum": "https://forum.dfinity.org/t/observability-with-the-new-boundary-node-architecture/41725",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/135629",
+            "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/salt_sharing",
+            "status": "deployed",
             "milestone_id": "Levitron"
           }
         ]
@@ -2847,7 +2842,7 @@
         "name": "Enabling governance token holdings and broader participation",
         "milestone_id": "Neon",
         "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
-        "eta": null,
+        "eta": "June 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -2878,7 +2873,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Neon"
@@ -2886,7 +2881,7 @@
           {
             "title": "Large Wasm support for SNS controlled dapp canisters",
             "overview": "This simplifies owning large dapp canisters for SNS DAO communities by a built-in process to do so in the SNS framework.",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Neon"
@@ -3149,7 +3144,7 @@
             "description": "Public neurons provide more transparency to followers, while private neurons keep ballots confidential. This introduces more transparency by revealing all neurons’ IDs and their stake",
             "forum": "",
             "proposal": "",
-            "docs": "https://internetcomputer.org/docs/building-apps/governing-apps/nns/concepts/neurons/neuron-management",
+            "docs": "https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons",
             "eta": "",
             "status": "deployed",
             "is_community": true,
@@ -3672,103 +3667,6 @@
     "description": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
     "milestones": [
       {
-        "name": "Coding and development in ICP Ninja",
-        "milestone_id": "Coulomb",
-        "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
-        "eta": "March 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "ICP Ninja BETA",
-            "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on ICP.",
-            "status": "deployed",
-            "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
-            "proposal": "",
-            "docs": "https://internetcomputer.org/docs/building-apps/developer-tools/icp-ninja",
-            "is_community": false,
-            "in_beta": true,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Developer productivity enhancements",
-            "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
-            "status": "deployed",
-            "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "AI learning assistant",
-            "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
-            "status": "deployed",
-            "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Landing page revamp",
-            "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Project sharing",
-            "overview": "Projects can be shared with others by generating a link.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Login with Internet Identity or GitHub",
-            "overview": "Users can sign into ICP Ninja with their Internet Identity or GitHub to create an account to get access to even more features on the platform.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Saving projects",
-            "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Exporting projects to GitHub",
-            "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
-          }
-        ]
-      },
-      {
         "name": "Canister resource management",
         "milestone_id": "Thorium",
         "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
@@ -3927,6 +3825,103 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium"
+          }
+        ]
+      },
+      {
+        "name": "Coding and development in ICP Ninja",
+        "milestone_id": "Coulomb",
+        "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
+        "eta": "March 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "ICP Ninja BETA",
+            "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on ICP.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
+            "proposal": "",
+            "docs": "https://internetcomputer.org/docs/building-apps/developer-tools/icp-ninja",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Developer productivity enhancements",
+            "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "AI learning assistant",
+            "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Landing page revamp",
+            "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-update-coulomb-milestone-unleashed/42561",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Project sharing",
+            "overview": "Projects can be shared with others by generating a link.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-update-coulomb-milestone-unleashed/42561",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Login with Internet Identity or GitHub",
+            "overview": "Users can sign into ICP Ninja with their Internet Identity or GitHub to create an account to get access to even more features on the platform.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-update-coulomb-milestone-unleashed/42561",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Saving projects",
+            "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-update-coulomb-milestone-unleashed/42561",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Exporting projects to GitHub",
+            "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-update-coulomb-milestone-unleashed/42561",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
           }
         ]
       },

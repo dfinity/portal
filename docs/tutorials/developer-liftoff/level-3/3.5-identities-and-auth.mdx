@@ -92,81 +92,12 @@ Now let's look at a simple example of how to integrate Internet Identity into th
 
 Open the [ICP Ninja Who am I? example](https://icp.ninja/projects/who-am-i). In the project's `dfx.json` file, you will see a definition for the Internet Identity canister:
 
-```json title="dfx.json"
-...
-    "internet_identity": {
-      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
-      "type": "custom",
-      "specified_id": "rdmx6-jaaaa-aaaaa-aaadq-cai",
-      "remote": {
-        "id": {
-          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-      },
-      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
-    }
-...
+```json title="dfx.json" file=../../../references/samples/motoko/who_am_i/dfx.json
 ```
 
 In the file, you will see the code that initializes and creates the AuthClient, which uses Internet Identity to provide user authentication:
 
-```js title="frontend/src/App.jsx"
-const App = () => {
-  const [state, setState] = useState({
-    actor: undefined,
-    authClient: undefined,
-    isAuthenticated: false,
-    principal: 'Click "Whoami" to see your principal ID'
-  });
-
-// Initialize auth client
-  useEffect(() => {
-    updateActor();
-  }, []);
-
-  const updateActor = async () => {
-    const authClient = await AuthClient.create();
-    const identity = authClient.getIdentity();
-    const actor = createActor(canisterId, {
-      agentOptions: {
-        identity
-      }
-    });
-    const isAuthenticated = await authClient.isAuthenticated();
-
-    setState((prev) => ({
-      ...prev,
-      actor,
-      authClient,
-      isAuthenticated
-    }));
-  };
-
-  const login = async () => {
-    await state.authClient.login({
-      identityProvider,
-      onSuccess: updateActor
-    });
-  };
-
-  const logout = async () => {
-    await state.authClient.logout();
-    updateActor();
-  };
-
-  const whoami = async () => {
-    setState((prev) => ({
-      ...prev,
-      principal: 'Loading...'
-    }));
-
-   const result = await state.actor.whoami();
-   const principal = result.toString();
-   setState((prev) => ({
-      ...prev,
-      principal
-    }));
-  };
+```js title="frontend/src/App.jsx" file=../../../references/samples/motoko/who_am_i/frontend/src/App.jsx
 ```
 
 This code does the following:
@@ -185,14 +116,7 @@ This code does the following:
 
 The backend's `whoami` function is defined in `backend/app.mo`:
 
-```motoko title="backend/app.mo"
-import Principal "mo:base/Principal";
-
-persistent actor Whoami {
-  public query (message) func whoami() : async Principal {
-    message.caller;
-  };
-};
+```motoko title="backend/app.mo" file=../../../references/samples/motoko/who_am_i/backend/app.mo
 ```
 
 ### Interacting with the integration
