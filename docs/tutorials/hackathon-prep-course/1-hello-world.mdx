@@ -10,15 +10,13 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications. Decentralized applications are created through deploying smart contracts, which are known as **canisters**. A canister is capable of hosting entire applications, including their source and user interfaces. Once canisters are deployed to the mainnet, they are publicly accessible and upgradable.
+The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications (dapps). Dapps are created by deploying specialized smart contracts known as **canisters**. A canister is capable of hosting entire applications, including their source code and user interface. Once a canister is deployed to the mainnet, it is publicly accessible and upgradable. Users can interact with dapps directly in their web browser without needing a crypto wallet.
 
-Developers can build anything using ICP's advanced smart contract capabilities without using traditional IT infrastructure. Users can interact with decentralized applications deployed on ICP directly in their web browser without needing a crypto wallet.
-
-[Learn more about the vision of the Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33624077003668-What-is-the-Vision-behind-ICP).
+[Learn more about the Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33624077003668-What-is-the-Vision-behind-ICP).
 
 ## Deploy your first canister smart contract
 
-To begin developing and deploying applications on ICP, the web IDE [ICP Ninja](https://icp.ninja) provides a browser-based development environment that can be accessed from anywhere using any device. It is a free tool that doesn't require you to [download tools](/docs/building-apps/getting-started/install), create or authenticate with an [identity](/docs/building-apps/getting-started/identities), or obtain [cycles](/docs/building-apps/getting-started/tokens-and-cycles).
+To begin developing applications on ICP, the tool [ICP Ninja](https://icp.ninja) provides a browser-based development environment that can be accessed from anywhere using any device. It is a free platform that doesn't require you to [download tools](/docs/building-apps/getting-started/install), create or authenticate with an [identity](/docs/building-apps/getting-started/identities), or obtain [cycles](/docs/building-apps/getting-started/tokens-and-cycles).
 
 ICP Ninja does, however, impose a few [restrictions](/docs/building-apps/developer-tools/icp-ninja) that should be noted when using it. It is not designed to develop and deploy applications for long-term, production use.
 
@@ -34,7 +32,7 @@ The default project architecture has two canisters:
 
 - **Backend canister**: Used to store the application’s data and to provide endpoints to access and modify the data. Backend canisters can be written in [a variety of different languages](/docs/building-apps/developer-tools/cdks/) (Motoko, Rust, TypeScript, and more).
 
-- **Frontend canister**: Stores the web assets for the application’s user interface and interacts with the backend.
+- **Frontend canister**: Used to store the web assets for the application’s user interface.
 
 <div class="text--center">
   <img
@@ -48,7 +46,7 @@ The default project architecture has two canisters:
 
 Let's start with deploying only a backend canister. [Open the ICP Ninja "Hello, world!" project](https://icp.ninja/s/w2MbP). [View the ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
 
-It will contain the following files:
+This project will contain the following files:
 
 ```bash
 ├── backend      # Folder containing the source code of your dapp's backend.
@@ -60,7 +58,7 @@ It will contain the following files:
 
 ### dfx.json​
 
-The `dfx.json` file defines the application's canisters and their source code files. This project uses the following `dfx.json` file:
+The `dfx.json` file defines the application's canister and its source code file. This project uses the following `dfx.json` file:
 
 ```json title="dfx.json" file=../../references/samples/motoko/backend_only/dfx.json
 ```
@@ -75,14 +73,31 @@ Now, let's review the `backend/app.mo` file to learn about the application's fun
 ```
 
 - First, an actor is defined and named `HelloWorld`. An actor is an object that can hold state and interact with the world through messages.
-- Then, a query method is defined. Query methods do not alter the canister's state or data. They can be thought of as 'read-only' operations. This query method will return the text "Hello, " followed by the text passed to the method.
-- The method’s body returns `Text` concatenating 'Hello ,' the input value 'name,' and an exclamation mark.
+- Then, a **query method** is defined. Query methods do not alter the canister's state or data. They can be thought of as 'read-only' operations. When called, this query method will return the text "Hello, " followed by the text passed to the method and an exclamation mark.
+
+### Types of canister calls
+
+When calls are made to a canister's methods, there are two primary types: calls that go through consensus and calls that do not go through consensus.
+
+Calls that go through consensus are able to alter the canister's state. These are referred to as **update calls**. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method for counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
+
+Calls that do not go through consensus do not alter the state of a canister, making them 'read-only' operations. They are referred to as **query calls**. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. Query methods can be called in replicated mode as update calls. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
+
+Additionally, there are several other terms regarding calls that you will come across as an ICP developer, such as:
+
+**Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
+
+**Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
+
+**Inter-canister calls** are used to make calls between different canisters.
+
+[Learn more about canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
 
 :::info
-If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
+If you want to learn more about this code, you can right-click within ICP Ninja and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
 :::
 
-### Deploy the canister
+### Deploying the canister
 
 Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
 
@@ -97,17 +112,11 @@ https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp1.io/?id=6kwk6-qqaaa-aaaab-qbmga-cai
 
 Open the "Backend Internet Computer URL" in your web browser. This will open a [Candid API](/docs/building-apps/interact-with-canisters/candid/candid-concepts) interface you can use to call the method `greet` defined in the backend.
 
-In the input box, insert "ICP," then select "Query." The backend canister will process the call and return the response defined in the method. Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's state.
+In the input box, insert "ICP," then select "Query." The backend canister will process the call and return the response defined in the method. Since the method is defined as a `query` method, the canister simply returns data; it does not alter the canister's state.
 
 ```
 ("Hello, ICP!")
 ```
-
-### Canister upgrades
-
-Once a canister has been deployed and is running, there may need to be changes made to the canister's code to fix bugs or introduce new features. To make these changes, the canister must be upgraded.
-
-The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](/docs/tutorials/hackathon-prep-course/managing-canisters).
 
 You can edit the `app.mo` file to return a different greeting, such as:
 
@@ -115,30 +124,4 @@ You can edit the `app.mo` file to return a different greeting, such as:
 return "Hello, " # name # "! This is my first canister on ICP!";
 ```
 
-Then click "Deploy" again to upgrade your canister's code. Once deployed, you can test the `greet` method in the Candid API, and it should return your new greeting.
-
-[Learn more about upgrading canisters](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters).
-
-## Types of canister calls
-
-When calls are made on ICP, there are two primary types: calls that go through consensus and calls that do not go through consensus.
-
-Calls that go through consensus are able to alter the canister's state. These are referred to as **update calls**. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method for counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
-
-```motoko no-repl file=../../references/samples/motoko/counter/src/Main.mo#L10-L13
-```
-
-Calls that do not go through consensus do not alter the state of a canister, making them 'read-only' operations. They are referred to as **query calls**. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. Query methods can be called in replicated mode as update calls. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
-
-```motoko no-repl file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
-```
-
-Additionally, there are several other terms regarding calls that you will come across as an ICP developer, such as:
-
-**Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
-
-**Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
-
-**Inter-canister calls** are used to make calls between different canisters.
-
-[Learn more about canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
+Then click "Redeploy" to [upgrade](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters) your canister's code. Once deployed, you can test the `greet` method in the Candid API, and it should return your new greeting.

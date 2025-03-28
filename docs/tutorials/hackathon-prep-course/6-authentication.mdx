@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, tutorial, hackathon, hackathon prep course]
+keywords: [beginner, tutorial, hackathon, hackathon prep course, user authentication, add user auth, add user login, authentication, auth, login]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -9,7 +9,7 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-For end-users to interact with the frontend of applications on ICP, Internet Identity can be used. Internet Identity is ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local device's hardware.
+End users can authenticate with applications on ICP through [Internet Identity](https://identity.ic0.app/). It is ICP's native form of digital identity commonly used for dapps such as the NNS dashboard. Instead of having to manage a username or password, Internet Identity uses a cryptographic key pair that's stored in your local device's hardware.
 
 This allows you to authenticate to your Internet Identity using methods that unlock your device, such as TouchID, FaceID, or another method. Through this simple and flexible authentication method, developers can provide end users with a frictionless way to authenticate and use their application.
 
@@ -51,8 +51,6 @@ If you scroll down, you will see an option to add another passkey, and you will 
 
 ## Integrating Internet Identity into your dapp
 
-Developer identities and ledger accounts are two types of authentication that are used for interacting with canisters and cycles, but what about interacting with applications or websites built on ICP? For that, end users can use **Internet Identity**. It is ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your computer's hardware. Through this simple and flexible authentication method, developers can provide end users with a frictionless way to authenticate and use applications.
-
 Now let's look at a simple example of how to integrate Internet Identity into the frontend of a dapp.
 
 Open the [ICP Ninja Who am I? example](https://icp.ninja/projects/who-am-i). In the project's `dfx.json` file, you will see a definition for the Internet Identity canister:
@@ -60,7 +58,7 @@ Open the [ICP Ninja Who am I? example](https://icp.ninja/projects/who-am-i). In 
 ```json title="dfx.json" file=../../references/samples/motoko/who_am_i/dfx.json
 ```
 
-In the file, you will see the code that initializes and creates the AuthClient, which uses Internet Identity to provide user authentication:
+In the `App.jsx` file, you will see the code that initializes and creates the `AuthClient`, which uses Internet Identity to provide user authentication:
 
 ```js title="frontend/src/App.jsx" file=../../references/samples/motoko/who_am_i/frontend/src/App.jsx
 ```
@@ -73,9 +71,9 @@ This code does the following:
 
 - Then it creates an actor using the `createActor` function.
 
-- Checks if the user is authenticated using `authClient.isAuthenticated()`.
+- It checks if the user is authenticated using `authClient.isAuthenticated()`.
 
-- Updates the component's state with the new actor, `authClient`, and `isAuthenticated` status.
+- It updates the component's state with the new actor, `authClient`, and `isAuthenticated` status.
 
 - Lastly, the `result` variable awaits the response of a call to the backend's `whoami` function. When the response is returned, the `principal` variable stores it as a `String` data type.
 

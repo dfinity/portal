@@ -13,7 +13,7 @@ Now that you have canisters deployed from the CLI, it's important to learn how t
 
 ## Obtaining a canister's ID
 
-Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser, such as when you accessed the frontend of your dapp in the previous tutorial. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
+Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
 
 To get the canister ID of the canister that's been deployed on the mainnet, use the command:
 
@@ -53,7 +53,7 @@ dfx identity get-principal
 Then, use the `dfx canister update-settings` command to add the returned principal to be a controller of your `hello_world_backend` canister, but first, you need to switch back to your previously created identity, since only existing controllers can add new controllers:
 
 ```sh
-dfx identity use MyIdentity
+dfx identity use IDENTITY_NAME
 ```
 
 Then, use the `dfx canister update-settings` command:
@@ -80,7 +80,7 @@ dfx canister update-settings hello_world_backend --set-controller PRINCIPAL_ID
 
 ## Viewing the running state of a canister
 
-Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister is able to send requests and receive replies, the canister is in a **Running** state, which is the default state of a canister. If a canister needs to be temporarily or permanently stopped, such as before a canister is upgraded, it may be stopped to ensure proper message handling. Stopping a canister is also a requirement if the canister is going to be deleted.
+Once a canister has been deployed, it can receive and process requests from other canisters or end users and is in a **Running** state. If a canister needs to be temporarily or permanently stopped, such as before it can be upgraded, it must be stopped to ensure proper message handling. Stopping a canister is also a requirement if the canister is going to be deleted.
 
 To check the current state of all canisters, you can use the command:
 
@@ -88,7 +88,6 @@ To check the current state of all canisters, you can use the command:
 dfx canister status --network ic --all
 ```
 
-Or, you can check the status of a single canister by specifying its name, such as:
 Or, you can check the status of a single canister by specifying its name, such as:
 
 ```sh
@@ -132,7 +131,6 @@ Then to start the canister again, run the command:
 dfx canister start --network ic --all
 ```
 
-
 ## Checking the cycles balance of a canister
 
 To check a canister's cycles balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
@@ -154,7 +152,6 @@ Memory Size: Nat(2363181)
 Balance: 3_100_000_000_000 Cycles
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
-
 
 ## Topping up a canister with cycles
 

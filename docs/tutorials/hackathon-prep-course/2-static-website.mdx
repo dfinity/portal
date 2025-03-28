@@ -10,11 +10,11 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-To compile frontend assets like CSS and JavaScript into a Wasm module that can be deployed on ICP as a canister, `dfx` uses Rust boilerplate code to create an **asset canister**.
-
 Canister smart contracts are able to serve HTTP content natively, allowing for dapp frontends to be served directly in a web browser using the canister's URL at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. Frontend canisters can be used to deliver HTML, CSS, and JavaScript pages and answer API requests.
 
 If a canister wants to serve HTTP content, it should implement a method that consumes an HTTP request, which contains a URL, HTTP method, and headers, then outputs an HTTP response that contains a status, headers, and the response body. The canister method can return HTML, CSS, and JavaScript content as part of the HTTP response.
+
+To compile frontend assets like CSS and JavaScript into a Wasm module that can be deployed to ICP as a canister, `dfx` uses Rust boilerplate code to create an **asset canister**.
 
 :::info
 The terms 'asset canister' and 'frontend canister' are sometimes used interchangeably. **Asset** canister is typically used to describe the Rust code `dfx` uses in the background to compile a project's frontend assets into Wasm. **Frontend** canister is typically used as a general term to describe a project's frontend.
@@ -32,7 +32,7 @@ In the previous tutorial, you deployed a project with a single backend canister 
 
 ## Crypto blog example
 
-[Open the ICP Ninja My Crypto Blog project](https://icp.ninja/s/GQVBz). [View the ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
+[Open the ICP Ninja 'My Crypto Blog' project](https://icp.ninja/s/GQVBz). [View the ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
 
 Let's review the project's file structure:
 
@@ -72,7 +72,7 @@ This project's `main.jsx` file defines the source code for a simple app using Re
 If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
 :::
 
-### Deploy the canister
+### Deploying the canister
 
 Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
 
@@ -97,4 +97,4 @@ Open the dapp's "Internet Computer URL" in your web browser. This will open the 
 
 To edit the website's content, make adjustments to either the `main.jsx` file or change the styling in the `index.css` file. For example, you can change the page's title, body text, or button functionality, or add photos and videos to be embedded on the page.
 
-Since this is a static website, however, if you'd like to add any backend functionality such as user authentication and profiles, saving data to a user's account, or uploading and editing data, you will need to add a backend canister to your project. This will be demonstrated in the next tutorial module.
+Since this is a static website, however, if you'd like to add any backend functionality such as user authentication and profiles, saving data to a user's account, or uploading and editing data, you will need to add a backend canister to your project.

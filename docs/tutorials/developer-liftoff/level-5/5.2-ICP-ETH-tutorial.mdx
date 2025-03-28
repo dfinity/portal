@@ -65,11 +65,11 @@ This backend code has five functions:
 
 - `get_ecdsa_public_key`: Returns the canister's ECDSA public key.
 
-- `sign_message_with_ecdsa`: Signs an inputted message using the canister's ECDSA key.
+- `sign_message_with_ecdsa`: Signs a message using the canister's ECDSA key.
 
 - `get_schnorr_public_key`: Returns the canister's Schnorr public key.
 
-- `sign_message_with_schnorr`: Signs an inputted message using the canister's Schnorr key.
+- `sign_message_with_schnorr`: Signs a message using the canister's Schnorr key.
 
 To use the dapp, click the "Deploy" button in ICP Ninja, then open the application's URL returned in the output log:
 
@@ -87,7 +87,7 @@ When this button is clicked, the following is happening in the background:
 
 - The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-call) RPC request to an Ethereum JSON-RPC API using the Llama provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
 
-- This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
+  - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
 
 - The block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider, and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
 

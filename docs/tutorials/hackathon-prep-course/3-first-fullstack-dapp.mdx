@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Now that you've deployed a project with just a backend canister and then deployed a project with just a frontend canister, let's put the pieces together and create a full-stack application that has both a frontend and backend.
 
-For this example, open the [ICP Ninja Flying Ninja project](https://icp.ninja/projects/flying-ninja).
+For this example, open the [ICP Ninja 'Flying Ninja' project](https://icp.ninja/projects/flying-ninja).
 
 Flying Ninja is a 2D side-scroller game that showcases how ICP's unique onchain randomness can be used to generate random values; in this example, obstacles the player must avoid. The game also features a leaderboard to track player high scores.
 
@@ -28,15 +28,15 @@ In this project, note that the `dfx.json` file defines two canisters rather than
 
 When a canister is deployed, locally or on the mainnet, there are two primary methods of interacting with that canister. You can use an API through an agent, or you can use the canister's HTTP interface.
 
-In this project, the JavaScript agent is used. An agent is a library that is used to make calls to the public interface of the Internet Computer. Agents are primarily responsible for:
+In this project, the frontend canister will interact with the backend canister's API through the JavaScript agent. An agent is a library that is used to make calls to a public interface of a canister. Agents are primarily responsible for:
 
-- Structuring data: Agents are responsible for structuring the data made in a call into a format that can be processed by the canister.
+- Structuring data made in a call into a format that can be processed by the canister.
 
-- Managing authentication: Agents are responsible for attaching a cryptographic identity to the call.
+- Managing authentication by attaching a cryptographic identity to the call.
 
 - Decoding data: Once a response has been returned from the canister on the mainnet, the agent takes the certificate from the call's payload and verifies it.
 
-When a user loads the application in their web browser, the browser will fetch the UI from the frontend canister, and then the user can interact with it. Each interaction will trigger a message that will be sent to the backend.
+When a user loads the application in their web browser, the browser will fetch the UI from the frontend canister, and then the user can interact with it. Each interaction will trigger a message that the agent will send to the backend.
 
 <div class="text--center">
   <img
@@ -46,16 +46,16 @@ When a user loads the application in their web browser, the browser will fetch t
   />
 </div>
 
-For example, the `src/frontend/Game.jsx` file defines a React application that includes the game's logic. The portion that communicates with the backend canister is defined as:
+In this project, the `src/frontend/Game.jsx` file defines the game's logic. The portion that communicates with the backend canister is defined as:
 
-```jsx title="Game.jsx" file=../../references/samples/motoko/flying_ninja/frontend/src/Game.jsx#L52-L71
+```jsx title="Game.jsx" file=../../references/samples/motoko/flying_ninja/frontend/src/Game.jsx#L1-L71
 ```
 
 In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. Declaration files are generated during the build process. If you build this project locally, you will see them; they are not shown in the ICP Ninja file viewer.
 
 When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then, it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 
-In this example, the user interface includes randomly generated obstacles once the game is loaded. The UI sends a request to the backend's `getRandomness` method, defined in the `app.mo` file as:
+In this example, the user interface creates randomly generated obstacles once the game is loaded. To obtain the source of randomness to generate these, the UI sends a request to the backend's `getRandomness` method, defined in the `app.mo` file as:
 
 ```motoko title="app.mo" file=../../references/samples/motoko/flying_ninja/backend/app.mo#L48-L52
   // Produces secure randomness as a seed to the game.
@@ -80,14 +80,14 @@ A few other important terms regarding memory on ICP include:
 
 - **Persistent actors and stable variables**: Motoko-specific features referring to variables defined as `stable` or actors defined as `persistent` in a Motoko canister. The value of variables defined within a persistent actor are persisted across canister upgrades.
 
-In the Flying Ninja example, the actor is defined as `persistent`, therefore all of the data stored in the canister's variables will be persisted across upgrades:
+In this Flying Ninja example, the actor is defined as `persistent`, therefore all of the data stored in the canister's variables will be persisted across upgrades:
 
 ```motoko title="app.mo" file=../../references/samples/motoko/flying_ninja/backend/app.mo
 ```
 
 [Learn more about storage and data persistence](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
-## Deploy Flying Ninja
+## Deploying the project
 
 Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
 

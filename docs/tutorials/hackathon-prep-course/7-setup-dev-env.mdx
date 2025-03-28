@@ -13,7 +13,7 @@ import { OsType, useOs } from "/src/hooks/useOs";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-Projects deployed through ICP Ninja in previous tutorial modules are deployed temporarily for 20 minutes. If you'd like to deploy a project for long-term production use, you'll need to:
+All of the projects deployed through ICP Ninja in the previous tutorial modules are deployed temporarily for only 20 minutes. If you'd like to deploy a project for long-term production use, you'll need to:
 
 1. Download the IC SDK and any necessary dependencies.
 
@@ -169,6 +169,13 @@ Only one identity is active and used by `dfx` at any given point in time. Get th
 dfx identity whoami
 ```
 
+Switch to your new developer identity by running:
+
+```
+dfx identity use IDENTITY_NAME
+```
+
+
 To get the principal of the currently active identity, run:
 
 ```
@@ -180,11 +187,9 @@ Your developer identity will have a principal identifier in the format `itk7v-ih
 
 ## 3. Obtaining cycles
 
-Cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a canister. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
+Cycles are used to measure and pay for the resources, such as memory, storage, and compute power, that are used by a canister. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
 
-To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in XDR in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
-
-Cycles are only associated with canisters and user or developer principles. Canisters require cycles to perform operations and pay for the resources they use. Developers manage the distribution and ownership of cycles through the **cycles ledger**. The cycles ledger is used to convert ICP tokens into cycles, send cycles to canisters, and create new canisters with cycles.
+To obtain cycles, developers may receive a cycles coupon, or the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister. Cycles have a fixed price in XDR in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always corresponds to one XDR.
 
 ### Option A: Redeeming a cycles faucet coupon
 
@@ -240,10 +245,6 @@ dfx deploy --network ic
 
 In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
 
-:::info
-Deploying to the playground is ICP's equivalent of deploying to a testnet network.
-:::
-
 Now, let's use your dapp! To access the dapp's frontend, first you need to get the canister's URL. To get this, run the command:
 
 ```
@@ -256,4 +257,3 @@ This command will return the canister's URL, which should look like this:
 https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
 ```
 
-If you open this URL in your web browser, you will see the sample dapp frontend that you saw when you deployed it locally. The only difference is that now your dapp is hosted 100% onchain, does not rely on your local <GlossaryTooltip>replica</GlossaryTooltip> to keep running, and you can send this URL to anyone in the world to view your dapp!
