@@ -151,6 +151,7 @@ This example is currently not available in ICP Ninja and must be run locally wit
 
 </TabItem>
 </AdornedTabs>
+
 ### Creating a new project
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
@@ -222,7 +223,7 @@ It is recommended to put this behind a condition so that it only runs locally.
 Create a new file in `src/tests/` called `e2e_tests_backend.test.ts`, then insert the following content:
 
 ```ts title="src/tests/e2e_tests_backend.test.ts" reference
-https://github.com/krpeacock/sample-canister-e2e/blob/main/src/e2e/hello.test.ts
+https://github.com/krpeacock/sample-canister-e2e/blob/main/src/e2e/hello.test.ts#L1-L9
 ```
 
 In this test file, the following happens:
@@ -264,26 +265,7 @@ The test should be successful and return output such as:
 Now let's create a more complex test that checks the canister's metadata using the `CanisterStatus` API. Insert the following code at the end of the `src/tests/e2e_tests_backend.test.ts` file:
 
 ```ts title="src/tests/e2e_tests_backend.test.ts" reference
-
-test("Should contain a candid interface", async () => {
-  const agent = Actor.agentOf(e2e_tests_backend) as HttpAgent;
-  const id = Principal.from(e2e_tests_backendCanister);
-
-  const canisterStatus = await CanisterStatus.request({
-    canisterId: id,
-    agent,
-    paths: ["time", "controllers", "candid"],
-  });
-
-  expect(canisterStatus.get("time")).toBeTruthy();
-  expect(Array.isArray(canisterStatus.get("controllers"))).toBeTruthy();
-  expect(canisterStatus.get("candid")).toMatchInlineSnapshot(`
-    "service : {
-      greet: (text) -> (text) query;
-    }
-    "
-  `);
-});
+https://github.com/krpeacock/sample-canister-e2e/blob/main/src/e2e/hello.test.ts#L10-L28
 ```
 
 This test simply checks that our canister's metadata contains a Candid interface.
