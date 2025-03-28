@@ -12,10 +12,22 @@ import transitions from "@site/static/transitions.json";
 const sliderData = [
   {
     title:
+      "The Bitcoin DeFi Renaissance | World Computer Tech Talks | Thomas Locher",
+    image: "https://img.youtube.com/vi/VjLbm41vIGg/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=VjLbm41vIGg",
+  },
+  {
+    title: "ICP - More than a Bitcoin L2",
+    image: "https://img.youtube.com/vi/eTe6IXQJNUs/maxresdefault.jpg",
+    link: "https://www.youtube.com/watch?v=eTe6IXQJNUs",
+  },
+  {
+    title:
       "Bitcoin DeFi: Neil Fitzhugh Explains Tap Protocol's L1 Co-Processing | ETH Denver Interview",
     image: "https://img.youtube.com/vi/dUdd6U_twgw/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=dUdd6U_twgw",
   },
+
   {
     title:
       "Building the Ultimate Bitcoin Meme Coin Experience: Bob Bodily on ODIN•FUN's Success | ETH Denver",
