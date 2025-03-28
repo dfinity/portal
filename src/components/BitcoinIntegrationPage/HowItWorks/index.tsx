@@ -52,7 +52,7 @@ function Index() {
                   <motion.p className="tw-paragraph-sm md:tw-paragraph text-black/60">
                     ICP's Chain Fusion now supports threshold Schnorr signing.
                     ICP smart contracts can now generate Schnorr signatures in a
-                    distributed way. This allows one to sign taproot
+                    distributed way. This makes it possible to sign taproot
                     transactions or manage BRC-20 tokens directly from an ICP
                     smart contract.
                   </motion.p>
