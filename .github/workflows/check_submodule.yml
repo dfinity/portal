@@ -16,7 +16,8 @@ jobs:
 
       - name: Validate Submodule Commits
         run: |
-          # Define latest release commits
+          # Submodules are very easy to accidentally overwrite with old versions.
+          # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
           
           # dfx 0.25.0
           LATEST_SDK="44ae9ed6b534f75c40b805d199aced867dd479bb" 
