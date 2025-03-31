@@ -161,7 +161,7 @@ View the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standard
 
 When building dapps where users can deposit bitcoin to receive ckBTC or burn ckBTC to withdraw bitcoin, developers are advised to adhere to the following best practices.
 
-In order to mint ckBTC, the user must first deposit bitcoins to the Bitcoin address returned by the endpoint `get_btc_address`, which is tied to the user's prinicipal ID and possibly a subaccount.
+In order to mint ckBTC, the user must first deposit bitcoin into the Bitcoin address returned by the endpoint `get_btc_address`, which is tied to the user's prinicipal ID and possibly a subaccount.
 
 Next, the user should issue query calls to the `bitcoin_get_utxos_query` endpoint of the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister) to retrieve the unspent outputs of the Bitcoin address obtained in the first step.
 If the user does not know for which unspent outputs ckBTC has already been minted, the `get_known_utxos` query endpoint can be called on the ckBTC minter, returning the known unspent outputs for the Bitcoin address derived from the user's principal ID (and possibly a subaccount).
