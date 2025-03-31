@@ -37,6 +37,32 @@ export const CardsSection = () => {
       className="container-12 mt-30"
       variants={transitions.container}
     >
+      <article className="bg-infinite rounded-[32px] text-white  overflow-clip mt-6">
+        <div className="flex flex-col md:flex-row items-stretch">
+          <div className="basis-1/2 p-1/10 md:py-1/12 md:order-1">
+            <h4 className="tw-heading-4 md:tw-heading-60">Build on BTC</h4>
+            <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
+              Build incredible dapps that natively interact with the Bitcoin
+              network.
+            </p>
+            <Link
+              className="button-outline-white-30 mt-4"
+              href="/bitcoin-integration"
+            >
+              Find out more
+            </Link>
+          </div>
+
+          <div className="basis-1/2 relative md:order-1 -mt-[5%] md:mt-0 z-0 ">
+            <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-9 md:blob-y-8 z-1"></div>
+            <img
+              loading="lazy"
+              src="/img/bitcoin-integration/btc_integration_hero.svg"
+              className="md:absolute bottom-0 left-0 w-[80%] md:w-[70%] md:bottom-0 md:left-0 md:translate-x-[-5%] md:translate-y-[5%] z-20"
+            />
+          </div>
+        </div>
+      </article>
       <article
         aria-label="powered by chain fusion"
         className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6"
