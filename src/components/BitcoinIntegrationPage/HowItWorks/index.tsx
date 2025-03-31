@@ -84,18 +84,6 @@ function Index() {
               </aside>
             </motion.div>
           </AnimateSpawn>
-          <motion.div
-            variants={transitions.item}
-            className="mt-12 mb-6 md:mt-40 md:mb-12"
-          >
-            <VideoCard
-              image="https://internetcomputer.org/img/bitcoin-integration/video_thumb.webp"
-              title="BTC <> ICP"
-              label=""
-              link={`https://www.youtube.com/watch?v=eTe6IXQJNUs`}
-              description="ICP has protocol-level integration with the Bitcoin network, enabling dapps to seamlessly interact with Bitcoin and granting users access to the Bitcoin economy like never before with ckBTC."
-            />{" "}
-          </motion.div>
         </div>
       </AnimateSpawn>
     </>

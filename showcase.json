@@ -316,7 +316,7 @@
     "name": "Kinic",
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": ["Tools / Infrastructure", "DAO", "AI", "Analytics"],
-    "twitter": "https://x.com/kinic_ai",
+    "twitter": "https://x.com/kinic_app",
     "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
     "stats": "3,000,000+ searches",
     "display": "Large",
@@ -4178,5 +4178,27 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
+  },
+  {
+    "id": "bookie",
+    "name": "Bookie",
+    "description": "The Decentralised BTC Betting Exchange. \nBest Odds, 0% Fees & Crazy Bonuses - Built on ICP. ",
+    "website": "https://www.bookie.win/",
+    "logo": "/img/showcase/bookie_logo.webp",
+    "screenshots": [
+      "/img/showcase/bookie_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "The Decentralised BTC Betting Exchange",
+    "stats": "5,000+ Users",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/bookiedex",
+    "youtube": "https://www.youtube.com/@Bookiewin"
   }
 ]
