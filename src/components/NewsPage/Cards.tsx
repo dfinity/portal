@@ -17,6 +17,7 @@ export const FeaturedNewsCard: React.FC<{
       imgAlt={news.title}
       imgUrl={news.imageUrl}
       contentClassName="text-black"
+      aspectRatio={true}
     >
       <h3 className="tw-heading-5 md:tw-heading-4 mb-3">{news.title}</h3>
       <div className="tw-paragraph-sm md:tw-lead-sm text-black/60 mb-6">
