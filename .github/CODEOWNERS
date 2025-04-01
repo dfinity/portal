@@ -8,6 +8,15 @@ docs/other/updates/release-notes/ @dfinity/dx
 docs/building-apps/interact-with-canisters/agents/ @dfinity/dx
 docs/building-apps/developer-tools/cdks/ @dfinity/dx
 
+# SDK
+submodules/sdk @dfinity/sdk
+
+# Motoko
+submodules/motoko @dfinity/languages
+
+# Cross chain
+docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
+
 # FI
 docs/defi/ @dfinity/finint
 

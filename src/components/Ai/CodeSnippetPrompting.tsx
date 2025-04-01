@@ -7,12 +7,13 @@ import CodeBlockString from "@site/src/theme/CodeBlock/Content/String";
 const codeSnippets: Record<string, string> = {
   motoko: `import LLM "mo:llm";
 
-await LLM.prompt(#Llama3_1_8B, "What's the speed of light?")
-  `,
+await LLM.prompt(#Llama3_1_8B, "What's the speed of light?")`,
+  typescript: `import * as llm from "@dfinity/llm";
+
+await llm.prompt(llm.Model.Llama3_1_8B, "What's the speed of light?");`,
   rust: `use ic_llm::Model;
 
-ic_llm::prompt(Model::Llama3_1_8B, "What's the speed of light?").await;
-  `,
+ic_llm::prompt(Model::Llama3_1_8B, "What's the speed of light?").await;`,
 };
 
 const customStyles = {
@@ -43,6 +44,15 @@ export function CodeSnippetPrompting() {
                 showLineNumbers={true}
               >
                 {codeSnippets.motoko}
+              </CodeBlockString>
+            </TabItem>
+            <TabItem value="typescript" label="Typescript" default>
+              <CodeBlockString
+                language="motoko"
+                className="text-left"
+                showLineNumbers={true}
+              >
+                {codeSnippets.typescript}
               </CodeBlockString>
             </TabItem>
             <TabItem value="rust" label="Rust">
