@@ -496,18 +496,17 @@ parameter.
 #### node
 
 A **node** is a physical hardware device run by independent
-[node providers]. It hosts all the
+[node providers](#n). It hosts all the
 hardware, [replica](#r) software, and configuration
 settings required to participate in the [Internet
 Computer](#i).
 
 #### node operator
 
-A **node operator** (NO) is a non-canister
-[principal](#p) who has the authority to add/remove
-[nodes](#n) to/from the
-[ICP](#i), by delegation of the
-the corresponding [node providers](#n).
+A **node operator** (NO) is a non-canister [principal](#p) with a scoped authority to add/remove unassigned [nodes](#n) to/from the [ICP](#i).
+This power is granted in advance through an NNS [proposals](#p) stored in the [registry canister](#r).
+The proposal defines maximum NO capacity, and is scoped to a specific [node provider](#n), in a specific [data center](#d) with a specific IPv6 prefix.
+Actual addition/removal of an unassigned node requires no further approvals, and is executed through a message to the [registry canister](#r) signed by the corresponding node operator.
 
 #### node provider
 
