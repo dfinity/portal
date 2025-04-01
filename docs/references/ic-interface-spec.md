@@ -7770,7 +7770,7 @@ ic0.call_with_best_effort_response<es>(timeout_seconds : i32) =
   if
       es.context ∉ {U, CQ, Ry, Rt, CRy, CRt, T}
       or es.pending_call = NoPendingCall
-      or es.pending_call.timeout ≠ NoTimeout
+      or es.pending_call.timeout_seconds ≠ NoTimeout
   then Trap {cycles_used = es.cycles_used;}
   es.pending_call.timeout_seconds := min(timeout_seconds, MAX_CALL_TIMEOUT)
 
