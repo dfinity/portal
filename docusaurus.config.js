@@ -420,6 +420,11 @@ const marketingNav = {
               href: "/docs/building-apps/developing-canisters/what-are-canisters",
             },
             {
+              name: "Build on BTC",
+              description: "Leveraging Chain Fusion Technology",
+              href: "/bitcoin-integration",
+            },
+            {
               name: "Hackathons",
               description: "Join like-minded hackers",
               href: "https://dfinity.org/hackathons",
