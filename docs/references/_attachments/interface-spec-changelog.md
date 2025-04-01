@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.36.0 (2025-03-31) {#0_36_0}
+* Bounded-wait calls.
+
 ### 0.35.0 (2025-03-20) {#0_35_0}
 * New system API `ic0.canister_liquid_cycle_balance128` returning the current amount of cycles that is available for spending in calls and execution.
 * A canister can have multiple snapshots.
