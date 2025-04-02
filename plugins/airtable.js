@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
 const cheerio = require("cheerio");
+const https = require("https");
 
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
@@ -22,6 +23,14 @@ const EVENTS_VIEW_NAME = "viwx1BHC1Cj8RVG7q";
 const COURSES_BASE_ID = "app1LOpIHEj6dTeEx";
 const COURSES_TABLE_NAME = "tblpf2akkElbGlqti";
 const COURSES_VIEW_NAME = "viwDJz26NeIdJvqle";
+
+// Constants for the ecosystem projects table
+const ECOSYSTEM_BASE_ID = "appyWBGCHaZoTzKTN";
+const ECOSYSTEM_TABLE_NAME = "tblGcL1MfwogVlWk9";
+const ECOSYSTEM_VIEW_NAME = "viwWonHqqzyJCtvNq";
+
+// Directory for showcase images
+const SHOWCASE_IMG_DIR = path.join(__dirname, "../static/img/showcase");
 
 async function loadRecords({
   apiKey,
@@ -53,6 +62,9 @@ const airtablePlugin = async function () {
   );
   fs.mkdirSync(uniqueDirUnderTemp, { recursive: true });
 
+  // Ensure showcase image directory exists
+  fs.mkdirSync(SHOWCASE_IMG_DIR, { recursive: true });
+
   const isProd = process.env.NODE_ENV === "production";
 
   return {
@@ -65,12 +77,14 @@ const airtablePlugin = async function () {
           );
           const mockEvents = require("./data/airtable-events-mock.json");
           const mockCourses = require("./data/airtable-courses-mock.json");
+          const mockEcosystem = require("./data/airtable-ecosystem-mock.json");
 
           cache = {
             events: mockEvents,
             courses: mockCourses,
+            ecosystem: mockEcosystem,
           };
-          return;
+          return cache;
         }
 
         // Load events
@@ -95,9 +109,21 @@ const airtablePlugin = async function () {
         // Process courses data
         courses = await processCoursesData(courses);
 
+        // Load ecosystem projects
+        let ecosystem = await fetchAirtableRecords({
+          apiKey: AIRTABLE_KEY,
+          baseId: ECOSYSTEM_BASE_ID,
+          tableName: ECOSYSTEM_TABLE_NAME,
+          viewId: ECOSYSTEM_VIEW_NAME,
+        });
+
+        // Process ecosystem data
+        ecosystem = await processEcosystemData(ecosystem);
+
         cache = {
           events,
           courses,
+          ecosystem,
         };
       }
 
@@ -114,6 +140,7 @@ const airtablePlugin = async function () {
         "airtable-courses.json",
         JSON.stringify(content.courses, null, 2)
       );
+      createData("showcase.json", JSON.stringify(content.ecosystem, null, 2));
 
       if (isDev) {
         // Save mock files for development
@@ -124,6 +151,10 @@ const airtablePlugin = async function () {
         fs.writeFileSync(
           path.join(__dirname, "data", "airtable-courses-mock.json"),
           JSON.stringify(content.courses, null, 2)
+        );
+        fs.writeFileSync(
+          path.join(__dirname, "data", "airtable-ecosystem-mock.json"),
+          JSON.stringify(content.ecosystem, null, 2)
         );
       }
     },
@@ -153,6 +184,59 @@ async function fetchAirtableRecords({ apiKey, baseId, tableName, viewId }) {
   } while (offset);
 
   return records;
+}
+
+/**
+ * Downloads an image from a URL and saves it to the local filesystem
+ * @param {string} url - The URL of the image
+ * @param {string} filename - The filename to save as
+ * @returns {Promise<string>} - The local path to the saved image
+ */
+async function downloadImage(url, filename) {
+  const localPath = path.join(SHOWCASE_IMG_DIR, filename);
+
+  // Check if file already exists to avoid redundant downloads
+  if (fs.existsSync(localPath)) {
+    return `/img/showcase/${filename}`;
+  }
+
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(localPath);
+    https
+      .get(url, (response) => {
+        response.pipe(file);
+        file.on("finish", () => {
+          file.close();
+          resolve(`/img/showcase/${filename}`);
+        });
+      })
+      .on("error", (err) => {
+        fs.unlink(localPath, () => {}); // Delete the file if there was an error
+        reject(err);
+      });
+  });
+}
+
+/**
+ * Processes image data from Airtable and saves it locally
+ * @param {Object} imageData - The image data from Airtable
+ * @param {string} prefix - A prefix for the image filename
+ * @returns {Promise<string>} - The local path to the saved image
+ */
+async function processAndDownloadImage(imageData, prefix) {
+  try {
+    if (!imageData || !imageData.url) {
+      return null;
+    }
+
+    const fileExt = path.extname(imageData.filename) || ".png";
+    const safeFilename = `${prefix}_${imageData.id}${fileExt}`.toLowerCase();
+
+    return await downloadImage(imageData.url, safeFilename);
+  } catch (error) {
+    logger.warn(`Failed to download image: ${error.message}`);
+    return null;
+  }
 }
 
 async function processEventsData(records) {
@@ -257,6 +341,105 @@ async function processEventsData(records) {
     modes: Array.from(modes),
     websiteCategory: Array.from(websiteCategory),
   };
+}
+
+async function processEcosystemData(records) {
+  const showcaseItems = await Promise.all(
+    records.map(async (record) => {
+      const fields = record.fields;
+
+      // Generate a safe ID from the product name
+      const id =
+        fields.id ||
+        fields["Product name"]?.toLowerCase().replace(/[^a-z0-9]/g, "-") ||
+        record.id;
+
+      // Process logo image
+      let logoUrl = null;
+      if (fields["Logo "] && fields["Logo "].length > 0) {
+        logoUrl = await processAndDownloadImage(
+          fields["Logo "][0],
+          `${id}_logo`
+        );
+      }
+
+      // Process screenshots
+      let screenshots = [];
+      if (
+        fields["Screenshot of your prouduct"] &&
+        fields["Screenshot of your prouduct"].length > 0
+      ) {
+        screenshots = await Promise.all(
+          fields["Screenshot of your prouduct"].map((screenshot, index) =>
+            processAndDownloadImage(screenshot, `${id}_screenshot_${index}`)
+          )
+        );
+        // Filter out null values
+        screenshots = screenshots.filter(Boolean);
+      }
+
+      // Determine if it uses Internet Identity
+      const usesII = fields["Use Internet Identity?"] === "Yes";
+
+      // Map tags from Airtable to showcase format
+      const validTags = [
+        "SocialFi",
+        "Chain Fusion",
+        "Bitcoin",
+        "Ethereum",
+        "AI",
+        "NFT",
+        "Tools / Infrastructure",
+        "DeFi",
+        "Wallet",
+        "Metaverse",
+        "Gaming",
+        "DAO",
+        "Enterprise",
+        "Analytics",
+        "Creator Economy",
+      ];
+
+      const tags =
+        fields["Tags"] && Array.isArray(fields["Tags"])
+          ? fields["Tags"].filter((tag) => validTags.includes(tag))
+          : [];
+
+      // Extract stats if available
+      const stats = fields["Stats"] || null;
+
+      // Determine display mode (Large if has screenshots or video, Normal otherwise)
+      const display = screenshots.length > 0 ? "Large" : "Normal";
+
+      return {
+        id,
+        name: fields["Product name"],
+        description: fields["Description"]?.substring(0, 500) || "", // Limit to 500 chars
+        logo: logoUrl || "/img/showcase/default_logo.png", // Fallback to default if no logo
+        display,
+        website: fields["Website"] || "#",
+        tags,
+        stats,
+        usesInternetIdentity: usesII,
+        screenshots: screenshots.length > 0 ? screenshots : undefined,
+        github: fields["Github"] || undefined,
+        twitter: fields["Twitter"] || undefined,
+        youtube: fields["YouTube"] || undefined,
+        submittableId:
+          fields["Submittable ID (Optional)"]?.toString() || undefined,
+      };
+    })
+  );
+
+  // Filter out items with missing required fields
+  return showcaseItems.filter(
+    (item) =>
+      item.name &&
+      item.description &&
+      item.logo &&
+      item.website &&
+      item.tags.length > 0
+  );
 }
 
 async function fetchShareImage(url) {

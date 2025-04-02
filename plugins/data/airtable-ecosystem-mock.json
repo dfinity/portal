@@ -1,0 +1,3612 @@
+[
+  {
+    "id": "accelar",
+    "name": "Accelar",
+    "description": "Accelar is a unified product development infrastructure that allows for efficient development, launching, and management of web3 features. Create canisters, workflows, identities, and interact with dApps through a non-custodial wallet.",
+    "logo": "/img/showcase/accelar_logo_attydyg9syqqotjxk.png",
+    "display": "Large",
+    "website": "www.accelar.io",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/accelar_screenshot_0_attxqpy8qyo3h02h5.png"
+    ],
+    "github": "https://github.com/Accelar-labs",
+    "twitter": "https://twitter.com/accelarlabs",
+    "submittableId": "44378832"
+  },
+  {
+    "id": "RentSpace",
+    "name": "RentSpace",
+    "description": "A property rental platform powered by blockchain technology and Web3 innovation. RentSpace enables tenants to pay fees and rent in either cryptocurrency or traditional money. It will have an integrated actions-based rewards system.",
+    "logo": "/img/showcase/rentspace_logo_att9ylhyudyxwbkam.png",
+    "display": "Large",
+    "website": "rentb.space",
+    "tags": [
+      "Tools / Infrastructure",
+      "Wallet",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/rentspace_screenshot_0_attvxsje1eeled5hq.png"
+    ],
+    "github": "https://github.com/vinayakkalra/Rentspace",
+    "twitter": "https://twitter.com/RentSpaceco"
+  },
+  {
+    "id": "VirtuaSeal",
+    "name": "VirtuaSeal",
+    "description": "VirtuaSeal is an application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain. Users can create documents from a template or from scratch, verify the robustness and authenticity of the document using hashes, sign documents in a secured manner, and share documents with other parties.",
+    "logo": "/img/showcase/virtuaseal_logo_attajmwgcvygslabe.jpg",
+    "display": "Large",
+    "website": "https://p3cwv-2aaaa-aaaap-abwba-cai.icp0.io/",
+    "tags": [
+      "Analytics",
+      "Tools / Infrastructure"
+    ],
+    "stats": "Two law firms have agreed to use this product",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/virtuaseal_screenshot_0_att3p6uy1gmj82rs3.png"
+    ],
+    "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
+    "twitter": "https://twitter.com/kovachtech",
+    "youtube": "https://www.youtube.com/@danielkovach9657",
+    "submittableId": "44337954"
+  },
+  {
+    "id": "relinkdxyz",
+    "name": "{r}elinkd",
+    "description": "Digital identity + scores protocol and dapp. We're building a decentralized identity protocol, aggregating on-chain and off-chain credentials into the scores for creating trustworthy self-sovereign identity and personal brand profiles.",
+    "logo": "/img/showcase/relinkdxyz_logo_attsnzg1gpm6klm6f.svg",
+    "display": "Large",
+    "website": "https://snr42-qiaaa-aaaao-a3fpq-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/relinkdxyz_screenshot_0_atthcnvgal6d6tuax.png"
+    ],
+    "github": "https://github.com/relinkd/ICP-Wallet-Scorer",
+    "twitter": "https://twitter.com/relinkdxyz",
+    "youtube": "https://youtu.be/uuEUiEHf-RU",
+    "submittableId": "41592553"
+  },
+  {
+    "id": "arcmind-ai",
+    "name": "ArcMind AI",
+    "description": "ArcMind AI is a LLM-powered autonomous agent running that uses Chain of thoughts for reasoning, taking actions and completing goal. It orchestrates with web agents to interact with the world in real time, and Vector DB for long term memory store.",
+    "logo": "/img/showcase/arcmind-ai_logo_attc5lyglvqzgconh.svg",
+    "display": "Large",
+    "website": "https://arcmindai.app",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/arcmind-ai_screenshot_0_attgguiuqssccwh76.png"
+    ],
+    "github": "https://github.com/arcmindai/arcmindai",
+    "twitter": "https://twitter.com/arcmindai",
+    "submittableId": "39060710"
+  },
+  {
+    "id": "wasi-for-ic",
+    "name": "WASI for IC",
+    "description": "A collection of a tool and libraries that enables projects initially developed to be run on the WASI environment to be executed inside a canister.",
+    "logo": "/img/showcase/wasi-for-ic_logo_attmzehqortsfjgic.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/wasi-for-ic_screenshot_0_attjqzlgk0cu3otxz.png"
+    ],
+    "github": "https://github.com/wasm-forge/wasi2ic"
+  },
+  {
+    "id": "Game Bloc",
+    "name": "Game Bloc",
+    "description": "Game Bloc is a decentralised platform for hosting game tournaments which can either be crowdfunded (individually Funded tournaments) or Prepaid (funded by a gaming company trying to get their app or DApp known or Game Bloc). Rewards and incentives are sent directly to selected winners or squads.",
+    "logo": "/img/showcase/game bloc_logo_attyxp9mtshznm3hm.png",
+    "display": "Large",
+    "website": "https://cv4ma-4qaaa-aaaal-adntq-cai.icp0.io/",
+    "tags": [
+      "Gaming",
+      "Wallet",
+      "Analytics"
+    ],
+    "stats": "- We have 344 active users.\n- We have 64 created squads.\n- We are currently hosting our first prepaid tournament with a pool prize of $400.\n",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/game bloc_screenshot_0_attjygnikntyt34gx.png"
+    ],
+    "github": "https://github.com/Game-Bloc/Gamebloc-ICP",
+    "twitter": "https://twitter.com/game_bloc",
+    "submittableId": "44720573"
+  },
+  {
+    "id": "jobgrader-on-icp",
+    "name": "Jobgrader",
+    "description": "Jobgrader brings the Crowdworking market to train AI and any other micro task with over 150 million users into WEB3. All work onchain.\nJobgrader is challenging the need for verified workers to ensure data quality and audit ability without loading privacy in the micro task market. Any AI model must be fine tuned to provide compliant output. Jobgrader adds a global Business Process Outsourcing pipeline for any company with escrow contracts for micro payouts with our THXC token.",
+    "logo": "/img/showcase/jobgrader-on-icp_logo_atts1rsivkqpt4kzk.png",
+    "display": "Large",
+    "website": "https://jobgrader.app",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "So far the Bitfinity Main Net is not yet launched so that we were unable to get into bigger achievements. Looking forward for a next round.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/jobgrader-on-icp_screenshot_0_attgljsyxkybx8j7d.png"
+    ],
+    "github": "https://gitlab.com/jobgrader/jobgrader-app",
+    "submittableId": "44503915"
+  },
+  {
+    "id": "ava-reputation",
+    "name": "aVa Reputation",
+    "description": "Issue Digital Certificates with aVa Reputation, Anchored in User Activity",
+    "logo": "/img/showcase/ava-reputation_logo_attpm4o0s4i1fzpzg.svg",
+    "display": "Large",
+    "website": "https://check.ava.capetown",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "All Internet Identity Users",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ava-reputation_screenshot_0_att1t5psepk3nv229.png"
+    ],
+    "github": "https://github.com/ava-vs",
+    "youtube": "https://www.youtube.com/watch?v=_Hpmj_I67Yg",
+    "submittableId": "44317310"
+  },
+  {
+    "id": "opti-games",
+    "name": "OptiGames.pro",
+    "description": "OptiGames is a flexible framework for fully on-chain multiplayer turn-based games. The proof-of-concept game Bulldog Blast uses the framework for an action arcade experience.",
+    "logo": "/img/showcase/opti-games_logo_attc0shu7gpsnbmks.svg",
+    "display": "Large",
+    "website": "https://www.optiswap.pro",
+    "tags": [
+      "Gaming",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/opti-games_screenshot_0_attnj5dssvfelsbrm.png"
+    ],
+    "github": "https://github.com/OptiSwapGames/optiswapgames",
+    "youtube": "https://www.youtube.com/channel/UCtlyzOmO1_2R6usd6tR4xfQ/",
+    "submittableId": "39903719"
+  },
+  {
+    "id": "local-icp",
+    "name": "Local Icp",
+    "description": "Local Icp is an On-chain Peer-to-Peer Cryptocurrency Trading Platform which eliminates the use of Centralized Exchanges for buying and selling of ICP as well as other native tokens.",
+    "logo": "/img/showcase/local-icp_logo_attzuzucuhafmyvni.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/local-icp_screenshot_0_attmlnndiiclydytu.png"
+    ],
+    "twitter": "https://twitter.com/local_icp",
+    "submittableId": "36566420"
+  },
+  {
+    "id": "formyfi",
+    "name": "FormyFi",
+    "description": "Decentralized & fully on-chain forms.\nToolset for conducting surveys in Web3, ensuring security and completeness of data.",
+    "logo": "/img/showcase/formyfi_logo_attkv3fcqiihbd3kh.jpeg",
+    "display": "Large",
+    "website": "formyfi.io",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/formyfi_screenshot_0_atte9e9gyc8mgp7sb.jpg"
+    ],
+    "github": "https://github.com/Talentum-id/formify",
+    "submittableId": "44539692"
+  },
+  {
+    "id": "zkCross-icp-bridge",
+    "name": "zkCross Network Decentralised Cross-Chain Swap\n",
+    "description": "Our product streamlines cross-chain transactions, enabling swaps and bridges via a decentralised method, eliminating dependence on centralised servers. Utilising threshold ECDSA keys, we ensure private keys are never stored in server environments, boosting security. Additionally, we're integrating Internet Computer Protocol (ICP) to transition our indexers and executors. Transactions proceed only when two-thirds of our canisters confirm, ensuring a secure and reliable process.",
+    "logo": "/img/showcase/zkcross-icp-bridge_logo_attnu2hfr3yab7k6f.png",
+    "display": "Large",
+    "website": "https://zkcross.network/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/zkcross-icp-bridge_screenshot_0_attbm21ctwklde23f.png"
+    ],
+    "twitter": "https://twitter.com/ZkCrossNetwork"
+  },
+  {
+    "id": "secure-guard-escrow",
+    "name": "Secure Guard Escrow",
+    "description": "Welcome to SecureGuard Escrow, your trusted partner in making online transactions safe and sound. In a world where buying and selling online can feel like a leap of faith, we're here to ensure that your leap lands you on solid ground.\n\nWe provide a secure platform where money for a transaction is safely held until everyone involved is happy with the deal. Whether you're buying a vintage car, selling a piece of art, or closing a deal on a new app development, we've got your back.",
+    "logo": "/img/showcase/secure-guard-escrow_logo_attjsrsnafzpdiwhf.png",
+    "display": "Large",
+    "website": "https://cojoz-raaaa-aaaao-a3b7q-cai.icp0.io",
+    "tags": [
+      "DeFi",
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/secure-guard-escrow_screenshot_0_attcuv6cmpl5ew7ju.gif"
+    ],
+    "github": "https://github.com/bix-tech/secure-guard-escrow",
+    "submittableId": "44880325"
+  },
+  {
+    "id": "pado-project",
+    "name": "PADO",
+    "description": "PADO is a zk-attestation and computation network that breaks down barriers between datasets, enriches smart contract functionalities, and enables secure monetization of personal data within privacy-protected data flows. PADO creates applications and developer toolkits for end users and community builders.  With advanced cryptography techniques like IZK, MPC-TLS and zkFHE, PADO’s core application allows users to manage their personal data, and gain benefits while maintaining privacy. ",
+    "logo": "/img/showcase/pado-project_logo_attmfkcqd99y9rqwa.webp",
+    "display": "Large",
+    "website": "https://bupby-pqaaa-aaaam-abykq-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "PADO extension has over 25k registered users and  over 30k zkAttestations created on blockchains.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/pado-project_screenshot_0_attjgwbzulldlcgne.webp"
+    ],
+    "github": "https://github.com/pado-labs/pado-icp",
+    "twitter": "https://twitter.com/padolabs"
+  },
+  {
+    "id": "gotcha-ai-captcha",
+    "name": "Gotcha AI CAPTCHA",
+    "description": "CAPTCHAs to distinguish humans and bots on the Internet in the AI era.",
+    "logo": "/img/showcase/gotcha-ai-captcha_logo_attydoi1f81gtglry.png",
+    "display": "Large",
+    "website": "https://gotcha.land",
+    "tags": [
+      "Tools / Infrastructure",
+      "Gaming"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/gotcha-ai-captcha_screenshot_0_attdgrmtsj9sdgbu5.png"
+    ],
+    "twitter": "https://twitter.com/GotCHA_labs",
+    "submittableId": "35891457"
+  },
+  {
+    "id": "MyOrdinals.Loan",
+    "name": "MyOrdinals.Loan - Borrow and Lend ckBTC for Ordinals",
+    "description": "MyOrdinals.Loan facilitates peer-to-peer Bitcoin lending using ckBTC, a 1-to-1 mapped cryptocurrency to BTC. Users borrow or lend Bitcoin, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral. The process is fast and cost-effective, leveraging an Internet Computer Canister for security.",
+    "logo": "/img/showcase/myordinals.loan_logo_attehgx7sf2lp1vgv.png",
+    "display": "Large",
+    "website": "MyOrdinals.Loan",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": "We have successfully implemented the deposit and withdrawal processes for Ordinals, along with the functionality to lend ckBTC.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/myordinals.loan_screenshot_0_atttoene1swdlyo8r.png"
+    ],
+    "github": "https://github.com/gladguy/MyOrdinals.Loan",
+    "twitter": "https://twitter.com/MyOrdinalsLoan",
+    "youtube": "https://www.youtube.com/@MyOrdinalsLoan",
+    "submittableId": "41341564"
+  },
+  {
+    "id": "icap-project",
+    "name": "Internet Computer Analytics Platform",
+    "description": "ICAP is a platform for users to query and analyze data from various sources in the ICP ecosystem. Currently, it comprehends canisters for handling semantic data and a domain ontology called ICOnto that is designed to represent and structure the main conceptual entities of the ecosystem.",
+    "logo": "/img/showcase/icap-project_logo_attnd1ktye8ttg8m6.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "We have just delivered Phase 1 of the ICAP project and delivered an extended version of the ICOnto ontology, a backend canister that provides a triplestore implementation, and a frontend canister to allow accessing the knowledge stored in the triplestore using SPARQL.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/icap-project_screenshot_0_atth3s9hvuw15eiya.png"
+    ],
+    "github": "https://github.com/mobr-ai/icap",
+    "youtube": "https://youtu.be/mMQobKcaRHo",
+    "submittableId": "44300129"
+  },
+  {
+    "id": "Swimming-Pool",
+    "name": "Swimming Pool",
+    "description": "Fully onchain permissionless stablecoin protocol, collateralizing your BTC, ETH and other crypto assets.",
+    "logo": "/img/showcase/swimming-pool_logo_att1ad6oxkcaln38s.png",
+    "display": "Large",
+    "website": "https://swmpool.xyz",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/swimming-pool_screenshot_0_attik8zepxpbabgbt.png"
+    ],
+    "github": "https://github.com/SWMPool/SwimmingPool",
+    "twitter": "https://twitter.com/swmpool_finance"
+  },
+  {
+    "id": "knowledgetoken-wallet-frontend",
+    "name": "Knowledge Token Wallet frontend",
+    "description": "Our Knowledge Token Wallet enables simple viewing, browsing and sorting of your tokens according to their tags and specific identities, as well as trading them in auctions/transactions.",
+    "logo": "/img/showcase/knowledgetoken-wallet-frontend_logo_attw8hduesbc7k5p8.png",
+    "display": "Large",
+    "website": "https://knowledgefound.org/",
+    "tags": [
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/knowledgetoken-wallet-frontend_screenshot_0_attkyejqhnlmzl6iu.png"
+    ],
+    "github": "https://github.com/KnowledgeFound/KT_Private",
+    "twitter": "https://summit.immersiveeducation.org/Oxford/2023/hackathon.html",
+    "youtube": "https://youtu.be/sGu3ZAEuY-E",
+    "submittableId": "41324520"
+  },
+  {
+    "id": "ic-pluto",
+    "name": "Pluto",
+    "description": "Pluto is an HTTP router & SSR tool implemented on the Internet Computer to facilitate working with HTTP. This router is a framework that allows you to write REST API applications on the blockchain in almost the same way as in Web 2",
+    "logo": "/img/showcase/ic-pluto_logo_attbzbjofi7m0z2yw.png",
+    "display": "Large",
+    "website": "https://zygiv-iaaaa-aaaag-qdkoq-cai.raw.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "+15 stars on github",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/ic-pluto_screenshot_0_attvp1xwytngtgsw4.png"
+    ],
+    "github": "https://github.com/pu0238/pluto"
+  },
+  {
+    "id": "CodeGov",
+    "name": "CodeGov",
+    "description": "Advancing decentralization of the internet computer through NNS Replica Version Management proposal reviews and informed, independent voting by skilled developers in the ICP community",
+    "logo": "/img/showcase/codegov_logo_att2do48pgthwnbl4.jpg",
+    "display": "Large",
+    "website": "https://www.codegov.org/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/codegov_screenshot_0_attnalyibmyzqvnbr.png"
+    ],
+    "github": "https://github.com/CodeGov-org/codegov-website",
+    "twitter": "https://twitter.com/codegovorg",
+    "submittableId": "44738961"
+  },
+  {
+    "id": "BlendSafe",
+    "name": "BlendSafe",
+    "description": "BlendSafe is a MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
+    "logo": "/img/showcase/blendsafe_logo_attat3ygndwjb314c.png",
+    "display": "Large",
+    "website": "https://deep-ink.ventures",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/blendsafe_screenshot_0_attdayxz72zu4mrcs.pdf"
+    ],
+    "github": "https://github.com/deep-ink-ventures/blend-safe",
+    "twitter": "https://twitter.com/BlendSafe",
+    "youtube": "https://www.youtube.com/channel/UCaaMd020DvLxl8q4S83XbBA"
+  },
+  {
+    "id": "odoc",
+    "name": "Odoc",
+    "description": "Documentation app that implements custom smart contracts where the unordinary user can write the smart contract in the form of a table (data grid) without the need to know coding. At odoc, we also have task management and social platforms that combine the work of websites like Jira and Upwork at once.",
+    "logo": "/img/showcase/odoc_logo_attyw8bspzp5rkeur.png",
+    "display": "Large",
+    "website": "https://lwdq3-vqaaa-aaaal-acwda-cai.icp0.io",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": "Still waiting ckUSDT, my website can't really be used without that. Yet, I am publishing it now as documentation website only.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/odoc_screenshot_0_attvxd8uy5woqyapv.png"
+    ],
+    "github": "https://github.com/aliscie/odoc",
+    "twitter": "https://twitter.com/Odoc_ICP",
+    "youtube": "https://youtu.be/OKzK_nwnU4A",
+    "submittableId": "40335724"
+  },
+  {
+    "id": "37060447",
+    "name": "Hamster",
+    "description": "Hamster is the one-stop infrastructure, developer toolkit and middleware DevOps service platform, empowering projects in Web3.0 to improve their coding and delivery speed, quality and efficiency, as well as product reliability & safety.",
+    "logo": "/img/showcase/37060447_logo_atthcnjlba88jxzct.png",
+    "display": "Large",
+    "website": "https://hamsternet.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/37060447_screenshot_0_attrtyeoypa3cfu6r.png"
+    ],
+    "twitter": "https://twitter.com/Hamsternetio",
+    "youtube": "https://www.youtube.com/@hamsternet_io",
+    "submittableId": "37060447"
+  },
+  {
+    "id": "Zoksh Pay",
+    "name": "Zoksh",
+    "description": "Zoksh is a non-custodial payment solution that enables businesses to accept over 1000 currencies across 17 blockchains. Zoksh supports major OnRamps to enable Fiat payments, along with Fiat settlements directly to the bank accounts.\nOur powerful payment gateway offers some of the best tools that make business easy.\nMerchants can accept payments from anywhere in the world, incorporating a suite of payment optimization, security, and compliance features that ensure a great checkout experience",
+    "logo": "/img/showcase/zoksh pay_logo_atta6xszsdozby3fp.jpg",
+    "display": "Large",
+    "website": "zoksh.com",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": "Zoksh has hit a monthly volume of over 1M USD in just 8 months of operation demonstrating its rapid growth and market acceptance.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/zoksh pay_screenshot_0_atti8mde2smjeimax.png"
+    ],
+    "github": "github.com/zoksh",
+    "twitter": "x.com/zokshpay",
+    "youtube": "youtube.com/@zoksh",
+    "submittableId": "43963890"
+  },
+  {
+    "id": "gitcoin-passport-client",
+    "name": "ICP Gitcoin Passport Client",
+    "description": "Through an UI securely retrieve anti-Sybil scoring data from Gitcoin Passport, store it in a DB.",
+    "logo": "/img/showcase/gitcoin-passport-client_logo_attnhtxb4kkxfa3bp.png",
+    "display": "Large",
+    "website": "https://internet-computer.vporton.name/gitcoin-passport-client/",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "0 downloads at mops.one",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/gitcoin-passport-client_screenshot_0_attssur2v7uhcyz6j.png"
+    ],
+    "github": "https://github.com/vporton/passport-client-dfinity",
+    "youtube": "https://youtu.be/E-i6U2Mm4Fw",
+    "submittableId": "45861957"
+  },
+  {
+    "id": "survey-ease",
+    "name": "SurveyEase",
+    "description": "SurveyEase empowers users to design, distribute, and analyze surveys effortlessly. With features like dynamic template creation, real-time preview, and intuitive data visualization, users can create tailored surveys that capture valuable insights. Advanced functionalities such as team management, survey sharing, and access control ensure seamless collaboration and security. ",
+    "logo": "/img/showcase/survey-ease_logo_attbbe7wooiirrnpm.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/survey-ease_screenshot_0_attmtifpvtkjukxfz.jpg"
+    ],
+    "github": "https://github.com/SurveyEase/SurveyEase",
+    "twitter": "https://twitter.com/surveyEase",
+    "submittableId": "44325337"
+  },
+  {
+    "id": "local-icp",
+    "name": "Local Icp",
+    "description": "Local Icp is an On-chain Peer-to-Peer Cryptocurrency Trading Platform.",
+    "logo": "/img/showcase/local-icp_logo_attanypkr3hg2cbid.png",
+    "display": "Large",
+    "website": "https://3475y-5yaaa-aaaag-qjqha-cai.icp0.io/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/local-icp_screenshot_0_attdmqc24vcc7lvj1.png"
+    ],
+    "twitter": "https://twitter.com/local_icp",
+    "submittableId": "36566420"
+  },
+  {
+    "id": "ic-payroll",
+    "name": "Pochi",
+    "description": "Fully on-chain decentralized Hrms. Save User Data ,Send and receive ckBtc in single or bulk payments. Schedule Payments and much more.\n",
+    "logo": "/img/showcase/ic-payroll_logo_attq4hc3mwfon2o6m.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ic-payroll_screenshot_0_att5jy37gfivmcgfg.png"
+    ],
+    "github": "github.com/cosmasken/ic-payroll",
+    "submittableId": "44311024"
+  },
+  {
+    "id": "b4b-icp",
+    "name": "B4B",
+    "description": "B4B.app is a Web3 influencer marketing protocol that brings transparency, ownership, escrow, and on-chain history from all Socials\n\n✔️Marketplace to book and manage Ad process with high-quality influencers\n✔️All-in-one solution: search + analytics + escrow Ad process\n✔️Aggregated reputation layer from all social platforms (start with X, TG, Lens…)\n✔️Open standards and protocol layer on ICP for reputation, statistics and track record",
+    "logo": "/img/showcase/b4b-icp_logo_attw9zflcf1oozdni.svg",
+    "display": "Large",
+    "website": "https://b4b.world",
+    "tags": [
+      "Analytics",
+      "Tools / Infrastructure"
+    ],
+    "stats": "400+ verified influencer/KOLs onboarded, 30+ Web3 companies tried the product, 150+ Ad campaigns successfully launched",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/b4b-icp_screenshot_0_attuhwzpwckfz5lqd.png"
+    ],
+    "github": "https://gitlab.com/b4b-world/b4b-icp",
+    "twitter": "https://twitter.com/b4b_world",
+    "submittableId": "44548318"
+  },
+  {
+    "id": "datapond-icp",
+    "name": "DataPond.AI",
+    "description": "DataPond is a hub for exposing and tracing data used by AI to generate results. It enables end users and businesses to store files on Internet Computer and to control how they are consumed by AI tools as input for training, reasoning, or producing answers.\nDataPond is available as an open-source toolbox for developers who want to bridge their decentralized applications with AI transparently and efficiently. \n",
+    "logo": "/img/showcase/datapond-icp_logo_att542m4msg2dk888.png",
+    "display": "Large",
+    "website": "https://recheck.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "Identity integration and on-chain data storage with open-source canisters.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/datapond-icp_screenshot_0_attwyrr7t4rsudjg2.png"
+    ],
+    "github": "https://github.com/ReCheck-io/icp-datapond-integration",
+    "twitter": "https://twitter.com/recheck_io",
+    "youtube": "https://www.youtube.com/@recheck_io",
+    "submittableId": "44626241"
+  },
+  {
+    "id": "Cubetopia",
+    "name": "Cubetopia",
+    "description": "Welcome to Cubetopia, a vibrant on-chain sandbox where adventure and creativity meet! Connect with friends to explore diverse worlds, or unleash your creativity on your very own island. Dive into thrilling minigames and compete for glory, or relax and care for your adorable pets. In Cubetopia, the possibilities are truly limitless.",
+    "logo": "/img/showcase/cubetopia_logo_attghf0jw8jnpbyhb.png",
+    "display": "Large",
+    "website": "https://lsis7-riaaa-aaaah-adzqq-cai.icp0.io/",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": "1000+ players 10k+ plays",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/cubetopia_screenshot_0_attbalhddp0yoldbe.jpeg"
+    ],
+    "twitter": "https://twitter.com/TheCubetopia",
+    "submittableId": "44857812"
+  },
+  {
+    "id": "AppIC-DAO",
+    "name": "AppIC DAO",
+    "description": "Cross-chain token swapping made possible by AppIC DAO! First-ever infrastructure layer built on ICP that allows users and Dapps to transfer and swap tokens between ICP and different blockchains such as Bitcoin, Ethereum, Solana, and EVM chains, completely decentralized.  AppIC DAO offers unique DeFI solutions such as Auto Investment, Multi swapping, Cross-chain swapping, and AI-based portfolio solutions.",
+    "logo": "/img/showcase/appic-dao_logo_attavce0qioxnsm5n.jpg",
+    "display": "Large",
+    "website": "https://app.appic.solutions/",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure",
+      "Analytics",
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/appic-dao_screenshot_0_att98jj1fyrcdanfn.png"
+    ],
+    "github": "https://github.com/Appic-Solutions",
+    "twitter": "https://twitter.com/Appic_ICP",
+    "youtube": "https://youtube.com/@AppIC-DAO?",
+    "submittableId": "44626035"
+  },
+  {
+    "id": "Orderswap Layer2",
+    "name": "Orderswap Layer2",
+    "description": "A Layer2 built on Dfinity",
+    "logo": "/img/showcase/orderswap layer2_logo_atte2zeddqrhviowr.zip",
+    "display": "Large",
+    "website": "https://hk.ex3.one",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/orderswap layer2_screenshot_0_attrrir3h10hfuhkq.jpg"
+    ],
+    "github": "https://github.com/deland-labs",
+    "submittableId": "35502016"
+  },
+  {
+    "id": "ICP-Coffee-App",
+    "name": "ICP-Coffee-App",
+    "description": "The app allows coffee farmers to submit data reports on their yields and processes for crop insurance purposes. ",
+    "logo": "/img/showcase/icp-coffee-app_logo_attl4jicnqdkfgkpd.png",
+    "display": "Large",
+    "website": "plural.fi",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": "The app is being field tested by farmers in sub-Saharan Africa. ",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icp-coffee-app_screenshot_0_attjbsotbxnsupku3.png"
+    ],
+    "github": "https://github.com/nuwrldnf8r/coffee_app_icp",
+    "twitter": "www.twitter.com/pluralfi",
+    "youtube": "N/A",
+    "submittableId": "44635741"
+  },
+  {
+    "id": "icpexchange",
+    "name": "ICPEx",
+    "description": "ICPEx is a decentralized exchange built entirely on the chain based on the IC protocol, adhering to a user-centric philosophy with the aim of becoming a decentralized financial hub for Web3.",
+    "logo": "/img/showcase/icpexchange_logo_atttmljhzpz6dqyrg.png",
+    "display": "Large",
+    "website": "https://icpex.org/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": "(1) Users created 229 Tokens on ICPEx\n(2) Users created 90+ liquidity pools on ICPEx",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icpexchange_screenshot_0_att1tdvg1mavds3gj.png"
+    ],
+    "github": "https://github.com/ICPExchange",
+    "twitter": "https://twitter.com/ICPExchange",
+    "youtube": "https://www.youtube.com/@ICPExchange",
+    "submittableId": "44773760"
+  },
+  {
+    "id": "ICP Canister Bridge",
+    "name": "ICP Canister Bridge",
+    "description": "A bridge powered by ICP enables seamless swaps between the Lightning Network and EVM-compatible chains. It features a service maintained by the canister owner, including a canister and REST API for interacting with the service's Lightning node, as well as a P2P swap market secured by the canister.",
+    "logo": "/img/showcase/icp canister bridge_logo_attnis2ze0dg4rj4e.png",
+    "display": "Large",
+    "website": "https://vue2j-giaaa-aaaam-ab4bq-cai.icp0.io",
+    "tags": [
+      "Tools / Infrastructure",
+      "Bitcoin"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icp canister bridge_screenshot_0_attk5gscze6huwauo.jpeg"
+    ],
+    "github": "https://github.com/Bitcoin-AI/icp-canister-bridge"
+  },
+  {
+    "id": "personal-dao",
+    "name": "Personal DAO",
+    "description": "Personal DAO is a commoditized application- this means that it can be purchased, own, custody'd, governed and updated without the need for any coding experience nor any intermediaries. Personal DAO currently functions as an ICP neuron stake pool and a community treasury/multi-sig wallet. In the near future, Personal DAO will feature a peer-to-peer lending protocol that supports ICP, staked ICP, Ehtereum, Bitcoin and Stable coins. ",
+    "logo": "/img/showcase/personal-dao_logo_atts1fmwrnosjqv6o.png",
+    "display": "Large",
+    "website": "https://unl3b-waaaa-aaaam-ach6a-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Wallet",
+      "DeFi",
+      "Analytics",
+      "Bitcoin"
+    ],
+    "stats": "3 DAO-controlled neurons staked, 177 successful upgrades delivered programmatically to 3 different Personal DAO's deployed to the IC(totaling 531 upgrades delivered).",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/personal-dao_screenshot_0_atthfp9bgdw0qsevr.png"
+    ],
+    "twitter": "https://x.com/Personal_DAO"
+  },
+  {
+    "id": "nx-governance",
+    "name": "NX Governance",
+    "description": "NX Governance is multi-chain governance framework built on the Internet Computer. Our framework is designed with a focus on modularity, transparency, versatility, and security, ensuring every administrative action is auditable and executed via democratic consensus.",
+    "logo": "/img/showcase/nx-governance_logo_att8wsvwi9qrwco2m.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/nx-governance_screenshot_0_attc7nyl3wvhj4muk.png"
+    ],
+    "github": "https://github.com/nx-fi/nx-governance"
+  },
+  {
+    "id": "communities-ooo",
+    "name": "Communities.ooo",
+    "description": "Communities.ooo is a tool that creates online communities owned by the creators as ICRC7 NFTs. Users can join this communities with their Ethereum, Solana or IC wallets. Creators on the other hand have moderation tools to maintain and upgrade their communities.",
+    "logo": "/img/showcase/communities-ooo_logo_attguhwvqapje32hw.png",
+    "display": "Large",
+    "website": "https://www.communities.ooo/",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/communities-ooo_screenshot_0_attwtleohpw9f3ftb.png"
+    ],
+    "github": "https://github.com/LiveDuo/communities",
+    "twitter": "https://twitter.com/andreas_tzionis",
+    "youtube": "https://www.youtube.com/watch?v=GqROYKOaFv4",
+    "submittableId": "44415119"
+  },
+  {
+    "id": "ic-footprint",
+    "name": "IC Footprint",
+    "description": "IC Footprint is a blockchain ESG platform that tracks ICP environmental metrics and provides tooling to reduce the environmental impact of the network. The platform enables real-time emissions tracking, energy management based on grid carbon intensity or regional electricity cost, and decarbonisation via an environmental asset exchange.",
+    "logo": "/img/showcase/ic-footprint_logo_attelkjdtl9t1fae0.png",
+    "display": "Large",
+    "website": "icfootprint.io",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics",
+      "Wallet"
+    ],
+    "stats": "1,200+ ESG wallets created, 1,100,000 KgCO2e tracked, 14,000+ KgCO2e compensated",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/ic-footprint_screenshot_0_attcacvs49p3s7peo.png"
+    ],
+    "github": "https://github.com/orgs/CarbonCrowd/repositories?type=all",
+    "twitter": "https://twitter.com/icfootprint",
+    "submittableId": "36662879"
+  },
+  {
+    "id": "galactic-bridge",
+    "name": "Galactic bridge",
+    "description": "Galactic bridge is a cross-chain bridge that allows users to move Solana to ICP and vice versa. It is based on chain-key cryptography and Solana treasury program. Learn more here: https://weichain.gitbook.io/galactic-bridge.",
+    "logo": "/img/showcase/galactic-bridge_logo_attcwfs3i2ecaazlg.png",
+    "display": "Large",
+    "website": "https://galactic-bridge-tzbjl.ondigitalocean.app/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": "The first bridge on ICP that supports Solana",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/galactic-bridge_screenshot_0_attmrpf8ddlvy2b37.png"
+    ],
+    "github": "https://github.com/weichain/galactic-bridge-icp",
+    "twitter": "https://twitter.com/TitoMarchev/status/1778081412467290512",
+    "youtube": "https://twitter.com/TitoMarchev/status/1778081412467290512",
+    "submittableId": "45228628"
+  },
+  {
+    "id": "CBIndex",
+    "name": "CBIndex",
+    "description": "CBIndex transforms crypto asset management by integrating Bitcoin and Bitcoin assets with omnichain capabilities, ensuring secure, trustless, and diversified BTCFi on multiple blockchains. CBIndex leverages the ICP technology to offer a suite of BTCFi products, including Bitcoin bridge, decentralized Bitcoin indexer, Bitcoin cross-chain restaking, Bitcoin lending & borrowing, and Bitcoin token on-chain fund management, across multiple blockchain networks, including Ethereum, Solana, Aptos, etc.",
+    "logo": "/img/showcase/cbindex_logo_att6xbxd0wdwfz2ke.png",
+    "display": "Large",
+    "website": "https://cbindex.finance",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/cbindex_screenshot_0_atto4prrpge3deqpy.jpg"
+    ],
+    "github": "https://github.com/CypherBabel-Lab",
+    "twitter": "https://twitter.com/CBIndex_Global",
+    "submittableId": "43913128"
+  },
+  {
+    "id": "b3-forge",
+    "name": "B3Forge",
+    "description": "B3Forge leverages the unique capabilities of the interface definition language(Candid), to revolutionize the creation of user interfaces for decentralized applications (dApps). With B3Forge, developers can effortlessly generate user interfaces without the need to write a single line of code. This innovative approach simplifies the development process, making it accessible to a broader audience and accelerating the adoption of decentralized solutions.",
+    "logo": "/img/showcase/b3-forge_logo_att3vxb5rnsfwbdwu.png",
+    "display": "Large",
+    "website": "https://sehgq-cqaaa-aaaap-ahc4q-cai.icp0.io",
+    "tags": [
+      "Tools / Infrastructure",
+      "Wallet",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/b3-forge_screenshot_0_att7wbdtv0j7t7bys.png"
+    ],
+    "github": "https://github.com/B3Pay",
+    "twitter": "https://x.com/b3hr4d_dev",
+    "youtube": "https://www.youtube.com/@b3hr4d",
+    "submittableId": "41341459"
+  },
+  {
+    "id": "Pass",
+    "name": "Pass",
+    "description": "Project Highlights: Pass - Elevating Password Management with Blockchain Technology\n\nOverview: \nPass redefines password management by integrating cutting-edge Rust code with the power of the Internet Computer blockchain. It offers a seamless and secure solution for users to safeguard their digital identities and streamline their online experience.\n\nJoin us on this transformative journey with Pass and experience the next evolution of password management firsthand!",
+    "logo": "/img/showcase/pass_logo_attsglgmeca3cjdbd.svg",
+    "display": "Large",
+    "website": "https://www.ic-pass.app/",
+    "tags": [
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/pass_screenshot_0_attcjj4a1jsvkyj76.jpg"
+    ],
+    "github": "https://github.com/IC-Pass",
+    "twitter": "https://twitter.com/pass_ic",
+    "youtube": "https://vimeo.com/820093605?share=copy",
+    "submittableId": "36442525"
+  },
+  {
+    "id": "taxlint",
+    "name": "TaxLint",
+    "description": "Decentralised, Private, Secure, Automated Tax Report, TaxLint help users easily count ICP and ICRC1 token transactions",
+    "logo": "/img/showcase/taxlint_logo_att8isivxhzzzqawt.png",
+    "display": "Large",
+    "website": "https://www.taxlint.online/",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "150 users",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/taxlint_screenshot_0_attjeylwcln5s0vw9.png"
+    ],
+    "github": "https://github.com/TaxLintDAO/taxlint",
+    "twitter": "https://twitter.com/TaxLint",
+    "submittableId": "44947971"
+  },
+  {
+    "id": "scinet-licensing",
+    "name": "SCINET",
+    "description": "SCINET is a licensing application for life-sciences companies. With SCINET, you can easily monetize your intellectual property using NFTs.",
+    "logo": "/img/showcase/scinet-licensing_logo_attg2dx7kj2u7ygzx.png",
+    "display": "Large",
+    "website": "https://scifi.scinet.one",
+    "tags": [
+      "DeFi",
+      "Analytics"
+    ],
+    "stats": "We completed our MVP and are ready to onboard users.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/scinet-licensing_screenshot_0_att4zfstgadiqyk25.png"
+    ],
+    "github": "https://github.com/SCINET-INC",
+    "twitter": "https://twitter.com/SCINET_INC",
+    "submittableId": "33285268"
+  },
+  {
+    "id": "motodex",
+    "name": "motoDEX",
+    "description": "MotoDEX is a top-3 Blockchain Game, in which users participate in motorcycle races, develop their riders and improve high-speed tracks. ",
+    "logo": "/img/showcase/motodex_logo_attwmwtrfianilz8d.png",
+    "display": "Large",
+    "website": "https://motodex.dexstudios.games",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/motodex_screenshot_0_attcooq1cjsaxjhhh.png"
+    ]
+  },
+  {
+    "id": "chainkeyx",
+    "name": "ChainkeyX",
+    "description": "A crypto neobank that offers a fully onchain bitcoin borrowing and lending on ICP. The idea is a liquid staking fixed deposit product for long term bitcoin stackers to earn bitcoin denominated yield on our idle bitcoin stash.  The yield is generated by lending these bitcoin to more sophisticated DeFi users who want to leverage up their returns on their bitcoin related liquditiy pool or restaking positions. ",
+    "logo": "/img/showcase/chainkeyx_logo_attrvufdolcrj8uix.png",
+    "display": "Large",
+    "website": "www.chainkeyx.com",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/chainkeyx_screenshot_0_attk9jcqow02rh2ne.png"
+    ],
+    "github": "https://github.com/CKX-dev/CKX_Swap",
+    "twitter": "https://x.com/ckexchange",
+    "submittableId": "43900721"
+  },
+  {
+    "id": "clp-finance",
+    "name": "CLP Finance",
+    "description": "CLP(Crato Liquidity Protocol) is a decentralized financial protocol built on the Internet Computer Protocol (ICP) ecosystem. By adopting an interest-free lending mechanism, CLP aims to provide users with low-cost, efficient, and secure digital asset lending services. Users can borrow the stablecoin CUSD by pledging ICP, ckETH or ckBTC, achieving liquidity for crypto assets. Utilizing a dual-token mechanism (CUSD and CLPT), users can earn additional rewards through mining and liquidation.",
+    "logo": "/img/showcase/clp-finance_logo_attqiiat7t8rqptqg.png",
+    "display": "Large",
+    "website": "https://www.clp.finance/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": "CLP is under development and is expected to launch a beta version in June.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/clp-finance_screenshot_0_attnj69uoxwhu2ipz.png"
+    ],
+    "github": "https://github.com/CLPFinance",
+    "twitter": "https://x.com/CLPFinance721",
+    "youtube": "https://www.youtube.com/@CLPFinance",
+    "submittableId": "45950272"
+  },
+  {
+    "id": "taurus-protect",
+    "name": "Taurus-PROTECT",
+    "description": "Taurus-PROTECT is a enterprise digital asset custody solution which allows banks to offer custody of any digital assets for their clients and create staking transactions on any supported blockchain",
+    "logo": "/img/showcase/taurus-protect_logo_att2qmy6extlxyeva.jpg",
+    "display": "Large",
+    "website": "www.taurushq.com",
+    "tags": [
+      "Analytics",
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/taurus-protect_screenshot_0_atttmzt5ayubwlsa0.png"
+    ]
+  },
+  {
+    "id": "BrownFi-AMM",
+    "name": "BrownFi AMM",
+    "description": "BrownFi has invented a novel AMM with high capital efficiency and simple UX. By a simulation setting, we show that BrownFi has high CE as Uniswap V3 and hundred-folds higher than Uniswap V2. Additionally, BrownFi offers a simple UX (like Uniswap V2), suitable for both retail and professional LPs. BrownFi AMM aims to unlock deep liquidity and high capital efficiency on ICP, a very new and emerging layer-1 ecosystem.",
+    "logo": "/img/showcase/brownfi-amm_logo_att1ye8aivbltneau.jpg",
+    "display": "Large",
+    "website": "https://browndex.io/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/brownfi-amm_screenshot_0_attul4g4y8jztqweo.png"
+    ],
+    "github": "https://github.com/BrownFi/BrownFi-AMM-ICP",
+    "twitter": "https://x.com/BrownFidex",
+    "youtube": "https://youtu.be/-CUiX3Iz4VQ",
+    "submittableId": "45031637"
+  },
+  {
+    "id": "bipquantum-ip-standard",
+    "name": "bIPQuantum",
+    "description": "bIPQuantum deploy AI as an IP assistant and virtual lawyer to revolutionize IP management. Our platform sets the standard for IP tokenization on the Internet Computer Protocol, ensuring secure and efficient IP asset management. Users can create, manage, and trade IP certificates with our AI-driven system, which provides guidance on US Copyright law. Our POC demonstrates the minting of blockchain-based IP certificates, including title, description, type, licenses, price, and ownership details.",
+    "logo": "/img/showcase/bipquantum-ip-standard_logo_attkt8awp8ku6btpg.jpg",
+    "display": "Large",
+    "website": "https://gdjoy-siaaa-aaaap-qhh2q-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics",
+      "Wallet"
+    ],
+    "stats": "We are planning to test and attract 500 creatives, aiming to mint over 1,000 IP tokens. Our goal is to demonstrate the value of our innovative IP management solutions and engage a growing number of users on our platform.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/bipquantum-ip-standard_screenshot_0_attqsv2idlhvmwgot.png"
+    ],
+    "github": "https://github.com/bipquantum",
+    "twitter": "https://x.com/BipQuantum",
+    "youtube": "https://www.youtube.com/@bipquantum",
+    "submittableId": "44032000"
+  },
+  {
+    "id": "ELNA.ai-icp-project",
+    "name": "ELNA.ai",
+    "description": "ELNA.ai secures AI Agents using Blockchain.\nA community-driven decentralised AI agent creation platform on the IC blockchain that bridges the gap between the development, creation and monetisation of AI agents on the blockchain - making AI’s governance transparent, and user data secure and private.",
+    "logo": "/img/showcase/elna.ai-icp-project_logo_attercpxmdhljqcp1.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/elna.ai-icp-project_screenshot_0_attjoebo2sqnat5dt.jpg"
+    ]
+  },
+  {
+    "id": "sns-rewards-dashboard",
+    "name": "SNS Rewards Dashboard",
+    "description": "The product is a data dashboard that displays metrics and charts related to the rewards distributed within the SNS ecosystem. The objective of the dashboard is to educate stakeholders on the potential rewards they could be earning by voting on SNS proposals. ",
+    "logo": "/img/showcase/sns-rewards-dashboard_logo_att2jzc9286pboivm.png",
+    "display": "Large",
+    "website": "https://shrny-laaaa-aaaag-alckq-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/sns-rewards-dashboard_screenshot_0_att870k7cutq5lqds.png"
+    ],
+    "twitter": "https://x.com/pyorxyz",
+    "submittableId": "44433932"
+  },
+  {
+    "id": "NostrRelay-on-IC",
+    "name": "Replicatr",
+    "description": "Nostr relay with Internet Computer integration for inter-relay synchronization.\n",
+    "logo": "/img/showcase/nostrrelay-on-ic_logo_attltcyw7noihtiso.jpg",
+    "display": "Large",
+    "website": "https://replicatr.dev/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "NA",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/nostrrelay-on-ic_screenshot_0_atthxykc93w81jqxd.jpg"
+    ],
+    "github": "https://github.com/Hubmakerlabs/replicatr",
+    "twitter": "https://x.com/catalyze_one?lang=en",
+    "youtube": " https://youtu.be/dTl5PqteAwo",
+    "submittableId": "44448625"
+  },
+  {
+    "id": "BitPochi",
+    "name": "ic-payroll",
+    "description": "IC-Payroll delivers a powerful, user-friendly, and secure HR management and payroll solution that leverages the unique capabilities of the Internet Computer. By enhancing efficiency, reducing costs, and ensuring data sovereignty, IC-Payroll empowers businesses to manage their HR operations with confidence and ease.",
+    "logo": "/img/showcase/bitpochi_logo_attvybr2cercqhsbj.png",
+    "display": "Large",
+    "website": "https://ilcnp-myaaa-aaaal-qjdxa-cai.icp0.io/",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": "ckbtc integration ,metamask integration for vue ",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/bitpochi_screenshot_0_atttejwj50kklmtge.png"
+    ],
+    "github": "https://github.com/cosmasken/ic-payroll",
+    "twitter": "https://x.com/BitPochi",
+    "youtube": "https://youtu.be/U5Rb6z_tqHA",
+    "submittableId": "44311024"
+  },
+  {
+    "id": "dotmeet-icp",
+    "name": "Dotmeet",
+    "description": "Dotmeet aims to assist web3 communities and companies in effectively reaching their target audience within cities by offering a city-based events calendar app. This platform enables users to conveniently view all web3 events within their cities in one centralized location. The app is seamlessly integrated with Telegram web3 communities through Telegram bots, allowing communities to effortlessly list events in the calendar. ",
+    "logo": "/img/showcase/dotmeet-icp_logo_attlnjiw6zka3r3sz.jpg",
+    "display": "Large",
+    "website": "https://dotmeet.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "Dotmeet has over 4,000 users, with more than 1,500 daily active users, and serves over 1,000 events.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/dotmeet-icp_screenshot_0_attwgqedn3gmqvk0e.png"
+    ],
+    "github": "https://github.com/dotmeet/dotmeet-icp",
+    "twitter": "https://x.com/dotmeetapp",
+    "submittableId": "46082263"
+  },
+  {
+    "id": "momint-solar-onchain",
+    "name": "Momint",
+    "description": "Momint enables fractional trade of renewable energy projects through its Asset Marketplace.",
+    "logo": "/img/showcase/momint-solar-onchain_logo_attyj6fvuoqogfg97.png",
+    "display": "Large",
+    "website": "www.momint.io",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": "53k Users  |  $5.9M Assets  |  500k+ transactions",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/momint-solar-onchain_screenshot_0_attt9z7bvn0rrnuyp.png"
+    ],
+    "github": "https://github.com/Ebb-n-Air",
+    "twitter": "https://twitter.com/Momint_official",
+    "youtube": "https://youtu.be/zyE5cpmSzI8?si=GGDepFTXbJju4za1",
+    "submittableId": "45707626"
+  },
+  {
+    "id": "juno",
+    "name": "_",
+    "description": "I don't want to edit the showcase. The data on the portal about Juno are up-to-date. Just feeling the form as it is mandatory to do so.",
+    "logo": "/img/showcase/juno_logo_atta2wmrx64eihmus.png",
+    "display": "Large",
+    "website": "https://juno.build/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/juno_screenshot_0_attroqhrbgkjyy5q6.jpg"
+    ],
+    "github": "https://github.com/junobuild/juno",
+    "twitter": "https://x.com/junobuild"
+  },
+  {
+    "id": "icp-subaccount-indexer",
+    "name": "ICP Subaccount Indexer (ICSI)",
+    "description": "The ICP Sub-Account Indexer is a tool designed to manage and track ICP sub-accounts on the Internet Computer, providing robust features for subaccount management, transaction tracking, and fund sweeping.",
+    "logo": "/img/showcase/icp-subaccount-indexer_logo_attqlb0vsgishbmhs.svg",
+    "display": "Large",
+    "website": "https://jagad.to/",
+    "tags": [
+      "DeFi",
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "Run a user specific deposit address on-chain infrastructure for less than 10 USD per month in cycles.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/icp-subaccount-indexer_screenshot_0_attfdh69s5ygjulfu.png"
+    ],
+    "github": "https://github.com/garudaidr",
+    "twitter": "https://x.com/Jagad_Official",
+    "youtube": "https://youtu.be/2QcE-YCqW7k",
+    "submittableId": "44707034"
+  },
+  {
+    "id": "tezsign",
+    "name": "TezSign",
+    "description": "TezSign is a digital signing platform that offers a seamless signing experience for individuals and enterprises. It utilizes blockchain to ensure the authenticity and immutability of document signing activities and leverages generative AI to streamline legal contract drafting.",
+    "logo": "/img/showcase/tezsign_logo_attvmda6x4bae0vrl.png",
+    "display": "Large",
+    "website": "https://www.tezsign.com/",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/tezsign_screenshot_0_attk6d9rtqbwpiunr.png"
+    ],
+    "twitter": "https://x.com/TezSign/",
+    "youtube": "https://www.youtube.com/@TezSign",
+    "submittableId": "45026198"
+  },
+  {
+    "id": "syron",
+    "name": "Syron USD (SUSD)",
+    "description": "A USD-pegged stablecoin, overcollateralized with Bitcoin and powered by Chain Fusion. It's open source and Bitcoin-native as a BRC-20 token, offering greater interoperability, stability, security, and decentralization. It boasts a permissionless design, allowing any Bitcoin wallet to create a Safety Deposit ₿ox to deposit BTC and withdraw SUSD.",
+    "logo": "/img/showcase/syron_logo_attk0nebgkto3pwtj.png",
+    "display": "Large",
+    "website": "tyrondao.org",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": "Waitlist Signups: Nearly 2,000 users\nUnique Visitors: Over 6,000 unique visitors to our app in the last month",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/syron_screenshot_0_atth6pq6jmvdyz1en.png"
+    ],
+    "github": "github.com/tyrondao",
+    "twitter": "x.com/tyrondao_org",
+    "youtube": "youtube.com/@ssiprotocol ",
+    "submittableId": "45731186"
+  },
+  {
+    "id": "meddle-icp-project",
+    "name": "Meddle",
+    "description": "Meddle is a software-IoT product that deals with data collection from sensors and industrial machinery, aggregation of data from different industrial communication protocols normalization of ingested data, and sending to third-party destinations through a set of web communication protocols, enabling monitoring and analysis of operation and production data of these assets. With its integration in the ICP ecosystem, the goal is to securely store data retrieved from industrial machinery/PLCs etc..",
+    "logo": "/img/showcase/meddle-icp-project_logo_att2fgy4ly9y3e6id.png",
+    "display": "Large",
+    "website": "https://meddleconnect.com",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/meddle-icp-project_screenshot_0_attzqr69any9zhrig.png"
+    ],
+    "github": "https://github.com/quinck-io/meddle-icp-be/tree/main",
+    "submittableId": "44758580"
+  },
+  {
+    "id": "ic-side-services",
+    "name": "IC Side Services",
+    "description": "We created an orchestrator canister which interacts with the Akash Network so that DAOs can deploy the services they depend upon and that are currently run on AWS. The orchestrator is used to receive the ICP payments from canisters who need a supporting instance and it takes care of launching the instance and running on it the code specified by the canister.",
+    "logo": "/img/showcase/ic-side-services_logo_att39v0s1286o0yak.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ic-side-services_screenshot_0_attgpxemrvzpurui4.png"
+    ],
+    "github": "https://github.com/omnia-network/ic_akash",
+    "submittableId": "44644796"
+  },
+  {
+    "id": "Doxa-Dollar",
+    "name": "Doxa",
+    "description": "Doxa is a multi-stablecoin plartform with the doxa dollar",
+    "logo": "/img/showcase/doxa-dollar_logo_attiunzkscgf3uufb.jpeg",
+    "display": "Large",
+    "website": "https://i7m4z-gqaaa-aaaak-qddtq-cai.icp0.io/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/doxa-dollar_screenshot_0_attpwfi5z9h4fscux.jpeg"
+    ],
+    "github": "https://github.com/DoxaFoundation/doxa-v3",
+    "twitter": "https://x.com/doxa_dollar",
+    "submittableId": "46156300"
+  },
+  {
+    "id": "dappradar",
+    "name": "DappRadar",
+    "description": "DappRadar acts as a dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
+    "logo": "/img/showcase/dappradar_logo_attqdslykiqqvqg9q.svg",
+    "display": "Large",
+    "website": "https://dappradar.com/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/dappradar_screenshot_0_attxm2rfamytfpurr.png"
+    ],
+    "twitter": "https://x.com/dappradar"
+  },
+  {
+    "id": "staex-vts",
+    "name": "Staex VTS",
+    "description": "Vehicle Tracking System (VTS) - infrastructure to track and invoice vehicles.\n\nThe goal - trusted, transparent and automatic infrastructure to use, rent and track vehicles.",
+    "logo": "/img/showcase/staex-vts_logo_attz4tjsjuxjmrsso.png",
+    "display": "Large",
+    "website": "https://staex.io",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": "We achieved: trusted agreements without third parties, transparent vehicle telemetry, honest and automatic invoice creation from trusted telemetry.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/staex-vts_screenshot_0_attwxnn6ybjm4grv9.png"
+    ],
+    "github": "https://github.com/staex-io/vts",
+    "twitter": "https://x.com/staex_io",
+    "youtube": "https://www.youtube.com/@staex5585",
+    "submittableId": "45727274"
+  },
+  {
+    "id": "idempotent-proxy",
+    "name": "Idempotent Proxy",
+    "description": "💈 Reverse proxy server with build-in idempotency support written in Rust & Cloudflare Worker.",
+    "logo": "/img/showcase/idempotent-proxy_logo_attqjzh94gkp7pcg1.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/idempotent-proxy_screenshot_0_attt4gxwjl1enpr9g.png"
+    ],
+    "github": "https://github.com/ldclabs/idempotent-proxy",
+    "twitter": "https://x.com/icpandadao",
+    "submittableId": "46479877"
+  },
+  {
+    "id": "36070404",
+    "name": "Relation",
+    "description": "Relation is a social graph based Internet computer",
+    "logo": "/img/showcase/36070404_logo_attlfd7sd8j8uguw0.png",
+    "display": "Large",
+    "website": "https://relationlabs.ai/home",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/36070404_screenshot_0_attwrheh1qomsrz3k.png"
+    ],
+    "github": "https://github.com/relationlabs/",
+    "twitter": "https://twitter.com/relationlabs",
+    "submittableId": "36070404"
+  },
+  {
+    "id": "rolodex",
+    "name": "RoloDEX",
+    "description": "RoloDEX is a self-sovereign directory using ICP security, giving YOU control of your contact information. Users can configure a complete private directory listing, then choose exactly what they want to share with other users or groups. Now you can share sensitive information like your phone number with close friends, but not random social groups. And when you change your info, you don’t have to blast out updates; contacts with access will receive the new data automatically.",
+    "logo": "/img/showcase/rolodex_logo_attlawdlq5xsqtxwl.svg",
+    "display": "Large",
+    "website": "https://rolodex.weavechain.com/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/rolodex_screenshot_0_atthh87znn5zcdg7t.png"
+    ],
+    "github": "https://github.com/weavechain/rolodex3",
+    "twitter": "https://x.com/WeavechainWeb3",
+    "youtube": "https://www.youtube.com/channel/UCqIwP9DvhbqfQB-LfFOtExw",
+    "submittableId": "41333046"
+  },
+  {
+    "id": "ubin",
+    "name": "asset-app",
+    "description": "uBin (formerly Asset App) allows you to seamlessly launch your own file storage smart contracts on the Internet Computer using only a wallet and interact with them via a file explorer in the browser.",
+    "logo": "/img/showcase/ubin_logo_attlreaskbvsng1pj.png",
+    "display": "Large",
+    "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "Early whitelist access reached it's 100 user goal. Original debut video received over 120k views within days.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ubin_screenshot_0_att4fmgqdxzbypaue.png"
+    ],
+    "twitter": "https://twitter.com/realdanmccoy",
+    "youtube": "https://youtube.com/@realdanmccoy",
+    "submittableId": "43974403"
+  },
+  {
+    "id": "cycleops",
+    "name": "CycleOps",
+    "description": "Proactive, automated, no-code canister management for the Internet Computer.\n\nIn less than 10 minutes, get set up with automated cycles top ups, canister monitoring, and email alerting for your application today.",
+    "logo": "/img/showcase/cycleops_logo_attk91svfvmrjuyz6.png",
+    "display": "Large",
+    "website": "https://cycleops.dev",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "Over 450 canisters monitored.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/cycleops_screenshot_0_atto7sohtcsnwphce.png"
+    ],
+    "github": "https://github.com/CycleOperators/CycleOps/",
+    "twitter": "https://twitter.com/cycleops",
+    "youtube": "https://www.youtube.com/@CycleOpsOfficial",
+    "submittableId": "36320431"
+  },
+  {
+    "id": "estate-dao-icp-project",
+    "name": "EstateDAO",
+    "description": "EstateDAO enables users to list their properties for tokenization. Investors can browse these listings, invest in properties, and earn returns on their investments seamlessly.",
+    "logo": "/img/showcase/estate-dao-icp-project_logo_attpawkheayijbxr6.png",
+    "display": "Large",
+    "website": "https://www.estatedao.org/",
+    "tags": [
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/estate-dao-icp-project_screenshot_0_attqw2qvl5qvloqqw.png"
+    ],
+    "github": "https://github.com/Estate-DAO",
+    "twitter": "https://x.com/EstateDAO_ICP",
+    "submittableId": "44812315"
+  },
+  {
+    "id": "Panorama-Block",
+    "name": "Panorama Block",
+    "description": "Panorama Block provides real-time blockchain data, starting with Bitcoin. It displays block sizes, values, and transaction counts on an easy-to-use interface. Users can view detailed transaction and address info alongside a proprietary scorecard feature. The platform includes helpful graphs for deeper analysis, making it a trusted source of blockchain data across various ecosystems.",
+    "logo": "/img/showcase/panorama-block_logo_att7sanrklkcypx0v.png",
+    "display": "Large",
+    "website": "https://panoramablock.com",
+    "tags": [
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "DeFi",
+      "Analytics"
+    ],
+    "stats": "Processed 850,000 Bitcoin blocks;\nAchieved real-time on-chain data capture through a queue algorithm;\nReduced cycle costs by 90% with a new backend version;\nTested backend with Motoko, Azle, and Rust;\nSaved all application data in stable variables;\nMaintained >90% uptime for data availability.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/panorama-block_screenshot_0_atterxk81g6fshkkd.png"
+    ],
+    "github": "https://github.com/Panorama-Block/panorama-block-icp",
+    "twitter": "https://x.com/panoramablock",
+    "youtube": "https://Youtube.com/@panoramablock",
+    "submittableId": "46733264"
+  },
+  {
+    "id": "motodex",
+    "name": "MotoDEX",
+    "description": "🏍 MotoDEX is a hyper-casual game, in which users participate in motorcycle races, \ndevelop their riders and improve high-speed tracks.",
+    "logo": "/img/showcase/motodex_logo_attazcpxtuktpdd1b.png",
+    "display": "Large",
+    "website": "https://motodex.dexstudios.games/",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": "UAW 70,53k per day totally",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/motodex_screenshot_0_att8qfcfi3w6ufjqx.png"
+    ],
+    "github": "https://oleksiivinogradov.github.io/motoDEXweb/",
+    "twitter": "https://twitter.com/openbisea"
+  },
+  {
+    "id": "RentSpace",
+    "name": "RentSpace",
+    "description": "a crypto-friendly property rental platform",
+    "logo": "/img/showcase/rentspace_logo_attnppclnpzziprsa.png",
+    "display": "Large",
+    "website": "rentb.space",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "1. Received Developer’s grants from Dfinity Foundation and completed 2 Milestones. \n2. Integrated one of the largest booking aggregator and started a closed testing of the app in July.\n3. Launched 4 NFT collections and built a prototype of the NFT staking platform.\n4. Completed the acceleration program by 3x Capital, participated in 3 Hackathons.\n5. Opened a legal entity and bank accounts in Europe.\n6. Organised 2 events with ICP CC, started to built a community (8k followers across all platforms) and onboarded 120 ambassadors.\n7. Built an MVP of NFT staking platform for RentSpace Villas.\n",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/rentspace_screenshot_0_attcis8lpuztwdkam.png"
+    ],
+    "github": "https://github.com/ICP-hub/RentSpace-ICP",
+    "twitter": "https://x.com/rentspaceco",
+    "submittableId": "44394368"
+  },
+  {
+    "id": "clpfinance",
+    "name": "CLP",
+    "description": "CLP (Crato Liquidity Protocol) is a liquidity protocol and native stablecoin project on the ICP chain. It allows users to deposit assets, borrow stablecoins at zero interest, and use them in ICP ecosystem DAPPs or participate in liquidation pools to earn rewards.",
+    "logo": "/img/showcase/clpfinance_logo_attesv71uvowgelr4.png",
+    "display": "Large",
+    "website": "https://www.clp.finance/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": "More than 5,000 independent accounts participated in the test, and nearly 500 opinions and suggestions were collected.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/clpfinance_screenshot_0_attqghdjvefuevp55.jpg"
+    ],
+    "github": "https://github.com/CLPFinance",
+    "twitter": "https://x.com/CLPFinance721",
+    "youtube": "https://www.youtube.com/@CLPFinance",
+    "submittableId": "45950272"
+  },
+  {
+    "id": "metaviz-icp",
+    "name": "Metaviz",
+    "description": "Metaviz is a visual project collaboration workspace. Good for making diagrams, project management, storing files and media.",
+    "logo": "/img/showcase/metaviz-icp_logo_att2nptm3gvprgdih.svg",
+    "display": "Large",
+    "website": "https://www.metaviz.net/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/metaviz-icp_screenshot_0_attdu2pgzjj00u2t6.png"
+    ],
+    "github": "https://github.com/dariuszdawidowski/metaviz-server-juno",
+    "twitter": "https://x.com/MetavizOfficial",
+    "youtube": "https://www.youtube.com/@MetavizOfficial",
+    "submittableId": "45837824"
+  },
+  {
+    "id": "alpacafi",
+    "name": "AlpacaFi",
+    "description": "Tools to bring ICP to everyone, such as AlpacaFi (CoinMarketCap for ICP tokens) and PacaBot (Telegram Trading Bot).",
+    "logo": "/img/showcase/alpacafi_logo_attlaow2notyr11lx.png",
+    "display": "Large",
+    "website": "alpacafi.xyz",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "30-50k impressions per month on our iOS and Android apps.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/alpacafi_screenshot_0_attlozfhlbsfr4j8h.png"
+    ],
+    "submittableId": "46111985"
+  },
+  {
+    "id": "hf-explorer-foodfolio",
+    "name": "Highfeast-Explorer/Foodfolio",
+    "description": "Decentralized food knowledge base offering personalised, round-the-clock cooking assistance to users on a chat interface. ",
+    "logo": "/img/showcase/hf-explorer-foodfolio_logo_attrbw9prgwtek3wv.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/hf-explorer-foodfolio_screenshot_0_attruagy96a1zdwkr.png"
+    ],
+    "github": "https://github.com/highfeast/explorer",
+    "twitter": "https://x.com/dreampiperDAO/status/1818505198286868580/",
+    "youtube": "https://youtu.be/3b4tWP0Fp4M/",
+    "submittableId": "45939345"
+  },
+  {
+    "id": "azle-chain-fusion-starter",
+    "name": "Azle Chain Fusion Starter",
+    "description": "Starter template leveraging chain fusion technology to build EVM coprocessors on the Internet Computer Protocol",
+    "logo": "/img/showcase/azle-chain-fusion-starter_logo_attayay34v2lhcwhg.png",
+    "display": "Large",
+    "website": "https://github.com/adrian-d-hidalgo/azle-chain-fusion-starter",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "GIthub Stats:\n\n- 3 stars\n- 2 watching\n- 1 fork",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/azle-chain-fusion-starter_screenshot_0_attqgei49iujszll2.png"
+    ],
+    "github": "https://github.com/adrian-d-hidalgo/azle-chain-fusion-starter",
+    "submittableId": "46691401"
+  },
+  {
+    "id": "DooCoins",
+    "name": "DooCoins",
+    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements. Teach financial literacy and organization skills. ",
+    "logo": "/img/showcase/doocoins_logo_attrj4luozuii4pph.png",
+    "display": "Large",
+    "website": "https://www.doo.co",
+    "tags": [
+      "Gaming",
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/doocoins_screenshot_0_attnmyvhzvc0so93c.png"
+    ],
+    "github": "https://github.com/jakepeg/doocoins-pwa",
+    "twitter": "https://x.com/DooCoins",
+    "youtube": "https://youtu.be/525xrPuqKcE",
+    "submittableId": "46108131"
+  },
+  {
+    "id": "Gate 23",
+    "name": "Gate23",
+    "description": "Gate23 is an advanced Point of Sale (POS) and business software designed specifically for the Food & Beverage (F&B), e-commerce and retail industries. It automates the data collection process. With Gate23, detailed line-item purchase information is automatically uploaded directly to users’ Bridge23 accounts, allowing them to organize and sell their data more efficiently. The decentralized platform also builds greater trust among all parties involved.",
+    "logo": "/img/showcase/gate 23_logo_atttk8bulszra19ba.png",
+    "display": "Large",
+    "website": "https://alpha-gate23.bridge23.app/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "alpha version, 2 type contracts",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/gate 23_screenshot_0_att7uzhzf8vkznhc7.png"
+    ],
+    "github": "https://github.com/bridge-23/Gate23",
+    "twitter": "https://x.com/bridge23inc",
+    "submittableId": "46117536"
+  },
+  {
+    "id": "IC-PayPortal",
+    "name": "IC PayPortal",
+    "description": "The IC-PayPortal Motoko is a library that provides developers with a set of functions for managing fiat payments on the Internet Computer Protocol (ICP). This module enables seamless integration of popular fiat gateways such as Stripe and Paypal into Motoko applications",
+    "logo": "/img/showcase/ic-payportal_logo_attoktxoudrmke9pe.jpeg",
+    "display": "Large",
+    "website": "https://3356i-cqaaa-aaaao-axdqa-cai.icp0.io/",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ic-payportal_screenshot_0_att5h4opwvf0tpglv.png"
+    ],
+    "github": "https://github.com/Expeera/IC-PayPortal/tree/phase-3",
+    "youtube": "https://youtu.be/E3MfxbHCTGY",
+    "submittableId": "35781155"
+  },
+  {
+    "id": "icda",
+    "name": "InternetComputer DA",
+    "description": "Using canisters and threshold signature to build a DA layer compatible with EigenDA, providing reliable and more cost-effective and secure DA infrastructure for Blockchains.",
+    "logo": "/img/showcase/icda_logo_attcdrb11mm16kezy.png",
+    "display": "Large",
+    "website": "Not established",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "In multiple storage tests, ICDA has demonstrated the ability to maintain excellent operation under prolonged storage stress. In several demo tests, it achieved over 1 hour of blob writing and storage with an upload bandwidth of 10M, as well as verifying the blob hash and generating confirmations for the blobs to provide a valid proof of storage on the blockchain.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/icda_screenshot_0_att9aulmo4y9tnfyy.png"
+    ],
+    "github": "https://github.com/C-B-Elite/ICDA",
+    "twitter": "Not established",
+    "youtube": "Not established"
+  },
+  {
+    "id": "event-hub-attention-dao",
+    "name": "Event Hub/Attention DAO",
+    "description": "Event Hub Broadcaster is an event-driven system managed by Attention DAO for connecting Internet Computer Ecosystem projects. ",
+    "logo": "/img/showcase/event-hub-attention-dao_logo_att4ynv1lthpciacg.png",
+    "display": "Large",
+    "website": "https://attentiondao.app/dao",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/event-hub-attention-dao_screenshot_0_attmq6ukmh9sfk5o9.png"
+    ],
+    "github": "https://github.com/Vitiv/event-broadcaster/tree/betav02-020824",
+    "submittableId": "45816008"
+  },
+  {
+    "id": "bridge-23-app",
+    "name": "Bridge 23",
+    "description": "Bridge 23 is a fully featured Data Marketplace running on Internet Computer blockchain where everyone can sell their data directly to merchants, companies and institutions.\n\n“Your Data is Your Business!”™",
+    "logo": "/img/showcase/bridge-23-app_logo_atte7nypovspnuoev.png",
+    "display": "Large",
+    "website": "https://alpha.bridge23.app/login, https://t.me/bridge23bot/bridge23app",
+    "tags": [
+      "Analytics"
+    ],
+    "stats": "5000+ waitlist, 100+ users, 4000+ tokenized products",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/bridge-23-app_screenshot_0_att3ouh5yqy3i5lnf.png"
+    ],
+    "github": "https://github.com/bridge-23",
+    "twitter": "https://x.com/bridge23inc",
+    "youtube": "https://www.youtube.com/@bridge23inc",
+    "submittableId": "46117536"
+  },
+  {
+    "id": "icecube",
+    "name": "Ice Cube",
+    "description": "An Open Source Social Network 100% On-Chain. \n\nYou can post updates in a microblog format, featuring the latest popular content. Users can buy and trade shares of these posts, creating a tokenized model. Like a post? Own a share!\n\nCreators can also set up private communities for exclusive content. Only those who hold shares in the creator's work can access these private spaces, effectively tokenizing the creator. Enjoy their private content? Own a share!",
+    "logo": "/img/showcase/icecube_logo_att0v6tc5ghirjpxl.png",
+    "display": "Large",
+    "website": "https://mjlwf-iqaaa-aaaan-qmtna-cai.icp0.io/home",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icecube_screenshot_0_attbyfhhzkbak1gkx.png"
+    ],
+    "github": "https://github.com/NeutronStarDAO/icecube",
+    "twitter": "https://x.com/icecubeapp",
+    "submittableId": "46477549"
+  },
+  {
+    "id": "Moonshift",
+    "name": "Moonshift",
+    "description": "MoonShift is a gamified quest board where projects can create “Shifts” or marketing bounties for their community to collect. Completed and approved bounties are paid out in native tokens to users.",
+    "logo": "/img/showcase/moonshift_logo_att69txaduzynk5j7.png",
+    "display": "Large",
+    "website": "moonshift.app",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/moonshift_screenshot_0_attuxtuwqw2mrapqh.png"
+    ],
+    "github": "https://github.com/MemeFighterCo/Moonshift",
+    "twitter": "https://x.com/moonshiftapp",
+    "submittableId": "46921623"
+  },
+  {
+    "id": "icpkit-swift",
+    "name": "IcpKit.swift",
+    "description": "A comprehensive iOS package for writing mobile applications that interact with the Internet Computer Protocol (ICP), written in Swift. IcpKit aims at facilitating the interaction between iOS apps and the ICP blockchain.",
+    "logo": "/img/showcase/icpkit-swift_logo_attuwzib7smsuqyqa.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "IcpKit.swift is being used in production by iOS app 'Bity Wallet'",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/icpkit-swift_screenshot_0_attjekhie4y3iksko.png"
+    ],
+    "github": "https://github.com/kosta-bity/IcpKit",
+    "submittableId": "46842913"
+  },
+  {
+    "id": "DeDa",
+    "name": "DeDa - Decentralised Data Marketplace",
+    "description": "In AI and ML, obtaining high-quality datasets is critical but challenging, often being time-consuming, costly, and prone to data integrity issues. Transparency and fairness in compensating data contributors and validators are also lacking. DeDa addresses these challenges by creating a decentralised data marketplace on the Internet Computer (ICP), enabling seamless data exchange, ensuring quality, and providing fair compensation in a secure, transparent, and efficient ecosystem.",
+    "logo": "/img/showcase/deda_logo_atttg904gwodijmo8.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/deda_screenshot_0_attalyrfjl9imjkvl.png"
+    ],
+    "github": "https://github.com/ronykris/deda"
+  },
+  {
+    "id": "PlexiMail",
+    "name": "PlexiMail",
+    "description": "PlexiMail, the end-to-end encrypted, ICP Canister based, trustless secure email service with metadata cloaking and workflow extension for electronic signature and notarization. ",
+    "logo": "/img/showcase/pleximail_logo_att56on5wexazyp3s.png",
+    "display": "Large",
+    "website": "https://ai-fi.cc",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/pleximail_screenshot_0_attg5ugft7swlgtue.png"
+    ],
+    "github": "https://github.com/ai-fi/pleximail.app",
+    "youtube": "https://www.youtube.com/watch?v=x20uu03Y8Zg",
+    "submittableId": "45342336"
+  },
+  {
+    "id": "liquidify.us",
+    "name": "liquidify.us - P2P Lending platform",
+    "description": "We began as a P2P lending project in a hackathon and won the ICP Hackathon, sparking our passion for ICP and securing a grant for development. Our team of three ICP developers from India refined our ideas into a better solution. With Liquidify.us, you can lend ckBTC for ICP NFTs, and borrowers repay with APY. Our roadmap includes adding ckETH and ckUSD. Our loyalty program lets users earn points, convertible to tokens during TGE, incentivizing early adoption. That’s how Liquidify.us was born.",
+    "logo": "/img/showcase/liquidify.us_logo_attxwydeismelodtf.png",
+    "display": "Large",
+    "website": "liquidify.us",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": "Onchain DeFi P2P Loan for NFT",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/liquidify.us_screenshot_0_attfceqyw53xdbs9j.jpeg"
+    ],
+    "github": "https://github.com/gladguy/DeFiOrdinals",
+    "twitter": "https://x.com/liquidify_us",
+    "youtube": "https://www.youtube.com/@liquidify-e8q",
+    "submittableId": "45864716"
+  },
+  {
+    "id": "icspore",
+    "name": "ICSpore",
+    "description": "A payment solution for automated purchases in the IC ecosystem that allows you to buy tokens using a DCA financial strategy.",
+    "logo": "/img/showcase/icspore_logo_attv9lstji3icif1x.jpeg",
+    "display": "Large",
+    "website": "https://qnoqa-vaaaa-aaaap-qhima-cai.icp0.io/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure",
+      "Bitcoin"
+    ],
+    "stats": "We created the first non-custodial solution for automated purchases in the IC",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icspore_screenshot_0_attffsqh6kvawm0ei.png"
+    ],
+    "github": "https://github.com/ICSpore/dca-v1",
+    "twitter": "https://x.com/icspore",
+    "submittableId": "44886778"
+  },
+  {
+    "id": "Nauts-World",
+    "name": "Nauts World",
+    "description": "A digital/physical toy and game world where players collect, stake and wager characters native to the Nauts World Multiverse all supported by various game types and collector mechanics to allow players of all ages and genres to be part of Nauts World",
+    "logo": "/img/showcase/nauts-world_logo_att89g9k2aihlfh11.png",
+    "display": "Large",
+    "website": "https://nautsworld.com/",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/nauts-world_screenshot_0_attxbrluzzlhwi0o1.jpg"
+    ],
+    "github": "https://github.com/idarkstudio/Nauts_World",
+    "twitter": "https://x.com/NautsWorldHQ",
+    "youtube": "https://www.youtube.com/@nautsnautsworld2585",
+    "submittableId": "40747187"
+  },
+  {
+    "id": "Satoshi-Notes",
+    "name": "Satoshi Notes",
+    "description": "SatoshiNotes is the free note taking software that allows you to sell your valuable notes for Bitcoin, and also keeps your files secure in your PC or the blockchain. ",
+    "logo": "/img/showcase/satoshi-notes_logo_attymdpyul2ggexoa.png",
+    "display": "Large",
+    "website": "https://satoshinotes.org/",
+    "tags": [
+      "Bitcoin"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/satoshi-notes_screenshot_0_attphjje4x7u72pct.png"
+    ],
+    "twitter": "https://x.com/satoshinotesbtc",
+    "youtube": "https://www.youtube.com/@SatoshiNotes",
+    "submittableId": "36890889"
+  },
+  {
+    "id": "bridge-23",
+    "name": "Bridge 23",
+    "description": "First party data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
+    "logo": "/img/showcase/bridge-23_logo_att9jfdlrxqinesqo.png",
+    "display": "Large",
+    "website": "https://beta.bridge23.app/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "same",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/bridge-23_screenshot_0_attnceajrft6ybwlh.png"
+    ],
+    "github": "-",
+    "twitter": "https://x.com/bridge23app",
+    "submittableId": "46117536"
+  },
+  {
+    "id": "ic-gamekit-part-1",
+    "name": "IC GameKit Part One",
+    "description": "The IC GameKit is a drop-in replacement for the standard go-to Web2 gaming services like Unity Gaming Services or AWS GameKit. By giving a game developer an off the shelf solution to many of the systems that are required by a modern game i.e. authentication, achievements, game saves, user specific game data, the barrier to entry for creating such rich gaming experiences is drastically reduced. ",
+    "logo": "/img/showcase/ic-gamekit-part-1_logo_attsbifidlzgqiujy.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Gaming",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ic-gamekit-part-1_screenshot_0_attunlmrzfj1s0okk.png"
+    ],
+    "github": "https://github.com/morganpage/ic-gamekit",
+    "twitter": "https://twitter.com/PlatoEvolved",
+    "youtube": "https://youtu.be/Q9WkQRRGTTU?si=aOcO10fb_rXv4yTy",
+    "submittableId": "46230898"
+  },
+  {
+    "id": "RentSpace",
+    "name": "RentSpace",
+    "description": "A property rental platform powered by blockchain technology: Tik-Tok style marketing, crypto payments and user rewards programs.",
+    "logo": "/img/showcase/rentspace_logo_attjvejiy7xgyyu8p.png",
+    "display": "Large",
+    "website": "https://rentspace.homes/ (new website will be here) ",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/rentspace_screenshot_0_attts8hid75ioblbc.png"
+    ],
+    "github": "https://github.com/ICP-hub/RentSpace-ICP",
+    "twitter": "https://x.com/RentSpaceco"
+  },
+  {
+    "id": "cipher-ai-vault",
+    "name": "Cipher AI Vault",
+    "description": "Cipher AI Vault is an Azle-based proof of concept designed with a strong emphasis on abstraction, seamlessly integrating in-memory VectorDB, in-memory LLM, secure asset storage, cycles-distro top-up, and ic-auth for authentication. This adaptability makes it well-suited for a wide range of AI-driven use cases. The project showcases the Internet Computer's potential for secure, sandboxed AI development, offering versatile tools for diverse applications.",
+    "logo": "/img/showcase/cipher-ai-vault_logo_attnmkaqfun7yamhq.jpg",
+    "display": "Large",
+    "website": "https://cipherproxy.com",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/cipher-ai-vault_screenshot_0_attbivxkpvygixukz.png"
+    ],
+    "github": "https://github.com/supaIC/Cipher-AI-Vault",
+    "twitter": "https://x.com/cipherproxyllc",
+    "youtube": "https://www.youtube.com/@cipherproxy",
+    "submittableId": "44283097"
+  },
+  {
+    "id": "cero-trade",
+    "name": "Cero Trade - IREC trading system por LATAM",
+    "description": "Cero Trade is a decentralized platform for trading, buying, and redeeming tokenized IRECs (renewable energy certificates). It features a marketplace where users can manage their assets, redeem certificates, and list them for sale. With real-time data from the I-TRACK (sandbox) API, traders can make informed decisions. The platform ensures transparency and security by integrating decentralized KYC and transaction management for a seamless experience.",
+    "logo": "/img/showcase/cero-trade_logo_attumwegddar0p7pz.png",
+    "display": "Large",
+    "website": "https://z2mgf-dqaaa-aaaak-qihbq-cai.icp0.io/auth/login?canisterId=z2mgf-dqaaa-aaaak-qihbq-cai",
+    "tags": [
+      "Analytics",
+      "Tools / Infrastructure",
+      "Wallet"
+    ],
+    "stats": "Functional MVP - to be approved by legal entities and audited by I-TRACK foundation",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/cero-trade_screenshot_0_attp7oepa2elxo1zm.png"
+    ],
+    "github": "https://github.com/Cero-Trade/mvp1.0/tree/main",
+    "submittableId": "44161777"
+  },
+  {
+    "id": "toyoworld",
+    "name": "ToyoWorld",
+    "description": "Collect, battle and track down mythical creatures in this open world adventure game!",
+    "logo": "/img/showcase/toyoworld_logo_attvbkaji4at5pbev.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/toyoworld_screenshot_0_attppcu9ctbgxxhhp.png"
+    ],
+    "twitter": "https://x.com/ToyoWorldGame",
+    "submittableId": "44404548"
+  },
+  {
+    "id": "stable-fs",
+    "name": "File system implemented on top of the stable memory of the IC.",
+    "description": "The stable-fs  enables storing files on the stable memory of the Internet Computer, providing a \npersistent and fault-tolerant storage solution.",
+    "logo": "/img/showcase/stable-fs_logo_attyxoccnsgxfpofr.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "* Writing and reading of 100 Mb of data on the mounted file within around  130 M instructions, * Inserting a million persons into a rusqlite database within about 9B instructions.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/stable-fs_screenshot_0_attuvvqxxfgthmfzn.png"
+    ],
+    "github": "https://github.com/wasm-forge/stable-fs",
+    "submittableId": "46090829"
+  },
+  {
+    "id": "Civic Pass on ICP",
+    "name": "Civic Pass",
+    "description": "Digital identity platform enabling developers to quickly leverage a variety of verification services and provide users with a reusable identity to more quickly onboard into new applications.",
+    "logo": "/img/showcase/civic pass on icp_logo_attt7gfgircnwfp5a.png",
+    "display": "Large",
+    "website": "https://www.civic.com",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "900,000 passes issued, millions of bots blocked",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/civic pass on icp_screenshot_0_attrxcb8cxfzhtbvj.png"
+    ],
+    "github": "https://github.com/civicteam/civic-icp-canister",
+    "twitter": "https://x.com/civickey",
+    "youtube": "https://www.youtube.com/channel/UCN82Tq5EY4BjhHzrRhJjGow",
+    "submittableId": "45489206"
+  },
+  {
+    "id": "grunt-defi",
+    "name": "GRUNT defi",
+    "description": "Tired of being right too soon? Lock your Bitcoins on grunt.defi and get rewarded for your convictions that stand the test of time. Grunt.defi — the unbribable consensus platform that seeks the truth.",
+    "logo": "/img/showcase/grunt-defi_logo_attgcrz0hq1eswhig.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/grunt-defi_screenshot_0_attljcotv3fzsym8t.png"
+    ],
+    "github": "https://github.com/sardariuss/carlson_protocol",
+    "submittableId": "45842768"
+  },
+  {
+    "id": "plonk-verifier-on-icp",
+    "name": "plonk-verifier-on-icp",
+    "description": "We implement a gnark plonk verifier on ICP. \nGnark is a well-known ZK scheme written by Go, its verifier can be exported as solidity only.\nICP does not support solidity smart contract natively, we implement the plonk verifier in rust and then deploy on ICP. \nArkworks is a well-known ZK library written in Rust,  which does not support plonk,  but provides some basic ZK components, such as finite field, curve, paring。Hence, we plan to implement rust plonk verifier based on arkworks.",
+    "logo": "/img/showcase/plonk-verifier-on-icp_logo_attmwvmfjijatdqfw.jpg",
+    "display": "Large",
+    "website": " website (if applicable) https://twitter.com/LightecXYZ",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/plonk-verifier-on-icp_screenshot_0_attr3v1zulwfmiytz.png"
+    ],
+    "github": "https://github.com/lightec-xyz/plonk_verifier_on_icp"
+  },
+  {
+    "id": "NeverEndsArt-icp",
+    "name": "NeverEndsArt",
+    "description": "Decentralized AI Video generation platform ",
+    "logo": "/img/showcase/neverendsart-icp_logo_att0ztbknhs5xlpse.png",
+    "display": "Large",
+    "website": "https://mx6ql-zyaaa-aaaak-akxpa-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "200,00 users, 500,000 Videos generated",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/neverendsart-icp_screenshot_0_attpphvql9kqumwju.png"
+    ],
+    "github": "https://github.com/KomatsuzakiAran/neverends_art",
+    "twitter": " @NeverEnds_ai",
+    "youtube": "https://www.youtube.com/watch?v=SOXq13axMZ0",
+    "submittableId": "46172173"
+  },
+  {
+    "id": "chainsight",
+    "name": "Chainsight",
+    "description": "Chainsight is an advanced on-chain data hub that aggregates data from various markets and makes it accessible on-chain. Any data can be accessed from smart contracts, including data that can be retrieved from HTTPS endpoints on the web, results calculated from huge amounts of data, and states from other chains.",
+    "logo": "/img/showcase/chainsight_logo_att5sbxpdvns6capq.png",
+    "display": "Large",
+    "website": "https://chainsight.network/",
+    "tags": [
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/chainsight_screenshot_0_attlhlhzkip5aaim7.png"
+    ],
+    "github": "https://github.com/horizonx-tech",
+    "twitter": "https://x.com/chainsight_",
+    "submittableId": "44374824"
+  },
+  {
+    "id": "game-bloc",
+    "name": "Game Bloc",
+    "description": "GameBloc is a decentralized platform that lets gamers and gaming organizations create and join game tournaments. It offers both crowdfunded and prepaid tournaments, ensuring fair rewards through blockchain technology. With features like customizable tournaments, secure transactions, and transparent competition, GameBloc brings a new level of trust and engagement to gaming.",
+    "logo": "/img/showcase/game-bloc_logo_attexki3unspmvdcx.png",
+    "display": "Large",
+    "website": "https://cv4ma-4qaaa-aaaal-adntq-cai.icp0.io/",
+    "tags": [
+      "Gaming",
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "Over 700 active users on the platform.\nMore than 1000 followers on Twitter, 150 subscribers on Youtube.\nSuccessful launch of the Blitzkrieg tournament, with high user engagement and follow-up tournaments.\nOver $2000 in transaction volume generated from tournament activities.\nPartnership with Nexal, expanding our network.\nAutomated payments and smart contract integration ensuring secure prize distribution across tournaments.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/game-bloc_screenshot_0_attptsiowregoo7kq.png"
+    ],
+    "github": "https://github.com/Game-Bloc/Gamebloc-ICP",
+    "twitter": "https://x.com/game_bloc",
+    "youtube": "https://www.youtube.com/@Game_bloc",
+    "submittableId": "46421095"
+  },
+  {
+    "id": "ICPEx",
+    "name": "ICPEx",
+    "description": "ICPEx is a full-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm and is committed to becoming a decentralized financial hub serving Web3.",
+    "logo": "/img/showcase/icpex_logo_att0chulded9ea7sh.svg",
+    "display": "Large",
+    "website": "https://icpex.org/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": "ICPEx is the first DEX in the ICP ecosystem to complete integration with DexScreener. Currently, users have created over 600 tokens on ICPEx, making it the largest memecoin creation platform in the ICP ecosystem.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icpex_screenshot_0_attvnndax5ppl65ii.png"
+    ],
+    "github": "https://github.com/ICPExchange",
+    "twitter": "https://x.com/ICPExchange",
+    "youtube": "https://www.youtube.com/@ICPExchange",
+    "submittableId": "46461279"
+  },
+  {
+    "id": "icRamp",
+    "name": "icRamp",
+    "description": "icRamp is a decentralized protocol that seamlessly integrates the Internet Computer with Ethereum and other blockchains, enabling fast, trustless onramping and offramping of digital assets.",
+    "logo": "/img/showcase/icramp_logo_attf0kdamqqdxdyuq.png",
+    "display": "Large",
+    "website": "https://app.icramp.xyz",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icramp_screenshot_0_attfqp5k5hlqnqu2e.png"
+    ],
+    "github": "https://github.com/reymom/ic2P2ramp",
+    "twitter": "https://x.com/ic_rampXYZ",
+    "youtube": "https://www.youtube.com/@icRamp-xyz",
+    "submittableId": "46690853"
+  },
+  {
+    "id": "UPAS",
+    "name": "User Public Achievement Standard (UPAS)",
+    "description": "UPAS is a Decentralized Open-source Reputation Standard that utilizes Internet Computer canisters to securely and autonomously verify user achievements, issuing credentials without relying on centralized authorities. This approach enhances trust, security, and user control in digital identity management, bridging the gap between users, issuers, and verifiers in the digital economy.",
+    "logo": "/img/showcase/upas_logo_attrzb2nhi5lhnogs.svg",
+    "display": "Large",
+    "website": "https://relinkd.gitbook.io/upas/upas/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/upas_screenshot_0_attty9rljwtlh9zvn.png"
+    ],
+    "github": "https://github.com/relinkd/upas-reputation",
+    "twitter": "https://x.com/relinkdxyz",
+    "youtube": "https://youtu.be/WJCaA_wfFhA?si=EStu9qYpoAFDoY9X",
+    "submittableId": "45854414"
+  },
+  {
+    "id": "BitoBridge",
+    "name": "BitoBridge",
+    "description": "The first-ever BTC omnichain bridge built with Chain Fusion technology.",
+    "logo": "/img/showcase/bitobridge_logo_atto8iu0xzjthosa7.png",
+    "display": "Large",
+    "website": "https://dapp.bitomni.io",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/bitobridge_screenshot_0_attlp7s0myo1fl0bo.png"
+    ],
+    "github": "https://github.com/CypherBabel-Lab/bito-bridge-canisters-v2",
+    "twitter": "https://x.com/Bitomni_Global",
+    "submittableId": "46506788"
+  },
+  {
+    "id": "ICP Kotlin Kit",
+    "name": "ICP Kotlin Kit",
+    "description": "Kotlin open-source libraries for interacting with the IC",
+    "logo": "/img/showcase/icp kotlin kit_logo_att1v6tdqw3towvmw.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/icp kotlin kit_screenshot_0_attp1t26xnn5y7ugx.png"
+    ],
+    "github": "https://github.com/ThomasConstantinBity/ICP-Kotlin-Kit",
+    "submittableId": "46181059"
+  },
+  {
+    "id": "icp-sdk-android",
+    "name": "ICP SDK for Android",
+    "description": "We have developed a new lite version of ICP Java SDK on top of existing Java SDK targetting Android Developers. This SDK will help mobile and other Java applications developer to build their application on top of ICP.",
+    "logo": "/img/showcase/icp-sdk-android_logo_attopdb5hmirprszh.png",
+    "display": "Large",
+    "website": "https://github.com/nikhil5642/ICP-TweetApp",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icp-sdk-android_screenshot_0_atti6tc3ek6ipl9sk.png"
+    ],
+    "github": "https://github.com/nikhil5642/ic4j-agent-lite"
+  },
+  {
+    "id": "dao-venture",
+    "name": "DAO-Venture",
+    "description": "A simple roguelite adventure where players collectively build and govern the game through a DAO.",
+    "logo": "/img/showcase/dao-venture_logo_att4inqatalaqaatr.png",
+    "display": "Large",
+    "website": "https://bpo6s-4qaaa-aaaap-acava-cai.icp0.io/",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/dao-venture_screenshot_0_attasxzgaj08hthnu.png"
+    ],
+    "github": "https://github.com/edjCase/DAO-Venture",
+    "twitter": "https://x.com/daoventure_game",
+    "submittableId": "45134281"
+  },
+  {
+    "id": "paws-arena",
+    "name": "Paws Arena",
+    "description": "The cutest, most fun and competitive multiplayer play-to-earn game developed on the Internet Computer blockchain, designed to be eye-catching, fun to play and make players come back everyday to challenge their friends, using our NFTs.",
+    "logo": "/img/showcase/paws-arena_logo_att8ytkfmft185ed0.png",
+    "display": "Large",
+    "website": "https://knbkj-fiaaa-aaaan-qaadq-cai.ic0.app/",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": "Over 100,000 battles played",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/paws-arena_screenshot_0_attesclfzagyzaing.png"
+    ],
+    "twitter": "https://x.com/PawsArena",
+    "submittableId": "41306759"
+  },
+  {
+    "id": "ICSoccerWorld",
+    "name": "ICSoccerWorld",
+    "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine. Flashlight Multilayer Perceptron Deep Learning used for training Soccer Agents on ICP blockchain.",
+    "logo": "/img/showcase/icsoccerworld_logo_attbba3acl7y6sv03.jpg",
+    "display": "Large",
+    "website": "https://gb4ri-5yaaa-aaaal-ac3hq-cai.raw.icp0.io/",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/icsoccerworld_screenshot_0_attrkwiylb8r2zecv.jpg"
+    ],
+    "github": "https://github.com/ktimam/SoccerTrainer",
+    "twitter": "https://x.com/ICSoccerWorld",
+    "youtube": "https://vimeo.com/manage/videos/1022208560",
+    "submittableId": "47149788"
+  },
+  {
+    "id": "solutio",
+    "name": "Solutio",
+    "description": "App to crowdfund open-source\n\nRequest software you need and share the costs with others\n\n- Describe your problem\n- Find like-minded people to help fund it.\n- Devs who build it, earn the rewards.\n\nSOLUTIO makes open source profitable and affordable!",
+    "logo": "/img/showcase/solutio_logo_atteuvi1udzm5u2y9.png",
+    "display": "Large",
+    "website": "https://home.solutio.one/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/solutio_screenshot_0_att7zah0rdmfkd0l0.png"
+    ],
+    "twitter": "https://x.com/SolutioApp",
+    "submittableId": "44990951"
+  },
+  {
+    "id": "Power-up with Piggycell",
+    "name": "Piggycell",
+    "description": "Piggycell is a DEPIN project that provides tokenized incentive solutions to electric power charging platforms.\nPiggycell has deployed 100,000 Chargers to over 13,000 POI (Point of Installation) and successfully marked as no.1 charging infrastructures in South Korea.\nWe currently have over 3 million users with 90% market share across the country and\nour mission is to successfully bring web2 users to web3 world by providing seamless web3 experiences",
+    "logo": "/img/showcase/power-up with piggycell_logo_atttjtuh4oqpyndv3.svg",
+    "display": "Large",
+    "website": "https://www.piggycell.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Gaming"
+    ],
+    "stats": "3,210,000 users. 100,000 Batteries over 13,000 Devices Deployed",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/power-up with piggycell_screenshot_0_att9zkyiuidhlhfja.jpg"
+    ],
+    "github": "https://github.com/piggycell-github",
+    "twitter": "https://x.com/piggycell"
+  },
+  {
+    "id": "icp-pussh-metrics",
+    "name": "IC Push Metrics",
+    "description": "Our project aims to address these limitations by modifying the IC node source code to allow nodes to push metrics. This eliminates the need for firewall reconfiguration and external IP management, providing a more secure and streamlined method for accessing node metrics.",
+    "logo": "/img/showcase/icp-pussh-metrics_logo_attysemowdi9bcjng.png",
+    "display": "Large",
+    "website": "https://docs.zondax.ch/ic-push-metrics/introduction",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "The product is a demo at the moment",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icp-pussh-metrics_screenshot_0_attss5ztxflmhj8s5.png"
+    ],
+    "github": "https://github.com/dfinity/ic/pull/1727",
+    "twitter": "https://x.com/_zondax_/status/1849364980451229831",
+    "youtube": "https://www.youtube.com/watch?v=ZG1-IJtHBzk"
+  },
+  {
+    "id": "tabbypos",
+    "name": "TabbyPOS",
+    "description": "TabbyPOS is a cash register terminal that supports cryptocurrency payments.",
+    "logo": "/img/showcase/tabbypos_logo_attyyguluqgeyvhdk.png",
+    "display": "Large",
+    "website": "https://tabbylab.io",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/tabbypos_screenshot_0_attoxddzvfxifyi42.jpg"
+    ],
+    "github": "https://github.com/TabbyLabMy",
+    "twitter": "https://x.com/tabbypos",
+    "submittableId": "44731923"
+  },
+  {
+    "id": "ReTransICP",
+    "name": "ReTransICP",
+    "description": "Want to create recurring ERC20 transactions? ReTransICP is your tool!",
+    "logo": "/img/showcase/retransicp_logo_attljlwsadkumssit.png",
+    "display": "Large",
+    "website": "https://malteish.github.io/ReTransICP/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/retransicp_screenshot_0_attehugalk2kresql.png"
+    ],
+    "github": "https://github.com/malteish/ReTransICP",
+    "youtube": "https://www.youtube.com/watch?v=9ZyWuZQsUaw"
+  },
+  {
+    "id": "clp-finance",
+    "name": "CLP",
+    "description": "CLP is an omni-chain liquidity protocol and native stablecoin platform within the ICP ecosystem. Through an interest-free lending mechanism, CLP aims to provide users with low-cost, efficient, and secure crypto asset lending services across all assets. Users can pledge ICP, BTC, ETH, or other supported assets to borrow the stablecoin CUSD, achieving crypto asset liquidity, and earn additional mining and liquidation rewards through a dual-token mechanism (stablecoin CUSD and platform token CLPT).",
+    "logo": "/img/showcase/clp-finance_logo_attmwp8w1arhniryu.png",
+    "display": "Large",
+    "website": "https://www.clp.finance/",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": "over 20,000 users during our public test, with nearly 600 feedback forms submitted, over 20 strategic partnerships",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/clp-finance_screenshot_0_att8czci1ffxyrhge.jpg"
+    ],
+    "github": "https://github.com/CLPFinance",
+    "twitter": "https://x.com/CLPFinance721",
+    "youtube": "https://www.youtube.com/channel/UCEgdi0XIXXZ-qJOFPf4JSKw",
+    "submittableId": "45950272"
+  },
+  {
+    "id": "icgpt",
+    "name": "icgpt",
+    "description": "llama.cpp on the Internet Computer - fully on-chain, no outcalls.\n\nAccess the Qwen2.5-instruct LLM with 0.5 billion parameters, the largest LLM currently live on IC mainnet at:\n\nhttps://icgpt.icpp.world",
+    "logo": "/img/showcase/icgpt_logo_attrbfttza6bnzihf.png",
+    "display": "Large",
+    "website": "https://icgpt.icpp.world/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "The largest LLM currently live on the IC mainnet can be accessed at https://icgpt.icpp.world. The Qwen2.5-instruct LLM with 0.5 billion parameters.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icgpt_screenshot_0_attgsnzsxyn3letdv.png"
+    ],
+    "github": "https://github.com/icppWorld/icgpt",
+    "twitter": "https://x.com/icpp_pro",
+    "submittableId": "45615074"
+  },
+  {
+    "id": "devinci-ai",
+    "name": "DeVinci",
+    "description": "DeVinci is the browser-based AI chat app end-to-end decentralized via the Internet Computer and with full user privacy. Chat with the AI model loaded into your browser so your chats remain on your device. If you choose to log in, you can also store your chats on the Internet Computer and reload them later.",
+    "logo": "/img/showcase/devinci-ai_logo_attdfun3c1pikjcvg.png",
+    "display": "Large",
+    "website": "https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "First end-to-end decentralized AI chat app",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/devinci-ai_screenshot_0_attfpvlprdw4fniwc.png"
+    ],
+    "github": "https://github.com/patnorris/DecentralizedAIonIC",
+    "twitter": "https://x.com/onicaiHQ",
+    "submittableId": "45986253"
+  },
+  {
+    "id": "medblock-project",
+    "name": "Medblock",
+    "description": "Medblock is a secure mobile app that puts medical records in patients' hands while helping hospitals manage healthcare data efficiently through blockchain technology.",
+    "logo": "/img/showcase/medblock-project_logo_attwtt0wmvpkqae2q.png",
+    "display": "Large",
+    "website": "https://www.medblock.id/en",
+    "tags": [
+      "Analytics",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/medblock-project_screenshot_0_attwtxpeni0zhxm8y.png"
+    ],
+    "github": "https://github.com/baliola/Medblock/",
+    "twitter": "https://x.com/medblockid/",
+    "youtube": "https://www.youtube.com/@medblockid",
+    "submittableId": "44389918"
+  },
+  {
+    "id": "neuralbay-ai-marketplace",
+    "name": "NeuralBay - Decentralized AI Model Marketplace",
+    "description": "NeuralBay revolutionizes AI accessibility as the first decentralized AI marketplace on Internet Computer. We empower businesses to discover and deploy pre-trained AI models with enterprise-grade security, while enabling vendors to monetize their solutions transparently. Our platform transforms how organizations access and implement AI, all powered by ICP's robust infrastructure.",
+    "logo": "/img/showcase/neuralbay-ai-marketplace_logo_attkvdfbpoj93mrbn.jpeg",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/neuralbay-ai-marketplace_screenshot_0_atthl0ytvbj08etdp.jpeg"
+    ]
+  },
+  {
+    "id": "dfx-dashboard",
+    "name": "DFX Dashboard",
+    "description": "Manage internet computer projects, canisters, and cycles with ease using our intuitive GUI\n\n- Unified Project Management\n\n- Effortless Canister Control\n\n- Simplified Identity Management\n\n- Monitor cycle balances, convert ICP to cycles, and top up canisters directly from the dashboard.\n\n- Visual Network Configuration\n\n- Comprehensive Logging",
+    "logo": "/img/showcase/dfx-dashboard_logo_attmsodn193jbyubt.png",
+    "display": "Large",
+    "website": "https://dfx-dashboard-docs.netlify.app/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/dfx-dashboard_screenshot_0_attjhd0u9yy31w0ou.png"
+    ],
+    "github": "https://github.com/tolgayayci/dfx-dashboard",
+    "submittableId": "46237155"
+  },
+  {
+    "id": "cload-icp-project",
+    "name": "CLOAD",
+    "description": "Web3 applications and game marketplaces, you can fully deploy your project on the blockchain.\nCLOAD is a decentralized WEB3.0 virtual goods trading platform built on the Internet computer network. It aims to provide users with a rich experience in creation and transactions. On CLOAD, you can freely submit and share your creations, whether they are artworks, videos, games, applications, or other virtual goods. They can be showcased and traded on the platform.",
+    "logo": "/img/showcase/cload-icp-project_logo_attg0iueskz2wqhzy.svg",
+    "display": "Large",
+    "website": "https://cload.one/",
+    "tags": [
+      "Gaming",
+      "Tools / Infrastructure"
+    ],
+    "stats": "More than 2000 registered users，Theoretically, there is no upper limit on the file hosting capacity. Currently, more than 10TB of project hosting and storage are possible. ",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/cload-icp-project_screenshot_0_attzuuqheiaehssz7.png"
+    ],
+    "github": "https://github.com/Byte2077/world",
+    "twitter": "https://x.com/Cload_app"
+  },
+  {
+    "id": "anti-korrupt",
+    "name": "Anti-Korrupt",
+    "description": "Anti-Korrupt leverages the power of ICP and AI to enhance learning about corruption to create an overall corruption-free environment all over the world.",
+    "logo": "/img/showcase/anti-korrupt_logo_attryeo9wu449xyc7.png",
+    "display": "Large",
+    "website": "https://px7id-byaaa-aaaak-albiq-cai.icp0.io/#",
+    "tags": [
+      "Analytics",
+      "DeFi"
+    ],
+    "stats": "100 users",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/anti-korrupt_screenshot_0_atttxwsqlov4nwjy7.png"
+    ],
+    "github": "https://github.com/KezzyNgotho/Hackathon202409AI",
+    "twitter": "https://x.com/netrobeweb/",
+    "youtube": "https://www.youtube.com/@devnetrobe",
+    "submittableId": "48641313"
+  },
+  {
+    "id": "Tap-Protocol",
+    "name": "Tap Protocol",
+    "description": "Tap is the most programmable layer 1 Bitcoin protocol, which enables full smart-contract functionality (AMMs for example) without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
+    "logo": "/img/showcase/tap-protocol_logo_attymf3v4gwexxgha.svg",
+    "display": "Large",
+    "website": "https://www.tap-protocol.com",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": "First Bitcoin native smart contracts (L1). First Bitcoin protocol to achieve full AMMs and decentralised peer-to-peer swaps ('Uniswap of Bitcoin'). First protocol to build L1 Bitcoin<> L1 Ethereum Bridge. First Bitcoin protocol to enable stablecoins (USDT, USDC,etc) directly on L1 Bitcoin. First Bitcoin token to launch with Coinlist.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/tap-protocol_screenshot_0_att1h0gklh8rv5fju.png"
+    ],
+    "github": "https://docs.tap-protocol.com",
+    "twitter": "https://x.com/tap_protocol",
+    "youtube": "https://www.youtube.com/@tap_protocol/videos"
+  },
+  {
+    "id": "Shipstone VetKey Cargo Crate and NPM Package",
+    "name": "VetKey Cargo Crate and NPM Package",
+    "description": "Shipstone developed a Rust-based cargo crate and an NPM package to simplify access to VetKeys functionality, enabling developers to use VetKeys without low-level coding expertise.  A demo app is linked to in the repo that shows how the tools programmatically share the content with others securely.  According to ICP, VetKey functionality will be released around the end of Q1 2025.",
+    "logo": "/img/showcase/shipstone vetkey cargo crate and npm package_logo_attuffahlyngbfvwl.png",
+    "display": "Large",
+    "website": "http://vetkeys.shipstone.com/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "We created deliverables that will enable other developers to reliably use a complex functionality soon to be released by ICP.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/shipstone vetkey cargo crate and npm package_screenshot_0_att83r4fcnncxcuu7.png"
+    ],
+    "github": "https://github.com/shipstone-labs/vetkd-utils",
+    "youtube": "https://youtu.be/3R6CH5u-Ylw",
+    "submittableId": "47475015"
+  },
+  {
+    "id": "ic-toolkit",
+    "name": "Toolkit",
+    "description": "Simplifying canister management, project collaboration, and decentralized governance on the Internet Computer",
+    "logo": "/img/showcase/ic-toolkit_logo_attgsefgsuxnm7kex.png",
+    "display": "Large",
+    "website": "https://ic-toolkit.app",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ic-toolkit_screenshot_0_attertjfxukunpm9t.png"
+    ],
+    "github": "https://github.com/toolkit-development",
+    "twitter": "https://x.com/ic_toolkit",
+    "submittableId": "46460741"
+  },
+  {
+    "id": "nfid-identitykit",
+    "name": "NFID IdentityKit",
+    "description": "The best way to connect an ICP wallet to your dapp.",
+    "logo": "/img/showcase/nfid-identitykit_logo_attn1bcxl1cqwbbph.svg",
+    "display": "Large",
+    "website": "https://identitykit.xyz",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/nfid-identitykit_screenshot_0_attxfeesz2vyzz22z.png"
+    ],
+    "github": "https://github.com/internet-identity-labs/identitykit",
+    "twitter": "https://x.com/NFIDIdentityKit"
+  },
+  {
+    "id": "tabbypos",
+    "name": "TabbyPOS",
+    "description": "TabbyPOS is a blockchain-based point-of-sale (POS) system that enables businesses to accept various cryptocurrencies as payment.",
+    "logo": "/img/showcase/tabbypos_logo_attibjeymjhz9azho.png",
+    "display": "Large",
+    "website": "https://www.tabbylab.io/",
+    "tags": [
+      "Bitcoin"
+    ],
+    "stats": "Our product is currently in the Minimum Viable Product (MVP) stage.",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/tabbypos_screenshot_0_att4om71mbgrgfzqb.jpg"
+    ],
+    "github": "https://github.com/LEEKOHCHING/ICP-Integration",
+    "twitter": "https://x.com/tabbypos"
+  },
+  {
+    "id": "ares-suite",
+    "name": "Ares",
+    "description": "Ares is a suite of tools to facilitate user management in applications built with Internet Computer.",
+    "logo": "/img/showcase/ares-suite_logo_attwxmexyhcahxzvz.png",
+    "display": "Large",
+    "website": "- ",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "- ",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ares-suite_screenshot_0_att2jhsdmalehf3dk.png"
+    ],
+    "github": "https://github.com/bundlydev/ares-platform",
+    "submittableId": "46103653"
+  },
+  {
+    "id": "earthstream-icp-project",
+    "name": "Earthstream",
+    "description": "We use acoustic sensors to monitor for biodiversity, and transmit this data to the Internet Computer. The data is then used to detect for birds and measure biodiversity. Our integrated portal helps to fund biodiversity monitoring. ",
+    "logo": "/img/showcase/earthstream-icp-project_logo_attpn9ymvajp8smpp.png",
+    "display": "Large",
+    "website": "earthstream.live",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": "We have around 60%-70% accuracy with bird species detection with very thin data sets. ",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/earthstream-icp-project_screenshot_0_attxw7hxvntlwx8qz.png"
+    ],
+    "github": "N/A (Having to keep things closed sourced, while raising investment)",
+    "twitter": "x.com/@earthstreamlive",
+    "youtube": "https://youtu.be/Ehdx6saaVX8"
+  },
+  {
+    "id": "Invoice-Mate",
+    "name": "Decentralized Invoice Financing Marketplace",
+    "description": "Decentralized Invoice Factoring Protocol based on a new consensus mechanism - Proof of Invoice, that offers stable and secure yields backed by real-world revenue, a new DeFi Primitive that Connects Real World Businesses with Crypto Liquidity.",
+    "logo": "/img/showcase/invoice-mate_logo_attqgfp502xco003q.png",
+    "display": "Large",
+    "website": "www.invoicemate.tech ",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": "- Signed a $400 Million contract for recurring invoice financing \n-  ⁠$275+ Million worth of invoices tokenized \n-  ⁠$50.8+ Million in invoices factored  \n- Partnership with 20+ Supply chains and Financial Institutions like JS Bank, Jazz, Zoth, Flow48, Trella, and many more.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/invoice-mate_screenshot_0_attyw6u6jgsuico8a.png"
+    ],
+    "github": "https://github.com/Mate-Sol/IM-Marketplace-ICP.git",
+    "twitter": "https://x.com/defaprimitive",
+    "youtube": "https://www.youtube.com/@DeFaPrimitive",
+    "submittableId": "45672677"
+  },
+  {
+    "id": "blockbolt-icp-payment",
+    "name": "Blockbolt Payment Protocol",
+    "description": "Blockbolt is a decentralized, multichain, contactless payment protocol that enables seamless, secure, and efficient transactions for both businesses and consumers, promoting the adoption of cryptocurrency.",
+    "logo": "/img/showcase/blockbolt-icp-payment_logo_attlip8zr5zve5zu9.png",
+    "display": "Large",
+    "website": "https://blockbolt.io/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/blockbolt-icp-payment_screenshot_0_atteqy4j2wvh8b9ui.jpg"
+    ],
+    "github": "https://github.com/blockboltpay/ICP_Payment",
+    "twitter": "https://twitter.com/blockboltpay",
+    "youtube": "https://www.youtube.com/@BoltPay",
+    "submittableId": "45394905"
+  },
+  {
+    "id": "tally-bot",
+    "name": "Tally Bot",
+    "description": "This app by the CodeGov team can query the governance canister of the NNS and update a custom list of neuron IDs regarding their vote status of a proposal. Known neurons can make their voting more transparent than it is today with other tools. This bot is deployed for OpenChat community channels and it will operate in threads of messages that are in channels already dedicated to NNS proposals. It is open sourced so anyone can modify the bot for their own use. ",
+    "logo": "/img/showcase/tally-bot_logo_attknyclmfdx50o6p.png",
+    "display": "Large",
+    "website": "https://oc.app/group/labxu-baaaa-aaaaf-anb4q-cai/7942",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/tally-bot_screenshot_0_attzumqp3nqyi6w0z.jpg"
+    ],
+    "github": "https://github.com/CodeGov-org/proposal-tracker",
+    "twitter": "https://x.com/codegovorg",
+    "submittableId": "45128555"
+  },
+  {
+    "id": "FEX-ICP",
+    "name": "Fantasy Extreme",
+    "description": "Fantasy Extreme is ICP based fantasy multi-sports platform with unique per match rewards model. Where User gets rewards in every match giving user multiple winning opportunities every week. Currently, It have capability to cover different football leagues now and in future we plan to integrate other fantasy sports into it. It has potential to be a liquidity gateway for ICP ecosystem as we plan to integrate different passive income methods through DEFI in future. ",
+    "logo": "/img/showcase/fex-icp_logo_attz0msefmxtqyerq.png",
+    "display": "Large",
+    "website": "https://mgzsp-ziaaa-aaaao-qetnq-cai.icp0.io/ | https://fantasyextreme.org",
+    "tags": [
+      "DeFi",
+      "Gaming",
+      "Analytics"
+    ],
+    "stats": "Number Of Users : 120\nMemory Size: Nat(128388028)\nNumber of queries: 1_268_735\nInstructions spent in queries: 12_852_081_185_671\nTotal query request payload size (bytes): 93_051_933\nTotal query response payload size (bytes): 2_864_342_260",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/fex-icp_screenshot_0_attqjkutwrpk7fgbd.png"
+    ],
+    "github": "https://github.com/FantasyExtreme/FEX/",
+    "twitter": "https://x.com/FExtremesports",
+    "youtube": "https://www.youtube.com/@FantasyExtreme",
+    "submittableId": "47135300"
+  },
+  {
+    "id": "fair-buy-icp",
+    "name": "FairBuy.ai ",
+    "description": "FairBuy App: Revolutionizing Digital Advertising and Empowering Users\nAs pioneers in the digital advertising landscape with over 12 years of experience, we recognized the pressing need for a fairer alternative in the market. Thus, FairBuy App was born—a revolutionary platform that puts users in control of their data and advertising experiences.\nOur unique features are: User Data Ownership and True Interest Selection, Customizable News Feed, Real-Time Market Cap Updates, Healthy Usage Limits.",
+    "logo": "/img/showcase/fair-buy-icp_logo_att2onzt2lf0xk5nm.png",
+    "display": "Large",
+    "website": "https://www.fairbuy.ai/",
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "1 client 500 users 2 loi",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/fair-buy-icp_screenshot_0_att7bttsmjh1jhhba.png"
+    ],
+    "github": "https://github.com/fairadsapp/ICRC_fungible",
+    "twitter": "https://x.com/FairAdsAPP",
+    "youtube": "https://www.youtube.com/watch?v=aKjXFGvutJM&ab_channel=flo10i",
+    "submittableId": "46838620"
+  },
+  {
+    "id": "CoreLedger",
+    "name": "Token Economy Operating System",
+    "description": "Token Economy Operating System (TEOS) can operate on virtually any existing EVM blockchain infrastructure, with customizable components for any business process. TEOS can be used directly by any business to build products and software on the blockchain. ",
+    "logo": "/img/showcase/coreledger_logo_attdcnpg3vmc4qsjx.png",
+    "display": "Large",
+    "website": "https://coreledger.net/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/coreledger_screenshot_0_attl3qwrv5mubl3nr.net"
+    ],
+    "twitter": "https://x.com/CoreLedger",
+    "youtube": "https://www.youtube.com/channel/UC0KwUpD_UT_wIeNnF8icmpw"
+  },
+  {
+    "id": "mu-protocol",
+    "name": "mu protocol",
+    "description": "mu Protocol is a versatile cross-chain framework designed to streamline the transition of Web2 projects to Web3, while also simplifying the development of new Web3 applications.",
+    "logo": "/img/showcase/mu-protocol_logo_attl9grsklsumkbb3.jpg",
+    "display": "Large",
+    "website": "https://muprotocol.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/mu-protocol_screenshot_0_attlxookra5viqks4.jpeg"
+    ],
+    "github": "https://github.com/muprotocol",
+    "twitter": "https://twitter.com/ProtocolMu",
+    "youtube": "https://www.youtube.com/channel/UCWgyQQbG3qIQWfgE3NfzEag",
+    "submittableId": "41366162"
+  },
+  {
+    "id": "fairbid",
+    "name": "Fairbid",
+    "description": "FairBid is a decentralized p2p auction marketplace offering transparent, fee-free & cross-chain transactions and multiple auction formats, leveraging the Internet Computer for a seamless, secure, and user-friendly experience.",
+    "logo": "/img/showcase/fairbid_logo_attnndvntsgzy8hyq.png",
+    "display": "Large",
+    "website": "https://2umgr-waaaa-aaaal-artta-cai.icp0.io/#/",
+    "tags": [
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/fairbid_screenshot_0_atta9ls9xzmjppkzi.png"
+    ],
+    "github": "https://github.com/mervanerenci",
+    "twitter": "https://x.com/fairbid_icp",
+    "youtube": "https://www.youtube.com/@fairbid-icp",
+    "submittableId": "46882809"
+  },
+  {
+    "id": "oreka",
+    "name": "Oreka",
+    "description": "Prediction Market Layer on ICP",
+    "logo": "/img/showcase/oreka_logo_atty0pgqlgupmrynj.png",
+    "display": "Large",
+    "website": "https://ezmek-haaaa-aaaas-ak6ga-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/oreka_screenshot_0_attwt6hkobxnbwdcy.png"
+    ],
+    "github": "https://github.com/mangekyou-network/oreka",
+    "submittableId": "47582280"
+  },
+  {
+    "id": "lendfinity",
+    "name": "Lendfinity",
+    "description": "The lending protocol on Bitfinity. Borrow and Lend ICRC-1 tokens and Runes from an EVM environment.",
+    "logo": "/img/showcase/lendfinity_logo_attlduyr7opfafsbk.png",
+    "display": "Large",
+    "website": "https://www.lendfinity.xyz/",
+    "tags": [
+      "DeFi",
+      "Bitcoin"
+    ],
+    "stats": "+$1M TVL in 2 weeks",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/lendfinity_screenshot_0_attqeludr41iaoaej.png"
+    ],
+    "github": "https://github.com/LendFinity",
+    "twitter": "https://x.com/lendfinity_xyz",
+    "youtube": "https://www.youtube.com/@lendfinity-p6t/videos"
+  },
+  {
+    "id": "motoko-regex-engine",
+    "name": "Motoko Regex Engine",
+    "description": "A motoko library for native pattern matching on the internet computer.",
+    "logo": "/img/showcase/motoko-regex-engine_logo_attfm16csb2yvyqqw.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/motoko-regex-engine_screenshot_0_attsltbjkv3o7z3hy.png"
+    ]
+  },
+  {
+    "id": "IC-EVM-Connect",
+    "name": "IC EVM Connect",
+    "description": "The main goal of this project is to demonstrate a bridge between ICP's native capabilities and the widely adopted Ethereum Virtual Machine (EVM) ecosystem. By translating ICP events into EVM-compatible formats, we enable easier integration with existing Ethereum tooling and infrastructure.",
+    "logo": "/img/showcase/ic-evm-connect_logo_atttkdptexxiu2bpz.png",
+    "display": "Large",
+    "website": "zondax.ch",
+    "tags": [
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/ic-evm-connect_screenshot_0_att0b5hdocadazoum.png"
+    ],
+    "github": "https://github.com/Zondax/icp-icrc3-evm-adapter",
+    "twitter": "https://x.com/_zondax_",
+    "youtube": "https://youtu.be/jWLZR3kmFVQ",
+    "submittableId": "46522074"
+  },
+  {
+    "id": "ICP Support for VS Code",
+    "name": "ICP Support for VS Code",
+    "description": "We’ve created a VS Code extension for ICP with the goal of enhancing the developer experience for IC developers working in VS Code. This extension allows developers to deploy canisters and test them directly within the editor.",
+    "logo": "/img/showcase/icp support for vs code_logo_atttyqun6ud6wthvu.png",
+    "display": "Large",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "Over 230 downloads till now.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/icp support for vs code_screenshot_0_att8cprhikb63iaul.png"
+    ],
+    "github": "https://www.blockydevs.com/",
+    "twitter": "https://x.com/BlockyDevs/"
+  },
+  {
+    "id": "claimlink",
+    "name": "ClaimLink",
+    "description": "Decentralized platform on the Internet Computer (ICP) that simplifies NFT and token distribution. Easily create campaigns, generate claim links or QR codes, and let users claim rewards seamlessly—no complex steps or gas fees!",
+    "logo": "/img/showcase/claimlink_logo_attg3opponscwsj60.svg",
+    "display": "Normal",
+    "website": "https://claimlink.xyz/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "N/A",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ICP-hub/claimlink.git",
+    "twitter": "https://x.com/ClaimLinkXYZ"
+  },
+  {
+    "id": "VNX",
+    "name": "VNX Stablecoins",
+    "description": "Regulated European stablecoin generator",
+    "logo": "/img/showcase/vnx_logo_att26n1ueayf6a0xz.svg",
+    "display": "Normal",
+    "website": "https://vnx.li/",
+    "tags": [
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true
+  },
+  {
+    "id": "DataPond ",
+    "name": "DataPond",
+    "description": "DataPond creates a blockchain-based marketplace for AI data by enabling data providers to publish content securely and track its usage by AI, with compensation through a points system redeemable as stablecoins or crypto. The key features include a data publishing and marketplace platform, a point tracking and redeeming system, and a public beta launch. The project aims to enhance the Internet Computer ecosystem by facilitating secure data monetization and rewarding contributors transparently.",
+    "logo": "/img/showcase/datapond _logo_attxbbfhymvubxlo4.svg",
+    "display": "Large",
+    "website": "https://datapond.ai/",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/datapond _screenshot_0_att7wagove825h2uv.jpeg"
+    ],
+    "github": "https://github.com/ReCheck-io/datapond-points-canister",
+    "twitter": "https://x.com/DataPondAI",
+    "submittableId": "46801364"
+  },
+  {
+    "id": "ic-oss",
+    "name": "IC-OSS",
+    "description": "🗂 A decentralized Object Storage Service on the Internet Computer.",
+    "logo": "/img/showcase/ic-oss_logo_atttqv1d09jrsoq6h.svg",
+    "display": "Normal",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ldclabs/ic-oss",
+    "twitter": "https://x.com/icpandadao",
+    "submittableId": "46572006"
+  },
+  {
+    "id": "cknft",
+    "name": "ckNFT",
+    "description": "Cast NFTs from EVM to EVM(and soon more).",
+    "logo": "/img/showcase/cknft_logo_attvtmm2nbhefy7iy.svg",
+    "display": "Normal",
+    "website": "https://icdevs.org/",
+    "tags": [
+      "Chain Fusion",
+      "Creator Economy"
+    ],
+    "stats": "Proof of Concept",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/icdevsorg/",
+    "twitter": "https://x.com/icdevs_org",
+    "youtube": "https://www.youtube.com/@ICDevs_org",
+    "submittableId": "46129897"
+  },
+  {
+    "id": "pacapaump-icp",
+    "name": "PacaPump",
+    "description": "PacaPump lets you create tokens in the ICP ecosystem in a flash!",
+    "logo": "/img/showcase/pacapaump-icp_logo_attiulzu6pdjzush8.svg",
+    "display": "Normal",
+    "website": "https://pacapump.io",
+    "tags": [
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "submittableId": "47314633"
+  },
+  {
+    "id": "chain-fusion-governance-module",
+    "name": "Chain Fusion Governance Module (CGM)",
+    "description": "DAOs on Q can use Chain Fusion to operate across chains, starting with the management of cross-chain treasuries. CGM augmented treasuries can live on ICP or on any EVM chain like Ethereum or L2's like Arbitrum, Polygon and Optimism. \n\nFurthermore, the CGM can be modified to govern any other smart contract or canister. An expansion to non-EVM chains, including Bitcoin is planned. More information can be found [in the docs](https://docs.q-dao.tools/category/chain-fusion-governance-modules-cgm).",
+    "logo": "/img/showcase/chain-fusion-governance-module_logo_atthlzqcjtkmsorte.svg",
+    "display": "Normal",
+    "website": "https://q.org",
+    "tags": [
+      "Chain Fusion"
+    ],
+    "stats": "No stats can be provided at this time.",
+    "usesInternetIdentity": false,
+    "github": "https://gitlab.com/q-dev/q-gdk/icp-receiver-core",
+    "twitter": "https://x.com/QBlockchain",
+    "youtube": "https://www.youtube.com/@qblockchain",
+    "submittableId": "47174206"
+  },
+  {
+    "id": "metaviz-icp",
+    "name": "Metaviz",
+    "description": "A visual project collaboration workspace. Gather information about your project in one place - notes, files, images. Create diagrams and design flow.",
+    "logo": "/img/showcase/metaviz-icp_logo_attxr1shuizyf862x.svg",
+    "display": "Normal",
+    "website": "https://www.metaviz.net",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/dariuszdawidowski/metaviz-server-motoko",
+    "twitter": "https://x.com/MetavizOfficial",
+    "youtube": "https://www.youtube.com/@MetavizOfficial"
+  },
+  {
+    "id": "anti-korrupt-v2",
+    "name": "Anti-Korrupt",
+    "description": "Anti-Korrupt is an educational platform that uses AI to teach people about corruption and its impacts in society. Students can take interactive courses, chat with AI course assistants, and earn blockchain-based rewards (tokens and NFTs) for completing lessons and passing quizzes. The platform makes learning about anti-corruption engaging and accessible while ensuring all educational records and interactions are secure and transparent through blockchain technology.",
+    "logo": "/img/showcase/anti-korrupt-v2_logo_attotuqngmjxugl22.svg",
+    "display": "Large",
+    "website": "https://px7id-byaaa-aaaak-albiq-cai.icp0.io/",
+    "tags": [
+      "AI",
+      "Wallet",
+      "DeFi"
+    ],
+    "stats": "500 users",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/anti-korrupt-v2_screenshot_0_att50csbtvo5juyar.jpg"
+    ],
+    "github": "https://github.com/KezzyNgotho/Anti-Korrupt",
+    "submittableId": "48887295"
+  },
+  {
+    "id": "icp-net",
+    "name": "ICP.NET",
+    "description": "C#/.NET client for the Internet Computer. Provides auto client generation, candid encoding, pocket-ic integration, etc...",
+    "logo": "/img/showcase/icp-net_logo_attqdcczby9kxmiul.svg",
+    "display": "Normal",
+    "website": "#",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "github": "https://github.com/edjCase/ICP.NET"
+  },
+  {
+    "id": "codegov-gaas-app",
+    "name": "CodeGov Governance-as-a-Service",
+    "description": "The GaaS platform keeps track of technical NNS proposals and enables reviewers to publish reviews in a standardized way.",
+    "logo": "/img/showcase/codegov-gaas-app_logo_attdcmgxuaymovtbb.svg",
+    "display": "Normal",
+    "website": "https://www.codegov.org/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "37,000+ lines of code",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/CodeGov-org/codegov-website",
+    "twitter": "https://x.com/codegovorg",
+    "submittableId": "45128256"
+  },
+  {
+    "id": "oraclekit",
+    "name": "OracleKit LayerZero DVN",
+    "description": "Decentralized LayerZero DVN running on ICP network.",
+    "logo": "/img/showcase/oraclekit_logo_attsbnamk5jepjzji.svg",
+    "display": "Normal",
+    "website": "#",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "github": "https://github.com/OracleKit/dvn",
+    "submittableId": "46601451"
+  },
+  {
+    "id": "deda",
+    "name": "DeDa : Decentralised Data Application",
+    "description": "Imagine you're an AIML researcher trying to train a model, but you can't find the right data or it's too expensive and unreliable. At the same time, people with valuable data don't know how to share it securely. That’s where DeDa comes in. DeDa is a decentralised marketplace built on the Internet Computer where researchers can request data and data owners can share it with the researchers. It’s like a trusted, automated system for sharing data in a secure, transparent, and efficient manner. ",
+    "logo": "/img/showcase/deda_logo_attg3yiptn8nhlqqk.svg",
+    "display": "Large",
+    "website": "https://d3zsm-eyaaa-aaaag-atyza-cai.icp0.io/",
+    "tags": [
+      "AI"
+    ],
+    "stats": "Not there yet!",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/deda_screenshot_0_attbjsweuesso0irt.jpeg"
+    ],
+    "github": "https://github.com/ronykris/deda",
+    "twitter": "https://x.com/lowcodekrish",
+    "youtube": "https://youtu.be/hRJRHn7M8tY",
+    "submittableId": "47261416"
+  },
+  {
+    "id": "COOWN",
+    "name": "COOWN",
+    "description": "Crypto Wallets for Groups",
+    "logo": "/img/showcase/coown_logo_attqqcdsueleodbpn.svg",
+    "display": "Large",
+    "website": "htpps://coown.box",
+    "tags": [
+      "Wallet"
+    ],
+    "stats": "A multi-sig wallet hosted on chain, with API calls for notifications enhancing convenience.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/coown_screenshot_0_atttfwjqolouxytsx.jpg"
+    ],
+    "github": "https://github.com/Managed-Trust",
+    "twitter": "https://x.com/COOWN_crypto",
+    "youtube": "https://www.youtube.com/@coown",
+    "submittableId": "47585256"
+  },
+  {
+    "id": "syron-usd",
+    "name": "SYRON USD",
+    "description": "SYRON USD is a BTC-backed stablecoin that provides USD-denominated loans using BTC as collateral. Users deposit BTC into independent Safety Deposit Boxes (SDBs)—trustless, smart contract vaults linked to their Bitcoin self-custodial wallets—to receive SYRON loans. It's an open-source system that ensures transparency, decentralization, and capital efficiency to access liquidity for payments and DeFi. Built on BTC and ICP, SYRON combines scalability and cybersecurity to redefine digital dollars.",
+    "logo": "/img/showcase/syron-usd_logo_attckpzqoqm516zkm.svg",
+    "display": "Normal",
+    "website": "app.tyrondao.org",
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Bitcoin",
+      "Wallet"
+    ],
+    "stats": "2500 users in the waiting list",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/txalkan/tyron-icp",
+    "twitter": "x.com/tyrondao_org",
+    "youtube": "https://www.youtube.com/@tyronDAO",
+    "submittableId": "47602017"
+  },
+  {
+    "id": "Mugc&Univoice",
+    "name": "Univoice",
+    "description": "Univoice is the first Ai Agent+depin project in the Internet Computer ecosystem based on voice multi-modal data. We combine it with IC’s advanced encryption and computing technology to ensure the security and ownership of user data. Through interactive training between voice and AI Agent, users can have their own ai Agent, implements voice2earn. ",
+    "logo": "/img/showcase/mugc&univoice_logo_attstxj8xqrx3czkw.svg",
+    "display": "Normal",
+    "website": "univoice.world",
+    "tags": [
+      "AI",
+      "DeFi"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "twitter": "x.com/UNIVOICE_"
+  },
+  {
+    "id": "diode-collab",
+    "name": "Diode Collab",
+    "description": "Diode Collab is a decentralized full self-custody alternative for discord/slack/ms teams. It also allows sharing of files and folders, keeping notes and managing shared network resource access making it a viable alternative for small and medium businesses to run their communication at low cost with maximum security. Often businesses can fold the old cost for slack, vpn and external storage together and go safer and cheaper with Diode Collab.",
+    "logo": "/img/showcase/diode-collab_logo_attdp8f2pnrdwwmhh.svg",
+    "display": "Large",
+    "website": "https://diode.io",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "stats": "We just finished integration and are launching full ICP support this month. ",
+    "usesInternetIdentity": false,
+    "screenshots": [
+      "/img/showcase/diode-collab_screenshot_0_attzzjirkzv9r3ezw.jpg"
+    ],
+    "github": "https://github.com/diodechain/zone_availability_canister",
+    "twitter": "https://x.com/diode_chain",
+    "submittableId": "46599371"
+  },
+  {
+    "id": "partnrship-icp-platform",
+    "name": "partnrship",
+    "description": "We bridge the gap between technical and non-technical people by fractionalising developments and handling micro-payments ",
+    "logo": "/img/showcase/partnrship-icp-platform_logo_attxv5zncbfghzjk8.svg",
+    "display": "Normal",
+    "website": "https://e7bx6-iiaaa-aaaag-qm7oq-cai.icp0.io/board/Partnrship",
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "stats": "20+ Alpha users to onboard ",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ImCrimson/Partnrship",
+    "twitter": "https://x.com/partnrship"
+  },
+  {
+    "id": "Fully onchain Runes  Decentralized Exchange",
+    "name": "RunicSwap",
+    "description": "RunicSwap is a decentralized exchange (DEX) that lets users trade Runestone with Bitcoin, ICP, and ckBTC. Built on the Internet Computer blockchain, it uses canister technology for secure, seamless, and direct transactions with the Bitcoin blockchain.",
+    "logo": "/img/showcase/fully onchain runes  decentralized exchange_logo_attjvuck5ololvwih.svg",
+    "display": "Normal",
+    "website": "#",
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/buriburizaemonnn/Runicswap"
+  },
+  {
+    "id": "Appic DAO",
+    "name": "Appic DAO",
+    "description": "Appic is the first-ever infrastructure layer that allows projects and users to transfer and swap tokens between ICP and other blockchains such as Ethereum, Bitfinity and Solana.",
+    "logo": "/img/showcase/appic dao_logo_att2luudejitjpyos.svg",
+    "display": "Normal",
+    "website": "https://appicdao.com/",
+    "tags": [
+      "DeFi",
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Appic-Solutions",
+    "twitter": "https://twitter.com/Appic_ICP",
+    "youtube": "https://www.youtube.com/@AppICDAO",
+    "submittableId": "46953106"
+  },
+  {
+    "id": "ICaiBus",
+    "name": "ICaiBus",
+    "description": "ICaiBus by Pan Industrial transforms network interactions for enterprises, DAOs, AIs, and dApps on the Internet Computer with an event-driven platform where components publish and subscribe to data streams with minimal code. ICaiBus enables instant monetization of dApp data and provides tools and components to streamline development.",
+    "logo": "/img/showcase/icaibus_logo_attoufkfd1j19aff0.svg",
+    "display": "Normal",
+    "website": "https://panindustrial.com/",
+    "tags": [
+      "AI",
+      "Analytics",
+      "Tools / Infrastructure"
+    ],
+    "stats": "Currently processing the ICP transaction stream",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/panIndustrial-Org/",
+    "twitter": "https://x.com/pan_industrial",
+    "submittableId": "46129186"
+  },
+  {
+    "id": "front-row",
+    "name": "Front Row",
+    "description": "Front Row is a decentralised ticketing exchange where attendees can trade their tickets on a secure immutable marketplace. For the event organisers, Front Row provides a mobile scanner App through which event organisers can guarantee singularity of scanned tickets and attribute Proof of Attendance to ticket holders to drive future engagement. ",
+    "logo": "/img/showcase/front-row_logo_attxxvcb5k9sfgflo.svg",
+    "display": "Normal",
+    "website": "https://xw7l2-viaaa-aaaal-qditq-cai.icp0.io/",
+    "tags": [
+      "Analytics",
+      "Wallet",
+      "Chain Fusion"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Front-R0w",
+    "twitter": "https://x.com/FrontRowIC",
+    "youtube": "https://www.youtube.com/@FrontRowIC"
+  },
+  {
+    "id": "tabbypos",
+    "name": "TabbyPOS",
+    "description": "A blockchain payment solution integrates a hardware terminal with POS software that seamlessly merges the blockchain with real-world business operations",
+    "logo": "/img/showcase/tabbypos_logo_attbirahst8qz6ecs.svg",
+    "display": "Normal",
+    "website": "http://tabbylab.io/",
+    "tags": [
+      "Bitcoin",
+      "Wallet"
+    ],
+    "stats": "Complete all grant milestone.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/LEEKOHCHING/ICP-Integration",
+    "twitter": "https://x.com/tabbypos",
+    "submittableId": "44731923"
+  },
+  {
+    "id": "CANI",
+    "name": "CANI",
+    "description": "CANI combines decades of music industry expertise with blockchain innovation to revolutionise the creator economy.",
+    "logo": "/img/showcase/cani_logo_attnivk0g1n7grj59.svg",
+    "display": "Large",
+    "website": "https://canistore.io/",
+    "tags": [
+      "Creator Economy"
+    ],
+    "stats": "We are deployed on the EU subnet; our ecosystem is built with a GDPR-ready architecture. We have an early access waiting list of 1200, currently open for pre-release with 100 artists invited via invitation codes.",
+    "usesInternetIdentity": true,
+    "screenshots": [
+      "/img/showcase/cani_screenshot_0_att1achhgbia4tz24.jpg"
+    ],
+    "github": "https://github.com/Canistore/CANI_DAPP",
+    "twitter": "https://x.com/canistore",
+    "submittableId": "34838526"
+  },
+  {
+    "id": "partnrship",
+    "name": "partnrship",
+    "description": "A project management and DevOps platform with micropayment integration for working with 3rd party vendors ",
+    "logo": "/img/showcase/partnrship_logo_attyovzxnfxxnksrc.svg",
+    "display": "Normal",
+    "website": "https://e7bx6-iiaaa-aaaag-qm7oq-cai.icp0.io/board/Partnrship",
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy",
+      "DeFi"
+    ],
+    "stats": "20+ Alpha users signed up for beta testing",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ImCrimson/Partnrship",
+    "twitter": "https://x.com/partnrship?mx=2",
+    "submittableId": "47369845"
+  },
+  {
+    "id": "blockid---one-id--infinite-trust",
+    "name": "BlockID - One ID, Infinite Trust",
+    "description": "BlockID is a decentralized identity and reputation protocol built on the Internet Computer",
+    "logo": "/img/showcase/blockid---one-id--infinite-trust_logo_att0rsqmm94hizny8.svg",
+    "display": "Normal",
+    "website": "https://blockid.cc",
+    "tags": [
+      "DeFi",
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "1295 users verified and successfully integrated in 2 ICTO fundraising projects",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ICTO-Labs/BlockID",
+    "twitter": "https://x.com/icto_app",
+    "youtube": "https://www.youtube.com/@icto_app",
+    "submittableId": "47669862"
+  },
+  {
+    "id": "ic-solana-gateway",
+    "name": "IC-Solana Gateway",
+    "description": "IC-Solana Gateway is a solution that connects the Internet Computer with Solana.",
+    "logo": "/img/showcase/ic-solana-gateway_logo_attrlh83aemj6rawg.svg",
+    "display": "Normal",
+    "website": "https://github.com/mfactory-lab/ic-solana",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/mfactory-lab/ic-solana"
+  },
+  {
+    "id": "amplify-platform",
+    "name": "Amplify Platform",
+    "description": "Amplify is a SocialFi platform that boosts social engagement of creators/projects on OpenChat and Taggr; rewards interacting users with ICRC tokens.",
+    "logo": "/img/showcase/amplify-platform_logo_attiggziqrtut4ae2.svg",
+    "display": "Normal",
+    "website": "https://amplifyicp.com/",
+    "tags": [
+      "Creator Economy",
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/NearverseLabs/Amplify/tree/icp-v2",
+    "twitter": "https://x.com/Amplify_ICP",
+    "youtube": "https://www.youtube.com/@NearverseLabs"
+  },
+  {
+    "id": "partnrship",
+    "name": "partnrship",
+    "description": "Project management / DevOps platform with an integrated escrow wallet system for secure payments with 3rd party developers/partners",
+    "logo": "/img/showcase/partnrship_logo_attww6k0mt9f0wgqk.svg",
+    "display": "Normal",
+    "website": "https://e7bx6-iiaaa-aaaag-qm7oq-cai.icp0.io/board/Partnrship",
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics",
+      "Creator Economy",
+      "Wallet",
+      "DeFi"
+    ],
+    "stats": "20 alpha users ready to alpha test",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ImCrimson/Partnrship",
+    "twitter": "https://x.com/partnrship?mx=2"
+  },
+  {
+    "id": "proof-of-paint",
+    "name": "Proof of paint",
+    "description": "Proof of paint is a street art gallery dApp where artists can be authed anonymously and choose aliases. ",
+    "logo": "/img/showcase/proof-of-paint_logo_attvpxonsnwthutdq.svg",
+    "display": "Normal",
+    "website": "https://rqbwu-jaaaa-aaaao-a356a-cai.icp0.io/",
+    "tags": [
+      "Wallet",
+      "Creator Economy"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/xanderread/proof-of-paint",
+    "submittableId": "48718088"
+  },
+  {
+    "id": "mutual-link",
+    "name": "Mutual link",
+    "description": "Mutualink transforms the medical referral system, enabling individuals to control their medical data and access better healthcare services.",
+    "logo": "/img/showcase/mutual-link_logo_atthevi1mwhx0nexp.svg",
+    "display": "Normal",
+    "website": "https://wzt7x-ayaaa-aaaam-qddyq-cai.icp0.io/",
+    "tags": [
+      "Wallet"
+    ],
+    "stats": null,
+    "usesInternetIdentity": false,
+    "github": "https://github.com/daeu81404/mutual-link"
+  },
+  {
+    "id": "icp-chainvault",
+    "name": "ICP-ChainVault",
+    "description": "ICP-ChainVault: A DeFi protocol on ICP enabling Bitcoin liquidity via ckBTC collateral, secure vaults, and trustless smart contract execution.",
+    "logo": "/img/showcase/icp-chainvault_logo_attjshoteqquhg6nz.svg",
+    "display": "Normal",
+    "website": "https://chain-vault-front-lq0atklpo-samarabdelhameeds-projects.vercel.app/_app.html",
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Wallet",
+      "Tools / Infrastructure"
+    ],
+    "stats": "ICP-ChainVault Achievements: \n✅ 10,000+ Transactions executed seamlessly on the platform.  \n✅ 5+ Smart Contracts (Canisters) deployed for secure DeFi operations.  \n✅ Multiple Vaults successfully created and tested.  \n✅ Real-time Oracle Integration for accurate Bitcoin price feeds.  \n✅ 100% On-Chain Executionpowered by the Internet Computer.  \nThese achievements lay the foundation for further growth and scalability! 🚀",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/samarabdelhameed/icp-chainvault",
+    "twitter": "https://x.com/icpChainvault/status/1896146028619030679",
+    "youtube": "https://www.youtube.com/watch?v=MYfcEY3ve-U",
+    "submittableId": "45857881"
+  },
+  {
+    "id": "bq-labs",
+    "name": "BQ Labs",
+    "description": "BQ Labs is a decentralized insurance protocol enabling modular underwriting, dynamic risk pricing, and tokenized risk solutions for Bitcoin and DeFi.",
+    "logo": "/img/showcase/bq-labs_logo_attwzsdtjxcc6aoks.svg",
+    "display": "Normal",
+    "website": "https://www.bqlabs.xyz/",
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "stats": "We have a growing community of over 20,000 members and a waitlist of 7,500+ users eager to participate in our upcoming testnet.",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/bitquid-labs/testnet-v1",
+    "twitter": "https://x.com/bq_labs/",
+    "submittableId": "48429136"
+  },
+  {
+    "id": "clp-finance",
+    "name": "CLP Finance",
+    "description": "Full-chain liquidity protocol and native stablecoin platform of ICP ecosystem, offering zero-interest crypto asset lending and liquidity management.",
+    "logo": "/img/showcase/clp-finance_logo_att9fmc20tcqypytc.svg",
+    "display": "Normal",
+    "website": "https://www.clp.finance/",
+    "tags": [
+      "Chain Fusion",
+      "DeFi"
+    ],
+    "stats": "20,000+ active users",
+    "usesInternetIdentity": true,
+    "github": "https://github.com/CLPFinance",
+    "twitter": "https://x.com/CLPFinance721",
+    "youtube": "https://www.youtube.com/@CLPFinance",
+    "submittableId": "45950272"
+  },
+  {
+    "id": "mu-protocol",
+    "name": "mu PROTOCOL",
+    "description": "mu Protocol is a next-generation blockchain interoperability layer that connects decentralized applications across multiple blockchains. ",
+    "logo": "/img/showcase/mu-protocol_logo_att8tljwgiv4mzfsv.svg",
+    "display": "Normal",
+    "website": "https://muprotocol.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true
+  },
+  {
+    "id": "bitcoin-gift-cards",
+    "name": "Bitcoin Gift Cards",
+    "description": "Bitcoin Gift Cards let you send Bitcoin to anyone using just their email.",
+    "logo": "/img/showcase/bitcoin-gift-cards_logo_attwwufejzuqfofcx.svg",
+    "display": "Normal",
+    "website": "https://btc-gift-cards.com",
+    "tags": [
+      "Chain Fusion",
+      "Bitcoin"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/f0i/btcgiftcards"
+  },
+  {
+    "id": "bitcoin-gift-cards",
+    "name": "Bitcoin Gift Cards",
+    "description": "Bitcoin Gift Cards let you send Bitcoin to anyone using just their email.",
+    "logo": "/img/showcase/bitcoin-gift-cards_logo_attwwufejzuqfofcx.svg",
+    "display": "Normal",
+    "website": "https://btc-gift-cards.com",
+    "tags": [
+      "Chain Fusion",
+      "Bitcoin"
+    ],
+    "stats": null,
+    "usesInternetIdentity": true,
+    "github": "https://github.com/f0i/btcgiftcards",
+    "submittableId": "49162161"
+  }
+]
