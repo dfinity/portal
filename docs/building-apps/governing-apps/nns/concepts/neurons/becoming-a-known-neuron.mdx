@@ -12,7 +12,7 @@ import '/src/components/CenterImages/center.scss';
 
 A know neuron has a name and optionally a short description.
 A known neuron can be registered in the NNS governance via a proposal, officially storing its name and description
-within the NNS. This information can be used by other neurons to find known neurons and [follow](/docs/building-apps/governing-apps/nns/concepts/neurons/neuron-following) them.
+within the NNS. This information can be used by other neurons to find known neurons and [follow](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons) them.
 
 To become a known neuron in the NNS DAO, you first need to create a neuron, then submit an NNS proposal to register as a known neuron. After the proposal is accepted and your neuron is registered, it will be visible to all NNS users when they set up their own neuron following.
 
@@ -26,7 +26,7 @@ Depending on this, different neuron creation options might be more suitable.
 ### Create a neuron controlled by one party
 
 If you would like to create a known neuron that is operated by one party that knows the neuron's controlling key and can change the neuron, you can use one of the following options:
-* [Create the neuron on the NNS dapp](/docs/building-apps/governing-apps/nns/overview#stake-icp-utility-tokens-in-a-neuron).
+* [Create the neuron on the NNS dapp](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System).
 * [Create the neuron on the NNS dapp that is controlled by a hardware ledger wallet](https://support.dfinity.org/hc/en-us/articles/8760495850900-How-do-I-use-my-Ledger-Nano-with-the-Internet-Computer)
 * [Create the neuron via the quill command line tool](https://support.dfinity.org/hc/en-us/articles/4408752586260-What-is-Quill).
 
@@ -52,7 +52,7 @@ This might be useful so that followers can make well-informed decisions regardin
 
 * **Who you are**: Name of the person or group and their relationship to the ICP. You may want to argue why the people behind the neuron have a long-term interest in the wellbeing of the ICP and are motivated to make good voting decisions.
 * **Neuron control**: Who controls the neuron? Does it have a single controller or can it be changed by a group of people?
-* **Covered topics**: A description of what topics the known neuron will vote on. Does the neuron commit to always vote on these topics? Since following is done based on proposal topics, this is relevant information for followers. Usually, neurons would want to follow other neurons that always vote on a given topic in order not to miss out on [voting rewards](./staking-voting-rewards.mdx).
+* **Covered topics**: A description of what topics the known neuron will vote on. Does the neuron commit to always vote on these topics? Since following is done based on proposal topics, this is relevant information for followers. Usually, neurons would want to follow other neurons that always vote on a given topic in order not to miss out on voting rewards.
 * **Depth of reviews**: A description of how the known neuron plans to verify proposals. To which depth will it review the code or the content of the proposal and how is this done?
 * **Following setting**: For the topics where the know neuron does not vote directly, who does the neuron follow?
 * **Voting principles**: What are the principles according to which you plan to vote?
@@ -89,7 +89,7 @@ You can install Rosetta by running `softwareupdate --install-rosetta` in your te
 Your neuron is controlled by a **principal ID**, which is an identity on ICP.
 However, you want to be able to submit proposals from the command line on your computer in this neuron's name.
 For this, you can register the principal that you have on your computer as a
-[**hot key**](/docs/building-apps/governing-apps/nns/concepts/neurons/neuron-management#neuron-attributes)
+[**hot key**](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons#neuron-attributes)
 of the neuron. Hot keys have the permission to vote and submit proposals for the neuron.
 
 Run `dfx identity get-principal` to get the principal ID that corresponds to your current [developer identity](/docs/building-apps/getting-started/identities). The following steps will refer to this as your "dfx principal".

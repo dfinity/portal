@@ -127,6 +127,14 @@ This specification may refer to certain constants and limits without specifying 
 
     Maximum wall clock time spent on evaluation of a query call.
 
+-   `MAX_SNAPSHOTS`
+
+    Maximum number of canister snapshots per canister.
+
+-   `MAX_CALL_TIMEOUT`
+
+    The maximum timeout (in seconds) for an inter-canister call.
+
 ### Principals {#principal}
 
 Principals are generic identifiers for canisters, users and possibly other concepts in the future. As far as most uses of the IC are concerned they are *opaque* binary blobs with a length between 0 and 29 bytes, and there is intentionally no mechanism to tell canister ids and user ids apart.
@@ -590,23 +598,34 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 #### Asynchronous canister calling {#http-async-call-overview}
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#http-interface) and the call is received by a replica (a node belonging to an IC subnet). The receiving replica decides whether it accepts the call. An honest replica does so by checking that the target canister is not frozen and
 
-2.  For a certain amount of time, the IC behaves as if it does not know about the call.
+  - checking that the target canister is not empty, checking that the target canister is running, and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
 
-3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
+  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister
+    (or that the call targets the [IC Provisional API](#ic-provisional-api) on a development instance).
 
-4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
+  Moreover, the signature must be valid and created with a correct key.
 
-5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
+  Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
-6.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
+  From this point on the user may receive a response from the IC about the status of the call. Only valid IC certificates in responses should be trusted, since responses come from a single replica that can be either honest or malicious. Note that a lack of a valid IC certificate doesn't necessarily mean that the responding replica is malicious; examples of responses that are expected to come without a certificate (and thus aren't necessarily trustworthy) include responses signalling that the message hasn't been accepted, and responses saying that the request is accepted for further processing.
 
-7.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+  So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
-8.  In the case that the call has been retained for long enough, but the request has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`.
 
-9.  Once the expiry time is past, the IC can prune the call and its response, and completely forget about it.
+  The above steps are formalized in this [transition](#api-request-submission).
+
+2.  Once the IC starts processing the call, its (certified) status is set to `processing`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call. Now the user has the guarantee that the call will have some effect.
+
+3.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
+
+4.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-request-status) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+
+5.  In case of high load on the IC, even if the call has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+
+6.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-request-status) and thus completely forget about it.
 
 This yields the following interaction diagram:
 ```plantuml
@@ -642,16 +661,21 @@ The characteristic property of the `processing` state is that *the initial effec
 A call may be rejected by the IC or the canister. In either case, there is no guarantee about how much processing of the call has happened.
 
 To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call's `ingress_expiry` field.
+If a subnet's time strictly exceeds the call's `ingress_expiry` field, the subnet's time exceeds the call's `ingress_expiry` field by at most 5 minutes, and the call's status is unknown to the IC (i.e., it was never in state `received`, `processing`, `replied`, `rejected`, or `done`), then the call will never be in one of these states.
 
-Calls must stay in `replied` or `rejected` long enough for polling users to catch the response.
+Calls should stay in `replied` or `rejected` for 5 minutes so that polling users can catch the response under good networking conditions
+and low load on the IC. However, in case of high load on the IC, the IC can transition the call to `done` at any time.
 
 When asking the IC about the state or call of a request, the user uses the request id (see [Request ids](#request-id)) to read the request status (see [Request status](#state-tree-request-status)) from the state tree (see [Request: Read state](#http-read-state)).
 
 #### Synchronous canister calling {#http-sync-call-overview}
 
-A synchronous update call, also known as a "call and await", is a type of update call where the replica will attempt to respond to the HTTPS request with a certificate of the call status. If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) to determine the result of the call. A terminal state means the call has completed its execution.
+A synchronous update call, also known as a "call and await", is a type of update call where the replica will attempt to respond to the HTTPS request with a certificate of the call status. 
+On the replica, a synchronous call request goes through the same states (`received`, `processing`, `replied`, `rejected`, or `done`) as the ones depicted for the [asynchronous API](#http-async-call-overview).
+If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) 
+to determine the result of the call. A terminal state means the call has completed its execution.
 
-The synchronous call endpoint is useful for users as it removes the networking overhead of polling the IC to determine the status of their call.
+The synchronous call endpoint is useful for users as it reduces the networking overhead of polling the IC to determine the status of their call. 
 
 The replica will maintain the HTTPS connection for the request and will respond once the call status transitions to a terminal state. 
 
@@ -663,7 +687,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -705,7 +729,7 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -751,7 +775,7 @@ In order to read parts of the [The system state tree](#state-tree), the user mak
 
 -   `request_type` (`text`): Always `read_state`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). `ingress_expiry` refers to this request's expiry, not the expiry of any call request referenced in this read state request.
 
 -   `paths` (sequence of paths): A list of at most 1000 paths, where a path is itself a sequence of at most 127 blobs.
 
@@ -976,7 +1000,7 @@ All requests coming in via the HTTPS interface need to be either *anonymous* or 
 
 -   `nonce` (`blob`, optional): Arbitrary user-provided data of length at most 32 bytes, typically randomly generated. This can be used to create distinct requests with otherwise identical fields.
 
--   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. These rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp.
+-   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition call requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. The acceptance rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp. Note that the `ingress_expiry` of a `read_state` request is independent of the `ingress_expiry` of an earlier `call` request, they do *not* need to be the same.
 
 -   `sender` (`Principal`, required): The user who issued the request.
 
@@ -1124,6 +1148,8 @@ Reject codes are member of the following enumeration:
 
 -   `CANISTER_ERROR` (5): Canister error (e.g., trap, no response)
 
+-   `SYS_UNKNOWN` (6): Response unknown; system stopped waiting for it (e.g., timed out, or system under high load). This code is only applicable to inter-canister calls that used `ic0.call_with_best_effort_response`.
+
 The symbolic names of this enumeration are used throughout this specification, but on all interfaces (HTTPS API, System API), they are represented as positive numbers as given in the list above.
 
 The error message is guaranteed to be a string, i.e. not arbitrary binary data.
@@ -1247,6 +1273,7 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 -   It may declare (import or export) at most one memory.
 
 -   It may only import a function if it is listed in [Overview of imports](#system-api-imports).
+    In particular, all imported functions belong to the `ic0` module (denoted by the prefix `ic0.`).
     The value of `I ∈ {i32, i64}` specifying whether the imported functions have 32-bit or 64-bit pointers
     is derived from the bit-width of the declared memory defaulting to `I = i32` if the canister declares no memory.
 
@@ -1439,6 +1466,8 @@ The 32-bit stable memory System API (`ic0.stable_size`, `ic0.stable_grow`, `ic0.
 
 The following sections describe various System API functions, also referred to as system calls, which we summarize here.
 
+All the following functions belong to the `ic0` module (denoted by the prefix `ic0.`).
+
 In the following, the value of `I ∈ {i32, i64}` specifies whether the imported functions have 32-bit or 64-bit pointers.
 Given a canister module, the value of `I ∈ {i32, i64}` is derived from the bit-width of the declared memory
 defaulting to `I = i32` if the canister declares no memory.
@@ -1451,6 +1480,8 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
+
+    ic0.msg_deadline : () -> i64;                                                         // U Q CQ Ry Rt CRy CRt
 
     ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ CQ Ry Rt CRy CRt
     ic0.msg_reply : () -> ();                                                             // U RQ NRQ CQ Ry Rt CRy CRt
@@ -1467,6 +1498,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.canister_self_size : () -> I;                                                     // *
     ic0.canister_self_copy : (dst : I, offset : I, size : I) -> ();                       // *
     ic0.canister_cycle_balance128 : (dst : I) -> ();                                      // *
+    ic0.canister_liquid_cycle_balance128 : (dst : I) -> ();                               // *
     ic0.canister_status : () -> i32;                                                      // *
     ic0.canister_version : () -> i64;                                                     // *
 
@@ -1489,6 +1521,7 @@ defaulting to `I = i32` if the canister declares no memory.
       ) -> ();                                                                            // U CQ Ry Rt CRy CRt T
     ic0.call_on_cleanup : (fun : I, env : I) -> ();                                       // U CQ Ry Rt CRy CRt T
     ic0.call_data_append : (src : I, size : I) -> ();                                     // U CQ Ry Rt CRy CRt T
+    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                   // U CQ Ry Rt CRy CRt T
     ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
     ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
 
@@ -1613,6 +1646,12 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 -   `ic0.msg_reject_msg_size : () → I` and `ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
+
+-   `ic0.msg_deadline : () -> i64`
+
+    The deadline, in nanoseconds since 1970-01-01, after which the caller might stop waiting for a response.
+
+    For update methods and their callbacks, if the method was called via a bounded-wait inter-canister call the deadline is computed based on the time the call was made, and the `timeout_seconds` parameter provided by the caller. For other calls (including ingress messages and all calls to query and composite query methods, including calls in replicated mode) a deadline of 0 is returned.
 
 ### Responding {#responding}
 
@@ -1746,6 +1785,16 @@ If this traps (e.g. runs out of cycles), the state changes from the `cleanup` fu
 
 There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` and `ic0.call_perform`.
 
+-   `ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ()`
+
+    Turns the call into a *bounded-wait call*, by relaxing the response delivery guarantee to be best effort, and asking the system to respond at the latest after `timeout_seconds` have elapsed. Best effort means the system may also respond with a `SYS_UNKNOWN` reject code, signifying that the call **may or may not** have been processed by the callee. Then, even if the callee produces a response, it will not be delivered to the caller.
+
+    Any value for `timeout_seconds` is permitted, but is silently bounded from above by the `MAX_CALL_TIMEOUT` system constant; i.e., larger timeouts are treated as equivalent to `MAX_CALL_TIMEOUT` and do not cause an error. The implementation may add a specific [error code](#error-codes) to a reject message to indicate the cause, in particular whether the timeout expired. Note that the reject callback may be executed (possibly significantly) later than the specified time (e.g., if the caller is under high load), or before timeout expiration (e.g., if the system is under load).
+
+    A caller that receives a `SYS_UNKNOWN` reject code, yet needs to learn the call outcome, must find an out-of-band way of doing so. For example, if the callee provides idempotent function calls, the caller can simply retry the call. Sample causes of `SYS_UNKNOWN` include the call not being delivered in time, call processing not completing in time, reply delivery taking too long, and the system shedding load.
+
+    This method can be called only in between `ic0.call_new` and `ic0.call_perform`, and at most once at that. Otherwise, it traps. A different timeout can be specified for each call.
+
 -   `ic0.call_data_append : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     Appends the specified bytes to the argument of the call. Initially, the argument is empty. Traps if the total appended data exceeds the [maximum inter-canister call payload](https://internetcomputer.org/docs/developer-docs/backend/resource-limits#resource-constraints-and-limits).
@@ -1762,9 +1811,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This system call traps if there is no call under construction, i.e., if not called between `ic0.call_new` and `ic0.call_perform`.
 
-    This system call traps if trying to transfer more cycles than are in the current balance of the canister.
-
-    This system call traps if the cycle balance of the canister after transferring cycles decreases below the canister's freezing limit.
+    This system call traps if trying to transfer more cycles than returned by `ic0.canister_liquid_cycle_balance128`.
 
 -   `ic0.call_cycles_add128 : (amount_high : i64, amount_low : i64) -> ()`
 
@@ -1778,9 +1825,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This system call traps if there is no call under construction, i.e., if not called between `ic0.call_new` and `ic0.call_perform`.
 
-    This system call traps if trying to transfer more cycles than are in the current balance of the canister.
-
-    This system call traps if the cycle balance of the canister after transferring cycles decreases below the canister's freezing limit.
+    This system call traps if trying to transfer more cycles than returned by `ic0.canister_liquid_cycle_balance128`.
 
 -   `ic0.call_perform  : () -> ( err_code : i32 )`
 
@@ -1806,7 +1851,7 @@ This specification currently does not go into details about which actions cost h
 
 -   `ic0.canister_cycle_balance : () → i64`
 
-    Indicates the current cycle balance of the canister. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
+    Indicates the current cycle balance of the canister. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message and calls finalized via `ic0.call_perform`, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
 
 :::note
 
@@ -1816,7 +1861,11 @@ This call traps if the current balance does not fit into a 64-bit value. Caniste
 
 -   `ic0.canister_cycle_balance128 : (dst : I) → ()`; `I ∈ {i32, i64}`
 
-    Indicates the current cycle balance of the canister by copying the value at the location `dst` in the canister memory. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
+    Indicates the current cycle balance of the canister by copying the value at the location `dst` in the canister memory. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message and calls finalized via `ic0.call_perform`, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
+
+-   `ic0.canister_liquid_cycle_balance128 : (dst : I) → ()`; `I ∈ {i32, i64}`
+
+    Indicates the current amount of cycles that is available for spending in calls and execution by copying the value at the location `dst` in the canister memory. This amount of cycles can be safely attached to a call via `ic0.call_cycles_add128` as long as the memory usage of the canister does not increase for the rest of the current message execution. Hence, it is recommended to never attach the entire `ic0.canister_liquid_cycle_balance128` to a call, but leave some slack based on the expected canister memory usage and freezing threshold.
 
 -   `ic0.msg_cycles_available : () → i64`
 
@@ -2713,7 +2762,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method takes a snapshot of the specified canister. A snapshot consists of the wasm memory, stable memory, certified variables, wasm chunk store and wasm binary.
 
-Subsequent `take_canister_snapshot` calls will create a new snapshot. However, a `take_canister_snapshot` call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing a snapshot ID via the optional `replace_snapshot` parameter. The snapshot identified by the specified ID will be deleted once a new snapshot has been successfully created. Currently, only one snapshot per canister is allowed.
+Subsequent `take_canister_snapshot` calls will create a new snapshot. However, a `take_canister_snapshot` call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing a snapshot ID via the optional `replace_snapshot` parameter. The snapshot identified by the specified ID will be deleted once a new snapshot has been successfully created.
 
 It's important to note that a snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
 
@@ -2747,7 +2796,7 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots. Currently, at most one snapshot per canister will be stored.
+This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots.
 
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
@@ -3289,7 +3338,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
       memory_usage_raw_module : Nat;
       memory_usage_canister_history : Nat;
       memory_usage_chunk_store : Nat;
-      memory_usage_snapshot : Nat;
+      memory_usage_snapshots : Nat;
       freezing_threshold : Nat;
       subnet_id : Principal;
       subnet_size : Nat;
@@ -3306,6 +3355,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
       arg: Blob;
       transferred_cycles: Nat;
       callback: Callback;
+      timeout_seconds : NoTimeout | Nat;
     }
 
     UpdateFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
@@ -3357,13 +3407,13 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
         new_global_timer : NoGlobalTimer | Nat;
         cycles_used : Nat;
       }
-      update_methods : MethodName ↦ ((Arg, CallerId, Env, AvailableCycles) -> UpdateFunc)
+      update_methods : MethodName ↦ ((Arg, CallerId, Deadline, Env, AvailableCycles) -> UpdateFunc)
       query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
       composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
       heartbeat : (Env) -> SystemTaskFunc
       global_timer : (Env) -> SystemTaskFunc
       on_low_wasm_memory : (Env) -> SystemTaskFunc
-      callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
+      callbacks : (Callback, Response, Deadline, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
       composite_callbacks : (Callback, Response, Env) -> UpdateFunc
       inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
         status : Accept | Reject;
@@ -3408,6 +3458,7 @@ CallOrigin
   | FromCanister {
       calling_context : CallId;
       callback: Callback;
+      deadline : NoDeadline | Timestamp | Expired Timestamp;
     }
   | FromSystemTask
 CallCtxt = {
@@ -3603,7 +3654,6 @@ Subnet = {
   subnet_size : Nat;
 }
 Snapshot = {
-  snapshot_id : SnapshotId;
   wasm_state : WasmState;
   raw_module : Blob;
   chunk_store : ChunkStore;
@@ -3614,7 +3664,7 @@ Snapshot = {
 S = {
   requests : Request ↦ (RequestStatus, Principal);
   canisters : CanisterId ↦ CanState;
-  snapshots: CanisterId ↦ Snapshot;
+  snapshots: CanisterId ↦ SnapshotId ↦ Snapshot;
   controllers : CanisterId ↦ Set Principal;
   compute_allocation : CanisterId ↦ Nat;
   memory_allocation : CanisterId ↦ Nat;
@@ -3676,7 +3726,7 @@ The (unspecified) function `idle_cycles_burned_rate(compute_allocation, memory_a
 freezing_limit(compute_allocation, memory_allocation, freezing_threshold, memory_usage, subnet_size) = idle_cycles_burned_rate(compute_allocation, memory_allocation, memory_usage, subnet_size) * freezing_threshold / (24 * 60 * 60)
 ```
 
-The (unspecified) functions `memory_usage_wasm_state(wasm_state)`, `memory_usage_raw_module(raw_module)`, `memory_usage_canister_history(canister_history)`, `memory_usage_chunk_store(chunk_store)`, and `memory_usage_snapshot(snapshot)` determine the canister's memory usage in bytes consumed by its Wasm state, raw Wasm binary, canister history, chunk store, and snapshot, respectively.
+The (unspecified) functions `memory_usage_wasm_state(wasm_state)`, `memory_usage_raw_module(raw_module)`, `memory_usage_canister_history(canister_history)`, `memory_usage_chunk_store(chunk_store)`, and `memory_usage_snapshots(snapshots)` determine the canister's memory usage in bytes consumed by its Wasm state, raw Wasm binary, canister history, chunk store, and snapshots, respectively.
 
 The freezing limit of canister `A` in state `S` can be obtained as follows:
 ```
@@ -3689,7 +3739,7 @@ freezing_limit(S, A) =
       memory_usage_raw_module(S.canisters[A].raw_module) +
       memory_usage_canister_history(S.canister_history[A]) +
       memory_usage_chunk_store(S.chunk_store[A]) +
-      memory_usage_snapshot(S.snapshots[A]),
+      memory_usage_snapshots(S.snapshots[A]),
     S.canister_subnet[A].subnet_size,
   )
 ```
@@ -3778,12 +3828,13 @@ The following is an incomplete list of invariants that should hold for the abstr
     ∀ (_ ↦ Ctxt) ∈ S.call_contexts:
       S.canister_status[Ctxt.canister] ≠ Stopped
     ```
--   Referenced call contexts exist:
+-   Referenced call contexts exist, unless the origins have expired deadlines:
+
     ```
-    ∀ CallMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ∈ dom(S.call_contexts)
-    ∀ ResponseMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ∈ dom(S.call_contexts)
-    ∀ (_ ↦ {needs_to_respond = true, origin = FromCanister O, …}) ∈ S.call_contexts: O.calling_context ∈ dom(S.call_contexts)
-    ∀ (_ ↦ Stopping Origins) ∈ S.canister_status: ∀(FromCanister O, _) ∈ Origins. O.calling_context ∈ dom(S.call_contexts)
+    ∀ CallMessage {origin = FromCanister O, …} ∈ S.messages. O.deadline ≠ Expired _ ⇒ O.calling_context ∈ dom(S.call_contexts)
+    ∀ ResponseMessage {origin = FromCanister O, …} ∈ S.messages. O.deadline ≠ Expired _ ⇒ O.calling_context ∈ dom(S.call_contexts)
+    ∀ (_ ↦ {needs_to_respond = true, origin = FromCanister O, …}) ∈ S.call_contexts: O.deadline ≠ Expired _ ⇒ O.calling_context ∈ dom(S.call_contexts)
+    ∀ (_ ↦ Stopping Origins) ∈ S.canister_status: ∀(FromCanister O, _) ∈ Origins. O.deadline ≠ Expired _ ⇒ O.calling_context ∈ dom(S.call_contexts)
     ```
 ### State transitions
 
@@ -3832,15 +3883,22 @@ is_effective_canister_id(Request {canister_id = ic_principal, method = install_c
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
-#### API Request submission
 
-After a node accepts a request via `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`, the request gets added to the IC state as `Received`.
+#### API Request submission {#api-request-submission}
 
-This may only happen if the signature is valid and is created with a correct key. Due to this check, the envelope is discarded after this point.
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`
+and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
-Requests that have expired are dropped here.
+This can only happen if the target canister is not frozen and
 
-Ingress message inspection is applied, and messages that are not accepted by the canister are dropped.
+- the target canister is not empty, the target canister is running, and ingress message inspection succeeds for calls to a regular canister;
+
+- the management canister method can be called via ingress messages and the caller is a controller of the target canister for calls to the management canister
+  (or the call targets the [IC Provisional API](#ic-provisional-api) on a development instance).
+
+Moreover, the signature must be valid and created with a correct key. Due to this check, the envelope is discarded after this point.
+
+Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
 Submitted request
 `E : Envelope`
@@ -3854,6 +3912,7 @@ E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
 E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
 is_effective_canister_id(E.content, ECID)
+liquid_balance(S, E.content.canister_id) ≥ 0
 ( E.content.canister_id = ic_principal
   E.content.arg = candid({canister_id = CanisterId, …})
   E.content.sender ∈ S.controllers[CanisterId]
@@ -3881,7 +3940,7 @@ is_effective_canister_id(E.content, ECID)
     memory_usage_raw_module = memory_usage_raw_module(S.canisters[E.content.canister_id].raw_module);
     memory_usage_canister_history = memory_usage_canister_history(S.canister_history[E.content.canister_id]);
     memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[E.content.canister_id]);
-    memory_usage_snapshot = memory_usage_snapshot(S.snapshots[E.content.canister_id]);
+    memory_usage_snapshots = memory_usage_snapshots(S.snapshots[E.content.canister_id]);
     freezing_threshold = S.freezing_threshold[E.content.canister_id];
     subnet_id = S.canister_subnet[E.content.canister_id].subnet_id;
     subnet_size = S.canister_subnet[E.content.canister_id].subnet_size;
@@ -3889,7 +3948,6 @@ is_effective_canister_id(E.content, ECID)
     status = simple_status(S.canister_status[E.content.canister_id]);
     canister_version = S.canister_version[E.content.canister_id];
   }
-  liquid_balance(S, E.content.canister_id) ≥ 0
   S.canisters[E.content.canister_id].module.inspect_message
     (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Env) = Return {status = Accept;}
 )
@@ -4211,7 +4269,7 @@ Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
   memory_usage_raw_module(S.canisters[C].raw_module) +
   memory_usage_canister_history(S.canister_history[C]) +
   memory_usage_chunk_store(S.chunk_store[C]) +
-  memory_usage_snapshot(S.snapshots[C])
+  memory_usage_snapshots(S.snapshots[C])
 
 if S.memory_allocation[C] = 0:
   Wasm_memory_capacity = S.wasm_memory_limit[C]
@@ -4238,6 +4296,17 @@ S with
 
 The transition models the actual execution of a message, whether it is an initial call to a public method or a response. In either case, a call context already exists (see transition "Call context creation").
 
+For convenience, we first define a function that extracts the deadline from a call context. Note that user and system messages have no deadline.
+
+```html
+
+deadline_of_context(ctxt) = match ctxt.origin with
+    FromCanister O if O.deadline ≠ Expired _ → O.deadline
+    FromCanister O if O.deadline = Expired ts → ts
+    otherwise → NoDeadline
+
+```
+
 Conditions  
 
 ```html
@@ -4248,6 +4317,8 @@ S.messages = Older_messages · FuncMessage M · Younger_messages
 S.on_low_wasm_memory_hook_status[M.receiver] ≠ Ready
 S.canisters[M.receiver] ≠ EmptyCanister
 Mod = S.canisters[M.receiver].module
+Ctxt = S.call_contexts[M.call_context]
+Deadline = deadline_of_context(Ctxt)
 
 Is_response = M.entry_point == Callback _ _ _
 
@@ -4263,7 +4334,7 @@ Env = {
   memory_usage_raw_module = memory_usage_raw_module(S.canisters[M.receiver].raw_module);
   memory_usage_canister_history = memory_usage_canister_history(S.canister_history[M.receiver]);
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[M.receiver]);
-  memory_usage_snapshot = memory_usage_snapshot(S.snapshots[M.receiver]);
+  memory_usage_snapshots = memory_usage_snapshots(S.snapshots[M.receiver]);
   freezing_threshold = S.freezing_threshold[M.receiver];
   subnet_id = S.canister_subnet[M.receiver].subnet_id;
   subnet_size = S.canister_subnet[M.receiver].subnet_size;
@@ -4272,9 +4343,9 @@ Env = {
   canister_version = S.canister_version[M.receiver];
 }
 
-Available = S.call_contexts[M.call_contexts].available_cycles
+Available = Ctxt.available_cycles
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = Mod.update_methods[Name](Arg, Caller, Env, Available)
+  F = Mod.update_methods[Name](Arg, Caller, Deadline, Env, Available)
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = S.wasm_memory_limit[M.receiver]
 )
@@ -4286,7 +4357,7 @@ or
 )
 or
 ( M.entry_point = Callback Callback Response RefundedCycles
-  F = Mod.callbacks(Callback, Response, RefundedCycles, Env, Available)
+  F = Mod.callbacks(Callback, Response, Deadline, RefundedCycles, Env, Available)
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = 0
 )
@@ -4338,7 +4409,7 @@ if
       memory_usage_raw_module(S.canisters[M.receiver].raw_module) +
       memory_usage_canister_history(S.canister_history[M.receiver]) +
       memory_usage_chunk_store(S.chunk_store[M.receiver]) +
-      memory_usage_snapshot(S.snapshots[M.receiver]),
+      memory_usage_snapshots(S.snapshots[M.receiver]),
     S.canister_subnet[M.receiver].subnet_size,
   )
   New_reserved_balance ≤ S.reserved_balance_limits[M.receiver]
@@ -4351,10 +4422,10 @@ if
     memory_usage_raw_module(S.canisters[M.receiver].raw_module) +
     memory_usage_canister_history(S.canister_history[M.receiver]) +
     memory_usage_chunk_store(S.chunk_store[M.receiver]) +
-    memory_usage_snapshot(S.snapshots[M.receiver])
+    memory_usage_snapshots(S.snapshots[M.receiver])
   (S.memory_allocation[M.receiver] = 0) or (Total_memory_usage ≤ S.memory_allocation[M.receiver])
   (Wasm_memory_limit = 0) or |res.new_state.store.mem| <= Wasm_memory_limit
-  (res.response = NoResponse) or S.call_contexts[M.call_context].needs_to_respond
+  (res.response = NoResponse) or Ctxt.needs_to_respond
 then
   S with
     canisters[M.receiver].wasm_state = res.new_state;
@@ -4366,6 +4437,10 @@ then
           origin = FromCanister {
             call_context = M.call_context;
             callback = call.callback;
+            deadline = if call.timeout_seconds ≠ NoTimeout
+                        then S.time[M.receiver] + call.timeout_seconds * 10^9
+                        else NoDeadline
+
           };
           caller = M.receiver;
           callee = call.callee;
@@ -4376,7 +4451,7 @@ then
         }
       | call ∈ res.new_calls ] ·
       [ ResponseMessage {
-          origin = S.call_contexts[M.call_context].origin
+          origin = Ctxt.origin;
           response = res.response;
           refunded_cycles = Available - res.cycles_accepted;
         }
@@ -4487,6 +4562,75 @@ S.messages =
       }
 ```
 
+#### Call expiry {#call-expiry}
+
+These transitions expire bounded-wait calls. The transition can be taken before the specified call deadline (e.g., due to high system load), and we thus ignore the caller time in these transitions. We define two variants of the transition, one that expires messages, and one that expires calls that are in progress (i.e., have open downstream call contexts).
+
+The first transition defines the expiry of messages.
+
+Condition:
+
+```html
+S.messages = Older_messages · M · Younger_messages
+M = CallMessage _ ∨ M = ResponseMessage _
+M.origin = FromCanister O
+O.deadline = timestamp
+```
+
+State after:
+
+```html
+S.messages = Older_messages · (M with origin = FromCanister O with deadline = Expired timestamp) · Younger_messages ·
+    ResponseMessage {
+        origin = FromCanister O with deadline = NoDeadline;
+        response = Reject (SYS_UNKNOWN, <implementation-specific>);
+        refunded_cycles = 0;
+    }
+```
+
+The next two transitions define the expiry of calls that are being processed by the callee. The first transition deals with regular calls.
+
+Condition:
+
+```html
+ctxt_id ∈ S.call_contexts
+S.call_contexts[ctxt_id].origin = FromCanister O
+S.call_contexts[ctxt_id].needs_to_respond = true
+O.deadline = timestamp
+```
+
+State after:
+
+```html
+S.call_contexts[ctxt_id].origin = FromCanister O with deadline = Expired timestamp
+S.messages = S.messages · ResponseMessage {
+    origin = FromCanister O with deadline = NoDeadline;
+    response = Reject (SYS_UNKNOWN, <implementation-specific>);
+    refunded_cycles = 0;
+}
+```
+
+The second transition deals with the special case of a call that's trying to stop the `target_canister`
+
+Condition:
+
+```html
+S.canister_status[target_canister] = Stopping (prefix · (FromCanister O, stop_ts) · suffix)
+O.deadline = timestamp
+```
+
+State after:
+
+```html
+S.canister_status[target_canister] =
+    Stopping (prefix · (FromCanister O with deadline = Expired timestamp, stop_ts) · suffix)
+S.messages = S.messages · ResponseMessage {
+    origin = FromCanister O with deadline = NoDeadline;
+    response = Reject (SYS_UNKNOWN, <implementation-specific>);
+    refunded_cycles = 0;
+}
+```
+
 #### Call context starvation {#rule-starvation}
 
 If the call context needs to respond (in particular, if the call context is not for a system task) and there is no call, downstream call context, or response that references a call context, then a reject is synthesized. The error message below is *not* indicative. In particular, if the IC has an idea about *why* this starved, it can put that in there (e.g. the initial message handler trapped with an out-of-memory access).
@@ -4496,10 +4640,10 @@ Conditions
 ```html
 
 S.call_contexts[Ctxt_id].needs_to_respond = true
-∀ CallMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id
-∀ ResponseMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id
-∀ (_ ↦ {needs_to_respond = true, origin = FromCanister O, …}) ∈ S.call_contexts: O.calling_context ≠ Ctxt_id
-∀ (_ ↦ Stopping Origins) ∈ S.canister_status: ∀(FromCanister O, _) ∈ Origins. O.calling_context ≠ Ctxt_id
+∀ CallMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
+∀ ResponseMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
+∀ (_ ↦ {needs_to_respond = true, origin = FromCanister O, …}) ∈ S.call_contexts: O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
+∀ (_ ↦ Stopping Origins) ∈ S.canister_status: ∀(FromCanister O, _) ∈ Origins. O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
 
 ```
 
@@ -4515,7 +4659,7 @@ S with
       ResponseMessage {
         origin = S.call_contexts[Ctxt_id].origin;
         response = Reject (CANISTER_ERROR, <implementation-specific>);
-        refunded_cycles = S.call_contexts[Ctxt_id].available_cycles
+        refunded_cycles = S.call_contexts[Ctxt_id].available_cycles;
       }
 
 ```
@@ -4529,10 +4673,10 @@ Conditions
 ```html
 
 S.call_contexts[Ctxt_id].needs_to_respond = false
-∀ CallMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id
-∀ ResponseMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id
-∀ (_ ↦ {needs_to_respond = true, origin = FromCanister O, …}) ∈ S.call_contexts: O.calling_context ≠ Ctxt_id
-∀ (_ ↦ Stopping Origins) ∈ S.canister_status: ∀(FromCanister O, _) ∈ Origins. O.calling_context ≠ Ctxt_id
+∀ CallMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
+∀ ResponseMessage {origin = FromCanister O, …} ∈ S.messages. O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
+∀ (_ ↦ {needs_to_respond = true, origin = FromCanister O, …}) ∈ S.call_contexts: O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
+∀ (_ ↦ Stopping Origins) ∈ S.canister_status: ∀(FromCanister O, _) ∈ Origins. O.calling_context ≠ Ctxt_id ∨ O.deadline = Expired _
 
 ```
 
@@ -4697,7 +4841,7 @@ Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_sta
   memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
   memory_usage_canister_history(New_canister_history) +
   memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshot(S.snapshots[A.canister_id])
+  memory_usage_snapshots(S.snapshots[A.canister_id])
 
 if New_memory_allocation > 0:
   Total_memory_usage ≤ New_memory_allocation
@@ -4843,7 +4987,7 @@ S with
               memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
               memory_usage_canister_history(S.canister_history[A.canister_id]) +
               memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-              memory_usage_snapshot(S.snapshots[A.canister_id]),
+              memory_usage_snapshots(S.snapshots[A.canister_id]),
             S.freezing_threshold[A.canister_id],
             S.canister_subnet[A.canister_id].subnet_size,
           );
@@ -5033,7 +5177,7 @@ Env = {
   memory_usage_raw_module = memory_usage_raw_module(A.wasm_module);
   memory_usage_canister_history = memory_usage_canister_history(New_canister_history);
   memory_usage_chunk_store = memory_usage_chunk_store(New_chunk_store);
-  memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
+  memory_usage_snapshots = memory_usage_snapshots(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
   subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
@@ -5055,7 +5199,7 @@ Total_memory_usage = memory_usage_wasm_state(New_state) +
   memory_usage_raw_module(A.wasm_module) +
   memory_usage_canister_history(New_canister_history) +
   memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshot(S.snapshots[A.canister_id])
+  memory_usage_snapshots(S.snapshots[A.canister_id])
 
 if S.memory_allocation[A.canister_id] > 0:
   Total_memory_usage ≤ S.memory_allocation[A.canister_id]
@@ -5155,7 +5299,7 @@ Env = {
   memory_usage_raw_module = memory_usage_raw_module(S.canisters[A.canister_id].raw_module);
   memory_usage_canister_history = memory_usage_canister_history(S.canister_history[A.canister_id]);
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[A.canister_id]);
-  memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
+  memory_usage_snapshots = memory_usage_snapshots(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
   subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
@@ -5220,7 +5364,7 @@ Total_memory_usage = memory_usage_wasm_state(New_state) +
   memory_usage_raw_module(A.wasm_module) +
   memory_usage_canister_history(New_canister_history) +
   memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshot(S.snapshots[A.canister_id])
+  memory_usage_snapshots(S.snapshots[A.canister_id])
 
 if S.memory_allocation[A.canister_id] > 0:
   Total_memory_usage ≤ S.memory_allocation[A.canister_id]
@@ -5949,12 +6093,11 @@ M.method_name = 'take_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 if A.replace_snapshot is not null:
-  S.snapshots[A.canister_id].snapshot_id = A.replace_snapshot
+  A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
 else:
-  S.snapshots[A.canister_id] = null
+  |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
 
 New_snapshot = Snapshot {
-  snapshot_id = Snapshot_id;
   wasm_state = S.canisters[A.canister_id].wasm_state;
   raw_module = S.canisters[A.canister_id].raw_module;
   chunk_store = S.chunk_store[A.canister_id];
@@ -5975,7 +6118,8 @@ State after
 ```html
 
 S' = S with
-    snapshots[A.canister_id] = New_snapshot
+    snapshots[A.canister_id][A.replace_snapshot] = (deleted)
+    snapshots[A.canister_id][Snapshot_id] = New_snapshot
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     messages = Older_messages · Younger_messages ·
@@ -5984,7 +6128,7 @@ S' = S with
         response = Reply (candid({
           id = Snapshot_id;
           taken_at_timestamp = S.time[A.canister_id];
-          total_size = memory_usage_snapshot(New_snapshot);
+          total_size = memory_usage_snapshots([Snapshot_id → New_snapshot]);
         }));
         refunded_cycles = M.transferred_cycles;
       }
@@ -6005,14 +6149,15 @@ M.callee = ic_principal
 M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
-S.snapshots[A.canister_id].snapshot_id = A.snapshot_id
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 
 New_state = {
-  wasm_state = S.snapshots[A.canister_id].wasm_state;
-  raw_module = S.snapshots[A.canister_id].raw_module;
-  module = parse_wasm_mod(S.snapshots[A.canister_id].raw_module);
-  public_custom_sections = parse_public_custom_sections(S.snapshots[A.canister_id].raw_module);
-  private_custom_sections = parse_private_custom_sections(S.snapshots[A.canister_id].raw_module);
+  wasm_state = Snapshot.wasm_state;
+  raw_module = Snapshot.raw_module;
+  module = parse_wasm_mod(Snapshot.raw_module);
+  public_custom_sections = parse_public_custom_sections(Snapshot.raw_module);
+  private_custom_sections = parse_private_custom_sections(Snapshot.raw_module);
 }
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], S.snapshots[A.canister_id], New_state)
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
@@ -6030,9 +6175,9 @@ New_canister_history = {
     canister_version = S.canister_version[A.canister_id] + 1
     origin = change_origin(M.caller, A.sender_canister_version, M.origin);
     details = LoadSnapshot {
-      snapshot_id = S.snapshots[A.canister_id].snapshot_id
-      canister_version = S.snapshots[A.canister_id].canister_version
-      taken_at_timestamp = S.snapshots[A.canister_id].take_at_timestamp
+      snapshot_id = A.snapshot_id
+      canister_version = Snapshot.canister_version
+      taken_at_timestamp = Snapshot.take_at_timestamp
     };
   };
 }
@@ -6044,7 +6189,7 @@ if S.memory_allocation[A.canister_id] > 0:
     memory_usage_raw_module(New_state.raw_module) +
     memory_usage_canister_history(New_canister_history) +
     memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-    memory_usage_snapshot(S.snapshots[A.canister_id]) ≤ S.memory_allocation[A.canister_id]
+    memory_usage_snapshots(S.snapshots[A.canister_id]) ≤ S.memory_allocation[A.canister_id]
 
 ```
 
@@ -6054,8 +6199,8 @@ State after
 
 S' = S with
     canisters[A.canister_id] = New_state
-    chunk_store[A.canister_id] = S.snapshots[A.canister_id].chunk_store
-    certified_data[A.canister_id] = S.snapshots[A.canister_id].certified_data
+    chunk_store[A.canister_id] = Snapshot.chunk_store
+    certified_data[A.canister_id] = Snapshot.certified_data
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     canister_history[A.canister_id] = New_canister_history
@@ -6082,11 +6227,11 @@ M.method_name = 'list_canister_snapshots'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
-Snapshots = if S.snapshots[A.canister_id] is null then [] else [{
-    id = S.snapshots[A.canister_id].snapshot_id;
-    taken_at_timestamp = S.snapshots[A.canister_id].taken_at_timestamp;
-    total_size = memory_usage_snapshot(S.snapshots[A.canister_id]);
-  }]
+Snapshots = [{
+  id = Snapshot_id;
+  taken_at_timestamp = Snapshot.taken_at_timestamp;
+  total_size = memory_usage_snapshots([Snapshot_id → Snapshot]);
+} | Snapshot_id → Snapshot ∈ S.snapshots[A.canister_id]]
 
 ```
 
@@ -6115,7 +6260,7 @@ M.callee = ic_principal
 M.method_name = 'delete_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
-S.snapshots[A.canister_id].snapshot_id = A.snapshot_id 
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 
 ```
 
@@ -6124,7 +6269,7 @@ State after
 ```html
 
 S with
-    S.snapshots[A.canister_id] = null
+    S.snapshots[A.canister_id][A.snapshot_id] = (deleted)
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
@@ -6148,9 +6293,12 @@ S.messages = Older_messages · ResponseMessage RM · Younger_messages
 RM.origin = FromCanister {
     call_context = Ctxt_id
     callback = Callback
+    deadline = D
   }
+Ctxt_id ∈ dom(S.call_contexts)
 not S.call_contexts[Ctxt_id].deleted
 S.call_contexts[Ctxt_id].canister ∈ dom(S.balances)
+D ≠ Expired _
 
 ```
 
@@ -6173,7 +6321,7 @@ S with
 
 ```
 
-If the responded call context does not exist anymore, because the canister has been uninstalled since, the refunded cycles are still added to the canister balance, but no function invocation is enqueued:
+If the responded call context does not exist anymore, because the canister has been uninstalled since, the refunded cycles are still added to the canister balance, but no function invocation is enqueued.
 
 Conditions  
 
@@ -6183,9 +6331,12 @@ S.messages = Older_messages · ResponseMessage RM · Younger_messages
 RM.origin = FromCanister {
     call_context = Ctxt_id
     callback = Callback
+    deadline = D
   }
+Ctxt_id ∈ dom(S.call_contexts)
 S.call_contexts[Ctxt_id].deleted
 S.call_contexts[Ctxt_id].canister ∈ dom(S.balances)
+D ≠ Expired _
 
 ```
 
@@ -6198,6 +6349,22 @@ S with
       S.balances[S.call_contexts[Ctxt_id].canister] + RM.refunded_cycles + MAX_CYCLES_PER_RESPONSE
     messages = Older_messages · Younger_messages
 
+```
+
+#### Dropping expired messages {#message-timeout}
+
+Condition:
+```html
+S.messages = Older_messages · M · Younger_messages
+M = ResponseMessage _ ∨ M = CallMessage _
+M.origin = FromCanister O
+O.deadline = Expired _
+```
+
+State after
+
+```html
+S.messages = Older_messages · Younger_messages
 ```
 
 #### Respond to user request
@@ -6228,9 +6395,9 @@ S with
 
 NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
-#### Request clean up
+#### Update call request clean up
 
-The IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
+The IC will keep the data for a replied or rejected update `call` request around for a certain, implementation defined amount of time, to allow users to poll for the data with `read_state` requests . After that time, the data of the request will be dropped:
 
 Conditions  
 
@@ -6559,7 +6726,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               memory_usage_raw_module = memory_usage_raw_module(S.canisters[Canister_id].raw_module);
               memory_usage_canister_history = memory_usage_canister_history(S.canister_history[Canister_id]);
               memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[Canister_id]);
-              memory_usage_snapshot = memory_usage_snapshot(S.snapshots[Canister_id]);
+              memory_usage_snapshots = memory_usage_snapshots(S.snapshots[Canister_id]);
               freezing_threshold = S.freezing_threshold[Canister_id];
               subnet_id = S.canister_subnet[Canister_id].subnet_id;
               subnet_size = S.canister_subnet[Canister_id].subnet_size;
@@ -6854,6 +7021,7 @@ Params = {
   sysenv : Env;
   cycles_refunded : Nat;
   method_name : NoText | Text;
+  deadline : NoDeadline | Timestamp;
 }
 ExecutionState = {
   wasm_state : WasmState;
@@ -6895,7 +7063,7 @@ liquid_balance(es) =
         es.params.sysenv.memory_usage_raw_module +
         es.params.sysenv.memory_usage_canister_history +
         es.params.sysenv.memory_usage_chunk_store +
-        es.params.sysenv.memory_usage_snapshot,
+        es.params.sysenv.memory_usage_snapshots,
       es.params.sysenv.subnet_size,
     )
   )
@@ -6911,6 +7079,7 @@ liquid_balance(es) =
       sysenv = (undefined);
       cycles_refunded = 0;
       method_name = NoText;
+      deadline = NoDeadline;
     }
     empty_execution_state = {
       wasm_state = (undefined);
@@ -7081,10 +7250,15 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `update_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_update <method>`, and has value
     ```
-    update_methods[method] = λ (arg, caller, sysenv, available) → λ wasm_state →
+    update_methods[method] = λ (arg, caller, deadline, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
-          params = empty_params with { arg = arg; caller = caller; sysenv }
+          params = empty_params with {
+              arg = arg;
+              caller = caller;
+              deadline = deadline;
+              sysenv;
+          }
           balance = sysenv.balance
           cycles_available = available;
           context = U
@@ -7226,10 +7400,11 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 -   The function `callbacks` of the `CanisterModule` is defined as follows
     ```
     I ∈ {i32, i64}
-    callbacks = λ(callbacks, response, refunded_cycles, sysenv, available) → λ wasm_state →
+    callbacks = λ(callbacks, response, deadline, refunded_cycles, sysenv, available) → λ wasm_state →
       let params0 = empty_params with {
-        sysenv
+        sysenv;
         cycles_refunded = refund_cycles;
+        deadline;
       }
       let (fun, env, params, context) = match response with
         Reply data ->
@@ -7429,6 +7604,12 @@ ic0.msg_reject_msg_copy<es>(dst : I, offset : I, size : I) =
   if es.context ∉ {Rt, CRt} then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.reject_msg)
 
+ic0.msg_deadline<es>() : i64 =
+    if es.context ∉ {U, Q, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+    if es.params.deadline = Timestamp t
+        then return t
+        else return 0
+
 I ∈ {i32, i64}
 ic0.msg_reply_data_append<es>(src : I, size : I) =
   if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
@@ -7527,6 +7708,11 @@ ic0.canister_cycle_balance128<es>(dst : I) =
   let amount = es.balance
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
+I ∈ {i32, i64}
+ic0.canister_liquid_cycle_balance128<es>(dst : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  copy_cycles_to_canister<es>(dst, liquid_balance(es).to_little_endian_bytes())
+
 ic0.canister_status<es>() : i32 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   match es.params.sysenv.canister_status with
@@ -7582,6 +7768,14 @@ ic0.call_new<es>(
       on_cleanup = NoClosure
     };
   }
+
+ic0.call_with_best_effort_response<es>(timeout_seconds : i32) =
+  if
+      es.context ∉ {U, CQ, Ry, Rt, CRy, CRt, T}
+      or es.pending_call = NoPendingCall
+      or es.pending_call.timeout_seconds ≠ NoTimeout
+  then Trap {cycles_used = es.cycles_used;}
+  es.pending_call.timeout_seconds := min(timeout_seconds, MAX_CALL_TIMEOUT)
 
 I ∈ {i32, i64}
 ic0.call_on_cleanup<es> (fun : I, env : I) =
