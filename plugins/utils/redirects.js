@@ -860,6 +860,8 @@ const redirects = `
   /docs/current/samples/pos /samples
   /docs/current/samples/t-ecdsa-sample /samples
   /docs/current/samples/vetkd-encrypted-notes /samples
+  /docs/samples/overview /samples
+  /docs/current/samples/overview /samples
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
