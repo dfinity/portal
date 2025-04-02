@@ -1273,6 +1273,7 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 -   It may declare (import or export) at most one memory.
 
 -   It may only import a function if it is listed in [Overview of imports](#system-api-imports).
+    In particular, all imported functions belong to the `ic0` module (denoted by the prefix `ic0.`).
     The value of `I ∈ {i32, i64}` specifying whether the imported functions have 32-bit or 64-bit pointers
     is derived from the bit-width of the declared memory defaulting to `I = i32` if the canister declares no memory.
 
@@ -1464,6 +1465,8 @@ The 32-bit stable memory System API (`ic0.stable_size`, `ic0.stable_grow`, `ic0.
 :::
 
 The following sections describe various System API functions, also referred to as system calls, which we summarize here.
+
+All the following functions belong to the `ic0` module (denoted by the prefix `ic0.`).
 
 In the following, the value of `I ∈ {i32, i64}` specifies whether the imported functions have 32-bit or 64-bit pointers.
 Given a canister module, the value of `I ∈ {i32, i64}` is derived from the bit-width of the declared memory
