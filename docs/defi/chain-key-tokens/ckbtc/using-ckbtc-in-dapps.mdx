@@ -14,7 +14,7 @@ ckBTC is an ICRC-2 compliant token, meaning it supports the [ICRC-1](https://git
 
 To integrate ckBTC into your dapp, you can write code that uses the [ICRC-1 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). For token transfers and account balances, ckBTC requests must be sent to the ICRC-1 ledger canister with principal ID `mxzaz-hqaaa-aaaar-qaada-cai`.
 
-## Write a smart contract that uses ckBTC
+## Write a smart contract that trades ckBTC
 
 To write canister code that makes calls to the ICRC-1 ledger, you will need to use inter-canister calls and specify the principal ID of the ICRC-1 ledger canister. Then, to interact with ckBTC, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
@@ -156,6 +156,19 @@ ic_cdk::export_candid!();
 </Tabs>
 
 View the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) for more information on sending and receiving tokens.
+
+## Write a smart contract that mints and burns ckBTC
+
+When building dapps where users can deposit bitcoin to receive ckBTC or burn ckBTC to withdraw bitcoin, developers are advised to adhere to the following best practices.
+
+In order to mint ckBTC, the user must first deposit bitcoin into the Bitcoin address returned by the endpoint `get_btc_address`, which is tied to the user's prinicipal ID and possibly a subaccount.
+
+Next, the user should issue query calls to the `bitcoin_get_utxos_query` endpoint of the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister) to retrieve the unspent outputs of the Bitcoin address obtained in the first step.
+If the user does not know for which unspent outputs ckBTC has already been minted, the `get_known_utxos` query endpoint can be called on the ckBTC minter, returning the known unspent outputs for the Bitcoin address derived from the user's principal ID (and possibly a subaccount).
+
+If there is an unspent output that the ckBTC minter has not seen yet, the user can issue an update call to the `update_balance` endpoint on the ckBTC minter. The ckBTC minter will then mint ckBTC for each newly discovered unspent output.
+
+The recommended mechanism to withdraw bitcoin is to first create an [ICRC-2 approval](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md#icrc2_approve) by calling the `icrc2_approve` endpoint on the ckBTC ledger, authorizing the ckBTC minter (canister ID: `mqygn-kiaaa-aaaar-qaadq-cai`) to retrieve at least the amount that is to be withdrawn. After that, the user can call the `retrieve_btc_with_approval` endpoint on the ckBTC minter, which will create a transaction to burn the specified amount in ckBTC. When this operation succeeds, the ckBTC minter will then create a Bitcoin transaction to withdraw the corresponding amount in bitcoin to the user's specified Bitcoin address.
 
 ## ckBTC production application examples
 
