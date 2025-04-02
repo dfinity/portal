@@ -71,7 +71,7 @@ When this button is clicked, the application executes the following:
 
 - The frontend canister triggers the `get_evm_block` method of the backend canister.
 
-- The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-call) RPC request to an Ethereum JSON-RPC API using the Llama provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
+- The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-getblockbynumber) RPC request to an Ethereum JSON-RPC API using the Llama provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
 
     - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
 
