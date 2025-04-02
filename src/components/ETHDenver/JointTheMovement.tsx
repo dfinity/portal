@@ -45,7 +45,7 @@ const JointTheMovement: FC<{
             </motion.p>
             <MotionLink
               className="button-outline-white"
-              href="https://identity.internetcomputer.org//"
+              href="https://identity.internetcomputer.org/"
               variants={transitions.item}
             >
               Set up now!
