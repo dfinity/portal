@@ -48,7 +48,7 @@ const InternetIdentity = () => {
           </motion.p>
           <MotionLink
             className="button-outline-white"
-            href="https://identity.ic0.app/"
+            href="https://identity.internetcomputer.org//"
           >
             Create Your Internet Identity
           </MotionLink>

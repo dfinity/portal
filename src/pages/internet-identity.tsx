@@ -336,7 +336,7 @@ function InternetIdentityPage() {
               </motion.p>
               <Link
                 className="mt-3 md:mt-6 link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                href="https://identity.ic0.app/"
+                href="https://identity.internetcomputer.org//"
               >
                 <LinkArrowRight />
                 <span>Launch Internet Identity</span>
@@ -429,7 +429,7 @@ function InternetIdentityPage() {
               </motion.p>
               <Link
                 className="button-primary mt-6"
-                href="https://identity.ic0.app/"
+                href="https://identity.internetcomputer.org//"
               >
                 Launch Internet Identity
               </Link>
