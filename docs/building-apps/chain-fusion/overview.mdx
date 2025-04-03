@@ -1,0 +1,411 @@
+---
+keywords: [advanced, Chain Fusion, overview, what is chain fusion, chain, fusion, ethereum, bitcoin, multi-chain]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+
+# What is Chain Fusion?
+
+<MarkdownChipRow labels={["Advanced", "Chain Fusion"]} />
+
+Chain Fusion allows the Internet Computer Protocol to interconnect with multiple blockchains in a decentralized manner, eliminating the need for a single trusted intermediary such as a bridge. This is possible through **decentralized bi-directional communication** of the Internet Computer with other chains and the ability of ICP smart contracts to **sign and submit transactions** to other chains.
+
+Chain Fusion augments smart contracts and decentralized applications (dapps) on other chains with the unique capabilities of ICP, including:
+
+- **Web2-like user experience**: Due to low cost, fast finality, and the reverse gas model, interacting with a smart contract on ICP closely resembles the user experience of traditional web services. By complementing non-ICP smart contracts with user interfaces served from ICP, the user can interact with these smart contracts using a standard browser, without installing a crypto wallet or relying on a single point of trust.
+
+- **Performance**: Smart contracts on the IC possess the power to support a vast range of web services, from social networks to full-fledged AI models. Thus, Chain Fusion allows building more powerful dapps by combining non-ICP smart contracts with the decentralized compute power of ICP.
+
+- **Storage**: Using a competitive pricing model, a single smart contract on ICP offers up to 500GiB of storage, enabling all application data to be stored onchain. Through Chain Fusion, these decentralized storage capacities are made available to non-ICP dapps.
+
+- **Autonomy**: Unlike traditional blockchains, smart contracts on ICP are capable of scheduling messages for themselves at any given interval. This functionality allows smart contracts to operate without the need for user inputs or arbitrage to maintain their services. Chain Fusion provides this autonomy to non-ICP smart contracts without sacrificing decentralization.
+
+- **Interoperability with Web2**: ICP’s HTTPS outcalls feature permits canisters to reach out to any web service in a replicated fashion, using deterministic response results. Chain Fusion brings this Web2-Web3 interoperability to non-ICP dapps.
+
+The following examples illustrate the variety of use cases enabled by Chain Fusion:
+
+- **Trustless cronjob service**: Many Ethereum smart contracts depend on periodic activation of certain functions (such as loan liquidations, batching, etc.). These activations usually occur via arbitrageurs or external centralized services like Gelato.
+
+- **A decentralized borrowing protocol**: A DeFi protocol issuing a stablecoin backed by the world-class asset Bitcoin as collateral.
+
+- **Multi-chain asset DEX**: A decentralized exchange providing a uniform user experience, facilitating effortless and efficient trading of assets from different blockchains.
+
+- **In-browser multi-chain wallet**: Similar to a DEX, a single browser-based wallet that manages assets from different and unrelated blockchains.
+
+- **Onchain frontend**: Hosting an immutable or DAO-managed frontend for a smart contract on another blockchain.
+
+- **Decentralized oracle**: Linking Web2 services and smart contracts on other blockchains via HTTPS outcalls.
+
+## How does it work and why is it secure?
+
+<div class="text-center">
+  <img
+    src={useBaseUrl("/img/docs/chain-fusion-overview.png")}
+    alt="Chain Fusion overview"
+    width="800"
+  />
+</div>
+
+### ICP smart contracts
+
+Smart contracts on ICP are called canisters. In addition to unparalleled compute and storage capabilities (see above), canisters can make use of protocol primitives that are not natively available on other chains. For example:
+
+- Canisters can request [randomness](/docs/references/system-canisters/management-canister/#retrieving-randomness) from the protocol, which is useful in applications where fairness or unpredictability is required.
+
+- [Timers](/docs/building-apps/network-features/periodic-tasks-timers) let canisters manage their tasks by initiating specific actions periodically without depending on any external actors.
+
+- Full Web 2 integration allows canisters to both expose [HTTP interfaces](/docs/building-apps/network-features/using-http/https-outcalls/overview) and call [HTTP APIs hosted on the web](/docs/building-apps/network-features/using-http/https-outcalls/overview).
+
+### Key management and signing
+
+A key feature of the ICP’s Chain Fusion capabilities is [threshold signing](/docs/building-apps/network-features/signatures/t-ecdsa/). This feature allows canisters to control accounts on other blockchains. The private keys that are used to sign transactions are never accessible in a single physical place but are securely distributed as shares among a group of nodes performing a threshold signing protocol to generate signatures on behalf of a canister.
+
+:::info
+Threshold signing is also referred to as [chain-key cryptography](/docs/references/glossary#c).
+:::
+
+### Integrations
+
+A canister’s interaction with external blockchains requires submitting transactions and reading the state of the other chain. ICP offers two types of such integrations:
+
+- **Direct integration**: In the case of the Bitcoin integration, ICP nodes utilize a special component called the Bitcoin adapter to connect to the Bitcoin p2p network securely and independently. A set of ICP nodes effectively constitutes a native Bitcoin node.
+
+- **Decentralized RPC integration**: When it comes to Ethereum integration, IC utilizes HTTPS outcalls to contact three separate JSON RPC providers (such as Ankr, BlockPI, Alchemy, and others) to retrieve the chain state and submit signed transactions.
+
+### Whom do users trust?
+
+A key question we must answer to fully understand the security of ICP's Chain Fusion capabilities is: whom do users place trust in when using the presented infrastructure?
+
+ICP’s decentralization is rooted in the replicated execution and state of canisters which depends on the honesty of a supermajority of subnet [nodes](/docs/building-apps/essentials/network-overview#nodes). These nodes are sourced from various identifiable and DAO-approved providers that operate in globally distributed data centers.
+
+In the case of direct chain integration, the only trust assumption needed is that a supermajority of subnet nodes are honest and in consensus. In case of integration via RPC, users additionally need to trust RPC node providers. While this is seen as less secure than a direct integration that involves running a full node, it's currently deemed an acceptable trade-off (due to a reliance on replicated results from multiple independent providers).
+
+## How to build applications using Chain Fusion
+
+To showcase how powerful Chain Fusion is, here is a simple example that shows three chains interacting in one smart contract: a single **ICP** smart contract that can have custody of **bitcoin** and programmatically trigger sending it based on events observed on an **Ethereum** DeFi smart contract.
+
+This code snippet is written in both Rust and Motoko, but a similar example can also be written in TypeScript, Python, and other languages.
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+
+import evm "ic:7hfb6-caaaa-aaaar-qadga-cai";
+import ic "ic:aaaaa-aa";
+import Cycles "mo:base/ExperimentalCycles";
+import Timer "mo:base/Timer";
+
+//Actor is the computational unit of a canister
+actor {
+    let EVM_FEE = 10000000000;
+    let BITCOIN_FEE = 2016000000;
+
+        //Function checks the logs of an ETH smart contract for an event
+        //If a particular event is found, it sends bitcoin to an address
+    func check_evm_log() : async () {a
+        Cycles.add<system>(EVM_FEE);
+        let log = await evm.eth_getLogs(
+        #EthMainnet(null),
+        null,
+        {
+            // dummy address. Replace with the right one
+            addresses = ["address"];
+            fromBlock = ? #Finalized;
+            toBlock = ? #Finalized;
+            //dummy topics to look at. Replace with topics of interest
+            topics = ?[["topic1", "topic2"]];
+        },
+        );
+        switch log {
+        case (#Consistent(#Ok(_))) {
+            // if we get a consistent log, send bitcoin
+            await send_bitcoin();
+        };
+        case _ {};
+        };
+    };
+
+    // Function that sends bitcoin. This is used by check_evm_log()
+    func send_bitcoin() : async () {
+        Cycles.add<system>(BITCOIN_FEE);
+        await ic.bitcoin_send_transaction({
+        transaction = "\be\ef";
+        network = #testnet;
+        });
+    };
+
+    // Check for evm logs every 2 seconds
+    let _ = Timer.setTimer<system>(#seconds 2, check_evm_log);
+
+};
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+#![allow(non_snake_case, clippy::large_enum_variant, clippy::enum_variant_names)]
+use std::time::Duration;
+
+use candid::{self, CandidType, Deserialize, Principal};
+
+pub const SCRAPING_LOGS_INTERVAL: Duration = Duration::from_secs(3 * 60);
+
+fn setup_timers() {
+    // // Start scraping logs immediately after the install, then repeat with the interval.
+    ic_cdk_timers::set_timer(Duration::ZERO, || ic_cdk::spawn(check_evm_log()));
+    ic_cdk_timers::set_timer_interval(SCRAPING_LOGS_INTERVAL, || ic_cdk::spawn(check_evm_log()));
+}
+
+#[ic_cdk::init]
+fn init() {
+    // start timers upon canister initialization
+    setup_timers();
+}
+
+// Function checks the logs of an ETH smart contract for an event
+// If a particular event is found, it sends bitcoin to an address
+async fn check_evm_log() {
+    // the cycles we attach to the message to pay for the service provide by
+    // the EVM RPC canister
+    let cycles = 10_000_000_000;
+    // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
+    let canister_id =
+        Principal::from_text("7hfb6-caaaa-aaaar-qadga-cai").expect("principal should be valid");
+    // call the eth_getLogs function on the EVM RPC canister
+    let (result,) = ic_cdk::api::call::call_with_payment128::<
+        (RpcServices, Option<RpcConfig>, GetLogsArgs),
+        (MultiGetLogsResult,),
+    >(
+        canister_id,
+        "eth_getLogs",
+        (
+            RpcServices::EthMainnet(None),
+            None,
+            // for more information on eth_getLogs check
+            // https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs
+            GetLogsArgs {
+                fromBlock: Some(BlockTag::Finalized),
+                toBlock: Some(BlockTag::Finalized),
+                addresses: vec!["dummy_address".to_string()],
+                topics: Some(vec![vec!["topic1".to_string()], vec!["topic2".to_string()]]),
+            },
+        ),
+        cycles,
+    )
+    .await
+    .expect("Call failed");
+
+    match result {
+        MultiGetLogsResult::Consistent(_) => send_bitcoin().await,
+        MultiGetLogsResult::Inconsistent(_) => {
+            panic!("RPC providers gave inconsistent results")
+        }
+    }
+}
+
+// Function that sends bitcoin. This is used by check_evm_log()
+async fn send_bitcoin() {
+    // for more information on bitcoin_send_transaction check
+    // /docs/references/ic-interface-spec/#ic-bitcoin_send_transaction
+    ic_cdk::api::management_canister::bitcoin::bitcoin_send_transaction(
+        ic_cdk::api::management_canister::bitcoin::SendTransactionRequest {
+            transaction: b"beef".into(),
+            network: ic_cdk::api::management_canister::bitcoin::BitcoinNetwork::Testnet,
+        },
+    )
+    .await
+    .expect("Call failed");
+}
+
+//TYPE DECLARATIONSpush
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum EthSepoliaService {
+    Alchemy,
+    BlockPi,
+    PublicNode,
+    Ankr,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub struct HttpHeader {
+    pub value: String,
+    pub name: String,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub struct RpcApi {
+    pub url: String,
+    pub headers: Option<Vec<HttpHeader>>,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum EthMainnetService {
+    Alchemy,
+    BlockPi,
+    Cloudflare,
+    PublicNode,
+    Ankr,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum RpcServices {
+    EthSepolia(Option<Vec<EthSepoliaService>>),
+    Custom { chainId: u64, services: Vec<RpcApi> },
+    EthMainnet(Option<Vec<EthMainnetService>>),
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct RpcConfig {
+    pub responseSizeEstimate: Option<u64>,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone)]
+pub enum BlockTag {
+    Earliest,
+    Safe,
+    Finalized,
+    Latest,
+    Number(candid::Nat),
+    Pending,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub struct JsonRpcError {
+    pub code: i64,
+    pub message: String,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum ProviderError {
+    TooFewCycles {
+        expected: candid::Nat,
+        received: candid::Nat,
+    },
+    MissingRequiredProvider,
+    ProviderNotFound,
+    NoPermission,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum ValidationError {
+    CredentialPathNotAllowed,
+    HostNotAllowed(String),
+    CredentialHeaderNotAllowed,
+    UrlParseError(String),
+    Custom(String),
+    InvalidHex(String),
+}
+
+#[derive(CandidType, Deserialize, Debug, PartialEq)]
+pub enum RejectionCode {
+    NoError,
+    CanisterError,
+    SysTransient,
+    DestinationInvalid,
+    Unknown,
+    SysFatal,
+    CanisterReject,
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum HttpOutcallError {
+    IcError {
+        code: RejectionCode,
+        message: String,
+    },
+    InvalidHttpJsonRpcResponse {
+        status: u16,
+        body: String,
+        parsingError: Option<String>,
+    },
+}
+
+#[derive(CandidType, Deserialize, Debug)]
+pub enum RpcError {
+    JsonRpcError(JsonRpcError),
+    ProviderError(ProviderError),
+    ValidationError(ValidationError),
+    HttpOutcallError(HttpOutcallError),
+}
+
+#[derive(CandidType, Deserialize)]
+pub enum RpcService {
+    EthSepolia(EthSepoliaService),
+    Custom(RpcApi),
+    EthMainnet(EthMainnetService),
+    Chain(u64),
+    Provider(u64),
+}
+
+#[derive(CandidType, Deserialize)]
+pub struct GetLogsArgs {
+    pub fromBlock: Option<BlockTag>,
+    pub toBlock: Option<BlockTag>,
+    pub addresses: Vec<String>,
+    pub topics: Option<Vec<Vec<String>>>,
+}
+
+#[derive(CandidType, Deserialize, Debug, Clone, PartialEq)]
+pub struct LogEntry {
+    pub transactionHash: Option<String>,
+    pub blockNumber: Option<candid::Nat>,
+    pub data: String,
+    pub blockHash: Option<String>,
+    pub transactionIndex: Option<candid::Nat>,
+    pub topics: Vec<String>,
+    pub address: String,
+    pub logIndex: Option<candid::Nat>,
+    pub removed: bool,
+}
+
+#[derive(CandidType, Deserialize)]
+pub enum GetLogsResult {
+    Ok(Vec<LogEntry>),
+    Err(RpcError),
+}
+
+#[derive(CandidType, Deserialize)]
+pub enum MultiGetLogsResult {
+    Consistent(GetLogsResult),
+    Inconsistent(Vec<(RpcService, GetLogsResult)>),
+}
+```
+
+</TabItem>
+</AdornedTabs>
+
+:::caution
+This code snippet is for demonstration purposes only as it contains placeholder values. For example, the Bitcoin transaction value must updated with an actual signed transaction, and the Ethereum address and topic values must be replaced.
+
+For a fully working example, view the [Chain Fusion starter project](https://github.com/letmejustputthishere/chain-fusion-starter).
+:::
+
+### Building blocks
+
+There are several building blocks available to augment non-ICP smart contracts with ICP’s Chain Fusion capabilities or to leverage Chain Fusion in existing ICP dapps:
+
+- **Chain-key tokens**: Using the primitives described above, DFINITY has built canisters implementing the [ICRC-2](https://github.com/dfinity/ICRC) token standard to represent native Bitcoin, Ethereum, and ERC-20 tokens on ICP: [ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview), [ckETH](/docs/defi/chain-key-tokens/cketh/overview), and [ckERC20](/docs/defi/chain-key-tokens/ckerc20/overview). These tokens are digital twins of their corresponding native token and are backed 1:1 by the native assets which are managed 100% onchain through a canister smart contract without any intermediaries.
+
+- **[EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an onchain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
+
+- **[Threshold signatures](/docs/references/t-sigs-how-it-works)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
+
+- **[HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview)**: Replicated calls into external web services.
+
+- **[Bitcoin API](/docs/references/bitcoin-how-it-works)**: A protocol API that allows canisters to interact with the Bitcoin blockchain directly.
+
+## Resources
+
+- [ICP Chain Fusion Educate - Bitcoin Edition: Introduction to ICP and Chain Fusion](https://www.youtube.com/watch?v=A0K9GXsfw74&list=PLfEHHr3qexv_L0t6KrCyJ-l2ZaHaO-m85).
+
+- [ICP Chain Fusion Educate Powered by Encode Club](https://www.youtube.com/playlist?list=PLfEHHr3qexv9bjbFNp3ItK7yBZ5IQVXjf).
+
+
+

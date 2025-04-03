@@ -80,7 +80,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
         <a
-          href="https://internetcomputer.org/docs/current/motoko/main/getting-started/motoko-introduction"
+          href="https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction"
           target="_blank"
         >
           <span className="logo-stack">
@@ -224,7 +224,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 );
 ```
 
-Together, these files enable the frontend canister's user interface, as seen in [2: Deploying your first fullstack dapp](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).
+Together, these files enable the frontend canister's user interface, as seen in [2: Deploying your first fullstack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).
 
 ## Learning more about frontend canisters
 
@@ -294,7 +294,7 @@ export const frontend = createActor(canisterId);
 
 In this code, the constructor first creates an `HTTPAgent` that wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the local testnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
 
-You can learn more about agents in the documentation [here](/docs/current/developer-docs/developer-tools/off-chain/agents/overview).
+You can learn more about agents in the documentation [here](/docs/building-apps/interact-with-canisters/agents/overview).
 
 ### Serving HTTP content
 
@@ -304,4 +304,4 @@ If a canister wants to serve HTTP content, it should implement a method that con
 
 ## Next steps
 
-- [5: Integrating with tokens](/docs/current/tutorials/hackathon-prep-course/integrating-with-tokens).
+- [5: Integrating with tokens](/docs/tutorials/hackathon-prep-course/integrating-with-tokens).

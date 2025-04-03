@@ -335,13 +335,13 @@ function WebAssemblyPage() {
             <CardWithDescription
               title="Rust"
               description="Offers high performance, and many libraries that the Rust community developed over the years. Supported, and maintained by DFINITY."
-              href="/docs/current/developer-docs/backend/rust/"
+              href="/docs/building-apps/developer-tools/cdks/rust/intro-to-rust"
             />
 
             <CardWithDescription
               title="Motoko"
               description="The Internet Computer’s native language, designed to support all features ICP has to offer, and has a less steep learning curve compared to Rust. Supported, and maintained by DFINITY."
-              href="/docs/current/motoko/main/getting-started/motoko-introduction"
+              href="/docs/motoko/main/getting-started/motoko-introduction"
             />
             <CardWithDescription
               title="TypeScript"

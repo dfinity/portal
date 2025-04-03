@@ -42,7 +42,7 @@ You can read more about deterministic decentralization on the [Internet Computer
 
 A core component of ICP is the protocol's advanced cryptographic mechanisms, which are collectively referred to as chain-key cryptography. Chain-key cryptographic methods provide the ability for ICP to achieve functionalities and scalability that other networks can't.
 
-Chain-key cryptography uses a secret signing key in a [threshold signature scheme](/how-it-works/chain-key-technology) that is distributed across all replicas in a subnet.
+Chain-key cryptography uses a secret signing key in a [threshold signature scheme](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography) that is distributed across all replicas in a subnet.
 
 Chain-key cryptography enables the following functionalities:
 
@@ -54,7 +54,7 @@ Chain-key cryptography enables the following functionalities:
 
 - Transactions that are targeted at other blockchain networks can be computed fully onchain, allowing for integrations with chains such as Bitcoin and Ethereum.
 
-To learn more about chain-key cryptography, check out [this documentation.](/how-it-works/chain-key-technology/)
+To learn more about chain-key cryptography, check out [this documentation.](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography)
 
 
 ## ICP superpowers
@@ -67,7 +67,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 - [ICP.Labs](https://dfinity.org/icplab): An advanced, tailored program provided by the DFINITY Foundation that's dedicated to onboarding teams and individuals onto ICP.
 
-- [Developer Liftoff tutorial series](/docs/current/tutorials/developer-liftoff/).
+- [Developer Liftoff tutorial series](/docs/tutorials/developer-liftoff/).
 
 - [Developer Liftoff video series](https://www.youtube.com/watch?v=3WpP8ux1zX0).
 
@@ -90,7 +90,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 ICP is able to scale infinitely, meaning there is no limit to the amount of canisters it can host, memory it can store, or transactions it can process. This unbounded scalability is achieved through horizontal scaling, where new subnets can be added at any time, without a limit on the maximum number of subnets that can exist.
 
-Infinite scalability is especially beneficial for hosting large-scale projects or applications in a fully decentralized manner. You can learn more in the [documentation](/how-it-works/scalability/#infinite-scalability).
+Infinite scalability is especially beneficial for hosting large-scale projects or applications in a fully decentralized manner. You can learn more in the [documentation](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
 ### Cross-chain interoperability
 
@@ -119,11 +119,11 @@ The term **canister** refers to a smart contract on ICP. Canisters are a computa
 
 At a high level, a canister is used to expose methods. A **method** is a piece of code specifying a task that declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
 
-Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/current/developer-docs/getting-started/install), and there are several community-developed canister development kits such as Python and Typescript.
+Canister code can be written in any language that can be compiled into a Wasm module. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/building-apps/getting-started/install), and there are several community-developed canister development kits such as Python and Typescript.
 
 A canister is managed by a **controller**, which can be a centralized entity, a decentralized entity such as a DAO, or a canister can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister.
 
-You can learn more about canister smart contracts in [this documentation.](https://internetcomputer.org/how-it-works/canister-lifecycle/)
+You can learn more about canister smart contracts in [this documentation.](https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts)
 
 ### Capabilities
 
@@ -168,7 +168,7 @@ In addition to managing a canister, controllers are also responsible for assurin
 
 Cycles are used to pay for the resources, such as memory, storage, and compute power, that are used by a canister using the Internet Computer Protocol's reverse gas model. When a canister is deployed on the mainnet, cycles are 'charged' for the creation of the canister, then for every action that a canister performs.
 
-To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
+To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](/docs/references/glossary#x) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
 ### Languages
 
@@ -194,4 +194,4 @@ Languages that are supported via the IC SDK and community CDKs currently include
 
 ## Next steps
 
-- [2: Deploying your first full-stack dapp](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).
+- [2: Deploying your first full-stack dapp](/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp).

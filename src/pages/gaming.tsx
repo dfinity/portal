@@ -593,7 +593,7 @@ function GamingPage() {
             <CardWithDescription
               title="Dev Docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="Sample Code"

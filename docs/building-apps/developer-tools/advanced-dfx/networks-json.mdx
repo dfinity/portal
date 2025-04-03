@@ -1,0 +1,134 @@
+---
+keywords: [advanced, dfx, custom networks, networks.json, dfx custom network, networks-json, system-wide network, project-specific network]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Defining custom networks
+
+<MarkdownChipRow labels={["Advanced", "dfx workflow"]} />
+
+When developing multiple projects simultaneously, it can be beneficial to deploy each project to a different local network for simplicity or to support different development workflows. Custom networks can be configured with `dfx` at both the system-wide and project-specific levels.
+
+## Defining system-wide networks in `networks.json`
+
+Canisters in any project can be deployed to system-wide networks. System-wide custom networks can be configured in the `networks.json` configuration file for `dfx`.
+
+To locate this file on your local system, use the `dfx` command:
+
+```
+dfx info networks-json-path
+```
+
+This will return the file path where your system's `networks.json` file is located, such as:
+
+```
+/Users/developer/.config/dfx/networks.json
+```
+
+### Default configuration
+
+By default, this file contains the following configuration:
+
+```json
+{
+    "local": {
+        "replica": {
+            "subnet_type": "application"
+        }
+    }
+}
+```
+
+Alternatively, if a `network.json` file is not defined locally, `dfx` will by default use the above configuration.
+
+### Defining a custom network
+
+To define a custom network, you can define a binding address in your `networks.json` to be `localhost` or any other domain name, such as:
+
+```json
+{
+  "network_1": {
+    "bind": "localhost:4943",
+    "replica": {
+      "subnet_type": "application"
+    }
+  }
+}
+```
+
+To define multiple networks, use multiple definitions on different domain names:
+
+```json
+{
+  "network_1": {
+    "bind": "localhost:4943",
+    "replica": {
+      "subnet_type": "application"
+    }
+  },
+  "network_2": {
+    "bind": "127.0.0.1:4943",
+    "replica": {
+      "subnet_type": "application"
+    }
+  }
+}
+```
+
+Then, to deploy to one of these networks, use the `--network` flag with `dfx deploy`, such as:
+
+```
+dfx deploy --network network_2
+```
+
+`dfx deploy` will display URLs in the format `<canister>.localhost:port` or `<network>:port/?canisterId=<canister>`:
+
+```
+  Frontend canister via browser
+    poll_frontend: http://b77ix-eeaaa-aaaaa-qaada-cai.localhost:4943/
+  Backend canister via Candid interface:
+    poll_backend: http://by6od-j4aaa-aaaaa-qaadq-cai.localhost:4943/?id=bw4dl-smaaa-aaaaa-qaacq-cai
+```
+
+```
+URLs:
+  Frontend canister via browser
+    poll_frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+  Backend canister via Candid interface:
+    poll_backend: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+## Defining project-specific networks in `dfx.json`
+
+Networks can also be defined in a project's `dfx.json` file. Only canisters within the project can be deployed to the networks defined in `dfx.json`.
+
+Network definitions in the `dfx.json` file can have the following configuration components:
+
+- `providers`: The network provider; can be `localhost` or any other domain name. Domain names must be a full URL, such as `https://domain.com`.
+- `type`: The type of network, either `ephemeral` or `persistent`. Ephemeral networks do not retain the same IDs for canisters, while persistent networks will retain the same canister IDs.
+
+To define a project-specific network, add a "networks" section to your `dfx.json` file such as:
+
+```json
+"networks": {
+    "dev": {
+      "providers": [
+        "https://icp0.io"
+      ],
+      "type": "persistent"
+    }
+  }
+```
+
+If you are using a [cycles wallet](/docs/building-apps/canister-management/topping-up), be sure to deploy your cycles wallet to this custom network.
+
+```
+dfx identity --network dev set-wallet $(dfx identity --network ic get-wallet)
+```
+
+Then, deploy to the network:
+
+```
+dfx deploy --network dev
+```

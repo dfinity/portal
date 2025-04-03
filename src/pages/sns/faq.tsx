@@ -95,7 +95,7 @@ function SnsFaqPage() {
               </p>
               <ul>
                 <li>
-                  The design of SNSs is similar to that of the{" "}
+                  The design of SNSes is similar to that of the{" "}
                   <Link href="/nns">Network Nervous System (NNS)</Link>, which
                   is the onchain DAO that governs the whole ICP.
                 </li>
@@ -106,7 +106,7 @@ function SnsFaqPage() {
                   dapp is controlled by voting via tokens.
                 </li>
                 <li>
-                  There can be many SNSs on ICP. Any developer can hand over the
+                  There can be many SNSes on ICP. Any developer can hand over the
                   control of their dapp to an SNS DAO. Doing so gives control to
                   DAO token holders.
                 </li>
@@ -232,7 +232,7 @@ function SnsFaqPage() {
                   You can propose upgrades for many of the DAO's parameters such
                   as maximum staking period, voting rewards and many more. See{" "}
                   <Link
-                    href="/docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters"
+                    href="https://learn.internetcomputer.org/hc/en-us/articles/34142964565396-DAO-Settings"
                     target="_blank"
                   >
                     parameters
@@ -339,8 +339,8 @@ function SnsFaqPage() {
               <p>
                 From a user's vantage point, the Neurons' fund is a way for
                 people who stake ICP in the NNS to use their maturity to fund
-                future SNSs. As the NNS decides how the Neuons' fund contributes to
-                SNSs, ICP stakers participating in them can leverage the broader community's
+                future SNSes. As the NNS decides how the Neuons' fund contributes to
+                SNSes, ICP stakers participating in them can leverage the broader community's
                 "wisdom of crowds" to chose which SNS tokens to acquire. This allows
                 users to participate automatically in upcoming SNS launches.
               </p>
@@ -448,7 +448,7 @@ function SnsFaqPage() {
               <p>
                 The number of SNS tokens you receive, and the price of for
                 each token, depends on the amount of ICP swapped.
-                The more ICP are swapped, the fewer SNS tokens you receive, 
+                The more ICP are swapped, the fewer SNS tokens you receive,
                 however their price will be higher.
               </p>
             </Faq>
@@ -460,7 +460,7 @@ function SnsFaqPage() {
                 swap, which means their price is determined by the amount of ICP
                 swappend. You can calculate the token price by dividing the amount
                 of ICP swappend with the number of tokens distributed. Price = ICP
-                swappend / number of tokens distributed. 
+                swappend / number of tokens distributed.
                 Note that the final price of SNS tokens
                 isn't known at the time of the decentralization swap, as it is
                 dependent on the total amount of ICP swapped.
@@ -661,7 +661,7 @@ function SnsFaqPage() {
               After a decentralization swap successfully concludes, the ICP
               collected through the swap is allocated to the SNS DAO's treasury.
               Optionally, the DAO can allocate a number of SNS tokens to be in
-              the DAO's treasury, which all SNSs so far have done. The SNS
+              the DAO's treasury, which all SNSes so far have done. The SNS
               treasury is controlled by the DAO, and can only be transferred
               using proposals that SNS token holders vote on. It is also
               possible to mint new SNS tokens at any point after the SNS launch,
@@ -786,7 +786,7 @@ function SnsFaqPage() {
             <Faq title="What is neuron following?">
               <p>
                 Following neurons is a way to delegate votes both on the NNS and
-                in SNSs. Each SNS neuron can either manually vote on proposals
+                in SNSes. Each SNS neuron can either manually vote on proposals
                 or follow another neuron’s voting decisions. Neurons are
                 followed based on various topics, such as making SNS treasury
                 transfers or upgrading the dapp. Neurons can be set to follow
@@ -934,7 +934,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/developer-docs/daos/sns/"
+            href="https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>

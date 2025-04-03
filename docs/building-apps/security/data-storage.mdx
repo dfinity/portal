@@ -1,0 +1,97 @@
+---
+keywords: [security, concept, storage, stable memory, encryption, backup]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: Data storage
+
+<MarkdownChipRow labels={["Security", "Best practices"]} />
+
+## Rust: Use `thread_local!` with `Cell/RefCell` for state variables and put all your globals in one basket
+
+### Security concern
+
+Canisters need a global mutable state. In Rust, there are several ways to achieve this. However, some options can lead to vulnerabilities such as memory corruption.
+
+### Recommendation
+
+- [Use `thread_local!` with `Cell/RefCell` for state variables](https://mmapped.blog/posts/01-effective-rust-canisters.html#use-threadlocal) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+- [Put all your globals in one basket](https://mmapped.blog/posts/01-effective-rust-canisters.html#clear-state) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+## Limit the amount of data that can be stored in a canister per user
+
+### Security concern
+
+If a user is able to store a big amount of data on a canister, this may be abused to fill up the canister storage and make the canister unusable.
+
+### Recommendation
+
+Limit the amount of data that can be stored in a canister per user. This limit has to be checked whenever data is stored for a user in an update call.
+
+## Consider using stable memory, version it, and test it
+
+### Security concern
+
+Canister memory is not persisted across upgrades. If data needs to be kept across upgrades, you may serialize the canister memory in `pre_upgrade` and deserialize it in `post_upgrade`. Using `pre_upgrade` and `post_upgrade` methods is not recommended and should be avoided. The available number of instructions for these methods is limited. If the memory grows too big, the canister can no longer be updated.
+
+### Recommendation
+
+- Stable memory is persisted across upgrades and can be used to address this issue.
+
+- [Consider using stable memory](https://mmapped.blog/posts/01-effective-rust-canisters.html#stable-memory-main) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). Take note of the discussed disadvantages.
+
+- [Version stable memory](https://mmapped.blog/posts/01-effective-rust-canisters.html#version-stable-memory) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+- [Test the upgrade hooks](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+- See also the section on upgrades in [how to audit an ICP canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) (focused on Motoko canisters).
+
+- Write tests for stable memory to avoid bugs.
+
+- Some libraries commonly used are:
+
+    - [https://github.com/dfinity/stable-structures](https://github.com/dfinity/stable-structures)
+
+    - HashMap: [https://github.com/dfinity/stable-structures/pull/1](https://github.com/dfinity/stable-structures/pull/1) (currently not production ready.)
+
+    - [https://github.com/seniorjoinu/ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory)
+
+:::caution
+Please note some of these libraries may be partially unfinished.
+:::
+
+- See [current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serializer requiring additional Wasm memory.".
+
+- For example, [Internet Identity](https://github.com/dfinity/internet-identity) uses stable memory directly to store user data.
+
+## Consider encrypting sensitive data on canisters
+
+### Security concern
+
+By default, canisters provide integrity but not confidentiality. Data stored on canisters can be read by nodes/replicas.
+
+### Recommendation
+
+- Consider end-to-end encrypting any private or personal data (e.g., a user’s personal or private information) on canisters.
+
+- The example dapp [encrypted notes](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp) illustrates how end-to-end encryption can be done.
+
+## Create backups
+
+### Security concern
+
+A canister could be rendered unusable and impossible to upgrade. For example, due to one of the following reasons:
+
+- It has a faulty upgrade process due to some bug from the dapp developer.
+
+- The state becomes inconsistent or corrupt because of a bug in the code that persists data.
+
+### Recommendation
+
+- Make sure methods used in upgrading are tested, or the canister becomes immutable.
+
+- It may be useful to have a disaster recovery strategy that makes it possible to reinstall the canister.
+
+- See the "Backup and recovery" section in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)

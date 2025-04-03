@@ -2,7 +2,10 @@ name: Tag Docs PRs
 on:
   pull_request:
     paths:
-      - docs/developer-docs/**
+      - docs/building-apps/**
+      - docs/defi/**
+      - docs/tutorials/**
+
 jobs:
   docs-tag:
     name: Tag PR with documentation

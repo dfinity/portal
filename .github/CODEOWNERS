@@ -1,22 +1,43 @@
 .github/ @dfinity/idx
 * @dfinity/editorial
 
-docs/developer-docs/updates/release-notes/ @dfinity/dx
-docs/developer-docs/build/agents @dfinity/dx
-docs/developer-docs/build/cdks @dfinity/dx
-docs/developer-docs/integrations/rosetta @dfinity/finint
-docs/developer-docs/security @dfinity/product-security
-docs/references/execution-errors.mdx @dfinity/execution
-docs/references/ingress-messages.mdx @dfinity/product-security
-docs/references/message-execution-properties.mdx @dfinity/product-security
-docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
-docs/developer-docs/web-apps/http-compatible-canisters @dfinity/trust
+# Certain areas of documentation must be owned by the respective teams
 
-# Each piece of documentation must be owned by the respective teams
-docs/developer-docs/smart-contracts/advanced-features/simd.mdx @dfinity/execution
-docs/developer-docs/smart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution
-docs/developer-docs/smart-contracts/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
-docs/developer-docs/smart-contracts/maintain/backtraces.mdx @dfinity/execution
+# DX
+docs/other/updates/release-notes/ @dfinity/dx
+docs/building-apps/interact-with-canisters/agents/ @dfinity/dx
+docs/building-apps/developer-tools/cdks/ @dfinity/dx
+
+# SDK
+submodules/sdk @dfinity/sdk
+
+# Motoko
+submodules/motoko @dfinity/languages
+
+# FI
+docs/defi/ @dfinity/finint
+
+# Cross chain
+docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
+
+# ProdSec
+docs/building-apps/best-practices/security/ @dfinity/product-security
+docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
+src/pages/security-advisories.tsx @dfinity/product-security
+
+# Execution
+docs/references/execution-errors.mdx @dfinity/execution
+docs/building-apps/interact-with-canisters/advanced-calls.mdx @dfinity/execution
+docs/building-apps/essentials/message-execution.mdx @dfinity/execution
+docs/building-apps/network-features/simd.mdx @dfinity/execution
+docs/building-apps/network-features/periodic-tasks-timers.mdx @dfinity/execution
+docs/building-apps/canister-management/backtraces.mdx @dfinity/execution
+
+# Boundary Node
+docs/building-apps/frontends/custom-domains/ @dfinity/boundary-node
+
+# Trust
+docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust
 
 # The Interface Specification
 docs/references/_attachments/certificates.cddl @dfinity/canister-os
@@ -27,4 +48,4 @@ docs/references/_attachments/requests.cddl @dfinity/canister-os
 docs/references/http-gateway-protocol-spec.md @dfinity/canister-os
 docs/references/ic-interface-spec.md @dfinity/canister-os
 
-src/pages/security-advisories.tsx @dfinity/product-security
+

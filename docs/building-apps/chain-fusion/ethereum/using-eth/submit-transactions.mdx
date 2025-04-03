@@ -1,0 +1,50 @@
+---
+keywords: [advanced, ethereum, eth, tutorial, submit transactions, submit eth transaction, submit eth, submit, transactions, eth transactions]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Submitting transactions
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
+
+To submit transactions to the Ethereum network, first the transaction must be signed and formatted as an ETH transaction. [Learn more about signing transactions](signing-transactions.mdx).
+
+Once you have your raw signed transaction, you can either programmatically submit the transaction or use the EVM RPC canister's RPC method `eth_sendRawTransaction`.
+
+### Submitting transactions programmatically
+
+Below is an example demonstrating how to submit a raw ETH transaction programmatically using Rust:
+
+```rust reference
+https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/packages/ic-evm-utils/src/eth_send_raw_transaction.rs#L213-L230
+```
+
+### Using the EVM RPC canister
+
+To submit a raw transaction with the EVM RPC canister, make a call to the `eth_sendRawTransaction` method:
+
+```
+# Configuration
+NETWORK=local
+IDENTITY=default
+CYCLES=1000000000
+WALLET=$(dfx identity get-wallet)
+RPC_SOURCE=EthMainnet
+RPC_CONFIG=null
+
+# Send a raw transaction
+dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
+```
+
+[Learn more about the EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
+
+## Resources
+
+- [ICP ETH starter project](https://github.com/dfinity/icp-eth-starter).
+
+- [Ethers-core Rust library](https://github.com/gakonst/ethers-rs).

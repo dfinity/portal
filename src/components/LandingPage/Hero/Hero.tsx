@@ -58,21 +58,12 @@ const Hero: React.FC<{
                 Applications are immune to cyber attacks and unstoppable,
                 capable of processing tokens, and can run under exclusive DAO
                 control. Build web3 social media, games, DeFi, multi-chain apps,
-                secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP 
-                connected software. Now ICP hosts software.
+                secure front-ends, ledgers, enterprise apps, and AI models.
+                TCP/IP connected software. ICP hosts software.
               </p>
               <div className="flex flex-row flex-wrap gap-8 mt-8 md:mt-6 items-center">
-                <Link
-                  className={"button-white w-max"}
-                  href="/docs/current/home"
-                >
+                <Link className={"button-white w-max"} href="/docs/home">
                   DEVELOP
-                </Link>
-                <Link
-                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/what-is-the-ic"
-                >
-                  <LinkArrowRight /> <span>What is ICP</span>
                 </Link>
 
                 <Link
@@ -80,7 +71,7 @@ const Hero: React.FC<{
                   href="/library"
                 >
                   <LinkArrowRight /> <span>Guides, decks and papers</span>
-                </Link> 
+                </Link>
               </div>
             </div>
             <aside

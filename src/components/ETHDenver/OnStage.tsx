@@ -92,12 +92,12 @@ const MeetUs: FC<{
             <div className="flex flex-col md:flex-row md:gap-3 mt-6">
               <div className="w-full md:w-1/2 flex gap-3">
                 <div className="w-10 h-10 bg-white rounded-full overflow-hidden">
-                  <img src="/img/ethdenver/lomesh-dutta.jpg" alt="Lomesh Dutta" className="w-full h-full object-cover" />
+                  <img src="/img/ethdenver/kyle-langham.webp" alt="Kyle Langham" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="tw-paragraph text-white mb-0">Lomesh Dutta</h4>
+                  <h4 className="tw-paragraph text-white mb-0">Kyle Langham</h4>
                   <p className="tw-paragraph text-white-60">
-                    VP of Growth in Developer Ecosystem<br />
+                    Director of Data and Analytics in Business Operations & Projects<br />
                     DFINITY Foundation
                   </p>
                 </div>

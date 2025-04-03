@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update November 1, 2023
-description: In this update, we announce the publication of the developer liftoff level 4 documentation, a handful of other documentation updates, and a new ledger method for retrieving your account identifier.
+description: In this update, we announce the publication of the Developer Liftoff level 4 documentation, a handful of other documentation updates, and a new ledger method for retrieving your account identifier.
 tags: [Devs]
 image: /img/blog/dev-update-blog-nov-1.jpg
 ---
@@ -10,14 +10,14 @@ image: /img/blog/dev-update-blog-nov-1.jpg
 
 ![November 1 2023](../../static/img/blog/dev-update-blog-nov-1.jpg)
 
-Hello developers and welcome to this week's developer weekly update! In this update, we announce the publication of the developer liftoff level 4 documentation, a handful of other documentation updates, and a new ledger method for retrieving your account identifier. Let's dive in!
+Hello developers and welcome to this week's developer weekly update! In this update, we announce the publication of the Developer Liftoff level 4 documentation, a handful of other documentation updates, and a new ledger method for retrieving your account identifier. Let's dive in!
 
-## Developer liftoff level 4
+## Developer Liftoff level 4
 
-This week, the Space Pilot level of the developer liftoff series was published! In this level, developers learn about tokens such as ICP and ICRC-1, how to deploy and use their respective ledgers, and how to use the ICP Bitcoin integration. This level also covers ICP's form of governance through the NNS and the CLI tool quill that can be used to interact with the ICP ledger, ckBTC, and the NNS.
+This week, the Space Pilot level of the Developer Liftoff series was published! In this level, developers learn about tokens such as ICP and ICRC-1, how to deploy and use their respective ledgers, and how to use the ICP Bitcoin integration. This level also covers ICP's form of governance through the NNS and the CLI tool quill that can be used to interact with the ICP ledger, ckBTC, and the NNS.
 Here's the full breakdown of level 4:
 
-- [4.1 Using the ICP ledger](/docs/current/tutorials/developer-liftoff/level-4/4.1-icp-ledger): In this tutorial, we'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it:
+- [4.1 Using the ICP ledger](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger): In this tutorial, we'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it:
     - Accounts.
     - Transaction types.
     - Deploying the ICP ledger locally.
@@ -32,7 +32,7 @@ Here's the full breakdown of level 4:
         - Using the Candid UI.
     - Resources.
 
-- [4.2 ICRC-1 tokens](/docs/current/tutorials/developer-liftoff/level-4/4.2-icrc-tokens): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, we'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard:
+- [4.2 ICRC-1 tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens): For developers to create their own fungible tokens on the Internet Computer, the ICRC-1 token standard can be used. For this tutorial, we'll focus on the ICRC-1 standard, ICRC-1 ledger, and briefly look into the ICRC-2 standard:
     - What’s the difference between the ICP and ICRC-1 ledgers?
         - `Account`s versus `AccountIdentifier`s.
         - Endpoints.
@@ -50,7 +50,7 @@ Here's the full breakdown of level 4:
         - Using the Candid UI.
     - Resources.
 
-- [4.3 ckBTC and Bitcoin integration](/docs/current/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. In this tutorial, we take a look at ckBTC and the Internet Computer's Bitcoin integration:
+- [4.3 ckBTC and Bitcoin integration](/docs/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin): One of the key features of the Internet Computer is known as **chain-key cryptography**. This feature enables integrations with other networks, such as the Bitcoin network. In this tutorial, we take a look at ckBTC and the Internet Computer's Bitcoin integration:
     - Bitcoin integration architecture.
     - What is ckBTC?
     - Bitcoin use cases on ICP.
@@ -65,7 +65,7 @@ Here's the full breakdown of level 4:
         - Sending BTC.
     - Resources.
 
-- [4.4 NNS governance and staking](/docs/current/tutorials/developer-liftoff/level-4/4.4-nns-governance): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully onchain and is responsible for making protocol-level upgrades to ICP:
+- [4.4 NNS governance and staking](/docs/tutorials/developer-liftoff/level-4/4.4-nns-governance): The Network Nervous System (NNS) is the governing body of the Internet Computer. It is a decentralized autonomous organization that is hosted fully onchain and is responsible for making protocol-level upgrades to ICP:
     - What is the NNS?
         - Neurons.
         - Proposals.
@@ -75,7 +75,7 @@ Here's the full breakdown of level 4:
         - Staking ICP in a neuron.
         - Interacting with NNS proposals.
 
-- [4.5 Using quill](/docs/current/tutorials/developer-liftoff/level-4/4.5-using-quill): Quill is a ledger and governance toolkit that provides support for self-custody of ICP tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**:
+- [4.5 Using quill](/docs/tutorials/developer-liftoff/level-4/4.5-using-quill): Quill is a ledger and governance toolkit that provides support for self-custody of ICP tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**:
     - What is quill?
     - Downloading and installing quill.
     - Using quill’s basic commands.
@@ -83,7 +83,7 @@ Here's the full breakdown of level 4:
     - Using quill with the NNS.
     - Resources.
 
-- [4.6 Motoko level 4](/docs/current/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4): In this final Motoko module of the developer liftoff series, we'll cover the following Motoko concepts and components:
+- [4.6 Motoko level 4](/docs/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4): In this final Motoko module of the Developer Liftoff series, we'll cover the following Motoko concepts and components:
     - Mutable state.
         - Immutable variables versus mutable variables.
         - Reading data from mutable memory.
@@ -108,18 +108,18 @@ Here's the full breakdown of level 4:
 
 A new method for the ICP ledger is available. This method, `account_identifier` is used to return your account identifier. Before, developers had to get the SHA224 hash for their `principal` and `subaccount_identifier`, then prepend this value with the CRC32 value to get their account identifier. This method does this work behind the scenes for you, so there is no longer a risk of getting a wrong identifier due to incorrect byte manipulation.
 
-You can view the reference documentation for the ledger [here](/docs/current/references/ledger#_accounts).
+You can view the reference documentation for the ledger [here](/docs/references/ledger#_accounts).
 
 
 ## Documentation updates
 
 This week, the developer docs saw several updates, which include:
 
-- Publication of the six documents that make up [Level 4 of the developer liftoff](/docs/current/tutorials/developer-liftoff/level-4/).
-- The [ledger reference documentation](/docs/current/references/ledger#_accounts) has been updated to include the new `account_identifier` method.
-- A new document on the [canister history](/docs/current/developer-docs/smart-contracts/maintain/history) feature has been created.
-- A new community-contributed JavaScript signature verification library has been added to the documentation for [independently verifying signatures](/docs/current/developer-docs/web-apps/independently-verifying-ic-signatures).
-- The [playground documentation](/docs/current/developer-docs/getting-started/deploy-and-manage) has been updated to include instructions for how to create a custom local playground instance.
+- Publication of the six documents that make up [Level 4 of the Developer Liftoff](/docs/tutorials/developer-liftoff/level-4/).
+- The [ledger reference documentation](/docs/references/ledger#_accounts) has been updated to include the new `account_identifier` method.
+- A new document on the canister history feature has been created.
+- A new community-contributed JavaScript signature verification library has been added to the documentation for independently verifying signatures.
+- The playground documentation has been updated to include instructions for how to create a custom local playground instance.
 
 That'll wrap things up for this week! See everyone in the next issue of developer weekly!
 

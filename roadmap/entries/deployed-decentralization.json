@@ -66,7 +66,7 @@
       "overview": "Custom domain names for canisters on ICP. DNS entry of domain redirects to boundary nodes.",
       "forum": "https://forum.dfinity.org/t/custom-domains-for-ic0-app-community-consideration/6162",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/",
+      "docs": "https://internetcomputer.org/docs/building-apps/frontends/custom-domains/using-custom-domains",
       "eta": "February 2023",
       "status": "deployed",
       "is_community": true,
@@ -200,6 +200,15 @@
       "in_beta": false,
       "milestone_id": "Solenoid",
       "imported": true
+    },
+    {
+      "title": "Privacy-preserving logs",
+      "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
+      "forum": "https://forum.dfinity.org/t/observability-with-the-new-boundary-node-architecture/41725",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/135629",
+      "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/salt_sharing",
+      "status": "deployed",
+      "milestone_id": "Levitron"
     }
   ]
 }

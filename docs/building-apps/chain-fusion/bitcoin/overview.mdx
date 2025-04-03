@@ -1,0 +1,68 @@
+---
+keywords: [advanced, bitcoin, btc,  chain fusion, bitcoin integration, btc integration]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Bitcoin integration
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
+
+The integration of the Internet Computer with Bitcoin allows ICP smart contracts to directly interact with the Bitcoin network.
+
+## Why is an integration with Bitcoin important?
+
+The Bitcoin integration is important because it brings smart contract functionality to Bitcoin, which does not have a native smart contract platform itself, opening up new possibilities for DeFi and dapp development. For example, ICP smart contracts can directly hold, receive, and send BTC. It also facilitates the creation of a ckBTC token that is backed 1:1 by BTC.
+
+# How it works
+
+Smart contracts running on ICP can directly interact with the Bitcoin network without using bridges.
+This is possible because ICP nodes can fetch and validate the Bitcoin network's blocks and then make them available for smart contracts to query and read.
+Smart contracts can also sign and send Bitcoin transactions, allowing them to directly hold BTC.
+
+This direct Bitcoin integration uses two features:
+
+- **[Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa)** and **[threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. ECDSA and Schnorr are compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
+
+- **Bitcoin adapter**: ICP has one subnet whose nodes participate in the Bitcoin network. These nodes are used to fetch the Bitcoin state and blocks and send transactions to the network.
+
+The diagram below shows the flow of interacting with the Bitcoin network from a smart contract.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/bitcoin-overview.png")}
+    alt="Bitcoin overview"
+    width="500"
+  />
+</div>
+
+At the protocol level, both the Bitcoin adapter and chain-key ECDSA features expose an API on the [management canister](/docs/references/system-canisters/management-canister).
+
+When a canister wants to make a Bitcoin transaction, a request is sent to the Bitcoin subnet that hosts a Bitcoin canister that contains ICP's onchain Bitcoin state. The request is sent to the Bitcoin network through the Bitcoin adapter and is processed by Bitcoin asynchronously.
+
+## ckBTC
+
+The primary value of chain-key tokens, such as ckBTC, is that they can be transferred with a low finality time (within seconds) and for a fraction of the cost of a transaction on the token's native network (in this instance, a BTC transaction on Bitcoin).
+
+## Use cases and sample dapps
+
+The Bitcoin integration supports both basic and advanced use cases, such as decentralized exchanges or working with Bitcoin inscriptions.
+
+The ckBTC token is suitable for the common use cases of holding, transferring, and trading BTC.
+
+Sample dapps:
+
+- Crowdfunding platforms that accept BTC, such as [Funded](https://funded.app/).
+
+- Social applications that support sending crypto to other users, like [OpenChat](https://oc.app/).
+
+- Online eCommerce platforms. [Bitshop](https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/) is one example.
+
+[View the full list of Bitcoin ecosystem examples](https://internetcomputer.org/ecosystem?tag=Bitcoin).
+
+## Resources
+
+- [ICP Chain Fusion Educate - Bitcoin Edition: Introduction to ICP and Chain Fusion](https://www.youtube.com/watch?v=A0K9GXsfw74&list=PLfEHHr3qexv_L0t6KrCyJ-l2ZaHaO-m85).
+
+- [Learn about the Bitcoin developer workflow on ICP](./using-btc/btc-dev-workflow.mdx).

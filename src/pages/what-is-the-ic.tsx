@@ -170,7 +170,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/developer-docs/cost-estimations-and-examples"
+                  href="/docs/building-apps/essentials/cost-estimations-and-examples"
                 >
                   <DocsIcon /> Learn more about ICP costs
                 </Link>
@@ -195,7 +195,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
+                  href="/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
                 >
                   <DocsIcon /> Deploying your first full-stack dapp
                 </Link>
@@ -209,7 +209,20 @@ function WhatIsIcpPage() {
                   Interoperability
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  ICP can directly interoperate with other smart contract blockchains and traditional Web2 internet resources via HTTP requests and special signing capabilities. For example, chain-key Bitcoin (ckBTC), a token backed 1:1 by BTC held entirely on the ICP blockchain, works because ICP smart contracts can sign transactions on the Bitcoin blockchain without having to hold traditional private keys, which could be stolen. Meanwhile, DeFi smart contracts have access to data from major cryptocurrency exchanges, which is securely retrieved from Web2 exchanges (through consensus), without the use of trusted intermediaries such as traditional oracles.
+                  ICP can interface with other smart contract blockchains and
+                  traditional Web 2 internet resources via HTTP requests and
+                  signing capabilities. For example, Chain-key Bitcoin (ckBTC),
+                  a token backed 1:1 by BTC held entirely on the ICP blockchain,
+                  is possible because ICP smart contracts can sign transactions.
+                  Additionally, the{" "}
+                  <Link
+                    className="link-white"
+                    href="/docs/references/system-canisters/index"
+                  >
+                    exchange rate canister
+                  </Link>{" "}
+                  sends and receives HTTP requests to fetch data from major
+                  cryptocurrency exchanges.
                 </p>
 
                 <Link
@@ -226,7 +239,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/references/t-sigs-how-it-works"
+                  href="/docs/references/t-sigs-how-it-works"
                 >
                   <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
                   ICP contracts threshold signing
@@ -251,7 +264,7 @@ function WhatIsIcpPage() {
                 <br />
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/home"
+                  href="/docs/home"
                 >
                   <DocsIcon /> Developer documentation
                 </Link>
@@ -531,7 +544,7 @@ function WhatIsIcpPage() {
             <CardWithDescription
               title="Developer docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="ICP dapps"

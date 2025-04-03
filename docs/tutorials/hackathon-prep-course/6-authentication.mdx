@@ -18,7 +18,7 @@ This allows you to authenticate to your Internet Identity using methods that unl
 
 ## Creating an Internet Identity
 
-To create an Internet Identity, navigate to the II frontend URL: https://identity.ic0.app/
+To create an Internet Identity, navigate to the II frontend URL: https://identity.internetcomputer.org/
 
 Select 'Create New' from the UI.
 
@@ -54,7 +54,7 @@ If you scroll down, you will see an option to add another passkey, and you will 
 
 ## Integrating Internet Identity into your dapp
 
-To integrate II into your dapp, you can **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered briefly in the previous module, [3: Exploring the backend](/docs/current/tutorials/hackathon-prep-course/exploring-the-backend).
+To integrate II into your dapp, you can **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered briefly in the previous module, [3: Exploring the backend](/docs/tutorials/hackathon-prep-course/exploring-the-backend).
 
 Using the same `vite-motoko-react` example project directory, edit your `dfx.json` file to reflect the following content:
 
@@ -150,7 +150,7 @@ export const defaultOptions = {
   loginOptions: {
     identityProvider:
       process.env.DFX_NETWORK === "ic"
-        ? "https://identity.ic0.app/#authorize"
+        ? "https://identity.internetcomputer.org/#authorize"
         : `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize`,
     // Maximum authorization expiration is 8 days
     maxTimeToLive: days * hours * nanoseconds,
@@ -194,8 +194,8 @@ dfx deps deploy
 dfx deploy
 ```
 
-You can learn more about Internet Identity and integrating it into a dapp in the tutorial [here](/docs/current/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).
+You can learn more about Internet Identity and integrating it into a dapp in the tutorial [here](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).
 
 ## Next steps
 
-- [7: Obtaining cycles](/docs/current/tutorials/hackathon-prep-course/obtaining-cycles).
+- [7: Obtaining cycles](/docs/tutorials/hackathon-prep-course/obtaining-cycles).

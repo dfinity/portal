@@ -1,0 +1,167 @@
+---
+keywords: [advanced, concept, signing transactions, signatures, tschnorr, chain-key signatures, threshold signature, threshold, schnorr, threshold schnorr, sign with schnorr, signing transactions, signing messages]
+---
+
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+
+# Threshold Schnorr
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+Schnorr signatures are a type of digital signature scheme popularly used amongst blockchain networks because they are efficient, simple, and allow for multi-signatures, threshold signatures, and aggregated signatures to be used on the network. On ICP, threshold Schnorr signatures enable canisters to hold a wider range of digital assets and allow for direct integrations with other chains like Solana.
+
+Specifically, threshold Schnorr signatures on ICP provide:
+
+- Support for BIP-340, which is Bitcoin's variant of Schnorr used in Ordinals, Runes, and BRC-20.
+
+- Support for Ed25519 signatures, which are used by chains such as Solana, Cardano, Polkadot, and Ripple. Ed25519 is also a popular signature scheme outside of blockchains for Web2 functions such as signing X.509 certificates.
+
+- Provide higher signature throughput than threshold ECDSA signatures.
+
+- Allow canisters to obtain their own Schnorr public key and address, unlocking the ability for them to derive addresses on other chains, then authorize and submit transactions on those chains.
+
+- Enable Schnorr signatures to be computed on arbitrary messages.
+
+## Signing messages and transactions
+
+The threshold Schnorr API allows canisters to securely sign messages and transactions without the corresponding private keys ever existing. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s and `key_id`s.
+
+The API provides two methods:
+
+- `sign_with_schnorr`: Used to sign messages.
+
+- `schnorr_public_key`: Used to obtain public keys.
+
+Signatures will have different encoding depending on the provided `key_id` algorithm:
+
+- `bip340secp256k1`: The signature will be encoded according to [BIP340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki), using 64 bytes. Optionally, the caller can provide a 0 or 32-byte taproot merkle tree root as a key tweak as defined in [BIP341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki).
+
+- `ed25519`: The signature will be encoded according to [RFC8032, 5.1.6 Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6), using 64 bytes.
+
+### Difference between t-ECDSA and t-Schnorr API endpoints
+
+The `sign_with_schnorr` endpoint takes a full message to sign as input rather than a message hash used by the `sign_with_ecdsa` API endpoint. This is because BIP340 and Ed25519 signature messages are hashed together with other information, meaning a canister cannot do the message hashing as it is done for `sign_with_ecdsa`.
+
+## Signing messages
+
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+
+To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
+
+The `sign_with_schnorr` method requires cycles to be attached. [Learn more about threshold Schnorr costs](/docs/building-apps/essentials/gas-cost).
+
+To deploy code using the `sign_with_schnorr` method, you will need to specify the correct `key_ID` for the environment in the canister's source code. The following key IDs are supported:
+
+- `dfx_test_key`: Only available on the local replica started by `dfx`.
+- `test_key_1`: Test key available on the ICP mainnet.
+- `key_1`: Production key available on the ICP mainnet.
+
+Also, optionally you can provide a 0 or 32-byte taproot merkle tree root as a
+key tweak for `bip340secp256k1` as defined in
+[BIP341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki).
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/motoko/threshold-schnorr/src/schnorr_example_motoko/main.mo#L60-L83
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/rust/threshold-schnorr/src/schnorr_example_rust/src/wasm_only.rs#L94-L138
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Verifying signatures
+
+Created signatures can be verified with the public key corresponding to the canister that initiated the request and the derivation path. For threshold Schnorr, Ed25519 and BIP340 are verified differently.
+
+Calls to the `verify` method should always return `true` if the correct parameters are provided or return `false` otherwise.
+
+BIP340 can be verified using code such as:
+
+:::caution
+The first byte of the BIP340 public key needs to be removed for verification. Below, this is done by the verification function internally.
+:::
+
+<AdornedTabs groupId="language">
+<TabItem value="javascript" label="JavaScript" default>
+
+```js reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/motoko/threshold-schnorr/test.sh#L56-L104
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/rust/threshold-schnorr/src/schnorr_example_rust/src/wasm_only.rs#L141-L248
+```
+
+</TabItem>
+</AdornedTabs>
+
+Ed25519 can be verified using code such as:
+
+<AdornedTabs groupId="language">
+<TabItem value="javascript" label="JavaScript" default>
+
+```js reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/motoko/threshold-schnorr/test.sh#L25-L44
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/rust/threshold-schnorr/src/schnorr_example_rust/src/wasm_only.rs#L141-L168
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+Verification can be done in other languages using libraries and packages that support `bip340secp256k1` signing with an arbitrary message length.
+
+## Obtaining public keys
+
+To obtain public keys, you will need to call the `schnorr_public_key` method of the IC management canister (`aaaaa-aa`). You can deploy the threshold Schnorr sample [locally](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) and use the Candid UI to call this method, or you can call this method programmatically using Motoko or Rust.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/013d77e0e12aafaabb8137b910bbc1acce66f1f7/motoko/threshold-schnorr/src/schnorr_example_motoko/main.mo#L44-L58
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-schnorr/src/schnorr_example_rust/src/wasm_only.rs#L76-L91
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Resources
+
+- [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
+
+- [Threshold Schnorr API](/docs/references/ic-interface-spec#ic-schnorr_public_key).
+
+- [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr).
+
+- [Threshold Schnorr sample dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-schnorr).

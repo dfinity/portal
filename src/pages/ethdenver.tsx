@@ -52,7 +52,6 @@ function EthDenverPage() {
         {/* Try some DAPPS */}
         <TrySomeDapps id="ecosystem" />
 
-        {/* Join the movement */}
         <BackgroundPanel
           panelClassName="bg-[#0A0023]"
           outerClassName="pt-10 md:pt-20 md:pb-30"
@@ -91,7 +90,6 @@ function EthDenverPage() {
             ]}
           />
         </div>
-
       </main>
     </Layout>
   );
