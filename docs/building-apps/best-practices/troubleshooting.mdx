@@ -16,7 +16,7 @@ This document will detail some troubleshooting methods and performance optimizat
 
 On subnets with low loads, query calls are answered in about 100 milliseconds, and update calls are answered in about 2 seconds.
 
-On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the subnet your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters). Look for the subnet your canister is deployed on, then compare the number of "Million Instructions Executed Per Second" for that subnet to other subnets.
+On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters). Look for the subnet your canister is deployed on, then compare the number of "Million Instructions Executed Per Second" for that subnet to other subnets.
 
 ### Recommendation: Consider moving the canister to another subnet.
 
@@ -26,7 +26,7 @@ If your canister is running on a subnet that has a consistently high load and th
 
 ### Recommendation: Use query calls instead of update calls when possible.
 
-[Query calls](/docs/building-apps/interact-with-canisters/query-calls) are executed on a single node within a subnet and do not go through consensus; therefore, they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
+[Query calls](/docs/building-apps/interact-with-canisters/query-calls) are executed on a single node within a subnet and do not go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus); therefore, they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
 
 However, the security trade-offs of query calls must be considered. Since query calls do not go through consensus, it is not recommended that they be used for retrieving sensitive information that requires data assurance. For example, returning financial data on a decentralized exchange dapp should not use basic query calls, as it is important the call return data that has been validated through the subnet's consensus. As an alternative, [certified queries](/docs/building-apps/interact-with-canisters/query-calls) may be used.
 
@@ -52,6 +52,6 @@ Inter-canister calls are a slow operation since they use `await` methods. Skippi
 
 To ensure that your canister is optimized, both for latency and cycles cost, be sure to follow the [canister general best practices](/docs/building-apps/best-practices/general), which include ways to implement efficient Motoko and Rust code.
 
-### Recommendation: To troubleshoot network latency, obtain the boundary node address and request IDs your canister is using before reaching out to the DFINITY team.
+### Recommendation: To troubleshoot network latency, obtain the [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) address and request IDs your canister is using before reaching out to the DFINITY team.
 
 In order for the team to troubleshoot network latency, they will need the boundary node ID and, if possible, the request ID. This information can be found by looking in the networking tab of the developer tools. The boundary node address will be listed as `Remote Address` and the request ID will be listed as the `X-Request-Id`.
