@@ -15,7 +15,7 @@ This allows you to authenticate to your Internet Identity using methods that unl
 
 ## Creating an Internet Identity
 
-To create an Internet Identity, navigate to the II frontend URL: https://identity.ic0.app/
+To create an Internet Identity, navigate to the II frontend URL: https://identity.internetcomputer.org/
 
 Select 'Create New' from the UI.
 
@@ -58,6 +58,8 @@ Open the [ICP Ninja Who am I? example](https://icp.ninja/projects/who-am-i). In 
 ```json title="dfx.json" file=../../references/samples/motoko/who_am_i/dfx.json
 ```
 
+### Initialize `AuthClient`
+
 In the `App.jsx` file, you will see the code that initializes and creates the `AuthClient`, which uses Internet Identity to provide user authentication:
 
 ```js title="frontend/src/App.jsx" file=../../references/samples/motoko/who_am_i/frontend/src/App.jsx
@@ -76,6 +78,9 @@ This code does the following:
 - It updates the component's state with the new actor, `authClient`, and `isAuthenticated` status.
 
 - Lastly, the `result` variable awaits the response of a call to the backend's `whoami` function. When the response is returned, the `principal` variable stores it as a `String` data type.
+
+
+### `whoami` function
 
 The backend's `whoami` function is defined in `backend/app.mo`:
 

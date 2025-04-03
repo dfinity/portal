@@ -54,7 +54,7 @@ Let's review the project's file structure:
 ├── README.md    # Information about the project and using ICP Ninja.
 ```
 
-### dfx.json​
+### `dfx.json​`
 
 The `dfx.json` file for this project will closely resemble the one used for the [Hello, world!](./1-hello-world.mdx) example; however there is one key difference. Rather than defining what the canister is `"type": "motoko"`, this project will define the canister as `"type": "asset"` which prompts `dfx` to compile the canister's assets into a Wasm module using Rust boilerplate code.
 
@@ -65,14 +65,14 @@ The `dfx.json` file for this project will closely resemble the one used for the 
 
 This project's `main.jsx` file defines the source code for a simple app using React, Vite, and Tailwind CSS that the canister will host. This app will create a very basic blog website with three randomly generated placeholder blog post entries.
 
-```js reference file=../../references/samples/hosting/my_crypto_blog/frontend/src/main.jsx
+```jsx title=main.jsx file=../../references/samples/hosting/my_crypto_blog/frontend/src/main.jsx
 ```
 
 :::info
 If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
 :::
 
-### Deploying the canister
+## Deploying the canister
 
 Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
 

@@ -13,13 +13,11 @@ import '/src/components/CenterImages/center.scss';
 
 To facilitate the connection to Ethereum and other EVM networks, the **EVM RPC canister** can be used. It receives calls from other canisters or users, then sends RPC requests to the destination chain using [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) and [threshold ECDSA signatures](/docs/building-apps/network-features/signatures/t-ecdsa). Once it receives the result of the RPC request, it sends the response to the original caller. Calls can be simple data queries such as block information or they can be signed transactions that are submitted for processing on the EVM chain.
 
-## EVM block explorer example
-
 To explore Chain Fusion using the EVM RPC canister, let's take a look at a simple project that can be used to query information from the Ethereum network and sign messages using threshold ECDSA and Schnorr.
 
 Open the [ICP Ninja 'EVM block explorer' example](https://icp.ninja/projects/evm-block-explorer).
 
-### Exploring the project's files
+## Exploring the project's files
 
 First, let's start by looking at the contents of the project's `dfx.json` file. This file will contain the following:
 

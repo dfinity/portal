@@ -17,6 +17,9 @@ submodules/motoko @dfinity/languages
 # FI
 docs/defi/ @dfinity/finint
 
+# Cross chain
+docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
+
 # ProdSec
 docs/building-apps/best-practices/security/ @dfinity/product-security
 docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security

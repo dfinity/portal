@@ -11,7 +11,9 @@ import '/src/components/CenterImages/center.scss';
 
 Now that you have canisters deployed from the CLI, it's important to learn how to manage and maintain those canisters. Basic canister management includes obtaining information about a canister, adding an identity as a controller of a canister, topping up a canister, starting and stopping a canister, and deleting a canister.
 
-## Obtaining a canister's ID
+## Canister information
+
+### Obtaining a canister's ID
 
 Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
 
@@ -27,7 +29,7 @@ If you want to get the canister ID for a locally deployed canister, simply omit 
 dfx canister id hello_world_backend
 ```
 
-## Obtaining canister information
+### Obtaining canister details
 
 To obtain information about the canister, such as the canister's controller(s) and the Wasm module hash, use the command:
 
@@ -35,7 +37,9 @@ To obtain information about the canister, such as the canister's controller(s) a
 dfx canister info hello_world_backend
 ```
 
-## Adding an identity as a controller of a canister
+## Access control
+
+### Adding an identity as a controller of a canister
 
 To add another identity as an additional controller of the canister, first, create a new identity:
 
@@ -63,7 +67,7 @@ dfx canister update-settings hello_world_backend --add-controller PRINCIPAL_ID
 ```
 
 
-## Removing an identity as a controller of a canister
+### Removing an identity as a controller of a canister
 
 You can remove this principal with the command:
 
@@ -108,7 +112,7 @@ Balance: 3_100_000_000_000 Cycles
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
 
-## Stopping a canister
+### Stopping a canister
 
 To stop a single canister, run the command:
 
@@ -123,7 +127,7 @@ dfx canister stop --network ic --all
 ```
 
 
-## Starting a canister
+### Starting a canister
 
 Then to start the canister again, run the command:
 
@@ -131,7 +135,9 @@ Then to start the canister again, run the command:
 dfx canister start --network ic --all
 ```
 
-## Checking the cycles balance of a canister
+## Cycles management
+
+### Checking the cycles balance of a canister
 
 To check a canister's cycles balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
 
@@ -153,7 +159,7 @@ Balance: 3_100_000_000_000 Cycles
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
 
-## Topping up a canister with cycles
+### Topping up a canister with cycles
 
 Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which are consistently using cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
 
@@ -167,7 +173,7 @@ There are a few ways to top up a canister:
 - Using a fiat option through [Cycle.express](https://cycle.express/).
 - Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](/docs/building-apps/canister-management/topping-up).
 
-### Using ICP
+#### Using ICP
 
 If you currently have a balance of ICP tokens within your `dfx` ledger account ID, you can use the `dfx ledger top-up` command to automatically convert that ICP into cycles and deposit it into the specified canister, for example:
 
@@ -175,14 +181,14 @@ If you currently have a balance of ICP tokens within your `dfx` ledger account I
 dfx ledger top-up hello_world_backend --amount 2.7 --network ic
 ```
 
-### Using the cycles ledger
+#### Using the cycles ledger
 If you have already converted some ICP into cycles, you can send cycles to the canister with the `dfx cycles top-up` command, such as:
 
 ```sh
 dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
 ```
 
-## Getting cycles back from a canister
+### Getting cycles back from a canister
 
 To withdraw cycles from a canister, the canister must be deleted. The cycles will be returned to the canister's principal controller.
 
@@ -207,7 +213,7 @@ Deleting canister hello_world_backend, with canister_id jqylk-byaaa-aaaal-qbymq-
 To confirm that the cycles were withdrawn properly, check your cycles balance with `dfx cycles balance`.
 
 
-## Setting the canister's freezing threshold
+### Setting the canister's freezing threshold
 
 A canister's freezing threshold is a value defined in seconds, which is used to calculate how many cycles a canister must retain in its cycles balance. This calculation is based on the canister's memory consumption. The default freezing threshold value is `2_592_000s`, which corresponds to 30 days.
 

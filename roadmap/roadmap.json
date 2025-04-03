@@ -2378,7 +2378,7 @@
         "milestone_id": "Echelon",
         "description": "Orbit is a secure solution for digital assets and smart contract management, and this milestone will broaden its asset management capabilities by enabling seamless integration of native tokens from other blockchains, starting with ETH and ERC-20. This will create a unified platform for treasury management, allowing users to securely sign and send transactions across multiple chains. Additionally, we will introduce automatic smart contract upgrades, ensuring that users always have access to the latest security updates and features with minimal manual intervention.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "ETH and ERC-20 integration",
@@ -2389,7 +2389,7 @@
           {
             "title": "Automatic upgrades",
             "overview": "A streamlined update system will allow users to subscribe for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Echelon"
           },
           {
@@ -2405,7 +2405,7 @@
         "milestone_id": "Neutron",
         "description": "To further improve Orbit’s usability and accessibility, we will enhance the user experience through intuitive approval flows, a revamped onboarding, and a comprehensive documentation hub. These improvements will ensure the Orbit App is efficient for both individual users and teams managing their digital assets management needs.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Documentation hub",
@@ -2422,7 +2422,7 @@
           {
             "title": "UX improvements",
             "overview": "A revamped configuration flow will simplify the setup of Orbit Station, making it easier for users of all technical levels to integrate smart contracts and manage assets.",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Neutron"
           }
         ]
@@ -3731,24 +3731,24 @@
         "milestone_id": "Atlas",
         "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Open Caffeine projects",
             "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Atlas"
           },
           {
             "title": "Generate a project with AI",
             "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Atlas"
           },
           {
             "title": "More sample projects to get you started",
             "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Atlas"
           },
           {

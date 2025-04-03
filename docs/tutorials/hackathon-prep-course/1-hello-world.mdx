@@ -42,7 +42,7 @@ The default project architecture has two canisters:
   />
 </div>
 
-### Hello, world! backend only
+## Hello, world! backend
 
 Let's start with deploying only a backend canister. Open the [ICP Ninja "Hello, world!" project](https://icp.ninja/s/w2MbP). View the [ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
 
@@ -56,7 +56,7 @@ This project will contain the following files:
 ├── README.md    # Information about the project and using ICP Ninja.
 ```
 
-### dfx.json​
+### `dfx.json​`
 
 The `dfx.json` file defines the application's canister and its source code file. This project uses the following `dfx.json` file:
 
@@ -75,7 +75,7 @@ Now, let's review the `backend/app.mo` file to learn about the application's fun
 - First, an actor is defined and named `HelloWorld`. An actor is an object that can hold state and interact with the world through messages.
 - Then, a **query method** is defined. Query methods do not alter the canister's state or data. They can be thought of as 'read-only' operations. When called, this query method will return the text "Hello, " followed by the text passed to the method and an exclamation mark.
 
-### Types of canister calls
+## Types of canister calls
 
 When calls are made to a canister's methods, there are two primary types: calls that go through consensus and calls that do not go through consensus.
 
@@ -97,7 +97,7 @@ Additionally, there are several other terms regarding calls that you will come a
 If you want to learn more about this code, you can right-click within ICP Ninja and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
 :::
 
-### Deploying the canister
+## Deploying the canister
 
 Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
 

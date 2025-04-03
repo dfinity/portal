@@ -37,7 +37,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
-  /docs/current/references/samples/* /docs/references/samples/:splat
   /docs/current/references/* /docs/references/:splat
   /docs/current/references/samples/* /docs/references/samples/:splat
 
@@ -61,8 +60,6 @@ const redirects = `
   /docs/candid-guide/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/candid-guide /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/building-apps/interact-with-canisters/candid/using-candid
-  /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/building-apps/interact-with-canisters/candid/candid-tools
 
   ## Concepts
   /docs/concepts/bitcoin-integration /bitcoin-integration
@@ -124,7 +121,6 @@ const redirects = `
   /docs/current/motoko/main/base/time /docs/motoko/main/base/Time
   /docs/current/motoko/main/base/trie /docs/motoko/main/base/Trie
   /docs/current/motoko/main/base/triemap  /docs/motoko/main/base/TrieMap
-  /docs/current/motoko/main/language-manual /docs/motoko/main/reference/language-manual
   /docs/current/motoko/main/base/debug /docs/motoko/main/base/Debug
   /docs/current/motoko/main/base/int8 /docs/motoko/main/base/Int8
   /docs/current/motoko/main/base/nat /docs/motoko/main/base/Nat
@@ -178,7 +174,6 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/project-organization /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/current/developer-docs/backend/rust/index /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/infrastructure /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/intercanister /docs/building-apps/developer-tools/cdks/rust/intercanister
   /docs/current/developer-docs/backend/rust/message-inspect /docs/building-apps/developer-tools/cdks/rust/message-inspect
   /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -197,7 +192,6 @@ const redirects = `
   /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/defi/overview
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/defi/overview
   /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/defi/token-ledgers/cycles-ledger
   /docs/current/developer-docs/defi/dex/overview https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/exchange-rate-canister/ /docs/references/system-canisters/
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/defi/token-standards/
@@ -379,9 +373,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
   /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
-  /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/building-apps/interact-with-canisters/agents/nodejs
   /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/building-apps/interact-with-canisters/agents/overview
@@ -681,7 +672,6 @@ const redirects = `
   /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/icp-ninja
 
   ## Smart contracts
-  /docs/current/developer-docs/smart-contracts/maintain/import /docs/building-apps/advanced/using-third-party-canisters
   /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/references/async-code
   /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/building-apps/network-features/using-http/gateways
@@ -710,7 +700,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/call/overview /docs/building-apps/essentials/message-execution
   /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/building-apps/interact-with-canisters/candid/using-candid
   /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/building-apps/interact-with-canisters/candid/candid-tools
-  /docs/current/developer-docs/smart-contracts/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/smart-contracts/candid/index /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/smart-contracts/compile /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/create /docs/building-apps/essentials/canisters
@@ -891,6 +880,8 @@ const redirects = `
   /docs/current/samples/pos /samples
   /docs/current/samples/t-ecdsa-sample /samples
   /docs/current/samples/vetkd-encrypted-notes /samples
+  /docs/samples/overview /samples
+  /docs/current/samples/overview /samples
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
@@ -907,7 +898,6 @@ const redirects = `
   /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
-  /docs/references/ic-interface /docs/references/ic-interface-spec
   /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
   /docs/current/references/cli-reference/dfx-ledger/ /docs/building-apps/developer-tools/dfx/dfx-ledger
   /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
@@ -1009,9 +999,7 @@ const redirects = `
   /icp-newsletter /news
   /language-guide/ /docs/tutorials/developer-liftoff/level-0/intro-languages
   /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
-  /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
   /live-sessions https://dfinity.org/events-and-news/#videos-live-sessions
-  /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
   /multichain /chainfusion
   /ois /sns
   /openchat /sns

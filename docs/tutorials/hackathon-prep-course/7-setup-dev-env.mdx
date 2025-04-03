@@ -161,7 +161,7 @@ By default, `dfx` will store your identity in the local keyring/keychain. If a k
 
 Make sure you switch to the newly created identity as explained below.
 
-## Using your developer identity
+### Using your developer identity
 
 Only one identity is active and used by `dfx` at any given point in time. Get the name of the currently active identity by running:
 
@@ -221,7 +221,11 @@ dfx cycles convert --amount AMOUNT --network ic
 
 ## Deploying your dapp to the mainnet
 
-Now that you've obtained some cycles, you can deploy a project to the mainnet from the command line. Create a new project with `dfx new hello_world --type=motoko && cd hello_world`.
+Now that you've obtained some cycles, you can deploy a project to the mainnet from the command line. Create a new project with:
+
+```
+dfx new hello_world --type=motoko && cd hello_world
+```
 
 Then, make sure you have an active connection to the mainnet. In your terminal window, run the command:
 
