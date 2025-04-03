@@ -21,10 +21,10 @@ Having your own local Bitcoin network allows you to mine blocks quickly and at w
 facilitates testing various cases without having to rely on the (slow) Bitcoin testnet
 or the (even slower) Bitcoin mainnet.
 
-- #### Step 1: Download [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
-- #### Step 2: Unpack the `.tar.gz` file: `tar -xfz bitcoin-25.0-x86_64-apple-darwin.tar.gz`
-- #### Step 3: Create a directory named `data` inside the unpacked folder: `cd bitcoin-25.0 && mkdir data`
-- #### Step 4: Create a file called `bitcoin.conf` at the root of the unpacked folder and add the following contents:
+- #### Step 1: Download [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
+- #### Step 2: Unpack the `.tar.gz` file: `tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz`. Don't use any other approach of unpacking the file, as it may lead to issues.
+- #### Step 3: Create a directory named `data` inside the unpacked folder: cd bitcoin-27.0 && mkdir data
+- #### Step 4: Replace the content of the file called `bitcoin.conf` at the root of the unpacked folder with the following contents:
 
 ```
 # Enable regtest mode. This is required to set up a private bitcoin network.
@@ -78,15 +78,13 @@ cd examples/motoko/basic_bitcoin
 # For Rust
 cd examples/rust/basic_bitcoin
 ```
+- #### Step 3: Install the mops package manager
+```
+# For Motoko
+curl -fsSL cli.mops.one/install.sh | sh
+# For Rust, this step is not necessary
+```
 
-- #### Step 3: Initialize the git submodules.
-```
-git submodule update --init --recursive
-```
-- #### Step 4: If you're on a Mac, install [Homebrew](https://brew.sh/) and then run the following to install additional packages:
-```
-brew install llvm binaryen cmake
-```
 ### Deploying in `regtest` Mode
 
 Your local Bitcoin node operates in what's called "regression testing mode," or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode).
@@ -208,9 +206,9 @@ DEBG .../ic_btc_canister/heartbeat New Bitcoin tip height: 101
 These logs indicate that your local `dfx` project has ingested the 100 new blocks you just mined.
 The BTC your canister owns can now be spent.
 
-## Sending Bitcoin
+## Sending bitcoin
 
-You can send Bitcoin using the `send` endpoint on your canister.
+You can send bitcoin using the `send_from_${type}` endpoint on your canister, where `${type}` is one of `[p2pkh_address, p2tr_key_only_address, p2tr_address_key_path, p2tr_address_script_path]`.
 
 In the Candid UI, add a destination address and an amount to send. In the example below, you're sending 1 BTC to the address `n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S`.
 
@@ -219,11 +217,11 @@ In the Candid UI, add a destination address and an amount to send. In the exampl
 Via command line, the same call would look like this:
 
 ```
-dfx canister call basic_bitcoin send '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
+dfx canister call basic_bitcoin send_from_p2pkh_address '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
 ```
 
 The command above creates a transaction and sends it out to your local Bitcoin node.
-For more details on how the `send` endpoint works, see the [deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) tutorial.
+For more details on how the `send_from_${type}` endpoints work, see the "deploying your first Bitcoin dapp" [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) or [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) tutorials.
 
 There still remains one additional step, which is to mine a block so that the transaction
 you just sent becomes part of the blockchain. Run the following from the `bitcoind` directory:

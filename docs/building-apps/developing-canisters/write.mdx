@@ -13,7 +13,7 @@ import Tabs from "@theme/Tabs";
 
 # Write
 
-<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
 ICP supports a wide range of applications and architecture types. They can range from a single canister to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects and everything in between.
 
@@ -181,7 +181,7 @@ fn greet(name: String) -> String {
 
 ### Step 2: Add randomness.
 
-A key feature of ICP is its ability to generate [onchain randomness](/docs/building-apps/network-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
+A key feature of ICP is its ability to generate [onchain randomness](/docs/building-apps/network-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
 
 To use randomness in your canister, you need to make a call to the `raw_rand` method of the [management canister](/docs/references/system-canisters/management-canister).
 
@@ -661,7 +661,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 At this point, we have three functions in this code that demonstrate three different ICP features: **onchain randomness**, **timers** for autonomous execution, and **HTTPS outcalls** to obtain data. Let's edit the code to use them in conjunction with one another rather than separately:
 
-1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent [NNS proposal]((/docs/building-apps/governing-apps/nns/overview) at random.
+1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent [NNS proposal]((https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System) at random.
 
 2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.
 

@@ -3,48 +3,6 @@
   "categoryDescription": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of Web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
   "elements": [
     {
-      "title": "Orbit Multi custody wallet for ICP",
-      "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Poloidal"
-    },
-    {
-      "title": "Secure canister management",
-      "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Poloidal"
-    },
-    {
-      "title": "Orbit supports ICRC-1",
-      "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Poloidal"
-    },
-    {
-      "title": "The Orbit multi-custody asset framework",
-      "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-      "is_milestone": true,
-      "milestone_id": "Poloidal",
-      "status": "in_progress",
-      "eta": "",
-      "eta_to_render": "February 2025"
-    },
-    {
       "title": "Enterprise-grade ledgers",
       "description": "This milestone extends the ICRC suite of ledger standards to meet enterprise requirements, unlocking key use cases such as stablecoins, Utopia, and the tokenization of real-world assets, driving the future of trustless digital asset management on the Internet Computer.",
       "status": "in_progress",

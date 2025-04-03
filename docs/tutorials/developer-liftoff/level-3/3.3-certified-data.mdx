@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer liftoff, certified data, certified variables]
+keywords: [intermediate, tutorial, developer liftoff, certified data, certified variables, certifying data, how to certify data]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -14,21 +14,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/OztLHEilyuc?si=pEXWrE4fGyMsSBOH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
+In a previous module, [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly learned about certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
 
+Recall that certified variables are used as a way for queries to return an authenticated response that can be validated and trusted, since query calls do not go through consensus. This is useful for workflows that require additional layers of authentication, such as applications that handle financial data or important records. For users of the application, they can trust that the information they're interacting with and receiving from the application is trustworthy and secure.
 
-In a previous module, [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly touched on certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
+Certified variables are set within an update call to a canister, since an update call changes the canister's state and goes through consensus. Once a certified variable is set, the certification can be read by a query call that returns the certified variable.
 
-Recall that certified variables are used as a way for queries to return an authenticated response that can be validated and trusted, since query calls do not go through consensus and therefore their response cannot be certified. By utilizing certified variables, developers can make query calls that return an authenticated response that they can trust. This allows for workflows that require additional layers of authentication, such as applications that handle financial data or important records. For users of the application, they can be assured that the information they're interacting with and receiving from the application is trustworthy and secure as well.
-
-Certified variables can be set within an update call to a canister, since an update call changes the canister's state and goes through the consensus process. Once a certified variable is set, the certification can be read in future query calls that return the certified variable in response to the query call in a trustworthy and secure way. Using this method, any application or client can immediately validate each certified variable that it receives from a query call without having to put trust into the single node that it received the response from.
-
-Certified variables are part of a broader concept of **certified data.** Certified data utilizes **chain-key cryptography** at the canister level to generate a digital signature that can be validated using a permanent, public key that belongs to the Internet Computer, whose private key counterpart is constantly distributed across many different nodes on the network. A valid signature can only be generated when the majority of the nodes that store the components of the private key cooperate in a cryptographic protocol.
+Certified variables are part of a broader concept of **certified data.** Certified data utilizes **chain-key cryptography** at the canister level to generate a digital signature that can be validated using a permanent, public key that belongs to ICP, whose private key counterpart is distributed across many different nodes on the network. A valid signature can only be generated when the majority of the nodes that store the components of the private key cooperate in a cryptographic protocol.
 
 ## How data is certified
 
-The notion of certified data can be used to certify all the assets of a canister's frontend, such as the canister's HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, an HTTP gateway can be used to verify that certificate before passing the response off to the client.
+Certified data can be used to certify all the assets of a dapp's frontend, such as the HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, an HTTP gateway can be used to verify that certificate before passing the response off to the client.
 
-In each round of message execution on the Internet Computer, the message routing layer generates a new state tree that contains that round's information. The tree contains a root hash that is then used by the nodes in the subnet to create a certificate. This state tree contains several pieces of information, including the certified variables of each canister. An example of what a state tree looks like can be found below:
+In each round of message execution on ICP, the message routing layer generates a new state tree that contains that round's information. The tree contains a root hash that is then used by the nodes in the subnet to create a certificate. This state tree contains several pieces of information, including the certified variables of each canister. An example of what a state tree looks like can be found below:
 
 ```bash
 *root*
@@ -43,21 +41,17 @@ In each round of message execution on the Internet Computer, the message routing
        ...
 ```
 
-This example state tree highlights where the certified data is stored in the tree. Note that the certified data of a canister is limited to being 32 bytes long; if a canister needs to certify more than 32 bytes of information, the canister must hash the data before certifying it.
+The certified data of a canister is limited to being 32 bytes long; if a canister needs to certify more than 32 bytes of information, the canister must hash the data before certifying it.
 
 ### Data certificates
 
-A certificate for each piece of certified data consists of:
-
-- A certificate for the root hash of the state tree.
-
-- A Merkle proof that validates that the certified data belongs to a tree that hashes the root hash.
+A certificate for each piece of certified data consists of the root hash of the state tree and a Merkle proof that validates that the certified data belongs to a tree that hashes the root hash.
 
 ## How canisters certify data
 
 To certify data, a canister uses the following workflow:
 
-- First, a canister must construct a hash tree that maps the paths of HTTPS resources to SHA-256 hashes. An example of this tree is:
+1. First, a canister must construct a hash tree that maps the paths of HTTPS resources to SHA-256 hashes. An example of this tree is:
 
 ```bash
 *root*
@@ -67,8 +61,9 @@ To certify data, a canister uses the following workflow:
     └── /css/styles.css -> SHA256(body)
 ```
 
-- Then, the canister computes the root hash of the tree and calls `ic0.certified_data_set` with the bytes of the hash as the argument.
-- Lastly, a [`#IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) header is added to each certified HTTP response.
+2. Then, the canister computes the root hash of the tree and calls `ic0.certified_data_set` with the bytes of the hash as the argument.
+
+3. Lastly, a [`#IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) header is added to each certified HTTP response.
 
 ### Certified data API methods
 
@@ -87,7 +82,7 @@ Developers can certify their canister's data and assets in two ways:
 - Code can be written that explicitly manages and certifies all assets. In this workflow, the developer must construct a tree containing all of the assets, Merkelize the tree, then compute its root hash.
     - To verify the root hash, developers can use libraries within [Motoko](#certified-data-motoko-module) and [Rust](#certified-data-rust-cdk-module), or use the [ic-certified-assets library](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-certified-assets).
 
-- Alternatively, developers can create a dedicated asset canister. For new projects created with `dfx`, the 'asset' canister is the 'frontend' canister. Any canister can be configured to be an asset canister by setting the canister's type as 'asset' in the project's `dfx.json` file. By setting the canister as an asset canister, the canister's boilerplate code manages and certifies all assets in the background.
+- Alternatively, developers can create a dedicated asset canister. For new projects created with `dfx`, the 'asset' canister is the 'frontend' canister. Any canister can be configured to be an asset canister by setting the canister's type as 'asset' in the project's `dfx.json` file. An asset canister's boilerplate code manages and certifies all assets in the background.
 
 ### Certified data Motoko module
 
@@ -98,18 +93,9 @@ let set : (data : Blob) -> ()
 let getCertificate : () -> ?Blob
 ```
 
-### Certified data Rust CDK module
-
-The Rust canister development kit `ic-cdk` provides the following system API methods for certified data:
-
-```rust
-pub fn set_certified_data(data: &[u8])
-pub fn data_certificate() -> Option<Vec<u8>>
-```
-
 ## Generating an HTTP response
 
-On the Internet Computer, there is a built-in `http_request` query method. This method uses information related to an HTTP request as the input and outputs an HTTP response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTP requests, this method should be implemented.
+On ICP, there is a built-in `http_request` query method. This method uses information related to an HTTP request as the input and outputs an HTTP response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTP requests, this method should be implemented.
 
 When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) and a value equal to the asset's certificate.
 
@@ -117,7 +103,7 @@ More information can be found in the [HTTP gateway protocol specification](/docs
 
 ### Example
 
-To demonstrate the concepts you've learned thus far, you'll take a look at the `/index.html` asset of the Internet Identity canister (canister ID `rdmx6-jaaaa-aaaaa-aaadq-cai`). The SHA-256 hash of this asset at the time it was retrieved was `478afb8206ca0b566a7f138e623accd169fa822602d2f6d717fb67d1045f4f0d`. The response contained the following header:
+To demonstrate the concepts you've learned thus far, consider the `/index.html` asset of the Internet Identity canister (canister ID `rdmx6-jaaaa-aaaaa-aaadq-cai`). The SHA-256 hash of this asset at the time it was retrieved for this tutorial was `478afb8206ca0b566a7f138e623accd169fa822602d2f6d717fb67d1045f4f0d`. The response contained the following header:
 
 ```
 IC-Certificate: certificate=:2dn3omR0cmVlgwGDAYMBgwJIY2FuaXN0ZXKDAYMBggRYIIudikoDwH1gRK637olblUhMUX3HlE0Dihj8MTACxGzHgwGCBFggyCRYc8M/ugt8G7C8RPYayn+l4sdBj8gvFotzJELnQ32DAYIEWCA1/+UHZ9SF67w4ssjOi+Jv3ch7WQNzezGmhtuvB+RDpYMCSgAAAAAAAAAHAQGDAYMBgwJOY2VydGlmaWVkX2RhdGGCA1ggWUt10wjWinx0aAWyrNEi/0R7VeuhalDMjGDErzIbZzqCBFgg/VtZRZdYyK/sr3KF2jWeS1rblF+4ajwfDv2ZbCGpaTiCBFggSoI5JS0pCusHP4nh6h780ebr961E0lVnFkFwzF5pZaeCBFggcKidPEGiPoFMPYfEyNGsDRYWmry1iGX0HNUEoKhIATeCBFggR0zdKUZOMcm5EHNl5Tee3XWqbq1gArwUGzZ2FH4rWtmCBFggTkwJcNrh0eJ9FutJcn6th9eCbM2KXnloxed0acxmQNeDAYIEWCA6SNH8IT1JMHEDEE99csK1kw7bqHh7kGMfNDs6popfCoMCRHRpbWWCA0nFnbXrts/65xZpc2lnbmF0dXJlWDCkXN2tcvH5b+xFCzfkuJMqrZDcplfW8vDziJwzx08WOPI4rh2TIGYZ3R6dgQTF0CA=:, tree=:2dn3gwGDAktodHRwX2Fzc2V0c4MBggRYIDgtAGcz5VvevwiEwwZB9zpkt17C9LE6o/O37bEwQUawgwGDAksvaW5kZXguaHRtbIIDWCBHivuCBsoLVmp/E45iOszRafqCJgLS9tcX+2fRBF9PDYIEWCCx2L8SfJwOydBkUxjc8tKXDVUeoiw8qEYI+8b+HRWIWYIEWCAqZ+3yoFSA9s+jbLFbtcVz+wi0HF9x51Kx38qPcBhiDA==:
@@ -181,37 +167,11 @@ HashTree {
 
 ## Using certified variables
 
-Now that you've covered the fundamental concepts behind certified data, let's take a look at a working example using certified variables. In this example, you'll demonstrate the certification of an HTTP response using a simple interface to store both the response and the certification through a single call.
+To demonstrate how to use certified data, open the [ICP Ninja certified data example](https://icp.ninja/s/JzA5z). In this example, the certification of an HTTP response uses a simple interface to store both the response and the certification through a single call.
 
-### Prerequisites
+Take a look at the source code for this project's canister in the `backend/app.mo` file to see how this code works. Let's take a look at a few snippets of it. For example, the function to submit the HTTP request uses the following code:
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
-
-You will also need to install Mops, which was covered in the previous module [3.1: Motoko package managers](/docs/tutorials/developer-liftoff/level-3/3.1-package-managers).
-
-### Creating a new project
-
-To get started, open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and clone the sample code's repository:
-
-```bash
-dfx start --clean --background
-git clone https://github.com/krpeacock/certified-cache
-cd certified-cache
-```
-
-Then, install the following packages with Mops:
-
-```bash
-mops install base@0.8.0
-mops install sha2@0.0.2
-mops install ic-certification@0.1.1
-```
-
-### Creating an HTTP request
-
-You can take a look at the source code for this canister in the `src/demo.mo` file to see how this code works. Let's take a look at a few snippets of it. For example, the function to submit the HTTP request uses the following code:
-
-```motoko no-repl title="src/demo.mo"
+```motoko no-repl title="backend/app.mo"
 public query func http_request(req : HttpRequest) : async HttpResponse {
     let cached = cache.get(req.url);
 
@@ -253,7 +213,7 @@ In this function, if the HTTP `query` request returns a status code of `200`, th
 
 If the HTTP `query` request returns a status code of `404`, the request has failed, and the request is upgraded to an `update` request. Then, the `http_request_update` function is called, which uses the following code:
 
-```motoko no-repl title="src/demo.mo"
+```motoko no-repl title="backend/app.mo"
 public func http_request_update(req : HttpRequest) : async HttpResponse {
     let url = req.url;
 
@@ -297,55 +257,14 @@ public func http_request_update(req : HttpRequest) : async HttpResponse {
 
 In this function, a request that was upgraded to an `update` request is stored in the cache with a certification, so that next time it is queried, it can be returned with the certificate and a status code of `200`, rather than the status code of `404`.
 
-The full canister code can be found at [`src/demo.mo`](https://github.com/krpeacock/certified-cache/blob/main/src/demo.mo) on GitHub.
-
-Now let's deploy the canister to make some requests:
-
-```bash
-dfx deploy
-```
-
 ### Interacting with certified variables
 
-To make a request to the canister, run the command:
+To make a request to the canister, open the canister's Candid UI URL. Then, click "Call" under the `http_request_query` method. It should return an error 404 response since there aren't any requests stored in the cache to begin with. It will automatically upgrade the request to an update and store it in the cache.
 
-```bash
-curl "http://localhost:$(dfx info webserver-port)?canisterId=$(dfx canister id cache)"
-```
+Then, if you make this call again, the request will be returned automatically without the request having to be upgraded to an update request. In the response, you will see the certificate of the data:
 
-Since there aren't any requests stored in the cache to begin with, you will receive the following output:
-
-```bash
-2023-10-02 22:22:09.157001 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] Request was not found in cache. Upgrading to update request.
-
-2023-10-02 22:22:11.069725 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] Storing request in cache.
-
-<html><head><meta name='viewport' content='width=device-width, initial-scale=1'><link rel='stylesheet' href='https://unpkg.com/chota@latest'><title>IC certified assets demo</title></head><body><div class='container' role='document'><pre>Request has been stored in cache:
-URL is: /?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai
-Method is GET
-Body is: ""
-Timestamp is:
-+1_696_285_331_069_725_000
-</pre></div></body></html>%
-```
-
-Then, if you use this call again, the request will be returned automatically without the request having to be upgraded to an update request:
-
-```bash
-2023-10-02 22:42:09.868110 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] <html><head><meta name='viewport' content='width=device-width, initial-scale=1'><link rel='stylesheet' href='https://unpkg.com/chota@latest'><title>IC certified assets demo</title></head><body><div class='container' role='document'><pre>Request has been stored in cache:
-URL is: /?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai
-Method is GET
-Body is: ""
-Timestamp is:
-+1_696_285_331_069_725_000
-</pre></div></body></html>
-<html><head><meta name='viewport' content='width=device-width, initial-scale=1'><link rel='stylesheet' href='https://unpkg.com/chota@latest'><title>IC certified assets demo</title></head><body><div class='container' role='document'><pre>Request has been stored in cache:
-URL is: /?canisterId=bkyz2-fmaaa-aaaaa-qaaaq-cai
-Method is GET
-Body is: ""
-Timestamp is:
-+1_696_285_331_069_725_000
-</pre></div></body></html>%
+```json
+(record {body=vec {60; 104; 116; 109; 108; 62; 60; 104; 101; 97; 100; 62; 60; 109; 101; 116; 97; 32; 110; 97; 109; 101; 61; 39; 118; 105; 101; 119; 112; 111; 114; 116; 39; 32; 99; 111; 110; 116; 101; 110; 116; 61; 39; 119; 105; 100; 116; 104; 61; 100; 101; 118; 105; 99; 101; 45; 119; 105; 100; 116; 104; 44; 32; 105; 110; 105; 116; 105; 97; 108; 45; 115; 99; 97; 108; 101; 61; 49; 39; 62; 60; 108; 105; 110; 107; 32; 114; 101; 108; 61; 39; 115; 116; 121; 108; 101; 115; 104; 101; 101; 116; 39; 32; 104; 114; 101; 102; 61; 39; 104; 116; 116; 112; 115; 58; 47; 47; 117; 110; 112; 107; 103; 46; 99; 111; 109; 47; 99; 104; 111; 116; 97; 64; 108; 97; 116; 101; 115; 116; 39; 62; 60; 116; 105; 116; 108; 101; 62; 73; 67; 32; 99; 101; 114; 116; 105; 102; 105; 101; 100; 32; 97; 115; 115; 101; 116; 115; 32; 100; 101; 109; 111; 60; 47; 116; 105; 116; 108; 101; 62; 60; 47; 104; 101; 97; 100; 62; 60; 98; 111; 100; 121; 62; 60; 100; 105; 118; 32; 99; 108; 97; 115; 115; 61; 39; 99; 111; 110; 116; 97; 105; 110; 101; 114; 39; 32; 114; 111; 108; 101; 61; 39; 100; 111; 99; 117; 109; 101; 110; 116; 39; 62; 60; 112; 114; 101; 62; 82; 101; 113; 117; 101; 115; 116; 32; 104; 97; 115; 32; 98; 101; 101; 110; 32; 115; 116; 111; 114; 101; 100; 32; 105; 110; 32; 99; 97; 99; 104; 101; 58; 32; 10; 85; 82; 76; 32; 105; 115; 58; 32; 10; 77; 101; 116; 104; 111; 100; 32; 105; 115; 32; 10; 66; 111; 100; 121; 32; 105; 115; 58; 32; 34; 34; 10; 84; 105; 109; 101; 115; 116; 97; 109; 112; 32; 105; 115; 58; 32; 10; 43; 49; 95; 55; 52; 49; 95; 50; 57; 52; 95; 55; 56; 56; 95; 57; 49; 56; 95; 53; 52; 54; 95; 57; 56; 57; 10; 60; 47; 112; 114; 101; 62; 60; 47; 100; 105; 118; 62; 60; 47; 98; 111; 100; 121; 62; 60; 47; 104; 116; 109; 108; 62}; headers=vec {record {"content-type"; "text/html"}; record {"ic-certificate"; "certificate=:2dn3o2R0cmVlgwGDAYMBggRYIH95Xq8hH7PaMh0ikUKbrUOoaaHM/XYf9aNfGjYjIqH0gwJIY2FuaXN0ZXKDAYIEWCB2sZMeGXOE+sGIEqYPOjvHmvS0ZyyW/r+TKI+CUdS09oMBgwGCBFggiHJvSkBbY+OwEk/iHzUvCOYkq+97yREBgaB2htjE1k6DAYMBggRYIDg5hKENC+HoMONJv0IZxuj92XtUSg0pGd/3LXkwP8zAgwGCBFgg5bj4KSDe8x80+UolD6X5DotRCz53gqbVhF0kBd2M8aKDAYMBgwGCBFggXuYzJcmCOvNk+3Hbf8ZJBZdRlLKPRtE1gmzcqnhixLGDAYMBgwGDAkoAAAAAADALFQEBgwGDAYMCTmNlcnRpZmllZF9kYXRhggNYIGjrwAYOKbzNf9Pik8Qaenhw5wuQUNFCKwvJH6NJezAJggRYIOZYPTpY2YGxf5mB+0Z68Ho8mLJRVJfjKGeWfSzWEQiHggRYIEq7TgH+HYOGTkvtgHAmJAS/4k0XAGZMIZFf5c7mKzV8ggRYICYcCnLK7xDuqmbX0KIr+azmZPdgC6fZjFtARxtA18FfggRYIFhCz9UfqnXVOPiwG8fZZEOrJ4Amsf2XVEzc1THR+SWyggRYIBm496bmCQNlpPzWLzlqiH7cQ3fcDHz3Tx4P8McDZ9koggRYIFbi8tw2jYm2dMbcaCoavadkH0lt0VlA5iG44iIn73i2ggRYIDbj/uXRv4TLhV0M4GmxSL6OiDzmjJN9Yty/P55QtiPnggRYIOtR2xKby4powcPLgvlLX45BaTAUm+9J94KshUEi09rwggRYICwKe1gt6Id86afBH0EtnzprPDldHi47h8otcDrDmtsMggRYIHGoa2yaefljnUiqx8a6NOL4o2mOqWEj76+OHiJCLAT0gwGCBFggR/y+V96q0OalbVk+N42oHKM2jLWXjXO+Q/DHmoTm+6eDAkR0aW1lggNJrLipnIzOlJUYaXNpZ25hdHVyZVgwkG5ctbCG3cmeoj5ioKqw/qlWAjyLBHnvGwUUiL3ICQ+HtQ+sCfy6Nv05d+GRhS5famRlbGVnYXRpb26iaXN1Ym5ldF9pZFgdw7lupH4EyJd8twPxWq9aqq9z1ZbHvhmkOnGNiwJrY2VydGlmaWNhdGVZAjHZ2feiZHRyZWWDAYIEWCA4JvPJWsHXI4KJgS6EbnAKyKspzKLAcZFGip+O7yPlYIMBgwGCBFggeX1CyOT1kassDqRyAecS5HNgE1ZccnJOC4ju22ffjyeDAkZzdWJuZXSDAYIEWCCktZ0dMTiiE/sQngk82YrksC34jYWP/OrgasBa+bx4YYMBgwGDAYMCWB3DuW6kfgTIl3y3A/Far1qqr3PVlse+GaQ6cY2LAoMBgwJPY2FuaXN0ZXJfcmFuZ2VzggNYG9nZ94GCSgAAAAAAMAAAAQFKAAAAAAA///8BAYMCSnB1YmxpY19rZXmCA1iFMIGCMB0GDSsGAQQBgtx8BQMBAgEGDCsGAQQBgtx8BQMCAQNhAIe8xygapWIEVNViHaV1Av0KyfEAMc7MnfZxWZTDCsdvISeI0j26iqBcjsEJCQVhzgfFznrvnySO7NHQqXvKsil3+5hW9L+1ztH8VpMyC3tu9f4oxpaIuSqNrmHK52LrR4IEWCB8UnE056bG6ld7GSNoueLdWnD48HXVlqNrhljoaiYi3IIEWCAUWeDIR/nzfKfbxG5FxlOHoYB9tLZqqiBjkjUM5w6wq4IEWCDqQ7o4kiwKqNimRX1aK6PPrL3fJpZyEi8c/3iApOXyroMCRHRpbWWCA0n6zeTMkdL2lBhpc2lnbmF0dXJlWDCRWL0ALcZQOo832TH6p4WDIZePec3qYhzuaDd7WgnEk5aqSWGsCOSBXTN6lK+PP/w=:, tree=:2dn3gwJLaHR0cF9hc3NldHODAYMCQIIDWCAulU6i05Lor+BUVf5P0/xZSpFnvj46oIGTxnZAViIA5YIEWCDQDBXcUOzZR6JU+GCVkisJqqQ+Un3IrWIezpqlwMjUuA==:"}}; upgrade=null; streaming_strategy=null; status_code=200})
 ```
 
 That'll wrap up this module! Want to learn more about certified variables? Check out the [resources](#resources) below.
@@ -358,32 +277,6 @@ Canisters using HTTP asset certification:
 - [NNS frontend.](https://github.com/dfinity/nns-dapp/blob/49126394df77b9583e508277fc736eda51de47be/rs/src/assets.rs#L123)
 - [Certified assets canister.](https://github.com/dfinity/certified-assets)
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The IC community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-Next, let's dive deeper into agents:
-
-- [3.4 Introduction to agents](/docs/tutorials/developer-liftoff/level-3/3.4-intro-to-agents).
+<TutorialFooter />

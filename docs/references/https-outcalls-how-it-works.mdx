@@ -172,17 +172,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-The cycles cost for an HTTPS outcall request has a fixed and variable component. The fixed part accounts for the constant overheads associated with an HTTPS outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. The current prices can be found [here](/docs/building-apps/essentials/gas-cost).
-
-**Formula:**
-```
-header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
-request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
-http_outcall_cost = per_call_cost + per_request_byte_cost * request_size + per_response_byte_cost * max_response_size
-scaling_factor = subnet_size / 13
-total_cost = scaling_factor * http_outcall_cost
-```
-
+[View the cycles cost for an HTTPS outcall request](/docs/building-apps/essentials/gas-cost#https-outcalls).
 The cycles provided with the call must be sufficient for covering the cost of the request; excessive cycles are returned to the caller.
 
 The current pricing is defined to be rather conservative (expensive), and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTPS outcall with a small response, like the ones used for querying financial APIs, only costs fractions of a USD cent, which is substantially cheaper than fees charged for a call by oracles on most blockchains.

@@ -26,32 +26,11 @@ Recall that the `vite-motoko-react` project includes the following files and sub
 │       ├── Backend.add.test.mo
 │       ├── Backend.get.test.mo
 │       └── Backend.inc.test.mo
-│   ├── Backend.mo
-│   └── tests
-│       ├── Backend.add.test.mo
-│       ├── Backend.get.test.mo
-│       └── Backend.inc.test.mo
 ├── dfx.json
 ├── mops.toml
 ├── package-lock.json
 ├── package.json
 ├── src
-│   ├── App.css
-│   ├── App.tsx
-│   ├── assets
-│   │   ├── favicon.ico
-│   │   ├── motoko.png
-│   │   ├── motoko_moving.png
-│   │   ├── motoko_shadow.png
-│   │   ├── react.svg
-│   │   └── vite.svg
-│   ├── index.html
-│   ├── index.scss
-│   ├── main.tsx
-│   ├── setupTests.ts
-│   ├── tests
-│   │   └── App.test.tsx
-│   └── vite-env.d.ts
 │   ├── App.css
 │   ├── App.tsx
 │   ├── assets
@@ -89,19 +68,6 @@ actor class Backend() {
   public func add(n : Nat) : async () {
     counter += n;
   };
-  stable var counter = 0;
-  // Get the current count
-  public query func get() : async Nat {
-    counter;
-  };
-  // Increment the count by one
-  public func inc() : async () {
-    counter += 1;
-  };
-  // Add `n` to the current count
-  public func add(n : Nat) : async () {
-    counter += n;
-  };
 };
 ```
 
@@ -114,18 +80,15 @@ actor class Backend() {
 ```
 
 Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor that uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be persisted during canister upgrades. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
-Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor that uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be persisted during canister upgrades. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
 
 ```motoko no-repl title="backend/Backend.mo"
 stable var counter = 0;
 ```
 
 Next, the code defines a public function called `get()`. The function is modified with the keyword `query`, which defines that calls to this function will use a query call. A query call is used for querying information from a canister's method. This tutorial will go into further detail on query calls in the section [query and update calls](#query-and-update-calls). This function simply returns the value of the `counter` variable.
-Next, the code defines a public function called `get()`. The function is modified with the keyword `query`, which defines that calls to this function will use a query call. A query call is used for querying information from a canister's method. This tutorial will go into further detail on query calls in the section [query and update calls](#query-and-update-calls). This function simply returns the value of the `counter` variable.
 
 ```motoko no-repl title="backend/Backend.mo"
 public query func get() : async Nat {
-    counter;
     counter;
 };
 ```
@@ -135,16 +98,13 @@ In the next portion of the code, a public function called `inc()` is defined. Th
 ```motoko no-repl title="backend/Backend.mo"
 public func inc() : async () {
     counter += 1;
-    counter += 1;
 };
 ```
 
 Lastly, the `add(n : Nat)` function is defined. This function adds `n` to the current count, where `n` is a numerical value passed to the function when it is called. In the frontend UI, the button used to increase the counter value does not use this function; however, it can be called manually from the command line or Candid interface of the backend canister. This tutorial will go into further detail on Candid in the section [Candid](#candid).
-Lastly, the `add(n : Nat)` function is defined. This function adds `n` to the current count, where `n` is a numerical value passed to the function when it is called. In the frontend UI, the button used to increase the counter value does not use this function; however, it can be called manually from the command line or Candid interface of the backend canister. This tutorial will go into further detail on Candid in the section [Candid](#candid).
 
 ```motoko no-repl title="backend/Backend.mo"
 public func add(n : Nat) : async () {
-    counter += n;
     counter += n;
 };
 ```
@@ -171,9 +131,7 @@ To further understand and develop your own backend canisters, let's review a few
 ### Single versus multi-canister projects
 
 When you design a dapp to be deployed on ICP, one of the first decisions you will make is how your dapp should be structured. Dapps can consist of a single canister, such as only the backend canister; they can consist of a single backend canister and a single frontend canister, as this sample `vite-react-motoko` starter project does, or they can consist of several canisters.
-When you design a dapp to be deployed on ICP, one of the first decisions you will make is how your dapp should be structured. Dapps can consist of a single canister, such as only the backend canister; they can consist of a single backend canister and a single frontend canister, as this sample `vite-react-motoko` starter project does, or they can consist of several canisters.
 
-Typically, service-based dapps that don't include a frontend UI work well as single canister projects, while projects that involve several reusable services can work well as multi-canister projects.
 Typically, service-based dapps that don't include a frontend UI work well as single canister projects, while projects that involve several reusable services can work well as multi-canister projects.
 
 ### Importing external canisters
@@ -187,27 +145,6 @@ To test the integration with a third-party canister locally, dfx supports pullin
 
 ```json title="dfx.json"
 {
-    "canisters": {
-        "example_backend": {
-            "type": "motoko",
-            "main": "src/example_backend/main.mo",
-            "dependencies": [
-                "internet_identity"
-            ]
-        },
-        "internet_identity": {
-            "type": "pull",
-            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
     "canisters": {
         "example_backend": {
             "type": "motoko",
@@ -245,21 +182,13 @@ actor countCharacters {
   public query func get() : async Nat {
       counter;
   };
-  public query func get() : async Nat {
-      counter;
-  };
 }
 ```
 
 **Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
-**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
 
 ```motoko title="backend/Backend.mo"
 actor countCharacters {
-    public func test(text : Text) : async Bool {
-        let size = Text.size(text);
-        return size % 2 == 0;
-    };
     public func test(text : Text) : async Bool {
         let size = Text.size(text);
         return size % 2 == 0;
@@ -269,7 +198,6 @@ actor countCharacters {
 
 Additionally, there are several other terms regarding calls that you will come across as an ICP developer, such as:
 
-**Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
 **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
 
 **Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
@@ -293,21 +221,15 @@ A service description that does not have any public methods is not very useful. 
 ```candid
 service : {
   ping : () -> ();
-  ping : () -> ();
 }
 ```
 
-In this `ping` method, there are no arguments passed to the method, and there are no results returned, so the empty sequence of () is used for both the arguments and the results.
 In this `ping` method, there are no arguments passed to the method, and there are no results returned, so the empty sequence of () is used for both the arguments and the results.
 
 To interact with the service descriptions defined by Candid, you can make calls directly to the canister's defined method, interact with the method through a frontend service (such as an agent), or you can use the CandidUI. CandidUI is a user interface that can be used to interact with a canister's public methods through the web browser. When a backend canister is deployed, the backend canister URL that is returned in the terminal window is the CandidUI URL, indicated by 'via Candid interface':
 
 ```bash
 URLs:
-  Frontend canister via browser
-    frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
-  Backend canister via Candid interface:
-    backend: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
   Frontend canister via browser
     frontend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
   Backend canister via Candid interface:
@@ -365,16 +287,10 @@ Additionally, Mops is defined as the project's package manager in the project's 
       "packtool": "mops sources"
     }
   }
-  "defaults": {
-    "build": {
-      "packtool": "mops sources"
-    }
-  }
 }
 ...
 ```
 
-To add additional packages to your project's dependencies, you can use the command `mops add` followed by the package name:
 To add additional packages to your project's dependencies, you can use the command `mops add` followed by the package name:
 
 ```bash
