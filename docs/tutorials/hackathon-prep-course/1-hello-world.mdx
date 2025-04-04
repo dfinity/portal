@@ -1,0 +1,127 @@
+---
+keywords: [beginner, tutorial, hackathon, hackathon prep course, getting started, icp ninja, basic example, backend only, hello, world! icp, ninja]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# 1: Hello, world!
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+The Internet Computer (ICP) is a transparent and secure blockchain network that enables developers to create and deploy fully decentralized applications (dapps). Dapps are created by deploying specialized smart contracts known as **canisters**. A canister is capable of hosting entire applications, including their source code and user interface. Once a canister is deployed to the mainnet, it is publicly accessible and upgradable. Users can interact with dapps directly in their web browser without needing a crypto wallet.
+
+[Learn more about the Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33624077003668-What-is-the-Vision-behind-ICP).
+
+## Deploy your first canister smart contract
+
+To begin developing applications on ICP, the tool [ICP Ninja](https://icp.ninja) provides a browser-based development environment that can be accessed from anywhere using any device. It is a free platform that doesn't require you to [download tools](/docs/building-apps/getting-started/install), create or authenticate with an [identity](/docs/building-apps/getting-started/identities), or obtain [cycles](/docs/building-apps/getting-started/tokens-and-cycles).
+
+ICP Ninja does, however, impose a few [restrictions](/docs/building-apps/developer-tools/icp-ninja#limitations) that should be noted when using it. It is not designed to develop and deploy applications for long-term, production use.
+
+### Application architecture
+
+Applications deployed on ICP are composed of one or more canisters. Each canister contains code in the form of a WebAssembly (Wasm) module and state, i.e., the data stored in the canister.
+
+When you design a dapp to be deployed on ICP, one of the first decisions you will make is how your dapp should be structured. Dapps can consist of a single canister, such as only the backend canister; they can consist of a single backend canister and a single frontend canister, or they can consist of several canisters.
+
+Typically, service-based dapps that don't include a frontend UI work well as single canister projects, while projects that involve several reusable services can work well as multi-canister projects.
+
+The default project architecture has two canisters:
+
+- **Backend canister**: Used to store the application’s data and to provide endpoints to access and modify the data. Backend canisters can be written in [a variety of different languages](/docs/building-apps/developer-tools/cdks/) (Motoko, Rust, TypeScript, and more).
+
+- **Frontend canister**: Used to store the web assets for the application’s user interface.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+## Hello, world! backend
+
+Let's start with deploying only a backend canister. Open the [ICP Ninja "Hello, world!" project](https://icp.ninja/s/w2MbP). View the [ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
+
+This project will contain the following files:
+
+```bash
+├── backend      # Folder containing the source code of your dapp's backend.
+│   ├──  app.mo  # The default source code file; this is the file you'll be working with in this tutorial.
+├── dfx.json     # The configuration file for your application.
+├── mops.toml    # Package configuration file for Motoko.
+├── README.md    # Information about the project and using ICP Ninja.
+```
+
+### `dfx.json​`
+
+The `dfx.json` file defines the application's canister and its source code file. This project uses the following `dfx.json` file:
+
+```json title="dfx.json" file=../../references/samples/motoko/backend_only/dfx.json
+```
+
+Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+
+### `backend/app.mo`
+
+Now, let's review the `backend/app.mo` file to learn about the application's functions.
+
+```motoko title="backend/app.mo" no-repl file=../../references/samples/motoko/backend_only/backend/app.mo
+```
+
+- First, an actor is defined and named `HelloWorld`. An actor is an object that can hold state and interact with the world through messages.
+- Then, a **query method** is defined. Query methods do not alter the canister's state or data. They can be thought of as 'read-only' operations. When called, this query method will return the text "Hello, " followed by the text passed to the method and an exclamation mark.
+
+## Types of canister calls
+
+When calls are made to a canister's methods, there are two primary types: calls that go through consensus and calls that do not go through consensus.
+
+Calls that go through consensus are able to alter the canister's state. These are referred to as **update calls**. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method for counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
+
+Calls that do not go through consensus do not alter the state of a canister, making them 'read-only' operations. They are referred to as **query calls**. Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. They are executed synchronously and answered immediately once received. Query calls are executed on a single node within a subnet. Query methods can be called in replicated mode as update calls. The backend canister in this example uses the following query call, defined by the keyword `query` as seen above:
+
+Additionally, there are several other terms regarding calls that you will come across as an ICP developer, such as:
+
+**Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
+
+**Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
+
+**Inter-canister calls** are used to make calls between different canisters.
+
+[Learn more about canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
+
+:::info
+If you want to learn more about this code, you can right-click within ICP Ninja and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
+:::
+
+## Deploying the canister
+
+Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
+
+```
+Deploying code onchain...
+→ Reserving canisters onchain
+→ Building backend
+Backend Internet Computer URL:
+https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp1.io/?id=6kwk6-qqaaa-aaaab-qbmga-cai
+⏰ Your dapp will be available for 20 minutes
+```
+
+Open the "Backend Internet Computer URL" in your web browser. This will open a [Candid API](/docs/building-apps/interact-with-canisters/candid/candid-concepts) interface you can use to call the method `greet` defined in the backend.
+
+In the input box, insert "ICP," then select "Query." The backend canister will process the call and return the response defined in the method. Since the method is defined as a `query` method, the canister simply returns data; it does not alter the canister's state.
+
+```
+("Hello, ICP!")
+```
+
+You can edit the `app.mo` file to return a different greeting, such as:
+
+```motoko no-repl
+return "Hello, " # name # "! This is my first canister on ICP!";
+```
+
+Then click "Redeploy" to [upgrade](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters) your canister's code. Once deployed, you can test the `greet` method in the Candid API, and it should return your new greeting.
