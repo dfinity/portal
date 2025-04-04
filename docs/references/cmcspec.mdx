@@ -9,10 +9,10 @@ The Cycles Minting Canister (CMC) is a system canister on the Internet Computer 
 
 - Topping up existing canisters.
 - Creating new canisters.
-- Depositing minted cycles into ledger-managed accounts.
+- Minting and depositing minted cycles into cycle ledger-managed accounts.
 - Fetching exchange rates and subnet configuration.
 
-The CMC is governed entirely by the [NNS (Network Nervous System)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview) and receives configuration updates through proposals.
+The CMC is governed solely by the [NNS (Network Nervous System)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview) and receives configuration updates through proposals.
 
 ## Configuration parameters
 
@@ -64,10 +64,15 @@ The CMC expects the payment to follow a strict structure that encodes both the *
   }
   ```
 
-#### Returns
+  #### Returns
   ```candid
   variant { Ok: principal; Err: NotifyError }
   ```
+
+  - **Ok**: The principal of the newly created canister.
+  - **Err**: Indicates why the request was rejected (e.g., incorrect memo, controller mismatch, payment already processed, etc.).
+    See [NotifyError](#error-handling-and-retry-semantics) for all possible errors.
+
 
 #### Notes
   - The call is idempotent with respect to `block_index`; repeating it returns the same result.
@@ -98,10 +103,15 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     }
     ```
 
-#### Returns
+    #### Returns
     ```candid
-    variant { Ok: nat; Err: NotifyError } // Number of cycles minted and deposited
+    variant { Ok: nat; Err: NotifyError }
     ```
+
+    - **Ok**: Number of cycles minted and deposited into the specified canister.
+    - **Err**: Describes why the top-up failed (e.g., invalid transaction, wrong memo, too old, already processed, etc.).
+      See [NotifyError](#error-handling-and-retry-semantics).
+
 
 #### Notes
     - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see [“Shared logic”](#shared-logic) section).
@@ -112,7 +122,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 Mints cycles into a [cycles ledger account](/docs/defi/token-ledgers/cycles-ledger) based on an ICP payment recorded in the ICP Ledger.
 
-This method is used to deposit minted cycles into a specific subaccount in the [cycles ledger*](/docs/defi/token-ledgers/cycles-ledger) It supports minting from both legacy and ICRC-1-style transfers.
+This method is used to deposit minted cycles into a specific subaccount in the [cycles ledger.](/docs/defi/token-ledgers/cycles-ledger) It supports minting from both legacy and ICRC-1-style transfers.
 
 The CMC expects the payment to follow a strict structure that encodes the **intent** and **destination**:
 
@@ -137,17 +147,24 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   }
   ```
 
-#### Returns
+  #### Returns
   ```candid
   variant {
     Ok: record {
-      block_index: nat;  // Block index in the cycles ledger
-      minted: nat;       // Amount of cycles minted
-      balance: nat;      // Final balance of the cycles ledger account
+      block_index: nat;
+      minted: nat;
+      balance: nat;
     };
     Err: NotifyError;
   }
   ```
+
+  - **Ok**: A record that includes:
+    - `block_index`: The cycles ledger block index of the minting transaction
+    - `minted`: The amount of cycles created from the ICP payment
+    - `balance`: The new balance of the target cycles ledger subaccount
+  - **Err**: Describes why the minting failed. See [NotifyError](#error-handling-and-retry-semantics).
+
 
 #### Notes
   - This method is idempotent by `block_index`.
@@ -173,10 +190,16 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
   }
   ```
 
-#### Returns
+  #### Returns
   ```candid
   variant { Ok: principal; Err: CreateCanisterError }
   ```
+
+  - **Ok**: The principal ID of the newly created canister.
+  - **Err**: An error indicating why the creation failed.
+    May include a refund amount if cycles were consumed but the canister was not created.  
+    See `CreateCanisterError` for structured error types.
+
 
 #### Notes
   - This method requires cycles to be attached to the call.
