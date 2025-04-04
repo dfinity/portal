@@ -35,7 +35,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
-  /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
   /docs/current/references/* /docs/references/:splat
@@ -158,6 +157,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/icp-ninja /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/icp-ninja
@@ -746,6 +746,26 @@ const redirects = `
   /docs/current/developer-docs/getting-started/write-smart-contracts /docs/building-apps/developing-canisters/write
   /docs/current/developer-docs/smart-contracts/maintain/import /docs/building-apps/advanced/using-third-party-canisters
 
+  ## Hackathon prep course
+
+  /docs/tutorials/hackathon-prep-course/what-is-icp /docs/tutorials/hackathon-prep-course/hello-world
+  /docs/current/tutorials/hackathon-prep-course/what-is-icp /docs/tutorials/hackathon-prep-course/hello-world
+  /docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp /docs/tutorials/hackathon-prep-course/static-website
+  /docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp /docs/tutorials/hackathon-prep-course/static-website
+  /docs/tutorials/hackathon-prep-course/exploring-the-backend /docs/tutorials/hackathon-prep-course/first-fullstack-dapp
+  /docs/current/tutorials/hackathon-prep-course/exploring-the-backend /docs/tutorials/hackathon-prep-course/first-fullstack-dapp
+  /docs/tutorials/hackathon-prep-course/exploring-the-frontend /docs/tutorials/hackathon-prep-course/evm-block-explorer
+  /docs/current/tutorials/hackathon-prep-course/exploring-the-frontend /docs/tutorials/hackathon-prep-course/evm-block-explorer
+  /docs/tutorials/hackathon-prep-course/integrating-with-tokens /docs/tutorials/hackathon-prep-course/create-deploy-token
+  /docs/current/tutorials/hackathon-prep-course/integrating-with-tokens /docs/tutorials/hackathon-prep-course/create-deploy-token
+  /docs/current/tutorials/hackathon-prep-course/tutorials/hackathon-prep-course/authentication /docs/tutorials/hackathon-prep-course/authentication
+  /docs/tutorials/hackathon-prep-course/obtaining-cycles /docs/tutorials/hackathon-prep-course/setup-dev-env
+  /docs/current/tutorials/hackathon-prep-course/obtaining-cycles /docs/tutorials/hackathon-prep-course/setup-dev-env
+  /docs/current/tutorials/hackathon-prep-course/managing-canisters /docs/tutorials/hackathon-prep-course/managing-canisters
+  /docs/tutorials/hackathon-prep-course/sample-starter-projects /docs/tutorials/hackathon-prep-course/advanced-features
+  /docs/current/tutorials/hackathon-prep-course/sample-starter-projects /docs/tutorials/hackathon-prep-course/advanced-features
+  /docs/current/tutorials/hackathon-prep-course/resources /docs/tutorials/hackathon-prep-course/resources
+
   ## Frontends
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/application-frontends/asset-security /docs/building-apps/frontends/asset-security
@@ -775,6 +795,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/building-apps/authentication/overview
   /docs/current/developer-docs/web-apps/user-login/nfid /docs/building-apps/authentication/overview
+  /docs/current/developer-docs/frontend/custom-frontend /docs/building-apps/frontends/using-an-asset-canister
 
   ## Old: Developer's guide
   /docs/current/tutorials/deploy_sample_app /docs/tutorials/developer-liftoff/
@@ -860,6 +881,8 @@ const redirects = `
   /docs/current/samples/pos /samples
   /docs/current/samples/t-ecdsa-sample /samples
   /docs/current/samples/vetkd-encrypted-notes /samples
+  /docs/samples/overview /samples
+  /docs/current/samples/overview /samples
 
   ## Misc
   /docs/current/developer-docs/use-cases/ /docs/home
@@ -1088,7 +1111,7 @@ const redirects = `
   /bootcamp /education-hub
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
-
+  /blog/features/vetkey-primer /docs/references/vetkeys-overview
   `
 
   .split(/[\r\n]+/)
@@ -1096,66 +1119,66 @@ const redirects = `
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
-  function isSplat(redirect) {
-    return redirect[0].includes("/*");
-  }
+function isSplat(redirect) {
+  return redirect[0].includes("/*");
+}
 
-  function isExternal(redirect) {
-    return redirect[1].startsWith("http");
-  }
+function isExternal(redirect) {
+  return redirect[1].startsWith("http");
+}
 
-  function isExactUrl(redirect) {
-    return redirect[0].endsWith(".html");
-  }
+function isExactUrl(redirect) {
+  return redirect[0].endsWith(".html");
+}
 
-  function ruleToRedirect(rule) {
-    const from = rule[0].replace(/(.+)\/$/, "$1");
-    const to = rule[1];
-    return {
-      from,
-      to,
-    };
-  }
-
-  exports.getRedirects = function () {
-    return redirects
-      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
-      .map(ruleToRedirect)
-      .map((r) => ({
-        to: r.to.replace(/#.+$/, ""),
-        from: r.from,
-      }));
+function ruleToRedirect(rule) {
+  const from = rule[0].replace(/(.+)\/$/, "$1");
+  const to = rule[1];
+  return {
+    from,
+    to,
   };
+}
 
-  exports.getExternalRedirects = function () {
-    return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
-  };
+exports.getRedirects = function () {
+  return redirects
+    .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+    .map(ruleToRedirect)
+    .map((r) => ({
+      to: r.to.replace(/#.+$/, ""),
+      from: r.from,
+    }));
+};
 
-  exports.getExactUrlRedirects = function () {
-    return redirects
-      .filter((r) => !isExternal(r) && isExactUrl(r))
-      .map(ruleToRedirect);
-  };
+exports.getExternalRedirects = function () {
+  return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
+};
 
-  exports.getSplatRedirects = function (existingUrl) {
-    const urls = [];
+exports.getExactUrlRedirects = function () {
+  return redirects
+    .filter((r) => !isExternal(r) && isExactUrl(r))
+    .map(ruleToRedirect);
+};
 
-    for (const redirect of redirects.filter(
-      (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r))
-    ) {
-      const trimmedSource = redirect[0].replace("/*", "/");
+exports.getSplatRedirects = function (existingUrl) {
+  const urls = [];
 
-      if (redirect[1].includes(":splat")) {
-        const trimmedDestination = redirect[1].replace(":splat", "");
-        if (existingUrl.startsWith(trimmedDestination)) {
-          const completeSourceUrl = existingUrl.replace(
-            trimmedDestination,
-            trimmedSource
-          );
-          urls.push(completeSourceUrl);
-        }
+  for (const redirect of redirects.filter(
+    (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r)
+  )) {
+    const trimmedSource = redirect[0].replace("/*", "/");
+
+    if (redirect[1].includes(":splat")) {
+      const trimmedDestination = redirect[1].replace(":splat", "");
+      if (existingUrl.startsWith(trimmedDestination)) {
+        const completeSourceUrl = existingUrl.replace(
+          trimmedDestination,
+          trimmedSource
+        );
+        urls.push(completeSourceUrl);
       }
     }
+  }
 
-    return urls;
-  };
+  return urls;
+};

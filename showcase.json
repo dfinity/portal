@@ -2627,7 +2627,7 @@
     "description": "Odoc is a place where you can hire and work. It is empowering freelancers with transparent and liberating smart contracts on the blockchain.",
     "usesInternetIdentity": true,
     "website": "https://lwdq3-vqaaa-aaaal-acwda-cai.icp0.io/",
-    "twitter": "https://twitter.com/odoc_icp",
+    "twitter": "https://twitter.com/odoc_ic",
     "github": "https://github.com/aliscie/odoc",
     "display": "Normal",
     "logo": "/img/showcase/odoc_logo.png"
@@ -3136,16 +3136,6 @@
     "display": "Normal",
     "logo": "/img/showcase/cani_icon.svg",
     "submittableId": "41319392"
-  },
-  {
-    "id": "cyclestransferstation",
-    "name": "CYCLES-TRANSFER-STATION",
-    "tags": ["DeFi", "DAO"],
-    "website": "https://cycles-transfer-station.com",
-    "description": "The CYCLES-TRANSFER-STATION is an onchain order-book market trade platform for ICRC-1 tokens on the world-computer. The key is that the market tokens trade against the native CYCLES, creating a stable trading scenario, and facilitating the general trade of the CYCLES.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/cyclestransferstation_logo.png"
   },
   {
     "id": "relation",
