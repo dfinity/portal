@@ -1,6 +1,7 @@
 name: Update search index
 on:
   # run every 24 hours
+  push:
   schedule:
     - cron: "0 0 * * *"
 
