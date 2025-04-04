@@ -4190,5 +4190,27 @@
     "usesInternetIdentity": true,
     "twitter": "https://x.com/bookiedex",
     "youtube": "https://www.youtube.com/@Bookiewin"
+  },
+  {
+    "id": "iwinpool",
+    "name": "IwinPool",
+    "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
+    "website": "https://iwinpool.com",
+    "logo": "/img/showcase/iwinpool_logo.webp",
+    "screenshots": [
+      "/img/showcase/iwinpool_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "Decentralized Community Pool Lottety Platform",
+    "stats": "150 +",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": true,
+    "github": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": ""
   }
 ]
