@@ -17,7 +17,7 @@ The Internet Computer (ICP) is a transparent and secure blockchain network that 
 
 ## Vision of the Internet Computer
 
-The Internet Computer's vision is to extend the public internet with serverless cloud functionality to create a blockchain so powerful, it plays the role of 'Cloud 3.0.'.
+The [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP)'s vision is to extend the public internet with serverless cloud functionality to create a blockchain so powerful, it plays the role of 'Cloud 3.0.'.
 
 Developers can build almost anything using ICP's advanced smart contract capabilities without using traditional IT infrastructure. Users can interact with decentralized applications deployed on ICP directly in their web browser without needing a crypto wallet.
 
@@ -26,7 +26,7 @@ You can learn more about the vision of the Internet Computer in the [ICP deck](h
 ## Architecture of the Internet Computer Protocol
 ### Subnets
 
-A subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's consensus algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
+A subnet is a collection of nodes that run their own instance of the Internet Computer Protocol's [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) algorithm, essentially running their own blockchain. Each subnet consists of node machines, or nodes, which are used to host canister smart contracts. Each canister's code, along with its state and computation, is replicated across every node on the subnet.
 
 Subnets are designed to be highly scalable and host canister smart contracts efficiently. Each subnet operates concurrently with and independently of the other subnets but can communicate asynchronously with other subnets. Multiple independent subnets run in parallel, allowing the Internet Computer to break through the single-machine barrier that limits traditional blockchains.
 
@@ -40,9 +40,9 @@ You can read more about deterministic decentralization on the [Internet Computer
 
 ### Chain-key cryptography
 
-A core component of ICP is the protocol's advanced cryptographic mechanisms, which are collectively referred to as chain-key cryptography. Chain-key cryptographic methods provide the ability for ICP to achieve functionalities and scalability that other networks can't.
+A core component of ICP is the protocol's advanced cryptographic mechanisms, which are collectively referred to as chain-key cryptography. Chain-key cryptographic methods provide the ability for ICP to achieve functionalities and [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling) that other networks can't.
 
-Chain-key cryptography uses a secret signing key in a [threshold signature scheme](/how-it-works/chain-key-technology) that is distributed across all replicas in a subnet.
+Chain-key cryptography uses a secret signing key in a [threshold signature scheme](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography) that is distributed across all replicas in a subnet.
 
 Chain-key cryptography enables the following functionalities:
 
@@ -54,7 +54,7 @@ Chain-key cryptography enables the following functionalities:
 
 - Transactions that are targeted at other blockchain networks can be computed fully onchain, allowing for integrations with chains such as Bitcoin and Ethereum.
 
-To learn more about chain-key cryptography, check out [this documentation.](/how-it-works/chain-key-technology/)
+To learn more about chain-key cryptography, check out [this documentation.](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography)
 
 
 ## ICP superpowers
@@ -90,7 +90,7 @@ Users can be onboarded into the ICP ecosystem seamlessly through dozens of diffe
 
 ICP is able to scale infinitely, meaning there is no limit to the amount of canisters it can host, memory it can store, or transactions it can process. This unbounded scalability is achieved through horizontal scaling, where new subnets can be added at any time, without a limit on the maximum number of subnets that can exist.
 
-Infinite scalability is especially beneficial for hosting large-scale projects or applications in a fully decentralized manner. You can learn more in the [documentation](/how-it-works/scalability/#infinite-scalability).
+Infinite scalability is especially beneficial for hosting large-scale projects or applications in a fully decentralized manner. You can learn more in the [documentation](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
 ### Cross-chain interoperability
 
@@ -109,7 +109,7 @@ ICP is designed with features that strive to make it future-proof. Some key comp
 
 - Scalability: Through ICP's subnet architecture that enables unbounded scalability, 100% onchain Web3 services are made possible. Scalability helps future-proof ICP as it helps increase adoption, demand, and usage.
 
-- Governance: ICP is governed by an advanced decentralized autonomous organization (DAO) known as the Network Nervous System (NNS), which provides the ICP community with direct control over the governance of the network. Upgrades made to ICP are executed through proposals that are approved by the NNS without requiring the network to fork. This form of governance makes ICP future-proof as it provides the ability for the network to adapt and change to fit the needs of the ICP community.
+- Governance: ICP is governed by an advanced decentralized autonomous organization (DAO) known as the Network Nervous System (NNS), which provides the ICP community with direct control over the [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) of the network. Upgrades made to ICP are executed through proposals that are approved by the NNS without requiring the network to fork. This form of governance makes ICP future-proof as it provides the ability for the network to adapt and change to fit the needs of the ICP community.
 
 - Interoperability: Through chain-key cryptography, ICP is able to directly interact with other blockchains without using bridges. This interoperability contributes to ICP's ability to adapt and change in the blockchain ecosystem.
 
@@ -123,7 +123,7 @@ Canister code can be written in any language that can be compiled into a Wasm mo
 
 A canister is managed by a **controller**, which can be a centralized entity, a decentralized entity such as a DAO, or a canister can have no controller at all, which would make it an immutable smart contract. Controllers are the only ones that can deploy the canister to the IC, start or stop their execution, and push updated code to the canister.
 
-You can learn more about canister smart contracts in [this documentation.](https://internetcomputer.org/how-it-works/canister-lifecycle/)
+You can learn more about canister smart contracts in [this documentation.](https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts)
 
 ### Capabilities
 
