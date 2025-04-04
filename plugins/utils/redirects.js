@@ -1090,7 +1090,7 @@ const redirects = `
   /bootcamp /education-hub
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
-
+  /blog/features/vetkey-primer /docs/references/vetkeys-overview
   `
 
   .split(/[\r\n]+/)
@@ -1098,66 +1098,66 @@ const redirects = `
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
-  function isSplat(redirect) {
-    return redirect[0].includes("/*");
-  }
+function isSplat(redirect) {
+  return redirect[0].includes("/*");
+}
 
-  function isExternal(redirect) {
-    return redirect[1].startsWith("http");
-  }
+function isExternal(redirect) {
+  return redirect[1].startsWith("http");
+}
 
-  function isExactUrl(redirect) {
-    return redirect[0].endsWith(".html");
-  }
+function isExactUrl(redirect) {
+  return redirect[0].endsWith(".html");
+}
 
-  function ruleToRedirect(rule) {
-    const from = rule[0].replace(/(.+)\/$/, "$1");
-    const to = rule[1];
-    return {
-      from,
-      to,
-    };
-  }
-
-  exports.getRedirects = function () {
-    return redirects
-      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
-      .map(ruleToRedirect)
-      .map((r) => ({
-        to: r.to.replace(/#.+$/, ""),
-        from: r.from,
-      }));
+function ruleToRedirect(rule) {
+  const from = rule[0].replace(/(.+)\/$/, "$1");
+  const to = rule[1];
+  return {
+    from,
+    to,
   };
+}
 
-  exports.getExternalRedirects = function () {
-    return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
-  };
+exports.getRedirects = function () {
+  return redirects
+    .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+    .map(ruleToRedirect)
+    .map((r) => ({
+      to: r.to.replace(/#.+$/, ""),
+      from: r.from,
+    }));
+};
 
-  exports.getExactUrlRedirects = function () {
-    return redirects
-      .filter((r) => !isExternal(r) && isExactUrl(r))
-      .map(ruleToRedirect);
-  };
+exports.getExternalRedirects = function () {
+  return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
+};
 
-  exports.getSplatRedirects = function (existingUrl) {
-    const urls = [];
+exports.getExactUrlRedirects = function () {
+  return redirects
+    .filter((r) => !isExternal(r) && isExactUrl(r))
+    .map(ruleToRedirect);
+};
 
-    for (const redirect of redirects.filter(
-      (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r))
-    ) {
-      const trimmedSource = redirect[0].replace("/*", "/");
+exports.getSplatRedirects = function (existingUrl) {
+  const urls = [];
 
-      if (redirect[1].includes(":splat")) {
-        const trimmedDestination = redirect[1].replace(":splat", "");
-        if (existingUrl.startsWith(trimmedDestination)) {
-          const completeSourceUrl = existingUrl.replace(
-            trimmedDestination,
-            trimmedSource
-          );
-          urls.push(completeSourceUrl);
-        }
+  for (const redirect of redirects.filter(
+    (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r)
+  )) {
+    const trimmedSource = redirect[0].replace("/*", "/");
+
+    if (redirect[1].includes(":splat")) {
+      const trimmedDestination = redirect[1].replace(":splat", "");
+      if (existingUrl.startsWith(trimmedDestination)) {
+        const completeSourceUrl = existingUrl.replace(
+          trimmedDestination,
+          trimmedSource
+        );
+        urls.push(completeSourceUrl);
       }
     }
+  }
 
-    return urls;
-  };
+  return urls;
+};
