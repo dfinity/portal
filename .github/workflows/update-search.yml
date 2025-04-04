@@ -31,6 +31,11 @@ jobs:
           AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
+      - name: Remove redirect pages
+        run: |
+          rm -rf build/bitcoin-integration/
+          # Other redirected pages to remove
+
       - name: Update search index
         run: |
           cd search/src/doc_generator
