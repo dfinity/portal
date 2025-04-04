@@ -45,10 +45,7 @@ export const CardsSection = () => {
               Build incredible dapps that natively interact with the Bitcoin
               network.
             </p>
-            <Link
-              className="button-outline-white-30 mt-4"
-              href="/bitcoin-integration"
-            >
+            <Link className="button-outline-white-30 mt-4" href="/bitcoin">
               Find out more
             </Link>
           </div>
