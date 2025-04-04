@@ -28,7 +28,7 @@ function Index() {
     },
     {
       title: "Bitcoin integration FAQ",
-      href: "/bitcoin-integration/faq",
+      href: "/bitcoin/faq",
     },
   ];
   return (

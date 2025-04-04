@@ -470,10 +470,7 @@ function CkbtcPage(): JSX.Element {
 
                   <p className="tw-paragraph mb-3">
                     The key innovations behind ckBTC are the{" "}
-                    <Link href="/bitcoin-integration">
-                      native Bitcoin integration
-                    </Link>{" "}
-                    and{" "}
+                    <Link href="/bitcoin">native Bitcoin integration</Link> and{" "}
                     <Link href="/docs/references/t-sigs-how-it-works/">
                       chain-key ECDSA signing
                     </Link>{" "}
@@ -591,7 +588,7 @@ function CkbtcPage(): JSX.Element {
                   </p>
                   <Link
                     className="link-primary link-with-icon mt-10"
-                    href="/bitcoin-integration"
+                    href="/bitcoin"
                   >
                     <LinkArrowRight />
                     How Native Bitcoin Integration Works
