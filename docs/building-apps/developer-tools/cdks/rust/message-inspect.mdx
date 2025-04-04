@@ -12,7 +12,7 @@ A canister can inspect an ingress message and either accept or decline the messa
 
 A canister that does not have a Wasm module installed will reject any ingress messages. If the canister does not implement `canister_inspect_message`, all ingress messages will be accepted.
 
-The `canister_inspect_message` functionality should not be used for definitive access control. This is because it is executed by a single replica, without full consensus, and its result could be spoofed by a malicious boundary node. However, since it does not go through full consensus, a malicious user cannot drain cycles from your canister because you don’t pay the cost for the message going through consensus.
+The `canister_inspect_message` functionality should not be used for definitive access control. This is because it is executed by a single replica, without full [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), and its result could be spoofed by a malicious [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure). However, since it does not go through full consensus, a malicious user cannot drain cycles from your canister because you don’t pay the cost for the message going through consensus.
 
 Using the `canister_inspect_message` endpoint, the canister can invoke `ic0.accept_message : () → ()` to accept the message.
 

@@ -185,7 +185,7 @@ actor countCharacters {
 }
 ```
 
-**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
+**Update calls** are able to alter the canister's state. Any changes made with an update call are persisted. They are executed on all nodes of a subnet since the result must go through the subnet's [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) process. Update calls are submitted and answered asynchronously since they must go through consensus. Update calls are not defined with a function modifier as query calls are. Below is a simple update call example that provides a method counting the number of characters within a given string, then updates the canister's state. If the string is divisible by 2, the function returns a value of 'true.'
 
 ```motoko title="backend/Backend.mo"
 actor countCharacters {

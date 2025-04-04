@@ -23,7 +23,7 @@ The canister HTTPS outcalls feature is implemented as part of the Internet Compu
 The adapter limits the network response size to `max_response_bytes`, which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response, as it affects the price of the request. The price increases with the size of `max_response_bytes`, and the actual response size is not considered, only the maximum.
 - #### Step 6: An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response.
 This is done by a component within the replica process.
-- #### Step 7: The transformed response is handed over to consensus on each replica.
+- #### Step 7: The transformed response is handed over to [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) on each replica.
 - #### Step 8: ICP consensus agrees on a response if at least $2/3$ (to be more precise, $2f+1$, where $f$ is the number of faulty replicas tolerated by the protocol) of the replicas have the same response for the request as input.
 In this case, consensus provides this response back to the management canister API, or an error if no consensus can be reached or in case of other problems.
 - #### Step 9: The management canister API provides the response or error back to the calling canister.
