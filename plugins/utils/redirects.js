@@ -62,7 +62,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
 
   ## Concepts
-  /docs/concepts/bitcoin-integration /bitcoin-integration
+  /docs/concepts/bitcoin-integration /bitcoin
   /docs/concepts/canisters-code /docs/building-apps/essentials/canisters
   /docs/concepts/chain-key-technology/ /docs/building-apps/chain-fusion/overview
   /docs/concepts/concepts-intro.html /docs/building-apps/essentials/network-overview
@@ -805,7 +805,7 @@ const redirects = `
   /docs/developers-guide/basic-syntax-rules /docs/motoko/main/reference/language-manual
   /docs/developers-guide/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/developers-guide/computation-and-storage-costs.html /docs/building-apps/essentials/gas-cost
-  /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
+  /docs/developers-guide/concepts/bitcoin-integration /bitcoin
   /docs/developers-guide/concepts/concepts-intro /docs/building-apps/essentials/network-overview
   /docs/developers-guide/concepts/ /docs/building-apps/essentials/network-overview
   /docs/developers-guide/concepts/what-is-ic /docs/building-apps/essentials/network-overview
@@ -891,7 +891,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/serving-static-asset /docs/building-apps/frontends/uploading-serving-assets
   /docs/building-apps/frontends/custom-domains/ /docs/building-apps/frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/glossary /docs/references/glossary
-  /BTC /bitcoin-integration
+  /BTC /bitcoin
   /chain-fusion /chainfusion
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -1107,7 +1107,7 @@ const redirects = `
   /apis/site/proxy /docs/references/http-gateway-protocol-spec
   /base-libraries/ /docs/motoko/main/base/
   /basics /what-is-the-ic
-  /bitcoin /bitcoin-integration
+  /bitcoin-integration /bitcoin 
   /bootcamp /education-hub
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
