@@ -163,81 +163,14 @@ You'll notice that this project structure is a bit different from the ones you'v
 
 Now let's take a closer look at the `Main.mo` file for our 'Publisher' canister. The code can be found below with comments that explain the code's logic:
 
-```motoko title="src/pub/Main.mo"
-import List "mo:base/List";
-
-// Define an actor called Publisher
-actor Publisher {
-
-  // Create a new type called 'Counter' that stores a key-value pair of 'topic: value'.
-  type Counter = {
-    topic : Text;
-    value : Nat;
-  };
-
-  // Create a new type called 'Subscriber' that stores a key-value pair of 'topic: callback'. Callback refers to the inter-canister call that sends the 'Counter' key-value pair to canisters in the 'subscribers' variable.
-  type Subscriber = {
-    topic : Text;
-    callback : shared Counter -> ();
-  };
-
-  // Define a stable variable that stores the list of canisters 'subscribed' to a topic on the 'Publisher' canister.
-  stable var subscribers = List.nil<Subscriber>();
-
-  // Define a function that enables canisters to subscribe to a topic.
-  public func subscribe(subscriber : Subscriber) {
-    subscribers := List.push(subscriber, subscribers);
-  };
-
-  // Define the function to create new topics submitted by the 'Subscriber' canister within the 'Counter' key-value pair.
-  public func publish(counter : Counter) {
-    for (subscriber in List.toArray(subscribers).vals()) {
-      if (subscriber.topic == counter.topic) {
-        subscriber.callback(counter);
-      };
-    };
-  };
-}
+```motoko title="src/pub/Main.mo" file=../../../references/samples/motoko/pub-sub/src/pub/Main.mo
 ```
 
 ### Writing a `subscriber` canister
 
 Now, let's look at the corresponding 'Subscriber' canister.
 
-```motoko no-repl title="src/sub/Main.mo"
-// Import the Publisher canister
-import Publisher "canister:pub";
-
-// Define an actor called 'Subscriber'
-actor Subscriber {
-
-  // Create a new type called 'Counter' that stores a key-value pair of 'topic: value'.
-  type Counter = {
-    topic : Text;
-    value : Nat;
-  };
-
-  // Create a variable called 'count' that has a value of '0'.
-  var count: Nat = 0;
-
-  // Define a function that sends a call to the 'Publisher' canister that subscribes to a topic and triggers the 'updateCount' function.
-  public func init(topic0 : Text) {
-    Publisher.subscribe({
-      topic = topic0;
-      callback = updateCount;
-    });
-  };
-
-  // Define the 'updateCount' function that updates the value associated with a topic.
-  public func updateCount(counter : Counter) {
-    count += counter.value;
-  };
-
-  // Define a function that queries the value of 'count'.
-  public query func getCount() : async Nat {
-    count;
-  };
-}
+```motoko no-repl title="src/sub/Main.mo" file=../../../references/samples/motoko/pub-sub/src/sub/Main.mo
 ```
 
 ### Deploying the project
