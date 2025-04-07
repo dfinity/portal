@@ -72,7 +72,7 @@ Considering that blockchains are public places where transparency is a crucial f
 
 The secret key derivation is the most sensitive part, which should avoid being controlled by one central (potentially untrusted, unauthorized, or compromised) party, and hence the KD in vetKD. Assuming there is no one trusted party, trust is distributed amongst multiple parties and requires that some threshold of them collaborate on shares of the master secret key to derive decryption keys.
 
-Parties get shares of the master secret key by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
+Parties get shares of the master secret key by leveraging a [distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
 
 ### Syntax
 
@@ -112,7 +112,7 @@ All algorithms mentioned ($\mathsf\{DKG, TKG, EKDerive, EKSVerify, Combine, EKVe
 
 ## How the vetKD primitive is constructed
 
-Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. The main feature of BLS signatures is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least). This makes them a great candidate signature scheme for the blockchain setting.
+Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. The main feature of [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least). This makes them a great candidate signature scheme for the blockchain setting.
 
 As with any signature scheme, BLS comprises three algorithms:
 

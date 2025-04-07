@@ -47,7 +47,7 @@ The following table shows units of cycles and the respective fiat values:
 
 ## Replication
 
-When a canister is deployed to a subnet, it is automatically replicated on every node within that subnet. The amount of cycles that a canister is charged will vary based on the amount of times the canister is replicated:
+When a canister is deployed to a [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation), it is automatically replicated on every node within that subnet. The amount of cycles that a canister is charged will vary based on the amount of times the canister is replicated:
 
 - Canisters deployed **locally** are deployed on a single node and therefore are replicated once. Cycles charged to locally deployed canisters have a cost that is `1 / 13` the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using `dfx`.
 

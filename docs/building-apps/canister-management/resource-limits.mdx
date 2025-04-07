@@ -34,7 +34,7 @@ The limits depend on the message type as shown in the following table.
 | Instruction limit, instructions per inspect_message                                  | 200 Million |
 | Instruction limit, instructions per round per execution thread                       | 7 Billion   |
 
-| <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
+| <Tooltip text="A collection of nodes that run their own instance of the ICP [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
 | Subnet capacity (total memory available per subnet)                                  | 1TiB        |
 | Maximum number of snapshots per canister                                              | 1           |
@@ -70,7 +70,7 @@ The limits depend on the message type as shown in the following table.
 
 ## Performance limits
 
-The block rate varies from 0.75 blocks per second to 1.5 blocks per second depending on the subnet and the number of nodes in the subnet.
+The block rate varies from 0.75 blocks per second to 1.5 blocks per second depending on the subnet and the number of nodes in the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
 Up to 1000 messages can be included in a block.
 Since ICP decouples message reception from message execution, the messages included in a block are not guaranteed to be executed in the same block.

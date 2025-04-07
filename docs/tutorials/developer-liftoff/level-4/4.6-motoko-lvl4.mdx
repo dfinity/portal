@@ -394,7 +394,7 @@ The argument type of the `inspect` function depends on the actor's interface. Th
 - `msg`: A variant of decoding functions, which contains one variant per shared function and the ID of the actor.
 
 
-The inspect system function should not be used as a definitive form of access control since it is executed by a single replica and does not go through full consensus and could be maliciously spoofed.
+The inspect system function should not be used as a definitive form of access control since it is executed by a single replica and does not go through full [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and could be maliciously spoofed.
 
 Consider the following `inspect` function example that denies all ingress messages and ignores all message information:
 
