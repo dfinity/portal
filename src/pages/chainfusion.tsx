@@ -1897,7 +1897,7 @@ function ChainFusion() {
               </div>
               <div className="absolute z-0 bottom-0 pointer-events-none ">
                 <img
-                  src="img/chainfusion/btc.webp"
+                  src="/img/chainfusion/btc.webp"
                   className="object-cover size-full md:translate-y-[9%] sm:w-1/2 md:w-full"
                 />
               </div>
@@ -1922,7 +1922,7 @@ function ChainFusion() {
               </div>
               <div className="absolute z-0 bottom-0  pointer-events-none ">
                 <img
-                  src="img/chainfusion/eth.webp"
+                  src="/img/chainfusion/eth.webp"
                   className="object-cover size-full sm:w-1/2 md:w-full"
                 />
               </div>
