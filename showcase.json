@@ -316,7 +316,7 @@
     "name": "Kinic",
     "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": ["Tools / Infrastructure", "DAO", "AI", "Analytics"],
-    "twitter": "https://x.com/kinic_ai",
+    "twitter": "https://x.com/kinic_app",
     "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
     "stats": "3,000,000+ searches",
     "display": "Large",
@@ -2627,7 +2627,7 @@
     "description": "Odoc is a place where you can hire and work. It is empowering freelancers with transparent and liberating smart contracts on the blockchain.",
     "usesInternetIdentity": true,
     "website": "https://lwdq3-vqaaa-aaaal-acwda-cai.icp0.io/",
-    "twitter": "https://twitter.com/odoc_icp",
+    "twitter": "https://twitter.com/odoc_ic",
     "github": "https://github.com/aliscie/odoc",
     "display": "Normal",
     "logo": "/img/showcase/odoc_logo.png"
@@ -3136,16 +3136,6 @@
     "display": "Normal",
     "logo": "/img/showcase/cani_icon.svg",
     "submittableId": "41319392"
-  },
-  {
-    "id": "cyclestransferstation",
-    "name": "CYCLES-TRANSFER-STATION",
-    "tags": ["DeFi", "DAO"],
-    "website": "https://cycles-transfer-station.com",
-    "description": "The CYCLES-TRANSFER-STATION is an onchain order-book market trade platform for ICRC-1 tokens on the world-computer. The key is that the market tokens trade against the native CYCLES, creating a stable trading scenario, and facilitating the general trade of the CYCLES.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/cyclestransferstation_logo.png"
   },
   {
     "id": "relation",
@@ -4178,6 +4168,7 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
+
   } ,
   {
   "id": “mercx”,
@@ -4197,5 +4188,30 @@
   "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
   "twitter": "https://x.com/mercx__?s=21",
 
-}
+
+
+  },
+  {
+    "id": "bookie",
+    "name": "Bookie",
+    "description": "The Decentralised BTC Betting Exchange. \nBest Odds, 0% Fees & Crazy Bonuses - Built on ICP. ",
+    "website": "https://www.bookie.win/",
+    "logo": "/img/showcase/bookie_logo.webp",
+    "screenshots": [
+      "/img/showcase/bookie_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "oneLiner": "The Decentralised BTC Betting Exchange",
+    "stats": "5,000+ Users",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/bookiedex",
+    "youtube": "https://www.youtube.com/@Bookiewin"
+  }
+
 ]

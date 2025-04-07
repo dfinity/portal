@@ -20,17 +20,17 @@ On ICP, an HTTP request goes through the following lifecycle:
 
 1. An HTTP client makes an outbound request.
 
-2. The HTTP gateway intercepts the request and resolves the canister ID of the request's destination.
+2. The [HTTP gateway](https://learn.internetcomputer.org/hc/en-us/articles/34211943471892-HTTP-Gateway-Protocol) intercepts the request and resolves the canister ID of the request's destination.
 
 3. The request is encoded with Candid and sent in a query call to the destination canister's `http_request` method.
 
-4. This request is sent to an ICP API boundary node, which will then forward the request to a replica node on the relevant subnet.
+4. This request is sent to an ICP API [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure), which will then forward the request to a replica node on the relevant [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
 5. The canister receives and processes the request, then returns the response.
 
 6. The HTTP gateway decodes the Candid encoding on the response.
 
-7. If the canister requests it, the gateway sends the request again via an update call to the canister's `http_request_update` method. The update call goes through consensus on the subnet.
+7. If the canister requests it, the gateway sends the request again via an update call to the canister's `http_request_update` method. The update call goes through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) on the subnet.
 
 8. If the response size [exceeds the maximum response size](/docs/building-apps/canister-management/resource-limits), the HTTP gateway fetches additional response body data through query calls.
 
@@ -60,7 +60,7 @@ For a more secure solution, it is possible to run your own HTTP gateway instance
 
 ### Running a local HTTP gateway
 
-To run your own local HTTP gateway, a proof-of-concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
+To run your own local [HTTP gateway](https://learn.internetcomputer.org/hc/en-us/articles/34211943471892-HTTP-Gateway-Protocol), a proof-of-concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
 
 This implementation features:
 
@@ -172,6 +172,8 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.upd
 ## Resources
 
 - [HTTP gateway specification](/docs/references/http-gateway-protocol-spec)
+
+- [HTTP gateway Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34211943471892-HTTP-Gateway-Protocol)
 
 - [HTTPS outcalls: `GET`](/docs/building-apps/network-features/using-http/https-outcalls/get)
 

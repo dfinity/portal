@@ -24,7 +24,7 @@ In order to verify that your canister sent the HTTP request you expected, this c
 
 ## Important notes on `POST` requests
 
-Because HTTP outcalls go through consensus, a developer should expect any HTTP `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTPS, where it is common for clients to retry requests for a variety of reasons (e.g., destination server being unavailable).
+Because HTTP outcalls go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), a developer should expect any HTTP `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTPS, where it is common for clients to retry requests for a variety of reasons (e.g., destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same.
 

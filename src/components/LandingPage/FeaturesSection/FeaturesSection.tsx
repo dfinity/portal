@@ -88,7 +88,7 @@ const FeaturesSection = () => {
             data.
           </p>
           <p className="mb-0 -mx-3 flex flex-col gap-3 items-center">
-            <Link className="link-primary" href="/bitcoin-integration">
+            <Link className="link-primary" href="/bitcoin">
               <LinkArrowRight />
               Bitcoin on ICP
             </Link>

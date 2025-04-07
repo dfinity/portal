@@ -422,7 +422,7 @@ function TokenHolders(): JSX.Element {
                   This was made possible on the Internet Computer through native{" "}
                   <Link
                     className="text-white hover:text-white underline hover:cursor-pointer"
-                    href="/bitcoin-integration"
+                    href="/bitcoin"
                   >
                     Bitcoin integration
                   </Link>
