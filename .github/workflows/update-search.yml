@@ -1,6 +1,7 @@
 name: Update search index
 on:
-
+  ### only manual trigger
+  workflow_dispatch:
 jobs:
   update-search:
     runs-on: ubuntu-latest
