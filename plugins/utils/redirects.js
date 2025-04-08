@@ -35,7 +35,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
-  /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
   /docs/current/references/* /docs/references/:splat
@@ -63,7 +62,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
 
   ## Concepts
-  /docs/concepts/bitcoin-integration /bitcoin-integration
+  /docs/concepts/bitcoin-integration /bitcoin
   /docs/concepts/canisters-code /docs/building-apps/essentials/canisters
   /docs/concepts/chain-key-technology/ /docs/building-apps/chain-fusion/overview
   /docs/concepts/concepts-intro.html /docs/building-apps/essentials/network-overview
@@ -158,6 +157,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/icp-ninja /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/icp-ninja
@@ -746,6 +746,26 @@ const redirects = `
   /docs/current/developer-docs/getting-started/write-smart-contracts /docs/building-apps/developing-canisters/write
   /docs/current/developer-docs/smart-contracts/maintain/import /docs/building-apps/advanced/using-third-party-canisters
 
+  ## Hackathon prep course
+
+  /docs/tutorials/hackathon-prep-course/what-is-icp /docs/tutorials/hackathon-prep-course/hello-world
+  /docs/current/tutorials/hackathon-prep-course/what-is-icp /docs/tutorials/hackathon-prep-course/hello-world
+  /docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp /docs/tutorials/hackathon-prep-course/static-website
+  /docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp /docs/tutorials/hackathon-prep-course/static-website
+  /docs/tutorials/hackathon-prep-course/exploring-the-backend /docs/tutorials/hackathon-prep-course/first-fullstack-dapp
+  /docs/current/tutorials/hackathon-prep-course/exploring-the-backend /docs/tutorials/hackathon-prep-course/first-fullstack-dapp
+  /docs/tutorials/hackathon-prep-course/exploring-the-frontend /docs/tutorials/hackathon-prep-course/evm-block-explorer
+  /docs/current/tutorials/hackathon-prep-course/exploring-the-frontend /docs/tutorials/hackathon-prep-course/evm-block-explorer
+  /docs/tutorials/hackathon-prep-course/integrating-with-tokens /docs/tutorials/hackathon-prep-course/create-deploy-token
+  /docs/current/tutorials/hackathon-prep-course/integrating-with-tokens /docs/tutorials/hackathon-prep-course/create-deploy-token
+  /docs/current/tutorials/hackathon-prep-course/tutorials/hackathon-prep-course/authentication /docs/tutorials/hackathon-prep-course/authentication
+  /docs/tutorials/hackathon-prep-course/obtaining-cycles /docs/tutorials/hackathon-prep-course/setup-dev-env
+  /docs/current/tutorials/hackathon-prep-course/obtaining-cycles /docs/tutorials/hackathon-prep-course/setup-dev-env
+  /docs/current/tutorials/hackathon-prep-course/managing-canisters /docs/tutorials/hackathon-prep-course/managing-canisters
+  /docs/tutorials/hackathon-prep-course/sample-starter-projects /docs/tutorials/hackathon-prep-course/advanced-features
+  /docs/current/tutorials/hackathon-prep-course/sample-starter-projects /docs/tutorials/hackathon-prep-course/advanced-features
+  /docs/current/tutorials/hackathon-prep-course/resources /docs/tutorials/hackathon-prep-course/resources
+
   ## Frontends
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/application-frontends/asset-security /docs/building-apps/frontends/asset-security
@@ -775,6 +795,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/building-apps/authentication/overview
   /docs/current/developer-docs/web-apps/user-login/nfid /docs/building-apps/authentication/overview
+  /docs/current/developer-docs/frontend/custom-frontend /docs/building-apps/frontends/using-an-asset-canister
 
   ## Old: Developer's guide
   /docs/current/tutorials/deploy_sample_app /docs/tutorials/developer-liftoff/
@@ -784,7 +805,7 @@ const redirects = `
   /docs/developers-guide/basic-syntax-rules /docs/motoko/main/reference/language-manual
   /docs/developers-guide/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/developers-guide/computation-and-storage-costs.html /docs/building-apps/essentials/gas-cost
-  /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
+  /docs/developers-guide/concepts/bitcoin-integration /bitcoin
   /docs/developers-guide/concepts/concepts-intro /docs/building-apps/essentials/network-overview
   /docs/developers-guide/concepts/ /docs/building-apps/essentials/network-overview
   /docs/developers-guide/concepts/what-is-ic /docs/building-apps/essentials/network-overview
@@ -870,7 +891,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/serving-static-asset /docs/building-apps/frontends/uploading-serving-assets
   /docs/building-apps/frontends/custom-domains/ /docs/building-apps/frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/glossary /docs/references/glossary
-  /BTC /bitcoin-integration
+  /BTC /bitcoin
   /chain-fusion /chainfusion
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -1086,7 +1107,7 @@ const redirects = `
   /apis/site/proxy /docs/references/http-gateway-protocol-spec
   /base-libraries/ /docs/motoko/main/base/
   /basics /what-is-the-ic
-  /bitcoin /bitcoin-integration
+  /bitcoin-integration /bitcoin 
   /bootcamp /education-hub
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
