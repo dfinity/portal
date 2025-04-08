@@ -22,7 +22,7 @@ In case of attacks, it is great to be able to obtain relevant metrics from canis
 
 ### Security concern
 
-Publicly revealing the canister's cycles balance allows an attacker to measure the number of instructions spent by executing the canister methods on the attacker's input. Then the attacker might be able to learn which code paths were taken during execution and derive secret information based on that. Moreover, the attacker can learn which methods and their inputs consume a lot of cycles to mount a cycles-draining attack (see also [protect against draining the cycles balance](/docs/building-apps/security/dos#protect-against-draining-the-cycles-balance)).
+Publicly revealing the canister's cycles balance allows an attacker to measure the number of instructions spent by executing the canister methods on the attacker's input. Then the attacker might be able to learn which code paths were taken during execution and derive secret information based on that. Moreover, the attacker can learn which methods and their inputs consume a lot of cycles to mount a cycles-draining attack (see also [protect against draining the cycles balance](/docs/building-apps/security/dos#handle-expensive-calls)).
 
 ### Recommendation
 
