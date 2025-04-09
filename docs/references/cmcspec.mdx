@@ -1,0 +1,419 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Cycles Minting Canister (CMC) API
+
+<MarkdownChipRow labels={["Reference"]} />
+
+
+The Cycles Minting Canister (CMC) is a system canister on the Internet Computer responsible for converting ICP tokens into **cycles**. It supports:
+
+- Topping up existing canisters.
+- Creating new canisters.
+- Minting and depositing minted cycles into cycle ledger-managed accounts.
+- Fetching exchange rates and subnet configuration.
+
+The CMC is governed solely by the [NNS (Network Nervous System)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview) and receives configuration updates through proposals.
+
+## Configuration parameters
+
+- **Conversion rate source**: The ICP/XDR exchange rate is **pushed** into the CMC by a dedicated [exchange rate canister](/docs/references/system-canisters/xrc). This data reflects live market pricing and determines the ICP→cycles conversion.
+
+- **Governance control**: All operations of the CMC — including upgrades, configuration, and authorized callers — are managed through NNS proposals.
+
+
+## API endpoints
+
+The CMC exposes a set of core methods for converting ICP into cycles and interacting with subnet configuration. These include:
+
+- `notify_create_canister`: Processes an ICP payment by minting cycles and using them to create a new canister, assigning control to the specified principal and applying optional settings.
+- `notify_top_up`: Processes an ICP payment by minting cycles and sending them to an existing canister to increase its available balance.
+- `notify_mint_cycles`: Processes an ICP payment by minting cycles and depositing them into the caller's cycles ledger account associated with a subaccount.
+- `create_canister`: Creates a canister using cycles directly attached to the call.
+- `get_icp_xdr_conversion_rate`: Returns the current ICP/XDR exchange rate with certification.
+- `get_subnet_types_to_subnets`: Lists publicly available subnets grouped by their types. Only covers subnets that don't have standard settings.
+- `get_principals_authorized_to_create_canisters_to_subnets`: Indicates which principals are permitted to create canisters on which subnets.
+- `get_default_subnets`: Returns the subnets for general-purpose public canister creation. These subnets typically have standard settings.
+- `get_build_metadata`: Displays internal version and build information for the CMC.
+
+
+
+## `notify_create_canister`
+
+Creates a new canister after verifying an ICP payment has been recorded in the ICP Ledger.
+If the `subnet_selection` field is omitted, the CMC will automatically choose a suitable subnet at random from the available options.
+
+The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **recipient**:
+
+- The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the intended controller's principal.
+- The **memo field** must explicitly indicate the intent to create a canister. This can be expressed as:
+  - A legacy 64-bit unsigned integer memo with value (in decimal)
+  ```
+  1095062083
+  ```
+  - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
+    ```
+    "\43\52\45\41\00\00\00\00"
+    ```
+
+
+#### Parameters
+  ```
+  record {
+    block_index: nat64;              // The ledger block containing the ICP payment
+    controller: principal;           // The creator of the canister. Must match caller; otherwise, Err is returned. This is also used when checking that the creator is authorized to create canisters in subnets where authorization is required. This is also used when `settings` does not specify `controllers`.
+    settings: opt CanisterSettings;  // Optional settings like controllers, memory limits, etc.
+    subnet_type: opt text;           // Deprecated: legacy subnet selection
+    subnet_selection: opt SubnetSelection; // Preferred subnet selection method
+  }
+  ```
+
+  #### Returns
+  ```
+  variant { Ok: principal; Err: NotifyError }
+  ```
+
+  - **Ok**: The principal of the newly created canister.
+  - **Err**: Indicates why the request was rejected (e.g., incorrect memo, controller mismatch, payment already processed, etc.).
+    See [NotifyError](#error-handling-and-retry-semantics) for all possible errors.
+
+
+#### Notes
+  - The caller principal must match the one encoded in the subaccount used for the payment.
+
+## `notify_top_up`
+
+  Tops up an existing canister by minting cycles based on an ICP payment recorded in the ICP Ledger.
+
+  The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **target canister**:
+
+  - The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal.
+  - The **memo field** must explicitly indicate the intent to top up a canister. This can be expressed as:
+    - A legacy 64-bit unsigned integer memo with value (in decimal)
+    ```
+    1347768404
+    ```
+    - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
+      ```
+      "\50\55\50\54\00\00\00\00"
+      ```
+
+#### Parameters
+    ```
+    record {
+      block_index: nat64;     // Block index of the ICP ledger payment
+      canister_id: principal; // Canister to be topped up
+    }
+    ```
+
+    #### Returns
+    ```
+    variant { Ok: nat; Err: NotifyError }
+    ```
+
+    - **Ok**: Number of cycles minted and deposited into the specified canister.
+    - **Err**: Describes why the top-up failed (e.g., invalid transaction, wrong memo, too old, already processed, etc.).
+      See [NotifyError](#error-handling-and-retry-semantics).
+
+
+#### Notes
+    - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see [“Shared logic”](#shared-logic) section).
+
+
+## `notify_mint_cycles`
+
+Mints cycles into a [cycles ledger account](/docs/defi/token-ledgers/cycles-ledger) based on an ICP payment recorded in the ICP Ledger.
+
+This method is used to deposit minted cycles into a specific subaccount in the [cycles ledger.](/docs/defi/token-ledgers/cycles-ledger) It supports minting from both legacy and ICRC-1-style transfers.
+
+The CMC expects the payment to follow a strict structure that encodes the **intent** and **destination**:
+
+- The subaccount used in the transfer must be derived from the caller principal using the standard 32-byte encoding (see “Shared Logic” section).
+- The **ICP transfer's memo field** must explicitly indicate the intent to mint cycles. This can be:
+  - For legacy `transfer` calls: a `u64` memo with value (in decimal):
+
+    ```
+    1414416717
+    ```
+  - For ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`): a `blob` memo equal to:
+    ```
+    "\4d\49\4e\54\00\00\00\00"
+    ```
+
+#### Parameters
+  ```
+  record {
+    block_index: nat64;         // Block index of the ICP ledger payment
+    to_subaccount: opt blob;    // 32-byte subaccount to credit in the cycles ledger
+    deposit_memo: opt blob;     // Optional application-specific memo that will be used in the cycles ledger's deposit transaction
+  }
+  ```
+
+  #### Returns
+  ```
+  variant {
+    Ok: record {
+      block_index: nat;
+      minted: nat;
+      balance: nat;
+    };
+    Err: NotifyError;
+  }
+  ```
+
+  - **Ok**: A record that includes:
+    - `block_index`: The cycles ledger block index of the minting transaction
+    - `minted`: The amount of cycles created from the ICP payment
+    - `balance`: The new balance of the target cycles ledger subaccount
+  - **Err**: Describes why the minting failed. See [NotifyError](#error-handling-and-retry-semantics).
+
+
+
+  ## Notify Methods – Shared Behavior
+
+  All `notify_*` methods (`notify_create_canister`, `notify_top_up`, `notify_mint_cycles`) process ICP payments recorded in the ledger and mint cycles accordingly. They follow the same core logic and safeguards:
+
+  - **Memo validation**: The ICP transfer must include a memo indicating the intended operation. If the memo does not match the expected value for the given `notify_*` method, the transfer is **automatically refunded** to the sender, minus the ICP ledger’s transfer fee.
+
+  - **Idempotency**: These methods are **idempotent** with respect to the `block_index` provided. If a `notify_*` call has already been processed for a given ledger block, repeated calls with the same parameters will return the previously computed result.
+
+  - **Result caching**: The results of successful calls are **cached** in memory for a generous but bounded duration to allow retrying without recomputation. Once the cache expires, duplicate calls may return a new error if the ledger transaction is no longer considered valid (e.g., too old).
+
+  - **Concurrency handling**: If a `notify_*` method is invoked while a previous call for the same ledger block is still in progress, the method returns an error indicating that the call is currently being processed. This prevents redundant computation or double processing.
+
+
+
+
+## `create_canister`
+
+Creates a new canister using cycles attached directly to the call (not from an ICP ledger payment).
+
+Unlike `notify_create_canister`, this method does not rely on an external ICP transaction. Instead, the calling canister must attach enough cycles to cover the creation cost.
+
+- If `subnet_selection` and the (deprecated) `subnet_type` are omitted, the CMC will select a suitable subnet at random from the available subnets.
+- If `settings` is provided, it will override the default configuration for the new canister.
+- If no controllers are given in `settings`, the calling principal becomes the sole controller.
+
+#### Parameters
+  ```
+  record {
+    settings: opt CanisterSettings;         // Optional settings: controller(s), allocations, limits, etc.
+    subnet_type: opt text;                  // (Deprecated) Legacy subnet type selection
+    subnet_selection: opt SubnetSelection;  // Preferred way to select the subnet
+  }
+  ```
+
+  #### Returns
+  ```
+  variant { Ok: principal; Err: CreateCanisterError }
+  ```
+
+  - **Ok**: The principal ID of the newly created canister.
+  - **Err**: An error indicating why the creation failed.
+    May include a refund amount if cycles were consumed but the canister was not created.
+    See `CreateCanisterError` for structured error types.
+
+
+#### Notes
+  - This method requires cycles to be attached to the call.
+  - Returns the principal of the newly created canister.
+  - The result is **not idempotent** — calling it again will consume cycles and create a different canister.
+
+  ## `get_icp_xdr_conversion_rate`
+
+Returns the current ICP/XDR exchange rate used to compute how many cycles a given amount of ICP buys.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  data: opt record {
+    xdr_permyriad_per_icp: nat64;
+    timestamp_seconds: nat64;
+  };
+  certificate: blob;
+}
+```
+
+- `xdr_permyriad_per_icp`: The exchange rate, in hundredths of a percent. For example, 12500 means 1 ICP = 1.25 XDR.
+- `timestamp_seconds`: Time the rate was recorded, in seconds since the Unix epoch.
+- `certificate`: Certified data that can be verified by canister clients in query calls.
+
+#### Notes
+
+This method can be called as a query. If the exchange rate is not available, `data` will be `null`.
+
+---
+
+## `get_subnet_types_to_subnets`
+
+Returns a mapping from subnet types (e.g., `"application"`, `"verified_application"`) to the list of subnets of that type.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  subnets: vec record {
+    subnet_type: text;
+    subnet_ids: vec principal;
+  };
+}
+```
+
+- Each entry in `subnets` represents a mapping from a subnet type to the list of subnets that belong to that type.
+
+#### Notes
+
+This information can be used by dapps to select appropriate subnets for canister creation.
+
+---
+
+## `get_principals_authorized_to_create_canisters_to_subnets`
+
+Lists the principals that are authorized to create canisters on which subnets.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  mappings: vec record {
+    principal: principal;
+    subnet_ids: vec principal;
+  };
+}
+```
+
+- Each entry represents a principal and the list of subnet IDs on which they are allowed to create canisters.
+
+#### Notes
+
+This is typically governed by proposals on the NNS. Only some principals are explicitly authorized.
+
+---
+
+## `get_default_subnets`
+
+Returns the list of default subnets for general-purpose canister creation.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  subnets: vec principal;
+}
+```
+
+- `subnets`: The default subnets that a user may be assigned when no subnet is specified during canister creation.
+
+#### Notes
+
+These are usually `"application"` type subnets and serve as a fallback option.
+
+---
+
+## `get_build_metadata`
+
+Returns metadata about the current build of the Cycles Minting Canister.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  repo: opt text;
+  git_revision: opt text;
+  rust_version: opt text;
+  cargo_version: opt text;
+  build_time: opt text;
+}
+```
+
+- `repo`: URL of the source code repository.
+- `git_revision`: Git commit hash.
+- `rust_version`: Version of Rust used.
+- `cargo_version`: Version of Cargo used.
+- `build_time`: UTC string of when the build was performed.
+
+#### Notes
+
+This is primarily used for debugging, reproducibility, and audits. Fields may be `null` depending on build environment.
+
+
+## Shared logic
+
+### `CanisterSettings`
+
+The `CanisterSettings` record is used to configure the canister at the time of creation or through governance. Each field is optional and will default to system-provided values if not specified.
+
+```
+record {
+  controllers : opt vec principal;          // List of principals allowed to control the canister
+  compute_allocation : opt nat;             // Percentage (0-100) of guaranteed compute capacity
+  memory_allocation : opt nat;              // Memory reserved for the canister, in bytes
+  freezing_threshold : opt nat;             // Number of seconds the canister can go without being topped up before being frozen
+  reserved_cycles_limit : opt nat;          // Reserved minimum cycle balance for execution
+  log_visibility : opt variant {
+    controllers;
+    public;
+  };                                        // Visibility of canister logs
+  wasm_memory_limit : opt nat;              // Cap on wasm memory usage, in bytes
+  wasm_memory_threshold : opt nat;          // Threshold to trigger memory alerts or actions
+}
+```
+
+Unspecified fields are interpreted as:
+- `controllers`: Defaults to the caller of the method.
+- Other fields: Use system-wide default configuration values.
+
+
+## Encoding a principal into a subaccount
+
+Several CMC methods require an ICP payment to be sent to a subaccount that encodes a principal (e.g., the controller of a new canister or the canister being topped up).
+
+To derive this subaccount, the principal is serialized and packed into a 32-byte array using the following logic:
+
+```
+public func principalToSubAccount(id: Principal) : [Nat8] {
+    let p = Blob.toArray(Principal.toBlob(id));
+    Array.tabulate(32, func(i : Nat) : Nat8 {
+        if (i >= p.size() + 1) 0
+        else if (i == 0) (Nat8.fromNat(p.size()))
+        else (p[i - 1])
+    })
+};
+```
+
+This produces a 32-byte subaccount where:
+- The first byte contains the length of the principal.
+- The next bytes contain the principal's raw byte encoding.
+- The remainder is zero-padded to reach 32 bytes.
+
+This convention ensures the CMC can determine which principal or canister an incoming payment was intended for.
