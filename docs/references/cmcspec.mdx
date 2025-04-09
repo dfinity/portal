@@ -46,15 +46,18 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 - The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the intended controller's principal.
 - The **memo field** must explicitly indicate the intent to create a canister. This can be expressed as:
-  - A legacy 64-bit unsigned integer memo with value `0x41455243` (ASCII `"AERC"`)
+  - A legacy 64-bit unsigned integer memo with value (in decimal)
+  ```
+  1095062083
+  ```
   - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
-    ```candid
+    ```
     "\43\52\45\41\00\00\00\00"
     ```
-    which represents `"CREA"` padded to 8 bytes.
+
 
 #### Parameters
-  ```candid
+  ```
   record {
     block_index: nat64;              // The ledger block containing the ICP payment
     controller: principal;           // The creator of the canister. Must match caller; otherwise, Err is returned. This is also used when checking that the creator is authorized to create canisters in subnets where authorization is required. This is also used when `settings` does not specify `controllers`.
@@ -65,7 +68,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
   ```
 
   #### Returns
-  ```candid
+  ```
   variant { Ok: principal; Err: NotifyError }
   ```
 
@@ -88,15 +91,18 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
   - The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal.
   - The **memo field** must explicitly indicate the intent to top up a canister. This can be expressed as:
-    - A legacy 64-bit unsigned integer memo with value `0x50555054` (ASCII `"PUPT"`)
+    - A legacy 64-bit unsigned integer memo with value (in decimal)
+    ```
+    1347768404
+    ```
     - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
-      ```candid
+      ```
       "\50\55\50\54\00\00\00\00"
       ```
       which represents `"PUPT"` padded to 8 bytes.
 
 #### Parameters
-    ```candid
+    ```
     record {
       block_index: nat64;     // Block index of the ICP ledger payment
       canister_id: principal; // Canister to be topped up
@@ -104,7 +110,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     ```
 
     #### Returns
-    ```candid
+    ```
     variant { Ok: nat; Err: NotifyError }
     ```
 
@@ -128,18 +134,19 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
 
 - The subaccount used in the transfer must be derived from the caller principal using the standard 32-byte encoding (see “Shared Logic” section).
 - The **ICP transfer's memo field** must explicitly indicate the intent to mint cycles. This can be:
-  - For legacy `transfer` calls: a `u64` memo with value:
-    ```candid
-    0x544e494d  // ASCII "MINT"
+  - For legacy `transfer` calls: a `u64` memo with value (in decimal):
+
+    ```
+    1414416717
     ```
   - For ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`): a `blob` memo equal to:
-    ```candid
+    ```
     "\4d\49\4e\54\00\00\00\00"
     ```
     which represents `"MINT"` padded to 8 bytes
 
 #### Parameters
-  ```candid
+  ```
   record {
     block_index: nat64;         // Block index of the ICP ledger payment
     to_subaccount: opt blob;    // 32-byte subaccount to credit in the cycles ledger
@@ -148,7 +155,7 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   ```
 
   #### Returns
-  ```candid
+  ```
   variant {
     Ok: record {
       block_index: nat;
@@ -182,7 +189,7 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
 - If no controllers are given in `settings`, the calling principal becomes the sole controller.
 
 #### Parameters
-  ```candid
+  ```
   record {
     settings: opt CanisterSettings;         // Optional settings: controller(s), allocations, limits, etc.
     subnet_type: opt text;                  // (Deprecated) Legacy subnet type selection
@@ -191,13 +198,13 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
   ```
 
   #### Returns
-  ```candid
+  ```
   variant { Ok: principal; Err: CreateCanisterError }
   ```
 
   - **Ok**: The principal ID of the newly created canister.
   - **Err**: An error indicating why the creation failed.
-    May include a refund amount if cycles were consumed but the canister was not created.  
+    May include a refund amount if cycles were consumed but the canister was not created.
     See `CreateCanisterError` for structured error types.
 
 
@@ -206,6 +213,52 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
   - Returns the principal of the newly created canister.
   - The result is **not idempotent** — calling it again will consume cycles and create a different canister.
 
+  ## `get_icp_xdr_conversion_rate`
+
+  Returns the current ICP/XDR exchange rate used to compute how many cycles a given amount of ICP buys.
+
+  #### Parameters
+
+  ```did
+  record {}
+```
+
+#### Returns
+```
+record {
+  data: opt record {
+    xdr_permyriad_per_icp: nat64;
+    timestamp_seconds: nat64;
+  };
+  certificate: blob;
+}
+```
+
+* `xdr_permyriad_per_icp`: The exchange rate, in hundredths of a percent. For example, 12500 means 1 ICP = 1.25 XDR.
+
+* `timestamp_seconds`: Time the rate was recorded, in seconds since the Unix epoch.
+
+* `certificate`: Certified data that can be verified by canister clients in query calls.
+
+#### Notes
+This method can be called as a query. If the exchange rate is not available, data will be null.
+
+
+
+---
+
+```
+## `get_subnet_types_to_subnets`
+
+Returns a mapping from subnet types (e.g., `"application"`, `"verified_application"`) to the list of subnets of that type.
+
+#### Parameters
+
+```did
+record {}
+```
+
+
 
 ## Shared logic
 
@@ -213,7 +266,7 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
 
 The `CanisterSettings` record is used to configure the canister at the time of creation or through governance. Each field is optional and will default to system-provided values if not specified.
 
-```candid
+```
 record {
   controllers : opt vec principal;          // List of principals allowed to control the canister
   compute_allocation : opt nat;             // Percentage (0-100) of guaranteed compute capacity
@@ -240,7 +293,7 @@ Several CMC methods require an ICP payment to be sent to a subaccount that encod
 
 To derive this subaccount, the principal is serialized and packed into a 32-byte array using the following logic:
 
-```motoko
+```
 public func principalToSubAccount(id: Principal) : [Nat8] {
     let p = Blob.toArray(Principal.toBlob(id));
     Array.tabulate(32, func(i : Nat) : Nat8 {
