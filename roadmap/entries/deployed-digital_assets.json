@@ -2,7 +2,6 @@
   "categoryName": "",
   "categoryDescription": "",
   "elements": [
-   
     {
       "title": "Oisy ownership model",
       "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
@@ -170,6 +169,48 @@
       "status": "deployed",
       "eta": "",
       "eta_to_render": "February 2025"
+    },
+    {
+      "title": "Orbit Multi custody wallet for ICP",
+      "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "Secure canister management",
+      "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "Orbit supports ICRC-1",
+      "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "The Orbit multi-custody asset framework",
+      "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
+      "is_milestone": true,
+      "milestone_id": "Poloidal",
+      "status": "deployed",
+      "eta": "",
+      "eta_to_render": "March 2025"
     }
   ]
 }

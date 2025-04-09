@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, tutorial, developer liftoff, manage canisters]
+keywords: [beginner, tutorial, developer liftoff, manage canisters, canister info, get canister id, canister state, canister status, delete canister, canister settings]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -17,62 +17,63 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <iframe width="660" height="415" src="https://www.youtube.com/embed/_grEFfKCXf4?si=XrtPPHnLmeX19La4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
 
-Now that you have <GlossaryTooltip>canisters</GlossaryTooltip> deployed, the next step is to learn how to manage those canisters. Managing a canister includes workflows such as obtaining information, setting an identity as the canister's owner, and deleting a canister. You'll dive into these different workflows and more in this guide to assure that you have the core fundamentals of how to maintain canisters.
+Now that you have <GlossaryTooltip>canisters</GlossaryTooltip> deployed, the next step is to learn how to manage those canisters. Managing a canister includes obtaining the canister's usage information, setting an identity as the canister's controller, and deleting a canister.
 
 ## The ICP management canister
 
-To enable canister management, the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister,' it is not actually a canister that exists with an isolated state, Wasm code, etc.; it is a facade. It is important to understand the management canister's role, however, to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
+The **ICP management canister** exposes management functionality to end users and canisters. While it is titled the 'management canister,' it is not actually a canister that exists with an isolated state, Wasm code, etc., but rather a system API. It is important to know the management canister's role, however, to understand some of the more advanced ICP features, such as threshold ECDSA and the Bitcoin integration.
 
-Management operations such as updating a canister, creating a canister, and stopping or starting a canister are sent to the management canister and then executed. When executed, the messages are sent to the relevant <GlossaryTooltip>subnet</GlossaryTooltip> and intercepted by the execution environment, which triggers the execution of the operation.
+Management operations such as updating a canister, creating a canister, and stopping or starting a canister are sent to the management canister to be executed. When executed, the messages are sent to the relevant <GlossaryTooltip>subnet</GlossaryTooltip> and intercepted by the execution environment, which triggers the execution of the operation.
 
-## Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
-You will be building off of the previous three modules, [1.3 Developing your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp), [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles), and [1.5 Deploying canisters](/docs/tutorials/developer-liftoff/level-1/1.5-deploying-canisters). You will need to have followed along and completed the steps outlined in these modules to complete this tutorial.
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
+You will be building off of the previous module [1.3: Intro to dfx](/docs/tutorials/developer-liftoff/level-1/1.3-intro-dfx). You will need to have followed along and deployed the `hello_world_backend` canister locally to complete this tutorial.
 
 ## Obtaining a canister's ID
 
-Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser, such as when you accessed the frontend of your poll dapp in the last tutorial. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
+Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser, such as when you accessed the frontend of your hello_world dapp in the last tutorial. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
 
-As an example, to get the canister ID of your `poll_backend` canister that's been deployed on the mainnet, use the command:
+As an example, to get the canister ID of your `hello_world_backend` canister that's been deployed locally, use the command:
 
 ```bash
-dfx canister id poll_backend --network ic
+dfx canister id hello_world_backend
 ```
 
-This command will return the canister's ID, which will look something like this:
+<details>
+<summary>Output</summary>
 
 ```
 bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
-If you want to get the canister ID for a locally deployed canister, simply omit the `--network ic` flag, such as:
-
-```bash
-dfx canister id poll_backend
-```
-
-:::danger
-
-This tutorial will reference locally deployed canisters from this point forward.
-
-:::
+</details>
 
 ## Obtaining canister information
 
-Next, to obtain some information about your canister, such as the canister's controller(s) and the Wasm module hash, use the command:
+Next, to view the canister's controller(s) and the Wasm module hash, use the command:
 
 ```bash
-dfx canister info poll_backend
+dfx canister info hello_world_backend
 ```
 
-The output will be returned, such as:
+<details>
+<summary>Output</summary>
 
 ```
 Controllers: bnz7o-iuaaa-aaaaa-qaaaa-cai x4d3z-ufpaj-lpxs4-v7gmt-v56ze-aub3k-bvifl-y4lsq-soafd-d3i4k-fqe
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
+
+</details>
+
 
 ## Adding an identity as a controller of a canister
 
@@ -89,34 +90,39 @@ dfx identity use ControllerExample
 dfx identity get-principal
 ```
 
-The output will resemble the following:
+<details>
+<summary>Output</summary>
 
 ```
 lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
+
 ```
 
-Copy this value. You'll then use the `dfx canister update-settings` command to add this principal to be a controller of your `poll_backend` canister, but first, you need to switch back to your previously created identity, since only existing controllers can add new controllers:
+</details>
+
+
+Copy this value. You'll then use the `dfx canister update-settings` command to add this principal to be a controller of your `hello_world_backend` canister, but first, you need to switch back to your previously created identity, since only existing controllers can add new controllers:
 
 ```bash
-dfx identity use DeveloperJourney
+dfx identity use DeveloperLiftoff
 ```
 
 Then, use the `dfx canister update-settings` command:
 
 ```bash
-dfx canister update-settings poll_backend --add-controller PRINCIPAL_ID
+dfx canister update-settings hello_world_backend --add-controller PRINCIPAL_ID
 ```
 
 For example, to use your principal value from above:
 
 ```bash
-dfx canister update-settings poll_backend --add-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
+dfx canister update-settings hello_world_backend --add-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 ```
 
-This command adds the principal `lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae` as an additional controller of your `poll_backend` canister. To confirm that this principal has been added, you can run the `dfx canister info` command again:
+This command adds the principal `lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae` as an additional controller of your `hello_world_backend` canister. To confirm that this principal has been added, you can run the `dfx canister info` command again:
 
 ```bash
-dfx canister info poll_backend
+dfx canister info hello_world_backend
 ```
 
 Now you can see this principal listed as a controller:
@@ -129,18 +135,18 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 You can remove this principal with the command:
 
 ```bash
-dfx canister update-settings poll_backend --remove-controller PRINCIPAL_ID
+dfx canister update-settings hello_world_backend --remove-controller PRINCIPAL_ID
 ```
 
 Alternatively, you can use the `--set-controller` flag instead of the `--add-controller` flag. If any controllers are set using the `--set-controller` flag, any other existing controllers will be removed. For example, re-run the command above, but use the `--set-controller` flag instead:
 
 ```bash
-dfx canister update-settings poll_backend --set-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
+dfx canister update-settings hello_world_backend --set-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 ```
 
-You will be warned that you'll be removing yourself as a controller since you're setting the `ControllerExample` identity as the sole controller while you're using the `DeveloperJourney` identity. Accept this warning.
+You will be warned that you'll be removing yourself as a controller since you're setting the `ControllerExample` identity as the sole controller while you're using the `DeveloperLiftoff` identity. Accept this warning.
 
-Then, rerun the `dfx canister info poll_backend` command. The output should now be:
+Then, rerun the `dfx canister info hello_world_backend` command. The output should now be:
 
 ```
 Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
@@ -149,26 +155,21 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Managing the running state of a canister
 
-Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister can send requests and receive replies, the canister is in a **Running** state.
+Once a canister has been deployed, it is in a **Running** state and can receive and process requests from other canisters or end users.
 
-Canisters are placed in the **Running** state by default, but there may be situations where a canister needs to be temporarily or permanently stopped. For example, before a canister is upgraded, it may be stopped to ensure proper message handling if the message is in progress or should be rolled back. Stopping a canister is also a requirement if the canister is going to be deleted.
+Canisters are placed in the **Running** state by default, but there may be situations where a canister needs to be temporarily or permanently stopped. For example, before a canister is upgraded, it may be stopped to ensure proper message handling if a message is in progress or should be rolled back. Stopping a canister is also a requirement if the canister is going to be deleted.
 
-To check the current state of all canisters, you can use the command:
-
-```bash
-dfx canister status --all
-```
-
-Or, you can check the status of a single canister by specifying its name, such as:
+To check the current state of a canister by specifying its name, such as:
 
 ```bash
-dfx canister status poll_backend
+dfx canister status hello_world_backend
 ```
 
-The output of the command will resemble the following:
+<details>
+<summary>Output</summary>
 
 ```
-Canister status call result for poll_backend.
+Canister status call result for hello_world_backend.
 Status: Running
 Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 Memory allocation: 0
@@ -181,35 +182,34 @@ Reserved Cycles Limit: 5_000_000_000_000 Cycles
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
 
-Stopping a canister works in a similar fashion. For example, to stop a single canister, run the command:
+</details>
+
+Stopping a canister works in a similar fashion. For example, to stop a canister, run the command:
 
 ```bash
-dfx canister stop poll_backend
+dfx canister stop hello_world_backend
 ```
 
-Or, to stop all canisters, use the command:
+<details>
+<summary>Output</summary>
+
+```
+Stopping code for canister hello_world_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
+```
+
+</details>
+
+Then you can verify that the canister has been stopped by rerunning the `dfx canister status` command:
 
 ```bash
-dfx canister stop --all
+dfx canister status hello_world_backend
 ```
 
-This command displays output similar to the following:
+<details>
+<summary>Output</summary>
 
 ```
-Stopping code for canister poll_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-Stopping code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
-```
-
-Then you can verify that the canisters have been stopped by rerunning the `dfx canister status` command:
-
-```bash
-dfx canister status poll_backend
-```
-
-Which should return:
-
-```
-Canister status call result for poll_backend.
+Canister status call result for hello_world_backend.
 Status: Stopped
 Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 Memory allocation: 0
@@ -222,25 +222,29 @@ Reserved Cycles Limit: 5_000_000_000_000 Cycles
 Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 ```
 
+</details>
+
 Then to start the canister again, run the command:
 
 ```bash
-dfx canister start --all
+dfx canister start hello_world_backend
 ```
 
-This will return a confirmation such as:
+<details>
+<summary>Output</summary>
 
 ```
-Starting code for canister poll_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
-Starting code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaada-cai
+Starting code for canister hello_world_backend, with canister_id 5o6tz-saaaa-aaaaa-qaacq-cai
 ```
+
+</details>
 
 ## Checking the cycles balance of a canister
 
 To check a canister's <GlossaryTooltip>cycles</GlossaryTooltip> balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
 
 ```bash
-dfx canister status poll_backend
+dfx canister status hello_world_backend
 ```
 
 The output will resemble the following, where the value `Balance` refers to the main cycles balance and `Reserved` refers to the reserved cycles balance:
@@ -261,11 +265,9 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Topping up a canister's cycles balance
 
-Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which consistently use cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
+Depositing cycles into a canister's cycles balance is known as "topping up." For production canisters, which consistently use cycles over time to pay for the canister's resources on the mainnet, topping up the canister is routine maintenance.
 
-While you must be a canister's controller in order to view the cycles balance of the canister, anyone can top up a canister.
-
-There are a few ways to top up a canister:
+While you must be a canister's controller in order to view the cycles balance of the canister, anyone can top up a canister using one of the following methods:
 
 - Using ICP in your account.
 - Using the cycles ledger.
@@ -276,20 +278,20 @@ Local development fabricates cycles as needed for canister deployment. To learn 
 
 ## Setting the canister's freezing threshold
 
-In the output of the `dfx canister status` command, you may have noticed the `freezing threshold` value. The freezing threshold is a value defined in seconds, which is used to calculate how many cycles a canister must retain in its cycles balance. This calculation is based off of the canister's memory consumption. The default freezing threshold value is `2_592_000s`, which corresponds to 30 days.
+The freezing threshold is a value defined in seconds, which is used to calculate how many cycles a canister must retain in its cycles balance. This calculation is based off of the canister's memory consumption. The default freezing threshold value is `2_592_000s`, which corresponds to 30 days.
 
 The freezing threshold is important because if a canister runs out of cycles, it will be uninstalled. The freezing threshold protects it from deletion, since if the cycles balance dips below the threshold, the canister will stop processing any new requests; however, it will continue to reply to existing requests.
 
-For example, to set a freezing threshold for your `poll_backend` canister, use the command:
+For example, to set a freezing threshold for your `hello_world_backend` canister, use the command:
 
 ```bash
-dfx canister update-settings poll_backend --freezing-threshold 3472000
+dfx canister update-settings hello_world_backend --freezing-threshold 3472000
 ```
 
-Then, you can confirm that this threshold has been set by running the `dfx canister status poll_backend ` command again:
+Then, you can confirm that this threshold has been set by running the `dfx canister status hello_world_backend ` command again:
 
 ```
-Canister status call result for poll_backend.
+Canister status call result for hello_world_backend.
 Status: Stopped
 Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 Memory allocation: 0
@@ -303,53 +305,22 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Deleting a canister
 
-The last portion of canister management that will be covered in this guide is deleting canisters. Deleting a canister will withdraw any cycles from that canister and return them to the identity associated with the canister's controller principal.
+Deleting a canister will withdraw any cycles from that canister and return them to the identity associated with the canister's controller principal. When a canister is deleted, the canister's code, state, and canister ID are removed.
 
-To delete a single canister, first you need to stop the canister with the command:
+
+Canisters must be stopped before they can be deleted:
 
 ```bash
-dfx canister stop poll_backend
+dfx canister stop hello_world_backend
 ```
 
 Then you can run the command:
 
 ```bash
-dfx canister delete poll_backend
+dfx canister delete hello_world_backend
 ```
 
-When a canister is deleted, the canister's code, state, and canister ID are removed. Canisters must be stopped before they can be deleted. Alternatively, all canisters for a project can be deleted with the commands:
 
-```bash
-dfx canister stop  --all
-dfx canister delete  --all
-```
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-## Need help?
-
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-In the next step of our developer liftoff, you'll explore upgrading canisters, storage, and persistence.
-
-- [2.1 Storage and persistence](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+<TutorialFooter />

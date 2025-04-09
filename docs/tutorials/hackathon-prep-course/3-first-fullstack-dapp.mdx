@@ -1,0 +1,152 @@
+---
+keywords: [beginner, tutorial, hackathon, hackathon prep course, fullstack dapp, game, 2d game, create a game, flying ninja, icp ninja, gaming, onchain gaming, gamefi, randomness]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# 3: Deploy your first full-stack dapp: Flying Ninja
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+Now that you've deployed a project with just a backend canister and then deployed a project with just a frontend canister, let's put the pieces together and create a full-stack application that has both a frontend and backend.
+
+For this example, open the [ICP Ninja 'Flying Ninja' project](https://icp.ninja/projects/flying-ninja).
+
+Flying Ninja is a 2D side-scroller game that showcases how ICP's unique onchain randomness can be used to generate random values; in this example, obstacles the player must avoid. The game also features a leaderboard to track player high scores.
+
+The backend canister contains the logic for the game's randomness, leaderboard, and scoring, while the frontend contains the player's ninja icon and obstacles.
+
+### `dfx.json` with two canisters
+
+In this project, note that the `dfx.json` file defines two canisters rather than just one:
+
+```json title=dfx.json file=../../references/samples/motoko/flying_ninja/dfx.json
+```
+
+## How does the backend communicate with the frontend?
+
+When a canister is deployed, locally or on the mainnet, there are two primary methods of interacting with that canister. You can use an API through an agent, or you can use the canister's HTTP interface.
+
+In this project, the frontend canister will interact with the backend canister's API through the JavaScript agent. An agent is a library that is used to make calls to a public interface of a canister. Agents are primarily responsible for:
+
+- Structuring data made in a call into a format that can be processed by the canister.
+
+- Managing authentication by attaching a cryptographic identity to the call.
+
+- Decoding data: Once a response has been returned from the canister on the mainnet, the agent takes the certificate from the call's payload and verifies it.
+
+When a user loads the application in their web browser, the browser will fetch the UI from the frontend canister, and then the user can interact with it. Each interaction will trigger a message that the agent will send to the backend.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-flow.png")}
+    alt="Application flow"
+    width="800"
+  />
+</div>
+
+<div>
+</div>
+
+In this project, the `src/frontend/Game.jsx` file defines the game's logic. The portion that communicates with the backend canister is defined as:
+
+```jsx title="Game.jsx" file=../../references/samples/motoko/flying_ninja/frontend/src/Game.jsx#L1-L71
+```
+
+In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. Declaration files are generated during the build process. If you build this project locally, you will see them; they are not shown in the ICP Ninja file viewer.
+
+When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then, it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
+
+In this example, the user interface creates randomly generated obstacles once the game is loaded. To obtain the source of randomness to generate these, the UI sends a request to the backend's `getRandomness` method, defined in the `app.mo` file as:
+
+```motoko title="app.mo" file=../../references/samples/motoko/flying_ninja/backend/app.mo#L48-L52
+  // Produces secure randomness as a seed to the game.
+  public func getRandomness() : async Blob {
+    await Random.blob();
+  };
+```
+
+The `backend` canister processes the request from the agent, then responds with the result of the method.
+
+[Learn more about agents](/docs/building-apps/interact-with-canisters/agents/overview).
+
+## Stable memory
+
+Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 500GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade.
+
+In contrast to stable memory, heap storage refers to the regular Wasm data storage for a canister. Heap storage is temporary and does not persist across canister upgrades. When a canister is upgraded or reinstalled, the heap storage is cleared. Heap storage is limited to 4GiB.
+
+A few other important terms regarding memory on ICP include:
+
+- **Stable storage**: A Motoko-specific term referring to the Motoko stable storage feature. Stable storage uses the stable memory feature to persist data across canister upgrades. Stable storage is designed to accommodate changes to both the application data and the Motoko compiler.
+
+- **Persistent actors and stable variables**: Motoko-specific features referring to variables defined as `stable` or actors defined as `persistent` in a Motoko canister. The value of variables defined within a persistent actor are persisted across canister upgrades.
+
+In this Flying Ninja example, the actor is defined as `persistent`, therefore all of the data stored in the canister's variables will be persisted across upgrades:
+
+```motoko title="app.mo" file=../../references/samples/motoko/flying_ninja/backend/app.mo
+```
+
+[Learn more about storage and data persistence](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+
+## Deploying the project
+
+Click the "Deploy" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
+
+```
+Building and deploying code onchain:
+→ Reserving canisters onchain
+→ Building backend
+→ Building frontend
+→ Uploading frontend assets
+Backend Internet Computer URL:
+https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp0.io/?id=t46xv-jqaaa-aaaab-qbktq-cai
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://3o7v4-zyaaa-aaaab-qblga-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
+```
+
+Open the dapp's "Internet Computer URL" in your web browser. This will open the Flying Ninja game, which you can start playing, record your score on the leaderboard, then send to your friends and challenge them to beat your score!
+
+Want to make some changes to the game but not sure how? The ICP Ninja AI Assistant can be used to generate code based on prompts. For example, let's try to add a message that is shown when a user beats the leaderboard's high score. Since this idea will alter the frontend assets, let's look at the `frontend/src/Game.jsx` file and identify where the high score is determined:
+
+```jsx title="Game.jsx" file=../../references/samples/motoko/flying_ninja/frontend/src/Game.jsx#L152-L159
+```
+
+Highlight this portion of the code, right-click, then select "Ask AI - Modify." In the modify prompt box, insert text such as "When a player gets the high score, tell them 'You win!'" The AI will try to modify this portion of the code to achieve the desired result. In this example, the AI generated the following:
+
+```jsx
+{showNameInput && (
+  <div
+    style={{
+      marginTop: '20px',
+      padding: '20px',
+      border: '2px solid black',
+      borderRadius: '10px'
+    }}
+  >
+    <h2>New High Score!</h2>
+    <h1 style={{ color: 'green', fontSize: '32px' }}>{winMessage}</h1>
+    <p>Enter your name:</p>
+    <input
+      type="text"
+      value={playerName}
+      onChange={(e) => setPlayerName(e.target.value)}
+      style={{ marginBottom: '10px' }}
+    />
+    <button onClick={submitScore}>Submit</button>
+  </div>
+)}
+```
+
+:::caution
+Code generated by the AI Assistant will vary.
+:::
+
+Then insert the generated code into the `frontend/src/Game.jsx` file, upgrade the canister by clicking "Redeploy," and refresh your application to see the changes! If you need help, you can also ask the AI to fix the code by right-clicking and selecting "AI Assistant - Fix."
+
+
+
+
+

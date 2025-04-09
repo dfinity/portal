@@ -28,103 +28,6 @@
       "imported": true
     },
     {
-      "title": "Coding and development in ICP Ninja",
-      "is_milestone": true,
-      "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
-      "milestone_id": "Coulomb",
-      "eta": "",
-      "status": "in_progress",
-      "eta_to_render": "March 2025"
-    },
-    {
-      "title": "ICP Ninja BETA",
-      "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on ICP.",
-      "status": "deployed",
-      "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
-      "proposal": "",
-      "docs": "https://internetcomputer.org/docs/building-apps/developer-tools/icp-ninja",
-      "is_community": false,
-      "in_beta": true,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "Developer productivity enhancements",
-      "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
-      "status": "deployed",
-      "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "AI learning assistant",
-      "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
-      "status": "deployed",
-      "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "Landing page revamp",
-      "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "Project sharing",
-      "overview": "Projects can be shared with others by generating a link.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "Login with Internet Identity or GitHub",
-      "overview": "Users can sign into ICP Ninja with their Internet Identity or GitHub to create an account to get access to even more features on the platform.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "Saving projects",
-      "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
-      "title": "Exporting projects to GitHub",
-      "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Coulomb"
-    },
-    {
       "title": "Cycles and instruction insights",
       "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
       "forum": "",
@@ -175,7 +78,7 @@
     {
       "title": "Amazing first time developer experience with ICP Ninja",
       "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Atlas",
       "eta_to_render": ""
@@ -183,19 +86,19 @@
     {
       "title": "Open Caffeine projects",
       "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
       "title": "Generate a project with AI",
       "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
       "title": "More sample projects to get you started",
       "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
