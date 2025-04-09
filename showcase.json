@@ -2591,6 +2591,7 @@
     "description": "A B2B Platform for configuring Generative AI white label solutions.",
     "usesInternetIdentity": false,
     "website": "https://onicai.com/",
+    "twitter": "https://x.com/onicaiHQ",
     "github": "https://github.com/onicai",
     "display": "Normal",
     "logo": "/img/showcase/onicai_logo.png"
