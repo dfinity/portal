@@ -20,6 +20,8 @@ On subnets with low loads, query calls are answered in about 100 milliseconds, a
 
 On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters). Look for the subnet your canister is deployed on, then compare the number of "Million Instructions Executed Per Second" for that subnet to other subnets.
 
+You can also make an HTTPS outcall from a canister to get the subnet metrics (which includes the number of canisters, state of subnet, etc) from the system state tree.
+
 ### Recommendation: Consider moving the canister to another subnet.
 
 If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](/docs/building-apps/essentials/gas-cost#execution-and-compute-allocation) setting. A compute allocation of 1% will guarantee your canister is scheduled for execution once every 100 rounds.
