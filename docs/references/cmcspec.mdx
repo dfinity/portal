@@ -78,10 +78,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 
 #### Notes
-  - The call is idempotent with respect to `block_index`; repeating it returns the same result.
   - The caller principal must match the one encoded in the subaccount used for the payment.
-  - Only transactions that follow the exact memo format will be processed successfully.
-
 
 ## `notify_top_up`
 
@@ -99,7 +96,6 @@ The CMC expects the payment to follow a strict structure that encodes both the *
       ```
       "\50\55\50\54\00\00\00\00"
       ```
-      which represents `"PUPT"` padded to 8 bytes.
 
 #### Parameters
     ```
@@ -121,8 +117,7 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
 #### Notes
     - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see [“Shared logic”](#shared-logic) section).
-    - This method is idempotent by `block_index`: retrying the same request will return the same result if it already succeeded.
-    - Only transfers matching the expected structure and memo will be accepted.
+
 
 ## `notify_mint_cycles`
 
@@ -143,7 +138,6 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
     ```
     "\4d\49\4e\54\00\00\00\00"
     ```
-    which represents `"MINT"` padded to 8 bytes
 
 #### Parameters
   ```
@@ -173,9 +167,20 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
   - **Err**: Describes why the minting failed. See [NotifyError](#error-handling-and-retry-semantics).
 
 
-#### Notes
-  - This method is idempotent by `block_index`.
-  - Both legacy and ICRC-1 memo formats are accepted if they correctly encode `"MINT"`.
+
+  ## Notify Methods – Shared Behavior
+
+  All `notify_*` methods (`notify_create_canister`, `notify_top_up`, `notify_mint_cycles`) process ICP payments recorded in the ledger and mint cycles accordingly. They follow the same core logic and safeguards:
+
+  - **Memo validation**: The ICP transfer must include a memo indicating the intended operation. If the memo does not match the expected value for the given `notify_*` method, the transfer is **automatically refunded** to the sender, minus the ICP ledger’s transfer fee.
+
+  - **Idempotency**: These methods are **idempotent** with respect to the `block_index` provided. If a `notify_*` call has already been processed for a given ledger block, repeated calls with the same parameters will return the previously computed result.
+
+  - **Result caching**: The results of successful calls are **cached** in memory for a generous but bounded duration to allow retrying without recomputation. Once the cache expires, duplicate calls may return a new error if the ledger transaction is no longer considered valid (e.g., too old).
+
+  - **Concurrency handling**: If a `notify_*` method is invoked while a previous call for the same ledger block is still in progress, the method returns an error indicating that the call is currently being processed. This prevents redundant computation or double processing.
+
+
 
 
 ## `create_canister`
@@ -215,15 +220,16 @@ Unlike `notify_create_canister`, this method does not rely on an external ICP tr
 
   ## `get_icp_xdr_conversion_rate`
 
-  Returns the current ICP/XDR exchange rate used to compute how many cycles a given amount of ICP buys.
+Returns the current ICP/XDR exchange rate used to compute how many cycles a given amount of ICP buys.
 
-  #### Parameters
+#### Parameters
 
-  ```did
-  record {}
+```
+record {}
 ```
 
 #### Returns
+
 ```
 record {
   data: opt record {
@@ -234,30 +240,131 @@ record {
 }
 ```
 
-* `xdr_permyriad_per_icp`: The exchange rate, in hundredths of a percent. For example, 12500 means 1 ICP = 1.25 XDR.
-
-* `timestamp_seconds`: Time the rate was recorded, in seconds since the Unix epoch.
-
-* `certificate`: Certified data that can be verified by canister clients in query calls.
+- `xdr_permyriad_per_icp`: The exchange rate, in hundredths of a percent. For example, 12500 means 1 ICP = 1.25 XDR.
+- `timestamp_seconds`: Time the rate was recorded, in seconds since the Unix epoch.
+- `certificate`: Certified data that can be verified by canister clients in query calls.
 
 #### Notes
-This method can be called as a query. If the exchange rate is not available, data will be null.
 
-
+This method can be called as a query. If the exchange rate is not available, `data` will be `null`.
 
 ---
 
-```
 ## `get_subnet_types_to_subnets`
 
 Returns a mapping from subnet types (e.g., `"application"`, `"verified_application"`) to the list of subnets of that type.
 
 #### Parameters
 
-```did
+```
 record {}
 ```
 
+#### Returns
+
+```
+record {
+  subnets: vec record {
+    subnet_type: text;
+    subnet_ids: vec principal;
+  };
+}
+```
+
+- Each entry in `subnets` represents a mapping from a subnet type to the list of subnets that belong to that type.
+
+#### Notes
+
+This information can be used by dapps to select appropriate subnets for canister creation.
+
+---
+
+## `get_principals_authorized_to_create_canisters_to_subnets`
+
+Lists the principals that are authorized to create canisters on which subnets.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  mappings: vec record {
+    principal: principal;
+    subnet_ids: vec principal;
+  };
+}
+```
+
+- Each entry represents a principal and the list of subnet IDs on which they are allowed to create canisters.
+
+#### Notes
+
+This is typically governed by proposals on the NNS. Only some principals are explicitly authorized.
+
+---
+
+## `get_default_subnets`
+
+Returns the list of default subnets for general-purpose canister creation.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  subnets: vec principal;
+}
+```
+
+- `subnets`: The default subnets that a user may be assigned when no subnet is specified during canister creation.
+
+#### Notes
+
+These are usually `"application"` type subnets and serve as a fallback option.
+
+---
+
+## `get_build_metadata`
+
+Returns metadata about the current build of the Cycles Minting Canister.
+
+#### Parameters
+
+```
+record {}
+```
+
+#### Returns
+
+```
+record {
+  repo: opt text;
+  git_revision: opt text;
+  rust_version: opt text;
+  cargo_version: opt text;
+  build_time: opt text;
+}
+```
+
+- `repo`: URL of the source code repository.
+- `git_revision`: Git commit hash.
+- `rust_version`: Version of Rust used.
+- `cargo_version`: Version of Cargo used.
+- `build_time`: UTC string of when the build was performed.
+
+#### Notes
+
+This is primarily used for debugging, reproducibility, and audits. Fields may be `null` depending on build environment.
 
 
 ## Shared logic
