@@ -14,7 +14,7 @@ For troubleshooting specific to the IC SDK, see [IC SDK troubleshooting](/docs/b
 
 For troubleshooting specific to using the IC SDK with WSL, see [WSL troubleshooting](/docs/building-apps/getting-started/wsl-troubleshoot).
 
-## Problem: High network latency
+## Problem: Network latency
 
 On subnets with low loads, query calls are answered in about 100 milliseconds, and update calls are answered in about 2 seconds.
 
@@ -23,8 +23,6 @@ On subnets with higher loads, your application may experience elevated latencies
 ### Recommendation: Consider moving the canister to another subnet.
 
 If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](/docs/building-apps/essentials/gas-cost#execution-and-compute-allocation) setting. A compute allocation of 1% will guarantee your canister is scheduled for execution once every 100 rounds.
-
-## Problem: Network latency
 
 ### Recommendation: To troubleshoot network latency, obtain the [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) address and request IDs your canister is using before reaching out to the DFINITY team.
 
