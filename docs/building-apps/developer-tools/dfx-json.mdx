@@ -79,20 +79,20 @@ All possible `dfx.json` configuration options are listed below.
 
     - `workspace`: The workspace in `package.json` that the canister is in, if it is not in the root workspace.
 
-    **Example*::
+    **Example**:
 
     ```json
       "canisters": {
         "example_frontend": {
-        "dependencies": [
-            "example_backend"
-        ],
-        "source": [
-            "src/example_frontend/dist"
-        ],
-        "type": "assets",
-        "workspace": "example_frontend"
-        }
+            "dependencies": [
+                "example_backend"
+            ],
+            "source": [
+                "src/example_frontend/dist"
+            ],
+            "type": "assets",
+            "workspace": "example_frontend"
+            }
         },
     ```
 
@@ -108,14 +108,14 @@ All possible `dfx.json` configuration options are listed below.
 
     ```json
         "canisters": {
-        "example_backend": {
-            "build": "npx azle example_backend",
-            "candid": "src/example_backend/example_backend.did",
-            "gzip": true,
-            "main": "src/example_backend/src/index.ts",
-            "type": "custom",
-            "wasm": ".azle/example_backend/example_backend.wasm"
-        }
+            "example_backend": {
+                "build": "npx azle example_backend",
+                "candid": "src/example_backend/example_backend.did",
+                "gzip": true,
+                "main": "src/example_backend/src/index.ts",
+                "type": "custom",
+                "wasm": ".azle/example_backend/example_backend.wasm"
+            }
         }
     ```
 
