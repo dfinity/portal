@@ -285,6 +285,7 @@ build: [
       items: [
         "building-apps/authentication/overview",
         "building-apps/authentication/integrate-internet-identity",
+        "building-apps/authentication/integrate-misc-wallets",
         "building-apps/authentication/alternative-origins",
       ],
     },
