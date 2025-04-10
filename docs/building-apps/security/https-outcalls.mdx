@@ -25,7 +25,7 @@ Make sure you don’t store sensitive data inside your canister.
 
 [More information.](/docs/references/https-outcalls-how-it-works#compromised-replicas)
 
-[Data confidentiality security recommendations.](/docs/building-apps/security/misc#data-confidentiality-on-the-internet-computer)
+[Data confidentiality security recommendations.](/docs/building-apps/security/misc#data-confidentiality-on-icp)
 
 ## Ensure your canisters have a sufficiently large quota with the HTTP server
 
@@ -75,7 +75,7 @@ This applies to the HTTP response body and headers. Make sure to consider both w
 
 ### Security concern
 
-The [pricing](/docs/references/https-outcalls-how-it-works#pricing) of HTTPS outcalls is determined by the size of the HTTP request and the maximal response size, among other variables. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky in scenarios where HTTPS outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
+The [pricing](/docs/building-apps/essentials/gas-cost#https-outcalls) of HTTPS outcalls is determined by the size of the HTTP request and the maximal response size, among other variables. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky in scenarios where HTTPS outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
 
 ### Recommendation
 

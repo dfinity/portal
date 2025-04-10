@@ -2781,6 +2781,8 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method loads a snapshot identified by `snapshot_id` onto the canister. It fails if no snapshot with the specified `snapshot_id` can be found.
 
+The snapshot can only be loaded onto the canister for which the snapshot was taken.
+
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
 :::note
