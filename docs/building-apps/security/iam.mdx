@@ -70,7 +70,7 @@ Also note that for inter-canister calls, `canister_inspect_message` is not invok
 
 ### Recommendation
 
-Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security-critical code, such as [access control checks](#make-sure-any-action-that-only-a-specific-user-should-be-able-to-do-requires-authentication), should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function.
+Your canisters should not rely on the correct execution of `canister_inspect_message`. This in particular means that no security-critical code, such as [access control checks](#make-sure-specific-user-actions-require-authentication), should be solely performed in that method. Such checks **must** be performed as part of an update method to guarantee reliable execution. Ideally, they are executed both in the `canister_inspect_message` function and a guard function.
 
 ## Use a well-audited authentication service and client-side ICP libraries
 
@@ -112,7 +112,7 @@ A [short presentation](https://www.youtube.com/watch?v=iRmpCkzC6iI&t=1863s) can 
 
 ### Security concern
 
-Internet Identity has a standardized way for web applications to request authentication of a user. This [client authentication protocol](/docs/references/ic-interface-spec#client-authentication-protocol) allows a client dapp frontend to obtain a delegation signed by the Internet Identity for a locally generated session key pair. Using this delegation in combination with the session key allows the dapp frontend to make authenticated calls towards the backend canister. Such calls need to be digitally signed by the session private key. The IC will verify the signature and verify if there is a delegation (or chain of delegations) from the II key to the session public key.
+Internet Identity has a standardized way for web applications to request authentication of a user. This [client authentication protocol](/docs/references/ii-spec#client-authentication-protocol) allows a client dapp frontend to obtain a delegation signed by the Internet Identity for a locally generated session key pair. Using this delegation in combination with the session key allows the dapp frontend to make authenticated calls towards the backend canister. Such calls need to be digitally signed by the session private key. The IC will verify the signature and verify if there is a delegation (or chain of delegations) from the II key to the session public key.
 
 The II client authentication protocol leverages the browser’s `postMessage` API to communicate between the client origin and the II origin. This protocol allows II to authenticate the origin of the authorization request using the hostname.
 
