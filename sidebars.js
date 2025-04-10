@@ -772,6 +772,7 @@ defi: [
         ],
         },
         "defi/token-indexes/index",
+        "defi/defi-best-practices",
         {
           type: "category",
           label: "Chain-key tokens",
