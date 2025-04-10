@@ -22,7 +22,7 @@ This guide demonstrates an example of how to integrate Internet Identity authent
 
 First, use `dfx start` to start a [local instance of the replica](/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
 
-Alternatively, you can open this project in [ICP Ninja](https://icp.ninja), a web-based IDE for temporary project deployments.
+Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/tree/master/motoko/who_am_i).
 
 #### Creating a new project
 
@@ -76,7 +76,7 @@ In the frontend canister code, add a method to the `App` class to call the backe
 
 :::warning
 
-Make sure to always create a single `AuthClient` instance on page load and reuse it within your click handlers as shown in the previous and current steps.
+Make sure to always create a single `AuthClient` instance on page load and reuse it within your click handlers.
 
 :::
 
