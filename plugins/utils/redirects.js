@@ -896,6 +896,8 @@ const redirects = `
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
+  /docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/current/developer-docs/setup/sdk-installation/ /docs/building-apps/getting-started/install
   /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
