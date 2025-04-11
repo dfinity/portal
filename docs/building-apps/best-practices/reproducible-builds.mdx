@@ -9,13 +9,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Best practices"]} />
 
-If you are using a canister that you did not develop yourself, you may want to verify that the canister is running the code that you expect it to be before giving it control to make important decisions for you, such as accepting ICP for a payment. Verifying a canister's code requires confirming that the Wasm module is the correct result of compiling the canister source code and that the canister is in fact running that Wasm module and not another Wasm module.
+If you are using a canister that you did not develop yourself, you may want to verify that the canister is running the code that you expect it to be before giving it control of important tasks such as accepting ICP for a payment. Verifying a canister's code requires confirming that the Wasm module is the correct result of compiling the canister source code and that the canister is in fact running that Wasm module and not another Wasm module.
 
-It is therefore recommended that canister authors ensure trusted and [reproducible builds](https://reproducible-builds.org/docs/definition/) of the Wasm module are possible from their source code. Such builds allow anyone to follow the same steps as the canister authors and yield the exact same Wasm module, which can then be compared to the Wasm module executing on ICP.
+It is therefore recommended that canister authors ensure trusted and [reproducible builds](https://reproducible-builds.org/docs/definition/) of the Wasm module are possible from their source code. Such builds allow anyone to follow the same steps as the canister authors and yield the exact same Wasm module, which can then be compared to the Wasm module deployed on ICP.
 
 ## Considerations for developers
 
-When developing code meant to be reproducible, it is recommended to use [Docker or a similar technology](#build-environments-using-docker) to conveniently set up the operating system and the build tools and fix their versions for the user. If the build tools you are using don’t guarantee fully reproducible builds, Docker can also help by minimizing the differences in paths, environment variables, etc. The build tools and the base Docker image should be sourced from somewhere that the user can trust. Ideally, you want to minimize the number of dependencies, as the user may have to rebuild all of your dependencies to properly reproduce your build.
+When developing code meant to be reproducible, it is recommended to use [Docker or a similar technology](#build-environments-using-docker) to conveniently set up the operating system and the build tools with fixed versions for the user. If the build tools you are using don’t guarantee fully reproducible builds, Docker can also help by minimizing the differences in paths, environment variables, etc. The build tools and the base Docker image should be sourced from somewhere that the user can trust. Ideally, you want to minimize the number of dependencies, as the user may have to rebuild all of your dependencies to properly reproduce your build.
 
 However, build tools aren’t perfect and may fail to ensure reproducible builds. If reproducibility is critical for your canister (e.g., it holds other users' funds), [test it](#testing-reproducibility).
 
@@ -23,11 +23,17 @@ However, build tools aren’t perfect and may fail to ensure reproducible builds
 
 ICP does not allow you to access the Wasm module of an arbitrary canister. This is a design decision, as developers might want to keep some code private. However, ICP does allow anyone to access the SHA-256 of the Wasm module.
 
-To obtain this hash, you must first note the principal of the canister whose code you want to check. For example, to check the code of the Internet Identity canister, the principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this data is using [`dfx`](/docs/building-apps/getting-started/install) from a command line using the following command:
+To obtain this hash, you must first note the canister ID of the canister whose code you want to check. For example, to check the code of the Internet Identity canister, the canister ID is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this data is using [`dfx`](/docs/building-apps/getting-started/install) from a command line through the command:
 
 ```bash
 dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
 ```
+
+:::info
+
+You will need to run this command from a directory that contains a valid `dfx.json` file. If you don’t have such a directory, you can create one using `dfx new`.
+
+:::
 
 This will return the controller(s) of the canister and the Wasm module hash:
 
@@ -36,11 +42,9 @@ Controllers: r7inp-6aaaa-aaaaa-aaabq-cai
 Module hash: 0x86ab08ea53e4da5bba4f27baa931e2edc5ab2a1f228c204a5340992c16389f66
 ```
 
-You will need to run this command from a directory that contains a valid `dfx.json` file. If you don’t have such a directory, you can create one using `dfx new`.
-
 Here, ICP tells us that the hash of the Wasm module of the `rdmx6-jaaaa-aaaaa-aaadq-cai` canister is `0x86ab08ea53e4da5bba4f27baa931e2edc5ab2a1f228c204a5340992c16389f66`.
 
-The check above provides you the **current** hash of the canister’s Wasm module, but the **controllers** of a canister may change the code at any time, such as to upgrade the canister. However, if the list of controllers is empty or the only controller is a [blackhole](https://github.com/ninegua/ic-blackhole) canister, you know that the canister is immutable since no one has the power to change the code.
+The check above provides you the **current** hash of the canister’s Wasm module, but the **controllers** of a canister may change the code at any time, such as to upgrade the canister. However, if the list of controllers is empty or the only controller is a [blackhole](https://github.com/ninegua/ic-blackhole) canister, the canister is immutable since no one has the power to change the code.
 
 ## Verifying the build is reproducible
 
@@ -60,7 +64,7 @@ Typically, it is recommended that developers version your code in `git` or some 
 
 ### Reproducing build environments
 
-Before building your code, you should document the build environment you are using in detail. In particular, for the languages supported by the IC SDK (Motoko, Rust, TypeScript, Python):
+Before building your code, you should document the build environment you are using in detail. In particular, for the languages supported by the IC SDK (Motoko, Rust):
 
 -   Note your local machine's operating system and its version.
 
@@ -70,17 +74,13 @@ Before building your code, you should document the build environment you are usi
 
 -   If you are building Rust, note the version of `cargo` you are using.
 
-- If you are building TypeScript, note the version of [Azle](https://demergent-labs.github.io/azle/).
-
-- If you are building Python, note the version of Python and [Kybra](https://demergent-labs.github.io/kybra/).
-
 -   If you are using a framework for frontend development, such as React, Vite, or webpack, note their versions.
 
 -   If your build process depends on any environment variables (such as the timezone or locale), note them.
 
 You should communicate all of these to your user in the reproducible build instructions. Ideally, provide an executable recipe or script to recreate the build environment using tools such as Docker or Nix. It is recommended to use Docker, as it allows you to also pinpoint the operating system used for building the software.
 
-### Build environments using Docker
+## Build environments using Docker
 
 [Docker containers](https://docs.docker.com/) are a popular solution for providing reproducible build environments.
 
@@ -88,13 +88,13 @@ You should communicate all of these to your user in the reproducible build instr
 For developers using macOS, it is recommended to install Docker using [lima](https://github.com/lima-vm/lima), as it proves more stable than Docker Desktop or Docker Machine. In particular, it avoids some QEMU bugs on Apple M1 machines.
 :::
 
-After setting Docker up, you can use a `Dockerfile` to provide the user with a particular version of the operating system, as well as other necessary tooling, such as `dfx`, Node.js, and the Rust toolchain.
+After setting Docker up, you can use a `Dockerfile` to provide the user with a particular version of the operating system, as well as other necessary tooling.
 
 :::caution
 It is advised to stick with `x86_64` for running the Docker container, as builds are generally not reproducible across architectures. See the [docs](https://github.com/lima-vm/lima/blob/master/docs/multi-arch.md) on setting up cross-platform Docker containers in case your host environment is not `x86_64`.
 :::
 
-Below is an example Dockerfile that creates a standardized Rust build environment.
+Below is an example `Dockerfile` that creates a standardized Rust build environment.
 
 ```dockerfile title="Dockerfile"
 FROM ubuntu:22.04
@@ -140,7 +140,7 @@ WORKDIR /canister
 
 There are a couple of things worth noting about this `Dockerfile`:
 
--   It starts from an official Docker image, such that all the installed tools are standard and come from standard sources. This provides the user with confidence that the build environment hasn’t been tampered with, and thus that the build process using Docker can be trusted.
+-   It starts from an official Docker image, such that all the installed tools are standard and come from standard sources. This provides the user with confidence that the build environment hasn’t been tampered with and thus that the build process using Docker can be trusted.
 
 -   To ensure that specific versions of the build tools are installed, it installs them directly rather than through a package manager. Package managers usually don’t provide a way of pinning the build tools to specific versions.
 
@@ -206,7 +206,7 @@ Next, consider if it is necessary to make the build deterministic. For the build
 
 For `npm`, running `npm install` will create a `package-lock.json` file with some fixed versions of all (transitive) dependencies of your project that satisfy the requirements specified in your `package.json`. However, `npm install` will overwrite the `package-lock.json` file every time it is invoked. Thus, once you are ready to create the final version of your canister, run `npm install` only once. After that, commit `package-lock.json` to your version control system. Finally, when checking the build for reproducibility, use `npm ci` instead of `npm install`.
 
-For Rust code, Cargo will automatically generate a `Cargo.lock` file with the fixed versions of your (transitive) dependencies. Like with `package-lock.json`, you should commit this file to your version control system once you are ready to produce the final version of your canister. Furthermore, Cargo by default ignores the locked versions of dependencies. Pass the `--locked` flag to the `cargo` command to ensure that the locked dependencies are used.
+For Rust code, cargo will automatically generate a `Cargo.lock` file with the fixed versions of your (transitive) dependencies. Like with `package-lock.json`, you should commit this file to your version control system once you are ready to produce the final version of your canister. Furthermore, cargo by default ignores the locked versions of dependencies. Pass the `--locked` flag to the `cargo` command to ensure that the locked dependencies are used.
 
 - #### Step 2: Your own build scripts must not introduce non-determinism.
 
@@ -214,7 +214,7 @@ Sources of non-determinism include randomness, timestamps, concurrency, or code 
 
 - #### Step 3: Given the same dependencies and deterministic build scripts, the build tools themselves (`moc` for Motoko, `cargo` for Rust, `npx` for TypeScript, `pip` for Python, or `webpack` for frontend development) must also be deterministic.
 
-These tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is nontrivial. Thus, non-determinism bugs can and do occur.
+These tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is nontrivial. Thus, non-deterministic bugs can and do occur.
 
 #### Motoko deterministic considerations
 
@@ -261,7 +261,7 @@ docker run --rm --privileged -it mycanister
 #### What this does
 - The first command builds the Docker container using the `Dockerfile` provided earlier.
 - The second command opens an interactive shell in the container, indicated by the flag `-it`. You can run this in privileged mode using the `--privileged` flag, as `reprotest` uses kernel modules for some build environment variations. You can also run it in non-privileged mode by excluding some of the variations; see the [reprotest manual](https://manpages.debian.org/stretch/reprotest/reprotest.1.en.html). The `--rm` flag will destroy the container after you close its shell.
-- Once inside the container, a directory is created for the build artifacts, and `reprotest` is launched in verbose mode using the `-vv` flags. You need to give it the build command you want to run as the first argument; in this example it is `dfx build --network ic`. It will then run the build in two different environments.
+- Once inside the container, a directory is created for the build artifacts and `reprotest` is launched in verbose mode using the `-vv` flags. You need to give it the build command you want to run as the first argument; in this example, it is `dfx build --network ic`. It will then run the build in two different environments.
 - Finally, you need to tell `reprotest` which paths to compare at the end of the two builds. In this example, it compares the Wasm code for all canisters, which is found in the `.dfx/ic` directory. It is encouraged that you compare the artifacts produced by 'reprotest` while manually changing your system time.
 
 :::info

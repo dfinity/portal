@@ -170,6 +170,8 @@ If there is an unspent output that the ckBTC minter has not seen yet, the user c
 
 The recommended mechanism to withdraw bitcoin is to first create an [ICRC-2 approval](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md#icrc2_approve) by calling the `icrc2_approve` endpoint on the ckBTC ledger, authorizing the ckBTC minter (canister ID: `mqygn-kiaaa-aaaar-qaadq-cai`) to retrieve at least the amount that is to be withdrawn. After that, the user can call the `retrieve_btc_with_approval` endpoint on the ckBTC minter, which will create a transaction to burn the specified amount in ckBTC. When this operation succeeds, the ckBTC minter will then create a Bitcoin transaction to withdraw the corresponding amount in bitcoin to the user's specified Bitcoin address.
 
+[Learn more about ckBTC best practices](/docs/defi/defi-best-practices).
+
 ## ckBTC production application examples
 
 - [ICDex](https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex).

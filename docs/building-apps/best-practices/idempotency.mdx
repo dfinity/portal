@@ -8,27 +8,25 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Best practices"]} />
 
-In the case of network issues or other unexpected behavior, ICP clients (such as agents) that issue
-ingress update calls may be unable to determine whether their ingress
-request has been processed. For example, this can happen if the client loses its
-connection until the request status has been removed from the state tree, since ICP will remove the request from the system state tree some time after the ingress expiry.
-Similarly, canisters which call other canisters using bounded-wait calls may be unable to determine whether the call was successful or not.
+In the case of network issues or other unexpected behavior, ICP clients (such as agents) that issue ingress update calls may be unable to determine whether their ingress request has been processed. For example, this can happen if the client loses connection until after the request's ingress expiry ends and the request's status is removed from the system state tree.
 
-This can be risky as the callers (external users or applications for ingress messages, or canisters for inter-canister calls) might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending.
+Similarly, canisters that call other canisters using bounded-wait calls may be unable to determine whether the call was successful or not.
 
-Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP provides no information about previous request attempts. This page describes general approaches that both the canister authors and the clients can adopt to enable safe retries.
+This can be risky as the callers (external users or applications for ingress messages, or canisters for inter-canister calls) might decide to retry the transaction, potentially leading to serious security vulnerabilities such as double spending.
 
-Please read the [reference on ingress messaging](/docs/building-apps/essentials/message-execution) to learn about the messaging basics and potential errors.
+Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP provides no information about previous request attempts. This page describes general approaches that both the canister authors and clients can adopt to enable safe retries.
+
+Please read the [reference on ingress messaging](/docs/references/message-execution-properties) to learn about the messaging basics and potential errors.
 
 ## Idempotent canister APIs
 
-We say that a canister endpoint is idempotent if executing it multiple times is equivalent to executing it once.[^1] Whenever an endpoint is idempotent or can be made idempotent by the developer, this provides an easy way to implement safe retries.
+A canister endpoint is idempotent if executing it multiple times is equivalent to executing it once.[^1] Whenever an endpoint is idempotent or can be made idempotent by the developer, this provides an easy way to implement safe retries.
 
-Given an idempotent endpoint, you can implement retries from an external application by retrying the call until you observe a certified response, either a replied or rejected status; see the illustration below. If such a response is ever observed, it's sure that the transaction has been executed at least once which, thanks to idempotency, has the same result as executing it exactly once. However, the application may not be willing to wait for a response indefinitely and a timeout could be implemented. Upon timeout, an error should be displayed to the user instructing them to wait until the latest message that has been sent has expired (as defined by the request's `ingress_expiry`) and then manually check the status of the transaction. Ideally, timeouts should be rare and not occur during normal operation.
+Given an idempotent endpoint, you can implement retries from an external application by retrying the call until you observe a certified response, either a replied or rejected status; see the illustration below. If such a response is ever observed, it's sure that the transaction has been executed at least once, which, thanks to idempotency, has the same result as executing it exactly once. However, the application may not be willing to wait for a response indefinitely, and a timeout could be implemented. Upon timeout, an error should be displayed to the user instructing them to wait until the latest message that has been sent has expired (as defined by the request's `ingress_expiry`) and then manually check the status of the transaction. Ideally, timeouts should be rare and not occur during normal operation.
 
 ![Retrying an idempotent call](/img/docs/retry_idempotency.png)
 
-The situation is similar for bounded-wat inter-canister calls. Given an idempotent endpoint, the calling canister can keep retrying until a response other than `SYS_UNKNOWN` is observed, or give up after a timeout, if waiting indefinitely is not an option.
+The situation is similar for bounded-wait inter-canister calls. Given an idempotent endpoint, the calling canister can keep retrying until a response other than `SYS_UNKNOWN` is observed or give up after a timeout if waiting indefinitely is not an option.
 
 Below are two approaches to making endpoints idempotent: sequence numbers and (time window) ID deduplication.
 
@@ -43,7 +41,7 @@ The advantages of this approach are:
 The approach also has some disadvantages:
 1. It limits the throughput. When per-caller sequence numbers are used, it means that the caller can generally perform only one ingress call per [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) block, translating to a throughput of about 1 ingress call per second for that user. The situation is better for inter-canister calls, as the requests (if delivered) will be delivered in the order in which they were sent. Thus, the calling canister can issue multiple requests simultaneously, using appropriate sequence numbers. Under normal load, all requests should be delivered. However, under heavy load where the system may drop some requests, requests that follow such a dropped request may become invalid.
 
-2. It limits concurrency. The user has to sequentialize all their calls. This is straightforward to do when the user is another canister, but it can be much more difficult when the canister is called through ingress messages. In particular, it's complicated when the user is using multiple clients or devices to access the canister, for example. This concurrency problem also makes the approach  inapplicable to cases where anonymous users are allowed to trigger update calls.
+2. It limits concurrency. The user has to sequentialize all their calls. This is straightforward to do when the user is another canister, but it can be much more difficult when the canister is called through ingress messages. In particular, it's complicated when the user is using multiple clients or devices to access the canister, for example. This concurrency problem also makes the approach inapplicable to cases where anonymous users are allowed to trigger update calls.
 
 3. If the sequence number is stored per user or per account, tracking them for too many users can exhaust the canister memory, even if each individual number is small. This could, e.g., be exploited by an attacker to exhaust the memory. The approach is thus best suited for cases where the user has to pay for the usage in some way (e.g., the ledgers usually require a fee to both create an account and transfer funds), which thwarts attackers by requiring them to invest significant funds in an attack.
 
