@@ -149,7 +149,7 @@ const TechnicalPaperItem = ({ date, title, description, url }) => {
 
 const TechnicalPapers = () => {
   return (
-    <div className="mx-auto max-w-[1200px] py-8 md:py-20">
+    <div className="mx-auto max-w-[1200px] py-8 md:py-10">
       <div className="flex flex-col">
         {technicalPapers.map((paper, index) => (
           <TechnicalPaperItem

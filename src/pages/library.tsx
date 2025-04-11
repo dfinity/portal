@@ -376,9 +376,7 @@ function Library() {
           </div>
         </section>
         <section className="container-10 py-4 md:py-20 mb-20">
-          <h2 className="tw-heading-4 md:tw-heading-48 mb-1 md:mb-3">
-            Technical Papers
-          </h2>
+          <h2 className="tw-heading-4 md:tw-heading-48">Technical Papers</h2>
           <TechnicalPapers />
           {/* <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {whitepaperCards.map((card, idx) => (
