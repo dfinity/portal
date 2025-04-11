@@ -337,7 +337,7 @@ function AIPage() {
           cards={[
             {
               label: "Start building DeAI",
-              href: "/docs/current/developer-docs/ai/overview",
+              href: "/ecosystem",
             },
             {
               label: "Apply to DeAI Grants",
