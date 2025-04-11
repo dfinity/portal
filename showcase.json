@@ -4271,5 +4271,26 @@
   "twitter": "https://x.com/CanisterCloud",
   "youtube": "",
   "submittableId": ""
+},
+  {
+  "name": "Ghost - The ZK Notary",
+  "description": "Ghost: A privacy-focused tool for the Internet Computer that creates Zero-Knowledge Proofs of token ownership with AI-enhanced explanations.",
+  "website": "https://ghost.zkaas.xyz",
+  "logo": "/img/showcase/ghost-the-zk-notary_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "ghost-the-zk-notary",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "AI",
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/gabrielrondon/ghost_dev",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "49689335"
 }
 ]
