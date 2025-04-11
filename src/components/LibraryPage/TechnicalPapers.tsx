@@ -40,7 +40,7 @@ const technicalPapers = [
     title: "Non-interactive distributed key generation and key resharing",
     description:
       "The Internet Computer hosts clusters of nodes running subnets (shards) that host finite state machines known as canisters (advanced smart contracts).",
-    url: "/whitepapers/Non-interactive distributed key generation and key resharing.pdf",
+    url: "/whitepapers/Non-interactive distributed key generation and  key resharing.pdf",
   },
   {
     date: "Apr 30, 2023",
@@ -93,7 +93,7 @@ const technicalPapers = [
     title:
       "Lightweight Asynchronous Verifiable Secret Sharing with Optimal Resilience",
     description: "Victor Shoup and Nigel P. Smart",
-    url: "/whitepapers/Lightweight Asynchronous Verifiable Secret Sharing with Optimal Resilience.pdf",
+    url: "/whitepapers/Lightweight Asynchronous Verifiable Secret Sharing with Optimal  Resilience.pdf",
   },
   {
     date: "2023",
@@ -107,7 +107,7 @@ const technicalPapers = [
     title:
       "On the security of ECDSA with additive key derivation and presignatures",
     description: "Jens Groth and Victor Shoup, DFINITY Foundation",
-    url: "/whitepapers/On the security of ECDSA with additive key derivation and presignatures.pdf",
+    url: "/whitepapers/On the security of ECDSA with additive key derivation and  presignatures.pdf",
   },
   {
     date: "Feb 23, 2024",
