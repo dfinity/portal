@@ -25,12 +25,9 @@ build: [
         id: "building-apps/essentials/network-overview",
       },
       {
-        type: "category",
-        label: "Fees",
-        items:[
-          "building-apps/essentials/gas-cost",
-          "building-apps/essentials/cost-estimations-and-examples"
-        ]
+        type: "doc",
+        label: "Fee breakdown",
+        id: "building-apps/essentials/gas-cost",
       },
       {
         type: "doc",
@@ -848,7 +845,7 @@ references: [
       "references/vetkeys-overview"
     ],
   },
-  "references/cycles-cost-forumlas",
+  "references/cycles-cost-formulas",
   {
     type: "category",
     label: "System canisters",
