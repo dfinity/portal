@@ -848,6 +848,7 @@ references: [
       "references/vetkeys-overview"
     ],
   },
+  "references/cycles-cost-forumlas",
   {
     type: "category",
     label: "System canisters",
