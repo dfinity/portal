@@ -10,7 +10,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Tokens"]} />
 
-Tokens deployed on ICP must adhere to a standard. The network's native token, ICP, adheres to its own standard as it is unique on the network in the sense that it is used for network utility and governance. Tokens created for other purposes on the network typically adhere to one of the ICRC standards.
+Tokens deployed on ICP must adhere to a standard. The network's native token, ICP, adheres to its own standard as it is unique on the network in the sense that it is used for network utility and [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance). Tokens created for other purposes on the network typically adhere to one of the ICRC standards.
 
 [ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments.' ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, <GlossaryTooltip>canister</GlossaryTooltip> calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
 
@@ -28,6 +28,20 @@ In the past, the [DIP-721](#dip-721) standard was promoted and used by projects 
 
 - The ICRC standard is either adopted or rejected by the NNS.
 
+## Accounts: Principals and subaccounts
+
+ICP token accounts use principals and their associated subaccount to generate an `AccountIdentifier` value to identify the account owner.
+
+ICRC-1 token accounts use an `Account` value that contains two fields, a principal and a subaccount, to identify the account owner.
+
+### Principals
+
+Every token account is owned by a single principal. Principals are unique identifiers used to identify both users and canisters on ICP.
+
+### Subaccounts
+
+Each principal can have multiple accounts identified by a `32-byte` string called a **subaccount**. Subaccounts are used for organizing funds within a single principal for optimized management and transparency. Subaccounts can be used to distinguish between personal funds and business funds, or separate funds for one project from another.
+
 ## ICP tokens
 
 The ICP token is the network's native token used for various utility and governance functions, such as:
@@ -37,6 +51,8 @@ The ICP token is the network's native token used for various utility and governa
 - Rewarding node providers for contributing resources to the network.
 
 - Rewarding neurons for staking ICP into the neuron and voting on governance proposals.
+
+ICP accounts are identified by an `AccountIdentifier`, which is derived from the account owner's ICP `principal` and `subaccount` identifier.
 
 View an example dapp for [ICP transfers](https://github.com/dfinity/examples/tree/master/motoko/token_transfer).
 

@@ -10,16 +10,18 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <MarkdownChipRow labels={["Beginner", "Education", "Concept"]} />
 
 A common question when developing an application is how and where to store the data. In contrast to traditional platforms, ICP does not provide a database.
-Instead, ICP can persist changes in the <GlossaryTooltip>canister</GlossaryTooltip> state using stable memory.
-This means that developers have a lot of freedom in organizing and storing the data. The recommended practice is to use already existing libraries, such as the Motoko [stable regions](/docs/motoko/main/stable-memory/stable-regions) library or the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
+Instead, ICP can persist changes in a <GlossaryTooltip>canister</GlossaryTooltip>'s state using stable memory.
+This means that developers have a lot of freedom with regards to how they can organize and store data. The recommended practice is to use already existing libraries, such as the Motoko [stable regions](/docs/motoko/main/stable-memory/stable-regions) library or the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
 
-Another question that developers should ask is how to structure their application. It is possible to build an application consisting of multiple canisters that communicate with each other.
+Another question that developers should ask is how to structure their application. It is possible to build an application using a single canister or multiple canisters that communicate with each other.
+
 A common pitfall for new developers is designing the application for millions of users from the get-go without understanding the underlying trade-offs of the system.
 It is better to start with the simplest possible architecture and iteratively improve it with user growth.
 
 ## Canister-per-service architecture
-Canisters can be thought of as microservices, where each canister is responsible for a specific service of the application, such as managing users, storing data, or processing data.
-Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
+
+Canisters can be thought of as microservices, where each canister is responsible for a specific service within the application, such as managing users, storing data, or processing data. Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
+
 The default project structure that [`dfx new`](/docs/building-apps/developer-tools/dfx/dfx-new) generates can be viewed as the simplest microservice architecture, with the frontend canister being responsible for serving web assets and the backend canister being responsible for the core logic of the application.
 
 ## Single canister architecture
@@ -34,19 +36,23 @@ Even though this architecture is simple, it can scale to thousands of users and 
 
 ## Canister-per-subnet architecture
 
-ICP scales horizontally via <GlossaryTooltip>subnets</GlossaryTooltip>, so applications can also scale by utilizing more subnets.
-One way to achieve this is to have one or multiple canisters per subnet and then shard data over these canisters to distribute the load.
-This is the most scalable architecture and could, in theory, support millions of users and terabytes of data.
-Since the application data and logic are distributed over multiple subnets, this requires expert knowledge of distributed programming.
+ICP scales horizontally via <GlossaryTooltip>subnets</GlossaryTooltip>, so applications can also scale by utilizing more subnets. One way to achieve this is to have one or multiple canisters per [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) and then shard data over these canisters to distribute the load.
+
+This is the most scalable architecture and could, in theory, support millions of users and terabytes of data. Since the application data and logic are distributed over multiple subnets, this requires expert knowledge of distributed programming.
+
 The cost of development and maintenance is much higher compared to the single-canister architecture.
 
 ## Canister-per-user architecture
-This architecture is based on the vision that Web3 users should have full control over their data.
-The idea is to create a canister per user and make the user the controller of their canister.
+
+The canister-per-user architecture is based on the vision that Web3 users should have full control over their data, with the idea that a new canister should be created for each user, and the user should be a controller of the canister.
+
 The main canister of the application would then orchestrate user canisters to implement the application’s functionality.
-Since users are controllers of their canisters, they can install their own code, decide how to participate in the application, and determine what data to share.
-These user benefits come at large development costs because the main canister needs to be programmed in such a way that it can handle all possible actions of potentially malicious user canisters.
-This is a new and unprecedented way of programming.
-**There hasn’t been a successful implementation of this vision yet.**
-A couple of projects that opted for this architecture, but only [NFID Vaults](https://nfidvaults.com) have given the ownership of canisters to the users.
+
+Since users would be controllers of their canisters, they could install their own code, decide how to participate in the application, and determine what data to share.
+These user benefits would come at large development costs because the main canister needs to be programmed in such a way that it can handle all possible actions of potentially malicious user canisters.
+
+This is a new and unprecedented way of programming. **There hasn’t been a successful implementation of this vision yet.**
+
+A couple of projects have opted for a variation of this type of architecture, but only [NFID Vaults](https://nfidvaults.com) have given the ownership of canisters to the users.
+
 A common misconception is that the canister-per-user architecture is the most scalable; actually, canister-per-subnet is more performant because it can utilize multiple subnets without having the overhead of too many canisters.

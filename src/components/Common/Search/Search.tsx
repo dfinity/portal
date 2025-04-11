@@ -7,6 +7,7 @@ import { createFocusTrap } from "focus-trap";
 import Link from "@docusaurus/Link";
 import { trackEvent } from "@site/src/utils/matomo";
 import useLockBodyScroll from "../../../utils/use-lock-body-scroll";
+import { useLocation } from "@docusaurus/router";
 
 let initialTerm = "";
 let initialResults: PageSearchResult[] | null = null;
@@ -26,6 +27,8 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
     Record<string, true>
   >({});
   const [loading, setLoading] = useState(false);
+  const location = useLocation(); // Get current location
+  const isDocsPage = location.pathname.includes("/docs");
 
   useLockBodyScroll();
 
@@ -75,18 +78,55 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
     actorRefPromise.current.then(async (actor) => {
       initialTerm = term;
 
-      const results = await actor.query(term);
+      // Get the search results from the actor
+      const rawResults = await actor.query(term);
+
+      // Prioritize results based strictly on title matches first, then URL context
+      let prioritizedResults = [...rawResults];
+
+      // Create a normalized search term for matching
+      const normalizedTerm = term.toLowerCase().trim();
+
+      // Sort the results with title matches as absolute first priority
+      prioritizedResults.sort((a, b) => {
+        // First priority: Title matches (trumps everything else)
+        const aHasTitleMatch = a.title.toLowerCase().includes(normalizedTerm);
+        const bHasTitleMatch = b.title.toLowerCase().includes(normalizedTerm);
+
+        if (aHasTitleMatch && !bHasTitleMatch) return -1;
+        if (!aHasTitleMatch && bHasTitleMatch) return 1;
+
+        // If title match status is the same for both results,
+        // only then consider docs vs non-docs as a secondary factor
+        if (aHasTitleMatch === bHasTitleMatch) {
+          const aIsDoc = a.url.includes("/docs");
+          const bIsDoc = b.url.includes("/docs");
+
+          // If we're on a docs page, prioritize docs results
+          if (isDocsPage) {
+            if (aIsDoc && !bIsDoc) return -1;
+            if (!aIsDoc && bIsDoc) return 1;
+          }
+          // If we're on a regular page, prioritize non-docs results
+          else {
+            if (!aIsDoc && bIsDoc) return -1;
+            if (aIsDoc && !bIsDoc) return 1;
+          }
+        }
+
+        return 0; // Keep original order for equally matched items
+      });
 
       if (!unmounted) {
         setLoading(false);
-        initialResults = results;
-        setResults(results);
+        initialResults = prioritizedResults;
+        setResults(prioritizedResults);
       }
     });
     return () => {
       unmounted = true;
     };
-  }, [term, setLoading]);
+  }, [term, isDocsPage, setLoading]);
 
   function handleResultClick(
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -139,7 +179,9 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                 <input
                   // type="search"
                   className="mainsearchinput block border-none tw-lead-sm bg-transparent py-[22px] px-4 pl-14 w-full focus:outline-none"
-                  placeholder="Search for anything"
+                  placeholder={
+                    isDocsPage ? "Search docs..." : "Search for anything"
+                  }
                   ref={inputRef}
                   value={term}
                   onChange={(e) => setTerm(e.target.value)}

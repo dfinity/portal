@@ -3,9 +3,11 @@
 # ICP developer portal
 
 The ICP developer portal brings together all the resources needed for developers to build on the
-Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
+Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), and [community tooling page](https://internetcomputer.org/tooling).
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
+
+This repo is built and deployed using the latest version of `dfx` (v0.25.0) and `moc` v0.14.3.
 
 # Developer documentation
 
@@ -93,7 +95,7 @@ docs
 ├── motoko // Motoko documentation - submodule
 ├── references // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer liftoff, hackathon prep course, etc).
+├── tutorials // tutorial series (Developer Liftoff, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs
@@ -107,12 +109,11 @@ docs
 - Must be in `.mdx` file format to support the previous two components.
 - Must be registered in [`sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js), otherwise, it will not appear in the
   side navigation bar.
-- Make sure that the [`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file is
-  filled with new documents that you added. This way we can ensure that future Pull Requests are reviewed by the right people.
+- New documentation pages that should be owned by a specific team must be added to the [`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file to ensure that future pull requests are reviewed by the right people.
 
 If proposed documentation additions do not follow the above guidelines, they will need to be revised.
 
-Additionally, it is recommended to create a branch for changes, then submit a PR that compares the Master branch to your branch. This is because the GitHub preview canister can only generate live previews of the proposed changes from branches. It cannot create previews from forks or branches of forks.
+Additionally, it is recommended to create a branch for changes, then submit a PR that compares the Master branch to your branch. This is because the GitHub preview canister can only generate live previews of proposed changes from branches. It cannot create previews from forks or branches of forks.
 
 ## Adding a document
 
@@ -121,7 +122,7 @@ To add a new documentation page, first find the category on the sidebar that you
 All documents must be in `.mdx` format.
 
 ## Format, language choice, and capitalization
-Avoid using the term ‘we’ in documentation. Either eliminate using pronouns or instead, use ‘your’.
+Avoid using the terms ‘we’ or 'our' in documentation. Either eliminate using pronouns or instead, use ‘your’.
 
 - “Next, we will open the main.mo file.” → “Next, open the main.mo file.”
 
@@ -187,9 +188,7 @@ Link to resources that go into further detail and provide a brief summary of the
 
 - The [reference technology overview](/docs/references/bitcoin-how-it-works) pages
 
-- The [how it works](https://internetcomputer.org/how-it-works) section of the website
-
-- The [core concepts](/docs/building-apps/essentials/canisters) section of the docs
+- The [how it works](https://learn.internetcomputer.org/) section of the website
 
 Try to answer the following questions within the document:
 
@@ -207,17 +206,19 @@ Avoid duplication of content whenever possible. If content exists elsewhere on t
 Avoid using several sentences that say the same thing. Remove redundancies whenever possible.
 
 ### Code snippets
-When inserting code snippets into a document, you may use full, deploy-ready snippets, or you can use small pieces of code to demonstrate a specific feature or function.
 
-To determine which form suits the document best, answer the following:
+Code snippets should be referenced via their source code files, either from the `/docs/references/samples` submodule folder or via the file's GitHub URL. For example:
 
-- Does the document focus on a specific feature or functionality, or does it showcase an entire dapp/service?
-- If the development showcases a specific feature, a partial snippet may be appropriate.
-- Is implementation of this feature/functionality very complex? Does it require prerequisite knowledge?
-- If the feature is fairly simple and doesn’t require much prerequisite knowledge, a small partial snippet can be used.
-- Are the prerequisites for using this code available elsewhere in the documentation? Is it clear that these prerequisites should be followed prior to inserting this feature?
+Referenced via submodule file:
 
-When in doubt, try to use full code snippets. This additional context can help limit confusion and aid in developer onboarding/developer adoption of new features.
+		```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
+		```
+
+Referenced via GitHub URL:
+
+		```motoko no-repl reference
+		https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49
+		```
 
 ### Simplicity
 Keep content as brief and to-the-point as possible. Do not over-explain concepts. Try to use pointed sentences that do not contain ‘fluff’ words.
@@ -229,7 +230,7 @@ For non-native English speakers, having long paragraphs with redundant sentences
 ### Language-agnosity
 Avoid giving the impression that developers must learn and use Motoko to create canisters. When possible, provide code snippets in as many languages as possible. Use the [Docusaurus tab](#tabs) functionality to format these examples. Reach out to @jessiemongeon1 for questions/assistance with this.
 
-For some documentation instances, this may not be possible, such as Rust crates and Motoko libraries.
+For some documentation instances, this may not be possible, such as pages referring to specific Rust crates or Motoko libraries.
 
 ### Visual aids
 When introducing new protocol concepts or architecture, visual aids can be extremely beneficial for the reader. If possible, create a visual aid to help explain these new concepts.
@@ -281,13 +282,13 @@ Documentation pages should include two types of keywords:
 
 	- Advanced
 
-- Document type:
-
-	- Concept
-
-	- Tutorial
+- Document category or type, such as:
 
 	- Getting started
+
+   	- Developer tools
+
+	- Concept
 
 	- Reference (Reference pages do not require a skill level tag)
 
@@ -345,32 +346,12 @@ Here is an example of how to use this custom tab component:
 	```
 
 	</TabItem>
-
-	<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-	```typescript
-
-	TypeScript code
-
-	```
-
-	</AdornedTab>
-
-	<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-	```python
-
-	Python code
-
-	```
-
-	</AdornedTab>
 	</AdornedTabs>
 
 
 ## Tooltips
 
-Tooltips are pieces of text, usually glossary keywords that display an info box when moused over. Tooltips are optional but recommended for content tagged as 'Beginner'.
+Tooltips are pieces of text, usually defining glossary keywords, that display an info box when moused over. Tooltips are optional but recommended within content tagged as 'Beginner'.
 
 To use tooltips, first import the necessary module:
 
@@ -390,9 +371,7 @@ The word included within the `<GlossaryTooltip>` tags must be defined in the fil
 word=definition.
 ```
 
-Please make sure you put an `=` equal sign between the term and the definition, and keep each term + definition pair on a single line.
-
-Failing to do so will break the code that auto-populates the Tooltip with the appropriate definition.
+Please make sure you put an `=` equal sign between the term and the definition and keep each term + definition pair on a single line. Failing to do so will break the code that auto-populates the Tooltip with the appropriate definition.
 
 ## Submodules
 
@@ -427,10 +406,27 @@ The following submodules and their corresponding repos are currently used:
 
 ### Updating submodules
 
-To update all submodules, run the command:
+The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job. 
+
+These versions can be updated to the newest release via commands:
 
 ```
-git submodule update --remote
+cd submodules/motoko
+git checkout 0.14.1
+```
+
+and
+
+```
+cd submodules/sdk
+git checkout 0.25.1
+```
+
+For other submodules without release versions, checkout the latest commit hash when updates are requested. 
+
+```
+cd submodules/dfxvm
+git checkout 69adb0cc8edd532dcdcb465cfcc2166692a51448
 ```
 
 ### Reverting submodule changes
@@ -454,10 +450,8 @@ You can embed YouTube videos by adding a piece of iframe code. Go to the Youtube
 
 ## Contribution workflow
 
-Here is a description of how a contribution should be made to the developer portal:
-
-1. The contributor creates a fork/branch where proposed changes are made.
-2. A pull request (PR) is created from that branch/fork to `master`. A build preview is generated and the reviewers can directly check the preview website.
+1. The contributor creates a branch where proposed changes are made.
+2. A pull request (PR) is created from that branch to `master`. A build preview is generated and the reviewers can directly check the preview website.
 3. After the pull request is merged into `master`, CI/CD will deploy the contents to ICP. The changes made will appear on the website.
 
 ### Deployed previews
@@ -526,48 +520,11 @@ roadmap
 
 Each domain folder contains an `index.md` file which adds metadata, like a title, a description, and cover images.
 
-### Changing the 'how it works' content
-
-The 'How it works' page cards and subpages are stored as markdown files inside
-the [how-it-works](https://github.com/dfinity/portal/tree/master/how-it-works) directory.
-
-```
-how-it-works
-├── 1_about
-│   ├── 01-overview-of-the-internet-computer.card.md
-│   ├── 01-overview-of-the-internet-computer.subpage.md
-│   ├── canister-lifecycle.card.md
-│   ├── canister-lifecycle.subpage.md
-│   └── index.md
-├── 2_featured
-│   ├── direct-integration-with-bitcoin.card.md
-│   ├── direct-integration-with-bitcoin.subpage.md
-│   ├── index.md
-│   ├── sns.card.md
-│   ├── threshold-ecdsa-signing.card.md
-│   ├── threshold-ecdsa-signing.subpage.md
-```
-
-The directory contains markdown files ending in `.card.md` and `.subpage.md`.
-
-The `.card.md` files will show up as part of the `/how-it-works page`, under the section they are grouped in (eg.
-Featured).
-
-The `.subpage.md` files will each generate a subpage under `/how-it-works/`, based on the files' metadata and content:
-
-- The `slug` parameter will determine the final URL, eg. the slug `canister-lifecycle` will generate the
-  page `/how-it-works/canister-lifecycle`.
-- The `title`, `abstract` (optional), and `coverImage` will determine how the page looks when shared on social media
-
 ## Adding documentation for community-created agents and CDKs
 
 The [agents](/docs/building-apps/interact-with-canisters/agents/overview)
-and [CDKs](/docs/building-apps/developer-tools/cdks/index) sections should not only contain docs
-for DFINITY-created agents and CDKs.
-We therefore invite other projects to:
-
-- Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `/docs/building-apps/interact-with-canisters/agents/overview` or `/docs/building-apps/developer-tools/cdks/index.md`).
+and [CDKs](/docs/building-apps/developer-tools/cdks/index) sections should not only mention DFINITY-created agents and CDKs.
+We invite other projects to link to their own agents or CDKs on the respective index pages (the files to be edited are `/docs/building-apps/interact-with-canisters/agents/overview.mdx` or `/docs/building-apps/developer-tools/cdks/index.mdx`).
 
 ## Adding community-created developer tools
 

@@ -1,0 +1,263 @@
+---
+keywords: [beginner, tutorial, hackathon, hackathon prep course]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import '/src/components/CenterImages/center.scss';
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { OsType, useOs } from "/src/hooks/useOs";
+
+# 7: Create a local developer environment
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+All of the projects deployed through ICP Ninja in the previous tutorial modules are deployed temporarily for only 20 minutes. If you'd like to deploy a project for long-term production use, you'll need to:
+
+1. Download the IC SDK and any necessary dependencies.
+
+2. Create a developer identity.
+
+3. Obtain cycles.
+
+4. Deploy your application to the mainnet.
+
+Let's take a look at how to complete these steps.
+
+## 1. Install the IC SDK
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+#### Prerequisites
+
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+#### Prerequisites
+
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended.
+<div>
+</div>
+<input type="checkbox"/> Apple silicon machines: Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+#### Prerequisites
+
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
+<input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
+<div>
+</div>
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and install a Linux distribution (i.e., Ubuntu) using Windows Subsystem for Linux: <code>wsl --install -d ubuntu</code>
+<div>
+</div>
+<input type="checkbox"/> Open the WSL Linux environment. Run all following commands within this environment.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">install Node.js</a> within your WSL Linux environment.
+<div>
+</div> View the [WSL troubleshooting](wsl-troubleshoot.mdx) guide if necessary.
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+</AdornedTabs>
+
+## 2. Create a developer identity
+
+When a canister is created and deployed, the developer identity that created the canister is set as a **controller** of that canister. A controller has permission to manage the canister.
+
+By default, `dfx` will create and use the `default` identity. This identity is not stored securely. It is recommended you create your own personal identity.
+
+First, use `dfx` to list all current identities. If none exist, it will automatically create the `default` identity.
+
+```
+dfx identity list
+```
+
+Create a new developer identity with the command:
+
+```
+dfx identity new IDENTITY_NAME
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Your seed phrase for identity 'IDENTITY_NAME': hotel knock any token tooth deal fossil salmon coral idea tip weapon cotton save fiction major arrive history library clerk depth poet path guide
+Write it down in a safe place, as this information can be used to reconstruct your key in case of emergency.
+Created identity: "IDENTITY_NAME".
+```
+
+</details>
+
+Identities created with `dfx` are global; they are not confined to a specific project's context.
+
+Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
+
+### Storing the developer identity's private key
+
+The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem`. This file should be backed up to a secure location.
+
+By default, `dfx` will store your identity in the local keyring/keychain. If a keyring/keychain is unavailable, it will prompt you to choose a password, then store your private key locally in a password-protected PEM file at `~/.config/dfx/identity/IDENTITY_NAME/identity.pem.encrypted`.
+
+Make sure you switch to the newly created identity as explained below.
+
+### Using your developer identity
+
+Only one identity is active and used by `dfx` at any given point in time. Get the name of the currently active identity by running:
+
+```
+dfx identity whoami
+```
+
+Switch to your new developer identity by running:
+
+```
+dfx identity use IDENTITY_NAME
+```
+
+
+To get the principal of the currently active identity, run:
+
+```
+dfx identity get-principal
+```
+
+Your developer identity will have a principal identifier in the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe`.
+
+
+## 3. Obtaining cycles
+
+Cycles are used to measure and pay for the resources, such as memory, storage, and compute power, that are used by a canister. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
+
+To obtain cycles, developers may receive a cycles coupon, or the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister. Cycles have a fixed price in XDR in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always corresponds to one XDR.
+
+### Option A: Redeeming a cycles faucet coupon
+
+At hackathon events, DFINITY may offer cycles faucet coupons to participants, which can be redeemed for 10T free cycles.
+
+If such a cycles faucet coupon was handed out to you, navigate to the website [https://faucet.dfinity.org](https://faucet.dfinity.org) and follow the instructions there.
+
+### Option B: Converting ICP tokens to cycles
+
+The typical way to obtain cycles is to convert ICP tokens. First, you need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens) through a crypto exchange, or they can be received through other activities such as participating in the NNS governance and receiving grants from the DFINITY foundation.
+
+To get your account ID so you know where to send your ICP tokens, run the command:
+
+```
+dfx ledger account-id
+```
+
+Once you have sent some ICP to this account ID, you can verify that they were received by checking the balance with the command:
+
+```
+dfx ledger --network ic balance
+```
+
+After you have your ICP tokens ready, you can convert them into cycles using the command:
+
+```
+dfx cycles convert --amount AMOUNT --network ic
+```
+
+## Deploying your dapp to the mainnet
+
+Now that you've obtained some cycles, you can deploy a project to the mainnet from the command line. Create a new project with:
+
+```
+dfx new hello_world --type=motoko && cd hello_world
+```
+
+Then, make sure you have an active connection to the mainnet. In your terminal window, run the command:
+
+```
+dfx ping ic
+```
+
+A successful connection to the mainnet will return an output such as:
+
+```
+{
+  "certified_height": 57374997  "ic_api_version": "0.18.0"  "impl_hash": "d5896681ceac74c83c9473654de75214d5079193294ade3775e89a81270fd0cf"  "impl_version": "f8f59f896499f2fef394d8321116f83351c59aa8"  "replica_health_status": "healthy"  "root_key": [48, 129, 130, 48, 29, 6, 13, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1, 6, 12, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1, 3, 97, 0, 129, 76, 14, 110, 199, 31, 171, 88, 59, 8, 189, 129, 55, 60, 37, 92, 60, 55, 27, 46, 132, 134, 60, 152, 164, 241, 224, 139, 116, 35, 93, 20, 251, 93, 156, 12, 213, 70, 217, 104, 95, 145, 58, 12, 11, 44, 197, 52, 21, 131, 191, 75, 67, 146, 228, 103, 219, 150, 214, 91, 155, 180, 203, 113, 113, 18, 248, 71, 46, 13, 90, 77, 20, 80, 95, 253, 116, 132, 176, 18, 145, 9, 28, 95, 135, 185, 136, 131, 70, 63, 152, 9, 26, 11, 170, 174]
+}
+```
+
+Now, you can deploy your dapp to the mainnet by running the following command:
+
+```
+dfx deploy --network ic
+```
+
+In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
+
+Now, let's use your dapp! To access the dapp's frontend, first you need to get the canister's URL. To get this, run the command:
+
+```
+dfx canister id hello_world_frontend --network ic
+```
+
+This command will return the canister's URL, which should look like this:
+
+```
+https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
+```
+

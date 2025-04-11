@@ -10,11 +10,9 @@ Two advanced engineering challenges needed to be solved to enable Bitcoin smart 
 - A protocol-level integration of ICP with the Bitcoin network.
 - Chain-key signatures based on novel threshold ECDSA and threshold Schnorr protocols.
 
-This page provides a general overview of the Bitcoin integration technology. For a deeper technical explanation of ckBTC, please see the [wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
-
 ## Protocol-level integration of ICP with the Bitcoin network
 
-The Internet Computer Protocol has been integrated with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated on any number of Internet Computer subnets. At the beginning, there will only be one dedicated Bitcoin-activated subnet, and requests to the Bitcoin API from canisters on any subnet will be routed to this single Bitcoin-activated subnet using ICP's XNet communication capabilities. The integration serves two key purposes:
+The Internet Computer Protocol has been integrated with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated on any number of Internet Computer subnets. Currently, there is only one dedicated Bitcoin-activated subnet, and requests to the Bitcoin API from canisters on any subnet are routed to this subnet using ICP's XNet communication capabilities. The integration serves two key purposes:
 
 -   Obtaining the Bitcoin UTXO set and keeping it onchain in the replicated state of the Internet Computer to be able to answer queries for UTXO sets and balances of Bitcoin accounts issued by canisters.
 -   Accepting signed Bitcoin transactions from canisters and submitting them to the Bitcoin network.
@@ -23,60 +21,62 @@ The Internet Computer Protocol has been integrated with the Bitcoin protocol to 
 
 ### Chain-key signatures
 
-Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols and therefore can receive and hold bitcoin and other assets. Canisters can also create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation, as they, for example, also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/docs/references/t-sigs-how-it-works/).
+Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols and therefore can receive and hold bitcoin and other assets. Canisters can also create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation, as they, for example, also comprise protocols for secure [distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/docs/references/t-sigs-how-it-works/).
 
-The protocol-level Bitcoin integration and chain-key signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on ICP. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions, are nontrivial to use, and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA and Schnorr signature APIs are also generically useful for any use case, e.g., integration with other blockchains such as Ethereum.
+The chain-key signature protocols expose an API on the management canister, whereas the Bitcoin integration endpoints are made available through the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister).
+The low-level APIs are designed around the concepts of Bitcoin UTXOs and transactions, are nontrivial to use, and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA and Schnorr signature APIs are also generically useful for any use case, e.g., integrations with other blockchains such as Ethereum.
 
-This page gives a high-level overview of the above-mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold signatures documentation page](/docs/references/t-sigs-how-it-works/).
+This page gives a high-level overview of the above-mentioned technology behind the direct Bitcoin integration. For details, the reader is referred to the [Bitcoin page on the Internet Computer Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration) as well as the [threshold signatures documentation page](/docs/references/t-sigs-how-it-works/).
 
 ### Components
 
-On a Bitcoin-activated subnet, a **BTC canister** (Bitcoin canister), implemented as a regular NNS-managed Wasm canister, is made accessible to canisters via an API of the management canister; i.e., the interface is implemented as part of the replica. The BTC canister holds the onchain Bitcoin-related state: the UTXO set, the most recent Bitcoin blocks to allow for fork resolution ("unstable blocks"), and outgoing transactions.
+On a Bitcoin-activated subnet, a **Bitcoin canister**, implemented as a regular NNS-managed Wasm canister, provides the Bitcoin integration endpoints. The Bitcoin canister holds the onchain Bitcoin-related state: the UTXO set, the most recent Bitcoin blocks to allow for fork resolution ("unstable blocks"), and outgoing transactions.
 
-A **Bitcoin adapter** process at the networking layer connects to nodes of the Bitcoin network, much like a regular Bitcoin node does.
+A **Bitcoin adapter** process at the networking layer connects to nodes of the Bitcoin network, much like a regular Bitcoin node.
 
 ### Maintaining the Bitcoin UTXO set
 
-The BTC canister and adapter are integrated and communicate with each other via ICP's protocol stack. The BTC canister requests successor blocks to the latest Bitcoin blocks it has received from the Bitcoin adapter. The adapter on each replica of the subnet obtains the requested blocks from the Bitcoin network, and the adapter of a block-making replica provides a requested block to the Bitcoin canister through consensus. The Bitcoin canister processes blocks in that it validates the proof of work, extracts the block's transactions, extracts the UTXOs from the transactions, and updates the UTXO set maintained in replicated state to reflect the UTXOs consumed and the UTXOs created by the transactions. Both the UTXO set and a set of recent blocks not yet absorbed into the UTXO set (the unstable blocks) are used to respond to UTXO and balance requests.
+The Bitcoin canister and adapter are integrated and communicate with each other via ICP's protocol stack. The Bitcoin canister requests successor blocks to the latest Bitcoin blocks it has received from the Bitcoin adapter. The adapter on each replica of the subnet obtains the requested blocks from the Bitcoin network, and the adapter of a block-making replica provides a requested block to the Bitcoin canister through consensus. The Bitcoin canister processes blocks in that it validates the proof of work, extracts the block's transactions, extracts the UTXOs from the transactions, and updates the UTXO set maintained in replicated state to reflect the UTXOs consumed and the UTXOs created by the transactions. Both the UTXO set and a set of recent blocks not yet absorbed into the UTXO set (the unstable blocks) are used to respond to UTXO and balance requests.
 
-The significant complexity of the implementation is in the area of securely resolving forks and protecting against various kinds of attacks. For example, in order to be able to resolve forks, the Bitcoin canister needs to maintain a certain number of Bitcoin blocks that are not yet absorbed into the maintained UTXO set, but the UTXOs therein must be efficiently considered for calculating the UTXOs of a given address in addition to those in the UTXO set.
+The significant complexity of the implementation is in the area of securely resolving forks and protecting against various kinds of attacks. For example, in order to be able to resolve forks, the Bitcoin canister needs to maintain a certain number of Bitcoin blocks that are not yet added to the maintained UTXO set, but the UTXOs therein must be efficiently considered for calculating the UTXOs of a given address in addition to those in the UTXO set.
 
 ### Submitting transactions
 
-Canisters can submit Bitcoin transactions to the Bitcoin canister using the corresponding management canister API. Doing so queues the transactions for submission to the Bitcoin network. In every subnet round, adapters obtain the pending transactions from the Bitcoin canister and queue them for being submitted asynchronously to the Bitcoin network. This leads to an efficient and quick distribution of transactions in the Bitcoin network, as every replica of the subnet submits transactions via multiple connected nodes of the Bitcoin network.
+Canisters can submit Bitcoin transactions to the Bitcoin canister using a dedicated endpoint. Doing so queues the transactions for submission to the Bitcoin network. In every subnet round, adapters obtain the pending transactions from the Bitcoin canister and queue them for being submitted asynchronously to the Bitcoin network. This leads to an efficient and quick distribution of transactions in the Bitcoin network, as every replica of the subnet submits transactions via multiple connected nodes of the Bitcoin network.
 
 ## Deployment architecture
 
-The Bitcoin functionality will be activated on a single subnet of ICP, and API calls from canisters to the Bitcoin API are routed via XNet communication; thus some extra latency is incurred. The Bitcoin canister may, if needed, in the future be additionally activated on some (application) subnets to avoid the additional XNet latency and to be able to respond to more requests per time unit.
+The Bitcoin functionality is activated on a single subnet of ICP, and API calls from canisters to the Bitcoin API are routed via XNet communication; thus some extra latency is incurred. The Bitcoin canister may, if needed, in the future be additionally activated on some (application) subnets to avoid the additional XNet latency and to be able to respond to more requests per time unit.
 
-Threshold ECDSA requests will be equally answered by a single active signing subnet; another subnet will back up the private key in secret-shared form for disaster recovery.
+Threshold ECDSA requests are equally answered by a single active signing subnet; another subnet backs up the private key in secret-shared form for disaster recovery.
 
 ## Development, pre-production, and production environment
 
 The Bitcoin functionality, including threshold signatures, is available in all stages required for the development life cycle on ICP:
 -   The **IC SDK** for local development of canisters.
--   ICP support as the pre-production environment for final testing on **Bitcoin testnet**.
+-   ICP support as the pre-production environment for final testing on **Bitcoin testnet** (v4).
 -   ICP support as the production environment for the release using the **Bitcoin mainnet**.
 
 ### Local SDK
 
-In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](/docs/building-apps/getting-started/install) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA management canister APIs.
+In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](/docs/building-apps/getting-started/install) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA APIs.
 
-In contrast to ICP deployments of the feature, which integrate with Bitcoin Testnet and Bitcoin Mainnet, respectively, the SDK integrates with a locally running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. To facilitate our developers as best as possible, the Internet Computer has integrated the IC SDK with `bitcoind` in regtest mode to bring the best Bitcoin development experience to ICP. Both development and automated testing of smart contracts are first done in the local environment with this setup.
+In contrast to ICP deployments of the feature, which integrate with Bitcoin testnet and Bitcoin mainnet, respectively, the SDK integrates with a locally running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. The Internet Computer has integrated the IC SDK with `bitcoind` in regtest mode to bring the best Bitcoin development experience to ICP. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
-The Bitcoin adapter of the single replica running the local SDK environment connects to the local `bitcoind` node instead of multiple nodes on the Bitcoin Testnet or Mainnet. To see the relevant flags on dfx, please look at the output of `dfx start --help`.
+The Bitcoin adapter of the single replica running the local SDK environment connects to the local `bitcoind` node instead of multiple nodes on the Bitcoin testnet or mainnet. Please look at the output of `dfx start --help` to see the relevant flags for `dfx`.
 
 ### Bitcoin testnet on ICP
 
-Once a smart contract is ready for acceptance testing, it is deployed on the mainnet (recall, there is no public ICP testnet), still using the Bitcoin API set to connect to the Bitcoin testnet. This is the same setting as used in local development. This setup is used to perform the acceptance testing of the dapp using the Bitcoin testnet and a test chain-key ECDSA key, i.e., no real value is at stake.
+Once a smart contract is ready for acceptance testing, it is deployed on the ICP mainnet (recall, there is no public ICP testnet), using the Bitcoin API set to connect to the Bitcoin testnet, i.e., no real value is at stake.
+This is the same setting used in local development.
 
 ### Bitcoin mainnet on ICP
 
-The final stage of the development of a Bitcoin smart contract is its deployment on ICP with the Bitcoin API set to use the Bitcoin Mainnet. This is the final production environment for the smart contract and is now available.
+The final stage of the development of a Bitcoin smart contract is its deployment on ICP with the Bitcoin API set to use the Bitcoin mainnet.
 
 ## API fees and pricing
 
-The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mainnet APIs are presented in the following tables. As a general principle for the Bitcoin API, some API calls must have a minimum number of cycles attached to them, as indicated in the column *Minimum cycles to send with call*. Cycles not consumed by the call are returned to the caller. Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of replication factor in the future. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached, as the charged cost is independent of the replication factor of the subnet.
+The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mainnet APIs are presented in the following tables. As a general principle for the Bitcoin API, some API calls must have a minimum number of cycles attached to them, as indicated in the column *Minimum cycles to send with call*. Cycles not consumed by the call are returned to the caller. Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of its replication factor in the future. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached as the charged cost is independent of the replication factor of the subnet.
 
 The cost per API call in USD uses the USD/XDR exchange rate of July 23, 2024.
 
@@ -89,6 +89,8 @@ The cost per API call in USD uses the USD/XDR exchange rate of July 23, 2024.
 | Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4_000_000                 | $0.00000530204                   | 40_000_000 |
 | Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2_000_000_000             | $0.00265102                    | n.a.       |
 | Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8_000_000                 | $0.00001060408                    | n.a.       |
+| Bitcoin block headers                | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)                              | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
+
 
 ### Bitcoin Mainnet
 
@@ -99,9 +101,10 @@ The cost per API call in USD uses the USD/XDR exchange rate of July 23, 2024.
 | Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 10_000_000                 | $0.0000132551                    | 100_000_000 |
 | Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5_000_000_000             | $0.00662755                    | n.a.       |
 | Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 20_000_000                 | $0.0000265102                    | n.a.       |
+| Bitcoin block headers                | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)                              | 50_000_000 + 1 cycle per Wasm instruction | $0.0000662755 + Wasm instruction cost | 10_000_000_000 |
 
 :::note
-Note that the `bitcoin_get_utxos` call is charged through a baseline fee that amortizes part of the Bitcoin block processing and the cycles cost of the actually-used Wasm instructions. This is the fairest way of charging because a flat fee would be less fair for requests returning a small number of UTXOs, while a fee scaling with the number of UTXOs is hard to define in a clean way. A few informal test measurements have yielded Wasm execution fees anywhere in the range of less than 200K to more than 1,000K cycles per returned UTXO, and in addition, 30M-50M cycles for processing the unstable blocks. This wide variance per UTXO was the reason to not use a charging approach based on the number of UTXOs returned, but it should give you a rough indication of what to expect to pay in terms of fees. For queries with a small number of UTXOs, you can expect around 100M cycles as a fee to be deducted from the provided cycles on the call for the majority of calls.
+Note that the fees for calling the `bitcoin_get_utxos` and `bitcoin_get_block_headers` endpoints depend on the number of Wasm instructions that the Bitcoin canister consumes when processing the requests to ensure fair charging.
 :::
 
 ## Resources

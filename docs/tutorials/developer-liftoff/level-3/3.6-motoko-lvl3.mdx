@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer liftoff, motoko]
+keywords: [intermediate, tutorial, developer liftoff, motoko, caller identification, access control, pattern matching, periodic tasks]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -14,13 +14,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/6YlHOARxUSo?si=8F_md_y7q2UswW_3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-In the previous module, [3.5: Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth) you covered different forms of identities and authentication on ICP. In this Motoko level, you'll look into caller identification, adding access control with identities, plus other non-identity-related functionalities such as pattern matching and periodic tasks.
+In this Motoko level, you'll look into caller identification, adding access control with identities, plus other workflows such as using pattern matching and periodic tasks.
 
 ## Principals and caller identification
 
-Motoko's shared functions support a form of caller identification, allowing for the principal associated with the caller of a function to be returned. Recall that a principal is a unique identifier associated with the user or canister. Principals can be used to implement basic access control for an application.
+Motoko's shared functions support a form of caller identification, allowing for the principal associated with the caller of a function to be returned. Recall that a principal is a unique identifier associated with an identity or canister. Principals can be used to implement basic access control for an application.
 
-In Motoko, recall that the `shared` keyword is used to declare a shared function and that a **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned. A shared function's arguments and return value(s) must also be shared types. Shared functions can declare an optional parameter of type `{caller : Principal}`. The developer liftoff covered shared functions in more detail in [2.6: Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
+In Motoko, recall that the `shared` keyword is used to declare a shared function and that a **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned. A shared function's arguments and return value(s) must also be shared types. Shared functions can declare an optional parameter of type `{caller : Principal}`. This was covered in more detail in [2.6: Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
 
 To demonstrate this, consider the following function:
 
@@ -32,9 +32,9 @@ shared(msg) func inc() : async () {
 }
 ```
 
-In this basic demonstration, the shared function `inc()` specifies a `msg` parameter, a record, and the `msg.caller` accesses the `principal` field of `msg`. Calls to the `inc()` function do not change. When the call is made, the caller's `principal` is provided by the system, not the user, so the principal cannot be forged or spoofed maliciously.
+The shared function `inc()` specifies a `msg` parameter, a record, and the `msg.caller` accesses the `principal` field of `msg`. When the call is made, the caller's `principal` is provided by the system, not the user, so the principal cannot be forged or spoofed maliciously.
 
-Additionally, the caller of an actor class can be called using the same syntax on the actor class declaration, such as:
+Additionally, the caller of an actor class can be returned using the same syntax on the actor class declaration, such as:
 
 ```motoko
 import Nat "mo:base/Nat";
@@ -44,7 +44,7 @@ shared(msg) actor class Counter(init : Nat) {
 }
 ```
 
-To further this example, imagine a scenario where you have the `Counter` actor that you used in a previous example that you want to restrict access to. You can modify the original example so that only the `principal` that installed the actor can modify the actor by recording the `principal` that installed the actor and binding it to an `owner` variable, then checking that the caller of each method is equal to the owner variable:
+To further this example, imagine a scenario where you have a `Counter` actor that you want to restrict access to. You can modify the original code so that only the `principal` that installed the actor can modify it by recording the `principal` that installed the actor and binding it to an `owner` variable, then checking that the caller of each method is equal to the `owner` variable:
 
 ```motoko
 import Nat "mo:base/Nat";
@@ -72,7 +72,7 @@ shared(msg) actor class Counter(init : Nat) {
 }
 ```
 
-In this code, the `assert (owner == msg.caller)` expression causes the functions `inc()` and `bump()` to trap if the call is unauthorized, preventing any modification of the count variable while the `read()` function permits any caller.
+In this code, the `assert (owner == msg.caller)` expression causes the functions `inc()` and `bump()` to trap if the call is unauthorized, preventing any modification of the count variable, while the `read()` function can be called by anyone.
 
 ## Adding access control with identities
 
@@ -82,68 +82,37 @@ In this example, you'll create a simple app that displays a different greeting f
 
 - Users who have the `admin` role will receive the greeting, "You have a role with administrative privileges."
 
-- Users who have the `authorized` role will receive the greeting, "Are you enjoying the developer liftoff?".
+- Users who have the `authorized` role will receive the greeting, "Are you enjoying the Developer Liftoff?".
 
 - Users who are not assigned a role will receive the greeting, "Nice to meet you!".
 
 Only the `principal` that initialized the canister is assigned the `owner` role, and only principals with the `owner` and `admin` roles can assign roles to others.
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
 
 ```
 dfx start --clean --background
-dfx new access_hello
-```
-
-You will be prompted to select the language that your backend canister will use. Select 'Motoko':
-
-```
-? Select a backend language: ›
-❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
-
-```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-❯ No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-Then, navigate into the new project directory:
-
-```
+dfx new access_hello --type=motoko --no-frontend
 cd access_hello
 ```
 
-
-### Creating an `owner` identity
+### Creating an owner identity
 
 First, let's create a new identity to use. You'll call this identity 'owner,' since it will be the owner of the canister you create:
 
@@ -152,163 +121,18 @@ dfx identity new owner
 dfx identity use owner
 ```
 
-Now, let's write the code that sets up the simple access control app. Open the `src/access_hello_backend/main.mo` file in your code editor and replace the existing content with the following pieces of code:
-
 ### Writing backend code with access control
 
-Start by importing the base modules:
+Then, write the code that sets up the simple access control dapp. Open the `src/access_hello_backend/main.mo` file in your code editor and replace the existing content with the following code:
 
 ```motoko title="src/access_hello_backend/main.mo"
+// Start by importing the base modules:
+
 import AssocList "mo:base/AssocList";
 import Error "mo:base/Error";
 import List "mo:base/List";
-```
 
-Then, declare your shared actor class, which defines three role-based greetings to display using an if/else statement:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-shared({ caller = initializer }) actor class() {
-
-    public shared({ caller }) func greet(name : Text) : async Text {
-        if (has_permission(caller, #assign_role)) {
-            return "Hello, " # name # ". You have a role with administrative privileges."
-        } else if (has_permission(caller, #lowest)) {
-            return "Welcome, " # name # ". You have an authorized account. Would you like to play a game?";
-        } else {
-            return "Greetings, " # name # ". Nice to meet you!";
-        }
-    };
-```
-
-Next, define the custom types `Role` and `Permission`:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    public type Role = {
-        #owner;
-        #admin;
-        #authorized;
-    };
-
-    public type Permission = {
-        #assign_role;
-        #lowest;
-    };
-```
-
-Then, define stable variables to store a list of principals and their associated role:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    private stable var roles: AssocList.AssocList<Principal, Role> = List.nil();
-    private stable var role_requests: AssocList.AssocList<Principal, Role> = List.nil();
-```
-
-Create a function that checks if principal `a` equals principal `b`:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    func principal_eq(a: Principal, b: Principal): Bool {
-        return a == b;
-    };
-```
-
-Define a function to get the principal's current role, first by checking if the principal is the initializer of the canister, then by checking the list that stores principals and their associated roles:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    func get_role(pal: Principal) : ?Role {
-        if (pal == initializer) {
-            ?#owner;
-        } else {
-            AssocList.find<Principal, Role>(roles, pal, principal_eq);
-        }
-    };
-```
-
-
-Then, determine if a principal has a role with permissions:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    func has_permission(pal: Principal, perm : Permission) : Bool {
-        let role = get_role(pal);
-        switch (role, perm) {
-            case (?#owner or ?#admin, _) true;
-            case (?#authorized, #lowest) true;
-            case (_, _) false;
-        }
-    };
-```
-
-Define a function that rejects any unauthorized principals:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    func require_permission(pal: Principal, perm: Permission) : async () {
-        if ( has_permission(pal, perm) == false ) {
-            throw Error.reject( "unauthorized" );
-        }
-    };
-```
-
-Define a function to assign a new role to a principal:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    public shared({ caller }) func assign_role( assignee: Principal, new_role: ?Role ) : async () {
-        await require_permission( caller, #assign_role );
-
-        switch new_role {
-            case (?#owner) {
-                throw Error.reject( "Cannot assign anyone to be the owner" );
-            };
-            case (_) {};
-        };
-        if (assignee == initializer) {
-            throw Error.reject( "Cannot assign a role to the canister owner" );
-        };
-        roles := AssocList.replace<Principal, Role>(roles, assignee, principal_eq, new_role).0;
-        role_requests := AssocList.replace<Principal, Role>(role_requests, assignee, principal_eq, null).0;
-    };
-
-    public shared({ caller }) func request_role( role: Role ) : async Principal {
-        role_requests := AssocList.replace<Principal, Role>(role_requests, caller, principal_eq, ?role).0;
-        return caller;
-    };
-```
-
-Return the principal of the message caller/user identity:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    public shared({ caller }) func callerPrincipal() : async Principal {
-        return caller;
-    };
-```
-
-
-Return the role of the message caller/user identity:
-
-```motoko no-repl title="src/access_hello_backend/main.mo"
-    public shared({ caller }) func my_role() : async ?Role {
-        return get_role(caller);
-    };
-
-    public shared({ caller }) func my_role_request() : async ?Role {
-        AssocList.find<Principal, Role>(role_requests, caller, principal_eq);
-    };
-
-    public shared({ caller }) func get_role_requests() : async List.List<(Principal,Role)> {
-        await require_permission( caller, #assign_role );
-        return role_requests;
-    };
-
-    public shared({ caller }) func get_roles() : async List.List<(Principal,Role)> {
-        await require_permission( caller, #assign_role );
-        return roles;
-    };
-};
-```
-
-In total, the code in the `src/access_hello_backend/main.mo` file should be:
-
-```motoko title="src/access_hello_backend/main.mo"
-import AssocList "mo:base/AssocList";
-import Error "mo:base/Error";
-import List "mo:base/List";
+// Then, declare your shared actor class, which defines three role-based greetings to display using an if/else statement:
 
 shared({ caller = initializer }) actor class() {
 
@@ -322,6 +146,7 @@ shared({ caller = initializer }) actor class() {
         }
     };
 
+    // Next, define the custom types `Role` and `Permission`:
     public type Role = {
         #owner;
         #admin;
@@ -333,12 +158,16 @@ shared({ caller = initializer }) actor class() {
         #lowest;
     };
 
+    // Define stable variables to store a list of principals and their associated role:
     private stable var roles: AssocList.AssocList<Principal, Role> = List.nil();
     private stable var role_requests: AssocList.AssocList<Principal, Role> = List.nil();
 
+    // Create a function that checks if principal `a` equals principal `b`:
     func principal_eq(a: Principal, b: Principal): Bool {
         return a == b;
     };
+
+    // Define a function to get the principal's current role, first by checking if the principal is the initializer of the canister, then by checking the list that stores principals and their associated roles:
 
     func get_role(pal: Principal) : ?Role {
         if (pal == initializer) {
@@ -348,6 +177,7 @@ shared({ caller = initializer }) actor class() {
         }
     };
 
+    // Then, determine if a principal has a role with permissions:
     func has_permission(pal: Principal, perm : Permission) : Bool {
         let role = get_role(pal);
         switch (role, perm) {
@@ -357,12 +187,14 @@ shared({ caller = initializer }) actor class() {
         }
     };
 
+    // Define a function that rejects any unauthorized principals:
     func require_permission(pal: Principal, perm: Permission) : async () {
         if ( has_permission(pal, perm) == false ) {
             throw Error.reject( "unauthorized" );
         }
     };
 
+    // Define a function to assign a new role to a principal:
     public shared({ caller }) func assign_role( assignee: Principal, new_role: ?Role ) : async () {
         await require_permission( caller, #assign_role );
 
@@ -384,10 +216,12 @@ shared({ caller = initializer }) actor class() {
         return caller;
     };
 
+    // Return the principal of the message caller/user identity:
     public shared({ caller }) func callerPrincipal() : async Principal {
         return caller;
     };
 
+    // Return the role of the message caller/user identity:
     public shared({ caller }) func my_role() : async ?Role {
         return get_role(caller);
     };
@@ -408,7 +242,7 @@ shared({ caller = initializer }) actor class() {
 };
 ```
 
-The key components of this app are:
+The key components of this dapp are:
 
 - A `greet` function that uses a message caller to determine the permissions that should be applied to a principal, then displays a greeting depending on the permissions associated with the caller.
 
@@ -420,9 +254,7 @@ The key components of this app are:
 
 - A `my_role` function that returns the role associated with an identity.
 
-Save these changes made to the `src/access_hello_backend/main.mo` file.
-
-Now let's deploy our canister with the command:
+Save these changes made to the `src/access_hello_backend/main.mo` file. Then deploy the canister with the command:
 
 ```bash
 dfx deploy
@@ -436,11 +268,14 @@ Now that your canister is deployed, you can interact with it using different ide
 dfx identity whoami
 ```
 
-This should return:
+<details>
+<summary>Output</summary>
 
 ```bash
 owner
 ```
+
+</details>
 
 If the command displays anything else, you can switch back to the `owner` identity with the same command you used earlier:
 
@@ -454,11 +289,14 @@ Then, get the principal for this identity with the command:
 dfx identity get-principal
 ```
 
-The command displays output similar to the following:
+<details>
+<summary>Output</summary>
 
 ```bash
 65fam-cvhbx-ny6xn-p2l44-x3bai-ksvzb-2krf2-2fy3m-d2vde-cnrt6-aqe
 ```
+
+</details>
 
 Now, let's check this identity's role associated with the canister:
 
@@ -466,11 +304,14 @@ Now, let's check this identity's role associated with the canister:
 dfx canister call access_hello_backend my_role
 ```
 
-The command should return a response indicating that your identity has the `owner` role:
+<details>
+<summary>Output</summary>
 
 ```bash
 (opt variant { owner })
 ```
+
+</details>
 
 Now let's create some new user identities and assign them different roles. First, let's create a new identity that'll have the `admin` role:
 
@@ -490,12 +331,15 @@ This will return the response of `(null)`, since you haven't assigned the identi
 dfx identity use ic_admin && dfx identity get-principal
 ```
 
-The command displays output similar to the following:
+<details>
+<summary>Output</summary>
 
 ```bash
 Using identity: "ic_admin".
 scc3r-hhpnt-264cn-t2ud3-sx74o-5txbl-arwi5-h7c4s-wx7zc-sl54q-dqe
 ```
+
+</details>
 
 Now, to assign the `admin` role to the `ic_admin` identity, switch back to the `owner` identity, then make a call to the canister:
 
@@ -504,7 +348,7 @@ dfx identity use owner
 dfx canister call access_hello_backend assign_role '((principal "scc3r-hhpnt-264cn-t2ud3-sx74o-5txbl-arwi5-h7c4s-wx7zc-sl54q-dqe"),opt variant{admin})'
 ```
 
-Be sure to replace the `principal` with the one returned by the `dfx identity get-principal` command for the `ic_admin` identity.
+Be sure to replace the `principal` with the one returned by the `dfx identity get-principal` command when using the `ic_admin` identity.
 
 Now, make another call to the canister to verify that the role has been updated for the principal; it should now return `admin` instead of `(null)`.
 
@@ -512,13 +356,14 @@ Now, make another call to the canister to verify that the role has been updated 
 dfx --identity ic_admin canister call access_hello_backend my_role
 ```
 
-Let's call the `greet` function for the `ic_admin` identity to assure that it returns the correct greeting for the role `admin`:
+Call the `greet` function for the `ic_admin` identity to assure that it returns the correct greeting for the role `admin`:
 
 ```bash
 dfx --identity ic_admin canister call access_hello_backend greet "Internet Computer Admin"
 ```
 
-The command displays output similar to the following:
+<details>
+<summary>Output</summary>
 
 ```bash
 (
@@ -526,23 +371,15 @@ The command displays output similar to the following:
 )
 ```
 
+</details>
+
 From here, you can repeat the previous steps to create other identities and assign them the `admin` or `authorized` role.
 
 ## Pattern matching
 
-In Motoko, **pattern matching** is a feature for testing and decomposing structured data into its individual components. With Motoko's pattern matching, data fragments derived from structured data can be bound to names that you define. Patterns resemble the structure of structured data in their syntax but generally appear in input-direction positions, such as after the `case` keyword in `switch` expressions or after `let` or `var` declarations.
+In Motoko, **pattern matching** is a feature for testing and deconstructing structured data into its individual components. With Motoko's pattern matching, data fragments derived from structured data can be bound to names that you define. Patterns resemble the structure of structured data in their syntax but generally appear in input-direction positions, such as after the `case` keyword in `switch` expressions or after `let` or `var` declarations.
 
-For example, consider the following function call:
-
-```motoko
-import Text "mo:base/Text";
-
-actor {
-    let name = ({ first = "Jane"; mid = "M"; last = "Doe" });
-};
-```
-
-This function call constructs a record containing three fields, then passes it to the function called `fullName`. The call's result is bound to the identifier `name`. The last step that binds the result to the identifier is an example of **pattern matching**, where `name : Text` is one of the simplest forms of a pattern. To further demonstrate, the following is an example of the function:
+The input in this callee is an anonymous object, which is then deconstructed into the object's three `Text` fields that are bound to the identifiers `first`, `mid`, and `last`. These values can be freely used in the block that forms the body of the function.
 
 ```motoko
 import Text "mo:base/Text";
@@ -553,8 +390,6 @@ actor {
     }
 };
 ```
-
-The input in this callee is an anonymous object, which is then deconstructed into the object's three `Text` fields that are bound to the identifiers `first`, `mid`, and `last`. These values can be freely used in the block that forms the body of the function.
 
 Pattern matching can also be used to declare literal patterns, which resemble literal constants. Literal patterns can be useful in `switch` expressions, since in case the first pattern match fails, the next pattern match can be checked, and so forth. For example:
 
@@ -582,66 +417,12 @@ Since heartbeats are a legacy feature, new canisters should opt to use timers in
 
 To support timers, the Motoko `Timer.mo` library exists. The following is a simple example that creates a periodic reminder for logging a message every new year:
 
-```motoko no-repl
-import { print } = "mo:base/Debug";
-import { abs } = "mo:base/Int";
-import { now } = "mo:base/Time";
-import { setTimer; recurringTimer } = "mo:base/Timer";
+```motoko no-repl file=../../../motoko/main/examples/Reminder.mo
 
-actor Reminder {
-
-  let solarYearSeconds = 356_925_216;
-
-  private func remind() : async () {
-    print("Happy New Year!");
-  };
-
-  ignore setTimer(#seconds (solarYearSeconds - abs(now() / 1_000_000_000) % solarYearSeconds),
-    func () : async () {
-      ignore recurringTimer(#seconds solarYearSeconds, remind);
-      await remind();
-  });
-}
 ```
 
 In this code, there is a global timer that issues callbacks from a queue maintained by Motoko's runtime. When lower-level access to the canister global timer is needed, an actor can choose to receive timer expiry messages by declaring the system function named `timer`. This function takes a single argument and returns a future of unit type `(async ())`.
 
-The following is an example of a global timer expiration callback that gets called immediately after the canister starts, such as immediately after install, then periodically every twenty seconds thereafter:
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-```motoko no-repl
-actor {
-    system func timer(setGlobalTimer : Nat64 -> ()) : async () {
-    let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
-    setGlobalTimer(next);
-    print("Timer!");
-    }
-};
-```
-
-## Need help?
-
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course on learning all things Motoko.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-That'll wrap up level 3 of the developer liftoff! In the next level, you'll start by taking a look at using the ICP ledger.
-
-- [4.1 Using the ICP ledger.](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger)
+<TutorialFooter />

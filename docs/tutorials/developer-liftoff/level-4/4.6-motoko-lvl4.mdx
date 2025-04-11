@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, motoko]
+keywords: [advanced, tutorial, developer liftoff, motoko, mutable state, local objects and classes, message inspection, errors and options]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/E7JxP3-CjH8?si=db1zJWYxOs98tVLJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-In this final Motoko module of the developer liftoff series, you'll cover the following Motoko concepts and components:
+In this final Motoko module of the Developer Liftoff series, you'll learn about:
 
 - Mutable state.
 
@@ -26,29 +26,27 @@ In this final Motoko module of the developer liftoff series, you'll cover the fo
 
 ## Mutable state
 
-Every actor in Motoko uses an internal, mutable state. This internal state is private and cannot be directly shared with other actors. This is a core Motoko design feature, where mutable data is always kept private to the actor that has allocated it, and it is not shared remotely.
+Every actor in Motoko uses an internal, mutable state. This internal state is private and cannot be directly shared with other actors. This is a core Motoko design feature, where mutable data is always kept private to the actor that has allocated it.
 
 Mutable states are not shareable, since sharing them would mean moving an object's code among other actors and executing it remotely, which poses a security risk, or alternatively sharing the state with a bit of remote logic, which poses another risk.
-
-The term **mutable** refers to something that can be changed or altered, whereas the term **immutable** refers to something that cannot be changed or altered and has a permanent definition.
 
 To understand mutable state, let's take a look at an example where an actor's private state is altered using mutation operations.
 
 ### Immutable variables versus mutable variables
 
-Immutable variables use the `let` syntax when being declared, such as:
+Immutable variables use the `let` syntax when being declared:
 
 ```motoko
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 
 actor {
-  let textImmutable  : Text = "developer liftoff";
+  let textImmutable  : Text = "Developer Liftoff";
   let numImmutable  : Nat = 50;
 }
 ```
 
-Mutable variables use the `var` syntax when being declared, such as:
+Mutable variables use the `var` syntax when being declared:
 
 ```motoko no-repl
 import Text "mo:base/Text";
@@ -70,7 +68,7 @@ actor {
 }
 ```
 
-In this syntax, you can update each mutable variable using an update rule for their current values. An actor processes calls by performing updates on its internal mutable variables using the same syntax as above.
+An actor processes calls by performing updates on its internal mutable variables using the same syntax as above.
 
 ### Reading data from mutable memory
 
@@ -95,7 +93,7 @@ actor {
 }
 ```
 
-The only difference between these two variable declarations is the use of `let` for the immutable variable and `var` for the mutable variable. However, these variables contain much different meanings, especially in the context of larger projects and programs.
+The only difference between these two variable declarations is the use of `let` for the immutable variable and `var` for the mutable variable. However, these variables have very different meanings, especially in the context of larger projects and programs.
 
 In the immutable variable definition using `let`, each occurrence of the variable equals `0`. Replacing each occurrence with the value `0` will not change the program.
 
@@ -203,13 +201,13 @@ In comparison, local objects and classes can pass any Motoko data to another obj
 
 Classes are defined by the keyword `class`, followed by the name for the constructor and the type being defined, optional type arguments, an argument list, and an optional type annotation for constructed objects.
 
-The previous section introduced mutable state declarations of private mutable state using `var` bound variables and mutable arrays. In this section, you'll use mutable state to implement simple objects.
+The previous section introduced mutable state declarations using `var` bound variables and mutable arrays. In this section, you'll use mutable state to implement simple objects.
 
 ### Object classes versus actor classes
 
 First, let's clearly define the difference between object and actor classes:
 
-- Object classes: Object classes refer to blueprints used to define a series of related objects with customizable states. Motoko uses a class definition that simplifies building objects of the same implementation and type.
+- Object classes: Refer to blueprints used to define a series of related objects with customizable states. Motoko uses a class definition that simplifies building objects of the same implementation and type.
 
 - Actor classes: When an object class exposes a service, the corresponding Motoko construct is an actor class, which follows a similar design.
 
@@ -232,7 +230,7 @@ actor {
 
 ```
 
-In this declaration, a single object, called `counter`, is defined. In this object there are three public functions, `inc`, `read`, and `bump`, which use the keyword `public` to declare each as a sharable function. This object definition also includes a single private mutable variable called `count`, defined by the `var` declaration.
+In this declaration, a single object, called `counter`, is defined with three public functions, `inc`, `read`, and `bump`, which use the keyword `public` to declare each as a sharable function. This object definition also includes a single private mutable variable called `count`, defined by the `var` declaration.
 
 By default, all declarations in an object block are private, such as the variable `count` is in this example.
 
@@ -252,25 +250,9 @@ Each `field` type includes an identifier, a colon `:`, and a type for the field'
 
 The inability to access the variable `count` provides an important benefit: the object has a normal general type with fewer fields, and in return is interchangeable with objects that implement the same `counter` object type differently, without including a field such as `count`.
 
-For example, the following variation of the `counter` declaration above uses the same object type but uses a different implementation of the `count` variable using an ordinary `Nat` value. This object type is interchangeable with the previous example:
-
-```motoko
-import Nat8 "mo:base/Nat8";
-
-actor {
-  object byteCounter {
-    var count : Nat8 = 0;
-    public func inc() { count += 1 };
-    public func read() : Nat { Nat8.toNat(count) };
-    public func bump() : Nat { inc(); read() };
-  };
-}
-
-```
-
 ### Object subtyping
 
-Next, let's take a look at object subtyping. In Motoko, object subtyping refers to objects that may have various types. Object types with fewer fields are typically considered subtypes. Object subtypes in Motoko use structural subtyping, where the equality of two types is based on their structure. Two classes with different names but equivalent definitions produce type-compatible objects.
+In Motoko, object subtyping refers to objects that may have various types. Object types with fewer fields are typically considered subtypes. Object subtypes in Motoko use structural subtyping, where the equality of two types is based on their structure. Two classes with different names but equivalent definitions produce type-compatible objects.
 
 To demonstrate an example of subtyping, let's use a simple counter with a more general type that uses fewer public functions:
 
@@ -289,7 +271,7 @@ actor {
 
 ```
 
-The object type for the object `bumpCounter` exposes only one operation, `bump`:
+The object type for `bumpCounter` exposes only one operation, `bump`:
 
 ```motoko no-repl
 {
@@ -322,7 +304,7 @@ If a function expects to receive an object using the first type `({ bump: () →
 
 ### Object classes
 
-Now let's move on to object classes. An object class is a package of entities that share a common name. For example, let's define a class example for counters that start at zero:
+An object class is a package of entities that share a common name. For example, let's define a class example for counters that start at zero:
 
 ```motoko no-repl
 import Nat "mo:base/Nat";
@@ -371,8 +353,6 @@ actor {
 }
 ```
 
-Note that the return type of this function is `{ inc : () -> Nat }`, which could be named to use in further type declarations, such as `type Counter = { inc : () -> Nat };`.
-
 ### Data arguments
 
 In your object class, you initialized counter functions to start with a value of zero. If you want to initialize the counter with a value other than zero, you can pass a data argument into the constructor function:
@@ -393,9 +373,15 @@ Notice that now the value of `c` is set to `init` rather than set to `0`, to ref
 
 ## Message inspection
 
-When a canister receives an ingress message submitted through HTTP, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_message` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted. `canister_inspect_message` is not used for HTTP query calls, inter-canister calls, and calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/docs/building-apps/security/iam#do-not-rely-on-ingress-message-inspection) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks.
+### Canister message inspection
+
+When a canister receives an ingress message, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_message` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted.
+
+`canister_inspect_message` is not used for HTTP query calls, inter-canister calls, or calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/docs/building-apps/security/iam#do-not-rely-on-ingress-message-inspection) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks.
 
 Message inspection is designed to mitigate some denial of service attacks, since it drains canisters of their cycles for placing unsolicited calls that are rejected.
+
+### Actor message inspection
 
 Actors can elect to inspect messages and make a decision on whether to execute them or not by declaring a system function called `inspect`. Using the message's attributes, this function produces a true or false value that indicates if the canister decides to accept or decline the message. If a call traps, it will return a false value.
 
@@ -408,7 +394,7 @@ The argument type of the `inspect` function depends on the actor's interface. Th
 - `msg`: A variant of decoding functions, which contains one variant per shared function and the ID of the actor.
 
 
-The inspect system function should not be used as a definitive form of access control since it is executed by a single replica and does not go through full consensus and could be maliciously spoofed.
+The inspect system function should not be used as a definitive form of access control since it is executed by a single replica and does not go through full [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and could be maliciously spoofed.
 
 Consider the following `inspect` function example that denies all ingress messages and ignores all message information:
 
@@ -458,7 +444,7 @@ Motoko error handling best practices recommend using `Option` and `Result` error
 
 ### Error reporting with `Option` values
 
-If a function wants to return the value of type `A`, or signal an error, it can return a value of option type `?A`; the `null` value can designate the error. For example, consider the following `markDone` function that returns an async value of `?Seconds`.
+If a function wants to return the value of type `A` or signal an error, it can return a value of option type `?A`; the `null` value can designate the error. For example, consider the following `markDone` function that returns an async value of `?Seconds`.
 
 ```motoko no-repl
 import Time "mo:base/Time";
@@ -617,32 +603,6 @@ actor {
 
 - [Motoko error handling](/docs/motoko/main/writing-motoko/errors).
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-That'll wrap up level 4 of the developer liftoff! Next, you'll dive into the final level, level 5:
-
-- [5.1 Developing an encrypted notes dapp with vetKD.](/docs/tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial)
+<TutorialFooter />

@@ -15,7 +15,7 @@ You can talk to the canister using the v2 API with an agent that follows the int
 
 Smart contracts are able to define their own APIs using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
 
-ICP supports two types of calls: `queries` and `updates`. Queries are fast and cannot change state. Updates go through consensus and will take around 2-4 seconds to complete.
+ICP supports two types of calls: `queries` and `updates`. Queries are fast and cannot change state. Updates go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and will take around 2-4 seconds to complete.
 
 As a result of the latency for updates, best practices around modeling your application's performance will have you make updates asynchronously and early. If you can make an update ahead of time and have it already "cached" in your canister's memory, your users will have a better experience requesting that data. Similarly, if your application needs to make an update, it is best to avoid blocking interaction while your update is taking place. Use **optimistic rendering** wherever practical, and proceed with your application as if the call has already succeeded.
 
@@ -35,16 +35,11 @@ In addition to those, there are several other community-supported agents. Note t
 - Dart
     - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
 - Go
-    - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
     - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
 - Java
     - [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
-- Python
-    - [`ic-py` by Rocklabs](https://github.com/rocklabs-io/ic-py)
 - C
     - [`agent-c` by Zondax](https://github.com/Zondax/icp-client-cpp) (C Wrapper for IC Rust Agent)
-- Ruby
-    - [`ic_agent` by Terry.Tu](https://github.com/tuminfei/ic_agent)
 - Elixir
     - [`icp_agent`](https://github.com/diodechain/icp_agent)
 
