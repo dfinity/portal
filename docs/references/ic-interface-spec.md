@@ -2236,7 +2236,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `freezing_threshold` (`nat`)
 
-    Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
+    Must be a number between 604800 (or equivalent of 1 week in seconds) and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
 
     A canister is considered frozen whenever the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass, given the canister's current size and the IC's current cost for storage.
 
@@ -2780,6 +2780,8 @@ It is expected that the canister controllers (or their tooling) do this separate
 This method can be called by canisters as well as by external users via ingress messages.
 
 This method loads a snapshot identified by `snapshot_id` onto the canister. It fails if no snapshot with the specified `snapshot_id` can be found.
+
+The snapshot can only be loaded onto the canister for which the snapshot was taken.
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 

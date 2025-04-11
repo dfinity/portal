@@ -422,7 +422,7 @@ const marketingNav = {
             {
               name: "Build on BTC",
               description: "Leveraging Chain Fusion Technology",
-              href: "/bitcoin-integration",
+              href: "/bitcoin",
             },
             {
               name: "Hackathons",
