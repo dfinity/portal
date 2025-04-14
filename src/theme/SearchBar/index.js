@@ -67,6 +67,7 @@ const Search = () => {
       appId="B0O3KB7MGW"
       indexName="internetcomputer"
       apiKey="43d8a7a6f4697a580cdf0cb021affddb"
+      placeholder="Search internetcomputer.org"
       />
 
 
