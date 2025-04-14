@@ -83,7 +83,7 @@ const redirects = `
 
   ## Motoko
   /docs/current/developer-docs/backend/motoko/infrastructure /docs/motoko/home
-  /docs/current/developer-docs/backend/motoko/explore-templates //docs/motoko/fundamentals/basic-syntax/defining_an_actor
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/fundamentals/basic-syntax/defining_an_actor
   /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/install
   /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/home
   /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/install
