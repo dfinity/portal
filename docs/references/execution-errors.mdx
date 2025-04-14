@@ -257,7 +257,7 @@ An example of this error is:
   Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
 ```
 
-Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/main/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
+Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
 
 
 ### Canister made a call with too large a payload
