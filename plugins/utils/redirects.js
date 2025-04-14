@@ -126,7 +126,7 @@ const redirects = `
   /docs/rust/main/motoko-packages/databases /docs/home
   /docs/current/motoko/main/motoko-introduction /docs/motoko/home
   /docs/current/motoko/main/motoko /docs/motoko/home
-  /docs/current/motoko/main/basic-concepts //docs/motoko/fundamentals/basic-syntax/defining_an_actor
+  /docs/current/motoko/main/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining_an_actor
   /docs/current/motoko/main/overview /docs/motoko/home
   /docs/current/motoko/main/language-manual /docs/motoko/language-manual
   /docs/current/motoko/main/style /docs/motoko/motoko-style-guide
@@ -146,7 +146,7 @@ const redirects = `
   /docs/current/motoko/main/pattern-matching /docs/motoko/fundamentals/pattern-matching
   /docs/current/motoko/main/pipes /docs/motoko/fundamentals/basic-syntax/operators
   /docs/current/motoko/main/sharing /docs/motoko/fundamentals/types/shared-types
-  /docs/current/motoko/main/stable-regions //docs/motoko/fundamentals/data-persistence
+  /docs/current/motoko/main/stable-regions /docs/motoko/fundamentals/data-persistence
   /docs/current/motoko/main/stablememory /docs/motoko/fundamentals/data-persistence
   /docs/current/motoko/main/structural-equality /docs/motoko/fundamentals/types/subtyping
   /docs/current/motoko/main/timers /docs/motoko/icp-features/timers
@@ -1193,7 +1193,7 @@ const redirects = `
   /docs/current/developer-docs/production/system-canisters /docs/references/system-canisters/
   /docs/current/developer-docs/production/topping-up-canister/ /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
+  /docs/current/developer-docs/backend/solidity/ https:/docs.bitfinity.network/
   /docs/current/developer-docs/backend/subnet-types /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/backend/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
