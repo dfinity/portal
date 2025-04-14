@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Security", "Best practices"]} />
 
-To understand the issues around async inter-canister calls, one needs to understand the [properties of message execution on ICP](/docs/building-apps/essentials/message-execution). Understanding these properties is a prerequisite for understanding the security issues discussed below.
+To understand the issues around async inter-canister calls, one needs to understand the [properties of message execution on ICP](/docs/references/message-execution-properties). Understanding these properties is a prerequisite for understanding the security issues discussed below.
 
 This is also explained in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
 
@@ -20,7 +20,7 @@ This is also explained in the [community conversation on security best practices
 
 ### Security concern
 
-Traps and panics roll back the canister state, as described in [Property 5](/docs/building-apps/interact-with-canisters/advanced-calls). So any state change followed by a trap or panic can be risky. This is an important concern when inter-canister calls are made. If a trap occurs after an await to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call’s callback invocation, and not to the state before the entire call.
+Traps and panics roll back the canister state, as described in [Property 5](/docs/references/message-execution-properties#message-execution-properties). So any state change followed by a trap or panic can be risky. This is an important concern when inter-canister calls are made. If a trap occurs after an await to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call’s callback invocation, and not to the state before the entire call.
 
 More precisely, suppose some state changes are applied and then an inter-canister call is issued. Also, assume that these state changes leave the canister in an inconsistent state, and that state is only made consistent again in the callback. Now if there is a trap in the callback, this leaves the canister in an inconsistent state.
 
@@ -51,7 +51,7 @@ Due to these reasons, while it is easy to recommend “avoiding traps”, this i
 In the first approach, the cleanup callback is used to recover from unexpected panics. This can work, but it has several drawbacks:
 - The cleanup itself could panic, in which case one is in the initial problematic situation again. The risk may be acceptable for simple cleanups, but as discussed above, it is hard to write code that never panics, especially if it is somewhat complex.
 - As of version 0.12.0, Motoko provides the `try`/`finally` feature to clean up temporary resource allocations in a structured way. Cleanup is used (as formerly) internally by Motoko to perform some state manipulations and now allows inserting programmer-written code also. If an execution path after `await` traps, all `finally` blocks in (dynamic) scope will be executed as a last-resort measure. Be aware that `finally` is not a magical construct to end all trap worries, as trapping in the `finally` blocks themselves can still leave your canister in an inconsistent state. Thus we recommend keeping your `finally` code clear and concise and paying special attention to reviewing it well.
-- As discussed above, the Rust CDK has a feature that automatically releases local variables in cleanup, which [can be used to release locks](/docs/building-apps/security/inter-canister-calls#be-aware-that-there-is-no-reliable-message-ordering). Since only one cleanup callback can be defined, any custom cleanup would currently have to implement that feature itself if needed, making this currently hard to use and understand.
+- As discussed above, the Rust CDK has a feature that automatically releases local variables in cleanup, which [can be used to release locks](/docs/building-apps/security/inter-canister-calls#recommendation-1). Since only one cleanup callback can be defined, any custom cleanup would currently have to implement that feature itself if needed, making this currently hard to use and understand.
 
 Instead, “journaling” is the recommended way of addressing the problem at hand.
 
@@ -128,14 +128,14 @@ GoldDAO's GLDT-swap has an implementation of journaling. In their case, the jour
     - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/registry.rs#L18
     - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L654
 - The registry is used in `notify_sale_nft_origyn` to record progress and enforce correctness of the flow.
-    - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#910
+    - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L910
     - Note that not all details of the flow appear in the registry. The amount of detail to include depends on one's goals for recovery.
 
 ## Be aware that there is no reliable message ordering
 
 ### Security concern
 
-As described in the [properties of message executions on ICP](/docs/building-apps/essentials/message-execution), messages (but not entire calls) are processed atomically. In particular, as described in Property 4 in that document, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'reentrancy bugs' (see the [Ethereum best practices on reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note, however, that the messaging guarantees, and thus the bugs, on ICP are different from Ethereum.
+As described in the [properties of message executions on ICP](/docs/references/message-execution-properties), messages (but not entire calls) are processed atomically. In particular, as described in Property 4 in that document, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'reentrancy bugs' (see the [Ethereum best practices on reentrancy](https://consensysdiligence.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note, however, that the messaging guarantees, and thus the bugs, on ICP are different from Ethereum.
 
 Here are two concrete and somewhat similar types of bugs to illustrate potential reentrancy security issues:
 

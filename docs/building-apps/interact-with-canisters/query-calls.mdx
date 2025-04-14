@@ -9,11 +9,11 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Query calls
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 ICP supports two types of calls: updates and queries. Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response.
 
-A query call discards state changes and typically executes on a single node. An update call is executed on all nodes and persists canister state changes. Since they execute on a single node, they do not go through consensus and can be much faster than [update](/docs/building-apps/interact-with-canisters/update-calls) calls.
+A query call discards state changes and typically executes on a single node. An update call is executed on all nodes and persists canister state changes. Since they execute on a single node, they do not go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and can be much faster than [update](/docs/building-apps/interact-with-canisters/update-calls) calls.
 
 It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a replicated query.
 
@@ -140,7 +140,7 @@ Users and the client-side JavaScript code can invoke a composite query endpoint 
 |--------|--------|----------------|
 | Cannot call other queries or composite queries| Can call other updates and queries ; Cannot call composite queries| Can call other queries and composite queries |
 | Can be called as an update | Cannot be called as a query | Cannot be called as an update |
-| Can call canisters on another subnet | Can call canisters on another subnet | Cannot call canisters on another subnet |
+| Can call canisters on another [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) | Can call canisters on another subnet | Cannot call canisters on another subnet |
 
 
 Composite queries were enabled in the following releases:

@@ -41,12 +41,12 @@ The [Threshold Schnorr integration](/docs/building-apps/network-features/signatu
 To learn more about the Bitcoin integration on ICP, refer to the [Bitcoin integration documentation](/docs/building-apps/chain-fusion/bitcoin/overview).
 
 ## Consensus
-Bitcoin uses proof of work as its consensus mechanism. Using proof of work, the Bitcoin blockchain waits for ten minutes before validating transactions one block at a time, posing challenges to security and scalability.
+Bitcoin uses proof of work as its consensus mechanism. Using proof of work, the Bitcoin blockchain waits for ten minutes before validating transactions one block at a time, posing challenges to security and [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling).
 
 Instead of imposing time constraints, ICP relies on cryptographic signatures to finalize a block. A block maker selects available messages, merging them into a block. The consensus protocol maintains a tree of notarized blocks. Each replica creates a distinct finalization share for every notarized block, serving as a definitive indicator that consensus has been achieved. This entire process could take less than two seconds.
 
 To enhance scalability, ICP divides canisters into smaller groups, each running within a subnet with a diverse set of replicas. This approach allows for additional subnets as needed.
 
-To learn more about the consensus mechanism of ICP, refer to the [consensus resource](https://internetcomputer.org/how-it-works/consensus).
+To learn more about the consensus mechanism of ICP, refer to the [consensus resource](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus).
 
 The enhanced ICP enhanced security and scalability make it suitable as a Layer 2 solution for Bitcoin.
