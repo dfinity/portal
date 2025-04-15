@@ -365,7 +365,7 @@ testWithII('should sign-in with an existing new user', async ({page, iiPage}) =>
 });
 ```
 
-If desired, you can have the test wait for Internet Identity to be ready by providing the local replica URL and the canister ID of your local Internet Identity instance:
+If desired, you can have the test wait for Internet Identity to be ready by providing the local development environment URL and the canister ID of your local Internet Identity instance:
 
 ```typescript title="e2e/login.spec.ts"
 testWithII.beforeEach(async ({iiPage, browser}) => {
