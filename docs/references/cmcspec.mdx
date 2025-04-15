@@ -349,7 +349,7 @@ record {
 
 This information can be used by dapps to select appropriate subnets for canister creation when a specific type is desired via `SubnetSelection::Filter`.
 
----
+
 
 ## `get_principals_authorized_to_create_canisters_to_subnets`
 
@@ -380,7 +380,7 @@ record {
 
 This is typically governed by proposals on the NNS. Only some principals are explicitly authorized for specific subnets beyond the default list.
 
----
+
 
 ## `get_default_subnets`
 
@@ -408,7 +408,7 @@ record {
 
 These are usually `"application"` type subnets and serve as a fallback option.
 
----
+
 
 ## `total_cycles_minted`
 
@@ -426,7 +426,7 @@ record {}
 nat // Total cycles minted as an arbitrary-precision natural number.
 ```
 
----
+
 
 ## `get_build_metadata`
 
@@ -462,7 +462,7 @@ record {
 
 This is primarily used for debugging, reproducibility, and audits. Fields may be `null` depending on build environment (though typically returned as a single formatted string).
 
----
+
 
 ## `http_request` (Metrics Endpoint)
 
@@ -495,7 +495,7 @@ record {
 -   Call with method "GET" and URL "/metrics".
 -   Provides metrics like `cmc_cycles_minted_total`, `cmc_icp_xdr_conversion_rate`, `cmc_limiter_cycles`, `cmc_cycles_limit`, etc. Useful for monitoring CMC activity and capacity. Requires standard HTTP request structure.
 
----
+
 
 ## Shared logic
 
