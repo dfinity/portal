@@ -1158,7 +1158,7 @@ When canisters explicitly reject a message (see [Public methods](#system-api-req
 
 ### Error codes {#error-codes}
 
-Implementations of the API can provide additional details for rejected messages in the form of a textual label identifying the error condition. API clients can use these labels to handle errors programmatically or suggest recovery paths to the user. The specification reserves error codes matching the regular expression `IC[0-9]+` (e.g., `IC502`) for the DFINITY implementation of the API.
+Implementations of the HTTPS and System APIs can provide additional details for rejected messages in the form of a textual label identifying the error condition. API clients and canisters can use these labels to handle errors programmatically or suggest recovery paths to the user. In the HTTPS API, the specification reserves error codes matching the regular expression `IC[0-9]+` (e.g., `IC502`) for the DFINITY implementation of the API.
 
 ### Status endpoint {#api-status}
 
@@ -1480,6 +1480,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
+    ic0.msg_error_code : () -> i32;                                        // Rt CRt
 
     ic0.msg_deadline : () -> i64;                                                         // U Q CQ Ry Rt CRy CRt
 
@@ -1646,6 +1647,10 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 -   `ic0.msg_reject_msg_size : () → I` and `ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
+
+-    `ic0.msg_error_code : () → i32`
+
+    The error code. Traps if there is no reject message (i.e. if `reject_code` is `0`).
 
 -   `ic0.msg_deadline : () -> i64`
 
