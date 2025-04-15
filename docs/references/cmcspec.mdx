@@ -17,7 +17,6 @@ The CMC is governed solely by the [NNS (Network Nervous System)](https://interne
 
 -   **Conversion rate source**: The ICP/XDR exchange rate is **pushed** into the CMC by a dedicated [exchange rate canister](/references/exchange-rate-canister). This data reflects live market pricing and determines the ICP→cycles conversion.
 -   **Governance control**: All operations of the CMC — including upgrades, configuration, and authorized callers — are managed through NNS proposals.
-
 ## API endpoints
 
 The CMC exposes a set of core methods for converting ICP into cycles and interacting with subnet configuration. These include:
@@ -41,7 +40,7 @@ Uses tokens from an ICP transfer to **mint cycles**, which are then used to **cr
 
 The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **recipient**:
 
--   The **destination account** of the ICP transfer must be the CMC's account with a **subaccount derived from the intended controller's principal**.
+-   The **destination account** of the ICP transfer must be the CMC's account with a **subaccount derived from the intended controller's principal** (see the section on [Encoding a principal into a subaccount](#encoding-a-principal-into-a-subaccount)).
 -   The **principal encoded in the subaccount is the intended controller** of the created canister.
 -   Only that principal is authorized to call `notify_create_canister` and can set **arbitrary canister settings**, including additional controllers.
 -   **Exception**: The [NNS dapp](https://nns.ic0.app/) is permitted to call `notify_create_canister` on behalf of users and acts as a proxy in that case.
@@ -83,7 +82,7 @@ Tops up an existing canister by minting cycles based on an ICP payment recorded 
 
 The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **target canister**:
 
--   The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal.
+-   The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the target canister’s principal (see the section on [Encoding a principal into a subaccount](#encoding-a-principal-into-a-subaccount)).
 -   The **memo field** must explicitly indicate the intent to top up a canister. This can be expressed as:
     -   A legacy 64-bit unsigned integer memo with value (in decimal)
         ```
@@ -283,7 +282,7 @@ This method can be called as a query. Clients should verify the certificate and 
 
 The following methods are used by the NNS Governance canister to configure how canisters are created across different subnets. Developers typically do not call these directly but may query the results using methods like `get_default_subnets`, `get_principals_authorized_to_create_canisters_to_subnets`, and `get_subnet_types_to_subnets`.
 
-### `set_authorized_subnetwork_list` (Governance Only)
+### `set_authorized_subnetwork_list` (Governance only)
 
 Configures which principals are authorized to create canisters on specific lists of subnets.
 
@@ -295,7 +294,7 @@ Configures which principals are authorized to create canisters on specific lists
 
 *(Args: `record { who: opt principal; subnets: vec principal; }`, Returns: `()`) *
 
-### `update_subnet_type` (Governance Only)
+### `update_subnet_type` (Governance only)
 
 Adds or removes named subnet types (e.g., "Fiduciary", "Storage"). These types provide logical groupings for subnets with specific characteristics.
 
@@ -306,7 +305,7 @@ Adds or removes named subnet types (e.g., "Fiduciary", "Storage"). These types p
 
 *(Args: `variant { Add: text; Remove: text; }`, Returns: `variant { Ok: (); Err: text }`)*
 
-### `change_subnet_type_assignment` (Governance Only)
+### `change_subnet_type_assignment` (Governance only)
 
 Assigns or unassigns specific subnets to a named subnet type.
 
@@ -464,7 +463,7 @@ This is primarily used for debugging, reproducibility, and audits. Fields may be
 
 
 
-## `http_request` (Metrics Endpoint)
+## `http_request` (Metrics endpoint)
 
 Standard HTTP interface for fetching canister metrics in Prometheus format.
 
