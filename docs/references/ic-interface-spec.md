@@ -1158,7 +1158,7 @@ When canisters explicitly reject a message (see [Public methods](#system-api-req
 
 ### Error codes {#error-codes}
 
-Implementations of the HTTPS and System APIs can provide additional details for rejected messages in the form of a textual label identifying the error condition. API clients and canisters can use these labels to handle errors programmatically or suggest recovery paths to the user. In the HTTPS API, the specification reserves error codes matching the regular expression `IC[0-9]+` (e.g., `IC502`) for the DFINITY implementation of the API.
+Implementations of the HTTPS and System APIs can provide additional details for rejected messages in the form of an error code identifying the error condition. API clients and canisters can use these codes to handle errors programmatically or suggest recovery paths to the user. In the HTTPS API, the error codes are represented using textual labels in the state tree. For these labels, the specification reserves error codes matching the regular expression `IC[0-9]+` (e.g., `IC502`) for the DFINITY implementation of the HTTPS API.
 
 ### Status endpoint {#api-status}
 
