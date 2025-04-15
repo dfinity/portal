@@ -1650,7 +1650,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
 -    `ic0.msg_error_code : () → i32`
 
-    The error code. Traps if there is no reject message (i.e. if `reject_code` is `0`).
+    The error code. Traps if there is no error code (i.e. if `reject_code` is `0`).
 
 -   `ic0.msg_deadline : () -> i64`
 
