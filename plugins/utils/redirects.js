@@ -477,7 +477,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/integrations/icrc-1/index /docs/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/defi/token-ledgers/usage/icrc1_ledger_usage
-  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures
+  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/index /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/building-apps/authentication/alternative-origins
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/building-apps/authentication/overview
@@ -786,7 +786,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
   /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
   /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
-  /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures
+  /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/building-apps/developer-tools/dfx/dfx-ping
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/building-apps/authentication/overview
   /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/building-apps/authentication/alternative-origins
@@ -896,6 +896,8 @@ const redirects = `
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
+  /docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/current/developer-docs/setup/sdk-installation/ /docs/building-apps/getting-started/install
   /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
