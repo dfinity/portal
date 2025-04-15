@@ -237,7 +237,7 @@ const redirects = `
   /docs/motoko/main/base/TrieSet /docs/motoko/base/TrieSet
   /docs/motoko/main/canister-maintenance/compatibility /docs/motoko/home
   /docs/motoko/main/canister-maintenance/cycles /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/motoko/main/canister-maintenance/memory docs/motoko/fundamentals/data-persistence
+  /docs/motoko/main/canister-maintenance/memory /docs/motoko/fundamentals/data-persistence
   /docs/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
   /docs/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/orthogonal-persistence
   /docs/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/orthogonal-persistence
