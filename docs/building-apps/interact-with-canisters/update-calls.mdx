@@ -35,7 +35,7 @@ See the reference on [ingress messages](/docs/building-apps/interact-with-canist
 
 To make an update call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--update` flag:
 
-- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local development environment must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
 - `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 

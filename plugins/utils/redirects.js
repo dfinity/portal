@@ -665,7 +665,7 @@ const redirects = `
   /docs/current/developer-docs/setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/setup/manage-projects /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy
-  /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/advanced/test/pocket-ic
+  /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/test/pocket-ic
   /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/building-apps/advanced/using-third-party-canisters
   /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/developer-docs/setup/state /docs/building-apps/canister-management/state
@@ -727,8 +727,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/building-apps/advanced/benchmarking
-  /docs/current/developer-docs/smart-contracts/test/overview /docs/building-apps/advanced/test/overview
-  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/building-apps/advanced/test/pocket-ic
+  /docs/current/developer-docs/smart-contracts/test/overview /docs/building-apps/test/overview
+  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/building-apps/test/pocket-ic
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
   /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/building-apps/getting-started/troubleshooting

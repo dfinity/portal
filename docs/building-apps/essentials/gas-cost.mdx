@@ -49,8 +49,6 @@ The following table shows units of cycles and the respective fiat values:
 
 When a canister is deployed to a [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation), it is automatically replicated on every node within that subnet. The amount of cycles that a canister is charged will vary based on the amount of times the canister is replicated:
 
-- Canisters deployed **locally** are deployed on a single node and therefore are replicated once. Cycles charged to locally deployed canisters have a cost that is `1 / 13` the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using `dfx`.
-
 - Canisters deployed to a **13-node subnet** are replicated 13 times. Cycle cost amounts are based on a 13-node subnet, i.e., there is no calculation needed to determine the cost based on the subnet's replication factor.
 
 - Canisters deployed to a **34-node subnet** are replicated 34 times. If you intend to deploy canisters on high-replication subnets (greater than 13 nodes), your canister should be prepared for an increase in cycles prices. Calls made to high-replication subnets will also require more cycles. Cycles costs on 34-node subnets can be calculated as `cost / 13 * 34`.
