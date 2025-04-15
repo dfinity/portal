@@ -287,6 +287,7 @@ build: [
         "building-apps/authentication/integrate-internet-identity",
         "building-apps/authentication/integrate-misc-wallets",
         "building-apps/authentication/alternative-origins",
+        "building-apps/authentication/independently-verifying-ic-signatures",
       ],
     },
     {
@@ -351,7 +352,6 @@ build: [
           items: [
             "building-apps/network-features/signatures/t-ecdsa",
             "building-apps/network-features/signatures/t-schnorr",
-            "building-apps/network-features/signatures/independently-verifying-ic-signatures",
           ],
         },
         {
@@ -773,6 +773,7 @@ defi: [
         ],
         },
         "defi/token-indexes/index",
+        "defi/defi-best-practices",
         {
           type: "category",
           label: "Chain-key tokens",
