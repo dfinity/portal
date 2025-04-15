@@ -39,17 +39,19 @@ The CMC exposes a set of core methods for converting ICP into cycles and interac
 
 ## `notify_create_canister`
 
-Creates a new canister after verifying an ICP payment has been recorded in the ICP Ledger.
-If the `subnet_selection` field is omitted, the CMC will automatically choose a suitable subnet at random from the available options.
+Uses tokens from an ICP transfer to **mint cycles**, which are then used to **create a new canister**. The CMC first verifies that the transfer has been recorded in the ICP ledger and that it matches the expected structure. If the `subnet_selection` field is omitted, the CMC selects a suitable subnet at random.
 
 The CMC expects the payment to follow a strict structure that encodes both the **intent** and the **recipient**:
 
-- The **destination account** of the ICP transfer must be the CMC's account with a subaccount derived from the intended controller's principal.
+- The **destination account** of the ICP transfer must be the CMC's account with a **subaccount derived from the intended controller's principal**.
+- The **principal encoded in the subaccount is the intended controller** of the created canister.
+- Only that principal is authorized to call `notify_create_canister` and can set **arbitrary canister settings**, including additional controllers.
+- **Exception**: The [NNS dapp](https://nns.ic0.app) is permitted to call `notify_create_canister` on behalf of users and acts as a proxy in that case.
 - The **memo field** must explicitly indicate the intent to create a canister. This can be expressed as:
-  - A legacy 64-bit unsigned integer memo with value (in decimal)
-  ```
-  1095062083
-  ```
+  - A legacy 64-bit unsigned integer memo with value (in decimal):
+    ```
+    1095062083
+    ```
   - Or, for ICRC-1-compatible transfers (e.g., `icrc1_transfer`, `icrc2_transfer_from`), a memo blob equal to:
     ```
     "\43\52\45\41\00\00\00\00"
@@ -74,11 +76,11 @@ The CMC expects the payment to follow a strict structure that encodes both the *
 
   - **Ok**: The principal of the newly created canister.
   - **Err**: Indicates why the request was rejected (e.g., incorrect memo, controller mismatch, payment already processed, etc.).
-    See [NotifyError](#error-handling-and-retry-semantics) for all possible errors.
+  For information about retry semantics, error handling, and caching behavior, see [Notify Methods – Shared Behavior](#notify-methods-shared-behavior-retry-error-handling-and-caching)
+.
 
 
-#### Notes
-  - The caller principal must match the one encoded in the subaccount used for the payment.
+
 
 ## `notify_top_up`
 
@@ -111,9 +113,9 @@ The CMC expects the payment to follow a strict structure that encodes both the *
     ```
 
     - **Ok**: Number of cycles minted and deposited into the specified canister.
-    - **Err**: Describes why the top-up failed (e.g., invalid transaction, wrong memo, too old, already processed, etc.).
-      See [NotifyError](#error-handling-and-retry-semantics).
-
+    - **Err**: Indicates why the top-up failed (e.g., incorrect memo, controller mismatch, payment already processed, etc.).
+      For information about retry semantics, error handling, and caching behavior, see [Notify Methods – Shared Behavior](#notify-methods-shared-behavior-retry-error-handling-and-caching)
+    .
 
 #### Notes
     - The subaccount used in the transfer must be derived from the target canister’s principal using the standard 32-byte encoding (see [“Shared logic”](#shared-logic) section).
@@ -164,22 +166,21 @@ The CMC expects the payment to follow a strict structure that encodes the **inte
     - `block_index`: The cycles ledger block index of the minting transaction
     - `minted`: The amount of cycles created from the ICP payment
     - `balance`: The new balance of the target cycles ledger subaccount
-  - **Err**: Describes why the minting failed. See [NotifyError](#error-handling-and-retry-semantics).
+  - **Err**: Indicates why the minting failed (e.g., incorrect memo, controller mismatch, payment already processed, etc.).
+  For information about retry semantics, error handling, and caching behavior, see [Notify Methods – Shared Behavior](#notify-methods-shared-behavior-retry-error-handling-and-caching)
+.
 
 
+  ## Notify Methods – Shared Behavior (Retry, Error Handling, and Caching)
 
-  ## Notify Methods – Shared Behavior
+  All `notify_*` methods (such as `notify_create_canister` and `notify_top_up`) follow the same core semantics:
 
-  All `notify_*` methods (`notify_create_canister`, `notify_top_up`, `notify_mint_cycles`) process ICP payments recorded in the ledger and mint cycles accordingly. They follow the same core logic and safeguards:
+  - If the ICP transfer does not use the correct memo, the tokens are refunded (minus the ledger’s transfer fee).
+  - If a concurrent `notify_*` call is already processing for the same transfer, the new call returns an error indicating that the operation is in progress.
+  - If a previous `notify_*` call has already successfully processed a transfer at the same block height, the new call returns the same result.
+  - To support safe retries, the result of a successful call is **cached** for a bounded (but generous) amount of time.
 
-  - **Memo validation**: The ICP transfer must include a memo indicating the intended operation. If the memo does not match the expected value for the given `notify_*` method, the transfer is **automatically refunded** to the sender, minus the ICP ledger’s transfer fee.
-
-  - **Idempotency**: These methods are **idempotent** with respect to the `block_index` provided. If a `notify_*` call has already been processed for a given ledger block, repeated calls with the same parameters will return the previously computed result.
-
-  - **Result caching**: The results of successful calls are **cached** in memory for a generous but bounded duration to allow retrying without recomputation. Once the cache expires, duplicate calls may return a new error if the ledger transaction is no longer considered valid (e.g., too old).
-
-  - **Concurrency handling**: If a `notify_*` method is invoked while a previous call for the same ledger block is still in progress, the method returns an error indicating that the call is currently being processed. This prevents redundant computation or double processing.
-
+  These semantics ensure that all `notify_*` methods are idempotent. Clients can safely retry using the original parameters (memo, block height, destination account).
 
 
 
