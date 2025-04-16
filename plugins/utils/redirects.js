@@ -885,7 +885,6 @@ const redirects = `
   /docs/current/samples/overview /samples
 
   ## Misc
-  /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/use-cases/ /docs/home
   /docs/current/developer-docs/interact-with-canisters/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/starter-kits /docs/building-apps/getting-started/quickstart
