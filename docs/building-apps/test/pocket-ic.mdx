@@ -15,19 +15,19 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 **`dfx start` uses PocketIC by default to run a local development environment as of `v0.26.0`.**
 
-It can also be run as a standalone binary on macOS and Linux systems that doesn't require additional containers or virtual machines.
+It can also be run as a standalone binary for automated testing on macOS and Linux systems that doesn't require additional containers or virtual machines.
 
 PocketIC provides synchronous control over the local development environment by removing the non-deterministic parts of the replica to make tests fully reproducible. It only provides the necessary components and strips away the [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and networking layers.
 
 PocketIC can be used to run concurrent and independent IC instances so that tests can run in parallel. It supports XNet calls and simulating multiple subnets locally. Using PocketIC, you can run tests that set stable memory, control how time passes, and other testing environment variables.
 
-Currently, it supports Rust, Python, and JavaScript/TypeScript and can support integration with any language that is written against the [PocketIC REST API](https://docs.rs/pocket-ic/latest/pocket_ic/).
+Currently, it supports client libraries for Rust, Python, and JavaScript/TypeScript and can support integration with any language that is written against the [PocketIC REST API](https://docs.rs/pocket-ic/latest/pocket_ic/).
 
 ## How to use PocketIC
 
 There are two ways to use PocketIC:
 
-1. PocketIC can be used to create a local development network with `dfx start`. Canisters deployed to this local network can be interacted with via `dfx` commands or through their Candid UI.
+1. PocketIC can be used to create a local development environment with `dfx start`. Canisters deployed to this local environment can be interacted with via `dfx` commands or through their Candid UI.
 
 :::caution
 In `dfx` versions `v0.26.0` and newer, PocketIC is the default local development environment.
@@ -35,13 +35,13 @@ In `dfx` versions `v0.26.0` and newer, PocketIC is the default local development
 For older `dfx` versions, PocketIC must be manually enabled with `dfx start --pocketic`.
 :::
 
-2. You can create automated tests through a PocketIC client library. In this workflow, the client library starts the PocketIC server, which the file path must be configured as the `POCKET_IC_BIN` environment variable.
+2. You can create automated tests through a PocketIC client library. In this workflow, the client library starts the PocketIC server using the binary file located at the file path stored as the `POCKET_IC_BIN` environment variable.
 
 ## Using PocketIC with `dfx start`
 
 To learn about running local development environments with `dfx`, [learn more about `dfx start`](/docs/building-apps/developer-tools/dfx/dfx-start).
 
-## Using PocketIC for automated tests
+## Using PocketIC client libraries for automated tests
 
 <AdornedTabs>
 <TabItem value="rust" label="PocketIC Rust library">
