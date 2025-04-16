@@ -23,9 +23,11 @@ PocketIC can be used to run concurrent and independent IC instances so that test
 
 Currently, it supports Rust, Python, and JavaScript/TypeScript and can support integration with any language that is written against the [PocketIC REST API](https://docs.rs/pocket-ic/latest/pocket_ic/).
 
-## Using PocketIC
+## How to use PocketIC
 
-To use PocketIC, make calls from your test file to the PocketIC server that is started with `dfx start`.
+There are two ways to use PocketIC:
+
+1. PocketIC can be used to create a local development network with `dfx start`. Canisters deployed to this local network can be interacted with via `dfx` commands or through their Candid UI.
 
 :::caution
 In `dfx` versions `v0.26.0` and newer, PocketIC is the default local development environment.
@@ -33,8 +35,16 @@ In `dfx` versions `v0.26.0` and newer, PocketIC is the default local development
 For older `dfx` versions, PocketIC must be manually enabled with `dfx start --pocketic`.
 :::
 
+2. You can create automated tests through a PocketIC client library. In this workflow, the client library starts the PocketIC server, which the file path must be configured as the `POCKET_IC_BIN` environment variable.
+
+## Using PocketIC with `dfx start`
+
+To learn about running local development environments with `dfx`, [learn more about `dfx start`](/docs/building-apps/developer-tools/dfx/dfx-start).
+
+## Using PocketIC for automated tests
+
 <AdornedTabs>
-<TabItem value="rust" label="Rust">
+<TabItem value="rust" label="PocketIC Rust library">
 
 [View a minimalistic example of setting up PocketIC tests in a Rust project](https://github.com/dfinity/icp-hello-world-rust/blob/main/README.md#testing-your-project).
 
@@ -81,7 +91,7 @@ fn call_counter_canister(pic: &PocketIc, canister_id: Principal, method: &str) -
 
 </TabItem>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="PocketIC Python library">
 
 [View a minimalistic example of setting up PocketIC tests in a Motoko project](https://github.com/dfinity/icp-hello-world-motoko/blob/main/README.md#testing-your-project).
 
@@ -122,7 +132,7 @@ assert(response == 'Hello, PocketIC!')
 ### Hello, world! test
 
 <AdornedTabs>
-<TabItem value="rust" label="Rust">
+<TabItem value="rust" label="PocketIC Rust library">
 
 ```rust reference
 https://github.com/dfinity/icp-hello-world-rust/blob/main/src/backend/tests/integration_tests.rs
@@ -130,7 +140,7 @@ https://github.com/dfinity/icp-hello-world-rust/blob/main/src/backend/tests/inte
 
 </TabItem>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="PocketIC Python library">
 
 ```python reference
 https://github.com/dfinity/icp-hello-world-motoko/blob/main/src/backend/tests/integration_tests.py
@@ -143,7 +153,7 @@ https://github.com/dfinity/icp-hello-world-motoko/blob/main/src/backend/tests/in
 ### Simple counter canister on a single subnet
 
 <AdornedTabs>
-<TabItem value="rust" label="Rust">
+<TabItem value="rust" label="PocketIC Rust library">
 
 ```rust title=counter_test.rs
 use candid::{Principal, encode_one};
@@ -191,7 +201,7 @@ fn call_counter_can(pic: &PocketIc, canister_id: Principal, method: &str) -> Vec
 
 </TabItem>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="PocketIC Python library">
 
 ```python title=counter_test.py
 import sys
@@ -263,7 +273,7 @@ Multi-subnet testing allows for simulating multiple subnets, including subnets o
 - Named subnets with canister ID ranges like on the mainnet, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets.
 
 <AdornedTabs>
-<TabItem value="rust" label="Rust">
+<TabItem value="rust" label="PocketIC Rust library">
 
 This example uses an NNS subnet and two application subnets.
 
@@ -298,7 +308,7 @@ View a larger, [more complex example](https://github.com/dfinity/ic/blob/1c46b8a
 
 </TabItem>
 
-<TabItem value="python" label="Python">
+<TabItem value="python" label="PocketIC Python library">
 
 This example uses a single NNS subnet and an instance of the ICRC1 ledger canister:
 
