@@ -729,6 +729,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/building-apps/advanced/benchmarking
   /docs/current/developer-docs/smart-contracts/test/overview /docs/building-apps/test/overview
   /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/building-apps/test/pocket-ic
+  /docs/building-apps/advanced/test/overview /docs/building-apps/test/overview
+  /docs/building-apps/advanced/test/pocket-ic /docs/building-apps/test/pocket-ic
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
   /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/building-apps/getting-started/troubleshooting
