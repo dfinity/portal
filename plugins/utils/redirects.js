@@ -477,7 +477,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/integrations/icrc-1/index /docs/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/defi/token-ledgers/usage/icrc1_ledger_usage
-  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures
+  /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/index /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/building-apps/authentication/alternative-origins
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/building-apps/authentication/overview
@@ -786,7 +786,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
   /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
   /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
-  /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures
+  /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/building-apps/developer-tools/dfx/dfx-ping
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/building-apps/authentication/overview
   /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/building-apps/authentication/alternative-origins
@@ -885,6 +885,9 @@ const redirects = `
   /docs/current/samples/overview /samples
 
   ## Misc
+  /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
+  /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
+  /docs/current/references/security/ /docs/building-apps/security/overview
   /docs/current/developer-docs/use-cases/ /docs/home
   /docs/current/developer-docs/interact-with-canisters/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/starter-kits /docs/building-apps/getting-started/quickstart
@@ -1092,7 +1095,8 @@ const redirects = `
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/building-apps/authentication/overview
-  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
+  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/gas-cost
+  /docs/building-apps/essentials/cost-estimations-and-examples /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
