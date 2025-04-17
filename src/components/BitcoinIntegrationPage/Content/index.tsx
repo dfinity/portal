@@ -149,7 +149,7 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/references/t-sigs-how-it-works//"
+                  to="/docs/references/t-sigs-how-it-works/"
                 >
                   threshold-ECDSA signatures
                 </Link>
