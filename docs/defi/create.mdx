@@ -107,21 +107,22 @@ Replace the existing content in the `dfx.json` with the following, updating the 
 
 ```json
 {
-    "canisters": {
-        "icrc1_ledger_canister": {
-            "type": "custom",
-            "candid": "https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icrc1/ledger/ledger.did",
-            "wasm": "https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz",
-            "init_arg": "(variant {Init = record { token_symbol = "TOKEN_SYMBOL"; token_name = "TOKEN_NAME"; minting_account = record { owner = principal "MINTER" transfer_fee = TRANSFER_FEE; metadata = vec {}; feature_flags = opt record{icrc2 = false}; initial_balances = vec { record { record { owner = principal "DEFAULT_ACCOUNT_ID"; }; "PRE_MINTED_TOKENS"; }; }; archive_options = record { num_blocks_to_archive = "NUM_OF_BLOCK_TO_ARCHIVE"; trigger_threshold = "TRIGGER_THRESHOLD"; controller_id = principal "ARCHIVE_CONTROLLER"; cycles_for_archive_creation = opt "10000000000000"; }; }} })" },
-            },
-    "defaults": {
-        "build": {
-            "args": "",
-            "packtool": ""
-        }
-        },
-    "output_env_file": ".env",
-    "version": 1
+  "canisters": {
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz",
+      "init_arg": "(variant { Init = record { token_symbol = \"TOKEN_SYMBOL\"; token_name = \"TOKEN_NAME\"; minting_account = record { owner = principal \"MINTER\"; }; transfer_fee = \"TRANSFER_FEE\"; metadata = vec {}; feature_flags = opt record { icrc2 = false }; initial_balances = vec { record { record { owner = principal \"DEFAULT_ACCOUNT_ID\"; }, \"PRE_MINTED_TOKENS\" } }; archive_options = record { num_blocks_to_archive = \"NUM_OF_BLOCK_TO_ARCHIVE\"; trigger_threshold = \"TRIGGER_THRESHOLD\"; controller_id = principal \"ARCHIVE_CONTROLLER\"; cycles_for_archive_creation = opt \"10000000000000\"; } } })"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
