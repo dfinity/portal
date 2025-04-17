@@ -32,7 +32,7 @@ Boundary nodes route canister queries to appropriate subnet.
 
 If a canister wishes to serve web content, it should implement a method that consumes a HTTP request (url, http method and headers) and outputs a HTTP response (status, headers and body). The canister method could return HTML, CSS and Javascript content as part of the HTTP response. Refer to [Internet Computer Interface Spec](/docs/references/ic-interface-spec#ic-http_request) for more details.
 
-There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. See [tutorial](/docs/references/samples/hosting/static-website//) or [watch the video](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
+There’s also an easy way to host existing static web apps (even those built using frameworks such as React and Angular) on the Internet Computer with minimal extra code by creating an “asset canister”. An asset canister works similar to a regular canister, except that a lot of boilerplate code to host static websites is taken care of for us. To host a static website, we simply need to create a canister, specify its type as “asset” and specify the source folder of the web app. Once the asset canister is deployed to the Internet Computer, the website can be accessed at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. See [tutorial](/docs/references/samples/hosting/static-website/) or [watch the video](https://www.youtube.com/watch?v=JAQ1dkFvfPI).
 
 ## HTTP gateway protocol
 
@@ -50,7 +50,7 @@ The dapps running on the Internet Computer seamlessly integrate into the Web 2.0
 
 [Building a front-end dapp on the IC](https://medium.com/dfinity/building-a-front-end-dapp-on-the-internet-computer-55985f0a595b)
 
-[Hosting a static website on the IC](/docs/references/samples/hosting/static-website//)
+[Hosting a static website on the IC](/docs/references/samples/hosting/static-website/)
 
 [HTTP Gateway Protocol](/docs/references/ic-interface-spec#http-gateway)
 
