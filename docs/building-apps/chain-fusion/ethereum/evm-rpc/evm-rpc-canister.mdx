@@ -11,6 +11,14 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
 
+:::caution
+
+For creating and signing transactions, using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) provides a more seamless workflow. Requests made using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) are not replicated between more than one RPC provider, but that is acceptable when submitting signed transactions.
+
+For querying token balances, verifying that transactions have the right number of confirmations, or other workflows that rely on replicated responses, using the EVM-RPC canister directly provides a better experience.
+
+:::
+
 ## Supported RPC methods
 
 The following JSON-RPC methods are available as part of the canister's [Candid interface](https://github.com/dfinity/candid#readme):

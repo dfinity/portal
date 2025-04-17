@@ -285,6 +285,7 @@ build: [
       items: [
         "building-apps/authentication/overview",
         "building-apps/authentication/integrate-internet-identity",
+        "building-apps/authentication/integrate-misc-wallets",
         "building-apps/authentication/alternative-origins",
         "building-apps/authentication/independently-verifying-ic-signatures",
       ],
@@ -326,6 +327,16 @@ build: [
                   type: "doc",
                   id: "building-apps/network-features/using-http/http-certification/serving-static-assets-over-http",
                   label: "Serving static assets over HTTP (custom)",
+                },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/upgrading-http-query-calls-to-update-calls",
+                  label: "Upgrading HTTP query calls to update calls",
+                },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/skipping-certification-for-http-responses",
+                  label: "Skipping certification for HTTP responses",
                 },
               ],
             },
