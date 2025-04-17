@@ -1,0 +1,38 @@
+type Doc = record {
+  id : nat64;
+  url : text;
+  title : text;
+  body : text;
+  page_url : text;
+  title_len : nat64;
+  page_title : text;
+  excerpt : text;
+  page_title_len : nat64;
+};
+type IndexEntry = record {
+  end : nat64;
+  doc_index : nat64;
+  word_index : nat64;
+  count : nat64;
+  score : float32;
+  start : nat64;
+};
+type PageSearchResult = record {
+  url : text;
+  title : text;
+  results : vec SearchResult;
+};
+type SearchResult = record {
+  doc : Doc;
+  term_positions : vec record { nat64; nat64 };
+  score : float32;
+};
+service : {
+  commit_upload : () -> ();
+  get_admins : () -> (vec principal) query;
+  "query" : (text) -> (vec PageSearchResult) query;
+  set_stop_words : (vec text) -> ();
+  start_upload : () -> ();
+  upload_index_documents : (vec Doc) -> ();
+  upload_index_entries : (vec record { text; vec IndexEntry }) -> ();
+}
