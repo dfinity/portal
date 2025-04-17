@@ -1,0 +1,10 @@
+/target
+project.todo
+docs.json
+.dfx
+output.json
+node_modules
+.venv
+__pycache__
+*.pem
+output.json

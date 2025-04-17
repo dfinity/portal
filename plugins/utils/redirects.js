@@ -885,6 +885,9 @@ const redirects = `
   /docs/current/samples/overview /samples
 
   ## Misc
+  /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
+  /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
+  /docs/current/references/security/ /docs/building-apps/security/overview
   /docs/current/developer-docs/use-cases/ /docs/home
   /docs/current/developer-docs/interact-with-canisters/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/starter-kits /docs/building-apps/getting-started/quickstart
@@ -1092,7 +1095,8 @@ const redirects = `
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/building-apps/authentication/overview
-  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
+  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/gas-cost
+  /docs/building-apps/essentials/cost-estimations-and-examples /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
