@@ -80,7 +80,7 @@ The order of messages in the queue depends on the implementation; it is not nece
 
 ### Canister storage
 
-There are two types of [storage](/docs/building-apps/canister-management/storage) available to a canister: Wasm memory and stable memory. Wasm memory is automatically used for heap-allocated objects and has a maximum size limitation of 4GiB. Both 32-bit and 64-bit heap storage are supported. A canister upgrade clears the Wasm memory.
+There are two types of [storage](/docs/building-apps/canister-management/storage) available to a canister: Wasm memory and stable memory. Wasm memory is automatically used for heap-allocated objects and has a maximum size limitation of 6GiB. Both 32-bit and 64-bit heap storage are supported. A canister upgrade clears the Wasm memory.
 
 Stable memory is 64-bit with a maximum size limitation of 500GiB. Functions can access a canister’s stable memory by calling special [system functions](/docs/references/ic-interface-spec#system-api-stable-memory). Stable memory is preserved across canister upgrades.
 
