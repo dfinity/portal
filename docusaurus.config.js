@@ -587,6 +587,7 @@ const config = {
   organizationName: "dfinity",
   projectName: "portal",
   customFields: {
+    searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
     marketingNav,
   },
   markdown: {
@@ -691,19 +692,6 @@ const config = {
     // but to do that type preset- classic had to be disabled below
     // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'B0O3KB7MGW',
-
-        // Public API key: it is safe to commit it
-        apiKey: '43d8a7a6f4697a580cdf0cb021affddb',
-
-        indexName: 'internetcomputer',
-
-        contextualSearch: true,
-
-        insights: true,
-      },
       image: "/img/share.webp",
       colorMode: {
         disableSwitch: false,
