@@ -10,62 +10,85 @@ import TabItem from "@theme/TabItem";
 
 <MarkdownChipRow labels={["Intermediate" , "Ledgers"]} />
 
-The Internet Computer Protocol (ICP) implements management of its utility token (ticker "ICP") using a specialized canister, called the **ICP ledger canister**. It is a single ledger canister that runs alongside other canisters on a special subnet of the Internet Computer—the NNS subnet. The ICP ledger canister is a smart contract that holds **blocks**, each containing a single transaction.
+The Internet Computer Protocol (ICP) implements its utility token (ticker "ICP") using a specialized canister called the **ICP ledger canister**. It runs alongside other canisters the NNS subnet. The ICP ledger canister holds **blocks**, each containing a single transaction and maintains a traceable history of all transactions starting from its initial state.
 
-These transactions are either:
+These transactions represent either:
 
-- **Mint ICP tokens** for accounts.
+- **Minting ICP tokens**.
 
-- **Transfer ICP tokens** from one account to another.
+- **Transferring ICP tokens** from one account to another.
 
-- **Burn ICP tokens** eliminating them from existence.
+- **Burning ICP tokens** , which eliminates them from existence.
 
-- **Approve ICP tokens** to be spent by some other `AccountIdentifier`.
+- **Approving ICP tokens** to be spent by some other `AccountIdentifier`, and/or **transferring ICP from** a previously approved `AccountIdentifier`.
 
-- **Transfer ICP from** a previously approved `AccountIdentifier`.
+Each block is associated with a unique index number. The entire chain is regularly signed by the network. The signature used to authenticate the chain can be verified by any third party using the root public key of the Internet Computer. Specific transactions can be retrieved by querying the ICP ledger directly.
 
-All operations are recorded as transactions in the ledger canister.
+If you are testing your project in a local development environment, you won't be able to test it using the ICP ledger running on the mainnet. Instead, you need to deploy a local instance of the ICP ledger canister. The history and balances of the mainnet ICP ledger will not be not available in a local instance.
 
-The ICP ledger canister maintains a traceable history of all transactions, starting from its genesis state (initial state).
+## Accounts
 
-Each new transaction is placed into a block, and each block is associated with a monotonically increasing unique index. The entire chain is regularly signed by the network. The signature used to authenticate the chain can be verified by any third party who has access to the root public key of the Internet Computer. Specific transactions can be retrieved by querying the ICP ledger for blocks.
+An account on the ICP ledger is represented and stored as an `AccountIdentifier`, which is derived from a principal ID and subaccount identifier by computing a hash of the two.
 
-If you are working in a local development environment, i.e., with a local replica instead of the public Internet Computer, you can't access the ICP ledger running on the mainnet. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister or install the NNS locally through dfx. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+You can think of principal IDs as a rough equivalent to the hash of a user’s public key for chains like Bitcoin or Ethereum. The corresponding secret key is used to sign messages and authenticate to the ledger canister.
 
-## Architecture
-
-### Accounts
-
-An ICP ledger account (see [ICRC-1 standard](/docs/defi/token-standards/#icrc-1)) belongs to and is controlled by the account owner, who must have a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
-
-An account on the ledger is represented and stored as an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier by computing a hash of the two. The subaccount is an optional bitstring that helps distinguish between the different subaccounts of the same owner.
-
-In this context, you can think of principal identifiers as a rough equivalent to the hash of a user’s public key for Bitcoin or Ethereum. You use the corresponding secret key to sign messages and therefore authenticate to the ledger canister and operate on the principal’s account. Canisters can also have accounts in the ledger canister, in which case the address is derived from the canister’s principal.
+An ICP ledger account belongs to and is controlled by the account owner, who must have a valid principal ID. Accounts cannot be owned by two or more principals (no "joint accounts"). However, since a principal can also refer to a canister, canisters with multiple [controllers](/docs/building-apps/canister-management/control) can be used as joint accounts, in which case the `AccountIdentifier` is derived from the canister’s principal.
 
 :::info Why does the ledger use `AccountIdentifier`s and not just principal IDs?
 
-The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by the wallet software, this is not possible for canisters.
+Accounts allow a principal to control multiple accounts (subaccounts). While this could be abstracted away for a user by the wallet software, this functionality is not possible for canisters.
 :::
 
-## Deploying the ledger locally
+## Deploying the ICP ledger locally
 
 There are two ways of deploying an ICP ledger locally:
 
-1. Use [`dfx nns`](/docs/building-apps/developer-tools/dfx/dfx-nns) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will also install an ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straightforward, but also more heavyweight.
+1. Use [`dfx nns`](/docs/building-apps/developer-tools/dfx/dfx-nns) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will install an instance of the ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straightforward, but also heavyweight.
 
-2. Deploy the ICP ledger locally using the canister's Wasm file. This method is discussed and demonstrated in this guide, as it gives you more control over the deployment and is lightweight.
+2. Deploy the ICP ledger locally using the canister's Wasm and Candid files. This method gives you more control over the deployment and it is lightweight. For instance, you can define the `minting account`, you have control over the initialization arguments, and you have control over which Wasm version of the ICP ledger you want to interact with.
 
-Deploying an ICP ledger locally using the Wasm or `.did` files gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments, and you have control over which Wasm version of the ICP ledger you want to interact with.
 
-The ICP ledger is not meant to be used for other token deployments because it needs to be backwards compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
+::caution
+The ICP ledger is not meant to be used for other token deployments.
 
 If you want to deploy your own token, read the [guide on setting up an ICRC-1 ledger](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
+:::
 
-## Using `dfx nns install`
+### Using `dfx nns install`
 
-The [`dfx nns install`](/docs/building-apps/developer-tools/dfx/dfx-nns) command can be used to deploy an instance of the entire NNS locally. The NNS includes the ICP ledger canister with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`.
+- #### Step 1: Install the `nns` extension.
 
-## Using the most recent ICP ledger Wasm file
+```
+dfx extension install nns
+```
+
+- #### Step 2: Use the command `dfx nns install` to deploy an instance of the entire NNS locally, including the ICP ledger canister.
+
+This installation will include two accounts that are initialized with ICP for testing. One uses a `secp256k1` key, which is convenient for command line usage, another uses an `ed25519` key, which is more convenient in web applications.
+
+For example, to use the `secp256k1` key, create a new file called `ident-1.pem` that contains the following content:
+
+```
+-----BEGIN EC PRIVATE KEY-----
+MHQCAQEEICJxApEbuZznKFpV+VKACRK30i6+7u5Z13/DOl18cIC+oAcGBSuBBAAK
+oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
+74ly5xXEBNSXiENyxhEuzOZrIWMCNQ==
+-----END EC PRIVATE KEY-----
+```
+
+- #### Step 3: Create an identity using the `secp256k1` key.
+
+```
+dfx identity import ident-1 ident-1.pem
+```
+
+- #### Step 4: Run tests with ICP tokens.
+
+```
+dfx ledger balance
+```
+
+## Using the most recent ICP ledger Wasm and Candid files
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -75,18 +98,17 @@ The [`dfx nns install`](/docs/building-apps/developer-tools/dfx/dfx-nns) command
 </TabItem>
 </Tabs>
 
-- #### Step 1: Create a new `dfx` project or open an existing project.
+- #### Step 1: Create a [new `dfx` project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing one.
 
-- #### Step 2: Obtain the latest ledger Wasm and Candid files.
+- #### Step 2: Obtain the latest ledger Wasm and Candid file URLs.
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision.
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary release hash.
 
-The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ledger-canister.wasm.gz`.
+The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<RELEASE_HASH>/canisters/ledger-canister.wasm.gz`.
 
-The URL for the ledger's Candid file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icp/ledger.did`.
+The URL for the ledger's Candid file is `https://raw.githubusercontent.com/dfinity/ic/<RELEASE_HASH>/rs/ledger_suite/icp/ledger.did`.
 
-#### Optional
-If you want to make sure you have the latest ICP ledger files, you can run the following script. Please ensure that you have [`jq`](https://jqlang.github.io/jq/) installed, as the script relies on it.
+The Wasm and Candid files can be referenced in your project via their public URLs shown above or they can be referenced via local files. If you want to download the Wasm and Candid files, use the following script. Please ensure that you have [`jq`](https://jqlang.github.io/jq/) installed, as the script relies on it.
 
 ``` sh
 curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
@@ -94,7 +116,7 @@ chmod +x download_latest_icp_ledger.sh
 ./download_latest_icp_ledger.sh
 ```
 
-- #### Step 3: Create a new identity that will work as a minting account.
+- #### Step 3: Create a new identity that will act as a minting account.
 
 ``` sh
 dfx identity new minter
@@ -104,7 +126,7 @@ echo $(dfx ledger account-id)
 
 Record the output of these commands as your minting account ID. Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
 
-- #### Step 4: Switch back to your primary developer identity and record its ledger account identifier.
+- #### Step 4: Switch back to your primary developer identity and record its ledger account ID.
 
 ``` sh
 dfx identity use MyIdentity
@@ -115,17 +137,27 @@ Record the output of these commands as your developer account ID.
 
 - #### Step 5: Configure the `dfx.json` file.
 
-Open the `dfx.json` file in your project's directory. Replace the existing content with the following, updating the values of `MINTER_ACCOUNT_ID` and `DEVELOPER_ACCOUNT_ID` with the values obtained in the previous steps:
+Open the `dfx.json` file in your project's directory. Replace or edit the existing content with the following, updating the values of `MINTER_ACCOUNT_ID` and `DEVELOPER_ACCOUNT_ID` with the values obtained in the previous steps.
+
+:::info
+In an existing project you only need to add the `icp_ledger_canister` canister to the `canisters` section instead of replacing the entire content of `dfx.json`.
+:::
+
 
 `dfx.json` does not support referring to values through environment variables. Values must be hardcoded in plain text.
+
+<Tabs>
+<TabItem value="URLs" label="Using file URLs" default>
+
+Replace <RELEASE_HASH> with the latest replica release hash obtained from the dashboard.
 
 ``` json
 {
   "canisters": {
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/<RELEASE_HASH>/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/<RELEASE_HASH>/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -145,24 +177,44 @@ Open the `dfx.json` file in your project's directory. Replace the existing conte
 }
 ```
 
-:::danger
-If you chose to download the ICP ledger files with the script, you need to replace the Candid and Wasm file entries:
+</TabItem>
+<TabItem value="paths" label="Using file paths" default>
 
-```json
-...
-"candid": icp_ledger.did,
-"wasm" : icp_ledger.wasm.gz,
-  ...
+``` json
+{
+  "canisters": {
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": icp_ledger.did,
+      "wasm" : icp_ledger.wasm.gz,
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "init_arg" : "(variant { Init = record { minting_account = \"MINTER_ACCOUNT_ID\"; initial_values = vec { record { \"DEFAULT_ACCOUNT_ID\"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt \"LICP\"; token_name = opt \"Local ICP\"; } })"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
 ```
 
-:::
+</TabItem>
+</Tabs>
 
 This `dfx.json` file defines the init arguments for the ledger canister:
 
 - Sets the minting account to the account identifier you saved in a previous step (`MINTER_ACCOUNT_ID`).
 - Mints 100 ICP tokens to the `DEFAULT_ACCOUNT_ID` (1 ICP is equal to 10^8 e8s).
 - Sets the transfer fee to 0.0001 ICP.
-- Names the token `Local ICP / LICP`.
+- Names the token `Local ICP` with ticker symbol `LICP`.
 
 ### Init arguments
 
@@ -196,7 +248,7 @@ You can also pass these init args to the canister [using the command line](/docs
 
 [Learn more about init args](/docs/building-apps/developer-tools/advanced-dfx/init-args/).
 
-- #### Step 6: Start a local replica.
+- #### Step 6: Start a local development environment.
 
 ``` sh
 dfx start --clean --background
@@ -204,26 +256,30 @@ dfx start --clean --background
 
 - #### Step 7: Deploy the ledger canister locally.
 
+You will deploy the local ICP ledger canister to the same canister ID as the mainnet ledger canister. This is to facilitate switching between local and mainnet deployments.
+
+:::caution
+
 You cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
+
+:::
 
 ```
 dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister
 ```
-
-You are deploying the local ICP ledger canister to the same canister ID as the mainnet ledger canister. This is to facilitate switching between local and mainnet deployments.
-
-Your local ICP ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.
 
 - #### Step 8: Interact with the canister.
 
 You can interact with the canister by running CLI commands, such as:
 
 ```
-dfx canister call icp_ledger_canister name
+dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai symbol '()'
 ```
 
-Or, you can interact with it using the Candid UI by navigating to the URL provided when the canister was deployed, such as:
+Or, you can interact with it using the Candid UI by navigating to the Candid URL returned when the canister was deployed, such as:
 
 ```
 http://127.0.0.1:4943/?canisterId=bnz7o-iuaaa-aaaaa-qaaaa-cai&id=ryjl3-tyaaa-aaaaa-aaaba-cai
 ```
+
+[Learn more about interacting with the ICP ledger](/docs/defi/token-ledgers/usage/icp_ledger_usage).
