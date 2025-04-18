@@ -9,7 +9,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](http://internetcomputer.org//docs/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/building-apps/getting-started/tokens-and-cycles).
+Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/building-apps/getting-started/tokens-and-cycles).
 
 The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of March 12, 2025, the [exchange rate for 1 XDR = $1.33](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
 
@@ -53,7 +53,7 @@ Additionally, they must pay for any ingress messages they receive, including ing
 
 [Xnet](https://mmapped.blog/posts/08-ic-xnet) calls are charged to the sending canister.
 
-More information about responsible canisters can be found on the \[cycles calculation reference page.]\(add link when available)
+More information about responsible canisters can be found on the [cycles calculation reference page.](/docs/references/cycles-cost-formulas)
 
 ### Canister creation
 
@@ -74,7 +74,7 @@ A canister can receive messages from users and other canisters. Messaging fees a
 
 Canisters use compute resources to execute autonomous tasks and process ingress messages. ICP reserves cycles to execute the callback or cleanup of a message. The amount reserved is equivalent to what would be needed for maximum execution.
 
-For example, a [DTS execution](how-it-works/execution-layer/#deterministic-time-slicing) of 40B instructions on a 13-node subnet would reserve 16B cycles. From this reservation, 5% is reserved for the cleanup/callback; it is not expected that the entire 5% will be used.
+For example, a [DTS execution](/how-it-works/execution-layer/#deterministic-time-slicing) of 40B instructions on a 13-node subnet would reserve 16B cycles. From this reservation, 5% is reserved for the cleanup/callback; it is not expected that the entire 5% will be used.
 
 By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can set `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
 
@@ -124,7 +124,7 @@ A controller of a canister can disable resource reservation by setting the `rese
 
 Certain network features incur a special cost based on the feature’s unique infrastructure and functionality. These features include:
 
-- [**HTTPS outcalls**](//docs/references/cost-calculation-formulas)
+- [**HTTPS outcalls**](/docs/references/cost-calculation-formulas)
 
 - [**Bitcoin API**](/docs/references/bitcoin-how-it-works)
 
