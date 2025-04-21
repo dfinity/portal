@@ -392,7 +392,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
-  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/developing-canisters/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/essentials/canisters
   /docs/current/references/subnets/subnet-types/ /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
   /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
@@ -885,6 +885,7 @@ const redirects = `
   /docs/current/samples/overview /samples
 
   ## Misc
+  /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
   /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
   /docs/current/references/security/ /docs/building-apps/security/overview
