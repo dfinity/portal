@@ -14,29 +14,39 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
-After you have created your canisters, you need to compile the code into a WebAssembly module before it can be deployed on ICP.
-
-:::danger
-
-You must create your canisters before you can build them; otherwise, you will receive an error message saying they do not exist.
-
-:::
+After you have [created a canister](create.mdx), you need to compile its code into a WebAssembly module then [install it](install.mdx) into the canister before it can be deployed.
 
 :::info
 Canister compilation is done automatically in the background of the `dfx deploy` command. However, there may be certain workflows where manually compiling code into Wasm is necessary.
 :::
 
-[`dfx build`](/docs/building-apps/developer-tools/dfx/dfx-build) looks for source code to compile for each canister configured under the `canisters` section in the [`dfx.json`](/docs/building-apps/developer-tools/dfx-json-reference) file. `dfx build` can be used to compile a specific canister or all canisters defined in the project.
+## How code is compiled to Wasm
 
-Verify the location of your project's files and their file names. If necessary, edit your project's `dfx.json` file to reflect the current intended configuration.
+WebAssembly (Wasm) is a platform-independent binary format that can be executed in the Wasm virtual machine. Many modern compilers support Wasm as the compilation target along with traditional targets such as x86 and arm32.
 
-Compile your canisters from within the project's directory:
+ICP uses vanilla Wasm to compile canister code, then provides a set of system API functions to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
+
+An ICP canister development kit (CDK) of a supported programming language comes with build scripts that link to the system API and compile code to Wasm programs that are compatible with ICP.
+
+Rust and Motoko compile to the `wasm32-unknown-unknown` target directly under the hood.
+
+Azle and Kybra first compile to the `wasm32-wasi` target and then convert the Wasm binary to `wasm32-unknown-unknown` using the `wasi2ic` tool.
+
+For the convenience of developers, `dfx` wraps the CDK-specific build scripts and provides the `dfx build` command to compile the code to a Wasm binary.
+
+## Compiling code
+
+[`dfx build`](/docs/building-apps/developer-tools/dfx/dfx-build) looks in a project's [`dfx.json`](/docs/building-apps/developer-tools/dfx-json-reference) to determine the source code file(s) that should be compiled for a specific canister or all canisters configured within the project.
+
+Compilation happens on the local machine of the developer. `dfx build` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`.
+
+Verify the location of your canister's source code files and their file names. If necessary, edit your project's `dfx.json` file to reflect the current intended configuration.
+
+To compile canisters from within the project's directory, use:
 
 ```
 dfx build <canister-name> --network=<NETWORK>
 ```
-
-Compilation happens on the local machine of the developer. `dfx build` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`.
 
 When this command is executed, the following steps happen:
 
@@ -45,23 +55,3 @@ When this command is executed, the following steps happen:
 - If a canister is written in Motoko, type declarations are automatically generated using Candid.
 
 - If a canister is written in Rust, the build process checks for Rust vulnerabilities.
-
-### How code is compiled to Wasm
-
-WebAssembly (Wasm) is a platform-independent binary format that can be executed in the Wasm virtual machine.
-Many modern compilers support Wasm as the compilation target along with traditional targets such as x86 and arm32.
-
-There are three types of Wasm depending on where the Wasm virtual machine is hosted and how it interacts with users and the host environment:
-
-- **Web browser**: The Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
-
-- **WASI**: This abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
-
-- **Vanilla Wasm**: There is no standard API for interacting with users and the host environment. Every host environment provides its own API. ICP uses this approach and provides a set of functions, called the System API, to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
-
-The Canister Development Kit (CDK) of supported programming language comes with build scripts that link the System API and compile the code to Wasm programs that are compatible with ICP:
-
-- Rust and Motoko compile to the `wasm32-unknown-unknown` target directly under the hood.
-- Azle and Kybra first compile to the `wasm32-wasi` target and then convert the Wasm binary to `wasm32-unknown-unknown` using the `wasi2ic` tool.
-
-For the convenience of developers, `dfx` wraps the CDK-specific build scripts and provides the `dfx build` command to compile the code to a Wasm binary.
