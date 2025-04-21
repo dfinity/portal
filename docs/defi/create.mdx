@@ -5,7 +5,7 @@ keywords: [intermediate, defi,  tokens, deploy a token, create a token, icrc1]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Create a token
+# Create a fungible token
 
 <MarkdownChipRow labels={["Intermediate", "Tokens"]} />
 
@@ -13,17 +13,18 @@ Custom fungible tokens can be created and deployed on ICP using the [ICRC-1](htt
 
 The ICRC-1 standard is considered the 'base' standard, as it defines a set of general functionalities and requirements that all tokens and their corresponding ledgers must fulfill. Read about [token standards](/docs/defi/token-standards/) to learn more about what token standards are and the functionalities each one supports.
 
-## Checklist: How to create a token
+## Checklist: How to create a fungible token
 
 1. Determine your token's name, symbol, and tokenomics.
-2. Create or determine the [developer identity](/docs/building-apps/getting-started/identities) that will act as the token's minter account.
-3. Create or determine the [developer identity](/docs/building-apps/getting-started/identities) that will act as the controller ID for the ledger canister.
-4. Setup a local [ICRC-1 ledger](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
-5. [Initialize your token's settings](/docs/defi/token-ledgers/usage/icrc1_ledger_usage).
-6. Determine if your token will support approval workflows and if so, [enable ICRC-2 methods](/docs/defi/token-ledgers/usage/icrc1_ledger_usage#ICRC2).
-7. Configure archive options.
-8. Deploy your token locally and test.
-9. Deploy your token to the mainnet for production use.
+2. Refer to the [token best practices](/docs/defi/defi-best-practices) and [security best practices](/docs/building-apps/security/overview) to educate yourself on the precautions you should take when developing a DeFi asset.
+3. Create or determine the [developer identity](/docs/building-apps/getting-started/identities) that will act as the token's minter account.
+4. Create or determine the [developer identity](/docs/building-apps/getting-started/identities) that will act as the controller ID for the ledger canister.
+5. Setup a local [ICRC-1 ledger](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
+6. [Initialize your token's settings](/docs/defi/token-ledgers/usage/icrc1_ledger_usage).
+7. Determine if your token will support approval workflows and if so, [enable ICRC-2 methods](/docs/defi/token-ledgers/usage/icrc1_ledger_usage#ICRC2).
+8. Configure archive options.
+9. Deploy your token locally and test.
+10. Deploy your token to the mainnet for production use.
 
 ## Resources
 
