@@ -158,7 +158,6 @@ build: [
       label: "Developing canisters",
       items:
       [
-        "building-apps/developing-canisters/what-are-canisters",
         "building-apps/developing-canisters/write",
         "building-apps/developing-canisters/create",
         "building-apps/developing-canisters/compile",
