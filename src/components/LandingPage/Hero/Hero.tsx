@@ -1,4 +1,4 @@
-import { EthEquivalentTxRate, TotalBlocks } from "./Stats";
+import { CycleBurnRate, EthEquivalentTxRate, TotalBlocks } from "./Stats";
 import { QueryClient, QueryClientProvider } from "react-query";
 import React, { useRef } from "react";
 
@@ -78,56 +78,49 @@ const Hero: React.FC<{
               aria-label="Various stats"
               className="block md:absolute mt-8 md:mt-0 bottom-0 -left-[min(10vw,20rem)] backdrop-blur-lg"
             >
-              <AnimateSpawn
-                className="
-                      bg-black/20 p-2 px-0 rounded-t-xl relative overflow-hidden min-w-[15rem] 
-                      hover:bg-white trabsition-all duration-100"
-                variants={transitions.container}
-              >
-                <Link
-                  href="https://dfinity.org/"
-                  className="
-                    hover:no-underline text-white hover:text-black duration-100
-                  "
-                >
-                  <span className="absolute top-6 right-6">
-                    <LinkArrowUpRight />
-                  </span>
-                  <div
-                    className="rounded-xl text-current py-3 px-6"
-                    style={{ fontSize: "24px", fontWeight: 500 }}
-                    variants={transitions.fadeIn}
-                  >
-                    <figure className="m-0">
-                      <span className="text-3xl font-bold">1'000+</span>
-                      <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
-                        ICP R&D effort/years
-                      </figcaption>
-                    </figure>
-                  </div>
-                </Link>
-
-                <hr className="absolute -bottom-8 left-6 right-6 h-px my-8 border-0 opacity-20" />
-              </AnimateSpawn>
-              <Link
-                href="https://dashboard.internetcomputer.org/"
-                className="hover:no-underline text-white hover:text-black duration-100"
-              >
+              <div className="hover:no-underline text-white">
                 <AnimateSpawn
                   className="
-                    bg-black/20 p-2 px-0 rounded-b-xl relative overflow-hidden min-w-[15rem] 
-                    hover:bg-white trabsition-all duration-100"
+                    bg-black/20 p-2 px-0 rounded-t-xl relative overflow-hidden min-w-[18rem] 
+                  "
                   variants={transitions.container}
                 >
-                  <span className="absolute top-6 right-6">
-                    <LinkArrowUpRight />
-                  </span>
                   <QueryClientProvider client={queryClient}>
+                    <CycleBurnRate />
                     <EthEquivalentTxRate />
                     <TotalBlocks />
                   </QueryClientProvider>
+                  <hr className="absolute -bottom-8 left-6 right-6 h-px my-8 border-0 opacity-20" />
                 </AnimateSpawn>
-              </Link>
+              </div>
+
+              <AnimateSpawn
+                className="
+                      bg-black/20 p-2 px-0 rounded-b-xl relative overflow-hidden min-w-[18rem] 
+                      hover:bg-white trabsition-all hover:!text-black hover:no-underline text-white duration-100"
+                variants={transitions.container}
+              >
+                <Link
+                  className="py-3 px-6 link-primary link-with-icon !text-white hover:!text-black hover:opacity-80 duration-200 ease-in-out text-[14px] "
+                  href="https://dashboard.internetcomputer.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  dashboard.internetcomputer.org{" "}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.2429 8.34285L3.65709 8.34285L3.65709 6.34315H14.6568V17.3429L12.6571 17.3429L12.6571 9.75706L4.05024 18.364L2.63603 16.9498L11.2429 8.34285Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </Link>
+              </AnimateSpawn>
             </aside>
           </div>
         </div>
