@@ -20,7 +20,7 @@ This guide demonstrates an example of how to integrate Internet Identity authent
 
 ### Step 1: Create or open a project.
 
-First, use `dfx start` to start a [local instance of the replica](/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+First, use `dfx start` to start a [local development environment](/docs/building-apps/test/pocket-ic)(/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
 
 Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/tree/master/motoko/who_am_i).
 
@@ -184,7 +184,7 @@ testWithII('should sign-in with an existing new user', async ({page, iiPage}) =>
 });
 ```
 
-If desired, you can have the test wait for Internet Identity to be ready by providing the local replica URL and the canister ID of your local Internet Identity instance:
+If desired, you can have the test wait for Internet Identity to be ready by providing the local development environment URL and the canister ID of your local Internet Identity instance:
 
 ```typescript title="e2e/login.spec.ts"
 testWithII.beforeEach(async ({iiPage, browser}) => {

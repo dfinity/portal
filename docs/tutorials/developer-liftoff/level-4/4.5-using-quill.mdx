@@ -36,7 +36,7 @@ To support cold wallets, quill uses two separate steps to send query and update 
 
 While it is important to know that quill supports cold wallet workflows, it can also be used on a computer connected to the internet without using any cold wallet workflows.
 
-Transactions that use query requests, such as obtaining an account's balance or returning proposal information, require an internet connection and cannot be run on cold wallets. This is because submitting these query calls locally would not return data, since the mainnet canisters being queried are not running on the local replica. Additionally, query calls do not require the same cryptographic validity that update calls do; therefore, they do not need a signature to be generated and can be submitted directly to the mainnet.
+Transactions that use query requests, such as obtaining an account's balance or returning proposal information, require an internet connection and cannot be run on cold wallets. This is because submitting these query calls locally would not return data, since the mainnet canisters being queried are not running on the local development environment. Additionally, query calls do not require the same cryptographic validity that update calls do; therefore, they do not need a signature to be generated and can be submitted directly to the mainnet.
 
 In this tutorial, you'll see that query calls do not generate JSON output and can be submitted directly to the mainnet, while update calls will generate a JSON response that must be saved and submitted using `quill send`.
 
