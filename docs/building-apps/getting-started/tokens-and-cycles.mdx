@@ -13,7 +13,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 For ICP developers, there are two important tokens:
 
-1. The **ICP token** is the protocol’s native utility token, which can be purchased and traded on various exchanges. It plays a key role in the governance and economics of the network.
+1. The **ICP token** is the protocol’s native utility token, which can be purchased and traded on various exchanges. It plays a key role in the [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) and economics of the network.
 
 2. **Cycles** are used to pay for resource and service consumption, comparable to gas on Ethereum. The price of cycles is pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a group of fiat currencies, where **1 trillion (T) cycles equals 1 XDR** (1 XDR is around 1.3 USD as of early 2025).
 
@@ -23,7 +23,7 @@ Note, ICP supports creating and deploying custom fungible or non-fungible tokens
 
 ## Canister resource consumption
 
-Canisters require resources like storage, compute, and network bandwidth. When a canister is deployed to the mainnet, it utilizes the resources provided by the network's nodes. Canisters are charged for the resources they use, calls they send, and any operations they perform using specialized features such as HTTPS outcalls, threshold signatures, and the Bitcoin integration API. Each type of canister operation and resource has a different cost associated with it, and costs linearly scale with the number of nodes in the subnet.
+Canisters require resources like storage, compute, and network bandwidth. When a canister is deployed to the mainnet, it utilizes the resources provided by the network's nodes. Canisters are charged for the resources they use, calls they send, and any operations they perform using specialized features such as HTTPS outcalls, threshold signatures, and the Bitcoin integration API. Each type of canister operation and resource has a different cost associated with it, and costs linearly scale with the number of nodes in the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
 A canister pays for consumed resources by burning cycles. It's the developer's responsibility to load each of their canisters with adequate amounts of cycles, though anyone can send cycles to any canister. This cost model is known as ICP's **reverse gas model**.
 
@@ -109,7 +109,7 @@ This command must be run with the `--network=ic` flag because cycles are fabrica
 
 ### Calculating how many cycles you need
 
-Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/cost-estimations-and-examples).
+Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/gas-cost).
 
 ### Step 5: Confirm the cycles balance.
 

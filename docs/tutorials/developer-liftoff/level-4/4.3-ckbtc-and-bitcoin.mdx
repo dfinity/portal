@@ -20,7 +20,7 @@ Currently, ICP supports an integration with the Bitcoin network that includes th
 
 ## Bitcoin integration architecture
 
-ICP's direct integration with Bitcoin uses a novel protocol for chain-key signatures based on **threshold signatures**. [Threshold ECDSA](/docs/references/t-sigs-how-it-works/) and threshold Schnorr are protocol suites that include several features like [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/references/t-sigs-how-it-works/#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/references/t-sigs-how-it-works//#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
+ICP's direct integration with Bitcoin uses a novel protocol for chain-key signatures based on **threshold signatures**. [Threshold ECDSA](/docs/references/t-sigs-how-it-works/) and threshold Schnorr are protocol suites that include several features like [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/references/t-sigs-how-it-works/#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/references/t-sigs-how-it-works/#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
 
 On a high level, subnets that have ECDSA and Schnorr enabled hold a master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA or Schnorr keys. It is important to know that an ECDSA or Schnorr private key only exists in a secret-shared form during its lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
 
@@ -72,7 +72,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
-<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
 </TabItem>
 </AdornedTabs>

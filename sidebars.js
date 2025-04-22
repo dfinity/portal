@@ -25,12 +25,9 @@ build: [
         id: "building-apps/essentials/network-overview",
       },
       {
-        type: "category",
-        label: "Fees",
-        items:[
-          "building-apps/essentials/gas-cost",
-          "building-apps/essentials/cost-estimations-and-examples"
-        ]
+        type: "doc",
+        label: "Fee breakdown",
+        id: "building-apps/essentials/gas-cost",
       },
       {
         type: "doc",
@@ -285,7 +282,9 @@ build: [
       items: [
         "building-apps/authentication/overview",
         "building-apps/authentication/integrate-internet-identity",
+        "building-apps/authentication/integrate-misc-wallets",
         "building-apps/authentication/alternative-origins",
+        "building-apps/authentication/independently-verifying-ic-signatures",
       ],
     },
     {
@@ -326,6 +325,16 @@ build: [
                   id: "building-apps/network-features/using-http/http-certification/serving-static-assets-over-http",
                   label: "Serving static assets over HTTP (custom)",
                 },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/upgrading-http-query-calls-to-update-calls",
+                  label: "Upgrading HTTP query calls to update calls",
+                },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/skipping-certification-for-http-responses",
+                  label: "Skipping certification for HTTP responses",
+                },
               ],
             },
             {
@@ -350,7 +359,6 @@ build: [
           items: [
             "building-apps/network-features/signatures/t-ecdsa",
             "building-apps/network-features/signatures/t-schnorr",
-            "building-apps/network-features/signatures/independently-verifying-ic-signatures",
           ],
         },
         {
@@ -772,6 +780,7 @@ defi: [
         ],
         },
         "defi/token-indexes/index",
+        "defi/defi-best-practices",
         {
           type: "category",
           label: "Chain-key tokens",
@@ -847,6 +856,7 @@ references: [
       "references/vetkeys-overview"
     ],
   },
+  "references/cycles-cost-formulas",
   {
     type: "category",
     label: "System canisters",
@@ -977,15 +987,15 @@ hackathon: [
       id: "tutorials/hackathon-prep-course/index",
     },
     items: [
-      "tutorials/hackathon-prep-course/what-is-icp",
-      "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
-      "tutorials/hackathon-prep-course/exploring-the-backend",
-      "tutorials/hackathon-prep-course/exploring-the-frontend",
-      "tutorials/hackathon-prep-course/integrating-with-tokens",
+      "tutorials/hackathon-prep-course/hello-world",
+      "tutorials/hackathon-prep-course/static-website",
+      "tutorials/hackathon-prep-course/first-fullstack-dapp",
+      "tutorials/hackathon-prep-course/evm-block-explorer",
+      "tutorials/hackathon-prep-course/create-deploy-token",
       "tutorials/hackathon-prep-course/authentication",
-      "tutorials/hackathon-prep-course/obtaining-cycles",
+      "tutorials/hackathon-prep-course/setup-dev-env",
       "tutorials/hackathon-prep-course/managing-canisters",
-      "tutorials/hackathon-prep-course/sample-starter-projects",
+      "tutorials/hackathon-prep-course/advanced-features",
       "tutorials/hackathon-prep-course/resources",
     ],
   },

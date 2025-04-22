@@ -100,8 +100,7 @@ const Highlights: React.FC = () => {
                   href="https://wiki.internetcomputer.org/wiki/Proof_of_Useful_Work"
                   className="link-white link-with-icon"
                 >
-                  Wiki explanation of Proof of Useful Work{" "}
-                  <LinkArrowUpRight />
+                  Wiki explanation of Proof of Useful Work <LinkArrowUpRight />
                 </Link>
               </p>
             </div>
@@ -147,7 +146,7 @@ const Highlights: React.FC = () => {
             <div className="flex-1 pt-10 md:pt-20 order-2 md:order-1">
               <ul className="tw-lead-sm md:tw-lead-lg text-white list-none checklist space-y-6">
                 <li className="checklist-item-white pl-8 md:pl-12 bg-[length:24px] md:bg-[length:36px]">
-                   Web experiences served by smart contracts
+                  Web experiences served by smart contracts
                 </li>
                 <li className="checklist-item-white pl-8 md:pl-12 bg-[length:24px] md:bg-[length:36px]">
                   Web2 APIs processed through consensus
@@ -186,13 +185,11 @@ const Highlights: React.FC = () => {
                 Ethereum hosts unstoppable smart contract code
               </p>
               <p className="text-white tw-lead md:tw-title-sm mb-10 md:mb-20">
-                The Internet Computer can execute code on any blockchain and process any asset
+                The Internet Computer can execute code on any blockchain and
+                process any asset
               </p>
               <p className="mb-0">
-                <Link
-                  href="/bitcoin-integration"
-                  className="link-white link-with-icon"
-                >
+                <Link href="/bitcoin" className="link-white link-with-icon">
                   <LinkArrowRight />
                   Bitcoin on ICP
                 </Link>

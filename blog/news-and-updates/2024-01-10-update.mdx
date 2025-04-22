@@ -21,7 +21,7 @@ This week, Motoko `v0.10.4` has been released! The release notes for this versio
 
 - Avoid large allocations per message: Avoid allocations of 100 MB or more per message, as they extend the duration of the GC's increment. Instead, distribute large allocations across multiple messages.
 
-- Limit the heap size: Set a custom limit within your program to keep the heap size and data volume below the scalability limit that you determined during testing. 
+- Limit the heap size: Set a custom limit within your program to keep the heap size and data volume below the [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling) limit that you determined during testing.
 
 To review the full list of recommendations along with the full release details, see the Motoko release notes [here](https://github.com/dfinity/motoko/releases/tag/0.10.4).
 
