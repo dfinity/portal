@@ -1,0 +1,21 @@
+---
+keywords: [intermediate, tutorial, user sign in, user login, plug wallet, authentication, authentication services, plug, wallet]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Integrating with other authentication services 
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+## Integrate with Plug wallet
+
+[Plug wallet](https://www.plug-wallet.com/) uses Secp256k1 as its key algorithm. To integrate Plug wallet authentication into your dapp, you can use the `@dfinity/identity-secp256k1` and a PEM file:
+
+```js
+import { Secp256k1KeyIdentity } from '@dfinity/identity-secp256k1';
+
+const identity = Secp256k1KeyIdentity.fromPem(pemFileContentString);
+```
