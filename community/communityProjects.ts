@@ -2089,13 +2089,13 @@ const communityProjects: SampleItem[] = [
     links: {
       github: "https://github.com/Mercatura-Developers-Team/Mercx.git",
       livePreview: "https://xpm3z-7qaaa-aaaan-qzvlq-cai.icp0.io/",
-    otherLinks: [],
+    otherLinks: []
     },
     domains: ["Website"],
     level: "advanced",
     languages: ["rust", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
-    image: "/img/showcase/mercx_logo.png",
+    image: "/img/showcase/mercx_logo.png"
   }
 ];
 
