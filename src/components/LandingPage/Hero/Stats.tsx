@@ -216,13 +216,11 @@ export const CycleBurnRate = () => {
     ["getUpdateCycleBurnRate"],
     () => updateCycleBurnRateWithJitter().then((rate) => rate),
     {
-      // Reduce refetch frequency
-      refetchInterval: 3000,
+      refetchInterval: 5000,
       enabled: !!cycleBurnRateQuery.isSuccess,
     }
   );
 
-  // Custom format function to ensure integers only
   const formatIntegerWithApostrophes = (num: number) => {
     return Math.floor(num)
       .toString()
