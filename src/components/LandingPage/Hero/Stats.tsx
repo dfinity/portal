@@ -234,7 +234,7 @@ export const CycleBurnRate = () => {
       variants={transitions.fadeIn}
     >
       <figure className="m-0 gap-3 block">
-        <div className="inline-grid relative left-1 static inline">
+        <div className="inline-grid relative static inline">
           {updateBurnRate.isFetched && updateBurnRate.isSuccess ? (
             <>
               <SpringCounter
@@ -283,8 +283,8 @@ export const EthEquivalentTxRate = () => {
       style={{ fontSize: "24px", fontWeight: 500 }}
       variants={transitions.fadeIn}
     >
-      <figure className="m-0 gap-3 block">
-        <div className="inline-grid relative left-1 static inline">
+      <figure className="m-0 gap- block">
+        <div className="inline-grid relative static inline">
           {updateTxRate.isFetched && updateTxRate.isSuccess ? (
             <>
               <SpringCounter
