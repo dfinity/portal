@@ -358,8 +358,8 @@ build: [
           type: "category",
           label: "Verifiable encryption",
           items: [
-            "building-apps/network-features/encryption/vetkeys",
-            "building-apps/network-features/encryption/using-vetkeys",
+            "building-apps/network-features/vetkeys/description",
+            "building-apps/network-features/encryption/send_file_to_eth",
           ],
         },
         "building-apps/network-features/randomness",
