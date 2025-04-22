@@ -224,7 +224,7 @@ export const CycleBurnRate = () => {
   const formatIntegerWithApostrophes = (num: number) => {
     return Math.floor(num)
       .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "’");
   };
 
   return (
