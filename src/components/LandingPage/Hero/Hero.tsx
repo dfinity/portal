@@ -106,7 +106,19 @@ const Hero: React.FC<{
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  dashboard.internetcomputer.org <LinkArrowUpRight />
+                  dashboard.internetcomputer.org{" "}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.2429 8.34285L3.65709 8.34285L3.65709 6.34315H14.6568V17.3429L12.6571 17.3429L12.6571 9.75706L4.05024 18.364L2.63603 16.9498L11.2429 8.34285Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                 </Link>
               </AnimateSpawn>
             </aside>
