@@ -4178,7 +4178,7 @@
       "DeFi",
       "Wallet",
       "Chain Fusion",
-      "Analytics",
+      "Analytics"
     ],
   "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
   "stats": "On boarded four regulated institutional grade investment funds",
@@ -4186,11 +4186,8 @@
   "usesInternetIdentity": true,
 
   "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
-  "twitter": "https://x.com/mercx__?s=21",
-
-
-
-  },
+  "twitter": "https://x.com/mercx__?s=21"
+ },
   {
     "id": "bookie",
     "name": "Bookie",
