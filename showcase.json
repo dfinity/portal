@@ -4271,5 +4271,16 @@
   "twitter": "https://x.com/CanisterCloud",
   "youtube": "",
   "submittableId": ""
+},
+  {
+  "name": "bshop",
+  "description": "A fully decentralized shopping DApp.",
+  "url": "https://bshops.fun",
+  "logo": "bettingdapp.png",
+  "category": "Marketplace",
+  "socials": {
+    "twitter": "https://x.com/btc_bshop"
+  }
 }
+
 ]
