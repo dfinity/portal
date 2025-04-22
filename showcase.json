@@ -53,6 +53,7 @@
   {
     "id": "icpswap",
     "name": "ICPSwap",
+    "display": "Normal",
     "website": "https://icpswap.com",
     "twitter": "https://x.com/ICPSwap",
     "tags": [
@@ -149,6 +150,7 @@
   {
     "id": "nfid",
     "name": "NFID",
+    "display": "Normal",
     "website": "https://nfid.one/",
     "twitter": "https://twitter.com/IdentityMaxis",
     "tags": [
@@ -182,6 +184,7 @@
   {
     "id": "golddao",
     "name": "Gold DAO",
+    "display": "Normal",
     "website": "https://www.gold-dao.org/",
     "twitter": "https://twitter.com/gldrwa",
     "tags": [
@@ -194,6 +197,7 @@
   {
     "id": "dragginz",
     "name": "dragginz",
+    "display": "Normal",
     "website": "https://dragginz.io/",
     "twitter": "https://twitter.com/dragginzgame",
     "tags": [
@@ -224,6 +228,7 @@
   {
     "id": "yral",
     "name": "Yral",
+    "display": "Normal",
     "website": "https://yral.com",
     "twitter": "https://x.com/Yral_app",
     "github": "https://github.com/yral-dapp",
@@ -264,6 +269,7 @@
   {
     "id": "iclighthouse",
     "name": "ICLightHouse",
+    "display": "Normal",
     "website": "https://iclight.house/",
     "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
     "tags": [
@@ -452,6 +458,7 @@
   {
     "id": "stoicwallet",
     "name": "Stoic Wallet",
+    "display": "Normal",
     "website": "https://www.stoicwallet.com/",
     "tags": [
       "Wallet",
@@ -468,6 +475,7 @@
   {
     "id": "kleverio",
     "name": "Klever.io",
+    "display": "Normal",
     "website": "https://klever.io/",
     "twitter": "https://x.com/klever_io",
     "tags": [
@@ -485,6 +493,7 @@
   {
     "id": "nnsfront-enddapp",
     "name": "NNS Dapp",
+    "display": "Normal",
     "website": "https://nns.ic0.app",
     "github": "https://github.com/dfinity/nns-dapp",
     "tags": [
@@ -501,6 +510,7 @@
   {
     "id": "trax",
     "name": "Trax",
+    "display": "Normal",
     "website": "https://trax.so/",
     "twitter": "https://twitter.com/onlyontrax",
     "tags": [
@@ -543,6 +553,7 @@
   {
     "id": "w3ns",
     "name": "W3NS - Multichain",
+    "display": "Normal",
     "website": "https://www.argonstudios.xyz",
     "twitter": "https://twitter.com/ArgonStudiosXYZ",
     "github": "https://github.com/miguelToscano/w3ns",
@@ -580,6 +591,7 @@
   {
     "id": "ethereum-canister",
     "name": "Ethereum Canister",
+    "display": "Normal",
     "website": "https://www.eiger.co/",
     "github": "https://github.com/eigerco/ethereum-canister",
     "submittableId": 40732752,
@@ -596,6 +608,7 @@
   {
     "id": "origyn",
     "name": "Origyn",
+    "display": "Normal",
     "website": "https://www.origyn.com/",
     "twitter": "https://twitter.com/ORIGYNTech",
     "github": "https://github.com/origyn-sa",
@@ -656,6 +669,7 @@
   {
     "id": "querio",
     "name": "Querio",
+    "display": "Normal",
     "website": "https://querio.io/",
     "twitter": "https://x.com/querio_io",
     "tags": [
@@ -686,6 +700,7 @@
   {
     "id": "airgap",
     "name": "AirGap",
+    "display": "Normal",
     "website": "https://airgap.it/",
     "twitter": "https://x.com/airgap_it",
     "tags": [
@@ -714,6 +729,7 @@
   {
     "id": "azle",
     "name": "Azle",
+    "display": "Normal",
     "website": "https://demergent-labs.github.io/azle/azle.html",
     "github": "https://github.com/demergent-labs/azle",
     "tags": [
@@ -729,6 +745,7 @@
   {
     "id": "internetidentity",
     "name": "Internet Identity",
+    "display": "Normal",
     "website": "https://identity.ic0.app/",
     "github": "https://github.com/dfinity/internet-identity",
     "tags": [
@@ -806,6 +823,7 @@
   {
     "id": "canscale",
     "name": "CanScale",
+    "display": "Normal",
     "website": "https://www.canscale.dev",
     "twitter": "https://twitter.com/can_scale",
     "submittableId": 34140445,
@@ -818,6 +836,7 @@
   {
     "id": "cycleops",
     "name": "CycleOps",
+    "display": "Normal",
     "website": "https://cycleops.dev",
     "twitter": "https://twitter.com/CycleOps",
     "github": "https://github.com/CycleOperators/CycleOps/",
@@ -850,6 +869,7 @@
   {
     "id": "canistergeek",
     "name": "Canistergeek",
+    "display": "Normal",
     "website": "https://canistergeek.app/",
     "twitter": "https://twitter.com/theUSERGEEK",
     "github": "https://github.com/usergeek/canistergeek_ic_rust",
@@ -880,6 +900,7 @@
   {
     "id": "beamfi",
     "name": "BeamFi",
+    "display": "Normal",
     "website": "https://beamfi.app",
     "twitter": "https://twitter.com/BeamFiApp",
     "github": "https://github.com/BeamFi/BeamFiProtocol",
@@ -898,6 +919,7 @@
   {
     "id": "eimolad",
     "name": "Eimolad",
+    "display": "Normal",
     "website": "https://eimolad.com/",
     "twitter": "https://twitter.com/eimolad",
     "submittableId": 28118212,
@@ -910,6 +932,7 @@
   {
     "id": "mora",
     "name": "MORA",
+    "display": "Normal",
     "website": "https://mora.app",
     "twitter": "https://twitter.com/Mora_App",
     "youtube": "https://www.youtube.com/watch?v=rQIGanE7WxA",
@@ -1023,6 +1046,7 @@
   {
     "id": "nuance",
     "name": "Nuance",
+    "display": "Normal",
     "website": "https://exwqn-uaaaa-aaaaf-qaeaa-cai.ic0.app/",
     "twitter": "https://x.com/nuancedapp",
     "tags": [
@@ -1042,6 +1066,7 @@
   {
     "id": "cosmicrafts",
     "name": "Cosmicrafts",
+    "display": "Normal",
     "website": "https://cosmicrafts.com/",
     "twitter": "https://twitter.com/cosmicrafts",
     "tags": [
@@ -1089,6 +1114,7 @@
   {
     "id": "sudograph",
     "name": "Sudograph",
+    "display": "Normal",
     "website": "https://i67uk-hiaaa-aaaae-qaaka-cai.raw.ic0.app/",
     "github": "https://github.com/sudograph/sudograph",
     "tags": [
@@ -1133,6 +1159,7 @@
   {
     "id": "scinet",
     "name": "SCINET",
+    "display": "Normal",
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "submittableId": 33285268,
@@ -1148,6 +1175,7 @@
   {
     "id": "factland",
     "name": "Factland DAO",
+    "display": "Normal",
     "website": "https://factland.org",
     "twitter": "https://twitter.com/factlanddao",
     "github": "https://github.com/Factland",
@@ -1176,6 +1204,7 @@
   {
     "id": "ember-cli-dfinity",
     "name": "ember-cli-dfinity",
+    "display": "Normal",
     "website": "https://vkx2r-zaaaa-aaaap-aa55a-cai.icp0.io/",
     "github": "https://github.com/onehilltech/ember-cli-dfinity",
     "tags": [
@@ -1188,6 +1217,7 @@
   {
     "id": "kybra",
     "name": "Kybra",
+    "display": "Normal",
     "website": "https://github.com/demergent-labs/kybra",
     "tags": [
       "Tools / Infrastructure"
@@ -1204,6 +1234,7 @@
     "name": "ICPipeline",
     "display": "Normal",
     "website": "https://www.icpipeline.com",
+    "twitter": "https://x.com/icpipeline",
     "github": "https://github.com/icpipeline-framework",
     "tags": [
       "Tools / Infrastructure"
@@ -1215,6 +1246,7 @@
   {
     "id": "icme",
     "name": "ICME",
+    "display": "Normal",
     "website": "https://sygsn-caaaa-aaaaf-qaahq-cai.raw.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
@@ -1230,6 +1262,7 @@
   {
     "id": "iknows",
     "name": "iKnows",
+    "display": "Normal",
     "website": "https://ffxwx-3yaaa-aaaah-qajua-cai.ic0.app",
     "twitter": "https://twitter.com/iKnowsDAO",
     "github": "https://github.com/iKnowsDAO/rights-dao",
@@ -1245,6 +1278,7 @@
   {
     "id": "metamob",
     "name": "Metamob",
+    "display": "Normal",
     "website": "https://site.metamob.app/",
     "twitter": "https://twitter.com/metamob_app",
     "github": "https://github.com/av1ctor/metamob",
@@ -1262,7 +1296,9 @@
   {
     "id": "icpexplorer",
     "name": "ICP Explorer",
+    "display": "Normal",
     "website": "https://www.icpexplorer.org/#/datacenters",
+    "twitter": "https://x.com/icpexplorer",
     "tags": [
       "Tools / Infrastructure",
       "Analytics"
@@ -1276,6 +1312,7 @@
   {
     "id": "bitshop",
     "name": "Bitshop",
+    "display": "Normal",
     "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
     "twitter": "https://twitter.com/bitshopicp",
     "github": "https://github.com/lukasvozda/bitshop",
@@ -1306,6 +1343,7 @@
   {
     "id": "canlista",
     "name": "Canlista",
+    "display": "Normal",
     "website": "https://k7gat-daaaa-aaaae-qaahq-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
@@ -1320,6 +1358,7 @@
   {
     "id": "nnscat",
     "name": "NNSCat",
+    "display": "Normal",
     "website": "https://iz6s6-kqaaa-aaaae-qaakq-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
@@ -1333,7 +1372,9 @@
   {
     "id": "icdevs.org",
     "name": "ICDevs.org ",
+    "display": "Normal",
     "website": "https://icdevs.org",
+    "twitter": "https://x.com/ICDevs_org",
     "github": "https://github.com/icdevs/Icdevs_fleeksite",
     "submittableId": 33212854,
     "tags": [
@@ -1387,6 +1428,7 @@
   {
     "id": "aviatelabs",
     "name": "Aviate Labs",
+    "display": "Normal",
     "website": "https://www.aviatelabs.co/",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
     "submittableId": 25140378,
@@ -1401,6 +1443,7 @@
   {
     "id": "goagent",
     "name": "Go Agent ",
+    "display": "Normal",
     "website": "https://github.com/aviate-labs/agent-go",
     "github": "https://github.com/aviate-labs/agent-go",
     "tags": [
@@ -1413,6 +1456,7 @@
   {
     "id": "javaagent",
     "name": "Java Agent ",
+    "display": "Normal",
     "website": "https://github.com/ic4j/ic4j-agent",
     "github": "https://github.com/ic4j/ic4j-agent",
     "tags": [
@@ -1428,6 +1472,7 @@
   {
     "id": "icevent",
     "name": "ICEvent",
+    "display": "Normal",
     "website": "https://icevent.app/",
     "twitter": "https://twitter.com/vansdaynet",
     "submittableId": 22168376,
@@ -1445,6 +1490,7 @@
   {
     "id": "bink",
     "name": "Bink",
+    "display": "Normal",
     "website": "https://b.ink",
     "tags": [
       "SocialFi",
@@ -1469,6 +1515,7 @@
   {
     "id": "icpulse",
     "name": "ICPulse",
+    "display": "Normal",
     "website": "https://icpulse.io/",
     "twitter": "https://twitter.com/CrossChain_Labs/status/1626495037734285312?s=20",
     "github": "https://github.com/CrossChainLabs-ICP",
@@ -1518,6 +1565,7 @@
   {
     "id": "polycrypt",
     "name": "PolyCrypt",
+    "display": "Normal",
     "website": "https://perun.network",
     "twitter": "https://twitter.com/PolyCrypt_",
     "github": "https://github.com/perun-network/perun-icp-canister",
@@ -1531,6 +1579,7 @@
   {
     "id": "codebase",
     "name": "CODEBASE",
+    "display": "Normal",
     "website": "https://codebase.org/",
     "twitter": "https://twitter.com/CodebaseLabs",
     "github": "https://github.com/paulyoung/icfs",
@@ -1543,6 +1592,7 @@
   {
     "id": "usergeek",
     "name": "Usergeek",
+    "display": "Normal",
     "website": "https://usergeek.app/",
     "twitter": "https://twitter.com/theUSERGEEK",
     "github": "https://github.com/usergeek/usergeek-ic-js",
@@ -1557,6 +1607,7 @@
   {
     "id": "configeek",
     "name": "Configeek",
+    "display": "Normal",
     "website": "https://configeek.app/",
     "twitter": "https://twitter.com/theUSERGEEK",
     "github": "https://github.com/usergeek/configeek-ic-js",
@@ -1583,6 +1634,7 @@
   {
     "id": "thewall",
     "name": "The Wall",
+    "display": "Normal",
     "website": "https://rivyl-6aaaa-aaaaf-qaapq-cai.raw.ic0.app/",
     "github": "https://github.com/kristoferlund/ic-wall",
     "tags": [
@@ -1649,6 +1701,7 @@
   {
     "id": "dank",
     "name": "Dank",
+    "display": "Normal",
     "website": "https://dank.ooo/",
     "twitter": "https://twitter.com/psychedelicDAO",
     "tags": [
@@ -1677,6 +1730,7 @@
   {
     "id": "dbox",
     "name": "Dbox",
+    "display": "Normal",
     "website": "https://dbox.foundation/",
     "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
     "submittableId": 22737412,
@@ -1690,6 +1744,7 @@
   {
     "id": "icpcoins",
     "name": "ICP Coins",
+    "display": "Normal",
     "website": "https://icpcoins.com",
     "twitter": "https://x.com/ICPCoins",
     "github": "https://github.com/vvv-interactive/icpcoins",
@@ -1722,6 +1777,7 @@
   {
     "id": "dgdg",
     "name": "DGDG",
+    "display": "Normal",
     "website": "https://www.dgastonia.com/nfts/collections/",
     "tags": [
       "NFT",
@@ -1735,6 +1791,7 @@
   {
     "id": "windowsic",
     "name": "Windows IC",
+    "display": "Normal",
     "website": "https://3ix2y-naaaa-aaaad-qap6a-cai.raw.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
@@ -1761,6 +1818,7 @@
   {
     "id": "welcomeintothemetaverse",
     "name": "Welcome Into the Metaverse",
+    "display": "Normal",
     "website": "https://lc7ip-3iaaa-aaaah-aafva-cai.ic0.app/",
     "tags": [
       "Gaming"
@@ -1774,6 +1832,7 @@
   {
     "id": "reversi",
     "name": "Reversi",
+    "display": "Normal",
     "website": "https://ivg37-qiaaa-aaaab-aaaga-cai.ic0.app/#!/play",
     "github": "https://github.com/ninegua/reversi",
     "tags": [
@@ -1788,6 +1847,7 @@
   {
     "id": "gooble",
     "name": "Goblin Studio",
+    "display": "Normal",
     "website": "https://gooble.app/",
     "twitter": "https://twitter.com/vger_ic",
     "tags": [
@@ -1806,6 +1866,7 @@
   {
     "id": "football-god",
     "name": "FootballGod",
+    "display": "Normal",
     "website": "https://43loz-3yaaa-aaaal-qbxrq-cai.ic0.app/",
     "twitter": "https://twitter.com/beadle1989",
     "tags": [
@@ -1821,6 +1882,7 @@
   {
     "id": "oneblock",
     "name": "One Block",
+    "display": "Normal",
     "website": "https://oneblock.page/",
     "github": "https://github.com/ICEvent/OneBlock",
     "tags": [
@@ -1833,6 +1895,7 @@
   {
     "id": "blocklist",
     "name": "Block List",
+    "display": "Normal",
     "website": "https://vfclb-tyaaa-aaaap-aawna-cai.ic0.app/",
     "github": "https://github.com/ICEvent/Escrow",
     "tags": [
@@ -1862,6 +1925,7 @@
   {
     "id": "metaforo-icp",
     "name": "Metaforo ICP deployment",
+    "display": "Normal",
     "website": "https://can1.metaforo.io/",
     "twitter": "https://twitter.com/realmetaforo",
     "github": "https://github.com/metaforo/metaforo-icp",
@@ -1982,6 +2046,8 @@
     "name": "NFT Studio",
     "display": "Normal",
     "website": "https://7xw5z-uqaaa-aaaad-qaqcq-cai.raw.ic0.app/",
+    "twitter": "https://x.com/NFTStudioPoland",
+    "github": "https://github.com/NFTSTUDIOGDANSK",
     "tags": [
       "Metaverse",
       "NFT",
@@ -2008,7 +2074,10 @@
   {
     "id": "fleek",
     "name": "Fleek",
+    "display": "Normal",
     "website": "https://fleek.co/",
+    "twitter": "https://x.com/fleek",
+    "github": "https://github.com/fleek-platform",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2023,6 +2092,7 @@
   {
     "id": "ichub",
     "name": "IC HUB",
+    "display": "Normal",
     "website": "https://md7ke-jyaaa-aaaak-qbrya-cai.ic0.app/",
     "tags": [
       "SocialFi",
@@ -2041,6 +2111,7 @@
   {
     "id": "hashkeydid",
     "name": "HashKey DID",
+    "display": "Normal",
     "website": "http://icp.hashkey.id",
     "twitter": "https://twitter.com/HashKeyDID",
     "github": "https://github.com/hashkeydid/hashkeydid-icp",
@@ -2056,6 +2127,7 @@
   {
     "id": "nnsdao",
     "name": "NnsDAO Protocol",
+    "display": "Normal",
     "website": "https://www.nnsdao.org/",
     "twitter": "https://twitter.com/nnsdaos",
     "github": "https://github.com/NnsDao",
@@ -2091,6 +2163,7 @@
   {
     "id": "motokopilot",
     "name": "MotokoPilot",
+    "display": "Normal",
     "website": "https://d7dm6-sqaaa-aaaag-qcgma-cai.icp0.io/",
     "twitter": "https://twitter.com/icpcsnft",
     "github": "https://github.com/icpcs/motokopilot-vscode",
@@ -2110,6 +2183,7 @@
   {
     "id": "agorapp",
     "name": "AgorApp",
+    "display": "Normal",
     "website": "https://agorapp.dev/",
     "twitter": "https://twitter.com/agorappDAO",
     "github": "https://github.com/agorapp-dao/",
@@ -2148,6 +2222,7 @@
   {
     "id": "pluto",
     "name": "Pluto",
+    "display": "Normal",
     "website": "https://t5mcf-cqaaa-aaaag-qcjna-cai.raw.icp0.io/",
     "github": "https://github.com/pu0238/pluto",
     "submittableId": 36517192,
@@ -2161,6 +2236,7 @@
   {
     "id": "motoko-book",
     "name": "The Motoko Programming Language Book",
+    "display": "Normal",
     "github": "https://github.com/Web3NL/motoko-book",
     "youtube": "https://www.youtube.com/watch?v=FktYj4UgBKU",
     "submittableId": 34608505,
@@ -2175,6 +2251,7 @@
   {
     "id": "infinitinote",
     "name": "InfinitiNote",
+    "display": "Normal",
     "website": "https://jqajc-hiaaa-aaaak-qck5a-cai.icp0.io/#/",
     "github": "https://github.com/hafezrouzati/infinitinote",
     "youtube": "https://www.youtube.com/watch?v=XTDznhHdeOE",
@@ -2254,6 +2331,7 @@
   {
     "id": "Faceless",
     "name": "Faceless Project",
+    "display": "Normal",
     "website": "https://faceless.live/",
     "twitter": "https://twitter.com/Faceless_Proj",
     "github": "https://github.com/HeisenbergLin22/faceless_delivery_May",
@@ -2536,6 +2614,7 @@
   {
     "id": "vault-k8s",
     "name": "Vault k8s Canister",
+    "display": "Normal",
     "website": "https://github.com/Zondax/vault-k8s-canister",
     "twitter": "https://twitter.com/_zondax_",
     "github": "https://github.com/Zondax/vault-k8s-canister",
@@ -2555,6 +2634,7 @@
   {
     "id": "ubin",
     "name": "ubin",
+    "display": "Normal",
     "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
     "tags": [
       "Tools / Infrastructure"
@@ -2569,6 +2649,7 @@
   {
     "id": "Outank NFT Rarity",
     "name": "Outrank",
+    "display": "Normal",
     "website": "https://www.outrank.io",
     "twitter": "https://twitter.com/OutRankNFT",
     "github": "https://github.com/OutRankNFT",
@@ -2586,6 +2667,7 @@
   {
     "id": "ic-mind-body-canister",
     "name": "user controlled mind and body canister",
+    "display": "Normal",
     "website": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "github": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "submittableId": 44190088,
@@ -2599,6 +2681,7 @@
   {
     "id": "icgpt",
     "name": "icgpt",
+    "display": "Normal",
     "website": "https://icgpt.icpp.world/",
     "twitter": "https://twitter.com/icpp_pro",
     "github": "https://github.com/icppWorld/icgpt",
@@ -2743,6 +2826,7 @@
   {
     "id": "IcpKit",
     "name": "IcpKit",
+    "display": "Normal",
     "website": "https://github.com/kosta-bity/IcpKit",
     "twitter": "https://twitter.com/kosta__g/status/1752691646150455584",
     "github": "https://github.com/kosta-bity/IcpKit",
@@ -2775,6 +2859,7 @@
   {
     "id": "relinkdxyz",
     "name": "{r}elinkd",
+    "display": "Normal",
     "website": "https://relinkd.xyz/",
     "twitter": "https://twitter.com/relinkdxyz",
     "github": "https://github.com/relinkd",
@@ -2791,6 +2876,7 @@
   {
     "id": "ic_siwe",
     "name": "ic_siwe (Sign-In with Ethereum)",
+    "display": "Normal",
     "website": "https://github.com/kristoferlund/ic-siwe",
     "github": "https://github.com/kristoferlund/ic-siwe",
     "submittableId": 44265779,
@@ -3000,6 +3086,7 @@
     "name": "ICGhost",
     "display": "Normal",
     "website": "https://yadjb-mqaaa-aaaan-qaqlq-cai.icp0.io/",
+    "twitter": "https://x.com/ghost_icp",
     "tags": [
       "DeFi",
       "DAO"
@@ -3315,6 +3402,7 @@
     "name": "Onicai",
     "display": "Normal",
     "website": "https://onicai.com/",
+    "twitter": "https://x.com/onicaiHQ",
     "github": "https://github.com/onicai",
     "tags": [
       "AI"
@@ -3407,6 +3495,7 @@
     "name": "CanDB",
     "display": "Normal",
     "website": "https://ykgs2-ziaaa-aaaak-qcfya-cai.icp0.io/",
+    "twitter": "https://x.com/can_scale?lang=en",
     "github": "https://github.com/ORIGYN-SA/CanDB",
     "tags": [
       "Tools / Infrastructure"
@@ -4085,6 +4174,7 @@
   {
     "id": "zon",
     "name": "Zon Social Media",
+    "display": "Normal",
     "website": "https://zoncircle.com",
     "twitter": "https://x.com/ZonDirectory",
     "github": "https://github.com/vporton/zondirectory2",
@@ -4099,6 +4189,7 @@
   {
     "id": "neuronpool",
     "name": "NeuronPool",
+    "display": "Normal",
     "website": "https://neuronpool.com/",
     "twitter": "https://x.com/NeuronPool",
     "github": "https://github.com/neuronpool-technologies",
@@ -4117,6 +4208,7 @@
   {
     "id": "fort-major-dao",
     "name": "Fort Major DAO",
+    "display": "Normal",
     "website": "https://fort-major.org",
     "twitter": "https://x.com/msqwallet",
     "github": "https://github.com/fort-major/dao",
@@ -4309,6 +4401,7 @@
     "name": "Cipher AI Vault",
     "display": "Normal",
     "website": "https://qehbq-rqaaa-aaaan-ql2iq-cai.icp0.io/",
+    "twitter": "https://x.com/cipherproxyllc",
     "github": "https://github.com/supaIC/Cipher-AI-Vault",
     "tags": [
       "AI"
@@ -4352,7 +4445,9 @@
     "name": "Civic Pass",
     "display": "Normal",
     "website": "https://www.civic.com",
+    "twitter": "https://x.com/civickey",
     "github": "https://github.com/civicteam/civic-icp-canister",
+    "youtube": "https://www.youtube.com/@CivicTechnologies",
     "submittableId": 45489206,
     "tags": [
       "Tools / Infrastructure"
@@ -4526,6 +4621,7 @@
     "name": "NeverEndsArt",
     "display": "Normal",
     "website": "https://mx6ql-zyaaa-aaaak-akxpa-cai.icp0.io/",
+    "twitter": "https://x.com/neverendsart_ai",
     "tags": [
       "AI"
     ],
@@ -4728,6 +4824,7 @@
     "name": "Pickpump",
     "display": "Normal",
     "website": "https://pickpump.xyz/",
+    "twitter": "https://x.com/pickpump_xyz",
     "github": "https://github.com/elizaOS/eliza/tree/develop/packages/plugin-icp",
     "tags": [
       "AI",
@@ -4862,6 +4959,8 @@
     "name": "VNX Stablecoins",
     "display": "Normal",
     "website": "https://vnx.li/",
+    "twitter": "https://x.com/vnx_platform",
+    "youtube": "https://www.youtube.com/channel/UCEkpvZaOfRkFDP5oV6L2BcA",
     "tags": [
       "DeFi"
     ],
@@ -5288,6 +5387,7 @@
   {
     "id": "friescoin",
     "name": "FRYS",
+    "display": "Normal",
     "website": "https://friescoin.xyz/",
     "twitter": "https://x.com/FriesCoin",
     "tags": [
@@ -5351,5 +5451,35 @@
     ],
     "description": "Utu is a Bitcoin <> Starknet runes bridge permitting traders to profit from the best onchain UX for your favorite Bitcoin assets.",
     "usesInternetIdentity": false
+  },
+  {
+    "id": "ghost-the-zk-notary",
+    "name": "Ghost - The ZK Notary",
+    "display": "Normal",
+    "website": "https://ghost.zkaas.xyz",
+    "github": "https://github.com/gabrielrondon/ghost_dev",
+    "submittableId": 49689335,
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "description": "Ghost: A privacy-focused tool for the Internet Computer that creates Zero-Knowledge Proofs of token ownership with AI-enhanced explanations.",
+    "usesInternetIdentity": true
+  },
+  {
+    "id": "Mercx",
+    "name": "MERCX",
+    "display": "Normal",
+    "website": "https://xpm3z-7qaaa-aaaan-qzvlq-cai.icp0.io/",
+    "twitter": "https://x.com/mercx__?s=21",
+    "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
+    "tags": [
+      "DeFi",
+      "Wallet",
+      "Chain Fusion",
+      "Analytics"
+    ],
+    "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
+    "usesInternetIdentity": true
   }
 ]

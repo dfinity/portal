@@ -1,0 +1,44 @@
+name: Update Showcase
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    # Allows manual triggering
+
+jobs:
+  update-showcase:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install dependencies
+        run: |
+          npm install node-fetch@2 dotenv
+
+      - name: Update showcase.json
+        run: node update-showcase.js
+        env:
+          AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet showcase.json || echo "::set-output name=changed::true"
+
+      - name: Commit and push if showcase.json has changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add showcase.json
+          git commit -m "Update showcase.json from Airtable data [automated]"
+          git push
