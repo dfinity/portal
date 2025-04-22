@@ -7,7 +7,7 @@
       "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
       "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
       "proposal": "",
-      "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/description",
+      "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
       "eta": "Q2 2025",
       "status": "in_progress",
       "is_community": false,

@@ -533,7 +533,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/storage/cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/integrations/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/references/t-sigs-how-it-works
-  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/vetkeys/description
+  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/references/vetkeys-overview
   /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/encryption/send_file_to_eth
   /docs/current/developer-docs/local-quickstart /docs/building-apps/getting-started/install
@@ -715,7 +715,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/send_file_to_eth
-  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/vetkeys/description
+  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview /docs/building-apps/essentials/canisters

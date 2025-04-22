@@ -358,7 +358,7 @@ build: [
           type: "category",
           label: "Verifiable encryption",
           items: [
-            "building-apps/network-features/vetkeys/description",
+            "building-apps/network-features/vetkeys/introduction",
             "building-apps/network-features/encryption/send_file_to_eth",
           ],
         },
