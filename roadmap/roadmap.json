@@ -4054,7 +4054,7 @@
             "overview": "The PocketIC is a canister testing system that allows to run a \"pocket version\" of ICP, including multiple subnets. This is the preferred way of testing dapps.",
             "forum": "https://forum.dfinity.org/t/pocketic-testing-canisters-in-python/22490",
             "proposal": "",
-            "docs": "https://internetcomputer.org/docs/building-apps/advanced/test/pocket-ic",
+            "docs": "https://internetcomputer.org/docs/building-apps/test/pocket-ic",
             "eta": "Dec 2023",
             "status": "deployed",
             "is_community": false,
