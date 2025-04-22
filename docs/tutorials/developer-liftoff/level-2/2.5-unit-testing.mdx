@@ -111,7 +111,11 @@ Want to learn more about running large, long-running batches of tests? Take a lo
 
 ## Tests using PocketIC
 
-PocketIC provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP <GlossaryTooltip>replica</GlossaryTooltip>. An example test with PocketIC might look like:
+PocketIC provides local canister testing using Rust and Python libraries. `dfx start` uses PocketIC to run the local development environment by default.
+
+Using PocketIC, developers can simulate the mainnet in their local environment to test their projects against real-world scenarios locally.
+
+An example test with PocketIC might look like:
 
 ```python
 from pocket_ic import PocketIC
@@ -125,7 +129,7 @@ response = pic.update_call(canister_id, method="greeting", ...)
 assert(response == 'Hello, PocketIC!')
 ```
 
-[Learn more about PocketIC](https://github.com/dfinity/pocketic-py#readme).
+[Learn more about PocketIC](/docs/building-apps/test/pocket-ic).
 
 ## Tests using Light Replica
 
@@ -213,7 +217,7 @@ This agent file does the following:
 :::caution
 This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since it poses severe security concerns for the dapp making the call.
 
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local development environment, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
 
 It is recommended to put this behind a condition so that it only runs locally.
 :::
