@@ -2,6 +2,7 @@ import {
   getBlockCount,
   getBlockRate,
   getEthEquivTxRateMultiplier,
+  getCyclesBurnRate,
   getTransactionData,
   getTransactionRateV3,
   getckBTCTotalSupply,
@@ -141,7 +142,7 @@ const BlockCounter = () => {
           ? formatNumber(Math.floor(state.displayCount))
           : "\u00A0"}
       </div>
-      <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
+      <figcaption className="tw-paragraph-sm text-current opacity-50 flex items-center gap-1">
         Blocks processed
       </figcaption>
     </figure>
@@ -190,7 +191,78 @@ const Info: React.FC<{ children: ReactNode }> = ({ children }) => {
     </span>
   );
 };
+let lastCycleBurnRate = 0;
+function updateCycleBurnRateWithJitter(): Promise<number> {
+  return getCyclesBurnRate().then((rate) => {
+    if (lastCycleBurnRate === rate) {
+      return Math.max(0, rate + Math.floor(Math.random() * 10000 - 5000));
+    }
+    lastCycleBurnRate = rate;
+    return rate;
+  });
+}
+export const CycleBurnRate = () => {
+  const cycleBurnRateQuery = useQuery(
+    "cyclesBurnRateMultiplier",
+    getCyclesBurnRate,
+    {
+      // Set a longer refetch interval (5 seconds)
+      refetchInterval: 5000,
+      staleTime: 4000,
+    }
+  );
 
+  const updateBurnRate = useQuery(
+    ["getUpdateCycleBurnRate"],
+    () => updateCycleBurnRateWithJitter().then((rate) => rate),
+    {
+      // Reduce refetch frequency
+      refetchInterval: 3000,
+      enabled: !!cycleBurnRateQuery.isSuccess,
+    }
+  );
+
+  // Custom format function to ensure integers only
+  const formatIntegerWithApostrophes = (num: number) => {
+    return Math.floor(num)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+  };
+
+  return (
+    <motion.div
+      className="rounded-xl text-current py-3 px-6"
+      style={{ fontSize: "24px", fontWeight: 500 }}
+      variants={transitions.fadeIn}
+    >
+      <figure className="m-0 gap-3 block">
+        <div className="inline-grid relative left-1 static inline">
+          {updateBurnRate.isFetched && updateBurnRate.isSuccess ? (
+            <>
+              <SpringCounter
+                target={updateBurnRate.data}
+                initialTarget={updateBurnRate.data}
+                initialValue={updateBurnRate.data}
+                format={formatIntegerWithApostrophes}
+                springConfig={[3, 1, 1]}
+                className="text-left col-start-1 row-start-1"
+              ></SpringCounter>
+              <span className="md:hidden col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
+                {getFigureSpacer(updateBurnRate.data)}
+              </span>
+            </>
+          ) : (
+            <>&nbsp;</>
+          )}
+        </div>
+
+        <figcaption className="tw-paragraph-sm tw-paragraph text-current opacity-50 flex items-center gap-1">
+          Cycles burned/s
+        </figcaption>
+      </figure>
+    </motion.div>
+  );
+};
 export const EthEquivalentTxRate = () => {
   const multiplierQuery = useQuery(
     "ethEquivMultiplier",
@@ -221,7 +293,7 @@ export const EthEquivalentTxRate = () => {
                 target={updateTxRate.data}
                 initialTarget={updateTxRate.data}
                 initialValue={updateTxRate.data}
-                format={formatNumber}
+                format={(n) => formatNumber(Math.floor(n))}
                 springConfig={[3, 1, 1]}
                 className="text-left col-start-1 row-start-1"
               ></SpringCounter>
@@ -235,7 +307,7 @@ export const EthEquivalentTxRate = () => {
         </div>
 
         <figcaption className="tw-paragraph-sm tw-paragraph text-current opacity-50 flex items-center gap-1">
-          ETH eq. TX/s
+          Ethereum TX/s (equiv.)
         </figcaption>
       </figure>
     </motion.div>
