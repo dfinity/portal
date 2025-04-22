@@ -363,7 +363,7 @@ build: [
         },
         {
           type: "category",
-          label: "Verifiable encryption",
+          label: "Verifiable encryption (vetKeys)",
           items: [
             "building-apps/network-features/encryption/vetkeys",
             "building-apps/network-features/encryption/using-vetkeys",
