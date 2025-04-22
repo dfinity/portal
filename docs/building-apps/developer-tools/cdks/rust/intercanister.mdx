@@ -37,7 +37,7 @@ The finished code for the project is already available in `src/caller`. You can 
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
 ```
 
-Now, deploy this code to the local replica. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
+Now, deploy this code to the local development environment. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
 
 ```bash
 dfx deploy caller
@@ -187,7 +187,7 @@ Below is a threshold signature example that shows how to attach cycles to a call
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
 ```
 
-Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local replica.
+Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local development environment.
 
 ```bash
 dfx canister call caller sign_message '("Some text to be signed")'
