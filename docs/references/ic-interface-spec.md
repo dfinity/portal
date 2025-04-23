@@ -2236,7 +2236,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `freezing_threshold` (`nat`)
 
-    Must be a number between 604800 (or equivalent of 1 week in seconds) and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
 
     A canister is considered frozen whenever the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass, given the canister's current size and the IC's current cost for storage.
 

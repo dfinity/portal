@@ -3,7 +3,7 @@
 	url = https://github.com/dfinity/sdk.git
 [submodule "submodules/motoko"]
 	path = submodules/motoko
-	url = https://github.com/dfinity/motoko.git
+	url = https://github.com/dfinity/motoko.git#docs-restructure
 [submodule "submodules/internetidentity"]
 	path = submodules/internetidentity
 	url = https://github.com/dfinity/internet-identity.git

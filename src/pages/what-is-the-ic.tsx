@@ -170,7 +170,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/building-apps/essentials/cost-estimations-and-examples"
+                  href="/docs/building-apps/essentials/gas-cost"
                 >
                   <DocsIcon /> Learn more about ICP costs
                 </Link>
