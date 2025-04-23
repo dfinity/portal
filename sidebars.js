@@ -178,7 +178,7 @@ build: [
     },
     {
       type: "category",
-      label: "Interact with canisters",
+      label: "Interacting with canisters",
       items: [
         {
           type: "category",
@@ -207,6 +207,17 @@ build: [
             "building-apps/interact-with-canisters/agents/rust-agent",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Testing canisters",
+      link: {
+        type: "doc",
+        id: "building-apps/test/overview",
+      },
+      items: [
+        "building-apps/test/pocket-ic"
       ],
     },
     {
@@ -252,17 +263,6 @@ build: [
       label: "Advanced development",
       items:
       [
-         {
-          type: "category",
-          label: "Testing canisters",
-          link: {
-            type: "doc",
-            id: "building-apps/advanced/test/overview",
-          },
-          items: [
-            "building-apps/advanced/test/pocket-ic"
-          ],
-        },
         "building-apps/advanced/using-third-party-canisters",
         "building-apps/advanced/benchmarking",
         {
