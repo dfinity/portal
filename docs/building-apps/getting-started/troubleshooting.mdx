@@ -16,7 +16,7 @@ This section provides information to help you troubleshoot and resolve or work a
 
 - Using the [IC SDK](/docs/building-apps/getting-started/install).
 
-- Running the local replica.
+- Running the local development environment.
 
 ## Migrating an existing project
 
@@ -26,11 +26,11 @@ In many cases, however, you can continue to work with projects from a previous r
 
 For example, if you have a project that was created with IC SDK version `0.8.0`, open the `dfx.json` file in a text editor and change the `dfx` setting to the latest version or remove the section entirely.
 
-## Restarting the local replica
+## Restarting the local development environment
 
-In some cases, starting the local replica fails due to stale state. If you encounter issues when running `dfx start` to start the local replica:
+In some cases, starting the local development environment fails due to stale state. If you encounter issues when running `dfx start` to start the local development environment:
 
-- #### Step 1: Interrupt the local replica process through Ctrl+C if necessary, then stop the local replica:
+- #### Step 1: Interrupt the local development environment process through Ctrl+C if necessary, then stop the local development environment:
 
 ```bash
 dfx stop
@@ -42,13 +42,13 @@ dfx stop
 dfx killall
 ```
 
-- #### Step 3: Restart the local replica in a clean state by running the following command:
+- #### Step 3: Restart the local development environment in a clean state by running the following command:
 
 ```bash
 dfx start --clean --background
 ```
 
-The `--clean` option removes checkpoints and stale state information from your project’s cache so that you can restart the local replica and web server processes in a clean state.
+The `--clean` option removes checkpoints and stale state information from your project’s cache so that you can restart the local development environment and web server processes in a clean state.
 
 :::danger
 Resetting the state information by running `dfx start --clean` removes your existing canisters, and new canister IDs may differ from old ones.
@@ -102,7 +102,7 @@ Fixing memory leaks is an ongoing process. If you encounter any error messages r
 
 - #### Step 3: Reinstall the IC SDK
 
-- #### Step 4: Run `dfx start` to restart replica processes.
+- #### Step 4: Run `dfx start` to restart the local development environment.
 
 Alternatively, you can remove the `.cache/dfinity` directory and reinstall the latest IC SDK `dfx` binary:
 
