@@ -31,7 +31,7 @@ Query calls are:
 
 To make a query call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--query` flag:
 
-- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
 - `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
 
