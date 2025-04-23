@@ -1,0 +1,1 @@
+../submodules/motoko/doc/md/7-motoko-style-guide.md
