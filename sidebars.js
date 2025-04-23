@@ -63,7 +63,7 @@ build: [
             {
               type: "doc",
               label: "Motoko",
-              id: "motoko",
+              id: "motoko/home",
             },
             {
               type: "category",
