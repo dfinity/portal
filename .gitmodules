@@ -17,3 +17,5 @@
 [submodule "submodules/response-verfication"]
 	path = submodules/response-verfication
 	url = https://github.com/dfinity/response-verification
+[submodule "motoko"]
+	branch = docs-restructure
