@@ -83,7 +83,7 @@ const redirects = `
 
   ## Motoko
   /docs/current/developer-docs/backend/motoko/infrastructure /docs/motoko/home
-  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/fundamentals/basic-syntax/defining_an_actor
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/fundamentals/actors-async
   /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/install
   /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/home
   /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/install
@@ -98,7 +98,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/define-an-actor /docs/motoko/fundamentals/actors-async
   /docs/current/developer-docs/backend/motoko/multiple-actors /docs/motoko/fundamentals/actors-async
   /docs/current/developer-docs/backend/motoko/access-control /docs/motoko/icp-features/caller-identification
-  /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/icp-features/candid-serialization-ui
+  /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/icp-features/candid-serialization
   /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/motoko/home
   /docs/current/developer-docs/backend/motoko/sample-apps /samples
   /docs/current/developer-docs/backend/motoko/mo-doc /docs/motoko/motoko-tooling/mo-doc
@@ -126,7 +126,7 @@ const redirects = `
   /docs/rust/main/motoko-packages/databases /docs/home
   /docs/current/motoko/main/motoko-introduction /docs/motoko/home
   /docs/current/motoko/main/motoko /docs/motoko/home
-  /docs/current/motoko/main/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining_an_actor
+  /docs/current/motoko/main/basic-concepts /docs/motoko/fundamentals/actors-async
   /docs/current/motoko/main/overview /docs/motoko/home
   /docs/current/motoko/main/language-manual /docs/motoko/language-manual
   /docs/current/motoko/main/style /docs/motoko/motoko-style-guide
@@ -221,8 +221,7 @@ const redirects = `
   /docs/motoko/main/base/random /docs/motoko/base/Random
   /docs/motoko/main/base/RBTree /docs/motoko/base/RBTree
   /docs/motoko/main/base/Region /docs/motoko/base/Region
-  /docs/motoko/main/base/Result /docs/motoko/base/Result
-  /docs/motoko/main/base/result /docs/motoko/base/Result
+
   /docs/motoko/main/base/Stack /docs/motoko/base/Stack
   /docs/motoko/main/base/Text /docs/motoko/base/Text
   /docs/motoko/main/base/text /docs/motoko/base/Text
