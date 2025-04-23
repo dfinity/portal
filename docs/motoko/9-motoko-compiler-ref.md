@@ -1,1 +1,1 @@
-../submodules/motoko/doc/md/9-motoko-compiler-ref.md
+../../submodules/motoko/doc/md/9-motoko-compiler-ref.md
