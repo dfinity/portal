@@ -140,11 +140,11 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Learn about programming languages on the ICP."
-              href="/docs/building-apps/developing-canisters/what-are-canisters"
+              href="/docs/building-apps/essentials/canisters"
             />
             <CardWithDescription
               title="Community Conversation"
-              description="Learn about performance and scalabilty of the ICP."
+              description="Learn about performance and scalability of the ICP."
               href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription
