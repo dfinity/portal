@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, bitcoin, btc, workflow, developer workflow]
+keywords: [advanced, bitcoin, btc, workflow, developer workflow, btc workflow, btc dev, make btc dapp, btc dapps, develop btc, btc smart contract]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -7,15 +7,13 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# ICP BTC developer workflow
+# Developer workflow
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
-Developers on ICP can create canisters and dapps that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. To use this integration, developers must implement a specific workflow to prepare transactions and submit them to the Bitcoin network. Developers can also integrate and interact with chain-key Bitcoin (ckBTC) from within a canister, which uses the ICRC-1 token implementation.
+Developers on ICP can create dapps that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. To use this integration, developers must implement a specific workflow to prepare transactions and submit them to the Bitcoin network.
 
-## Using the Bitcoin integration
-
-To interact with the Bitcoin testnet or mainnet networks, a developer needs to use both the management canister and the Bitcoin integration API to complete the following steps:
+To build Bitcoin dapps, a developer needs to make calls to the ICP system API and the Bitcoin integration API and complete the following steps:
 
 1. [Generate a Bitcoin address](generate-addresses.mdx): To receive BTC, your canister must generate a Bitcoin address using the `ecdsa_public_key` API endpoint of the [management canister](/docs/references/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions).
 
