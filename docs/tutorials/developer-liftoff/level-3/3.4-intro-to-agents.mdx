@@ -153,7 +153,7 @@ In this code, the constructor first creates an `HTTPAgent` that creates the Java
 :::caution
 This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp making the call. It is recommended to put it behind a condition so that it only runs locally.
 
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local development environment, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
 :::
 
 Now the actor is set up to call all of the defined public methods; in this instance, there is just the `generate` method.

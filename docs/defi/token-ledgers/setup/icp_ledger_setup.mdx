@@ -30,7 +30,7 @@ The ICP ledger canister maintains a traceable history of all transactions, start
 
 Each new transaction is placed into a block, and each block is associated with a monotonically increasing unique index. The entire chain is regularly signed by the network. The signature used to authenticate the chain can be verified by any third party who has access to the root public key of the Internet Computer. Specific transactions can be retrieved by querying the ICP ledger for blocks.
 
-If you are working in a local development environment, i.e., with a local replica instead of the public Internet Computer, you can't access the ICP ledger running on the mainnet. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister or install the NNS locally through dfx. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+If you are working in a local development environment, i.e., with a local development environment instead of the public Internet Computer, you can't access the ICP ledger running on the mainnet. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister or install the NNS locally through dfx. However, this local ledger canister won't have the history and balances of the live ICP ledger.
 
 ## Architecture
 
@@ -196,7 +196,7 @@ You can also pass these init args to the canister [using the command line](/docs
 
 [Learn more about init args](/docs/building-apps/developing-canisters/deploy/).
 
-- #### Step 6: Start a local replica.
+- #### Step 6: Start a local development environment.
 
 ``` sh
 dfx start --clean --background

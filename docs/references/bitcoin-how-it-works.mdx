@@ -61,9 +61,9 @@ The Bitcoin functionality, including threshold signatures, is available in all s
 
 In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](/docs/building-apps/getting-started/install) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA APIs.
 
-In contrast to ICP deployments of the feature, which integrate with Bitcoin testnet and Bitcoin mainnet, respectively, the SDK integrates with a locally running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. The Internet Computer has integrated the IC SDK with `bitcoind` in regtest mode to bring the best Bitcoin development experience to ICP. Both development and automated testing of smart contracts are first done in the local environment with this setup.
+In contrast to ICP deployments of the feature, which integrate with Bitcoin testnet and Bitcoin mainnet, respectively, the SDK integrates with a locally running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
-The Bitcoin adapter of the single replica running the local SDK environment connects to the local `bitcoind` node instead of multiple nodes on the Bitcoin testnet or mainnet. Please look at the output of `dfx start --help` to see the relevant flags for `dfx`.
+The Bitcoin adapter running in the local SDK environment connects to the local `bitcoind` node instead of multiple nodes on the Bitcoin testnet or mainnet. Please look at the output of `dfx start --help` to see the relevant flags for `dfx`.
 
 ### Bitcoin testnet on ICP
 

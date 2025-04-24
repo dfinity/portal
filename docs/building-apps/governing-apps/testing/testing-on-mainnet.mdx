@@ -79,7 +79,7 @@ Activities developers may need to do in running a test flight:
 
 ## Steps to run a test flight
 
-If you would like to deploy the test flight locally before trying the test flight on the mainnet (which requires cycles), first start a local replica:
+If you would like to deploy the test flight locally before trying the test flight on the mainnet (which requires cycles), first start a local development environment:
 
 ```bash
 dfx start --clean
@@ -129,7 +129,7 @@ When running the test flight on the mainnet, pass `--network ic` as an additiona
 
 Register all canisters that are supposed to be managed by the testflight SNS by submitting an SNS proposal via `quill`.
 
-When running the test flight locally, export the environment variable `IC_URL` to point to your local replica instance, e.g.,
+When running the test flight locally, export the environment variable `IC_URL` to point to your local development environment instance, e.g.,
 
 ```bash
 export IC_URL="http://localhost:8080/"
