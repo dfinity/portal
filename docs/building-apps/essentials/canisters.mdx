@@ -10,7 +10,13 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-Canisters are WebAssembly (Wasm) programs that can store persistent data, communicate with users and other canisters, and be managed by entities such as DAOs.
+Smart contracts running on ICP are a powerful evolution of traditional smart contracts called **canisters**. They are computational units that combine both code and data. Canisters can be used for serving web pages to creating a secure messaging app or implementing a decentralized token exchange. They can communicate with users or other canisters and be managed by entities such as DAOs.
+
+<div class="text--center">
+<img src="/img/docs/canister.png" alt="Canister" width="400"/>
+</div>
+
+Canisters have special properties that allow developers to build scalable Web3 services. To better understand these properties, one has to consider canisters from different perspectives to form a complete picture of their capabilities.
 
 There are several ways to think about canisters, such as associating them with the concepts of traditional smart contracts, operating system processes, or WebAssembly module instances. While these associations are accurate, they are incomplete.
 
@@ -45,6 +51,8 @@ Operating system processes cannot directly modify their table of file descriptor
 ### Canisters as WebAssembly module instances
 
 Canisters are implemented as WebAssembly modules. This allows for maximum interoperability, as developers can write canisters in a variety of languages that compile into WebAssembly.
+
+The [WebAssembly standard](https://webassembly.org/) defines only the instructions and the memory of the Wasm virtual machine; how a Wasm program interacts with other programs and users is left up to the host that embeds the virtual machine. ICP as a Wasm host provides a set of functions that Wasm code can use to read the incoming arguments, call the system and other canisters, and return results.
 
 Each canister is a complete WebAssembly instance with its own state and execution stack. Canisters’ memory uses [orthogonal persistence](https://medium.com/dfinity/ic-internals-orthogonal-persistence-9e0c094aac1a), which makes storing canister data transparent for users. The data of the canister’s WebAssembly module is persisted automatically by the system and is present the next time the canister is scheduled for execution. The WebAssembly module itself is stored along with other bits of the canister’s state.
 
