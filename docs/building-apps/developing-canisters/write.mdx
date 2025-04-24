@@ -2,71 +2,81 @@
 keywords: [beginner, getting started, tutorial, hello world, writing code, writing smart contracts, write, smart contracts, write code]
 ---
 
-import TabItem from "@theme/TabItem";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import Tabs from "@theme/Tabs";
 
 # Write
 
 <MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
-ICP supports a wide range of applications and architecture types. They can range from a single canister to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects and everything in between.
+ICP supports a wide range of applications and architecture types, ranging from a single canister to complex, multi-canister projects and everything in between.
+
+ICP accepts and executes canister code in the WebAssembly (Wasm) binary format. Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be installed into a canister.
 
 You can begin writing and structuring your application using one of two primary workflows:
 
-- **Standard workflow**: The developer writes both the frontend and backend code, then deploys both to ICP as canisters.
+- **Standard workflow**: The developer writes an application's code and deploys it to ICP as one or more canisters.
 
-- **Framework-based workflow**: An external framework is used to help facilitate creating and deploying canisters. [Learn more about frameworks](#framework-based-workflow).
+- **Framework-based workflow**: An external framework is used to help facilitate creating and deploying canisters.
 
-### Standard workflow
+## Standard workflow
 
-#### Choosing the programming language for the backend
+### Choosing the programming language for the backend
 
-The backend stores the application’s data and contains the core logic.
-Several languages are supported, such as:
+The backend stores the application’s data and contains the core logic. Several languages are supported, such as:
 
-- **[Motoko](/docs/motoko/main/getting-started/motoko-introduction)**: Supported by [DFINITY](https://github.com/dfinity/motoko). Motoko is production-ready and was specifically designed to onboard developers onto ICP and leverage the actor-based programming model of ICP. It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
+- **[Motoko](/docs/motoko/main/getting-started/motoko-introduction)**: Supported by [DFINITY](https://github.com/dfinity/motoko). Motoko is production-ready and was specifically designed to leverage the actor-based programming model of ICP. It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
 Examples of production canisters that use Motoko include [ICDex](https://github.com/iclighthouse/ICDex) and [CycleOps](https://github.com/CycleOperators/cycles-manager). [Learn more about using Motoko](/docs/motoko/main/getting-started/motoko-introduction).
 
-- **[Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications.
-All system canisters, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icp), and the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration canisters, are written in Rust. This language gives the developer full control over all aspects of the canister, starting from performance to memory management.
-The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code.
-[Learn more about using Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+- **[Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications. All system canisters, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icp), and the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration canisters, are written in Rust. This language gives the developer full control over all aspects of the canister, from performance to memory management. The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code. [Learn more about using Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
 
-- **TypeScript (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle. Azle is in beta. Please check [the Azle website](https://demergent-labs.github.io/azle/) for more information.
+- **TypeScript (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle. It is in beta. Please check [the Azle website](https://demergent-labs.github.io/azle/) for more information.
 
-- **Python (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Kybra. Kybra is in beta. Please check [the Kybra website](https://demergent-labs.github.io/kybra/kybra.html) for more information.
+- **Python (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Kybra. It is in beta. Please check [the Kybra website](https://demergent-labs.github.io/kybra/kybra.html) for more information.
 
 - **[C++](https://docs.icpp.world/)**: Supported through the [C++ CDK](https://docs.icpp.world/).
 
-#### Choosing a web framework for the frontend
+### Choosing a web framework for the frontend
 
-The [HTTP Gateway protocol](/docs/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets such as JS, HTML, and CSS from a canister via HTTP.
-This means that [web assets can be stored fully onchain](/docs/building-apps/frontends/using-an-asset-canister) and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+The [HTTP Gateway protocol](/docs/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets, such as JS, HTML, and CSS, from a canister via HTTP.
+This means that [web assets can be stored fully onchain](/docs/building-apps/frontends/using-an-asset-canister).
 
 [Svelte](https://svelte.dev/), [React](https://react.dev/), and [Vue](https://vuejs.org/) have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks.
 
-Having no frontend at all is also a valid option for canisters that don’t have a UI and are callable only by users or other canisters. [Learn more](/docs/building-apps/frontends/using-an-asset-canister).
+Using a frontend stored off-chain or having no frontend at all are also valid options for applications. [Learn more](/docs/building-apps/frontends/using-an-asset-canister).
 
-#### Using an existing sample project
+## Framework-based workflow
 
-You can also obtain projects from other sources, such as [ICP Ninja](https://icp.ninja) or the [sample repository](https://github.com/dfinity/examples). If you are obtaining a project from a source other than the `dfx new` command, confirm that the project's root directory contains a `dfx.json` file that defines the project's canisters.
+### Juno
+[Juno](https://juno.build/docs/intro) is a community project that is tailored for Web2 developers. It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns. For more details, refer to [the official Juno documentation](https://juno.build/docs/intro).
 
-### Framework-based workflow
+### Bitfinity EVM
 
-#### Juno
-[Juno](https://juno.build/docs/intro) is a community project that is tailored for Web2 developers. It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns. For more details, please follow [the official Juno documentation](https://juno.build/docs/intro).
+[Bitfinity EVM](https://docs.bitfinity.network/) is tailored for Solidity developers. It runs an instance of the Ethereum virtual machine on ICP and enables developers to upload and execute canisters written in Solidity. For more details, refer to [the official Bitfinity documentation](https://docs.bitfinity.network/).
 
-#### Bitfinity EVM
+## Creating projects
 
-[Bitfinity EVM](https://docs.bitfinity.network/) is tailored for Solidity developers. It is a canister that runs an instance of the Ethereum virtual machine and allows developers to upload and execute canisters written in Solidity. For more details, please follow [the official Bitfinity documentation](https://docs.bitfinity.network/).
+### Default project architecture
 
-## Creating a project
+The `backend` canister stores the dapp's functions and core logic.
+
+The `frontend` canister stores the app's frontend assets, including files such as HTML, CSS, JavaScript, React, images, and videos.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+### Using a sample project
+
+You can obtain sample or boilerplate projects from sources such as [ICP Ninja](https://icp.ninja) or the [sample repository](https://github.com/dfinity/examples). Confirm that the project's root directory contains a `dfx.json` file that defines the project's canisters.
+
+ICP Ninja provides several sample project templates that can be opened, edited, and deployed directly from your web browser, while the sample repository provides examples for specific use cases and workflows such as token transfers and the Bitcoin integration.
+
+### Creating a new project with `dfx`
 
 Before writing canister code, you need to create a project by running the command:
 
@@ -77,7 +87,9 @@ cd PROJECT_NAME
 
 Options for the `--type` flag are `motoko`, `rust`, `azle`, and `kybra`. Using [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Azle](https://demergent-labs.github.io/azle//), or [Kybra](https://demergent-labs.github.io/kybra/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
 
-You should be in a directory that contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
+### `dfx.json`
+
+Regardless whether you are using a sample project or have created a new project, your project directory should contain a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
 
 ```json title=dfx.json
 {
@@ -107,767 +119,3 @@ You should be in a directory that contains a file called `dfx.json`. This file i
   "version": 1
 }
 ```
-
-## Default project architecture
-
-The `backend` canister stores the dapp's functions and core logic.
-
-The `frontend` canister stores the app's frontend assets, including files such as HTML, CSS, JavaScript, React, images, and videos.
-
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/app-arch.png")}
-    alt="Application architecture"
-    width="800"
-  />
-</div>
-
-## Writing canister code
-
-This section will focus on writing backend canister code. If you want to explore some examples with application frontends, [view the ICP Ninja projects](https://icp.ninja).
-
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
-
-<input type="checkbox"/> Download and install an IDE or code editor. <a href="https://code.visualstudio.com/">VS Code is recommended.</a>
-
-</TabItem>
-</Tabs>
-
-### Step 1: Open the backend canister source code file in your code editor.
-
-For Motoko projects, this file will be `src/PROJECT_NAME_backend/main.mo`. For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
-
-For Rust projects, this file will be `src/PROJECT_NAME_backend/src/lib.rs`.
-
-For [Azle](https://demergent-labs.github.io/azle/get_started.html) or [Kybra](https://demergent-labs.github.io/kybra/) projects, please refer to their respective documentation for details about their default code files.
-
-If you are using the default template created by `dfx`, you will see the following default "Hello, world!" code:
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
-actor {
-public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
-};
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```rust title="src/PROJECT_NAME_backend/src/lib.rs"
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
-```
-
-</TabItem>
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-[View the Azle documentation](https://demergent-labs.github.io/azle/get_started.html).
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-[View the Kybra documentation](https://demergent-labs.github.io/kybra/).
-
-</AdornedTab>
-</AdornedTabs>
-
-### Step 2: Add randomness.
-
-A key feature of ICP is its ability to generate [onchain randomness](/docs/building-apps/network-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography). In each round of [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) on a [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation), the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
-
-To use randomness in your canister, you need to make a call to the `raw_rand` method of the [management canister](/docs/references/system-canisters/management-canister).
-
-To demonstrate how to use randomness, you will create a simple app that generates a random number.
-
-Remove the existing code in your backend source code file. Then, insert the following:
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
-import Nat8 "mo:base/Nat8";
-import Debug "mo:base/Debug";
-import Blob "mo:base/Blob";
-import Nat "mo:base/Nat";
-// The management canister's principal ID is "aaaaa-aa".
-import IC "ic:aaaaa-aa";
-
-actor {
-  // Create a stable variable to store the current random number.
-  // Stable variables persist across canister upgrades.
-  stable var currentRandomNumber : Nat = 0;
-
-  // Create a function to generate a new random number.
-  // This function calls the raw_rand method of the management canister.
-  // Then it uses the random bytes returned to generate a random number.
-  private func generateNewNumber() : async () {
-      let randomBytes = await IC.raw_rand();
-      if (randomBytes.size() > 0) {
-          // Use the first byte to generate a number between 0 and 255
-          let bytes : [Nat8] = Blob.toArray(randomBytes);
-          currentRandomNumber := Nat8.toNat(bytes[0]);
-          Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
-      };
-  };
-
-  // Use a query call to get current random number.
-  public query func getCurrentNumber() : async Nat {
-      currentRandomNumber
-  };
-}
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```rust title="src/PROJECT_NAME_backend/src/lib.rs"
-use candid::Nat;
-// Import the management canister's raw_rand method
-use ic_cdk::api::management_canister::main::raw_rand;
-use std::time::Duration;
-
-// Define a variable to hold the current random number.
-thread_local! {
-    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
-}
-
-// Define an init function to generate a new random number.
-#[ic_cdk::init]
-fn generate_new_number() {
-  let _ = ic_cdk::spawn(async {
-      let random_bytes = raw_rand().await.unwrap().0;
-      if !random_bytes.is_empty() {
-          CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
-              *n = Nat::from(random_bytes[0]);
-          });
-          // Print the random number
-          ic_cdk::println!(
-              "New random number generated: {}",
-              CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-          );
-      }
-  });
-}
-
-// Define a query function to get the random number.
-#[ic_cdk::query]
-fn get_current_number() -> Nat {
-    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-}
-```
-
-</TabItem>
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-
-
-[Learn more about Azle](https://demergent-labs.github.io/azle/).
-
-</AdornedTab>
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-
-
-[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
-
-</AdornedTab>
-</AdornedTabs>
-
-
-### Step 3: Add a timer.
-
-At this point, the canister code generates a random number and stores it in a variable. You can retrieve that value with a query function. To demonstrate another feature of ICP, let's add a timer that generates a new random number every 5 seconds.
-
-Timers are used to automatically execute actions after a specified interval or delay, enabling canisters to perform autonomous tasks.
-
-Add the following highlighted line to your backend code:
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
-import Nat8 "mo:base/Nat8";
-import Debug "mo:base/Debug";
-import Blob "mo:base/Blob";
-import Nat "mo:base/Nat";
-// The management canister's principal ID is "aaaaa-aa".
-import IC "ic:aaaaa-aa";
-// highlight-start
-import Timer "mo:base/Timer";
-// highlight-end
-
-actor {
-  // Create a stable variable to store the current random number.
-  // Stable variables persist across canister upgrades.
-  stable var currentRandomNumber : Nat = 0;
-
-  // Create a function to generate a new random number.
-  // This function calls the raw_rand method of the management canister.
-  // Then it uses the random bytes returned to generate a random number.
-  private func generateNewNumber() : async () {
-      let randomBytes = await IC.raw_rand();
-      if (randomBytes.size() > 0) {
-          // Use the first byte to generate a number between 0 and 255
-          let bytes : [Nat8] = Blob.toArray(randomBytes);
-          currentRandomNumber := Nat8.toNat(bytes[0]);
-          Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
-      };
-  };
-
-  // Use a query call to get the current random number.
-  public query func getCurrentNumber() : async Nat {
-      currentRandomNumber
-  };
-
-  // highlight-start
-  // Initialize timer to generate a new number every 5 seconds
-  let timer = Timer.recurringTimer(#seconds 5, generateNewNumber);
-  // highlight-end
-}
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```rust title="src/PROJECT_NAME_backend/src/lib.rs"
-use candid::Nat;
-// Import the management canister's raw_rand method
-use ic_cdk::api::management_canister::main::raw_rand;
-
-// highlight-start
-// Import time duration for timers.
-use std::time::Duration;
-// highlight-end
-
-thread_local! {
-    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
-}
-
-// highlight-start
-const N: Duration = Duration::from_secs(5);
-
-// Create a timer that executes the generate_new_number function every 5 seconds.
-#[ic_cdk::init]
-async fn init() {
-    let _timer_id = ic_cdk_timers::set_timer_interval(N, generate_new_number);
-}
-// highlight-end
-
-// Define a method to generate a new random number.
-#[ic_cdk::update]
-fn generate_new_number() {
-let _ = ic_cdk::spawn(async {
-    let random_bytes = raw_rand().await.unwrap().0;
-    if !random_bytes.is_empty() {
-        CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
-            *n = Nat::from(random_bytes[0]);
-        });
-        ic_cdk::println!(
-            "New random number generated: {}",
-            CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-        );
-    }
-});
-}
-
-// Define a query method to get the random number.
-#[ic_cdk::query]
-fn get_current_number() -> Nat {
-    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-}
-```
-
-</TabItem>
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-[Learn more about Azle](https://demergent-labs.github.io/azle/).
-
-</AdornedTab>
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
-
-</AdornedTab>
-</AdornedTabs>
-
-### Step 4: Retrieve external data.
-
-HTTPS outcalls can obtain data from any external source, including other blockchains, traditional Web2 APIs, and other web services. When HTTPS outcalls are used locally, the returned result is not validated since the local development environment is only a single node. HTTPS outcalls used on the mainnet validate the returned result through the subnet's consensus, providing security that the data obtained has not been maliciously tampered with during transport.
-
-HTTPS outcalls currently support `GET` and `POST` HTTPS methods.
-
-To demonstrate how to create and send HTTPS outcalls, let's add an HTTPS outcall GET request that returns information about ICP's daily stats from the ICP API. Insert the following highlighted code into your backend source code file:
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
-import Nat8 "mo:base/Nat8";
-import Debug "mo:base/Debug";
-import Blob "mo:base/Blob";
-import Nat "mo:base/Nat";
-// The management canister's principal ID is "aaaaa-aa".
-import IC "ic:aaaaa-aa";
-import Timer "mo:base/Timer";
-// highlight-start
-import Cycles "mo:base/ExperimentalCycles";
-import Text "mo:base/Text";
-import Types "Types";
-// highlight-end
-
-actor {
-  // Create a stable variable to store the current random number.
-  // Stable variables persist across canister upgrades.
-  stable var currentRandomNumber : Nat = 0;
-
-  // Create a function to generate a new random number.
-  // This function calls the raw_rand method of the management canister.
-  // Then it uses the random bytes returned to generate a random number.
-  private func generateNewNumber() : async () {
-      let randomBytes = await IC.raw_rand();
-      if (randomBytes.size() > 0) {
-          // Use the first 2 bytes to generate a number between 0 and 255
-          let bytes : [Nat8] = Blob.toArray(randomBytes);
-          currentRandomNumber := Nat8.toNat(bytes[0]);
-          Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
-      };
-  };
-
-  // Use a query call to get the current random number.
-  public query func getCurrentNumber() : async Nat {
-      currentRandomNumber
-  };
-
-  // Initialize a timer to generate a new number every 5 seconds.
-  let timer = Timer.recurringTimer<system>(#seconds 5, generateNewNumber);
-
-  // highlight-start
-
-  // Define a public function to get the daily stats about ICP from the ICP API.
-  public func getIcpInfo() : async Text {
-
-    // Define the API endpoints to obtain data from.
-    // This example uses the IC API, but any API endpoint can be used.
-    let url = "https://ic-api.internetcomputer.org/api/v3/daily-stats?format=json";
-    let transform_context : Types.TransformContext = {
-      function = transform;
-      context = Blob.fromArray([]);
-    };
-
-    // Define the http_request components.
-    let http_request = {
-        url = url;
-        max_response_bytes = null; // Optional.
-        headers = [];
-        body = null; // Optional.
-        method = #get;
-        transform = ?transform_context;
-    };
-
-    // HTTP outcalls require cycles to be attached to the call.
-    Cycles.add<system>(20_949_972_000);
-
-    // Execute the HTTP outcall.
-    let http_response = await IC.http_request(http_request);
-
-    let response_body: Blob = http_response.body;
-    switch (Text.decodeUtf8(response_body)) {
-        case null { "No value returned" };
-        case (?y) { y };
-    };
-  };
-
-  // Define a transform function to return the status response and body.
-  public query func transform(raw : Types.TransformArgs) : async IC.http_request_result {
-      {
-          status = raw.response.status;
-          body = raw.response.body;
-          headers = [ ];
-      };
-  };
-// highlight-end
-}
-```
-
-This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.TransformContext`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, and then import them as needed.
-
-Create a new file called `src/PROJECT_NAME_backend/Types.mo` that contains the following:
-
-```motoko title="src/PROJECT_NAME_backend/Types.mo" no-repl
-import IC "ic:aaaaa-aa";
-
-module Types {
-
-  // HTTPS outcalls have an optional "transform" key. These two types help describe it.
-  // The transform function may transform the body in any way, add or remove headers, modify headers, etc.
-
-  public type TransformArgs = {
-    response : IC.http_request_result;
-    context : Blob;
-  };
-
-  public type TransformContext = {
-    function : shared query TransformArgs -> async IC.http_request_result;
-    context : Blob;
-  };
-
-}
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```rust title="src/PROJECT_NAME_backend/src/lib.rs"
-use candid::Nat;
-// Import the management canister's raw_rand method
-use ic_cdk::api::management_canister::main::raw_rand;
-
-// Import time duration for timers.
-use std::time::Duration;
-
-// highlight-start
-// Import the management canister's http_request method
-use ic_cdk::api::management_canister::http_request::{
-    http_request, CanisterHttpRequestArgument, HttpMethod, HttpResponse, TransformArgs,
-    TransformContext, TransformFunc,
-};
-// highlight-end
-
-thread_local! {
-    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
-}
-
-const N: Duration = Duration::from_secs(5);
-
-// Create a timer that executes the generate_new_number function every 5 seconds.
-#[ic_cdk::init]
-async fn init() {
-    let _timer_id = ic_cdk_timers::set_timer_interval(N, generate_new_number);
-}
-
-// Define a method to generate a new random number.
-#[ic_cdk::update]
-fn generate_new_number() {
-let _ = ic_cdk::spawn(async {
-    let random_bytes = raw_rand().await.unwrap().0;
-    if !random_bytes.is_empty() {
-        CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
-            *n = Nat::from(random_bytes[0]);
-        });
-        ic_cdk::println!(
-            "New random number generated: {}",
-            CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-        );
-    }
-});
-}
-
-// Define a query method to get the random number.
-#[ic_cdk::query]
-fn get_current_number() -> Nat {
-    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-}
-
-// highlight-start
-// Define an update method using the HTTPS outcalls feature.
-#[ic_cdk::update]
-async fn get_icp_info() -> String {
-    let url = format!(
-        "https://ic-api.internetcomputer.org/api/v3/daily-stats?format=json",
-    );
-
-    // Define the HTTP request arguments.
-    let request = CanisterHttpRequestArgument {
-        url: url.to_string(),
-        method: HttpMethod::GET,
-        body: None,               // Optional.
-        max_response_bytes: None, // Optional.
-        transform: Some(TransformContext {
-            // The "method" parameter must have the same name as the function name of your transform function.
-            function: TransformFunc(candid::Func {
-                principal: ic_cdk::api::id(),
-                method: "transform".to_string(),
-            }),
-            context: vec![],
-        }),
-        headers:  vec![],
-    };
-
-    // HTTPS outcalls require cycles.
-    let cycles = 230_949_972_000;
-
-    match http_request(request, cycles).await {
-        // Decode and return the response.
-        // Learn more: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
-
-        Ok((response,)) => {
-
-            // Return the body as a string and end the method.
-            String::from_utf8(response.body).expect("Transformed response is not UTF-8 encoded.")
-        }
-        Err((r, m)) => {
-            let message =
-                format!("The http_request resulted into error. RejectionCode: {r:?}, Error: {m}");
-
-            // Return the error as a string and end the method.
-            message
-        }
-    }
-}
-
-// Define a transform method.
-// Strips all data that is not needed from the original response.
-#[ic_cdk::query]
-fn transform(raw: TransformArgs) -> HttpResponse {
-    let headers = vec![];
-
-    let mut res = HttpResponse {
-        status: raw.response.status.clone(),
-        body: raw.response.body.clone(),
-        headers,
-    };
-
-    if res.status == 200u64 {
-        res.body = raw.response.body;
-    } else {
-        ic_cdk::api::print(format!("Received an error = {:?}", raw));
-    }
-    res
-}
-// highlight-end
-```
-</TabItem>
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-[Learn more about Azle](https://demergent-labs.github.io/azle/).
-
-</AdornedTab>
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
-
-</AdornedTab>
-</AdornedTabs>
-
-### Step 5: Putting it all together.
-
-At this point, we have three functions in this code that demonstrate three different ICP features: **onchain randomness**, **timers** for autonomous execution, and **HTTPS outcalls** to obtain data. Let's edit the code to use them in conjunction with one another rather than separately:
-
-1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent [NNS proposal]((https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System) at random.
-
-2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.
-
-3. Timers will be used to generate a new number every 30 seconds and send a new HTTPS outcall every 32 seconds.
-
-Replace the backend canister source code with the following revised code:
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
-import Timer "mo:base/Timer";
-import Nat8 "mo:base/Nat8";
-import Debug "mo:base/Debug";
-import Blob "mo:base/Blob";
-import Nat "mo:base/Nat";
-import Cycles "mo:base/ExperimentalCycles";
-import Text "mo:base/Text";
-import Types "Types";
-
-// The management canister's principal ID is "aaaaa-aa".
-import IC "ic:aaaaa-aa";
-
-actor {
-  // Create a stable variable to store the current random number.
-  // Stable variables persist across canister upgrades.
-  stable var currentRandomNumber : Nat = 0;
-  stable var proposalId : Text = "1";
-
-  // Create a function to generate a new random number.
-  // This function calls the raw_rand method of the management canister.
-  // Then it uses the random bytes returned to generate a random number.
-  private func generateNewNumber() : async () {
-      let randomBytes = await IC.raw_rand();
-      if (randomBytes.size() > 0) {
-          // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers)
-          let bytes : [Nat8] = Blob.toArray(randomBytes);
-          currentRandomNumber := Nat8.toNat(bytes[0]) + 133000;
-          proposalId := Nat.toText(currentRandomNumber);
-      };
-  };
-
-  // Define a public function to get proposal information.
-  public func getIcpInfo() : async Text {
-
-    // Define the API endpoints to obtain data from.
-    // This example uses the IC API, but any API endpoint can be used.
-    let url = "https://ic-api.internetcomputer.org/api/v3/proposals/" # proposalId ;
-    let transform_context = {
-      function = transform;
-      context = Blob.fromArray([]);
-    };
-
-    // Define the http_request components.
-    let http_request = {
-        url = url;
-        max_response_bytes = null; //optional for request
-        headers = [];
-        body = null; //optional for request
-        method = #get;
-        transform = ?transform_context;
-    };
-
-    // HTTP outcalls require cycles are attached to the call.
-    Cycles.add<system>(20_949_972_000);
-
-    // Execute the HTTPS outcall.
-    let http_response = await IC.http_request(http_request);
-
-    let response_body: Blob = http_response.body;
-    switch (Text.decodeUtf8(response_body)) {
-        case null { "No value returned" };
-        case (?y) { y };
-    };
-  };
-
-  // Define a transform function to return the status response and body.
-  public query func transform(raw : Types.TransformArgs) : async IC.http_request_result {
-      {
-          status = raw.response.status;
-          body = raw.response.body;
-          headers = [ ];
-      };
-  };
-
-  private func printResults() : async () {
-    Debug.print("Generated new random proposal number: " # Nat.toText(currentRandomNumber));
-    let result : Text = await getIcpInfo();
-    Debug.print("Proposal info obtained through HTTPS outcall: " # result);
-  };
-
-  // Initialize timer to generate new number every 30 seconds
-  let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
-  // Initialize timer to send an HTTPS outcall and print the results every 32 seconds
-  let timer2 = Timer.recurringTimer<system>(#seconds 32, printResults);
-}
-```
-
-You will still need the `Types.mo` file created in step 4. You do not need to make any edits to the `Types.mo` file.
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```rust title="src/PROJECT_NAME_backend/src/lib.rs"
-use candid::Nat;
-use ic_cdk::api::management_canister::http_request::{
-    http_request, CanisterHttpRequestArgument, HttpMethod, HttpResponse, TransformArgs,
-    TransformContext, TransformFunc,
-};
-use ic_cdk::api::management_canister::main::raw_rand;
-use std::time::Duration;
-
-// NOTE: These thread_local! variables are not stored in the stable memory and are not persisted across canister upgrades.
-thread_local! {
-    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
-    static PROPOSAL_ID: std::cell::RefCell<String> = std::cell::RefCell::new("1".to_string());
-}
-
-#[ic_cdk::init]
-async fn init() {
-    // Initialize timer to generate new number every 30 seconds
-    ic_cdk_timers::set_timer_interval(Duration::from_secs(30), generate_new_number);
-    // Initialize timer to send an HTTPS outcall and print the results every 32 seconds
-    ic_cdk_timers::set_timer_interval(Duration::from_secs(32), print_results);
-}
-
-// Create a function to generate a new random number.
-// This function calls the raw_rand method of the management canister.
-// Then it uses the random bytes returned to generate a random number.
-fn generate_new_number() {
-    ic_cdk::spawn(async {
-        let random_bytes = raw_rand().await.unwrap().0;
-        if !random_bytes.is_empty() {
-            // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers)
-            let current_random_number = random_bytes[0] as u32 + 133000u32;
-            CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
-                *n = Nat::from(current_random_number).clone();
-            });
-            PROPOSAL_ID.with_borrow_mut(|p| {
-                *p = current_random_number.to_string();
-            });
-        }
-    });
-}
-
-// Define a public function to get proposal information.
-#[ic_cdk::update]
-async fn get_icp_info() -> String {
-    // Define the API endpoints to obtain data from.
-    // This example uses the IC API, but any API endpoint can be used.
-    let url = format!(
-        "https://ic-api.internetcomputer.org/api/v3/proposals/{}",
-        PROPOSAL_ID.with_borrow(|p| p.clone())
-    );
-    let arg = CanisterHttpRequestArgument {
-        url,
-        max_response_bytes: None,
-        method: HttpMethod::GET,
-        headers: vec![],
-        body: None,
-        transform: Some(TransformContext {
-            function: TransformFunc(candid::Func {
-                method: "transform".to_string(),
-                principal: ic_cdk::id(),
-            }),
-            context: vec![],
-        }),
-    };
-    // HTTP outcalls require cycles are attached to the call.
-    let http_response = http_request(arg, 20_949_972_000).await.unwrap().0;
-
-    String::from_utf8(http_response.body).unwrap()
-}
-
-#[ic_cdk::query]
-fn transform(raw: TransformArgs) -> HttpResponse {
-    HttpResponse {
-        status: raw.response.status,
-        headers: vec![],
-        body: raw.response.body,
-    }
-}
-
-fn print_results() {
-    ic_cdk::println!(
-        "Generated new random proposal number: {}",
-        CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-    );
-    ic_cdk::spawn(async {
-        let result = get_icp_info().await;
-        ic_cdk::println!("Proposal info obtained through HTTPS outcall: {}", result);
-    });
-}
-```
-
-</TabItem>
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-[Learn more about Azle](https://demergent-labs.github.io/azle/).
-
-</AdornedTab>
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
-
-</AdornedTab>
-</AdornedTabs>
-
-Save your code file, then [learn how to deploy the project](deploy.mdx).

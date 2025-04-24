@@ -2082,7 +2082,21 @@ const communityProjects: SampleItem[] = [
     languages: ["python", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/showcase/BR-DAO_logo.svg",
-  }
+  },{
+    index: 128,
+    title: "MERCX",
+    body: "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
+    links: {
+      github: "https://github.com/Mercatura-Developers-Team/Mercx.git",
+      livePreview: "https://xpm3z-7qaaa-aaaan-qzvlq-cai.icp0.io/",
+    otherLinks: []
+    },
+    domains: ["Website"],
+    level: "advanced",
+    languages: ["rust", "javascript"],
+    contentType: ["code samples", "community repo", "live demos"],
+    image: "/img/showcase/Mercx logo 4.54.14 PM.png"
+  }
 ];
 
 export default communityProjects;
