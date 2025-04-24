@@ -373,7 +373,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
-  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
+  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/building-apps/interact-with-canisters/agents/nodejs
   /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/building-apps/interact-with-canisters/agents/overview
@@ -889,6 +889,9 @@ const redirects = `
   ## Misc
   /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
   /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
+  /docs/building-apps/developer-tools/advanced-dfx/networks-json /docs/building-apps/developing-canisters/custom-networks
+  /docs/building-apps/developer-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
   /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
   /docs/current/references/security/ /docs/building-apps/security/overview
   /docs/current/developer-docs/use-cases/ /docs/home

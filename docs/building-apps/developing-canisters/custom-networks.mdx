@@ -13,7 +13,7 @@ ICP does not have a public testnet network because <GlossaryTooltip>canisters</G
 
 ICP offers a [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) network as a testnet-like environment for small-scale, temporary testing. Canisters deployed to the playground are restricted to certain parameters:
 
-- Cycle transfer instructions are silently ignored by the playground. Canisters cannot make calls that require cycles be attached to the call.
+- Cycle transfer instructions are silently ignored by the playground. Canisters cannot make calls that require an attachment of cycles.
 - Canisters can use at most 1GiB of memory.
 - Canisters can call the management canister to manage themselves without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
@@ -26,7 +26,7 @@ For advanced developers and use cases that want to use a testnet environment wit
 
 - **Custom dfx network**: Use the `dfx` named network feature to create a local network that is segmented away from the default local network created by `dfx`.
 
-## Custom playground
+## Custom playground instance
 
 Using your own instance of the playground allows for extensive customization, such as:
 
@@ -42,7 +42,9 @@ Using a custom playground can also help simplify development for teams since the
 
 - #### Step 1: [Install the Motoko playground locally](https://github.com/dfinity/motoko-playground/tree/main?tab=readme-ov-file#running-locally) following the instructions in the playground's repository.
 
-- #### Step 2: Edit the `service/pool/Main.mo` file to change the custom playground settings, such as:
+- #### Step 2: Edit the `service/pool/Main.mo` file.
+
+Customize your playground instance's settings, such as:
 
     - Add access control as desired, such as creating an `allowList` of principals that are permitted to use the custom playground.
 
@@ -50,14 +52,14 @@ Using a custom playground can also help simplify development for teams since the
 
     - Change the [Wasm transformation to fit your desired configuration](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L348). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted.
 
-- #### Step 3: Lastly, define the local playground network in your project's `dfx.json` file.
+- #### Step 3: Define the local playground network in your project's `dfx.json` file.
 
 In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
 
 ```json title="dfx.json"
-"<network name>": {
+"<NETWORK_NAME>": {
   "playground": {
-    "playground_canister": "<canister pool id>",
+    "playground_canister": "<canister pool ID>",
     "timeout_seconds": <amount of seconds after which a canister is returned to the pool>
   },
   "providers": [
@@ -66,33 +68,62 @@ In this definition, you will need to set the playground canister's ID (the `pool
 }
 ```
 
-If the value `<network name>` is set as `playground`, then the command `dfx deploy --playground` will deploy to your custom playground. Otherwise, the command has to use `--network <network name>`.
+If the value `<NETWORK_NAME>` is set as `playground`, then the command `dfx deploy --playground` will deploy to your custom playground. Otherwise, the command has to use `--network <NETWORK_NAME>`.
 
 This network definition can also go into the `networks.json` file, so it applies to every project. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`.
 
 - #### Step 4: To use the custom playground, [deploy it locally](https://github.com/dfinity/motoko-playground?tab=readme-ov-file#deploy-the-motoko-playground-to-your-local-replica-using-the-following-command).
 
-## Custom dfx network
+## Custom `dfx` networks
 
-In a custom network, it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myNetwork` instead. `myNetwork` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`. Using a custom local network allows you to test integrations with services and estimate deployment costs.
+In a custom network, it is possible to run any `dfx` command that would otherwise accept the flag `--network ic` but instead using `--network myNetwork` instead. `myNetwork` can be replaced with any other name, except for system-reserved names: `ic`, `local`, and `playground`.
 
-Networks are defined in two ways: assumed and explicitly configured. `dfx` only contains the `ic` network as an assumed environment. All other networks are explicitly configured in the `networks.json` or `dfx.json` files. The "networks" section of `dfx.json` should contain at least the local network, which gets chosen by default if no other network is specified with the `--network` flag.
+Networks are defined in two ways: assumed and explicitly configured. `dfx` only contains the `ic` and `playground` networks as an assumed environment. All other networks are explicitly configured in the `networks.json` or `dfx.json` files. The "networks" section of `dfx.json` should contain at least the local network, which gets chosen by default if no other network is specified with the `--network` flag.
 
-You can create a custom-named network for each project, therefore creating a synthetic network that is segmented from the other locally tested projects in your environment, or you can create system-wide networks that can be used by any project.
+You can create a custom-named network for each project so that the canisters are segmented from any other locally tested projects in your environment. Or, you can create system-wide networks that can be used by any project.
 
-### Creating a system-wide custom dfx network
+### Project-specific networks
 
-Custom networks can be configured in the `networks.json` configuration file for `dfx`, which can be found using the following `dfx` command:
+Networks can be defined in a project's `dfx.json` file. Only canisters defined in that `dfx.json` file can be deployed to that network.
+
+To define a project-specific network, add a "networks" section to your `dfx.json` file:
+
+```json title="dfx.json"
+"networks": {
+    "myNetwork": {
+      "providers": [
+        "https://icp0.io"
+      ],
+      "type": "persistent"
+    }
+  }
+```
+
+This definition uses the following parameters:
+
+- `providers`: The network provider; can be `localhost` or any other domain name. Domain names must be a full URL, such as `https://domain.com`.
+- `type`: The type of network, either `ephemeral` or `persistent`. Ephemeral networks do not retain the same IDs for canisters, while persistent networks will retain the same canister IDs.
+
+:::caution
+
+If you are using a cycles wallet, the cycles wallet for each network is stored separately.
+
+[Learn more about cycles wallets](/docs/building-apps/canister-management/topping-up).
+
+:::
+
+
+### System-wide local networks
+
+Custom networks can be configured in the `networks.json` configuration file for `dfx`, which can be found by running:
 
 ```bash
 dfx info networks-json-path
 ```
 
-This will return the file path where your system's `networks.json` file is located. Networks defined in this file can be used by any project in your local environment.
+Networks defined in this file can be used by any project in your local environment.
 
-- #### Step 1: Edit the `networks.json` file to define a binding address such as `localhost` or any other domain name.
-
-For example:
+Edit the `networks.json` file to define a binding address such as `localhost` or any other domain name. For example:
 
 ```json title="networks.json"
 {
@@ -123,45 +154,3 @@ To define multiple networks, use multiple definitions on different domain names:
   }
 }
 ```
-
-- #### Step 2: Deploy to one of these networks with `dfx deploy`:
-
-```bash
-dfx deploy --network myNetwork2
-```
-
-### Creating a project-specific custom `dfx` network
-
-Alternatively, networks can also be defined in a project's `dfx.json` file. Only canisters defined in that `dfx.json` file can be deployed to that network.
-
-To define a project-specific network, add a "networks" section to your `dfx.json` file:
-
-```json title="dfx.json"
-"networks": {
-    "myNetwork": {
-      "providers": [
-        "https://icp0.io"
-      ],
-      "type": "persistent"
-    }
-  }
-```
-
-This definition uses the following parameters:
-
-- `providers`: The network provider; can be `localhost` or any other domain name. Domain names must be a full URL, such as `https://domain.com`.
-- `type`: The type of network, either `ephemeral` or `persistent`. Ephemeral networks do not retain the same IDs for canisters, while persistent networks will retain the same canister IDs.
-
-:::caution
-
-If you are using a cycles wallet, the cycles wallet for each network is stored separately.
-
-[Learn more about cycles wallets](/docs/building-apps/canister-management/topping-up).
-
-:::
-
-## Resources
-
-- [Defining custom `dfx` networks](/docs/building-apps/developer-tools/advanced-dfx/networks-json).
-
-- [Using the playground UI](/docs/building-apps/developer-tools/icp-ninja).
