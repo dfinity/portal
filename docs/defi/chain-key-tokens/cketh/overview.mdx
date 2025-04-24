@@ -31,6 +31,7 @@ helper contract on Ethereum:
 
 
 The **ckETH minter** is responsible for the minting and burning of ckETH tokens.
+
 It uses the following workflow:
 
 - Tokens are minted when a user calls the `deposit` function of the helper contract on Ethereum with some ETH attached. The deposit function takes the receiver's principal as an argument and emits a `ReceivedEth` event with the `sender`, `value`, and `receiver` as payload.
@@ -45,22 +46,6 @@ A detailed description of the ckETH minter can be found in its [GitHub repositor
 
 The **ckETH ledger** and **ckETH index** canisters are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [using the ICRC-1 ledger](/docs/defi/token-ledgers/usage/icrc1_ledger_usage) section.
 
-## ckETH use cases
-
-ckETH has many of the same use cases as ckBTC, such as:
-
-- Token swaps.
-
-- Decentralized exchanges.
-
-- Point of sale applications and services.
-
-- Crowdfunding applications.
-
-- eCommerce platforms.
-
-- Faster and cheaper ETH transactions
-
 ## ckETH production application examples
 
 - [ICDex](https://iclight.io/ICDex/DKP/ICP).
@@ -72,7 +57,7 @@ ckETH has many of the same use cases as ckBTC, such as:
 - [NFID](https://nfid.one/).
 
 
-## Further reading
+## Resources
 
 - [User guide on how to acquire ckETH](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc).
 

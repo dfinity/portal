@@ -6,15 +6,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Using ckETH in dapps
+# Write a smart contract that uses ckETH
 
 <MarkdownChipRow labels={["Advanced", "Ethereum" , "Chain-key tokens"]} />
 
 ckETH is an ICRC-2 compliant token, meaning it supports the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards.
 
 To integrate ckETH into your dapp, you can simply write code that uses the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) standards. For token transfers and account balances, ckETH requests must be sent to the ckETH ledger canister with principal ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
-
-## Write a smart contract that uses ckETH
 
 To write canister code that makes calls to the ckETH ledger, you will need to use inter-canister calls and specify the principal ID of the ckETH ledger canister. Then, to interact with ckETH, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
