@@ -54,7 +54,7 @@ Create a [new `dfx` project](/docs/building-apps/developer-tools/dfx/dfx-new) or
 
 Search for [ledger-suite-icrc releases](https://github.com/dfinity/ic/releases?q="ledger-suite-icrc"&expanded=false) and select the latest ICRC ledger suite release.
 
-The URL for the ledger Wasm module is `https://github.com/dfinity/ic/releases/download/<RELEASE_HASH>/ic-icrc1-ledger.wasm.gz`.
+The URL for the ledger Wasm module is `https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz`.
 
 The URL for the ledger Candid file is `https://github.com/dfinity/ic/releases/download/<RELEASE-HASH>/ledger.did`.
 
@@ -77,7 +77,7 @@ In an existing project you only need to add the `icrc1_ledger_canister` canister
 <Tabs>
 <TabItem value="URLs" label="Using file URLs" default>
 
-Replace <RELEASE_HASH> with the latest replica release hash obtained from the dashboard.
+Replace <RELEASE> with the latest replica release hash obtained from the dashboard.
 
 ``` json
 {
@@ -172,8 +172,8 @@ Replace the existing content in the `dfx.json` with the following, updating the 
   "canisters": {
     "icrc1_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz",
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz"
       "init_arg": "(variant { Init = record { token_symbol = \"TOKEN_SYMBOL\"; token_name = \"TOKEN_NAME\"; minting_account = record { owner = principal \"MINTER\"; }; transfer_fee = \"TRANSFER_FEE\"; metadata = vec {}; feature_flags = opt record { icrc2 = true }; initial_balances = vec { record { record { owner = principal \"DEFAULT_ACCOUNT_ID\"; }, \"PRE_MINTED_TOKENS\" } }; archive_options = record { num_blocks_to_archive = \"NUM_OF_BLOCK_TO_ARCHIVE\"; trigger_threshold = \"TRIGGER_THRESHOLD\"; controller_id = principal \"ARCHIVE_CONTROLLER\"; cycles_for_archive_creation = opt \"10000000000000\"; } } })"
     }
   },

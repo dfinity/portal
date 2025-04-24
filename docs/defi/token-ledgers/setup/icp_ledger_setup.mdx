@@ -66,15 +66,7 @@ dfx extension install nns
 
 This installation will include two accounts that are initialized with ICP for testing. One uses a `secp256k1` key, which is convenient for command line usage, another uses an `ed25519` key, which is more convenient in web applications.
 
-For example, to use the `secp256k1` key, create a new file called `ident-1.pem` that contains the following content:
-
-```
------BEGIN EC PRIVATE KEY-----
-MHQCAQEEICJxApEbuZznKFpV+VKACRK30i6+7u5Z13/DOl18cIC+oAcGBSuBBAAK
-oUQDQgAEPas6Iag4TUx+Uop+3NhE6s3FlayFtbwdhRVjvOar0kPTfE/N8N6btRnd
-74ly5xXEBNSXiENyxhEuzOZrIWMCNQ==
------END EC PRIVATE KEY-----
-```
+To use the `secp256k1` key, create a new file called `ident-1.pem` that contains a `secp256k1` key.
 
 - #### Step 3: Create an identity using the `secp256k1` key.
 
@@ -102,11 +94,12 @@ dfx ledger balance
 
 - #### Step 2: Obtain the latest ledger Wasm and Candid file URLs.
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary release hash.
+Go to the [releases overview](https://github.com/dfinity/ic/releases?q=%22ledger-suite-icp%22&expanded=false) and obtain the latest ICP ledger release version. Then, replace <RELEASE> in the following URLs with that release version:
 
-The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<RELEASE_HASH>/canisters/ledger-canister.wasm.gz`.
-
-The URL for the ledger's Candid file is `https://raw.githubusercontent.com/dfinity/ic/<RELEASE_HASH>/rs/ledger_suite/icp/ledger.did`.
+```
+https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icp-index-canister.wasm.gz
+https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did
+```
 
 The Wasm and Candid files can be referenced in your project via their public URLs shown above or they can be referenced via local files. If you want to download the Wasm and Candid files, use the following script. Please ensure that you have [`jq`](https://jqlang.github.io/jq/) installed, as the script relies on it.
 
@@ -149,15 +142,15 @@ In an existing project you only need to add the `icp_ledger_canister` canister t
 <Tabs>
 <TabItem value="URLs" label="Using file URLs" default>
 
-Replace <RELEASE_HASH> with the latest replica release hash obtained from the dashboard.
+Replace <RELEASE> with the latest replica release hash obtained from the dashboard.
 
 ``` json
 {
   "canisters": {
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/<RELEASE_HASH>/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/<RELEASE_HASH>/canisters/ledger-canister.wasm.gz",
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icp-index-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -223,8 +216,8 @@ You can also pass init args to the canister [using the command line](/docs/build
   "canisters": {
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icp-index-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
