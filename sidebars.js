@@ -469,11 +469,6 @@ build: [
           items: [
           {
             type: "doc",
-            label: "What are security best practices?",
-            id: "building-apps/security/overview",
-          },
-          {
-            type: "doc",
             label: "Inter-canister calls",
             id: "building-apps/security/inter-canister-calls",
           },
