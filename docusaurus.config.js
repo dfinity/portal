@@ -417,7 +417,7 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/building-apps/developing-canisters/what-are-canisters",
+              href: "/docs/building-apps/essentials/canisters",
             },
             {
               name: "Build on BTC",

@@ -4292,6 +4292,23 @@
   "twitter": "https://x.com/CanisterCloud",
   "youtube": "",
   "submittableId": ""
+},
+{
+  "name": "IwinPool",
+  "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
+  "website": "https://iwinpool.com",
+  "logo": "/img/showcase/iwinpool_logo.webp",
+  "screenshots": [
+    "/img/showcase/iwinpool_screenshot.webp"
+  ],
+  "display": "Normal",
+  "id": "iwinpool",
+  "oneLiner": "Decentralized Community Pool Lottety Platform",
+  "stats": "150 +",
+  "tags": [
+    "Gaming"
+  ],
+  "usesInternetIdentity": true
 }
 
 ]
