@@ -128,8 +128,6 @@ build: [
                 items: [
                   "building-apps/developer-tools/advanced-dfx/check-chunk-store",
                   "building-apps/developer-tools/advanced-dfx/dfx-migration",
-                  "building-apps/developer-tools/advanced-dfx/init-args",
-                  "building-apps/developer-tools/advanced-dfx/networks-json",
                   "building-apps/developer-tools/advanced-dfx/specifying-replica-version",
                 ],
               },
