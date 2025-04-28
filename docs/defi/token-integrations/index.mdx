@@ -16,7 +16,7 @@ Developers can integrate with the ICP or ICRC-1 ledgers using either the ICRC Ro
 Tokens other than ICP, e.g., ckBTC or CHAT, follow the ICRC suite of standards (ICRC-1, ICRC-2, etc.) and can be integrated in a similar manner as the main ICP token. For differences in detail, see below.
 :::
 
-- **Direct integration**: For a direct integration, one needs to provide an integration layer that interacts with ICP canisters via the ICP API. To support ICP tokens, the integration layer needs to call into the ICP ledger canister to issue and retrieve transactions. On ICP, submitting messages does not require running a node, as all of the communication uses publicly available URLs and can be validated using the network's public key and chain-key cryptography. This type of integration requires familiarity with the ICP API and the ICP ledger API. There are API libraries for JavaScript/TypeScript, Rust, Java, C, C++, and Go.
+- **Direct integration**: For a direct integration, one needs to provide an integration layer that interacts with ICP canisters via the ICP API. To support tokens on ICP, the integration layer needs to call into the individual ledger canisters corresponding to each token, to issue and retrieve transactions. On ICP, submitting messages does not require running a node, as all of the communication uses publicly available URLs and can be validated using the network's public key and chain-key cryptography. This type of integration requires familiarity with the ICP API and the ICP ledger API. There are API libraries for JavaScript/TypeScript, Rust, Java, C, C++, and Go.
 
 ![Direct Integration](direct_integration.png)
 
