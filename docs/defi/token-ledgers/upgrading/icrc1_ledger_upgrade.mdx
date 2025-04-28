@@ -95,7 +95,7 @@ If your ledger suite is running a non-released version or you are unsure which v
   - The aforementioned version writes the serialized ledger state to stable memory using a [MemoryManager](https://github.com/dfinity/stable-structures/blob/69ed47f9b5001af67d650c714cd56ec3ee0ef2bb/src/memory_manager.rs). This is a prerequisite for migrating ledger-internal data structures to [stable structures](https://github.com/dfinity/stable-structures/tree/main) in subsequent ledger releases. Upgrading to this version from any prior release should be possible.
   - If installing this version results in an error due to compatibility issues, this is most likely because the deployed ledger version is based on a later release. In this case, the recommended approach is to try with the subsequent releases until the upgrade succeeds.
 
-3. For each canister in the ledger suite, in the order specified in step #4 in the previous section, test the upgrade, take a snapshot, perform the upgrade, and verify the upgrade using the steps #5 and #6 in the previous section.
+3. For each canister in the ledger suite, in [the order specified earlier](https://c4y23-xqaaa-aaaam-abayq-cai.icp0.io/docs/defi/token-ledgers/upgrading/icrc1_ledger_upgrade#component-upgrade-order/docs/defi/token-ledgers/upgrading/icrc1_ledger_upgrade#component-upgrade-order), test the upgrade, take a snapshot, perform the upgrade, and [verify the upgrade](/docs/defi/token-ledgers/upgrading/icrc1_ledger_upgrade#verifying-upgrades).
 
  - In case of issues, consider either:
   - Reverting to the snapshot taken before the upgrade
