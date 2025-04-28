@@ -2095,7 +2095,11 @@ const communityProjects: SampleItem[] = [
     level: "advanced",
     languages: ["rust", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
+
     image: "/img/showcase/MercX-logo-Cover-2-.jpg"
+
+  
+
   }
 ];
 
