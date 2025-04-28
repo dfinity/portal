@@ -22,13 +22,9 @@ ckETH has the same attributes and advantages as ckBTC, but corresponding to ETH 
 The ckETH functionality is provided through an interplay of a suite of canisters on ICP, and a
 helper contract on Ethereum:
 
-| Canister / contract                                                                                   | Ethereum mainnet                                                                                                                                                                    | Sepolia testnet                                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Minter](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/minter)                        | [sv3dd-oaaaa-aaaar-qacoa-cai](https://dashboard.internetcomputer.org/canister/sv3dd-oaaaa-aaaar-qacoa-cai) ([Dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard)) | [jzenf-aiaaa-aaaar-qaa7q-cai](https://dashboard.internetcomputer.org/canister/jzenf-aiaaa-aaaar-qaa7q-cai) ([Dashboard](https://jzenf-aiaaa-aaaar-qaa7q-cai.raw.icp0.io/dashboard)) |
-| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)                     | [ss2fx-dyaaa-aaaar-qacoq-cai](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai)                                                                          | [apia6-jaaaa-aaaar-qabma-cai](https://dashboard.internetcomputer.org/canister/apia6-jaaaa-aaaar-qabma-cai)                                                                          |
-| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)                    | [s3zol-vqaaa-aaaar-qacpa-cai](https://dashboard.internetcomputer.org/canister/s3zol-vqaaa-aaaar-qacpa-cai)                                                                          | [sh5u2-cqaaa-aaaar-qacna-cai](https://dashboard.internetcomputer.org/canister/sh5u2-cqaaa-aaaar-qacna-cai)                                                                          |
-| [Helper](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/minter/EthDepositHelper.sol) | [0x7574eB42cA208A4f6960ECCAfDF186D627dCC175](https://etherscan.io/address/0x7574eB42cA208A4f6960ECCAfDF186D627dCC175)                                                             | [0xb44B5e756A894775FC32EDdf3314Bb1B1944dC34](https://sepolia.etherscan.io/address/0xb44B5e756A894775FC32EDdf3314Bb1B1944dC34)                                                       |
-
+```adoc reference
+https://github.com/dfinity/ic/blob/974d10d2884487ac9c77db99de56020a6ff845cc/rs/ethereum/cketh/docs/ckerc20.adoc?plain=1#L71-L88
+```
 
 The **ckETH minter** is responsible for the minting and burning of ckETH tokens.
 

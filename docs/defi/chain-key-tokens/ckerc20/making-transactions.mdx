@@ -51,6 +51,12 @@ Note that the helper smart contract might change. It is therefore recommended to
 
 3. The user calls the `deposit` function of the helper smart contract, specifying the ERC-20 contract, how many ERC-20 tokens should be withdrawn from the user's account, and the principal ID that should be credited for the minted ckERC20 tokens. The principal ID must be encoded as a `bytes32` array. A convenient way to obtain the correct encoding is to use the `Principal → Bytes32 conversion` function on the ckETH minter [dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard).
 
+:::warning
+
+If your encoded principal ID is incorrect, funds will be lost.
+
+:::
+
 4. The helper smart contract transfers the specified number of ERC-20 tokens to itself and, if successful, emits an `event` to be consumed by the ckETH minter.
 
 5. The ckETH minter periodically fetches the logs from the helper smart contract, minting ckERC20 tokens for every newly discovered `event`.
