@@ -85,7 +85,7 @@ dfx canister --ic call minter withdraw_erc20 "(record { amount = CKERC20_TOKEN_A
 
 Lastly, `ETH_ADDRESS` must be replaced by the desired Ethereum destination address.
 
-The ckETH minter then issues transactions to burn the fee in ckETH and the specified amount of the ckERC20 token. If both operations succeed, it sends an Ethereum transaction that transfers the specified amount from the helper smart contract to the destination address that the user provided.
+After having called `withdraw_erc20`, the user does not need to do anything else. The minter will take care of the rest and send an Ethereum transaction transferring the desired amount of corresponding ERC-20 tokens to the specified address. See the [ckERC20 documentation](https://github.com/dfinity/ic/blob/974d10d2884487ac9c77db99de56020a6ff845cc/rs/ethereum/cketh/docs/ckerc20.adoc?plain=1#L267) for more details.
 
 ## Transferring ckERC20 tokens
 
