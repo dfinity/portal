@@ -12,8 +12,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 All ckERC20 tokens are ICRC-2 compliant tokens, which means that they support the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards. To integrate ckERC20 tokens into your dapp, you can simply write code that adheres and uses these standards. For token transfers and account balances, requests must be sent to the corresponding ckERC20 ledger canister.
 
-## Write a smart contract that uses ckERC20 tokens
-
 Since ckERC20 tokens are managed by ICRC-2 compliant ledgers, the development project needs to be configured to interact with the ledger of the targeted ckERC20 tokens.
 
 Once you have your project configured to use the correct ledger, you can interact with it for workflows such as transferring tokens. The following code sample uses the ckUSDC ledger as an example:
