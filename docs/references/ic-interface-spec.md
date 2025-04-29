@@ -81,7 +81,7 @@ Update calls are executed in *replicated* mode, i.e. execution takes place in pa
 
 Internally, a call or a response is transmitted as a *message* from a *sender* to a *receiver*. Messages do not have a response.
 
-WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. Functions, too, have parameters and take arguments.
+WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. A trap is caused by an irrecoverable error in the WebAssembly module or System API execution (e.g., running out of memory or exceeding the instruction limit for a single message execution imposed by the Internet Computer). Functions, too, have parameters and take arguments.
 
 External *users* interact with the Internet Computer by issuing *requests* on the HTTPS interface. Requests have responses which can either be replies or rejects. Some requests cause internal messages to be created.
 
@@ -1301,7 +1301,7 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 
 -   It may not have both `icp:public <name>` and `icp:private <name>` with the same `name` as the custom section name.
 
--   It may not have other custom sections the names of which start with the prefix `icp:` besides the \`icp:public \` and \`icp:private \`.
+-   It may not have other custom sections the names of which start with the prefix `icp:` besides the `icp:public ` and `icp:private `.
 
 -   The IC may reject WebAssembly modules that
 
@@ -1444,17 +1444,18 @@ Canister methods can be executed either in *replicated* mode where the method ru
 
 The following table captures the modes that different canister methods can be executed in.
 
-| Canister method          | Replicated Mode | Non-Replicated Mode |
-| ------------------------ | --------------- | ------------------- |
-| canister_update          | Yes             | No                  |
-| canister_query           | Yes             | Yes                 |
-| canister_composite_query | No              | Yes                 |
-| canister_inspect_message | No              | Yes                 |
-| canister_init            | Yes             | No                  |
-| canister_pre_upgrade     | Yes             | No                  |
-| canister_post_upgrade    | Yes             | No                  |
-| canister_heartbeat       | Yes             | No                  |
-| canister_global_timer    | Yes             | No                  |
+| Canister method             | Replicated Mode | Non-Replicated Mode |
+| --------------------------- | --------------- | ------------------- |
+| canister_update             | Yes             | No                  |
+| canister_query              | Yes             | Yes                 |
+| canister_composite_query    | No              | Yes                 |
+| canister_inspect_message    | No              | Yes                 |
+| canister_init               | Yes             | No                  |
+| canister_pre_upgrade        | Yes             | No                  |
+| canister_post_upgrade       | Yes             | No                  |
+| canister_heartbeat          | Yes             | No                  |
+| canister_global_timer       | Yes             | No                  |
+| canister_on_low_wasm_memory | Yes             | No                  |
 
 ### Overview of imports {#system-api-imports}
 
