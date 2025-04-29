@@ -885,6 +885,35 @@ const redirects = `
   /docs/current/samples/vetkd-encrypted-notes /samples
   /docs/samples/overview /samples
   /docs/current/samples/overview /samples
+  /docs/references/samples/ADDING_AN_EXAMPLE /samples
+  /docs/references/samples/archive/motoko/actor_reference/ /samples
+  /docs/references/samples/archive/motoko/auth_client_demo/ /samples
+  /docs/references/samples/archive/motoko/calc/ /samples
+  /docs/references/samples/archive/motoko/defi/ /samples
+  /docs/references/samples/archive/motoko/dip721-nft-container/ /samples 
+  /docs/references/samples/archive/motoko/echo/ /samples
+  /docs/references/samples/archive/motoko/factorial/ /samples
+  /docs/references/samples/archive/motoko/hello-world/ /samples
+  /docs/references/samples/archive/motoko/hello/ /samples
+  /docs/references/samples/archive/motoko/ios-notifications/ /samples
+  /docs/references/samples/archive/motoko/persistent-storage/ /samples
+  /docs/references/samples/archive/motoko/phone-book/ /samples
+  /docs/references/samples/archive/motoko/quicksort/ /samples
+  /docs/references/samples/archive/motoko/simple-to-do/ /samples
+  /docs/references/samples/c/adventure  /samples
+  /docs/references/samples/c/qr  /samples
+  /docs/references/samples/c/reverse /samples
+  /docs/references/samples/hosting/ /samples
+  /docs/references/samples/hosting/godot-html5-template/ /samples
+  /docs/references/samples/hosting/react/ /samples
+  /docs/references/samples/hosting/unity-webgl-template/ /samples
+  /docs/references/samples/native-apps/unity_ii_applink  /samples
+  /docs/references/samples/native-apps/unity_ii_deeplink  /samples
+  /docs/references/samples/native-apps/unity_ii_universallink /samples
+  /docs/references/samples/svelte/svelte-motoko-starter  /samples
+  /docs/references/samples/svelte/svelte-starter  /samples
+  /docs/references/samples/svelte/sveltekit-starter /samples
+  /docs/references/samples/wasm/counter /samples
 
   ## Misc
   /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
