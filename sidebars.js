@@ -457,21 +457,16 @@ build: [
     {
       type: "category",
       label: "Security",
-      link:
-        {
-          type: "doc",
-          id: "building-apps/security/overview",
-        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          items: [
+          link:
           {
             type: "doc",
-            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
+          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
