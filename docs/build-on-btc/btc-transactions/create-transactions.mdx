@@ -11,46 +11,18 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-A Bitcoin transaction spends a number of unspent transaction outputs (UTXOs) and
-creates new UTXOs. In order to create a Bitcoin transaction, you need to:
+A Bitcoin transaction spends a number of unspent transaction outputs (UTXOs) and creates new UTXOs. In order to create a Bitcoin transaction, you need to:
 
-1. Get the available UTXOs corresponding to a Bitcoin address controlled by the canister using the `bitcoin_get_utxos` API endpoint.
+1. Get the available UTXOs corresponding to a Bitcoin address controlled by your ICP smart contract using the `bitcoin_get_utxos` API endpoint.
 2. Calculate an appropriate transaction fee using the `bitcoin_get_current_fee_percentiles` API endpoint.
 3. Select a subset of the available UTXOs to spend that covers the transaction amount and fee.
 4. Create a transaction that spends the selected UTXOs and creates new UTXOs. You will need at least one for the recipient, and in most cases, one to collect the change.
 
 ## Get available UTXOs
 
-The following snippet shows how to get the available UTXOs corresponding to `own_address`. Note that a canister can control many addresses, and each of them can have multiple UTXOs associated with it.
+The following snippet shows how to get the available UTXOs corresponding to `own_address`. Note that an ICP smart contract can control many addresses and each of them can have multiple UTXOs associated with it.
 
-:::info
-
-To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local development environment with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
-
-```json reference
-https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
-```
-
-[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
-
-:::
-
-<Tabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko no-repl reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49
-```
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```rust reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet.rs#L25-L28
-```
-
-</TabItem>
-</Tabs>
+To create a transaction that sends `X` satoshis to a destination address, you need to select a subset of the available UTXOs that cover the amount `X` plus the transaction fee.
 
 A UTXO has the following structure:
 
@@ -103,12 +75,34 @@ pub struct Outpoint {
 </TabItem>
 </Tabs>
 
-To create a transaction that sends `X` satoshis to a destination address, you need to select a subset of the available UTXOs that cover the amount `X` plus the transaction fee.
+
+:::info
+
+To implement the following code snippets in your dapp, you will need to setup a [local development environment](btc-dev-env.mdx) and [create a project](btc-dev-env.mdx).
+
+:::
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet.rs#L25-L28
+```
+
+</TabItem>
+</Tabs>
+
 
 ## Calculate transaction fee per byte
 
-The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions that were included in the Bitcoin blockchain.
-The following snippet shows how to estimate the fee per byte for a transaction using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the 50th percentile.
+The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions that were included in the Bitcoin blockchain. The following snippet shows how to estimate the fee per byte for a transaction using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the 50th percentile.
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>

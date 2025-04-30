@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-To read information about the Bitcoin network's state, the Bitcoin integration API exposes the following methods:
+To read information about the Bitcoin network's state, the Bitcoin API exposes the following methods:
 
 - `bitcoin_get_utxos`: Returns the unspent transaction outputs (UTXOs) of a Bitcoin address.
 
@@ -32,7 +32,7 @@ To implement the following code snippets in your dapp, you will need to setup a 
 
 ## Reading unspent transaction outputs (UTXOs)
 
-To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` Bitcoin API method. You can create a function in your canister to call this method, such as:
+To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` [Bitcoin API method](btc-api.mdx). You can create a function in your canister to call this method, such as:
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -52,16 +52,9 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 </TabItem>
 </AdornedTabs>
 
-
-Then make a call to this function from the command line with the command:
-
-```
-dfx canister --network ic call SMART_CONTRACT_NAME get_utxos '("ADDRESS")'
-```
-
 ## Reading current balance
 
-To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` Bitcoin API method. You can create a function in your canister to call this method, such as:
+To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` [Bitcoin API method](btc-api.mdx).
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -80,12 +73,6 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 
 </TabItem>
 </AdornedTabs>
-
-Then make a call to this function from the command line with the command:
-
-```
-dfx canister --network ic call CANISTER_NAME get_balance '("ADDRESS")'
-```
 
 ## Reading the fee percentile
 
@@ -112,12 +99,14 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 </TabItem>
 </AdornedTabs>
 
+## Reading the block headers
 
-Then make a call to this function from the command line with the command:
+To read the block headers within a provided range of start and end heights, make a call to the `bitcoin_get_block_headers` [Bitcoin API method](btc-api.mdx)
 
+```rust reference
+https://github.com/dfinity/examples/blob/a5b05ac27913fe20f01c93c2d65d5e206aa22ddf/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L42-L64
 ```
-dfx canister --network ic call CANISTER_NAME get_current_fee_percentiles
-```
+
 
 ## Resources
 
