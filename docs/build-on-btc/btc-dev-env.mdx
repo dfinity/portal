@@ -1,0 +1,320 @@
+---
+keywords: [advanced, bitcoin, deploying locally, deploy local btc, btc local]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# BTC local developer environment 
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
+
+It is recommended that developers set up a local Bitcoin network on their machine, as it allows you to mine blocks quickly and at will, which
+facilitates testing various cases without having to rely on the (slow) Bitcoin testnet or the (even slower) Bitcoin mainnet. Alternatively, you can test dapps using the Bitcoin testnet or mainnet through the ICP Bitcoin API. Both workflows are detailed below.
+
+Before getting started, you must install the IC SDK, a CLI tool used for creating, managing, and deploying dapps on ICP.
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+#### Prerequisites
+
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+#### Prerequisites
+
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended.
+<div>
+</div>
+<input type="checkbox"/> Apple silicon machines: Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+#### Prerequisites
+
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
+<input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
+<div>
+</div>
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and install a Linux distribution (i.e., Ubuntu) using Windows Subsystem for Linux: <code>wsl --install -d ubuntu</code>
+<div>
+</div>
+<input type="checkbox"/> Open the WSL Linux environment. Run all following commands within this environment.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">install Node.js</a> within your WSL Linux environment.
+<div>
+</div> View the [WSL troubleshooting](wsl-troubleshoot.mdx) guide if necessary.
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+</AdornedTabs>
+
+## Setting up a local Bitcoin network with `bitcoind`
+
+- #### Step 1: Download [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
+- #### Step 2: Unpack the `.tar.gz` file: `tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz`. Don't use any other approach of unpacking the file, as it may lead to issues.
+- #### Step 3: Create a directory named `data` inside the unpacked folder: cd bitcoin-27.0 && mkdir data
+- #### Step 4: Replace the content of the file called `bitcoin.conf` at the root of the unpacked folder with the following contents:
+
+```
+# Enable regtest mode. This is required to set up a private Bitcoin network.
+regtest=1
+
+# Dummy credentials that are required by `bitcoin-cli`.
+rpcuser=ic-btc-integration
+rpcpassword=QPQiNaph19FqUsCrBRN0FII7lyM26B51fAMeBQzCb-E=
+rpcauth=ic-btc-integration:cdf2741387f3a12438f69092f0fdad8e$62081498c98bee09a0dce2b30671123fa561932992ce377585e8e08bb0c11dfa
+```
+
+- #### Step 5: Run `bitcoind` to start the bitcoin client using the following command:
+```
+
+./bin/bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/data --port=18444
+```
+
+This command assumes that port `18444` on your machine is available. If it isn't, change the specified port accordingly.
+
+<details>
+<summary>Output</summary>
+
+```
+2022-07-11T12:49:51Z Bitcoin Core version v22.0.0 (release build)
+...
+2022-07-11T12:49:51Z Config file arg: regtest="1"
+2022-07-11T12:49:51Z Config file arg: rpcauth=****
+2022-07-11T12:49:51Z Config file arg: rpcpassword=****
+2022-07-11T12:49:51Z Config file arg: rpcuser=****
+...
+2022-07-11T12:49:51Z Bound to 127.0.0.1:18445
+2022-07-11T12:49:51Z Bound to [::]:18444
+2022-07-11T12:49:51Z Bound to 0.0.0.0:18444
+...
+2022-07-11T12:49:52Z opencon thread start
+2022-07-11T12:49:52Z addcon thread start
+2022-07-11T12:49:52Z 0 addresses found from DNS seeds
+2022-07-11T12:49:52Z dnsseed thread exit
+```
+
+</details>
+
+
+
+## Using `dfx` for local Bitcoin development
+
+:::caution
+Using `dfx` for local development has several limitations compared to running a local Bitcoin node with `bitcoind`. Using `dfx`, you will make calls to the Bitcoin API that either target the Bitcoin testnet or mainnet, neither of which you will have control over and thus testing may take longer.
+
+Using a local Bitcoin node, you will have full control over the local network's configuration and when blocks are mined, allowing you to iterate faster.
+:::
+
+You can start the local development environment with Bitcoin support enabled.
+
+```
+dfx start --enable-bitcoin --background
+```
+
+Alternatively, in your project you can edit the `dfx.json` file to include the Bitcoin configuration:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+## Create or download an example project
+
+Create a new project (`dfx new my_project`) or [download an example](https://github.com/dfinity/examples). Projects must include a `dfx.json` file. Once you have a project, you can begin building your BTC dapp by writing the smart contract(s) that it will be comprised of.
+
+This tutorial will use the [`basic_bitcoin`](https://github.com/dfinity/examples/motoko/basic_bitcoin) example written in Motoko. This example project is also available in a [Rust variation](https://github.com/dfinity/examples/rust/basic_bitcoin).
+
+The `basic_bitcoin` example provides functions for generating a BTC address, creating a transaction, singing a transaction, and submitting a transaction.
+
+## Connect to the local Bitcoin node
+
+If you setup your environment with `bitcoind`, the local Bitcoin node operates in "regression testing mode" or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode). Regtest mode is used to instantly create a new, private blockchain with the configuration as a testnet; however there is one key difference: regtest mode enables the developer to have complete control over the environment, including determining when blocks are created.
+
+To connect your project to the local Bitcoin node, first run `dfx start --clean` to start the local development environment.
+
+:::caution
+
+If you get a failure to connect error:
+
+```
+Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
+```
+
+This indicates that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin node is up and running, and you're setting the correct port (default is `18444`). The port used can be changed in your project's `dfx.json` file.
+
+:::
+
+## Deploy an example project
+
+```
+dfx deploy basic_bitcoin --argument '(variant { regtest })'
+```
+
+<details>
+
+<summary>Output</summary>
+
+```
+Deploying: basic_bitcoin
+Building canisters...
+...
+Deployed canisters.
+URLs:
+Candid:
+    basic_bitcoin: http://127.0.0.1:4943/?canisterId=...
+```
+
+</details>
+
+## Interacting with the local Bitcoin node
+
+### Generating a Bitcoin address
+
+The Bitcoin network uses different types of addresses (e.g., P2PKH, P2SH), most of which can be generated from an ECDSA public key. The `basic_bitcoin` example implements a function for generating a P2PKH address using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) API endpoint.
+
+You can call this function from the command line:
+
+```
+dfx canister call basic_bitcoin get_p2pkh_address
+```
+
+### Receiving bitcoin
+
+A key difference between working with a local Bitcoin node and the Bitcoin testnet or mainnet is how you receive Bitcoin. In order to receive BTC on your local Bitcoin network, you need to manually mine blocks. BTC is issued as a reward for each block mined.
+
+:::info Coinbase maturity
+
+One caveat of using a local Bitcoin node and receiving block rewards is that the rewards are subject to the [Coinbase maturity rule](https://github.com/bitcoin/bitcoin/blob/bace615ba31cedec50afa4f296934a186b9afae6/src/consensus/consensus.h#L19), which states that, in order for you to spend rewarded BTC, you will first need to mine 100
+blocks.
+
+:::
+
+In the same directory as `bitcoind`, you can issue the following command to mine blocks.
+
+```
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress <number-of-blocks> <btc-address>
+```
+
+After mining a block, its hash will be returned. In the `dfx` logs, you will see a log entry confirming that `dfx` has ingested the newly mined block. Syncing the first bitcoin block can take up to 30 seconds. Subsequent blocks sync nearly instantly.
+
+Then check your BTC balance:
+
+```
+dfx canister call basic_bitcoin get_balance '("<btc-address>")'
+```
+
+:::danger
+
+The BTC you mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
+
+:::
+
+### Sending bitcoin
+
+You can send bitcoin using the `send_from_${type}` function of the `basic_bitcoin` smart contract, where `${type}` is one of `[p2pkh_address, p2tr_key_only_address, p2tr_address_key_path, p2tr_address_script_path]`:
+
+```
+dfx canister call basic_bitcoin send_from_p2pkh_address '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
+```
+
+The command above creates a transaction and sends it out to your local Bitcoin node.
+
+Now, you need to mine a block so that the transaction you just sent becomes part of the blockchain:
+
+```
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 mtbZzVBwLnDmhH4pE9QynWAgh6H3aC1E6M
+```
+
+## Troubleshooting
+
+### Sending transactions
+
+If you're trying to send a transaction and the transaction isn't being mined, try sending the same transaction via `bitcoin-cli`, as it can reveal helpful errors:
+
+```
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf sendrawtransaction <tx-in-hex>
+```
+
+### Resetting the state
+
+It's often useful to delete all the Bitcoin state you have locally and to start from scratch.
+
+- #### Step 1: Run the following commands in the directory of your `dfx` project to delete the local state of `dfx`.
+
+```
+dfx stop
+rm -rf .dfx
+```
+
+:::caution
+Running `rm -rf .dfx` will permanently delete _all_ the ICP smart contracts you have created locally.
+:::
+
+- #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running, and then to delete the chain you created.
+
+```
+rm -r data
+mkdir data
+```
+
+

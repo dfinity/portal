@@ -10,9 +10,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Reading the Bitcoin state
 
-<MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
+<MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-To read information from the Bitcoin blockchain's state, the Bitcoin integration API exposes the following methods:
+To read information about the Bitcoin network's state, the Bitcoin integration API exposes the following methods:
 
 - `bitcoin_get_utxos`: Returns the unspent transaction outputs (UTXOs) of a Bitcoin address.
 
@@ -26,28 +26,11 @@ Standard Bitcoin addresses (P2PKH, P2SH, P2WPKH, etc.) are supported.
 
 :::info
 
-To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local development environment with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
-
-```json reference
-https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
-```
-
-[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
-
+To implement the following code snippets in your dapp, you will need to setup a [local development environment](btc-dev-env.mdx) and [create a project](btc-dev-env.mdx).
 
 :::
 
-## Bitcoin networks
-
-Both the Bitcoin testnet (v4) and mainnet networks are supported. The network can be specified as a parameter in each function.
-
-## API costs
-
-Each call to the API has a cost of cycles; therefore, a sufficient amount of cycles must be sent with each call.
-
-Cycles costs will vary between the Bitcoin testnet and mainnet. For a breakdown of the costs, see [Bitcoin API costs](/docs/references/bitcoin-how-it-works).
-
-## Reading unspent transaction outputs
+## Reading unspent transaction outputs (UTXOs)
 
 To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` Bitcoin API method. You can create a function in your canister to call this method, such as:
 
@@ -70,13 +53,11 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 </AdornedTabs>
 
 
-Then make a call to this canister's function with the command:
+Then make a call to this function from the command line with the command:
 
 ```
-dfx canister --network ic call CANISTER_NAME get_utxos '("ADDRESS")'
+dfx canister --network ic call SMART_CONTRACT_NAME get_utxos '("ADDRESS")'
 ```
-
-Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
 
 ## Reading current balance
 
@@ -100,13 +81,11 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 </TabItem>
 </AdornedTabs>
 
-Then make a call to this canister's function with the command:
+Then make a call to this function from the command line with the command:
 
 ```
 dfx canister --network ic call CANISTER_NAME get_balance '("ADDRESS")'
 ```
-
-Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
 
 ## Reading the fee percentile
 
@@ -134,13 +113,11 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 </AdornedTabs>
 
 
-Then make a call to this canister's function with the command:
+Then make a call to this function from the command line with the command:
 
 ```
 dfx canister --network ic call CANISTER_NAME get_current_fee_percentiles
 ```
-
-Replace `CANISTER_NAME` with your canister's name.
 
 ## Resources
 

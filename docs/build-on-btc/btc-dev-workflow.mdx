@@ -7,49 +7,28 @@ import TabItem from '@theme/TabItem';
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Developer workflow
+# BTC developer workflow
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
-Developers on ICP can create dapps that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. To use this integration, developers must implement a specific workflow to prepare transactions and submit them to the Bitcoin network.
+To build Bitcoin dapps, a developer needs to make calls and submit transactions to the Bitcoin network from their ICP smart contract. Each ICP smart contract can have its own Bitcoin addresses, hold and control BTC, and sign and submit transactions directly to the Bitcoin mainnet or testnet.
 
-To build Bitcoin dapps, a developer needs to make calls to the ICP system API and the Bitcoin integration API and complete the following steps:
+Before you start building your BTC dapp, you will need to [setup a local development environment](btc-dev-env.mdx).
 
-1. [Generate a Bitcoin address](generate-addresses.mdx): To receive BTC, your canister must generate a Bitcoin address using the `ecdsa_public_key` API endpoint of the [management canister](/docs/references/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions).
+Developers should expect to implement some or more of the following functions to build a BTC dapp:
 
-2. [Create a Bitcoin transaction](./create-transactions.mdx): If the canister controls BTC, it can create a transaction to spend them.
+- [Generate a Bitcoin address](generate-addresses.mdx) by calling either the [`ecdsa_public_key` API endpoint](/docs/references/ic-interface-spec#ic-ecdsa_public_key) or the [`schnorr_public_key` API endpoint](/docs/references/ic-interface-spec#ic-schnorr_public_key).
 
-3. [Sign a transaction](./sign-transactions.mdx): Next, the transaction must be signed with t-ECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/references/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
+- [Create a Bitcoin transaction](./create-transactions.mdx).
 
-4. [Submit a transaction](./submit-transactions.mdx): Once a transaction has been signed, it can be submitted to the Bitcoin network to be executed using the Bitcoin API's [`bitcoin_send_transaction`](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md#bitcoin_send_transaction) endpoint, which must specify a `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
+- [Sign a transaction](./sign-transactions.mdx) using the [`sign_with_ecdsa` API endpoint](/docs/references/ic-interface-spec#ic-sign_with_ecdsa) or [`sign_with_schnorr` API endpoint](/docs/references/ic-interface-spec#ic-sign_with_schnorr). Transactions cannot be sent to the Bitcoin network until they are signed.
 
-5. [Read information from the Bitcoin network](read-state.mdx): Lastly, you can query and return information from the Bitcoin network, such as unspent transaction outputs (UTXOs) of a Bitcoin address, the balance of a Bitcoin address, and the percentiles of the fees for the last 10_000 transactions. The endpoints for each query can be found in the [Bitcoin API specification](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md).
+- [Submit a transaction](./submit-transactions.mdx) using the Bitcoin API's [`bitcoin_send_transaction`](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md#bitcoin_send_transaction) endpoint, which must specify the `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
 
-Each of these API endpoints can be executed programmatically within a smart contract that is deployed on ICP. View the documentation for each workflow step to see code examples for interacting with each API endpoint.
+- [Read information from the Bitcoin network](read-state.mdx) using one of the the [Bitcoin API endpoints](#bitcoin-api-endpoints).
 
 :::tip
 
-Working with Bitcoin data structures like addresses, UTXOs, and transactions can be cumbersome. The good news is that popular libraries like [`rust-bitcoin`](https://github.com/rust-bitcoin/rust-bitcoin) and [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib) can be used within canisters.
+Popular libraries like [`rust-bitcoin`](https://github.com/rust-bitcoin/rust-bitcoin) and [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib) can be used within ICP smart contracts.
+
 :::
-
-## Using `dfx`'s Bitcoin integration support
-
-To develop and test a canister locally that uses the Bitcoin integration, you can start the local development environment with `dfx start --enable-bitcoin`. Alternatively, you can include the following configuration in the project's `dfx.json` file:
-
-```json reference
-https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
-```
-
-[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
-
-## Using a local instance of the Bitcoin testnet
-
-You can also develop and test your canister against a local instance of the Bitcoin testnet running in your developer environment. [Learn more in the Bitcoin developing locally](local-development.mdx) documentation.
-
-## Using ckBTC
-
-Chain-key Bitcoin (ckBTC) is a digital twin token of Bitcoin that is backed 1:1 with Bitcoin held within an ICP smart contract. ckBTC tokens comply with the [ICRC token standard](/docs/defi/chain-key-tokens/ckbtc/overview).
-
-ckBTC and other chain-key tokens can be interacted with in the same manner as other ICRC tokens. There aren't any special workflow steps, parameters, or smart contract types that must be used to integrate with chain-key tokens such as ckBTC.
-
-[Learn more about ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview).
