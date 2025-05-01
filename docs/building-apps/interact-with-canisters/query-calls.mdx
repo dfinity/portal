@@ -11,7 +11,13 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-ICP supports two types of calls: updates and queries. Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response.
+After deployment, a canister accepts and processes messages (calls) from users and other canisters. Only the public endpoints of the canister can be called.
+
+<div class="text--center">
+<img src="/img/docs/call-canister.png" alt="Call canister" width="600"/>
+</div>
+
+Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response. They do not go through consensus.
 
 A query call discards state changes and typically executes on a single node. An update call is executed on all nodes and persists canister state changes. Since they execute on a single node, they do not go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and can be much faster than [update](/docs/building-apps/interact-with-canisters/update-calls) calls.
 

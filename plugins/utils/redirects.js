@@ -373,7 +373,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
-  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
+  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/building-apps/interact-with-canisters/agents/nodejs
   /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/building-apps/interact-with-canisters/agents/overview
@@ -392,7 +392,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
-  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/developing-canisters/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/essentials/canisters
   /docs/current/references/subnets/subnet-types/ /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
   /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
@@ -885,9 +885,42 @@ const redirects = `
   /docs/current/samples/vetkd-encrypted-notes /samples
   /docs/samples/overview /samples
   /docs/current/samples/overview /samples
+  /docs/references/samples/ADDING_AN_EXAMPLE /samples
+  /docs/references/samples/archive/motoko/actor_reference/ /samples
+  /docs/references/samples/archive/motoko/auth_client_demo/ /samples
+  /docs/references/samples/archive/motoko/calc/ /samples
+  /docs/references/samples/archive/motoko/defi/ /samples
+  /docs/references/samples/archive/motoko/dip721-nft-container/ /samples 
+  /docs/references/samples/archive/motoko/echo/ /samples
+  /docs/references/samples/archive/motoko/factorial/ /samples
+  /docs/references/samples/archive/motoko/hello-world/ /samples
+  /docs/references/samples/archive/motoko/hello/ /samples
+  /docs/references/samples/archive/motoko/ios-notifications/ /samples
+  /docs/references/samples/archive/motoko/persistent-storage/ /samples
+  /docs/references/samples/archive/motoko/phone-book/ /samples
+  /docs/references/samples/archive/motoko/quicksort/ /samples
+  /docs/references/samples/archive/motoko/simple-to-do/ /samples
+  /docs/references/samples/c/adventure  /samples
+  /docs/references/samples/c/qr  /samples
+  /docs/references/samples/c/reverse /samples
+  /docs/references/samples/hosting/ /samples
+  /docs/references/samples/hosting/godot-html5-template/ /samples
+  /docs/references/samples/hosting/react/ /samples
+  /docs/references/samples/hosting/unity-webgl-template/ /samples
+  /docs/references/samples/native-apps/unity_ii_applink  /samples
+  /docs/references/samples/native-apps/unity_ii_deeplink  /samples
+  /docs/references/samples/native-apps/unity_ii_universallink /samples
+  /docs/references/samples/svelte/svelte-motoko-starter  /samples
+  /docs/references/samples/svelte/svelte-starter  /samples
+  /docs/references/samples/svelte/sveltekit-starter /samples
+  /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
   /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
+  /docs/building-apps/developer-tools/advanced-dfx/networks-json /docs/building-apps/developing-canisters/custom-networks
+  /docs/building-apps/developer-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
   /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
   /docs/current/references/security/ /docs/building-apps/security/overview
   /docs/current/developer-docs/use-cases/ /docs/home

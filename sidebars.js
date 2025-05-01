@@ -128,8 +128,6 @@ build: [
                 items: [
                   "building-apps/developer-tools/advanced-dfx/check-chunk-store",
                   "building-apps/developer-tools/advanced-dfx/dfx-migration",
-                  "building-apps/developer-tools/advanced-dfx/init-args",
-                  "building-apps/developer-tools/advanced-dfx/networks-json",
                   "building-apps/developer-tools/advanced-dfx/specifying-replica-version",
                 ],
               },
@@ -158,7 +156,6 @@ build: [
       label: "Developing canisters",
       items:
       [
-        "building-apps/developing-canisters/what-are-canisters",
         "building-apps/developing-canisters/write",
         "building-apps/developing-canisters/create",
         "building-apps/developing-canisters/compile",
@@ -438,21 +435,16 @@ build: [
     {
       type: "category",
       label: "Security",
-      link:
-        {
-          type: "doc",
-          id: "building-apps/security/overview",
-        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          items: [
+          link:
           {
             type: "doc",
-            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
+          items: [
           {
             type: "doc",
             label: "Inter-canister calls",

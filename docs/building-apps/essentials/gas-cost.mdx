@@ -25,7 +25,7 @@ One downside of the reverse gas model is that it requires ongoing maintenance. C
 
 To prevent a canister from running out of cycles, a [freezing threshold](/docs/building-apps/canister-management/settings/#freezing-threshold) can be set that pauses a canister's execution if the cycles balance is expected to fall below a certain amount, or[ topping up a canister](/docs/building-apps/canister-management/topping-up) can be automated using tools like [CycleOps](https://cycleops.dev/).
 
-Learn more about the [reverse gas model](capabilities/reverse-gas).
+Learn more about the [reverse gas model](/capabilities/reverse-gas).
 
 ## Subnet replication factors
 
@@ -90,7 +90,7 @@ Setting even 1% compute allocation provides a significant advantage over caniste
 
 Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.000013 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
 
-[View the cost calculation formula for more information about how costs are calculated](/docs/references/cost-calculation-formulas).
+[View the cost calculation formula for more information about how costs are calculated](/docs/references/cycles-cost-formulas).
 
 ### Storage
 
@@ -124,7 +124,7 @@ A controller of a canister can disable resource reservation by setting the `rese
 
 Certain network features incur a special cost based on the feature’s unique infrastructure and functionality. These features include:
 
-- [**HTTPS outcalls**](/docs/references/cost-calculation-formulas)
+- [**HTTPS outcalls**](/docs/references/cycles-cost-formulas#https-outcalls)
 
 - [**Bitcoin API**](/docs/references/bitcoin-how-it-works)
 
