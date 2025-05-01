@@ -60,7 +60,7 @@ build: [
             {
               type: "doc",
               label: "Motoko",
-              id: "motoko/home",
+              id: "motoko/main/getting-started/motoko-introduction",
             },
             {
               type: "category",
@@ -392,10 +392,6 @@ build: [
       items: [
         "building-apps/chain-fusion/supported-chains",
         {
-          type: "doc",
-          id: "building-apps/chain-fusion/bitcoin/overview",
-        },
-        {
           type: "category",
           label: "Ethereum & EVM chains",
           link: {
@@ -435,16 +431,21 @@ build: [
     {
       type: "category",
       label: "Security",
+      link:
+        {
+          type: "doc",
+          id: "building-apps/security/overview",
+        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          link:
+          items: [
           {
             type: "doc",
+            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
-          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
@@ -799,6 +800,7 @@ defi: [
 ],
 
 btc: [
+  "build-on-btc/overview",
   "build-on-btc/btc-dev-workflow",
   "build-on-btc/btc-dev-env",
   "build-on-btc/btc-examples",

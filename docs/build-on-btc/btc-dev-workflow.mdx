@@ -1,5 +1,6 @@
 ---
 keywords: [advanced, bitcoin, btc, workflow, developer workflow, btc workflow, btc dev, make btc dapp, btc dapps, develop btc, btc smart contract]
+hide_table_of_contents: true
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,21 +12,21 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
-To build Bitcoin dapps, a developer needs to make calls and submit transactions to the Bitcoin network from their ICP smart contract. Each ICP smart contract can have its own Bitcoin addresses, hold and control BTC, and sign and submit transactions directly to the Bitcoin mainnet or testnet.
+To build Bitcoin dapps on ICP, a developer needs to make calls and submit transactions to the Bitcoin network from their ICP smart contract.
 
-Before you start building your BTC dapp, you will need to [setup a local development environment](btc-dev-env.mdx).
+Before you start building your dapp, you will need to [setup a local development environment with Bitcoin support](./btc-dev-env.mdx).
 
-Developers should expect to implement some or more of the following functions to build a BTC dapp:
+Developers should expect to implement one or more of the following functions to build a Bitcoin dapp:
 
-- [Generate a Bitcoin address](generate-addresses.mdx) by calling either the [`ecdsa_public_key` API endpoint](/docs/references/ic-interface-spec#ic-ecdsa_public_key) or the [`schnorr_public_key` API endpoint](/docs/references/ic-interface-spec#ic-schnorr_public_key).
+- [Generate a Bitcoin address](./btc-transactions/generate-addresses.mdx). Bitcoin addresses are necessary for your dapp to sign transactions and hold assets like BTC. An ICP smart contract can have multiple addresses that have been generated with different signature types, i.e., ECDSA and Schnorr.
 
-- [Create a Bitcoin transaction](./create-transactions.mdx).
+- [Create a Bitcoin transaction](.btc-transactions/create-transactions.mdx). Bitcoin transactions spend unspent transaction outputs (UTXOs) and create new UTXOs. An UTXO is the output of a bitcoin transaction. It exists as a UTXO until it is used as the input of another transaction.
 
-- [Sign a transaction](./sign-transactions.mdx) using the [`sign_with_ecdsa` API endpoint](/docs/references/ic-interface-spec#ic-sign_with_ecdsa) or [`sign_with_schnorr` API endpoint](/docs/references/ic-interface-spec#ic-sign_with_schnorr). Transactions cannot be sent to the Bitcoin network until they are signed.
+- [Sign the transaction](./btc-transactions/sign-transactions.mdx) using one of the supported [threshold signature algorithms](/docs/references/t-sigs-how-it-works). All inputs of a transaction must be signed before the transaction can be submitted to the Bitcoin network.
 
-- [Submit a transaction](./submit-transactions.mdx) using the Bitcoin API's [`bitcoin_send_transaction`](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md#bitcoin_send_transaction) endpoint, which must specify the `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
+- [Submit the transaction](./btc-transactions/submit-transactions.mdx) by sending a request to the Bitcoin API that specifies the `blob` of the transaction and the target Bitcoin network (mainnet or testnet v4).
 
-- [Read information from the Bitcoin network](read-state.mdx) using one of the the [Bitcoin API endpoints](#bitcoin-api-endpoints).
+- [Read information from the Bitcoin network](read-state.mdx) such as transaction details or address balances.
 
 :::tip
 

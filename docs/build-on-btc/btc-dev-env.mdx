@@ -5,13 +5,16 @@ keywords: [advanced, bitcoin, deploying locally, deploy local btc, btc local]
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { OsType, useOs } from "/src/hooks/useOs";
 
-# BTC local developer environment 
+# BTC developer environment
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-It is recommended that developers set up a local Bitcoin network on their machine, as it allows you to mine blocks quickly and at will, which
+It is recommended that developers set up a local Bitcoin testnet on their machine, as it allows you to mine blocks quickly and at will, which
 facilitates testing various cases without having to rely on the (slow) Bitcoin testnet or the (even slower) Bitcoin mainnet. Alternatively, you can test dapps using the Bitcoin testnet or mainnet through the ICP Bitcoin API. Both workflows are detailed below.
+
+## Install the IC SDK
 
 Before getting started, you must install the IC SDK, a CLI tool used for creating, managing, and deploying dapps on ICP.
 
@@ -108,7 +111,7 @@ dfx --version
 
 </AdornedTabs>
 
-## Setting up a local Bitcoin network with `bitcoind`
+## Create a local Bitcoin testnet with `bitcoind`
 
 - #### Step 1: Download [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
 - #### Step 2: Unpack the `.tar.gz` file: `tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz`. Don't use any other approach of unpacking the file, as it may lead to issues.
@@ -157,26 +160,46 @@ This command assumes that port `18444` on your machine is available. If it isn't
 </details>
 
 
-
-## Using `dfx` for local Bitcoin development
+## Use the Bitcoin testnet through `dfx`
 
 :::caution
-Using `dfx` for local development has several limitations compared to running a local Bitcoin node with `bitcoind`. Using `dfx`, you will make calls to the Bitcoin API that either target the Bitcoin testnet or mainnet, neither of which you will have control over and thus testing may take longer.
+Using `dfx` for Bitcoin local development and testing has several limitations compared to running a local Bitcoin testnet with `bitcoind`. Using `dfx start --enable-bitcoin`, you will make calls to the Bitcoin API that target the Bitcoin testnet, which you will not have control over and thus testing may take longer.
 
-Using a local Bitcoin node, you will have full control over the local network's configuration and when blocks are mined, allowing you to iterate faster.
+Using a local Bitcoin testnet, you will have full control over the local network's configuration and when blocks are mined, allowing you to iterate faster.
 :::
 
-You can start the local development environment with Bitcoin support enabled.
+Start the local development environment with Bitcoin support enabled:
 
 ```
 dfx start --enable-bitcoin --background
 ```
 
-Alternatively, in your project you can edit the `dfx.json` file to include the Bitcoin configuration:
+When this option is used, `dfx` deploys a local instance of the Bitcoin testnet API, which runs as a smart contract. It actively makes calls to the Bitcoin testnet (v4) to listen for network events and provides API methods for you to query info or submit transactions to the testnet.
+
+Alternatively, in your project you can edit the `dfx.json` file to include the local Bitcoin configuration:
 
 ```json reference
 https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
 ```
+
+:::caution
+That Bitcoin config in `dfx.json` will not have any effect unless `dfx.json` also defines the local network and `dfx start` is run within the project directory.
+:::
+
+## Target the Bitcoin mainnet
+
+To target the Bitcoin mainnet, make calls directly to the Bitcoin mainnet API that is available via the smart contract address [`ghsi2-tqaaa-aaaan-aaaca-cai`](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai),
+
+```
+dfx canister call --query "ghsi2-tqaaa-aaaan-aaaca-cai" bitcoin_get_balance_query '(record { network = variant { mainnet }; address = "bc1q7s4xl56gy5q5d5mwemv0nn6mv99tmx6x0xvdae"})' --network=ic
+```
+
+Or, pass the `mainnet` variant to your Bitcoin dapp as an init argument:
+
+```
+dfx deploy --network=ic bitcoin_dapp --argument '(variant { mainnet })'
+```
+
 
 ## Create or download an example project
 
@@ -186,11 +209,11 @@ This tutorial will use the [`basic_bitcoin`](https://github.com/dfinity/examples
 
 The `basic_bitcoin` example provides functions for generating a BTC address, creating a transaction, singing a transaction, and submitting a transaction.
 
-## Connect to the local Bitcoin node
+### Connect to the local Bitcoin testnet
 
-If you setup your environment with `bitcoind`, the local Bitcoin node operates in "regression testing mode" or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode). Regtest mode is used to instantly create a new, private blockchain with the configuration as a testnet; however there is one key difference: regtest mode enables the developer to have complete control over the environment, including determining when blocks are created.
+If you setup your environment with `bitcoind`, the local Bitcoin testnet operates in "regression testing mode" or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode). Regtest mode is used to instantly create a new, private blockchain with the configuration as a testnet; however there is one key difference: regtest mode enables the developer to have complete control over the environment, including determining when blocks are created.
 
-To connect your project to the local Bitcoin node, first run `dfx start --clean` to start the local development environment.
+To connect your project to the local Bitcoin testnet, first run `dfx start --clean` to start the local development environment.
 
 :::caution
 
@@ -200,15 +223,19 @@ If you get a failure to connect error:
 Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 ```
 
-This indicates that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin node is up and running, and you're setting the correct port (default is `18444`). The port used can be changed in your project's `dfx.json` file.
+This indicates that `dfx` isn't able to connect to your Bitcoin network. Make sure your Bitcoin network is up and running, and you're setting the correct port (default is `18444`). The port used can be changed in your project's `dfx.json` file.
 
 :::
 
-## Deploy an example project
+### Deploy the example project
 
 ```
 dfx deploy basic_bitcoin --argument '(variant { regtest })'
 ```
+
+:::info
+`regtest` refers to the local Bitcoin testnet. If you want to deploy to the Bitcoin testnet or mainnet, adjust this variable accordingly. You will need to include the `--network ic` flag to target the mainnet.
+:::
 
 <details>
 
@@ -226,7 +253,7 @@ Candid:
 
 </details>
 
-## Interacting with the local Bitcoin node
+## Make calls to the local Bitcoin testnet
 
 ### Generating a Bitcoin address
 
@@ -240,11 +267,11 @@ dfx canister call basic_bitcoin get_p2pkh_address
 
 ### Receiving bitcoin
 
-A key difference between working with a local Bitcoin node and the Bitcoin testnet or mainnet is how you receive Bitcoin. In order to receive BTC on your local Bitcoin network, you need to manually mine blocks. BTC is issued as a reward for each block mined.
+A key difference between working with a local Bitcoin testnet and the Bitcoin testnet or mainnet is how you receive Bitcoin. In order to receive BTC on your local Bitcoin testnet, you need to manually mine blocks. BTC is issued as a reward for each block mined.
 
 :::info Coinbase maturity
 
-One caveat of using a local Bitcoin node and receiving block rewards is that the rewards are subject to the [Coinbase maturity rule](https://github.com/bitcoin/bitcoin/blob/bace615ba31cedec50afa4f296934a186b9afae6/src/consensus/consensus.h#L19), which states that, in order for you to spend rewarded BTC, you will first need to mine 100
+One caveat of using a local Bitcoin testnet and receiving block rewards is that the rewards are subject to the [Coinbase maturity rule](https://github.com/bitcoin/bitcoin/blob/bace615ba31cedec50afa4f296934a186b9afae6/src/consensus/consensus.h#L19), which states that, in order for you to spend rewarded BTC, you will first need to mine 100
 blocks.
 
 :::
@@ -265,7 +292,7 @@ dfx canister call basic_bitcoin get_balance '("<btc-address>")'
 
 :::danger
 
-The BTC you mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
+The BTC you mine is valid only in your local Bitcoin testnet and cannot be spent or used elsewhere.
 
 :::
 
@@ -277,7 +304,7 @@ You can send bitcoin using the `send_from_${type}` function of the `basic_bitcoi
 dfx canister call basic_bitcoin send_from_p2pkh_address '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
 ```
 
-The command above creates a transaction and sends it out to your local Bitcoin node.
+The command above creates a transaction and sends it out to your local Bitcoin testnet.
 
 Now, you need to mine a block so that the transaction you just sent becomes part of the blockchain:
 

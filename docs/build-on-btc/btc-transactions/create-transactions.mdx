@@ -11,18 +11,12 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-A Bitcoin transaction spends a number of unspent transaction outputs (UTXOs) and creates new UTXOs. In order to create a Bitcoin transaction, you need to:
+Unspent transaction outputs (UTXOs) are used as inputs to build a Bitcoin transaction. Every Bitcoin transaction spends one or more UTXOs and in return creates new UTXOs. A UTXO exists until it is used as input for a future transaction. In order to create a Bitcoin transaction, you need to:
 
 1. Get the available UTXOs corresponding to a Bitcoin address controlled by your ICP smart contract using the `bitcoin_get_utxos` API endpoint.
 2. Calculate an appropriate transaction fee using the `bitcoin_get_current_fee_percentiles` API endpoint.
 3. Select a subset of the available UTXOs to spend that covers the transaction amount and fee.
 4. Create a transaction that spends the selected UTXOs and creates new UTXOs. You will need at least one for the recipient, and in most cases, one to collect the change.
-
-## Get available UTXOs
-
-The following snippet shows how to get the available UTXOs corresponding to `own_address`. Note that an ICP smart contract can control many addresses and each of them can have multiple UTXOs associated with it.
-
-To create a transaction that sends `X` satoshis to a destination address, you need to select a subset of the available UTXOs that cover the amount `X` plus the transaction fee.
 
 A UTXO has the following structure:
 
@@ -76,6 +70,12 @@ pub struct Outpoint {
 </Tabs>
 
 
+## Get available UTXOs
+
+The following snippet shows how to get the available UTXOs corresponding to `own_address`. Note that an ICP smart contract can control multiple addresses and each one can have multiple UTXOs associated with it.
+
+To create a transaction that sends `X` satoshis to a destination address, you need to select a subset of the available UTXOs that cover the amount `X` plus the transaction fee.
+
 :::info
 
 To implement the following code snippets in your dapp, you will need to setup a [local development environment](btc-dev-env.mdx) and [create a project](btc-dev-env.mdx).
@@ -102,7 +102,7 @@ https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea294345251890972
 
 ## Calculate transaction fee per byte
 
-The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions that were included in the Bitcoin blockchain. The following snippet shows how to estimate the fee per byte for a transaction using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the 50th percentile.
+The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions on the Bitcoin mainnet. The following snippet shows how to estimate the fee per byte for a transaction using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the 50th percentile.
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -124,9 +124,9 @@ https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea294345251890972
 
 ## Build the transaction
 
-Next, the transaction can be built. The following snippet shows a simplified version of how to build a transaction that sends `amount` satoshis to the `dst_address`, and returns the change to the `own_address`.
+Now the transaction can be built. Since the fee of a transaction is based on its size, the transaction has to be built iteratively and signed with a mock signer that adds the respective size of the signature. Each selected UTXO is used as an input for the transaction and requires a signature.
 
-Since the fee of a transaction is based on its size, the transaction has to be built iteratively and signed with a mock signer that just adds the respective size of the signature. Each selected UTXO is used as an input for the transaction and requires a signature.
+The following snippet shows a simplified version of how to build a transaction that sends `amount` satoshis to the `dst_address`, and returns the change to the `own_address`.
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -143,7 +143,6 @@ https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea294345251890972
 ```
 
 [Learn more about constructing Bitcoin transactions with the Rust Bitcoin Cookbook](https://rust-bitcoin.org/book/intro.html).
-
 
 </TabItem>
 </Tabs>

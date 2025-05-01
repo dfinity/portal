@@ -1,5 +1,6 @@
 ---
 keywords: [advanced, bitcoin, bitcoin api, api reference, api endpoints, bitcoin reference, bitcoin endpoints, btc api]
+hide_table_of_contents: true
 ---
 
 import TabItem from "@theme/TabItem";
@@ -10,19 +11,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-The Bitcoin API is hosted through a canister running on ICP. To make calls to the API, you must target the canister ID for either the Bitcoin mainnet or Bitcoin testnet:
+The Bitcoin API is hosted as an ICP smart contract. To make calls to the API, you must target the smart contract address for either the Bitcoin mainnet or Bitcoin testnet:
 
-- Mainnet: `ghsi2-tqaaa-aaaan-aaaca-cai`
+- Mainnet: [`ghsi2-tqaaa-aaaan-aaaca-cai`](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai)
 
-- Testnet (v4): `g4xu7-jiaaa-aaaan-aaaaq-cai`
+- Testnet (v4): [`g4xu7-jiaaa-aaaan-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai)
 
 [View the full Bitcoin API specification for details.](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md)
 
 ## API costs
 
-Each call to the API has a cost of [cycles](/docs/building-apps/getting-started/tokens-and-cycles); therefore, a sufficient amount of cycles must be sent with each call.
+Each call to the Bitcoin API has a cost of [cycles](/docs/building-apps/getting-started/tokens-and-cycles); therefore, a sufficient amount of cycles must be sent with each call.
 
-Cycles costs will vary between the Bitcoin testnet and mainnet. For a breakdown of the costs, see [Bitcoin API costs](/docs/references/bitcoin-how-it-works).
+Cycles costs vary between the Bitcoin testnet and mainnet. For a breakdown of the costs, see [Bitcoin API costs](/docs/references/bitcoin-how-it-works).
 
 #### `bitcoin_get_utxos`
 
@@ -52,7 +53,7 @@ Returns raw block headers for a given range of heights.
 
 Sends a raw Bitcoin transaction to the network after validation.
 
-## Signature system API endpoints
+## Threshold signature system API endpoints
 
 #### `ecdsa_public_key`
 

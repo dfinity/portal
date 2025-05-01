@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, bitcoin, btc, addresses, signing,btc addresses, signing transactions]
+keywords: [advanced, bitcoin, btc, addresses, signing, btc addresses, signing transactions, sewgwit, p2pkh]
 ---
 
 import Tabs from "@theme/Tabs";
@@ -11,22 +11,20 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
 
-In contrast to most other blockchains, Bitcoin doesn't use accounts. Instead, it uses a UTXO model. A UTXO is an unspent transaction output, and a Bitcoin
-transaction spends one or more UTXOs and creates new UTXOs. Each UTXO is associated with a Bitcoin address, which is derived from a public key or a script that defines the conditions under which the UTXO can be spent. A Bitcoin address is often used as a single-use invoice instead of a persistent address to increase privacy.
+Bitcoin doesn't use accounts; instead, it uses a UTXO model. A UTXO is an unspent transaction output.
 
-## Types of addresses
+Each UTXO is associated with a Bitcoin address that is derived from either a public key or a script that defines the conditions under which the UTXO can be spent. A Bitcoin address is often used as a single-use invoice instead of a persistent address to increase privacy.
 
-### Bitcoin legacy addresses
+## Bitcoin legacy addresses
 
-Legacy addresses start with a `1` and are called `P2PKH` (Pay to Public Key Hash) addresses. They encode the hash of an ECDSA public key.
+Legacy addresses start with a `1` and are called `P2PKH` (Pay to public key hash) addresses. They encode the hash of an ECDSA public key.
 
-There is also another type of legacy address that starts with a `3` called `P2SH` (Pay to Script Hash) that encodes the hash of a
+There is also another type of legacy address that starts with a `3` called `P2SH` (Pay to script hash) that encodes the hash of a
 [script](https://en.bitcoin.it/wiki/Script). The script can define complex conditions such as multisig or timelocks.
 
-### Bitcoin SegWit addresses
+## Bitcoin SegWit addresses
 
-SegWit addresses are newer addresses following the [`Bech32`](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
-format that start with `bc1`. They are cheaper to spend than legacy addresses and solve problems regarding transaction malleability, which is important for advanced use cases like Partially Signed Bitcoin Transactions (PSBT) or the Lightning Network.
+SegWit addresses follow the [`Bech32`](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki) format and start with `bc1`. They are cheaper to spend than legacy addresses and solve problems regarding transaction malleability, which is important for advanced use cases like partially signed Bitcoin transactions (PSBT) or the Lightning Network.
 
 SegWit addresses can be of three types:
 
@@ -37,20 +35,22 @@ SegWit addresses can be of three types:
 
 ## Generating addresses with threshold ECDSA
 
-To generate a Bitcoin address that can only be spent by a specific smart contract or a specific caller of a smart contract, you need to derive the address from a smart contract's public key.
+To generate a Bitcoin address that can only be spent by a specific smart contract or a specific caller of a smart contract, you need to derive the address from the smart contract's public key.
 
 An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) demonstrates how to generate a `P2PKH` address from a smart contract's public key.
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
+```motoko reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2pkh.rs#L21-L31
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2pkh.rs#L21-L31
 ```
 
 </TabItem>
@@ -58,37 +58,41 @@ An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/refere
 
 ## Generating addresses with threshold Schnorr
 
-A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/references/ic-interface-spec#ic-schnorr_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) demonstrates how to generate two different types of `P2TR` addresses, a key-only address and an address allowing spending using a key or script, from a smart contract's public key.
+A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/references/ic-interface-spec#ic-schnorr_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) demonstrates how to generate two different types of `P2TR` addresses from a smart contract's public key: a key-only address and an address using a key or script.
 
 #### Generating a key-only P2TR address
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L79-L112
+```motoko reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L79-L112
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_key_only.rs#L20-L35
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_key_only.rs#L20-L35
 ```
 
 </TabItem>
 </Tabs>
 
-#### Generating a P2TR address
+#### Generating a key or script P2TR address
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L87-L120
+```motoko reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L87-L120
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr.rs#L25-L51
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr.rs#L25-L51
 
 ```
 
