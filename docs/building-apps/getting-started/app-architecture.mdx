@@ -31,31 +31,32 @@ This page will cover default project structure, how to interact with a backend c
 
 ## Project structure and files​
 
-A default application, such as the [“Hello, world!”](https://icp.ninja/projects/hello-world) example available on ICP Ninja, has the following structure:
+A default application, such as the Motoko [“Hello, world!”](https://icp.ninja/projects/hello-world) example available on ICP Ninja, has the following structure:
 
 ```
-hello
-├── README.md
+hello-world
+├── .devcontainer
+├── backend
+│   └── app.mo
+├── frontend
+│   └── index.html
+│   └── package.json
+│   └── vite.config.js
 ├── dfx.json
+├── mops.toml
 ├── package.json
-├── src
-│   ├── hello_backend
-│   │   └── main.mo
-│   └── hello_frontend
-│       ├── index.html
-│       ├── package.json
-│       └── vite.config.js
+└── README.md
 ```
 
 - `dfx.json`: Defines the project’s structure, including how to build and deploy it.
 
-- `src/hello_backend/`: Contains the backend code. This example uses Motoko.
+- `backend/app.mo`: Contains the backend code. This example uses Motoko.
 
-- `src/hello_frontend/`: Contains the frontend assets.
+- `frontend/index.html`: Contains the frontend assets.
 
 ### dfx.json​
 
-The `dfx.json` file in the root  directory defines the canisters that make up the application and where their source code is located. The `hello` project has two canisters, the backend in Motoko and an asset canister for the frontend:
+The `dfx.json` file in the root directory defines the canisters that make up the application and where their source code is located. The `hello_world` project has two canisters, the backend in Motoko and an asset canister for the frontend:
 
 ```json title=dfx.json file=../../references/samples/motoko/hello_world/dfx.json
 ```
@@ -97,14 +98,14 @@ If you are using the IC SDK, you can run the commands:
 
 ```
 dfx deploy --playground
-dfx canister call hello_backend --playground greet ICP
+dfx canister call backend --playground greet ICP
 ```
 
 The parts of this command are:
 
 - `dfx canister call`: The `dfx` command used to call canisters.
 
-- `hello_backend`: The canister's name.
+- `backend`: The canister's name.
 
 - `--playground`: The network the canister is deployed and running on.
 
@@ -116,7 +117,7 @@ The canister will return the following output:
 ("Hello, ICP!")
 ```
 
-The `dfx canister call` command sent a call to the `hello_backend` canister that is deployed to mainnet for free using the `--playground` argument. The call was sent to the `greet` method, which was given the input `"ICP."` The backend canister processed the call and returned the response defined in the method.
+The `dfx canister call` command sent a call to the `backend` canister that is deployed to mainnet for free using the `--playground` argument. The call was sent to the `greet` method, which was given the input `"ICP."` The backend canister processed the call and returned the response defined in the method.
 
 Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's state.
 
@@ -131,7 +132,7 @@ dfx canister call hello_world_backend --playground setGreeting "Hi, "
 Then, call the `greet` function again: 
 
 ```
-dfx canister call hello_world_backend --playground greet ICP
+dfx canister call backend --playground greet ICP
 ```
 
 Observe the new value of the `greeting` variable:
