@@ -14,7 +14,14 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
-Compiled Wasm modules must be installed into a canister using the [`dfx canister install`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-install) command from the project's directory:
+The next step after writing the code, creating a canister, and compiling the code is to install the code into the canister.
+This can be done by calling the `install_code` endpoint of the management canister and passing the canister ID and the Wasm binary to it.
+
+<div class="text--center">
+<img src="/img/docs/install-canister.png" alt="Install canister" width="600"/>
+</div>
+
+Compiled Wasm modules can be installed into a canister using the [`dfx canister install`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-install) command from the project's directory:
 
 ```
 dfx canister install <canister-name> --network=<NETWORK>

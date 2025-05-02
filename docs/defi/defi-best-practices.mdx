@@ -12,7 +12,7 @@ When developing applications that utilize tokens, or when deploying your own tok
 
 ## Creating a token
 
-### Recommendation: Choose the token standard that best fits your needs.
+#### Recommendation: Choose the token standard that best fits your needs.
 
 - For basic fungible tokens, use ICRC-1.
 
@@ -20,43 +20,43 @@ When developing applications that utilize tokens, or when deploying your own tok
 
 - For non-fungible tokens (NFTs) use ICRC-7 or ICRC-37. ICRC-37 supports the approve and transfer functionality.
 
-### Recommendation: Include appropriate metadata for your token.
+#### Recommendation: Include appropriate metadata for your token.
 
 Better metadata results in a better user experience and wallet integration. [Learn more about metadata](/docs/tutorials/hackathon-prep-course/integrating-with-tokens#icrc-1-tokens).
 
 ## Transaction deduplication
 
-### Recommendation: Use the `created_at_time` and `memo` parameters to make transaction calls [idempotent](/docs/building-apps/best-practices/idempotency#id-deduplication).
+#### Recommendation: Use the `created_at_time` and `memo` parameters to make transaction calls [idempotent](/docs/building-apps/best-practices/idempotency#id-deduplication).
 
-### Recommendation: Implement a time window for deduplication using the ICRC configuration parameter `TX_WINDOW`.
+#### Recommendation: Implement a time window for deduplication using the ICRC configuration parameter `TX_WINDOW`.
 
-### Recommendation: Consider capacity limits for your deduplication store.
+#### Recommendation: Consider capacity limits for your deduplication store.
 
 There is a limit for the number of deduplicated transactions that can be stored in the [deduplication store](/docs/building-apps/best-practices/idempotency#id-deduplication). Transactions are rejected once this store is full until older transactions expire at the end of the time window.
 
 ## Embedding standards into existing ledgers
 
-### Recommendation: Utilize flexibility when choosing internal account representations.
+#### Recommendation: Utilize flexibility when choosing internal account representations.
 
-### Recommendation: Use `icrc1_` as the prefix for all methods to prevent conflicts.
+#### Recommendation: Use `icrc1_` as the prefix for all methods to prevent conflicts.
 
-### Recommendation: Handle transaction logs appropriately.
+#### Recommendation: Handle transaction logs appropriately.
 
 [Learn more about embedding](https://medium.com/dfinity/the-design-and-evolution-of-the-icrc-1-fungible-token-standard-f7f303a33300#88bd).
 
 ## Inter-canister call considerations
 
-### Recommendation: Fully test inter-canister calls and rollbacks.
+#### Recommendation: Fully test inter-canister calls and rollbacks.
 
 Issues with [inter-canister calls](/docs/building-apps/security/overview) can lead to time-of-check, time-of-use, or double spending security bugs.
 
-### Recommendation: Certify query responses if they are relevant for security.
+#### Recommendation: Certify query responses if they are relevant for security.
 
 This is important when displaying important financial data to the user that may be used to make decisions on future transactions.
 
 ## Controllers
 
-### Recommendation: Use a decentralized governance system like SNS.
+#### Recommendation: Use a decentralized governance system like SNS.
 
 Decentralizing control is a fundamental aspect of decentralized finance applications.
 
