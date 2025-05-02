@@ -598,6 +598,7 @@ build: [
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
+                "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-sns-topic-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-confirm-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
