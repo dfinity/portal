@@ -19,7 +19,7 @@ To add new features and fix bugs, it is recommended to periodically upgrade the 
 
 ## Background
 
-Development of ledger implementations have prioritized the ability to downgrade from any version of the ledger to its immediately preceding version until the migration of the ledgers to use stable storage for key data structures (balances, approval information) caused breaking changes. Additionally, migrating from heap-based data storage to stable storage requires a series of carefully orchestrated steps, each of which introduce critical changes that subsequent upgrades depend upon.
+Development of ledger implementations has prioritized the ability to downgrade from any version of the ledger to its immediately preceding version until the migration of the ledgers to use stable storage for key data structures (balances, approval information) caused breaking changes. Additionally, migrating from heap-based data storage to stable storage requires a series of carefully orchestrated steps, each of which introduces critical changes that subsequent upgrades depend upon.
 
 This means that upgrading an ICRC ledger suite that still uses heap-based data storage to the latest version must be done with care and attention to the prescribed upgrade sequence.
 
@@ -65,7 +65,7 @@ Within each release, the recommended upgrade order is:
 
 ## Performing upgrades
 
-Prior to upgrading production ledgers, test the upgrade path by first installing the same production ledger canister version either on a local setup or a test canister on the mainnet. Then, upgrade that to the new version and verify that the upgrade was successful by checking that the module hash changed to match the new version and follow the [Verifying upgrades](#verifying-upgrades) steps.
+Prior to upgrading production ledgers, test the upgrade path by first installing the same production ledger canister version either on a local setup or on a test canister on the mainnet. Then, upgrade that to the new version and verify that the upgrade was successful by checking that the module hash changed to match the new version and follow the [Verifying upgrades](#verifying-upgrades) steps.
 
 Before performing the actual upgrade in production, consider taking a [snapshot](/docs/current/developer-docs/smart-contracts/maintain/snapshots) of the canister so that it can be restored in case of issues.
 Note that restoring a canister snapshot will result in the loss of any transactions that may have been performed since the snapshot was taken.
@@ -101,6 +101,6 @@ If the currently installed version is not known, the recommended next version is
 In case of issues, consider either:
 
 - Reverting to the snapshot taken before the upgrade.
-- Stopping the canister to prevent (further) state corruption, and perform further investigation, e.g., trying to reproduce the issue in a test environment.
+- Stopping the canister to prevent (further) state corruption and perform further investigation, e.g., trying to reproduce the issue in a test environment.
 
 Repeat steps #2 and #3 until the ledger is at the latest release.
