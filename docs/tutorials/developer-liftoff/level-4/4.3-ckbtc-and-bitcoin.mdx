@@ -76,6 +76,7 @@ This example is currently not available in ICP Ninja and must be run locally wit
 
 </TabItem>
 </AdornedTabs>
+
 ### Setting up a local Bitcoin network
 
 To develop a Bitcoin dapp locally, first a local Bitcoin network instance must be running. This allows developers to mine blocks quickly and facilitates testing without having to rely on the slow Bitcoin testnet or the Bitcoin mainnet.
@@ -84,27 +85,8 @@ To develop a Bitcoin dapp locally, first a local Bitcoin network instance must b
 - #### Step 1: Download [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
 - #### Step 2: Unpack the `.tar.gz` file: `tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz`. Don't use any other approach of unpacking the file, as it may lead to issues.
 - #### Step 3: Create a directory named `data` inside the unpacked folder: cd bitcoin-27.0 && mkdir data
-- #### Step 4:
+- #### Step 4: Replace the content of the file called `bitcoin.conf` at the root of the unpacked folder with the following contents:
 
-
-To get started, first download the [Bitcoin core v27](https://bitcoin.org/bin/bitcoin-core-27.0/). It is recommended to use the `.tar.gz` version for Mac users.
-
-Then, unpack the `.tar.gz` file with the command:
-
-```bash
-tar -xf bitcoin-27.0-arm64-apple-darwin.tar.gz
-```
-
-It is not recommended to use another approach of unpacking the file, as it may lead to issues.
-
-Navigate into the newly unpacked directory and create a new empty directory called `data`:
-
-```bash
-cd bitcoin-27.0
-mkdir data
-```
-
-Then, while still in the root directory of `bitcoin-27.0`, replace the content of the file called `bitcoin.conf` with the following contents:
 
 ```
 # Enable regtest mode. This is required to set up a private bitcoin network.
@@ -116,9 +98,7 @@ rpcpassword=QPQiNaph19FqUsCrBRN0FII7lyM26B51fAMeBQzCb-E=
 rpcauth=ic-btc-integration:cdf2741387f3a12438f69092f0fdad8e$62081498c98bee09a0dce2b30671123fa561932992ce377585e8e08bb0c11dfa
 ```
 
-This snippet of configuration enables `regtest` mode, which is required for a local, private Bitcoin network instance. 'Regtest' is short for "regression testing mode." Then, it sets some test credentials that will be used by the Bitcoin network for authentication.
-
-Then, start the local Bitcoin instance with the command:
+Step 5: Run `bitcoind` to start the Bitcoin client using the following command:
 
 ```bash
 ./bin/bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/data --port=18444
