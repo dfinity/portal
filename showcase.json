@@ -668,7 +668,7 @@
     "logo": "/img/showcase/mops_logo.webp",
     "display": "Normal",
     "id": "mops",
-    "stats": "100,000+ downloads",
+    "stats": "400,000+ downloads",
     "tags": ["Tools / Infrastructure"],
     "usesInternetIdentity": false,
     "github": "https://github.com/ZenVoich/mops",
@@ -4210,7 +4210,7 @@
     "twitter": "https://x.com/bookiedex",
     "youtube": "https://www.youtube.com/@Bookiewin"
 
- 
+
   },
   {
   "name": "Blockminer",
@@ -4232,7 +4232,7 @@
   "twitter": "https://x.com/blockminerfun",
   "youtube": "https://www.youtube.com/@blockminerfun",
   "submittableId": "48493500"
-}, 
+},
   {
   "name": "IC-COSE",
   "description": "A decentralized Configuration service with Signing and Encryption on the Internet Computer.",
@@ -4252,7 +4252,7 @@
   "twitter": "https://x.com/ICPandaDAO",
   "youtube": "",
   "submittableId": "47061712"
-}, 
+},
   {
   "name": "Utu: The Bitcoin <> Starknet Bridge",
   "description": "Utu is a Bitcoin <> Starknet runes bridge permitting traders to profit from the best onchain UX for your favorite Bitcoin assets.",
