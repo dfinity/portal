@@ -1,5 +1,15 @@
 [
   {
+    "id": "coineo",
+    "name": "Coineo",
+    "display": "Normal",
+    "website": "https://coineo.app",
+    "twitter": "https://x.com/coineo_app",
+    "tags": ["Analytics", "Bitcoin"],
+    "description": "Coineo is a portfolio tracker for ICP, ICRC tokens, and the Bitcoin network. Track all your wallets in one unified dashboard. Calculate profit and loss. Get insights on your portfolio's performance!",
+    "logo": "/img/showcase/coineo_logo.webp"
+  },
+  {
     "id": "decideai",
     "name": "DecideAI",
     "display": "Large",
@@ -4210,7 +4220,7 @@
     "twitter": "https://x.com/bookiedex",
     "youtube": "https://www.youtube.com/@Bookiewin"
 
- 
+
   },
   {
   "name": "Blockminer",
@@ -4232,7 +4242,7 @@
   "twitter": "https://x.com/blockminerfun",
   "youtube": "https://www.youtube.com/@blockminerfun",
   "submittableId": "48493500"
-}, 
+},
   {
   "name": "IC-COSE",
   "description": "A decentralized Configuration service with Signing and Encryption on the Internet Computer.",
@@ -4252,7 +4262,7 @@
   "twitter": "https://x.com/ICPandaDAO",
   "youtube": "",
   "submittableId": "47061712"
-}, 
+},
   {
   "name": "Utu: The Bitcoin <> Starknet Bridge",
   "description": "Utu is a Bitcoin <> Starknet runes bridge permitting traders to profit from the best onchain UX for your favorite Bitcoin assets.",
