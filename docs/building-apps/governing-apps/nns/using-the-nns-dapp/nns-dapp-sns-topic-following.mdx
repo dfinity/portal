@@ -12,31 +12,31 @@ This tutorial describes how you can delegate your voting power based on topics a
 
 * Step 1: To change the vote delegations of an SNS neuron, first go to "Neuron Staking" and choose the SNS DAO where you want to perform this action. 
 
-TODO: screenshot with example of how to get to neurons table
+![Example of how to get to neurons table](../../_attachments/sns_topic_following_how_to_get_to_neurons_table.png)
 
 * Step 2: Select a neuron for which you would like to set following. And go to the section "Vote delegation".
 
-TODO: screenshot of a neuron and the section "Vote delegation"
+!["Vote delegation" section](../../_attachments/sns_topic_following_a_neuron_and_the_section_vote_delegation.png)
 
 * Step 3 (optional): As each SNS DAO has different kind of proposals, it is up to each SNS DAO to group the proposals into topics. If you are a more advanced user and would like to learn the details of which proposals are in which topic, you can do so by clicking on "View topic definitions". This will lead you view "Topic Definition List" that list for all topics all proposal types that have been categorized into this topic by this particular SNS DAO.
 
-TODO: screenshot of "Topic Definition List"
+![Topic Definition List](../../_attachments/sns_topic_following_topic_definition_list.png)
 
 * Step 4: Close this window again and now click on "Follow neuron" to set or change your vote delegation. You will get to a new view "Delegate Voting" where you will see your current settings. The proposal topics are divided into two sections showing the critical an non-critial topics. Critical proposals follow stricter rules on what criteria need to be met for a proposal to be adopted and, because they are usually about more fundamental DAO-decisions, you might want to consdier different aspects when setting following on these topics. You can find out more details about the difference between critical and non-critical proposals in [Decision rules for critical and non-critical proposals](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals#h_01JJ75Z3FKG8Q9TE470AFBJ4VC).
 
-TODO: screenshot of "Delegate voting" (with not ticks).
+![Delegate voting w/o followings](../../_attachments/sns_topic_following_delegate_voting_with_no_ticks.png)
 
 * For each topic where you have set a vote delegation to one or more neurons, you will see green tick at the end of of the line.
 
-TODO: screenshot of "Delegate voting" with at least one green tick.
+![Delegate voting with followings](../../_attachments/sns_topic_following_delegate_voting_collapsed.png)
 
 * Step 5: To either change a setting or choose one for a topic that you haven't covered, first choose the topics for which you would like to delegate your voting power. You can choose one or more topics by selecting them.
 
-TODO: screenshot of "Delegate voting" with 2 proposal topics selected (as in figma)
+!["Delegate voting" with 2 proposal topics selected](../../_attachments/sns_topic_following_delegate_voting_with_no_ticks.png)
 
 * Step 6: You will be lead to a new page where you can enter the neuron ID of the neuron that you would like to delegate you voting to. Enter the neuron's ID and select "Follow Neuron".
 
-TODO: screenshot of "Enter Neuron to Follow" with already entered neuron ID 
+![Enter Neuron to Follow modal](../../_attachments/sns_topic_following_enter_neuron_to_follow.png)
 
 * You should now see that the topics you just updated have a green tick. 
 
@@ -44,7 +44,7 @@ To add additional delegates (also called "followees") to the same neuron, you ca
 
 * By selecting the arrow next to a topic, you can see the list of neuron IDs who you are currently delegating your voting power to in this topic.
 
-TODO : screenshot of "Delegate voting" with the view of "Currenlty following" (only on topics) open. 
+![Delegate voting modal with followings](../../_attachments/sns_topic_following_delegate_voting_with_current_delegates.png)
 
 ## Legacy vote delegation (based on proposal types)
 
@@ -52,13 +52,13 @@ As metioned on top, before April 2025, SNS following (or vote delegation) was ba
 
 * Step 1-4: Follow steps 1-4 above to reach the "Delegate Voting" page for an SNS neuron for which you would like to update the vote delegation.
 
-TODO: screenshot of "Delegate Voting" with not ticks
+![Delegate Voting modal](../../_attachments/sns_topic_following_delegate_voting_empty.png)
 
 * You do not see any green ticks. This does not mean that vote delegation is not active, it just means that you haven't set up _topic-based_ vote delegation for any of the topics. Indeed, if you have so-called legacy following (based on proposal types), the SNS goverance will still apply those rules if you haven't covered the proposal type by any topic.
 
 * Step 5: To see your legacy following, you can select an arrow next to a topic. You will see all underlying types for which you have vote delegations set.
 
-TODO: Screenshot of topic with underlying choices
+![Legacy delegates](../../_attachments/sns_topic_following_topic_with_underlying_choices.png)
 
 * Step 6: To remove the legacy following, you have two options.
 a) You can use the the cross next to the delegate, which will remove the particular choice for this proposal type. 
@@ -69,7 +69,7 @@ In the legacy vote delegation, based on proposal types, there was a special case
 
 * To see the legacy catch-all following, follow steps 1-5 above. If you have legacy catch-all, this is also shown when you extend the information for a given topic.
 
-TODO: screenshot that shows "catch-all applied"
+![Catch-all applied](../../_attachments/sns_topic_following_shows_catch_all_applied.png)
 
 * Step 6: To remove the legacy following, you again have two options.
 a) Since you cannot remove the catch-all in just one topic, there is a option to remove it for all topics, called "Deactivate catch-all". You can find it next to the non-critical topics, as the catch-all is only applied for non-critical proposals.
