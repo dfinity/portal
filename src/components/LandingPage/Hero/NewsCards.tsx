@@ -14,8 +14,8 @@ const cardsData = [
       dateHuman: "",
       press: "",
       details: null,
-      url: "https://worldcomputer.com/",
-      imageUrl: "/img/home/news-cards/thumb_worldcomputer.webp",
+      url: "https://worldcomputer.com/wcs25",
+      imageUrl: "/img/home/news-cards/thumb-wcs25.webp",
     },
   },
   {
