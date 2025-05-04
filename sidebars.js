@@ -457,21 +457,16 @@ build: [
     {
       type: "category",
       label: "Security",
-      link:
-        {
-          type: "doc",
-          id: "building-apps/security/overview",
-        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          items: [
+          link:
           {
             type: "doc",
-            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
+          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
@@ -599,6 +594,7 @@ build: [
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-sns-topic-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
             },
