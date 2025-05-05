@@ -2236,7 +2236,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `freezing_threshold` (`nat`)
 
-    Must be a number between 604800 (or equivalent of 1 week in seconds) and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates a length of time in seconds.
 
     A canister is considered frozen whenever the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass, given the canister's current size and the IC's current cost for storage.
 
@@ -2471,7 +2471,16 @@ This method can be called by canisters as well as by external users via ingress 
 
 The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
 
-Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). The IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
+When this method successfully returns, then the canister status is `stopped` at that point.
+However, note that the canister might be restarted at any time due to a concurrent call.
+
+The execution of this method proceeds as follows:
+
+- The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped).
+- The IC now rejects all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual.
+- When all outstanding responses have been processed (so that there are no open call contexts), the canister status is changed to `stopped`.
+- If the canister status is changed to `stopped` within an implementation-specific timeout, then this method successfully returns.
+- Otherwise, this method returns an error (the canister status is still `stopping` and might eventually become `stopped` if all outstanding responses have been processed and the canister has not been restarted by a separate call).
 
 ### IC method `start_canister` {#ic-start_canister}
 

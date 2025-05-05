@@ -4168,7 +4168,26 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
-  },
+
+  } ,
+  {
+  "id": "mercx",
+  "name": "MERCX",
+  "website": "https://xpm3z-7qaaa-aaaan-qzvlq-cai.icp0.io/",
+  "tags": [
+      "DeFi",
+      "Wallet",
+      "Chain Fusion",
+      "Analytics"
+    ],
+  "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
+  "stats": "On boarded four regulated institutional grade investment funds",
+  "logo": "/img/showcase/Mercx logo 4.54.14 PM.png",
+  "usesInternetIdentity": true,
+
+  "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
+  "twitter": "https://x.com/mercx__?s=21"
+ },
   {
     "id": "bookie",
     "name": "Bookie",
@@ -4190,6 +4209,8 @@
     "usesInternetIdentity": true,
     "twitter": "https://x.com/bookiedex",
     "youtube": "https://www.youtube.com/@Bookiewin"
+
+ 
   },
   {
   "name": "Blockminer",
@@ -4292,5 +4313,23 @@
   "twitter": "",
   "youtube": "",
   "submittableId": "49689335"
+},
+  {
+  "name": "IwinPool",
+  "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
+  "website": "https://iwinpool.com",
+  "logo": "/img/showcase/iwinpool_logo.webp",
+  "screenshots": [
+    "/img/showcase/iwinpool_screenshot.webp"
+  ],
+  "display": "Normal",
+  "id": "iwinpool",
+  "oneLiner": "Decentralized Community Pool Lottety Platform",
+  "stats": "150 +",
+  "tags": [
+    "Gaming"
+  ],
+  "usesInternetIdentity": true
 }
+
 ]

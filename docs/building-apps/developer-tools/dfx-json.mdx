@@ -282,7 +282,7 @@ Other fields applicable to all canister types include:
 
 - **`shrink`** (`boolean | null`): Whether to run `ic-wasm shrink`. Enabled by default for Rust and Motoko canisters. Disabled by default for custom canisters.
 
-- **`specified_id`** (`string | null`): Configure a static canister ID. This option only works with the local replica. If the `--specified-id` argument is also provided, this `specified_id` field will be ignored.
+- **`specified_id`** (`string | null`): Configure a static canister ID. This option only works with the local development environment. If the `--specified-id` argument is also provided, this `specified_id` field will be ignored.
 
 **Example:**
 
@@ -339,13 +339,13 @@ Other fields applicable to all canister types include:
 - **`proxy`**:
     - **`domain`**: A list of domains that can be served. These are used for canister resolution. Default: `localhost`.
 
-- **`replica`**: Configuration for the local replica.
+- **`replica`**: Configuration for the local development environment.
 
     - **`log_level`**: Options are `"critical"`, `"error"`, `"warning"`, `"info"`, `"debug"`, or `"trace"`. Default: `"error"`.
 
     - **`port`** (`uint16 | null`): Local port for the replica. For the shared local network, the default is `127.0.0.1:4943`. For project-specific local networks, the default is `127.0.0.1:8000`.
 
-    - **`subnet_type`**: Determines the subnet type for the local replica. Affects things like cycles accounting, message size limits, cycle limits. Options are `"system"`, `"application"`, `"verifiedapplication"`. Default: `"application"`.
+    - **`subnet_type`**: Determines the subnet type for the local development environment. Affects things like cycles accounting, message size limits, cycle limits. Options are `"system"`, `"application"`, `"verifiedapplication"`. Default: `"application"`.
 
     **Example:**
 
@@ -379,7 +379,7 @@ Other fields applicable to all canister types include:
 
 ### `networks`
 
-**Description**: Define custom local networks. [Learn more about custom network definitions and configurations](/docs/building-apps/developer-tools/advanced-dfx/networks-json).
+**Description**: Define custom local networks. [Learn more about custom network definitions and configurations](/docs/building-apps/developing-canisters/custom-networks).
 
 
 **Example:**
