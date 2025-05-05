@@ -4023,11 +4023,14 @@
     "logo": "/img/showcase/univoice_logo.svg",
     "id": "mugc&univoice",
     "tags": ["AI", "DeFi"],
-    "website": "https://univoice.world",
+    "website": "https://fcdp2-niaaa-aaaai-atapa-cai.icp0.io/",
     "description": "An AI Agent built based on voice multi-modal data.",
     "twitter": "https://x.com/UNIVOICE_",
     "usesInternetIdentity": true,
-    "display": "Normal"
+    "display": "Normal",
+    "github": "https://github.com/AIO-2030/univoice-agent",
+    "youtube": "https://www.youtube.com/channel/UCvtPBD6yt_biQfyCFxTZF_w",
+    "submittableId": "48650422"
   },
   {
     "name": "VFANS",
@@ -4444,25 +4447,5 @@
   "twitter": "https://x.com/@Staex_io",
   "youtube": "https://youtube.com/@staex5585?si=L9vvwYDCfsxniqHx",
   "submittableId": "47374595"
-},
-  {
-  "name": "Univoice",
-  "description": "Univoice is a decentralized voice-AI on ICP, enabling secure speech-to-earn, emotional AI agents, and composable services via AIO-2030.",
-  "website": "https://fcdp2-niaaa-aaaai-atapa-cai.icp0.io/",
-  "logo": "/img/showcase/univoice_logo.svg",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "univoice",
-  "oneLiner": "Voice-AI on ICP with ZK privacy, RL rewards, and AIO agents.",
-  "stats": " ",
-  "tags": [
-    "AI"
-  ],
-  "usesInternetIdentity": true,
-  "github": "https://github.com/AIO-2030/univoice-agent",
-  "twitter": "https://x.com/UNIVOICE_",
-  "youtube": "https://www.youtube.com/channel/UCvtPBD6yt_biQfyCFxTZF_w",
-  "submittableId": "48650422"
 }
 ]
