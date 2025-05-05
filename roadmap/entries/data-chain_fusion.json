@@ -19,7 +19,7 @@
       "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
       "forum": "",
       "proposal": "",
-      "docs": "https://github.com/mfactory-lab/ic-solana",
+      "docs": "https://github.com/dfinity/sol-rpc-canister",
       "eta": "",
       "status": "in_progress",
       "is_community": true,
