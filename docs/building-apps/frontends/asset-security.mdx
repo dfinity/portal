@@ -74,7 +74,7 @@ A valid JSON format is required. The following fields are accepted:
 
 - `ignore`: Files that begin with a . are ignored, while all other files are included, unless an  `.ignore` field is present. If a directory is ignored, its files and subdirectories cannot be unignored. A file can be ignored and unignored many times, as long as any of its parent directories haven't been ignored.
 
-- `headers` 
+- `headers`: Headers from multiple applicable rules are concatenated unless `nul`l is specified, which resets the headers. Both `"headers": {}` and absence of headers field don't have an effect on the end result.
 
 - `match`: Properties from a rule matching a file in a subdirectory override properties from a rule matching a file in a parent directory. The last rule in the configuration file takes precedence over the first rule.
 
