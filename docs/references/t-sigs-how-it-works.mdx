@@ -186,11 +186,11 @@ In order to facilitate developers throughout the canister development lifecycle 
 
 ### SDK
 
-The development of canisters is typically done in the developer's local environment, facilitated by the use of the SDK. The SDK has been extended such that the management canister API for threshold ECDSA and threshold Schnorr is available in the local canister execution environment. Thus, canisters using the t-sig APIs can be run locally for development and testing purposes. They are always enabled in the SDK, so no further user action is required in order to make use of the APIs.
+The development of canisters is typically done in the developer's local environment, facilitated by the use of the SDK. The SDK has been extended such that the management canister API for threshold ECDSA and threshold Schnorr is available in the local development environment. Thus, canisters using the t-sig APIs can be run locally for development and testing purposes. They are always enabled in the SDK, so no further user action is required in order to make use of the APIs.
 
 When the replica of the SDK environment is first started up, a new t-sig key is generated. This key is then stored in non-volatile memory so that it does not change with every restart of the replica.
 
-For the technically interested readers, it is important to note that the SDK uses the exact same implementations of t-sigs as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on ICP.
+For the technically interested readers, it is important to note that the SDK uses the exact same implementations of t-sigs as the mainnet, however the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on ICP.
 
 ### Internet Computer
 

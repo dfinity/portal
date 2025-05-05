@@ -10,6 +10,26 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 This guide outlines essential development best practices for building on the Internet Computer Protocol (ICP).
 
+### Recommendation: Write clean, readable code by using meaningful function and variable names and consistent formatting.
+
+### Recommendation: Avoid code duplication.
+
+Keep logic segmented and reusable, especially for large dapps.
+
+### Recommendation: Design your application for scale.
+
+Consider growth factors like increased data usage, concurrent users, or increased message execution and anticipate necessary optimizations.
+
+### Recommendation: Implement access control to restrict access to certain methods.
+
+[Learn more about access control](https://internetcomputer.org/docs/tutorials/hackathon-prep-course/managing-canisters/#access-control).
+
+### Recommendation: Limit resources per call and consider possible concerns of unbounded data processing or recursion to prevent DoS attacks.
+
+### Recommendation: If a frontend relies on tamper-roof data, utilize certified variables.
+
+[Learn more](https://internetcomputer.org/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
+
 ### Recommendation: Generous canister top-up.
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
@@ -26,40 +46,17 @@ Refer to [this resource](/docs/building-apps/canister-management/topping-up#mana
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
 
-### Recommendation: Efficient implementations.
+### Recommendation: Use efficient implementations.
 
 Optimize canister implementation to avoid unnecessary costs.
 
 Use [canister timers](/docs/building-apps/network-features/periodic-tasks-timers) over plain heartbeats for reduced daily costs.
 
-#### Motoko
+Use [efficient data storage techniques](/docs/building-apps/best-practices/storage).
 
-1. Opt for `TrieMap` over `HashMap` to prevent automatic resizing overhead.
-2. Utilize `Buffer` instead of `Array` for dynamic resizing.
-3. Consider `Blob` over `[Nat8]` for compact storage and reduced GC pressure:
+### Recommendation: Paginate large data query requests.
 
-    - Use `Blob` instead of `[Nat8]` for storing large binary assets.
-    - Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours, but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
+If a data set frequently changes, adapt the design of your application to support that. For example, an application that returns a list of products and uses a simple pagination design may return duplicate results if products are added or removed and thus already received on the previous page.
 
-4. Store large Blobs in stable memory for efficient manual management.
-5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
-6. Be mindful of calling an [actor class]((/docs/motoko/main/writing-motoko/actor-classes), as the overhead is similar to that of installing a fresh canister.
+One approach is to pass an optional previous token that has been received, then only receive tokens that come after that. This approach will require additional logic, such as sorting order or instances where the previous token does not exist.
 
-#### Rust
-1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message.
-2. Refer to recommended blogs and articles for effective Rust canister development.
-
-#### Resources
-
-Several resources on efficient implementations include:
-
-- [Blog post on effective Rust canisters by Roman Kashitsyn](https://mmapped.blog/posts/01-effective-rust-canisters.html)
-- [Good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
-
-### Recommendation: State backup and restoration.
-
-Implement backup mechanisms within canisters for state protection against deallocation or upgrade issues. Explore [backup strategies](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) like those employed by [Distrikt](https://distrikt.app/).
-
-### Recommendation: Transaction history storage.
-
-If your application needs to store transaction history, consider using dedicated services like [CAP](https://cap.ooo/) for maintaining transaction logs. This facilitates integration with explorers and wallets and aids in ownership state reconstruction if the main canister is compromised. Be mindful of additional costs associated with inter-canister calls.

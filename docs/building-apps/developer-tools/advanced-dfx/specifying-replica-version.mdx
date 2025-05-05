@@ -4,7 +4,7 @@ keywords: [advanced, dfx, specifying replica version, replica version, specific 
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Specifying the replica version in dfx
+# Specifying a replica / MOC version for `dfx`
 
 <MarkdownChipRow labels={["Advanced", "dfx workflow"]} />
 
@@ -18,5 +18,11 @@ To use a specific replica version, there are two options:
 
 2. Use the commands `dfx cache install && cp <path to new replica> "$(dfx cache show)/replica"` to copy the replica version into `dfx`'s cache. 
 
+## Use a specific Motoko version
 
+To use a specific Motoko version with `dfx deploy`, export the following environment variable that indicates which Motoko base version you'd like `dfx` to use:
+
+```bash
+DFX_MOC_PATH="$(vessel bin)/moc" dfx <command>
+```
 
