@@ -37,7 +37,7 @@ The finished code for the project is already available in `src/caller`. You can 
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
 ```
 
-Now, deploy this code to the local replica. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
+Now, deploy this code to the local development environment. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
 
 ```bash
 dfx deploy caller
@@ -177,7 +177,7 @@ To summarize, bounded-wait calls will time out after a while, but you might not 
 
 ## Attaching cycles: canister signatures
 
-A canister can attach [cycles](/docsbuilding-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
+A canister can attach [cycles](/docs/building-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
 
 Cycle transfers are generally either used to pay for the callee's costs of processing the call or to move and store cycles as assets. An example where they are used to pay for call processing costs is the IC [threshold signature feature](/docs/building-apps/network-features/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger/).
 
@@ -187,7 +187,7 @@ Below is a threshold signature example that shows how to attach cycles to a call
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
 ```
 
-Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local replica.
+Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local development environment.
 
 ```bash
 dfx canister call caller sign_message '("Some text to be signed")'

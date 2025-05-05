@@ -417,12 +417,12 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/building-apps/developing-canisters/what-are-canisters",
+              href: "/docs/building-apps/essentials/canisters",
             },
             {
               name: "Build on BTC",
               description: "Leveraging Chain Fusion Technology",
-              href: "/bitcoin-integration",
+              href: "/bitcoin",
             },
             {
               name: "Hackathons",
@@ -658,7 +658,18 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           breadcrumbs: false,
-
+          exclude: [
+            'references/samples/ADDING_AN_EXAMPLE.md',
+            'references/samples/archive/**',
+            'references/samples/c/**',
+            'references/samples/hosting/README.md',
+            'references/samples/hosting/godot-html5-template/**',
+            'references/samples/hosting/react/**',
+            'references/samples/hosting/unity-webgl-template/**',
+            'references/samples/native-apps/**',
+            'references/samples/svelte/**',
+            'references/samples/wasm/**',
+          ],
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins,
           rehypePlugins,

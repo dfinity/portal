@@ -4055,11 +4055,12 @@
     "name": "icRamp",
     "logo": "/img/showcase/icramp_logo.png",
     "id": "icramp",
-    "tags": ["DeFi", "Tools / Infrastructure"],
-    "website": "https://app.icramp.xyz",
+    "tags": ["DeFi", "Chain Fusion", "Wallet", "Bitcoin" ],
+    "website": "https://sandbox.icramp.xyz/",
     "github": "https://github.com/reymom/ic2P2ramp",
-    "description": "A decentralized protocol that seamlessly integrates ICP with Ethereum and other blockchains, enabling fast, trustless onramping and offramping of digital assets.",
+    "description": "Decentralized P2P onramping with Bitcoin Runes, Ethereum, and ICP—secure multichain orders, UTXOs, and real-time price sync.",
     "twitter": "https://x.com/ic_rampXYZ",
+    "youtube": "https://www.youtube.com/@icRamp-xyz",
     "usesInternetIdentity": true,
     "display": "Normal"
   },
@@ -4168,7 +4169,26 @@
     "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false
-  },
+
+  } ,
+  {
+  "id": "mercx",
+  "name": "MERCX",
+  "website": "https://xpm3z-7qaaa-aaaan-qzvlq-cai.icp0.io/",
+  "tags": [
+      "DeFi",
+      "Wallet",
+      "Chain Fusion",
+      "Analytics"
+    ],
+  "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
+  "stats": "On boarded four regulated institutional grade investment funds",
+  "logo": "/img/showcase/Mercx logo 4.54.14 PM.png",
+  "usesInternetIdentity": true,
+
+  "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
+  "twitter": "https://x.com/mercx__?s=21"
+ },
   {
     "id": "bookie",
     "name": "Bookie",
@@ -4190,5 +4210,106 @@
     "usesInternetIdentity": true,
     "twitter": "https://x.com/bookiedex",
     "youtube": "https://www.youtube.com/@Bookiewin"
-  }
+
+ 
+  },
+  {
+  "name": "Blockminer",
+  "description": "Token launch pad for creating and mining tokens with Bitcoin like proof-of-work and tokeconomics.",
+  "website": "https://blockminer.fun/",
+  "logo": "/img/showcase/blockminer_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "blockminer",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "",
+  "twitter": "https://x.com/blockminerfun",
+  "youtube": "https://www.youtube.com/@blockminerfun",
+  "submittableId": "48493500"
+}, 
+  {
+  "name": "IC-COSE",
+  "description": "A decentralized Configuration service with Signing and Encryption on the Internet Computer.",
+  "website": "https://github.com/ldclabs/ic-cose",
+  "logo": "/img/showcase/ic-cose_logo.webp",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "ic-cose",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/ldclabs/ic-cose",
+  "twitter": "https://x.com/ICPandaDAO",
+  "youtube": "",
+  "submittableId": "47061712"
+}, 
+  {
+  "name": "Utu: The Bitcoin <> Starknet Bridge",
+  "description": "Utu is a Bitcoin <> Starknet runes bridge permitting traders to profit from the best onchain UX for your favorite Bitcoin assets.",
+  "website": "https://utu-frontend.vercel.app/",
+  "logo": "/img/showcase/utu-the-bitcoin-lessgreater-starknet-bridge_logo.webp",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "utu-the-bitcoin-lessgreater-starknet-bridge",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Bitcoin"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/lfglabs-dev?q=utu&type=all&language=&sort=a",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "47689636"
+},
+  {
+  "name": "Canister Cloud",
+  "description": "Store, Share & Collect Documents. Sovereign data management designed for privacy, secured on the blockchain.",
+  "website": "https://canister.co",
+  "logo": "/img/showcase/canister-cloud_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "canister-cloud",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/jakepeg/canister_app",
+  "twitter": "https://x.com/CanisterCloud",
+  "youtube": "",
+  "submittableId": ""
+},
+{
+  "name": "IwinPool",
+  "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
+  "website": "https://iwinpool.com",
+  "logo": "/img/showcase/iwinpool_logo.webp",
+  "screenshots": [
+    "/img/showcase/iwinpool_screenshot.webp"
+  ],
+  "display": "Normal",
+  "id": "iwinpool",
+  "oneLiner": "Decentralized Community Pool Lottety Platform",
+  "stats": "150 +",
+  "tags": [
+    "Gaming"
+  ],
+  "usesInternetIdentity": true
+}
+
 ]
