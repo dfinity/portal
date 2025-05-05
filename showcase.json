@@ -1,15 +1,5 @@
 [
   {
-    "id": "coineo",
-    "name": "Coineo",
-    "display": "Normal",
-    "website": "https://coineo.app",
-    "twitter": "https://x.com/coineo_app",
-    "tags": ["Analytics", "Bitcoin"],
-    "description": "Coineo is a portfolio tracker for ICP, ICRC tokens, and the Bitcoin network. Track all your wallets in one unified dashboard. Calculate profit and loss. Get insights on your portfolio's performance!",
-    "logo": "/img/showcase/coineo_logo.webp"
-  },
-  {
     "id": "decideai",
     "name": "DecideAI",
     "display": "Large",
@@ -4319,6 +4309,16 @@
     "Gaming"
   ],
   "usesInternetIdentity": true
+},
+{
+  "id": "coineo",
+  "name": "Coineo",
+  "display": "Normal",
+  "website": "https://coineo.app",
+  "twitter": "https://x.com/coineo_app",
+  "tags": ["Analytics", "Bitcoin"],
+  "description": "Coineo is a portfolio tracker for ICP, ICRC tokens, and the Bitcoin network. Track all your wallets in one unified dashboard. Calculate profit and loss. Get insights on your portfolio's performance!",
+  "logo": "/img/showcase/coineo_logo.webp"
 }
 
 ]
