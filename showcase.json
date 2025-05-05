@@ -3898,13 +3898,14 @@
     "name": "Piggycell",
     "logo": "/img/showcase/piggycell_logo.svg",
     "id": "piggycell",
-    "tags": ["Tools / Infrastructure"],
+    "tags": ["Tools / Infrastructure", "NFT", "Gaming" ],
     "website": "https://www.piggycell.io/",
-    "github": "https://github.com/piggycell-github",
+    "github": "github": "https://github.com/junyoungpark358/piggycell",
     "description": "A DePIN project that provides tokenized incentive solutions to electric power charging platforms.",
     "twitter": "https://x.com/piggycell",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "display": "Normal"
+    "submittableId": "48772581"
   },
   {
     "name": "COOWN",
@@ -4463,27 +4464,5 @@
   "twitter": "https://x.com/UNIVOICE_",
   "youtube": "https://www.youtube.com/channel/UCvtPBD6yt_biQfyCFxTZF_w",
   "submittableId": "48650422"
-},
-  {
-  "name": "Piggycell",
-  "description": "Piggycell is a RWA project that uses blockchain to incentivize users.",
-  "website": "https://piggycell.io/home",
-  "logo": "/img/showcase/piggycell.svg",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "piggycell",
-  "oneLiner": "",
-  "stats": " ",
-  "tags": [
-    "Tools / Infrastructure",
-    "NFT",
-    "Gaming"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/junyoungpark358/piggycell",
-  "twitter": "https://x.com/piggycell",
-  "youtube": "",
-  "submittableId": "48772581"
 }
 ]
