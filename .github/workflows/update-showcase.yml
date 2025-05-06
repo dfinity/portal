@@ -20,7 +20,7 @@ jobs:
       url: ${{ fromJson(steps.get-url.outputs.url) }}
 
     steps:
-      # First part: Update showcase.json
+      # Update showcase.json
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -47,26 +47,7 @@ jobs:
         run: |
           git diff --quiet showcase.json || echo "changed=true" >> $GITHUB_OUTPUT
 
-      # Validate showcase.json if it changed using npm build
-      - name: Validate showcase.json with build system
-        if: steps.git-check.outputs.changed == 'true'
-        run: |
-          # Run docusaurus build with just enough to validate showcase.json
-          npx docusaurus build --locale en --no-minify --out-dir build-validation
-        env:
-          # Include only the env vars needed for validation
-          NODE_ENV: production
-
-      - name: Commit and push if showcase.json has changed and is valid
-        if: steps.git-check.outputs.changed == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add showcase.json
-          git commit -m "Update showcase.json from Airtable data [automated]"
-          git push
-
-      # Second part: Deploy to IC (your existing CD workflow)
+      # Deploy steps without committing first
       - name: Install DFX
         uses: dfinity/setup-dfx@main
 
@@ -107,3 +88,14 @@ jobs:
         run: |
           URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').raw.ic0.app"
           echo "url={\"$URL\"}" >> $GITHUB_OUTPUT
+
+      # Commit changes AFTER successful deployment
+      - name:
+          Commit and push if showcase.json has changed and deployment succeeded
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add showcase.json
+          git commit -m "Update showcase.json from Airtable data [automated]"
+          git push
