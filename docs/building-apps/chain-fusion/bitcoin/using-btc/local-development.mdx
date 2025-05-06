@@ -78,11 +78,12 @@ cd examples/motoko/basic_bitcoin
 # For Rust
 cd examples/rust/basic_bitcoin
 ```
-- #### Step 3: Install the mops package manager
+- #### Step 3: Language-Specific Setup
 ```
 # For Motoko
 curl -fsSL cli.mops.one/install.sh | sh
-# For Rust, this step is not necessary
+# For Rust, if you're on a Mac, install [Homebrew](https://brew.sh/) and then run the following to install additional packages:
+brew install llvm binaryen cmake
 ```
 
 ### Deploying in `regtest` Mode
