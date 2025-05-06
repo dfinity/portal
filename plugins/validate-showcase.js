@@ -76,13 +76,13 @@ function fileMaxSize(value, maxSize) {
 /**
  * @param {string} message
  * @param {import('../src/components/ShowcasePage/ShowcaseProject').ShowcaseProject} project
- * @returns {string} Error message
+ * @returns {never}
  */
-function buildErrorMessage(message, project) {
-  return `${message}\n${JSON.stringify(project, null, 2)}`;
+function fail(message) {
+  throw new Error(`showcase.json validation failed: ${message}`);
 }
 
-function validate(value, rules, project) {
+function validate(value, rules) {
   for (const rule of rules) {
     const [predicate, errorMessage] = rule;
 
@@ -93,13 +93,13 @@ function validate(value, rules, project) {
     }
 
     if (!predicate(value)) {
-      return errorMessage;
+      fail(errorMessage);
     }
   }
-  return null; // No errors
 }
 
 /*
+
 export type ShowcaseProject = {
   id: string; //
   description: string; // max 350 characters
@@ -119,6 +119,7 @@ export type ShowcaseProject = {
   youtube?: string; // should be an external URL starting with https://
   submittableId?: string; // should be any string or null
 };
+
 */
 
 function UniqueValue() {
@@ -134,8 +135,7 @@ function UniqueValue() {
   };
 }
 
-let showcase = require("../showcase.json");
-const showcasePath = path.join(__dirname, "../showcase.json");
+const showcase = require("../showcase.json");
 
 let validationPassed = false;
 
@@ -147,316 +147,145 @@ module.exports = function validateShowcasePlugin() {
     const websites = new UniqueValue();
 
     let errorCount = 0;
-    let invalidProjects = [];
-    let validProjects = [];
 
     for (const project of showcase) {
-      let isValid = true;
-      let errors = [];
-
       try {
-        // Check for required name
-        const nameError = validate(
-          project.name,
-          [[isString, "missing project name"]],
-          project
-        );
-        if (nameError) {
-          errors.push(nameError);
-          isValid = false;
-        }
+        validate(project.name, [[isString, "missing project name"]]);
 
-        // Check for required description
-        const descError = validate(
-          project.description,
+        validate(project.description, [
+          [isString, "missing project description"],
           [
-            [isString, "missing project description"],
-            [
-              (value) => value.length <= maximumDescriptionLength,
-              `project description too long, should be <= ${maximumDescriptionLength} characters`,
-            ],
+            (value) => value.length <= maximumDescriptionLength,
+            `project description too long, should be <= ${maximumDescriptionLength} characters`,
           ],
-          project
-        );
-        if (descError) {
-          errors.push(descError);
-          isValid = false;
-        }
+        ]);
 
-        // Check for website if no GitHub
-        if (!project.github) {
-          const websiteError = validate(
-            project.website,
+        !project.github &&
+          validate(project.website, [
+            [isExternalUrl, "missing project website"],
+            [websites.ensureUnique, "duplicate project website"],
+          ]);
+
+        validate(project.id, [
+          [isString, "missing project id"],
+          [ids.ensureUnique, "duplicate project id"],
+        ]);
+
+        validate(project.tags, [
+          [isArray, "missing project tags"],
+          [(value) => value.length > 0, "missing project tags"],
+          [(value) => isArrayOfValues(value, tags), "invalid project tag"],
+        ]);
+
+        project.oneLiner &&
+          validate(project.oneLiner, [
+            [isString, "invalid project oneLiner"],
             [
-              [isExternalUrl, "missing project website"],
-              [websites.ensureUnique, "duplicate project website"],
+              (value) => value.length <= maximumOneLinerLength,
+              `project oneLiner too long, should be <= ${maximumOneLinerLength} characters`,
             ],
-            project
-          );
-          if (websiteError) {
-            errors.push(websiteError);
-            isValid = false;
-          }
-        }
+          ]);
 
-        // Check for required ID
-        const idError = validate(
-          project.id,
+        project.stats &&
+          validate(project.stats, [
+            [isString, "missing project stats"],
+            [
+              (value) => value.length <= maximumStatsLength,
+              `project stats too long should be <= ${maximumStatsLength} characters`,
+            ],
+          ]);
+
+        validate(project.logo, [
+          [isString, "missing project logo"],
+          [fileExists, "project logo file does not exist"],
           [
-            [isString, "missing project id"],
-            [ids.ensureUnique, "duplicate project id"],
+            (value) => fileMaxSize(value, maximumLogoSize),
+            `project logo file too big, should be <= ${
+              maximumLogoSize / 1024
+            } kb`,
           ],
-          project
-        );
-        if (idError) {
-          errors.push(idError);
-          isValid = false;
-        }
+        ]);
 
-        // Check for tags
-        const tagsError = validate(
-          project.tags,
-          [
-            [isArray, "missing project tags"],
-            [(value) => value.length > 0, "missing project tags"],
-            [(value) => isArrayOfValues(value, tags), "invalid project tag"],
-          ],
-          project
-        );
-        if (tagsError) {
-          errors.push(tagsError);
-          isValid = false;
-        }
-
-        // Check oneLiner if present
-        if (project.oneLiner) {
-          const oneLinerError = validate(
-            project.oneLiner,
+        project.display &&
+          validate(project.display, [
             [
-              [isString, "invalid project oneLiner"],
-              [
-                (value) => value.length <= maximumOneLinerLength,
-                `project oneLiner too long, should be <= ${maximumOneLinerLength} characters`,
-              ],
+              (v) => isOneOf(v, ["Large", "Normal"]),
+              "invalid project display mode",
             ],
-            project
-          );
-          if (oneLinerError) {
-            errors.push(oneLinerError);
-            isValid = false;
-          }
-        }
+          ]);
 
-        // Check stats if present
-        if (project.stats) {
-          const statsError = validate(
-            project.stats,
+        project.display === "Large" &&
+          !project.video &&
+          validate(project.screenshots, [
             [
-              [isString, "missing project stats"],
-              [
-                (value) => value.length <= maximumStatsLength,
-                `project stats too long should be <= ${maximumStatsLength} characters`,
-              ],
+              (value) => value !== null && value !== undefined,
+              "a project with display: Large must have either a video or a screenshot",
             ],
-            project
-          );
-          if (statsError) {
-            errors.push(statsError);
-            isValid = false;
-          }
-        }
-
-        // Check logo
-        const logoError = validate(
-          project.logo,
-          [
-            [isString, "missing project logo"],
-            [fileExists, "project logo file does not exist"],
             [
-              (value) => fileMaxSize(value, maximumLogoSize),
-              `project logo file too big, should be <= ${
-                maximumLogoSize / 1024
+              isArray,
+              "project screenshots must be an array of paths to local images under /img/showcase/",
+            ],
+            [(value) => value.length > 0, "missing project screenshots"],
+            [
+              (value) => value.every(isLocalImage),
+              "invalid project screenshot",
+            ],
+            [
+              (value) =>
+                value.every((value) =>
+                  fileMaxSize(value, maximumScreenshotSize)
+                ),
+              `project screenshot file too big, should be <= ${
+                maximumScreenshotSize / 1024
               } kb`,
             ],
-          ],
-          project
-        );
-        if (logoError) {
-          errors.push(logoError);
-          isValid = false;
-        }
-
-        // Check display if present
-        if (project.display) {
-          const displayError = validate(
-            project.display,
             [
-              [
-                (v) => isOneOf(v, ["Large", "Normal"]),
-                "invalid project display mode",
-              ],
+              (value) => value.every(fileExists),
+              "project screenshot file does not exist",
             ],
-            project
-          );
-          if (displayError) {
-            errors.push(displayError);
-            isValid = false;
-          }
-        }
+          ]);
 
-        // Check for Large display requirements - screenshots
-        if (project.display === "Large" && !project.video) {
-          const screenshotsError = validate(
-            project.screenshots,
+        project.display === "Large" &&
+          !project.screenshots &&
+          validate(project.video, [
             [
-              [
-                (value) => value !== null && value !== undefined,
-                "a project with display: Large must have either a video or a screenshot",
-              ],
-              [
-                isArray,
-                "project screenshots must be an array of paths to local images under /img/showcase/",
-              ],
-              [(value) => value.length > 0, "missing project screenshots"],
-              [
-                (value) => value.every(isLocalImage),
-                "invalid project screenshot",
-              ],
-              [
-                (value) =>
-                  value.every((value) =>
-                    fileMaxSize(value, maximumScreenshotSize)
-                  ),
-                `project screenshot file too big, should be <= ${
-                  maximumScreenshotSize / 1024
-                } kb`,
-              ],
-              [
-                (value) => value.every(fileExists),
-                "project screenshot file does not exist",
-              ],
+              isString,
+              "a project with display: Large must have either a video or a screenshot",
             ],
-            project
-          );
-          if (screenshotsError) {
-            errors.push(screenshotsError);
-            isValid = false;
-          }
-        }
+            [isLocalVideo, "invalid project video"],
+            [fileExists, "project video file does not exist"],
+            [
+              (value) => fileMaxSize(value, maximumVideoSize),
+              `project video file too big, should be <= ${
+                maximumVideoSize / 1024 / 1024
+              } mb`,
+            ],
+            [
+              (value) => value.videoContentType === "video/mp4",
+              "project video file must be of type video/mp4",
+            ],
+          ]);
 
-        // Check for Large display requirements - video
-        if (project.display === "Large" && !project.screenshots) {
-          const videoError = validate(
-            project.video,
-            [
-              [
-                isString,
-                "a project with display: Large must have either a video or a screenshot",
-              ],
-              [isLocalVideo, "invalid project video"],
-              [fileExists, "project video file does not exist"],
-              [
-                (value) => fileMaxSize(value, maximumVideoSize),
-                `project video file too big, should be <= ${
-                  maximumVideoSize / 1024 / 1024
-                } mb`,
-              ],
-              [
-                (value) => project.videoContentType === "video/mp4",
-                "project video file must be of type video/mp4",
-              ],
-            ],
-            project
-          );
-          if (videoError) {
-            errors.push(videoError);
-            isValid = false;
-          }
-        }
-
-        // Check for website or GitHub
-        if (!project.website && !project.github) {
-          const githubError = validate(
-            project.github,
-            [
-              [isString, "a project must have a website or a github URL"],
-              [isExternalUrl, "invalid project github URL"],
-              [githubs.ensureUnique, "duplicate project github URL"],
-            ],
-            project
-          );
-          if (githubError) {
-            errors.push(githubError);
-            isValid = false;
-          }
-        } else if (project.github) {
-          // If GitHub is present, validate it
-          const githubError = validate(
-            project.github,
-            [
-              [isExternalUrl, "invalid project github URL"],
-              [githubs.ensureUnique, "duplicate project github URL"],
-            ],
-            project
-          );
-          if (githubError) {
-            errors.push(githubError);
-            isValid = false;
-          }
-        }
-
-        if (isValid) {
-          validProjects.push(project);
-        } else {
-          invalidProjects.push({
-            project,
-            errors,
-          });
-          errorCount++;
-        }
+        (!project.website || project.github) &&
+          validate(project.github, [
+            [isString, "a project must have a website or a github URL"],
+            [isExternalUrl, "invalid project github URL"],
+            [githubs.ensureUnique, "duplicate project github URL"],
+          ]);
       } catch (e) {
-        logger.error(
-          `Unexpected error validating project: ${e.message}\n${JSON.stringify(
-            project,
-            null,
-            2
-          )}`
-        );
-        invalidProjects.push({
-          project,
-          errors: [e.message],
-        });
+        logger.error(`${e.message}\n${JSON.stringify(project, null, 2)}`);
         errorCount++;
       }
     }
 
     if (errorCount > 0) {
-      logger.warn(
-        `showcase.json validation found ${errorCount} project(s) with issues. These will be removed from the showcase.`
+      logger.error(
+        `showcase.json validation failed with ${errorCount} error(s).\nTo produce a valid asset bundle, you can use https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/`
       );
-
-      // Log details about invalid projects
-      invalidProjects.forEach(({ project, errors }) => {
-        logger.warn(
-          `Project "${
-            project.name || project.id || "unknown"
-          }" failed validation:`
-        );
-        errors.forEach((error) => logger.warn(`  - ${error}`));
-      });
-
-      // Write the valid projects back to showcase.json
-      fs.writeFileSync(showcasePath, JSON.stringify(validProjects, null, 2));
-
-      logger.info(
-        `Updated showcase.json with ${validProjects.length} valid projects.`
-      );
-
-      // Update the showcase variable to use the filtered list
-      showcase = validProjects;
-    } else {
-      logger.info("showcase.json validation passed for all projects");
+      process.exit(1);
     }
+
+    logger.info("showcase.json validation passed");
   }
 
   validationPassed = true;

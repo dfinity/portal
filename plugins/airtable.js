@@ -23,11 +23,6 @@ const COURSES_BASE_ID = "app1LOpIHEj6dTeEx";
 const COURSES_TABLE_NAME = "tblpf2akkElbGlqti";
 const COURSES_VIEW_NAME = "viwDJz26NeIdJvqle";
 
-// Constants for the projects table
-const PROJECTS_BASE_ID = "appyWBGCHaZoTzKTN";
-const PROJECTS_TABLE_NAME = "tbl7PMpN6pHpF8rMX";
-const PROJECTS_VIEW_NAME = "viwIiHvahcPMYpx4M";
-
 async function loadRecords({
   apiKey,
   baseId,
@@ -70,14 +65,12 @@ const airtablePlugin = async function () {
           );
           const mockEvents = require("./data/airtable-events-mock.json");
           const mockCourses = require("./data/airtable-courses-mock.json");
-          const mockProjects = require("./data/airtable-projects-mock.json");
 
           cache = {
             events: mockEvents,
             courses: mockCourses,
-            projects: mockProjects,
           };
-          return cache;
+          return;
         }
 
         // Load events
@@ -102,21 +95,9 @@ const airtablePlugin = async function () {
         // Process courses data
         courses = await processCoursesData(courses);
 
-        // Load projects
-        let projects = await fetchAirtableRecords({
-          apiKey: AIRTABLE_KEY,
-          baseId: PROJECTS_BASE_ID,
-          tableName: PROJECTS_TABLE_NAME,
-          viewId: PROJECTS_VIEW_NAME,
-        });
-
-        // Process projects data
-        projects = processProjectsData(projects);
-
         cache = {
           events,
           courses,
-          projects,
         };
       }
 
@@ -134,13 +115,6 @@ const airtablePlugin = async function () {
         JSON.stringify(content.courses, null, 2)
       );
 
-      // Write showcase.json to the project root
-      const showcasePath = path.join(__dirname, "..", "showcase.json");
-      fs.writeFileSync(showcasePath, JSON.stringify(content.projects, null, 2));
-      logger.info(
-        `Successfully wrote ${content.projects.length} projects to showcase.json`
-      );
-
       if (isDev) {
         // Save mock files for development
         fs.writeFileSync(
@@ -150,10 +124,6 @@ const airtablePlugin = async function () {
         fs.writeFileSync(
           path.join(__dirname, "data", "airtable-courses-mock.json"),
           JSON.stringify(content.courses, null, 2)
-        );
-        fs.writeFileSync(
-          path.join(__dirname, "data", "airtable-projects-mock.json"),
-          JSON.stringify(content.projects, null, 2)
         );
       }
     },
@@ -183,70 +153,6 @@ async function fetchAirtableRecords({ apiKey, baseId, tableName, viewId }) {
   } while (offset);
 
   return records;
-}
-
-function processProjectsData(records) {
-  return records.map((record) => {
-    const fields = record.fields;
-
-    // Extract tags (looking for tags__001 through tags__007)
-    const tags = [];
-    for (let i = 1; i <= 7; i++) {
-      const tagKey = `tags__${String(i).padStart(3, "0")}`;
-      if (fields[tagKey]) {
-        tags.push(fields[tagKey]);
-      }
-    }
-
-    // Extract screenshots
-    const screenshots = [];
-    for (let i = 1; i <= 3; i++) {
-      const screenshotKey = `screenshots__${String(i).padStart(3, "0")}`;
-      if (fields[screenshotKey]) {
-        screenshots.push(fields[screenshotKey]);
-      }
-    }
-
-    // Extract authOrigins
-    const authOrigins = [];
-    for (let i = 1; i <= 2; i++) {
-      const authOriginKey = `authOrigins__${String(i).padStart(3, "0")}`;
-      if (fields[authOriginKey]) {
-        authOrigins.push(fields[authOriginKey]);
-      }
-    }
-
-    // Convert usesInternetIdentity from string to boolean
-    const usesInternetIdentity = fields.usesInternetIdentity === "True";
-
-    // Build the project object in the correct format
-    const project = {
-      id: fields.id,
-      name: fields.name,
-    };
-
-    // Add optional fields only if they exist
-    if (fields.display) project.display = fields.display;
-    if (fields.website) project.website = fields.website;
-    if (fields.twitter) project.twitter = fields.twitter;
-    if (fields.github) project.github = fields.github;
-    if (fields.youtube) project.youtube = fields.youtube;
-    if (fields.submittableId) project.submittableId = fields.submittableId;
-    if (tags.length > 0) project.tags = tags;
-    if (fields.stats) project.stats = fields.stats;
-    if (fields.description) project.description = fields.description;
-    if (fields.usesInternetIdentity !== undefined)
-      project.usesInternetIdentity = usesInternetIdentity;
-    if (authOrigins.length > 0) project.authOrigins = authOrigins;
-    if (fields.logo) project.logo = fields.logo;
-    if (screenshots.length > 0) project.screenshots = screenshots;
-    if (fields.video) project.video = fields.video;
-    if (fields.videoContentType)
-      project.videoContentType = fields.videoContentType;
-    if (fields.oneLiner) project.oneLiner = fields.oneLiner;
-
-    return project;
-  });
 }
 
 async function processEventsData(records) {
@@ -523,6 +429,12 @@ function pickThumbnail(thumbnails) {
   return thumbnails.default ? thumbnails.default.url : null;
 }
 
+(async () => {
+  const plugin = await airtablePlugin();
+  const content = await plugin.loadContent();
+  console.log("Loaded Airtable Data");
+})();
+
 async function getYouTubePlaylistThumbnail(playlistId) {
   try {
     const response = await fetch(
@@ -603,16 +515,6 @@ function parseAirtableData(record) {
     status: record.fields["Status"],
     featured: record.fields["Featured on Event Website"] || false,
   };
-}
-
-// For testing or direct execution
-if (require.main === module) {
-  (async () => {
-    const plugin = await airtablePlugin();
-    const content = await plugin.loadContent();
-    console.log("Loaded Airtable Data");
-    console.log(`Projects: ${content.projects.length}`);
-  })();
 }
 
 module.exports = airtablePlugin;
