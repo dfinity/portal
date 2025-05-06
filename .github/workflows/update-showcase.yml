@@ -8,33 +8,56 @@ on:
     # Allows manual triggering
 
 jobs:
-  update-showcase:
+  update-and-deploy:
+    name: "Update Showcase and Deploy"
     runs-on: ubuntu-latest
+    concurrency:
+      group: "website update"
+      cancel-in-progress: true
+
+    environment:
+      name: "Internet Computer Mainnet"
+      url: ${{ fromJson(steps.get-url.outputs.url) }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      # First part: Update showcase.json
+      - uses: actions/checkout@v2
         with:
-          node-version: "16"
+          fetch-depth: 0
+
+      - run: git submodule update --init
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Install dependencies
-        run: |
-          npm install node-fetch@2 dotenv
+        run: npm install
+
+      - name: Install update script dependencies
+        run: npm install node-fetch@2 dotenv
 
       - name: Update showcase.json
         run: node update-showcase.js
         env:
-          AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
+          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
 
       - name: Check for changes
         id: git-check
         run: |
-          git diff --quiet showcase.json || echo "::set-output name=changed::true"
+          git diff --quiet showcase.json || echo "changed=true" >> $GITHUB_OUTPUT
 
-      - name: Commit and push if showcase.json has changed
+      # Validate showcase.json if it changed using npm build
+      - name: Validate showcase.json with build system
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          # Run docusaurus build with just enough to validate showcase.json
+          npx docusaurus build --locale en --no-minify --out-dir build-validation
+        env:
+          # Include only the env vars needed for validation
+          NODE_ENV: production
+
+      - name: Commit and push if showcase.json has changed and is valid
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git config --local user.email "action@github.com"
@@ -42,3 +65,45 @@ jobs:
           git add showcase.json
           git commit -m "Update showcase.json from Airtable data [automated]"
           git push
+
+      # Second part: Deploy to IC (your existing CD workflow)
+      - name: Install DFX
+        uses: dfinity/setup-dfx@main
+
+      - name: Dump Identity
+        run: |
+          mkdir -p ~/.config/dfx/identity/default
+          echo $DFX_IDENTITY_DESIGN_TEAM | base64 -d > ~/.config/dfx/identity/default/identity.pem
+          sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
+        env:
+          DFX_IDENTITY_DESIGN_TEAM: ${{ secrets.DFX_IDENTITY_DESIGN_TEAM }}
+
+      - name: Check Canister Balance
+        run: |
+          balance=$(dfx canister --network ic status portal 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
+          LANG=en_US.UTF-8
+          balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
+          echo "Canister balance: $balance_formatted"
+          if [ "5000000000000" -gt "$balance" ]; then
+            canister_id=$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic')
+            template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel internetcomputer.org canister \`$canister_id\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $canister_id --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
+            curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage -o /dev/null
+          fi
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+
+      - name: Deploy to Mainnet
+        run: dfx deploy --network=ic --no-wallet portal
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          DFX_WARNING: -mainnet_plaintext_identity
+
+      - name: Get URL
+        id: get-url
+        run: |
+          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').raw.ic0.app"
+          echo "url={\"$URL\"}" >> $GITHUB_OUTPUT
