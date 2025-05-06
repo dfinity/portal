@@ -3918,13 +3918,14 @@
     "name": "Piggycell",
     "logo": "/img/showcase/piggycell_logo.svg",
     "id": "piggycell",
-    "tags": ["Tools / Infrastructure"],
+    "tags": ["Tools / Infrastructure", "NFT", "Gaming" ],
     "website": "https://www.piggycell.io/",
-    "github": "https://github.com/piggycell-github",
+    "github": "https://github.com/junyoungpark358/piggycell",
     "description": "A DePIN project that provides tokenized incentive solutions to electric power charging platforms.",
     "twitter": "https://x.com/piggycell",
-    "usesInternetIdentity": true,
-    "display": "Normal"
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "submittableId": "48772581"
   },
   {
     "name": "COOWN",
@@ -4042,11 +4043,14 @@
     "logo": "/img/showcase/univoice_logo.svg",
     "id": "mugc&univoice",
     "tags": ["AI", "DeFi"],
-    "website": "https://univoice.world",
+    "website": "https://fcdp2-niaaa-aaaai-atapa-cai.icp0.io/",
     "description": "An AI Agent built based on voice multi-modal data.",
     "twitter": "https://x.com/UNIVOICE_",
     "usesInternetIdentity": true,
-    "display": "Normal"
+    "display": "Normal",
+    "github": "https://github.com/AIO-2030/univoice-agent",
+    "youtube": "https://www.youtube.com/channel/UCvtPBD6yt_biQfyCFxTZF_w",
+    "submittableId": "48650422"
   },
   {
     "name": "VFANS",
@@ -4355,6 +4359,138 @@
     "Gaming"
   ],
   "usesInternetIdentity": true
+},
+  {
+  "name": "Moonbit IC CDK",
+  "description": "The most AI- and WASM-friendly ICP Canister Development Kit.",
+  "website": "https://www.moonbitlang.com/",
+  "logo": "/img/showcase/moonbit-ic-cdk_logo.jpg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "moonbit-ic-cdk",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/eliezhao/moonbit-ic-cdk",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
+  "name": "AstroApe",
+  "description": "AstroApe is a multichain meme coin launcher with bonding curves, cross-chain support, and zero-liquidity deployment powered by ICP's Chain Fusion.",
+  "website": "https://lxxcl-eyaaa-aaaap-qhsgq-cai.icp0.io/",
+  "logo": "/img/showcase/astroape_logo.svg",
+  "screenshots": [
+    "/img/showcase/astroape_screenshot.webp"],
+  "video": "",
+  "display": "Normal",
+  "id": "astroape",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "Ethereum",
+    "DeFi",
+    "Chain Fusion"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/AstroApe-DAO",
+  "twitter": "https://x.com/AstroApe_",
+  "youtube": "https://www.youtube.com/@AstroApe_on_ICP",
+  "submittableId": "48606701"
+},
+  {
+  "name": "Tricorn BTC Lightning Staking Protocol",
+  "description": "First non-custodial BTC staking: native BTC via Lightning & Internet Computer, rewards from routing, stBTC on Ethereum for trustless Bitcoin DeFi.",
+  "website": "https://tricorn.network/",
+  "logo": "/img/showcase/tricorn-btc-lightning-staking-protocol_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "tricorn-btc-lightning-staking-protocol",
+  "oneLiner": "Bitcoin staking bridging BTC with Ethereum DeFi  ",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "Ethereum",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
+  "name": "Multi",
+  "description": "Multi is an asset-backed currency using crowdsourced intelligence to optimize its reserve. Users stake on strategies, earning rewards for performance.",
+  "website": "https://www.multicurrency.io/",
+  "logo": "/img/showcase/multi_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "multi",
+  "oneLiner": "Asset-backed currency optimized by crowdsourced intelligence.",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "Ethereum",
+    "DeFi", 
+    "Chain Fusion"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/multi-system",
+  "twitter": "https://x.com/MultiCurrencyIO",
+  "youtube": "",
+  "submittableId": "48768102"
+},
+  {
+  "name": "Knowledge Foundation NFT System",
+  "description": "The Knowledge Foundation NFT System is an NFT management platform where admins mint, manage and transfer NFTs to users on the platform. ",
+  "website": "https://vdyum-faaaa-aaaad-qg73a-cai.icp0.io/",
+  "logo": "/img/showcase/knowledge-foundation-nft-system_logo.jpg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "knowledge-foundation-nft-system",
+  "oneLiner": "NFT Management Platform",
+  "stats": " ",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DeFi",
+    "Creator Economy"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/KnowledgeFound/kt-nft-system",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
+  "name": "Staex dVault",
+  "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust.",
+  "website": "https://staex.io",
+  "logo": "/img/showcase/staex-dvault_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "staex-dvault",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Tools / Infrastructure",
+    "Enterprise"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/staex-io/dvault",
+  "twitter": "https://x.com/@Staex_io",
+  "youtube": "https://youtube.com/@staex5585?si=L9vvwYDCfsxniqHx",
+  "submittableId": "47374595"
 }
-
 ]
