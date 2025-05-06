@@ -1235,9 +1235,6 @@
     "display": "Normal",
     "website": "https://www.icpipeline.com",
     "twitter": "https://x.com/icpipeline",
-    "twitter": "https://x.com/icpipeline",
-    "tags": ["Tools / Infrastructure"],
-    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.\n",
     "github": "https://github.com/icpipeline-framework",
     "tags": [
       "Tools / Infrastructure"
@@ -1306,8 +1303,6 @@
       "Tools / Infrastructure",
       "Analytics"
     ],
-    "twitter": "https://x.com/icpexplorer",
-    "tags": ["Tools / Infrastructure", "Analytics"],
     "description": "ICP Explorer, a project started in 2018, is an open-source, community-built dashboard and explorer for the Internet Computer, providing live information and statistics about the network, governance, and the ICP utility token, including account and transaction information.",
     "logo": "/img/showcase/icpexplorer_logo.webp",
     "screenshots": [
@@ -1379,7 +1374,6 @@
     "name": "ICDevs.org ",
     "display": "Normal",
     "website": "https://icdevs.org",
-    "twitter": "https://x.com/ICDevs_org",
     "twitter": "https://x.com/ICDevs_org",
     "github": "https://github.com/icdevs/Icdevs_fleeksite",
     "submittableId": 33212854,
@@ -2060,9 +2054,6 @@
       "Tools / Infrastructure",
       "Creator Economy"
     ],
-    "twitter": "https://x.com/NFTStudioPoland",
-    "github": "https://github.com/NFTSTUDIOGDANSK",
-    "tags": ["Metaverse", "NFT", "Tools / Infrastructure", "Creator Economy"],
     "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
     "logo": "/img/showcase/nftstudio_logo.webp"
   },
@@ -2091,9 +2082,6 @@
       "Tools / Infrastructure"
     ],
     "stats": "1,000+ websites",
-    "twitter": "https://x.com/fleek",
-    "github": "https://github.com/fleek-platform",
-    "tags": ["Tools / Infrastructure"],
     "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/fleek_logo.webp",
@@ -3103,8 +3091,6 @@
       "DeFi",
       "DAO"
     ],
-    "twitter": "https://x.com/ghost_icp",
-    "tags": ["DeFi", "DAO"],
     "description": "The First Decentralized Meme Coin on IC",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/icghost.png"
@@ -3417,7 +3403,6 @@
     "display": "Normal",
     "website": "https://onicai.com/",
     "twitter": "https://x.com/onicaiHQ",
-    "twitter": "https://x.com/onicaiHQ",
     "github": "https://github.com/onicai",
     "tags": [
       "AI"
@@ -3511,8 +3496,6 @@
     "display": "Normal",
     "website": "https://ykgs2-ziaaa-aaaak-qcfya-cai.icp0.io/",
     "twitter": "https://x.com/can_scale?lang=en",
-    "twitter": "https://x.com/can_scale?lang=en",
-    "discord": "https://discord.com/invite/DgAarrEGps", 
     "github": "https://github.com/ORIGYN-SA/CanDB",
     "tags": [
       "Tools / Infrastructure"
@@ -4426,8 +4409,6 @@
     "description": "Azle-based proof-of-concept designed integrating in-memory VectorDB and LLM.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/cipherAI_logo.jpeg"
-    "website": "https://qehbq-rqaaa-aaaan-ql2iq-cai.icp0.io/",
-    "twitter": "https://x.com/cipherproxyllc"
   },
   {
     "id": "zkLama",
@@ -4474,10 +4455,6 @@
     "description": "A digital identity platform enabling developers to quickly leverage a variety of verification services and provide users with a reusable identity to more quickly onboard into new applications.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/civic_logo.png"
-    "twitter": "https://x.com/civickey",
-    "discord": "https://discord.com/invite/MWmhXauJw8",
-    "youtube": "https://www.youtube.com/@CivicTechnologies",
-    "submittableId": "45489206"
   },
   {
     "id": "toyoworld",
@@ -4648,8 +4625,6 @@
     "tags": [
       "AI"
     ],
-    "twitter": "https://x.com/neverendsart_ai",
-    "discord": "https://discord.com/invite/neverends-1169553300568424530",
     "description": "A decentralized AI Video generation platform.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/neverendsart_logo.svg"
@@ -4850,7 +4825,6 @@
     "display": "Normal",
     "website": "https://pickpump.xyz/",
     "twitter": "https://x.com/pickpump_xyz",
-    "twitter": "https://x.com/pickpump_xyz",
     "github": "https://github.com/elizaOS/eliza/tree/develop/packages/plugin-icp",
     "tags": [
       "AI",
@@ -4990,8 +4964,6 @@
     "tags": [
       "DeFi"
     ],
-    "twitter": "https://x.com/vnx_platform",
-    "youtube": "https://www.youtube.com/channel/UCEkpvZaOfRkFDP5oV6L2BcA",
     "description": "Regulated European stablecoin generator.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/vnx_stablecoins_logo.svg"
@@ -5280,17 +5252,12 @@
     "display": "Normal",
     "website": "https://app.icramp.xyz",
     "twitter": "https://x.com/ic_rampXYZ",
-    "tags": ["DeFi", "Chain Fusion", "Wallet", "Bitcoin" ],
-    "website": "https://sandbox.icramp.xyz/",
     "github": "https://github.com/reymom/ic2P2ramp",
     "tags": [
       "DeFi",
       "Tools / Infrastructure"
     ],
     "description": "A decentralized protocol that seamlessly integrates ICP with Ethereum and other blockchains, enabling fast, trustless onramping and offramping of digital assets.",
-    "description": "Decentralized P2P onramping with Bitcoin Runes, Ethereum, and ICP—secure multichain orders, UTXOs, and real-time price sync.",
-    "twitter": "https://x.com/ic_rampXYZ",
-    "youtube": "https://www.youtube.com/@icRamp-xyz",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icramp_logo.png"
   },
@@ -5444,27 +5411,9 @@
       "DeFi"
     ],
     "description": "Token launch pad for creating and mining tokens with Bitcoin like proof-of-work and tokeconomics.",
-    "usesInternetIdentity": false
-
-  } ,
-  {
-  "id": "mercx",
-  "name": "MERCX",
-  "website": "https://xpm3z-7qaaa-aaaan-qzvlq-cai.icp0.io/",
-  "tags": [
-      "DeFi",
-      "Wallet",
-      "Chain Fusion",
-      "Analytics"
-    ],
-  "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
-  "stats": "On boarded four regulated institutional grade investment funds",
-  "logo": "/img/showcase/Mercx logo 4.54.14 PM.png",
-  "usesInternetIdentity": true,
-
-  "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
-  "twitter": "https://x.com/mercx__?s=21"
- },
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/blockminer_logo.svg"
+  },
   {
     "id": "ic-cose",
     "name": "IC-COSE",
@@ -5477,7 +5426,8 @@
       "Tools / Infrastructure"
     ],
     "description": "A decentralized Configuration service with Signing and Encryption on the Internet Computer.",
-    "usesInternetIdentity": true
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/ic-cose_logo.webp"
   },
   {
     "id": "canister-cloud",
@@ -5489,7 +5439,8 @@
       "Tools / Infrastructure"
     ],
     "description": "Store, Share & Collect Documents. Sovereign data management designed for privacy, secured on the blockchain.",
-    "usesInternetIdentity": true
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/canister-cloud_logo.svg"
   },
   {
     "id": "utu-the-bitcoin-lessgreater-starknet-bridge",
@@ -5502,7 +5453,8 @@
       "Bitcoin"
     ],
     "description": "Utu is a Bitcoin <> Starknet runes bridge permitting traders to profit from the best onchain UX for your favorite Bitcoin assets.",
-    "usesInternetIdentity": false
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/utu-the-bitcoin-lessgreater-starknet-bridge_logo.webp"
   },
   {
     "id": "ghost-the-zk-notary",
@@ -5532,132 +5484,24 @@
       "Analytics"
     ],
     "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
-    "usesInternetIdentity": true
-  }
     "usesInternetIdentity": true,
-    "twitter": "https://x.com/bookiedex",
-    "youtube": "https://www.youtube.com/@Bookiewin"
-
- 
+    "logo": "/img/showcase/Mercx logo 4.54.14 PM.png"
   },
   {
-  "name": "Blockminer",
-  "description": "Token launch pad for creating and mining tokens with Bitcoin like proof-of-work and tokeconomics.",
-  "website": "https://blockminer.fun/",
-  "logo": "/img/showcase/blockminer_logo.svg",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "blockminer",
-  "oneLiner": " ",
-  "stats": " ",
-  "tags": [
-    "Bitcoin",
-    "DeFi"
-  ],
-  "usesInternetIdentity": false,
-  "github": "",
-  "twitter": "https://x.com/blockminerfun",
-  "youtube": "https://www.youtube.com/@blockminerfun",
-  "submittableId": "48493500"
-}, 
-  {
-  "name": "IC-COSE",
-  "description": "A decentralized Configuration service with Signing and Encryption on the Internet Computer.",
-  "website": "https://github.com/ldclabs/ic-cose",
-  "logo": "/img/showcase/ic-cose_logo.webp",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "ic-cose",
-  "oneLiner": " ",
-  "stats": " ",
-  "tags": [
-    "Tools / Infrastructure"
-  ],
-  "usesInternetIdentity": true,
-  "github": "https://github.com/ldclabs/ic-cose",
-  "twitter": "https://x.com/ICPandaDAO",
-  "youtube": "",
-  "submittableId": "47061712"
-}, 
-  {
-  "name": "Utu: The Bitcoin <> Starknet Bridge",
-  "description": "Utu is a Bitcoin <> Starknet runes bridge permitting traders to profit from the best onchain UX for your favorite Bitcoin assets.",
-  "website": "https://utu-frontend.vercel.app/",
-  "logo": "/img/showcase/utu-the-bitcoin-lessgreater-starknet-bridge_logo.webp",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "utu-the-bitcoin-lessgreater-starknet-bridge",
-  "oneLiner": " ",
-  "stats": " ",
-  "tags": [
-    "Bitcoin"
-  ],
-  "usesInternetIdentity": false,
-  "github": "https://github.com/lfglabs-dev?q=utu&type=all&language=&sort=a",
-  "twitter": "",
-  "youtube": "",
-  "submittableId": "47689636"
-},
-  {
-  "name": "Canister Cloud",
-  "description": "Store, Share & Collect Documents. Sovereign data management designed for privacy, secured on the blockchain.",
-  "website": "https://canister.co",
-  "logo": "/img/showcase/canister-cloud_logo.svg",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "canister-cloud",
-  "oneLiner": " ",
-  "stats": " ",
-  "tags": [
-    "Tools / Infrastructure"
-  ],
-  "usesInternetIdentity": true,
-  "github": "https://github.com/jakepeg/canister_app",
-  "twitter": "https://x.com/CanisterCloud",
-  "youtube": "",
-  "submittableId": ""
-},
-  {
-  "name": "Ghost - The ZK Notary",
-  "description": "Ghost: A privacy-focused tool for the Internet Computer that creates Zero-Knowledge Proofs of token ownership with AI-enhanced explanations.",
-  "website": "https://ghost.zkaas.xyz",
-  "logo": "/img/showcase/ghost-the-zk-notary_logo.svg",
-  "screenshots": [],
-  "video": "",
-  "display": "Normal",
-  "id": "ghost-the-zk-notary",
-  "oneLiner": " ",
-  "stats": " ",
-  "tags": [
-    "AI",
-    "Tools / Infrastructure"
-  ],
-  "usesInternetIdentity": true,
-  "github": "https://github.com/gabrielrondon/ghost_dev",
-  "twitter": "",
-  "youtube": "",
-  "submittableId": "49689335"
-},
-  {
-  "name": "IwinPool",
-  "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
-  "website": "https://iwinpool.com",
-  "logo": "/img/showcase/iwinpool_logo.webp",
-  "screenshots": [
-    "/img/showcase/iwinpool_screenshot.webp"
-  ],
-  "display": "Normal",
-  "id": "iwinpool",
-  "oneLiner": "Decentralized Community Pool Lottety Platform",
-  "stats": "150 +",
-  "tags": [
-    "Gaming"
-  ],
-  "usesInternetIdentity": true
-}
-
+    "id": "IwinPool",
+    "name": "IwinPool",
+    "display": "Normal",
+    "website": "https://iwinpool.com",
+    "tags": [
+      "Gaming"
+    ],
+    "stats": "150+",
+    "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/iwinpool_logo.webp",
+    "screenshots": [
+      "/img/showcase/iwinpool_screenshot.webp"
+    ],
+    "oneLiner": "Decentralized Community Pool Lottety Platform"
+  }
 ]
