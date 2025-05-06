@@ -1,0 +1,472 @@
+---
+keywords: [intermediate, test, tutorial, test code, test canisters, pocketic, pocketic rust, pocketic python, pocket ic, simulate mainnet, testnet, local test, local testing, replica, run replica, dfx replica, local developer environment, local replica]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# PocketIC
+
+<MarkdownChipRow labels={["Beginner", "Testing canisters"]} />
+
+[PocketIC](https://github.com/dfinity/pocketic) is a lightweight, deterministic testing solution for programmatic testing of <GlossaryTooltip>canisters</GlossaryTooltip>. It can be used to simulate mainnet behavior in a local development environment for more deterministic testing.
+
+**`dfx start` uses PocketIC by default to run a local development environment as of `v0.26.0`.**
+
+It can also be run as a standalone binary for automated testing on macOS and Linux systems that doesn't require additional containers or virtual machines.
+
+PocketIC provides synchronous control over the local development environment by removing the non-deterministic parts of the replica to make tests fully reproducible. It only provides the necessary components and strips away the [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) and networking layers.
+
+PocketIC can be used to run concurrent and independent IC instances so that tests can run in parallel. It supports XNet calls and simulating multiple subnets locally. Using PocketIC, you can run tests that set stable memory, control how time passes, and other testing environment variables.
+
+Currently, it supports client libraries for Rust, Python, and JavaScript/TypeScript and can support integration with any language that is written against the [PocketIC REST API](https://docs.rs/pocket-ic/latest/pocket_ic/).
+
+## How to use PocketIC
+
+There are two ways to use PocketIC:
+
+1. PocketIC can be used to create a local development environment with `dfx start`. Canisters deployed to this local environment can be interacted with via `dfx` commands or through their Candid UI.
+
+:::caution
+In `dfx` versions `v0.26.0` and newer, PocketIC is the default local development environment.
+
+For older `dfx` versions, PocketIC must be manually enabled with `dfx start --pocketic`.
+:::
+
+2. You can create automated tests through a PocketIC client library. In this workflow, the client library starts the PocketIC server using the binary file located at the file path stored as the `POCKET_IC_BIN` environment variable.
+
+## Using PocketIC with `dfx start`
+
+To learn about running local development environments with `dfx`, [learn more about `dfx start`](/docs/building-apps/developer-tools/dfx/dfx-start).
+
+## Using PocketIC client libraries for automated tests
+
+<AdornedTabs>
+<TabItem value="rust" label="PocketIC Rust library">
+
+[View a minimalistic example of setting up PocketIC tests in a Rust project](https://github.com/dfinity/icp-hello-world-rust/blob/main/README.md#testing-your-project).
+
+Run the following command to install the PocketIC cargo package:
+
+```
+cargo add pocket-ic --dev
+```
+
+Import PocketIC into your test file:
+
+```rust title=test.rs
+use pocket_ic::PocketIc;
+```
+
+Create a new PocketIC instance:
+
+```rust title=test.rs
+let pic = PocketIc::new();
+```
+
+Create a simple test that creates a canister and makes a call to it:
+
+```rust title=test.rs
+// Create a counter canister and charge it with 2T cycles.
+fn deploy_counter_canister(pic: &PocketIc) -> Principal {
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, 2_000_000_000_000);
+    pic.install_canister(canister_id, counter_wasm(), vec![], None);
+    canister_id
+}
+
+// Call a method on the counter canister as the anonymous principal.
+fn call_counter_canister(pic: &PocketIc, canister_id: Principal, method: &str) -> Vec<u8> {
+    pic.update_call(
+        canister_id,
+        Principal::anonymous(),
+        method,
+        encode_one(()).unwrap(),
+    )
+    .expect("Failed to call counter canister")
+}
+```
+
+</TabItem>
+
+<TabItem value="python" label="PocketIC Python library">
+
+[View a minimalistic example of setting up PocketIC tests in a Motoko project](https://github.com/dfinity/icp-hello-world-motoko/blob/main/README.md#testing-your-project).
+
+Run the following command to install the PocketIC Python package:
+
+```bash
+pip3 install pocket-ic
+```
+
+Import PocketIC into your test file:
+
+```python title=test.py
+from pocket_ic import PocketIC
+```
+
+Create a new PocketIC instance:
+
+```python title=test.py
+pic = PocketIC()
+```
+
+Create a simple test that creates a canister and makes a call to it:
+
+```python title=test.py
+canister_id = pic.create_canister()
+pic.add_cycles(canister_id, 2_000_000_000_000)  # 2T cycles
+pic.install_code(...)
+
+# Make a canister call
+response = pic.update_call(canister_id, method="greet", ...)
+assert(response == 'Hello, PocketIC!')
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+### Hello, world! test
+
+<AdornedTabs>
+<TabItem value="rust" label="PocketIC Rust library">
+
+```rust reference
+https://github.com/dfinity/icp-hello-world-rust/blob/main/src/backend/tests/integration_tests.rs
+```
+
+</TabItem>
+
+<TabItem value="python" label="PocketIC Python library">
+
+```python reference
+https://github.com/dfinity/icp-hello-world-motoko/blob/main/src/backend/tests/integration_tests.py
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+### Simple counter canister on a single subnet
+
+<AdornedTabs>
+<TabItem value="rust" label="PocketIC Rust library">
+
+```rust title=counter_test.rs
+use candid::{Principal, encode_one};
+use pocket_ic::PocketIc;
+
+// 2T cycles
+const INIT_CYCLES: u128 = 2_000_000_000_000;
+
+#[test]
+fn test_counter_canister() {
+    // Create new PocketIC instance
+    let pic = PocketIc::new();
+
+    // Create a canister and charge it with 2T cycles.
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, INIT_CYCLES);
+
+    // Install the counter canister wasm file on the canister.
+    let counter_wasm = todo!();
+    pic.install_canister(canister_id, counter_wasm, vec![], None);
+
+    // Make some calls to the canister.
+    let reply = call_counter_can(&pic, canister_id, "read");
+    assert_eq!(reply, vec![0, 0, 0, 0]);
+    let reply = call_counter_can(&pic, canister_id, "write");
+    assert_eq!(reply, vec![1, 0, 0, 0]);
+    let reply = call_counter_can(&pic, canister_id, "write");
+    assert_eq!(reply, vec![2, 0, 0, 0]);
+    let reply = call_counter_can(&pic, canister_id, "read");
+    assert_eq!(reply, vec![2, 0, 0, 0]);
+}
+
+fn call_counter_can(pic: &PocketIc, canister_id: Principal, method: &str) -> Vec<u8> {
+    pic.update_call(
+        canister_id,
+        Principal::anonymous(),
+        method,
+        encode_one(()).unwrap(),
+    )
+    .expect("Failed to call counter canister")
+}
+```
+
+[View additional Rust examples](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs).
+
+</TabItem>
+
+<TabItem value="python" label="PocketIC Python library">
+
+```python title=counter_test.py
+import sys
+import os
+import unittest
+import ic
+
+# The example needs to have the module in its sys path, so we traverse
+# up until we find the pocket_ic package.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(os.path.dirname(script_dir)))
+
+from pocket_ic import PocketIC
+
+class CounterCanisterTests(unittest.TestCase):
+    def test_counter_canister(self):
+        // Create new PocketIC instance
+        pic = PocketIC()
+
+        // Create a canister and charge it with 2T cycles.
+        canister_id = pic.create_canister()
+        pic.add_cycles(canister_id, 2_000_000_000_000)  # 2T cycles
+
+        // Install the counter canister wasm file on the canister.
+        with open(os.path.join(script_dir, "counter.wasm"), "rb") as wasm_file:
+            wasm_module = wasm_file.read()
+        pic.install_code(canister_id, bytes(wasm_module), [])
+
+        // Make some calls to the canister.
+        self.assertEqual(
+            pic.query_call(canister_id, "read", ic.encode([])),
+            [0, 0, 0, 0],
+        )
+        self.assertEqual(
+            pic.update_call(canister_id, "write", ic.encode([])),
+            [1, 0, 0, 0],
+        )
+        self.assertEqual(
+            pic.update_call(canister_id, "write", ic.encode([])),
+            [2, 0, 0, 0],
+        )
+        self.assertEqual(
+            pic.query_call(canister_id, "read", ic.encode([])),
+            [2, 0, 0, 0],
+        )
+        self.assertEqual(
+            pic.update_call(canister_id, "read", ic.encode([])),
+            [2, 0, 0, 0],
+        )
+
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+To see more examples and run them locally, clone the [PocketIC Python repo](https://github.com/dfinity/pocketic-py).
+
+</TabItem>
+</AdornedTabs>
+
+### Multi-subnet testing & different subnet types
+
+Multi-subnet testing allows for simulating multiple subnets, including subnets of different types. Possible types of subnets include:
+
+- Generic system subnets.
+
+- Generic application subnets.
+
+- Named subnets with canister ID ranges like on the mainnet, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets.
+
+<AdornedTabs>
+<TabItem value="rust" label="PocketIC Rust library">
+
+This example uses an NNS subnet and two application subnets.
+
+```rust title=multi_subnet.rs
+use candid::{Principal, encode_one};
+use pocket_ic::PocketIc;
+
+let pic = PocketIcBuilder::new()
+
+    // Create an IC instance with an NNS subnet and two application subnets
+    .with_nns_subnet()
+    .with_application_subnet()
+    .with_application_subnet()
+    .build();
+
+    // Target the NNS subnet to create a canister
+    let nns_sub = pic.topology().get_nns_subnet().unwrap();
+    let nns_can_id = pic.create_canister_on_subnet(..., nns_sub);
+
+    // Test one of the application subnets and install a canister
+    let app_sub_2 = pic.topology().get_app_subnets()[1];
+    let app_can_id = pic.create_canister_on_subnet(..., app_sub_2);
+    pic.install_canister(app_can_id, ...);
+
+    // Create a canister with a specific `canister_id` on a named subnet, in this example the NNS subnet
+    let ledger_canister_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+    pic.create_canister_with_id(..., ledger_canister_id).unwrap();
+    pic.install_canister(ledger_canister_id, ...);
+```
+
+View a larger, [more complex example](https://github.com/dfinity/ic/blob/1c46b8a2c717616bca1b5ba264e7b3ff81a3ce52/packages/pocket-ic/tests/tests.rs#L277).
+
+</TabItem>
+
+<TabItem value="python" label="PocketIC Python library">
+
+This example uses a single NNS subnet and an instance of the ICRC1 ledger canister:
+
+```python title=multi_subnet.py
+import sys
+import os
+import unittest
+import ic
+
+# The example needs to have the module in its sys path, so we traverse
+# up until we find the pocket_ic package.
+script_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(os.path.dirname(script_dir)))
+
+from pocket_ic import PocketIC, SubnetConfig
+
+
+class LedgerCanisterTests(unittest.TestCase):
+    def setUp(self) -> None:
+
+        # This is run for every test individually.
+
+        # We create a new PocketIC with a single NNS subnet.
+        self.pic = PocketIC(SubnetConfig(nns=True))
+        self.principal_a = ic.Principal(b"A")
+        self.principal_b = ic.Principal(b"B")
+        self.principal_minting = ic.Principal(b"MINTER")
+
+        with open(
+            os.path.join(script_dir, "ledger.did"), "r", encoding="utf-8"
+        ) as candid_file:
+            candid = candid_file.read()
+
+        # Specify the init args for the ledger canister.
+        init_args = {
+            "Init": {
+                "decimals": [],
+                "token_symbol": "MYTOKEN",
+                "transfer_fee": 0,
+                "metadata": [],
+                "minting_account": {
+                    "owner": self.principal_minting.to_str(),
+                    "subaccount": [],
+                },
+                "initial_balances": [
+                    ({"owner": self.principal_a.to_str(), "subaccount": []}, 666),
+                    ({"owner": self.principal_b.to_str(), "subaccount": []}, 420),
+                ],
+                "maximum_number_of_accounts": [],
+                "accounts_overflow_trim_quantity": [],
+                "fee_collector_account": [],
+                "archive_options": {
+                    "num_blocks_to_archive": 1,
+                    "max_transactions_per_response": [],
+                    "trigger_threshold": 1,
+                    "max_message_size_bytes": [],
+                    "cycles_for_archive_creation": [],
+                    "node_max_memory_size_bytes": [],
+                    "controller_id": "2vxsx-fae",
+                },
+                "max_memo_length": [],
+                "token_name": "My Token",
+                "feature_flags": [],
+            }
+        }
+        with open(os.path.join(script_dir, "ledger_canister.wasm"), "rb") as wasm_file:
+            wasm_module = wasm_file.read()
+
+        # Install the ledger canister on the NNS subnet.
+        self.ledger: ic.Canister = self.pic.create_and_install_canister_with_candid(
+            candid, wasm_module, init_args
+        )
+        return super().setUp()
+
+    def test_get_name(self):
+        res = self.ledger.icrc1_name()
+        self.assertEqual(res, ["My Token"])
+
+    def test_get_decimals(self):
+        res = self.ledger.icrc1_symbol()
+        self.assertEqual(res, ["MYTOKEN"])
+
+    def test_get_fee(self):
+        res = self.ledger.icrc1_fee()
+        self.assertEqual(res, [0])
+
+    def test_get_total_supply(self):
+        res = self.ledger.icrc1_total_supply()
+        self.assertEqual(res, [666 + 420])
+
+    def test_get_transactions(self):
+        self.pic.set_sender(self.principal_a)
+
+        receiver = {"owner": self.principal_b.to_str(), "subaccount": []}
+        res = self.ledger.icrc1_transfer(
+            {
+                "from_subaccount": [],
+                "to": receiver,
+                "amount": 42,
+                "fee": [],
+                "memo": [],
+                "created_at_time": [],
+            },
+        )
+
+        self.pic.set_anonymous_sender()
+
+        res = self.ledger.get_transactions({"start": 0, "length": 10})
+        self.assertEqual(len(res[0]["archived_transactions"]), 1)
+
+    def test_transfer(self):
+        self.pic.set_sender(self.principal_a)
+
+        receiver = {"owner": self.principal_b.to_str(), "subaccount": []}
+        res = self.ledger.icrc1_transfer(
+            {
+                "from_subaccount": [],
+                "to": receiver,
+                "amount": 42,
+                "fee": [],
+                "memo": [],
+                "created_at_time": [],
+            },
+        )
+        self.assertTrue("Ok" in res[0])
+
+        self.pic.set_anonymous_sender()
+
+        res = self.ledger.icrc1_balance_of(
+            {"owner": self.principal_a.to_str(), "subaccount": []}
+        )
+        self.assertEqual(res, [666 - 42])
+        res = self.ledger.icrc1_balance_of(
+            {"owner": self.principal_b.to_str(), "subaccount": []}
+        )
+        self.assertEqual(res, [420 + 42])
+
+    def test_get_balance_of(self):
+        res = self.ledger.icrc1_balance_of(
+            {"owner": self.principal_a.to_str(), "subaccount": []}
+        )
+        self.assertEqual(res, [666])
+
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+## Resources
+
+- [PocketIC.](https://github.com/dfinity/pocketic)
+
+- [PocketIC Python.](https://pypi.org/project/pocket-ic/)
+
+- [PocketIC Rust.](https://crates.io/crates/pocket-ic)
+
+- [PocketIC forum post.](https://forum.dfinity.org/t/pocketic-fast-and-versatile-canister-testing-in-rust-and-python/23793)

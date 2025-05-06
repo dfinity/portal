@@ -1,0 +1,100 @@
+---
+keywords: [beginner, concept, gas cost, cycles cost, cycles gas, what is the cost, pricing, gas, cycles cost formulas]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# Cycles cost formulas
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+Canisters are charged for the resources they consume and any operations they perform using features such as HTTPS outcalls, threshold signatures, and the Bitcoin integration API. At a high level this can be visualized using the following diagram:
+
+![Canister calls overview](./_attachments/transaction-overview.svg)
+
+A detailed, mathematical example of how the cost of running a canister on a 13-node subnet is computed can be found [on the wiki](https://wiki.internetcomputer.org/wiki/Comparing_Canister_Cycles_vs_Performance_Counter).
+
+Specific mathematical formulas used for different types of costs can be found below for reference.
+
+The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where **1 trillion cycles equals 1 XDR**. As of December 18, 2023, the exchange rate for 1 XDR = $1.336610. The exchange rate for USD/XDR may vary. Learn more about [XDR exchange rates](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+
+The following table shows units of cycles and the respective fiat values:
+
+| Abbreviation  | Name      | In numbers   | Cycles XDR value  | Cycles USD value |
+|-------------- | --------- | ------------ | ----------------- | ---------------- |
+| T             | Trillion  | 1_000_000_000_000 | 1            | 1.336610         |
+| B             | Billion   | 1_000_000_000| 0.001             | 0.001336610      |
+| M             | Million   | 1_000_000    | 0.000001          | 0.000001336610   |
+| k             | Thousand  | 1_000        | 0.000000001       | 0.000000001336610 |
+
+## Cost calculation formulas
+
+A detailed, mathematical example of how the cost of running a canister on a 13-node subnet is computed can be found [on the wiki](https://wiki.internetcomputer.org/wiki/Comparing_Canister_Cycles_vs_Performance_Counter).
+
+Specific mathematical formulas used for different types of costs can be found below for reference.
+
+### Message transmissions
+
+A fixed baseline fee and per-byte fee are charged for each byte of the message: `base-fee` + `per-byte-fee` * `size-in-bytes`.
+
+### Execution
+
+The execution cost consists of a fixed execution fee and a per-instruction fee (on application subnets (13 nodes), 10 instructions cost 4 cycles) that is charged for each executed WebAssembly instruction:
+
+`base-fee` + `per-instruction-fee` * `number-of-instructions`
+
+The current values of fees are `base-fee` = 5M cycles (or $0.00000668305 USD), `per-instruction-fee` = 1 cycle (or $0.01325 USD for 1B instructions).
+
+### HTTPS outcalls
+
+The cycles cost of an HTTPS outcall request has both a fixed and variable component.
+The fixed component accounts for the known overhead associated with an HTTPS outcall, whereas the variable component accounts for the resources consumed during the request.
+The cost scales with regard to subnet size.
+
+Currently, these fees are:
+
+```
+total_fee = base_fee + size_fee
+base_fee = (3_000_000 + 60_000 * n) * n
+size_fee = (400 * request_bytes + 800 * max_response_bytes) * n
+```
+
+The `request_bytes` includes the entire request, not just the HTTP body:
+
+```
+request_size = url.len + transform.name.len + transform.context.len + body.len + header_len
+header_len = header_1.name + header_1.value + ... + header_n.name + header_n.value
+```
+
+while `max_response_bytes` is either set by the canister or defaults to `2M`.
+
+## Cycles price breakdown
+
+The table below details the cost of compute, storage transmissions, and canister calls.
+
+You can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/) to estimate the cost for your dapp.
+
+| Canister transmission | Description | Who is responsible for paying the cycles fee? | 13-node subnets cycles cost | 13-node subnets USD cost | 34-node subnets | 34-node subnets USD cost |
+| ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
+| Query call | Query information from a canister. | N/A | Free |  Free | Free | Free |
+| Canister creation | For creating canisters on a subnet. | Created canister | 500B | $0.668305000000 | 500B / 13 * 34 | $1.74787461538 |
+| Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.000013366100 | 10M / 13 * 34 | $0.000034957492 |
+| Update message execution | For every update message executed. | Target canister | 5M | $0.000006683050 | 5M / 13 * 34 | $0.000017478740 |
+| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 1B | $0.001336610000 | 1B / 13 * 34 | $0.003495749230 |
+| Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K | $0.000000347519 | 260K / 13 * 34 | $0.000000908895 |
+| Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K | $0.000000001337 | 1K / 13 * 34 | $0.000000003496 |
+| Ingress message reception | For every ingress message received. | Receiving canister | 1.2M | $0.000001603932 | 1.2M / 13 * 34 | $0.000004194899 |
+| Ingress byte reception | For every byte received in an ingress message. | Receiving canister | 2K | $0.000000002673 | 2K / 13 * 34 | $0.000000006991 |
+| GiB storage per second | For storing a GiB of data per second. | Canister with storage | 127K | $0.000000169749 | 127K / 13 * 34 | $0.000000443960 |
+| | | | | | | | |
+| _HTTPS outcalls_ | | | | | | | |
+| HTTPS outcall (per call) | For sending an HTTPS outcall to a server outside the IC, per message (`http_request`). | Sending canister | 49_140_000 | $0.000065681015 | 171_360_000 | $0.000229041490 |
+| HTTPS outcall request message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per request byte (`http_request`). | Sending canister | 5_200 | $0.000000006950 | 13_600 | $0.000000018178 |
+| HTTPS outcall response message size (per byte) | For sending an HTTPS outcall to a server outside the IC, per reserved response byte (`http_request`). | Sending canister | 10_400 | $0.000000013901 | 27_200 | $0.000000036356 |
+
+The following table shows the calculated storage cost per GiB for a 30-day month:
+
+| | | 13-node subnets | 34-node subnets |
+|----------------------|------------------------------------|-----------------------------|-----------------------------|
+| GiB Storage Per Month | For storing a GiB of data per month | $0.446150495 | $1.70 |
