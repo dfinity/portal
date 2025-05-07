@@ -921,6 +921,7 @@
     "id": "icpipeline",
     "name": "ICPipeline",
     "website": "https://www.icpipeline.com",
+    "twitter": "https://x.com/icpipeline",
     "tags": ["Tools / Infrastructure"],
     "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.\n",
     "github": "https://github.com/icpipeline-framework",
@@ -970,6 +971,7 @@
     "id": "icpexplorer",
     "name": "ICP Explorer",
     "website": "https://www.icpexplorer.org/#/datacenters",
+    "twitter": "https://x.com/icpexplorer",
     "tags": ["Tools / Infrastructure", "Analytics"],
     "description": "ICP Explorer, a project started in 2018, is an open-source, community-built dashboard and explorer for the Internet Computer, providing live information and statistics about the network, governance, and the ICP utility token, including account and transaction information.",
     "logo": "/img/showcase/icpexplorer_logo.webp",
@@ -1022,6 +1024,7 @@
     "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding, and scientific discovery",
     "tags": ["Tools / Infrastructure"],
     "website": "https://icdevs.org",
+    "twitter": "https://x.com/ICDevs_org",
     "github": "https://github.com/icdevs/Icdevs_fleeksite",
     "logo": "/img/showcase/icdevs.org_logo.webp",
     "submittableId": "33212854"
@@ -1516,6 +1519,8 @@
     "id": "nftstudio",
     "name": "NFT Studio",
     "website": "https://7xw5z-uqaaa-aaaad-qaqcq-cai.raw.ic0.app/",
+    "twitter": "https://x.com/NFTStudioPoland",
+    "github": "https://github.com/NFTSTUDIOGDANSK",
     "tags": ["Metaverse", "NFT", "Tools / Infrastructure", "Creator Economy"],
     "description": "NFT Studio is the first to develop 3D NFTs. This means that the NFTs themselves are living 3D code, as opposed to a .GIF recording of a 3D rendered image. This is only possible thanks to the ICP blockchain as NFTs can run code, not just link to an image. NFT Studio has had features in major media for the 3D NFT minting tools that are being built for global creators.",
     "display": "Normal",
@@ -1537,6 +1542,8 @@
     "id": "fleek",
     "name": "Fleek",
     "website": "https://fleek.co/",
+    "twitter": "https://x.com/fleek",
+    "github": "https://github.com/fleek-platform",
     "tags": ["Tools / Infrastructure"],
     "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
     "usesInternetIdentity": false,
@@ -2331,6 +2338,7 @@
     "id": "icghost",
     "name": "ICGhost",
     "website": "https://yadjb-mqaaa-aaaan-qaqlq-cai.icp0.io/",
+    "twitter": "https://x.com/ghost_icp",
     "tags": ["DeFi", "DAO"],
     "description": "The First Decentralized Meme Coin on IC",
     "usesInternetIdentity": false,
@@ -2591,6 +2599,7 @@
     "description": "A B2B Platform for configuring Generative AI white label solutions.",
     "usesInternetIdentity": false,
     "website": "https://onicai.com/",
+    "twitter": "https://x.com/onicaiHQ",
     "github": "https://github.com/onicai",
     "display": "Normal",
     "logo": "/img/showcase/onicai_logo.png"
@@ -2666,6 +2675,8 @@
     "description": "Flexible and truly horizontally scalable NoSQL database built for ICP.",
     "usesInternetIdentity": false,
     "website": "https://ykgs2-ziaaa-aaaak-qcfya-cai.icp0.io/",
+    "twitter": "https://x.com/can_scale?lang=en",
+    "discord": "https://discord.com/invite/DgAarrEGps", 
     "github": "https://github.com/ORIGYN-SA/CanDB",
     "display": "Normal",
     "logo": "/img/showcase/candb_logo.png"
@@ -3376,7 +3387,8 @@
     "tags": ["AI"],
     "usesInternetIdentity": true,
     "github": "https://github.com/supaIC/Cipher-AI-Vault",
-    "website": "https://qehbq-rqaaa-aaaan-ql2iq-cai.icp0.io/"
+    "website": "https://qehbq-rqaaa-aaaan-ql2iq-cai.icp0.io/",
+    "twitter": "https://x.com/cipherproxyllc"
   },
   {
     "id": "zkLama",
@@ -3411,6 +3423,9 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/civicteam/civic-icp-canister",
     "website": "https://www.civic.com",
+    "twitter": "https://x.com/civickey",
+    "discord": "https://discord.com/invite/MWmhXauJw8",
+    "youtube": "https://www.youtube.com/@CivicTechnologies",
     "submittableId": "45489206"
   },
   {
@@ -3552,6 +3567,8 @@
     "name": "NeverEndsArt",
     "tags": ["AI"],
     "website": "https://mx6ql-zyaaa-aaaak-akxpa-cai.icp0.io/",
+    "twitter": "https://x.com/neverendsart_ai",
+    "discord": "https://discord.com/invite/neverends-1169553300568424530",
     "description": "A decentralized AI Video generation platform.",
     "usesInternetIdentity": false,
     "display": "Normal",
@@ -3714,6 +3731,7 @@
     "name": "Pickpump",
     "tags": ["AI", "DeFi"],
     "website": "https://pickpump.xyz/",
+    "twitter": "https://x.com/pickpump_xyz",
     "github": "https://github.com/elizaOS/eliza/tree/develop/packages/plugin-icp",
     "description": "An AI-powered, on-chain platform for memecoins. The first ICRC token creation plugin on Eliza.",
     "usesInternetIdentity": false,
@@ -3825,6 +3843,8 @@
     "id": "vnx",
     "tags": ["DeFi"],
     "website": "https://vnx.li/",
+    "twitter": "https://x.com/vnx_platform",
+    "youtube": "https://www.youtube.com/channel/UCEkpvZaOfRkFDP5oV6L2BcA",
     "description": "Regulated European stablecoin generator.",
     "usesInternetIdentity": true,
     "display": "Normal"
@@ -3898,13 +3918,14 @@
     "name": "Piggycell",
     "logo": "/img/showcase/piggycell_logo.svg",
     "id": "piggycell",
-    "tags": ["Tools / Infrastructure"],
+    "tags": ["Tools / Infrastructure", "NFT", "Gaming" ],
     "website": "https://www.piggycell.io/",
-    "github": "https://github.com/piggycell-github",
+    "github": "https://github.com/junyoungpark358/piggycell",
     "description": "A DePIN project that provides tokenized incentive solutions to electric power charging platforms.",
     "twitter": "https://x.com/piggycell",
-    "usesInternetIdentity": true,
-    "display": "Normal"
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "submittableId": "48772581"
   },
   {
     "name": "COOWN",
@@ -4022,11 +4043,14 @@
     "logo": "/img/showcase/univoice_logo.svg",
     "id": "mugc&univoice",
     "tags": ["AI", "DeFi"],
-    "website": "https://univoice.world",
+    "website": "https://fcdp2-niaaa-aaaai-atapa-cai.icp0.io/",
     "description": "An AI Agent built based on voice multi-modal data.",
     "twitter": "https://x.com/UNIVOICE_",
     "usesInternetIdentity": true,
-    "display": "Normal"
+    "display": "Normal",
+    "github": "https://github.com/AIO-2030/univoice-agent",
+    "youtube": "https://www.youtube.com/channel/UCvtPBD6yt_biQfyCFxTZF_w",
+    "submittableId": "48650422"
   },
   {
     "name": "VFANS",
@@ -4055,11 +4079,12 @@
     "name": "icRamp",
     "logo": "/img/showcase/icramp_logo.png",
     "id": "icramp",
-    "tags": ["DeFi", "Tools / Infrastructure"],
-    "website": "https://app.icramp.xyz",
+    "tags": ["DeFi", "Chain Fusion", "Wallet", "Bitcoin" ],
+    "website": "https://sandbox.icramp.xyz/",
     "github": "https://github.com/reymom/ic2P2ramp",
-    "description": "A decentralized protocol that seamlessly integrates ICP with Ethereum and other blockchains, enabling fast, trustless onramping and offramping of digital assets.",
+    "description": "Decentralized P2P onramping with Bitcoin Runes, Ethereum, and ICP—secure multichain orders, UTXOs, and real-time price sync.",
     "twitter": "https://x.com/ic_rampXYZ",
+    "youtube": "https://www.youtube.com/@icRamp-xyz",
     "usesInternetIdentity": true,
     "display": "Normal"
   },
@@ -4182,7 +4207,11 @@
     ],
   "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
   "stats": "On boarded four regulated institutional grade investment funds",
-  "logo": "/img/showcase/Mercx logo 4.54.14 PM.png",
+
+  "logo": "/img/showcase/MercX-logo-Cover-2-.jpg",
+
+
+
   "usesInternetIdentity": true,
 
   "github": "https://github.com/Mercatura-Developers-Team/Mercx.git",
@@ -4293,7 +4322,28 @@
   "youtube": "",
   "submittableId": ""
 },
-{
+  {
+  "name": "Ghost - The ZK Notary",
+  "description": "Ghost: A privacy-focused tool for the Internet Computer that creates Zero-Knowledge Proofs of token ownership with AI-enhanced explanations.",
+  "website": "https://ghost.zkaas.xyz",
+  "logo": "/img/showcase/ghost-the-zk-notary_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "ghost-the-zk-notary",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "AI",
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/gabrielrondon/ghost_dev",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": "49689335"
+},
+  {
   "name": "IwinPool",
   "description": "An innovative platform for decentralized community lottery pools, built on the cutting-edge Internet Computer Protocol. Discover unparalleled transparency, security, and fairness in lottery pooling.",
   "website": "https://iwinpool.com",
@@ -4309,6 +4359,138 @@
     "Gaming"
   ],
   "usesInternetIdentity": true
+},
+  {
+  "name": "Moonbit IC CDK",
+  "description": "The most AI- and WASM-friendly ICP Canister Development Kit.",
+  "website": "https://www.moonbitlang.com/",
+  "logo": "/img/showcase/moonbit-ic-cdk_logo.jpg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "moonbit-ic-cdk",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Tools / Infrastructure"
+  ],
+  "usesInternetIdentity": false,
+  "github": "https://github.com/eliezhao/moonbit-ic-cdk",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
+  "name": "AstroApe",
+  "description": "AstroApe is a multichain meme coin launcher with bonding curves, cross-chain support, and zero-liquidity deployment powered by ICP's Chain Fusion.",
+  "website": "https://lxxcl-eyaaa-aaaap-qhsgq-cai.icp0.io/",
+  "logo": "/img/showcase/astroape_logo.svg",
+  "screenshots": [
+    "/img/showcase/astroape_screenshot.webp"],
+  "video": "",
+  "display": "Normal",
+  "id": "astroape",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "Ethereum",
+    "DeFi",
+    "Chain Fusion"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/AstroApe-DAO",
+  "twitter": "https://x.com/AstroApe_",
+  "youtube": "https://www.youtube.com/@AstroApe_on_ICP",
+  "submittableId": "48606701"
+},
+  {
+  "name": "Tricorn BTC Lightning Staking Protocol",
+  "description": "First non-custodial BTC staking: native BTC via Lightning & Internet Computer, rewards from routing, stBTC on Ethereum for trustless Bitcoin DeFi.",
+  "website": "https://tricorn.network/",
+  "logo": "/img/showcase/tricorn-btc-lightning-staking-protocol_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "tricorn-btc-lightning-staking-protocol",
+  "oneLiner": "Bitcoin staking bridging BTC with Ethereum DeFi  ",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "Ethereum",
+    "DeFi"
+  ],
+  "usesInternetIdentity": false,
+  "github": "",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
+  "name": "Multi",
+  "description": "Multi is an asset-backed currency using crowdsourced intelligence to optimize its reserve. Users stake on strategies, earning rewards for performance.",
+  "website": "https://www.multicurrency.io/",
+  "logo": "/img/showcase/multi_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "multi",
+  "oneLiner": "Asset-backed currency optimized by crowdsourced intelligence.",
+  "stats": " ",
+  "tags": [
+    "Bitcoin",
+    "Ethereum",
+    "DeFi", 
+    "Chain Fusion"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/multi-system",
+  "twitter": "https://x.com/MultiCurrencyIO",
+  "youtube": "",
+  "submittableId": "48768102"
+},
+  {
+  "name": "Knowledge Foundation NFT System",
+  "description": "The Knowledge Foundation NFT System is an NFT management platform where admins mint, manage and transfer NFTs to users on the platform. ",
+  "website": "https://vdyum-faaaa-aaaad-qg73a-cai.icp0.io/",
+  "logo": "/img/showcase/knowledge-foundation-nft-system_logo.jpg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "knowledge-foundation-nft-system",
+  "oneLiner": "NFT Management Platform",
+  "stats": " ",
+  "tags": [
+    "NFT",
+    "Tools / Infrastructure",
+    "DeFi",
+    "Creator Economy"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/KnowledgeFound/kt-nft-system",
+  "twitter": "",
+  "youtube": "",
+  "submittableId": ""
+},
+  {
+  "name": "Staex dVault",
+  "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust.",
+  "website": "https://staex.io",
+  "logo": "/img/showcase/staex-dvault_logo.svg",
+  "screenshots": [],
+  "video": "",
+  "display": "Normal",
+  "id": "staex-dvault",
+  "oneLiner": " ",
+  "stats": " ",
+  "tags": [
+    "Tools / Infrastructure",
+    "Enterprise"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/staex-io/dvault",
+  "twitter": "https://x.com/@Staex_io",
+  "youtube": "https://youtube.com/@staex5585?si=L9vvwYDCfsxniqHx",
+  "submittableId": "47374595"
 }
-
 ]

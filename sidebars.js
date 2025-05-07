@@ -594,6 +594,7 @@ build: [
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-sns-topic-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
             },
@@ -764,7 +765,8 @@ defi: [
             label: "ICRC ledger",
             items: [
               "defi/token-ledgers/setup/icrc1_ledger_setup",
-              "defi/token-ledgers/usage/icrc1_ledger_usage"
+              "defi/token-ledgers/usage/icrc1_ledger_usage",
+              "defi/token-ledgers/upgrading/icrc1_ledger_upgrade"
             ],
           },
           "defi/token-ledgers/cycles-ledger",

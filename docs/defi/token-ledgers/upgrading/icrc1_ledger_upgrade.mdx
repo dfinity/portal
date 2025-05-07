@@ -1,0 +1,108 @@
+---
+keywords: [intermediate, tokens, icrc, tutorial, ledger, icrc ledger, token ledger, ledger upgrade, icrc upgrade, upgrade ledger, upgrade token, upgrade icrc]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ICRC-1 ledger suite upgrade
+
+<MarkdownChipRow labels={["Intermediate", "Ledgers"]} />
+
+
+The ICRC-1 **ledger suite** consists of the following canisters:
+
+- A [ledger canister](/docs/defi/token-ledgers/setup/icrc1_ledger_setup) that manages token balances, transfers, and approval mechanisms.
+- An (optional) [index canister](/docs/defi/token-indexes) that provides efficient querying of balances and transaction histories.
+- An (optional) archive canister that stores historical transaction data.
+
+To add new features and fix bugs, it is recommended to periodically upgrade the canisters.
+
+## Background
+
+Development of ledger implementations has historically prioritized the ability to downgrade from any version of the ledger to its immediately preceding version. However, this invariant was broken when the ledgers transitioned to using stable storage for key data structures such as balances and approval information. This migration introduced breaking changes.
+
+Moreover, the transition from heap-based to stable storage involves a series of carefully orchestrated steps, with each step introducing critical changes upon which subsequent upgrades depend. 
+
+As a result, upgrading an ICRC ledger suite that still uses heap-based data storage to the latest version must be done with particular care and strict adherence to the prescribed upgrade sequence.
+
+## Versioned release process
+
+A versioned release process for the ledger suite was introduced in late 2024.
+Releases are formally tagged using the format `ledger-suite-icrc-<year>-<month>-<day>`.
+
+At the time of writing, [officially released versions](https://github.com/dfinity/ic/releases?q=ledger-suite-icrc&expanded=false) include (from oldest to latest):
+
+  1. [Release September 13, 2024 (`ledger-suite-icrc-2024-09-13`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-09-13)
+  2. [Release October 17, 2024 (`ledger-suite-icrc-2024-10-17`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-10-17)
+  3. [Release November 28, 2024 (`ledger-suite-icrc-2024-11-28`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28)
+  4. [Release January 7, 2025 (`ledger-suite-icrc-2025-01-07`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-01-07)
+  5. [Release January 21, 2025 (`ledger-suite-icrc-2025-01-21`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-01-21)
+  6. [Release February 27, 2025 (`ledger-suite-icrc-2025-02-27`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-02-27)
+
+## Sequential upgrades
+
+Since the [November 28, 2024 (`ledger-suite-icrc-2024-11-28`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28) release, each new version checks that the upgrade is starting from the correct version and will fail if the version being upgraded is too old.
+:::caution
+It is crucial to upgrade versions sequentially. Skipping a release can result in incompatibilities or data integrity issues.
+:::
+
+
+Upgrades must follow this order:
+  1. Upgrade your suite from `2024-09-13` to `2024-10-17`.
+  2. Once the upgrade to `2024-10-17` has been completed, upgrade to `2024-11-28`.
+  3. Once the upgrade to ` 2024-11-28` has been completed, upgrade to `2025-01-07`.
+  4. Once the upgrade to `2025-01-07` has been completed, upgrade to `2024-01-21`.
+  5. Once the upgrade to `2025-01-21` has been completed, upgrade to `2024-02-27`.
+
+Note that starting from the [November 28, 2024 release (`ledger-suite-icrc-2024-11-28`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28) release, not all releases are backwards compatible since they perform data migration from the heap to stable structures and migration back to the heap in case a ledger downgrade is not supported.
+Learn more in [Upgrade and downgrade notes](#upgrade-and-downgrade-notes).
+
+## Component upgrade order
+
+Within each release, the recommended upgrade order is:
+
+  1. **Index canister**
+  2. **Ledger**
+  3. **Archive**
+
+## Performing upgrades
+
+Prior to upgrading production ledgers, test the upgrade path by first installing the same production ledger canister version either on a local setup or on a test canister on the mainnet. Populate the state with a reasonably large number of transactions. Then, upgrade that to the new version and verify that the upgrade was successful by checking that the module hash changed to match the new version and follow the [Verifying upgrades](#verifying-upgrades) steps.
+
+Before performing the actual upgrade in production, consider taking a [snapshot](/docs/current/developer-docs/smart-contracts/maintain/snapshots) of the canister so that it can be restored in case of issues.
+Note that restoring a canister snapshot will result in the loss of any transactions that may have been performed since the snapshot was taken.
+If an index canister is installed, it can be used to verify that the blocks and balances match what is stored in the ledger.
+
+## Verifying upgrades
+
+Verify that the upgrade was successful:
+
+- Check the individual balances, allowances, and blocks of the ledger to make sure that they match before and after the upgrade.
+- Check the metrics available at `https://<canister_id>.raw.icp0.io/metrics` before and after the upgrade. E.g., make sure that the `ledger_transactions`, `ledger_balance_store_entries`, and `ledger_num_approvals` are correct.
+- Verify that key functionality of the ledger works (e.g., querying blocks, performing transactions).
+
+## Upgrading from non-released versions
+
+The guidelines above cover upgrades between officially released versions of the ledger suite. 
+If your ledger is running a non-released version—or if you're unsure which version is currently deployed—the following steps can help you identify your current state, transition to an official release, and complete the migration to stable memory.
+
+### Step 1: Determine the currently installed ledger version.
+
+ - Look at the module hash of the canister, e.g., from the dashboard (`https://dashboard.internetcomputer.org/canister/<canister_id>`) and see if it matches one of the officially released versions.
+ - The `dfx canister metadata <canister_id> git_commit_id` may also be helpful.
+
+### Step 2: Determine the canister version to upgrade to.
+
+If the currently installed version is an official release, the next version would be the version of the next official release.
+If the currently installed version is not known, the recommended next version is the [October 17, 2024 release (`ledger-suite-icrc-2024-10-17`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-10-17).
+- The aforementioned version writes the serialized ledger state to stable memory using a [MemoryManager](https://github.com/dfinity/stable-structures/blob/69ed47f9b5001af67d650c714cd56ec3ee0ef2bb/src/memory_manager.rs). This is a prerequisite for migrating ledger-internal data structures to [stable structures](https://github.com/dfinity/stable-structures/tree/main) in subsequent ledger releases. Upgrading to this version from any prior release should be possible.
+- If installing this version results in an error due to compatibility issues, this is most likely because the deployed ledger version is based on a later release. In this case, the recommended approach is to try with the subsequent releases until the upgrade succeeds.
+
+### Step 3: For each canister in the ledger suite, in [the order specified above](#component-upgrade-order), test the upgrade, take a snapshot, perform the upgrade, and then [verify the upgrade](/docs/defi/token-ledgers/upgrading/icrc1_ledger_upgrade#verifying-upgrades).
+
+In case of issues, consider either:
+
+- Reverting to the snapshot taken before the upgrade.
+- Stopping the canister to prevent (further) state corruption and perform further investigation, e.g., trying to reproduce the issue in a test environment.
+
+Repeat steps #2 and #3 until the ledger is at the latest release.
