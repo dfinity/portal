@@ -5044,12 +5044,15 @@
     "display": "Normal",
     "website": "https://www.piggycell.io/",
     "twitter": "https://x.com/piggycell",
-    "github": "https://github.com/piggycell-github",
+    "github": "https://github.com/junyoungpark358/piggycell",
+    "submittableId": 48772581,
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "NFT",
+      "Gaming"
     ],
     "description": "A DePIN project that provides tokenized incentive solutions to electric power charging platforms.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "logo": "/img/showcase/piggycell_logo.svg"
   },
   {
@@ -5196,8 +5199,11 @@
     "id": "mugc&univoice",
     "name": "Univoice",
     "display": "Normal",
-    "website": "https://univoice.world",
+    "website": "https://fcdp2-niaaa-aaaai-atapa-cai.icp0.io/",
     "twitter": "https://x.com/UNIVOICE_",
+    "github": "https://github.com/AIO-2030/univoice-agent",
+    "youtube": "https://www.youtube.com/channel/UCvtPBD6yt_biQfyCFxTZF_w",
+    "submittableId": 48650422,
     "tags": [
       "AI",
       "DeFi"
@@ -5237,14 +5243,17 @@
     "id": "icramp",
     "name": "icRamp",
     "display": "Normal",
-    "website": "https://app.icramp.xyz",
+    "website": "https://sandbox.icramp.xyz/",
     "twitter": "https://x.com/ic_rampXYZ",
     "github": "https://github.com/reymom/ic2P2ramp",
+    "youtube": "https://www.youtube.com/@icRamp-xyz",
     "tags": [
       "DeFi",
-      "Tools / Infrastructure"
+      "Chain Fusion",
+      "Wallet",
+      "Bitcoin"
     ],
-    "description": "A decentralized protocol that seamlessly integrates ICP with Ethereum and other blockchains, enabling fast, trustless onramping and offramping of digital assets.",
+    "description": "Decentralized P2P onramping with Bitcoin Runes, Ethereum, and ICP—secure multichain orders, UTXOs, and real-time price sync.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icramp_logo.png"
   },
