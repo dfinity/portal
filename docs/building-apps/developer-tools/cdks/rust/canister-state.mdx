@@ -6,15 +6,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import Tabs from "@theme/Tabs";
 
-# Globally mutable states
+# Globally mutable state
 
 <MarkdownChipRow labels={["Beginner", "Rust"]} />
 
-By design, canisters on ICP are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to use global mutable variables. This results in Rust developers needing to choose a method of code organization that takes ICP's design into consideration. This guide will cover a few of those code organization options.
+Globally mutable state is data that exists globally, can be accessed from anywhere in your program, and can be altered at runtime.
 
-### Using `thread_local!` with `Cell/RefCell` for state variables
+By design, canisters on ICP are structured in a way that forces developers to use a globally mutable state. However, Rust's design makes it difficult to use globally mutable variables, forcing Rust developers to choose a method of code organization that takes ICP's design into consideration.
 
-Using `thread_local!` with `Cell/RefCell` is the safest option to avoid issues with asynchronous calls and memory corruption. The following is an example of how `thread_local!` can be used:
+## Using `thread_local!` with `Cell/RefCell` for state variables
+
+The marco `thread_local!` defines thread-local storage (TLS), which is a data storage method where data is stored locally to each thread. Each thread gets its own copy of a variable's data that is not shared with other threads.
+
+Since you can't directly mutate static variables, using `thread_local!` with `Cell/RefCell` is the safest option to allow mutability and avoid issues with asynchronous calls or memory corruption. The following is an example of how `thread_local!` can be used:
 
 ```rust
 thread_local! {
@@ -23,9 +27,9 @@ thread_local! {
 }
 ```
 
-### Canister code should be target-independent
+## Canister code should be target-independent
 
-It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the system API should go into the main file.
+It is recommended that most of a canister's code is grouped into loosely coupled modules and packages, then tested independently. Most of the code that depends on the system API should go into the main file.
 
 It is also possible to create a thin abstraction for the system API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
 
@@ -40,7 +44,7 @@ pub trait Memory {
 
 ## Observability
 
-Metrics can be used to gain insight into a wide range of information regarding your canister's production services. This data is important to learn about your canister's statistics and productivity. The following metrics can be important to watch:
+Metrics can be used to gain insight into your canister's statistics and productivity, such as:
 
 - The size of the canister's stable memory.
 - The size of the canister's internal data structures
@@ -65,7 +69,7 @@ fn metrics() -> MyMetrics {
 }
 ```
 
-You can also expose the canister's metrics in a format that your monitoring system can ingest through the canister's HTTP gateway. For text-based exposition formats, the following example can be used:
+You can also expose a canister's metrics in a format that your monitoring system can ingest through the canister's HTTP gateway. For text-based exposition formats, the following example can be used:
 
 ```rust
 fn http_request(req: HttpRequest) -> HttpResponse {
