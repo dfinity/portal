@@ -3721,7 +3721,7 @@
     "name": "Anda",
     "tags": ["AI"],
     "github": "https://github.com/ldclabs/anda",
-    "description": "An framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
+    "description": "A framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/anda_logo.jpeg"
