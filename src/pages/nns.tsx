@@ -57,9 +57,9 @@ function NnsPage() {
                   variants={transitions.item}
                 >
                   The NNS is one of the world's largest DAOs that governs the
-                  Internet Computer. It is a 100% onchain, permissionless
-                  system that continuously upgrades the Internet Computer based
-                  on the voting of ICP token holders.
+                  Internet Computer. It is a 100% onchain, permissionless system
+                  that continuously upgrades the Internet Computer based on the
+                  voting of ICP token holders.
                 </motion.p>
                 <MotionLink
                   className="button-white"
@@ -113,7 +113,7 @@ function NnsPage() {
               </motion.p>
               <MotionLink
                 className="link-external"
-                href="https://wiki.internetcomputer.org/wiki/Network_Nervous_System"
+                href="https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview"
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={transitions.item}
