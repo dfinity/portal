@@ -2538,12 +2538,6 @@ Cycles to pay for the call must be explicitly transferred with the call, i.e., t
 
 ### IC method `schnorr_public_key` {#ic-schnorr_public_key}
 
-:::note
-
-Threshold Schnorr API is EXPERIMENTAL and there might be breaking changes of the behavior in the future. Use at your own risk!
-
-:::
-
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
 This method returns a (derived) Schnorr public key for the given canister using the given derivation path. If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings. Each byte string may be of arbitrary length, including empty. The total number of byte strings in the `derivation_path` must be at most 255. The `key_id` is a struct specifying both an algorithm and a name. The availability of a particular `key_id` depends on the implementation.
@@ -2631,12 +2625,6 @@ KTpub((K<sub>par</sub>, c<sub>par</sub>), d) → (K<sub>d</sub>, c<sub>d</sub>):
 - return (K<sub>d</sub>, c<sub>d</sub>).
 
 ### IC method `sign_with_schnorr` {#ic-sign_with_schnorr}
-
-:::note
-
-Threshold Schnorr API is EXPERIMENTAL and there might be breaking changes of the behavior in the future. Use at your own risk!
-
-:::
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
