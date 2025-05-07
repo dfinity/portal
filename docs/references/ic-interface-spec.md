@@ -81,7 +81,7 @@ Update calls are executed in *replicated* mode, i.e. execution takes place in pa
 
 Internally, a call or a response is transmitted as a *message* from a *sender* to a *receiver*. Messages do not have a response.
 
-WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. A trap is caused by an irrecoverable error in the WebAssembly module or System API execution (e.g., running out of memory or exceeding the instruction limit for a single message execution imposed by the Internet Computer). Functions, too, have parameters and take arguments.
+WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. A trap is caused by an irrecoverable error in the WebAssembly module (e.g., division by zero) or System API execution (e.g., running out of memory or exceeding the instruction limit for a single message execution imposed by the Internet Computer). Functions, too, have parameters and take arguments.
 
 External *users* interact with the Internet Computer by issuing *requests* on the HTTPS interface. Requests have responses which can either be replies or rejects. Some requests cause internal messages to be created.
 
