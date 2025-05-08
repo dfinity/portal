@@ -24,11 +24,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install update script dependencies
-        run: npm install node-fetch@2 dotenv
+      - name: Install script dependencies
+        run: npm install --no-save node-fetch@2 dotenv
 
       - name: Update showcase.json
         run: node update-showcase.js
@@ -40,7 +37,7 @@ jobs:
         run: |
           git diff --quiet showcase.json || echo "changed=true" >> $GITHUB_OUTPUT
 
-      # Create a PR with the changes instead of pushing directly
+      # Create a PR with the changes
       - name: Create Pull Request
         if: steps.git-check.outputs.changed == 'true'
         id: create-pr
@@ -67,6 +64,8 @@ jobs:
           labels: |
             automated
           delete-branch: true
+          add-paths: |
+            showcase.json
 
       # Output information about the PR that was created
       - name: Output PR Information
