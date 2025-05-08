@@ -31,7 +31,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 <AdornedTabs>
 <TabItem label="Prerequisites">
 
-<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
 </TabItem>
 </AdornedTabs>
@@ -305,8 +305,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Deleting a canister
 
-Deleting a canister will withdraw any cycles from that canister and return them to the identity associated with the canister's controller principal. When a canister is deleted, the canister's code, state, and canister ID are removed.
-
+Deleting a canister will withdraw any cycles from that canister and return them to the cycles wallet or cycles ledger account associated with the canister's controller principal. If the canister has multiple controllers, then the principal that made the delete request receives the cycles. When a canister is deleted, the canister's code, state, and canister ID are removed.
 
 Canisters must be stopped before they can be deleted:
 

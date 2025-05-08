@@ -33,20 +33,20 @@
       "milestone_id": "Helium",
       "status": "in_progress",
       "eta": "",
-      "eta_to_render": "May 2025"
+      "eta_to_render": "June 2025"
     },
     {
       "title": "Dogecoin integration",
       "is_milestone": true,
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
-      "status": "future",
+      "status": "in_progress",
       "eta_to_render": ""
     },
     {
       "title": "Native Dogecoin integration",
       "overview": "Native Dogecoin integration will extend ICP replicas to also follow the Dogecoin network and collect its UTXO set in a special Dogecoin canister. This allows canisters on ICP to securely read the Dogecoin state. Combined with the existing threshold ECDSA signing functionality, this allows canisters to securely hold and transfer native dogecoin.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Meridian"
     },
     {

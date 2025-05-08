@@ -37,7 +37,7 @@ The finished code for the project is already available in `src/caller`. You can 
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
 ```
 
-Now, deploy this code to the local replica. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
+Now, deploy this code to the local development environment. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
 
 ```bash
 dfx deploy caller
@@ -92,7 +92,7 @@ This also holds true for the effects on the caller canister itself. In particula
 For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/docs/references/async-code), [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls).
 
 :::info
-To summarize, the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves scalability, but you need to understand the implications, especially around when and how state is persisted.
+To summarize, the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling), but you need to understand the implications, especially around when and how state is persisted.
 :::
 
 ## Unbounded-wait calls: semantics and error cases
@@ -177,7 +177,7 @@ To summarize, bounded-wait calls will time out after a while, but you might not 
 
 ## Attaching cycles: canister signatures
 
-A canister can attach [cycles](/docsbuilding-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
+A canister can attach [cycles](/docs/building-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
 
 Cycle transfers are generally either used to pay for the callee's costs of processing the call or to move and store cycles as assets. An example where they are used to pay for call processing costs is the IC [threshold signature feature](/docs/building-apps/network-features/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger/).
 
@@ -187,7 +187,7 @@ Below is a threshold signature example that shows how to attach cycles to a call
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
 ```
 
-Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local replica.
+Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local development environment.
 
 ```bash
 dfx canister call caller sign_message '("Some text to be signed")'
@@ -210,7 +210,7 @@ To summarize, you can transfer cycles to the callee by attaching them to a bound
 
 More details on how inter-canister calls execute and how the different call types work is provided in the documentation on [inter-canister calls and async code](/docs/references/async-code). Also consult the documentation on [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls). To allow your callers to handle call errors robustly, follow the [best practice](/docs/building-apps/best-practices/idempotency) document on retries and idempotency.
 
-As noted in our examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same subnet as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
+As noted in our examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
 
 For a real-life example of how to handle errors when calling canisters, see the [ICRC-1 examples](/docs/defi/token-ledgers/usage/icrc1_ledger_usage)
 
