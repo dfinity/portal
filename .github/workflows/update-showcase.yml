@@ -24,10 +24,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install project dependencies
-        run: npm install
-
-      - name: Install script dependencies without saving to package.json
+      # Only install the specific dependencies needed for the script
+      - name: Install script dependencies
         run: npm install --no-save node-fetch@2 dotenv
 
       - name: Update showcase.json
@@ -35,12 +33,12 @@ jobs:
         env:
           AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
 
-      - name: Check for changes to showcase.json only
+      - name: Check for changes
         id: git-check
         run: |
           git diff --quiet showcase.json || echo "changed=true" >> $GITHUB_OUTPUT
 
-      # Create a PR with the changes instead of pushing directly
+      # Create a PR with the changes
       - name: Create Pull Request
         if: steps.git-check.outputs.changed == 'true'
         id: create-pr
@@ -67,9 +65,6 @@ jobs:
           labels: |
             automated
           delete-branch: true
-          # Only include showcase.json in the PR
-          add-paths: |
-            showcase.json
 
       # Output information about the PR that was created
       - name: Output PR Information
