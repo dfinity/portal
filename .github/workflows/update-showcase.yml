@@ -64,6 +64,8 @@ jobs:
           labels: |
             automated
           delete-branch: true
+          add-paths: |
+            showcase.json
 
       # Output information about the PR that was created
       - name: Output PR Information
