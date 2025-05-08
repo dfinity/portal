@@ -15,6 +15,10 @@ jobs:
       group: "website update"
       cancel-in-progress: true
 
+    environment:
+      name: "Internet Computer Mainnet"
+      url: ${{ fromJson(steps.get-url.outputs.url) }}
+
     steps:
       # Update showcase.json
       - uses: actions/checkout@v2
@@ -78,6 +82,12 @@ jobs:
           AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           DFX_WARNING: -mainnet_plaintext_identity
+
+      - name: Get URL
+        id: get-url
+        run: |
+          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').raw.ic0.app"
+          echo "::set-output name=url::\"$URL\""
 
       # Commit changes AFTER successful deployment
       - name:
