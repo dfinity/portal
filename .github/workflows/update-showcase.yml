@@ -17,7 +17,7 @@ jobs:
 
     environment:
       name: "Internet Computer Mainnet"
-      url: ${{ fromJson(steps.get-url.outputs.url) }}
+      url: ${{ steps.get-url.outputs.url }}
 
     steps:
       # Update showcase.json
@@ -87,7 +87,7 @@ jobs:
         id: get-url
         run: |
           URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').raw.ic0.app"
-          echo "url={\"$URL\"}" >> $GITHUB_OUTPUT
+          echo "url=$URL" >> $GITHUB_OUTPUT
 
       # Commit changes AFTER successful deployment
       - name:
