@@ -363,6 +363,17 @@
       "status": "",
       "is_community": false,
       "in_beta": false
+    },
+    {
+      "title": "Maximize Canister Availability During Subnet Upgrade",
+      "overview": "One of the great features of ICP is that the protocol can be upgraded through a simple proposal that, if adopted, triggers the nodes of a subnet to automatically download, install, and run a new version of the protocol. At the core of this process is an agreement among the nodes to run the old version until a designated block height, and then switch to the new version after that point. This necessarily means that block finalization is halted at the designated block height and only resumes once a sufficient number of nodes are running the new version. Currently, this entire process takes about two minutes, during which canisters do not process messages. Theoretically, the period during which a canister is unavailable can be reduced to a few seconds for upgrade calls, and to virtually zero downtime for query calls. Achieving this will require significant changes to the protocol (e.g., how the different layers interact) and/or to the software architecture of the replica and host OS. The goal of this feature is to develop a design and implementation plan to realize these improvements.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
     }
   ]
 }
