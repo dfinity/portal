@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.39.0 (2025-05-07) {#0_39_0}
+* Threshold Schnorr API, composite query methods, and canister logs management canister API are considered stable.
+
 ### 0.38.0 (2025-04-18) {#0_38_0}
 * Reverted a lower bound of one week on the canister's freezing threshold.
 
