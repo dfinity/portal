@@ -4129,21 +4129,6 @@
     "logo": "/img/showcase/Meddle_Logo.png"
   },
   {
-    "id": "staexvts",
-    "name": "Staex VTS",
-    "display": "Normal",
-    "website": "https://staex.io",
-    "twitter": "https://twitter.com/staex_io",
-    "github": "https://github.com/staex-io/vts",
-    "tags": [
-      "Tools / Infrastructure",
-      "Enterprise"
-    ],
-    "description": "A vehicle tracking system that serves as an infrastructure to track and invoice vehicles.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/staex_logo.png"
-  },
-  {
     "id": "rolodex",
     "name": "rolodex",
     "display": "Normal",
