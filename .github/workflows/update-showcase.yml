@@ -24,7 +24,6 @@ jobs:
         with:
           node-version: 18
 
-      # Only install the specific dependencies needed for the script
       - name: Install script dependencies
         run: npm install --no-save node-fetch@2 dotenv
 
