@@ -802,6 +802,7 @@ const redirects = `
 
   ## Old: Developer's guide
   /docs/current/tutorials/deploy_sample_app /docs/tutorials/developer-liftoff/
+  /docs/developers-guide/webpack-config.html /docs/building-apps/frontends/using-an-asset-canister
   /docs/defi/icp-tokens/icp-index-local-setup /docs/defi/token-indexes/
   /docs/developer-docs /docs/building-apps/essentials/network-overview
   /docs/developers-guide/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
@@ -917,6 +918,9 @@ const redirects = `
   /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
+  /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
+  /docs/building-apps/developing-canisters/what-are-canisters/ /docs/building-apps/essentials/canisters
   /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
   /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/building-apps/developer-tools/advanced-dfx/networks-json /docs/building-apps/developing-canisters/custom-networks
