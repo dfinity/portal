@@ -23,7 +23,7 @@ It’s a light week this week from the languages team!
 ![Header image](../_assets/motoko-cubed.png)
 
 There are currently discussions about what the future of Motoko package management looks like with respect to Vessel and
-other package management tools that the community is using, such as [MOPS](https://mops.one/). There was a nice post by
+other package management tools that the community is using, such as [Mops](https://mops.one/). There was a nice post by
 @icme recently talking about this issue that can be found
 here: https://forum.dfinity.org/t/developer-feedback-opportunity-motoko-package-manager-improvements-redesign/18137
 
@@ -68,7 +68,7 @@ let x = do {
 This is also how you can bind to an `if` expression.
 
 ```
-let x = 
+let x =
   if (y < 0) {
     foo();
     2
@@ -83,7 +83,7 @@ You can even bind a variable to a `while` loop, but that is less useful, because
 the type system to always evaluate to unit.
 
 ```
-let x = 
+let x =
   while (y < 0) {
     foo();
   };
@@ -105,7 +105,7 @@ You can also add a `?` to the `do` block to work with option types.
 
 ```
 let x : ?Nat = foo(); // x is an option type who may or may not be null
-let y = 
+let y =
   do ? {
     x! + 3
   };

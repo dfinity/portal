@@ -12,7 +12,7 @@ If you’re already developing canisters that use stable memory, then those cani
 
 ## What is stable memory?
 
-Stable memory is a data store separate from regular Wasm memory. It is accessed using the [stable memory API](/docs/current/references/ic-interface-spec#system-api-stable-memory) which allows reading/writing arbitrary bytes. Libraries like [`ic-stable-memory`](https://crates.io/crates/ic-stable-memory) and [`ic-stable-structures`](https://crates.io/crates/ic-stable-structures) also make stable memory ergonomic to use.
+Stable memory is a data store separate from regular Wasm memory. It is accessed using the [stable memory API](/docs/references/ic-interface-spec#system-api-stable-memory) which allows reading/writing arbitrary bytes. Libraries like [`ic-stable-memory`](https://crates.io/crates/ic-stable-memory) and [`ic-stable-structures`](https://crates.io/crates/ic-stable-structures) also make stable memory ergonomic to use.
 
 The main reasons to use stable memory are that:
 

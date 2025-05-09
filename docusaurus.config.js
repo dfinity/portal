@@ -26,10 +26,10 @@ const math = require("remark-math");
 const katex = require("rehype-katex");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
-  getRedirects,
   getSplatRedirects,
-  getExternalRedirects,
+  getRedirects,
   getExactUrlRedirects,
+  getExternalRedirects,
 } = require("./plugins/utils/redirects");
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
@@ -37,6 +37,14 @@ const contentfulPlugin = require("./plugins/contentful");
 const snsDataPlugin = require("./plugins/sns-data");
 const airtablePlugin = require("./plugins/airtable");
 const youtubePlugin = require("./plugins/youtube");
+
+const remarkPlugins = [
+  math,
+  simplePlantUML,
+  require("remark-code-import"),
+  require("./plugins/remark/validate-links.js"),
+];
+const rehypePlugins = [katex];
 
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
@@ -62,79 +70,69 @@ const subnavItems = [
     type: "docSidebar",
     position: "left",
     sidebarId: "build",
-    label: "Build",
-    activeBasePath: "/docs/current/developer-docs/",
+    label: "Building apps",
+    activeBasePath: "/docs/build/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "defi",
+    label: "DeFi",
+    activeBasePath: "/docs/defi/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "motoko",
+    label: "Motoko",
+    activeBasePath: "/docs/motoko/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "references",
+    label: "References",
+    activeBasePath: "/docs/references/",
   },
   {
     type: "dropdown",
     position: "left",
-    label: "Languages",
-    items: [
-      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      {
-        label: "Motoko",
-        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
-      },
-      {
-        label: "TypeScript",
-        href: "/docs/current/developer-docs/backend/typescript/",
-      },
-      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      {
-        label: "Solidity",
-        href: "/docs/current/developer-docs/backend/solidity/",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
-    label: "Frameworks",
-    items: [
-      {
-        label: "Juno",
-        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
-    label: "Additional Resources",
+    label: "Resources",
     items: [
       {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
-      { label: "Sample Code", to: "/samples" },
+      {
+        label: "Sample projects",
+        href: "https://internetcomputer.org/samples",
+      },
       {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
-        label: "Playground",
-        href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+        label: "ICP Ninja",
+        href: "https://icp.ninja",
       },
       {
-        label: "Dev Forum",
+        label: "ICP Developer Forum",
         href: "https://forum.dfinity.org/",
       },
       {
-        label: "Dev Discord",
-        href: "https://discord.gg/jnjVVQaE2C",
+        label: "ICP Developer Discord",
+        href: "https://discord.internetcomputer.org",
       },
     ],
   },
   /**
    * Add UI tests in development mode
+   * process.env.NODE_ENV === "development" && {
+   *   label: "UI Tests",
+   *   href: "/docs/tests/all",
    */
-  process.env.NODE_ENV === "development" && {
-    label: "UI Tests",
-    href: "/docs/current/tests/all",
-  },
 ].filter(Boolean);
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
@@ -150,7 +148,7 @@ const marketingNav = {
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         {
           name: "White paper",
-          href: "https://dfinity.org/whitepaper.pdf",
+          href: "https://internetcomputer.org/whitepapers/The%20Internet%20Computer%20for%20Geeks.pdf",
         },
         {
           name: "History of ICP",
@@ -178,19 +176,19 @@ const marketingNav = {
               description: "Transforming the internet",
             },
             {
-              name: "How it works",
-              href: "/how-it-works",
-              description: "Look into the nitty gritty",
+              name: "Learn Hub",
+              href: "https://learn.internetcomputer.org",
+              description: "Expand your ICP knowledge",
             },
             {
               name: "ICP Dashboard",
               href: "https://dashboard.internetcomputer.org/",
-              description: "Join like-minded hackers",
+              description: "Track key metrics",
             },
             {
               name: "ICP Roadmap",
               href: "/roadmap",
-              description: "Highlighting upcoming Mil",
+              description: "Highlighting upcoming milestones",
             },
             /*
             {
@@ -202,6 +200,11 @@ const marketingNav = {
               name: "Sustainability",
               href: "/capabilities/sustainability",
               description: "Building green, efficient tech",
+            },
+            {
+              name: "Library",
+              href: "/library",
+              description: "Resources to get you started",
             },
             /*
             {
@@ -222,7 +225,7 @@ const marketingNav = {
             },*/
           ],
           featured: {
-            title: "Chain Fusion Technology",
+            title: "Chain Fusion",
             href: "/chainfusion",
             image: "/img/nav/featured-chainfusion.webp",
           },
@@ -237,7 +240,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -294,7 +297,7 @@ const marketingNav = {
             {
               name: "AI on ICP",
               href: "/ai",
-              description: "Run AI models fully on chain",
+              description: "Run AI models as real smart contracts",
             },
             /*
             {
@@ -324,17 +327,17 @@ const marketingNav = {
             {
               name: "DeFi",
               href: "/defi",
-              description: "On-chain swaps",
+              description: "Onchain swaps",
             },*/
             /*
             {
               name: "NFTs",
               href: "/nft",
-              description: "NFT’s live fully on-chain",
+              description: "NFT’s live fully onchain",
             },*/
           ],
           featured: {
-            title: "Run AI models on blockchain",
+            title: "Run AI models as real smart contracts",
             href: "/ai",
             image: "/img/nav/featured-ai.webp",
           },
@@ -363,7 +366,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -387,8 +390,8 @@ const marketingNav = {
         },
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
-          name: "Free Cycles",
-          href: "/docs/current/developer-docs/getting-started/cycles/cycles-faucet",
+          name: "Using cycles",
+          href: "/docs/building-apps/getting-started/tokens-and-cycles",
         },
       ],
 
@@ -398,8 +401,8 @@ const marketingNav = {
           items: [
             {
               name: "Developer Docs",
-              href: "/docs/current/home",
-              description: "Start coding",
+              href: "/docs/home",
+              description: "Find the resources you need quickly",
             },
             {
               name: "Sample code",
@@ -407,14 +410,19 @@ const marketingNav = {
               description: "Get inspired by existing projects",
             },
             {
-              name: "Playground",
-              href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              description: "Deploy to the playground environment",
+              name: "Web IDE",
+              href: "https://icp.ninja",
+              description: "Deploy your first dapp with ICP.Ninja",
             },
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/current/developer-docs/smart-contracts/write/overview",
+              href: "/docs/building-apps/essentials/canisters",
+            },
+            {
+              name: "Build on BTC",
+              description: "Leveraging Chain Fusion Technology",
+              href: "/bitcoin",
             },
             {
               name: "Hackathons",
@@ -433,8 +441,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Start building step by step",
-            href: "/docs/current/tutorials/developer-journey/",
+            title: "Developer Docs",
+            href: "/docs/home",
             image: "/img/nav/featured-building.webp",
           },
         },
@@ -448,7 +456,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -508,12 +516,12 @@ const marketingNav = {
             {
               name: "OLYMPUS",
               href: "/olympus",
-              description: "The On-Chain Acceleration Platform",
+              description: "The Onchain Acceleration Platform",
             },
           ],
           featured: {
             title: "OLYMPUS",
-            subtitle: "The On-Chain Acceleration Platform",
+            subtitle: "The Onchain Acceleration Platform",
             href: "/olympus",
             image: "/img/nav/featured-olympus.webp",
           },
@@ -528,7 +536,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -568,13 +576,13 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: data, content, computations, and user experiences.",
+    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP connected software. Now ICP hosts software.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
   baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon-32x32.png",
   organizationName: "dfinity",
   projectName: "portal",
@@ -582,7 +590,30 @@ const config = {
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
     marketingNav,
   },
-  scripts: [],
+  markdown: {
+    mermaid: true,
+  },
+  scripts: [
+    {
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      "data-website-id": "08910249-851f-465b-b60f-238d84e1afc1",
+      "data-project-name": "Internet Computer",
+      "data-project-color": "#172234",
+      "data-project-logo":
+        "https://s3.coinmarketcap.com/static-gravity/image/2fb1bc84c1494178beef0822179d137d.png",
+      "data-modal-override-open-class": "ask-ai-widget-trigger",
+      "data-modal-ask-ai-input-placeholder":
+        "Ask me a question about the Internet Computer Protocol",
+      "data-modal-example-questions":
+        "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully onchain Web3?",
+      "data-modal-disclaimer":
+        " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
+      "data-user-analytics-fingerprint-enabled": "true",
+      "data-modal-z-index": "1001",
+      async: true,
+      "data-button-hide": "true",
+    },
+  ],
   plugins: [
     "docusaurus-plugin-sass",
     customWebpack,
@@ -627,24 +658,29 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           breadcrumbs: false,
-          versions: {
-            current: {
-              label: "Current 🚧",
-              path: "current",
-            },
-          },
-
+          exclude: [
+            'references/samples/ADDING_AN_EXAMPLE.md',
+            'references/samples/archive/**',
+            'references/samples/c/**',
+            'references/samples/hosting/README.md',
+            'references/samples/hosting/godot-html5-template/**',
+            'references/samples/hosting/react/**',
+            'references/samples/hosting/unity-webgl-template/**',
+            'references/samples/native-apps/**',
+            'references/samples/svelte/**',
+            'references/samples/wasm/**',
+          ],
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         blog: {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -667,11 +703,18 @@ const config = {
     // but to do that type preset- classic had to be disabled below
     // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
-      image: "/img/share.jpg",
+      image: "/img/share.webp",
       colorMode: {
-        disableSwitch: true,
+        disableSwitch: false,
         defaultMode: "light",
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
+      },
+      // github codeblock theme configuration
+      codeblock: {
+        showGithubLink: true,
+        githubLinkLabel: "View on GitHub",
+        showRunmeLink: false,
+        runmeLinkLabel: "Checkout via Runme",
       },
       metadata: [
         {
@@ -724,6 +767,7 @@ const config = {
               {
                 label: "Node Providers",
                 href: "/node-providers",
+                target: "_self",
               },
               {
                 label: "Dashboard",
@@ -733,10 +777,6 @@ const config = {
           },
           {
             items: [
-              {
-                label: "ICP Careers",
-                href: "https://careers.internetcomputer.org/",
-              },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",
@@ -748,8 +788,7 @@ const config = {
               },
               {
                 label: "Press Kit",
-                href: "https://internetcomputer.org/press-kit.zip",
-                isDownload: true,
+                href: "https://dfinity.frontify.com/d/pD7yZhsmpqos/press-kit",
               },
             ],
           },
@@ -816,6 +855,14 @@ const config = {
                   "./static/img/svgIcons/purple/dscvr.svg"
                 ),
               },
+              {
+                label: "Discord",
+                to: "https://discord.internetcomputer.org",
+                icon: "data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath%20d%3D%22M19.3034%205.33716C17.9344%204.71103%2016.4805%204.2547%2014.9629%204C14.7719%204.32899%2014.5596%204.77471%2014.411%205.12492C12.7969%204.89144%2011.1944%204.89144%209.60255%205.12492C9.45397%204.77471%209.2311%204.32899%209.05068%204C7.52251%204.2547%206.06861%204.71103%204.70915%205.33716C1.96053%209.39111%201.21766%2013.3495%201.5891%2017.2549C3.41443%2018.5815%205.17612%2019.388%206.90701%2019.9187C7.33151%2019.3456%207.71356%2018.73%208.04255%2018.0827C7.41641%2017.8492%206.82211%2017.5627%206.24904%2017.2231C6.39762%2017.117%206.5462%2017.0003%206.68416%2016.8835C10.1438%2018.4648%2013.8911%2018.4648%2017.3082%2016.8835C17.4568%2017.0003%2017.5948%2017.117%2017.7434%2017.2231C17.1703%2017.5627%2016.576%2017.8492%2015.9499%2018.0827C16.2789%2018.73%2016.6609%2019.3456%2017.0854%2019.9187C18.8152%2019.388%2020.5875%2018.5815%2022.4033%2017.2549C22.8596%2012.7341%2021.6806%208.80747%2019.3034%205.33716ZM8.5201%2014.8459C7.48007%2014.8459%206.63107%2013.9014%206.63107%2012.7447C6.63107%2011.5879%207.45884%2010.6434%208.5201%2010.6434C9.57071%2010.6434%2010.4303%2011.5879%2010.4091%2012.7447C10.4091%2013.9014%209.57071%2014.8459%208.5201%2014.8459ZM15.4936%2014.8459C14.4535%2014.8459%2013.6034%2013.9014%2013.6034%2012.7447C13.6034%2011.5879%2014.4323%2010.6434%2015.4936%2010.6434C16.5442%2010.6434%2017.4038%2011.5879%2017.3825%2012.7447C17.3825%2013.9014%2016.5548%2014.8459%2015.4936%2014.8459Z%22%20fill%3D%22white%22%20%2F%3E %3C%2Fsvg%3E",
+                iconLight: getImageDataUrl(
+                  "./static/img/svgIcons/purple/discord.svg"
+                ),
+              },
             ],
           },
         ],
@@ -830,7 +877,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: ["@saucelabs/theme-github-codeblock", "@docusaurus/theme-mermaid"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 

@@ -1,35 +1,34 @@
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-// import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
-import Layout from "@theme/Layout";
-import React from "react";
-
 /*import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
 import FoundationSection from "../components/LandingPage/Foundation";
 import GallerySection from "../components/LandingPage/Gallery";*/
 import { CardsSection } from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
-//import IntroCards from "../components/LandingPage/Hero/IntroCards";
+// import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
+import Layout from "@theme/Layout";
+// import IntroCards from "../components/LandingPage/Hero/IntroCards";
+import NewsCards from "../components/LandingPage/Hero/NewsCards";
 import { NewsSection } from "../components/LandingPage/Hero/News";
 /*import {
   CollapsedVisionSection,
   VisionSection,
 } from "../components/LandingPage/Hero/VisionSection";*/
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
+import React from "react";
 //import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
-import SectionSlider from "../components/LandingPage/Hero/SectionSlider";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
 
   return (
     <Layout
-      title="Home"
+      title="World Computer"
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <div className="bg-[#1B025A]">
         <Hero></Hero>
-        <SectionSlider />
+        <NewsCards />
         <CardsSection />
         <NewsSection />
       </div>

@@ -13,7 +13,7 @@ export default function BlogPostItemHeader() {
   return (
     <header>
       <Link
-        className="tw-title-navigation inline-flex items-center gap-3 text-infinite hover:no-underline hover:text-black mt-10 md:mt-0"
+        className="tw-title-navigation inline-flex items-center gap-3 hover:no-underline mt-10 md:mt-0"
         href="/blog/"
       >
         <LinkArrowRight className="-scale-x-100" />

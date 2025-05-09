@@ -150,7 +150,12 @@ export const ShowcaseCard: React.FC<{
       className="bg-white/90 border overflow-hidden border-white border-solid rounded-xl px-6 py-8  text-black "
       variants={transitions.item}
     >
-      <img src={imgSrc} loading="lazy" alt="" className="w-20 h-20"></img>
+      <img
+        src={imgSrc}
+        loading="lazy"
+        alt=""
+        className="w-20 h-20 ml-0 mr-auto"
+      ></img>
       <h3 className="text-gradient tw-heading-5 mb-2 mt-8 colo">{title}</h3>
       <h4 className="tw-heading-6 ">{subtitle}</h4>
       <p className="tw-lead-sm mb-0 text-black/60">{description}</p>

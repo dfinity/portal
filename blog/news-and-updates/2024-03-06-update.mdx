@@ -14,7 +14,7 @@ Hello developers, and welcome to this week's developer weekly update! This week,
 
 ## NNS neuron sandbox
 
-Have you ever wanted to experiment with neurons without having to stake actual ICP? Introducing the NNS neuron sandbox! This new sandbox platform is an on-chain interactive tool that can be used to simulate the behavior of neurons. It is a great resource to learn more about the NNS and understand how to participate in the governance of ICP.
+Have you ever wanted to experiment with neurons without having to stake actual ICP? Introducing the NNS neuron sandbox! This new sandbox platform is an onchain interactive tool that can be used to simulate the behavior of neurons. It is a great resource to learn more about the NNS and understand how to participate in the governance of ICP.
 
 You can use the sandbox to play with different neuron configurations and operations in a safe environment. It also provides insights into the simulated voting power of a neuron and its estimated annualized rewards in the upcoming years. Get started practicing today by heading over to the [NNS neuron sandbox](https://klgza-cqaaa-aaaak-qcz5a-cai.icp0.io/).
 
@@ -31,7 +31,7 @@ In the newest version of Motoko, the type system has been revised to detect and 
 
 For example, in previous Motoko versions, the following code snippet could be used:
 
-```motoko
+```motoko no-repl
   func splitCycles() {
     let amount = ExperimentalCycles.balance() / 2;
     ExperimentalCycles.add(amount); // new error
@@ -47,14 +47,14 @@ In Motoko v0.11.0 and newer, this code will throw a compiler error:
 
 To support the new changes, the previous code should be rewritten to include the `system` type parameter:
 
-```motoko
+```motoko no-repl
  func splitCycles<system>() {
     let amount = ExperimentalCycles.balance() / 2;
     ExperimentalCycles.add(amount); // warning
   };
 ```
 
-You can learn more in the [Motoko v0.11.0 migration guide](/docs/current/motoko/main/migration-guides/0.11.0-migration-guide).
+You can learn more in the [Motoko v0.11.0 migration guide](/docs/motoko/main/migration-guides/0.11.0-migration-guide).
 
 ## Juno + OpenAI demo
 

@@ -1,0 +1,150 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+
+# Topping up a canister
+
+<MarkdownChipRow labels={["Beginner", "Management"]} />
+
+A <GlossaryTooltip>canister</GlossaryTooltip> needs to have cycles deposited continuously into it to pay for the resources it uses. This process is known as 'topping up' the canister. Topping up canisters is routine maintenance.
+
+Anyone can top-up any canister deployed to ICP; you do not need to be the owner or controller of the canister. All you need is the canister's principal.
+
+There are a few different ways to top-up canisters:
+
+- Using [`dfx cycles top-up`](/docs/building-apps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up).
+
+- Through the [NNS frontend dapp](https://nns.ic0.app).
+
+- Through a [third-party service](/docs/building-apps/canister-management/topping-up) (e.g., https://cycleops.dev).
+
+### Number of cycles
+
+For ease of use, you can copy/paste the cycles amounts below:
+
+| Cycles            | Number        |
+| -----------       | -----------   |
+| 1 million         | 1000000         |
+| 10 million        | 10000000         |
+| 100 million       | 100000000         |
+| 1 billion         | 1000000000         |
+| 10 billion        | 10000000000         |
+| 100 billion       | 100000000000         |
+| 1 trillion        | 1000000000000         |
+| 10 trillion       | 10000000000000         |
+| 100 trillion      | 100000000000000         |
+
+## Canister top-up workflows
+
+The following examples will demonstrate how to interact with and top-up a canister with the canister ID `jqylk-byaaa-aaaal-qbymq-cai` with one trillion cycles (1000000000000) or one ICP's worth of cycles. These instructions will work for any canister ID or cycles/ICP amount.
+
+### Checking the cycles balance of a canister
+
+Canister cycles balances are available through the [`dfx canister status`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status) command. They are not exposed publicly by default; you can only see them if you are the controller of a canister.
+
+```bash
+dfx canister status jqylk-byaaa-aaaal-qbymq-cai --network=ic
+```
+
+<details>
+<summary>Output</summary>
+
+```bash
+Canister status call result for jqylk-byaaa-aaaal-qbymq-cai.
+Status: Running
+Controllers: mto6d-zfnut-rlsxr-ogdeg-apo53-evpob-ljgnp-ma2x3-6yf3b-t4rd5-qqe t5j57-vyaaa-aaaal-qatsq-cai
+Memory allocation: 0
+Compute allocation: 0
+Freezing threshold: 2_592_000
+Memory Size: Nat(2471918)
+Balance: 9_811_813_913_485 Cycles
+Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
+```
+
+</details>
+
+Canisters can check their balance programmatically.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+Motoko canisters can use the [ExperimentalCycles library](/docs/motoko/main/base/ExperimentalCycles) to interact with cycles.
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+Rust canisters can use the function `canister_balance128()` from the [Rust IC CDK](https://docs.rs/ic-cdk/latest/ic_cdk/api/fn.canister_balance128.html).
+
+</TabItem>
+</AdornedTabs>
+
+### Option 1: If you have ICP on your account
+
+If you have ICP associated with your [developer identity](/docs/building-apps/getting-started/identities) you can use [`dfx ledger top-up`](/docs/building-apps/developer-tools/dfx/dfx-ledger) to convert some ICP into cycles, then top-up a canister with those cycles:
+
+### Option 2: If you have cycles
+
+If you already have cycles, you can top-up a canister with the command [`dfx cycles top-up`](/docs/building-apps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up):
+
+```bash
+dfx cycles top-up jqylk-byaaa-aaaal-qbymq-cai 1T --network ic
+```
+
+### Special case: topping up a cycles wallet
+
+:::danger
+The cycles wallet will be removed from `dfx` in a future release.
+
+It is recommended to use the cycles ledger instead.
+:::
+
+Cycles wallets are canisters like any other. If you have a cycles wallet you control via `dfx`, there is another option for sending cycles from your cycles wallet to a canister of your choice: [`dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-send).
+
+[Learn more about the cycles wallet](cycles-wallet.mdx).
+
+## Topping up a canister with the NNS frontend dapp
+
+You can also top-up any canister via the [NNS frontend dapp](https://nns.ic0.app):
+
+- #### Step 1: Navigate to the **My Canisters** section of the dapp.
+- #### Step 2: Click **Link Canister**.
+- #### Step 3: Add a canister principal. The user doesn't need to control the canister.
+- #### Step 4: Once the canister is added, click on that canister.
+- #### Step 5: Click `Add cycles` to add cycles using the ICP in your NNS frontend dapp.
+
+## Managing cycle depletion with freezing threshold
+
+ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles.
+
+[Learn more about freezing thresholds](/docs/building-apps/canister-management/settings#freezing-threshold).
+
+## Using a cycles management service
+
+Cycles management services provide canister monitoring and automated cycles top-ups to ensure canister applications remain up and running and do not run out of cycles.
+
+Instead of manually topping up a canister via `dfx` or scripting a custom solution, cycles management services provide tested top-up automation and canister metric insights.
+
+Popular cycles management services include:
+
+* [CycleOps](https://cycleops.dev): Onchain, proactive, no-code canister monitoring with historical trend graphs, top-up email notifications & downloadable transaction history.
+* [TipJar](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/): Donate cycles to your favorite canisters on the Internet Computer and keep them alive and healthy!
+* [Canistergeek](https://cusyh-iyaaa-aaaah-qcpba-cai.raw.icp0.io/): Top up your canisters, monitor cycles, memory, and logs, and get your monthly reports in one place.
+
+Popular cycles management libraries include:
+
+### Motoko
+
+* [cycles-manager](https://github.com/CycleOperators/cycles-manager): Provides a simplified, permissioned cycles management framework for multi-canister applications (sponsored by CycleOps).
+* [canistergeek-ic-motoko](https://github.com/usergeek/canistergeek-ic-motoko): An open-source Motoko tool for Internet Computer to track your project canisters cycles and memory status and collect log messages.
+
+### Rust
+* [canfund](https://github.com/dfinity/canfund): An open-source library for automated cycles management of canisters on the Internet Computer.
+* [canistergeek_ic_rust](https://github.com/usergeek/canistergeek_ic_rust): An open-source Rust tool for Internet Computer to track your project canisters cycles and memory status and collect log messages.
+
+## Creating custom autonomous top-up solutions
+
+To create an autonomous canister that doesn't rely on a third-party service, you can create your own autonomous canister top-up solution. One option is to use a similar architecture implemented by [CycleOps](https://github.com/CycleOperators/cycles-manager/tree/main), where one canister acts as the cycles manager for the project and provides the API used to request more cycles when a canister within the project has its cycles balance dip below a preset threshold. Below is a sample code for this architecture, where 'CyclesManager' is the management canister and 'Child' is another canister in the project that requests cycles from the 'CyclesManager'.

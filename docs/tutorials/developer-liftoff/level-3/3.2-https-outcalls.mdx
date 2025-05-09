@@ -1,0 +1,118 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, https outcalls, http get, http post, http outcall example, http outcalls ]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+
+# 3.2 Using HTTPS outcalls
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/gEyfbFMyhwc?si=2Tmy6FZj-IQ9xU5c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+Since blockchains are a form of replicated state machine, where each replica must perform the same computations within the same state to make the same transitions each round, doing computations with results from an external source may lead to a state divergence. Tools like oracles have been used in the past to facilitate retrieving external data. However, on ICP, canisters can communicate directly with external servers or other blockchains through **HTTPS outcalls**. The response of these HTTP calls can then be used by canisters in a way that the replica can safely be updated using the response without the risk of a state divergence.
+
+:::info
+This guide uses the term **HTTPS** to refer to both the **HTTP** and **HTTPS** protocols. This is because typically all traffic on a public network uses the secure HTTPS protocol.
+:::
+
+HTTPS outcalls enable many use cases and have several advantages compared to using third-party services like oracles to handle external requests. HTTPS outcalls use a stronger trust model since there are no external intermediaries required. Most real-world dapps have a need for accessing data stored in off-chain entities, as most digital data is still stored in traditional 'Web 2' servers.
+
+## Supported HTTP methods
+
+Currently, HTTPS outcalls support `GET`, `HEAD`, and `POST` methods for HTTP requests. In this guide, you'll look at examples for the `GET` method.
+
+## Cycles
+
+Cycles used to pay for an HTTPS call must be explicitly transferred with the call. They will not be automatically deducted from the caller's balance.
+
+## HTTPS outcalls API
+
+A canister can make an HTTPS outcall by using the `http_request` method with the following parameters:
+
+- `url`: Specifies the requested URL; must be valid per the standard [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt). The length must not exceed `8192` and may include a custom port number.
+
+- `max_response_bytes`: Specifies the maximum size of the request in bytes and must not exceed 2MB. This field is optional; if this field is not specified, the maximum of 2MB will be used.
+
+:::info
+It is recommended to set `max_response_bytes`, since using it appropriately can save developers a significant amount of cycles.
+:::
+
+- `method`: Specifies the method; currently, only `GET`, `HEAD`, and `POST` are supported.
+
+- `headers`: Specifies the list of HTTP request headers and their corresponding values.
+
+- `body`: Specifies the content of the request's body. This field is optional.
+
+- `transform`: Specifies a function that transforms raw responses to sanitized responses and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. This field is optional; if it is provided, the calling canister itself must export this function.
+
+The returned response, including the response to the `transform` function if specified, will contain the following content:
+
+- `status`: Specifies the response status (e.g., 200, 404).
+
+- `headers`: Specifies the list of HTTP response headers and their corresponding values.
+
+- `body`: Specifies the response's body.
+
+### IPv6
+
+When deploying applications to ICP, HTTPS outcalls can **only** be made to APIs that support **IPv6**. You can check if an API supports IPv6 by using a tool such as https://ready.chair6.net/.
+
+## HTTP GET
+
+To demonstrate how to use the HTTPS `GET` outcall, open the [ICP Ninja Daily Planner example](https://icp.ninja/projects/daily-planner), which uses HTTPS outcalls to retrieve an "On this day" fact.
+
+In the project's `backend/app.mo` file, the HTTPS outcall is defined through the following lines:
+
+```motoko no-repl title="backend/app.mo" file=../../../references/samples/motoko/daily_planner/backend/app.mo#L113-L203
+```
+
+The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
+
+A few important points to note are:
+
+- All methods that include HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
+
+- The code above adds `20_949_972_000` cycles. This is typically enough for `GET` requests, but this may need to change depending on your use case.
+
+
+### The `transform` function
+
+The `transform` function in the code above is important because it takes the raw content and transforms it into a raw HTTP payload. This step sets the payload's headers, which include the Content Security Policy and Strict Transport Security headers.
+
+When developing locally, this function doesn't have much of an effect since only the local replica (one node) is making the call.
+
+When HTTPS calls are used on the mainnet, a common error message may appear that indicates not all replicas on the subnet get the same response:
+
+```
+Reject text: Canister http responses were different across replicas, and no consensus was reached
+```
+
+This error occurs when the replicas on the subnet don't all return the same value for a piece of data within the HTTPS response. For example, if you have an application that sends an HTTPS request to the Coinbase API for the current price of a token, due to latency the replicas will not all return the same response. To remedy this, you can request the token price for a specific timestamp to assure that the replicas all return the same response.
+
+### Calling the HTTP `GET` request
+
+Click 'Deploy" within the ICP Ninja code editor to deploy the project, then open the project's frontend URL and click "Get data from the Internet" to call the backend canister's HTTPS outcall method `fetchAndStoreOnThisDay`.
+
+## HTTP `POST`
+
+To demonstrate how to use the HTTP `POST` outcall, you'll create a simple canister that has one public method named `send_http_post_request()`. This method will trigger an HTTP `POST` request to a public API service where the HTTP request can be inspected, and you can inspect the request's headers and body to validate that it reflects what the canister sent.
+
+The following are some important notes on `POST` requests:
+
+- Since HTTPS outcalls go through consensus, it is expected that any HTTP `POST` request may be sent several times to its destination. This is because it is common for clients to retry requests for a variety of reasons.
+
+- It is recommended that HTTP `POST` requests add the idempotency keys in the header of the request so that the destination knows which `POST` requests from the client are identical.
+
+- Developers should be cautious using idempotency keys since the destination server may not know how to understand and use them.
+
+To learn more about HTTPS `POST` requests, view the [GitHub HTTPS `POST` example](https://github.com/dfinity/examples/tree/master/motoko/send_http_post).
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

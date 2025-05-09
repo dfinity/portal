@@ -312,7 +312,7 @@ function EnterprisePage() {
                 documents via emails with no audit trail of who accessed and
                 edited them, or using expensive US hosted SaaS services with the
                 associated vendor lock-in and geographical data protection
-                issues. On-chain encryption enabled by 'Verifiable Encrypted
+                issues. Onchain encryption enabled by 'Verifiable Encrypted
                 Threshold Keys' (VETKeys) will enable customized cross-org
                 workflows via tamperproof smart contract that store private data
                 securely encrypted on chain.
@@ -330,21 +330,21 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/development-costs-2.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Secure inter-org workflows
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Privately share documents with other organizations and
-                  customers, using on-chain encryption enabled by VETKeys.
+                  customers, using onchain encryption enabled by VETKeys.
                 </p>
               </div>
               <div className="flex flex-col">
                 <img
                   src="/img/enterprise/digital-identity.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Digital identity layer
@@ -358,7 +358,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/loyalty-programs.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Tokenized reward programs
@@ -372,7 +372,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/secure-sharing.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Verifiable credentials
@@ -386,7 +386,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/ownership.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Simple self-custody
@@ -400,7 +400,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/supply-chain.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
                 <p className="tw-paragraph mb-0">
@@ -459,7 +459,7 @@ function EnterprisePage() {
                 ORIGYN Foundation, they are building a solution on the Internet
                 Computer to improve their “100% made in Italy” verification
                 service. Consumers benefit from product authenticity of origin
-                certificates stored fully on-chain and protected by tamperproof
+                certificates stored fully onchain and protected by tamperproof
                 smart contracts.
               </p>
               <Link
@@ -580,7 +580,7 @@ function EnterprisePage() {
             <CardWithDescription
               title="Developer docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="How it works"

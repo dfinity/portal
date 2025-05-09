@@ -78,20 +78,24 @@ const projects: {
   imageUrl: string;
   title: string;
   body: React.ReactNode;
+  link: React.ReactNode;
 }[] = [
   {
     title: "distrikt",
-    body: "distrikt combines the best of Twitter and Linkedin. It is the world's first web3 microblogging social media platform built entirely on-chain. Own your data and identity, make new connections, and build a community.",
+    body: "distrikt combines the best of Twitter and Linkedin. It is the world's first web3 microblogging social media platform built entirely onchain. Own your data and identity, make new connections, and build a community.",
+    link: <Link href="https://distrikt.app/">Try out distrikt</Link>,
     imageUrl: "/img/social-media-dapps/Distrikt.webp",
   },
   {
     title: "DSCVR",
     body: "DSCVR’s mission is to create a decentralized social content aggregation platform where users not only control the content, but also the platform itself. Communities form groups called Portals around topics of interest. Key features include NFT gating, token airdrops, tipping with crypto and more - all of which is impossible on web2.",
+    link: <Link href="https://dscvr.one/">Try out DSCVR</Link>,
     imageUrl: "/img/social-media-dapps/DSCVR.webp",
   },
   {
     title: "OpenChat",
     body: "OpenChat is the first instant messaging service running 100% on the blockchain. This web3 dapp is backed by the security of chain-key cryptography. Plus users can easily send crypto to friends via messages, or vote on ICP governance proposals without leaving the dapp.",
+    link: <Link href="https://oc.app/">Try out OpenChat</Link>,
     imageUrl: "/img/social-media-dapps/OpenChat.webp",
   },
 ];
@@ -102,7 +106,7 @@ function SocialMediaDappsPage() {
   return (
     <Layout
       title="Social media decentralized"
-      description="Take full ownership and control over your social media plaforms."
+      description="Take full ownership and control over your social media platforms."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
@@ -273,7 +277,7 @@ function SocialMediaDappsPage() {
             </motion.h2>
             <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
               The Internet Computer is a true world computer. It hosts the
-              largest collection of Web3 social media services fully on-chain.
+              largest collection of Web3 social media services fully onchain.
               Services like OpenChat, DSCVR and distrikt are already well on
               their way to mass adoption, with over 300,000 users combined.
             </motion.p>
@@ -308,6 +312,7 @@ function SocialMediaDappsPage() {
                     onClick={() => setOpenProjectIndex(i)}
                   >
                     <div className="flex-1 tw-paragraph">{p.body}</div>
+                    <div className="flex-1 tw-paragraph">{p.link}</div>
 
                     <img
                       src={projects[i].imageUrl}
@@ -364,7 +369,7 @@ function SocialMediaDappsPage() {
                   Distrupt the world of social media by coding your own. The
                   Internet Computer blockchain provides the first complete tech
                   stack for developers to build a new era of DAO-governed social
-                  media sevices to replace Big Tech.
+                  media services to replace Big Tech.
                 </p>
 
                 <div className="">
@@ -380,14 +385,14 @@ function SocialMediaDappsPage() {
                       Provides out of the box anonymous authentication system
                     </li>
                     <li className="checklist-item leading-6 pl-8">
-                      Store large amounts of data on-chain
+                      Store large amounts of data onchain
                     </li>
                     <li className="checklist-item leading-6 pl-8">
-                      Store private data on-chain
+                      Store private data onchain
                     </li>
                   </ul>
                   <p>
-                    <Link className="link-external" href="/developers">
+                    <Link className="link-external" href="/docs/home">
                       Start coding
                     </Link>
                   </p>
@@ -504,12 +509,12 @@ function SocialMediaDappsPage() {
             <CardWithDescription
               title="Quick start"
               description="New to the Internet Computer? Learn how to create your first dapp here in 10 minutes."
-              href="/docs/current/tutorials/developer-journey/"
+              href="/docs/tutorials/developer-liftoff/"
             ></CardWithDescription>
             <CardWithDescription
               title="Developer docs"
               description="Get to know the Internet Computer and how to build on it."
-              href="/developers"
+              href="/docs/home"
               className="md:col-span-2"
             ></CardWithDescription>
           </AnimateSpawn>

@@ -9,6 +9,8 @@
 @import "fonts.css";
 
 /* You can override the default Infima variables here. */
+html[data-theme='dark']:root,
+/* we did this so the darkmode does not affect any page but we can still use the feature for the docs pages */
 :root {
   font-family: "CircularXX", sans-serif;
   --ifm-font-family-base: "CircularXX", sans-serif;
@@ -42,6 +44,216 @@
   --ic0-nav-border: 1px solid white;
   --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
   --ic0-docs-background: white;
+  --ifm-color-content: #000;
+  --doc-sidebar-width: 350px !important;
+}
+
+html.docs-wrapper[data-theme='dark'] {
+
+  --icp-white: #fff;
+  --icp-black: #000;
+  --icp-raven: oklch(from var(--icp-black) calc(l + .25) c h);
+  --icp-purple: #AE9EFF;
+  --icp-pink: #e300b6;
+
+  --icp-surface: var(--icp-raven);
+  --icp-on-surface: var(--icp-white);
+  --icp-on-surface--inverted: var(--icp-black);
+
+  --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
+  --icp-on-surface-box: var(--icp-white);
+
+  --icp-surface-highlight: var(--icp-surface-box);
+  --icp-on-surface-highlight: var(--icp-white);
+
+  --icp-line: oklch(from var(--icp-surface-box) calc(l - .05) c h);
+
+  --icp-interaction: var(--icp-purple);
+  --icp-interaction-hover: var(--icp-pink);
+  --icp-on-interaction: var(--icp-white);
+
+  --icp-interaction-text: var(--icp-purple);
+  --icp-interaction-text-hover: var(--icp-pink);
+
+  --ifm-color-content: var(--icp-on-surface);
+
+  --docusaurus-highlighted-code-line-bg: oklch(from var(--icp-pink) calc(l - .3) c h);
+
+
+  body {
+    --ifm-menu-color-active: var(--icp-interaction-text);
+    --ifm-menu-color-background-hover: var(--icp-surface-box);
+
+    --ifm-link-color: var(--icp-interaction-text);
+    --ifm-color-primary: var(--icp-interaction-text);
+
+    --ifm-link-hover-color: var(--icp-interaction-text-hover);
+    --ifm-pagination-nav-color-hover: var(--icp-interaction-text-hover);
+
+    --ifm-color-primary-dark: #3500a7;
+    --ifm-color-primary-darker: #32009d;
+    --ifm-color-primary-darkest: #290082;
+    --ifm-color-primary-light: #4100cb;
+    --ifm-color-primary-lighter: #4400d5;
+    --ifm-color-primary-lightest: #4d00f1;
+    --ifm-background-color: #f1eef5;
+    --ifm-navbar-height: 110px;
+    --ifm-navbar-x-padding: max(calc((100vw - 1320px) / 2), 50px);
+    --ifm-navbar-background-color: rgb(241, 238, 245);
+    --ifm-navbar-shadow: 0px 2px 4px rgba(0, 0, 0, 0);
+    --ifm-navbar-search-input-color: rgba(24, 24, 24, 0.6);
+    --ifm-navbar-search-input-background-color: #f8f3f1;
+    --ifm-navbar-search-input-placeholder-color: rgba(24, 24, 24, 0.6);
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16px" height="16px"><path d="M11.7668 11.0239L14.6221 13.8786L13.6788 14.8219L10.8241 11.9666C9.76196 12.818 8.4408 13.2812 7.07947 13.2792C3.76747 13.2792 1.07947 10.5912 1.07947 7.27924C1.07947 3.96724 3.76747 1.27924 7.07947 1.27924C10.3915 1.27924 13.0795 3.96724 13.0795 7.27924C13.0814 8.64057 12.6183 9.96173 11.7668 11.0239ZM10.4295 10.5292C11.2755 9.65916 11.748 8.49286 11.7461 7.27924C11.7461 4.70057 9.65747 2.61257 7.07947 2.61257C4.5008 2.61257 2.4128 4.70057 2.4128 7.27924C2.4128 9.85723 4.5008 11.9459 7.07947 11.9459C8.29309 11.9478 9.45939 11.4753 10.3295 10.6292L10.4295 10.5292Z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/></svg>');
+    --ifm-footer-background-color: #3b00b9;
+    --ic0-color: #3b00b9;
+    scroll-behavior: smooth;
+    --ifm-tabs-color: #000;
+    --ic0-docs-background: var(--icp-surface);
+
+    --ifm-tabs-color-active: var(--icp-interaction-text);
+    --ifm-tabs-color-active-border: var(--icp-interaction-text);
+    --ifm-tabs-color: var(--icp-on-surface);
+
+    --ifm-navbar-link-hover-color: #da3979;
+    --ifm-navbar-link-active-color: #da3979;
+
+    --ifm-menu-color: #fff;
+
+    --ic0-nav-border: 1px solid #151515;
+    --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
+    --ic0-docs-background: #151515;
+
+    --ifm-navbar-padding-horizontal: 24px;
+    --ifm-navbar-y-padding: 0;
+    --ifm-navbar-height: 88px;
+    --ifm-subnav-height: 54px;
+    --ifm-navbar-link-hover-color: var(--icp-interaction-text-hover);
+    --ifm-navbar-x-padding: 50px;
+
+    @media (max-width: 996px) {
+      --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
+    }
+
+    // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
+    // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
+    // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
+    // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
+    --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+
+    .navbar {
+      padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+
+      --ifm-color-primary: var(--icp-interaction-text);
+
+      // color the dropdown caret on hover
+      .navbar__item:hover {
+        &.dropdown {
+          .navbar__link {
+            &:after {
+              filter: var(--ifm-color-primary-filter);
+            }
+          }
+        }
+      }
+    }
+
+    .tabs-container {
+      background: var(--icp-surface-highlight) !important;
+      color: var(--icp-on-surface-highlight);
+      border-color: var(--icp-line) !important;
+    }
+
+    .navbar__search-button {
+      border-color: currentColor;
+      color: var(--icp-on-surface);
+
+      span {
+        color: rgb(from var(--icp-on-surface) r g b / 50%);
+      }
+    }
+    .mainsearchinput,
+    input.mainsearchinput {
+      color: var(--icp-on-surface--inverted, #000);
+    }
+
+    main[class*=docMainContainer_] {
+      background: var(--icp-surface);
+    }
+  }
+
+  .navbar {
+    background: var(--icp-surface);
+    color: var(--icp-on-surface);
+  }
+
+  .subnav,
+  .menu {
+    background: var(--icp-surface);
+    color: var(--icp-on-surface);
+    border-color: transparent;
+  }
+
+  .container:has(.docshome),
+  .docshome {
+    background: var(--icp-surface);
+    color: var(--icp-on-surface);
+  }
+
+  .networkstats figcaption {
+    color: var(--icp-on-surface);
+  }
+
+  .networkstats svg path {
+    fill: var(--icp-on-surface);
+  }
+
+  .chip {
+    background: var(--icp-interaction);
+    color: var(--icp-on-interaction);
+  }
+
+  .tile {
+    background: var(--icp-surface-box);
+    color: var(--icp-on-surface-box);
+    border-color: var(--icp-line);
+  }
+
+  .tile__icon {
+    overflow: hidden;
+    border-radius: 0.2em;
+  }
+
+  .tile__icon--invert {
+    filter: invert(1);
+  }
+
+  .slidetile {
+    background: var(--icp-surface-box);
+    color: var(--icp-on-surface-box);
+    border-color: var(--icp-line);
+
+    * {
+      color: var(--icp-on-surface-box);
+    }
+
+    .border {
+      border-color: var(--icp-line);
+    }
+  }
+
+  .button-ghost {
+    background: oklch(from var(--icp-surface-box) calc(l + .05) c h);
+    color: var(--icp-on-surface-box);
+    border-color: var(--icp-line);
+  }
+}
+
+html[data-theme='dark'] {
+  .mainsearchinput,
+  input.mainsearchinput {
+    color: #000;
+  }
 }
 
 /* browser resets */
@@ -60,11 +272,11 @@ abbr[title] {
 @import "./subnav.scss";
 @import "./map.scss";
 @import "./spinner.scss";
-@import "./kapa.scss";
 
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
 html.docs-doc-page,
+,
 html.plugin-docs,
 html.plugin-blog {
   --ifm-navbar-padding-horizontal: 24px;
@@ -83,8 +295,7 @@ html.plugin-blog {
   // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
   // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
   // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
-  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%)
-    sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
 
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
@@ -161,6 +372,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     }
 
     @media (min-width: 996px) {
+
       div[class*="docItemContainer_"],
       div.blog-post-content-layout {
         // padding around article content
@@ -192,36 +404,23 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       background: #fdfdfd;
     }
 
-    .ic-chip-row + p:first-of-type,
-    .ic-chip-row + iframe {
+    .ic-chip-row+p:first-of-type,
+    .ic-chip-row+iframe {
       margin-top: 1rem;
     }
   }
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #e11f7a;
-  --ifm-color-primary-dark: #cb1b6e;
-  --ifm-color-primary-darker: #c01a68;
-  --ifm-color-primary-darkest: #9e1555;
-  --ifm-color-primary-light: #e43687;
-  --ifm-color-primary-lighter: #e6418e;
-  --ifm-color-primary-lightest: #ea65a4;
-  --ifm-navbar-background-color: #242526;
-}
 
 div[class^="announcementBarContent"] {
-  background: linear-gradient(
-    90.1deg,
-    #fbb03b 1.35%,
-    #f57c2d 15.43%,
-    #f15a24 26.38%,
-    #ed1e79 45.16%,
-    #be217d 54.55%,
-    #5c2684 76.97%,
-    #29abe2 99.92%
-  );
+  background: linear-gradient(90.1deg,
+      #fbb03b 1.35%,
+      #f57c2d 15.43%,
+      #f15a24 26.38%,
+      #ed1e79 45.16%,
+      #be217d 54.55%,
+      #5c2684 76.97%,
+      #29abe2 99.92%);
   color: white;
   font-weight: bold;
 }
@@ -247,46 +446,54 @@ div[class^="announcementBarContent"] {
   cursor: pointer;
 }
 
+.markdown {
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    scroll-margin-top: 10rem;
+  }
+}
+
 .gradient-text {
   background-image: linear-gradient(108.55deg, #3b00b9 0%, #18d0b5 149.76%);
 }
 
 .panel-gradient {
-  background: linear-gradient(
-    105.94deg,
-    rgba(255, 255, 255, 0.24) 0%,
-    rgba(255, 255, 255, 0) 38.54%,
-    rgba(255, 255, 255, 0.136216) 100%
-  );
+  background: linear-gradient(105.94deg,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0) 38.54%,
+      rgba(255, 255, 255, 0.136216) 100%);
 }
 
 .hero-stat-red {
-  background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(236, 0, 140, 0.5) 112.99%
-  );
+  background: linear-gradient(141.63deg,
+      #ffffff 19.8%,
+      rgba(236, 0, 140, 0.5) 112.99%);
 }
 
 .hero-stat-blue {
-  background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(59, 0, 185, 0.5) 112.99%
-  );
+  background: linear-gradient(141.63deg,
+      #ffffff 19.8%,
+      rgba(59, 0, 185, 0.5) 112.99%);
 }
 
 .hero-stat-green {
-  background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(24, 208, 181, 0.5) 112.99%
-  );
+  background: linear-gradient(141.63deg,
+      #ffffff 19.8%,
+      rgba(24, 208, 181, 0.5) 112.99%);
 }
 
 .component-fade-in {
   animation: fade-in 500ms ease-out backwards;
 }
+
+.mt-navbar-negative {
+  margin-top: calc(var(--ifm-navbar-height) * -1);
+}
+
 .marquee-container {
   width: 100%;
   overflow: hidden;
@@ -316,6 +523,7 @@ div[class^="announcementBarContent"] {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -325,14 +533,17 @@ div[class^="announcementBarContent"] {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
 }
+
 @keyframes nft-marquee-left {
   from {
     transform: translateX(-25%);
   }
+
   to {
     transform: translateX(-75%);
   }
@@ -342,6 +553,7 @@ div[class^="announcementBarContent"] {
   from {
     transform: translateX(-75%);
   }
+
   to {
     transform: translateX(-25%);
   }
@@ -359,6 +571,7 @@ div[class^="announcementBarContent"] {
   from {
     transform: translate(-40px, 100px);
   }
+
   to {
     transform: translate(0px, 0px);
   }
@@ -372,6 +585,7 @@ div[class^="announcementBarContent"] {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -385,6 +599,7 @@ div[class^="announcementBarContent"] {
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
@@ -407,7 +622,7 @@ div[class^="announcementBarContent"] {
 }
 
 // mobile top level sidebar
-.navbar-sidebar__item > :not(.theme-doc-sidebar-menu).menu__list {
+.navbar-sidebar__item> :not(.theme-doc-sidebar-menu).menu__list {
   .navbar__link--divider {
     display: block;
     margin: 0;
@@ -428,7 +643,7 @@ div[class^="announcementBarContent"] {
     }
   }
 
-  > .menu__list-item {
+  >.menu__list-item {
     margin-bottom: 14px;
     padding: 0 0 14px;
     border-bottom: 1px solid #18181814;
@@ -440,13 +655,16 @@ div[class^="announcementBarContent"] {
 
   .menu__list {
     padding: 0;
+
     .menu__list-item {
       margin: 0;
+
       a {
         color: var(--ifm-color-primary);
         padding: 0 8px;
         line-height: 52px;
       }
+
       a:hover,
       a.menu__link--active {
         background: #f1eef5;
@@ -495,16 +713,18 @@ div[class^="announcementBarContent"] {
   .dropdown__menu li:first-child {
     padding-top: 12px;
   }
+
   .dropdown__menu li:last-child {
     padding-bottom: 12px;
   }
 
-  .navbar__link.dropdown--custom + .dropdown__menu {
+  .navbar__link.dropdown--custom+.dropdown__menu {
     display: grid;
   }
 
-  .navbar__link.dropdown--custom.dropdown--columns-2 + .dropdown__menu {
+  .navbar__link.dropdown--custom.dropdown--columns-2+.dropdown__menu {
     grid-template-columns: minmax(240px, 1fr) minmax(min-content, 1fr);
+
     li:nth-child(odd) {
       border-right: 1px solid rgba(59, 0, 185, 0.1);
     }
@@ -543,11 +763,24 @@ div[class^="announcementBarContent"] {
 }
 
 .link-primary:not(.link-with-icon) {
+
   svg,
   img {
     vertical-align: text-bottom;
     margin-right: 8px;
   }
+}
+
+.hide-scrollbar {
+  /*FireFox*/
+  scrollbar-width: none;
+  /*IE10+*/
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  /*Chrome, Safari, Edge*/
+  display: none;
 }
 
 @tailwind base;

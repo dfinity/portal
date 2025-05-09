@@ -1,0 +1,46 @@
+---
+keywords: [beginner, tutorial, create, create canister, compile code, compile canister, compile, build, install, canister install, install code]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Create
+
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
+
+Canisters are created with [`dfx canister create`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create). They are initially empty and do not contain program code. The code must be [compiled](/docs/building-apps/developing-canisters/what-are-canisters) into Wasm and [installed](/docs/building-apps/developing-canisters/what-are-canisters) into the empty canister before it can be deployed.
+
+<div class="text--center">
+<img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
+</div>
+
+Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
+
+:::info
+Canister creation is done automatically in the background of the `dfx deploy` command. However, there may be certain workflows where creating an empty canister is necessary.
+:::
+
+Create a canister from within a project's directory:
+
+```
+dfx canister create <canister-name> --network=<NETWORK>
+```
+
+
+When a canister is created, the following steps happen:
+
+- A canister ID is registered with the local replica or the mainnet for each canister in the project's `dfx.json` file. Each canister ID is returned to the command line.
+
+- The following canister components are created:
+  - List of controllers.
+  - Cycles balance.
+  - Reserved cycles balance.
+  - Canister status.
+  - Resource reservations.
+
+### Errors related to canister creation
+
+Common errors related to canister creation include:
+
+- [Canister not found](/docs/references/execution-errors#canister-not-found).
+- [Maximum number of canisters reached](/docs/references/execution-errors#maximum-number-of-canisters-reached).

@@ -1,0 +1,68 @@
+---
+keywords: [https outcalls, advanced, tutorial, post requests, post http, http post, post method, http requests, http, outcalls, making http post requests, making http outcalls]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# HTTPS outcalls: POST
+
+<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
+
+A minimal example of how to make a `POST` HTTP request. The purpose of this dapp is only to show how to make HTTP requests from a canister. It sends a `POST` request with some JSON to a free API where you can verify the headers and body were sent correctly.
+
+:::caution
+The HTTPS outcalls feature only works for sending HTTP `POST` requests to servers or API endpoints that support **IPV6**.
+:::
+
+In order to verify that your canister sent the HTTP request you expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see in the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
+
+![Public API to inspect POST request](../../_attachments/https-post-requestbin-result.webp)
+
+## Important notes on `POST` requests
+
+Because HTTP outcalls go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), a developer should expect any HTTP `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTPS, where it is common for clients to retry requests for a variety of reasons (e.g., destination server being unavailable).
+
+The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same.
+
+Developers should be careful that the destination server understands and uses idempotency keys. A canister can be coded to send idempotency keys, but it is ultimately up to the recipient server to know what to do with them. Here is an [example of an API service that uses idempotency keys](https://stripe.com/docs/api/idempotent_requests).
+
+## `POST` example
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl file=../../../../references/samples/motoko/send_http_post/src/send_http_post_backend/main.mo
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust file=../../../../references/samples/rust/send_http_post/src/send_http_post_backend/src/lib.rs
+```
+
+
+To use HTTPS outcalls, you must update the canister's Candid file:
+
+```candid file=../../../../references/samples/rust/send_http_post/src/send_http_post_backend/send_http_post_backend.did
+```
+
+Update the `Cargo.toml` file to use the correct dependencies:
+
+```toml file=../../../../references/samples/rust/send_http_post/src/send_http_post_backend/Cargo.toml
+```
+
+</TabItem>
+</AdornedTabs>
+
+Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus and can be used to remove some headers from the response.
+
+You can see a deployed version of this canister's `send_http_post_request` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai).
+
+## Additional resources
+
+* Sample code of [HTTP `POST` requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post)
+* Sample code of [HTTP `POST` requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_post)

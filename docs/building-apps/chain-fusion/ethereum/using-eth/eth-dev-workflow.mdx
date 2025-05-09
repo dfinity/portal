@@ -1,0 +1,70 @@
+---
+keywords: [advanced, ethereum, developer workflow, eth dev, dev workflow, cketh, integrating with eth]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ICP ETH developer workflow
+
+<MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
+
+Developers on ICP can create canisters and dapps that interact with the Ethereum mainnet, Sepolia testnet, and other EVM-compatible networks through ICP's Ethereum integration. To use this integration, developers must implement a specific workflow that makes JSON-RPC calls to the EVM RPC canister in order to query network information and submit transactions to an EVM-compatible network.
+
+Interactions with the EVM RPC canister can be made directly to the EVM RPC canister's methods or you can use [`ic-alloy`](https://ic-alloy.dev/getting-started.html), a fork of the Ethereum tool Alloy specifically for ICP.
+
+Developers can also integrate and interact with chain-key Ethereum (ckETH) from within a canister, which uses the ICRC-1 token implementation.
+
+## Using the Ethereum integration
+
+To interact with the Ethereum network or another EVM-compatible network, a developer will need to use a combination of the management canister API and EVM RPC canister RPC methods to complete the following steps:
+
+1. [Generate a public key](./generating-addresses.mdx): To sign and submit transactions, your canister will need a public key. You will also need this public key to generate an Ethereum wallet address.
+
+2. [Sign a transaction](./signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/references/t-sigs-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
+
+3. [Submit a transaction](./submit-transactions.mdx): Signed raw transactions can be submitted using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) (recommended) or the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
+
+4. [Read information from the Ethereum network](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister): Information from the Ethereum network can be queried using RPC methods such as:
+
+   - `eth_getBlockByNumber`: Returns information about a given block.
+
+   - `eth_getTransactionCount`: Returns the number of transactions for a specified address.
+
+   - `eth_getTransactionReceipt`: Returns details about a submitted transaction.
+
+   - `eth_feeHistory`: Returns the historical fee data to estimate gas prices for transactions.
+
+   - `eth_getLogs`: Returns the logs of a specified block or transaction.
+
+Each of these steps can be executed programmatically within a smart contract that is deployed on ICP. View the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation to see code examples for each RPC method.
+
+Additional sample projects can be found in the [EVM RPC](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) canister documentation.
+
+## Integrating with Ethereum
+
+The Ethereum integration can be incorporated into dapps for several purposes, such as authentication, as shown in the [Sign In With Ethereum (SIWE)](https://github.com/kristoferlund/ic-siwe) example. The SIWE example showcases how to use an Ethereum wallet to sign into ICP applications. It creates a 1:1 correlation between Ethereum addresses and ICP principals within the scope of the application. It also guarantees that logging in with an Ethereum wallet will consistently produce the same principal regardless of the client used.
+
+## Using ckETH
+
+Chain-key Ethereum (ckETH) is a digital twin token of Ethereum that is backed 1:1 with Ethereum held within an ICP smart contract. ckETH tokens comply with the [ICRC token standard](/docs/defi/chain-key-tokens/cketh/overview).
+
+ckETH and other chain-key tokens can be interacted with in the same manner as other ICRC tokens. There aren't any special workflow steps, parameters, or smart contract types that must be used to integrate with chain-key tokens such as ckETH.
+
+[Learn more about ckETH](/docs/defi/chain-key-tokens/cketh/overview).
+
+## Using ckERC20 tokens
+
+ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai), are able to be deployed on ICP and backed 1:1 by their native currency, such as USDC for ckUSDC. Other ckERC20 tokens have been proposed, such as [ckOCT](https://forum.dfinity.org/t/proposal-to-add-oct-as-a-new-ckerc20-token/32108) and ckLINK.
+
+## Resources
+
+- [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
+
+- [Generating addresses](./generating-addresses.mdx).
+
+- [Signing transactions](./signing-transactions.mdx).
+
+- [Submitting transactions](./submit-transactions.mdx).
+
+- [ckETH](/docs/defi/chain-key-tokens/cketh/overview).

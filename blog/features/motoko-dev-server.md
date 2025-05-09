@@ -19,13 +19,13 @@ We are excited to introduce [mo-dev](https://github.com/dfinity/motoko-dev-serve
 
 Live reloading (or more specifically, [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement/)) is a well-established technology known to massively improve the productivity of web developers. I highly recommend checking out [this blog post](https://blog.logrocket.com/complete-guide-full-stack-live-reload/) for a great explanation of how it works.
 
-This is a solved problem in the world of conventional web development. Robust solutions such as the [Vite](https://vitejs.dev/), [Next.js](https://nextjs.org/docs/architecture/fast-refresh), and [Webpack](https://webpack.js.org/configuration/dev-server/) dev servers make it possible to change a line of front-end code and immediately see the result in your browser, usually without even refreshing the page.
+This is a solved problem in the world of conventional web development. Robust solutions such as the [Vite](https://vitejs.dev/), [Next.js](https://nextjs.org/docs/architecture/fast-refresh), and [Webpack](https://webpack.js.org/configuration/dev-server/) dev servers make it possible to change a line of frontend code and immediately see the result in your browser, usually without even refreshing the page.
 
 However, this feature is almost nonexistent when developing a decentralized application (or “dapp”) running on a blockchain. Several options exist — such as [ZepKit](https://blog.openzeppelin.com/solidity-hot-reloading-using-zepkit) for Solidity smart contracts — but the current state of Web3 live reloading leaves much to be desired given the sky-high expectations from Web2.
 
 ---
 
-This is where the [Motoko programming language](/docs/current/motoko/main/getting-started/motoko-introduction) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/current/motoko/main/canister-maintenance/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
+This is where the [Motoko programming language](/docs/motoko/main/getting-started/motoko-introduction) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/motoko/main/canister-maintenance/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
 
 Over the past six months, DFINITY has adopted full-stack live reloading in our internal Motoko projects, saving a huge amount of development time and allowing us to quickly try lots of different ideas to improve the end-user experience of our Internet Computer dapps.
 
@@ -63,21 +63,21 @@ Once you’ve installed the tool, run `mo-dev --help` to view usage examples and
 
 ## Candid UI
 
-Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
+Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
 
 ```sh
 mo-dev --deploy -y
 ```
 
-The `-y` flag automatically responds “yes” to prompts from [dfx](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy) about upgrading the canister interface (potentially clearing canister data). Feel free to include or omit this depending on your use case.
+The `-y` flag automatically responds “yes” to prompts from [dfx](/docs/building-apps/developer-tools/dfx/dfx-deploy) about upgrading the canister interface (potentially clearing canister data). Feel free to include or omit this depending on your use case.
 
 ## Full-Stack Dapp
 
-`mo-dev` is specifically designed to play well with popular front-end build tools such as [Vite](https://vitejs.dev/) and [Create React App](https://create-react-app.dev/).
+`mo-dev` is specifically designed to play well with popular frontend build tools such as [Vite](https://vitejs.dev/) and [Create React App](https://create-react-app.dev/).
 
 If you want to start a new project, consider using the [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) template (or the even simpler [plain JavaScript version](https://github.com/rvanasa/vite-react-motoko/tree/simplified-js#readme)).
 
-Otherwise, this is a good starting point for live reloading a back-end Motoko canister:
+Otherwise, this is a good starting point for live reloading a backend Motoko canister:
 
 ```sh
 mo-dev --generate --deploy -y
@@ -100,7 +100,7 @@ With this project configuration, `npm start` will run the Vite and Motoko dev se
 
 Another benefit of this configuration is that anyone can run the dev server without needing to globally install the `mo-dev` command, which is great for encouraging open-source contributions or working as part of a team.
 
-This project configuration will be included by default in the upcoming changes to the [dfx new](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) command.
+This project configuration will be included by default in the upcoming changes to the [dfx new](/docs/building-apps/developer-tools/dfx/dfx-new) command.
 
 `mo-dev` ships with a test runner compatible with third-party libraries such as motoko-matchers.
 
@@ -163,7 +163,7 @@ CI=true mo-dev --generate --deploy
 Here are a few miscellaneous tips which might come in handy while working with `mo-dev`:
 
 * Live reloading works when switching Git branches, which is useful to keep in mind for code reviews and pair programming.
-* If you’ve used [dfx generate](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate), you might have encountered a common catch-22 where both `dfx generate` and `dfx deploy` require running each other first. `mo-dev --generate --deploy` automatically handles this situation for you.
+* If you’ve used [dfx generate](/docs/building-apps/developer-tools/dfx/dfx-generate), you might have encountered a common catch-22 where both `dfx generate` and `dfx deploy` require running each other first. `mo-dev --generate --deploy` automatically handles this situation for you.
 * You can define custom live-reload logic using `mo-dev --exec <command>`.
 
 ---

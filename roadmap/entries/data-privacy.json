@@ -1,0 +1,122 @@
+{
+  "categoryName": "Privacy",
+  "categoryDescription": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
+  "elements": [
+    {
+      "title": "ICP integrates the vetKeys protocol",
+      "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
+      "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
+      "proposal": "",
+      "docs": "https://internetcomputer.org/docs/building-apps/network-features/encryption/vetkeys",
+      "eta": "Q2 2025",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Niobium",
+      "imported": true
+    },
+    {
+      "title": "User-space libraries and example dapps for vetKeys",
+      "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q2 2025",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Niobium",
+      "imported": false
+    },
+    {
+      "title": "vetKeys for decentralized key management",
+      "is_milestone": true,
+      "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
+      "milestone_id": "Niobium",
+      "status": "in_progress",
+      "eta": "Q2 2025",
+      "eta_to_render": "June 2025"
+    },
+    {
+      "title": "Confidentiality of canister states",
+      "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Containment",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Encrypted canister state",
+      "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
+      "status": "in_progress",
+      "milestone_id": "Containment"
+    },
+    {
+      "title": "Disaster recovery for SEV-SNP-enabled subnets",
+      "overview": "SEV-SNP raises the level of security, but also makes disaster recovery harder. SEV-SNP-enabled subnets need to be made recoverable, e.g., by securely escrowing its secure enclave key material on the NNS.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "SEV Support for replica nodes",
+      "overview": "Enabling the SEV-SNP trusted computing technology for the Replica VM to protect sensitive data from unauthorized access.",
+      "forum": "https://forum.dfinity.org/t/amd-sev-virtual-machine-support/6156",
+      "proposal": "https://forum.dfinity.org/t/long-term-r-d-tee-enhanced-ic-proposal/9384/4",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "SEV-SNP-enabled ECDSA subnet",
+      "overview": "The threshold ECDSA signing and backup subnets are enabled with SEV-SNP to raise the protection level against data exfiltration attacks by entities with access to the nodes.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "SEV-SNP for app subnets",
+      "overview": "Regular app subnets receive SEV-SNP protection to make them harder to tamper with and to enable attestation of running the correct software image.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Fully-homomorphic encryption (FHE)",
+      "overview": "Fully-homomorphic encryption (FHE) allows for arbitrary computations on encrypted data and only authorized parties to decrypt the result. Blockchain data privacy.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Cryptographic multi-party computation (MPC)",
+      "overview": "Running MPC on the blockchain nodes allow for privacy-preserving arbitrary computations to be made, with only authorized parties learning the results.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    }
+  ]
+}

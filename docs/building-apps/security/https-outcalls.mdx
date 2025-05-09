@@ -1,0 +1,101 @@
+---
+keywords: [security, concept, https outcall]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: HTTPS outcalls
+
+<MarkdownChipRow labels={["Security", "Best practices"]} />
+
+## Do not store sensitive data such as API keys in canisters
+
+### Security concern
+
+Sensitive data is a broad term that varies depending on your application logic and behavior. Here is a non-exhaustive list of secrets that are typically considered sensitive, such as API keys or tokens:
+* Secrets that allow interaction with non-public endpoints.
+* Secrets that allow querying or modifying endpoints with confidential data.
+* API tokens that are fee-based.
+
+By default, the data stored inside your canister is unencrypted. Therefore, if your canister is installed on a malicious replica, it can easily retrieve and steal your keys, tokens, and secrets in plain text.
+
+### Recommendation
+
+Make sure you don’t store sensitive data inside your canister.
+
+[More information.](/docs/references/https-outcalls-how-it-works#compromised-replicas)
+
+[Data confidentiality security recommendations.](/docs/building-apps/security/misc#data-confidentiality-on-icp)
+
+## Ensure your canisters have a sufficiently large quota with the HTTP server
+
+### Security concern
+
+When an HTTPS outcall is performed, it is amplified by the number of replicas in the subnet. The target web server will receive not only one request but as many requests as the number of nodes in the subnet.
+
+Most web servers implement some sort of rate limiting; this is a mechanism used to restrict the number of requests a client can make to a web server within a specific time period, preventing abuse or excessive usage of their API(s).
+
+### Recommendation
+
+You should consider such rate limits when designing and implementing your canisters. Rate limits are enforced using different time granularities, e.g., seconds or minutes. For second-granularity enforcement, make sure that the simultaneous requests by all subnet replicas do not violate the quota. Violations may lead to temporary or permanent bans.
+
+[More information.](/docs/references/https-outcalls-how-it-works#rate-limiting-by-servers)
+
+## Only make HTTPS outcall requests to idempotent endpoints
+
+### Security concern
+
+As mentioned before, if an HTTPS outcall is performed, it is amplified by the number of replicas in the subnet. That means the queried endpoint will receive the same request several times. This is especially risky in requests that change the endpoint state, given that one HTTPS outcall could lead to unintentionally changing the endpoint state several times.
+
+### Recommendation
+
+Make sure the endpoints, called by an HTTPS outcall, are idempotent, such that the queried endpoint has the same behavior with the same request payload, no matter the number of times it is called.
+
+Some servers support the use of idempotency keys. These keys are random unique strings submitted in the HTTP request as headers. If used with the HTTPS outcalls feature, all requests sent by each honest replica will contain the same idempotency key. This allows the server to recognize duplicated requests (i.e., requests with the same idempotency key), handle just one, and modify the server state only once. Note that this is a feature that must be supported by the server.
+
+[More information.](/docs/references/https-outcalls-how-it-works#post-requests-must-be-idempotent)
+
+## Ensure HTTPS responses are identical
+
+### Security concern
+
+When replicas of a subnet receive HTTP responses, these responses must be identical. Otherwise, [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) won’t be achieved, and the HTTP response will be rejected but still charged.
+
+### Recommendation
+
+Make sure the HTTP responses sent to the consensus layer are identical.
+
+Ideally, the HTTP responses returned by the queried endpoint would always be the same. However, most of the time this is not possible to control, and the responses include random data (e.g., the response includes timestamps, cookie values, or some sort of identifiers). In those cases, make sure to use the [transformation functions](/docs/references/https-outcalls-how-it-works#transformation-function) to guarantee that the responses received by each replica are identical by removing any random data or extracting only the relevant data.
+
+This applies to the HTTP response body and headers. Make sure to consider both when applying the transformation functions. Response headers are often overlooked and lead to failure because of failed consensus.
+
+[More information.](/docs/references/https-outcalls-how-it-works#responses-must-be-similar)
+
+## Be aware of HTTP request and response sizes
+
+### Security concern
+
+The [pricing](/docs/building-apps/essentials/gas-cost#https-outcalls) of HTTPS outcalls is determined by the size of the HTTP request and the maximal response size, among other variables. Thus, if big requests are made, this could quickly drain the canister’s cycles balance. This can be risky in scenarios where HTTPS outcalls are triggered by user actions (rather than a heartbeat or timer invocation).
+
+### Recommendation
+
+When using HTTPS outcalls, be mindful of the HTTP request and response sizes. Ensure that the size of the request issued and the size of the HTTP response coming from the server are reasonable.
+
+When making an HTTPS outcall, it is possible—and highly recommended—to define the `max_response_bytes` parameter, which allows you to set the maximum allowed response size. If this parameter is not defined, it defaults to the hard response size limit of the HTTPS outcalls feature, which is 2MiB. The cycle cost of the response is always charged based on the `max_response_bytes` or 2MB if not set.
+
+Finally, be aware that users may incur cycles costs for HTTPS outcalls in case these calls can be triggered by user actions.
+
+[More information.](/docs/references/https-outcalls-how-it-works#recipe-for-coding-a-canister-http-call)
+
+## Perform input validation in HTTPS outcalls
+
+### Security concern
+
+HTTPS outcalls that use user-submitted data are susceptible to various injection attacks. This may lead to several issues, such as the ones previously mentioned.
+
+### Recommendation
+
+Perform input validation when using user-submitted data in the HTTPS outcalls.
+
+[More information.](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)
+

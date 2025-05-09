@@ -1,0 +1,154 @@
+---
+keywords: [advanced, governance, tutorial, nns, known neurons, named neurons, neurons]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+
+# Registering a known neuron
+
+<MarkdownChipRow labels={["Advanced", "Governance", "Tutorial"]} />
+
+
+A know neuron has a name and optionally a short description.
+A known neuron can be registered in the NNS governance via a proposal, officially storing its name and description
+within the NNS. This information can be used by other neurons to find known neurons and [follow](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons) them.
+
+To become a known neuron in the NNS DAO, you first need to create a neuron, then submit an NNS proposal to register as a known neuron. After the proposal is accepted and your neuron is registered, it will be visible to all NNS users when they set up their own neuron following.
+
+It can be useful for known neuron candidates to be an (unregistered) actively voting neuron for a while before registering a neuron. During this time, the neuron holder can get familiar with voting and start becoming an expert in a topic. They can also share their neuron ID for others to follow them. In this way, by the time that they register the neuron as a known neuron, there is already some evidence of their voting behavior that NNS participants can base their decision on. Moreover, to convince the NNS DAO to accept a new known neuron, it can be useful for known neuron candidates to present themselves to the community outside the [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) context, for example, on the forum or social media.
+
+## Create a neuron
+There are multiple options to create and set up a neuron that can then be registered as a know neuron.
+A known neuron can be operated by an individual person, or an organization where either one person controls the neuron or it is operated by a group of people.
+Depending on this, different neuron creation options might be more suitable.
+
+### Create a neuron controlled by one party
+
+If you would like to create a known neuron that is operated by one party that knows the neuron's controlling key and can change the neuron, you can use one of the following options:
+* [Create the neuron on the NNS dapp](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System).
+* [Create the neuron on the NNS dapp that is controlled by a hardware ledger wallet](https://support.dfinity.org/hc/en-us/articles/8760495850900-How-do-I-use-my-Ledger-Nano-with-the-Internet-Computer)
+* [Create the neuron via the quill command line tool](https://support.dfinity.org/hc/en-us/articles/4408752586260-What-is-Quill).
+
+:::info
+If there are multiple people involved in a known neuron's voting decision, the known neuron can be set up to follow their individual neurons on the topics that it should vote on.
+However, for a neuron that is created this way, the **person who created the neuron has the controlling key**.
+This person can modify the neuron and, in particular, can also vote using the neuron without taking the input of others into account.
+This can be suitable for individuals who operate a known neuron, or for organizations where one person is trusted with this task.
+:::
+
+### Create a community neuron
+
+Additional information on how to create a community neuron will be added soon!
+
+
+## Start voting and present your neuron to the community
+Once you have created a neuron, you can start voting with it and also share context about how you voted and why with the community. You can already share your neuron ID with others so that they can follow you on certain topics.
+
+There are no rules that a known neuron must follow regarding if it presents itself to the community or not, but it can make sense for neuron owners to present themselves before submitting the proposal to register themselves as a known neuron. This can serve as a way for promoting the neuron and explaining the motivation behind it.
+This can, for example, be done with a forum post or by sharing information on social media, such as OpenChat or X.
+
+This might be useful so that followers can make well-informed decisions regarding who to follow for which topic:
+
+* **Who you are**: Name of the person or group and their relationship to the ICP. You may want to argue why the people behind the neuron have a long-term interest in the wellbeing of the ICP and are motivated to make good voting decisions.
+* **Neuron control**: Who controls the neuron? Does it have a single controller or can it be changed by a group of people?
+* **Covered topics**: A description of what topics the known neuron will vote on. Does the neuron commit to always vote on these topics? Since following is done based on proposal topics, this is relevant information for followers. Usually, neurons would want to follow other neurons that always vote on a given topic in order not to miss out on voting rewards.
+* **Depth of reviews**: A description of how the known neuron plans to verify proposals. To which depth will it review the code or the content of the proposal and how is this done?
+* **Following setting**: For the topics where the know neuron does not vote directly, who does the neuron follow?
+* **Voting principles**: What are the principles according to which you plan to vote?
+* **Link to the neuron ID / proposal**: If you already created the neuron, you may want to provide its ID or even link to a dashboard where it can be inspected. The same holds for the proposal to register it as a known neuron in the case where the proposal was already made.
+
+:::info
+It might be useful for known neurons to **focus on fewer topics and commit to always vote on those** rather than trying to cover a lot of topics and vote less reliably. For example, they could become experts on some proposal topics. If a known neuron commits to always vote on a certain topic, it might be more likely that others follow the neuron on this topic as the followers want to make sure they are not missing out on rewards.
+:::
+
+
+## Register the known neuron
+To register a neuron as a know neuron, you need to submit a NNS proposal. The proposal can be submitted by any neuron that has at
+least 10 ICP staked.
+For simplicity, we assume in the following example that the neuron to be registered was created on the NNS dapp and that the same neuron is
+used to submit the proposal.
+
+- ### Step 1: Download and install `dfx`
+
+It is not possible to submit proposals through the NNS dapp. Therefore, you must use a command line tool called `dfx`.`dfx` is only natively supported on Mac and Linux, but it can be installed on Windows using WSL.
+
+To install `dfx`, follow the [installation instructions](/docs/building-apps/getting-started/install#installing-dfx).
+
+Here are the instructions for Mac and Linux:
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+If you are using a machine running Apple silicon, you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed.
+You can install Rosetta by running `softwareupdate --install-rosetta` in your terminal.
+
+- ### Step 2: Add your `dfx` principal as a hotkey to your neuron
+
+Your neuron is controlled by a **principal ID**, which is an identity on ICP.
+However, you want to be able to submit proposals from the command line on your computer in this neuron's name.
+For this, you can register the principal that you have on your computer as a
+[**hot key**](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons#neuron-attributes)
+of the neuron. Hot keys have the permission to vote and submit proposals for the neuron.
+
+Run `dfx identity get-principal` to get the principal ID that corresponds to your current [developer identity](/docs/building-apps/getting-started/identities). The following steps will refer to this as your "dfx principal".
+It should output some text that looks something like this: `hnswe-crhc7-funvc-qqkg4-pk3j4-vxfhs-ckf2o-i56yb-frent-vl7vk-3qe`.
+
+Then, go back to the NNS dapp. On the "Neuron Staking" page, click “Add Hotkey” on for your neuron.
+You may need to scroll down a bit. Once you’ve clicked “Add Hotkey”, paste your dfx principal into the window that appears,
+and press confirm.
+Your dfx principal should appear under “Hotkeys”.
+You can now control your neuron from the local terminal.
+
+- ### Step 3: Submit the proposal
+To submit the proposal, you need the neuron ID of the neuron to be registered as a known neuron, a name for the known neuron, and a
+ short description.
+ You find your neuron ID in the NNS dapp at the top right of the NNS dashboard page for your neuron.
+
+To submit the proposal, customize the following template in a text editor, then run it!
+
+You can run it by pasting the customized template into your terminal.
+
+```
+NEURON_ID="your neuron ID" # Set to your neuron ID copied in the previous step
+NEW_NAME="desired known neuron name here" # Customize
+NEW_DESCRIPTION="desired known neuron name description here" # customize
+PROPOSAL_TITLE="Make $NEURON_ID a known neuron (${NEW_NAME})"
+PROPOSAL_SUMMARY="add the proposal proposal summary here" # customize
+PROPOSAL_URL="link to forum post" # customize to whatever url you want to be listed in the proposal, like a link to the forum post
+dfx canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {RegisterKnownNeuron = record {id = opt record { id = ${NEURON_ID}: nat64}; known_neuron_data = opt record {name = \"${NEW_NAME}\"; description = opt \"${NEW_DESCRIPTION}\"}}}}}})"
+
+```
+
+Here is a concrete example for reference:
+```
+NEURON_ID="12664007384337444895"
+NEW_NAME="Testname"
+NEW_DESCRIPTION="I like the NNS DAO"
+PROPOSAL_TITLE="Make $NEURON_ID a known neuron (${NEW_NAME})"
+PROPOSAL_SUMMARY="Hi everyone. I would like to become a known neuron. Find more information about me on the linked forum post."
+PROPOSAL_URL="https://forum.dfinity.org/link-to-post/3074"
+dfx canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {RegisterKnownNeuron = record {id = opt record { id = ${NEURON_ID}: nat64}; known_neuron_data = opt record {name = \"${NEW_NAME}\"; description = opt \"${NEW_DESCRIPTION}\"}}}}}})"
+
+```
+
+After running this command, you should see something like this:
+```
+(
+  record {
+    command = opt variant {
+      MakeProposal = record {
+        message = opt "The proposal has been created successfully.";
+        proposal_id = opt record { id = 129_666 : nat64 };
+      }
+    };
+  },
+)
+
+```
+
+What you see after `id =` is the ID of the proposal you just submitted, which other NNS neuron owners can now vote on!
+It should appear on the [dashboard](https://dashboard.internetcomputer.org/governance) shortly.
+If you have trouble finding it, you can just use the following URL and replace the number at the end with the ID of the proposal you just made (without the underscores):
+ https://dashboard.internetcomputer.org/proposal/129666.

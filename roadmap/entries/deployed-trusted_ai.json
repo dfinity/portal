@@ -1,0 +1,60 @@
+{
+  "categoryName": "",
+  "categoryDescription": "",
+  "elements": [
+    {
+      "title": "Increase the message instruction limit to 40 billion instructions",
+      "overview": "Increasing the message limit from 20 to 40 billion instructions to facilitate longer-running computations, which is crucial for AI inference.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Faster deterministic floating-point operations",
+      "overview": "Accelerating deterministic floating-point computations in the Wasm engine.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://medium.com/@dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Cyclotron"
+    },
+    {
+      "title": "Wasm SIMD instructions",
+      "overview": "Deterministic SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://medium.com/@dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Cyclotron"
+    },
+    {
+      "title": "Optimizing AI inference engine",
+      "overview": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://medium.com/@dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Cyclotron"
+    },
+    {
+      "title": "Onchain AI Inference",
+      "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
+      "is_milestone": true,
+      "milestone_id": "Cyclotron",
+      "status": "deployed",
+      "eta": "2024-07-15",
+      "eta_to_render": "July 15, 2024"
+    }
+  ]
+}

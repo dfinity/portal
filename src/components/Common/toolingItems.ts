@@ -4,7 +4,7 @@ export const dfinityToolingItems = [
     tags: ["CLI", "development", "operations"],
     description:
       "Create, deploy, and manage your dapps for the Internet Computer platform.",
-    links: { docs: "/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/" },
+    links: { docs: "/docs/building-apps/developer-tools/dfx/" },
   },
   {
     title: "Motoko VS Code",
@@ -20,6 +20,12 @@ export const dfinityToolingItems = [
     tags: ["plugin", "development"],
     description: "A configurable Prettier plugin for Motoko.",
     links: { github: "https://github.com/dfinity/prettier-plugin-motoko" },
+  },
+  {
+    title: "ICP Ninja",
+    tags: ["IDE", "website", "development"],
+    description: "A web-based IDE for developing and deploying ICP smart contracts.",
+    links: { external: "https://icp.ninja" },
   },
   {
     title: "Motoko Playground",
@@ -234,9 +240,9 @@ export const communityToolingItems = [
     links: { external: "https://internetcomputerservices.com/" },
   },
   {
-    title: "MOPS",
+    title: "Mops",
     tags: ["CLI", "website", "development"],
-    description: "An on-chain package manager for Motoko.",
+    description: "An onchain package manager for Motoko.",
     links: {
       external: "https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/",
       github: "https://github.com/ZenVoich/mops"
@@ -245,7 +251,7 @@ export const communityToolingItems = [
   {
     title: "ICPipeline",
     tags: [ "development", "service", "testing", "CLI", "website", "starter"],
-    description: "Multi-tiered IC development framework with on-chain admin console, repeatable deployments, on-demand environments, canister backups and more.",
+    description: "Multi-tiered IC development framework with onchain admin console, repeatable deployments, on-demand environments, canister backups and more.",
     links: {
       external: "https://www.icpipeline.com/",
       github: "https://github.com/icpipeline-framework",
@@ -292,7 +298,7 @@ export const communityToolingItems = [
     links: {
       github: "https://github.com/ic4j/ic4j-maven-plugin",
     },
-  }, 
+  },
 {
     title: "icpp-pro",
     tags: [ "C++", "development", "CDK" ],

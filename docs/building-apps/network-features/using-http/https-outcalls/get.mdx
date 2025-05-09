@@ -1,0 +1,61 @@
+---
+keywords: [https outcalls, advanced, tutorial, get requests, get http, http get, get method, http requests, http, outcalls, making http get requests, making http outcalls]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# HTTPS outcalls: GET
+
+<MarkdownChipRow labels={["Advanced", "Network feature"]} />
+
+A minimal example to make a `GET` HTTP request. The purpose of this dapp is only to show how to make HTTP requests from a canister. It sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token.
+
+## `GET` example
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl file=../../../../references/samples/motoko/send_http_get/src/send_http_get_backend/main.mo
+```
+
+- `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), even if the HTTPS outcall is a `GET`.
+- The code above adds `20_949_972_000` cycles. This is typically enough for `GET` requests, but this may need to change depending on your use case.
+- The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust file=../../../../references/samples/rust/send_http_get/src/send_http_get_backend/src/lib.rs
+```
+
+- `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
+- The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
+- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](/docs/references/ic-interface-spec#ic-http_request), but it is not strictly the same.
+
+To use HTTPS outcalls, you must update the canister's Candid file:
+
+```candid file=../../../../references/samples/rust/send_http_get/src/send_http_get_backend/send_http_get_backend.did
+```
+
+Update the `Cargo.toml` file to use the correct dependencies:
+
+```toml file=../../../../references/samples/rust/send_http_get/src/send_http_get_backend/Cargo.toml
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus and can be used to remove some headers from the response.
+
+You can see a deployed version of this canister and its `get_icp_usd_exchange` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai).
+
+
+## Additional resources
+
+- Sample code of [HTTP `GET` requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTP `GET` requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)

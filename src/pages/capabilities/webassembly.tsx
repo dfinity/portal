@@ -52,7 +52,7 @@ function WebAssemblyPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                A advantage of the Internet Computer blockchain is its
+                An advantage of the Internet Computer blockchain is its
                 use of WebAssembly for executing smart contracts and
                 decentralized applications — written in a wide variety of
                 languages that compile to WebAssembly.
@@ -175,7 +175,7 @@ function WebAssemblyPage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://people.mpi-sws.org/~rossberg/"
+                href="https://docs.bitfinity.network"
               >
                 Check out Bitfinity EVM
                 <LinkArrowUpRight />
@@ -335,13 +335,13 @@ function WebAssemblyPage() {
             <CardWithDescription
               title="Rust"
               description="Offers high performance, and many libraries that the Rust community developed over the years. Supported, and maintained by DFINITY."
-              href="/docs/current/developer-docs/backend/rust/"
+              href="/docs/building-apps/developer-tools/cdks/rust/intro-to-rust"
             />
 
             <CardWithDescription
               title="Motoko"
               description="The Internet Computer’s native language, designed to support all features ICP has to offer, and has a less steep learning curve compared to Rust. Supported, and maintained by DFINITY."
-              href="/docs/current/motoko/main/getting-started/motoko-introduction"
+              href="/docs/motoko/main/getting-started/motoko-introduction"
             />
             <CardWithDescription
               title="TypeScript"

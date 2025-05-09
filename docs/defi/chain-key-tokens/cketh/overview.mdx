@@ -1,0 +1,59 @@
+---
+keywords: [advanced, ethereum, cketh, chain-key ethereum, overview]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ckETH
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Chain-key tokens"]} />
+
+## What is ckETH?
+
+Chain-key Ethereum (ckETH) is an [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)-compliant token that is backed 1:1 by ETH held 100% on the mainnet.
+
+Like [ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview), ckETH does not rely on a centralized bridge to facilitate the conversion between ETH and ckETH, which makes it substantially more secure when compared to other traditional 'wrapped' tokens.
+
+ckETH has the same attributes and advantages as ckBTC, but corresponding to ETH instead of BTC. ckETH and ETH have the same value and can be swapped for one another seamlessly, and ckETH has faster and cheaper transactions than ETH.
+
+## How it works
+
+The ckETH functionality is provided through an interplay of a suite of canisters on ICP, and a helper contract on Ethereum. [View the ledger suite canister IDs and helper contract address](https://github.com/dfinity/ic/blob/974d10d2884487ac9c77db99de56020a6ff845cc/rs/ethereum/cketh/docs/ckerc20.adoc?plain=1#L71).
+
+The **ckETH minter** is responsible for the minting and burning of ckETH tokens.
+
+It uses the following workflow:
+
+- Tokens are minted when a user calls the `deposit` function of the helper contract on Ethereum with some ETH attached. The deposit function takes the receiver's principal as an argument and emits a `ReceivedEth` event with the `sender`, `value`, and `receiver` as payload.
+
+- The ckETH minter listens to the `ReceivedEth` event by periodically fetching logs from multiple Ethereum JSON RPC cloud providers and mints the corresponding amount of ckETH to the receiver's account on the ckETH ledger.
+
+- Users can withdraw ETH by creating an [ICRC-2 approval](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve) on the ledger and calling `withdraw_eth` with a receiver ETH address as an argument on the minter.
+
+- The minter will then burn the ckETH on the ledger and create an Ethereum transaction and submit it to the Ethereum network.
+
+A detailed description of the ckETH minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/minter).
+
+The **ckETH ledger** and **ckETH index** canisters are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [using the ICRC-1 ledger](/docs/defi/token-ledgers/usage/icrc1_ledger_usage) section.
+
+## ckETH production application examples
+
+- [ICDex](https://iclight.io/ICDex/DKP/ICP).
+
+- [ICPSwap](https://icpswap.com/).
+
+- [Oisy wallet](https://oisy.com/).
+
+- [NFID](https://nfid.one/).
+
+
+## Resources
+
+- [User guide on how to acquire ckETH](https://medium.com/dfinity/how-to-acquire-cketh-02d863c835fc).
+
+- [ckETH transaction explorer](https://dashboard.internetcomputer.org/ethereum/transactions).
+
+- [Github repository](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/cketh.adoc).
+
+- [ckETH](https://github.com/dfinity/ic-js/tree/main/packages/cketh) JavaScript library.

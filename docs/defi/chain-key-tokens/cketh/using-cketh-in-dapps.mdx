@@ -1,0 +1,156 @@
+---
+keywords: [advanced, ethereum, eth, cketh, chain-key ethereum]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Using ckETH in dapps
+
+<MarkdownChipRow labels={["Advanced", "Ethereum" , "Chain-key tokens"]} />
+
+ckETH is an ICRC-2 compliant token, meaning it supports the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards.
+
+To integrate ckETH into your dapp, you can simply write code that uses the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) standards. For token transfers and account balances, ckETH requests must be sent to the ckETH ledger canister with principal ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
+
+To write canister code that makes calls to the ckETH ledger, you will need to use inter-canister calls and specify the principal ID of the ckETH ledger canister. Then, to interact with ckETH, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+
+You can deploy the ckETH ledger locally for testing. [Learn more in the ckETH ledger documentation](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/mainnet#installing-the-ledger).
+
+Once you have your project configured to use the ckETH ledger, you can interact with it for workflows such as transferring tokens:
+
+<Tabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+import ckethLedger "canister:ledger";
+import Debug "mo:base/Debug";
+import Result "mo:base/Result";
+import Option "mo:base/Option";
+import Blob "mo:base/Blob";
+import Error "mo:base/Error";
+
+actor {
+
+  type Account = {
+    owner : Principal;
+    subaccount : ?[Nat8];
+  };
+
+  type TransferArgs = {
+    amount : Nat;
+    toAccount : Account;
+  };
+
+  public shared ({ caller }) func transfer(args : TransferArgs) : async Result.Result<ckethLedger.BlockIndex, Text> {
+    Debug.print(
+      "Transferring "
+      # debug_show (args.amount)
+      # " tokens to account"
+      # debug_show (args.toAccount)
+    );
+
+    let transferArgs : ckethLedger.TransferArg = {
+      // can be used to distinguish between transactions
+      memo = null;
+      // the amount we want to transfer
+      amount = args.amount;
+      // transfer tokens from the default subaccount of the canister
+      from_subaccount = null;
+      // if not specified, the default fee for the canister is used
+      fee = null;
+      // take the principal and subaccount from the arguments and convert them into an account identifier
+      to = args.toAccount;
+      // a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller then this is set to the current ICP time
+      created_at_time = null;
+    };
+
+    try {
+      // initiate the transfer
+      let transferResult = await ckethLedger.icrc1_transfer(transferArgs);
+
+      // check if the transfer was successful
+      switch (transferResult) {
+        case (#Err(transferError)) {
+          return #err("Couldn't transfer funds:\n" # debug_show (transferError));
+        };
+        case (#Ok(blockIndex)) { return #ok blockIndex };
+      };
+    } catch (error : Error) {
+      // catch any errors that might occur during the transfer
+      return #err("Reject message: " # Error.message(error));
+    };
+  };
+};
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust
+use candid::{CandidType, Deserialize, Principal};
+use icrc_ledger_types::icrc1::account::Account;
+use icrc_ledger_types::icrc1::transfer::{BlockIndex, NumTokens, TransferArg, TransferError};
+use serde::Serialize;
+
+#[derive(CandidType, Deserialize, Serialize)]
+pub struct TransferArgs {
+    amount: NumTokens,
+    to_account: Account,
+}
+
+#[ic_cdk::update]
+async fn transfer(args: TransferArgs) -> Result<BlockIndex, String> {
+    ic_cdk::println!(
+        "Transferring {} tokens to account {}",
+        &args.amount,
+        &args.to_account,
+    );
+
+    let transfer_args: TransferArg = TransferArg {
+        // can be used to distinguish between transactions
+        memo: None,
+        // the amount we want to transfer
+        amount: args.amount,
+        // we want to transfer tokens from the default subaccount of the canister
+        from_subaccount: None,
+        // if not specified, the default fee for the canister is used
+        fee: None,
+        // the account we want to transfer tokens to
+        to: args.to_account,
+        // a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller then this is set to the current ICP time
+        created_at_time: None,
+    };
+
+    // 1. Asynchronously call another canister function using `ic_cdk::call`.
+    ic_cdk::call::<(TransferArg,), (Result<BlockIndex, TransferError>,)>(
+        // 2. Convert a textual representation of a Principal into an actual `Principal` object.
+        //    `expect` will panic if the conversion fails, ensuring the code does not proceed with an invalid principal.
+        Principal::from_text("ss2fx-dyaaa-aaaar-qacoq-cai")
+            .expect("Could not decode the principal."),
+        // 3. Specify the method name on the target canister to be called, in this case, "icrc1_transfer".
+        "icrc1_transfer",
+        // 4. Provide the arguments for the call in a tuple, here `transfer_args` is encapsulated as a single-element tuple.
+        (transfer_args,),
+    )
+    .await // 5. Await the completion of the asynchronous call, pausing the execution until the future is resolved.
+    // 6. Apply `map_err` to transform any network or system errors encountered during the call into a more readable string format.
+    //    The `?` operator is then used to propagate errors: if the result is an `Err`, it returns from the function with that error,
+    //    otherwise, it unwraps the `Ok` value, allowing the chain to continue.
+    .map_err(|e| format!("failed to call ledger: {:?}", e))?
+    // 7. Access the first element of the tuple, which is the `Result<BlockIndex, TransferError>`, for further processing.
+    .0
+    // 8. Use `map_err` again to transform any specific ledger transfer errors into a readable string format, facilitating error handling and debugging.
+    .map_err(|e| format!("ledger transfer error {:?}", e))
+}
+
+// Enable Candid export (see /docs/building-apps/developer-tools/cdks/rust/generating-candid)
+ic_cdk::export_candid!();
+```
+
+</TabItem>
+</Tabs>
+
+View the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) endpoints for more information on sending and receiving tokens.

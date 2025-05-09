@@ -11,7 +11,7 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 
 **Let's get started. To kick things off, could you describe the mission of the Runtime team?**
 
-*Our mission is “secure and efficient runtime for smart contracts”. In computer science, the word “runtime” refers to an environment in which programs run. The Internet Computer (ICP) runs smart contracts using WebAssembly, which is one of the strengths of ICP as a blockchain because WebAssembly is an open standard that supports a wide range of programming languages. Our team strives to enhance the security and performance of WebAssembly execution and everything related to it.*
+*Our mission is “secure and efficient runtime for smart contracts”. In computer science, the word “runtime” refers to an environment in which programs run. The Internet Computer runs smart contracts using WebAssembly, which is one of the strengths of ICP as a blockchain because WebAssembly is an open standard that supports a wide range of programming languages. Our team strives to enhance the security and performance of WebAssembly execution and everything related to it.*
 
 **I think that's a great way to describe the team's mission! What an insightful explanation. What is the composition of the Runtime team?**
 
@@ -23,7 +23,7 @@ Hello developers and welcome to the second installment of the dev blog's new ser
 
 **Could you give a brief overview of how the ICP runtime environment is structured and how it operates?**
 
-*The runtime environment is part of the more general execution environment of ICP. The execution environment receives messages from the message routing layer of ICP. The scheduler in the execution environment decides which messages to run. Each message specifies the target WebAssembly method of the target canister that needs to be invoked in order to process the message. That information is passed to the runtime environment, whose job is to execute the requested WebAssembly method and return the result along with the state changes of the canister.*
+*The runtime environment is part of the more general execution environment of ICP. The execution environment receives messages from the [message routing](https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing) layer of ICP. The scheduler in the execution environment decides which messages to run. Each message specifies the target WebAssembly method of the target canister that needs to be invoked in order to process the message. That information is passed to the runtime environment, whose job is to execute the requested WebAssembly method and return the result along with the state changes of the canister.*
 
 *WebAssembly execution happens inside a canister sandbox process. This is an example of improving security, because it protects the system and other canisters against bugs in the WebAssembly runtime that may be exploited by a malicious canister.*
 

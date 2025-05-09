@@ -22,7 +22,7 @@ function FeaturePage() {
               <p className="tw-lead-sm md:tw-lead mb-0">
                 Users can interact with dapps on the Internet Computer (IC) with
                 speeds comparable to traditional web applications. Developers
-                can therefore build a much broader range of fully on-chain dapps
+                can therefore build a much broader range of fully onchain dapps
                 without relying on cloud services and risking single points of
                 failure.
                 <br />
@@ -30,6 +30,9 @@ function FeaturePage() {
                 Concretely, query (read) calls are answered in ~100
                 milliseconds, and update (write) calls in ~2 seconds.
               </p>
+              <h5>Times are based on subnets with low loads. Subnets with high loads may experience different response speeds. Learn more in the <Link href="/docs/building-apps/best-practices/troubleshooting/" className="text-white">
+                docs.
+              </Link>{" "}</h5>
             </div>
           </div>
           <div className="container-10 relative">
@@ -41,8 +44,8 @@ function FeaturePage() {
           </div>
         </section>
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
-          {/* 
-            delete this div if image is not needed 
+          {/*
+            delete this div if image is not needed
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
@@ -54,8 +57,8 @@ function FeaturePage() {
 
           <div
             className="
-            sm:flex-1 
-            prose 
+            sm:flex-1
+            prose
             prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
             prose-h3:tw-heading-7 prose-h3:mb-2
             prose-p:tw-paragraph prose-p:mb-4
@@ -83,7 +86,7 @@ function FeaturePage() {
                 performance tests
               </Link>{" "}
             </p>
-            <h3>Chain Key Cryptography</h3>
+            <h3>Chain-Key Cryptography</h3>
             <p>
               The main advantage of using a blockchain or decentralized protocol
               is that the central point of trust is removed. This advantage
@@ -98,7 +101,7 @@ function FeaturePage() {
               inefficiency as verifying many individual signatures can be slow.
               One of the key innovations of the IC is the introduction of{" "}
               <Link href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28">
-                Chain Key (CK) Cryptography
+                Chain-Key (CK) Cryptography
               </Link>{" "}
               which allows IC signatures to be verified with a single public
               key, hence reducing friction for all types of devices (node
@@ -113,7 +116,7 @@ function FeaturePage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See other 100% on-chain dapps
+                See other 100% onchain dapps
               </Link>
             </p>
           </div>
@@ -132,16 +135,16 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/developer-journey/"
+              href="/docs/tutorials/developer-liftoff/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
-              description="Learch about programming languages on the ICP."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              description="Learn about programming languages on the ICP."
+              href="/docs/building-apps/essentials/canisters"
             />
             <CardWithDescription
               title="Community Conversation"
-              description="Learn about performance and scalabilty of the ICP."
+              description="Learn about performance and scalability of the ICP."
               href="https://www.youtube.com/watch?v=XvE0ZsAYKiM"
             />
             <CardWithDescription

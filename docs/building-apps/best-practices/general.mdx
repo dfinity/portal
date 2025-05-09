@@ -1,0 +1,62 @@
+---
+keywords: [beginner, concept, best practices, generous canister top-up, efficient implementations, state backup and restoration]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Developer best practices: General
+
+<MarkdownChipRow labels={["Beginner", "Best practices"]} />
+
+This guide outlines essential development best practices for building on the Internet Computer Protocol (ICP).
+
+### Recommendation: Write clean, readable code by using meaningful function and variable names and consistent formatting.
+
+### Recommendation: Avoid code duplication.
+
+Keep logic segmented and reusable, especially for large dapps.
+
+### Recommendation: Design your application for scale.
+
+Consider growth factors like increased data usage, concurrent users, or increased message execution and anticipate necessary optimizations.
+
+### Recommendation: Implement access control to restrict access to certain methods.
+
+[Learn more about access control](https://internetcomputer.org/docs/tutorials/hackathon-prep-course/managing-canisters/#access-control).
+
+### Recommendation: Limit resources per call and consider possible concerns of unbounded data processing or recursion to prevent DoS attacks.
+
+### Recommendation: If a frontend relies on tamper-roof data, utilize certified variables.
+
+[Learn more](https://internetcomputer.org/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
+
+### Recommendation: Generous canister top-up.
+
+Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
+
+Refer to the [topping up cycles page](/docs/building-apps/canister-management/topping-up) to learn how to top-up cycles effectively.
+
+Refer to the [cycles estimate](/docs/building-apps/essentials/gas-cost) page to estimate cycle usage.
+
+### Recommendation: Manage cycle depletion.
+
+ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, ensuring at least 90 to 180 days' worth of cycles for proactive management.
+
+Refer to [this resource](/docs/building-apps/canister-management/topping-up#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister.
+
+To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
+
+### Recommendation: Use efficient implementations.
+
+Optimize canister implementation to avoid unnecessary costs.
+
+Use [canister timers](/docs/building-apps/network-features/periodic-tasks-timers) over plain heartbeats for reduced daily costs.
+
+Use [efficient data storage techniques](/docs/building-apps/best-practices/storage).
+
+### Recommendation: Paginate large data query requests.
+
+If a data set frequently changes, adapt the design of your application to support that. For example, an application that returns a list of products and uses a simple pagination design may return duplicate results if products are added or removed and thus already received on the previous page.
+
+One approach is to pass an optional previous token that has been received, then only receive tokens that come after that. This approach will require additional logic, such as sorting order or instances where the previous token does not exist.
+

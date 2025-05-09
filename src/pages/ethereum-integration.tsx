@@ -28,7 +28,8 @@ const projects = [
   {
     imgSrc: "img/ethereum-integration/msq.webp",
     title: "MSQ",
-    description: "Masquerade (MSQ) is a Metamask Snap based wallet that supports ICRC-1 payments.",
+    description:
+      "Masquerade (MSQ) is a Metamask Snap based wallet that supports ICRC-1 payments.",
     link: "https://msq.tech/",
   },
   {
@@ -60,7 +61,7 @@ const projects = [
     altText: "Orally Logo",
     title: "Orally",
     description:
-      "Orally is a decentralized data oracle provider. The goal of Orally's suite of products is to make digital asset data and real world data accessible on-chain.",
+      "Orally is a decentralized data oracle provider. The goal of Orally's suite of products is to make digital asset data and real world data accessible onchain.",
     link: "https://orally.network/",
   },
   {
@@ -154,7 +155,7 @@ function EthereumIntegrationPage() {
       description="A true World Computer enables a multi-chain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. ICP already integrates with the Bitcoin Network, and native ETH integration is underway."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-ethereum-integration.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ethereum-integration.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -184,11 +185,12 @@ function EthereumIntegrationPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Chain Fusion technology brings unique ICP features to Ethereum. Smart contracts gain access to threshold
-                signing services, oracles, DAO frameworks, privacy tools, pass
-                key authentication, smart contract wallets, and reverse gas
-                fees. Augment Ethereum dapps to build seamless multichain
-                solutions for DeFi, NFT trading, payments, SocialFi and more.
+                Chain Fusion technology brings unique ICP features to Ethereum.
+                Smart contracts gain access to threshold signing services,
+                oracles, DAO frameworks, privacy tools, pass key authentication,
+                smart contract wallets, and reverse gas fees. Augment Ethereum
+                dapps to build seamless multichain solutions for DeFi, NFT
+                trading, payments, SocialFi and more.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -256,7 +258,8 @@ function EthereumIntegrationPage() {
                       Threshold ECDSA signing latency & throughput improvements
                     </li>
                     <li className="mb-2">
-                      Chain-key ERC20 (ckERC20) tokens & stablecoins such as ckUSDC
+                      Chain-key ERC20 (ckERC20) tokens & stablecoins such as
+                      ckUSDC
                     </li>
                   </motion.ul>
                   <p className="mb-0 mt-8">
@@ -272,8 +275,8 @@ function EthereumIntegrationPage() {
                 <div className="md:w-1/2 relative md:mt-6 md:mb-3">
                   <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
                     <motion.img
-                      className="w-[90%] h-full object-cover"
-                      src="/img/roadmap/roadmap-viz.webp"
+                      className="w-[80%] h-full object-cover"
+                      src="/img/roadmap/roadmap.svg"
                       alt="roadmap"
                     />
                   </div>
@@ -322,7 +325,7 @@ function EthereumIntegrationPage() {
                 alt=""
                 className="mb-6"
               ></img>
-              <h3 className="sm:tw-heading-5 mb-2">100% on-chain Web3</h3>
+              <h3 className="sm:tw-heading-5 mb-2">100% onchain Web3</h3>
               <p className="tw-paragraph mb-0">
                 Decentralize your Ethereum dapp by hosting frontend and backend
                 data on the Internet Computer.
@@ -354,8 +357,8 @@ function EthereumIntegrationPage() {
               ></img>
               <h3 className="sm:tw-heading-5 mb-2">Web2 integration</h3>
               <p className="tw-paragraph mb-0">
-                Connect smart contracts to the world outside of blockchains. Fetch
-                real-time price data and more from Web2.
+                Connect smart contracts to the world outside of blockchains.
+                Fetch real-time price data and more from Web2.
               </p>
             </motion.div>
           </AnimateSpawn>
@@ -381,7 +384,7 @@ function EthereumIntegrationPage() {
               ckETH and ckERC-20 expose ICRC-1 and 2 ledger interfaces (the
               token standards of ICP), making it simple for all ICP wallets to
               offer ckETH support. Total value of ckETH is fully backed 1:1 by
-              ETH, and can always be verified by viewing the on-chain dashboard
+              ETH, and can always be verified by viewing the onchain dashboard
               and metrics of the canisters.
             </p>
           </TranslatedLayout>
@@ -390,12 +393,13 @@ function EthereumIntegrationPage() {
               EVM on the Internet Computer
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-            An Ethereum Virtual Machine (EVM) is available on ICP built by Bitfinity —
-            a team of developers from the ICP community.
-            Bitfinity offers a turn-key solution for developers to operate their
-            ETH dapps on the Internet Computer using Solidity, which brings ICP's
-            1-2s finality, and near-0 transaction fees to established Ethereum dapps,
-            providing an incredibly efficient Ethereum scaling solution.
+              An Ethereum Virtual Machine (EVM) is available on ICP built by
+              Bitfinity — a team of developers from the ICP community. Bitfinity
+              offers a turn-key solution for developers to operate their ETH
+              dapps on the Internet Computer using Solidity, which brings ICP's
+              1-2s finality, and near-0 transaction fees to established Ethereum
+              dapps, providing an incredibly efficient Ethereum scaling
+              solution.
             </p>
             <p className="mb-0">
               <Link
@@ -415,7 +419,7 @@ function EthereumIntegrationPage() {
             <p className="tw-lead-sm font-bold mt-1">EVM RPC</p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The EVM RPC canister is an ICP smart contract for communicating
-              with Ethereum and other EVM blockchains using an on-chain API. It
+              with Ethereum and other EVM blockchains using an onchain API. It
               introduces methods that massively simplify the developer
               experience. The Tritium milestone allows communication with
               Ethereum, Arbitrum, Optimism and Base. Interoperability can be
@@ -522,8 +526,8 @@ function EthereumIntegrationPage() {
               className="mb-0 tw-paragraph md:tw-lead-sm"
               variants={transitions.item}
             >
-              Join the other developers
-              building incredible use cases with Ethereum on ICP.
+              Join the other developers building incredible use cases with
+              Ethereum on ICP.
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
@@ -555,23 +559,23 @@ function EthereumIntegrationPage() {
             <CardWithDescription
               title="Learn about the EVM RPC canister"
               description=""
-              href="/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works"
+              href="/docs/building-apps/chain-fusion/ethereum/evm-rpc/how-it-works"
             />
 
             <CardWithDescription
               title="Learn about ckETH"
               description=""
-              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview"
+              href="/docs/defi/chain-key-tokens/cketh/overview"
             />
             <CardWithDescription
               title="Developer workflow for ETH devs on ICP"
               description=""
-              href="/docs/current/developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow"
+              href="/docs/building-apps/chain-fusion/ethereum/using-eth/eth-dev-workflow"
             />
             <CardWithDescription
               title="Get started building with Ethereum on ICP"
               description=""
-              href="/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister"
+              href="/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister"
             />
             <motion.div
               className="blob blob-purple blob-md blob-x-5 blob-y-7 z-[-1] md:blob-lg"

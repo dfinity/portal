@@ -24,7 +24,7 @@ function FeaturePage() {
               <p className="tw-lead-sm md:tw-lead mb-0">
                 The Internet Computer (IC) is the only blockchain that can host
                 a full dapp; frontend, backend, and data included. This is a
-                distinguishing IC feature allowing dapps to run 100% on-chain
+                distinguishing IC feature allowing dapps to run 100% onchain
                 while inheriting the security and decentralization of
                 blockchain, but without sacrificing speed or affordability.
               </p>
@@ -71,12 +71,12 @@ function FeaturePage() {
               all parts of a dapp are realized by smart contracts. Further, Web3
               functionality is only achievable by blockchain applications
               running fully decentralized, which includes smart contract logic,
-              on-chain data storage and serving frontend to the user's browser.
+              onchain data storage and serving frontend to the user's browser.
               <br />
               <br />
-              Hosting dapps 100% on-chain provides the additional benefit of
+              Hosting dapps 100% onchain provides the additional benefit of
               letting DAOs launched on the IC to completely control these
-              applications with on-chain governance. This lets users be fully in
+              applications with onchain governance. This lets users be fully in
               control of these dapps realizing complete decentralization and
               democratization of web applications.
             </p>
@@ -121,7 +121,7 @@ function FeaturePage() {
             <p>
               The dapps running on the Internet Computer seamlessly integrate
               into the Web 2.0 world as crawlers are able to access them
-              directly on-chain. This allows dapps to be indexed by search
+              directly onchain. This allows dapps to be indexed by search
               engines and for their metadata to be read in order to generate
               previews and cards on social platforms.
             </p>
@@ -143,7 +143,7 @@ function FeaturePage() {
               >
                 the Motoko Playground dapp
               </Link>{" "}
-              is hosted and executed entirely on-chain and it does not require
+              is hosted and executed entirely onchain and it does not require
               visitors to pay for the computation.
             </p>
             <p className="mb-3 mt-6">
@@ -153,7 +153,7 @@ function FeaturePage() {
               >
                 the Motoko Playground dapp
               </Link>{" "}
-              is hosted and executed entirely on-chain and it does not require
+              is hosted and executed entirely onchain and it does not require
               visitors to pay for the computation.
             </p>
           </div>
@@ -161,7 +161,7 @@ function FeaturePage() {
 
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15">
           <p className="tw-heading-4 text-center mb-2 w-full mx-auto md:tw-heading-2 md:mb-6 lg:w-8/12">
-            Build fully on-chain dapps
+            Build fully onchain dapps
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
             Get started today.
@@ -172,12 +172,12 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/developer-journey/"
+              href="/docs/tutorials/developer-liftoff/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
-              description="Learch about programming languages on the ICP."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              description="Learn about programming languages on the ICP."
+              href="/docs/building-apps/essentials/canisters"
             />
             <CardWithDescription
               title="Sample Code"
@@ -186,7 +186,7 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="'Web Serving' article on the 'IC Wiki'"
-              description="Take a deep dive into the Internet Computer's abiliy to host full dapps 100% on-chain"
+              description="Take a deep dive into the Internet Computer's abiliy to host full dapps 100% onchain"
               href="https://wiki.internetcomputer.org/wiki/Web_Serving"
             />
           </div>

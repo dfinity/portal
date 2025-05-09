@@ -17,7 +17,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             variants={transitions.item}
             className="tw-heading-3 mb-2 md:tw-heading-2 md:mb-6 md:w-7/12"
           >
-            ICP as a Bitcoin L2
+            Build on Bitcoin
           </motion.h1>
           <motion.p
             variants={transitions.item}
@@ -30,7 +30,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
           </motion.p>
           <motion.div variants={transitions.item} className="flex gap-4 mt-8">
             <Link
-              to="/docs/current/references/bitcoin-how-it-works"
+              to="/docs/references/bitcoin-how-it-works"
               className="button-white text-center mb-6 md:mb-8 whitespace-nowrap"
             >
               Build
@@ -43,7 +43,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             </Link>
           </motion.div>
           <motion.div className="container-12 relative pointer-events-none">
-            <div className="absolute w-10/12 translate-x-[5%] translate-y-[105%] bottom-1/2 sm:w-5/12 md:w-8/12 md:bottom-0 md:translate-x-2/3 md:translate-y-1/2">
+            <div className="absolute w-10/12 translate-x-[5%] translate-y-[105%] bottom-1/2 xs:w-7/12 sm:w-4/12 md:w-8/12 md:bottom-0 md:translate-x-2/3 md:translate-y-1/2">
               <img
                 src="/img/bitcoin-integration/btc_integration_hero.svg"
                 className="w-full max-w-none"

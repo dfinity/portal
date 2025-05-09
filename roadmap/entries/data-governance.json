@@ -1,0 +1,367 @@
+{
+  "categoryName": "Governance & Tokenomics",
+  "categoryDescription": "ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
+  "elements": [
+    {
+      "title": "Enabling governance token holdings and broader participation",
+      "is_milestone": true,
+      "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
+      "milestone_id": "Neon",
+      "status": "in_progress",
+      "eta_to_render": "June 2025"
+    },
+    {
+      "title": "Portfolio page",
+      "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
+      "status": "in_progress",
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Engaged and active DAO communities",
+      "is_milestone": true,
+      "description": "This milestone focuses on boosting user involvement in governance. It aims to create a sense of belonging to DAO communities and encourage users to contribute to the liquid democracy processes. SNS communities can apply their decisions easily by proposals.",
+      "milestone_id": "Nucleon",
+      "status": "future",
+      "eta": "",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Periodic followee confirmation",
+      "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
+      "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
+      "forum": "https://forum.dfinity.org/t/periodic-confirmation-design/34215",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/55651",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Stable memory for governance",
+      "overview": "Utilizing stable memory in different parts of the NNS and SNS framework will allow ICP's governance to handle a larger number of participants, preparing it for continued growth.",
+      "description": "Utilizing stable memory in different parts of the NNS and SNS framework will allow ICP's governance to handle a larger number of participants, preparing it for continued growth.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Large Wasm support for SNS controlled dapp canisters",
+      "overview": "This simplifies owning large dapp canisters for SNS DAO communities by a built-in process to do so in the SNS framework.",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Automatic SNS framework canister upgrades",
+      "overview": "For easier management of the SNS framework canisters, allow SNS DAOs to opt-in to receive automatic upgrades to canisters as soon as they are approved and released by the NNS.",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Leverage liquid democracy in SNS DAOs",
+      "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics and a notion of named or known neurons.",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Disburse maturity for NNS neurons",
+      "overview": "Unlike SNS neurons, NNS neurons spawn maturity into a newly created neuron. This feature will move to a flow where NNS neurons would also disburse maturity.",
+      "description": "In its current implementation, NNS neurons spawn maturity into a new neuron, whereas SNS DAOs disburse maturity directly into the user's account, which greatly simplifies the flow and reduces the new neurons created.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "SNS communities portal",
+      "overview": "A redesign of the voting interface that encourages community involvement and a sense of belonging, for example by allowing for announcement and updates.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "SNS treasury management",
+      "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
+      "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Council-based digital assets management",
+      "is_milestone": true,
+      "description": "This milestone integrates Orbit’s multi-approval framework with the Network Nervous System (NNS), designating the NNS as the root of trust. By having the NNS “bless” new versions, Orbit gains a robust, decentralized governance layer without requiring each council to implement its own governance from scratch.",
+      "milestone_id": "Nucleus",
+      "status": "future",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Root of trust integration",
+      "overview": "The Orbit control panel and core user interface are placed under NNS control. New versions of Orbit must be “blessed” by the NNS, ensuring a community-vetted approach to upgrades and governance.",
+      "status": "future",
+      "milestone_id": "Nucleus"
+    },
+    {
+      "title": "Public councils",
+      "overview": "Projects can create open, trackable councils using Orbit’s multi approval tools. All key actions—like canister upgrades—are fully transparent, enabling end users to monitor and verify changes in real time.",
+      "status": "future",
+      "milestone_id": "Nucleus"
+    },
+    {
+      "title": "NNS Neuron index",
+      "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
+      "status": "future"
+    },
+
+    {
+      "title": "Improve staking user experience",
+      "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
+      "description": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Launchpad redesign",
+      "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Guide users from swap participating to governance",
+      "overview": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Fiat values in the NNS dapp",
+      "overview": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
+      "description": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
+      "status": "deployed",
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Incentivise exceptional voting",
+      "overview": "All ICP governance participants are rewarded equally whether they vote manually or follow other neurons, even if the former takes significantly more effort. This roadmap item aims to explore ways to find a better balance.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "NNS known and named neurons",
+      "overview": "Currently there are a lot of known neurons and some that only focus on a few topics. It is hard for users to find good candidates to follow / delegate their  vote to for different topics. This feature aims to improve this and to consider introducing names also for other public neurons.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Reduce min dissolve delay to 3 months",
+      "overview": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
+      "description": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
+      "forum": "https://forum.dfinity.org/t/reducing-the-minimum-dissolve-delay-to-3-months/32714",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/131010",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Ledger support for SNS tokens",
+      "overview": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
+      "description": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Earn badges for activities",
+      "overview": "Depending on different activities, reward users with badges in the NNS dapp such as #8YearGang.",
+      "description": "Depending on different activities, reward users with badges in the NNS dapp such as #8YearGang.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Proposal error visibility",
+      "overview": "Make it easier for SNS communities to execute decisions via proposals by making potential errors visible. For example, if an SNS proposal fails to execute, users of the NNS dapp do not see the reason for why this happened. This feature introduces user-readable error messages.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Expand reporting functionality",
+      "overview": "Extending the reporting functionality, for example with SNS neurons or fiat values.",
+      "status": "future",
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Governance basic portfolio reporting capabilities",
+      "overview": "Reporting functionality that allows users to obtain summary information about their NNS neurons.",
+      "status": "deployed",
+      "milestone_id": "Neon"
+    },
+
+    {
+      "title": "Allow ecosystem wallets to connect to the NNS dapp",
+      "overview": "Allow ecosystem wallets to control tokens and governance neurons in the NNS dapp to foster an interoperable ICP ecosystem.",
+      "description": "The ICRC signer standards are being developed in collaboration with the ICP community to enable secure, and standardized communication between canisters. Adopting ICRC signer standards will foster an ecosystem of ICP dapps where the end-user has full control over their tokens, while managing them across dapps is much simplified. The NNS dapp will open up and provide an example implementation using these standards to allow ecosystem wallets to control assets in the NNS dapp. ICP wallets and dapps are encouraged to follow suit and together create an interoperable ICP ecosystem.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Manual overwriting of following-triggered votes",
+      "overview": "This feature enables manual (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron.",
+      "description": "This feature enables manual (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron. This roadmap item is based on the community proposal 38985.",
+      "forum": "https://forum.dfinity.org/t/proposal-to-enable-manual-voting-throughout-the-entire-voting-period-of-governance-proposals/9815",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/38985",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Archiving of NNS proposals",
+      "overview": "Storing NNS proposals long term instead of deleting them after a defined time period as done currently to increase transparency and accountability of governance.",
+      "description": "Currently, NNS proposals are only kept for a limited time and are then deleted. This feature intends to archive governance proposals to enhance transparency and accountability of the governance system.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Maintain neurons’ voting history",
+      "overview": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
+      "description": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Private voting",
+      "overview": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
+      "description": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "SNS cycles management",
+      "overview": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
+      "description": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "SNS swap participation with additional tokens",
+      "overview": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
+      "description": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Neurons' Fund phase II",
+      "overview": "Addresses the end-of-investment phase of the Neuron's Fund.",
+      "description": "Addresses the end-of-investment phase of the Neuron's Fund.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    }
+  ]
+}

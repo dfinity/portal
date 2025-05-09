@@ -1,0 +1,70 @@
+---
+title: Individual spotlight - Staff researcher
+description: In today's interview, we're chatting with Thomas from the Systems & Research team.
+tags: [Individual spotlight]
+image: /img/blog/indv-spotlight-6.jpg
+---
+
+![Product manager spotlight](../../static/img/blog/indv-spotlight-6.jpg)
+
+**Hello everyone, and welcome back to the individual spotlight series! In today's interview, we're chatting with Thomas from the Systems & Research team. Thomas is the research lead for multiple different engineering teams, and has worked on various important projects like the Bitcoin integration, the cycles ledger, and chain-key tokens. We're excited to learn more about Thomas' unique role at DFINITY and his perspective of the various different initiatives and features of ICP!
+
+**To kick things off, how is the role of a staff researcher different from other roles in the organization?**
+
+*Each researcher has the role of “research lead” for at least one engineering team. I’m the research lead for three teams: IC Integrations, SDK, and the Cross-Chain team, so I get to work on various different projects, such as the exchange rate canister (owned by the IC Integrations team), the recently released cycles ledger (SDK team), and everything related to Bitcoin, Ethereum, and chain-key tokens (cross-chain team).*
+
+**What responsibilities do you have as a staff researcher?**
+
+*As a staff researcher, one of my primary tasks is to lead and support bigger projects and features with a potentially large impact for the Internet Computer and DFINITY. A good example is the Bitcoin integration project, which was a significant cross-team effort to enable the creation of Bitcoin smart contracts on the Internet Computer. This integration is further the foundation of ckBTC, our first chain-key token.*
+
+**You’ve contributed to several of the different Chain Fusion projects, such as the Bitcoin integration and ckERC20 tokens. What was your role in the Bitcoin integration project?**
+
+*As the research lead for this feature, I was responsible for the technical specification. It was also my task to review the implementation to ensure that it conformed to the design. Of course, this was an iterative process, requiring many discussions with other researchers and the teams driving the implementation, and the design changed significantly throughout this process.*
+
+**What was your biggest learning or takeaway from working on the Bitcoin integration?**
+
+*Our Bitcoin integration is quite unique. Do you know any other smart contract on any blockchain that has a state size of nearly 100 GiB? I think the way Bitcoin blocks are ingested is unique too. Whenever you build something that has never been done before, there are many unknowns, which makes planning and estimating the required effort challenging. Maybe the biggest learning is that the challenges in such endeavors should never be underestimated—but this project also nicely showed that DFINITY has fantastic teams with the skill required to pull off such endeavors!*
+
+**Were there any challenges or hurdles that the team had to overcome during the Bitcoin integration?**
+
+*There were many challenges, small and large. One of the main challenges was to reach agreement across all involved teams and management about numerous important design decisions. For example, what information about the Bitcoin blockchain is stored? How many Bitcoin addresses can canisters have? Is the Bitcoin code part of the replica code, or does it run in a canister? And many more. Not surprisingly, many discussions were required, but in the end we converged on a fairly nice architecture, in my opinion.*
+
+**Let's talk about the ckERC20 project, that enabled ERC-20 tokens to be deployed on ICP as chain-key tokens. How was your role in this project different from your role in the Bitcoin integration project?**
+
+*It was actually quite different because, unlike in the Bitcoin integration project, the cross-chain team had already worked out a good design. So my focus was more on reviewing the specification and the implementation to make sure that they are consistent.*
+
+**You were also a contributor to the cycles ledger project that we did a [Project Spotlight](/blog/features/cycles-ledger) post on a few months ago. What has the community feedback been on the cycles ledger since launch?**
+
+*Before the launch, we were frequently asked when the cycles ledger would finally be ready. After the launch, there were a few positive comments, but that was it. I’d like to believe that the developers in our community are now happily using it, and we don’t hear anything because everything works as it should. But it is a good question. Maybe we should do a survey to figure out if the cycles ledger really lives up to the developers’ expectations.*
+
+**To switch gears a bit, let's chat about what projects you are currently working on.**
+
+*I currently work on multiple projects. In the future, we want to charge for query calls as well; that’s why we’re looking into accurately accumulating query statistics from replicas in a subnet. The challenge here is that the individual replicas are not trustworthy and may report completely wrong numbers!*
+
+*Of course, I’m also involved in current cross-chain activities. My main focus in that domain is currently the switch to a simpler know-your-token (KYT) mechanism for ckBTC. The new mechanism will result in lower KYT fees and reduce the risk of “false positives” where bitcoins get quarantined because of (overly) restrictive KYT rules.*
+
+*I’m also working on exposing recent Bitcoin blocks through the Bitcoin canister, which will help all projects that require more information about the Bitcoin blockchain state than balances and unspent outputs. This includes all projects that work with meta protocols such as Ordinals, BRC-20, and so on.*
+
+**Those are all exciting initiatives! We're excited to see each of those projects complete and available for our developers to use. Looking at the ICP roadmap, are there any other items from your team you are excited about?**
+
+*As far as the cross-chain team is concerned, I’m excited about all the work items that will make our Bitcoin integration more useful and accessible to developers. I also hope that our work on chain-key tokens will help grow our DeFi ecosystem.*
+
+*The SDK team has many cool roadmap items as well, which will help improve developer experience. For example, the work to provide more actionable information to developers, such as well-defined error codes and backtraces, is important to write correct canister code. I also like the `dfx` extensions feature as it makes it possible to reduce `dfx` to its core functionality while providing a flexible mechanism to integrate additional (DFINITY-made or third-party) functionality into `dfx`.*
+
+**What about roadmap items from other teams—are there any you're keeping an eye on?**
+
+*I’m excited about all features that bring substantial enhancements to the Internet Computer across all layers. For example, starting at the networking layer, I think having a synchronous message submission endpoint will be a nice feature for developers. Improving throughput on the [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) layer by only including hashes in blocks instead of large payloads is another roadmap item that I think will help the Internet Computer significantly, in particular once we start to see larger loads on the subnets. The roadmap item to support multiple terabytes of replicated storage is important for canisters that require a large state, for example, a canister that stores the full Bitcoin blockchain, a feature that has been requested numerous times!*
+
+**What advice would you give a new developer getting started on ICP?**
+
+*The Internet Computer has so many unique features, like HTTPS outcalls, code that can execute on a timer, whole frontends being served by canisters, and many more. I would advise a new developer to try out whatever feature he or she finds most interesting. Luckily, we have great documentation now, which should help anybody get started quickly!*
+
+**Are there any community projects or tools that you’ve been using recently?**
+
+*I don’t use any community project that is directly related to things that I’m working on. However, I do use some community tools for work, for example, OpenChat, and I try out various community projects privately. I think it’s definitely worthwhile to check out what our community is building.*
+
+**To wrap things up, what’s your favorite thing about ICP?**
+
+*I've used the word “unique” several times before, but its many unique features set the Internet Computer far apart from virtually any other blockchain project. My favorite thing about the Internet Computer is that it has the necessary features to build decentralized applications that can have a substantial impact in the real world.*
+
+**Thanks again, Thomas, for chatting with us and providing such great insight into several projects, especially the Bitcoin integration and cross-chain team initiatives! Be sure to tune in next time for another individual spotlight interview!**

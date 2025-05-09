@@ -1,0 +1,329 @@
+---
+keywords: [intermediate, tutorial, identity, credentials, verifiable credentials, relying party]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# Become a relying party
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+A **relying party** is a service or app that requests a user's verifiable credentials from an [issuer](issuer.mdx). Relying parties use an **identity provider**, such as Internet Identity, to communicate with the issuer. Identity providers must support the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). Communication with the identity provider uses the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) communication channel.
+
+The relying party must perform two main tasks:
+
+- Request the credentials from the issuer through an identity provider.
+- Verify the credentials received from an identity provider.
+
+## Requesting credentials
+
+There are two ways to request credentials:
+
+- Using the [verifiable credentials JavaScript SDK](https://www.npmjs.com/package/@dfinity/verifiable-credentials).
+
+- Manually integrating with an identity provider.
+
+## JavaScript SDK for verifiable credentials
+
+You can request credentials from issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
+
+```javascipt reference
+https://github.com/dfinity/verifiable-credentials-sdk/blob/8fe23fa830017d4d666d6fcdad38c1de7e99ca54/js-library/README.md#L50-73
+```
+
+[Learn more about the JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library).
+
+This code executes the following steps:
+
+- Opens a new window or tab with the identity provider (Internet Identity (II)).
+
+- Waits for a window post message from II.
+
+- Sends a request to II through the window post message.
+
+- Waits for the response from II.
+
+- Calls an `onSuccess` callback if the process was successful, but that does not necessarily mean that a credential was received.
+
+- Calls an `onError` callback if the process has some technical error, if the user closes the II window, or if II times out.
+
+Learn more about [how this workflow works](how-it-works.mdx).
+
+## Manual integration
+
+To implement a relying party service, your canister must perform three steps:
+
+1. Load an identity provider such as Internet Identity: Open a window to an identity provider that will act as the communication bridge between the relying party and the issuer.
+
+2. Request credentials: Send a JSON RPC request to the issuer API for a user's credentials.
+
+3. Receive a response: Receive either a success or error message from the identity provider.
+
+### Step 1: Load the identity provider in a new window
+
+First, your canister must initiate and load an identity provider (in this example, Internet Identity) in a new window with the URL path `/vc-flow`. Opening this window will trigger the identity provider to load and send a notification to the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) interface with the following JSON-RPC content:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "vc-flow-ready"
+}
+```
+
+The user will interact with this window to authenticate with their Internet Identity. If this window is closed by the user or times out, the request for credentials will be closed and an error will be returned to the relying party.
+
+### Step 2: Request a verifiable credential
+
+Once the user has logged into Internet Identity and the service is ready, the relying party service can request a verifiable credential for the user by sending a JSON RPC request to the issuer API. The user must be logged into Internet Identity for the request to be successful. Below is an example of a JSON RPC request to request a credential:
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "request_credential",
+  "params": {
+    "issuer": {
+        "origin": "https://employment-info.com",
+        "canisterId": "rwlgt-iiaaa-aaaaa-aaaaa-cai"
+    },
+    "credentialSpec": {
+        "credentialType": "VerifiedEmployee",
+        "arguments": {
+          "employerName": "XYZ Ltd."
+        }
+    },
+    "credentialSubject": "2mdal-aedsb-hlpnv-qu3zl-ae6on-72bt5-fwha5-xzs74-5dkaz-dfywi-aqe"
+  }
+}
+```
+
+In this request, the following parameters must be set:
+
+- `method`: Pass the expected method `"request_credential"`.
+
+- `params`: Configuration parameters to identify which credential is being requested.
+
+- `issuer`: The information to identify which issuer API instance the request is sent to.
+
+    - `origin`: The origin URL of the issuer.
+
+    - `canisterId`: The canister ID of the issuer API. This field is optional.
+
+- `credentialSpec`: The specification of the credential being requested.
+
+    - `credentialType`: The type of the requested credential.
+
+    - `arguments`: Key-value pairs that are specific to the credential. This field is optional.
+
+- `credentialSubject`: The principal of the user requesting the credential.
+
+- `derivationOrigin`: An origin that should be used for the relying party's principal derivation as an alternative to the frontend hostname. This should match the `derivationOrigin` used when logging in the relying party.
+
+
+Additional examples can be found in the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#examples).
+
+### Step 3: Receive a response
+
+If the JSON RPC request is successfully sent and received by the issuer API, Internet Identity will return the following JSON-RPC response to the relying party:
+
+```json
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "verifiablePresentation": "eyJQ..."
+  }
+}
+```
+
+In this response, `verifiablePresentation` is a JWT-based verifiable presentation (VP) containing two credentials:
+
+1. A verifiable credential issued by Internet Identity that relates the `credentialSubject` to the user principal.
+
+2. A verifiable credential issued by the issuer to the user principal.
+
+The specification ensures unlinkability between the relying party and the issuer. That's why two credentials are needed. The first credential proves the link between the relying party's principal and `id_alias` created in the identity provider. The second credential is the actual credential to the `id_alias`.
+
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/vcs-4.png")}
+    alt="Relying Party workflow"
+    width="800"
+  />
+</div>
+
+Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` needs the credential to verify the link between the user's principal and the `id_alias`.
+
+The order of the credentials in the VP should match the order above, such that the `id_alias` credential linking to the relying party's principal should come first.
+
+[View an example of a verifiable presentation](https://www.w3.org/TR/vc-data-model/#example-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative) for reference.
+
+The relying party should not expect to receive an immediate response, as it should wait for one of the following events:
+
+- II sends a JSON-RPC response as described above.
+
+- II sends a JSON-RPC error response as described below.
+
+- The user closes the II window. This should be treated as an error.
+
+The relying party may also close the II window after some timeout. The user would then be notified by the relying party that the request failed.
+
+### Error messages
+
+If the workflow fails for any reason, Internet Identity will return an error. The error does not provide details on the cause of the failure to provide privacy protection.
+
+An example error can be found below:
+
+``` json
+{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "error": {
+        "version": "1",
+        "code": "UNKNOWN"
+    }
+}
+```
+
+
+
+## Verifying the credentials
+
+To verify the credentials, the relying party needs to validate the JWT received from the identity provider.
+
+### Credentials format
+
+The relying party receives the credential in a JWT format, containing long text split into common parts:
+
+```
+<header>.<payload>.
+```
+
+The ICP verifiable credentials feature is based on the [w3c VC credentials data model](https://www.w3.org/TR/vc-data-model/).
+
+:::info
+There is no signature in this first presentation.
+:::
+
+When this is decoded, the format is the following:
+
+```
+{
+  "iss": <issuer>,
+  "vp": {
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": "VerifiablePresentation",
+    "verifiableCredential": [
+       "<header>.<payload>.<signature>",
+"<header>.<payload>.<signature>"
+    ]
+  }
+}
+```
+
+The field `verifiableCredential` within `vp` should contain two more verifiable credentials in the specified order:
+
+- An `id_alias` credential that links the effective subject of the credential to a temporary alias. This credential is signed by the identity provider.
+
+- The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
+
+When the `id_alias` credential is decoded, the following info is returned:
+
+```json
+{
+  "exp": <expiration>,
+  "iss": "https://identity.internetcomputer.org/",
+  "nbf": <not-before>,
+  "jti": <jwt-id>,
+  "sub": <relying-party-user-principal>
+  "vc": {
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": [
+      "VerifiableCredential",
+      "InternetIdentityIdAlias"
+    ],
+    "credentialSubject": {
+      "InternetIdentityIdAlias": {
+        "hasIdAlias": <id-alias>,
+        "derivationOrigin": <user-principal-derivation-origin>
+     }
+    }
+  }
+}
+```
+
+When the actual credential is decoded, the following info is returned:
+
+```
+{
+  "exp": <expiration>,
+  "iss": <isuer>,
+  "nbf": <not-before>,
+ "jti": <jwt-id>,
+ "sub": <did-id-alias>,
+ "vc": {
+   "@context": "https://www.w3.org/2018/credentials/v1",
+   "type": [
+     "VerifiableCredential",
+     "<credential-type>"
+   ],
+   "credentialSubject": {
+     <credential-type>: {
+       <argument1-key>: <argument1-value>,
+       <argument2-key>: <argument2-value>,
+       ...
+     }
+   }
+ }
+}
+```
+
+### Cryptographic verification
+
+To verify the two JWT signatures, verify the signature of the `id_alias` signed by the identity provider and the signature of the actual credential signed by the issuer. Both are found when you decode the received JWT.
+
+These signatures are [canister signatures](/docs/references/glossary#c) and there is an example on [how to verify those in the Internet Identity repository](https://github.com/dfinity/internet-identity/blob/2ae06956f9cabc048b8536b29b9f861092958515/src/vc_util/src/lib.rs#L193).
+
+### Semantic verification
+
+The relying party should verify the following data:
+
+- From the received credential JWT:
+
+    - The `iss` matches the identity provider canister ID.
+
+    - The decoded initial credential contains two credentials within `vp.verifiableCredential`: first the `id_alias` credential, then the requested one.
+
+- From the `id_alias` JWT:
+
+    - The `iss` is the expected identity provider.
+
+    - The `sub` in `id_alias` contains the principal of the user in the relying party.
+
+    - The credential type is `InternetIdentityIdAlias`.
+
+    - The `derivationOrigin` is the derivation origin when logging in the relying party.
+
+- From the requested credential JWT:
+
+    - The credential type within `vc.type` matches the first field in `vc.credentialSubject` and both are the same that was requested.
+
+    - The arguments within `vc.credentialSubject.<credential-type>` are the expected ones.
+
+- Cross credentials:
+
+    - The `sub` from the requested credential contains the value in the `id_alias` credential from `vc.credentialSubject.InternetIdentityIdAlias`.
+
+To learn more about verifying credentials, check out the [demo relying party's code](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/rp/src/main.rs#L262) and the helper used from the [Internet Identity repository](https://github.com/dfinity/internet-identity/blob/fd38b48f9fdf9085b4903d865a1f5e79ad24f81a/src/vc_util/src/lib.rs#L319).
+
+## Resources
+
+- [Verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
+
+- [Relying party demo](https://github.com/dfinity/vc-playground/tree/main/rp/frontend).
+
+- [Verifiable credentials playground: Issuer](https://metaissuer.vc/).
+
+- [Verifiable credentials playground: Relying party](https://relyingparty.vc/).

@@ -20,7 +20,7 @@ function GamingPage() {
   return (
     <Layout
       title="Autonomous Worlds on ICP"
-      description="Autonomous Worlds are a paradigm shift in Web3 gaming, allowing developers, and players to build infinitely extendable worlds together — 100% on-chain"
+      description="Autonomous Worlds are a paradigm shift in Web3 gaming, allowing developers, and players to build infinitely extendable worlds together — 100% onchain"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-gaming.jpg"></ShareMeta>
@@ -57,7 +57,7 @@ function GamingPage() {
                 shift in gaming, enabling developers, modders and players to
                 build composable, and permissionless game worlds that live on
                 the blockchain forever. Now possible on the Internet Computer —
-                100% on-chain.
+                100% onchain.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -175,7 +175,7 @@ function GamingPage() {
                 Autonomous Worlds
               </h2>
               <p className="tw-lead-sm mb-0">
-                Autonomous worlds are on-chain game worlds where all player
+                Autonomous worlds are onchain game worlds where all player
                 interactions, and digital assets are stored on the blockchain.
                 They enable new forms of gaming experiences and game genres, as
                 these worlds align incentives of developers, modders, and
@@ -266,11 +266,11 @@ function GamingPage() {
               large-scale, extendable game worlds hosted end-to-end on the
               blockchain. Reverse gas model enables novel revenue models, and
               lowers the barrier of entry for new players who don’t want to
-              setup a wallet just to interact with an on-chain game.
+              setup a wallet just to interact with an onchain game.
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="https://internetcomputer.org/ecosystem?tag=Games"
+                href="https://internetcomputer.org/ecosystem?tag=Gameing"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -307,7 +307,7 @@ function GamingPage() {
                 >
                   Build anything on your own unique voxel island saved as a
                   mutable NFT world, or visit the worlds others have built —
-                  100% on-chain, on the Internet Computer.
+                  100% onchain, on the Internet Computer.
                 </motion.p>
 
                 <motion.p className="mb-0" variants={transitions.item}>
@@ -365,7 +365,7 @@ function GamingPage() {
                 Plethora
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-5">
-                Fully on-chain web3 platformer with the goal of rewarding users
+                Fully onchain web3 platformer with the goal of rewarding users
                 both with fun gameplay and NFTs. Plethora empowers NFT projects
                 to launch their collections with immersive experiences
                 customized for you. Play now to compete, have fun, and earn
@@ -406,7 +406,7 @@ function GamingPage() {
                 loading="lazy"
                 className="w-30"
               />
-              <h3 className="tw-lead md:tw-title-sm mb-0">100% on-chain</h3>
+              <h3 className="tw-lead md:tw-title-sm mb-0">100% onchain</h3>
               <p className="mb-0 tw-paragraph-sm text-black/60">
                 The Internet Computer enables these worlds to be hosted fully on
                 the blockchain. As canister smart contracts serve web,
@@ -482,7 +482,7 @@ function GamingPage() {
                 className="tw-lead-sm md:tw-lead-sm mb-12"
                 variants={transitions.item}
               >
-                Since ICP dapps can be 100% on-chain, DAOs on the Internet
+                Since ICP dapps can be 100% onchain, DAOs on the Internet
                 Computer can govern complete game worlds end-to-end, including a
                 web-based game client.
               </motion.p>
@@ -527,7 +527,7 @@ function GamingPage() {
                 open-sourced game tooling that handles most of the complex smart
                 contract infrastructure, so you can focus on gameplay, and your
                 game client. Player interactions, NFT minting/burning, and the
-                on-chain game server is managed by BOOM DAO's World Engine
+                onchain game server is managed by BOOM DAO's World Engine
                 Protocol.
               </p>
 
@@ -561,7 +561,7 @@ function GamingPage() {
           >
             <VideoCard
               label="Workshop"
-              title="Rapidly Build Fully On-Chain Games with BOOM DAO Tools"
+              title="Rapidly Build Fully Onchain Games with BOOM DAO Tools"
               description="With Tommy M"
               image="/img/gaming/boomdao-workshop.webp"
               link="https://youtu.be/LHVVi4pN6CI?si=VZXpfMLkJMvhA-6b"
@@ -593,7 +593,7 @@ function GamingPage() {
             <CardWithDescription
               title="Dev Docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="Sample Code"

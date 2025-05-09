@@ -40,7 +40,7 @@ or submitting feedback on the
 
   <a
     className={"button button-primary"}
-    href={"https://internetcomputer.org/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister"}
+    href={"/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister"}
   >
     View the documentation
   </a>
@@ -102,7 +102,7 @@ individual subscription, API key, management, etc.
 
 The EVM RPC canister abstracts away much of the complexity around managing keys
 and querying the Ethereum network for blocks, transactions, and other data with
-an easy to use, on-chain API. It performs automatic consensus inference by
+an easy to use, onchain API. It performs automatic consensus inference by
 sending requests to multiple providers in parallel and ensuring the responses
 agree. It also lets you send requests to other EVM chains through a generic
 `request` interface. Overall, it simplifies what you as a developer need to
@@ -116,7 +116,7 @@ hopefully it still shows you how easy it is to get started.
 
 <!-- prettier-ignore-start -->
 :::info
-Please ensure you [install](/docs/current/developer-docs/getting-started/install/) `dfx` before proceeding with the steps below.
+Please ensure you [install](/docs/building-apps/getting-started/install) `dfx` before proceeding with the steps below.
 :::
 <!-- prettier-ignore-end -->
 
@@ -160,7 +160,7 @@ Next, from your terminal, run the following command to fetch all dependencies:
 dfx deps pull
 ```
 
-Start the local replica:
+Start the local development environment:
 
 ```bash
 dfx start --clean --background
@@ -169,7 +169,7 @@ dfx start --clean --background
 Set the init args for the EVM RPC canister:
 
 ```bash
-dfx deps init evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deps init evm_rpc --argument '(record { nodesInSubnet = 31 })'
 ```
 
 Locally deploy the `evm_rpc` canister:

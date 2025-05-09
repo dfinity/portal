@@ -1,24 +1,38 @@
-import Layout from "@theme/Layout";
+import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
 import React, { useEffect, useRef } from "react";
 
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
+import Download from "../components/Common/Icons/Download";
+import DownloadFile from "@site/plugins/utils/download-file";
+import GithubIcon from "@site/static/img/svgIcons/github.svg";
+import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import { useInView } from "react-intersection-observer";
-import showcaseData from "../../showcase.json";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import ShareMeta from "../components/Common/ShareMeta";
-import Tooltip from "../components/Common/Tooltip";
 import { ShowcaseProject } from "../components/ShowcasePage/ShowcaseProject";
+import Tooltip from "../components/Common/Tooltip";
+import TwitterIcon from "@site/static/img/svgIcons/twitter.svg";
+import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
+import clsx from "clsx";
+import showcaseData from "../../showcase.json";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import { useInView } from "react-intersection-observer";
 import { useQueryParam } from "../utils/use-query-param";
 
-import GithubIcon from "@site/static/img/svgIcons/github.svg";
-import YoutubeIcon from "@site/static/img/svgIcons/youtube.svg";
-import TwitterIcon from "@site/static/img/svgIcons/twitter.svg";
-import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import DarkHeroStyles from "../components/Common/DarkHeroStyles";
-import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
-
 type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
+
+const tagsNavigation = [
+  'Chain Fusion',
+  'DeFi',
+  'Bitcoin',
+  'Wallet',
+  'AI',
+  'Gaming',
+  'Creator Economy',
+  'Enterprise',
+  'Analytics',
+  'Tools / Infrastructure',
+];
 
 function sortDesktopProjects(
   projects: ShowcaseProject[]
@@ -238,20 +252,22 @@ const ReportCard = () => {
   return (
     <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
       <div className="flex flex-col gap-2">
-        <h3 className="tw-title-sm mb-0">ICP Ecosystem Report</h3>
+        <h3 className="tw-title-sm text-[35px] mb-0">
+          ICP Chain Fusion Ecosystem Report 2024
+        </h3>
         <p className="tw-paragraph text-white/60 flex-1 mb-12">
-          The first ICP ecosystem report recaps the most substantial ecosystem
-          achievements from 2023 as well as zooms in on several success stories
-          from within the ecosystem.
+          The ICP Chain Fusion Ecosystem Report recaps the most substantial
+          ecosystem achievements from 2024 as well as zooms in on several
+          success stories from within the Chain Fusion ecosystem.
         </p>
         <Link
-          className="button-white link text-center"
-          href="/icp_ecosystem_report_03_2024.pdf"
+          className="button-white link link-with-icon !gap-4"
+          href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download
         >
-          Download Report
+          <Download /> Download Report
         </Link>
       </div>
     </div>
@@ -284,19 +300,36 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
 };
 
 const projects = showcaseData as ShowcaseProject[];
+const reducedTags = projects.reduce((tags, p) => {
+  if (p.tags) {
+    for (const tag of p.tags) {
+      tags[tag] = (tags[tag] || 0) + 1;
+    }
+  }
+  if (p.usesInternetIdentity) {
+    tags["Internet Identity"] = (tags["Internet Identity"] || 0) + 1;
+  }
+  return tags;
+}, {} as Record<string, number>);
 const tags = Object.entries(
-  projects.reduce((tags, p) => {
-    if (p.tags) {
-      for (const tag of p.tags) {
-        tags[tag] = (tags[tag] || 0) + 1;
-      }
+  reducedTags
+)
+  .filter(([tag]) => tagsNavigation.includes(tag))
+  .sort((a, b) => {
+    const priorityOrder = tagsNavigation;
+    const indexA = priorityOrder.indexOf(a[0]);
+    const indexB = priorityOrder.indexOf(b[0]);
+
+    if (indexA !== -1 && indexB !== -1) {
+      return indexA - indexB;
+    } else if (indexA !== -1) {
+      return -1;
+    } else if (indexB !== -1) {
+      return 1;
+    } else {
+      return a[0].localeCompare(b[0]);
     }
-    if (p.usesInternetIdentity) {
-      tags["Internet Identity"] = (tags["Internet Identity"] || 0) + 1;
-    }
-    return tags;
-  }, {} as Record<string, number>)
-);
+  });
 
 function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =

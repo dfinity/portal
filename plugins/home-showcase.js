@@ -16,8 +16,6 @@ const showcaseProjectsPlugin = async function () {
           "kinic",
           "cubetopia",
           "plethora",
-          "yumi",
-          "hot-or-not",
           "taggr",
           "catalyze",
         ];

@@ -13,11 +13,11 @@ The Service Nervous System (SNS) framework is the Internet Computer's built-in s
 
 
 ## SNS DAO
-Generally, for each dapp that is under SNS DAO control, there is one SNS DAO. The SNS DAO works very similarly to the [NNS DAO that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions how to evolve the dapp that are called _proposals_. Each SNS community can choose its own unique tokenomics and governance rules by parameters that can be set for each SNS DAO.
+Generally, for each dapp that is under SNS DAO control, there is one SNS DAO. The SNS DAO works very similarly to the [NNS DAO that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions on how to evolve the dapp that are called _proposals_. Each SNS community can choose its own unique tokenomics and governance rules by parameters that can be set for each SNS DAO.
 
 
 ### What an SNS governs
-On a high level an SNS DAO governs a dapp, that is decides on the code of that dapp and how it is evolved. On the Internet Computer this can also include the dapp's data and frontend. Moreover, the SNS DAO makes decisions on the DAO itself, for example on how to change tokenomics. More technically, there are _native proposals_ that are common to all SNSs, such as proposals to upgrade the DAO-controlled dapp canisters, change governance rules, or making transfers from the treasury to open a liquidity pool on a DEX. In addition, each SNS can define _custom proposals_ that are specific to the dapp's needs. A proposal can be defined to call any method on any canister. This allows, for example to define proposals that orchestrate upgrades of dapps with many canisters.
+On a high level an SNS DAO governs a dapp, that is decides on the code of that dapp and how it is evolved. On the Internet Computer this can also include the dapp's data and frontend. Moreover, the SNS DAO makes decisions on the DAO itself, for example on how to change tokenomics. More technically, there are _native proposals_ that are common to all SNSes, such as proposals to upgrade the DAO-controlled dapp canisters, change governance rules, or making transfers from the treasury to open a liquidity pool on a DEX. In addition, each SNS can define _custom proposals_ that are specific to the dapp's needs. A proposal can be defined to call any method on any canister. This allows, for example to define proposals that orchestrate upgrades of dapps with many canisters.
 
 
 
@@ -30,7 +30,7 @@ The SNS implements a form of _liquid democracy_, which means that neurons can ei
 Voting on SNS proposals follows an algorithm called _wait-for-quiet_. The main idea of wait-for-quiet is that proposals where all voters agree can be executed quickly, while strongly contested proposals have a longer voting period. This allows voters to have enough time to react if a proposal result is turned all of a sudden. Each SNS can decide on the initial and maximal voting period of proposals.
 
 
-For proposal adoption, SNSs distinguish between normal and _critical_ proposals, which include for example treasury transfer proposals.
+For proposal adoption, SNSes distinguish between normal and _critical_ proposals, which include for example treasury transfer proposals.
 Most proposals are adopted if
 1) the voting period has elapsed, there are more votes in favor than against the proposal (simple majority), and at least 3% of the totally available voting power voted in favor of the proposal (enough participation).
 2) more than 50% of the total voting power are in favor of the proposal. At this point, the proposal's result cannot be changed anymore even if all remaining voters vote against the proposal and therefore the proposal is executed without awaiting the end of the voting period.
@@ -40,7 +40,7 @@ For _critical_ proposals, these rules are more strict and passing a proposal req
 
 
 ### Proposal execution
-As soon as a proposal is adopted, it is executed by the SNS. With very few exceptions, proposals are executed automatically and fully on-chain and thus do not require trusting any third party.
+As soon as a proposal is adopted, it is executed by the SNS. With very few exceptions, proposals are executed automatically and fully onchain and thus do not require trusting any third party.
 
 ## The Architecture of an SNS
 

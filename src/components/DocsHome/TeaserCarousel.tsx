@@ -12,28 +12,6 @@ import {
 const CARDS: Array<CarouselCard> = [
   {
     title: (
-      <h2 className={"text-white"}>ICP Demystified: Learn the Essentials</h2>
-    ),
-    subtitle: (
-      <p className={"text-white"}>
-        Explore the Protocol and Its Features with Our "Zero to dApp Educate
-        Series".
-      </p>
-    ),
-    backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
-    cta: (
-      <Link
-        className="button-transparent button-with-icon pl-0"
-        href="https://youtube.com/playlist?list=PLuhDt1vhGcrcRcHvSKmxIgJAh1b3rcR7N&si=sIElj5bAkJeMqDoA"
-      >
-        Watch now!
-        <LinkArrowRight />
-      </Link>
-    ),
-    mainImage: "/img/docs/teaser-cards/main-zero-to-dapp.webp",
-  },
-  {
-    title: (
       <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
     ),
     subtitle: (
@@ -54,15 +32,15 @@ const CARDS: Array<CarouselCard> = [
   {
     title: <h2 className={"text-white"}>Developer office hours on Discord</h2>,
     subtitle: (
-      <p className={"text-white"}>Every Wednesday 9AM CEST and 10:30AM PST</p>
+      <p className={"text-white"}>Every Wednesday 9AM CET/CEST and 8AM PST/PDT</p>
     ),
     backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
     cta: (
       <Link
         className="button-transparent button-with-icon pl-0"
-        href="https://discord.com/invite/5PJMmmETQB"
+        href="https://discord.internetcomputer.org"
       >
-        RSVP at #event channel
+        Join Discord
         <LinkArrowRight />
       </Link>
     ),

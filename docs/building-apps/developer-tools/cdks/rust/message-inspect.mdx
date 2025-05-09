@@ -1,0 +1,39 @@
+---
+keywords: [intermediate, rust, tutorial, message inspection]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Message inspection
+
+<MarkdownChipRow labels={["Intermediate", "Rust"]} />
+
+A canister can inspect an ingress message and either accept or decline the message through the canister's HTTPS interface. If the message is accepted, the canister will execute it.
+
+A canister that does not have a Wasm module installed will reject any ingress messages. If the canister does not implement `canister_inspect_message`, all ingress messages will be accepted.
+
+The `canister_inspect_message` functionality should not be used for definitive access control. This is because it is executed by a single replica, without full [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), and its result could be spoofed by a malicious [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure). However, since it does not go through full consensus, a malicious user cannot drain cycles from your canister because you don’t pay the cost for the message going through consensus.
+
+Using the `canister_inspect_message` endpoint, the canister can invoke `ic0.accept_message : () → ()` to accept the message.
+
+You can learn more in the [IC interface specification](/docs/references/ic-interface-spec#ingress-message-inspection).
+
+This guide will describe how to use `inspect_message` within a Rust canister.
+
+## `inspect_message`
+
+The `canister_inspect_message` entry point can be defined and exported by a Rust canister using `#[inspect_message]`.
+
+The function within this attribute cannot have a return value, and a canister can only have one `canister_inspect_message` entry point.
+
+```rust
+#[inspect_message]
+fn inspect_message_function() {
+    if /* some condition */ {
+        ic_cdk::api::call::accept_message();
+    } else {
+        /* trap or simply not call accept_message to deny*/
+    }
+}
+```
+

@@ -18,25 +18,25 @@ const sliderData = [
     link: "https://www.youtube.com/watch?v=1uX-fRgvXjU&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6",
   },
   {
-    tagline: "Milestone achieved 🚀",
-    title: "TRITIUM",
-    description: "Chain Fusion supports EVM Chains",
-    image: "/img/home/slider/update_evm_tritium_milestone.webp",
-    link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Tritium",
-  },
-  {
-    tagline: "July 26, 2024 – Nashville, US",
-    title: "ICP @ Bitcoin Nashville",
-    description: "Register now!",
-    image: "/img/home/slider/update_chain_fusion_bitcoin_nashville.webp",
-    link: "https://lu.ma/cfdnashville",
-  },
-  {
     tagline: "New initiative",
     title: "Universal Trusted Credentials",
     description: "Read the press release",
     image: "/img/home/slider/update_undp_initiative.webp",
     link: "https://www.undp.org/policy-centre/singapore/press-releases/undp-partners-dfinity-foundation-enhance-financial-inclusion-msmes",
+  },
+  {
+    tagline: "ICP Pitch Deck",
+    title: "ICP makes the internet into a World Computer",
+    description: "Read now",
+    image: "/img/home/slider/icp_deck_highlight.webp",
+    link: "https://deck.internetcomputer.org/",
+  },
+  {
+    tagline: "New Milestones achieved ✨",
+    title: "Tokamak, Beryllium & Stellarator",
+    description: "Read now",
+    image: "/img/home/slider/milestones_highlight_1.webp",
+    link: "https://medium.com/dfinity",
   },
 ];
 
@@ -95,17 +95,15 @@ export const CardWithImage: React.FC<{
     <MotionLink
       variants={transitions.item}
       to={href}
-      className="bg-[#0C0025] rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "contain",
-        backgroundPosition: "bottom right",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="bg-[#0C0025] rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group relative overflow-hidden"
     >
-      <div className="md:group-hover:-translate-y-2 transition-transform">
+      <div className="md:group-hover:-translate-y-2 transition-transform relative z-10 mr-4">
         {children}
       </div>
+      <div
+        className="absolute inset-y-0 right-0 w-1/3 bg-cover bg-no-repeat bg-center"
+        style={{ backgroundImage: `url(${image})` }}
+      />
     </MotionLink>
   );
 };
@@ -187,11 +185,11 @@ export const SectionSlider = () => {
         {sliderData.map((data, index) => (
           <article key={index} className="border-box px-3">
             <CardWithImage href={data.link} image={data.image}>
-              <div className="py-5 mr-40">
+              <div className="h-[120px] w-2/3 md:h-[140px] mr-44 flex flex-col justify-center">
                 <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 !truncate">
                   {data.tagline}
                 </strong>
-                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 line-clamp-2">
                   {data.title}
                 </h4>
                 <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">

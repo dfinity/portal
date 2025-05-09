@@ -127,7 +127,7 @@ const cardsData: CardData[] = [
   {
     title: "The brain of the Internet Computer",
     description:
-      "The Internet Computer is governed by a fully on-chain permissionless system that regularly upgrades the protocol following the intentions of ICP token holders expressed through their votes.",
+      "The Internet Computer is governed by a fully onchain permissionless system that regularly upgrades the protocol following the intentions of ICP token holders expressed through their votes.",
     image: "/img/features/nns-image.webp",
     href: "/nns",
     refText: "Participate in ICP governance",
@@ -136,7 +136,7 @@ const cardsData: CardData[] = [
   {
     title: "Turn any Web3 service into a DAO",
     description:
-      "The Internet Computer allows developers to turn their dapps into a DAO to achieve full decentralization — 100% on-chain",
+      "The Internet Computer allows developers to turn their dapps into a DAO to achieve full decentralization — 100% onchain",
     image: "/img/features/sns-image.webp",
     href: "/sns",
     refText: "Overview of ICP DAOs",
@@ -153,15 +153,6 @@ const dePinCardsData: CardData[] = [
     href: "https://lokamining.com",
     refText: "Learn more",
     imageSide: "right",
-  },
-  {
-    title: "RentSpace",
-    description:
-      "RentSpace is pioneering the future of property rentals by harnessing the power of blockchain technology and Web3 innovations. Their mission is to revolutionize the real estate industry by providing features like Tik-Tok-style video marketing, crypto and fiat payment integrations, collaborative booking, and action-based rewards programs.",
-    image: "/img/features/sns_image.webp",
-    href: "https://rentb.space",
-    refText: "Learn more",
-    imageSide: "left",
   },
 ];
 
@@ -208,7 +199,7 @@ caused a major chain to hard fork and a loss of 60 million USD.`,
   {
     title: "Subnets & infinite scalability",
     description: `The Internet Computer incorporates a novel subnet architecture
-  that enables infinite scalability, making 100% on-chain
+  that enables infinite scalability, making 100% onchain
   mass-market Web3 services possible. No cloud servers needed.`,
     href: "/capabilities/limitless-scaling",
   },
@@ -628,7 +619,7 @@ function FeaturesPage() {
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="/bitcoin-integration/"
+                href="/bitcoin"
                 className="tw-heading-6 flex gap-2 items-center text-white hover:text-white-60 hover:no-underline"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>

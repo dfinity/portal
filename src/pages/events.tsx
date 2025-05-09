@@ -165,9 +165,11 @@ function GlobalEventsPage() {
               bg-[linear-gradient(0deg,#F1EEF5_0%,#F1EEF5_50%,transparent_50%,transparent_100%)]
             "
             >
-              <div className="container-10">
-                <FeaturedCard event={featuredEvent}></FeaturedCard>
-              </div>
+              {featuredEvent && (
+                <div className="container-10">
+                  <FeaturedCard event={featuredEvent}></FeaturedCard>
+                </div>
+              )}
             </div>
           </section>
         </AnimateSpawn>
@@ -307,7 +309,10 @@ function GlobalEventsPage() {
                 the globe.
               </p>
               <p className="mb-0">
-                <Link href="/community" className="link-primary link-with-icon">
+                <Link
+                  href="/education-hub"
+                  className="link-primary link-with-icon"
+                >
                   <LinkArrowRight />
                   Explore initiatives
                 </Link>
@@ -326,7 +331,7 @@ function GlobalEventsPage() {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/community#hubs"
+                  href="https://linktr.ee/icp_hubs_network"
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight />

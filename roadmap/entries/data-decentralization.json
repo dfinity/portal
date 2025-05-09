@@ -1,0 +1,224 @@
+{
+  "categoryName": "Platform Decentralization",
+  "categoryDescription": "The security of ICP is based on the elimination of central points of control. A user interacting with ICP shall not need to rely on a single party. Besides architectural aspects, such as the edge infrastructure, this also encompasses operational aspects, complementing the DAO-based governance of ICP.",
+  "elements": [
+    {
+      "title": "Tooling for node provider self onboarding",
+      "overview": "Node provider onboarding through improved tooling and a GUI. Better UX for node provider onboarding than using the command line.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Public API boundary node logs and metrics",
+      "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
+      "forum": "",
+      "proposal": "",
+      "status": "in_progress",
+      "milestone_id": "Levitron"
+    },
+    {
+      "title": "Decentralized access logs and metrics",
+      "is_milestone": true,
+      "milestone_id": "Levitron",
+      "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
+      "status": "in_progress",
+      "eta_to_render": "June 2025"
+    },
+    {
+      "title": "Generation 3 node hardware and rewards",
+      "is_milestone": true,
+      "milestone_id": "Knot",
+      "description": "Define the next generation node hardware, refine reward calculations, and improve network topology to enhance network performance, efficiency, and decentralization.",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Node reward enhancements",
+      "overview": "Enhance the node reward calculation to better align with the demand and supply dynamics of computing resources.",
+      "status": "future",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Generation 3 node hardware",
+      "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
+      "status": "future",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Target topology enhancements",
+      "overview": "Improve the node target topology to further increase the decentralization of the network.",
+      "status": "future",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Performance-based node provider rewards",
+      "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
+      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "milestone_id": "Knot"
+    },
+    {
+      "title": "Subnet rental",
+      "overview": "Anyone can rent subnets created with possibly different decentralization properties than mainnet, and have full control over the subnet's resources.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Certification libraries",
+      "overview": "The libraries assist developers in managing certification at the appropriate level of abstraction, addressing the complexity of securely interacting with the IC.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/response-verification",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Off-chain observability stack for node providers",
+      "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Support public contributions to the dfinity/ic GitHub repository",
+      "overview": "The dfinity/ic GitHub repository, which provides an implementation for the Internet Computer Protocol, was made public in July 2024. This allowed the community to see all branches and Pull Requests that were created by the DFINITY Foundation and thus increased transparency. There’s more and more demand from the community to be able to make contributions to this repository. Currently this process is cumbersome and this feature is about streamlining the process and making it more user friendly. This milestone aims to create a process and technical means to support public contributions to the ic repository. It includes ensuring that no secrets can be leaked via DFINITY’s CI processes, no unauthorised access can be gained to DFINITY’s internal infrastructure and that no bad or malicious code can be merged",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "HTTP asset caching",
+      "overview": "Building on response verification v2, HTTP gateways support caching of static assets such as HTML pages, JavaScript code, and images.",
+      "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Certified queries",
+      "overview": "Enable certified queries by having boundary nodes send a query to multiple replicas and aggregating the signed responses. Better efficiency than fully-replicated calls, and comparable security.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "SEV-SNP-protected HTTP gateway",
+      "overview": "Trusted execution (AMD SEV-SNP) enables trustless HTTP gateways, empowering users to remotely attest that the correct software image is running.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "status": "future"
+    },
+    {
+      "title": "CDN canisters on edge infrastructure",
+      "overview": "Read-only canisters run on the ICP edge infrastructure in a non-replicated manner, bringing read-heavy data closer to the edge, analogous to CDNs.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Chain Name System (CNS)",
+      "overview": "A decentralized naming system built into the ICP that allows translating user-friendly domains into various records (e.g., A records as used in DNS or wallet addresses), while ensuring verifiability and reliability.",
+      "forum": "https://forum.dfinity.org/t/technical-working-group-naming-system/21236",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/cns",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Strengthened node provider checks and audits",
+      "overview": "Strengthening the checks of entities intending to join ICP as node providers. May also include node provider audits.",
+      "forum": "https://forum.dfinity.org/t/technical-working-group-node-providers/30255",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Autonomous capacity management",
+      "overview": "Making capacity management of the ICP network more decentralized and autonomous, driven by community proposals.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Community can run system tests",
+      "overview": "Enabling the community to run system tests for the ICP codebase, using Kubernetes as container orchestrator.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Decentralized backup and recovery",
+      "overview": "Enabling decentralized backup and recovery of canisters. Recovered canisters are guaranteed to not have been tampered with.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Public contributions to IC repository",
+      "overview": "Allowing for contributions by the public to the IC source code repository.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    }
+  ]
+}

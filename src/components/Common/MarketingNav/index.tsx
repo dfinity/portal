@@ -107,7 +107,7 @@ const Drawer: React.FC<{
   return (
     <div className="">
       {alwaysOpen ? (
-        <div className="text-black tw-heading-5">{title}</div>
+        <></>
       ) : (
         <button
           className="w-full flex justify-between items-center bg-transparent appearance-none border-none p-0 font-circular text-infinite"
@@ -159,7 +159,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
   }, [isActive]);
 
   return (
-    <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+    <div className="absolute z-[1000] top-[4.84rem] left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
       <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
         <div className="flex-1 flex">
           {item.sections.length > 1 && (
@@ -180,7 +180,31 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
               ))}
             </div>
           )}
-          <div className="flex lex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
+          <div className="flex lex-1 pl-6 pr-6 py-6 bg-white min-w-[705px]">
+            {item.sections[selectedSectionIndex].featured && (
+              <div className="pr-8">
+                <Link
+                  style={{
+                    backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
+                  }}
+                  className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
+                  href={item.sections[selectedSectionIndex].featured.href}
+                >
+                  <span className="tw-heading-5 text-white flex-[3] group-hover/featured:-translate-y-2 transition-transform">
+                    {item.sections[selectedSectionIndex].featured.title}
+                    {item.sections[selectedSectionIndex].featured.subtitle && (
+                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                        {item.sections[selectedSectionIndex].featured.subtitle}
+                      </h6>
+                    )}
+                  </span>
+
+                  <span className="flex-1  text-right ">
+                    <FeaturedArrowRight />
+                  </span>
+                </Link>
+              </div>
+            )}
             <div className="flex-1 grid grid-rows-4 grid-flow-col gap-5 gap-x-15 min-w-[256px] pr-6">
               {item.sections[selectedSectionIndex].items.map((item) => (
                 <Link
@@ -214,30 +238,6 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                 </Link>
               ))}
             </div>
-            {item.sections[selectedSectionIndex].featured && (
-              <div className="pl-6">
-                <Link
-                  style={{
-                    backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
-                  }}
-                  className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
-                  href={item.sections[selectedSectionIndex].featured.href}
-                >
-                  <span className="tw-heading-5 text-white flex-[3] group-hover/featured:-translate-y-2 transition-transform">
-                    {item.sections[selectedSectionIndex].featured.title}
-                    {item.sections[selectedSectionIndex].featured.subtitle && (
-                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
-                        {item.sections[selectedSectionIndex].featured.subtitle}
-                      </h6>
-                    )}
-                  </span>
-
-                  <span className="flex-1  text-right ">
-                    <FeaturedArrowRight />
-                  </span>
-                </Link>
-              </div>
-            )}
           </div>
         </div>
         {/* desktop aux items */}
@@ -467,7 +467,7 @@ const MarketingNav = () => {
             {/* Back button + close button */}
             <div className="flex items-center justify-between">
               <button
-                className="flex items-center gap-6 tw-heading-7 font-circular bg-transparent p-0 text-left border-none text-black"
+                className="flex items-center gap-6 tw-heading-5 font-circular bg-transparent p-0 text-left border-none text-black"
                 onClick={() => setSecondaryMobileNavOpen(false)}
               >
                 <LinkArrowLeft />
@@ -476,7 +476,7 @@ const MarketingNav = () => {
               <CloseButton onClick={closeNav} className="-mr-2" />
             </div>
 
-            <ul className="list-none p-0 flex flex-col gap-6 mt-8 pb-10 mb-0">
+            <ul className="list-none p-0 flex flex-col gap-6 pb-10 mb-0">
               {nav.mainItems[secondaryMobileNavOpen].sections.map(
                 (item, index) => (
                   <li className="p-0" key={item.name}>

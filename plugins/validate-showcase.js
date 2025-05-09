@@ -2,7 +2,7 @@ const logger = require("@docusaurus/logger");
 const fs = require("fs");
 const path = require("path");
 
-const maximumLogoSize = 200 * 1024;
+const maximumLogoSize = 10 * 1024;
 const maximumVideoSize = 10 * 1024 * 1024;
 const maximumScreenshotSize = 200 * 1024;
 
@@ -12,7 +12,7 @@ const maximumDescriptionLength = 500;
 
 const tags = [
   "SocialFi",
-  "Chainfusion",
+  "Chain Fusion",
   "Bitcoin",
   "Ethereum",
   "AI",
@@ -21,9 +21,11 @@ const tags = [
   "DeFi",
   "Wallet",
   "Metaverse",
-  "Games",
+  "Gaming",
   "DAO",
   "Enterprise",
+  "Analytics",
+  "Creator Economy",
 ];
 
 function isString(value) {

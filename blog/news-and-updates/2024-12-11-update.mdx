@@ -1,0 +1,44 @@
+---
+title: Developer weekly update December 11, 2024
+description: This week, we have an important Motoko security update, an upgrade to the NNS Chain Fusion signer canister, and a new package from Mops- regex.
+tags: [Devs]
+image: /img/blog/dev-update-blog-dec-11.jpg
+---
+
+# Developer weekly update December 11, 2024
+
+![December 11 2024](../../static/img/blog/dev-update-blog-dec-11.jpg)
+
+Hello developers, and welcome to this week's developer weekly update! This week, we have an important Motoko security update, an upgrade to the NNS Chain Fusion signer canister, and a new package from Mops: regex. Let's get started!
+
+## Motoko security fix in dfx v0.24.3
+
+A security bug in Motoko was recently discovered that, under certain circumstances, may lead to unwanted memory reads or writes. This bug only affected those using the incremental garbage collector or enhanced orthogonal persistence and was hard to trigger depending on heap constellations, garbage collection scheduling, and specific language features used at a large scale.
+
+This bug has been fixed in Motoko v0.14.3, which is included in `dfx` v0.24.3 and newer. It is highly recommended to upgrade to the latest `dfx` version if you are using the incremental garbage collector or enhanced orthogonal persistence.
+
+[Learn more on the dev forum](https://forum.dfinity.org/t/security-fix-in-motoko-dfx-0-24-3/38656/1).
+
+## Upgrade NNS canister: Chain Fusion signer
+
+The latest update to the Chain Fusion signer canister can be used to sign transactions from APIs directly from a web browser or off-chain client.
+
+NNS proposal 134424 introduces Schnorr signatures to be added to the signer canister API, specifically adding the `schnorr_public_key()` and `schnorr_sign()` methods. The Schnorr API can also be used to sign Solana transactions.
+
+[Read more on the dev forum](https://forum.dfinity.org/t/upgrade-nns-canister-chain-fusion-signer/38623/1).
+
+## Mops regex package
+
+A new Mops package has been released: regex. This package allows you to use regex patterns for objects and flags. The team behind this package has published a [tutorial video](https://www.youtube.com/watch?v=O1dOZfK6DQA).
+
+You can install the Motoko regex package with:
+
+```
+mops add regex
+```
+
+[Learn more on the dev forum](https://forum.dfinity.org/t/motoko-regex-is-live-on-mops/37428/1).
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY

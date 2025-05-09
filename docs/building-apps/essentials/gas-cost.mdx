@@ -1,0 +1,177 @@
+---
+keywords: [beginner, concept, gas cost, cycles cost, cycles gas, what is the cost, pricing, gas]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# Fee breakdown
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/building-apps/getting-started/tokens-and-cycles).
+
+The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of March 12, 2025, the [exchange rate for 1 XDR = $1.33](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
+
+To estimate how much a project might cost, you can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/).
+
+## The reverse gas model
+
+Unlike other networks that require end users to pay a “gas fee” each time they interact with a smart contract, on ICP it is the developer's responsibility to cover the “gas fees” for their application by loading their canisters with cycles. This is known as the **reverse gas model.**
+
+This model gives end users a smooth, Web2-like experience since they don't need to obtain tokens, configure wallets, or sign and approve every transaction when interacting with a dapp on ICP.
+
+One downside of the reverse gas model is that it requires ongoing maintenance. Canisters must have their cycles balances maintained and regularly topped up because a canister will be removed from the network if it runs out of cycles.
+
+To prevent a canister from running out of cycles, a [freezing threshold](/docs/building-apps/canister-management/settings/#freezing-threshold) can be set that pauses a canister's execution if the cycles balance is expected to fall below a certain amount, or[ topping up a canister](/docs/building-apps/canister-management/topping-up) can be automated using tools like [CycleOps](https://cycleops.dev/).
+
+Learn more about the [reverse gas model](/capabilities/reverse-gas).
+
+## Subnet replication factors
+
+Canisters are deployed to a subnet and automatically replicated on every node within that subnet. The cost of resources scales with the number of nodes on the subnet, such that:
+
+- Canisters deployed to a 13-node subnet are replicated 13 times. Cycles costs are based on a 13-node subnet, i.e., there is no calculation needed to determine the cost based on replication.
+
+- Canisters deployed to a 34-node subnet are replicated 34 times, resulting in resources having a cost that is calculated as `34 * (cost / 13)`.
+
+## Canister operations and resources
+
+Each type of canister operation and consumed resource has a different cycles cost. The canister responsible for paying the fee varies based on the type of operation.
+
+Canisters must pay for their own:
+
+- Canister creation.
+
+- Compute resources.
+
+- Storage resources.
+
+- Executed instructions.
+
+Additionally, they must pay for any ingress messages they receive, including ingress update messages and their associated execution.
+
+[Xnet](https://mmapped.blog/posts/08-ic-xnet) calls are charged to the sending canister.
+
+More information about responsible canisters can be found on the [cycles calculation reference page.](/docs/references/cycles-cost-formulas)
+
+### Canister creation
+
+Canister creation costs 500B cycles (approximately $0.65 USD). Canisters can be created by users or other canisters.
+
+### Messaging
+
+A canister can receive messages from users and other canisters. Messaging fees are calculated as:
+
+- Query calls: Free.
+
+- [Inter-canister calls](/docs/building-apps/interact-with-canisters/advanced-calls#inter-canister-calls): 260K base fee, plus 1K cycles per byte, paid by the sending canister.
+
+- [Ingress messages](/docs/building-apps/essentials/message-execution): 1.2M base fee, plus 2K cycles per byte, paid by the receiving canister.
+
+
+### Execution and compute allocation
+
+Canisters use compute resources to execute autonomous tasks and process ingress messages. ICP reserves cycles to execute the callback or cleanup of a message. The amount reserved is equivalent to what would be needed for maximum execution.
+
+For example, a [DTS execution](/how-it-works/execution-layer/#deterministic-time-slicing) of 40B instructions on a 13-node subnet would reserve 16B cycles. From this reservation, 5% is reserved for the cleanup/callback; it is not expected that the entire 5% will be used.
+
+By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can set `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
+
+Setting even 1% compute allocation provides a significant advantage over canisters that use the "best-effort" scheduling:
+
+- **1% compute allocation**: The canister will receive 1% of an execution core and is guaranteed to be scheduled every 100 rounds (assuming it executes only non-DTS messages).
+
+- **2% compute allocation**: The canister will receive 2% of an execution core and is guaranteed to be scheduled every 50 rounds.
+
+- **50% compute allocation**: The canister will receive 50% of an execution core and is guaranteed to be scheduled every other round.
+
+- **100% compute allocation**: The canister will receive 100% of an execution core and is guaranteed to be scheduled every round.
+
+Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.000013 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
+
+[View the cost calculation formula for more information about how costs are calculated](/docs/references/cycles-cost-formulas).
+
+### Storage
+
+Canisters pay for the storage used by both their [Wasm memory](/docs/building-apps/canister-management/storage#heap-memory) and [stable memory](/docs/building-apps/canister-management/storage#stable-memory). Cost is calculated based on the amount of storage and length of time, such that storing 1 GiB for 1 second costs 127k cycles, which amounts to \~4T cycles (approximately $5.35 USD) for storing 1 GiB for 1 year.
+
+Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
+
+
+#### Storage reservation mechanism*
+
+When a canister allocates new storage bytes, the system moves some number of cycles from the main balance into the canister’s reserved cycles balance to cover future payments for the newly allocated bytes.
+
+Operations that allocate new storage bytes are:
+
+- **Wasm instruction**: `memory.grow`.
+
+- **System API calls**: `ic0.stable_grow()` `ic0.stable64_grow()`.
+
+- **Increasing the** `memory_allocation` **in the canister settings.**
+
+The reserved cycles are not transferable, and the amount depends on how full the subnet’s memory is.
+
+- If subnet usage is below `450GiB`, then the amount of reserved cycles per allocated byte is `0`.
+
+- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage, from `0` to `10` years worth of payments at the subnet capacity (`1TiB`).
+
+A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in the canister’s settings. Such opted-out canisters are not able to allocate if the subnet usage is above `450GiB`.
+
+
+### Special features
+
+Certain network features incur a special cost based on the feature’s unique infrastructure and functionality. These features include:
+
+- [**HTTPS outcalls**](/docs/references/cycles-cost-formulas#https-outcalls)
+
+- [**Bitcoin API**](/docs/references/bitcoin-how-it-works)
+
+- [**Chain-key signing API**](/docs/references/t-sigs-how-it-works/): Threshold signatures, including threshold ECDSA and threshold Schnorr.
+
+- [**EVM RPC canister**](/docs/building-apps/chain-fusion/ethereum/overview)
+
+
+## Errors related to cycles
+
+Common errors related to cycles include:
+
+- [Insufficient cycles in memory grow](/docs/references/execution-errors#insufficient-cycles-in-memory-grow).
+
+- [Reserved cycles limit exceeded in memory grow](/docs/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-grow).
+
+- [Insufficient cycles in message memory grow](/docs/references/execution-errors#insufficient-cycles-in-message-memory-grow).
+
+- [Insufficient cycles in compute allocation](/docs/references/execution-errors#insufficient-cycles-in-compute-allocation).
+
+- [Insufficient cycles in memory allocation](/docs/references/execution-errors#insufficient-cycles-in-memory-allocation).
+
+- [Insufficient cycles in memory grow](/docs/references/execution-errors#insufficient-cycles-in-memory-grow-1).
+
+- [Reserved cycles limit exceeded in memory allocation](/docs/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-allocation).
+
+- [Install code not enough cycles](/docs/references/execution-errors#install-code-not-enough-cycles).
+
+- [Create canister not enough cycles](/docs/references/execution-errors#create-canister-not-enough-cycles).
+
+
+## **Resources**
+
+### Monitoring cycles usage
+
+- [Check your canister's cycles balance](/docs/building-apps/canister-management/topping-up#checking-the-cycles-balance-of-a-canister).
+
+- [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
+
+
+### Getting cycles back from a canister
+
+- To withdraw cycles from a canister, the [canister must be deleted](/docs/tutorials/developer-liftoff/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
+
+
+### Topping up canisters
+
+- [Top up your canisters](/docs/building-apps/canister-management/topping-up).
+
+- [Cycles management services](/docs/building-apps/canister-management/topping-up#using-a-cycles-management-service).

@@ -35,7 +35,7 @@ function Divider() {
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     })
     .replace(/,/g, "\u2019");
 }
@@ -44,13 +44,13 @@ export const NetworkStats = () => {
   const canisterCount = useQuery(["canisterCount"], getCanisterCount);
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-stretch whitespace-nowrap">
-      <figure className="m-0">
+    <div className="networkstats flex flex-col sm:flex-row justify-between items-stretch whitespace-nowrap">
+      <figure className="m-0 text-center flex flex-col items-center">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Storage Costs
           <Tooltip
             tooltip="Cost of storing 1 GB for a year in a canister smart contract"
-            className="w-52 whitespace-normal"
+            className="w-max whitespace-normal"
             wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
@@ -58,13 +58,13 @@ export const NetworkStats = () => {
         </figcaption>
         <div className="tw-heading-6">$5 / GB / Year</div>
       </figure>
-      <Divider />
-      <figure className="m-0">
+      
+      <figure className="m-0 text-center flex flex-col items-center">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Cost per Instruction
           <Tooltip
             tooltip="Cost per instruction when executing canister smart contact code"
-            className="w-52 whitespace-normal"
+            className="w-max whitespace-normal"
             wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />
@@ -72,13 +72,13 @@ export const NetworkStats = () => {
         </figcaption>
         <div className="tw-heading-6">$0.000000000000536</div>
       </figure>
-      <Divider />
-      <figure className="m-0">
+      
+      <figure className="m-0 text-center flex flex-col items-center">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Canisters
           <Tooltip
             tooltip="Number of running canister smart contracts"
-            className="w-52 whitespace-normal"
+            className="w-max whitespace-normal"
             wrapperClassName="inline-flex items-center"
           >
             <InfoIcon />

@@ -1,0 +1,183 @@
+---
+keywords: [beginner, query calls, queries, composite queries, query call, making a query, call a canister with query]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# Query calls
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+After deployment, a canister accepts and processes messages (calls) from users and other canisters. Only the public endpoints of the canister can be called.
+
+<div class="text--center">
+<img src="/img/docs/call-canister.png" alt="Call canister" width="600"/>
+</div>
+
+Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response. They do not go through consensus. Query calls are fast (200-400ms) and return a synchronous response. They are currently free and do not cost cycles.
+
+It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a **replicated query**.
+
+## Making query calls with `dfx`
+
+To make a query call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--query` flag:
+
+- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
+
+- `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx canister call --query <canister-name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
+
+The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a [certified query](#certified-queries) should be used for security-critical calls.
+
+## Making query calls from within canisters
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
+```
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust file=../../references/samples/rust/counter/src/lib.rs#L8-L12
+```
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
+</AdornedTab>
+</AdornedTabs>
+
+## Query stats
+
+An approximation of some statistics related to query calls is made available to developers through the canister's status, which can be viewed using the `dfx canister status` command. 
+
+The statistics collected in the canister status are an approximation. They might not capture all query calls, especially for infrequently used canisters.
+Query stats are collected in intervals by the system and therefore may lag behind the actual query execution by up to 30 mins.
+
+Statistics of composite queries are not currently collected.
+
+### Canister status entries
+
+The feature exposes the following fields:
+
+- A counter for the total number of query calls executed by that canister.
+- The sum of all instructions executed by the canister for query calls.
+- The sum of all query request payload sizes.
+- The sum of all query response payload sizes.
+
+Each value represents the total count since the canister was created.
+Rates for these values can be calculated from multiple calls to the canister status and observing the difference between the values in different calls.
+All values are monotonically increasing.
+
+### Retrieve query stats using `dfx`
+
+`dfx` can be used to return a canister's query stats:
+
+```
+dfx canister status sample_canister
+```
+
+This will return output such as:
+
+```
+Canister status call result for sample_canister.
+Status: Running
+[..]
+Number of queries: 0
+Instructions spent in queries: 0
+Total query request paylod size (bytes): 0
+Total query response payload size (bytes): 0
+```
+
+### Using query stats programmatically
+
+It's also possible to programmatically retrieve query stats from within the canister via the canister status method. The following is an example of how to do this in Rust:
+
+```rust
+let canister_status = canister_status(CanisterIdRecord {
+    canister_id: ic_cdk::id(),
+})
+.await.unwrap();
+let query_stats = canister_status.0.query_stats;
+```
+
+Query stats are supported in the `ic-cdk` since version `0.12.1`.
+
+## Composite queries
+
+An update call can make calls to update and query methods. However, a query call cannot make calls to other methods, which can hinder the development of scalable decentralized applications.
+
+Composite queries solve this problem. In contrast to regular queries, a composite query can call other composite and regular queries. 
+
+| Query | Update | Composite query |
+|--------|--------|----------------|
+| Cannot call other queries or composite queries| Can call other updates and queries ; Cannot call composite queries| Can call other queries and composite queries |
+| Can be called as an update | Cannot be called as a query | Cannot be called as an update |
+| Can call canisters on another [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) | Can call canisters on another subnet | Cannot call canisters on another subnet |
+
+You can add composite queries to your canister using the following annotations:
+
+- Candid: `composite_query`
+- Motoko: `composite query`
+- Rust: `#[query(composite = true)]`
+
+Users and client-side JavaScript code can invoke a composite query endpoint of a canister using the same query URL for existing regular queries. 
+
+Composite queries were enabled in the following releases:
+
+| Platform / Language        | Version |
+| -------------------------- | ------- |
+| Internet computer mainnet  | Release [7742d96ddd30aa6b607c9d2d4093a7b714f5b25b](https://nns.ic0.app/proposal/?u=qoctq-giaaa-aaaaa-aaaea-cai&proposal=123311)     |
+| Candid                     | [2023-06-30 (Rust 0.9.0)](https://github.com/dfinity/candid/blob/master/Changelog.md#2023-06-30-rust-090)     |
+| Motoko                     | [0.9.4](https://github.com/dfinity/motoko/releases/tag/0.9.4), revision: [2d9902f](https://github.com/dfinity/motoko/commit/2d9902fb75bb04e377c28913c311aa2be373e159)    |
+| Rust                       | [0.6.8](https://github.com/dfinity/cdk-rs/blob/219ae179b9c5ef0ebfff20b926a90f6624ebe704/src/ic-cdk/CHANGELOG.md#068---2022-11-28)    |
+
+
+### Sample code
+As an example, consider a partitioned key-value store, where a single frontend does the following for a `put` and `get` call:
+
+- First, it determines the ID of the data partition canister that holds the value with the given key.
+- Then, it makes a call into the `get` or `put` function of that canister and parses the result.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl file=../../references/samples/motoko/composite_query/src/map/Map.mo
+```
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust file=../../references/samples/rust/composite_query/src/kv_frontend/lib.rs
+```
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
+</AdornedTab>
+</AdornedTabs>
+
+### Resources
+The following example canisters demonstrate how to use composite queries:
+
+- [Motoko example](https://github.com/dfinity/examples/tree/master/motoko/composite_query)
+- [Rust example](https://github.com/dfinity/examples/tree/master/rust/composite_query)
+
+Feedback and suggestions can be contributed on the [forum](https://forum.dfinity.org/t/proposal-composite-queries/15979).

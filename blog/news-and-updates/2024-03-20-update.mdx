@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update March 20, 2024
-description: This week, we have a new agent-js release, an update on the cycles ledger, and a sneak peek into React Native apps on ICP.
+description: This week, we have a new ICP JavaScript agent release, an update on the cycles ledger, and a sneak peek into React Native apps on ICP.
 tags: [Devs]
 image: /img/blog/dev-update-blog-march-20.jpg
 ---
@@ -9,15 +9,15 @@ image: /img/blog/dev-update-blog-march-20.jpg
 
 ![March 20 2024](../../static/img/blog/dev-update-blog-march-20.jpg)
 
-Hello developers, and welcome to this week's developer weekly update! This week, we have a new agent-js release, an update on the cycles ledger, and a sneak peek into React Native apps on ICP. Let's get started!
+Hello developers, and welcome to this week's developer weekly update! This week, we have a new [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) release, an update on the cycles ledger, and a sneak peek into React Native apps on ICP. Let's get started!
 
 ## Agent-js v1.1.0
 
-This week, a new minor version of agent-js has been released. This release introduces a new `fromPem` method, which is designed to make managing identities easier during CI. It is recommended that developers use caution in any instance where users are transporting unencrypted `pem` files.
+This week, a new minor version of the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) has been released. This release introduces a new `fromPem` method, which is designed to make managing identities easier during CI. It is recommended that developers use caution in any instance where users are transporting unencrypted `pem` files.
 
 Another new feature in this release is certified watermarks, which can be used to help reduce the number of query calls that return stale responses.
 
-You can read the full release notes [on the agent-js GitHub release page](https://github.com/dfinity/agent-js/releases/tag/v1.1.0).
+You can read the full release notes [on the ICP JavaScript agent GitHub release page](https://github.com/dfinity/agent-js/releases/tag/v1.1.0).
 
 ## Cycles ledger
 
@@ -29,7 +29,7 @@ There will be a detailed Project Spotlight post in the coming weeks here on the 
 
 ## React Native for ICP apps
 
-React Native support is coming to ICP via agent-js! In the current agent-js architecture, Webassembly modules are used to verify BLS signatures. The latest version of the `@noble/curves` package provides an alternative solution. Support for the npm package `@noble/curves` will be included in an upcoming agent-js release, allowing for React Native apps to be built!
+React Native support is coming to ICP via the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)! In the current [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) architecture, Webassembly modules are used to verify [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures). The latest version of the `@noble/curves` package provides an alternative solution. Support for the npm package `@noble/curves` will be included in an upcoming [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) release, allowing for React Native apps to be built!
 
 Want to take a sneak peek? Check out [this tutorial](https://kyle-peacock.com/blog/dfinity/ic-expo/) that creates a React Native app on IC that manually installs and configures the `@noble/curves` package. In the future, this dependency can be managed by npm instead.
 

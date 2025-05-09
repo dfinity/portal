@@ -1,0 +1,165 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, package managers, mops, using mops, icp ninja, ]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# 3.1 Motoko package managers
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/KBMLOor1ink?si=ea3FtVLtkHUKL_y7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+[Mops](https://mops.one) is a package manager for Motoko. In this guide, you'll explore how to download and install Mops, then how to import and use different libraries through it.
+
+## What is a package manager?
+
+A **package manager** is a collection of tools that automates installing, upgrading, configuring, and removing software packages or libraries. They help efficiently manage the dependencies of a project. Mops and Vessel are two package managers for Motoko. Mops supports over 100 libraries for Motoko, spanning several different functionalities such as utility, encoding, cryptography, data structure libraries, and more.
+
+## Using Mops with ICP Ninja
+
+ICP Ninja supports adding Mops packages to projects. For example, open the [Flying Ninja project](https://icp.ninja/projects/flying-ninja) and view the `mops.toml` file to see the packages used within the project:
+
+```toml
+# Motoko dependencies (https://mops.one/)
+
+[dependencies]
+base = "0.14.1"
+```
+
+Simply edit this file with any Mops packages you'd like to use within your project. For example:
+
+```toml
+time = "1.0.7"
+```
+
+In the project's `dfx.json` file, you will see Mops configured as the package manager through the following line:
+
+```json title="dfx.json"
+...
+{
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
+}
+...
+```
+
+## Using Mops in a local environment
+
+To install Mops, first be sure to have set up your developer environment and installed the IC SDK and Node.js, as described in the previous module, 0.3: Developer environment setup. Mops is supported in dfx versions 0.10.0 and higher.
+
+Then, to install Mops, run the command:
+
+```
+npm i -g ic-mops
+```
+
+Create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
+
+```
+dfx start --clean --background
+dfx new mops_example --type=motoko --no-frontend
+cd mops_example
+```
+
+### Configuring your local project to use Mops
+
+Then, open the `dfx.json` file within your project. Add Mops as a `packtool` in the file by adding the following line:
+
+```json title="dfx.json"
+{
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  }
+}
+```
+
+### Initializing Mops
+
+Then, initialize the Mops configuration with the command:
+
+```bash
+mops init
+```
+
+You'll be prompted to choose whether you plan to use Mops to pull packages or publish packages:
+
+```bash
+? Select type: › - Use arrow-keys. Return to submit.
+❯   Project (I just want to use mops packages in my project)
+    Package (I plan to publish this package on mops)
+```
+
+In this case, select 'Project.' For more information about publishing packages, see the [publishing a package](#publishing-a-package) section.
+
+You will also be prompted to choose if you'd like to use a GitHub workflow. This is optional.
+
+### Adding packages to `mops.toml`.
+
+To install a package with Mops, you need to specify the package in the `mops.toml` file within your project. To add a package to this file, you can use the command `maps add` and then the package name:
+
+```bash
+mops add base
+```
+
+Or, you can add packages directly from GitHub by specifying the repository's URL:
+
+```bash
+mops add https://github.com/dfinity/motoko-base
+```
+
+You can also specify the branch, commit hash, or tag by adding `#<branch/tag/hash>`:
+
+```bash
+mops add https://github.com/dfinity/motoko-base#moc-0.9.1
+```
+
+If you have a locally stored package, you can put the source files inside your project's directory and then add them by specifying the path:
+
+```bash
+mops add ./local-package
+```
+
+Using any of these workflows will add the package to the `mops.toml` file.
+
+Then, to install all packages specified in this file, use the command:
+
+```bash
+mops install
+```
+
+### Publishing a package
+
+If you develop a package that you'd like to publish so other developers can use it, you can publish it to the Mops registry! For instructions on publishing a package to Mops, check out the [Mops documentation](https://github.com/ZenVoich/mops#publish-a-package).
+
+
+
+## Importing packages into your Motoko code
+
+Once a package has been installed, you can import it into your Motoko code file using the line `import PackageName "mo:<package_name>";`, such as:
+
+```motoko title="src/character_count/main.mo"
+import Text "mo:base/Text";
+import Bool "mo:base/Bool";
+
+actor characterCount {
+
+    public func test(text: Text) : async Bool {
+        let size = Text.size(text);
+        return size % 2 == 0;
+    };
+};
+```
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

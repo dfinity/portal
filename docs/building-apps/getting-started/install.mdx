@@ -1,0 +1,131 @@
+---
+keywords: [beginner, getting started, tutorial, tools, installing tools, install dfx, dfx, dfxvm, setup dfx, setup environment, install]
+hide_table_of_contents: true
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import { OsType, useOs } from "/src/hooks/useOs";
+
+# Install the IC SDK
+
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
+
+The IC SDK is a software development kit used to develop applications on your local machine and to deploy them to ICP. It is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
+
+:::danger
+
+If you followed a [quick start](/docs/building-apps/getting-started/quickstart) guide, you can skip this step.
+
+:::
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+#### Prerequisites
+
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+#### Prerequisites
+
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended (<code>brew install node</code>).
+<div>
+</div>
+<input type="checkbox"/> Apple silicon machines: Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+#### Prerequisites
+
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
+<input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
+<div>
+</div>
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and install a Linux distribution (i.e., Ubuntu) using Windows Subsystem for Linux: <code>wsl --install -d ubuntu</code>
+<div>
+</div>
+<input type="checkbox"/> Open the WSL Linux environment. Run all following commands within this environment.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">install Node.js</a> within your WSL Linux environment.
+<div>
+</div> View the [WSL troubleshooting](wsl-troubleshoot.mdx) guide if necessary.
+
+---------
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+</AdornedTabs>
+
+The latest version of the [IC SDK](https://github.com/dfinity/sdk) (v0.26.0) is comprised of:
+
+- `dfx`: A CLI tool used to create and manage projects, developer identities, and <GlossaryTooltip>cycles</GlossaryTooltip>.
+
+- [`dfxvm`](/docs/building-apps/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx` used to download a specific version of `dfx`, set a default version, and update to the latest version.
+
+- `moc` (v0.14.4): The [Motoko](/docs/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
+
+:::info
+Other languages such as Rust are supported by installing a [separate canister development kit (CDK)](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+:::
+
+- [PocketIC](/docs/building-apps/test/pocket-ic): A local testing suite that can be used to simulate mainnet behavior for deterministic canister testing.
+
+For troubleshooting common `dfx` errors, see [IC SDK troubleshooting](troubleshooting.mdx).

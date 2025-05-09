@@ -1,0 +1,75 @@
+---
+keywords: [beginner, concept, best practices, storage, storage best practices]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Developer best practices: Storage
+
+<MarkdownChipRow labels={["Beginner", "Best practices"]} />
+
+There are two forms of storage available to ICP canisters: **heap memory** and **stable memory**.
+
+**Heap memory** is a canister's Wasm memory. This memory does not store data long-term. The heap memory is cleared each time a canister is upgraded. Heap memory is limited to 4GiB. It is used by default for data such as variable values, arguments passed to a canister, and the result of a method's execution.
+
+**Stable memory** is a secondary storage type that is used to store data long-term. Stable memory data is persisted throughout the canister's lifetime, including canister upgrades. Stable memory is limited to 500GiB. To use stable memory, you must anticipate which data you want to persist across different canister processes and states.
+
+Ultimately, the form of memory you choose to utilize for your canister will depend on the most optimal workflow for your project.
+
+| Memory feature | Heap memory | Stable memory |
+|----------------|-------------|---------------|
+|Storage capacity| 4GiB        | 500GiB        |
+|Intended use    | Small datasets, frequently accessed data, temporary data | Large datasets, infrequently accessed data, important data that must persist |
+|Persistence     | Does not persist across upgrades | Data is preserved and persists across upgrades |
+|Performance     | Fast read/write operations | Slightly decreased read/write operations |
+
+[Learn more about canister storage](/docs/building-apps/canister-management/storage).
+
+### Recommendation: Use stable memory directly.
+
+It is recommended to use stable memory directly, such as through [stable structures](https://github.com/dfinity/stable-structures), for any data that is important. Linking data to your canister's Wasm binary and using pre/post upgrade hooks can be extremely risky. There are several areas for potential errors or bugs that can result in data loss.
+
+### Recommendation: Use heap memory for small datasets.
+
+Heap data is better suited to be used for small data sets (under 4GiB) or data that is frequently accessed and not necessary for long-term persistence.
+
+### Recommendation: Use stable memory for large datasets.
+
+Stable memory should be used for large data sets (more than 4GiB but less than 500GiB) or data that is infrequently accessed.
+
+If you expect to store significant amounts of data, anticipate expanding your dapp to multiple subnets if you begin to hit the limits of a single subnet.
+
+### Recommendation: Use efficient data structures.
+
+#### Motoko
+
+1. Opt for `TrieMap` over `HashMap` to prevent automatic resizing overhead.
+2. Utilize `Buffer` instead of `Array` for dynamic resizing.
+3. Consider `Blob` over `[Nat8]` for compact storage and reduced GC pressure:
+
+    - Use `Blob` instead of `[Nat8]` for storing large binary assets.
+    - Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours, but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
+
+4. Store large Blobs in stable memory for efficient manual management.
+5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
+6. Be mindful of calling an [actor class]((/docs/motoko/main/writing-motoko/actor-classes), as the overhead is similar to that of installing a fresh canister.
+
+#### Rust
+
+1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message.
+2. Refer to recommended blogs and articles for effective Rust canister development.
+
+#### Resources
+
+Several resources on efficient implementations include:
+
+- [Blog post on effective Rust canisters by Roman Kashitsyn](https://mmapped.blog/posts/01-effective-rust-canisters.html)
+- [Good practices for canister development by Joachim Breitner](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister)
+
+### Recommendation: State backup and restoration.
+
+Implement backup mechanisms within canisters for state protection against deallocation or upgrade issues. Explore [backup strategies](https://forum.dfinity.org/t/backup-restore-function-for-a-canister/12849/3) like those employed by [Distrikt](https://distrikt.app/).
+
+### Recommendation: Transaction history storage.
+
+If your application needs to store transaction history, consider using dedicated services like [CAP](https://cap.ooo/) for maintaining transaction logs. This facilitates integration with explorers and wallets and aids in ownership state reconstruction if the main canister is compromised. Be mindful of additional costs associated with inter-canister calls.

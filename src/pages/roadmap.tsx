@@ -10,20 +10,17 @@ import ShareMeta from "../components/Common/ShareMeta";
 import Overlay, {
   ArrowIconRight,
   DeployedIcon,
+  InProgressIcon,
 } from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import Tooltip from "../components/Common/Tooltip";
 
 const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
-
-function elementCount(milestoneElements: any[], status: string) {
-  return milestoneElements.filter((element) => element.status === status)
-    .length;
-}
 
 const css = `
   @keyframes blob {
@@ -153,7 +150,7 @@ const milestoneComponent = (
   } as React.CSSProperties;
 
   let wrapperClasses =
-    "milestone relative snap-start text-white rounded-md shrink-0 grow-0  p-4 p-5 md:p-8 md:px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)] cursor-pointer";
+    "milestone relative snap-start text-white rounded-md shrink-0 grow-0  p-4 p-5 md:p-10 md:px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)] cursor-pointer";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
@@ -189,24 +186,28 @@ const milestoneComponent = (
       onClick={overlayTrigger}
     >
       {isActiveMilestone && <CardBlobs></CardBlobs>}
+      {(milestone.status === "deployed" ||
+        milestone.name === "orphans_past") && (
+        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10 z-10">
+          <Tooltip tooltip="Deployed">
+            <DeployedIcon glowing={true} isDark={true} />
+          </Tooltip>
+        </div>
+      )}
+      {milestone.status === "in_progress" && (
+        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10 z-10">
+          <Tooltip tooltip="In Progress">
+            <InProgressIcon isDark={true} />
+          </Tooltip>
+        </div>
+      )}
       {isOrphan ? (
-        <div
-          className={`grow flex flex-col ${
-            milestone.name === "orphans_past"
-              ? "justify-between"
-              : "justify-end"
-          } md:justify-end`}
-        >
-          {milestone.name === "orphans_past" && (
-            <div className="w-9 ml-auto mr-0 mt-1 md:mt-0">
-              <DeployedIcon glowing={true} />
-            </div>
-          )}
-          <div>
-            <strong className="block text-[120px] font-light leading-none !text-right">
+        <div className={`grow flex flex-col justify-end`}>
+          <div className="min-w-[140px]">
+            <strong className="block text-[80px] font-light leading-none !text-right">
               {milestone.elements!.length}
             </strong>
-            <strong className="!text-right">
+            <strong className="block text-right">
               {milestone.name === "orphans_past"
                 ? `Past feature${
                     milestone.elements && milestone.elements.length > 1
@@ -225,7 +226,7 @@ const milestoneComponent = (
         <div className="flex min-h-full gap-8 md:gap-20 relative">
           <div className="grow flex flex-col justify-between">
             <header>
-              <h2 className="mb-0 tw-heading-4 uppercase">
+              <h2 className="mb-0 tw-heading-5">
                 {milestone.milestone_id == "none"
                   ? milestoneName(milestone.name)
                   : milestone.milestone_id}
@@ -247,13 +248,8 @@ const milestoneComponent = (
             </header>
             <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
           </div>
-          <div className="self-end">
-            {milestone.status === "deployed" && (
-              <div className="w-9 ml-auto mr-2 mt-1 md:mt-0">
-                <DeployedIcon glowing={true} />
-              </div>
-            )}
-            <strong className="block text-[120px] font-light leading-none text-right">
+          <div className="self-end mt-24">
+            <strong className="block text-[80px] font-light leading-none text-right">
               {milestone.elements!.length}
             </strong>
             <strong>Feature{milestone.elements!.length > 1 ? "s" : ""}</strong>
@@ -290,10 +286,6 @@ function scrollBy(ref: RefObject<T>, direction: 1) {
   });
 }
 
-function elementHasOverflown(element: HTMLElement) {
-  return element.scrollWidth > element.clientWidth;
-}
-
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(null);
@@ -317,13 +309,16 @@ const RoadmapPage: React.FC = () => {
     setOverlayOpen(true);
     setOverlayColor(color);
     //update current url with output from createId as an anchor
-    window.location.hash = createId(at, anchor || "start");
+    //window.location.hash = createId(at, anchor || "start");
+    window.history.pushState(null, "", `#${createId(at, anchor || "start")}`);
+    window.addEventListener("popstate", closeOverlay);
   }
 
   function closeOverlay() {
     document.body.style.overflow = "";
     setOverlayOpen(false);
     history.replaceState(null, "", " ");
+    window.removeEventListener("popstate", closeOverlay);
   }
 
   const parseId = (id: string, separator = "-") => {
@@ -334,10 +329,23 @@ const RoadmapPage: React.FC = () => {
   useEffect(() => {
     scrollRefs.forEach((ref) => {
       if (ref.current) {
+        // Find all past cards (completed milestones)
         const pastCards = ref.current.getElementsByClassName("past-card");
         if (pastCards.length > 0) {
+          // Calculate the total width of all past cards plus any gaps
+          const totalPastWidth = Array.from(pastCards).reduce(
+            (total: number, card: HTMLElement) => {
+              const cardWidth = card.getBoundingClientRect().width;
+              // Add 24px for the gap (md:gap-6 = 1.5rem = 24px)
+              return total + cardWidth + 24;
+            },
+            0
+          );
+
+          // Scroll to show the first non-past card
           ref.current.scrollTo({
-            left: pastCards[0].offsetWidth,
+            left: totalPastWidth,
+            behavior: "instant", // avoid animation on load
           });
         }
       }
@@ -352,32 +360,6 @@ const RoadmapPage: React.FC = () => {
       }
     }
   }, []);
-
-  // useEffect(() => {
-  //   const observer = new ResizeObserver((entries) => {
-  //     const rect = entries[0].contentRect;
-  //     scrollRefs.forEach((ref) => {
-  //       const controls = ref.current.parentElement.querySelectorAll(
-  //         "[data-slidecontrol]"
-  //       );
-  //       if (elementHasOverflown(ref.current)) {
-  //         controls.forEach((el: HTMLElement) => {
-  //           el.classList.remove("hidden");
-  //         });
-  //       } else {
-  //         controls.forEach((el: HTMLElement) => {
-  //           el.classList.add("hidden");
-  //         });
-  //       }
-  //     });
-  //   });
-
-  //   observer.observe(document.documentElement);
-
-  //   return () => {
-  //     observer.unobserve(document.documentElement);
-  //   };
-  // }, []);
 
   return (
     <Layout
@@ -401,21 +383,15 @@ const RoadmapPage: React.FC = () => {
                 the future and not yet scoped in detail, as well as past
                 achievements.
               </p>
-              <Link
-                to="https://medium.com/@dfinity/the-internet-computer-roadmap-62487bdce289"
-                className="link-primary !text-white select-none hover:!text-white/70"
-              >
-                Roadmap Milestones explained <LinkArrowUpRight />{" "}
-              </Link>
             </div>
           </div>
 
           <div className="container-12 relative">
-            <div className="absolute w-[115%] sm:w-7/12 left-1/12 translate-y-5/12 -translate-x-[10%] bottom-1/2 md:left-0 md:w-6/12 md:bottom-0 md:translate-x-[110%] md:translate-y-1/12">
+            <div className="absolute w-[80%] sm:w-7/12 left-2/12 translate-y-3/12 sm:translate-y-6/12 -translate-x-[10%] bottom-1/2 md:left-0 md:w-4/12 md:bottom-0 md:translate-x-[175%] md:-translate-y-[35%]">
               <img
                 className="w-full"
-                src="/img/roadmap/roadmap-viz.webp"
-                alt=""
+                src="/img/roadmap/roadmap.svg"
+                alt="roadmap"
               />
             </div>
           </div>
@@ -467,7 +443,7 @@ const RoadmapPage: React.FC = () => {
                   ref={scrollRefs[indexTheme]}
                   data-scroll={indexTheme}
                   aria-label="milestones"
-                  className="flex gap-2 md:gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
+                  className="flex gap-2 md:gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full hide-scrollbar box-border pl-[var(--offcut)] pr-[var(--offcut)]"
                   style={
                     {
                       scrollbarWidth: "none",

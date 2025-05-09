@@ -20,8 +20,8 @@ const cardsContent = [
   },
   {
     title: "Dev Discord Office Hours",
-    body: "Every Wednesday at 9am CET and 7pm CET",
-    link: "https://discord.gg/jnjVVQaE2C",
+    body: "Every Wednesday at 9AM CET/CEST and 8AM PST/PDT",
+    link: "https://discord.internetcomputer.org",
   },
   {
     title: "DFINITY developer grants and bounties",

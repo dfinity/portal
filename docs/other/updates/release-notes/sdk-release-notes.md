@@ -8,7 +8,7 @@ The SDK provides everything you need to perform the following key tasks:
 
 -   Simulate the Internet Computer network running locally on your development computer.
 
--   Deploy compiled programs as [canisters](/docs/current/concepts/glossary#canister).
+-   Deploy compiled programs as [canisters](/docs/references/glossary#c).
 
 -   Interact with your application service using a command-line interface or through a web browser.
 
@@ -26,7 +26,7 @@ To see a list of known problems with `dfx` or to report a problem you discovered
 
 Joining the [DFINITY Developer Forum](https://forum.dfinity.org/) is an effective way to learn from community members, ask questions, solicit help from other developers, and provide insight and feedback about your experiences.
 
-If you have questions that aren’t answered by the community, you might also want to check out [Troubleshooting](/docs/current/developer-docs/smart-contracts/test/troubleshooting) topics for information about common issues, workarounds for known issues, or help troubleshooting warnings or errors.
+If you have questions that aren’t answered by the community, you might also want to check out [Troubleshooting](/docs/building-apps/getting-started/troubleshooting) topics for information about common issues, workarounds for known issues, or help troubleshooting warnings or errors.
 
 For technical support, send email to [DFINITY Support](mailto:support@dfinity.org).
 

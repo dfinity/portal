@@ -1,0 +1,224 @@
+---
+keywords: [intermediate, tutorial, user sign in, user login, internet identity, integrate with ii, ii, integrate ii, integrate internet identity, enable user login, user auth, auth client, auth testing, ii testing, playwright, ii test, pullable canister, configure ii, local development]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Integrating Internet Identity
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+This guide demonstrates an example of how to integrate Internet Identity authentication into an application. In this example, a user can interact with the application's user interface to log in with their Internet Identity and then make a call to the backend canister's `whoami` method that returns the principal of the user.
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+<input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a>
+</TabItem>
+</Tabs>
+
+### Step 1: Create or open a project.
+
+First, use `dfx start` to start a [local development environment](/docs/building-apps/test/pocket-ic)(/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+
+Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/tree/master/motoko/who_am_i).
+
+#### Creating a new project
+
+Create a new project with the command:
+
+```
+dfx new internet_identity_app --type=motoko --no-frontend --extras internet-identity
+cd internet_identity_app
+```
+
+:::info
+To use a Rust backend canister, use `--type=rust` instead.
+:::
+
+The `--extras` flag will add the **pullable** version of the Internet identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/building-apps/advanced/using-third-party-canisters).
+
+#### Using an existing project
+
+If you already have a project that was not created with the extra Internet Identity feature, you can modify the project to use the pullable Internet Identity canister.
+First, add the canister configuration to the project's `dfx.json` file:
+
+```json file=../../references/samples/motoko/who_am_i/dfx.json
+```
+
+### Step 2: Create a "Who am I" function.
+
+To add a simple "Who am I?" function, insert the following code into the backend canister's source code file:
+
+<Tabs>
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko file=../../references/samples/motoko/who_am_i/backend/app.mo
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust file=../../references/samples/rust/who_am_i/backend/lib.rs
+```
+
+</TabItem>
+</Tabs>
+
+
+### Step 3: Edit frontend code.
+
+In the frontend canister code, add a method to the `App` class to call the backend function and initialize the auth client:
+
+```js file=../../references/samples/motoko/who_am_i/frontend/src/App.jsx
+```
+
+:::warning
+
+Make sure to always create a single `AuthClient` instance on page load and reuse it within your click handlers.
+
+:::
+
+:::info
+
+If you are developing using the Safari web browser, you need to change the value returned for the local development environment to `http://localhost:4943?canisterId=<canister_id>`.
+
+:::
+
+Install the required `npm` package:
+
+```bash
+npm install @dfinity/auth-client
+```
+
+:::caution
+
+Make sure that all **@dfinity/&lt;package&gt;** dependencies in **package.json** are the same version.
+
+:::
+
+
+### Step 4: Deploy the application:
+
+```bash
+dfx deploy
+```
+
+Open the frontend URL that is returned in the deployment output. Your dapp's frontend will be displayed.
+
+Click the "Login" button. You'll be redirected to the Internet Identity frontend. Since you're running this locally, you will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
+
+Click the "Who am I" button and it should return your Internet Identity principal:
+
+```
+Your principal is: 5uylz-j7fcd-isj73-gp57f-xwwyy-po2ib-7iboa-fdkdv-nrsam-3bd3r-qqe
+```
+
+:::info
+
+The above principal is an example. The principal returned will be different based on the account and the environment where the application and Internet Identity are running.
+
+:::
+
+## Local frontend development
+
+When modifying this example's frontend, it is recommended to develop using a local development server instead of using the deployed frontend canister. This is because using a local development server will enable Hot Module Reloading, allowing you to see any modifications made to your frontend instantaneously, rather than having to redeploy the frontend canister to see the changes.
+
+To start a local development server, run `npm run start`. The output will contain the local address the project is running at, such as `127.0.0.1:4943`.
+
+## End-to-end testing
+
+To run end-to-end testing for Internet Identity integrations, you can use the [Internet Identity Playwright plugin](https://github.com/dfinity/internet-identity-playwright).
+
+To use this plugin, first install [Playwright](https://playwright.dev/), then install the plugin itself with a package manager:
+
+```
+# Install with npm
+npm install --save-dev @dfinity/internet-identity-playwright
+
+# Install with pnpm
+pnpm add --save-dev @dfinity/internet-identity-playwright
+
+# Install with yarn
+yarn add -D @dfinity/internet-identity-playwright
+```
+
+Import the plugin into your Playwright test file:
+
+```typescript title="e2e/login.spec.ts"
+import {testWithII} from '@dfinity/internet-identity-playwright';
+```
+
+Then begin writing your tests, such as:
+
+```typescript title="e2e/login.spec.ts"
+testWithII('should sign-in with a new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithNewIdentity();
+});
+
+testWithII('should sign-in with an existing new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithIdentity({identity: 10003});
+});
+```
+
+In this test, `iiPage` represents your application's page that initiates the authentication flow with Internet Identity. By default, the test will look for a button identified by `[data-tid=login-button]`. This can be customized by configuring your own selector:
+
+```typescript title="e2e/login.spec.ts"
+const loginSelector = '#login';
+
+testWithII('should sign-in with a new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithNewIdentity({selector: loginSelector});
+});
+
+testWithII('should sign-in with an existing new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithIdentity({identity: 10003, selector: loginSelector});
+});
+```
+
+If desired, you can have the test wait for Internet Identity to be ready by providing the local development environment URL and the canister ID of your local Internet Identity instance:
+
+```typescript title="e2e/login.spec.ts"
+testWithII.beforeEach(async ({iiPage, browser}) => {
+  const url = 'http://127.0.0.1:4943';
+  const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
+
+  await iiPage.waitReady({url, canisterId});
+});
+```
+
+You can also configure a timeout parameter that indicates how long the function should wait for Internet Identity before failing:
+
+```typescript title="e2e/login.spec.ts"
+testWithII.beforeEach(async ({iiPage, browser}) => {
+  const url = 'http://127.0.0.1:4943';
+  const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
+  const timeout = 30000;
+
+  await iiPage.waitReady({url, canisterId, timeout});
+});
+```
+
+Once your tests are ready, run them with the command:
+
+```
+npx playwright test
+```
+
+[View more details in the plugin's repo](https://github.com/dfinity/internet-identity-playwright).
+
+## Resources
+
+- [Internet Identity dashboard](https://identity.internetcomputer.org/).
+- [Internet Identity specification](/docs/references/ii-spec).
+- [Internet Identity GitHub repository](https://github.com/dfinity/internet-identity).
+- [Internet Identity alternative frontend origins](/docs/building-apps/authentication/alternative-origins).
+- [Playwright plugin for E2E testing](https://github.com/dfinity/internet-identity-playwright).

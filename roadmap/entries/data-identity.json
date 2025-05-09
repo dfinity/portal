@@ -1,0 +1,243 @@
+{
+  "categoryName": "Identity",
+  "categoryDescription": "An identity solution that is privacy-preserving, self-sovereign, and user-friendly is a fundamental building block for Web3 adoption. Internet Identity provides a robust authentication solution based on passkeys, with easy onboarding and support for identity attributes while protecting the users’ privacy.",
+  "elements": [
+    {
+      "title": "Identity signer standards",
+      "overview": "Standards that enable an untrusted relying party (e.g., canister or web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
+      "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/wg-identity-authentication",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": true,
+      "milestone_id": "Synchrotron"
+    },
+    {
+      "title": "Transaction approval on Ledger's ICP app",
+      "overview": "Signer standards are coming to the Ledger HW ICP app. Specifically, the Leger ICP app will acquire the ability to interact with dapps that support signer standards and display ICRC-21 compatible messages to the user.",
+      "description": "Ledger users will be able to confirm and authorize a digital currency transaction initiated through a compatible dapp. The Ledger device will first validate the BLS-signed incoming message and after the user reviews the transaction details, e.g., recipient address, amount, and any associated fees, the Ledger device will digitally signing and send the transaction.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/wg-identity-authentication",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": true,
+      "milestone_id": "Synchrotron"
+    },
+    {
+      "title": "Signer standards in use by ICP dapps and wallets",
+      "is_milestone": true,
+      "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
+      "milestone_id": "Synchrotron",
+      "eta": "Q4 2024",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Rethinking the Internet Identity user experience",
+      "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Pulse",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Sing in with OpenID",
+      "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
+      "status": "in_progress",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "Make account numbers obsolete",
+      "overview": "Account numbers are confusing and hard to remember. Explore ways to deprecate them through the use of the latest WebAuthn features.",
+      "status": "future",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "Streamline the authentication flow",
+      "overview": "Make the authentication flow clear to the user. Avoid pitfalls and frustrations.",
+      "status": "future",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "One account, multiple identities",
+      "overview": "Internet Identity provides users with the tools to manage multiple identities.",
+      "status": "future",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "Disentangle identity / wallet / app",
+      "overview": "Resolve the confusion that exists between Internet Identity and wallets. Clearly define the role that Internet Identity plays for applications.",
+      "status": "future",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "Additional measures for securing accounts",
+      "overview": "Implement additional security measures for protecting accounts when a device is compromised or stolen.",
+      "status": "future",
+      "milestone_id": "Pulse"
+    },
+
+
+    {
+      "title": "Credentials solution for everyone",
+      "description": "Make the credential solution that Internet Identity offers a preferred option for a diverse range of issuers.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Plexus",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Bring the verifiable credentials protocol closer to the industry standard",
+      "overview": "Evolve the verifiable credentials protocol by bringing it closer to the industry standards.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
+    {
+      "title": "Credential issuers discoverability",
+      "overview": "Facilitate the discovery of credentials issuers through aggregation APIs.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
+    {
+      "title": "Increase adoption of the credentials solution",
+      "overview": "Lower the time to onboard new issuers and verifiers. Explore partnerships with key players in the industry.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
+    {
+      "title": "Sustainable business model for issuers and verifiers",
+      "overview": "Define and implement a sustainable business model for all: issuers, verifiers, users.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
+    {
+      "title": "ICP DID (Decentralised Identifier) method",
+      "overview": "Specify a canonical ICP DID method for DID creation, resolution, update, delegation and deletion.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Verifiable Credentials protocol extension",
+      "overview": "Extension of the Verifiable Credentials protocol to allow the VC issuer frontend to participate in credentials sharing.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Verifiable Credentials billing",
+      "overview": "Billing for provisioning of verifiable credentials. Enables a business model for identity providers.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/wg-identity-authentication",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "External services authentication to canisters",
+      "overview": "Allowing users to authenticate to canisters via Web2-based authentication services. True Web2-Web3-X-SSO.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Usernames instead of Anchors",
+      "overview": "Usernames are easier to remember and better reflect what users are used to from Web2 to identify to services.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Decentralized KYC",
+      "overview": "Decentralized onchain KYC system that provides a real-world identity backbone to ICP.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Social recovery",
+      "overview": "Recovery of an identity in case the device or credentials are lost by recovering the underlying key from the user's social circle who hold key shares.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Configurable II",
+      "overview": "Dapps can customize their configuration of II to meet the needs of their users and their product.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Root domain name independence",
+      "overview": "Make internet identities independent of the domain II was executing in when the II has been created. Important to ensure II anchors remain accessible even if II's root domain needs to be switched.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Identity management",
+      "overview": "Bringing comprehensive identity management features to II: Giving users a 360° view on their identities, such as their open sessions, credential sharing history, or pseudonyms used with parties.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ZK-II (Zero-knowledge II)",
+      "overview": "Cryptographically privacy-preserving II, based on vetKeys, that unconditionally prevents linkability of identities.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    }
+  ]
+}

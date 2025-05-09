@@ -1,0 +1,18 @@
+{
+  "categoryName": "",
+  "categoryDescription": "",
+  "elements": [
+    {
+      "title": "vetKeys API mock implementation",
+      "overview": "For facilitating the community discussions regarding the API of vetKeys, a mock implementation has been provided in a canister and used to converge to the final API.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    }
+  ]
+}

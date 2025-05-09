@@ -1,17 +1,52 @@
 .github/ @dfinity/idx
 * @dfinity/editorial
 
-docs/developer-docs/updates/release-notes/ @dfinity/dx
-docs/developer-docs/build/agents @dfinity/dx
-docs/developer-docs/build/cdks @dfinity/dx
-docs/developer-docs/integrations/rosetta @dfinity/finint
-docs/developer-docs/security @dfinity/product-security
-docs/references/execution-errors.mdx @dfinity/runtime @dfinity/execution
-docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
+# Certain areas of documentation must be owned by the respective teams
 
-# Each piece of documentation must be owned by the respective teams
-docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/runtime
-docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/runtime
+# DX
+docs/other/updates/release-notes/ @dfinity/dx
+docs/building-apps/interact-with-canisters/agents/ @dfinity/dx
+docs/building-apps/developer-tools/cdks/ @dfinity/dx
 
+# SDK
+submodules/sdk @dfinity/sdk
 
+# Motoko
+submodules/motoko @dfinity/languages
+
+# FI
+docs/defi/ @dfinity/finint
+
+# Cross chain
+docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
+docs/building-apps/chain-fusion/ @dfinity/cross-chain-team
+
+# ProdSec
+docs/building-apps/best-practices/security/ @dfinity/product-security
+docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
 src/pages/security-advisories.tsx @dfinity/product-security
+
+# Execution
+docs/references/execution-errors.mdx @dfinity/execution
+docs/building-apps/interact-with-canisters/advanced-calls.mdx @dfinity/execution
+docs/building-apps/essentials/message-execution.mdx @dfinity/execution
+docs/building-apps/network-features/simd.mdx @dfinity/execution
+docs/building-apps/network-features/periodic-tasks-timers.mdx @dfinity/execution
+docs/building-apps/canister-management/backtraces.mdx @dfinity/execution
+
+# Boundary Node
+docs/building-apps/frontends/custom-domains/ @dfinity/boundary-node
+
+# Trust
+docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust
+
+# The Interface Specification
+docs/references/_attachments/certificates.cddl @dfinity/canister-os
+docs/references/_attachments/http-gateway.did @dfinity/canister-os
+docs/references/_attachments/ic.did @dfinity/canister-os
+docs/references/_attachments/interface-spec-changelog.md @dfinity/canister-os
+docs/references/_attachments/requests.cddl @dfinity/canister-os
+docs/references/http-gateway-protocol-spec.md @dfinity/canister-os
+docs/references/ic-interface-spec.md @dfinity/canister-os
+
+

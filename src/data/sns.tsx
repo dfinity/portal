@@ -68,7 +68,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
     description: (
       <>
         A virtual pets game from the creators of Neopets. Non-profit, 100%
-        on-chain baby dragons, crowdsourced world building, magic spells, and a
+        onchain baby dragons, crowdsourced world building, magic spells, and a
         prince in disguise!
       </>
     ),
@@ -80,7 +80,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
     description: (
       <>
         The first and only dedicated search engine for Web3 content that runs on
-        100% on-chain. Trustless SEO backed by ZKML enables transparent results,
+        100% onchain. Trustless SEO backed by ZKML enables transparent results,
         instead of ad-based content .
       </>
     ),
@@ -126,7 +126,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
     description: (
       <>
         A collaborative hub for all things Web3 gaming. Plus an all-in-one web3
-        game platform and protocol running 100% on-chain on the Internet
+        game platform and protocol running 100% onchain on the Internet
         Computer.
       </>
     ),
@@ -161,7 +161,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
     twitter: "https://twitter.com/nuancedapp",
     description: (
       <>
-        The world's first publishing platform built entirely on-chain. In the
+        The world's first publishing platform built entirely onchain. In the
         same way DeFi has taken the middleman out of finance, Nuance does the
         same for the written word.
       </>

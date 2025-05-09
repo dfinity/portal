@@ -24,10 +24,10 @@ function FeaturePage() {
               <p className="tw-lead-sm md:tw-lead mb-0">
                 The Network Nervous System (NNS) is the decentralized autonomous
                 organization (DAO) that governs the Internet Computer (IC). It
-                is decentralized, runs fully on-chain and is, for instance,
+                is decentralized, runs fully onchain and is, for instance,
                 responsible for making protocol level upgrades to continuously
                 improve the Internet Computer. ICP neuron holders vote on
-                proposals that uprade the IC. Once such a proposal is accepted,
+                proposals that upgrade the IC. Once such a proposal is accepted,
                 it is autonomously executed across the blockchain (no human
                 intervention).
                 <br />

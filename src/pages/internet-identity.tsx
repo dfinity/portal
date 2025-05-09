@@ -36,7 +36,7 @@ const users = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          100s of next generation fully on-chain dapps
+          100s of next generation fully onchain dapps
         </Link>{" "}
         built end-to-end on the Internet Computer blockchain without needing to
         create usernames and passwords. Secure and seamless authentication and
@@ -73,7 +73,7 @@ const developers = [
         </Link>
         ,{" "}
         <Link
-          href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/overview"
+          href="/docs/building-apps/network-features/verifiable-credentials/overview"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
@@ -104,7 +104,7 @@ const developers = [
   },
   {
     icon: "img/internet-identity/features-2.svg",
-    title: "Build fully on-chain dapps",
+    title: "Build fully onchain dapps",
     description:
       "Build the next generation of secure, tamperproof and fully-on chain web3 applications on the Internet Computer.\
        Dynamic web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
@@ -336,7 +336,7 @@ function InternetIdentityPage() {
               </motion.p>
               <Link
                 className="mt-3 md:mt-6 link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                href="https://identity.ic0.app/"
+                href="https://identity.internetcomputer.org/"
               >
                 <LinkArrowRight />
                 <span>Launch Internet Identity</span>
@@ -429,7 +429,7 @@ function InternetIdentityPage() {
               </motion.p>
               <Link
                 className="button-primary mt-6"
-                href="https://identity.ic0.app/"
+                href="https://identity.internetcomputer.org/"
               >
                 Launch Internet Identity
               </Link>
@@ -471,7 +471,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
-                  href="https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/integrate-internet-identity"
+                  href="/docs/building-apps/authentication/integrate-internet-identity"
                 >
                   <LinkArrowRight />
                   <span>Start Building</span>
@@ -516,7 +516,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="button-primary mt-6"
-                  href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/issuer"
+                  href="/docs/building-apps/network-features/verifiable-credentials/issuer"
                 >
                   Become an Issuer
                 </Link>
@@ -618,7 +618,7 @@ function InternetIdentityPage() {
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Internet Computer allows anyone to develop and deploy fully
-                    on-chain web applications. With only the browser, users can
+                    onchain web applications. With only the browser, users can
                     operate any dapp and perform transactions beyond the mere
                     transfer of tokens. This design has the following
                     implications:
@@ -632,7 +632,7 @@ function InternetIdentityPage() {
                       <li>
                         Dapps must make authenticated calls to their own
                         canisters as well as shared infrastructure canisters,
-                        for instance the <Link href="https://internetcomputer.org/docs/current/developer-docs/defi/tokens/token-standards">IC Ledger canister</Link>.
+                        for instance the <Link href="/docs/defi/token-ledgers/usage/icp_ledger_usage">IC Ledger canister</Link>.
                       </li>
                     </ul>
                   </p>
@@ -694,7 +694,7 @@ function InternetIdentityPage() {
                     existing identity.
                     <div>
                       <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        href="/docs/building-apps/network-features/verifiable-credentials/how-it-works"
                         className="mt-6 md:mt-12 link-primary link-with-icon !font-bold no-underline hover:!text-black"
                       >
                         <LinkArrowRight /> Find out more
@@ -744,13 +744,13 @@ function InternetIdentityPage() {
                 On most blockchains, you need to authenticate every time you
                 make a request. The Internet Computer enables you to temporarily
                 and securely delegate authentication to the dapp after you connect. This is made possible by
-                creating sessions every time you use an app and leverages chain key cryptography.
+                creating sessions every time you use an app and leverages chain-key cryptography.
               </p>
               <Link
                 href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28"
                 className="link-primary link-with-icon !font-bold no-underline hover:!text-black mt-6"
               >
-                <LinkArrowUpRight /> Blog:  Chain key cryptography{" "}
+                <LinkArrowUpRight /> Blog:  Chain-key cryptography{" "}
               </Link>
             </Faq>
           </FaqSection>

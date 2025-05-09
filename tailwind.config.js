@@ -66,6 +66,7 @@ module.exports = {
       },
     },
     screens: {
+      xs: "420px",
       sm: "641px",
       md: "997px",
       lg: "1281px",
@@ -120,6 +121,7 @@ module.exports = {
     },
     fontFamily: {
       circular: ["CircularXX", "sans-serif"],
+      haloGrotesk: ["HaloGrotesk", "sans-serif"],
     },
     fontSize: {
       // bold
@@ -154,6 +156,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
@@ -203,6 +206,9 @@ module.exports = {
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
+                ".tw-heading-alt-1": "@apply font-haloGrotesk text-heading-1 text-[12.8rem] tracking-[-0.04em] font-normal leading-[90%] uppercase",
+                ".tw-heading-alt-2": "@apply font-haloGrotesk text-heading-2 text-[2.2rem] md:text-[3.5rem] font-normal leading-none uppercase",
+                ".tw-heading-alt-3": "@apply font-haloGrotesk text-heading-3 font-normal leading-none uppercase",
                 ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
                 ".tw-button-xs": "@apply text-button-xs font-bold tracking-[0.02em] uppercase",
 
@@ -222,8 +228,8 @@ module.exports = {
                 '.button-primary': '@apply text-center inline-block bg-infinite rounded-xl text-white tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-black hover:text-white transition-colors border-none',
                 '.button-white': '@apply text-center inline-block bg-white rounded-xl text-infinite tw-heading-7-caps py-4 px-6 uppercase hover:no-underline hover:bg-white-80 hover:text-infinite transition-colors border-none',
                 '.button-ghost': '@apply text-center inline-block bg-transparent rounded-xl border-none text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-black/20 transition-colors',
-                '.button-outline': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-black border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
-                '.button-outline-white': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-white border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
+                '.button-outline': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-black/30 border-solid text-black tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-infinite hover:border-infinite hover:text-white transition-colors',
+                '.button-outline-white': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-white/30 border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-outline-white-30': '@apply text-center inline-block bg-transparent rounded-xl border-2 border-white/30 border-solid text-white tw-heading-7-caps py-[14px] px-6 uppercase hover:no-underline hover:bg-white hover:border-white hover:text-infinite transition-colors',
                 '.button-transparent': "@apply button-white button-with-icon bg-transparent text-white hover:bg-transparent hover:text-white-80",
                 '.button-fancy': '@apply inline-flex gap-6 hover:gap-8 transition-[gap] items-center cursor-pointer from-infinite via-infinite to-razzmatazz rounded-xl text-white tw-heading-7-caps py-4 px-6 hover:no-underline hover:text-white bg-gradient-100',
@@ -314,6 +320,17 @@ module.exports = {
         )
       );
     }),
+
+    function ({ addUtilities }) {
+      addUtilities({
+        ".mask-fade-bottom": {
+          "-webkit-mask-image": "linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%)",
+          "mask-image": "linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%)",
+        },
+      });
+    },
+
   ],
   corePlugins: { preflight: false },
+  darkMode: ["class", '[data-theme="dark"]'],
 };

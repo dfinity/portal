@@ -1,6 +1,6 @@
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-const MOC_VERSION = "0.11.1";
+const MOC_VERSION = "0.14.3";
 
 async function addPackage(name, repo, version, dir) {
   const meta_url = `https://data.jsdelivr.com/v1/package/gh/${repo}@${version}/flat`;
@@ -38,7 +38,9 @@ function attachOnRunButton() {
     });
     document.head.appendChild(script);
   } else {
-    console.log("motoko not loaded");
+    if (process.env.NODE_ENV === "development") {
+      console.log("motoko not loaded");
+    }
   }
 }
 

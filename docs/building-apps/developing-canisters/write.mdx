@@ -1,0 +1,121 @@
+---
+keywords: [beginner, getting started, tutorial, hello world, writing code, writing smart contracts, write, smart contracts, write code]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Write
+
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
+
+ICP supports a wide range of applications and architecture types, ranging from a single canister to complex, multi-canister projects and everything in between.
+
+ICP accepts and executes canister code in the WebAssembly (Wasm) binary format. Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be installed into a canister.
+
+You can begin writing and structuring your application using one of two primary workflows:
+
+- **Standard workflow**: The developer writes an application's code and deploys it to ICP as one or more canisters.
+
+- **Framework-based workflow**: An external framework is used to help facilitate creating and deploying canisters.
+
+## Standard workflow
+
+### Choosing the programming language for the backend
+
+The backend stores the application’s data and contains the core logic. Several languages are supported, such as:
+
+- **[Motoko](/docs/motoko/main/getting-started/motoko-introduction)**: Supported by [DFINITY](https://github.com/dfinity/motoko). Motoko is production-ready and was specifically designed to leverage the actor-based programming model of ICP. It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
+Examples of production canisters that use Motoko include [ICDex](https://github.com/iclighthouse/ICDex) and [CycleOps](https://github.com/CycleOperators/cycles-manager). [Learn more about using Motoko](/docs/motoko/main/getting-started/motoko-introduction).
+
+- **[Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications. All system canisters, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icp), and the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration canisters, are written in Rust. This language gives the developer full control over all aspects of the canister, from performance to memory management. The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code. [Learn more about using Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+
+- **TypeScript (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle. It is in beta. Please check [the Azle website](https://demergent-labs.github.io/azle/) for more information.
+
+- **Python (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Kybra. It is in beta. Please check [the Kybra website](https://demergent-labs.github.io/kybra/kybra.html) for more information.
+
+- **[C++](https://docs.icpp.world/)**: Supported through the [C++ CDK](https://docs.icpp.world/).
+
+### Choosing a web framework for the frontend
+
+The [HTTP Gateway protocol](/docs/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets, such as JS, HTML, and CSS, from a canister via HTTP.
+This means that [web assets can be stored fully onchain](/docs/building-apps/frontends/using-an-asset-canister).
+
+[Svelte](https://svelte.dev/), [React](https://react.dev/), and [Vue](https://vuejs.org/) have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks.
+
+Using a frontend stored off-chain or having no frontend at all are also valid options for applications. [Learn more](/docs/building-apps/frontends/using-an-asset-canister).
+
+## Framework-based workflow
+
+### Juno
+[Juno](https://juno.build/docs/intro) is a community project that is tailored for Web2 developers. It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns. For more details, refer to [the official Juno documentation](https://juno.build/docs/intro).
+
+### Bitfinity EVM
+
+[Bitfinity EVM](https://docs.bitfinity.network/) is tailored for Solidity developers. It runs an instance of the Ethereum virtual machine on ICP and enables developers to upload and execute canisters written in Solidity. For more details, refer to [the official Bitfinity documentation](https://docs.bitfinity.network/).
+
+## Creating projects
+
+### Default project architecture
+
+The `backend` canister stores the dapp's functions and core logic.
+
+The `frontend` canister stores the app's frontend assets, including files such as HTML, CSS, JavaScript, React, images, and videos.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+### Using a sample project
+
+You can obtain sample or boilerplate projects from sources such as [ICP Ninja](https://icp.ninja) or the [sample repository](https://github.com/dfinity/examples). Confirm that the project's root directory contains a `dfx.json` file that defines the project's canisters.
+
+ICP Ninja provides several sample project templates that can be opened, edited, and deployed directly from your web browser, while the sample repository provides examples for specific use cases and workflows such as token transfers and the Bitcoin integration.
+
+### Creating a new project with `dfx`
+
+Before writing canister code, you need to create a project by running the command:
+
+```
+dfx new PROJECT_NAME --type=motoko
+cd PROJECT_NAME
+```
+
+Options for the `--type` flag are `motoko`, `rust`, `azle`, and `kybra`. Using [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Azle](https://demergent-labs.github.io/azle//), or [Kybra](https://demergent-labs.github.io/kybra/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
+
+### `dfx.json`
+
+Regardless whether you are using a sample project or have created a new project, your project directory should contain a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
+
+```json title=dfx.json
+{
+  "canisters": {
+    "PROJECT_NAME_backend": { // Backend canister name
+      "main": "src/PROJECT_NAME_backend/main.mo", // Backend canister source code
+      "type": "motoko" // Canister language
+    },
+    "PROJECT_NAME_frontend": { // Frontend canister name
+      "dependencies": [
+        "PROJECT_NAME_backend"
+      ],
+      "source": [
+        "src/PROJECT_NAME_frontend/dist" // Frontend canister source code
+      ],
+      "type": "assets", // All frontend canisters will have type 'assets' regardless of the frontend framework used
+      "workspace": "PROJECT_NAME_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```

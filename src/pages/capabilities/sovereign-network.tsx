@@ -39,8 +39,8 @@ function FeaturePage() {
           </div>
         </section>
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
-          {/* 
-            delete this div if image is not needed 
+          {/*
+            delete this div if image is not needed
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
@@ -52,8 +52,8 @@ function FeaturePage() {
 
           <div
             className="
-            sm:flex-1 
-            prose 
+            sm:flex-1
+            prose
             prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
             prose-h3:tw-heading-7 prose-h3:mb-2
             prose-p:tw-paragraph prose-p:mb-4
@@ -114,7 +114,7 @@ function FeaturePage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
+                See examples of dapps 100% onchain
               </Link>
             </p>
           </div>
@@ -133,7 +133,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/building-apps/essentials/canisters"
             />
             <CardWithDescription
               title="Sample Code"

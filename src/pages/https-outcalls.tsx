@@ -69,7 +69,7 @@ function HTTPSOutcalls() {
               Today, the majority of the world's API-accessible data, such as
               stock prices, football scores, IoT-related data, or crypto
               exchange prices, is hosted on Web 2.0 services, which is outside
-              the secure on-chain walls of a blockchain. As smart contract
+              the secure onchain walls of a blockchain. As smart contract
               software often relies on external web 2-hosted data to implement
               useful functionality, it is crucial that this data be accessible,
               first to unfold the full potential of smart contracts, and second,
@@ -166,7 +166,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Dev docs"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use"
+              href="/docs/building-apps/network-features/using-http/https-outcalls/overview"
             />
             <CardWithDescription
               title="Beyond oracles"

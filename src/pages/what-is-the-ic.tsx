@@ -20,9 +20,7 @@ function WhatIsIcpPage() {
   return (
     <Layout
       title="What is ICP"
-      description={`The ICP blockchain adds autonomous serverless cloud functionality to
-      the public Internet - making it possible to build almost any system or service
-      entirely on a decentralized network using "canister software", an evolution of smart contracts.`}
+      description={`The Internet Computer is a public blockchain network enabled by new science from first principles. It is millions of times more powerful and can replace clouds and traditional IT. `}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-what-is-the-ic.webp"></ShareMeta>
@@ -66,16 +64,21 @@ function WhatIsIcpPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6"
                 variants={transitions.item}
               >
-                What is the
-                <br className="hidden md:block" /> ICP blockchain?
+                What is ICP?
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-            Learn how the ICP blockchain unlocks the power of smart
-            contracts and explore the advanced design choices that make this possible.
-             </motion.p>
+                The Internet Computer is a public blockchain network enabled by
+                new science from first principles. It is millions of times more
+                powerful and can replace clouds and traditional IT. The network
+                – created by ICP, or Internet Computer Protocol – is
+                orchestrated by permissionless decentralized governance and is
+                hosted on sovereign hardware devices run by independent parties.
+                Its purpose is to extend the public internet with native cloud
+                computing functionality.
+              </motion.p>
             </div>
           </AnimateSpawn>
         </section>
@@ -116,36 +119,26 @@ function WhatIsIcpPage() {
         <section className=" bg-infinite text-white mt-16 md:mt-40">
           {/* What Features ICP has to unleash power of smart contracts */}
           <section className="container-12 pt-10 md:pt-20 pb-30 md:pb-20 relative">
-            <div className="text-center mb-16 md:mb-24">
+            <div className="text-center">
               <AnimateSpawn variants={transitions.container}>
                 <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense blob-x-10 blob-y-0 z-0 md:opacity-30 "></div>
-                <motion.h2
-                  className="tw-heading-3 md:tw-heading-60 text-left md:text-center md:w-7/10 inline-block mb-0"
-                  variants={transitions.item}
-                >
-                  What ICP offers today
-                </motion.h2>
               </AnimateSpawn>
             </div>
 
             <div className="flex flex-col gap-16 md:gap-40">
               <TranslatedLayout imageUrl="/img/what-is-the-ic/platform_risk_large.webp">
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  High-performance smart contracts
+                  A public blockchain with cloud-like power
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Smart contracts on the ICP blockchain can utilize
-                  hundreds of gigabytes of memory and compute at the full speed
-                  of a modern CPU, which is many orders of magnitude more than
-                  Ethereum smart contracts. For example, the high performance of ICP smart
-                  contracts enables the <a
-                    className="text-white underline"
-                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM" >
-                  demo of an AI inference model running on an ICP smart contract</a>, which is uniquely possible on ICP.
+                  Smart contracts on the ICP blockchain can utilize hundreds of
+                  gigabytes of memory and compute at the full speed of a modern
+                  CPU, which is many orders of magnitude more than Ethereum
+                  smart contracts. For example, the Internet Computer is able to run AI models as tamperproof smart contracts, a unique and game-changing advance for decentralized networks and crypto generally.
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white text-center mb-6 md:mb-8"
                   href="/ai"
                 >
                   Train and run AI models as smart contracts
@@ -163,13 +156,10 @@ function WhatIsIcpPage() {
                 reverse={true}
               >
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  Low cost & resource efficiency
+                  Efficiency comparable to traditional IT
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  ICP is designed to be resource-efficient, making it both
-                  cost-effective and environmentally friendly. For example, storing a
-                  gigabyte of memory on ICP costs a smart contract only $5 per
-                  year.
+                  ICP uses advanced science and technology to make smart contracts (a new kind of tamperproof and unstoppable network-resident software that blockchains can host) millions of times more efficient – enabling it to be used as an alternative to software running on traditional IT.
                 </p>
 
                 <Link
@@ -180,7 +170,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/developer-docs/cost-estimations-and-examples"
+                  href="/docs/building-apps/essentials/gas-cost"
                 >
                   <DocsIcon /> Learn more about ICP costs
                 </Link>
@@ -191,12 +181,10 @@ function WhatIsIcpPage() {
                 reverse={false}
               >
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  State-of-the-art User Experience{" "}
+                  ICP smart contracts can serve web experiences directly to users
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Users only need a browser to interact with ICP smart
-                  contracts. Users do not need wallets or tokens or any custom
-                  software, eliminating all hurdles typically associated with using dapps.
+                  ICP smart contracts process HTTP, and interact with users directly via web experiences they create. Because they pay for their own computation (using a "reverse-gas" model), they can stay in the background in the mode of backend code. This is key to allowing advanced blockchain to play the role of a public serverless cloud, delivering end-to-end decentralization and security. The Internet Computer is the ultimate expression of the "onchain is the new online" paradigm.
                 </p>
 
                 <Link
@@ -207,7 +195,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
+                  href="/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
                 >
                   <DocsIcon /> Deploying your first full-stack dapp
                 </Link>
@@ -215,7 +203,6 @@ function WhatIsIcpPage() {
               <TranslatedLayout
                 // imageUrl="/img/what-is-the-ic/fusion.webp"
                 imageUrl="/img/what-is-the-ic/RPC-canister.webp"
-
                 reverse={true}
               >
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
@@ -228,12 +215,14 @@ function WhatIsIcpPage() {
                   a token backed 1:1 by BTC held entirely on the ICP blockchain,
                   is possible because ICP smart contracts can sign transactions.
                   Additionally, the{" "}
-                  <a
-                    className="text-white underline"
-                    href="/docs/current/developer-docs/defi/exchange-rate-canister/">
+                  <Link
+                    className="link-white"
+                    href="/docs/references/system-canisters/index"
+                  >
                     exchange rate canister
-                  </a> sends and receives HTTP requests to fetch data from major cryptocurrency
-                  exchanges.
+                  </Link>{" "}
+                  sends and receives HTTP requests to fetch data from major
+                  cryptocurrency exchanges.
                 </p>
 
                 <Link
@@ -250,7 +239,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa"
+                  href="/docs/references/t-sigs-how-it-works"
                 >
                   <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
                   ICP contracts threshold signing
@@ -261,25 +250,21 @@ function WhatIsIcpPage() {
                 reverse={false}
               >
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  Developer-friendly
+                  Developer Power-up
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Developers can write contracts using popular languages like
-                  Rust, TypeScript, or Python and easily incorporate libraries
-                  from their respective ecosystem, much like they would in
-                  traditional web development. They also have the option to use Motoko,
-                  a language specifically designed for the ICP environment.
+                  Developers build within a serverless environment, using any programming language that can compile to Wasm (WebAssembly) byte code. Popular languages include Rust, Motoko and Python. Apps are built using "actor" software units that run in parallel. These run within their own persistent memory pages, creating a system of "orthogonal persistence," where data persists automatically inside developers' abstractions, essentially making logic and data one. ICP provides a modern, next-generation programming environment like none other, which is also internet native.
                 </p>
                 <Link
                   className="button-outline-white text-center mb-6 md:mb-8"
-                  href="/docs/current/developer-docs/getting-started/hello-world"
+                  href="https://icp.ninja"
                 >
-                  Start building
+                  INSTANT WEB IDE
                 </Link>{" "}
                 <br />
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/home"
+                  href="/docs/home"
                 >
                   <DocsIcon /> Developer documentation
                 </Link>
@@ -288,17 +273,7 @@ function WhatIsIcpPage() {
           </section>
         </section>
         {/*what design choices ICP has to achieve vision */}
-        <section className="container-12 pt-10 md:pt-40 pb-30 md:pb-20 relative">
-          <div className="text-center mb-16 md:mb-20">
-            <AnimateSpawn variants={transitions.container}>
-              <motion.h2
-                className="tw-heading-3 md:tw-heading-60 text-gradient text-left md:text-center md:w-7/10 inline-block mb-0"
-                variants={transitions.item}
-              >
-                Key Design Choices Behind ICP's Capabilities
-              </motion.h2>
-            </AnimateSpawn>
-          </div>
+        <section className="container-12 pt-10 md:pt-30 pb-30 md:pb-20 relative">
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
 
           <div>
@@ -306,8 +281,7 @@ function WhatIsIcpPage() {
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5"
               variants={transitions.container}
             >
-
-            <motion.div
+              <motion.div
                 className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
                 variants={transitions.item}
               >
@@ -320,17 +294,16 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Chain key cryptography
+                  Chain Key verification
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  A family of protocols leveraging threshold cryptography
-                  enables ICP to sign messages that can be efficiently verified,
-                  facilitating interoperability and a state-of-the-art user
-                  experience.
+                  When software in a web browser, or another place, submits a
+                  call to ICP, the transaction result in signed by a "chain key"
+                  signature proving both that it was produced correctly, and
+                  that it's tamper-free. One perpetual 48-byte key can be used
+                  to validate responses from the entire network, forever...
                 </p>
               </motion.div>
-
-
 
               <motion.div
                 className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
@@ -346,14 +319,15 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  DAO control{" "}
+                  Decentralized governance
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  Protocols often evolve slowly due to the need for consensus.
-                  ICP stands out by enabling frequent, decentralized updates
-                  through its NNS DAO, resulting in hundreds of upgrades since
-                  its launch. This allows for continuous addition of new
-                  functionalities to smart contracts.
+                  Networks often evolve slowly and suffer from centralized
+                  control. By contrast, ICP is orchestrated by fully-automated
+                  decentralized governance, in the form of its
+                  protocol-integrated NNS DAO, allowing for frequent upgrades
+                  and network re-structuring. The network scales, evolves and
+                  adapts in real time.
                 </p>
               </motion.div>
               <motion.div
@@ -370,13 +344,14 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Scale out via subnets
+                  Scaling via subnets
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  ICP comprises multiple subnets, each supporting different
-                  smart contracts that can communicate seamlessly. The network can
-                  dynamically add new subnets to scale with demand, enhancing
-                  efficiency and performance.
+                  The ICP network is comprised from multiple subnet blockchains,
+                  each of which adds capacity for hosting smart contract
+                  compute, while remaining transparent to smart contracts, which
+                  interact directly within one global seamless environment.
+                  Capacity scales horizontally and transparently.
                 </p>
               </motion.div>
               <motion.div
@@ -393,14 +368,14 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Powerful node hardware{" "}
+                  Sovereign node hardware
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  A replicated system is only as fast as the weakest nodes, so
-                  ICP runs on powerful machines in data centers, ensuring all
-                  nodes meet a high minimum standard. This design means
-                  participation isn't possible with low-power devices like a
-                  Raspberry Pi, but it enables high performance.
+                  Some blockchains are hosted by Big Tech's clouds, which is
+                  antithetical. ICP runs on sovereign hardware operated by
+                  independent node operators. Node hardware standardization also
+                  plays an important role in the workings of the network,
+                  unlocking efficiency that is orders of magnitude better.
                 </p>
               </motion.div>
               <motion.div
@@ -417,14 +392,14 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Asynchronous Execution{" "}
+                  Onchain parallelism
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  ICP's smart contracts operate asynchronously, unlike
-                  Ethereum's synchronous model where the "whole world waits" for one's
-                  smart contract transactions and causes delays as
-                  transactions process sequentially. ICP's asynchronous execution allows
-                  multiple contracts to process simultaneously.
+                  Traditional smart contracts run synchronously, which means
+                  transactions run one at a time, bounding maximum transaction
+                  throughput. ICP's contracts run in parallel, while keeping
+                  computation deterministic, unleashing unbounded throughput
+                  scaling, and constant performance under load.
                 </p>
               </motion.div>
               <motion.div
@@ -438,15 +413,14 @@ function WhatIsIcpPage() {
                   className="h-24"
                 />
                 <h3 className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm">
-                  Decentralization
+                  Deterministic Decentralization
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  ICP enhances security and efficiency through a deterministic
-                  decentralization approach that balances maximum
-                  decentralization with minimized replication. This method
-                  considers factors such as the diversity of node providers and
-                  their locations. As a result, ICP's replication factor is
-                  lower than that of Bitcoin, optimizing for efficiency.
+                  Traditional blockchains combine thousands of anonymous
+                  validators to produce consensus quorums, but many are run by
+                  the same operator, and run on the same clouds. ICP uses its
+                  governance to combine nodes into subnets using deterministic
+                  decentralization, allowing replication to be slashed.
                 </p>
               </motion.div>
 
@@ -466,10 +440,12 @@ function WhatIsIcpPage() {
                   WebAssembly
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
-                  ICP uses WebAssembly, an open standard for binary formats, for
-                  its smart contracts. This enables developers to use various
-                  programming languages with ease, enhancing developer
-                  friendliness due to straightforward mappings to WebAssembly.
+                  The ICP execution environment leverages the WebAssembly
+                  virtual machine. This enables developers to create smart
+                  contracts using any programming language that compiles to Wasm
+                  byte code, unlocking far greater flexibility and developer
+                  productivity. WebAssembly also helps unlock massive
+                  performance and efficiency.
                 </p>
               </motion.div>
 
@@ -511,7 +487,7 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Smart contracts serve web assets{" "}
+                  Smart contracts serve web{" "}
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   Users can interact with smart contracts through a standard
@@ -519,9 +495,6 @@ function WhatIsIcpPage() {
                   state-of-the-art user experience.
                 </p>
               </motion.div>
-
-
-
             </AnimateSpawn>
             <div className="flex justify-center items-center mt-10">
               {" "}
@@ -549,7 +522,7 @@ function WhatIsIcpPage() {
               className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              Get familiar with ICP{" "}
+              Connect and learn
             </motion.h2>
           </AnimateSpawn>
 
@@ -571,7 +544,7 @@ function WhatIsIcpPage() {
             <CardWithDescription
               title="Developer docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="ICP dapps"

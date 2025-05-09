@@ -10,7 +10,9 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import RotatingStatPanel, { RotatingStat } from "../components/Common/RotatingStatsPanel";
+import RotatingStatPanel, {
+  RotatingStat,
+} from "../components/Common/RotatingStatsPanel";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
@@ -82,7 +84,7 @@ function DefiPage() {
   return (
     <Layout
       title="DeFi"
-      description="From fully on-chain order book DEXs, to bridgeless multi-chain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
+      description="From fully onchain order book DEXs, to bridgeless multi-chain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
@@ -112,7 +114,7 @@ function DefiPage() {
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  From fully on-chain order book DEXs, to bridgeless multi-chain
+                  From fully onchain order book DEXs, to bridgeless multi-chain
                   swaps, the Internet Computer provides an unmatched tech stack
                   for DEXs to thrive on and DeFi to flourish.
                 </motion.p>
@@ -141,7 +143,7 @@ function DefiPage() {
               variants={transitions.item}
             >
               Everything
-              <br className="hidden md:block" /> on chain
+              <br className="hidden md:block" /> onchain
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"
@@ -193,7 +195,7 @@ function DefiPage() {
                   ability to sign native transactions on other blockchains
                   without using risky bridges. Today, users can seamlessly swap
                   between BTC/ETH in seconds for a few cents with 0 gas fees by
-                  using ckBTC, ckETH, and soon ckERC-20 tokens.{" "}
+                  using ckBTC, ckETH, and ckERC-20 tokens.{" "}
                 </p>
                 <p className="mb-0 flex flex-col gap-6 items-start">
                   <Link
@@ -236,10 +238,10 @@ function DefiPage() {
                 ICDex
               </div>
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Fully on-chain order book DEX
+                Fully onchain order book DEX
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                ICDex provides the world’s first fully on-chain order book DEX.
+                ICDex provides the world’s first fully onchain order book DEX.
                 Create limit orders or swap tokens instantly with complete
                 transparency and decentralization. ckBTC/ckETH swaps now
                 possible.
@@ -338,7 +340,7 @@ function DefiPage() {
                   <motion.p className="mb-0" variants={transitions.item}>
                     <Link
                       className="button-outline-white"
-                      href="https://internetcomputer.org/ecosystem?tag=Wallets"
+                      href="https://internetcomputer.org/ecosystem?tag=Wallet"
                     >
                       All ICP wallets
                     </Link>
@@ -439,7 +441,7 @@ function DefiPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Build a fully on-chain ETH wallet
+                  Build a fully onchain ETH wallet
                   <LinkArrowUpRight />
                 </Link>
               </p>
@@ -502,7 +504,7 @@ function DefiPage() {
             <CardWithDescription
               title="ETH starter tutorial"
               description=""
-              href="/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial"
+              href="/docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial"
             />
 
             <CardWithDescription
@@ -519,7 +521,7 @@ function DefiPage() {
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
+              href="/docs/defi/chain-key-tokens/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

@@ -17,12 +17,12 @@ Motoko is a new programming language for smart contracts. It is designed to seam
 
 [Motoko, a Programming Language Designed for the Internet Computer, Is Now Open Source](https://medium.com/dfinity/motoko-a-programming-language-designed-for-the-internet-computer-is-now-open-source-8d85da4db735)
 
-[Motoko Programming Language](https://internetcomputer.org/docs/current/motoko/main/getting-started/motoko-introduction)
+[Motoko Programming Language](https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction)
 
-[Learn the basics of Motoko](https://internetcomputer.org/docs/current/motoko/main/getting-started/motoko-introduction)
+[Learn the basics of Motoko](https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction)
 
-[Motoko style guidelines](https://internetcomputer.org/docs/current/motoko/main/reference/style)
+[Motoko style guidelines](https://internetcomputer.org/docs/motoko/main/reference/style)
 
-[Motoko grammar](https://internetcomputer.org/docs/current/motoko/main/getting-started/motoko-introduction-grammar)
+[Motoko grammar](https://internetcomputer.org/docs/motoko/main/reference/motoko-grammar)
 
-[Motoko base library](https://internetcomputer.org/docs/current/motoko/main/base/)
+[Motoko base library](https://internetcomputer.org/docs/motoko/main/base/)

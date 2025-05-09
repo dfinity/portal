@@ -1,0 +1,30 @@
+---
+keywords: [ingress message, query call, update call, error handling, idempotency]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Message execution
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+To interact with a canister, you must send it a message. There are two forms of messages that are executed on ICP:
+
+- **Ingress messages:** Requests sent to canisters from external entities like users.
+
+- **Inter-canister messages:** Messages sent from one canister to another from within the network.
+
+This page discusses ingress message execution and the two primary [types](/docs/references/ic-interface-spec#http-interface) of calls that can be sent using ingress messages: update calls and query calls.
+
+## Calls that go through consensus
+
+For an ingress message to modify a canister's state, the call must go through consensus. It must be executed on every node within a subnet to return certified responses signed by the subnet, providing the response’s authenticity. This provides the caller with validation that the result has not been tampered with by a malicious node, and it prevents the canister’s state from diverging. Ingress messages that go through consensus are referred to as [update calls](/docs/building-apps/interact-with-canisters/update-calls). Update calls cost cycles.
+
+## Calls that do not go through consensus
+
+Ingress calls that do modify a canister’s state and only return data from a canister do not go through consensus. Each call is answered and signed by a single replica. While responses can be obtained within milliseconds, they are not signed by the entire subnet, meaning a malicious replica or boundary node could arbitrarily modify the response. Calls that do go through consensus are referred to as [query calls](/docs/building-apps/interact-with-canisters/query-calls). Query calls currently do not cost cycles.
+
+Some applications may have higher authenticity requirements for query responses. For example, if a dapp queries a proposal description that the user then votes on, it may not be acceptable that the result could be tampered with, as it could trick users to vote in the attacker's favor. As an alternative, you can issue query calls as update calls instead. While that's easy to implement, it makes the calls significantly slower.
+
+Another alternative approach is to sign the data beforehand and provide [certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data/) in query responses. While this approach has better performance than sending query calls as update calls, it can be complex to implement depending on the specific use case. An example where certified variables are used is within the [HTTP asset certification](/docs/building-apps/security/data-integrity-and-authenticity#use-http-asset-certification-and-avoid-serving-your-dapp-through-rawicp0io). It is also recommended to view the [security best practices](/docs/building-apps/security/data-integrity-and-authenticity#certified-variables) for certified variables.

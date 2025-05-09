@@ -59,7 +59,7 @@ const WalletCard: React.FC<{
       <img
         src={icon}
         alt=""
-        className="w-14 h-14 object-contain object-center"
+        className="w-14 h-14 object-contain object-center mx-0"
         loading="lazy"
       />
       <div className="">
@@ -422,7 +422,7 @@ function TokenHolders(): JSX.Element {
                   This was made possible on the Internet Computer through native{" "}
                   <Link
                     className="text-white hover:text-white underline hover:cursor-pointer"
-                    href="/bitcoin-integration"
+                    href="/bitcoin"
                   >
                     Bitcoin integration
                   </Link>
@@ -440,11 +440,11 @@ function TokenHolders(): JSX.Element {
                       src="/img/showcase/icdex_logo.webp"
                       loading="lazy"
                       alt=""
-                      className="w-20 h-20"
+                      className="w-20 h-20 ml-0 mr-auto"
                     ></img>
                     <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                     <p className="tw-lead-sm mb-0 text-black/60">
-                      First orderbook-based DEX running fully on-chain. Bypass
+                      First orderbook-based DEX running fully onchain. Bypass
                       CEXs and get ICP or CHAT tokens for your BTC.{" "}
                     </p>
                   </Link>
@@ -458,7 +458,7 @@ function TokenHolders(): JSX.Element {
                       src="/img/showcase/icpswap_logo.webp"
                       loading="lazy"
                       alt=""
-                      className="w-20 h-20"
+                      className="w-20 h-20 ml-0 mr-auto"
                     ></img>
                     <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
                     <p className="tw-lead-sm mb-0 text-black/60">
@@ -504,9 +504,10 @@ function TokenHolders(): JSX.Element {
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
                   className="link-primary link-with-icon"
-                  href="https://wiki.internetcomputer.org/wiki/ICP_custody_options"
+                  href="https://internetcomputer.org/ecosystem?tag=Wallet"
                 >
-                  Learn more about custody options <LinkArrowUpRight />
+                  See all wallets
+                  <LinkArrowUpRight />
                 </Link>
               </motion.p>
             </AnimateSpawn>
@@ -524,46 +525,25 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <div className="space-y-4">
                   <WalletCard
+                    title="Oisy"
+                    description="Safe. Seamless. Sovereign. Built by Dfinity"
+                    link="https://oisy.com/"
+                    icon="/img/showcase/oisy_logo.svg"
+                  />
+                  <WalletCard
                     title="NNS Dapp"
                     description="Store and stake ICP, participate in governance."
                     link="https://nns.ic0.app/"
                     icon="/img/showcase/nnsfront-enddapp_logo.webp"
                   />
                   <WalletCard
-                    title="Stoic"
-                    description="The native wallet of ICP’s largest NFT marketplace, Entrepot."
-                    link="https://www.stoicwallet.com/"
-                    icon="/img/showcase/stoicwallet_logo.webp"
-                  />
-                  <WalletCard
-                    title="AstroX ME"
-                    description="ME wallet secures crypto assets without seed phrase across any device."
-                    link="https://astrox.me/"
-                    icon="/img/showcase/astroxme_logo.webp"
-                  />
-                  <WalletCard
-                    title="OpenChat"
-                    description="Chat accounts are crypto wallets. Send ICP, ckBTC and SNS tokens via messages."
-                    link="https://oc.app"
-                    icon="/img/showcase/openchat_logo.webp"
-                  />
-                  <WalletCard
-                    title="TAGGR"
-                    description="DAO controlled social media dapp. Every account comes with wallet out of the box."
-                    link="https://taggr.link/"
-                    icon="/img/showcase/taggr_logo.webp"
-                  />
-                  <WalletCard
                     title="NFID"
-                    description="Web3 Identity. Every new account creates an untraceable hardware wallet."
+                    description="Crypto wallet & gateway to ICP apps"
                     link="https://nfid.one/"
                     icon="/img/showcase/nfid_logo.webp"
                   />
                 </div>
-              </motion.div>
-              {/* Column 2 */}
-              <motion.div className="" variants={transitions.item}>
-                <h3 className="tw-heading-5 mb-6">Mobile app wallets</h3>
+                <h3 className="tw-heading-5 mb-6 mt-12 ">Mobile app wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Mobile apps offer easy access to crypto assets for people who
                   use them frequently.
@@ -576,25 +556,25 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/plug_logo.webp"
                   />
                   <WalletCard
-                    title="AstroX ME"
-                    description="ME wallet secures crypto assets without seed phrase across any device."
-                    link="https://astrox.me/"
-                    icon="/img/showcase/astroxme_logo.webp"
+                    title="Trust Wallet"
+                    description="Multichain wallet trusted by 140M people"
+                    link="https://trustwallet.com/blog/beginners-guide-to-icp"
+                    icon="/img/showcase/logo_trust.png"
                   />
                   <WalletCard
-                    title="Klever"
-                    description="Multi-chain mobile wallet integrated with the ICP ledger."
-                    link="https://klever.io/"
-                    icon="/img/showcase/kleverio_logo.webp"
+                    title="Bity"
+                    description="Self-custody app connected to Bity's fiat gateway"
+                    link="https://bity.com/en/personal/wallet"
+                    icon="/img/showcase/logo_bity.png"
                   />
                 </div>
-
-                <h3 className="tw-heading-5 mb-6 mt-16">
-                  Browser extension wallets
-                </h3>
+              </motion.div>
+              {/* Column 2 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Browser extension wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Great for users already familiar with crypto wallets from
-                  other chains.
+                  other chains. <br />
                 </p>
 
                 <div className="space-y-4">
@@ -605,43 +585,41 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/plug_logo.webp"
                   />
                   <WalletCard
-                    title="Bitfinity Wallet"
-                    description="Store and transfer BTC, ICP, SNS-1, and other tokens. One-click login to dapps."
-                    link="https://wallet.infinityswap.one/"
-                    icon="/img/showcase/bitfinitywallet_logo.webp"
+                    title="Trust Wallet"
+                    description="Multichain wallet trusted by 140M people"
+                    link="https://trustwallet.com/blog/beginners-guide-to-icp"
+                    icon="/img/showcase/logo_trust.png"
                   />
                 </div>
-              </motion.div>
-              {/* Column 3 */}
-              <motion.div className="" variants={transitions.item}>
-                <h3 className="tw-heading-5 mb-6">Hardware wallets</h3>
+                <h3 className="tw-heading-5 mb-6 mt-12">Hardware wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Maximum security. Hardware wallets hold private keys in
                   airgapped machines or ledger devices.
                 </p>
                 <div className="space-y-4">
                   <WalletCard
-                    title="Ledger"
-                    description="Complete control of crypto assets via a Ledger hardware wallet and Ledger app."
-                    link="https://support.ledger.com/hc/en-us/articles/4412643422481-Internet-Computer-ICP-?support=true"
+                    title="Ledger HW wallets"
+                    description="The original hardware wallet incl. staking support"
+                    link="https://www.ledger.com/coin/wallet/internet-computer"
                     icon="/img/showcase/ledger_logo.webp"
                   />
                   <WalletCard
                     title="AirGap"
-                    description="Turn your old smartphone into an air gapped crypto wallet."
+                    description="Turn your old phone into a HW wallet"
                     link="https://support.airgap.it/currencies/icp/introduction/"
                     icon="/img/showcase/airgap_logo.webp"
                   />
                   <WalletCard
-                    title="Quill"
-                    description="Provides a command line tool to manage ICP in an air gapped computer."
-                    link="https://github.com/dfinity/quill"
-                    icon="/img/showcase/quill_logo.webp"
+                    title="Tangem"
+                    description="Cold wallet in a smart card"
+                    link="https://x.com/Tangem/status/1841759127845982370"
+                    icon="/img/showcase/logo_tangem.png"
                   />
                 </div>
-                <h3 className="tw-heading-5 mb-6 mt-16">
-                  Institutional custody
-                </h3>
+              </motion.div>
+              {/* Column 3 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Institutional custody</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   For anyone managing large amounts of crypto assets.
                   Institutional custodians offer reliability and customer
@@ -649,20 +627,33 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <div className="space-y-4">
                   <WalletCard
-                    title="Sygnum"
-                    description="World’s first digital asset bank providing institutional-grade security to ICP holders."
-                    link="https://www.sygnum.com/"
-                    icon="/img/showcase/sygnum_logo.webp"
-                  />
-                  <WalletCard
-                    title="Coinbase"
-                    description="Store assets in segregated cold storage. An institutional-grade custody solution. "
+                    title="Coinbase Custody"
+                    description="Institutional ICP custody since 2021"
                     link="https://www.coinbase.com/"
                     icon="/img/showcase/coinbase_logo.webp"
                   />
                   <WalletCard
+                    title="Copper"
+                    description="Institutional ICP & token custody and ICP staking"
+                    link="https://copper.co/en"
+                    icon="/img/showcase/logo_cooper.png"
+                  />
+                  <WalletCard
+                    title="Primevault"
+                    description="Institutional ICP & token custody with DeFi access"
+                    link="https://www.primevault.com/"
+                    icon="/img/showcase/logo_primevault.png"
+                  />
+                  <WalletCard
+                    title="Sygnum"
+                    description="Institutional ICP custody & staking since 2021"
+                    link="https://www.sygnum.com/"
+                    icon="/img/showcase/sygnum_logo.webp"
+                  />
+
+                  <WalletCard
                     title="Taurus"
-                    description="Banking-grade custody for digital asset management."
+                    description="Swiss custody technology with HSM & MPC"
                     link="https://www.taurushq.com/"
                     icon="/img/showcase/taurus_logo.png"
                   />

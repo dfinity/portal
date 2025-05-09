@@ -480,7 +480,7 @@ function SnsPage() {
             <CardWithDescription
               title="Launch an SNS DAO"
               description=""
-              href="/docs/current/developer-docs/daos/sns"
+              href="https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System"
             />
             <CardWithDescription
               title="FAQ: How to join and participate in an SNS DAO"

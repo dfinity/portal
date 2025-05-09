@@ -1,0 +1,28 @@
+---
+keywords: [advanced, dfx, specifying replica version, replica version, specific replica version with dfx, dfx replica version, dfx replica]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Specifying a replica / MOC version for `dfx`
+
+<MarkdownChipRow labels={["Advanced", "dfx workflow"]} />
+
+The replica version included in the most recent release of `dfx` may not reflect the most up to date replica release. In some workflows, such as testing new features of the replica, having the most recent version of the replica may be desirable. 
+
+## Using a specific replica version
+
+To use a specific replica version, there are two options:
+
+1. Set the `DFX_REPLICA_PATH` local environment variable to reflect `DFX_REPLICA_PATH=<path to new replica>`. If this option is used, it is also necessary that `canister_sandbox` and `sandbox_launcher` are in the same directory with the desired replica version.
+
+2. Use the commands `dfx cache install && cp <path to new replica> "$(dfx cache show)/replica"` to copy the replica version into `dfx`'s cache. 
+
+## Use a specific Motoko version
+
+To use a specific Motoko version with `dfx deploy`, export the following environment variable that indicates which Motoko base version you'd like `dfx` to use:
+
+```bash
+DFX_MOC_PATH="$(vessel bin)/moc" dfx <command>
+```
+

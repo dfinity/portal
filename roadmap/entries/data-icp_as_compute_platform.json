@@ -1,0 +1,368 @@
+{
+  "categoryName": "Compute Platform",
+  "categoryDescription": "All computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
+  "elements": [
+    {
+      "title": "Load balancing & increased compute capacity",
+      "is_milestone": true,
+      "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and taking checkpoints asynchronously. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
+      "milestone_id": "Flux",
+      "status": "in_progress",
+      "eta": "",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Asynchronous checkpointing",
+      "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Flux"
+    },
+    {
+      "title": "Canister migration",
+      "overview": "Allows controllers to migrate a canister to another subnet, without changing its canister id. This is crucial to balance load across subnets and fully benefit from ICP’s scaling via subnets. It also allows canisters to move to another subnet which may differ in features or replication factor.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Flux"
+    },
+    {
+      "title": "Canister snapshots can be imported and exported",
+      "overview": "With canister snapshots, it became possible for controllers to take a full snapshot of their canister, allowing it to revert back to this state at a later point in time. This feature is an extension to the canister snapshot functionality, allowing controllers to retrieve snapshots and upload snapshots. This would enable storing canister snapshots in a canister or off-chain, using snapshots for testing purposes in a local environment, or loading a state snapshot of canister A into another canister B. The latter can be useful for testing purposes and is also a building block towards canister migration.",
+      "status": "in_progress",
+      "milestone_id": "Flux"
+    },
+    {
+      "title": "Enhance subnet capacity for active canisters",
+      "overview": "Increase the maximum number of concurrently active canisters supported by a subnet. This will be achieved through optimizations to the canister scheduling algorithm, improvements to canister sandbox management, and increased memory efficiency within canister sandboxes. This enhancement is crucial for ICP scaling and more predictable handling of peak loads.",
+      "status": "deployed",
+      "milestone_id": "Flux"
+    },
+    {
+      "title": "Integrity of node state",
+      "is_milestone": true,
+      "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
+      "milestone_id": "Magnetosphere",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "TEE-capable IC-OS",
+      "overview": "Adapt IC-OS to run inside SEV-SNP, ensuring it boots securely and allows for mutual remote attestation among all nodes.",
+      "status": "in_progress",
+      "milestone_id": "Magnetosphere"
+    },
+    {
+      "title": "Remote attestation for users",
+      "overview": "Allowing users to verify that an API boundary node is running trusted software inside a genuine trusted execution environment.",
+      "status": "in_progress",
+      "milestone_id": "Magnetosphere"
+    },
+    {
+      "title": "Load balancing via subnet splitting",
+      "is_milestone": true,
+      "description": "This milestone introduces subnet splitting, which allows one subnet to split into two, each subnet hosting half of the workload of the original subnet. Whenever a subnet is overloaded, the NNS can decide to split the subnet, which helps balance load across multiple subnets and avoids overloaded subnets. The first subnet split on ICP mainnet will mark the completion of this milestone.",
+      "milestone_id": "Fission",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Subnet splitting with minimal downtime",
+      "overview": "In a previous feature, subnet splitting became possible via a sequence of NNS proposals, which would incur significant downtime. In this feature, the goal is to make subnet splitting practically possible with minimal downtime for the subnet.",
+      "status": "in_progress",
+      "milestone_id": "Fission"
+    },
+    {
+      "title": "Best-effort messaging",
+      "overview": "Extend canister messaging by an additional message type that enables more scalable and responsive dApps.",
+      "status": "in_progress",
+      "forum": "https://forum.dfinity.org/t/scalable-messaging-model/26920",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/127668",
+      "docs": "",
+      "eta": "2024",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Small guaranteed-response messages",
+      "overview": "Extend canister messaging by an additional message type with the same guarantees as current messages with a tighter upper bound on the message size to allow for more messages that can be in flight at the same time.",
+      "status": "future",
+      "forum": "https://forum.dfinity.org/t/scalable-messaging-model/26920",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/127668",
+      "docs": "",
+      "eta": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Charging for query calls",
+      "overview": "Charge a fair price in cycles for executed query calls. Currently query calls are free and only update calls are charged for.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Increasing instruction limits for query and update calls",
+      "overview": "Raising instruction limits of query and update calls. They have limitations of a few billion instructions currently.",
+      "eta": "",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Wallet apps (\"Wapps\")",
+      "overview": "Wapps are the next evolutionary step of apps: Install your personal apps directly on the blockchain and keep control over your data.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Support of 1M canisters per subnet",
+      "overview": "Allowing up to 1 million canisters on a subnet, up from the current 100K canisters.",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false,
+      "forum": "https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/9",
+      "community": true,
+      "milestone_id": ""
+    },
+    {
+      "title": "Support multiple TB of replicated storage",
+      "overview": "Enhance replicated storage further to multiple terabytes per subnet. Requires protocol improvements and optimizations.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "",
+      "imported": true
+    },
+    {
+      "title": "Improved state certification",
+      "overview": "The protocol requires certifying parts of the replicated state every round, which includes hashing the respective parts of the state. The faster this is, the more time can be spent on other things during the round. This feature is about optimizing certification times.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Messages to specified canister version",
+      "overview": "Messages to canisters can be required to be only executed by a specific version of the call target to help guarantee that the intended (e.g., audited) version of the code is running.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Capabilities",
+      "overview": "Capabilities — untamperable self-contained permission tokens — allow users or canisters to perform actions with canisters. Authority can be delegated by delegating a capability to another entity.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Canister groups",
+      "overview": "Guarantee collocation of canisters on the same subnet by adding them to canister groups. Groups of canisters are always moved together between subnets.",
+      "forum": "https://forum.dfinity.org/t/canister-groups/16015",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Secure XNet cycles protocol",
+      "overview": "Securely sending cycles from a less-trusted subnet, e.g., a UTOPIA subnet, rented subnet, or low-replication subnet, to a regular ICP subnet.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Subnet deletion",
+      "overview": "Enable subnets to be deleted via NNS proposals.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "in_beta": false
+    },
+    {
+      "title": "Libraries for large data transfers",
+      "overview": "Provide more generalized abstractions to overcome message size limits and make them invisible to developers.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Wasm deduplication",
+      "overview": "Deduplicating Wasm code for running many instances of the same Wasm as is done in a-canister-per-user architectures.",
+      "forum": "https://forum.dfinity.org/t/what-do-you-need-from-icp-in-2024/25726/9",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "WASI V2 support",
+      "overview": "WASI V2 is the upcoming standard for running Wasm programs outside of browser environments. It is expected to become the de-facto standard and be targeted by many libraries and thus should be supported by ICP.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "HTTPS outcalls V2",
+      "overview": "Additional feature for HTTPS outcalls: IPv4 support, single-node outcalls, and fire & forget outcalls. Allows for reduced latencies and reduced cycle costs.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "XNet composite queries",
+      "overview": "Extending composite queries to work also across subnets, which gives full power to composite queries and simplifies building large-scale decentralized systems.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Capacity reservations for system calls",
+      "overview": "Allowing canisters to reserve capacity for certain crucial system calls such as chain-key signing or HTTPS outcalls. Reserved capacity is guaranteed to be available to the canister.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Replica key lifecycle V2 — Proactive security",
+      "overview": "Apply key rotation or resharing to a broader range of keys managed by the replica. Improved security against temporarily compromised replicas.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "User-paid messages",
+      "overview": "Using the regular gas model for specific settings: The caller, instead of the canister, pays for update and query calls.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Blob storage",
+      "overview": "Storage of large amounts of data in a subnet using a new blob storage architecture with the cost of around 2x the SSD cost. More efficient and cheaper compared to regular storage on ICP.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Blob streaming (download)",
+      "overview": "High-throughput download of data from a subnet's blob storage. The implementation of this can have the bulk data bypass consensus when being read by a user.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Blob streaming (upload)",
+      "overview": "High-throughput upload of data to a subnet's blob storage. An optimized implementation of this can have the bulk data bypass consensus, if uploaded by a user.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Inter-subnet messaging across trust zones",
+      "overview": "Sovereign subnets are typically more centralized than ICP mainnet. Thus, messaging between subnets needs to consider the trust zones the subnets are in to maintain overall security.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+---
+keywords: [beginner, concept, best practices, latency, troubleshooting latency, subnet latency troubleshooting]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Developer best practices: Troubleshooting
+
+<MarkdownChipRow labels={["Beginner", "Best practices"]} />
+
+This page describes methods for troubleshooting latency, options for optimizing canister performance, and other common issues.
+
+For troubleshooting specific to the IC SDK, see [IC SDK troubleshooting](/docs/building-apps/getting-started/troubleshooting).
+
+For troubleshooting specific to using the IC SDK with WSL, see [WSL troubleshooting](/docs/building-apps/getting-started/wsl-troubleshoot).
+
+## Problem: Network latency
+
+On subnets with low loads, query calls are answered in about 100 milliseconds, and update calls are answered in about 2 seconds.
+
+On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters). Look for the subnet your canister is deployed on, then compare the number of "Million Instructions Executed Per Second" for that subnet to other subnets.
+
+You can also make an HTTPS outcall from a canister to get the subnet metrics (which includes the number of canisters, state of subnet, etc) from the system state tree.
+
+### Recommendation: Consider moving the canister to another subnet.
+
+If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](/docs/building-apps/essentials/gas-cost#execution-and-compute-allocation) setting. A compute allocation of 1% will guarantee your canister is scheduled for execution once every 100 rounds.
+
+### Recommendation: To troubleshoot network latency, obtain the [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) address and request IDs your canister is using before reaching out to the DFINITY team.
+
+In order for the team to troubleshoot network latency, they will need the boundary node ID and, if possible, the request ID. This information can be found by looking in the networking tab of the developer tools. The boundary node address will be listed as `Remote Address` and the request ID will be listed as the `X-Request-Id`.
+
+### Recommendation: Use query calls instead of update calls when possible.
+
+[Query calls](/docs/building-apps/interact-with-canisters/query-calls) are executed on a single node within a subnet and do not go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus); therefore, they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
+
+However, the security trade-offs of query calls must be considered. Since query calls do not go through consensus, it is not recommended that they be used for retrieving sensitive information that requires data assurance. For example, returning financial data on a decentralized exchange dapp should not use basic query calls, as it is important the call return data that has been validated through the subnet's consensus. As an alternative, [certified queries](/docs/building-apps/interact-with-canisters/query-calls) may be used.
+
+### Recommendation: Use efficient query calls.
+
+You can improve the efficiency of query calls by:
+
+- Avoid using unnecessary calls to the `balance()` and `time()` system APIs.
+
+- Utilize system API calls in places where their use is optimized.
+
+[Learn more in the improving query latencies blog post](https://internetcomputer.org/blog/features/improving-query-latencies).
+
+## Problem: Latency when accessing memory
+
+### Recommendation: Request data from heap memory instead of stable memory.
+
+Requesting data from [heap memory](/docs/building-apps/canister-management/storage) instead of [stable memory](/docs/building-apps/canister-management/storage) can reduce latency in some applications.
+
+## Problem: Inter-canister call latency
+
+### Recommendation: Skip inter-canister calls when possible.
+
+Inter-canister calls are a slow operation since they use `await` methods. Skipping inter-canister calls when they are not necessary can help reduce canister latency.
+
+## Problem: Unoptimized canister
+
+### Recommendation: Follow canister best practices.
+
+To ensure that your canister is optimized, both for latency and cycles cost, be sure to follow the [canister general best practices](/docs/building-apps/best-practices/general), which include ways to implement efficient Motoko and Rust code.
+
+## Problem: Frontend of a dapp deployed to the mainnet only shows a black screen with "Failed to load resource" error in the browser console
+
+The dapp worked correctly during local development, but once deployed to the mainnet, does not show the UI.
+
+## Recommendation: Check if a client-side firewall is blocking access.
+
+## Problem: Not authorized to deploy on a subnet
+
+Deploying a canister to the mainnet returns the error "Failed to create canister: Subnet nl6hn-ja4yw-wvmpy-3z2jx-ymc34-pisx3-3cp5z-3oj4a-qzzny-jbsv3-4qe does not exist or gb2r4-2iaaa-aaaam-qc5kq-cai is not authorized to deploy to that subnet."
+
+### Recommendation: Have an existing canister call `aaaaa-aa:create_canister`. The new canister will be created on the same subnet as the existing canister.
+
+## Problem: Installing code into a cycles wallet returns "access denied."
+
+A cycles wallet that has a cycles balance returns "access denied" when code is installed. The cycles wallet module hash is listed as "None."
+
+### Recommendation: Use `dfx identity --network ic deploy-wallet <target canister>`.  This will install the cycles wallet code in the canister and configure that canister as that identity’s wallet.
+
+
+## Problem: Rust canister’s Wasm module is not valid. Wasm module has an invalid import section
+
+### Recommendation: Some crates assume that certain functions are available in `wasm32-unknown-unknown`. Check if your crate assumes that certain functions are available when they are not.
+
+## Problem: Frontend deployed on the mainnet redirects to a local instance of Internet Identity
+
+In the frontend canister's prebuild process, `dfx` downloads the Wasm and Candid files for canisters that are configured as "remote" in the project's `dfx.json`. This is a known bug where that does not happen for some remote canisters.
+
+### Recommendation: Download the Candid and Wasm files manually and place them within your project's directory.
+
+## Problem: Frontend canister violates Content Security Policy
+
+A frontend deployed on the mainnet returns the error:
+
+```
+index-a7d238a0.js:65 Refused to connect to 'https://ic0.app/api/v2/canister/ds2zq-sqaaa-aaaag-atyyq-cai/read_state' because it violates the document's Content Security Policy.
+```
+
+### Recommendation: Reinstall the canister's code with `dfx deploy frontend_canister --mode reinstall`.
+
+## Problem: Project returns warning: This project does not define a security policy for some assets.
+
+### Recommendation: You should define a security policy in .ic-assets.json5.
+
+For example:
+
+```json5
+[
+  {
+    "match": "**/*",
+    "security_policy": "standard"
+  }
+]
+```
+
+## Problem: Cannot create a cycles wallet
+
+You try to create a cycles wallet and receive an error indicating that one already exists. If you try to query the balance of the wallet, it returns error that one is not created:
+
+```
+Error: Failed to setup wallet caller.
+Caused by: No wallet configured for combination of identity ‘default’ and network ‘ic’
+```
+
+### Recommendation: Delete `~/.config/dfx/identity/default/wallets.json` and try to redeploy the wallet.

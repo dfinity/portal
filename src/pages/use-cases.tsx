@@ -77,7 +77,7 @@ function UseCasesPage() {
                   Run your AI models on the blockchain
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Run AI models entirely on-chain to benefit from the security,
+                  Run AI models entirely onchain to benefit from the security,
                   resilience, and power of the ICP blockchain.
                 </p>
 
@@ -92,7 +92,7 @@ function UseCasesPage() {
                 <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[0%] -translate-y-[25%] z-0 md:opacity-30 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  On-chain swaps
+                  Onchain swaps
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                   Imagine a decentralized order-book exchange built exclusively
@@ -120,7 +120,7 @@ function UseCasesPage() {
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                   An open internet service (OIS) keeps all its code, user
-                  experience, compute and data on-chain, and must be
+                  experience, compute and data onchain, and must be
                   transparently configured, updated and instructed by an
                   advanced DAO. The Internet Computer enables this via a public
                   governance DAO framework called a service nervous system
@@ -171,7 +171,7 @@ function UseCasesPage() {
                   shift in gaming, enabling developers, modders and players to
                   build composable, and permissionless game worlds that live on
                   the blockchain forever. Now possible on the Internet Computer
-                  — 100% on-chain.
+                  — 100% onchain.
                 </p>
 
                 <Link
@@ -186,7 +186,7 @@ function UseCasesPage() {
 
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">NFTs </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  NFT’s live fully on-chain{" "}
+                  NFT’s live fully onchain{" "}
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                   The Internet Computer is the only blockchain storing all

@@ -1,0 +1,84 @@
+---
+keywords: [advanced, ethereum, cketh, erc20, ckerc20, ckusdc, cklink, ckoct, ckpepe, chain-key ethereum, overview]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ckERC20
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Chain-key tokens" ]} />
+
+## What is ckERC20?
+
+Chain-key ERC-20 (ckERC20) tokens are
+[ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)-compliant tokens that are backed 1:1 by the corresponding [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)-compliant token on Ethereum.
+For example, there are chain-key tokens for [USDC](https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai) and [LINK](https://dashboard.internetcomputer.org/ethereum/g4tto-rqaaa-aaaar-qageq-cai).
+
+The full list of chain-key tokens can be viewed on the [Internet Computer dashboard](https://dashboard.internetcomputer.org/) under 'Chain Fusion.'
+
+Just like other chain-key tokens, such as [ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview) and [ckETH](/docs/defi/chain-key-tokens/cketh/overview), the ckERC20 tokens do not rely on any centralized bridge to facilitate the conversion between the ckERC20 token and the ERC-20 token, which makes the conversion substantially more secure compared to other traditional 'wrapped' tokens.
+
+ckERC20 tokens offer the same advantages over their counterparts on Ethereum, including faster and cheaper transactions.
+
+A ckERC20 token can be created for any ERC-20 token. The process of adding a ckERC20 token requires creating an [NNS proposal](https://github.com/dfinity/ic/blob/master/rs/ethereum/ledger-suite-orchestrator/README.adoc#add-new-ckerc20).
+
+:::info
+
+Note that the [same requirements](/docs/defi/chain-key-tokens/overview#requirements-for-chain-key-tokens) as for any other type of chain-key token apply.
+
+:::
+
+## How it works
+
+The ckERC20 functionality is provided by two canisters, the **ckETH minter** and the **ledger suite orchestrator (LSO)**, and a helper smart contract on Ethereum:
+
+| Canister / contract                                                                                   | Ethereum mainnet                                                                                                                                                                    | Sepolia testnet                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ckETH Minter](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/minter)                        | [sv3dd-oaaaa-aaaar-qacoa-cai](https://dashboard.internetcomputer.org/canister/sv3dd-oaaaa-aaaar-qacoa-cai) ([Canister dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard)) | [jzenf-aiaaa-aaaar-qaa7q-cai](https://dashboard.internetcomputer.org/canister/jzenf-aiaaa-aaaar-qaa7q-cai) ([Canister dashboard](https://jzenf-aiaaa-aaaar-qaa7q-cai.raw.ic0.app/dashboard)) |
+| [LSO](https://github.com/dfinity/ic/tree/master/rs/ethereum/ledger-suite-orchestrator)                    | [vxkom-oyaaa-aaaar-qafda-cai](https://dashboard.internetcomputer.org/canister/vxkom-oyaaa-aaaar-qafda-cai)                                                                          | [2s5qh-7aaaa-aaaar-qadya-cai](https://dashboard.internetcomputer.org/canister/2s5qh-7aaaa-aaaar-qadya-cai)                                                                          |
+| [Helper](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/minter/ERC20DepositHelper.sol) | [0x6abDA0438307733FC299e9C229FD3cc074bD8cC0](https://etherscan.io/address/0x6abDA0438307733FC299e9C229FD3cc074bD8cC0)                                                             | [0x674Cdbe64Df412DA9bAb1596e00c1520979B5A23](https://sepolia.etherscan.io/address/0x674Cdbe64Df412DA9bAb1596e00c1520979B5A23)                                                       |
+
+:::info
+
+Note that the helper smart contract might change. It is therefore recommended to request the ckETH minter info and extract the helper smart contract address from the response to assure you have the latest contract address.
+
+:::
+
+The ckETH minter is responsible for handling ERC-20 deposits and withdrawal requests. The ckETH minter handles these tasks because ERC-20 transfers require an Ethereum transaction with a fee in ETH.
+
+The ledger suite orchestrator is responsible for a set of ICRC ledger suites, one ledger suite per ckERC20 token. Each ledger suite consists of a ledger, an index, and possibly one or more archive canisters.
+
+The ledger suite orchestrator makes it possible to handle all ckERC20 tokens in a scalable manner.
+
+Specifically, it can:
+
+- Spawn a new ICRC ledger suite when adding a new ckERC20 token via an NNS proposal.
+
+- Upgrade all managed ledger suites via an NNS proposal.
+
+- Top up the canisters of all managed ledger suites with cycles.
+
+## Deploying ckERC20 tokens
+
+Tokens deployed on other networks that use the ERC-20 standard can be launched on ICP as ckERC20 tokens. To propose a new ckERC20 be launched on the mainnet, there are several technical and non-technical steps that should be completed. Learn more in [creating a new ckERC20 token.](creating-new-ckerc20.mdx)
+
+## ckERC20 production application examples
+
+- [ICDex](https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex).
+
+- [ICPSwap](https://icpswap.com/).
+
+- [Oisy wallet](https://oisy.com/).
+
+- [NFID](https://nfid.one/).
+
+## Resources
+
+- [What are ckETH and ckERC-20 tokens?](https://support.dfinity.org/hc/en-us/articles/20273018220180-What-are-ckETH-and-ckERC-20-tokens)
+
+- [Ethereum integration](https://internetcomputer.org/ethereum-integration).
+
+- [Github repository](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/ckerc20.adoc).
+
+- [ckETH](https://github.com/dfinity/ic-js/tree/main/packages/cketh) JavaScript library.

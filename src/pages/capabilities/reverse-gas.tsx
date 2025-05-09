@@ -50,7 +50,7 @@ function ReverseGasModelPage(): JSX.Element {
               >
                 A browser is all you need to interact with smart contracts on
                 the Internet Computer. Developers pay for gas. End users access
-                 and use dapps without tokens.
+                and use dapps without tokens.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -61,7 +61,7 @@ function ReverseGasModelPage(): JSX.Element {
           variants={transitions.container}
           className="container-12 relative -mt-36 md:mt-0 md:h-0 pointer-events-none"
         >
-          <div className="text-center md:text-right aspect-[2/1] relative md:-translate-y-1/2">
+          <div className="text-center md:text-right aspect-[2/1] relative md:-translate-y-1/2 md:translate-x-1/3">
             <motion.img
               variants={transitions.fadeIn}
               src="/img/features/reverse-gas-model.webp"
@@ -89,7 +89,7 @@ function ReverseGasModelPage(): JSX.Element {
               >
                 Traditionally, when end users interact with a blockchain, they
                 must have a wallet set up with tokens to pay gas fees for every
-                on-chain interaction, even interactions as simple as liking a
+                onchain interaction, even interactions as simple as liking a
                 post. Most blockchains get around this by hosting their data and
                 frontends on centralized cloud. Without compromising
                 decentralization, the Internet Computer removes this expensive
@@ -118,7 +118,7 @@ function ReverseGasModelPage(): JSX.Element {
             </p>
             <p className="mb-0">
               <Link
-                href="/docs/current/developer-docs/gas-cost"
+                href="/docs/building-apps/essentials/gas-cost"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -185,29 +185,30 @@ function ReverseGasModelPage(): JSX.Element {
             </h2>
             <p className="text-black tw-lead-sm mb-6">
               The Internet Computer protocol allows developers to burn ICP and
-              receive cycles. Cycles are priced in SDR, an international reserve
-              asset that is pegged to a bucket of fiat currencies. The protocol
-              guarantees a set conversion rate of 1T cycles for 1 SDR’s worth of
+              receive cycles. Cycles are priced in{" "}
+              <Link
+                href="/docs/references/glossary#x"
+                className="link-subtle"
+              >
+                XDR
+              </Link>, an international reserve asset
+              that is pegged to a bucket of fiat currencies. The protocol
+              guarantees a set conversion rate of 1T cycles for 1 XDR’s worth of
               ICP. As costs are predictable and stable over time, regardless of
               ICP price fluctuations, developers can easily work computation and
               storage costs into their budgets.
             </p>
             <p className="text-black tw-lead-sm mb-6">
+              Cycles can only be used to pay for a canister's resources, and
+              cannot be converted back to ICP.
+            </p>
+            <p className="text-black tw-lead-sm mb-6">
               Several DEXs on the Internet Computer have liquidity pools that
               offer cycles. Swapping ICP for cycles is currently cheaper than 1
-              SDR.
-            </p>
-            <p className="text-black tw-lead-sm mb-6 md:mb-10">
-              Developers just starting out can get 10T free cycles from the{" "}
-              <Link
-                href="/docs/current/developer-docs/getting-started/cycles/cycles-faucet"
-                className="link-subtle"
-              >
-                cycles faucet
-              </Link>
-              . Free cycles can only be used for computation and storage, and
-              cannot be converted back to ICP. Swap ICP for cycles on the NNS,
-              and in the ecosystem on{" "}
+              XDR. Swap ICP for cycles on the{" "}
+              <Link href="https://nns.ic0.app" className="link-subtle">
+                NNS
+              </Link>{" "}, and in the ecosystem on{" "}
               <Link href="https://app.sonic.ooo/swap" className="link-subtle">
                 Sonic
               </Link>{" "}
@@ -218,16 +219,14 @@ function ReverseGasModelPage(): JSX.Element {
               >
                 ICPSwap
               </Link>
-              .{" "}
+              .
             </p>
-            <p className="mb-0">
-              <Link
-                href="https://nns.ic0.app/"
-                className="link-primary link-with-icon"
-              >
-                Swap ICP for cycles on the NNS
-                <LinkArrowUpRight />
+            <p className="text-black tw-lead-sm mb-6">
+              Developers can use the command-line interface to{" "}
+              <Link href="/docs/building-apps/getting-started/tokens-and-cycles#4-convert-icp-into-cycles" className="link-subtle">
+                convert ICP into cycles
               </Link>
+              .
             </p>
           </TranslatedLayout>
         </section>
@@ -274,15 +273,15 @@ function ReverseGasModelPage(): JSX.Element {
           </div>
           <div className="grid grid-cols-1 grid-rows-2 md:grid-rows-none md:grid-cols-2 gap-5">
             <CardWithDescription
-              title="Get Free Cycles"
+              title="Get Cycles"
               description=""
-              href="https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/"
+              href="/docs/building-apps/getting-started/tokens-and-cycles#obtaining-cycles"
               className="min-h-[180px]"
             ></CardWithDescription>
             <CardWithDescription
-              title="Cycles Documentation"
+              title="Cycles Pricing Docs"
               description=""
-              href="https://internetcomputer.org/docs/current/developer-docs/gas-cost"
+              href="/docs/building-apps/essentials/gas-cost"
               className="min-h-[180px]"
             ></CardWithDescription>
           </div>

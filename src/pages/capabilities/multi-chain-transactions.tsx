@@ -25,7 +25,7 @@ function FeaturePage() {
                 On the Internet Computer, you can create smart contracts that
                 directly interact with other blockchains, without trusted
                 centralized bridges that can get hacked and do rug pulls. This
-                has been made possible using Chain Key Cryptography.
+                has been made possible using Chain-Key Cryptography.
               </p>
             </div>
           </div>
@@ -38,8 +38,8 @@ function FeaturePage() {
           </div>
         </section>
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
-          {/* 
-            delete this div if image is not needed 
+          {/*
+            delete this div if image is not needed
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
@@ -51,8 +51,8 @@ function FeaturePage() {
 
           <div
             className="
-            sm:flex-1 
-            prose 
+            sm:flex-1
+            prose
             prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
             prose-h3:tw-heading-7 prose-h3:mb-2
             prose-p:tw-paragraph prose-p:mb-4
@@ -89,14 +89,12 @@ function FeaturePage() {
               service built using Ethereum is not running in the mode of a
               decentralized protocol). Therefore, it would be better if the user
               experience could be created on the Internet Computer using
-              canister smart contracts, which are controlled by a DAO. A means
-              has been provided to do this (please check developers docs to see
-              what is in production at any one time).
+              canister smart contracts, which can be controlled by a DAO.
             </p>
 
             <h3>Threshold ECDSA</h3>
             <p>
-              The chain key cryptography protocol engine was extended so that
+              The chain-key cryptography protocol engine was extended so that
               hosted smart contracts can maintain ECDSA public keys, and make
               corresponding signatures, without need to store a private key on
               the blockchain in a way that would allow it to be stolen.
@@ -148,7 +146,7 @@ function FeaturePage() {
             Build on the IC
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Using the power of chain key cryptography, the Internet Computer can
+            Using the power of chain-key cryptography, the Internet Computer can
             thus be used as an orchestration blockchain, or meta blockchain,
             upon which new services can be built that combine functionality and
             assets provided by other blockchains in the Web3 universe - all
@@ -161,12 +159,12 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/developer-journey/"
+              href="/docs/tutorials/developer-liftoff/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
-              description="Learch about programming languages on the ICP."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              description="Learn about programming languages on the ICP."
+              href="/docs/building-apps/essentials/canisters"
             />
             <CardWithDescription
               title="Sample Code"

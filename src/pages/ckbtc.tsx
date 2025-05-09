@@ -54,7 +54,7 @@ function CkbtcPage(): JSX.Element {
     <QueryClientProvider client={queryClient}>
       <Layout
         title="ckBTC is bitcoin on Web3"
-        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, trustlessly created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
+        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
@@ -66,7 +66,7 @@ function CkbtcPage(): JSX.Element {
               variants={transitions.container}
             >
               <div className="blob blob-purple blob-x-5 blob-y-10 blob-md z-0 opacity-50"></div>
-              <div className="md:w-7/10">
+              <div className="md:w-6/10">
                 <motion.h1
                   className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative"
                   variants={transitions.item}
@@ -78,11 +78,11 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC — a multi-chain bitcoin twin, trustlessly created by
-                  chain-key cryptography and Internet Computer smart contracts
-                  that directly hold raw bitcoin. Send and receive ckBTC with
-                  1-2 second finality and negligible fees. Only possible because
-                  ICP smart contracts can call into the Bitcoin network.
+                  ckBTC — a multi-chain bitcoin twin, created by chain-key
+                  cryptography and Internet Computer smart contracts that
+                  directly hold raw bitcoin. Send and receive ckBTC with 1-2
+                  second finality and negligible fees. Only possible because ICP
+                  smart contracts can call into the Bitcoin network.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -107,8 +107,8 @@ function CkbtcPage(): JSX.Element {
                 variants={transitions.item}
               >
                 Hold, send and receive native bitcoin as if the Internet
-                Computer and the Bitcoin network were one blockchain. No bridges
-                or off-chain intermediaries.
+                Computer and the Bitcoin network were one blockchain. No
+                off-chain intermediaries.
               </motion.h2>
             </div>
           </AnimateSpawn>
@@ -138,7 +138,7 @@ function CkbtcPage(): JSX.Element {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkArrowRight /> Read the press release
+                Read the press release <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/bitcoin-integration/openchat.webp">
@@ -166,7 +166,7 @@ function CkbtcPage(): JSX.Element {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkArrowRight /> Join the OpenChat network
+                Join the OpenChat network <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/nft/social.webp" reverse={true}>
@@ -190,8 +190,7 @@ function CkbtcPage(): JSX.Element {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkArrowRight />
-                Check out DSCVR
+                Check out DSCVR <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
           </section>
@@ -261,7 +260,7 @@ function CkbtcPage(): JSX.Element {
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
-                    No centralized custodians or bridges{" "}
+                    No centralized off-chain intermediaries
                   </li>
                   <li className="checklist-item pl-8">
                     Chain-key integrations with other networks like Ethereum
@@ -299,8 +298,8 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    First orderbook-based DEX running fully on-chain. Bypass
-                    CEXs and get ICP or CHAT tokens for your BTC.{" "}
+                    First orderbook-based DEX running fully onchain. Bypass CEXs
+                    and get ICP or CHAT tokens for your BTC.{" "}
                   </p>
                 </Link>
               </motion.div>
@@ -356,7 +355,7 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">Sonic</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    Swap tokens, or provide liquidity on a fully on-chain DEX.
+                    Swap tokens, or provide liquidity on a fully onchain DEX.
                   </p>
                 </Link>
               </motion.div>
@@ -466,16 +465,13 @@ function CkbtcPage(): JSX.Element {
               <div className="flex-[6] space-y-12 md:space-y-20">
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a bridged token.
+                    Why it's more secure than traditional bridged tokens
                   </h3>
 
                   <p className="tw-paragraph mb-3">
                     The key innovations behind ckBTC are the{" "}
-                    <Link href="/bitcoin-integration">
-                      native Bitcoin integration
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="/docs/current/references/t-ecdsa-how-it-works/">
+                    <Link href="/bitcoin">native Bitcoin integration</Link> and{" "}
+                    <Link href="/docs/references/t-sigs-how-it-works/">
                       chain-key ECDSA signing
                     </Link>{" "}
                     — advanced threshold cryptography integrated with ICP. In
@@ -491,42 +487,25 @@ function CkbtcPage(): JSX.Element {
                     recreating the original secret key.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    This enables a pair of canister smart contracts to
-                    trustlessly create ckBTC, a multichain bitcoin twin that can
-                    be controlled by smart contracts and sent with near instant
-                    finality for negligible fees — all without the need for
-                    bridges or centralized custodians.
+                    This enables a pair of canister smart contracts to create
+                    ckBTC, a multichain bitcoin twin that can be controlled by
+                    smart contracts and sent with near instant finality for
+                    negligible fees — all without the need for centralized
+                    custodians.
                   </p>
-                  <p className="tw-paragraph mb-3">
-                    This is important, because blockchain bridges are
-                    centralized, insecure, cumbersome and costly. The insecurity
-                    alone is a dealbreaker: between 2021-2022, more than 2
-                    billion dollars was stolen by exploiting blockchain bridges.
-                  </p>
-                  <p className="tw-paragraph mb-3">
-                    The recent incident where the FTX exchange acted as the
-                    custodian, and Sollet the bridge for wrapping and unwrapping
-                    BTC and ETH on Solana, demonstrates how bridges and
-                    intermediaries can act as single points of failures and are
-                    highly vulnerable to hacks. Ethereum smart contracts behind
-                    a bridge make asset transfers between blockchains possible,
-                    but users must still trust a third-party centralized
-                    custodian to manage the digital assets whose code is often
-                    not publicly verifiable.
-                  </p>
+
                   <p className="mt-10">
                     <Link
                       className="link-primary"
                       href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
                     >
-                      <LinkArrowRight />
-                      ckBTC &lt;&gt; ICP user guide
+                      ckBTC &lt;&gt; ICP user guide <LinkArrowUpRight />
                     </Link>
                   </p>
                 </div>
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a wrapped token
+                    Better than a wrapped token
                   </h3>
 
                   <p className="tw-paragraph mb-3">
@@ -541,8 +520,7 @@ function CkbtcPage(): JSX.Element {
                     className="link-primary link-with-icon"
                     href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
                   >
-                    <LinkArrowUpRight />
-                    ckBTC security audit
+                    ckBTC security audit <LinkArrowUpRight />
                   </Link>
                 </div>
 
@@ -572,8 +550,7 @@ function CkbtcPage(): JSX.Element {
                     className="link-primary link-with-icon"
                     href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
                   >
-                    <LinkArrowUpRight />
-                    ckBTC security audit
+                    ckBTC security audit <LinkArrowUpRight />
                   </Link>
                 </div>
 
@@ -595,7 +572,7 @@ function CkbtcPage(): JSX.Element {
                   </p>
                   <p className="tw-paragraph mb-3">
                     Canister smart contracts can programmatically hold and
-                    transfer ckBTC, making it possible to develop fully on-chain
+                    transfer ckBTC, making it possible to develop fully onchain
                     Layer-2 applications for Bitcoin, which is not possible
                     using the Lightning Network.
                   </p>
@@ -611,7 +588,7 @@ function CkbtcPage(): JSX.Element {
                   </p>
                   <Link
                     className="link-primary link-with-icon mt-10"
-                    href="/bitcoin-integration"
+                    href="/bitcoin"
                   >
                     <LinkArrowRight />
                     How Native Bitcoin Integration Works
@@ -620,8 +597,8 @@ function CkbtcPage(): JSX.Element {
                     className="link-primary link-with-icon"
                     href="https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e"
                   >
+                    Blog: Chain-Key Bitcoin: A Decentralized Bitcoin Twin{" "}
                     <LinkArrowUpRight />
-                    Blog: Chain-Key Bitcoin: A Decentralized Bitcoin Twin
                   </Link>
                 </div>
               </div>

@@ -56,7 +56,7 @@ A canister is configured to be `pullable` by editing the `dfx.json` file to incl
 ```
 
 - `wasm_url`: A URL used to download the canister wasm module which will be deployed locally.
-- `wasm_hash`: A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the on-chain wasm module.
+- `wasm_hash`: A SHA256 hash of the wasm module located at `wasm_url`. This field is optional. In most cases, the wasm module at `wasm_url` will be the same as the onchain wasm module.
 - `dependencies`: An array of Canister IDs (Principal) of direct dependencies.
 - `init_guide`: A message to guide consumers how to initialize the canister.
 
@@ -122,7 +122,7 @@ After this step, the pulled dependencies can be deployed on a local replica usin
 
 ## Conclusion
 
-The `dfx deps` feature is available in dfx versions `0.14.1` and newer. You can learn more from our [developer documentation](/docs/current/developer-docs/smart-contracts/maintain/import), which includes an interactive example you can use to test the feature for yourself.
+The `dfx deps` feature is available in dfx versions `0.14.1` and newer. You can learn more from our [developer documentation](/docs/building-apps/advanced/using-third-party-canisters), which includes an interactive example you can use to test the feature for yourself.
 
 As always, please let us know if you have any feedback either through our [forum](https://forum.dfinity.org/) or [Discord server](https://discord.com/invite/5PJMmmETQB).
 

@@ -46,9 +46,8 @@ export default function StringWrapper(props) {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
-  const showRunButton = useMemo(() => {
-    return props.className === "language-motoko";
-  }, [props.className]);
+  const showRunButton =
+    props.className === "language-motoko" && !props.hasOwnProperty("no-repl");
 
   return (
     <div style={{ position: "relative" }}>

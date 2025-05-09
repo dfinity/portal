@@ -1,0 +1,44 @@
+---
+keywords: [intermediate, tutorial, nft collection, create an nft, icrc-7, icrc-37, nfts]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Create non-fungible tokens
+
+<MarkdownChipRow labels={["Intermediate", "Tokens"]} />
+
+An NFT collection is a series of non-fungible tokens that each have a unique identifier value. Each token's metadata may be the same, such as the name, image, and description, or each token's data can be unique and associated with a 'rarity' value, where some metadata values are less common than others. Rarity metadata attributes are common in generative NFT collections, often referring to an NFT collection where the artwork for each image has been randomly generated and some components only appear in a select few of the generated images.
+
+To create an NFT collection on ICP, it is recommended to use the ICRC-7 and ICRC-37 standards. [ICRC-7](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-7) is the base NFT standard, while [ICRC-37](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37) is an extension of ICRC-7 that enables an `approve` workflow so that owners of an NFT can allow another user to spend or transfer the NFT on their behalf.
+
+## Checklist: How to create a non-fungible token
+
+1. Determine your collection's name, symbol, imagery, unique properties or attributes, functionality, and tokenomics.
+2. Refer to the [token best practices](/docs/defi/defi-best-practices) and [security best practices](/docs/building-apps/security/overview) to educate yourself on the precautions you should take when developing a DeFi asset.
+3. Create or determine the [developer identity](/docs/building-apps/getting-started/identities) that will act as the deployer of the collection.
+4. Setup a local [ICRC-7 canister](https://github.com/PanIndustrial-Org/icrc_nft.mo/tree/main?tab=readme-ov-file#deployment). For Motoko projects, it is recommended to use the package [`icrc_nft.mo`](https://github.com/PanIndustrial-Org/icrc_nft.mo/blob/main/example/initial_state/icrc7.mo)
+5. [Initialize your collection's settings](https://github.com/PanIndustrial-Org/icrc_nft.mo/blob/main/example/initial_state/icrc7.mo).
+6. Determine if your token will support approval workflows and if so, [enable ICRC-37 methods](https://github.com/PanIndustrial-Org/icrc_nft.mo/blob/main/example/initial_state/icrc7.mo).
+7. [Mint the NFTs in your collection locally.](https://github.com/PanIndustrial-Org/icrc_nft.mo/blob/2610d1e52c965d04b6a2d21b1252f408d237a5a6/example/deploy.sh#L46)
+8. [Run local tests by calling the collection's canister.](https://github.com/PanIndustrial-Org/icrc_nft.mo/blob/2610d1e52c965d04b6a2d21b1252f408d237a5a6/example/deploy.sh#L34)
+9. Deploy your collection to the mainnet for production use.
+
+## Resources
+
+- [List of NFT collections on ICP](https://dab.ooo/nfts/).
+
+- [GitHub repo for this example](https://github.com/PanIndustrial-Org/icrc_nft.mo.git).
+
+- [ICRC-3](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-3): The standard for transaction logs and archives.
+
+- [ICRC-3 Mops package](https://mops.one/icrc3-mo/docs/lib).
+
+- [ICRC-7](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-7).
+
+- [ICRC-7 Mops package](https://mops.one/icrc7-mo/docs).
+
+- [ICRC-37](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37).
+
+- [ICRC-37 Mops package](https://mops.one/icrc37-mo/docs).

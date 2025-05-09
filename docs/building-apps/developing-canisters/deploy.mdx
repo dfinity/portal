@@ -1,0 +1,152 @@
+---
+keywords: [beginner, tutorial, deploy, deploy canisters, local deployment, local dev, mainnet deployment, mainnet, playground, deploy playground, deploy to playground]
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Deploy
+
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
+
+Canister smart contracts can be deployed to different development environments:
+
+- The local environment created by `dfx`. In this environment, PocketIC is used to customize testing parameters like subnet type or canister memory allocation.
+
+- A custom [local network](/docs/building-apps/developing-canisters/custom-networks).
+
+- The playground on the mainnet, which is a testnet-like sandbox environment. No cycles are required to deploy and run your canisters on the playground, but they will be removed after 20 minutes.
+
+- The mainnet, designed for production use. This deployment method will cost [cycles](/docs/building-apps/essentials/gas-cost).
+
+Verify you are in your project's directory and the canisters you'd like to deploy are configured in the project's `dfx.json` file. Then deploy your canisters using the `dfx deploy` command:
+
+```
+dfx deploy <canister-name> --network=<NETWORK>
+```
+
+## Does ICP have a testnet?
+
+Since the execution of canisters on ICP is fairly cheap and canisters can be upgraded once deployed, there is no testnet for ICP. Developers are encouraged to test their canisters locally using PocketIC or directly on the mainnet.
+
+However, tools such as [ICP Ninja](https://icp.ninja) (a web IDE) and the playground environment (available from the CLI) can be used as testnet-like deployment options. They do not require cycles to deploy and interact with a canister, but they do have limitations and canisters will be automatically removed after 20 minutes.
+
+For most developers, the playground option can be used. For more advanced developers and use cases, there are two possible options for a testnet-like environment:
+
+- [Custom playgrounds](/docs/building-apps/developing-canisters/custom-networks): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
+
+- [Custom `dfx` networks](/docs/building-apps/developing-canisters/custom-networks): The `dfx` named network feature can be used to create custom networks that can be used for testing segmented from other projects deployed locally.
+
+## Deploying a canister with initialization arguments
+
+Initialization arguments are initial configuration parameters that the canister's installation expects in order to install the code correctly. One example of a canister that requires these Candid initialization arguments is the [ICP ledger canister](/docs/defi/token-ledgers/setup/icp_ledger_setup).
+
+You can set a canister's init arguments when the canister is deployed by passing the `--argument` flag:
+
+```bash
+dfx deploy <canister-name> --argument "(arg in candid)"
+```
+
+To use this command, you will need to construct the argument within the CLI, such as:
+
+```
+dfx canister install icp_ledger_canister --argument
+"
+  (variant {
+    Init = record {
+      minting_account = \"$MINTER_ACCOUNT_ID\";
+      initial_values = vec {
+        record {
+          \"$DEFAULT_ACCOUNT_ID\";
+          record {
+            e8s = 10_000_000_000 : nat64;
+          };
+        };
+      };
+      send_whitelist = vec {};
+      transfer_fee = opt record {
+        e8s = 10_000 : nat64;
+      };
+      token_symbol = opt \"LICP\";
+      token_name = opt \"Local ICP\";
+    }
+  })
+"
+```
+
+To make managing init arguments easier for large, multi-canister projects, the `init_arg_file` option is supported. It can be used in both the CLI with the flag `--argument-file`:
+
+```bash
+dfx deploy <canister-name> --argument-file file.txt
+```
+
+An example initialization argument file can be found below:
+
+```did
+(variant {
+  Init = record {
+    minting_account = "MINTER_ACCOUNT_ID";
+    initial_values = vec {
+      record {
+        "DEFAULT_ACCOUNT_ID";
+        record {
+          e8s = 10_000_000_000 : nat64;
+        };
+      };
+    };
+    send_whitelist = vec {};
+    transfer_fee = opt record {
+      e8s = 10_000 : nat64;
+    };
+    token_symbol = opt "LICP";
+    token_name = opt "Local ICP";
+  }
+})
+```
+
+You can also specify the `init_arg_file` for each canister in the `dfx.json` file:
+
+```json
+"canisters": {
+    "icp_ledger": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger-canister_notify-method.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "init_arg_file": "src/candid/icp_ledger_init.did"
+    },
+    ...
+```
+
+Alternatively, init arguments can be set in `dfx.json` in `dfx` versions `v0.17.0` and newer:
+
+```json title="dfx.json"
+"canisters": {
+    "hello_backend": {
+      "candid": "src/hello_backend/hello_backend.did",
+      "package": "hello_backend",
+      "type": "rust",
+      "init_arg": "(arg in candid)"
+    },
+ }
+```
+
+### Important notes
+
+- If the `--argument` or `--argument-file` flags are used on the CLI, any configuration for `init_args` in `dfx.json` will be ignored. The CLI configuration takes precedence.
+
+- Only one `init_arg` and `init_arg_file` can be defined at a time.
+
+- Initialization arguments must be set individually for each canister, either through the CLI or `dfx.json`. To make this easier, `init_arg_file`s can be used, as detailed below.
+
+- When using `dfx.json` or an argument file, values referenced as environment variables within the file will not be passed to the canister.
+

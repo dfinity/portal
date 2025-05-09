@@ -1,0 +1,152 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, dfx deps, pullable canisters, third-party canisters, dfx deps pull, using third-party, integrating third-party canisters]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 2.3 Using third-party canisters
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/vuu3DUsdBZY?si=Mc1QxFBKEMPztCFm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
+
+Third-party canisters are canisters that provide a public service at a static <GlossaryTooltip>canister</GlossaryTooltip> ID. Some examples are the DFINITY NNS and Internet Identity canisters, but third-party canisters can also be made by community developers. Third-party canisters can be used to add features to your dapp, for example, using the Internet Identity canister in your dapp to enable authentication for users.
+
+`dfx` provides a **dependency** workflow where a canister can be configured to pull third-party canisters into the local environment. This can be useful for developers who are looking to test the accuracy of their integration with a third-party canister before deploying on the mainnet. It also drastically simplifies the local deployment of canisters like Internet Identity, since you don't need to obtain the Wasm and Candid files for the canisters yourself, `dfx` takes care of that in the background for you.
+
+In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/building-apps/advanced/using-third-party-canisters).
+
+## Pulling third-party canister dependencies
+
+To use third-party canisters, `dfx` provides the `dfx deps` command pulling and downloading the necessary files for canisters that are listed as `"type": "pull"` in the project's `dfx.json` file.
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
+### Creating a new project
+
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to start `dfx` and create a new project:
+
+Use `dfx new <project_name>` to create a new project:
+
+```
+dfx start --clean --background
+dfx new dependencies --type=motoko --no-frontend
+cd dependencies
+```
+
+You'll use the default 'Hello world' project in this example, then you'll pull the Internet Identity canister as a dependency of the `dependencies_backend` canister.
+
+First, open the `dfx.json` file in your project's directory. You need to configure your `dependencies_backend` canister to have a dependency of the `internet_identity` canister (`rdmx6-jaaaa-aaaaa-aaadq-cai`) on the mainnet. This series will dive deeper into Internet Identity in a later tutorial; for now, you'll just use it to demonstrate how third-party canisters can be used. Edit the `dfx.json` file to reflect the following configuration:
+
+```json title="dfx.json"
+{
+    "canisters": {
+        "dependencies_backend": {
+            "type": "motoko",
+            "main": "src/dependencies_backend/main.mo",
+            "dependencies": [
+                "internet_identity"
+            ]
+        },
+        "internet_identity": {
+            "type": "pull",
+            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+Next, run the `dfx deps pull` command:
+
+```bash
+dfx deps pull
+```
+
+By running this command, the following steps are executed:
+
+- First, the dependency canister is fetched and the Wasm for it is downloaded.
+
+- Then, the hash of the downloaded Wasm is verified against the hash of the deployed canister on the mainnet.
+
+- Next, a series of information is extracted from the downloaded Wasm file, such as the `dfx` metadata and Candid information.
+
+The `deps/` folder is created in your project's root folder. The `deps/pulled.json` file will contain information regarding the project's dependencies. In this example, the `deps/pulled.json` file should resemble the following:
+
+```json title="deps/pulled.json"
+{
+"canisters":{
+    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
+        "name": "internet_identity"
+        "wasm_hash": "aad8c68dcfe77df9140581097ad4bb82d1eb6da036d228c1a21dfd25a6558ca2" ,
+        "wasm_hash_download": "aad8c68dcfe77df9140581097ad4bb82dleb6da036d228c1a21dfd25a6558ca2" ,
+        "init_guide": "Use '(null)'. for sensible defaults. See the candid interface for more details.",
+        "init_arg": "(opt record { captcha_config = opt record {-max_unsolved_captchas= 50:nat64; captcha_trigger = variant {Static = variant {CaptchaDisabled}}}})",
+        "candid_args": "(opt InternetIdentityInit)",
+        "gzip": • true
+    }
+  }
+}
+```
+
+
+### Using `dfx deps`
+
+Next, you'll set the `init` arguments for the pulled canisters using the `dfx deps init` command. An `init` argument is a piece of data that will be passed to the canister when it is deployed. This command will iterate over all listed dependencies in the `pulled.json` file and set an empty argument for any that do not require an `init` argument. For those that do require an `init` argument, they will be returned so you can set them manually. Run the command:
+
+```bash
+dfx deps init
+```
+
+Now it's time to deploy the pulled dependency canister. Run the command:
+
+```bash
+dfx deps deploy
+```
+
+Lastly, let's deploy the project all together with the `dfx deploy` command:
+
+```bash
+dfx deploy
+```
+
+The output will include a local Candid UI URL for both the `dependencies_backend` canister, which has the default 'Hello world' code, and the local Candid UI URL for the Internet Identity canister.
+
+```bash
+Installing code for canister dependencies_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
+Deployed canisters.
+URLs:
+    Backend canister via Candid interface:
+    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
+```
+
+Interact with the II canister locally using the CLI or the Candid UI. In a future tutorial you'll integrate your backend canister with the II canister. For now, that'll wrap up this module.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

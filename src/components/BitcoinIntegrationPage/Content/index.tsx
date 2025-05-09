@@ -48,7 +48,7 @@ const projects = [
     title: "SocialFi",
     subtitle: "Open Chat",
     description:
-      "Send chat messages to others containing tokens like ICP and ckBTC using OpenChat - a decentralized real-time messaging service. Running entirely on-chain on ICP, it offers all the features of a chat app - from GIFs, to creating polls, to offering users rewards.",
+      "Send chat messages to others containing tokens like ICP and ckBTC using OpenChat - a decentralized real-time messaging service. Running entirely onchain on ICP, it offers all the features of a chat app - from GIFs, to creating polls, to offering users rewards.",
     imgSrc: "/img/bitcoin-integration/a5.webp",
     altText: "SocialFi project image",
     link: "https://oc.app/",
@@ -128,7 +128,7 @@ const Content: React.FC = () => {
                 By running{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/bitcoin-how-it-works"
+                  to="/docs/references/bitcoin-how-it-works"
                 >
                   Bitcoin adapters
                 </Link>
@@ -149,13 +149,13 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/t-ecdsa-how-it-works//"
+                  to="/docs/references/t-sigs-how-it-works/"
                 >
                   threshold-ECDSA signatures
                 </Link>
                 , enabling canister smart contracts to sign BTC transactions.
                 Leveraging network integration, these BTC transactions are
-                directly inscribed on the Bitcoin blockchain - no need for any
+                directly written to the Bitcoin blockchain - no need for any
                 cross-chain bridges. Chain-key signatures also derive BTC
                 addresses, enabling ICP smart contracts to read, write and own
                 BTC.
@@ -169,11 +169,11 @@ const Content: React.FC = () => {
                 ICP advanced capabilities
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Developers can harness the security of bitcoin as a native asset
+                Developers can harness the security of Bitcoin
                 while also leveraging the unique core features of the
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/concepts/canisters-code"
+                  to="/docs/building-apps/essentials/canisters"
                 >
                   {" "}
                   ICP tech stack
@@ -199,14 +199,14 @@ const Content: React.FC = () => {
                 integration,{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+                  to="/docs/building-apps/network-features/using-http/https-outcalls/overview"
                 >
                   RPC integration
                 </Link>{" "}
                 and
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+                  to="/docs/building-apps/network-features/using-http/https-outcalls/overview"
                 >
                   {" "}
                   HTTPs outcalls
@@ -226,7 +226,7 @@ const Content: React.FC = () => {
                 lengthy wait times for block confirmations. Enter{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
+                  to="/docs/defi/chain-key-tokens/ckbtc/overview"
                 >
                   ckBTC
                 </Link>
@@ -259,10 +259,10 @@ const Content: React.FC = () => {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                 Chain-key bitcoin (ckBTC), a multi-chain bitcoin twin on the
-                Internet Computer, is an
+                Internet Computer, is an 
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+                  to="/docs/building-apps/network-features/using-http/https-outcalls/overview"
                 >
                   ICRC-1
                 </Link>

@@ -41,8 +41,8 @@ function FeaturePage() {
           </div>
         </section>
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
-          {/* 
-            delete this div if image is not needed 
+          {/*
+            delete this div if image is not needed
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
@@ -54,8 +54,8 @@ function FeaturePage() {
 
           <div
             className="
-            sm:flex-1 
-            prose 
+            sm:flex-1
+            prose
             prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
             prose-h3:tw-heading-7 prose-h3:mb-2
             prose-p:tw-paragraph prose-p:mb-4
@@ -72,7 +72,7 @@ function FeaturePage() {
             </p>
             <h3>Subnet Architecture</h3>
             <p>
-            The Internet Computer blockchain runs on a network of nodes owned and operated by a growing community of independent 
+            The Internet Computer blockchain runs on a network of nodes owned and operated by a growing community of independent
             node providers distributed across the globe. The node providers are selected and vetted by the NNS neuron owners.
               <br />
               <br />
@@ -95,7 +95,7 @@ function FeaturePage() {
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/developer-docs/multi-chain/bitcoin/overview"
+                href="/docs/building-apps/chain-fusion/bitcoin/overview"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
@@ -118,12 +118,12 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/developer-journey/"
+              href="/docs/tutorials/developer-liftoff/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/building-apps/essentials/canisters"
             />
             <CardWithDescription
               title="Community Conversation"

@@ -1,0 +1,130 @@
+---
+keywords: [advanced, concept, tasks, timers, periodic tasks, periodic timers]
+---
+
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Periodic tasks and timers
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+Unlike other blockchains, ICP canisters can automatically execute tasks after a specified delay or interval.
+
+There are two ways to schedule an automatic canister execution on ICP:
+
+1. **Timers**: Single-expiration or periodic canister calls with specified minimum timeout or interval. A canister can implement multiple timers. Each timer will receive a unique ID to identify it within the context of the canister.
+2. **Heartbeats**: Legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by ICP for backward compatibility and some very special use cases. **Newly developed canisters should prefer using timers over the heartbeats.**
+
+## Timers
+
+Timers are implemented on two layers:
+
+- **The protocol level implementation:** The Internet Computer protocol supports one minimalistic global timer per canister via the `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer interface specification](/docs/references/ic-interface-spec#timer)).
+- **The CDK timers library level:** The library wraps the minimalistic protocol implementation, adding multiple and periodic timers on top. Canister developers can enjoy the familiar timers functionality using the CDK timers library for:
+
+    - [Rust](https://crates.io/crates/ic-cdk-timers)
+
+    - [Motoko](/docs/motoko/main/writing-motoko/timers)
+
+    - [TypeScript (Azle)](https://demergent-labs.github.io/azle/timers.html)
+
+    - [Python (Kybra)](https://demergent-labs.github.io/kybra/timers.html)
+
+Internally the CDK timers libraries do the following:
+
+1. The library keeps a global list of all periodic tasks inside the canister.
+2. Calls the `ic0.global_timer_set()` system API to schedule the next task from the list.
+3. Implements the `canister_global_timer` method with the following logic:
+    - For each expired task, the handler initiates a self-canister call to isolate the tasks from each other and from the library code. Note, the [normal inter-canister call costs](/docs/building-apps/essentials/gas-cost) apply.
+    - Reschedules periodic tasks at the end of their execution.
+    - Calls the `ic0.global_timer_set()` system API to schedule the next task.
+
+The library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` hook and reactivate the timers in the `canister_post_upgrade` method if necessary.
+
+Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
+
+For the code composability reasons, i.e., to be able to use different libraries with timers in a single project, canister developers are encouraged to use the CDK timers libraries over the protocol-level API or the heartbeats.
+
+### Single timer example
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl file=../../motoko/main/examples/Reminder.mo
+
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/periodic_tasks/timer/src/lib.rs#L67-L78
+
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle](https://demergent-labs.github.io/azle/timers.html).
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/timers.html).
+
+</AdornedTab>
+</AdornedTabs>
+
+To use multiple timers in a canister, simply create multiple timer definitions.
+
+### Timers library limitations
+
+Despite its superiority over the heartbeats, the CDK timers library has a few known shortcomings:
+
+- **Canister upgrades:** The library keeps a global list of multiple and periodic tasks inside the canister heap. During a canister upgrade, a fresh WebAssembly state is created, all the timers are deactivated, and the list of timers is cleared. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate them in the `canister_post_upgrade` method if needed.
+- **Self canister calls:** To isolate the tasks from each other and from the scheduling logic, the CDK timers library initiates a self canister call to execute each task. There are a few implications:
+
+    - Normal [inter-canister call costs](/docs/building-apps/essentials/gas-cost) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
+    - The tasks to execute are added at the end of the canister input queue. Depending on the canister and [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) load, the actual execution might be delayed.
+
+- As the canister output queue is limited in size (500 messages at the moment), this implicitly limits the number of tasks that might be scheduled in one round.
+
+- **Advanced scheduling:** The CDK timers library uses relative time to schedule tasks. To use an absolute time, canister developers should calculate the duration between now and the point in time or use a third-party library.
+
+## Heartbeats
+
+Once an Internet Computer canister exports the `canister_heartbeat` function, it will be called every subnet heartbeat interval (see the [Internet Computer interface specification](/docs/references/ic-interface-spec#heartbeat)).
+
+The only way to disable the heartbeats is to upgrade the canister to a version that does not export the `canister_heartbeat` method. Also, the heartbeat interval is implementation-defined, and there is no way to adjust it.
+
+Because of those limitations, in most cases, the CDK timers library for [Rust](https://crates.io/crates/ic-cdk-timers) or [Motoko](/docs/motoko/main/writing-motoko/timers) is a better option to schedule periodic tasks.
+
+## Frequently asked questions
+
+- #### Do timers support deterministic time slicing (DTS)?
+Yes, as the CDK timers library initiates a self-canister call to execute each task, normal [update message instruction limits](/docs/building-apps/canister-management/resource-limits) apply with DTS enabled.
+
+- #### What happens if a timer handler awaits a call?
+Normal await point rules apply: any new execution can start at the await point: a new message, another timer handler, or a heartbeat. Once that new execution is finished or reaches its await point, the execution of the current timer handler might be resumed.
+
+- #### What happens if a 1s periodic timer is executing for 2s?
+If there are no await points in the timer handler, the periodic timer will be rescheduled at the end of the execution. If there are await points, it's implementation-defined when the periodic timer is rescheduled.
+
+## Tutorials and examples
+
+### Examples using Motoko
+
+- [Timers](/docs/motoko/main/writing-motoko/timers).
+- [Heartbeats](/docs/motoko/main/writing-motoko/heartbeats).
+
+### Examples using Rust
+
+- [Periodic tasks and timers](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) (compares the costs of timers and heartbeats).

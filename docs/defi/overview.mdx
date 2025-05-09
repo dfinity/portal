@@ -1,0 +1,52 @@
+---
+keywords: [intermediate, defi,  tokens, icrc-1, icrc ledger, icrc index]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# DeFi on ICP
+
+<MarkdownChipRow labels={["Beginner", "Tokens"]} />
+
+The Internet Computer Protocol is positioned as an appealing DeFi platform thanks to its unique [chain-key signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography) and [ability to communicate directly with other blockchain networks](/docs/building-apps/chain-fusion/overview).
+
+Using chain-key signatures, canisters can sign and submit transactions directly on other blockchains, hold assets, and seamlessly swap between tokens like BTC and ETH and their chain-key counterparts, ckBTC and ckETH.
+
+By utilizing a canister smart contract's web-serving capabilities and its ability to host large amounts of data, DeFi platforms can exist fully onchain without depending on any centralized components.
+
+Canisters can access and ingest data from any source, including Web2 APIs, through the use of [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview). This enables DeFi apps to reduce cost and increase speed by querying data, such as up-to-date asset prices, from any traditional Web2 API without going through an oracle.
+
+Developers can build DeFi applications on ICP that aren’t possible on other chains, including:
+
+- Entirely onchain order books and decentralized exchanges.
+
+- DAO-controlled exchanges.
+
+- Onchain wallets that allow users to sign transactions for any ERC-20 token.
+
+[Learn more about DeFi use cases.](/defi)
+
+## Tokens
+
+On ICP, the DeFi ecosystem includes three types of assets:
+
+- [ICP token](/docs/building-apps/getting-started/tokens-and-cycles): The network’s native utility token.
+
+- [Cycles](/docs/building-apps/getting-started/tokens-and-cycles): The equivalent of “gas” on ICP.
+
+- ICRC tokens: Tokens that adhere to a set of [ICRC standards](/docs/defi/token-standards/) used for defining fungible and non-fungible tokens.
+
+Tokens are created and transferred using system canisters called **ledgers**. Ledgers are used to record transactions in a chain of blocks.
+
+**Index canisters** offer endpoints for querying the current balance of an account and fetching blocks without needing to query the entire ledger history.
+
+[Learn more about tokens.](/docs/defi/create)
+
+## Rosetta
+
+[Rosetta](https://www.rosetta-api.org/) is an open standard introduced by Coinbase to simplify the integration of tokens in applications and services such as exchanges, block explorers, and wallets. It can be used for creating block explorers, decentralized exchanges, wallets, or tokens that are tradable on CeFi exchanges.
+
+There are Rosetta implementations for both ICP and ICRC tokens for easy integration with CeFi exchanges.
+
+[Learn more about Rosetta.](/docs/defi/rosetta/icp_rosetta/)

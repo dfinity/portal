@@ -73,7 +73,7 @@ module.exports = [
     speaker: "Rick Porter",
     speakerTitle: "Founder of DSCVR",
     description:
-      "<p>DSCVR (pronounced “discover”) is a decentralized social content aggregation platform running on the Internet Computer blockchain where users control not only the content, but also the platform itself. It is similar to Reddit, if Reddit’s development were governed by the most dedicated members of its community through a tokenized framework and hosted completely on-chain.\nRick Porter from DSCVR talks about the vision for DSCVR, current features, and future roadmap.</p>\n",
+      "<p>DSCVR (pronounced “discover”) is a decentralized social content aggregation platform running on the Internet Computer blockchain where users control not only the content, but also the platform itself. It is similar to Reddit, if Reddit’s development were governed by the most dedicated members of its community through a tokenized framework and hosted completely onchain.\nRick Porter from DSCVR talks about the vision for DSCVR, current features, and future roadmap.</p>\n",
     startTimeUtc: 1630519200000,
     startTimePt: 1630486800000,
     startTimeEu: 1630519200000,
@@ -106,7 +106,7 @@ module.exports = [
     speaker: "Hazel",
     speakerTitle: "Founder of Departure Labs",
     description:
-      "<p>Noted Internet Computer community developer Hazel discusses her new initiative, Departure Labs. Among other things, Departure Labs has created an NFT minter to be able to create on-chain NFTs on the Internet Computer. Departure Labs is currently developing a non-fungible token standard that leverages the unique properties of the Internet Computer and enables builders to create entire experiences from a single contract.</p>\n",
+      "<p>Noted Internet Computer community developer Hazel discusses her new initiative, Departure Labs. Among other things, Departure Labs has created an NFT minter to be able to create onchain NFTs on the Internet Computer. Departure Labs is currently developing a non-fungible token standard that leverages the unique properties of the Internet Computer and enables builders to create entire experiences from a single contract.</p>\n",
     startTimeUtc: 1630616400000,
     startTimePt: 1630584000000,
     startTimeEu: 1630616400000,
@@ -129,7 +129,7 @@ module.exports = [
     speaker: "Roman Kashitsyn",
     speakerTitle: "Senior Software Engineer (Message Routing)",
     description:
-      "<p>The Internet Computer — the world’s first web-speed, internet scale public blockchain — is able to serve interactive web content directly to end users, enabling a broad range of systems and services to be built entirely on the blockchain in the form of dapps, without dependence on legacy tech. Applications are deployed in the form of canister smart contracts: bundles of WebAssembly bytecode logic, created from any high-level programming language such as Rust or Motoko, and the memory pages that the code runs inside. A key breakthrough is that the Internet Computer can host any number of canisters, and therefore any amount of data, fully on-chain. Moreover, it can run them concurrently, which means that it can process any amount of computation — allowing developers to create dapps that scale.</p>\n<p>Senior Software Engineer Roman Kashitsyn describes best practices when creating canister smart contracts in the Rust programming language in this talk.</p>\n",
+      "<p>The Internet Computer — the world’s first web-speed, internet scale public blockchain — is able to serve interactive web content directly to end users, enabling a broad range of systems and services to be built entirely on the blockchain in the form of dapps, without dependence on legacy tech. Applications are deployed in the form of canister smart contracts: bundles of WebAssembly bytecode logic, created from any high-level programming language such as Rust or Motoko, and the memory pages that the code runs inside. A key breakthrough is that the Internet Computer can host any number of canisters, and therefore any amount of data, fully onchain. Moreover, it can run them concurrently, which means that it can process any amount of computation — allowing developers to create dapps that scale.</p>\n<p>Senior Software Engineer Roman Kashitsyn describes best practices when creating canister smart contracts in the Rust programming language in this talk.</p>\n",
     startTimeUtc: 1631721600000,
     startTimePt: 1631689200000,
     startTimeEu: 1631721600000,
@@ -484,7 +484,7 @@ module.exports = [
     speaker: "Lara Schmid",
     speakerTitle: "Researcher NNS",
     description:
-      '<p>Similarly to how the Network Nervous System (NNS) is the open tokenized governance system that controls the Internet Computer blockchain (IC), service nervous systems (SNSs) are algorithmic DAOs that will allow developers to create decentralized, token-based governance systems for their dapps.\nIn this talk, we explain a design proposal for a first version of an open governance canister that will then be used to realise the service nervous systems (SNSs).\nApart from this, the canister can also be (re-)used by anyone looking to implement another kind of DAO.\nA more detailed description of the proposal that we will present is explained and discussed in this <a href="https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224">forum entry</a>.</p>\n',
+      '<p>Similarly to how the Network Nervous System (NNS) is the open tokenized governance system that controls the Internet Computer blockchain (IC), service nervous systems (SNSes) are algorithmic DAOs that will allow developers to create decentralized, token-based governance systems for their dapps.\nIn this talk, we explain a design proposal for a first version of an open governance canister that will then be used to realise the service nervous systems (SNSes).\nApart from this, the canister can also be (re-)used by anyone looking to implement another kind of DAO.\nA more detailed description of the proposal that we will present is explained and discussed in this <a href="https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224">forum entry</a>.</p>\n',
     startTimeUtc: 1642528800000,
     startTimePt: 1642496400000,
     startTimeEu: 1642528800000,
@@ -555,7 +555,7 @@ module.exports = [
     speaker: "Lara Schmid, Nicolas Zoghb",
     speakerTitle: "Researcher & Software Engineer",
     description:
-      "<p>Similarly to how the Network Nervous System (NNS) is the open tokenized governance system that controls the Internet Computer blockchain (IC), service nervous systems (SNSs) are algorithmic DAOs that will allow developers to create decentralized, token-based governance systems for their dapps. In this talk, we propose a design for how SNSs, consisting of a goverancne, a ledger and a root canister can be deployed and upgraded. A more detailed description of the proposal will be shared on the forum shortly.</p>\n",
+      "<p>Similarly to how the Network Nervous System (NNS) is the open tokenized governance system that controls the Internet Computer blockchain (IC), service nervous systems (SNSes) are algorithmic DAOs that will allow developers to create decentralized, token-based governance systems for their dapps. In this talk, we propose a design for how SNSes, consisting of a goverancne, a ledger and a root canister can be deployed and upgraded. A more detailed description of the proposal will be shared on the forum shortly.</p>\n",
     startTimeUtc: 1644944400000,
     startTimePt: 1644912000000,
     startTimeEu: 1644944400000,
@@ -653,7 +653,7 @@ module.exports = [
     speaker: "Lara Schmid & Björn Assmann ",
     speakerTitle: "Senior Researchers",
     description:
-      '<p>We would like to discuss a design proposal for a simple SNS reward scheme.\nService nervous systems (SNSs) are algorithmic DAOs that will allow developers to create decentralized, token-based governance systems for their dapps on the Internet Computer. In this talk, we would like to discuss the design proposal for a first, simple SNS reward scheme.\nLink to discussion on forum: <a href="https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224/36">https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224/36</a></p>\n',
+      '<p>We would like to discuss a design proposal for a simple SNS reward scheme.\nService nervous systems (SNSes) are algorithmic DAOs that will allow developers to create decentralized, token-based governance systems for their dapps on the Internet Computer. In this talk, we would like to discuss the design proposal for a first, simple SNS reward scheme.\nLink to discussion on forum: <a href="https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224/36">https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224/36</a></p>\n',
     startTimeUtc: 1652284800000,
     startTimePt: 1652252400000,
     startTimeEu: 1652284800000,

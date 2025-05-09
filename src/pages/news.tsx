@@ -273,11 +273,10 @@ function NewsPage() {
             </li>
             <li>
               <Link
-                href="https://drive.google.com/drive/folders/10NqSanklRHU6N4DNLwmFAdP7AduL5x8Z"
+                href="https://dfinity.frontify.com/d/pD7yZhsmpqos/press-kit"
                 className="link-primary link-with-icon"
               >
-                <DocumentIcon />
-                Press Kit
+                Press Kit <LinkArrowUpRight />
               </Link>
             </li>
             <li>
@@ -285,8 +284,7 @@ function NewsPage() {
                 href="https://dfinity.frontify.com/d/pD7yZhsmpqos"
                 className="link-primary link-with-icon"
               >
-                <DocumentIcon />
-                Brand guidelines
+                Brand guidelines <LinkArrowUpRight />
               </Link>
             </li>
           </ul>

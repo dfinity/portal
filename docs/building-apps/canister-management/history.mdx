@@ -1,0 +1,90 @@
+---
+keywords: [beginner, tutorial, maintain canisters, history, canister history]
+---
+
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip"
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Canister history
+
+<MarkdownChipRow labels={["Beginner", "Management"]} />
+
+The Internet Computer tracks the history of a deployed <GlossaryTooltip>canister</GlossaryTooltip> through the canister's Wasm module hashes and controller changes. This tracking provides insight into the canister's history, such as what code has been used to run the canister and which controller deployed that code.
+
+Viewing a canister's history can be important in use cases such as:
+
+- Verifying that a canister's controller has not maliciously modified the code.
+
+- Verifying that a canister's controller does not maliciously change the list of controllers for the canister. For example, if a canister's controller list only displays the [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) canister as the current controller, users can trust that the canister's code has not been maliciously altered.
+
+## How canister history works
+
+Canister history was introduced and released by the NNS DAO proposal [122617](https://dashboard.internetcomputer.org/proposal/122617).
+
+Canister history information is made available via inter-canister calls made to the `canister_info` method of the management canister, using a canister's ID as an argument for the call. A canister's history stores the 20 most recent changes to the canister, including the canister's creation, Wasm module installations, reinstallations, upgrades, and changes to the list of canister controllers. It is important to note that since only the 20 most recent changes are stored, this feature cannot be used for auditing canisters that are frequently changed within a short period of time.
+
+:::danger
+Canister history is only available for changes that have happened since this feature was rolled out on 23-06-05, 9:47:46 AM UTC, across all <GlossaryTooltip>subnets</GlossaryTooltip>.
+:::
+
+You can read more about this feature on the [developer forum](https://forum.dfinity.org/t/canister-history-on-the-ic/21745).
+
+## Getting a canister's history
+
+To get a canister's history, make a call to the IC management canister's `canister_info` method:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+import Principal "mo:base/Principal";
+
+actor Info {
+  type canister_info_args = {
+    canister_id : Principal;
+    num_requested_changes : ?Nat64
+  };
+
+  type canister_info_result = {
+    total_num_changes : Nat64;
+    module_hash : ?Blob;
+    controllers : [Principal]
+  };
+
+  let IC = actor "aaaaa-aa" : actor {
+    canister_info : {canister_id : Principal} -> async canister_info_result
+  };
+
+  public func getInfo() : async canister_info_result {
+    await IC.canister_info {canister_id = Principal.fromActor(Info)}
+  }
+
+}
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust file=../../references/samples/rust/canister-info/src/lib.rs
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle](https://demergent-labs.github.io/azle/get_started.html).
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
+
+</AdornedTab>
+</AdornedTabs>
