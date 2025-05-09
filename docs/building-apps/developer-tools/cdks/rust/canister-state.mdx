@@ -16,9 +16,7 @@ By design, canisters on ICP are structured in a way that forces developers to us
 
 ## Using `thread_local!` with `Cell/RefCell` for state variables
 
-The marco `thread_local!` defines thread-local storage (TLS), which is a data storage method where data is stored locally to each thread. Each thread gets its own copy of a variable's data that is not shared with other threads.
-
-Since you can't directly mutate static variables, using `thread_local!` with `Cell/RefCell` is the safest option to allow mutability and avoid issues with asynchronous calls or memory corruption. The following is an example of how `thread_local!` can be used:
+Globally mutable state normally requires thread-safety. To use `RefCell`, which is normally not thread-safe, you can use `thread_local!` since `thread_local!` globals do not require thread-safety:
 
 ```rust
 thread_local! {
