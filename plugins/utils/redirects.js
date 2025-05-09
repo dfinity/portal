@@ -24,13 +24,13 @@ const redirects = `
   ##
   /docs/current/motoko/* /docs/motoko:splat
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/* /docs/building-apps/developer-tools/dfx:splat
+  /docs/current/references/cli-reference/* /docs/building-apps/developer-tools/dfx:splat
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/tutorials/developer-liftoff/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/building-apps/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
   /docs/current/developer-docs/best-practices/* /docs/building-apps/best-practices/:splat
-  /docs/current/developer-docs/smart-contracts/best-practices/* /docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/daos/sns/* /docs/building-apps/governing-apps/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
@@ -38,7 +38,6 @@ const redirects = `
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
   /docs/current/references/* /docs/references/:splat
-  /docs/current/references/samples/* /docs/references/samples/:splat
 
   ## Explicit redirects
   ## For files that have changed directories & file names, there will need to be
@@ -393,11 +392,9 @@ const redirects = `
   /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/essentials/canisters
-  /docs/current/references/subnets/subnet-types/ /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
   /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
   /docs/current/developer-docs/smart-contracts/maintain/recovery /docs/building-apps/canister-management/snapshots
-  /docs/current/samples/overview /ecosystem
   /docs/current/references/https-outcalls-how-it-works /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/other/updates/release-notes/ /docs/other/updates/release-notes/
@@ -801,6 +798,7 @@ const redirects = `
 
   ## Old: Developer's guide
   /docs/current/tutorials/deploy_sample_app /docs/tutorials/developer-liftoff/
+  /docs/developers-guide/webpack-config.html /docs/building-apps/frontends/using-an-asset-canister
   /docs/defi/icp-tokens/icp-index-local-setup /docs/defi/token-indexes/
   /docs/developer-docs /docs/building-apps/essentials/network-overview
   /docs/developers-guide/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
@@ -916,6 +914,9 @@ const redirects = `
   /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
+  /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
+  /docs/building-apps/developing-canisters/what-are-canisters/ /docs/building-apps/essentials/canisters
   /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
   /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/building-apps/developer-tools/advanced-dfx/networks-json /docs/building-apps/developing-canisters/custom-networks
@@ -939,12 +940,11 @@ const redirects = `
   /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
-  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
   /docs/current/references/cli-reference/dfx-ledger/ /docs/building-apps/developer-tools/dfx/dfx-ledger
   /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
   /docs/current/samples/host-a-website/ /samples
   /features/serve-web-content/ /capabilities
-  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/intro-canisters
+  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/tooling
   /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
   /docs/tutorials/developer-liftoff/level-0/intro-languages /docs/tutorials/developer-liftoff/level-0/tooling
   /docs/tutorials/developer-liftoff/level-0/intro-dfx /docs/tutorials/developer-liftoff/level-0/first-dapp
@@ -990,7 +990,6 @@ const redirects = `
   /docs/candid-guide/candid-intro.html /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/home /docs/home
   /docs/building /docs/home
-  /docs/building-apps/ /docs/home
   /docs/introduction/welcome.html /docs/home
   /docs/rust-guide/rust-quickstart.html /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /install.sh) /docs/building-apps/getting-started/install
@@ -1004,7 +1003,6 @@ const redirects = `
   /docs/candid-guide/candid-howto /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/building-apps/getting-started/quickstart /docs/building-apps/getting-started/quickstart
   /developers-guide/tutorials/phonebook.html /samples
-  /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/tokenomics/identity-auth/ /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
   /docs /docs/home
@@ -1030,7 +1028,6 @@ const redirects = `
   /docs/operators-guide/ops-guide /docs/home
   /docs/videos-tutorials /docs/home
   /education /education-hub
-  /features /capabilities
   /features/ /capabilities
   /features/green /capabilities/sustainability
   /grants https://dfinity.org/grants
@@ -1122,7 +1119,6 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/cdks/ /docs/building-apps/developer-tools/cdks/
   /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/building-apps/developer-tools/cdks/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/main/writing-motoko/actors-async
@@ -1143,7 +1139,6 @@ const redirects = `
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/main/base/
   /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
