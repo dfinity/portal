@@ -9,17 +9,76 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Concept"]} />
 
-To configure how a frontend <GlossaryTooltip>canister</GlossaryTooltip> responds to requests for specific assets, you can edit the Concent Security Policy in a project's `.ic-assets.json5`. Each entry in this file allows for specifying a [glob](https://code.visualstudio.com/docs/editor/glob-patterns) pattern along with the headers to be returned for any file that matches the pattern. You may also dictate whether redirects are performed from a non-certified endpoint to a certified endpoint for any given filename pattern.
+To configure how a frontend <GlossaryTooltip>canister</GlossaryTooltip> responds to requests for specific assets, you can edit the Content Security Policy in a project's `.ic-assets.json5`. Each entry in this file allows for specifying a [glob](https://code.visualstudio.com/docs/editor/glob-patterns) pattern along with the headers to be returned for any file that matches the pattern. You may also dictate whether redirects are performed from a non-certified endpoint to a certified endpoint for any given filename pattern.
 
 ## Content Security Policies (CSP)
 
 By default, frontend canisters created with `dfx new` contain the following Content Security Policy (CSP) in the project's `.ic-assets.json5` file:
 
 ```
-"Content-Security-Policy": "default-src 'self';script-src 'self';connect-src 'self' http://localhost:* https://icp0.io https://*.icp0.io https://icp-api.io;img-src 'self' data:;style-src * 'unsafe-inline';style-src-elem * 'unsafe-inline';font-src *;object-src 'none';base-uri 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;",
+[
+    {
+        "match": "**/*",
+
+        // Provides a base set of security headers that will work for most dapps.
+        // Any headers you manually specify will override the headers provided by the policy.
+        // See 'dfx info security-policy' to see the policy and for advice on how to harden the headers.
+        // Once you improved the headers for your dapp, set the security policy to "hardened" to disable the warning.
+        // Options are: "hardened" | "standard" | "disabled".
+        "security_policy": "standard",
+
+        "headers": {
+            "Content-Security-Policy": "default-src 'self';script-src 'self' 'unsafe-eval' 'unsafe-inline';connect-src 'self' http://localhost:* https://icp0.io https://*.icp0.io https://icp-api.io;img-src 'self' data:;style-src * 'unsafe-inline';style-src-elem * 'unsafe-inline';font-src *;object-src 'none';base-uri 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;",
+        },
+
+        // Uncomment to disable the warning about using the
+        // standard security policy, if you understand the risk
+        // "disable_security_policy_warning": true,
+
+        // Uncomment to redirect all requests from .raw.icp0.io to .icp0.io
+        // "allow_raw_access": false
+    },
+]
 ```
 
 This CSP includes the configuration `img-src data` because image files are often included in frontend interfaces. It also includes the security setting `frame-ancestors: none` which is used to mitigate [clickjacking attacks](https://owasp.org/www-community/attacks/Clickjacking).
+
+`match` and `ignore` rules can be set within the `.ic-assets.json5` file.
+
+```json
+[
+    {
+        "match": ".*",
+        "cache": {
+            "max_age": 20
+        },
+        "headers": {
+            "X-Content-Type-Options": "nosniff"
+        },
+        "ignore": false
+    },
+    {
+        "match": "**/*",
+        "headers": null
+    },
+    {
+        "match": "file.json",
+        "ignore": true
+    }
+]
+```
+
+A valid JSON format is required. The following fields are accepted: 
+
+- `cache`
+
+- `ignore`: Files that begin with a . are ignored, while all other files are included, unless an  `.ignore` field is present. If a directory is ignored, its files and subdirectories cannot be unignored. A file can be ignored and unignored many times, as long as any of its parent directories haven't been ignored.
+
+- `headers`: Headers from multiple applicable rules are concatenated unless `nul`l is specified, which resets the headers. Both `"headers": {}` and absence of headers field don't have an effect on the end result.
+
+- `match`: Properties from a rule matching a file in a subdirectory override properties from a rule matching a file in a parent directory. The last rule in the configuration file takes precedence over the first rule.
+
+The `glob` pattern has to be valid.
 
 ## Security recommendations
 
