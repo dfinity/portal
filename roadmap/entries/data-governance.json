@@ -8,7 +8,7 @@
       "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
       "milestone_id": "Neon",
       "status": "in_progress",
-      "eta_to_render": "June 2025"
+      "eta_to_render": "July 2025"
     },
     {
       "title": "Portfolio page",
@@ -112,7 +112,7 @@
       "status": "future",
       "is_community": false,
       "in_beta": false,
-      "milestone_id": "Nucleon"
+      "milestone_id": "Neon"
     },
     {
       "title": "Council-based digital assets management",

@@ -64,8 +64,8 @@
       "milestone_id": "Pulse"
     },
     {
-      "title": "One account, multiple identities",
-      "overview": "Internet Identity provides users with the tools to manage multiple identities.",
+      "title": "One identity, multiple accounts",
+      "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
       "status": "future",
       "milestone_id": "Pulse"
     },
@@ -73,16 +73,14 @@
       "title": "Disentangle identity / wallet / app",
       "overview": "Resolve the confusion that exists between Internet Identity and wallets. Clearly define the role that Internet Identity plays for applications.",
       "status": "future",
-      "milestone_id": "Pulse"
+      "milestone_id": "Plexus"
     },
     {
       "title": "Additional measures for securing accounts",
       "overview": "Implement additional security measures for protecting accounts when a device is compromised or stolen.",
       "status": "future",
-      "milestone_id": "Pulse"
+      "milestone_id": "Plexus"
     },
-
-
     {
       "title": "Credentials solution for everyone",
       "description": "Make the credential solution that Internet Identity offers a preferred option for a diverse range of issuers.",

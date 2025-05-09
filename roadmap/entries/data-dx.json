@@ -256,7 +256,7 @@
     {
       "title": "REST- & JSON-centric interfaces",
       "overview": "REST and JSON-centric philosophy of interacting with ICP. Makes it easier for Web2 devs to onboard the ICP ecosystem.",
-      "status": "",
+      "status": "in_progress",
       "forum": "",
       "proposal": "",
       "docs": "",

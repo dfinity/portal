@@ -363,6 +363,17 @@
       "status": "",
       "is_community": false,
       "in_beta": false
+    },
+    {
+      "title": "Maximize Canister Availability During Subnet Upgrade",
+      "overview": "Currently, a subnet upgrade takes about two minutes, during which canisters do not process messages. Theoretically, the period during which a canister is unavailable can be reduced to a few seconds for upgrade calls, and to virtually zero downtime for query calls. Achieving this will require significant changes to the protocol (e.g., how the different layers interact) and/or to the software architecture of the replica and host OS. The goal of this feature is to develop a design and implementation plan to realize these improvements.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
     }
   ]
 }
