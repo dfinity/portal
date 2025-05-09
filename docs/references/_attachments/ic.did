@@ -210,11 +210,17 @@ type canister_install_mode = variant {
     };
 };
 
+type install_code_preconditions = record {
+    stopped : opt bool;
+    total_num_changes : opt nat64;
+};
+
 type install_code_args = record {
     mode : canister_install_mode;
     canister_id : canister_id;
     wasm_module : wasm_module;
     arg : blob;
+    preconditions : opt install_code_preconditions;
     sender_canister_version : opt nat64;
 };
 
@@ -225,6 +231,7 @@ type install_chunked_code_args = record {
     chunk_hashes_list : vec chunk_hash;
     wasm_module_hash : blob;
     arg : blob;
+    preconditions : opt install_code_preconditions;
     sender_canister_version : opt nat64;
 };
 
