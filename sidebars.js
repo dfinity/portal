@@ -146,6 +146,11 @@ build: [
               "building-apps/developer-tools/dfxvm/dfxvm-update",
             ],
           },
+          {
+            type: "doc",
+            label: "IC Pack",
+            id: "docs/building-apps/best-practices/icpack",
+          }
         ],
       },
        "building-apps/developer-tools/icp-ninja",
