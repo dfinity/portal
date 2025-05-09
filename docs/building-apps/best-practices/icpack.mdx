@@ -10,3 +10,11 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <MarkdownChipRow labels={["Intermediate", "Developer tools", "Concept"]} />
 
 **IC Pack** (see more docs [here](https://dev.package-mananger.com)) is a package manager for IC apps, akin to Google Play or Apple App Store. Don't confuse IC Pack with package managers for software libraries such as [MOPS](https://mops.one) and [Cargo](https://doc.rust-lang.org/cargo/).
+
+IC Pack has not been released yet, but some docs already were released, so that you can start building with it.
+
+The thing that you can now, is to create an app with a TypeScript (or JavaScript) script that creates your own app store and packages your app into it. See [this](https://dev.package-manager.com/sources/prepare-test.ts.html) example:
+
+* You first create the repository (and optionally set its properties such as name).
+* Then you upload WASM files of your app.
+* Then you create a package, that can be installed using IC Pack from your repository (app store).
