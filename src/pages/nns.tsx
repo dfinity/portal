@@ -1,7 +1,7 @@
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import Layout from "@theme/Layout";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import IconHowItWorks from "../../static/img/nns/how-it-works.svg";
 import IconGovern from "../../static/img/nns/govern.svg";
 import IconStake from "../../static/img/nns/stake.svg";
@@ -15,10 +15,29 @@ import {
   TranslatedCard,
   TranslatedCardList,
 } from "../components/Common/TranslatedCards/TranslatedCards";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const MotionLink = motion(Link);
 
 function NnsPage() {
+  const [isMobile, setIsMobile] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  const isDark = useDarkHeaderInHero(heroRef);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 612);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <Layout
       title="Network Nervous System (NNS)"
@@ -40,12 +59,23 @@ function NnsPage() {
           }
         />
       </Head>
-      <main className="text-black relative overflow-hidden">
-        <DarkHeroStyles></DarkHeroStyles>
-        <AnimateSpawn variants={transitions.container}>
-          <section className="overflow-hidden bg-infinite text-white">
-            <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
-              <div className="md:w-6/10">
+      <main
+        className="text-black relative overflow-hidden"
+        style={{
+          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+      >
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        <section
+          style={{
+            background: "linear-gradient(54deg, #3B00B9 0%, #D38ED7 153.06%)",
+          }}
+          className=" text-white"
+          ref={heroRef}
+        >
+          <AnimateSpawn variants={transitions.container}>
+            <div className="container-10 pt-40 mb-30 pb-48 md:pb-72 md:pt-48 relative text-center ">
+              <div className="md:w-7/10 md:mx-auto">
                 <motion.h1
                   className="tw-heading-3 md:tw-heading-2 mb-6"
                   variants={transitions.item}
@@ -61,40 +91,44 @@ function NnsPage() {
                   that continuously upgrades the Internet Computer based on the
                   voting of ICP token holders.
                 </motion.p>
-                <MotionLink
-                  className="button-white"
-                  href="https://nns.ic0.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={transitions.item}
-                >
-                  Go to the NNS
-                </MotionLink>
+                <motion.div className="flex flex-col md:flex-row items-center justify-center">
+                  <MotionLink
+                    className="button-white"
+                    href="https://nns.ic0.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variants={transitions.item}
+                  >
+                    Go to the NNS
+                  </MotionLink>
+                  <MotionLink
+                    className="invisible md:visible button-outline-white md:ml-4 mt-2 md:mt-0"
+                    href="https://www.youtube.com/watch?v=3o0eBOaHP_4&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6&index=4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variants={transitions.item}
+                  >
+                    HOW TO STAKE
+                  </MotionLink>
+                </motion.div>
               </div>
             </div>
-            <div className="container-10 relative">
-              <motion.img
-                src="/img/whiteBlurredCircle.webp"
-                alt=""
-                className="absolute pointer-events-none max-w-none w-[800px] aspect-square -right-[200px] bottom-[-300px] md:w-[1500px] md:bottom-[-680px] md:right-[-550px] object-contain object-center"
-                variants={transitions.item}
-              />
+            <div className="container-12 relative z-11">
+              {isMobile ? (
+                <img
+                  src="/img/nns/mobile.webp"
+                  className=" absolute w-[80%] xs:w-[60%] translate-x-[12.5%] xs:translate-x-[32.5%] bottom-0 left-0 translate-y-[55%]"
+                />
+              ) : (
+                <img
+                  src="/img/nns/desktop.webp"
+                  className=" absolute w-[90%] translate-x-[5%] bottom-0 left-0 translate-y-[40%] md:translate-y-1/2"
+                />
+              )}
             </div>
-          </section>
-          <motion.section
-            className="container-12 relative h-60 sm:h-30"
-            variants={transitions.item}
-          >
-            <img
-              src="/img/nns/hero.svg"
-              alt=""
-              loading="lazy"
-              className="w-full max-w-md sm:w-auto sm:absolute pointer-events-none right-5 -translate-y-1/2 sm:-translate-y-2/3"
-            />
-            {/* <HeroGraphic className="w-full max-w-md sm:w-auto sm:absolute pointer-events-none right-5 -translate-y-1/2 sm:-translate-y-2/3" /> */}
-          </motion.section>
-        </AnimateSpawn>
-        <section className="container-12">
+          </AnimateSpawn>
+        </section>
+        <section className="container-12 mt-[35rem] sm:mt-[25rem] md:mt-[40rem]">
           <TranslatedCardList>
             <TranslatedCard
               title="How it works"
