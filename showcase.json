@@ -4787,7 +4787,7 @@
     "tags": [
       "AI"
     ],
-    "description": "An framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
+    "description": "A framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/anda_logo.jpeg"
   },
