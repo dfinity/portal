@@ -765,7 +765,8 @@ defi: [
             label: "ICRC ledger",
             items: [
               "defi/token-ledgers/setup/icrc1_ledger_setup",
-              "defi/token-ledgers/usage/icrc1_ledger_usage"
+              "defi/token-ledgers/usage/icrc1_ledger_usage",
+              "defi/token-ledgers/upgrading/icrc1_ledger_upgrade"
             ],
           },
           "defi/token-ledgers/cycles-ledger",
