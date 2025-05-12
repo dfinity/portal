@@ -662,6 +662,17 @@ An example of this error is:
 To fix this error, consider using the `list_canister_snapshot` API to see which snapshots exist on your canister.
 
 
+### Canister snapshot limit exceeded
+The canister snapshot creation failed because the maximum number of allowed snapshots per canister was exceeded.
+
+An example of this error is:
+```
+  Canister xxx-xxx has reached the maximum number of snapshots allowed: 1.
+```
+
+To fix this error, delete an unnecessary snapshot of the specified canister before creating a new one.
+
+
 ### Canister heap delta rate limited
 The canister has been rate limited, which prevents it from taking or loading a snapshot.
 
