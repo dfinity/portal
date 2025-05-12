@@ -1260,26 +1260,6 @@
     ]
   },
   {
-    "id": "orbit",
-    "name": "Orbit",
-    "display": "Normal",
-    "website": "https://orbit.global",
-    "github": "https://github.com/dfinity/orbit",
-    "tags": [
-      "Wallet",
-      "Chain Fusion",
-      "Tools / Infrastructure"
-    ],
-    "stats": "170MAU",
-    "description": "Orbit offers multi approval workflows of treasury and smart contract management for teams of any size.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/orbit-logo.svg",
-    "screenshots": [
-      "/img/showcase/Orbit_largescreen.jpg"
-    ],
-    "oneLiner": "Secure, onchain, multi-approver governance for multichain assets."
-  },
-  {
     "id": "iknows",
     "name": "iKnows",
     "display": "Normal",
