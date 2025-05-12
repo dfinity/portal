@@ -5607,7 +5607,7 @@
       "Tools / Infrastructure",
       "Enterprise"
     ],
-    "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust",
+    "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/staex-dvault_logo.svg",
     "oneLiner": " "
