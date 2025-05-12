@@ -404,6 +404,35 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/deploy/custom-testnets /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/canbench /docs/building-apps/advanced/benchmarking
 
+  ## dfx
+  /docs/current/references/cli-reference/dfx-parent /docs/building-apps/developer-tools/dfx/dfx-parent
+  /docs/current/references/cli-reference/dfx-bootstrap /docs/building-apps/developer-tools/dfx/dfx-bootstrap
+  /docs/current/references/cli-reference/dfx-build /docs/building-apps/developer-tools/dfx/dfx-build
+  /docs/current/references/cli-reference/dfx-cache /docs/building-apps/developer-tools/dfx/dfx-cache
+  /docs/current/references/cli-reference/dfx-canister /docs/building-apps/developer-tools/dfx/dfx-canister
+  /docs/current/references/cli-reference/dfx-completion /docs/building-apps/developer-tools/dfx/dfx-completion
+  /docs/current/references/cli-reference/dfx-cycles /docs/building-apps/developer-tools/dfx/dfx-cycles
+  /docs/current/references/cli-reference/dfx-deploy /docs/building-apps/developer-tools/dfx/dfx-deploy
+  /docs/current/references/cli-reference/dfx-deps /docs/building-apps/developer-tools/dfx/dfx-deps
+  /docs/current/references/cli-reference/dfx-generate /docs/building-apps/developer-tools/dfx/dfx-generate
+  /docs/current/references/cli-reference/dfx-help /docs/building-apps/developer-tools/dfx/dfx-help
+  /docs/current/references/cli-reference/dfx-identity /docs/building-apps/developer-tools/dfx/dfx-identity
+  /docs/current/references/cli-reference/dfx-info /docs/building-apps/developer-tools/dfx/dfx-info
+  /docs/current/references/cli-reference/dfx-killall /docs/building-apps/developer-tools/dfx/dfx-killall
+  /docs/current/references/cli-reference/dfx-ledger /docs/building-apps/developer-tools/dfx/dfx-ledger
+  /docs/current/references/cli-reference/dfx-new /docs/building-apps/developer-tools/dfx/dfx-new
+  /docs/current/references/cli-reference/dfx-nns /docs/building-apps/developer-tools/dfx/dfx-nns
+  /docs/current/references/cli-reference/dfx-ping /docs/building-apps/developer-tools/dfx/dfx-ping
+  /docs/current/references/cli-reference/dfx-quickstart /docs/building-apps/developer-tools/dfx/dfx-quickstart
+  /docs/current/references/cli-reference/dfx-replica /docs/building-apps/developer-tools/dfx/dfx-replica
+  /docs/current/references/cli-reference/dfx-schema /docs/building-apps/developer-tools/dfx/dfx-schema
+  /docs/current/references/cli-reference/dfx-sns /docs/building-apps/developer-tools/dfx/dfx-sns
+  /docs/current/references/cli-reference/dfx-start /docs/building-apps/developer-tools/dfx/dfx-start
+  /docs/current/references/cli-reference/dfx-stop /docs/building-apps/developer-tools/dfx/dfx-stop
+  /docs/current/references/cli-reference/dfx-upgrade /docs/building-apps/developer-tools/dfx/dfx-upgrade
+  /docs/current/references/cli-reference/dfx-wallet /docs/building-apps/developer-tools/dfx/dfx-wallet
+  /docs/current/references/cli-reference/dfx-envars /docs/building-apps/developer-tools/dfx/dfx-envars
+
   ## Getting started
   /docs/current/developer-docs/getting-started/accounts /docs/building-apps/getting-started/identities
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/building-apps/canister-management/cycles-wallet
