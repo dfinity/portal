@@ -13,6 +13,8 @@ If you want to permanently delete a specific <GlossaryTooltip>canister</Glossary
 
 Deleting a canister permanently removes its code and state. This action cannot be undone, and once the canister is deleted, its ID cannot be reused. Before you can delete a canister, you must first stop the canister using [`dfx canister stop <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop) to clear any pending message requests or replies.
 
+Deleting a canister will withdraw any cycles from that canister and return them to the cycles wallet or cycles ledger account associated with the canister's controller principal. If the canister has multiple controllers, then the principal that made the delete request receives the cycles.
+
 ## Errors related to canister deletion
 
 Common errors related to canister deletion include:
