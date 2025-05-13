@@ -103,9 +103,7 @@ function NnsPage() {
                   </MotionLink>
                   <MotionLink
                     className="invisible md:visible button-outline-white md:ml-4 mt-2 md:mt-0"
-                    href="https://www.youtube.com/watch?v=3o0eBOaHP_4&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6&index=4"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#stake"
                     variants={transitions.item}
                   >
                     HOW TO STAKE
@@ -220,7 +218,10 @@ function NnsPage() {
           variants={transitions.container}
           className="container-10 mt-20 md:mt-30"
         >
-          <div className="text-center md:w-6/10 md:mx-auto mb-6 md:mb-20">
+          <div
+            id="stake"
+            className="text-center md:w-6/10 md:mx-auto mb-6 md:mb-20"
+          >
             <motion.h2
               variants={transitions.item}
               className="tw-heading-4 md:tw-heading-60 mb-3 md:mb-8"
