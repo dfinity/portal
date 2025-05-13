@@ -101,13 +101,18 @@ function NnsPage() {
                   >
                     Go to the NNS
                   </MotionLink>
-                  <MotionLink
-                    className="button-outline-white md:ml-4 mt-2 md:mt-0"
-                    href="#stake"
+                  <motion.div
+                    className="button-outline-white md:ml-4 mt-2 md:mt- cursor-pointer select-none"
+                    onClick={() => {
+                      window.scrollTo({
+                        top: document.getElementById("stake")?.offsetTop,
+                        behavior: "smooth",
+                      });
+                    }}
                     variants={transitions.item}
                   >
                     HOW TO STAKE
-                  </MotionLink>
+                  </motion.div>
                 </motion.div>
               </div>
             </div>
