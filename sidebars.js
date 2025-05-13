@@ -393,32 +393,6 @@ build: [
         "building-apps/chain-fusion/supported-chains",
         {
           type: "category",
-          label: "Bitcoin",
-          link: {
-            type: "doc",
-            id: "building-apps/chain-fusion/bitcoin/overview",
-          },
-          items: [
-            "building-apps/chain-fusion/bitcoin/using-btc/btc-comparison",
-            "building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow",
-            {
-              type: "category",
-              label: "Interacting with Bitcoin",
-              items: [
-                "building-apps/chain-fusion/bitcoin/using-btc/generate-addresses",
-                "building-apps/chain-fusion/bitcoin/using-btc/create-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/sign-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/submit-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/read-state",
-                "building-apps/chain-fusion/bitcoin/using-btc/ordinals",
-                "building-apps/chain-fusion/bitcoin/using-btc/runes",
-                "building-apps/chain-fusion/bitcoin/using-btc/local-development",
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
           label: "Ethereum & EVM chains",
           link: {
             type: "doc",
@@ -457,16 +431,21 @@ build: [
     {
       type: "category",
       label: "Security",
+      link:
+        {
+          type: "doc",
+          id: "building-apps/security/overview",
+        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          link:
+          items: [
           {
             type: "doc",
+            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
-          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
@@ -820,8 +799,46 @@ defi: [
             },
           ],
         },
-        ],
+],
 
+btc: [
+  "build-on-btc/overview",
+  "build-on-btc/btc-dev-workflow",
+  "build-on-btc/btc-dev-env",
+  "build-on-btc/btc-examples",
+  "build-on-btc/btc-api",
+  {
+    type: "category",
+    label: "Bitcoin transactions",
+    items: [
+      "build-on-btc/btc-transactions/generate-addresses",
+      "build-on-btc/btc-transactions/create-transactions",
+      "build-on-btc/btc-transactions/sign-transactions",
+      "build-on-btc/btc-transactions/submit-transactions",
+    ],
+  },
+  "build-on-btc/read-state",
+  "build-on-btc/building-an-oracle",
+  {
+    type: "category",
+    label: "Create BTC assets",
+    items: [
+      "build-on-btc/create-assets/brc20",
+      "build-on-btc/create-assets/inscriptions",
+      "build-on-btc/create-assets/ordinals",
+      "build-on-btc/create-assets/runes",
+    ],
+  },
+  "build-on-btc/btc-auth",
+  {
+    type: "category",
+    label: "Using BTC & ckBTC",
+    items: [
+      "build-on-btc/btc-ckbtc/convert-btc-ckbtc",
+      "build-on-btc/btc-ckbtc/wallets",
+    ],
+  },
+],
 
 references: [
   {
@@ -971,6 +988,7 @@ devjourney: [
   ],
   },
 ],
+
 
 hackathon: [
   {

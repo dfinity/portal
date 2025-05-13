@@ -1,0 +1,35 @@
+---
+keywords: [advanced, bitcoin, btc, workflow, developer workflow, btc workflow, btc dev, make btc dapp, btc dapps, develop btc, btc smart contract]
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# BTC developer workflow
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
+
+To build Bitcoin dapps on ICP, a developer needs to make calls and submit transactions to the Bitcoin network from their ICP smart contract.
+
+Before you start building your dapp, you will need to [setup a local development environment with Bitcoin support](./btc-dev-env.mdx).
+
+Developers should expect to implement one or more of the following functions to build a Bitcoin dapp:
+
+- [Generate a Bitcoin address](./btc-transactions/generate-addresses.mdx). Bitcoin addresses are necessary for your dapp to sign transactions and hold assets like BTC. An ICP smart contract can have multiple addresses that have been generated with different signature types, i.e., ECDSA and Schnorr.
+
+- [Create a Bitcoin transaction](.btc-transactions/create-transactions.mdx). Bitcoin transactions spend unspent transaction outputs (UTXOs) and create new UTXOs. An UTXO is the output of a bitcoin transaction. It exists as a UTXO until it is used as the input of another transaction.
+
+- [Sign the transaction](./btc-transactions/sign-transactions.mdx) using one of the supported [threshold signature algorithms](/docs/references/t-sigs-how-it-works). All inputs of a transaction must be signed before the transaction can be submitted to the Bitcoin network.
+
+- [Submit the transaction](./btc-transactions/submit-transactions.mdx) by sending a request to the Bitcoin API that specifies the `blob` of the transaction and the target Bitcoin network (mainnet or testnet v4).
+
+- [Read information from the Bitcoin network](read-state.mdx) such as transaction details or address balances.
+
+:::tip
+
+Popular libraries like [`rust-bitcoin`](https://github.com/rust-bitcoin/rust-bitcoin) and [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib) can be used within ICP smart contracts.
+
+:::
