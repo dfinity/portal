@@ -254,9 +254,9 @@
       "in_beta": false
     },
     {
-      "title": "REST- & JSON-centric interfaces",
-      "overview": "REST and JSON-centric philosophy of interacting with ICP. Makes it easier for Web2 devs to onboard the ICP ecosystem.",
-      "status": "",
+      "title": "PoC enabling REST & JSON-centric interfaces",
+      "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
+      "status": "in_progress",
       "forum": "",
       "proposal": "",
       "docs": "",
