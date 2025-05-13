@@ -90,12 +90,6 @@
       "eta_to_render": ""
     },
     {
-      "title": "Bring the verifiable credentials protocol closer to the industry standard",
-      "overview": "Evolve the verifiable credentials protocol by bringing it closer to the industry standards.",
-      "status": "future",
-      "milestone_id": "Plexus"
-    },
-    {
       "title": "Credential issuers discoverability",
       "overview": "Facilitate the discovery of credentials issuers through aggregation APIs.",
       "status": "future",
@@ -136,18 +130,6 @@
       "milestone_id": ""
     },
     {
-      "title": "Verifiable Credentials billing",
-      "overview": "Billing for provisioning of verifiable credentials. Enables a business model for identity providers.",
-      "forum": "",
-      "proposal": "",
-      "docs": "https://github.com/dfinity/wg-identity-authentication",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
       "title": "External services authentication to canisters",
       "overview": "Allowing users to authenticate to canisters via Web2-based authentication services. True Web2-Web3-X-SSO.",
       "forum": "",
@@ -156,18 +138,6 @@
       "eta": "",
       "status": "",
       "is_community": false,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
-      "title": "Usernames instead of Anchors",
-      "overview": "Usernames are easier to remember and better reflect what users are used to from Web2 to identify to services.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
       "in_beta": false,
       "milestone_id": ""
     },
@@ -201,17 +171,6 @@
       "docs": "",
       "eta": "",
       "status": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "Root domain name independence",
-      "overview": "Make internet identities independent of the domain II was executing in when the II has been created. Important to ensure II anchors remain accessible even if II's root domain needs to be switched.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
       "is_community": true,
       "in_beta": false
     },
