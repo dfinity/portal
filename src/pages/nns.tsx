@@ -115,7 +115,7 @@ function NnsPage() {
               {isMobile ? (
                 <img
                   src="/img/nns/mobile.webp"
-                  className=" absolute w-[80%] xs:w-[60%] xs:translate-x-[32.5%] bottom-0 left-0 translate-y-[55%]  translate-x-[12.5%] "
+                  className=" absolute w-[80%] xs:w-[60%] xs:translate-y-[60%] xs:translate-x-[32.5%] bottom-0 left-0 translate-y-[55%]  translate-x-[12.5%] "
                 />
               ) : (
                 <img
