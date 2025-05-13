@@ -19,7 +19,7 @@
       "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
       "forum": "",
       "proposal": "",
-      "docs": "https://github.com/mfactory-lab/ic-solana",
+      "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
       "eta": "",
       "status": "in_progress",
       "is_community": true,
@@ -40,13 +40,13 @@
       "is_milestone": true,
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
-      "status": "future",
+      "status": "in_progress",
       "eta_to_render": ""
     },
     {
       "title": "Native Dogecoin integration",
       "overview": "Native Dogecoin integration will extend ICP replicas to also follow the Dogecoin network and collect its UTXO set in a special Dogecoin canister. This allows canisters on ICP to securely read the Dogecoin state. Combined with the existing threshold ECDSA signing functionality, this allows canisters to securely hold and transfer native dogecoin.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Meridian"
     },
     {

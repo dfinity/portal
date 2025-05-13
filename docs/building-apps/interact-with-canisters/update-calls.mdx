@@ -16,7 +16,7 @@ To interact with a <GlossaryTooltip>canister</GlossaryTooltip>'s methods, there 
 **Update calls** can make modifications to a canister's state, while **query calls** cannot. Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus). This makes them slower than query calls. They can be synchronous or asynchronous.
 
 :::danger
-Update calls do not go through consensus on the local replica.
+Update calls do not go through consensus on the local development environment.
 :::
 
 A query method can be called as both an update or a query, whereas update methods can only be called as an update.
@@ -35,7 +35,7 @@ See the reference on [ingress messages](/docs/building-apps/interact-with-canist
 
 To make an update call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--update` flag:
 
-- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
 - `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 

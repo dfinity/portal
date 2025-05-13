@@ -25,12 +25,9 @@ build: [
         id: "building-apps/essentials/network-overview",
       },
       {
-        type: "category",
-        label: "Fees",
-        items:[
-          "building-apps/essentials/gas-cost",
-          "building-apps/essentials/cost-estimations-and-examples"
-        ]
+        type: "doc",
+        label: "Fee breakdown",
+        id: "building-apps/essentials/gas-cost",
       },
       {
         type: "doc",
@@ -131,8 +128,6 @@ build: [
                 items: [
                   "building-apps/developer-tools/advanced-dfx/check-chunk-store",
                   "building-apps/developer-tools/advanced-dfx/dfx-migration",
-                  "building-apps/developer-tools/advanced-dfx/init-args",
-                  "building-apps/developer-tools/advanced-dfx/networks-json",
                   "building-apps/developer-tools/advanced-dfx/specifying-replica-version",
                 ],
               },
@@ -161,7 +156,6 @@ build: [
       label: "Developing canisters",
       items:
       [
-        "building-apps/developing-canisters/what-are-canisters",
         "building-apps/developing-canisters/write",
         "building-apps/developing-canisters/create",
         "building-apps/developing-canisters/compile",
@@ -182,7 +176,7 @@ build: [
     },
     {
       type: "category",
-      label: "Interact with canisters",
+      label: "Interacting with canisters",
       items: [
         {
           type: "category",
@@ -211,6 +205,17 @@ build: [
             "building-apps/interact-with-canisters/agents/rust-agent",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Testing canisters",
+      link: {
+        type: "doc",
+        id: "building-apps/test/overview",
+      },
+      items: [
+        "building-apps/test/pocket-ic"
       ],
     },
     {
@@ -256,17 +261,6 @@ build: [
       label: "Advanced development",
       items:
       [
-         {
-          type: "category",
-          label: "Testing canisters",
-          link: {
-            type: "doc",
-            id: "building-apps/advanced/test/overview",
-          },
-          items: [
-            "building-apps/advanced/test/pocket-ic"
-          ],
-        },
         "building-apps/advanced/using-third-party-canisters",
         "building-apps/advanced/benchmarking",
         {
@@ -327,6 +321,16 @@ build: [
                   type: "doc",
                   id: "building-apps/network-features/using-http/http-certification/serving-static-assets-over-http",
                   label: "Serving static assets over HTTP (custom)",
+                },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/upgrading-http-query-calls-to-update-calls",
+                  label: "Upgrading HTTP query calls to update calls",
+                },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/skipping-certification-for-http-responses",
+                  label: "Skipping certification for HTTP responses",
                 },
               ],
             },
@@ -463,21 +467,16 @@ build: [
     {
       type: "category",
       label: "Security",
-      link:
-        {
-          type: "doc",
-          id: "building-apps/security/overview",
-        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          items: [
+          link:
           {
             type: "doc",
-            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
+          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
@@ -605,6 +604,7 @@ build: [
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-sns-topic-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
             },
@@ -775,7 +775,8 @@ defi: [
             label: "ICRC ledger",
             items: [
               "defi/token-ledgers/setup/icrc1_ledger_setup",
-              "defi/token-ledgers/usage/icrc1_ledger_usage"
+              "defi/token-ledgers/usage/icrc1_ledger_usage",
+              "defi/token-ledgers/upgrading/icrc1_ledger_upgrade"
             ],
           },
           "defi/token-ledgers/cycles-ledger",
@@ -859,6 +860,7 @@ references: [
       "references/vetkeys-overview"
     ],
   },
+  "references/cycles-cost-formulas",
   {
     type: "category",
     label: "System canisters",

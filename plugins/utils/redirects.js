@@ -373,7 +373,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
-  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
+  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/building-apps/interact-with-canisters/agents/nodejs
   /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/building-apps/interact-with-canisters/agents/overview
@@ -392,7 +392,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
-  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/developing-canisters/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/essentials/canisters
   /docs/current/references/subnets/subnet-types/ /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
   /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
@@ -665,7 +665,7 @@ const redirects = `
   /docs/current/developer-docs/setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/setup/manage-projects /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy
-  /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/advanced/test/pocket-ic
+  /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/test/pocket-ic
   /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/building-apps/advanced/using-third-party-canisters
   /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/developer-docs/setup/state /docs/building-apps/canister-management/state
@@ -727,8 +727,10 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/building-apps/advanced/benchmarking
-  /docs/current/developer-docs/smart-contracts/test/overview /docs/building-apps/advanced/test/overview
-  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/building-apps/advanced/test/pocket-ic
+  /docs/current/developer-docs/smart-contracts/test/overview /docs/building-apps/test/overview
+  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/building-apps/test/pocket-ic
+  /docs/building-apps/advanced/test/overview /docs/building-apps/test/overview
+  /docs/building-apps/advanced/test/pocket-ic /docs/building-apps/test/pocket-ic
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
   /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/building-apps/getting-started/troubleshooting
@@ -883,8 +885,44 @@ const redirects = `
   /docs/current/samples/vetkd-encrypted-notes /samples
   /docs/samples/overview /samples
   /docs/current/samples/overview /samples
+  /docs/references/samples/ADDING_AN_EXAMPLE /samples
+  /docs/references/samples/archive/motoko/actor_reference/ /samples
+  /docs/references/samples/archive/motoko/auth_client_demo/ /samples
+  /docs/references/samples/archive/motoko/calc/ /samples
+  /docs/references/samples/archive/motoko/defi/ /samples
+  /docs/references/samples/archive/motoko/dip721-nft-container/ /samples 
+  /docs/references/samples/archive/motoko/echo/ /samples
+  /docs/references/samples/archive/motoko/factorial/ /samples
+  /docs/references/samples/archive/motoko/hello-world/ /samples
+  /docs/references/samples/archive/motoko/hello/ /samples
+  /docs/references/samples/archive/motoko/ios-notifications/ /samples
+  /docs/references/samples/archive/motoko/persistent-storage/ /samples
+  /docs/references/samples/archive/motoko/phone-book/ /samples
+  /docs/references/samples/archive/motoko/quicksort/ /samples
+  /docs/references/samples/archive/motoko/simple-to-do/ /samples
+  /docs/references/samples/c/adventure  /samples
+  /docs/references/samples/c/qr  /samples
+  /docs/references/samples/c/reverse /samples
+  /docs/references/samples/hosting/ /samples
+  /docs/references/samples/hosting/godot-html5-template/ /samples
+  /docs/references/samples/hosting/react/ /samples
+  /docs/references/samples/hosting/unity-webgl-template/ /samples
+  /docs/references/samples/native-apps/unity_ii_applink  /samples
+  /docs/references/samples/native-apps/unity_ii_deeplink  /samples
+  /docs/references/samples/native-apps/unity_ii_universallink /samples
+  /docs/references/samples/svelte/svelte-motoko-starter  /samples
+  /docs/references/samples/svelte/svelte-starter  /samples
+  /docs/references/samples/svelte/sveltekit-starter /samples
+  /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
+  /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
+  /docs/building-apps/developer-tools/advanced-dfx/networks-json /docs/building-apps/developing-canisters/custom-networks
+  /docs/building-apps/developer-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
+  /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
+  /docs/current/references/security/ /docs/building-apps/security/overview
   /docs/current/developer-docs/use-cases/ /docs/home
   /docs/current/developer-docs/interact-with-canisters/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/starter-kits /docs/building-apps/getting-started/quickstart
@@ -996,8 +1034,32 @@ const redirects = `
   /features/ /capabilities
   /features/green /capabilities/sustainability
   /grants https://dfinity.org/grants
-  /howitworks/ /how-it-works
-  /howitworks /how-it-works
+  /how-it-works https://learn.internetcomputer.org/
+  /howitworks https://learn.internetcomputer.org/
+  /howitworks/ https://learn.internetcomputer.org/
+  /how-it-works/chain-key-technology https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography
+  /how-it-works/network-nervous-system-nns https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview
+  /how-it-works/chain-key-tokens https://learn.internetcomputer.org/hc/en-us/articles/34211397080980-Chain-Key-Tokens
+  /how-it-works/tokenomics https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
+  /how-it-works/web-authentication-identity https://internetcomputer.org/internet-identity
+  /how-it-works/smart-contracts-serve-the-web https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts
+  /how-it-works/sns https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
+  /how-it-works/threshold-ecdsa-signing https://learn.internetcomputer.org/hc/en-us/articles/34209497587732-Chain-Key-Signatures
+  /how-it-works/canister-lifecycle https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts
+  /how-it-works/message-routing https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing
+  /how-it-works/motoko https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction
+  /how-it-works/architecture-of-the-internet-computer https://learn.internetcomputer.org/hc/en-us/articles/33694833025172-How-Does-ICP-Work
+  /how-it-works/consensus https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus
+  /how-it-works/execution-layer https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer
+  /how-it-works/bitcoin-integration https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration
+  /how-it-works/boundary-nodes https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure
+  /how-it-works/core-ic-protocol-overview https://learn.internetcomputer.org/hc/en-us/articles/34206453538964-Blockchain-Protocol
+  /how-it-works/response-certification https://learn.internetcomputer.org/hc/en-us/articles/34214090576404-Certified-Communication
+  /how-it-works/scalability https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation
+  /how-it-works/upgrades https://learn.internetcomputer.org/hc/en-us/articles/34210120121748-Chain-Evolution
+  /how-it-works/asset-certification https://learn.internetcomputer.org/hc/en-us/articles/34214090576404-Certified-Communication
+  /how-it-works/fault-tolerance https://learn.internetcomputer.org/hc/en-us/articles/34210647901460-Fault-Tolerance
+  /how-it-works/peer-to-peer-p2p https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer
   /icp-event /events
   /icp-newsletter /news
   /language-guide/ /docs/tutorials/developer-liftoff/level-0/intro-languages
@@ -1092,7 +1154,8 @@ const redirects = `
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/building-apps/authentication/overview
-  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
+  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/gas-cost
+  /docs/building-apps/essentials/cost-estimations-and-examples /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http

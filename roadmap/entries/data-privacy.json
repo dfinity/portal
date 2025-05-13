@@ -35,12 +35,12 @@
       "milestone_id": "Niobium",
       "status": "in_progress",
       "eta": "Q2 2025",
-      "eta_to_render": ""
+      "eta_to_render": "June 2025"
     },
     {
       "title": "Confidentiality of canister states",
       "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Containment",
       "eta_to_render": ""
