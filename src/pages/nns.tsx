@@ -74,7 +74,7 @@ function NnsPage() {
           ref={heroRef}
         >
           <AnimateSpawn variants={transitions.container}>
-            <div className="container-10 pt-40 mb-30 pb-48 md:pb-72 md:pt-48 relative text-center ">
+            <div className="container-10 pt-40 mb-30 relative text-center  pb-48 md:pb-72 md:pt-48 ">
               <div className="md:w-7/10 md:mx-auto">
                 <motion.h1
                   className="tw-heading-3 md:tw-heading-2 mb-6"
@@ -117,12 +117,12 @@ function NnsPage() {
               {isMobile ? (
                 <img
                   src="/img/nns/mobile.webp"
-                  className=" absolute w-[80%] xs:w-[60%] translate-x-[12.5%] xs:translate-x-[32.5%] bottom-0 left-0 translate-y-[55%]"
+                  className=" absolute w-[80%] xs:w-[60%] xs:translate-x-[32.5%] bottom-0 left-0 translate-y-[55%]  translate-x-[12.5%] "
                 />
               ) : (
                 <img
                   src="/img/nns/desktop.webp"
-                  className=" absolute w-[90%] translate-x-[5%] bottom-0 left-0 translate-y-[40%] md:translate-y-1/2"
+                  className=" bottom-0 left-0 translate-y-[40%] md:translate-y-1/2 absolute w-[90%] translate-x-[5%] "
                 />
               )}
             </div>
