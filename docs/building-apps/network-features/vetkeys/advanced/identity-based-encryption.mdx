@@ -1,0 +1,43 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, encryption, identity based encryption, threshold decryption, encrypted threshold key derivation]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Identity Based Encryption (IBE)
+
+<MarkdownChipRow labels={["Advanced", "Identity Based Encryption"]} />
+
+vetKeys can be used for Identity-Based Encryption (IBE).
+
+## What is IBE?
+
+Identity-Based Encryption allows you to encrypt information to an **identity**:
+- An identity is essentially a string
+- The canister defines who can get the private key for an identity
+- No one except the authorized user can "see" the private key. The private key is constructed from secret shares, computed by the IC nodes. The shares are encrypted using the user-provided public transport key. The user decrypts the encrypted private key upon receipt using their private transport key
+- A simple instantiation of IBE on the IC is encryption to other principals. An identity is a principal, and users encrypt data, such as messages or files, for other users authorized with their principals
+
+## Benefits of IBE
+
+- IBE removes the need for generating, distributing, and storing users' encryption keys
+- IBE allows a user to obtain the private key for their identity, e.g., a principal
+
+## Using IBE with vetKeys
+
+Any encryption and decryption should happen on the client side. Any data encrypted or decrypted in the canister becomes public data.
+
+- **Encryption**: Obtain public key from the IC. Use the frontend library `ic_vetkeys` to encrypt data
+- **Decryption**: Obtain the encrypted IBE private key. Obtain encrypted data from the canister or wherever it is stored otherwise. Decrypt the IBE-encrypted data in the frontend using the frontend `ic_vetkeys` library
+
+## Comparison with DKMS
+
+- DKMS is a key management system that facilitates key derivation and management, as well as encryption
+- DKMS is a higher-level abstraction, where the developer does not need extensive knowledge in cryptography. The API operates on plaintext data
+- DKMS operates on symmetric key scopes. If the user can encrypt for a key, then this user can also decrypt. This is different in IBE. Any user can encrypt data for any IBE public key, but only the users that can obtain the **IBE private key** can decrypt. This allows for one-way encryption to an identity. Therefore, the use case for IBE is where a set of users encrypts data to another set of users. See also timelock encryption for more use cases of IBE
+
+## Demos
+
+- Use IBE to encrypt and send files to Ethereum wallets. React frontend and Rust backend. See [repository](https://github.com/kristoferlund/send_file_to_eth_demo).

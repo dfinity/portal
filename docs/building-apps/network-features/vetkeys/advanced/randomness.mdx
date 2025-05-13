@@ -1,0 +1,34 @@
+---
+keywords: [advanced, concept, random, randomness, onchain randomness, raw_rand]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+# Externally Verifiable Randomness
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+## Why Verifiable Randomness
+
+Internet Computer vetKeys can be used to produce **externally verifiable randomness**. This is useful to prove that the randomness was produced in the intended way. For example, in a web3 lottery or in the generation of random NFT properties, it is sometimes crucial that the used randomness can be verified by external users.
+
+## How It Works
+
+The process works as follows:
+- It can be proved that a vetKey was derived with correct arguments
+- Derive a vetKey for a request ID
+- The canister decrypts the vetKey
+- The hash of the vetKey serves as randomness
+- The vetKey and the public key serve as the proof
+- The hash is the randomness
+
+## How to Use
+
+More detailed implementation instructions and code snippets for using verifiable randomness with vetKeys will be provided in future updates, including:
+- How to instantiate a Verifiable Random Function (VRF)
+- How to instantiate a random beacon

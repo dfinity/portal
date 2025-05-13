@@ -1,0 +1,36 @@
+---
+keywords: [advanced, concept, random, randomness, onchain randomness, raw_rand]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+# Externally Verifiable Randomness
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+Timelock encryption builds upon Identity-Based Encryption (IBE). For more information about IBE, please refer to the [Identity-Based Encryption documentation](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption).
+
+It is useful to add time restrictions on when an IBE private key can be accessed. Additionally, the canister can decrypt IBE-encrypted data when appropriate conditions are met.
+
+## Use Cases
+
+### Secret-Bid Auction & MEV Protection
+
+Multiple bidders can create bids on an auction lot. The canister decrypts the bids once the lot is closed and decides on the winner. 
+
+For MEV (Miner Extractable Value) protection, multiple users create transactions and the canister orders them, and only then decrypts the amount to prevent front-running, where a malicious user tries to make use of market fluctuations.
+
+### Birthday Coupon
+
+One user encrypts a birthday coupon and the other user can only decrypt it after a certain delay, making it a time-based surprise gift.
+
+## Implementation Examples
+
+Detailed code examples for implementing timelock encryption with vetKeys will be provided in future updates, including:
+- Secret-bid auction implementation
+- Birthday coupon implementation

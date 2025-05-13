@@ -1,0 +1,63 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, encryption, threshold decryption, encrypted threshold key derivation]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Decentralized Key Management Service (DKMS) from vetKeys
+
+<MarkdownChipRow labels={["Advanced", "Encryption"]} />
+
+vetKeys can be used to facilitate a Distributed Key Management Service (DKMS). 
+
+## What is a DKMS?
+
+The derived vetKeys can be used for different purposes such as encryption, signing, and more. These keys can be shared with other users by adding corresponding user permissions in the canister. The DKMS has two primary components: access control and VetKey derivation.
+
+## Benefits of the DKMS
+
+DKMS provides several advantages:
+- Deterministic key generation from strong randomness
+- Access sharing without peer-to-peer interaction
+- Access sharing without requiring the receiving party to be online
+- Fetching keys on demand, reducing the risk of key compromise by eliminating the need for key persistence
+
+## How It Works
+
+- The canister (ICP smart contract) determines access control: what keys a user owns and what keys are shared with other users including specific access rights (e.g., whether an added user can further share the key)
+- A key identity is represented as a tuple consisting of (owner's principal, arbitrary byte string)
+- The owner can access any owned key, while other users cannot access any of the owner's keys until they are explicitly shared
+
+## Implementation: KeyManager
+
+The concrete implementation of DKMS is called `KeyManager`, which provides access control based on `Principal`s and derivation of VetKeys. It consists of two parts:
+
+- **Backend**: Available in both Rust and Motoko, it's a library that can be instantiated inside a canister
+- **Frontend**: Implemented in TypeScript, it allows communication with a `KeyManager`-enabled canister
+
+## EncryptedMaps
+
+A further abstraction built on top of `KeyManager` is `EncryptedMaps`. This is a collection of permissioned maps with user-encrypted data, where encryption happens using VetKeys. One of the key benefits of DKMS/`KeyManager`/`EncryptedMaps` is that developers don't need significant knowledge of cryptography to use it.
+
+`EncryptedMaps` is organized as a two-level collection of maps:
+1. The first level is indexed by the map owner's principal
+2. The second level is indexed by an arbitrary string (similar to `KeyManager`)
+
+This means that an encrypted map is associated with one vetkey and one access control scope.
+
+Once you have a reference to a map from the collection of `EncryptedMaps`, you can use it similar to a normal map - it has map keys (byte strings) that map to map values (encrypted byte strings). The important distinction from a normal map is that it is not intended to be used by the canister directly, as with VetKeys the user encrypts and decrypts data.
+
+> **Warning**: Any data encrypted or decrypted by the canister, or any vetkeys decrypted by the canister, are considered public.
+
+## Resources
+
+- [Forum discussion](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
+
+- [The first Community Conversation](https://youtu.be/baM6jHnmMq8).
+
+- [vetKeys reference](/docs/references/vetkeys-overview).
+
+- [Research paper](https://eprint.iacr.org/2023/616.pdf).
+

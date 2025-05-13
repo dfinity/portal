@@ -356,10 +356,20 @@ build: [
         },
         {
           type: "category",
-          label: "Verifiable encryption",
+          label: "vetKeys",
           items: [
             "building-apps/network-features/vetkeys/introduction",
-            "building-apps/network-features/encryption/send_file_to_eth",
+            "building-apps/network-features/vetkeys/dkms",
+            {
+              type: "category",
+              label: "Advanced",
+              items: [
+                "building-apps/network-features/vetkeys/advanced/bls-signatures",
+                "building-apps/network-features/vetkeys/advanced/identity-based-encryption",
+                "building-apps/network-features/vetkeys/advanced/timelock-encryption",
+                "building-apps/network-features/vetkeys/advanced/randomness",
+              ],
+            }
           ],
         },
         "building-apps/network-features/randomness",

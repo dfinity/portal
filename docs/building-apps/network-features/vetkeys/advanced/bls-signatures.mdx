@@ -1,0 +1,36 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, signature, BLS, threshold decryption, encrypted threshold key derivation]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# BLS Signatures from vetKeys
+
+<MarkdownChipRow labels={["Advanced", "BLS Signature"]} />
+
+vetKeys can be used for distributed signing using the BLS algorithm.
+
+## Signing Process
+
+The signing process works as follows:
+- The canister defines access rules for vetKeys, for example, based on principals
+- The canister calls the management canister API to produce an encrypted signature
+- If the signature does not need to be private, the canister can provide a dummy transport key, decrypt the vetkey, and then return the decrypted BLS signature
+- The canister returns the encrypted signature to the client
+
+## Signature Verification
+
+- The canister or the client can derive the public key to verify signatures
+
+## Resources
+
+- [Forum discussion](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
+
+- [The first Community Conversation](https://youtu.be/baM6jHnmMq8).
+
+- [vetKeys reference](/docs/references/vetkeys-overview).
+
+- [Research paper](https://eprint.iacr.org/2023/616.pdf).
+
