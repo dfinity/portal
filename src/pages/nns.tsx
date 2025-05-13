@@ -102,7 +102,7 @@ function NnsPage() {
                     Go to the NNS
                   </MotionLink>
                   <MotionLink
-                    className="invisible md:visible button-outline-white md:ml-4 mt-2 md:mt-0"
+                    className="button-outline-white md:ml-4 mt-2 md:mt-0"
                     href="#stake"
                     variants={transitions.item}
                   >
