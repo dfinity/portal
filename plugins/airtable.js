@@ -263,7 +263,25 @@ async function fetchShareImage(url) {
   if (!url || url === "#") return null;
 
   try {
-    const response = await fetch(url);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        "User-Agent": "Mozilla/5.0",
+      },
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      console.warn(
+        `Failed to fetch share image from ${url}: HTTP ${response.status}`
+      );
+      return null;
+    }
+
     const html = await response.text();
     const $ = cheerio.load(html);
 
@@ -279,7 +297,6 @@ async function fetchShareImage(url) {
     return null;
   }
 }
-
 function getDefaultEventImage(event) {
   const defaultImages = [
     "/img/events/event-01.webp",
