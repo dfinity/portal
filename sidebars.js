@@ -371,7 +371,7 @@ build: [
                 "building-apps/network-features/vetkeys/advanced/bls-signatures",
                 "building-apps/network-features/vetkeys/advanced/identity-based-encryption",
                 "building-apps/network-features/vetkeys/advanced/timelock-encryption",
-                "building-apps/network-features/vetkeys/advanced/randomness",
+                "building-apps/network-features/vetkeys/advanced/verifiable-randomness",
               ],
             }
           ],
