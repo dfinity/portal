@@ -10,20 +10,22 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Encryption"]} />
 
-vetKeys can be used to facilitate a Distributed Key Management Service (DKMS). 
+vetKeys can be used to facilitate a Distributed Key Management Service (DKMS).
+
+TODO: code snippets and explanation
 
 ## What is a DKMS?
 
-The vetKeys obtained from the Internet Computer (ICP) are only known to the client that request them, and, therefore, they can be used for different purposes such as encryption, signing, and further key generation.
+The vetKeys obtained from the Internet Computer (ICP) are only known to the client that requested them, and, therefore, they can be used for different purposes such as encryption, signing, and further key derivation.
 These keys can be shared with other users by adding corresponding user permissions in the canister.
 The DKMS is a set of tools that allows for exactly that, and exposes a high-level API that does not require the user to have extensive knowledge in cryptography.
-The DKMS has two primary components: access control and VetKey derivation.
+The DKMS has two primary components: **KeyManager** for access control and VetKey derivation and **EncryptedMaps** - that buils on top of the key manager - for efficient data encryption in a key-value store. EncryptedMaps also provides a canister storage to store the encrypted data.
 
 ## Benefits of the DKMS
 
 DKMS provides several advantages:
-- Deterministic key generation from strong randomness
-- Access sharing to key and encrypted data
+- Deterministic key generation from vetKeys from strong randomness
+- Access sharing for keys and encrypted data
     - Without peer-to-peer interaction
     - Without requiring the receiving party to be online
 - If fetching keys on demand, reduces the risk of key compromise by eliminating the need for persisting the key locally

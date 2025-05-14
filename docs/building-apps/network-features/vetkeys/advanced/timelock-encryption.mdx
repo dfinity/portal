@@ -9,7 +9,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 
-# Externally Verifiable Randomness
+# Time-lock encryption
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
@@ -22,6 +22,8 @@ It is useful to add time restrictions on when an IBE private key can be accessed
 ### Secret-Bid Auction & MEV Protection
 
 Multiple bidders can create bids on an auction lot. The canister decrypts the bids once the lot is closed and decides on the winner. 
+
+TODO: code snippets and explanation
 
 For MEV (Miner Extractable Value) protection, multiple users create transactions and the canister orders them, and only then decrypts the amount to prevent front-running, where a malicious user tries to make use of market fluctuations.
 

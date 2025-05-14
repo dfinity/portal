@@ -714,7 +714,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
-  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/send_file_to_eth
+  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
   /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
