@@ -100,7 +100,7 @@ const MarqueeBanner = () => {
               <img
                 src="/img/home/icp4th.svg"
                 alt="ICP Fourth Anniversary"
-                className="h-8" /* Increased from h-6 to h-8 */
+                className="h-10"
                 style={{ display: "block" }}
               />
             </div>
@@ -108,7 +108,7 @@ const MarqueeBanner = () => {
               <img
                 src="/img/home/wcs25.svg"
                 alt="WCS25"
-                className="h-15" /* Increased from h-6 to h-8 */
+                className="h-15"
                 style={{ display: "block" }}
               />
             </div>
