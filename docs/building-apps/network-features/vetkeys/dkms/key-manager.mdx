@@ -1,0 +1,98 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, encryption, threshold decryption, encrypted threshold key derivation, key manager, dkms, distributed key management service]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# `KeyManager`
+
+<MarkdownChipRow labels={["Advanced", "Key Manager"]} />
+
+TODO: code snippets and explanation
+
+`KeyManager` is a component provided in the Distributed Key Management Service (DKMS) offering access control for and derivation of vetKeys. Each vetKey's identity is defined as a pair: 1. owner's Internet Computer principal and 2. arbitrary byte string.
+
+## Core Features
+- **Retrieve And Decrypt vetKeys**: Fetch encrypted vetKeys and decrypt them locally using a transport secret key. The frontend `KeyManager` API does not expose those details to the developer and instead just returns the decrypted vetKey.
+- **Retrieve vetKey Verification Key**: Fetch the public verification key for validating encrypted vetKeys.
+- **Access Shared Keys Information**: Query which keys a user has access to.
+- **Manage Key Access**: Assign, modify, and revoke user rights on stored keys.
+
+## Backend component
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="rs" label="Rust" default>
+
+Instantiate the backend `KeyManager` component inside the canister.
+
+```rust no-repl reference
+https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L1-L31
+```
+
+</TabItem>
+
+<TabItem value="motoko" label="Motoko">
+
+Instantiate the backend `KeyManager` component inside the canister.
+
+```motoko no-repl reference
+https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/mo/canisters/ic_vetkeys_manager_canister/src/Main.mo#L1-L31
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Frontend component
+
+Allows to communicate with a `KeyManager`-enabled canister, available in TypeScript.
+
+<AdornedTabs groupId="languages">
+<TabItem value="ts" label="Typescript" default>
+
+Instantiate and use `KeyManager` in the frontend.
+
+```ts
+import { KeyManager } from "ic_vetkeys/key_manager";
+
+// Initialize the KeyManager
+const keyManager = new KeyManager(keyManagerClientInstance);
+
+// Retrieve shared keys
+const sharedKeys = await keyManager.getAccessibleSharedKeyIds();
+
+// Request and decrypt a vetKey
+const keyOwner = Principal.fromText("aaaaa-aa");
+const vetkeyName = "my_secure_key";
+const vetkey = await keyManager.getVetKey(keyOwner, vetkeyName);
+
+// Manage user access rights
+const user = Principal.fromText("bbbbbb-bb");
+const accessRights = { Read: null };
+const result = await keyManager.setUserRights(keyOwner, vetkeyName, user, accessRights);
+```
+
+</TabItem>
+</AdornedTabs>
+
+## End-to-end setup
+
+To set up `KeyManager` for a dapp, the developer's needs to define how frontend's calls will reach the `KeyManager` component in the backend.
+
+In the **backend**, the developer of the canister defines that whenever someone calls particular APIs of the canister, it calls the corresponding `KeyManager`'s method. For example, if canister's `set_user_rights` API is called, the canister makes a function call to the `set_user_rights` method of its `KeyManager` instance. As an example, see the following [default `KeyManager` canister implementation](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
+
+In the **frontend**, the developer of the frontend defines that when the frontend method `set_user_rights` of `KeyManager` is called, then the frontend `KeyManager` makes a call to the canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/interfaces/ic_vetkeys_tools.KeyManagerClient.html) interface. As an example, see the [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts) implementation of the `KeyManagerClient` interface.
+
+## Resources
+
+- [Rust backend `KeyManager` code documentation](https://todo).
+
+- [Motoko backend `KeyManager` code documentation](https://todo).
+
+- [Typescript frontend `KeyManager` code documentation](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/classes/ic_vetkeys_tools.KeyManager.html).
+
+- TODO: end-to-end example

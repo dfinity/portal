@@ -1,0 +1,43 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, encryption, threshold decryption, encrypted threshold key derivation, dkms, distributed key management service]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# What is DKMS?
+
+<MarkdownChipRow labels={["Advanced", "Key Derivation", "Encryption"]} />
+
+vetKeys can be used to facilitate a Distributed Key Management Service (DKMS).
+The vetKeys obtained from the Internet Computer (ICP) are only known to the client that requested them, and, therefore, they can be used for different purposes such as encryption, signing, and further key derivation.
+These keys can be shared with other users by adding corresponding user permissions in the canister.
+The DKMS is a set of tools that allows for exactly that, and exposes a high-level API that does not require the user to have extensive knowledge in cryptography.
+The DKMS has two primary components:
+- **[`KeyManager`](./key-manager.mdx)** for access control and vetKey derivation.
+- **[`EncryptedMaps`](./encrypted-maps.mdx)**, which buils on top of the `KeyManager`, for efficient data encryption and storage in a key-value store.
+
+## Benefits of DKMS
+
+- DKMS is a **ready solution** - no need to reinvent the wheel
+- Key derivation and data encryption using **simple, cleartext frontend APIs** - no need to define your own cryptographic primitives
+- DKMS is **efficient** and saves calls to vetKey derivation
+- Deterministic key generation from the **strong randomness** of vetKeys
+- In the **access control** to keys and encrypted data
+    - **No peer-to-peer interaction**
+    - A party getting access permissions does not need to be online during this process
+- If fetching keys on demand, reduces the risk of key compromise by eliminating the need for persisting keys locally
+
+## How It Works
+
+**Access Control** - The canister (ICP smart contract) determines access control. It controls what keys a user owns and what keys are shared with other users including specific access rights (e.g., whether an added user can further share the key). Furthermore, access control in DKMS is flexible as well, e.g., it can be extended to further restrict access to keys based on time.
+
+**Key Identities** - Every key identity is defined by the user's principal and an arbitrary byte string. This separates the domains from which users can derive keys, but still allows them to derive arbitrary many keys. Since every key identity contains the key's owner, the key owner is implicit and only the information about the sharing of the key must always be stored in the canister.
+
+**Full Stack** - Both `KeyManager` and `EncryptedMaps` provide libraries for the backend as well as the frontend. In the backend, the library provides a component that can be added to the canister. In the frontned, the library provides a way to communicate with a `KeyManager` or `EncryptedMaps`-enabled canister. Developer's role in the implementation is to define how to use their canister's APIs to let the frontend library communicate with the backend component.
+
+**Extensibility** - The developer using DKMS can add new functionalities to or around DKMS on a few levels.
+- Code extensions that don't require functional modifications of DKMS can be implemented very simply. For example, if the developer wants to add a counter that would count how many times particular users called particular APIs such as vetKey derivation, this can be implemented along DKMS.
+- The existing methods of DKMS can be used in a different way. For example, one may want to add a user to multiple keys in one go. For that, the frontend and canister API would need to define the batch addition of access permissions, but there would need to be no changes to the backend component.
+- The internal fields of the backend are public, and thus, it is possible to add new functions to DKMS. For example, `KeyManager` provides a method to remove user's access permissions for a key. The developer can easily implement a function that removes user access from all keys in one method.

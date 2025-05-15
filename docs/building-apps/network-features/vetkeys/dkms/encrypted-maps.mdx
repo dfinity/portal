@@ -1,0 +1,100 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, encryption, threshold decryption, encrypted threshold key derivation, encrypted maps, dkms, distributed key management service]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# `EncryptedMaps`
+
+<MarkdownChipRow labels={["Advanced", "EncryptedMaps"]} />
+
+A further part of [Decentralized Key Management Service (DKMS)](./introduction.mdx) built on top of DKMS's another component, [`KeyManager`](./key_manager.mdx), is called `EncryptedMaps`. `EncryptedMaps` is a collection of maps with access control that store user-encrypted data, where the encryption utilizes VetKeys.
+
+One of the key benefits of `EncryptedMaps` is that developers don't need significant knowledge in cryptography to add vetKey-based encryption to their dapps.
+
+`EncryptedMaps` (similar to `KeyManager`) identifies maps based on two pieces of information:
+1. Map owner's principal.
+2. An arbitrary byte string, e.g., a human-readable string encoded as bytes. 
+
+Every encrypted map is associated with one vetKey and one access control scope - we only need one vetKey for a map independent of how many key-values we store in the map, and all key-values have the same access premissions for users as the map itself.
+
+An encrypted map is actually quite similar to a normal map datastructure in any programming language. It has map keys (byte strings) that map to map values (byte strings, but encrypted). The important distinction from a normal map is that it is not intended to be used by the canister directly, since any information encrypted or decrypted by the canister is considered public. Instead, the user encrypts and decrypts data.
+
+A nice this about `EncryptedMaps` is that the encryption is completely opaque to the developer using the frontend APIs. The developer defines the destination where the data is inserted, i.e.,  the map name and the map key, but not how it is encrypted or decrypted. The encryption in `EncryptedMaps` is designed to be secure, efficient, and potentially reduce the number of vetKeys that need to be fetched from the Internet Computer.
+
+## Core Features
+
+Beyond the inherited features of `KeyManager`, `EncryptedMaps` has also the following features:
+- **Encrypted Key-Value Storage**: Store and retrieve encrypted key-value pairs within named maps.
+- **Cleartext APIs**: the frontend library for `EncryptedMaps` offers to the developers cleartext APIs.
+- **Store Data Anywhere**: `EncryptedMaps` provides a possibility to implement encrypted data store outside canisters, e.g., locally, while using vetKeys.
+- **Shared Maps Access Information**: Query which maps a user has access to.
+- **Manage User Access**: Assign, modify, and revoke user rights on stored maps.  
+
+## Backend component
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+Instantiate the backend `KeyManager` component inside the canister.
+
+```rust no-repl reference
+https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L1-L26
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Frontend component
+
+Allows to communicate with a `KeyManager`-enabled canister, available in TypeScript.
+
+<AdornedTabs groupId="languages">
+<TabItem value="ts" label="Typescript" default>
+
+Instantiate and use `KeyManager` in the frontend.
+
+```ts
+import { EncryptedMaps } from "ic_vetkeys/encrypted_maps";
+
+// Initialize the EncryptedMaps Client
+const encryptedMaps = new EncryptedMaps(encryptedMapsClientInstance);
+
+// Retrieve shared maps
+const sharedMaps = await encryptedMaps.getAccessibleSharedMapNames();
+
+const mapOwner = Principal.fromText("aaaaa-aa");
+const mapName = "passwords";
+const mapKey = "email_account";
+
+// Store an encrypted value
+const value = new TextEncoder().encode("my_secure_password");
+const result = await encryptedMaps.setValue(mapOwner, mapName, mapKey, value);
+
+// Retrieve a stored value
+const storedValue = await encryptedMaps.getValue(mapOwner, mapName, mapKey);
+
+// Manage user access rights
+const user = Principal.fromText("bbbbbb-bb");
+const accessRights = { ReadWrite: null };
+const result = await encryptedMaps.setUserRights(mapOwner, mapName, user, accessRights);
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Examples
+
+We provide two examples for the use of `EncryptedMaps`.
+- **[Password Manager](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager)**: use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encryptred using vetKeys.
+- **[Password Manager with Metadata](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager_with_metadata)**: store additional metadata in the canister (user as well as canister-generated metadata), and pass the metadata along the encrypted data in atomic password addition/removal calls. 
+
+## Resources
+
+- [Rust backend `EncryptedMaps` code documentation](https://todo).
+
+- [Motoko backend `EncryptedMaps` code documentation](https://todo).
+
+- [Typescript frontend `EncryptedMaps` code documentation](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/classes/ic_vetkeys_tools.EncryptedMaps.html).

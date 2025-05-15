@@ -363,7 +363,15 @@ build: [
           label: "vetKeys",
           items: [
             "building-apps/network-features/vetkeys/introduction",
-            "building-apps/network-features/vetkeys/dkms",
+            {
+              type: "category",
+              label: "Decentralized Key Management Service (DKMS)",
+              items: [
+                "building-apps/network-features/vetkeys/dkms/introduction",
+                "building-apps/network-features/vetkeys/dkms/key-manager",
+                "building-apps/network-features/vetkeys/dkms/encrypted-maps",
+              ],
+            },
             {
               type: "category",
               label: "Advanced",

@@ -20,13 +20,13 @@ vetKeys leverages the fact that [BLS signatures](https://learn.internetcomputer.
 
 The availability of vetKeys allows for a series of applications, including but not limited to those covered in the following sections.
 
-### [Distributed Key Management Service (DKMS)](./dkms.mdx)
+### [Distributed Key Management Service (DKMS)](./dkms/introduction.mdx)
 
-DKMS is a higher-level library based on vetKeys. Its main goal is to provide APIs that are simple to use, especially for developers without extensive knowledge in cryptography. DKMS enables multiple users to securely generate, manage, and share cryptographic keys. Those keys can be used for encryption, decryption, or signing of data.
+DKMS is a higher-level library based on vetKeys. Its main goal is to provide APIs that are simple to use, especially for developers without extensive knowledge in cryptography. DKMS enables users to utilize vetKeys and the Internet Computer to securely generate, manage, and share cryptographic keys. Those keys can be used for encryption, decryption, or signing of data.
 
-DKMS provides two types of APIs:
-- **KeyManager** - Key derivation and sharing.
-- **EncryptedMaps** - **Efficient** encryption and decryption of data using **cleartext frontend APIs** and storing the encrypted data in a **key-value store** in a canister (ICP smart contract).
+DKMS has two primary components:
+- **[`KeyManager`](dkms/key-manager.mdx)** for access control and vetKey derivation.
+- **[`EncryptedMaps`](dkms/encrypted-maps.mdx)** - , which buils on top of the KeyManager, for efficient data encryption and storage in a key-value store.
 
 One of the main use cases of DKMS is to enable a blockchain to encrypt and host data in a way that scales to millions of users and billions of secrets. BLS signatures are unique, making them immediately useful as symmetric keys.
 
@@ -89,6 +89,10 @@ The management canister provides the following low-level API for vetKeys.
 The full specification for vetKeys can be found in the [vetKD specification PR](https://github.com/dfinity/portal/pull/3763) (soon to be merged to the [ICP specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key)).
 
 ## Resources
+
+- [vetKeys code libraries](https://github.com/dfinity/vetkd-devkit).
+
+- [Examples of dapps based on vetKeys](https://github.com/dfinity/vetkd-devkit/tree/main/examples).
 
 - [Forum discussion](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
 
