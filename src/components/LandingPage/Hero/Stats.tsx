@@ -149,7 +149,12 @@ const BlockCounter = () => {
   );
 };
 
-function getFigureSpacer(value) {
+function getFigureSpacer(value: number): string {
+  if (typeof value !== "number") {
+    console.error("getFigureSpacer received non-number value:", value);
+    return "";
+  }
+
   const valueDigitCount = value.toString().length;
   const valueDigitCountWithApostrophes =
     valueDigitCount + Math.floor((valueDigitCount - 1) / 3);
