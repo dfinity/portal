@@ -150,7 +150,7 @@ async fn main() {
             .await;
 
     let agent = Agent::builder()
-        .with_arc_route_provider(Arc::new(route_provider))
+        .with_route_provider(route_provider)
         .build()
         .expect("failed to build ic-agent");
 
