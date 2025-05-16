@@ -10,25 +10,35 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # `KeyManager`
 
-<MarkdownChipRow labels={["Advanced", "Key Manager"]} />
+<MarkdownChipRow labels={["Advanced", "Key manager"]} />
 
+<!---------
 TODO: code snippets and explanation
+-------->
 
-`KeyManager` is a component provided in the Distributed Key Management Service (DKMS) offering access control for and derivation of vetKeys. Each vetKey's identity is defined as a pair: 1. owner's Internet Computer principal and 2. arbitrary byte string.
+`KeyManager` is a component provided in the distributed key management service (DKMS) offering access control and derivation of vetKeys. Each vetKey's identity is defined as a pair: 
 
-## Core Features
-- **Retrieve And Decrypt vetKeys**: Fetch encrypted vetKeys and decrypt them locally using a transport secret key. The frontend `KeyManager` API does not expose those details to the developer and instead just returns the decrypted vetKey.
-- **Retrieve vetKey Verification Key**: Fetch the public verification key for validating encrypted vetKeys.
-- **Access Shared Keys Information**: Query which keys a user has access to.
-- **Manage Key Access**: Assign, modify, and revoke user rights on stored keys.
+1. The owner's ICP principal.
 
-## Backend component
+2. An arbitrary byte string.
+`KeyManager` provides the following core features:
+
+- **Retrieve and decrypt vetKeys**: Securely fetch encrypted vetKeys and decrypt them locally using a transport secret key. The frontend `KeyManager` API abstracts this process, returning only the decrypted vetKey to the developer.
+
+- **Retrieve vetKey verification key**: Obtain the public verification key used to validate encrypted vetKeys.
+
+- **Access shared key information**: Query which vetKeys a user has permission to access.
+
+- **Manage key access**: Assign, update, or revoke user access rights for stored vetKeys.
+
+
+## Application backend component
 
 <AdornedTabs groupId="languages">
 
 <TabItem value="rs" label="Rust" default>
 
-Instantiate the backend `KeyManager` component inside the canister.
+Below is an example of how to instantiate the backend `KeyManager` component inside a canister.
 
 ```rust no-repl reference
 https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L1-L31
@@ -38,7 +48,7 @@ https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc
 
 <TabItem value="motoko" label="Motoko">
 
-Instantiate the backend `KeyManager` component inside the canister.
+Below is an example of how to instantiate the backend `KeyManager` component inside a canister.
 
 ```motoko no-repl reference
 https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/mo/canisters/ic_vetkeys_manager_canister/src/Main.mo#L1-L31
@@ -47,9 +57,9 @@ https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc
 </TabItem>
 </AdornedTabs>
 
-## Frontend component
+## Application frontend component
 
-Allows to communicate with a `KeyManager`-enabled canister, available in TypeScript.
+Your application's frontend can communicate with a `KeyManager`-enabled canister using the following TypeScript code:
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
@@ -81,11 +91,11 @@ const result = await keyManager.setUserRights(keyOwner, vetkeyName, user, access
 
 ## End-to-end setup
 
-To set up `KeyManager` for a dapp, the developer's needs to define how frontend's calls will reach the `KeyManager` component in the backend.
+To set up `KeyManager` for your dapp, you need to configure how your frontend will communicate with the `KeyManager` component on the backend.
 
-In the **backend**, the developer of the canister defines that whenever someone calls particular APIs of the canister, it calls the corresponding `KeyManager`'s method. For example, if canister's `set_user_rights` API is called, the canister makes a function call to the `set_user_rights` method of its `KeyManager` instance. As an example, see the following [default `KeyManager` canister implementation](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
+In the **backend**, you can define that whenever someone calls particular APIs of the canister, it calls the corresponding `KeyManager`'s method. For example, if a canister's `set_user_rights` API is called, the canister makes a function call to the `set_user_rights` method of its `KeyManager` instance. As an example, see the following [default `KeyManager` canister implementation](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
 
-In the **frontend**, the developer of the frontend defines that when the frontend method `set_user_rights` of `KeyManager` is called, then the frontend `KeyManager` makes a call to the canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/interfaces/ic_vetkeys_tools.KeyManagerClient.html) interface. As an example, see the [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts) implementation of the `KeyManagerClient` interface.
+In the **frontend**, you can define that when the frontend method `set_user_rights` of `KeyManager` is called, then the frontend `KeyManager` makes a call to the canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/interfaces/ic_vetkeys_tools.KeyManagerClient.html) interface. As an example, see the [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts) implementation of the `KeyManagerClient` interface.
 
 ## Resources
 
@@ -95,4 +105,6 @@ In the **frontend**, the developer of the frontend defines that when the fronten
 
 - [Typescript frontend `KeyManager` code documentation](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/classes/ic_vetkeys_tools.KeyManager.html).
 
+<!----
 - TODO: end-to-end example
+----->

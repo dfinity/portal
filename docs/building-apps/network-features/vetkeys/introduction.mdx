@@ -10,59 +10,65 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Encryption"]} />
 
-vetKeys on the Internet Computer (ICP) allow developers to more easily perform encryption, threshold decryption, and signing when building dapps on ICP. It is powered by a protocol called vetKD (Verifiably Encrypted Threshold Key Derivation) that allows deriving decryption keys on demand. vetKeys enable a public blockchain to hold secret data.
+`vetKeys` on the Internet Computer (ICP) make it easier for developers to implement encryption, threshold decryption, and signing in their dapps. They are powered by the `vetKD` protocol (Verifiably Encrypted Threshold Key Derivation), which enables secure, on-demand key derivation. With `vetKeys`, a public blockchain like ICP can hold and work with secret data securely.
 
-The goal of vetKeys is to ease the burden of using security and privacy tools on ICP. Encrypting information locally on a device and storing it on a blockchain is easy, as the secret key material always remaining on the local device and not being exposed. Without a solution like vetKeys, difficulties arise when a user wants to retrieve the encrypted information from a different device or share it with a different user, as there is no straightforward way to pass secret key material across public channels in a privacy-friendly way.
+The goal of `vetKeys` is to simplify the use of security and privacy tools on ICP. Encrypting data locally and storing it onchain is straightforward, since the secret key stays on the device. However, challenges arise when a user wants to access that data from another device or share it with someone else, as there’s no easy, privacy-preserving way to transmit secret key material across public channels. `vetKeys` solve this by enabling secure, on-demand key access without exposing secrets.
 
-vetKeys leverages the fact that [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures), the native signature scheme on ICP, are unique and therefore ideally suited to be used as cryptographic decryption keys. As BLS signatures are computed in a distributed way on ICP, there is no central authority deriving keys for users. Furthermore, following standard practices in [Identity-Based Encryption (IBE) schemes](/docs/references/vetkeys-overview), the derived key can be transported to the user in an encrypted manner. As such, nodes and the network never have access to a user’s keys.
+`vetKeys` leverages the fact that [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures), the native signature scheme on ICP, are unique, making them well-suited for use as cryptographic decryption keys. As BLS signatures are computed in a distributed manner across ICP subnets, there is no central authority generating keys for users.
+
+Following standard practices in [identity-based encryption (IBE) schemes](/docs/references/vetkeys-overview), the derived keys are securely transported to users in encrypted form. This ensures that neither individual nodes nor the network ever have access to a user’s private keys.
 
 ## vetKeys use cases and applications
 
 The availability of vetKeys allows for a series of applications, including but not limited to those covered in the following sections.
 
-### [Distributed Key Management Service (DKMS)](./dkms/introduction.mdx)
+### [Distributed key management service (DKMS)](docs/building-apps/network-features/vetkeys/dkms/introduction)
 
-DKMS is a higher-level library based on vetKeys. Its main goal is to provide APIs that are simple to use, especially for developers without extensive knowledge in cryptography. DKMS enables users to utilize vetKeys and the Internet Computer to securely generate, manage, and share cryptographic keys. Those keys can be used for encryption, decryption, or signing of data.
+`DKMS` is a higher-level library built on top of `vetKeys`, designed to offer simple, developer-friendly APIs especially for those without cryptographic expertise. It allows users to securely generate, manage, and share cryptographic keys using `vetKeys` and ICP. These keys can then be used for encryption, decryption, or data signing.
 
 DKMS has two primary components:
-- **[`KeyManager`](dkms/key-manager.mdx)** for access control and vetKey derivation.
-- **[`EncryptedMaps`](dkms/encrypted-maps.mdx)** - , which buils on top of the KeyManager, for efficient data encryption and storage in a key-value store.
+- **[`KeyManager`](dkms/key-manager.mdx)**: Access control and vetKey derivation.
+- **[`EncryptedMaps`](dkms/encrypted-maps.mdx)**: Built on top of the `KeyManager` for efficient data encryption and storage in a key-value store.
 
-One of the main use cases of DKMS is to enable a blockchain to encrypt and host data in a way that scales to millions of users and billions of secrets. BLS signatures are unique, making them immediately useful as symmetric keys.
+One of the primary use cases of `DKMS` is to enable a blockchain to securely encrypt and host data at scale to support millions of users and billions of secrets. Because BLS signatures are unique, they can be directly used as symmetric keys. For example:
 
-Think, for example, of a secure file storage dapp: a user could use DKMS to encrypt their files before storing them in the dapp. The dapp enforces that only the authorized users are allowed to decrypt the files. The nodes in the blockchain assist a user in recovering their keys but never see those keys or the decrypted content of the files.
+- **Secure file storage**: In a secure file storage dapp, users can encrypt their files using `DKMS` before uploading them. The dapp ensures that only authorized users can decrypt the files. While blockchain nodes assist in key recovery, they never see the private keys or decrypted file contents.
 
-A further example with more sophisticated access policies is a secure messaging dapp, where the conversation between two users is encrypted using the pair of identities, to which only those users are given access by the dapp. A secure decentralized social network could let users encrypt posts using a key that is related to the post, e.g., a unique identifier for the post. The SocialFi dapp then ensures that only the author and the users that the post is shared with get access to that key.
+- **Secure messaging**: A secure messaging dapp can encrypt conversations using the identities of the two participants. The dapp manages access so only those users can retrieve the decryption keys.
 
-### [Blockchain-issued BLS signatures](./advanced/bls-signatures.mdx)
+- **Decentralized social networking (SocialFi)**: In a decentralized social network, posts can be encrypted with a key tied to a unique post identifier. The SocialFi dapp ensures that only the author and selected recipients have access to the corresponding decryption key.
+
+### [Blockchain-issued BLS signatures](/docs/building-apps/network-features/vetkeys/advanced/bls-signatures)
 
 vetKeys can be used as signatures issued by the blockchain. This is especially useful for blockchains that don't have a built-in certification feature enabling dapps to sign statements.
 
 It can also be used to efficiently bridge blockchains, e.g., to swap assets in a DeFi application. A dapp on one blockchain can verify signed statements issued by a second blockchain without having to implement a complete light client of that second chain.
 
-### [Identity-Based Encryption (IBE)](./advanced/identity-based-encryption.mdx)
+### [Identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption)
 
-IBE facilitates encryption to an identity, where the dapp controls which user has which identity, e.g., each user can get a vetKey - used as an IBE decryption key - for its ICP principal.
+IBE enables encryption directly to a user’s identity. In this model, the dapp controls identity assignment, for example, associating each user with their ICP principal. Each user can then obtain a `vetKey`, which functions as their IBE decryption key, allowing them to decrypt messages or data encrypted to their identity.
 
-Compared to DKMS, IBE is different. In DKMS, one or more users hold **the same** key, and only the users that know the key can encrypt. IBE, on the other hand, is an asymmetric encryption scheme, meaning that anyone can encrypt messages to any identity, also to other canisters, but only the users knowing the key can decrypt them. IBE is somewhat more advanced than DKMS in the sense that we derive an asymmetric encryption scheme using vetKeys and are not just using vetKeys for symmetric key derivation.
+Compared to DKMS, IBE works differently. In DKMS, one or more users share **the same** symmetric key, and only those users can encrypt and decrypt data using that key.
 
-### [Time-lock encryption](./advanced/timelock-encryption.mdx)
+In contrast, IBE is an **asymmetric encryption** scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them. IBE is more advanced as it builds a full asymmetric encryption system using vetKeys rather than relying solely on symmetric key derivation.
 
-Time-lock encryption enables a sender to encrypt a message for the future, ensuring that it will get decrypted at a given time, but no earlier than that time. Time-lock encryption can be achieved via IBE by letting the dapp release the IBE decryption keys corresponding to the current time at regular intervals (eventually decrypting the ciphertexts in the canister) and letting the sender IBE-encrypt its message using the desired decryption time as identity. Also more sophisticated time-lock conditions are possible (see below).
+### [Timelock encryption](/docs/building-apps/network-features/vetkeys/advanced/timelock-encryption)
+
+Timelock encryption enables a sender to encrypt a message for the future, ensuring that it will get decrypted at a given time, but no earlier than that time. Timelock encryption can be achieved via IBE by letting the dapp release the IBE decryption keys corresponding to the current time at regular intervals (eventually decrypting the cipher texts in the canister) and letting the sender IBE-encrypt its message using the desired decryption time as identity. More sophisticated timelock conditions are also possible (see below).
 
 #### "Dead man's switch"
 
 Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. They can store the information in a dapp, encrypted using IBE that the dapp automatically and publicly recovers when a certain amount of time passes after it last received an authenticated ping from its owner.
 
-#### Secret-bid auctions and MEV protection
+#### Private auctions and MEV protection
 
-In a secret-bid auction dapp, users can submit bids that are IBE-encrypted under an identifier so that at the end of the auction, the dapp can decrypt all bids with a single vetKey evaluation. A similar technique can be used to prevent front-running, also known as miner-extracted value (MEV), on a decentralized exchange (DEX). Users submit their IBE-encrypted transactions under a predictable batch identifier. The DEX orders the transactions in encrypted form and, when all transactions for a particular batch have been ordered, triggers the recovery of the decryption key for that batch and executes the decrypted transactions in the fixed order. Note that all of the symmetric-encryption use cases listed above can be modified to encrypt using an IBE instead of a symmetric-key encryption, thereby eliminating the need to perform a vetKey derivation for encryption. Decryption, of course, still requires retrieving a vetKey.
+In a private auction dapp, users can submit bids that are IBE-encrypted under an identifier so that at the end of the auction, the dapp can decrypt all bids with a single vetKey evaluation. A similar technique can be used to prevent front-running, also known as miner-extracted value (MEV), on a decentralized exchange (DEX). Users submit their IBE-encrypted transactions under a predictable batch identifier. The DEX orders the transactions in encrypted form and, when all transactions for a particular batch have been ordered, triggers the recovery of the decryption key for that batch and executes the decrypted transactions in the fixed order. Note that all of the symmetric-encryption use cases listed above can be modified to encrypt using an IBE instead of a symmetric-key encryption, thereby eliminating the need to perform a vetKey derivation for encryption. Decryption, of course, still requires retrieving a vetKey.
 
-#### Advanced time-locks
+#### Advanced timelocks
 
 Anyone can IBE-encrypt their message using some more complex condition as identity, while a dapp lets anyone who can satisfy the condition (or when the condition is satisfied on its own) to obtain the respective vetKey. This enables quite interesting use cases, as it enables one to encrypt to any verifiable future event, e.g., the price of a stock going above or below a certain level, information escrow, or break-the-glass policies.
 
-### [Externally verifiable randomness](./advanced/verifiable-randomness.mdx)
+### [Externally verifiable randomness](/docs/building-apps/network-features/vetkeys/advanced/verifiable-randomness)
 
 Because of their uniqueness, vetKeys can also act as a Verifiable Random Function (VRF). Trusted, verifiable randomness is important for applications such as trustless online lotteries and casinos, fair decentralized games (GameFi), and selecting random features for non-fungible tokens (NFTs).
 

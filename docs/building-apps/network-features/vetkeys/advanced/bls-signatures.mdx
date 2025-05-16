@@ -8,19 +8,23 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-# BLS Signatures from vetKeys
+# BLS signatures from vetKeys
 
-<MarkdownChipRow labels={["Advanced", "BLS Signature"]} />
+<MarkdownChipRow labels={["Advanced", "BLS signatures"]} />
 
-vetKeys can be used for distributed signing using the BLS algorithm.
+vetKeys supports distributed signing using the BLS algorithm, which is widely adopted across ICP for its short, unique signatures that are easy to use in distributed systems and fast to compute.
 
-## Signing Process
+## Signing process
 
-The signing process works as follows:
-- The canister defines access rules for vetKeys, for example, based on principals
-- The canister calls the management canister API to produce an encrypted signature
-- If the signature does not need to be private, the canister can provide a dummy transport key, decrypt the vetkey, and then return the decrypted BLS signature
-- The canister returns the encrypted signature to the client
+To generate a BLS signature from vetKeys:
+
+1. The canister defines access rules for vetKeys, for example, based on principals.
+
+2. The canister calls the management canister API to produce an encrypted signature.
+
+3. If the signature does not need to be private, the canister can provide a dummy transport key, decrypt the vetKey, and then return the decrypted BLS signature.
+
+4. The canister returns the encrypted signature to the client.
 
 ## Backend
 
@@ -28,7 +32,7 @@ The signing process works as follows:
 
 <TabItem value="rust" label="Rust" default>
 
-Sign message for the caller. The signing BLS key is defined by the caller's principal.
+The backend of your application can implement a method that signs messages for a caller using the signing BLS key defined by the caller's principal.
 
 TODO: reference code instead of copy-pasting once the PR (currently in review) is merged.
 
@@ -178,7 +182,7 @@ fn bls12_381_dfx_test_key() -> VetKDKeyId {
 
 TODO: code snippet and explanation
 
-## Frontend
+## Sign messages from an application's frontend
 <AdornedTabs groupId="languages">
 <TabItem value="rs" label="Rust" default>
 

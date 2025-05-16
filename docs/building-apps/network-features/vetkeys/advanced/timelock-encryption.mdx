@@ -9,30 +9,28 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 
-# Time-lock encryption
+# Timelock encryption
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
-Timelock encryption builds upon Identity-Based Encryption (IBE). For more information about IBE, please refer to the [Identity-Based Encryption documentation](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption).
+Timelock encryption builds upon identity-based encryption (IBE). For more information about IBE, please refer to the [identity-based encryption documentation](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption).
 
 It is useful to add time restrictions on when an IBE private key can be accessed. Additionally, the canister can decrypt IBE-encrypted data when appropriate conditions are met.
 
-## Use Cases
+## Use cases
 
-### Secret-Bid Auction & MEV Protection
+#### Private auction 
 
-Multiple bidders can create bids on an auction lot. The canister decrypts the bids once the lot is closed and decides on the winner. 
+Multiple users can create bids on an auction lot. The canister decrypts the bids once the lot is closed and decides on the winner. 
 
+<!---------
 TODO: code snippets and explanation
+--------->
 
-For MEV (Miner Extractable Value) protection, multiple users create transactions and the canister orders them, and only then decrypts the amount to prevent front-running, where a malicious user tries to make use of market fluctuations.
+#### Miner extractable value protection
 
-### Birthday Coupon
+For miner extractable value (MEV) protection, multiple users create transactions and the canister orders them. The canister only then decrypts the amount to prevent front-running, where a malicious user tries to make use of market fluctuations.
 
-One user encrypts a birthday coupon and the other user can only decrypt it after a certain delay, making it a time-based surprise gift.
+#### Birthday coupon
 
-## Implementation Examples
-
-Detailed code examples for implementing timelock encryption with vetKeys will be provided in future updates, including:
-- Secret-bid auction implementation
-- Birthday coupon implementation
+A user can encrypt a coupon or gift, send it to another user, who can only decrypt it after a certain delay such as the time until their birthday. 

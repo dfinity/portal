@@ -10,7 +10,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "EncryptedMaps"]} />
 
-A further part of [Decentralized Key Management Service (DKMS)](./introduction.mdx) built on top of DKMS's another component, [`KeyManager`](./key_manager.mdx), is called `EncryptedMaps`. `EncryptedMaps` is a collection of maps with access control that store user-encrypted data, where the encryption utilizes VetKeys.
+An additional component of the [decentralized key management service (DKMS)](docs/building-apps/network-features/vetkeys/dkms/introduction) is `EncryptedMaps`, which builds on top of another DKMS module, [`KeyManager`](./key_manager.mdx). `EncryptedMaps` provides a collection of access-controlled maps for storing user-encrypted data, where encryption is performed using vetKeys.
+
 
 One of the key benefits of `EncryptedMaps` is that developers don't need significant knowledge in cryptography to add vetKey-based encryption to their dapps.
 
@@ -18,27 +19,28 @@ One of the key benefits of `EncryptedMaps` is that developers don't need signifi
 1. Map owner's principal.
 2. An arbitrary byte string, e.g., a human-readable string encoded as bytes. 
 
-Every encrypted map is associated with one vetKey and one access control scope - we only need one vetKey for a map independent of how many key-values we store in the map, and all key-values have the same access premissions for users as the map itself.
+Each encrypted map is associated with a single vetKey and one access control scope. Regardless of how many key-value pairs it contains, only one `vetKey` is needed per map. All key-value pairs inherit the same access permissions as the map itself.
 
-An encrypted map is actually quite similar to a normal map datastructure in any programming language. It has map keys (byte strings) that map to map values (byte strings, but encrypted). The important distinction from a normal map is that it is not intended to be used by the canister directly, since any information encrypted or decrypted by the canister is considered public. Instead, the user encrypts and decrypts data.
+An encrypted map functions similarly to a standard map in most programming languages, with keys and values represented as byte strings. However, the values are encrypted. The key difference is that encrypted maps are not meant to be used directly by the canister. Any data encrypted or decrypted by the canister is considered public. Instead, users handle encryption and decryption to maintain privacy.
 
-A nice this about `EncryptedMaps` is that the encryption is completely opaque to the developer using the frontend APIs. The developer defines the destination where the data is inserted, i.e.,  the map name and the map key, but not how it is encrypted or decrypted. The encryption in `EncryptedMaps` is designed to be secure, efficient, and potentially reduce the number of vetKeys that need to be fetched from the Internet Computer.
+A key advantage of `EncryptedMaps` is that encryption is entirely opaque to developers using the frontend APIs. Developers specify where the data should go, namely, the map name and key, but not how it's encrypted or decrypted. The encryption is designed to be secure, efficient, and to minimize the number of `vetKeys` that need to be fetched from ICP.
 
-## Core Features
+
+## Core features
 
 Beyond the inherited features of `KeyManager`, `EncryptedMaps` has also the following features:
-- **Encrypted Key-Value Storage**: Store and retrieve encrypted key-value pairs within named maps.
-- **Cleartext APIs**: the frontend library for `EncryptedMaps` offers to the developers cleartext APIs.
-- **Store Data Anywhere**: `EncryptedMaps` provides a possibility to implement encrypted data store outside canisters, e.g., locally, while using vetKeys.
-- **Shared Maps Access Information**: Query which maps a user has access to.
-- **Manage User Access**: Assign, modify, and revoke user rights on stored maps.  
+- **Encrypted key-value storage**: Store and retrieve encrypted key-value pairs within named maps.
+- **Cleartext APIs**: The frontend library for `EncryptedMaps` offers developers cleartext APIs.
+- **Store data anywhere**: `EncryptedMaps` provides a possibility to implement encrypted data store outside canisters, e.g., locally, while using vetKeys.
+- **Shared maps access information**: Query which maps a user has access to.
+- **Manage user access**: Assign, modify, and revoke user rights on stored maps.  
 
-## Backend component
+## Application backend component
 
 <AdornedTabs groupId="languages">
 <TabItem value="rs" label="Rust" default>
 
-Instantiate the backend `KeyManager` component inside the canister.
+Below is an example of how to instantiate the backend `KeyManager` component inside a canister.
 
 ```rust no-repl reference
 https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L1-L26
@@ -47,9 +49,9 @@ https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc
 </TabItem>
 </AdornedTabs>
 
-## Frontend component
+## Application frontend component
 
-Allows to communicate with a `KeyManager`-enabled canister, available in TypeScript.
+Your application's frontend can communicate with a `KeyManager`-enabled canister using the following TypeScript code:
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
@@ -87,9 +89,8 @@ const result = await encryptedMaps.setUserRights(mapOwner, mapName, user, access
 
 ## Examples
 
-We provide two examples for the use of `EncryptedMaps`.
-- **[Password Manager](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager)**: use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encryptred using vetKeys.
-- **[Password Manager with Metadata](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager_with_metadata)**: store additional metadata in the canister (user as well as canister-generated metadata), and pass the metadata along the encrypted data in atomic password addition/removal calls. 
+- **[Password manager](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager)**: Use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encrypted using vetKeys.
+- **[Password manager with metadata](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager_with_metadata)**: Store additional metadata in the canister (both user-provided and canister-generated) and include this metadata alongside the encrypted data in atomic password addition or removal operations.
 
 ## Resources
 
@@ -97,4 +98,4 @@ We provide two examples for the use of `EncryptedMaps`.
 
 - [Motoko backend `EncryptedMaps` code documentation](https://todo).
 
-- [Typescript frontend `EncryptedMaps` code documentation](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/classes/ic_vetkeys_tools.EncryptedMaps.html).
+- [TypeScript frontend `EncryptedMaps` code documentation](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/classes/ic_vetkeys_tools.EncryptedMaps.html).
