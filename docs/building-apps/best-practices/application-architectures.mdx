@@ -44,15 +44,15 @@ The cost of development and maintenance is much higher compared to the single-ca
 
 ## Canister-per-user architecture
 
-The canister-per-user architecture is based on the vision that Web3 users should have full control over their data, with the idea that a new canister should be created for each user, and the user should be a controller of the canister.
+The canister-per-user architecture is based on the vision that Web3 users should have full control over their data, with the idea that a new canister should be created for each user, and the user should be a controller of the canister. This architecture provides user's sovereignty over apps, that is that nobody can delete or update his/her app without user's consent.
 
 The main canister of the application would then orchestrate user canisters to implement the application’s functionality.
 
 Since users are controllers of their canisters, they can install their own code, decide how to participate in the application, and determine what data to share.
 
-It is implemented in IC Pack package manager ([MVP preliminary alpha](https://app.package-manager.com), [business site](https://docs.package-manager.com), [dev site](https://dev.package-manager.com)) - the software that allows to do canister-per-user architecture easily, making the user self-sovereign over their software. So, you will use IC Pack to create your canister-per-user apps. This architecture provides user's sovereignty, so that nobody can delete or update his/her app without user's consent.
+A package manager is implemented e.g. in IC Pack project ([MVP beta](https://app.package-manager.com), [business site](https://docs.package-manager.com), [dev site](https://dev.package-manager.com)) - a software for canister-per-user architecture.
 
-Without using a package manager for creating such software easily, these user benefits come at large development costs because the main canister needs to be programmed in such a way that it can handle all possible actions of potentially malicious user canisters.
+These user benefits come at large development costs because the main canister needs to be programmed in such a way that it can handle all possible actions of potentially malicious user canisters.
 This is a new and unprecedented way of programming.
 
 A couple of projects that opted for this architecture by themselves (without using an universal package manager), but only [NFID Vaults](https://nfidvaults.com) have given the ownership of canisters to the users.
