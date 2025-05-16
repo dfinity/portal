@@ -180,15 +180,21 @@ pub trait RouteProvider {
 The example above instantiates `DynamicRouteProvider`, an implementation of `RouteProvider`, and injects it into the agent to handle dynamic request routing. 
 The `DynamicRouteProvider` itself is generic and extensible, allowing you to define custom routing strategies. 
 
-Two built-in strategies are available:
-- Round-robin - distributes requests evenly across all healthy nodes
-- Latency-based weighted round-robin - prioritizes healthy nodes with the lowest observed latency
-In our example, we used the latency-based strategy to prioritize faster nodes, limiting the selection to the top three.
-
 Under the hood, `DynamicRouteProvider` builds and maintains a dynamic routing table, which is continuously updated by running two background services:
-- Discovery service - periodically fetches the latest API boundary node topology
-- Health check service - periodically checks nodes health by pinging it
+
+1. A discovery service that periodically fetches the latest API boundary node topology.
+
+2. A health check service that periodically checks nodes health by pinging it.
+
 This design enables the agent to adapt to changes in node availability and network topology, resulting in a resilient and performant routing.
+
+Two built-in strategies are available:
+
+1. Round-robin, which distributes requests evenly across all healthy nodes.
+
+2. Latency-based weighted round-robin, which prioritizes healthy nodes with the lowest observed latency
+
+The previous example uses the latency-based strategy to prioritize faster nodes, limiting the selection to the top three.
 
 For more detailed information take a look at the [documentation]("https://TODO").
 
