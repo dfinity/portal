@@ -5403,7 +5403,6 @@
     "logo": "/img/showcase/knowledge-foundation-nft-system_logo.jpg",
     "oneLiner": "NFT Management Platform"
   },
-[
   {
     "id": "staex-dvault",
     "name": "Staex dVault",
@@ -5431,7 +5430,7 @@
     "submittableId": 99999999,
     "tags": [
       "DeFi",
-      "GameFi"
+      "Gaming"
     ],
     "description": "ICPrize is a permissionless token incentive game built on the Internet Computer blockchain.",
     "usesInternetIdentity": true,
