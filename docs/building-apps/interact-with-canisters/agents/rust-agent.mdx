@@ -63,7 +63,7 @@ By default, the Rust agent uses static routing, sending all API calls to a singl
 - A specific API boundary node, which may be unreliable due to maintenance, etc.
 - A fleet of HTTP gateways that proxies the calls to the API boundary nodes (though HTTP gateways are not decentralized)
 
-To improve reliability and decentralization, the agent also supports dynamically routing API calls directly to globally distributed API boundary nodes. In particular, the agent is capable of:
+To improve reliability and decentralization, the agent also supports dynamically routing API calls directly to globally distributed API boundary nodes. In particular, the Rust agent is capable of:
 - Automatically discovering and monitoring the list of all API boundary nodes.
 - Filtering out unhealthy nodes.
 - Dynamically routing API calls across healthy nodes using different built-in strategies (e.g., round-robin and latency-based routing).
