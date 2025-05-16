@@ -30,34 +30,167 @@ Before using the agent in your project, it must be initialized using the `Agent:
 use anyhow::Result;
 use ic_agent::Agent;
 
-pub async fn create_agent(url: &str, is_mainnet: bool) -> Result<Agent> {
-    let agent = Agent::builder().with_url(url).build()?;
-    if !is_mainnet {
-        agent.fetch_root_key().await?;
-    }
-    Ok(agent)
+pub async fn create_agent(url: &str, use_mainnet: bool) -> Result<Agent> {
+    let agent = Agent::builder().with_url(url).build()?;
+    if !use_mainnet {
+        agent.fetch_root_key().await?;
+    }
+    Ok(agent)
+}
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    // URL of the IC HTTP Gateway
+    let url = "https://ic0.app";
+    // alternatively, specify URL of some API boundary node
+    // NOTE: you need to discover correct domain names first
+    // let url = "https://<api-boundary-node-domain>";
+
+    let agent = create_agent(url, true).await?;
+
+    // Example of how you'd use the agent:
+    // let response = agent.query(canister_id, method_name).await?;
+
+    Ok(())
 }
 ```
 
+This instantiates the agent with static routing, which dispatches all requests to a single endpoint (in this case `ic0.app`).
+
+### Static vs dynamic routing
+
+By default, the agent uses static routing, sending all API calls to a single, fixed URL. This URL can either point to:
+- A specific API boundary node (which may be unreliable due to maintenance etc.)
+- A fleet of HTTP gateways that proxies the calls to the API boundary nodes (though HTTP gateways are not decentralized)
+
+To improve reliability and decentralization, the agent also supports dynamically routing API calls directly to globally distributed API boundary nodes. In particular, the agent is capable of:
+- Automatically discovering and monitoring the list of all API boundary nodes.
+- Filtering out unhealthy nodes.
+- Dynamically routing API calls across healthy nodes using different built-in strategies (e.g., round-robin and latency-based routing).
+
+Dynamic routing improves decentralization (by directly routing API calls to the decentralized API boundary nodes), resilience and performance (by dynamically adapting to the current state of the network).
+
+On top of the built-in strategies, the agent allows developers to implement their custom routing strategies tailored to their specific use cases.
+
 ### Using dynamic routing
 
-The ICP Rust agent provides built-in dynamic routing functionality, allowing an application to communicate seamlessly via decentralized API boundary nodes for optimal performance. To enable dynamic routing, the agent needs to be initialized with a bootstrap URL. Using this initial URL, the agent will:
-
-- Fetch the list of available API boundary nodes.
-- Continuously monitor the health of these nodes.
-- Automatically route requests to the closest healthy node.
-
-Here’s an example of how to set up your agent with dynamic routing:
+In the following, we show how you can instantiate an agent with the default dynamic routing using `ic0.app` as seed:
 
 ```rust
-let agent = Agent::builder()
-    .with_url(URL)
-    .with_background_dynamic_routing()
-    .await
-    .build()
-    .expect("failed to build ic-agent");
+use ic_agent::Agent;
+use url::Url;
+
+#[tokio::main]
+async fn main() {
+    // Use the URL of an HTTP Gateway or API boundary node as the initial seed.
+    let seed_url = Url::parse("https://ic0.app").unwrap();
+
+    let agent = Agent::builder()
+        .with_url(seed_url)
+        .with_background_dynamic_routing()
+        .build()
+        .expect("failed to build ic-agent");
+
+    // ... use agent for API calls
+}
 ```
 
+In this configuration, the agent distributes requests across multiple healthy API boundary nodes using a default weighted round-robin algorithm that favors lower-latency nodes, prioritizing those closer to the client.
+
+#### Customizing dynamic routing
+
+Dynamic routing in the agent is fully customizable, giving you the flexibility to customize the existing strategies or implement your own routing logic as needed. To instantiate the agent with a custom dynamic routing setup:
+
+```rust
+use std::{sync::Arc, time::Duration};
+
+use ic_agent::{
+    agent::route_provider::dynamic_routing::{
+        dynamic_route_provider::{DynamicRouteProvider, DynamicRouteProviderBuilder},
+        node::Node,
+        snapshot::latency_based_routing::LatencyRoutingSnapshot,
+    },
+    Agent,
+};
+use reqwest::Client;
+
+#[tokio::main]
+async fn main() {
+    // Choose a routing strategy:
+    // Use latency-based weighted round-robin with 3 lowest-latency nodes
+    let routing_strategy = LatencyRoutingSnapshot::new().set_k_top_nodes(3);
+
+    // Alternatively, use a basic round-robin routing across all healthy API nodes
+    // let routing_strategy = RoundRobinRoutingSnapshot::new();
+
+    // Or implement and provide your own custom routing strategy
+
+    // Seed nodes used for initial topology discovery
+    let seed_nodes = vec![
+        Node::new("https://ic0.app").unwrap(),
+        // optionally add existing API boundary nodes as seeds
+        // Node::new("https://<api-boundary-node-domain>").unwrap(),
+    ];
+
+    let client = Client::builder()
+        .build()
+        .expect("failed to build HTTP client");
+
+    let route_provider: DynamicRouteProvider<LatencyRoutingSnapshot> =
+        DynamicRouteProviderBuilder::new(routing_strategy, seed_nodes, Arc::new(client))
+            // Set how often to fetch the latest API boundary node topology
+            .with_fetch_period(Duration::from_secs(10))
+            // Set how often to perform health checks on the API boundary nodes
+            .with_check_period(Duration::from_secs(2))
+            // Or optionally provide a custom node health checker implementation
+            // .with_checker(custom_checker)
+            // Or optionally provide a custom topology fetcher implementation
+            // .with_fetcher(custom_fetcher)
+            .build()
+            .await;
+
+    let agent = Agent::builder()
+        .with_arc_route_provider(Arc::new(route_provider))
+        .build()
+        .expect("failed to build ic-agent");
+
+    // ... use the agent for making API calls
+}
+```
+NOTE: To make use of custom dynamic routing, you must enable the currently internal feature by using:
+
+```
+cargo run --features _internal_dynamic-routing
+```
+
+##### How Dynamic Routing Works
+
+At the core of dynamic routing in the agent is the `RouteProvider trait`, which dynamically selects a routing URL for each request by invoking its `route()` method:
+
+```rust
+pub trait RouteProvider {
+    /// Generates the next routing URL based on the internal routing logic
+    fn route(&self) -> Result<Url, AgentError>;
+    /// Generates up to `n` different routing URLs in order of priority.
+    fn n_ordered_routes(&self, n: usize) -> Result<Vec<Url>, AgentError>;
+    ...
+}
+```
+
+In the example above, we instantiate a `DynamicRouteProvider`, an implementation of `RouteProvider`, and inject it into the agent to handle dynamic request routing. 
+The `DynamicRouteProvider` itself is generic and extensible, allowing you to define custom routing strategies. 
+
+Two built-in strategies are available:
+- Round-robin - distributes requests evenly across all healthy nodes
+- Latency-based weighted round-robin - prioritizes healthy nodes with the lowest observed latency
+In our example, we used the latency-based strategy to prioritize faster nodes, limiting the selection to the top three.
+
+Under the hood, `DynamicRouteProvider` builds and maintains a dynamic routing table, which is continuously updated by running two background services:
+- Discovery service - periodically fetches the latest API boundary node topology
+- Health check service - periodically checks nodes health by pinging it
+This design enables the agent to adapt to changes in node availability and network topology, resulting in a resilient and performant routing.
+
+For more detailed information take a look at the [documentation]("https://TODO").
 
 ## Authentication
 
