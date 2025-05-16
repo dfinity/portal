@@ -31,6 +31,13 @@ TODO: code snippets and explanation
 
 - **Manage key access**: Assign, update, or revoke user access rights for stored vetKeys.
 
+## End-to-end setup
+
+To set up `KeyManager` for your dapp, you need to configure how your frontend will communicate with the `KeyManager` component on the backend.
+
+In the **backend**, you can define that whenever someone calls particular APIs of the canister, it calls the corresponding `KeyManager`'s method. For example, if a canister's `set_user_rights` API is called, the canister makes a function call to the `set_user_rights` method of its `KeyManager` instance. As an example, see the following [default `KeyManager` canister implementation](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
+
+In the **frontend**, you can define that when the frontend method `set_user_rights` of `KeyManager` is called, then the frontend `KeyManager` makes a call to the canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/interfaces/ic_vetkeys_tools.KeyManagerClient.html) interface. As an example, see the [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts) implementation of the `KeyManagerClient` interface.
 
 ## Application backend component
 
@@ -88,14 +95,6 @@ const result = await keyManager.setUserRights(keyOwner, vetkeyName, user, access
 
 </TabItem>
 </AdornedTabs>
-
-## End-to-end setup
-
-To set up `KeyManager` for your dapp, you need to configure how your frontend will communicate with the `KeyManager` component on the backend.
-
-In the **backend**, you can define that whenever someone calls particular APIs of the canister, it calls the corresponding `KeyManager`'s method. For example, if a canister's `set_user_rights` API is called, the canister makes a function call to the `set_user_rights` method of its `KeyManager` instance. As an example, see the following [default `KeyManager` canister implementation](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
-
-In the **frontend**, you can define that when the frontend method `set_user_rights` of `KeyManager` is called, then the frontend `KeyManager` makes a call to the canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/interfaces/ic_vetkeys_tools.KeyManagerClient.html) interface. As an example, see the [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts) implementation of the `KeyManagerClient` interface.
 
 ## Resources
 
