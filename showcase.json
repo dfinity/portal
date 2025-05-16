@@ -5420,21 +5420,5 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/staex-dvault_logo.svg",
     "oneLiner": " "
-  },
-  {
-    "id": "icprize",
-    "name": "ICPrize",
-    "display": "Normal",
-    "website": "https://icprize.fun/",
-    "github": "https://github.com/zhongyufeng8",
-    "submittableId": 99999999,
-    "tags": [
-      "DeFi",
-      "Gaming"
-    ],
-    "description": "ICPrize is a permissionless token incentive game built on the Internet Computer blockchain.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/icprize_logo.png",
-    "oneLiner": "A Web3 token incentive game built on ICP."
   }
 ]
