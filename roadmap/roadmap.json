@@ -787,6 +787,17 @@
             "status": "",
             "is_community": false,
             "in_beta": false
+          },
+          {
+            "title": "Maximize Canister Availability During Subnet Upgrade",
+            "overview": "Currently, a subnet upgrade takes about two minutes, during which canisters do not process messages. Theoretically, the period during which a canister is unavailable can be reduced to a few seconds for upgrade calls, and to virtually zero downtime for query calls. Achieving this will require significant changes to the protocol (e.g., how the different layers interact) and/or to the software architecture of the replica and host OS. The goal of this feature is to develop a design and implementation plan to realize these improvements.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       }
@@ -955,7 +966,7 @@
             "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
             "forum": "",
             "proposal": "",
-            "docs": "https://github.com/mfactory-lab/ic-solana",
+            "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
             "eta": "",
             "status": "in_progress",
             "is_community": true,
@@ -969,12 +980,12 @@
         "milestone_id": "Meridian",
         "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Native Dogecoin integration",
             "overview": "Native Dogecoin integration will extend ICP replicas to also follow the Dogecoin network and collect its UTXO set in a special Dogecoin canister. This allows canisters on ICP to securely read the Dogecoin state. Combined with the existing threshold ECDSA signing functionality, this allows canisters to securely hold and transfer native dogecoin.",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Meridian"
           },
           {
@@ -1317,7 +1328,7 @@
         "name": "vetKeys for decentralized key management",
         "milestone_id": "Niobium",
         "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
-        "eta": null,
+        "eta": "June 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1325,7 +1336,7 @@
             "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
             "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
             "proposal": "",
-            "docs": "https://internetcomputer.org/docs/building-apps/network-features/encryption/vetkeys",
+            "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
             "eta": "Q2 2025",
             "status": "in_progress",
             "is_community": false,
@@ -1353,7 +1364,7 @@
         "milestone_id": "Containment",
         "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Encrypted canister state",
@@ -1975,20 +1986,8 @@
             "milestone_id": "Pulse"
           },
           {
-            "title": "One account, multiple identities",
-            "overview": "Internet Identity provides users with the tools to manage multiple identities.",
-            "status": "future",
-            "milestone_id": "Pulse"
-          },
-          {
-            "title": "Disentangle identity / wallet / app",
-            "overview": "Resolve the confusion that exists between Internet Identity and wallets. Clearly define the role that Internet Identity plays for applications.",
-            "status": "future",
-            "milestone_id": "Pulse"
-          },
-          {
-            "title": "Additional measures for securing accounts",
-            "overview": "Implement additional security measures for protecting accounts when a device is compromised or stolen.",
+            "title": "One identity, multiple accounts",
+            "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
             "status": "future",
             "milestone_id": "Pulse"
           }
@@ -2001,6 +2000,18 @@
         "eta": null,
         "status": "future",
         "elements": [
+          {
+            "title": "Disentangle identity / wallet / app",
+            "overview": "Resolve the confusion that exists between Internet Identity and wallets. Clearly define the role that Internet Identity plays for applications.",
+            "status": "future",
+            "milestone_id": "Plexus"
+          },
+          {
+            "title": "Additional measures for securing accounts",
+            "overview": "Implement additional security measures for protecting accounts when a device is compromised or stolen.",
+            "status": "future",
+            "milestone_id": "Plexus"
+          },
           {
             "title": "Bring the verifiable credentials protocol closer to the industry standard",
             "overview": "Evolve the verifiable credentials protocol by bringing it closer to the industry standards.",
@@ -2842,7 +2853,7 @@
         "name": "Enabling governance token holdings and broader participation",
         "milestone_id": "Neon",
         "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
-        "eta": "June 2025",
+        "eta": "July 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -2916,6 +2927,19 @@
             "milestone_id": "Neon"
           },
           {
+            "title": "SNS treasury management",
+            "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
+            "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "future",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
             "title": "Launchpad redesign",
             "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
             "forum": "",
@@ -2952,19 +2976,6 @@
           {
             "title": "SNS communities portal",
             "overview": "A redesign of the voting interface that encourages community involvement and a sense of belonging, for example by allowing for announcement and updates.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Nucleon"
-          },
-          {
-            "title": "SNS treasury management",
-            "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-            "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -4358,7 +4369,7 @@
           {
             "title": "REST- & JSON-centric interfaces",
             "overview": "REST and JSON-centric philosophy of interacting with ICP. Makes it easier for Web2 devs to onboard the ICP ecosystem.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",

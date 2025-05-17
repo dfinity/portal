@@ -1,0 +1,36 @@
+---
+keywords: [advanced, concept, random, randomness, onchain randomness, raw_rand]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+# Timelock encryption
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+Timelock encryption builds upon identity-based encryption (IBE). For more information about IBE, please refer to the [identity-based encryption documentation](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption).
+
+It is useful to add time restrictions on when an IBE private key can be accessed. Additionally, the canister can decrypt IBE-encrypted data when appropriate conditions are met.
+
+## Use cases
+
+#### Private auction 
+
+Multiple users can create bids on an auction lot. The canister decrypts the bids once the lot is closed and decides on the winner. 
+
+<!---------
+TODO: code snippets and explanation
+--------->
+
+#### Miner extractable value protection
+
+For miner extractable value (MEV) protection, multiple users create transactions and the canister orders them. The canister only then decrypts the amount to prevent front-running, where a malicious user tries to make use of market fluctuations.
+
+#### Birthday coupon
+
+A user can encrypt a coupon or gift, send it to another user, who can only decrypt it after a certain delay such as the time until their birthday. 
