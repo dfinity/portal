@@ -30,7 +30,7 @@ function AlliancePage() {
       <ShareMeta image="/img/shareImages/share-alliance.webp"></ShareMeta>
 
       <main
-        className="text-black relative overflow-hidden"
+        className="text-white bg-black relative overflow-hidden"
         style={{
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
