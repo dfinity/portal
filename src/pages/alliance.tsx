@@ -35,7 +35,7 @@ function AlliancePage() {
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
-        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>
         <section
           className="text-white pt-20 mb-[10vw] lg:mb-3"
           style={{
