@@ -22,16 +22,17 @@ import { useQueryParam } from "../utils/use-query-param";
 type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
 
 const tagsNavigation = [
-  'Chain Fusion',
-  'DeFi',
-  'Bitcoin',
-  'Wallet',
-  'AI',
-  'Gaming',
-  'Creator Economy',
-  'Enterprise',
-  'Analytics',
-  'Tools / Infrastructure',
+  "Chain Fusion",
+  "DeFi",
+  "Bitcoin",
+  "Wallet",
+  "AI",
+  "Gaming",
+  "Creator Economy",
+  "Enterprise",
+  "Analytics",
+  "Tools / Infrastructure",
+  "NFT",
 ];
 
 function sortDesktopProjects(
@@ -311,9 +312,7 @@ const reducedTags = projects.reduce((tags, p) => {
   }
   return tags;
 }, {} as Record<string, number>);
-const tags = Object.entries(
-  reducedTags
-)
+const tags = Object.entries(reducedTags)
   .filter(([tag]) => tagsNavigation.includes(tag))
   .sort((a, b) => {
     const priorityOrder = tagsNavigation;
