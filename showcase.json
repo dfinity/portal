@@ -5420,5 +5420,28 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/staex-dvault_logo.svg",
     "oneLiner": " "
+  },
+  {
+    "name": "IC Pack",
+    "description": "Internet users lost control over their apps due to SaaS: an app may be blocked, removed, etc. IC Pack allows to create apps that cannot be deleted or updated without user consent. This done by installing apps as your own canisters (canister-per-user model).",
+    "website": "https://docs.package-manager.com/",
+    "logo": "/img/showcase/icpack_logo.svg",
+    "screenshots": [
+      "/img/showcase/icpack_screenshot.webp"
+    ],
+    "video": "/img/showcase/icpack_video.mp4",
+    "display": "Normal",
+    "id": "icpack",
+    "oneLiner": "Reclaim lost control over apps lost in cloud era.",
+    "stats": "n/a",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/vporton/icp-package-manager",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": "",
+    "videoContentType": "video/mp4"
   }
 ]
