@@ -155,27 +155,6 @@ function AlliancePage() {
 
         </section>
 
-        <section className="container-10 py-16 md:py-24 bg-[#0E0822] text-white">
-          <div className="text-center mb-16">
-            <img
-              src="/img/alliance/infinity-logo.svg"
-              alt="Infinity logo"
-              className="h-16 mb-8"
-            />
-            <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
-              Why join the ICP Alliance?
-            </h2>
-            <p className="tw-paragraph md:w-2/3 mx-auto">
-              As a member of the ICP Alliance, you'll be at the forefront of the
-              next generation web technology. The Internet Computer Protocol
-              provides a complete tech stack that allows you to build fully
-              on-chain applications with Web2 performance and Web3 benefits.
-              You'll join a growing ecosystem of innovative companies delivering
-              sovereign, secure, and scalable solutions.
-            </p>
-          </div>
-        </section>
-
         <section className="container-10 py-16 md:py-24">
           <h2 className="tw-heading-4 md:tw-heading-3 mb-16 text-center">
             Deliver a new technology paradigm to your clients
