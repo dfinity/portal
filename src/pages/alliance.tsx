@@ -109,7 +109,7 @@ function AlliancePage() {
 
           <div className="md:flex gap-8 text-center flex-wrap justify-center">
             
-            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg md:w-[calc(25%-2rem)] flex-shrink-0">
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
               <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
                 <span className="text-[0.3em] font-normal text-end mr-2">USD</span><span>258b</span>
               </div>
@@ -118,7 +118,7 @@ function AlliancePage() {
               </p>
             </div>
 
-            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg md:w-[calc(25%-2rem)] flex-shrink-0">
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
               <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
                 <span className="text-[0.3em] font-normal text-end mr-2">USD</span><span>10.5t</span>
               </div>
@@ -127,7 +127,7 @@ function AlliancePage() {
               </p>
             </div>
 
-            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg md:w-[calc(25%-2rem)] flex-shrink-0">
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
               <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
                 <span>90%+</span>
               </div>
@@ -136,7 +136,7 @@ function AlliancePage() {
               </p>
             </div>
 
-            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg md:w-[calc(25%-2rem)] flex-shrink-0">
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
               <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
                 <span className="text-[0.3em] font-normal text-end mr-2">USD</span><span>15t</span>
               </div>
