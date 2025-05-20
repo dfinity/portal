@@ -37,20 +37,18 @@ function AlliancePage() {
       >
         <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>
         <section
-          className="text-white pt-20 mb-[10vw] lg:mb-3"
-          style={{
-            background: "linear-gradient(54deg, #3B00B9 0%, #0E0822 153.06%)",
-          }}
+          className="text-white pt-20 mb-[10vw] lg:mb-3 relative bg-[#050b1f]"
           ref={heroRef}
         >
+          <div className="absolute right-0 w-full h-full top-1/2 -translate-y-1/2">
+            <img 
+                src="/img/alliance/allianceglobe.webp" 
+                alt="Hero background" 
+                className="h-full w-full object-cover" 
+            />
+          </div>
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
-            <div className="flex justify-end mb-8">
-              <img
-                src="/img/alliance/icp-alliance-logo.svg"
-                alt="ICP Alliance"
-                className="h-12"
-              />
-            </div>
+            
             <motion.h1
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-2/3"
               variants={transitions.item}
@@ -59,6 +57,7 @@ function AlliancePage() {
               <br />
               Build sovereign clouds and apps.
             </motion.h1>
+
             <div className="relative md:w-5/10">
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
@@ -69,11 +68,19 @@ function AlliancePage() {
                 platform that performs and scales like Web2.
               </motion.p>
               <MotionLink
-                className="button-white"
+                className="button-white mr-4"
                 href="#join"
                 variants={transitions.item}
               >
-                JOIN ALLIANCE
+                Apply now
+              </MotionLink>
+
+              <MotionLink
+                className="button-outline-white"
+                href="#join"
+                variants={transitions.item}
+              >
+                Get in touch
               </MotionLink>
             </div>
           </div>
