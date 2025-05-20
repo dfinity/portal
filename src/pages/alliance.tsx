@@ -41,14 +41,14 @@ function AlliancePage() {
       <ShareMeta image="/img/shareImages/share-alliance.webp"></ShareMeta>
 
       <main
-        className="text-white bg-black relative overflow-hidden"
+        className="text-white bg-[#010103] relative overflow-hidden"
         style={{
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
         <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>
         <section
-          className="text-white pt-20 mb-[10vw] lg:mb-3 relative bg-[#050b1f]"
+          className="text-white pt-20 mb-[10vw] lg:mb-3 relative bg-[#010103]"
           ref={heroRef}
         >
           <div className="absolute right-0 h-full top-1/2 -translate-y-1/2
