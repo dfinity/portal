@@ -52,7 +52,7 @@ function AlliancePage() {
           ref={heroRef}
         >
           <div className="absolute right-0 h-full top-1/2 -translate-y-1/2
-            w-full lg:w-1/2 bg-[url('/img/alliance/allianceglobe.jpg')] bg-no-repeat bg-[length:auto_100%]"
+            w-full bg-[url('/img/alliance/allianceglobe.jpg')] bg-no-repeat bg-[length:auto_100%]"
           
             style={{
               backgroundPosition: "right 50%"
