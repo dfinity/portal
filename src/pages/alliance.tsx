@@ -170,7 +170,7 @@ function AlliancePage() {
               <h3 className="tw-heading-5 mb-4">
               Sovereign Cloud, Apps & AI
               </h3>
-              <p className="tw-paragraph-sm opacity-50">
+              <p className="tw-paragraph-sm opacity-60">
                 Run the full stack—data, logic, and AI agents—inside a jurisdiction-controlled cloud that never leaves the Internet Computer. Clients gain verify control over their data, processes and workloads while meeting even the toughest sovereignty mandates.
               </p>
             </div>
@@ -181,7 +181,7 @@ function AlliancePage() {
                 alt="Tech icon 2"
               />
               <h3 className="tw-heading-5 mb-4">Prompt-Driven App Factory</h3>
-              <p className="tw-paragraph-sm opacity-50">
+              <p className="tw-paragraph-sm opacity-60">
                 Developers simply describe a feature and watch the platform design, deploy, and orchestrate it end-to-end on ICP. This self-writing pipeline slashes build time and lets teams iterate at chat speed.
               </p>
             </div>
@@ -194,7 +194,7 @@ function AlliancePage() {
               <h3 className="tw-heading-5 mb-4">
                 Universal Interoperability Layer
               </h3>
-              <p className="tw-paragraph-sm  opacity-50">
+              <p className="tw-paragraph-sm  opacity-60">
                 Chain Fusion turns ICP into a trustless hub that can call smart-contracts on Bitcoin, Ethereum, Solana, and any future network—no bridges, no custodians. Enterprises can custody and move assets and data across chains without security trade-offs.
               </p>
             </div>
@@ -207,7 +207,7 @@ function AlliancePage() {
               <h3 className="tw-heading-5 mb-4">
                 Built-In Security & Governance
               </h3>
-              <p className="tw-paragraph-sm opacity-50">
+              <p className="tw-paragraph-sm opacity-60">
               Every app inherits tamper-proof state, hardware-rooted identity, and on-chain upgrade history, so audits are automatic and breaches are a thing of the past. Clients can also shape protocol upgrades through open governance, aligning infrastructure with their long-term needs.
               </p>
             </div>
