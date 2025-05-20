@@ -214,6 +214,14 @@ function AlliancePage() {
           </div>
         </section>
 
+        <div className="container-10 py-16 md:py-24">
+          <img
+            src="/img/alliance/usecases.png"
+            className="w-full mb-8 mx-auto block"
+            alt="use cases"
+          />
+        </div>
+
         <section className="container-10 py-16 md:py-24">
           <h2 className="tw-heading-4 md:tw-heading-3 mb-16 text-center">
             An Alliance that grows your business
