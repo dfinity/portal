@@ -147,7 +147,7 @@ function AlliancePage() {
             
           </div>
           <div className="text-center mt-8">
-            <p className="tw-paragraph-sm text-[#666]">
+            <p className="tw-heading-3 bg-clip-text text-transparent bg-gradient-to-r from-[#0F3987] via-[#EBF1FF] to-[#0F3987]">
               The ICP stack was built to scale for all of this.
             </p>
           </div>
