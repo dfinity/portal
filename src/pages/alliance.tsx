@@ -92,6 +92,12 @@ function AlliancePage() {
                 Get in touch
               </MotionLink>
             </div>
+
+            <img
+              src="/img/alliance/icpa-logo.png"
+              alt="alliance logo"
+              className="mx-auto absolute top-1/2 right-0 -translate-x-1/2 w-56 -translate-y-1/2"
+            />
           </div>
         </section>
 
