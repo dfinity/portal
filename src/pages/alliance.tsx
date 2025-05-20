@@ -102,17 +102,17 @@ function AlliancePage() {
         </section>
 
         <section className="container-10 py-16 md:py-24">
-          <h2 className="tw-heading-4 md:tw-heading-3 text-center mb-16">
+          <h2 className="tw-heading-3 text-center mb-16">
             Enterprises and governments are researching for sovereignty,
             security, AI and digital assets
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-white">
-                ~25B
+              <div className="font-bold text-[4.375em] mb-2 text-white gap-2">
+                <span className="text-[0.3em] font-normal text-end mr-2">USD</span><span>258b</span>
               </div>
               <p className="tw-paragraph-sm text-[#666]">
-                Average monthly API calls
+                Global sovereign-cloud spend projected by 2027 (26.6% CAGR)
               </p>
             </div>
             <div className="radius-2 outline-[#fff] outline-1">
