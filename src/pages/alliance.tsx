@@ -51,13 +51,13 @@ function AlliancePage() {
           className="text-white pt-20 mb-[10vw] lg:mb-3 relative bg-[#050b1f]"
           ref={heroRef}
         >
-          <div className="absolute right-0 w-full h-full top-1/2 -translate-y-1/2">
-            <img 
-                src="/img/alliance/allianceglobe.webp" 
-                alt="Hero background" 
-                className="h-full w-full object-cover" 
-            />
-          </div>
+          <div className="absolute right-0 h-full top-1/2 -translate-y-1/2
+            w-full lg:w-1/2 bg-[url('/img/alliance/allianceglobe.jpg')] bg-no-repeat bg-[length:auto_100%]"
+          
+            style={{
+              backgroundPosition: "right 50%"
+            }}
+          ></div>
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             
             <motion.h1
@@ -74,9 +74,7 @@ function AlliancePage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Partner with the ICP Alliance to deliver the world's most
-                advanced Web3 stack to your clients. Leverage the only Web3
-                platform that performs and scales like Web2.
+                Become the go-to partner for clients racing towards data sovereignty and self-writing apps. ICP Alliance offers leads, solution blueprints, early tech access, and engineering support for faster delivery.
               </motion.p>
               <MotionLink
                 className="button-white mr-4"
@@ -104,15 +102,15 @@ function AlliancePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
+              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-white">
                 ~25B
               </div>
               <p className="tw-paragraph-sm text-[#666]">
                 Average monthly API calls
               </p>
             </div>
-            <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
+            <div className="radius-2 outline-[#fff] outline-1">
+              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-white">
                 ~10.5T
               </div>
               <p className="tw-paragraph-sm text-[#666]">
@@ -120,13 +118,13 @@ function AlliancePage() {
               </p>
             </div>
             <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
+              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-white">
                 90%+
               </div>
               <p className="tw-paragraph-sm text-[#666]">Uptime</p>
             </div>
             <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
+              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-white">
                 ~15T
               </div>
               <p className="tw-paragraph-sm text-[#666]">Storage operations</p>
