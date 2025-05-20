@@ -161,42 +161,54 @@ function AlliancePage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-01.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 1"
+              />
               <h3 className="tw-heading-5 mb-4">
-                Alliance membership and benefits
+              Sovereign Cloud, Apps & AI
               </h3>
-              <p className="tw-paragraph-sm">
-                Access educational resources, marketing support, funding
-                opportunities, and a community of builders pushing the
-                boundaries of what's possible on the internet.
+              <p className="tw-paragraph-sm opacity-50">
+                Run the full stack—data, logic, and AI agents—inside a jurisdiction-controlled cloud that never leaves the Internet Computer. Clients gain verify control over their data, processes and workloads while meeting even the toughest sovereignty mandates.
               </p>
             </div>
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
-              <h3 className="tw-heading-5 mb-4">Certifications & training</h3>
-              <p className="tw-paragraph-sm">
-                Get certified as an Internet Computer developer or solutions
-                provider. Access training resources to upskill your team and
-                deliver cutting-edge solutions.
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-02.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 2"
+              />
+              <h3 className="tw-heading-5 mb-4">Prompt-Driven App Factory</h3>
+              <p className="tw-paragraph-sm opacity-50">
+                Developers simply describe a feature and watch the platform design, deploy, and orchestrate it end-to-end on ICP. This self-writing pipeline slashes build time and lets teams iterate at chat speed.
               </p>
             </div>
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-03.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 3"
+              />
               <h3 className="tw-heading-5 mb-4">
-                Language and coding apps to build and customize
+                Universal Interoperability Layer
               </h3>
-              <p className="tw-paragraph-sm">
-                Leverage SDK support for Motoko, Rust, TypeScript, Python, and
-                more to build customized solutions that meet your clients'
-                specific needs.
+              <p className="tw-paragraph-sm  opacity-50">
+                Chain Fusion turns ICP into a trustless hub that can call smart-contracts on Bitcoin, Ethereum, Solana, and any future network—no bridges, no custodians. Enterprises can custody and move assets and data across chains without security trade-offs.
               </p>
             </div>
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-04.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 4"
+              />
               <h3 className="tw-heading-5 mb-4">
-                Secure from local hosting and diverse access to B2B
+                Built-In Security & Governance
               </h3>
-              <p className="tw-paragraph-sm">
-                Build applications that are secure by design, with built-in
-                authentication, autonomous operation, and enterprise-grade
-                security features.
+              <p className="tw-paragraph-sm opacity-50">
+              Every app inherits tamper-proof state, hardware-rooted identity, and on-chain upgrade history, so audits are automatic and breaches are a thing of the past. Clients can also shape protocol upgrades through open governance, aligning infrastructure with their long-term needs.
               </p>
             </div>
           </div>
