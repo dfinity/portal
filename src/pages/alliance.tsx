@@ -27,6 +27,17 @@ function AlliancePage() {
       title="ICP Alliance - Build sovereign clouds and apps"
       description="Join the ICP Alliance to build sovereign clouds and applications. Enterprises and governments are researching for sovereignty, security, AI and digital assets."
     >
+      <style>
+        {`
+           footer {
+            --ifm-footer-background-color: transparent;
+            background: linear-gradient(97deg, #050011 69.49%, #08214C 98.09%);
+            --ifm-footer-color: white;
+            --ifm-footer-link-color: white;
+            --ifm-footer-title-color: white;
+          }
+        `}
+      </style>
       <ShareMeta image="/img/shareImages/share-alliance.webp"></ShareMeta>
 
       <main
