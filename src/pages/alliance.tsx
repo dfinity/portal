@@ -63,11 +63,11 @@ function AlliancePage() {
             <motion.h1
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-2/3"
               variants={transitions.item}
-            >
-              Lead the Next Web.
-              <br />
-              Build sovereign clouds and apps.
-            </motion.h1>
+            >Lead the Next Web</motion.h1>
+            <motion.h2
+              className="tw-heading-4 md:tw-heading-3 mb-8"
+              variants={transitions.item}
+            >Build sovereign clouds and apps.</motion.h2>
 
             <div className="relative md:w-5/10">
               <motion.p
