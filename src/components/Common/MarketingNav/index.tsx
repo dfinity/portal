@@ -160,7 +160,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
 
   return (
     <div className="absolute z-[1000] top-[4.84rem] left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
-      <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
+      <div className="shadow-2xl translate-y-[calc(var(--custom-banner-height,0)*0.30)] dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
         <div className="flex-1 flex">
           {item.sections.length > 1 && (
             <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
@@ -432,7 +432,7 @@ const MarketingNav = () => {
         className={`md:hidden overflow-auto fixed inset-0 bg-white z-[1000] px-6 pt-4 pb-12 transition-transform ${mobileNavClasses}`}
       >
         {/* logo + close button */}
-        <div className="flex items-center justify-between ">
+        <div className="flex items-center justify-between mt-[var(--custom-banner-height)]">
           <Link className="flex items-center" href="/" onClick={closeNav}>
             <img src="/img/logo-notext.svg" alt="" className="h-5" />
           </Link>

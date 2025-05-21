@@ -91,7 +91,7 @@ const MarqueeBanner = () => {
       </style>
       <div
         id="marquee-banner"
-        className="w-full overflow-hidden bg-black h-[var(--custom-banner-height,0)] flex items-center fixed top-0 left-0 right-0 z-[90000]"
+        className="w-full overflow-hidden bg-black h-[var(--custom-banner-height,0)] flex items-center fixed top-0 left-0 right-0 z-[1250]"
       >
         <div
           ref={containerRef}
