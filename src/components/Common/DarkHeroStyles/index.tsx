@@ -25,7 +25,7 @@ const DarkHeroStyles = ({
               /* Adjust the position to account for the marquee banner */
               margin-top: 48px !important;
               /* Ensure z-index is appropriate */
-              z-index: 40 !important;
+              z-index: 2 !important;
               `
                 : ""}
             }
