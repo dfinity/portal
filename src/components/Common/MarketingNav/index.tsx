@@ -376,7 +376,7 @@ const MarketingNav = () => {
   return (
     <>
       <nav
-        className="marketing-navbar z-[1000] !px-0 pt-6 pb-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent dark-hero:backdrop-blur-sm sticky top-0 transition-transform"
+        className="marketing-navbar z-[1000] !px-0 pt-6 pb-4 md:px-12 md:pt-11 md:pb-5 text-black  bg-page dark-hero:bg-transparent dark-hero:backdrop-blur-sm sticky top-[var(--custom-banner-height)] transition-transform"
         ref={navbarRef}
       >
         <div className="container-12 w-full flex items-center justify-between">

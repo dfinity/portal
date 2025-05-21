@@ -28,7 +28,7 @@ const Hero: React.FC<{
     <>
       <MarqueeBanner />
       <section className="bg-[#1B025A]" id="home" ref={darkRef}>
-        {isDark && <DarkHeroStyles bgColor="transparent" marquee={true} />}
+        {isDark && <DarkHeroStyles bgColor="transparent" />}
         <div
           className="
         pt-[152px] pb-40 md:pt-52 md:pb-64 md:grid relative 

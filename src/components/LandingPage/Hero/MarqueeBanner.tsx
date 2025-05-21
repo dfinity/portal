@@ -81,41 +81,50 @@ const MarqueeBanner = () => {
   }, []);
 
   return (
-    <div
-      id="marquee-banner"
-      className="w-full overflow-hidden bg-black h-12 flex items-center fixed top-0 left-0 right-0 z-50"
-    >
+    <>
+      <style>
+        {`
+         :root {
+          --custom-banner-height: 50px;
+          }
+        `}
+      </style>
       <div
-        ref={containerRef}
-        className="inline-flex whitespace-nowrap"
-        style={{ willChange: "transform" }}
+        id="marquee-banner"
+        className="w-full overflow-hidden bg-black h-[var(--custom-banner-height,0)] flex items-center fixed top-0 left-0 right-0 z-[90000]"
       >
         <div
-          ref={contentRef}
-          className="flex items-center justify-start text-white"
+          ref={containerRef}
+          className="inline-flex whitespace-nowrap"
+          style={{ willChange: "transform" }}
         >
-          {/* Create a single flex container for each pair of logos with fixed width */}
-          <div className="flex items-center mx-4" style={{ width: "400px" }}>
-            <div className="mr-8">
-              <img
-                src="/img/home/icp4th.svg"
-                alt="ICP Fourth Anniversary"
-                className="h-10"
-                style={{ display: "block" }}
-              />
-            </div>
-            <div>
-              <img
-                src="/img/home/wcs25.svg"
-                alt="WCS25"
-                className="h-15"
-                style={{ display: "block" }}
-              />
+          <div
+            ref={contentRef}
+            className="flex items-center justify-start text-white"
+          >
+            {/* Create a single flex container for each pair of logos with fixed width */}
+            <div className="flex items-center mx-4" style={{ width: "400px" }}>
+              <div className="mr-8">
+                <img
+                  src="/img/home/icp4th.svg"
+                  alt="ICP Fourth Anniversary"
+                  className="h-10"
+                  style={{ display: "block" }}
+                />
+              </div>
+              <div>
+                <img
+                  src="/img/home/wcs25.svg"
+                  alt="WCS25"
+                  className="h-15"
+                  style={{ display: "block" }}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div>{" "}
+    </>
   );
 };
 
