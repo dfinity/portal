@@ -363,25 +363,20 @@ build: [
           label: "vetKeys",
           items: [
             "building-apps/network-features/vetkeys/introduction",
-            {
-              type: "category",
-              label: "Decentralized Key Management Service (DKMS)",
-              items: [
-                "building-apps/network-features/vetkeys/dkms/introduction",
-                "building-apps/network-features/vetkeys/dkms/key-manager",
-                "building-apps/network-features/vetkeys/dkms/encrypted-maps",
-              ],
-            },
+            "building-apps/network-features/vetkeys/api",
+            "building-apps/network-features/vetkeys/dkms",
+            "building-apps/network-features/vetkeys/encrypted-onchain-storage",
             {
               type: "category",
               label: "Advanced",
               items: [
+                "building-apps/network-features/vetkeys/advanced/introduction",
                 "building-apps/network-features/vetkeys/advanced/bls-signatures",
                 "building-apps/network-features/vetkeys/advanced/identity-based-encryption",
                 "building-apps/network-features/vetkeys/advanced/timelock-encryption",
                 "building-apps/network-features/vetkeys/advanced/verifiable-randomness",
               ],
-            }
+            },
           ],
         },
         "building-apps/network-features/randomness",
