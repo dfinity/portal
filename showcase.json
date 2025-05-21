@@ -5420,5 +5420,41 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/staex-dvault_logo.svg",
     "oneLiner": " "
+  },
+  {
+    "id": "funnai",
+    "name": "funnAI",
+    "display": "Normal",
+    "website": "https://funnai.onicai.com/",
+    "twitter": "https://x.com/onicaiHQ",
+    "youtube": "https://www.youtube.com/@onicai",
+    "submittableId": 49395912,
+    "tags": [
+      "AI",
+      "Gaming",
+      "Tools / Infrastructure"
+    ],
+    "description": "Let’s burn cycles like never before—with cutting-edge decentralized AI, only on ICP! Be part of the autonomous AI economy. Join funnAI today!",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/funnAI.png"
+  },
+  {
+    "id": "cashier",
+    "name": "Cashier",
+    "display": "Normal",
+    "website": "www.cashierapp.io",
+    "twitter": "https://x.com/thecashierapp",
+    "github": "https://github.com/CashierHQ/cashier",
+    "youtube": "https://youtu.be/H8Qetnjz1Zs",
+    "submittableId": 49301373,
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Wallet"
+    ],
+    "description": "Cashier allows non-coders to flexibly build & share web3 transactions such as payments, donations, tips, airdrops, swaps in minutes with their phone",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/favicon_green.svg",
+    "oneLiner": "Non-coders can build & share web3 transactions in minutes on the phone"
   }
 ]
