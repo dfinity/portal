@@ -101,87 +101,6 @@ async fn main() -> Result<()> {
 ```
 
 In this configuration, the agent distributes requests across multiple healthy API boundary nodes using a default weighted round-robin algorithm that favors lower-latency nodes, prioritizing those closer to the client.
-
-#### Customizing dynamic routing
-
-Dynamic routing in the agent is fully customizable, giving you the flexibility to customize the existing strategies or implement your own routing logic as needed. To instantiate the agent with a custom dynamic routing setup:
-
-```rust
-use std::{sync::Arc, time::Duration};
-
-use anyhow::Result;
-use ic_agent::{
-    agent::route_provider::{
-        dynamic_routing::{
-            dynamic_route_provider::{DynamicRouteProvider, DynamicRouteProviderBuilder},
-            node::Node,
-            snapshot::latency_based_routing::LatencyRoutingSnapshot,
-        },
-        RouteProvider,
-    },
-    Agent,
-};
-use reqwest::Client;
-
-#[tokio::main]
-async fn main() -> Result<()> {
-    // Choose a routing strategy: top 3 lowest-latency API boundary nodes selected via weighted round-robin
-    let routing_strategy = LatencyRoutingSnapshot::new().set_k_top_nodes(3);
-
-    // Alternatively, use a basic round-robin routing across all healthy API boundary nodes
-    // let routing_strategy = RoundRobinRoutingSnapshot::new();
-
-    // Or implement and provide your own custom routing strategy
-
-    // Seed nodes for initial topology discovery
-    let seed_nodes = vec![
-        Node::new("ic0.app")?,
-        // Optional: add known API boundary nodes to improve resilience
-        // Node::new("<api-boundary-node-domain>")?,
-    ];
-
-    // HTTP client for health checks and topology discovery
-    let client = Client::builder().build()?;
-
-    // Build dynamic route provider
-    let route_provider: DynamicRouteProvider<LatencyRoutingSnapshot> =
-        DynamicRouteProviderBuilder::new(routing_strategy, seed_nodes, Arc::new(client))
-            // Set how often to fetch the latest API boundary node topology
-            .with_fetch_period(Duration::from_secs(10))
-            // Set how often to perform health checks on the API boundary nodes
-            .with_check_period(Duration::from_secs(2))
-            // Or optionally provide a custom node health checker implementation
-            // .with_checker(custom_checker)
-            // Or optionally provide a custom topology fetcher implementation
-            // .with_fetcher(custom_fetcher)
-            .build()
-            .await;
-
-    // Example: generate routing URLs
-    let url_1 = route_provider.route().expect("failed to get routing URL");
-    eprintln!("Generated URL: {url_1}");
-
-    let url_2 = route_provider.route().expect("failed to get routing URL");
-    eprintln!("Generated URL: {url_2}");
-
-    // Or inject route_provider into the agent for dynamic routing
-    let agent = Agent::builder()
-        .with_route_provider(route_provider)
-        .build()?;
-
-    // ... use the agent for API calls
-
-    Ok(())
-}
-```
-
-:::note
-To make use of custom dynamic routing, you must enable the currently internal feature by using:
-```bash
-cargo run --features _internal_dynamic-routing
-```
-:::
-
 ##### How dynamic routing works
 
 At the core of dynamic routing in the agent is the `RouteProvider trait`, which dynamically selects a routing URL for each request by invoking its `route()` method:
@@ -215,7 +134,7 @@ Two built-in strategies are available:
 
 The previous example uses the latency-based strategy to prioritize faster nodes, limiting the selection to the top three.
 
-For more detailed information take a look at the documentation.
+For more detailed information take a look at the [documentation](https://docs.rs/ic-agent/latest/ic_agent/agent/route_provider/index.html) of the `DynamicRouteProvider` in the [agent-rs](https://github.com/dfinity/agent-rs).
 
 ## Authentication
 
