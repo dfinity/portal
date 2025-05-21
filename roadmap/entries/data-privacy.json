@@ -97,6 +97,17 @@
       "in_beta": false
     },
     {
+      "title": "Remote attestation for users",
+      "overview": "Allowing users to verify that an API boundary node is running trusted software inside a genuine trusted execution environment.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
       "title": "Fully-homomorphic encryption (FHE)",
       "overview": "Fully-homomorphic encryption (FHE) allows for arbitrary computations on encrypted data and only authorized parties to decrypt the result. Blockchain data privacy.",
       "forum": "",
