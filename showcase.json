@@ -339,23 +339,6 @@
     "logo": "/img/showcase/plug_logo.webp"
   },
   {
-    "id": "helix",
-    "name": "Helix Markets",
-    "display": "Normal",
-    "website": "https://www.helixmarkets.io/",
-    "twitter": "https://twitter.com/HelixMarkets",
-    "tags": [
-      "Ethereum",
-      "Bitcoin",
-      "DeFi",
-      "Chain Fusion"
-    ],
-    "stats": "2,000+ users",
-    "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.svg"
-  },
-  {
     "id": "catalyze",
     "name": "Catalyze",
     "display": "Large",
@@ -454,23 +437,6 @@
       "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app"
     ],
     "logo": "/img/showcase/taggr_logo.webp"
-  },
-  {
-    "id": "stoicwallet",
-    "name": "Stoic Wallet",
-    "display": "Normal",
-    "website": "https://www.stoicwallet.com/",
-    "tags": [
-      "Wallet",
-      "Ethereum",
-      "Chain Fusion"
-    ],
-    "description": "Stoic Wallet by Toniq Labs allows anyone to create a digital wallet, authenticating users through a variety of methods, one of those being Internet Identity. Create accounts, keep an address book, and more. ",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/stoicwallet_logo.webp",
-    "screenshots": [
-      "/img/showcase/stoicwallet_screenshot_0.webp"
-    ]
   },
   {
     "id": "kleverio",
@@ -625,48 +591,6 @@
     ]
   },
   {
-    "id": "boom-dao",
-    "name": "Boom DAO",
-    "display": "Large",
-    "website": "https://boomdao.xyz/",
-    "twitter": "https://twitter.com/boomdaosns",
-    "github": "https://github.com/BoomDAO/",
-    "youtube": "https://www.youtube.com/watch?v=LHVVi4pN6CI",
-    "tags": [
-      "Gaming",
-      "DAO",
-      "Tools / Infrastructure",
-      "NFT",
-      "Metaverse",
-      "Creator Economy"
-    ],
-    "stats": "23,000+ DAO Members",
-    "description": "BOOM DAO is an all-in-one web3 game platform and protocol running 100% onchain on the Internet Computer. We are on a mission to build the gaming vertical of the Internet Computer blockchain, power the next generation of fully onchain games on ICP, and provide a collaborative hub for all things web3 gaming.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/boom-dao-logo.png",
-    "screenshots": [
-      "/img/showcase/boom-dao-screenshot0.webp"
-    ],
-    "video": "/img/showcase/boom-dao-video.mp4",
-    "videoContentType": "video/mp4"
-  },
-  {
-    "id": "plethora",
-    "name": "Plethora",
-    "display": "Normal",
-    "website": "https://plethora.game/",
-    "twitter": "https://twitter.com/PlethoraGame",
-    "tags": [
-      "Gaming",
-      "Metaverse",
-      "NFT",
-      "Creator Economy"
-    ],
-    "stats": "10,000+ users",
-    "description": "Plethora is a Web3 platformer with the goal of rewarding users both with fun gameplay and NFTs. Plethora empowers NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
-    "logo": "/img/showcase/plethora_logo.webp"
-  },
-  {
     "id": "querio",
     "name": "Querio",
     "display": "Normal",
@@ -758,25 +682,6 @@
     "screenshots": [
       "/img/showcase/internetidentity_screenshot_0.gif"
     ]
-  },
-  {
-    "id": "astrox",
-    "name": "AstroX ME",
-    "display": "Normal",
-    "website": "https://astrox.me/#/",
-    "twitter": "https://twitter.com/astrox_network",
-    "github": "https://github.com/AstroxNetwork",
-    "tags": [
-      "Tools / Infrastructure",
-      "Wallet",
-      "Bitcoin",
-      "NFT",
-      "Ethereum",
-      "Chain Fusion",
-      "Creator Economy"
-    ],
-    "description": "ME wallet securing your assets without seed phrase across any devices.",
-    "logo": "/img/showcase/astroxme_logo.webp"
   },
   {
     "id": "autoroyale",
@@ -992,23 +897,6 @@
     "description": "A forum for critical thinkers, builders and writers. Earn by providing human-to-human feedback.  ",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/kawak_logo.webp"
-  },
-  {
-    "id": "seers",
-    "name": "Seers",
-    "display": "Normal",
-    "website": "https://seers.social/",
-    "twitter": "https://x.com/SeersApp",
-    "tags": [
-      "SocialFi",
-      "DAO",
-      "Creator Economy",
-      "AI"
-    ],
-    "stats": "10,000 users + TVL",
-    "description": "The Social Network of Autonomous AI Agents.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/seers_logo.webp"
   },
   {
     "id": "pokedstudiobots",
@@ -1719,21 +1607,6 @@
     "logo": "/img/showcase/cyqlio_logo.svg"
   },
   {
-    "id": "dank",
-    "name": "Dank",
-    "display": "Normal",
-    "website": "https://dank.ooo/",
-    "twitter": "https://twitter.com/psychedelicDAO",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Dank is the first Decentralized Bank built on the Internet Computer, developed by Fleek. Through a collection of Open Internet Services for users and developers, Dank makes cycles management seamless.",
-    "logo": "/img/showcase/dank_logo.webp",
-    "screenshots": [
-      "/img/showcase/dank_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "icmojiorigins",
     "name": "ICmoji Origins",
     "display": "Normal",
@@ -2092,24 +1965,6 @@
     "logo": "/img/showcase/nacdb-database_logo.webp"
   },
   {
-    "id": "fleek",
-    "name": "Fleek",
-    "display": "Normal",
-    "website": "https://fleek.co/",
-    "twitter": "https://x.com/fleek",
-    "github": "https://github.com/fleek-platform",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "stats": "1,000+ websites",
-    "description": "Fleek brings decentralized web-hosting to the Internet Computer. With thousands of webpages deployed, Fleek enables anyone to deploy their content on Web3.0",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/fleek_logo.webp",
-    "screenshots": [
-      "/img/showcase/fleek_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "ichub",
     "name": "IC HUB",
     "display": "Normal",
@@ -2349,25 +2204,6 @@
     "video": "/img/showcase/open-internet-metaverse_video.mp4"
   },
   {
-    "id": "Faceless",
-    "name": "Faceless Project",
-    "display": "Normal",
-    "website": "https://faceless.live/",
-    "twitter": "https://twitter.com/Faceless_Proj",
-    "github": "https://github.com/HeisenbergLin22/faceless_delivery_May",
-    "youtube": "https://youtu.be/pFgVswCqzdk",
-    "submittableId": 35639090,
-    "tags": [
-      "Tools / Infrastructure",
-      "SocialFi",
-      "Enterprise",
-      "Creator Economy"
-    ],
-    "description": "Faceless provides a cross-platform private payment system based on human-readable identifiers in the IC ecosystem. It brings regulation-compliant financial services to users while still preserving users' privacy.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/faceless_logo.png"
-  },
-  {
     "id": "bravo-app",
     "name": "221Bravo App",
     "display": "Normal",
@@ -2593,7 +2429,7 @@
     "stats": "100+ users, 10+ global miners",
     "description": "Loka is a platform that enables retail investors to acquire BTC at better than market prices through co-investing with Bitcoin miners. The arrangement is based on a trustless non-custodial escrow solution, which eliminates any exposure to centralized party risk.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/loka_icon.png"
+    "logo": "/img/showcase/Loka_logo.jpg"
   },
   {
     "id": "icrouter",
@@ -3005,11 +2841,11 @@
     "logo": "/img/showcase/elnaai_logo.png"
   },
   {
-    "id": "vaultbet",
-    "name": "VaultBet",
+    "id": "bookie",
+    "name": "Bookie",
     "display": "Normal",
-    "website": "https://vault-bet.com",
-    "twitter": "https://twitter.com/VaultBet",
+    "website": "https://www.bookie.win/exchange",
+    "twitter": "https://x.com/BookieDex",
     "tags": [
       "Gaming",
       "DeFi",
@@ -3020,9 +2856,9 @@
       "Creator Economy"
     ],
     "stats": "1000+ Monthly Users",
-    "description": "VaultBet is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
+    "description": "Bookie is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/vaultbet_logo.webp"
+    "logo": "/img/showcase/bookie_logo.jpeg"
   },
   {
     "id": "icp-governor",
@@ -3215,19 +3051,19 @@
     "id": "b4b",
     "name": "B4B",
     "display": "Normal",
-    "website": "https://b4b.world",
+    "website": "https://b4b.app/",
     "twitter": "https://twitter.com/b4b_world",
+    "github": "https://gitlab.com/b4b-world/b4b-icp/-/tree/mainnet_ready?ref_type=heads",
     "submittableId": 44548318,
     "tags": [
-      "Tools / Infrastructure",
-      "Enterprise",
-      "SocialFi",
-      "Creator Economy"
+      "Creator Economy",
+      "Chain Fusion"
     ],
     "stats": "400+ influencers",
-    "description": "B4B.app is a Web3 influencer marketing protocol that brings transparency, ownership, escrow, and onchain history from all socials",
+    "description": "On-chain marketplace for booking, managing advertising campaigns on ICP. Native ICP deployment with ckUSDC, zero gas fees",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/b4b_logo.png"
+    "logo": "/img/showcase/B4B.jpg",
+    "oneLiner": "Protocol for Influencer Marketing"
   },
   {
     "id": "pochi",
@@ -3702,22 +3538,6 @@
     "logo": "/img/showcase/riide_logo.png"
   },
   {
-    "id": "chainkeyx",
-    "name": "ChainkeyX",
-    "display": "Normal",
-    "website": "https://www.chainkeyx.com",
-    "twitter": "https://twitter.com/ckexchange",
-    "github": "https://github.com/CKX-dev/CKX_Swap",
-    "tags": [
-      "Bitcoin",
-      "DeFi",
-      "Chain Fusion"
-    ],
-    "description": "A crypto neobank that offers fully onchain bitcoin borrowing and lending on ICP.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/chainkeyx_logo.png"
-  },
-  {
     "id": "konecta-protocol",
     "name": "Konectª",
     "display": "Normal",
@@ -3806,19 +3626,6 @@
     "description": "An AI IP assistant and virtual lawyer that uses ICP to mint IP certificates, including licenses and ownership details.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/bipQuantum_logo.jpg"
-  },
-  {
-    "id": "ICPCC",
-    "name": "ICPCC DAO LLC",
-    "display": "Normal",
-    "website": "https://osjzm-oaaaa-aaaal-ajcoq-cai.icp0.io/",
-    "twitter": "https://twitter.com/icp_cc",
-    "tags": [
-      "DAO"
-    ],
-    "description": "A community-owned and fully self-sustaining decentralized conference event series devoted to highlighting the ICP's technology and ecosystem.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/icpcc_logo.png"
   },
   {
     "id": "clpfinance",
@@ -3927,22 +3734,6 @@
     "description": "A digital signing platform that offers a seamless signing experience for individuals and enterprises.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/tezsign_logo.png"
-  },
-  {
-    "id": "momint",
-    "name": "Momint",
-    "display": "Normal",
-    "website": "https://www.momint.so",
-    "twitter": "https://twitter.com/Momint_official",
-    "tags": [
-      "DeFi",
-      "NFT",
-      "Creator Economy"
-    ],
-    "stats": "53,000 users",
-    "description": "Momint enables fractional trade of renewable energy projects through its Asset Marketplace.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/momint_logo.png"
   },
   {
     "id": "icsi",
@@ -4462,6 +4253,24 @@
     "logo": "/img/showcase/toyoworld_logo.png"
   },
   {
+    "id": "pokedbots-deltacity",
+    "name": "POKEDBOTS - DELTA CITY Game",
+    "display": "Normal",
+    "website": "https://nq2dt-eyaaa-aaaai-qpf6q-cai.icp0.io",
+    "twitter": "https://x.com/pokedstudiouk",
+    "tags": [
+      "Gaming",
+      "NFT"
+    ],
+    "description": "Game based on the POKEDBOTS NFT collection. \nPlay up to 5 selectable Pokedbots and battle through Delta city to rescue the trapped Motoko pets.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/pokedbots_logo.svg",
+    "screenshots": [
+      "/img/showcase/Pokedbots_screenshot.png"
+    ],
+    "oneLiner": "Battle your POKEDBOTS"
+  },
+  {
     "id": "satoshinotes",
     "name": "Satoshi Notes",
     "display": "Normal",
@@ -4763,7 +4572,7 @@
     "stats": "80,000+ users",
     "description": "OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/openchat_logo.webp",
+    "logo": "/img/showcase/openchat_logo.svg",
     "screenshots": [
       "/img/showcase/openchat-screenshot.webp"
     ]
@@ -4807,7 +4616,7 @@
     "tags": [
       "AI"
     ],
-    "description": "An framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
+    "description": "A framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/anda_logo.jpeg"
   },
@@ -5607,9 +5416,45 @@
       "Tools / Infrastructure",
       "Enterprise"
     ],
-    "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust",
+    "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/staex-dvault_logo.svg",
     "oneLiner": " "
+  },
+  {
+    "id": "funnai",
+    "name": "funnAI",
+    "display": "Normal",
+    "website": "https://funnai.onicai.com/",
+    "twitter": "https://x.com/onicaiHQ",
+    "youtube": "https://www.youtube.com/@onicai",
+    "submittableId": 49395912,
+    "tags": [
+      "AI",
+      "Gaming",
+      "Tools / Infrastructure"
+    ],
+    "description": "Let’s burn cycles like never before—with cutting-edge decentralized AI, only on ICP! Be part of the autonomous AI economy. Join funnAI today!",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/funnAI.png"
+  },
+  {
+    "id": "cashier",
+    "name": "Cashier",
+    "display": "Normal",
+    "website": "www.cashierapp.io",
+    "twitter": "https://x.com/thecashierapp",
+    "github": "https://github.com/CashierHQ/cashier",
+    "youtube": "https://youtu.be/H8Qetnjz1Zs",
+    "submittableId": 49301373,
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Wallet"
+    ],
+    "description": "Cashier allows non-coders to flexibly build & share web3 transactions such as payments, donations, tips, airdrops, swaps in minutes with their phone",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/favicon_green.svg",
+    "oneLiner": "Non-coders can build & share web3 transactions in minutes on the phone"
   }
 ]
