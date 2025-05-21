@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const MarqueeBanner = () => {
+const MarqueeBanner = ({ url = "https://worldcomputer.com/wcs25" }) => {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
 
@@ -25,6 +25,15 @@ const MarqueeBanner = () => {
     for (let i = 0; i < clonesCount; i++) {
       const clone = content.cloneNode(true);
       clone.classList.add("marquee-clone");
+
+      // Make sure the clones also have clickable links
+      const clonedLinks = clone.querySelectorAll("a");
+      clonedLinks.forEach((link) => {
+        link.setAttribute("href", url);
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      });
+
       container.appendChild(clone);
     }
 
@@ -66,6 +75,15 @@ const MarqueeBanner = () => {
       for (let i = 0; i < newClonesCount; i++) {
         const clone = content.cloneNode(true);
         clone.classList.add("marquee-clone");
+
+        // Make sure new clones also have clickable links
+        const clonedLinks = clone.querySelectorAll("a");
+        clonedLinks.forEach((link) => {
+          link.setAttribute("href", url);
+          link.setAttribute("target", "_blank");
+          link.setAttribute("rel", "noopener noreferrer");
+        });
+
         container.appendChild(clone);
       }
 
@@ -78,7 +96,7 @@ const MarqueeBanner = () => {
       cancelAnimationFrame(animationFrame);
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [url]);
 
   return (
     <>
@@ -104,26 +122,34 @@ const MarqueeBanner = () => {
           >
             {/* Create a single flex container for each pair of logos with fixed width */}
             <div className="flex items-center mx-4" style={{ width: "400px" }}>
-              <div className="mr-8">
-                <img
-                  src="/img/home/icp4th.svg"
-                  alt="ICP Fourth Anniversary"
-                  className="h-10"
-                  style={{ display: "block" }}
-                />
-              </div>
-              <div>
-                <img
-                  src="/img/home/wcs25.svg"
-                  alt="WCS25"
-                  className="h-15"
-                  style={{ display: "block" }}
-                />
-              </div>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center w-full cursor-pointer"
+                style={{ textDecoration: "none" }}
+              >
+                <div className="mr-8">
+                  <img
+                    src="/img/home/icp4th.svg"
+                    alt="ICP Fourth Anniversary"
+                    className="h-10"
+                    style={{ display: "block" }}
+                  />
+                </div>
+                <div>
+                  <img
+                    src="/img/home/wcs25.svg"
+                    alt="WCS25"
+                    className="h-15"
+                    style={{ display: "block" }}
+                  />
+                </div>
+              </a>
             </div>
           </div>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 };
