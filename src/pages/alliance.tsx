@@ -121,19 +121,23 @@ function AlliancePage() {
       <ShareMeta image="/img/shareImages/share-alliance.webp"></ShareMeta>
 
       <main
-        className="text-white bg-black relative overflow-hidden"
+        className="text-white bg-[#010103] relative overflow-hidden"
         style={{
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
         <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>
         <section
-          className="text-white pt-20 mb-[10vw] lg:mb-3"
-          style={{
-            background: "linear-gradient(54deg, #3B00B9 0%, #0E0822 153.06%)",
-          }}
+          className="text-white pt-20 mb-[10vw] lg:mb-3 relative bg-[#010103]"
           ref={heroRef}
         >
+          <div
+            className="absolute right-0 h-full top-1/2 -translate-y-1/2
+            w-full bg-[url('/img/alliance/allianceglobe.jpg')] bg-no-repeat bg-[length:auto_100%]"
+            style={{
+              backgroundPosition: "right 50%",
+            }}
+          ></div>
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <div className="flex justify-end mb-8">
               <img
@@ -155,9 +159,10 @@ function AlliancePage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Partner with the ICP Alliance to deliver the world's most
-                advanced Web3 stack to your clients. Leverage the only Web3
-                platform that performs and scales like Web2.
+                Become the go-to partner for clients racing towards data
+                sovereignty and self-writing apps. ICP Alliance offers leads,
+                solution blueprints, early tech access, and engineering support
+                for faster delivery.
               </motion.p>
               <MotionLink
                 className="button-white"
@@ -167,68 +172,71 @@ function AlliancePage() {
                 JOIN ALLIANCE
               </MotionLink>
             </div>
+
+            <img
+              src="/img/alliance/icpa-logo.png"
+              alt="alliance logo"
+              className="mx-auto absolute top-1/2 right-0 -translate-x-1/2 w-56 -translate-y-1/2"
+            />
           </div>
         </section>
 
         <section className="container-10 py-16 md:py-24">
-          <h2 className="tw-heading-4 md:tw-heading-3 text-center mb-16">
+          <h2 className="tw-heading-3 text-center mb-16">
             Enterprises and governments are researching for sovereignty,
             security, AI and digital assets
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
-                ~25B
-              </div>
-              <p className="tw-paragraph-sm text-[#666]">
-                Average monthly API calls
-              </p>
-            </div>
-            <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
-                ~10.5T
-              </div>
-              <p className="tw-paragraph-sm text-[#666]">
-                Total on-chain API calls processed
-              </p>
-            </div>
-            <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
-                90%+
-              </div>
-              <p className="tw-paragraph-sm text-[#666]">Uptime</p>
-            </div>
-            <div>
-              <div className="tw-heading-3 md:tw-heading-2 mb-2 text-[#3B00B9]">
-                ~15T
-              </div>
-              <p className="tw-paragraph-sm text-[#666]">Storage operations</p>
-            </div>
-          </div>
-          <div className="text-center mt-8">
-            <p className="tw-paragraph-sm text-[#666]">
-              The ICP stack was built to scale for all of this.
-            </p>
-          </div>
-        </section>
 
-        <section className="container-10 py-16 md:py-24 bg-[#0E0822] text-white">
-          <div className="text-center mb-16">
-            <img
-              src="/img/alliance/infinity-logo.svg"
-              alt="Infinity logo"
-              className="h-16 mb-8"
-            />
-            <h2 className="tw-heading-4 md:tw-heading-3 mb-6">
-              Why join the ICP Alliance?
-            </h2>
-            <p className="tw-paragraph md:w-2/3 mx-auto">
-              As a member of the ICP Alliance, you'll be at the forefront of the
-              next generation web technology. The Internet Computer Protocol
-              provides a complete tech stack that allows you to build fully
-              on-chain applications with Web2 performance and Web3 benefits.
-              You'll join a growing ecosystem of innovative companies delivering
-              sovereign, secure, and scalable solutions.
+          <div className="md:flex gap-8 text-center flex-wrap justify-center">
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
+              <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
+                <span className="text-[0.3em] font-normal text-end mr-2">
+                  USD
+                </span>
+                <span>258b</span>
+              </div>
+              <p className="tw-paragraph-sm text-[#666]">
+                Global sovereign-cloud spend projected by 2027 (26.6% CAGR)
+              </p>
+            </div>
+
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
+              <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
+                <span className="text-[0.3em] font-normal text-end mr-2">
+                  USD
+                </span>
+                <span>10.5t</span>
+              </div>
+              <p className="tw-paragraph-sm text-[#666]">
+                Cost of global cyber security spent in 2025
+              </p>
+            </div>
+
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
+              <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
+                <span>90%+</span>
+              </div>
+              <p className="tw-paragraph-sm text-[#666]">
+                Software cost savings through AI developing & deploying apps
+              </p>
+            </div>
+
+            <div className="border-solid border-1 border-[#223D6B] p-8 rounded-lg mt-8 mt-0 md:w-[calc(25%-2rem)] flex-shrink-0">
+              <div className="font-bold text-[3.5em] mb-2 text-white gap-2">
+                <span className="text-[0.3em] font-normal text-end mr-2">
+                  USD
+                </span>
+                <span>15t</span>
+              </div>
+              <p className="tw-paragraph-sm text-[#666]">
+                Stable Coin and RWA market projected by 2030
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mt-24">
+            <p className="tw-heading-4 bg-clip-text text-transparent bg-gradient-to-r from-[#0F3987] via-[#EBF1FF] to-[#0F3987]">
+              The ICP stack was built to scale for all of this.
             </p>
           </div>
         </section>
@@ -239,46 +247,78 @@ function AlliancePage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
-              <h3 className="tw-heading-5 mb-4">
-                Alliance membership and benefits
-              </h3>
-              <p className="tw-paragraph-sm">
-                Access educational resources, marketing support, funding
-                opportunities, and a community of builders pushing the
-                boundaries of what's possible on the internet.
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-01.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 1"
+              />
+              <h3 className="tw-heading-5 mb-4">Sovereign Cloud, Apps & AI</h3>
+              <p className="tw-paragraph-sm opacity-60">
+                Run the full stack—data, logic, and AI agents—inside a
+                jurisdiction-controlled cloud that never leaves the Internet
+                Computer. Clients gain verify control over their data, processes
+                and workloads while meeting even the toughest sovereignty
+                mandates.
               </p>
             </div>
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
-              <h3 className="tw-heading-5 mb-4">Certifications & training</h3>
-              <p className="tw-paragraph-sm">
-                Get certified as an Internet Computer developer or solutions
-                provider. Access training resources to upskill your team and
-                deliver cutting-edge solutions.
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-02.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 2"
+              />
+              <h3 className="tw-heading-5 mb-4">Prompt-Driven App Factory</h3>
+              <p className="tw-paragraph-sm opacity-60">
+                Developers simply describe a feature and watch the platform
+                design, deploy, and orchestrate it end-to-end on ICP. This
+                self-writing pipeline slashes build time and lets teams iterate
+                at chat speed.
               </p>
             </div>
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-03.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 3"
+              />
               <h3 className="tw-heading-5 mb-4">
-                Language and coding apps to build and customize
+                Universal Interoperability Layer
               </h3>
-              <p className="tw-paragraph-sm">
-                Leverage SDK support for Motoko, Rust, TypeScript, Python, and
-                more to build customized solutions that meet your clients'
-                specific needs.
+              <p className="tw-paragraph-sm  opacity-60">
+                Chain Fusion turns ICP into a trustless hub that can call
+                smart-contracts on Bitcoin, Ethereum, Solana, and any future
+                network—no bridges, no custodians. Enterprises can custody and
+                move assets and data across chains without security trade-offs.
               </p>
             </div>
-            <div className="bg-[#0E0822] text-white p-8 rounded-lg">
+            <div className="p-8 rounded-lg">
+              <img
+                src="/img/alliance/tech-icon-04.png"
+                className="h-20 mb-8 ml-0"
+                alt="Tech icon 4"
+              />
               <h3 className="tw-heading-5 mb-4">
-                Secure from local hosting and diverse access to B2B
+                Built-In Security & Governance
               </h3>
-              <p className="tw-paragraph-sm">
-                Build applications that are secure by design, with built-in
-                authentication, autonomous operation, and enterprise-grade
-                security features.
+              <p className="tw-paragraph-sm opacity-60">
+                Every app inherits tamper-proof state, hardware-rooted identity,
+                and on-chain upgrade history, so audits are automatic and
+                breaches are a thing of the past. Clients can also shape
+                protocol upgrades through open governance, aligning
+                infrastructure with their long-term needs.
               </p>
             </div>
           </div>
         </section>
+
+        <div className="container-10 py-16 md:py-24">
+          <img
+            src="/img/alliance/usecases.png"
+            className="w-full mb-8 mx-auto block"
+            alt="use cases"
+          />
+        </div>
 
         <section className="container-10 py-16 md:py-24">
           <h2 className="tw-heading-4 md:tw-heading-3 mb-16 text-center">
