@@ -458,6 +458,7 @@ build: [
             type: "doc",
             id: "building-apps/chain-fusion/solana/overview",
           },
+          items: [],
         },
         "building-apps/chain-fusion/examples",
       ],
