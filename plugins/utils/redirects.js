@@ -943,6 +943,7 @@ const redirects = `
 
   ## Misc
   /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
+  /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/security/overview
   /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
   /docs/building-apps/developing-canisters/what-are-canisters/ /docs/building-apps/essentials/canisters
   /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
@@ -997,6 +998,7 @@ const redirects = `
   /ecosystem.json /ecosystem
   /ethereum /chainfusion
   /img/ /docs/home
+  /olympus /
   /docs/defi /docs/defi/overview
   /docs/current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/download.html /docs/home
