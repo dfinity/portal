@@ -101,7 +101,8 @@ async fn main() -> Result<()> {
 ```
 
 In this configuration, the agent distributes requests across multiple healthy API boundary nodes using a default weighted round-robin algorithm that favors lower-latency nodes, prioritizing those closer to the client.
-##### How dynamic routing works
+
+#### How dynamic routing works
 
 At the core of dynamic routing in the agent is the `RouteProvider trait`, which dynamically selects a routing URL for each request by invoking its `route()` method:
 
