@@ -998,6 +998,7 @@ const redirects = `
   /ecosystem.json /ecosystem
   /ethereum /chainfusion
   /img/ /docs/home
+  /olympus /
   /docs/defi /docs/defi/overview
   /docs/current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/download.html /docs/home
