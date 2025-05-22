@@ -26,22 +26,50 @@ The goal of vetKeys is to simplify the use of security and privacy tools on ICP.
 
 The availability of vetKeys allows for a series of applications, including but not limited to those covered in the following sections.
 
-### Distributed key management service (DKMS)
+### [Distributed key management service (DKMS)](/docs/building-dapps/network-features/vetkeys/dkms)
 
-DKMS is an abstraction on top of vetKeys, designed to simplify obtaining and managing access permissions to vetKeys. It allows users to securely generate, manage, and share cryptographic keys using vetKeys and ICP. These vetKeys can then be used for encryption, decryption, or data signing. Read [here](/docs/building-dapps/network-features/vetkeys/dkms) about how DKMS can be instantiated in your dapp.
+Managing user keys, especially in multi-device and multi-user settings, is notoriously complex and error-prone. vetKeys enables the development of DKMSs that let users easily generate, retrieve, and share cryptographic keys across devices and with other users. By offloading key derivation to subnet nodes, without ever exposing the keys, vetKeys simplifies key distribution. Moreover, because threshold key derivation is deterministic, users can reliably retrieve their keys on demand, without having to explicitly store them anywhere.
 
-### Encrypted onchain storage
+Learn [here](/docs/building-dapps/network-features/vetkeys/dkms) how a DKMS can be integrated into your dapp.
 
-Encrypted onchain storage is another abstraction on top of DKMS that enables data encryption using vetKeys in the frontend, storage of the encrypted data, and management of access permissions. 
-Its goal is twofold:
-1. Simplify developing dapps that make use of data encryption and storage of encrypted data using vetKeys, especially for developers without cryptographic expertise.
-2. Enable a blockchain to securely and efficiently encrypt and host data at scale to support millions of users and billions of secrets.
+### [Encrypted onchain storage](/docs/building-dapps/network-features/vetkeys/encrypted-onchain-storage)
 
-The following [page](/docs/building-apps/network-features/vetkeys/encrypted-onchain-storage) describes how to use encrypted onchain storage in your dapp.
+A core application of DKMS is the generation of encryption keys for securing data, whether stored in a canister, on another blockchain, or off-chain entirely. With vetKeys, these keys can be securely shared across devices and between users, 
 
-### Advanced
+## [Threshold BLS signatures](/docs/building-apps/network-features/vetkeys/advanced/bls-signatures)
 
-You can use vetKeys to instantiate advanced cryptographic primitives: BLS signatures, identity-baseed encryption (IBE), timelock encryption, and verifiable randomness generation. See [what are advanced use cases of vetKeys](/docs/building-apps/network-features/vetkeys/advanced/introduction) page for more details.
+[Chain Fusion technology](https://internetcomputer.org/chainfusion) allows canisters to natively interact with other blockchains, such as Bitcoin or Ethereum, without relying on external bridges or trusted intermediaries. This is made possible through threshold signature schemes, which enable canisters to instruct subnet nodes to collectively compute ECDSA, Schnorr and EdDSA signatures. vetKeys extends this capability by introducing a new threshold signature scheme to canisters: threshold BLS signatures. BLS signatures are particularly well-suited for multi-chain applications due to their compact size and efficient aggregation properties. By supporting threshold BLS, vetKeys further enhances ICP’s interoperability, empowering canisters to participate in more advanced multi-chain dapps and protocols.
+
+## [Identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption)
+
+vetKeys enables IBE, allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the dapp. By authenticating with the dapp using their identity, the user can securely retrieve their decryption key and access the data. 
+
+Compared to DKMS, IBE works differently. In DKMS, one or more users share **the same** symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an **asymmetric encryption** scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them.
+
+## [Timelock encryption](/docs/building-apps/network-features/vetkeys/advanced/timelock-encryption)
+
+A special variant of IBE is called timelock encryption. It allows a sender to encrypt to a specific timestamp, ensuring that the recipient can only decrypt after the specific time has passed. Canisters can enforce this time-based access control by requesting threshold decryption of a ciphertext only after a predetermined expiry time, keeping sensitive information sealed until the appropriate moment. This makes it possible to implement time-sensitive applications, like sealed-bid auctions, time-locked documents, dead-man switches, and delayed reveal NFTs. 
+Timelock encryption also serves as a key building block for protecting against Maximal Extractable Value (MEV): by keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
+
+Timelock encryption enables a sender to encrypt a message for the future, ensuring that it will get decrypted at a given time, but no earlier than that time. Timelock encryption can be achieved via IBE by letting the dapp release the IBE decryption keys corresponding to the current time at regular intervals (eventually decrypting the cipher texts in the canister) and letting the sender IBE-encrypt its message using the desired decryption time as identity. More sophisticated timelock conditions are also possible (see below).
+
+### "Dead man's switch"
+
+Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. They can store the information in a dapp, encrypted using IBE that the dapp automatically and publicly recovers when a certain amount of time passes after it last received an authenticated ping from its owner.
+
+### Private auctions and MEV protection
+
+In a private auction dapp, users can submit bids that are IBE-encrypted under an identifier so that at the end of the auction, the dapp can decrypt all bids with a single vetKey evaluation. A similar technique can be used to prevent front-running, also known as miner-extracted value (MEV), on a decentralized exchange (DEX). Users submit their IBE-encrypted transactions under a predictable batch identifier. The DEX orders the transactions in encrypted form and, when all transactions for a particular batch have been ordered, triggers the recovery of the decryption key for that batch and executes the decrypted transactions in the fixed order. Note that all of the symmetric-encryption use cases listed above can be modified to encrypt using an IBE instead of a symmetric-key encryption, thereby eliminating the need to perform a vetKey derivation for encryption. Decryption, of course, still requires retrieving a vetKey.
+
+### Advanced timelocks
+
+Anyone can IBE-encrypt their message using some more complex condition as identity, while a dapp lets anyone who can satisfy the condition (or when the condition is satisfied on its own) to obtain the respective vetKey. This enables quite interesting use cases, as it enables one to encrypt to any verifiable future event, e.g., the price of a stock going above or below a certain level, information escrow, or break-the-glass policies.
+
+## [Externally verifiable randomness](/docs/building-apps/network-features/vetkeys/advanced/verifiable-randomness)
+
+vetKeys can also function as a Verifiable Random Function (VRF). This means that canisters can generate randomness that is not only unpredictable and tamper-proof but also publicly verifiable. Trusted randomness is a critical building block for a wide range of decentralized applications, including trustless online lotteries, fair casino games, and GameFi experiences where outcomes must be demonstrably fair. It also plays a key role in NFT ecosystems—for example, in assigning randomized traits or rarities during minting, or enabling dynamic, chance-based in-game interactions. 
+
+Because of their uniqueness, vetKeys can also act as a Verifiable Random Function (VRF). Trusted, verifiable randomness is important for applications such as trustless online lotteries and casinos, fair decentralized games (GameFi), and selecting random features for non-fungible tokens (NFTs).
 
 ## Resources
 

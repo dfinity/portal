@@ -10,8 +10,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Identity-based encryption"]} />
 
-
-
 Identity-based encryption allows you to encrypt information to an **identity**:
 
 An identity is essentially a string of characters. A canister can define who gets a private key for each defined identity.
@@ -20,6 +18,7 @@ No one except the authorized user can "see" the private key. The private key is 
 
 A simple instantiation of IBE on ICP is encryption to other principals. An identity is a principal, and users encrypt data, such as messages or files, for other users authorized with their principals.
 vetKeys can be used for Identity-based encryption (IBE).
+
 ## Benefits of IBE
 
 IBE removes the need for generating, distributing, and storing users' encryption keys and allows a user to obtain the private key for their identity, e.g., a principal.
