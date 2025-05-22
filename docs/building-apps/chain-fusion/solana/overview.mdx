@@ -8,19 +8,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Solana" ]} />
 
-Smart contracts on ICP can directly interact with the Solana network. This integration is possible thanks to ICP's HTTPS outcalls and threshold Ed25519 features, which allow Solana transactions to be queried and ICP smart contracts to sign and submit transactions to Solana.
+Canister smart contracts on ICP can interact directly with the Solana network. This integration is made possible by ICP’s HTTPS outcalls, which allow canisters to securely fetch external data, and threshold Ed25519 cryptography, which enables canisters to sign transactions. As a result, canisters can query the Solana blockchain and submit signed transactions to it.
 
-- **[Threshold Ed25519](/docs/building-apps/network-features/signatures/t-schnorr)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. Messages sent by the smart contract can be signed using this key, enabling signed transactions to be sent to Solana from the smart contract.
+- **[HTTPS outcalls](https://internetcomputer.org/https-outcalls)**: Canisters use HTTPS outcalls to fetch data from external sources, and can be used to query information about Solana’s JSON-RPC services or transaction, address, and block information. To facilitate JSON-RPC calls, the SOL RPC canister has been developed and deployed on the ICP mainnet, serving as a reusable building block that other canisters can integrate with.
 
-- **[HTTPS outcalls](https://internetcomputer.org/https-outcalls)**: To query information from Solana and to send signed transactions to Solana, HTTPS outcalls are used. HTTPS outcalls can obtain information from external sources. In this integration, they're used to obtain data from JSON-RPC services by querying Solana's transactions, addresses, and block information. To facilitate JSON-RPC calls, the SOL RPC canister has been created and deployed on the mainnet, providing a building block that other smart contracts can use.
+- **[Threshold Ed25519](/docs/building-apps/network-features/signatures/t-schnorr)**: A canister can have a secret key that is stored in a secure and decentralized manner using chain-key cryptography. Messages sent by the canister can be signed using this key, enabling the canister to send signed transactions to Solana.
 
 ## SOL RPC canister
 
 Canisters deployed on ICP are able to communicate with the Solana blockchain using the SOL RPC canister.
-At a very high level, the SOL RPC canister offers the same services to canisters as if a [Solana RPC node](https://solana.com/de/docs/rpc/http) were directly available on the Internet Computer.
+At a very high level, the SOL RPC canister offers the same services to canisters as if a [Solana RPC node](https://solana.com/de/docs/rpc/http) were directly available on the ICP mainnet.
 
-The canister does this by contacting multiple JSON-RPC Solana providers via [HTTPS outcalls](https://internetcomputer.org/https-outcalls), such as [Helius](https://www.helius.dev/), [Alchemy](https://www.alchemy.com/), [Ankr](https://www.ankr.com/), [dRPC](https://drpc.org/), or [Public Node](https://www.publicnode.com/), and aggregating their responses to avoid a single point of failure.
+The SOL RPC canister contacts multiple JSON-RPC Solana providers via [HTTPS outcalls](https://internetcomputer.org/https-outcalls), such as [Helius](https://www.helius.dev/), [Alchemy](https://www.alchemy.com/), [Ankr](https://www.ankr.com/), [dRPC](https://drpc.org/), or [Public Node](https://www.publicnode.com/), and aggregates their responses to avoid a single point of failure.
 
-It is run as a service controlled by the DAO governing the whole Internet Computer (the [Network Nervous System](https://internetcomputer.org/nns)), meaning that canisters can call the SOL RPC canister directly without any additional setup (e.g., no API keys needed) and trust that any change will require a proposal to be reviewed and approved by the community.
+The SOL RPC canister is controlled by the [Network Nervous System](https://internetcomputer.org/nns). Canisters can call the SOL RPC canister directly without any additional setup (e.g., no API keys needed) and trust that any change will require a proposal to be reviewed and approved by the community.
 
 You can [learn how to use the SOL RPC canister](https://github.com/dfinity/sol-rpc-canister/blob/main/README.md).

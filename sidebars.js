@@ -452,13 +452,9 @@ build: [
           ],
         },
         {
-          type: "category",
+          type: "doc",
           label: "Solana",
-          link: {
-            type: "doc",
-            id: "building-apps/chain-fusion/solana/overview",
-          },
-          items: [],
+          id: "building-apps/chain-fusion/solana/overview",
         },
         "building-apps/chain-fusion/examples",
       ],
