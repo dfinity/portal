@@ -68,12 +68,13 @@ const DOMAIN_SEPARATOR: &[u8] = b"example-vetkd-dapp".as_slice();
 fn vetkd_derive_key(transport_public_key: Vec<u8>) -> Vec<u8> {
     let caller = ic_cdk::caller();
     let request = VetKDDeriveKeyArgs {
-        canister_id: None,
         input: caller.as_slice().to_vec(),
         context: DOMAIN_SEPARATOR.to_vec(),
+        transport_public_key,
         key_id: bls12_381_g2_test_key(),
     };
-    let reply = vetkd_derive_key(&request).expect("failed to derive key");
+    let reply =
+        ic_cdk::management_canister::vetkd_derive_key(&request).expect("failed to derive key");
     reply.encrypted_key
 }
 
