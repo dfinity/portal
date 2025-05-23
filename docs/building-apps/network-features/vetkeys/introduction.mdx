@@ -34,22 +34,22 @@ Managing user keys, especially in multi-device and multi-user settings, is notor
 
 A core application of DKMS is the generation of encryption keys for securing data, whether stored in a canister, on another blockchain, or off-chain entirely. With vetKeys, these keys can be securely shared across devices and between users, enabling powerful privacy-preserving use cases. This includes private storage solutions, end-to-end encrypted messaging, password managers, and collaborative applications operating on confidential data.
 
-## [Threshold BLS signatures](/docs/building-apps/network-features/vetkeys/advanced/bls-signatures)
+## [Threshold BLS signatures](/docs/building-apps/network-features/vetkeys/bls-signatures)
 
 [Chain Fusion technology](https://internetcomputer.org/chainfusion) allows canisters to natively interact with other blockchains, such as Bitcoin or Ethereum, without relying on external bridges or trusted intermediaries. This is made possible through threshold signature schemes, which enable canisters to instruct subnet nodes to collectively compute ECDSA, Schnorr and EdDSA signatures. vetKeys extends this capability by introducing a new threshold signature scheme to canisters: threshold BLS signatures. BLS signatures are particularly well-suited for multi-chain applications due to their compact size and efficient aggregation properties. By supporting threshold BLS, vetKeys further enhances ICP’s interoperability, empowering canisters to participate in more advanced multi-chain dapps and protocols.
 
-## [Identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/advanced/identity-based-encryption)
+## [Identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption)
 
 vetKeys enables IBE, allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the dapp. By authenticating with the dapp using their identity, the user can securely retrieve their decryption key and access the data. 
 
 Compared to DKMS, IBE works differently. In DKMS, one or more users share **the same** symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an **asymmetric encryption** scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them.
 
-## [Timelock encryption](/docs/building-apps/network-features/vetkeys/advanced/timelock-encryption)
+## [Timelock encryption](/docs/building-apps/network-features/vetkeys/timelock-encryption)
 
 A special variant of IBE is called timelock encryption. It allows a sender to encrypt to a specific timestamp, ensuring that the recipient can only decrypt after the specific time has passed. Canisters can enforce this time-based access control by requesting threshold decryption of a ciphertext only after a predetermined expiry time, keeping sensitive information secret until the appropriate moment. This makes it possible to implement time-sensitive applications, like secret-bid auctions, time-locked documents, dead-man switches, and delayed reveal NFTs.
 Timelock encryption also serves as a key building block for protecting against Maximal Extractable Value (MEV): by keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
 
-## [Externally verifiable randomness](/docs/building-apps/network-features/vetkeys/advanced/verifiable-randomness)
+## [Externally verifiable randomness](/docs/building-apps/network-features/vetkeys/verifiable-randomness)
 
 vetKeys can also function as a Verifiable Random Function (VRF). This means that canisters can generate randomness that is not only unpredictable and tamper-proof but also publicly verifiable. Trusted randomness is a critical building block for a wide range of decentralized applications, including trustless online lotteries, fair casino games, and GameFi experiences where outcomes must be demonstrably fair. It also plays a key role in NFT ecosystems—for example, in assigning randomized traits or rarities during minting, or enabling dynamic, chance-based in-game interactions. 
 
