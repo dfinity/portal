@@ -5,11 +5,28 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 Verifiably encrypted threshold key derivation (vetKD) is a distributed protocol for securely deriving cryptographic keys, referred to as  _vetKeys_. 
 The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by proividing different inputs. 
+
 The API provides two methods:
 
-* vetkd_derive_key: Used to derive keys.
+- `vetkd_derive_key`: Derive keys based on the provided inputs.
 
-* vetkd_public_key: Used to obtain public keys that can be used to verify the derived keys.
+- `vetkd_public_key`: Returns a public key that can be used to verify keys derived using `vetkd_derive_key`.
+
+Both methods share the following input parameters:
+
+- `input` (`blob`): Arbitrary data used to derive keys. This acts as a key identifier &mdash; different inputs will result in different derived keys. Note that input does not need to be random.
+
+- `context` (`blob`): Serves as a domain separator to ensure that keys are derived within a specific context, preventing collisions between different applications or use cases.
+
+- `key_id` (`record { curve : vetkd_curve; name : text }`): Identifies the master key from which the derived key is created.
+
+Each method also includes a method-specific parameter:
+
+- `vetkd_public_key`
+  - `canister_id` (`opt canister_id`): Optional. If provided, the method returns the public key associated with the specified `canister_id`. If omitted (`null`), the public key for the calling canister is returned.
+
+- `vetkd_derive_key`
+  - `transport_public_key` (`blob`): The recipient’s public key. This is used to encrypt the derived key for secure transport.
 
 ```candid
   vetkd_public_key : (record {
