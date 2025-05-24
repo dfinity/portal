@@ -368,7 +368,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
+    "description": "Juno is next-gen serverless platform that helps developers build and ship secure projects at scale.",
     "usesInternetIdentity": true,
     "authOrigins": [
       "https://console.juno.build"
