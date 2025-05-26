@@ -5,7 +5,7 @@
     "display": "Large",
     "website": "https://decideai.xyz",
     "twitter": "https://twitter.com/DecideAI_",
-    "github": "https://github.com/modclub-app",
+    "github": "https://github.com/decide-ai",
     "tags": [
       "AI",
       "Tools / Infrastructure"
@@ -402,7 +402,7 @@
     "id": "kinic",
     "name": "Kinic",
     "display": "Large",
-    "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
+    "website": "https://www.kinic.io",
     "twitter": "https://x.com/kinic_app",
     "tags": [
       "Tools / Infrastructure",
@@ -2828,7 +2828,7 @@
     "name": "ELNA.ai",
     "display": "Normal",
     "website": "https://www.elna.ai/",
-    "twitter": "https://twitter.com/elna_live",
+    "twitter": "https://twitter.com/ELNA_DeAi",
     "github": "https://github.com/elna-ai",
     "submittableId": 44027684,
     "tags": [
@@ -4612,6 +4612,7 @@
     "id": "anda",
     "name": "Anda",
     "display": "Normal",
+    "website": "https://anda.ai",
     "github": "https://github.com/ldclabs/anda",
     "tags": [
       "AI"
@@ -4626,7 +4627,7 @@
     "display": "Normal",
     "website": "https://pickpump.xyz/",
     "twitter": "https://x.com/pickpump_xyz",
-    "github": "https://github.com/elizaOS/eliza/tree/develop/packages/plugin-icp",
+    "github": "https://github.com/elizaos-plugins/plugin-icp",
     "tags": [
       "AI",
       "DeFi"
