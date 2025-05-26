@@ -316,4 +316,13 @@ export const communityToolingItems = [
       github: "https://github.com/icpcs/motokopilot-vscode",
     },
   },
+{
+    title: "Dfns",
+    tags: [ "website", "development", "service" ],
+    description: "Wallet infrastructure for digital assets.",
+    links: {
+      external: "https://www.dfns.co/",
+      docs: "https://docs.dfns.co/d/getting-started/onboarding-to-dfns",
+    },
+  },
 ];
