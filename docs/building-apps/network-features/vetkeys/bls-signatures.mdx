@@ -12,7 +12,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Advanced", "BLS signatures"]} />
 
-vetKeys supports distributed signing using the BLS algorithm, which is widely adopted across ICP for its short, unique signatures that are easy to use in distributed systems and fast to compute.
+The vetKeys feature supports distributed signing using the BLS algorithm, which is widely adopted across ICP for its short, unique signatures that are easy to use in distributed systems and fast to compute.
 
 ## Signing process
 
@@ -186,7 +186,7 @@ TODO: code snippet and explanation
 <AdornedTabs groupId="languages">
 <TabItem value="rs" label="Rust" default>
 
-Alternatively, the frontend of your application can sign message for a caller using the signing BLS key defined by the caller's principal.
+In the frontend of your application, you must implement functionality that can sign messages for a caller using the signing BLS key defined by the caller's principal in the backend.
 
 TODO: reference code instead of copy-pasting once the PR (currently in review) is merged.
 

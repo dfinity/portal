@@ -4,7 +4,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 # vetKD API
 
 Verifiably encrypted threshold key derivation (vetKD) is a distributed protocol for securely deriving cryptographic keys, referred to as  _vetKeys_. 
-The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by proividing different inputs. 
+The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by providing different inputs. 
 
 The API provides two methods:
 
@@ -44,13 +44,13 @@ Each method also includes a method-specific parameter:
 
 The following key names are supported:
 
-- `dfx_test_key`: Only available on the local development environment started by dfx.
+- `dfx_test_key`: Only available on the local development environment started by `dfx`.
 
 - `test_key_1`: Test key available on the ICP mainnet.
 
 - `key_1`:  Production key that will soon be available on the ICP mainnet.
 
-## How to obtain a vetKey?
+## Obtaining a vetKey
 
 Deriving a vetKey typically involves both the frontend and backend components of a dapp, as the transport key is usually provided by the user.
 
@@ -137,7 +137,9 @@ const encryptedVetKey = EncryptedVetKey.deserialize(encryptedVetKeyBytes);
 </TabItem>
 </AdornedTabs>
 
-### Step 3: Retrieve the vetKD public key from the canister, then decrypt and verify the received encrypted vetKey
+### Step 3: Retrieve the vetKD public key from the backend canister
+
+Once retrieved, then you must decrypt and verify the received encrypted vetKey.
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
@@ -152,14 +154,14 @@ const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, m
 </TabItem>
 </AdornedTabs>
 
-The full specification of the vetKD APIs can be found in the [vetKD specification PR](https://github.com/dfinity/portal/pull/3763) (soon to be merged to the [ICP specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key)).
+The full specification of the vetKD APIs can be found in the [vetKD specification PR](https://github.com/dfinity/portal/pull/3763).
 
 ## API fees
 
-The fees for the vetKD APIs are as defined below. The threshold vetKD test key resides on a regular-sized (13-node) application subnet, while the threshold vetKD production key resides on a 34-node-sized fiduciary subnet. The subnet size of the subnet where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of November 23, 2022, has been used.
+The fees for the vetKD APIs are defined below. The threshold vetKD test key resides on a 13-node application subnet, while the threshold vetKD production key resides on a 34-node-sized fiduciary subnet. The subnet size where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of November 23, 2022, has been used.
 
 :::note
-If a canister using this feature is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
+If a canister using this feature is intended to be blackholed or used by other canisters, it's recommended to send more cycles with each call than the currently advertised cost. This ensures that, if the subnet's size increases in the future (leading to higher signature costs), the call will still succeed. Any unused cycles are automatically refunded.
 :::
 
 Fees for deriving one vetKey using the `vetkd_derive_key` API of the management canister:

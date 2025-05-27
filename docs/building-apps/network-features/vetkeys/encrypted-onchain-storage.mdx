@@ -12,9 +12,9 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Advanced", "vetKeys", "Encrypted maps"]} />
 
-Encrypted onchain storage is an abstraction for data encryption using vetKeys. it builds on top of decentralized key management service (see [previous section](/docs/building-apps/network-features/vetkeys/dkms)).
+Encrypted onchain storage is an abstraction for data encryption using vetKeys. it builds on top of [decentralized key management service](/docs/building-apps/network-features/vetkeys/dkms).
 
-We give an example implementation of  encrypted onchain storage in the `EncryptedMaps` library, which offers vetKey derivation and access control over vetKeys and encrypted data.
+Below is an example implementation of encrypted onchain storage using the `EncryptedMaps` library, which offers vetKey derivation and access control over vetKeys and encrypted data.
 
 ## Why use `EncryptedMaps`?
 
@@ -46,7 +46,7 @@ A key advantage of `EncryptedMaps` is that encryption is entirely opaque to deve
 
 Beyond the inherited features of `KeyManager`, `EncryptedMaps` has also the following features:
 
-- **Encrypted key-value storage**: Store and retrieve  key-encrypted-value pairs within named maps.
+- **Encrypted key-value storage**: Store and retrieve key-encrypted-value pairs within named maps.
 
 - **Cleartext APIs**: The frontend library for `EncryptedMaps` offers developers cleartext APIs.
 
@@ -58,12 +58,12 @@ Beyond the inherited features of `KeyManager`, `EncryptedMaps` has also the foll
 
 ## How to use `EncryptedMaps`?
 
-### Step 1: Instantiate the `EncryptedMaps` component in a canister
+### Step 1: Instantiate the `EncryptedMaps` component in a backend canister
 
 <AdornedTabs groupId="languages">
 <TabItem value="rs" label="Rust" default>
 
-Below is an example of how to instantiate the backend `EncryptedMaps` component inside a canister.
+Below is an example of how to instantiate the `EncryptedMaps` component inside a backend canister.
 
 ```rust no-repl reference
 https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L1-L18
@@ -72,12 +72,14 @@ https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc
 </TabItem>
 </AdornedTabs>
 
-### Step 2: Define canister APIs for communicating with the `EncryptedMaps` backend
+### Step 2: Define `EncryptedMaps` canister APIs for the frontend to communicate with
 
 <AdornedTabs groupId="languages">
 <TabItem value="rs" label="Rust" default>
 
-Below is an example of how to provide a canister API to interact with `EncryptedMaps` component's `set_user_rights` method. Canister APIs for other methods of `EncryptedMaps` can be added in a similar fashion.
+Below is an example of how to implement a backend canister API that allows the frontend to interact with the `set_user_rights` method of the `EncryptedMaps` component.
+
+You can follow a similar approach to expose other methods of `EncryptedMaps` through the canister interface.
 
 ```rust no-repl reference
 https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L196-L208
@@ -92,7 +94,9 @@ https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc
 
 <TabItem value="ts" label="Typescript" default>
 
-Below is an example of how to provide a `EncryptedMapsClient` implementation to interact with backend `EncryptedMaps` component's `set_user_rights` method. Implementations for other methods of `EncryptedMaps` can be added in a similar fashion.
+Below is an example of how to implement a backend canister API that allows the frontend to interact with the `set_user_rights` method of the `EncryptedMaps` component.
+
+You can follow a similar approach to expose other methods of `EncryptedMaps` through the canister interface.
 
 ```ts no-repl reference
 https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/frontend/ic_vetkeys/src/encrypted_maps/encrypted_maps_canister.ts#L100-L107
@@ -103,12 +107,11 @@ https://github.com/dfinity/vetkd-devkit/blob/3b1de5d546dcc32daaf22b21baaa2b220bc
 
 ### Step 4: Use `EncryptedMaps` in the frontend
 
-Your application's frontend can communicate with a `KeyManager`-enabled canister using the following TypeScript code:
+Your application's frontend can communicate with a backend canister that exposes `EncryptedMaps` API methods using the following TypeScript code:
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
 
-Instantiate and use `KeyManager` in the frontend.
 
 ```ts
 import { EncryptedMaps } from "ic_vetkeys/encrypted_maps";

@@ -14,21 +14,21 @@ vetKeys (verifiably encrypted threshold keys) on the Internet Computer (ICP) mak
 
 The goal of vetKeys is to simplify the use of security and privacy tools on ICP. Encrypting data locally and storing it onchain is straightforward, since the secret key stays on the device. However, challenges arise when a user wants to access that data from another device or share it with someone else, as there’s no easy, privacy-preserving way to transmit secret key material across public channels. vetKeys solve this by enabling secure, on-demand key access without exposing secrets.
 
-Why do we call them "vetKeys"?
+### Why are they called "vetKeys"?
 
-- **Verifiable**: users can verify the correctness of the derived vetKeys, and that they have not being tampered with.
+- **Verifiable**: Users can verify the correctness of the derived vetKeys and that they have not being tampered with.
 
-- **Encrypted**: the derived vetKeys are encrypted under a user-provided transport key. This ensures that neither individual nodes nor the network ever have access to user’s private vetKeys.
+- **Encrypted**: The derived vetKeys are encrypted under a user-provided transport key. This ensures that neither individual nodes nor the network ever have access to user’s private vetKeys.
 
-- **Threshold**: vetKeys are derived in a distributed manner, requiring a contribution of a threshold of nodes in a subnet. No single node ever sees the derived vetKeys, ensuring that no central authority can derive or reconstruct them.
+- **Threshold**: vetKeys are derived in a distributed manner, requiring the contribution of a threshold of nodes in a subnet. No single node ever sees the derived vetKeys, ensuring that no central authority can derive or reconstruct them.
 
-- **Keys**: key material that can be used to further derive strong cryptographic keys, such as encryption and signature keys.
+- **Keys**: Key material that can be used to further derive strong cryptographic keys, such as encryption and signature keys.
 
-The availability of vetKeys allows for a series of applications, including but not limited to those covered in the following sections.
+The availability of vetKeys allows for a variety of applications, including but not limited to those covered in the following sections.
 
 ## [Distributed key management service (DKMS)](/docs/building-dapps/network-features/vetkeys/dkms)
 
-Managing user keys, especially in multi-device and multi-user settings, is notoriously complex and error-prone. vetKeys enables the development of DKMSs that let users easily generate, retrieve, and share cryptographic keys across devices and with other users. By offloading key derivation to subnet nodes, without ever exposing the keys, vetKeys simplifies key distribution. Moreover, because threshold key derivation is deterministic, users can reliably retrieve their keys on demand, without having to explicitly store them anywhere.
+Managing user keys, especially in multi-device and multi-user settings, is notoriously complex and error-prone. vetKeys enables the development of DKMSs that let users easily generate, retrieve, and share cryptographic keys across devices and with other users. By offloading key derivation to subnet nodes without ever exposing the keys, vetKeys simplifies key distribution. Moreover, because threshold key derivation is deterministic, users can reliably retrieve their keys on demand without having to explicitly store them anywhere.
 
 ## [Encrypted onchain storage](/docs/building-dapps/network-features/vetkeys/encrypted-onchain-storage)
 
@@ -47,11 +47,11 @@ Compared to DKMS, IBE works differently. In DKMS, one or more users share **the 
 ## [Timelock encryption](/docs/building-apps/network-features/vetkeys/timelock-encryption)
 
 A special variant of IBE is called timelock encryption. It allows a sender to encrypt to a specific timestamp, ensuring that the recipient can only decrypt after the specific time has passed. Canisters can enforce this time-based access control by requesting threshold decryption of a ciphertext only after a predetermined expiry time, keeping sensitive information secret until the appropriate moment. This makes it possible to implement time-sensitive applications, like secret-bid auctions, time-locked documents, dead-man switches, and delayed reveal NFTs.
-Timelock encryption also serves as a key building block for protecting against Maximal Extractable Value (MEV): by keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
+Timelock encryption also serves as a key building block for protecting against maximal extractable value (MEV). By keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
 
 ## [Externally verifiable randomness](/docs/building-apps/network-features/vetkeys/verifiable-randomness)
 
-vetKeys can also function as a Verifiable Random Function (VRF). This means that canisters can generate randomness that is not only unpredictable and tamper-proof but also publicly verifiable. Trusted randomness is a critical building block for a wide range of decentralized applications, including trustless online lotteries, fair casino games, and GameFi experiences where outcomes must be demonstrably fair. It also plays a key role in NFT ecosystems—for example, in assigning randomized traits or rarities during minting, or enabling dynamic, chance-based in-game interactions. 
+vetKeys can also function as a Verifiable Random Function (VRF). This means that canisters can generate randomness that is not only unpredictable and tamperproof but also publicly verifiable. Trusted randomness is a critical building block for a wide range of decentralized applications, including trustless online lotteries, fair casino games, and GameFi experiences where outcomes must be demonstrably fair. It also plays a key role in NFT ecosystems, for example, in assigning randomized traits or rarities during minting, or enabling dynamic, chance-based in-game interactions. 
 
 ## Resources
 
