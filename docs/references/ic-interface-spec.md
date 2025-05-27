@@ -246,7 +246,9 @@ A canister can be *empty* (e.g. directly after creation) or *non-empty*. A non-e
 
 -   code, in the form of a canister module
 
--   state (memories, globals etc.)
+-   memories (heap and stable memory)
+
+-   globals
 
 -   possibly further data that is specific to the implementation of the IC (e.g. queues)
 
