@@ -28,6 +28,8 @@ Each method also includes a method-specific parameter:
 - `vetkd_derive_key`
   - `transport_public_key` (`blob`): The recipient’s public key. This is used to encrypt the derived key for secure transport.
 
+Below is a summary of the vetKD API methods and their parameters.
+
 ```candid
   vetkd_public_key : (record {
     canister_id : opt canister_id;
@@ -71,6 +73,9 @@ sequenceDiagram
 ```
 
 ### Step 1: Implement canister endpoints
+
+Expose the vetKD endpoints in the backend canister API so that the frontend can retrieve and verify vetKeys.
+
 <AdornedTabs groupId="languages">
 <TabItem value="rust" label="Rust" default>
 
@@ -121,6 +126,8 @@ fn bls12_381_g2_test_key() -> VetKDKeyId {
 
 
 ### Step 2: Generate a transport key pair and pass the transport public key to the canister
+
+In this step, the frontend generates a transport private key and passes the corresponding transport public key to the canister in order to obtain encrypted vetKeys that can only be decrypted by the frontend.
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>

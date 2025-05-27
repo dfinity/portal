@@ -42,7 +42,7 @@ Each encrypted map is associated with a single vetKey and one access control sco
 
 An encrypted map functions similarly to a standard map in most programming languages, with keys and values represented as byte strings. However, the values are encrypted. The key difference is that encrypted maps are not meant to be used directly by the canister. Any data encrypted or decrypted by the canister is considered public. Instead, users handle encryption and decryption to maintain privacy.
 
-A key advantage of `EncryptedMaps` is that encryption is entirely opaque to developers using the frontend APIs. Developers specify where the data should go, namely, the map name and key, but not how it's encrypted or decrypted. The encryption is designed to be secure, efficient, and to minimize the number of `vetKeys` that need to be fetched from ICP.
+A key advantage of `EncryptedMaps` is that encryption is entirely opaque to developers using the frontend APIs. Developers specify where the data should go, namely, the map name and key, but not how it's encrypted or decrypted. The encryption is designed to be secure, efficient, and to minimize the number of `vetKeys` that need to be fetched via the mainnet management canister.
 
 Beyond the inherited features of `KeyManager`, `EncryptedMaps` has also the following features:
 
