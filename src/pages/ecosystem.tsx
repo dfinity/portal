@@ -238,7 +238,7 @@ const PromoCard = () => {
         </p>
         <Link
           className="button-white text-center"
-          href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+          href="https://airtable.com/appyWBGCHaZoTzKTN/pagyIkYq3EiBEV0jt/form"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -434,7 +434,7 @@ function ShowcasePage(): JSX.Element {
             </p>
             <p className="mb-0">
               <Link
-                href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+                href="https://airtable.com/appyWBGCHaZoTzKTN/pagyIkYq3EiBEV0jt/form"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-primary link-with-icon"
