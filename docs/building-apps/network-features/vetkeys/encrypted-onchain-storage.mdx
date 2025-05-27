@@ -144,9 +144,9 @@ const result = await encryptedMaps.setUserRights(mapOwner, mapName, user, access
 
 ## Examples
 
-- **[Password manager](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager)**: Use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encrypted using vetKeys.
+- **[Password manager](https://github.com/dfinity/vetkeys/tree/main/examples/password_manager)**: Use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encrypted using vetKeys.
 
-- **[Password manager with metadata](https://github.com/dfinity/vetkd-devkit/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/password_manager_with_metadata)**: Store additional metadata in the canister (both user-provided and canister-generated) and include this metadata alongside the encrypted data in atomic password addition or removal operations.
+- **[Password manager with metadata](https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata)**: Store additional metadata in the canister (both user-provided and canister-generated) and include this metadata alongside the encrypted data in atomic password addition or removal operations.
 
 
 ## Extensibility
@@ -161,8 +161,6 @@ A developer using `EncryptedMaps` can add new functionalities to or around `Encr
 
 ## Resources
 
-- [Rust backend `EncryptedMaps` code documentation](https://todo).
+- [Rust backend `EncryptedMaps` code documentation](https://docs.rs/ic-vetkeys/latest/ic_vetkeys/encrypted_maps/struct.EncryptedMaps.html).
 
-- [Motoko backend `EncryptedMaps` code documentation](https://todo).
-
-- [TypeScript frontend `EncryptedMaps` code documentation](https://5lfyp-mqaaa-aaaag-aleqa-cai.icp0.io/classes/ic_vetkeys_tools.EncryptedMaps.html).
+- [TypeScript frontend `EncryptedMaps` code documentation](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys_encrypted_maps.EncryptedMaps.html).
