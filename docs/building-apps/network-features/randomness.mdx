@@ -68,7 +68,3 @@ let (randomBytes,): (Vec<u8>,) = ic_cdk::api::management_canister::main::raw_ran
 
 </AdornedTab>
 </AdornedTabs>
-
-## Externally verifiable randomness
-
-The randomness obtained from `raw_rand` is secure and verifiable by inspecting the canister implementation, but it is not externally verifiable, for example, on another blockchain. Externally verifiable randomness can be obtained using vetKeys. See the [vetKeys documentation](/docs/building-apps/network-features/vetkeys/verifiable-randomness) for more details.
