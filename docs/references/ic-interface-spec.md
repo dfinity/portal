@@ -1545,6 +1545,14 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
     ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
+    ic0.env_var_count() -> I;                                                             // *
+
+    ic0.env_var_name_size(index: I) -> I;                                                 // *
+    ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ();                    // *
+
+    ic0.env_var_value_size(src: i, size: I) -> I;                                         // *
+    ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ();            // *
+
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
 ```
