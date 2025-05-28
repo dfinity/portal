@@ -942,6 +942,7 @@ const redirects = `
   /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/deploy-specific-subnet
   /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/security/overview
   /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
