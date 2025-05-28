@@ -2262,6 +2262,15 @@ The optional `settings` parameter can be used to set the following settings:
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
 
+-   `log_visibility` (`log_visibility`)
+
+    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can fetch logs
+    - `public`: Anyone can fetch the canister's logs
+    - `allowed_viewers`: Only specified principals can fetch logs
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
