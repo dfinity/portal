@@ -87,30 +87,32 @@ const DOMAIN_SEPARATOR: &[u8] = b"example-vetkd-dapp".as_slice();
 
 /// Derive encrypted vetKey for caller's principal.
 #[update]
-fn vetkd_derive_key(transport_public_key: Vec<u8>) -> Vec<u8> {
-    let caller = ic_cdk::caller();
+async fn vetkd_derive_key(transport_public_key: Vec<u8>) -> Vec<u8> {
+    let caller = ic_cdk::api::msg_caller();
     let request = VetKDDeriveKeyArgs {
         input: caller.as_slice().to_vec(),
         context: DOMAIN_SEPARATOR.to_vec(),
         transport_public_key,
         key_id: bls12_381_g2_test_key(),
     };
-    let reply =
-        ic_cdk::management_canister::vetkd_derive_key(&request).expect("failed to derive key");
+    let reply = ic_cdk::management_canister::vetkd_derive_key(&request)
+        .await
+        .expect("failed to derive key");
     reply.encrypted_key
 }
 
 #[update]
-fn vetkd_public_key() -> Vec<u8> {
+async fn vetkd_public_key() -> Vec<u8> {
     let request = VetKDPublicKeyArgs {
         canister_id: None,
         context: DOMAIN_SEPARATOR.to_vec(),
         key_id: bls12_381_g2_test_key(),
     };
 
-    let reply =
-        ic_cdk::management_canister::vetkd_public_key(&request).expect("failed to derive key");
-    reply.encrypted_key.into()
+    let reply = ic_cdk::management_canister::vetkd_public_key(&request)
+        .await
+        .expect("failed to derive key");
+    reply.public_key
 }
 
 fn bls12_381_g2_test_key() -> VetKDKeyId {
