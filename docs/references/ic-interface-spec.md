@@ -2278,15 +2278,6 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: 0 (i.e., the "on low wasm memory" hook is never scheduled).
 
--   `log_visibility` (`log_visibility`)
-
-    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
-    - `controllers`: Only the canister's controllers can fetch logs
-    - `public`: Anyone can fetch the canister's logs
-    - `allowed_viewers`: Only specified principals can fetch logs
-
-    Default value: `controllers`.
-
 -   `environment_variables` (`environment_variables`)
 
     A record containing a vector of key-value pairs where both key and value are text strings. These variables are accessible to the canister during execution and can be used to configure canister behavior without code changes. Each key must be unique.
