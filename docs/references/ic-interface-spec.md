@@ -2461,7 +2461,7 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID and timestamp at which the snapshot was taken. Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers or environment variable change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID and timestamp at which the snapshot was taken. Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -4903,18 +4903,39 @@ S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
 }
-if A.settings.controllers is not null:
-  New_canister_history = {
-    total_num_changes = N + 1;
-    recent_changes = H · {
-        timestamp_nanos = S.time[A.canister_id];
-        canister_version = S.canister_version[A.canister_id] + 1;
-        origin = change_origin(M.caller, A.sender_canister_version, M.origin);
-        details = ControllersChange {
-          controllers = A.settings.controllers;
-        };
-        environment_variables[A.canister_id] = New_environment_variables
+
+New_recent_changes = H · 
+  // Add controllers change if present
+  (if A.settings.controllers is not null then
+    [{
+      timestamp_nanos = S.time[A.canister_id];
+      canister_version = S.canister_version[A.canister_id] + 1;
+      origin = change_origin(M.caller, A.sender_canister_version, M.origin);
+      details = ControllersChange {
+        controllers = A.settings.controllers;
       };
+    }]
+  else
+    []) ·
+  // Add environment variables change if present
+  (if A.settings.environment_variables is not null then
+    [{
+      timestamp_nanos = S.time[A.canister_id];
+      canister_version = S.canister_version[A.canister_id] + 1;
+      origin = change_origin(M.caller, A.sender_canister_version, M.origin);
+      details = EnvironmentVariablesChange {
+        hash = SHA-256(A.settings.environment_variables);
+      };
+    }]
+  else
+    [])
+
+if A.settings.controllers is not null or A.settings.environment_variables is not null:
+  New_canister_history = {
+    total_num_changes = N + 
+      (if A.settings.controllers is not null then 1 else 0) +
+      (if A.settings.environment_variables is not null then 1 else 0);
+    recent_changes = New_recent_changes
   }
 else:
   New_canister_history = S.canister_history[A.canister_id]
