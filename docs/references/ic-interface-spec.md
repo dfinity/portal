@@ -2168,16 +2168,14 @@ The following system calls provide access to the canister's environment variable
 
   Gets the size in bytes of the name of the environment variable at the given index.
   
--    `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
 
   Copies the name of the environment variable at the given index into memory.
 
--    `ic0.env_var_value_size(src: i, size: I) -> I`; `I ∈ {i32, i64}`
+-   `ic0.env_var_value_size(src: i, size: I) -> I`; `I ∈ {i32, i64}`
 
   Gets the size in bytes of the value for the environment variable with the given name.
 
-
-                                        // *
 -   `ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ()`; `I ∈ {i32, i64}`
 
   Copies the value of the environment variable with the given name into memory.
