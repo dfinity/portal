@@ -165,7 +165,7 @@ The full specification of the vetKD APIs can be found in the [vetKD specificatio
 
 ## API fees
 
-The fees for the vetKD APIs are defined below. The threshold vetKD test key resides on a 13-node application subnet, while the threshold vetKD production key resides on a 34-node-sized fiduciary subnet. The subnet size where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of November 23, 2022, has been used.
+The fees for the vetKD APIs are defined below. The threshold vetKD test key resides on a 13-node application subnet, while the threshold vetKD production key resides on a 34-node-sized fiduciary subnet. The subnet size where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of May 22, 2025, has been used.
 
 :::note
 If a canister using this feature is intended to be blackholed or used by other canisters, it's recommended to send more cycles with each call than the currently advertised cost. This ensures that, if the subnet's size increases in the future (leading to higher signature costs), the call will still succeed. Any unused cycles are automatically refunded.
@@ -175,5 +175,5 @@ Fees for deriving one vetKey using the `vetkd_derive_key` API of the management 
 
 | Key type                             | Cycles                      | USD                         |
 |--------------------------------------|-----------------------------|-----------------------------|
-| Test key (`test_key_1`)              | 10_000_000_000              | $0.0132551                  |
-| Production key (`key_1`)             | 26_153_846_153              | $0.0346672                  |
+| Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  |
+| Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  |
