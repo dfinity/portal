@@ -558,9 +558,9 @@ const redirects = `
   /docs/current/developer-docs/integrations/storage/cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/integrations/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/references/t-sigs-how-it-works
-  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/encryption/vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/references/vetkeys-overview
-  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/local-quickstart /docs/building-apps/getting-started/install
 
   ## Chain Fusion
@@ -739,8 +739,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
-  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
-  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/encryption/vetkeys
+  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
+  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview /docs/building-apps/essentials/canisters
@@ -942,6 +942,7 @@ const redirects = `
   /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/deploy-specific-subnet
   /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/security/overview
   /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
@@ -998,6 +999,7 @@ const redirects = `
   /ecosystem.json /ecosystem
   /ethereum /chainfusion
   /img/ /docs/home
+  /olympus /
   /docs/defi /docs/defi/overview
   /docs/current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/download.html /docs/home
@@ -1201,6 +1203,9 @@ const redirects = `
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
   /blog/features/vetkey-primer /docs/references/vetkeys-overview
+
+  /docs/building-apps/network-features/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
+  /docs/building-apps/network-features/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
   `
 
   .split(/[\r\n]+/)

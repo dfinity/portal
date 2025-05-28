@@ -5,7 +5,7 @@
     "display": "Large",
     "website": "https://decideai.xyz",
     "twitter": "https://twitter.com/DecideAI_",
-    "github": "https://github.com/modclub-app",
+    "github": "https://github.com/decide-ai",
     "tags": [
       "AI",
       "Tools / Infrastructure"
@@ -64,7 +64,7 @@
       "DAO",
       "Chain Fusion"
     ],
-    "description": "ICPSwap is an AMM DEX built completely onchain that is the premier hub for full-stack financial and DAO services on ICP",
+    "description": "ICPSwap is an AMM DEX built completely onchain that is the premier hub for full-stack financial and DAO services on ICP.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpswap_logo.webp",
     "screenshots": [
@@ -206,7 +206,7 @@
       "DAO",
       "Creator Economy"
     ],
-    "description": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures..",
+    "description": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/dragginz_logo.png"
   },
@@ -221,7 +221,7 @@
       "Bitcoin",
       "Chain Fusion"
     ],
-    "description": "ICDex is the flagship product by ICLighthouse, an orderbook-based DEX that runs 100% onchain. The world's first order book DEX - made possible by advanced ICP smart contracts",
+    "description": "ICDex is the flagship product by ICLighthouse, an orderbook-based DEX that runs 100% onchain. The world's first order book DEX - made possible by advanced ICP smart contracts.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icdex_logo.webp"
   },
@@ -260,7 +260,7 @@
       "Creator Economy"
     ],
     "stats": "45,000+ users",
-    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
+    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging.",
     "logo": "/img/showcase/bioniq-logo.jpeg",
     "screenshots": [
       "/img/showcase/bioniq-screenshot-min.png"
@@ -402,7 +402,7 @@
     "id": "kinic",
     "name": "Kinic",
     "display": "Large",
-    "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
+    "website": "https://www.kinic.io",
     "twitter": "https://x.com/kinic_app",
     "tags": [
       "Tools / Infrastructure",
@@ -530,7 +530,7 @@
       "Chain Fusion"
     ],
     "stats": "3 early launch partners sending notifications from Polygon",
-    "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and off-chain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today...",
+    "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and off-chain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/w3ns_logo.png"
   },
@@ -540,19 +540,20 @@
     "display": "Large",
     "website": "https://rubaru.app/",
     "twitter": "https://twitter.com/RuBaRu_app",
-    "youtube": "https://youtu.be/CBumSMJRV08",
+    "youtube": "https://www.youtube.com/watch?v=A5SO8xLs1w0",
     "submittableId": 39223821,
     "tags": [
-      "SocialFi",
+      "AI",
       "Creator Economy"
     ],
-    "stats": "190+ canisters N/W, On-chain content : 15k+ images & 5k+ videos",
-    "description": "The fully on-chain content creator/influencer platform: own your profile, own your content, and earn fair incentives.",
+    "stats": "OnChain Post Shared : 33,000+\nRegistered Users: 11658+",
+    "description": "RuBaRu: A fully on-chain, bot-free, censorship-resistant AttentionFi platform offering instant rewards, content ownership, & transparent monetization.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/rubaru_logo.png",
     "screenshots": [
       "/img/showcase/rubaru_dapp_screenshot.png"
-    ]
+    ],
+    "oneLiner": "Own your Content - Earn Transparently!"
   },
   {
     "id": "ethereum-canister",
@@ -814,7 +815,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "BeamFi is an open source DeFi protocol, bringing Autonomous Stream Payment solution to Internet Computer, allowing users to send or receive a constant stream of ICP or XTC in BeamFi DApp or BeamFi Meeting App in Zoom while a meeting is in progress",
+    "description": "BeamFi is an open source DeFi protocol, bringing Autonomous Stream Payment solution to Internet Computer, allowing users to send or receive a constant stream of ICP or XTC in BeamFi DApp or BeamFi Meeting App in Zoom while a meeting is in progress.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/beamfi_logo.webp",
     "screenshots": [
@@ -1127,7 +1128,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.\\n",
+    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/icpipeline_logo.webp"
   },
@@ -1271,7 +1272,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "An intuitive email-style inbox for NNS proposals",
+    "description": "An intuitive email-style inbox for NNS proposals.",
     "logo": "/img/showcase/nnscat_logo.png",
     "screenshots": [
       "/img/showcase/nnscat_screenshot_0.jpg"
@@ -1288,7 +1289,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding, and scientific discovery",
+    "description": "ICDevs.org seeks to provide the general public with community organization, educational resources, funding, and scientific discovery.",
     "logo": "/img/showcase/icdevs.org_logo.webp"
   },
   {
@@ -1338,6 +1339,7 @@
     "name": "Aviate Labs",
     "display": "Normal",
     "website": "https://www.aviatelabs.co/",
+    "twitter": "https://x.com/AviateLabs",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
     "submittableId": 25140378,
     "tags": [
@@ -1388,7 +1390,7 @@
       "Tools / Infrastructure"
     ],
     "stats": "3,000+",
-    "description": "Decentralized Calendar Solution (ticket, appointment, itinerary, schedule)",
+    "description": "Decentralized Calendar Solution (ticket, appointment, itinerary, schedule).",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icevent_logo_112x112.png",
     "screenshots": [
@@ -1535,7 +1537,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Build scalable DApps on internet computer with ease. Build, manage, and ship dapps with just a few clicks",
+    "description": "Build scalable DApps on internet computer with ease. Build, manage, and ship dapps with just a few clicks.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ics_logo.webp"
   },
@@ -1630,7 +1632,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "The decentralized inbox built on Internet Computer",
+    "description": "The decentralized inbox built on Internet Computer.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/dbox_logo.png"
   },
@@ -1781,7 +1783,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Public profile(links, bio, inbox...) for individual/organization",
+    "description": "Public profile (links, bio, inbox...) for individual/organization.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oneblock.png"
   },
@@ -1797,7 +1799,7 @@
       "NFT",
       "Creator Economy"
     ],
-    "description": "Open fleet market for P2P trading by leveraging open escrow service",
+    "description": "Open fleet market for P2P trading by leveraging open escrow service.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/blocklist.png"
   },
@@ -1811,7 +1813,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Collaborative Product Design Innovation Hub",
+    "description": "Collaborative Product Design Innovation Hub.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/dsign_logo.webp"
   },
@@ -2104,7 +2106,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Pluton is an HTTP router implemented on the Internet Computer to facilitate working with HTTP. This router is a framework that allows you to write REST API applications on the blockchain in almost the same way as in Web 2",
+    "description": "Pluton is an HTTP router implemented on the Internet Computer to facilitate working with HTTP. This router is a framework that allows you to write REST API applications on the blockchain in almost the same way as in Web2.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/pluto_logo.webp"
   },
@@ -2254,7 +2256,7 @@
       "SocialFi",
       "Creator Economy"
     ],
-    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.\\n",
+    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/doocoins_logo.webp"
   },
@@ -2391,7 +2393,7 @@
       "Creator Economy"
     ],
     "stats": "100+ artworks",
-    "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol",
+    "description": "A curated marketplace for buying and selling digital artwork. Built on the Internet Computer leveraging the Bitcoin Ordinals Protocol.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/bitbasel-art-marketplace_logo.webp"
   },
@@ -2516,7 +2518,7 @@
       "Tools / Infrastructure",
       "Creator Economy"
     ],
-    "description": "Open-source code, onchain rarity calculator, and empirical research to allow users to better understand NFT rarity",
+    "description": "Open-source code, onchain rarity calculator, and empirical research to allow users to better understand NFT rarity.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Outrank_logo.jpg"
   },
@@ -2675,7 +2677,7 @@
       "Creator Economy"
     ],
     "stats": "3000+ users",
-    "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
+    "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Mapz_logo.png"
   },
@@ -2708,7 +2710,7 @@
       "Gaming"
     ],
     "stats": "1500+ transactions",
-    "description": "Provably fair dice rolling game as a testament that randomness can be obtained onchain",
+    "description": "Provably fair dice rolling game as a testament that randomness can be obtained onchain.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/icdragon_logo.png"
   },
@@ -2759,7 +2761,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain. Users can create documents from a template or from scratch, verify the robustness and authenticity of the document using hashes, sign documents in a secured manner, and share documents with other parties",
+    "description": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain. Users can create documents from a template or from scratch, verify the robustness and authenticity of the document using hashes, sign documents in a secured manner, and share documents with other parties.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/virtuaseal.png"
   },
@@ -2828,7 +2830,7 @@
     "name": "ELNA.ai",
     "display": "Normal",
     "website": "https://www.elna.ai/",
-    "twitter": "https://twitter.com/elna_live",
+    "twitter": "https://twitter.com/ELNA_DeAi",
     "github": "https://github.com/elna-ai",
     "submittableId": 44027684,
     "tags": [
@@ -2933,7 +2935,7 @@
       "DAO",
       "Creator Economy"
     ],
-    "description": "Decentralised Fantasy Football",
+    "description": "Decentralised Fantasy Football.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/openfpl_logo.png"
   },
@@ -2947,7 +2949,7 @@
       "DeFi",
       "DAO"
     ],
-    "description": "The First Decentralized Meme Coin on IC",
+    "description": "The First Decentralized Meme Coin on IC.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/icghost.png"
   },
@@ -3026,7 +3028,7 @@
       "Creator Economy"
     ],
     "stats": "9,000,000+ users",
-    "description": "Dmail Network is an AI-powered decentralized communication infrastructure built to provide encrypted emails, unified notifications, and targeted marketing across multiple chains and dApps for users, developers, marketers and influencers",
+    "description": "Dmail Network is an AI-powered decentralized communication infrastructure built to provide encrypted emails, unified notifications, and targeted marketing across multiple chains and dApps for users, developers, marketers and influencers.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/dmail-network_logo.png"
   },
@@ -3060,7 +3062,7 @@
       "Chain Fusion"
     ],
     "stats": "400+ influencers",
-    "description": "On-chain marketplace for booking, managing advertising campaigns on ICP. Native ICP deployment with ckUSDC, zero gas fees",
+    "description": "On-chain marketplace for booking, managing advertising campaigns on ICP. Native ICP deployment with ckUSDC, zero gas fees.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/B4B.jpg",
     "oneLiner": "Protocol for Influencer Marketing"
@@ -3223,6 +3225,18 @@
     "description": "Shopify app designed to streamline the process of creating and launching NFT collections, product certificates, and more on ICP.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ic_nft_creater_logo.png"
+  },
+  {
+    "id": "motdex",
+    "name": "Motoko SNS",
+    "display": "Normal",
+    "website": "https://motodex.dexstudios.games",
+    "tags": [
+      "Gaming"
+    ],
+    "description": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/motoko_sns_logo.png"
   },
   {
     "id": "codegov",
@@ -3401,7 +3415,7 @@
       "NFT",
       "Creator Economy"
     ],
-    "description": "A tool that creates online communities as NFTs owned by the creators",
+    "description": "A tool that creates online communities as NFTs owned by the creators.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/communities_ooo_logo.png"
   },
@@ -3503,7 +3517,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "One-stop infrastructure, developer toolkit and middleware DevOps service platform",
+    "description": "One-stop infrastructure, developer toolkit and middleware DevOps service platform.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/hamster_logo.svg"
   },
@@ -3579,18 +3593,6 @@
       "Creator Economy"
     ],
     "description": "A community initiative aiming to drive awareness of the Motoko branding.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/motoko_sns_logo.png"
-  },
-  {
-    "id": "motdex",
-    "name": "Motoko SNS",
-    "display": "Normal",
-    "website": "https://motodex.dexstudios.games",
-    "tags": [
-      "Gaming"
-    ],
-    "description": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/motoko_sns_logo.png"
   },
@@ -3999,7 +4001,7 @@
       "DAO"
     ],
     "stats": "150+ Tasks Already Solved",
-    "description": "Let's build something nice together and share the benefits fairly! Sign in, find a task you can tackle, solve it and claim your rewards.",
+    "description": "Let's build something nice together and share the benefits fairly! Sign in, find a task you can tackle, solve it and claim your rewards. ",
     "logo": "/img/showcase/fort-major-dao_logo.svg"
   },
   {
@@ -4463,7 +4465,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "A lighter version of IC4J Agent that allows Java applications to interact with ICP",
+    "description": "A lighter version of IC4J Agent that allows Java applications to interact with ICP.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/kotlinkit_logo.svg"
   },
@@ -4612,6 +4614,7 @@
     "id": "anda",
     "name": "Anda",
     "display": "Normal",
+    "website": "https://anda.ai",
     "github": "https://github.com/ldclabs/anda",
     "tags": [
       "AI"
@@ -4626,7 +4629,7 @@
     "display": "Normal",
     "website": "https://pickpump.xyz/",
     "twitter": "https://x.com/pickpump_xyz",
-    "github": "https://github.com/elizaOS/eliza/tree/develop/packages/plugin-icp",
+    "github": "https://github.com/elizaos-plugins/plugin-icp",
     "tags": [
       "AI",
       "DeFi"
@@ -4646,7 +4649,7 @@
       "AI",
       "Chain Fusion"
     ],
-    "description": "Agricultural finance platform that leverages blockchain and AI to provide smallholder farmers with affordable loans and access to global investors, promoting financial inclusion and sustainable farming",
+    "description": "Agricultural finance platform that leverages blockchain and AI to provide smallholder farmers with affordable loans and access to global investors, promoting financial inclusion and sustainable farming.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/Investafarm_logo.png"
   },
@@ -4873,13 +4876,14 @@
     "id": "coown",
     "name": "COOWN",
     "display": "Normal",
-    "website": "htpps://coown.box",
+    "website": "https://coown.box",
     "twitter": "https://x.com/COOWN_crypto",
-    "github": "https://github.com/Managed-Trust",
+    "github": "https://github.com/coown-box",
+    "youtube": "https://www.youtube.com/@coown",
     "tags": [
       "Wallet"
     ],
-    "description": "Crypto wallets for groups",
+    "description": "Enterprise-grade solution with wallets for institutions, business units, private groups, and individuals. Spending limits with payment approvals. Tokenized shares for voting, capital raising, and automated dividends. An admin-free solution boosting cybersecurity, management efficiency, and owner control.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/coown_logo.svg"
   },
@@ -5129,6 +5133,25 @@
     "logo": "/img/showcase/coreledger.webp"
   },
   {
+    "id": "multi",
+    "name": "Multi",
+    "display": "Normal",
+    "website": "https://www.multicurrency.io/",
+    "twitter": "https://x.com/MultiCurrencyIO",
+    "github": "https://github.com/multi-system",
+    "submittableId": 48768102,
+    "tags": [
+      "Bitcoin",
+      "Ethereum",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "description": "Multi is an asset-backed currency using crowdsourced intelligence to optimize its reserve. Users stake on strategies, earning rewards for performance.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/multi_logo.svg",
+    "oneLiner": "Asset-backed currency optimized by crowdsourced intelligence."
+  },
+  {
     "id": "beproactive",
     "name": "BeProActive",
     "display": "Normal",
@@ -5368,25 +5391,6 @@
     "oneLiner": "Bitcoin staking bridging BTC with Ethereum DeFi  "
   },
   {
-    "id": "multi",
-    "name": "Multi",
-    "display": "Normal",
-    "website": "https://www.multicurrency.io/",
-    "twitter": "https://x.com/MultiCurrencyIO",
-    "github": "https://github.com/multi-system",
-    "submittableId": 48768102,
-    "tags": [
-      "Bitcoin",
-      "Ethereum",
-      "DeFi",
-      "Chain Fusion"
-    ],
-    "description": "Multi is an asset-backed currency using crowdsourced intelligence to optimize its reserve. Users stake on strategies, earning rewards for performance.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/multi_logo.svg",
-    "oneLiner": "Asset-backed currency optimized by crowdsourced intelligence."
-  },
-  {
     "id": "knowledge-foundation-nft-system",
     "name": "Knowledge Foundation NFT System",
     "display": "Normal",
@@ -5398,7 +5402,7 @@
       "DeFi",
       "Creator Economy"
     ],
-    "description": "The Knowledge Foundation NFT System is an NFT management platform where admins mint, manage and transfer NFTs to users on the platform. ",
+    "description": "The Knowledge Foundation NFT System is an NFT management platform where admins mint, manage and transfer NFTs to users on the platform.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/knowledge-foundation-nft-system_logo.jpg",
     "oneLiner": "NFT Management Platform"
@@ -5452,9 +5456,74 @@
       "DeFi",
       "Wallet"
     ],
-    "description": "Cashier allows non-coders to flexibly build & share web3 transactions such as payments, donations, tips, airdrops, swaps in minutes with their phone",
+    "description": "Cashier allows non-coders to flexibly build & share web3 transactions such as payments, donations, tips, airdrops, swaps in minutes with their phone.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/favicon_green.svg",
     "oneLiner": "Non-coders can build & share web3 transactions in minutes on the phone"
+  },
+  {
+    "id": "icquests",
+    "name": "ICQuests",
+    "display": "Normal",
+    "website": "https://icquests.com/landing",
+    "twitter": "https://x.com/icquests",
+    "submittableId": 47713036,
+    "tags": [
+      "Gaming",
+      "Tools / Infrastructure"
+    ],
+    "description": "ICQuests is an on-chain quest‑portal that gamifies onboarding to the Internet Computer (ICP) ecosystem.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Icquests_logo.svg",
+    "oneLiner": "Explore dapps, complete quests, earn XP"
+  },
+  {
+    "id": "quotex",
+    "name": "Quotex",
+    "display": "Normal",
+    "website": "https://joljv-6aaaa-aaaah-qqbmq-cai.icp0.io",
+    "github": "https://github.com/Ugoo-Labs",
+    "submittableId": 45484409,
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Quotex is decentralized finance platform for trading perpetual derivatives contracts utilizing an inbuilt Order-Book powered by the Internet Computer.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Quotex_logo.svg",
+    "oneLiner": "DeFi Hub of the Internet Computer "
+  },
+  {
+    "id": "tyche",
+    "name": "Tyche Bitomni",
+    "display": "Normal",
+    "website": "https://tyche.run/",
+    "twitter": "https://x.com/Bitomni_Global",
+    "github": "https://github.com/CypherBabel-Lab",
+    "tags": [
+      "Bitcoin",
+      "Gaming",
+      "Chain Fusion"
+    ],
+    "description": "A Bitcoin-native gaming platform that allows players to log in directly with their Bitcoin wallet and play games using BTC or Runes.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Tyche_Bitomni_logo.jpeg"
+  },
+  {
+    "id": "factfund",
+    "name": "FactFund",
+    "display": "Normal",
+    "website": "https://nv57a-iaaaa-aaaap-qhsqa-cai.icp0.io/",
+    "twitter": "https://x.com/fact_fund",
+    "github": "https://github.com/satishccy/FactFund",
+    "submittableId": 47582068,
+    "tags": [
+      "Creator Economy",
+      "DeFi"
+    ],
+    "description": "FactFund is a Web3 crowdfunding platform on ICP enabling secure, transparent fundraising with spam control, fund tracking, and proof of completion.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/FactFund_Logo1748194060.jpg",
+    "oneLiner": "Decentralized, transparent crowdfunding on the Internet Computer"
   }
+
 ]
