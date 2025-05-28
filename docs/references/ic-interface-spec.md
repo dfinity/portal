@@ -2156,6 +2156,37 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     - `1`: Invalid curve or algorithm. Memory at `dst` is left unchanged.
     - `2`: Invalid key name for the given combination of signing scheme and (valid) curve/algorithm. Memory at `dst` is left unchanged.
 
+### Environment Variables
+
+The following system calls provide access to the canister's environment variables:
+
+-   `ic0.env_var_count() -> I`; `I ∈ {i32, i64}`
+
+  Returns the number of environment variables set for this canister.
+
+-   `ic0.env_var_name_size(index: I) -> I`; `I ∈ {i32, i64}`
+
+  Gets the size in bytes of the name of the environment variable at the given index.
+  
+-    `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
+
+  Copies the name of the environment variable at the given index into memory.
+
+-    `ic0.env_var_value_size(src: i, size: I) -> I`; `I ∈ {i32, i64}`
+
+  Gets the size in bytes of the value for the environment variable with the given name.
+
+
+                                        // *
+-   `ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ()`; `I ∈ {i32, i64}`
+
+  Copies the value of the environment variable with the given name into memory.
+
+These system calls allow canisters to:
+- Enumerate all environment variables
+- Access variable names by index
+- Look up values by name
+
 ### Debugging aids
 
 In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
