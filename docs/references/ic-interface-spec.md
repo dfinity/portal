@@ -2278,6 +2278,23 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: 0 (i.e., the "on low wasm memory" hook is never scheduled).
 
+-   `log_visibility` (`log_visibility`)
+
+    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can fetch logs
+    - `public`: Anyone can fetch the canister's logs
+    - `allowed_viewers`: Only specified principals can fetch logs
+
+    Default value: `controllers`.
+
+-   `environment_variables` (`environment_variables`)
+
+    A record containing a vector of key-value pairs where both key and value are text strings. These variables are accessible to the canister during execution and can be used to configure canister behavior without code changes. Each key must be unique.
+
+    The maximum number of environment variables is implementation-defined. The maximum length of keys and values is implementation-defined.
+
+    Default value: `null` (i.e., no expplicit environment variables provided).
+
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
@@ -2400,6 +2417,8 @@ Indicates various information about the canister. It contains:
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
     -   The "low wasm memory" threshold, which is used to determine when the [canister_on_low_wasm_memory](#on-low-wasm-memory) function is executed.
+    
+    -   The environment variables of the canister, which is a record containing key-value pairs used to configure the canister's behavior.
 
 -   A SHA256 hash of the module installed on the canister. This is `null` if the canister is empty.
 
@@ -4738,6 +4757,10 @@ if A.settings.wasm_memory_threshold is not null:
   New_wasm_memory_threshold = A.settings.wasm_memory_threshold
 else:
   New_wasm_memory_threshold = 0
+if A.settings.environment_variables is not null:
+  New_environment_variables = A.settings.environment_variables
+else:
+  New_environment_variables = S.environment_variables[A.canister_id]
 
 Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation, null, EmptyCanister.wasm_state)
 New_balance = M.transferred_cycles - Cycles_reserved
@@ -4784,6 +4807,7 @@ S' = S with
     reserved_balance_limits[Canister_id] = New_reserved_balance_limit
     wasm_memory_limit[Canister_id] = New_wasm_memory_limit
     wasm_memory_threshold[Canister_id] = New_wasm_memory_threshold
+    environment_variables[Canister_id] = New_environment_variables
     on_low_wasm_memory_hook_status[Canister_id] = ConditionNotSatisfied
     certified_data[Canister_id] = ""
     query_stats[Canister_id] = []
@@ -4872,6 +4896,10 @@ if A.settings.wasm_memory_threshold is not null:
   New_wasm_memory_threshold = A.settings.wasm_memory_threshold
 else:
   New_wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id]
+if A.settings.environment_variables is not null:
+  New_environment_variables = A.settings.environment_variables
+else:
+  New_environment_variables = S.environment_variables[A.canister_id]
 
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, New_compute_allocation, New_memory_allocation, S.snapshots[A.canister_id], S.canisters[A.canister_id].wasm_state)
 New_balance = S.balances[A.canister_id] - Cycles_reserved
@@ -4894,6 +4922,7 @@ if A.settings.controllers is not null:
         details = ControllersChange {
           controllers = A.settings.controllers;
         };
+        environment_variables[A.canister_id] = New_environment_variables
       };
   }
 else:
@@ -4970,6 +4999,7 @@ S with
             reserved_cycles_limit = S.reserved_balance_limit[A.canister_id];
             wasm_memory_limit = S.wasm_memory_limit[A.canister_id];
             wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id];
+            environment_variables = S.environment_variables[A.canister_id];
           }
           module_hash =
             if S.canisters[A.canister_id] = EmptyCanister
