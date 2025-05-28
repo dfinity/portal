@@ -127,7 +127,7 @@ fn bls12_381_g2_test_key() -> VetKDKeyId {
 
 ### Step 2: Generate a transport key pair and pass the transport public key to the canister
 
-In this step, the frontend generates a transport private key and passes the corresponding transport public key to the canister in order to obtain encrypted vetKeys that can only be decrypted by the frontend.
+In this step, the frontend generates a transport private key and passes the corresponding transport public key to the canister in order to obtain the encrypted vetKeys that can only be decrypted by the frontend.
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
@@ -146,7 +146,7 @@ const encryptedVetKey = EncryptedVetKey.deserialize(encryptedVetKeyBytes);
 
 ### Step 3: Retrieve the vetKD public key from the backend canister
 
-Once retrieved, then you must decrypt and verify the received encrypted vetKey.
+Once retrieved, you must decrypt and verify the received encrypted vetKey.
 
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
