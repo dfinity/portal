@@ -246,7 +246,9 @@ A canister can be *empty* (e.g. directly after creation) or *non-empty*. A non-e
 
 -   code, in the form of a canister module
 
--   state (memories, globals etc.)
+-   memories (heap and stable memory)
+
+-   globals
 
 -   possibly further data that is specific to the implementation of the IC (e.g. queues)
 
@@ -2259,6 +2261,15 @@ The optional `settings` parameter can be used to set the following settings:
     Default value: 0 (i.e., no explicit limit).
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
+
+-   `log_visibility` (`log_visibility`)
+
+    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can fetch logs
+    - `public`: Anyone can fetch the canister's logs
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can fetch logs, the maximum length of the list is 10
+
+    Default value: `controllers`.
 
 -   `wasm_memory_threshold` (`nat`)
 
