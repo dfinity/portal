@@ -20,7 +20,7 @@ jobs:
           # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
           
           # dfx 0.26.1
-          LATEST_SDK="d4875108cb4f4043e1553dd41a3ff810381c288e"
+          LATEST_SDK="f3329759f1c98692f83dbb74651676b02b54a69e"
 
           # motoko 0.14.5
           LATEST_MOTOKO="51fa74671829c59912c37500773cfaba950b0a1b" 
