@@ -2262,6 +2262,15 @@ The optional `settings` parameter can be used to set the following settings:
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
 
+-   `log_visibility` (`log_visibility`)
+
+    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can fetch logs
+    - `public`: Anyone can fetch the canister's logs
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can fetch logs, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -2669,7 +2678,7 @@ The **size** of an HTTP request from the canister or an HTTP response from the r
 
 The following parameters should be supplied for the call:
 
--   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt) and its length must not exceed `8192`. The URL may specify a custom port number.
+-   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt), it might contain non-ASCII characters according to [RFC-3987](https://www.ietf.org/rfc/rfc3987.txt), and its length must not exceed `8192`. The URL may specify a custom port number.
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 

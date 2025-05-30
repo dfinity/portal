@@ -74,7 +74,7 @@ docs
 │   │   ├── query-calls
 │   │   ├── update-calls
 │   ├── network-features
-│   │   ├── encryption
+│   │   ├── vetkeys
 │   │   ├── signatures
 │   │   ├── using-http
 │   │   ├── verifiable-credentials
