@@ -2700,7 +2700,7 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `body` - the response's body
 
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is `2MB` (`2,000,000B`). Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is equal to `max_response_bytes`, if provided, otherwise the default value of `2MB` (`2,000,000B`) is used as the limit. Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
 
 When the transform function is invoked by the system due to a canister HTTP request, the caller's identity is the principal of the management canister. This information can be used by developers to implement access control mechanism for this function.
 
@@ -2725,7 +2725,7 @@ Currently, the Internet Computer mainnet only supports URLs that resolve to IPv6
 
 :::warning
 
-If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected network response size to not incur unnecessary cycles costs for your request.
+If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
 
