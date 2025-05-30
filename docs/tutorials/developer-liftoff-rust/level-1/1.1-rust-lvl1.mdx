@@ -15,7 +15,7 @@ Rust is especially well-suited for developing canisters on the ICP because:
 
 - It compiles to WebAssembly.
 
-- Implements strict compile-time checks help prevent common bugs.
+- Implements strict compile-time checks to help prevent common bugs.
 
 - Performs close to that of other low-level languages like C/C++.
 
@@ -36,7 +36,7 @@ ic-cdk = "0.15"
 candid = "0.10" # required if you want to define Candid data types
 ```
 
-Then, in a Rust source code file, typically `<project_name>/<canister_name>/src/lib.rs`, define your canister's code such as the following example that registers a `query` entrypoint named `hello`:
+Then, in a Rust source code file, typically `<project_name>/<canister_name>/src/lib.rs`, define your canister's code, such as the following example that registers a `query` entrypoint named `hello`:
 
 ```rust
 #[ic_cdk::query]
@@ -56,7 +56,7 @@ Canister entrypoints are the public methods that a canister exposes for other ca
 
 ### init
 
-If a canister's `init` entrypoint is defined (`canister_init`) it will be the first function that the network calls when a canister is installed. If `canister_init` finishes successfully, the network considers the canister fully set up. But if it traps, the installation is canceled and the canister is rolled back to its previous state.
+If a canister's `init` entrypoint is defined, it is the first function that the network calls when a canister is installed. If `canister_init` finishes successfully, the network considers the canister fully set up. But if it traps, the installation is canceled and the canister is rolled back to its previous state.
 
 A canister's `canister_init` entrypoint should match the initialization parameters in the Candid interface. It must have no return value. Each canister can only have one `canister_init` entry point.
 
@@ -71,23 +71,106 @@ Refer to the [`canister_init` specification](https://internetcomputer.org/docs/c
 
 ### query
 
+A `query` endpoint provides a callable method that only returns information. `query` endpoints cannot alter the state of a canister.
+
+```rust
+#[query]
+fn query_function() {
+    // ...
+}
+```
+
+You can specify a name of the exported method:
+
+```rust
+#[query(name = "method_name")]
+fn query_function() {
+    // ...
+}
+```
+
+If a `query` endpoint must have a prerequisite executed before it can be called, you can define a `guard` function that must be executed before the query function can be executed. If the `guard` function returns an error, the `query` function does not execute.
+
+```rust
+fn guard_function() -> Result<(), String> {
+    // ...
+}
+#[query(guard = "guard_function")]
+fn query_function() {
+    // ...
+}
+```
+
 ### update
+
+An `update` entrypoint provides a callable method that can make changes to the canister's state. `update` methods may return a response or they may return an empty type.
+
+
+```rust
+#[update]
+fn update_function() {
+    // ...
+}
+```
+
+`update` methods can be named or configured to use `guard` functions in the same ways that `query` methods can.
 
 ## Candid interface files
 
-This library re-exports macros defined in ic-cdk-macros crate.
+Candid is an interface description file (IDL) used to describe a canister smart contract's public methods. Each Candid file defines a service, then adds the canister's public methods and the data types that each method accepts and returns.
 
-The macros fall into two categories:
+Here is an example that defines the public method `greet`, which accepts type `text` and returns type `text` using a `query` call.
 
-To register functions as canister entry points
-To export Candid definitions
+```did
+service : {
+    "greet" : (text) -> (text) query;
+};
+```
 
+Candid interface description files (`.did`) for Rust canisters must be handwritten or manually exported using the `export_candid!` macro. This macro must be called once at the end of your canister's code outside of any query or update definitions.
 
-## How Rust is compiled into Wasm
+```rust
+use candid::Principal;
+
+#[ic_cdk::query]
+fn whoami() -> Principal {
+    ic_cdk::caller()
+}
+
+// Export the Candid interface
+ic_cdk::export_candid!();
+```
+
+`query` and `update` methods can be hidden from the Candid exporter by setting `hidden` to equal `true`. If a method is hidden, it still exists in the canister but will not have a Candid interface generated through `export_candid!`
+
+```rust
+#[query(hidden = true)]
+fn query_function() {
+    // ...
+}
+```
 
 ## Rust Wasm limitations
 
+WebAssembly (Wasm) is a portable binary format that runs in a virtual machine. ICP compiles canister code to standard Wasm and uses a system API to interact with it. The `ic-cdk` includes build tools that compile Rust code to the `wasm32-unknown-unknown` Wasm target.
 
+Canisters written in Rust have a set of limitations imposed by the Wasm compiler due to the fact that Wasm is purely binary code and does not provide a file system, network access, or other functionalities. These limitations include:
+
+- You cannot create threads. Instead, use [`ic_cdk::spawn`](https://docs.rs/ic-cdk/0.16.0/ic_cdk/fn.spawn.html).
+
+- You cannot sleep. Instead, use [`ic_cdk_timers`](https://docs.rs/ic-cdk-timers/latest/ic_cdk_timers/).
+
+- You cannot use `Instant`. Instead, use [`ic_cdk::api::time`](https://docs.rs/ic-cdk/0.16.0/ic_cdk/api/fn.time.html).
+
+- You cannot access environment variables with `std::env::var`, but you can embed compile-time environment variables with the `env!` macro.
+
+- Any crate that performs input/output will not work; however if you use a crate that performs input/output, it may work as long as you don't call the function that executes it.
+
+- Crates that specifically have a Wasm mode usually do not work as expected.
+
+- You cannot use `tokio`, use [`ic_cdk::spawn`](https://docs.rs/ic-cdk/0.16.0/ic_cdk/fn.spawn.html).
+
+- You cannot use crates that make or serve HTTP requests. Instead, use [HTTP outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) or the [gateway API](/docs/references/http-gateway-protocol-spec/).
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 
