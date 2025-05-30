@@ -8,7 +8,7 @@ import React from "react";
 function FeaturePage() {
   return (
     <Layout
-      title="Multi-chain transactions"
+      title="Multichain transactions"
       // fill in meta description
       description=""
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
@@ -19,7 +19,7 @@ function FeaturePage() {
           <div className="container-10 pt-12 mb-30 md:mb-52 md:pt-36 relative">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                Multi-chain transactions
+                Multichain transactions
               </h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
                 On the Internet Computer, you can create smart contracts that
@@ -74,7 +74,7 @@ function FeaturePage() {
               services are composed to create new services and functionality.
               Tokenized assets and liquidity must also be able to move between
               services, whichever blockchain they are on. The Internet Computer
-              provides a means to fully support this paradigm in a multi-chain
+              provides a means to fully support this paradigm in a multichain
               environment without need for trusted bridges run by central
               controllers such as companies.
             </p>
@@ -172,7 +172,7 @@ function FeaturePage() {
               href="/samples"
             />
             <CardWithDescription
-              title="'Trustless multi-chain Web3' article on the IC Wiki"
+              title="'Trustless multichain Web3' article on the IC Wiki"
               description="Learn about how IC's smart contracts directly interact with other blockchains, without trusted centralized bridges."
               href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
             />
