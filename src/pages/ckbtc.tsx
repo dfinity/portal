@@ -54,7 +54,7 @@ function CkbtcPage(): JSX.Element {
     <QueryClientProvider client={queryClient}>
       <Layout
         title="ckBTC is bitcoin on Web3"
-        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
+        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multichain bitcoin twin, created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
@@ -78,7 +78,7 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC — a multi-chain bitcoin twin, created by chain-key
+                  ckBTC — a multichain bitcoin twin, created by chain-key
                   cryptography and Internet Computer smart contracts that
                   directly hold raw bitcoin. Send and receive ckBTC with 1-2
                   second finality and negligible fees. Only possible because ICP
@@ -126,7 +126,7 @@ function CkbtcPage(): JSX.Element {
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                As part of a multi-chain, multi-wallet upgrade, ckBTC has been
+                As part of a multichain, multi-wallet upgrade, ckBTC has been
                 integrated into the MyLugano crypto payment app developed by
                 NOKU. This is a major step towards the Internet Computer
                 infrastructure integrating with the city of Lugano to eventually
@@ -513,7 +513,7 @@ function CkbtcPage(): JSX.Element {
                     fungible token standard, the pair of canister smart
                     contracts also allow bitcoin to be freely sent between
                     addresses either on the Bitcoin network or the Internet
-                    Computer, making it the first true multi-chain asset.
+                    Computer, making it the first true multichain asset.
                   </p>
 
                   <Link

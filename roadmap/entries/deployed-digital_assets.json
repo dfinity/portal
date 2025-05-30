@@ -36,9 +36,9 @@
       "milestone_id": "Toroidal"
     },
     {
-      "title": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
+      "title": "Oisy, a Multichain Wallet Powered by Chain Fusion",
       "is_milestone": true,
-      "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
+      "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multichain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
       "milestone_id": "Toroidal",
       "status": "deployed",
       "eta": "2024-12",
@@ -130,7 +130,7 @@
     },
     {
       "title": "Solana Integration",
-      "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
+      "overview": "OISY widens its multichain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multichain wallet for decentralized finance (DeFi) users.",
       "status": "deployed",
       "forum": "",
       "proposal": "",
@@ -163,7 +163,7 @@
     },
     {
       "title": "OISY Wallet v1.0 - The official Launch",
-      "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
+      "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multichain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
       "is_milestone": true,
       "milestone_id": "Helios",
       "status": "deployed",

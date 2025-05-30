@@ -13,7 +13,7 @@ import { SampleContentType } from "../../Common/sampleItems";
 const languageOptions = ["Motoko", "Rust", "Javascript", "Other"];
 const domainOptions = [
   "Global",
-  "Multi-chain",
+  "Multichain",
   "GameFi",
   "Asynchronous DeFi",
   "Website",

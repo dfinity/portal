@@ -391,7 +391,7 @@
       "Wallet",
       "Chain Fusion"
     ],
-    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+    "description": "OISY Wallet is a new browser-based multichain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg",
     "screenshots": [
@@ -2463,7 +2463,7 @@
       "Ethereum",
       "Chain Fusion"
     ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
+    "description": "The Bitfinity Wallet is a multichain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "screenshots": [
       "/img/showcase/bitfinitywallet_screenshot.webp"
@@ -3490,7 +3490,7 @@
       "Ethereum",
       "Chain Fusion"
     ],
-    "description": "A decentralized, multi-chain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
+    "description": "A decentralized, multichain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/b3pay_logo.png"
   },

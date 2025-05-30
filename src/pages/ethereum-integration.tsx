@@ -152,7 +152,7 @@ function EthereumIntegrationPage() {
   return (
     <Layout
       title="Hello, Ethereum"
-      description="A true World Computer enables a multi-chain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. ICP already integrates with the Bitcoin Network, and native ETH integration is underway."
+      description="A true World Computer enables a multichain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. ICP already integrates with the Bitcoin Network, and native ETH integration is underway."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-ethereum-integration.webp"></ShareMeta>

@@ -258,7 +258,7 @@ const Content: React.FC = () => {
                 Live ckBTC dashboard
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Chain-key bitcoin (ckBTC), a multi-chain bitcoin twin on the
+                Chain-key bitcoin (ckBTC), a multichain bitcoin twin on the
                 Internet Computer, is an 
                 <Link
                   className="link-primary !text-white hover:text-white/60"

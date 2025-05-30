@@ -163,7 +163,7 @@ This audience should be kept in mind when writing docs. For example:
 
 	- Smart contracts on ICP are referred to as canisters.
 	- Accounts on ICP are referred to as principals.
-	- Multi-chain applications on ICP use Chain Fusion capabilities.
+	- Multichain applications on ICP use Chain Fusion capabilities.
 
 - When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
 
@@ -298,7 +298,7 @@ Additional, optional (but recommended) tags include:
 
 	- Motoko / Rust / Python / Typescript / Solidity
 
-- Multi-chain integration
+- Multichain integration
 
 	- Bitcoin / Ethereum
 
