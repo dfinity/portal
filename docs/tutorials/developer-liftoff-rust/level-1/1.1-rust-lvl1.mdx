@@ -1,0 +1,94 @@
+---
+keywords: [beginner, tutorial, developer liftoff, motoko, fundamentals, basics, motoko basics, motoko fundamentals]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 1.1 Rust level 1
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+Rust is a powerful programming language known for its rich type system, memory efficiency, and safety guarantees. Much of the Internet Computer (ICP) stack is written in Rust because it is fast and ensures both memory safety and thread safety without a garbage collector.
+
+Rust is especially well-suited for developing canisters on the ICP because:
+
+- It compiles to WebAssembly.
+
+- Implements strict compile-time checks help prevent common bugs.
+
+- Performs close to that of other low-level languages like C/C++.
+
+- Has a strong tooling ecosystem.
+
+## The `ic-cdk`
+
+The `ic-cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module and deployed on ICP. Each canister contains entrypoints; entrypoints that are exposed by the canister can be called by other canisters or users.
+
+To use the `ic-cdk`, first include it in a project's `Cargo.toml` file:
+
+```toml
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ic-cdk = "0.15"
+candid = "0.10" # required if you want to define Candid data types
+```
+
+Then, in a Rust source code file, typically `<project_name>/<canister_name>/src/lib.rs`, define your canister's code such as the following example that registers a `query` entrypoint named `hello`:
+
+```rust
+#[ic_cdk::query]
+fn hello() -> String {
+    "world".to_string()
+}
+```
+## Canister entrypoints
+
+Canister entrypoints are the public methods that a canister exposes for other canisters or users to interact with. There are three primary types of Rust canister entrypoints:
+
+- `init`: The initialization method of the canister.
+
+- `query`: A method that returns query data (read-only) from the canister.
+
+- `update`: A method that makes changes to the canister's state.
+
+### init
+
+If a canister's `init` entrypoint is defined (`canister_init`) it will be the first function that the network calls when a canister is installed. If `canister_init` finishes successfully, the network considers the canister fully set up. But if it traps, the installation is canceled and the canister is rolled back to its previous state.
+
+A canister's `canister_init` entrypoint should match the initialization parameters in the Candid interface. It must have no return value. Each canister can only have one `canister_init` entry point.
+
+```rust
+#[init]
+fn init_function() {
+    // ...
+}
+```
+
+Refer to the [`canister_init` specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-init) for more information.
+
+### query
+
+### update
+
+## Candid interface files
+
+This library re-exports macros defined in ic-cdk-macros crate.
+
+The macros fall into two categories:
+
+To register functions as canister entry points
+To export Candid definitions
+
+
+## How Rust is compiled into Wasm
+
+## Rust Wasm limitations
+
+
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
