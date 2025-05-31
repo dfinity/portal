@@ -1545,6 +1545,14 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
     ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
+    ic0.env_var_count() -> I;                                                             // *
+
+    ic0.env_var_name_size(index: I) -> I;                                                 // *
+    ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ();                    // *
+
+    ic0.env_var_value_size(src: i, size: I) -> I;                                         // *
+    ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ();            // *
+
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
 ```
@@ -2148,6 +2156,35 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     - `1`: Invalid curve or algorithm. Memory at `dst` is left unchanged.
     - `2`: Invalid key name for the given combination of signing scheme and (valid) curve/algorithm. Memory at `dst` is left unchanged.
 
+### Environment Variables
+
+The following system calls provide access to the canister's environment variables:
+
+-   `ic0.env_var_count() -> I`; `I ∈ {i32, i64}`
+
+  Returns the number of environment variables set for this canister.
+
+-   `ic0.env_var_name_size(index: I) -> I`; `I ∈ {i32, i64}`
+
+  Gets the size in bytes of the name of the environment variable at the given index.
+  
+-   `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
+
+  Copies the name of the environment variable at the given index into memory.
+
+-   `ic0.env_var_value_size(src: i, size: I) -> I`; `I ∈ {i32, i64}`
+
+  Gets the size in bytes of the value for the environment variable with the given name.
+
+-   `ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ()`; `I ∈ {i32, i64}`
+
+  Copies the value of the environment variable with the given name into memory.
+
+These system calls allow canisters to:
+- Enumerate all environment variables
+- Access variable names by index
+- Look up values by name
+
 ### Debugging aids
 
 In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
@@ -2278,6 +2315,14 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: 0 (i.e., the "on low wasm memory" hook is never scheduled).
 
+-   `environment_variables` (`environment_variables`)
+
+    A record containing a vector of key-value pairs where both key and value are text strings. These variables are accessible to the canister during execution and can be used to configure canister behavior without code changes. Each key must be unique.
+
+    The maximum number of environment variables is implementation-defined. The maximum length of keys and values is implementation-defined.
+
+    Default value: `null` (i.e., no expplicit environment variables provided).
+
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
@@ -2400,6 +2445,8 @@ Indicates various information about the canister. It contains:
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
     -   The "low wasm memory" threshold, which is used to determine when the [canister_on_low_wasm_memory](#on-low-wasm-memory) function is executed.
+    
+    -   The environment variables of the canister, which is a record containing key-value pairs used to configure the canister's behavior.
 
 -   A SHA256 hash of the module installed on the canister. This is `null` if the canister is empty.
 
@@ -2451,7 +2498,7 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID and timestamp at which the snapshot was taken. Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers or environment variable change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID and timestamp at which the snapshot was taken. Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -4738,6 +4785,10 @@ if A.settings.wasm_memory_threshold is not null:
   New_wasm_memory_threshold = A.settings.wasm_memory_threshold
 else:
   New_wasm_memory_threshold = 0
+if A.settings.environment_variables is not null:
+  New_environment_variables = A.settings.environment_variables
+else:
+  New_environment_variables = S.environment_variables[A.canister_id]
 
 Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation, null, EmptyCanister.wasm_state)
 New_balance = M.transferred_cycles - Cycles_reserved
@@ -4784,6 +4835,7 @@ S' = S with
     reserved_balance_limits[Canister_id] = New_reserved_balance_limit
     wasm_memory_limit[Canister_id] = New_wasm_memory_limit
     wasm_memory_threshold[Canister_id] = New_wasm_memory_threshold
+    environment_variables[Canister_id] = New_environment_variables
     on_low_wasm_memory_hook_status[Canister_id] = ConditionNotSatisfied
     certified_data[Canister_id] = ""
     query_stats[Canister_id] = []
@@ -4872,6 +4924,10 @@ if A.settings.wasm_memory_threshold is not null:
   New_wasm_memory_threshold = A.settings.wasm_memory_threshold
 else:
   New_wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id]
+if A.settings.environment_variables is not null:
+  New_environment_variables = A.settings.environment_variables
+else:
+  New_environment_variables = S.environment_variables[A.canister_id]
 
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, New_compute_allocation, New_memory_allocation, S.snapshots[A.canister_id], S.canisters[A.canister_id].wasm_state)
 New_balance = S.balances[A.canister_id] - Cycles_reserved
@@ -4884,17 +4940,39 @@ S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
 }
-if A.settings.controllers is not null:
-  New_canister_history = {
-    total_num_changes = N + 1;
-    recent_changes = H · {
-        timestamp_nanos = S.time[A.canister_id];
-        canister_version = S.canister_version[A.canister_id] + 1;
-        origin = change_origin(M.caller, A.sender_canister_version, M.origin);
-        details = ControllersChange {
-          controllers = A.settings.controllers;
-        };
+
+New_recent_changes = H · 
+  // Add controllers change if present
+  (if A.settings.controllers is not null then
+    [{
+      timestamp_nanos = S.time[A.canister_id];
+      canister_version = S.canister_version[A.canister_id] + 1;
+      origin = change_origin(M.caller, A.sender_canister_version, M.origin);
+      details = ControllersChange {
+        controllers = A.settings.controllers;
       };
+    }]
+  else
+    []) ·
+  // Add environment variables change if present
+  (if A.settings.environment_variables is not null then
+    [{
+      timestamp_nanos = S.time[A.canister_id];
+      canister_version = S.canister_version[A.canister_id] + 1;
+      origin = change_origin(M.caller, A.sender_canister_version, M.origin);
+      details = EnvironmentVariablesChange {
+        hash = SHA-256(A.settings.environment_variables);
+      };
+    }]
+  else
+    [])
+
+if A.settings.controllers is not null or A.settings.environment_variables is not null:
+  New_canister_history = {
+    total_num_changes = N + 
+      (if A.settings.controllers is not null then 1 else 0) +
+      (if A.settings.environment_variables is not null then 1 else 0);
+    recent_changes = New_recent_changes
   }
 else:
   New_canister_history = S.canister_history[A.canister_id]
@@ -4970,6 +5048,7 @@ S with
             reserved_cycles_limit = S.reserved_balance_limit[A.canister_id];
             wasm_memory_limit = S.wasm_memory_limit[A.canister_id];
             wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id];
+            environment_variables = S.environment_variables[A.canister_id];
           }
           module_hash =
             if S.canisters[A.canister_id] = EmptyCanister
