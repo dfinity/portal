@@ -14,25 +14,23 @@ The API provides two methods:
 
 Both methods share the following input parameters:
 
-- `input` (`blob`): Arbitrary data used to derive keys. This acts as a key identifier &mdash; different inputs will result in different derived keys. Note that input does not need to be random.
-
 - `context` (`blob`): Serves as a domain separator to ensure that keys are derived within a specific context, preventing collisions between different applications or use cases.
 
 - `key_id` (`record { curve : vetkd_curve; name : text }`): Identifies the master key from which the derived key is created.
 
-Each method also includes a method-specific parameter:
+Each method also includes method-specific parameters:
 
 - `vetkd_public_key`
   - `canister_id` (`opt canister_id`): Optional. If provided, the method returns the public key associated with the specified `canister_id`. If omitted (`null`), the public key for the calling canister is returned.
 
 - `vetkd_derive_key`
+  - `input` (`blob`): Arbitrary data used to derive keys. This acts as a key identifier &mdash; different inputs will result in different derived keys. Note that input does not need to be random.
   - `transport_public_key` (`blob`): The recipient’s public key. This is used to encrypt the derived key for secure transport.
 
 Below is a summary of the vetKD API methods and their parameters.
 
 ```candid
   vetkd_public_key : (record {
-    input : blob;
     context : blob;
     canister_id : opt canister_id;
     key_id : record { curve : vetkd_curve; name : text };
