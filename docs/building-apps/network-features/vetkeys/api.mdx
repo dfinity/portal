@@ -134,12 +134,13 @@ In this step, the frontend generates a transport private key and passes the corr
 <TabItem value="ts" label="Typescript" default>
 
 ```ts
-import { DerivedPublicKey, TransportSecretKey } from "@dfinity/vetkeys";
+import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/vetkeys";
 
 const transportSecretKey = TransportSecretKey.random();
 const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
+// the canisterClient uses the caller's principal as `input` when calling the managent canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes());
-const encryptedVetKey = EncryptedVetKey.deserialize(encryptedVetKeyBytes);
+const encryptedVetKey = EncryptedVetKey(encryptedVetKeyBytes);
 ```
 
 </TabItem>
@@ -155,7 +156,7 @@ Once retrieved, you must decrypt and verify the received encrypted vetKey.
 ```ts
 const publicKeyBytes = await canisterClient.vetkd_public_key();
 const publicKey = DerivedPublicKey.deserialize(publicKeyBytes);
-const myPrincipalBytes = // serialize caller's principal as `Uint8Array`
+const myPrincipalBytes = // serialize caller's principal as `Uint8Array`, as this is what the canisterClient used as `input` when calling the managent canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, myPrincipalBytes);
 ```
 
