@@ -5524,6 +5524,19 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/FactFund_Logo1748194060.jpg",
     "oneLiner": "Decentralized, transparent crowdfunding on the Internet Computer"
+  },
+  {
+    "id": "ghostmessages",
+    "name": "Ghost Messages",
+    "display": "Normal",
+    "website": "https://ghostmessages.ink/",
+    "github": "https://github.com/internetcomputerpol/GhostMessages",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Disappearing, encrypted messages read once using an ID and password, then gone forever. Share the ID and password to let someone view it a single time.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ghostmessages_logo.svg",
+    "oneLiner": "Messages that disappear like ghosts after being read"
   }
-
 ]
