@@ -9,14 +9,14 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Update calls
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 To interact with a <GlossaryTooltip>canister</GlossaryTooltip>'s methods, there are two primary types of calls that can be used: update calls and query calls.
 
-**Update calls** can make modifications to a canister's state, while **query calls** cannot. Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through consensus. This makes them slower than query calls. They can be synchronous or asynchronous. 
+**Update calls** can make modifications to a canister's state, while **query calls** cannot. Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus). This makes them slower than query calls. They can be synchronous or asynchronous.
 
 :::danger
-Update calls do not go through consensus on the local replica.
+Update calls do not go through consensus on the local development environment.
 :::
 
 A query method can be called as both an update or a query, whereas update methods can only be called as an update.
@@ -26,7 +26,7 @@ A query method can be called as both an update or a query, whereas update method
 | Slow (1-2s) | Fast (200-400ms) |
 | Can modify state | Can't modify state |
 | Goes through consensus | Does not go through consensus |
-| Executed on all nodes of a subnet | Executed on a single node |
+| Executed on all nodes of a [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) | Executed on a single node |
 | Cost cycles | Free |
 
 See the reference on [ingress messages](/docs/building-apps/interact-with-canisters/advanced-calls) for a more technical discussion of this topic.
@@ -35,7 +35,7 @@ See the reference on [ingress messages](/docs/building-apps/interact-with-canist
 
 To make an update call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--update` flag:
 
-- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
 - `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 
@@ -64,7 +64,7 @@ To make an update call to a canister, use the [`dfx canister call`](/docs/buildi
 
 A number of errors could occur in the above flow. The following are examples of errors, indicated using the numbers in the diagram:
 1. Due to misconfiguration, the agent might fail to successfully sign the update call and not even send it.
-2. The call to the boundary node may fail because, for example, the agent or the boundary node is offline and the call times out.
+2. The call to the [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) may fail because, for example, the agent or the boundary node is offline and the call times out.
 3. Calls (`call` or `read_state`) to the IC node may fail due to possible reasons such as:
    1. The node is offline.
    2. An execution pre-processing error (status `200` in case of the async call) occurs.

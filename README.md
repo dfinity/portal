@@ -3,7 +3,7 @@
 # ICP developer portal
 
 The ICP developer portal brings together all the resources needed for developers to build on the
-Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [ecosystem project showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
+Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), and [community tooling page](https://internetcomputer.org/tooling).
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
@@ -74,7 +74,7 @@ docs
 │   │   ├── query-calls
 │   │   ├── update-calls
 │   ├── network-features
-│   │   ├── encryption
+│   │   ├── vetkeys
 │   │   ├── signatures
 │   │   ├── using-http
 │   │   ├── verifiable-credentials
@@ -163,7 +163,7 @@ This audience should be kept in mind when writing docs. For example:
 
 	- Smart contracts on ICP are referred to as canisters.
 	- Accounts on ICP are referred to as principals.
-	- Multi-chain applications on ICP use Chain Fusion capabilities.
+	- Multichain applications on ICP use Chain Fusion capabilities.
 
 - When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
 
@@ -188,7 +188,7 @@ Link to resources that go into further detail and provide a brief summary of the
 
 - The [reference technology overview](/docs/references/bitcoin-how-it-works) pages
 
-- The [how it works](https://internetcomputer.org/how-it-works) section of the website
+- The [how it works](https://learn.internetcomputer.org/) section of the website
 
 Try to answer the following questions within the document:
 
@@ -298,7 +298,7 @@ Additional, optional (but recommended) tags include:
 
 	- Motoko / Rust / Python / Typescript / Solidity
 
-- Multi-chain integration
+- Multichain integration
 
 	- Bitcoin / Ethereum
 
@@ -406,10 +406,27 @@ The following submodules and their corresponding repos are currently used:
 
 ### Updating submodules
 
-To update all submodules, run the command:
+The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job. 
+
+These versions can be updated to the newest release via commands:
 
 ```
-git submodule update --remote
+cd submodules/motoko
+git checkout 0.14.1
+```
+
+and
+
+```
+cd submodules/sdk
+git checkout 0.25.1
+```
+
+For other submodules without release versions, checkout the latest commit hash when updates are requested. 
+
+```
+cd submodules/dfxvm
+git checkout 69adb0cc8edd532dcdcb465cfcc2166692a51448
 ```
 
 ### Reverting submodule changes
@@ -502,39 +519,6 @@ roadmap
 - To mark an item as a community request, set `is_community: true` in the item's metadata.
 
 Each domain folder contains an `index.md` file which adds metadata, like a title, a description, and cover images.
-
-### Changing the 'how it works' content
-
-The 'How it works' page cards and subpages are stored as markdown files inside
-the [how-it-works](https://github.com/dfinity/portal/tree/master/how-it-works) directory.
-
-```
-how-it-works
-├── 1_about
-│   ├── 01-overview-of-the-internet-computer.card.md
-│   ├── 01-overview-of-the-internet-computer.subpage.md
-│   ├── canister-lifecycle.card.md
-│   ├── canister-lifecycle.subpage.md
-│   └── index.md
-├── 2_featured
-│   ├── direct-integration-with-bitcoin.card.md
-│   ├── direct-integration-with-bitcoin.subpage.md
-│   ├── index.md
-│   ├── sns.card.md
-│   ├── threshold-ecdsa-signing.card.md
-│   ├── threshold-ecdsa-signing.subpage.md
-```
-
-The directory contains markdown files ending in `.card.md` and `.subpage.md`.
-
-The `.card.md` files will show up as part of the `/how-it-works page`, under the section they are grouped in (eg.
-Featured).
-
-The `.subpage.md` files will each generate a subpage under `/how-it-works/`, based on the files' metadata and content:
-
-- The `slug` parameter will determine the final URL, eg. the slug `canister-lifecycle` will generate the
-  page `/how-it-works/canister-lifecycle`.
-- The `title`, `abstract` (optional), and `coverImage` will determine how the page looks when shared on social media
 
 ## Adding documentation for community-created agents and CDKs
 

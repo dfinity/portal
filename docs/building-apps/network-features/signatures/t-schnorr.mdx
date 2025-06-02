@@ -48,7 +48,7 @@ The `sign_with_schnorr` endpoint takes a full message to sign as input rather th
 
 ## Signing messages
 
-Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
@@ -56,7 +56,7 @@ The `sign_with_schnorr` method requires cycles to be attached. [Learn more about
 
 To deploy code using the `sign_with_schnorr` method, you will need to specify the correct `key_ID` for the environment in the canister's source code. The following key IDs are supported:
 
-- `dfx_test_key`: Only available on the local replica started by `dfx`.
+- `dfx_test_key`: Only available on the local development environment started by `dfx`.
 - `test_key_1`: Test key available on the ICP mainnet.
 - `key_1`: Production key available on the ICP mainnet.
 

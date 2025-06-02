@@ -149,13 +149,13 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/references/t-sigs-how-it-works//"
+                  to="/docs/references/t-sigs-how-it-works/"
                 >
                   threshold-ECDSA signatures
                 </Link>
                 , enabling canister smart contracts to sign BTC transactions.
                 Leveraging network integration, these BTC transactions are
-                directly inscribed on the Bitcoin blockchain - no need for any
+                directly written to the Bitcoin blockchain - no need for any
                 cross-chain bridges. Chain-key signatures also derive BTC
                 addresses, enabling ICP smart contracts to read, write and own
                 BTC.
@@ -169,7 +169,7 @@ const Content: React.FC = () => {
                 ICP advanced capabilities
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Developers can harness the security of bitcoin as a native asset
+                Developers can harness the security of Bitcoin
                 while also leveraging the unique core features of the
                 <Link
                   className="link-primary !text-white hover:text-white/60"
@@ -258,8 +258,8 @@ const Content: React.FC = () => {
                 Live ckBTC dashboard
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Chain-key bitcoin (ckBTC), a multi-chain bitcoin twin on the
-                Internet Computer, is an
+                Chain-key bitcoin (ckBTC), a multichain bitcoin twin on the
+                Internet Computer, is an 
                 <Link
                   className="link-primary !text-white hover:text-white/60"
                   to="/docs/building-apps/network-features/using-http/https-outcalls/overview"

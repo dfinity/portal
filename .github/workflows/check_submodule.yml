@@ -1,0 +1,44 @@
+name: Validate Submodule Commits
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  submodule-commit-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Validate Submodule Commits
+        run: |
+          # Submodules are very easy to accidentally overwrite with old versions.
+          # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
+          
+          # dfx 0.26.1
+          LATEST_SDK="f3329759f1c98692f83dbb74651676b02b54a69e"
+
+          # motoko 0.14.5
+          LATEST_MOTOKO="51fa74671829c59912c37500773cfaba950b0a1b" 
+
+          # Get current submodule commits
+          SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
+          MOTOKO_HASH=$(git submodule status submodules/motoko | awk '{print $1}')
+
+          # Validate SDK commit
+          if [[ "$SDK_HASH" != "$LATEST_SDK"* ]]; then
+            echo "Error: SDK submodule is not on the latest release commit"
+            exit 1
+          fi
+
+          # Validate Motoko commit
+          if [[ "$MOTOKO_HASH" != "$LATEST_MOTOKO"* ]]; then
+            echo "Error: Motoko submodule is not on the latest release commit"
+            exit 1
+          fi
+
+          echo "All submodules are on their latest release commits"

@@ -29,7 +29,7 @@ There will be a detailed Project Spotlight post in the coming weeks here on the 
 
 ## React Native for ICP apps
 
-React Native support is coming to ICP via the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)! In the current [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) architecture, Webassembly modules are used to verify BLS signatures. The latest version of the `@noble/curves` package provides an alternative solution. Support for the npm package `@noble/curves` will be included in an upcoming [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) release, allowing for React Native apps to be built!
+React Native support is coming to ICP via the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)! In the current [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) architecture, Webassembly modules are used to verify [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures). The latest version of the `@noble/curves` package provides an alternative solution. Support for the npm package `@noble/curves` will be included in an upcoming [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) release, allowing for React Native apps to be built!
 
 Want to take a sneak peek? Check out [this tutorial](https://kyle-peacock.com/blog/dfinity/ic-expo/) that creates a React Native app on IC that manually installs and configures the `@noble/curves` package. In the future, this dependency can be managed by npm instead.
 

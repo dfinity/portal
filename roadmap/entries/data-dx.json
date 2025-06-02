@@ -78,7 +78,7 @@
     {
       "title": "Amazing first time developer experience with ICP Ninja",
       "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Atlas",
       "eta_to_render": ""
@@ -86,19 +86,19 @@
     {
       "title": "Open Caffeine projects",
       "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
       "title": "Generate a project with AI",
       "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
       "title": "More sample projects to get you started",
       "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
@@ -254,9 +254,9 @@
       "in_beta": false
     },
     {
-      "title": "REST- & JSON-centric interfaces",
-      "overview": "REST and JSON-centric philosophy of interacting with ICP. Makes it easier for Web2 devs to onboard the ICP ecosystem.",
-      "status": "",
+      "title": "PoC enabling REST & JSON-centric interfaces",
+      "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
+      "status": "in_progress",
       "forum": "",
       "proposal": "",
       "docs": "",

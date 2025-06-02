@@ -9,29 +9,23 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Query calls
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-ICP supports two types of calls: updates and queries. Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response.
+After deployment, a canister accepts and processes messages (calls) from users and other canisters. Only the public endpoints of the canister can be called.
 
-A query call discards state changes and typically executes on a single node. An update call is executed on all nodes and persists canister state changes. Since they execute on a single node, they do not go through consensus and can be much faster than [update](/docs/building-apps/interact-with-canisters/update-calls) calls.
+<div class="text--center">
+<img src="/img/docs/call-canister.png" alt="Call canister" width="600"/>
+</div>
 
-It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a replicated query.
+Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response. They do not go through consensus. Query calls are fast (200-400ms) and return a synchronous response. They are currently free and do not cost cycles.
 
-Query calls are:
-
-- Fast (200-400ms).
-- Can't modify state.
-- Do not go through consensus.
-- Return a synchronous response.
-- Executed on a single node.
-- Currently free.
-
+It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a **replicated query**.
 
 ## Making query calls with `dfx`
 
 To make a query call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--query` flag:
 
-- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
 - `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
 
@@ -39,7 +33,7 @@ To make a query call to a canister, use the [`dfx canister call`](/docs/building
 
 The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a [certified query](#certified-queries) should be used for security-critical calls.
 
-### Making query calls from within canisters
+## Making query calls from within canisters
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -67,7 +61,7 @@ The downside of query calls is that the response is not trusted since it's comin
 
 ## Query stats
 
-The **query stats** feature gives developers information about the use of each canister's query calls. An approximation of some statistics related to query stats is made available to developers as part of the existing canister status API.
+An approximation of some statistics related to query calls is made available to developers through the canister's status, which can be viewed using the `dfx canister status` command. 
 
 The statistics collected in the canister status are an approximation. They might not capture all query calls, especially for infrequently used canisters.
 Query stats are collected in intervals by the system and therefore may lag behind the actual query execution by up to 30 mins.
@@ -76,14 +70,14 @@ Statistics of composite queries are not currently collected.
 
 ### Canister status entries
 
-The feature exposes the following fields to the canister status endpoint:
+The feature exposes the following fields:
 
 - A counter for the total number of query calls executed by that canister.
 - The sum of all instructions executed by the canister for query calls.
-- The sum of the payload sizes of all query requests to the canister.
-- The sum of the payload sizes of all query responses from the canister.
+- The sum of all query request payload sizes.
+- The sum of all query response payload sizes.
 
-Each value represents the total count since the canister has been created.
+Each value represents the total count since the canister was created.
 Rates for these values can be calculated from multiple calls to the canister status and observing the difference between the values in different calls.
 All values are monotonically increasing.
 
@@ -107,9 +101,6 @@ Total query request paylod size (bytes): 0
 Total query response payload size (bytes): 0
 ```
 
-Query stats are available via `dfx` since version `0.16.1`.
-
-
 ### Using query stats programmatically
 
 It's also possible to programmatically retrieve query stats from within the canister via the canister status method. The following is an example of how to do this in Rust:
@@ -126,22 +117,23 @@ Query stats are supported in the `ic-cdk` since version `0.12.1`.
 
 ## Composite queries
 
-An update can call other updates and queries. However, a query cannot make any calls, which can hinder the development of scalable decentralized applications, especially those that shard data across multiple canisters.
+An update call can make calls to update and query methods. However, a query call cannot make calls to other methods, which can hinder the development of scalable decentralized applications.
 
-Composite queries solve this problem. You can add composite queries to your canister using the following annotations:
-
-- Candid: `composite_query`
-- Motoko: `composite query`
-- Rust: `#[query(composite = true)]`
-
-Users and the client-side JavaScript code can invoke a composite query endpoint of a canister using the same query URL for existing regular queries. In contrast to regular queries, a composite query can call other composite and regular queries. Due to limitations of the current implementation, composite queries have two restrictions:
+Composite queries solve this problem. In contrast to regular queries, a composite query can call other composite and regular queries. 
 
 | Query | Update | Composite query |
 |--------|--------|----------------|
 | Cannot call other queries or composite queries| Can call other updates and queries ; Cannot call composite queries| Can call other queries and composite queries |
 | Can be called as an update | Cannot be called as a query | Cannot be called as an update |
-| Can call canisters on another subnet | Can call canisters on another subnet | Cannot call canisters on another subnet |
+| Can call canisters on another [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) | Can call canisters on another subnet | Cannot call canisters on another subnet |
 
+You can add composite queries to your canister using the following annotations:
+
+- Candid: `composite_query`
+- Motoko: `composite query`
+- Rust: `#[query(composite = true)]`
+
+Users and client-side JavaScript code can invoke a composite query endpoint of a canister using the same query URL for existing regular queries. 
 
 Composite queries were enabled in the following releases:
 

@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, Chain Fusion, overview, what is chain fusion, chain, fusion, ethereum, bitcoin, multi-chain]
+keywords: [advanced, Chain Fusion, overview, what is chain fusion, chain, fusion, ethereum, bitcoin, multichain]
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -32,9 +32,9 @@ The following examples illustrate the variety of use cases enabled by Chain Fusi
 
 - **A decentralized borrowing protocol**: A DeFi protocol issuing a stablecoin backed by the world-class asset Bitcoin as collateral.
 
-- **Multi-chain asset DEX**: A decentralized exchange providing a uniform user experience, facilitating effortless and efficient trading of assets from different blockchains.
+- **Multichain asset DEX**: A decentralized exchange providing a uniform user experience, facilitating effortless and efficient trading of assets from different blockchains.
 
-- **In-browser multi-chain wallet**: Similar to a DEX, a single browser-based wallet that manages assets from different and unrelated blockchains.
+- **In-browser multichain wallet**: Similar to a DEX, a single browser-based wallet that manages assets from different and unrelated blockchains.
 
 - **Onchain frontend**: Hosting an immutable or DAO-managed frontend for a smart contract on another blockchain.
 
@@ -80,9 +80,9 @@ A canister’s interaction with external blockchains requires submitting transac
 
 A key question we must answer to fully understand the security of ICP's Chain Fusion capabilities is: whom do users place trust in when using the presented infrastructure?
 
-ICP’s decentralization is rooted in the replicated execution and state of canisters which depends on the honesty of a supermajority of subnet [nodes](/docs/building-apps/essentials/network-overview#nodes). These nodes are sourced from various identifiable and DAO-approved providers that operate in globally distributed data centers.
+ICP’s decentralization is rooted in the replicated execution and state of canisters which depends on the honesty of a supermajority of [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) [nodes](/docs/building-apps/essentials/network-overview#nodes). These nodes are sourced from various identifiable and DAO-approved providers that operate in globally distributed data centers.
 
-In the case of direct chain integration, the only trust assumption needed is that a supermajority of subnet nodes are honest and in consensus. In case of integration via RPC, users additionally need to trust RPC node providers. While this is seen as less secure than a direct integration that involves running a full node, it's currently deemed an acceptable trade-off (due to a reliance on replicated results from multiple independent providers).
+In the case of direct chain integration, the only trust assumption needed is that a supermajority of subnet nodes are honest and in [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus). In case of integration via RPC, users additionally need to trust RPC node providers. While this is seen as less secure than a direct integration that involves running a full node, it's currently deemed an acceptable trade-off (due to a reliance on replicated results from multiple independent providers).
 
 ## How to build applications using Chain Fusion
 

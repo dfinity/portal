@@ -1,5 +1,21 @@
 ## Changelog {#changelog}
 
+### 0.40.0 (2025-05-30) {#0_40_0}
+* Non-ASCII characters are allowed in the URL of canister http outcalls.
+* The transformed response size of canister http outcalls must not exceeded `max_response_bytes` (if provided).
+
+### 0.39.0 (2025-05-07) {#0_39_0}
+* Threshold Schnorr API, composite query methods, and canister logs management canister API are considered stable.
+
+### 0.38.0 (2025-04-18) {#0_38_0}
+* Reverted a lower bound of one week on the canister's freezing threshold.
+
+### 0.37.0 (2025-04-11) {#0_37_0}
+* Introduced a lower bound of one week on the canister's freezing threshold.
+
+### 0.36.0 (2025-03-31) {#0_36_0}
+* Bounded-wait calls.
+
 ### 0.35.0 (2025-03-20) {#0_35_0}
 * New system API `ic0.canister_liquid_cycle_balance128` returning the current amount of cycles that is available for spending in calls and execution.
 * A canister can have multiple snapshots.

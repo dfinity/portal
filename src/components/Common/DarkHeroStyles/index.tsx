@@ -2,7 +2,7 @@ import Head from "@docusaurus/Head";
 import { css } from "@site/src/utils/dummy-css";
 import React from "react";
 
-export default ({ bgColor = "var(--ifm-color-primary)" }) => {
+const DarkHeroStyles = ({ bgColor = "var(--ifm-color-primary)" }) => {
   return (
     <>
       <Head>
@@ -11,6 +11,7 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
       <style
         dangerouslySetInnerHTML={{
           __html: css`
+            /* Set the navbar background color */
             nav.marketing-navbar {
               background-color: ${bgColor} !important;
             }
@@ -20,3 +21,5 @@ export default ({ bgColor = "var(--ifm-color-primary)" }) => {
     </>
   );
 };
+
+export default DarkHeroStyles;

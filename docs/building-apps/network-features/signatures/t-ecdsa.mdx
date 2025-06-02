@@ -11,9 +11,9 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 <MarkdownChipRow labels={["Advanced", "Signatures"]} />
 
-The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by nodes. Secret shares are shards of the ECDSA private key. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. More than one third of the nodes are required to generate a threshold signature using their respective key shares.
+The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by nodes. Secret shares are shards of the ECDSA private key. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) holds a key share that provides no information on its own. More than one third of the nodes are required to generate a threshold signature using their respective key shares.
 
-Besides the actual threshold signing protocol, chain-key ECDSA is comprised of protocols for secure, distributed key generation and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for ECDSA keys to be re-shared within the subnet. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
+Besides the actual threshold signing protocol, chain-key ECDSA is comprised of protocols for secure, [distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for ECDSA keys to be re-shared within the subnet. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
 
 Each canister on a subnet has control over a unique ECDSA public key and can request signatures for this public key. Canisters do not have access to their private ECDSA keys. They can only request signatures. This is because the private key is never stored in a single place.
 
@@ -59,7 +59,7 @@ service: {
 The `sign_with_ecdsa` method allows specifying an optional `derivation_path`, which allows a canister to request signatures for different keys controlled by the canister. The `key_id` field specifies the curve and name of the key to sign with.
 Currently only the `secp256k1` curve and the following key names are supported:
 
-- `dfx_test_key`: Only available on the local replica started by dfx.
+- `dfx_test_key`: Only available on the local development environment started by dfx.
 
 - `test_key_1`: Test key available on the ICP mainnet.
 

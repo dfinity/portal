@@ -10,9 +10,25 @@ import TabItem from "@theme/TabItem";
 
 <MarkdownChipRow labels={["Intermediate" , "Ledgers"]} />
 
-ICRC-1 is a [token standard](https://github.com/dfinity/ICRC-1) used to create and deploy fungible tokens on the Internet Computer. Each token deployed on the network has its own dedicated ledger. Thus, deploying a new token that is ICRC-1-compatible is synonymous with deploying an ICRC-1 ledger.
+ICRC-1 is a [token standard](https://github.com/dfinity/ICRC-1) used to create and deploy custom fungible tokens on the Internet Computer. Each token deployed on the network has its own dedicated ledger, thus, deploying a new token is synonymous with deploying a ledger.
 
-The ICRC-1 ledger used in this guide is a reference implementation used to demonstrate how to set up an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself.
+Each ICRC ledger canister holds **blocks**, each containing a single transaction and maintains a traceable history of all transactions for its associated ICRC token starting from its initial state.
+
+These transactions represent either:
+
+- **Minting ICRC tokens**.
+
+- **Transferring ICRC tokens** from one account to another.
+
+- **Burning ICRC tokens** , which eliminates them from existence.
+
+- **Approving ICRC tokens** to be spent by some other `Account`, and/or **transferring ICRC tokens from** a previously approved `Account`. Approve and transfer workflows are supported in ICRC-2 compatible ledgers. [Learn more about token standards](/docs/defi/token-standards).
+
+If you are testing your project in a local development environment, you won't be able to test it using an ICRC ledger that is deployed on the mainnet. You'll need to deploy it locally for testing, then deploy it to the mainnet for production when you have validated that it works as intended.
+
+## Accounts
+
+All ICRC tokens use an `Account` value that corresponds to the pair `(principal, subaccount)`. A principal can have multiple accounts where each subaccount of a principal is identified by a 32-byte string.
 
 ## Deploying the ICRC ledger locally
 
@@ -24,18 +40,25 @@ The ICRC-1 ledger used in this guide is a reference implementation used to demon
 </TabItem>
 </Tabs>
 
-- #### Step 1: Create a new `dfx` project or open an existing project.
+:::caution
 
-- #### Step 2: Obtain the latest ledger Wasm and Candid files.
+The ICRC-1 ledger used in this guide is a reference implementation used to demonstrate how to set up an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself.
+
+:::
+
+### Step 1: Open a project.
+
+Create a [new `dfx` project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+
+### Step 2: Obtain the latest ledger Wasm and Candid files.
 
 Search for [ledger-suite-icrc releases](https://github.com/dfinity/ic/releases?q="ledger-suite-icrc"&expanded=false) and select the latest ICRC ledger suite release.
 
 The URL for the ledger Wasm module is `https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz`.
 
-The URL for the ledger Candid file is `https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did`.
+The URL for the ledger Candid file is `https://github.com/dfinity/ic/releases/download/<RELEASE-HASH>/ledger.did`.
 
-#### Optional
-If you want to make sure you have the latest ICRC-1 ledger files, you can run the following script that downloads the files into your local directory:
+The Wasm and Candid files can be referenced in your project via their public URLs shown above or they can be referenced via local files. If you want to download the Wasm and Candid files, use the following script. Please ensure that you have [`jq`](https://jqlang.github.io/jq/) installed, as the script relies on it.
 
 ``` sh
 curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/69988ae40e4cc0db7ef758da7dd5c0606075e926/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
@@ -43,9 +66,18 @@ chmod +x download_latest_icrc1_ledger.sh
 ./download_latest_icrc1_ledger.sh
 ```
 
-- #### Step 4: Configure the `dfx.json` file.
+### Step 3: Configure the `dfx.json` file.
 
-Open the `dfx.json` file in your project's directory. Replace the existing content with the following and make sure you replace `<RELEASE>` in the `candid` and `wasm` URLs as shown in the previous step:
+Open the `dfx.json` file in your project's directory. Replace or edit the existing content with the following.
+
+:::info
+In an existing project you only need to add the `icrc1_ledger_canister` canister to the `canisters` section instead of replacing the entire content of `dfx.json`.
+:::
+
+<Tabs>
+<TabItem value="URLs" label="Using file URLs" default>
+
+Replace `<RELEASE>` with the latest replica release hash obtained from the dashboard.
 
 ``` json
 {
@@ -67,18 +99,130 @@ Open the `dfx.json` file in your project's directory. Replace the existing conte
 }
 ```
 
-If you chose to download the ICRC-1 ledger files with the script, you need to replace the Candid and Wasm file entries with the path to the files:
+</TabItem>
+<TabItem value="paths" label="Using file paths" default>
 
 ``` json
-...
-"candid": "icrc1_ledger.did",
-"wasm" : "icrc1_ledger.wasm.gz"
-  ...
+{
+  "canisters": {
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "icrc1_ledger.did",
+      "wasm" : "icrc1_ledger.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
 ```
 
+</TabItem>
+</Tabs>
+
+### Step 4: Determine token settings.
+
 :::info
-In an existing project you would only need to add the `icrc1_ledger_canister` canister to the `canisters` section instead of replacing the entire content of `dfx.json`.
+The initialization arguments of the ICRC-1 ledger are not specified in the [standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). Thus, the arguments defined in this section are dependent on the reference implementation of the ICRC-1 ledger. If you build your own ICRC-1 ledger, you may use different initialization arguments.
 :::
+
+To create a token, you will need to record several values. The full list can be found below:
+
+- `PRE_MINTED_TOKENS`: Amount of tokens that are minted during deployment for a specific account. In this tutorial, it will be the `default` account.
+
+- `TRANSFER_FEE`: Fee that users of the ledger will have to pay anytime they want to make a transfer.
+
+- `TOKEN_NAME`: The name of your token.
+
+- `TOKEN_SYMBOL`: The ticker symbol of your new token.
+
+- `MINTER`: The account of the principal responsible for minting and burning tokens (see the [ICRC-1 specification](https://github.com/dfinity/ICRC-1)). Transfers from the minting account will generate `Mint` transactions, resulting in the creation of new tokens. To mint tokens, the minting account must call the `icrc1_transfer` function, specifying the recipient in the 'to' value. Transfers sent to the minting account will generate `Burn` transactions, destroying tokens. An `icrc1_transfer` call from any principal with the 'to' value set as the minting account will burn tokens.
+
+- `FEATURE_FLAGS`: A flag for enabling or disabling certain extension standards to the ICRC-1 standard. In this case, the reference implementation can also support ICRC-2 transactions. If you only want to support the ICRC-1 standard, then you can set the flag to `false`. If you want to also support the ICRC-2 standard, set it to `true`.
+
+### Step 5: Set archive options.
+
+The following options configure the archiving settings of the ledger. In case optional fields are not specified, [the default values defined in `ArchiveOptions::new`](https://github.com/dfinity/ic/blob/396b461cd018448b075c82afac1b3a45b9a3dc1a/rs/ledger_suite/common/ledger_canister_core/src/archive.rs#L160-L176) are used.
+
+For production deployments, it is recommended to set the values [similarly to what is done for SNS ledgers](https://github.com/dfinity/ic/blob/98fa250f488163fc5d94079c4acd81ba55761bd6/rs/sns/init/src/lib.rs#L600-L613).
+
+- `CONTROLLER_ID`: The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/building-apps/canister-management/control) of the archive canisters.
+
+- `TRIGGER_THRESHOLD`: The number of blocks to archive when the trigger threshold is exceeded.
+
+- `CYCLES_FOR_ARCHIVE_CREATION`: The number of cycles that will be sent to the archive canister when it is created. Note that this needs to cover [the cost for canister creation](/docs/building-apps/essentials/gas-cost), and the installation of the canister. If the value is set too low, archiving is effectively disabled.
+
+- `NUM_BLOCKS_TO_ARCHIVE`: The number of blocks that will be archived. If this is set to zero, archiving is effectively disabled.
+
+### Step 6: Set init arguments.
+
+Replace the existing content in the `dfx.json` with the following, updating the values of `TOKEN_SYMBOL`, `TOKEN_NAME`, `MINTER`, `TRANSFER_FEE`, `DEFAULT_ACCOUNT_ID`, `PRE_MINTED_TOKENS`, `NUM_OF_BLOCKS_TO_ARCHIVE`, `TRIGGER_THRESHOLD`, and `ARCHIVE_CONTROLLER` with the values obtained in the previous steps:
+
+:::info
+`dfx.json` does not support referring to values through environment variables. Values must be hardcoded in plain text.
+:::
+
+```json
+{
+  "canisters": {
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz"
+      "init_arg": "(variant { Init = record { token_symbol = \"TOKEN_SYMBOL\"; token_name = \"TOKEN_NAME\"; minting_account = record { owner = principal \"MINTER\"; }; transfer_fee = \"TRANSFER_FEE\"; metadata = vec {}; feature_flags = opt record { icrc2 = true }; initial_balances = vec { record { record { owner = principal \"DEFAULT_ACCOUNT_ID\"; }, \"PRE_MINTED_TOKENS\" } }; archive_options = record { num_blocks_to_archive = \"NUM_OF_BLOCK_TO_ARCHIVE\"; trigger_threshold = \"TRIGGER_THRESHOLD\"; controller_id = principal \"ARCHIVE_CONTROLLER\"; cycles_for_archive_creation = opt \"10000000000000\"; } } })"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+Alternatively, you can pass these init arguments to the canister through the command line or through a dedicated init arg file. [Learn more about canister init arguments](/docs/building-apps/developer-tools/advanced-dfx/init-args).
+
+### Step 7: Start a local development environment.
+
+``` sh
+dfx start --clean --background
+```
+
+### Step 8: Deploy the ledger canister locally.
+
+:::caution
+
+You cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
+
+:::
+
+```
+dfx deploy
+```
+
+### Step 9: Interact with the canister.
+
+You can interact with the canister by running CLI commands, such as:
+
+```
+dfx canister call ss2fx-dyaaa-aaaar-qacoq-cai icrc1_symbol '()'
+```
+
+Or, you can interact with it using the Candid UI by navigating to the Candid URL returned when the canister was deployed, such as:
+
+```
+http://127.0.0.1:4943/?canisterId=bnz7o-iuaaa-aaaaa-qaaaa-cai&id=ss2fx-dyaaa-aaaar-qacoq-cai
+```
+
+[Learn more about interacting with ICRC ledgers](/docs/defi/token-ledgers/usage/icrc1_ledger_usage).
 
 ## Ledger test suite
 
