@@ -9,7 +9,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-Rust is a powerful programming language known for its rich type system, memory efficiency, and safety guarantees. Much of the Internet Computer (ICP) stack is written in Rust because it is fast and ensures both memory safety and thread safety.
+Rust is a powerful programming language known for its rich type system, memory efficiency, and safety guarantees. Much of the Internet Computer Protocol (ICP) stack is written in Rust because it is fast and ensures both memory safety and thread safety.
 
 Rust is especially well-suited for developing canisters on the ICP because:
 
@@ -21,7 +21,7 @@ Rust is especially well-suited for developing canisters on the ICP because:
 
 ## The `ic_cdk`
 
-The `ic_cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module that can be installed into a canister and deployed on ICP. Each canister's code must define entry points. An entry point can be exposed (or made 'public') so that it can be called by other canisters or users.
+The `ic_cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module that can be installed into a canister and deployed on ICP. Each canister must define entry points. An entry point can be exposed (or made 'public') so that it can be called by other canisters or users.
 
 To use the `ic_cdk`, first include it in a project's `Cargo.toml` file:
 
@@ -30,7 +30,7 @@ To use the `ic_cdk`, first include it in a project's `Cargo.toml` file:
 crate-type = ["cdylib"]
 
 [dependencies]
-ic_cdk = "0.15"
+ic_cdk = "0.17"
 candid = "0.10" # required if you want to define Candid data types
 ```
 
@@ -45,7 +45,7 @@ fn greet(name: String) -> String {
 
 ## Canister entry points
 
-The public entry points of a canister are called methods. They can be called by other canisters or external uses. There are three primary types of Rust canister entry points:
+The public entry points of a canister are called methods. They can be called by other canisters or external users. There are three primary types of Rust canister entry points:
 
 - `init`: The initialization method of the canister.
 
@@ -55,12 +55,12 @@ The public entry points of a canister are called methods. They can be called by 
 
 ### init
 
-If a canister's `init` entry point is defined, it is the first function that the network calls when a canister is installed. If `canister_init` finishes successfully, the network considers the canister fully set up. But if it traps, the installation is canceled and the canister is rolled back to its previous state.
+If a canister's `init` entry point is defined, it is the first function that the network calls when a canister is installed. If the execution of the `init` entrypoint finishes successfully, the network considers the canister fully set up. But if it traps, the installation is canceled and the canister is rolled back to its previous state.
 
-A canister's `canister_init` entry point should match the initialization parameters in the Candid interface. It must have no return value. Each canister can only have one `canister_init` entry point.
+A canister's `init` entry point should match the initialization parameters in the Candid interface. It must have no return value. Each canister can only have one `init` entry point.
 
 ```rust
-#[init]
+#[ic_cdk::init]
 fn init_function() {
     // ...
 }
@@ -73,16 +73,16 @@ Refer to the [`canister_init` specification](https://internetcomputer.org/docs/c
 A `query` endpoint provides a callable method that only returns information. `query` endpoints cannot alter the state of a canister.
 
 ```rust
-#[query]
+#[ic_cdk::query]
 fn query_function() {
     // ...
 }
 ```
 
-You can specify a name of the exported method:
+If you specify a name for the method, the canister will expose the method on the public interface with that name. Otherwise, the name of the function will be used:
 
 ```rust
-#[query(name = "method_name")]
+#[ic_cdk::query(name = "method_name")]
 fn query_function() {
     // ...
 }
@@ -94,7 +94,8 @@ If a `query` endpoint must have a prerequisite executed before it can be called,
 fn guard_function() -> Result<(), String> {
     // ...
 }
-#[query(guard = "guard_function")]
+
+#[ic_cdk::query(guard = "guard_function")]
 fn query_function() {
     // ...
 }
@@ -106,7 +107,7 @@ An `update` entry point provides a callable method that can make changes to the 
 
 
 ```rust
-#[update]
+#[ic_cdk::update]
 fn update_function() {
     // ...
 }
@@ -203,9 +204,9 @@ Then you can omit the `build` and `wasm` fields in favor of the `package` and `t
 
 ## Rust Wasm limitations
 
-Canisters written in Rust have a set of limitations imposed by the Wasm compiler due to the fact that Wasm is purely binary code and does not provide a file system, network access, or other functionalities. These limitations include:
+Canisters written in Rust have a set of limitations imposed by the Wasm compiler due to the fact that the IC does not provide a file system, network access, or other functionalities at the moment. These limitations include:
 
-- You cannot create threads. Instead, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/0.16.0/ic_cdk/fn.spawn.html).
+- You cannot create threads. Instead, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/latest/ic_cdk/fn.spawn.html).
 
 - You cannot sleep. Instead, use [`ic_cdk_timers`](https://docs.rs/ic_cdk-timers/latest/ic_cdk_timers/).
 
