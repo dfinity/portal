@@ -81,20 +81,20 @@ const redirects = `
 
   ## Motoko
   /docs/current/developer-docs/backend/motoko/infrastructure /docs/motoko/home
-  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/fundamentals/actors-async
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/actors-async
   /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/install
   /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/home
   /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/install
   /docs/current/developer-docs/backend/motoko/upgrading /docs/building-apps/canister-management/upgrade
-  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/motoko/fundamentals/messaging
+  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/motoko/messaging
   /docs/current/developer-docs/backend/motoko/optimizing /docs/building-apps/advanced/optimize/motoko
-  /docs/current/developer-docs/backend/motoko/phonebook /docs/motoko/fundamentals/basic-syntax/imports
+  /docs/current/developer-docs/backend/motoko/phonebook /docs/motoko/modules-imports
   /docs/current/developer-docs/backend/motoko/calculator /docs/motoko/fundamentals/basic-syntax/numbers
   /docs/current/developer-docs/backend/motoko/counter-tutorial /docs/motoko/fundamentals/types/objects-classes
   /docs/current/developer-docs/backend/motoko/hello-location /docs/motoko/fundamentals/types/functions
   /docs/current/developer-docs/backend/motoko/simple-cycles /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/motoko/fundamentals/actors-async
-  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/motoko/fundamentals/actors-async
+  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/motoko/actors-async
+  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/motoko/actors-async
   /docs/current/developer-docs/backend/motoko/access-control /docs/motoko/icp-features/caller-identification
   /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/icp-features/candid-serialization
   /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/motoko/home
@@ -124,33 +124,33 @@ const redirects = `
   /docs/rust/main/motoko-packages/databases /docs/home
   /docs/current/motoko/main/motoko-introduction /docs/motoko/home
   /docs/current/motoko/main/motoko /docs/motoko/home
-  /docs/current/motoko/main/basic-concepts /docs/motoko/fundamentals/actors-async
+  /docs/current/motoko/main/basic-concepts /docs/motoko/actors-async
   /docs/current/motoko/main/overview /docs/motoko/home
   /docs/current/motoko/main/language-manual /docs/motoko/language-manual
-  /docs/current/motoko/main/style /docs/motoko/motoko-style-guide
-  /docs/current/motoko/main/base-intro /docs/motoko/fundamentals/basic-syntax/imports
-  /docs/current/motoko/main/actors-async /docs/motoko/fundamentals/actors-async
-  /docs/current/motoko/main/actor-classes /docs/motoko/fundamentals/actors-async
+  /docs/current/motoko/main/style /docs/motoko/style
+  /docs/current/motoko/main/base-intro /docs/motoko/modules-imports
+  /docs/current/motoko/main/actors-async /docs/motoko/actors-async
+  /docs/current/motoko/main/actor-classes /docs/motoko/actors-async
   /docs/current/motoko/main/caller-id /docs/motoko/icp-features/caller-identification
   /docs/current/motoko/main/compatibility /docs/motoko/home
   /docs/current/motoko/main/control-flow /docs/motoko/fundamentals/control-flow/basic-control-flow
   /docs/current/motoko/main/cycles /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/motoko/main/errors /docs/motoko/fundamentals/error-handling
+  /docs/current/motoko/main/errors /docs/motoko/error-handling
   /docs/current/motoko/main/heartbeats /docs/motoko/icp-features/system-functions
   /docs/current/motoko/main/local-objects-classes /docs/motoko/fundamentals/types/objects-classes
-  /docs/current/motoko/main/message-inspection /docs/motoko/fundamentals/messaging
-  /docs/current/motoko/main/modules-and-imports /docs/motoko/fundamentals/basic-syntax/imports
-  /docs/current/motoko/main/mutable-state /docs/motoko/fundamentals/state
-  /docs/current/motoko/main/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/motoko/main/message-inspection /docs/motoko/messaging
+  /docs/current/motoko/main/modules-and-imports /docs/motoko/modules-imports
+  /docs/current/motoko/main/mutable-state /docs/motoko/state
+  /docs/current/motoko/main/pattern-matching /docs/motoko/pattern-matching
   /docs/current/motoko/main/pipes /docs/motoko/fundamentals/basic-syntax/operators
   /docs/current/motoko/main/sharing /docs/motoko/fundamentals/types/shared-types
-  /docs/current/motoko/main/stable-regions /docs/motoko/fundamentals/data-persistence
-  /docs/current/motoko/main/stablememory /docs/motoko/fundamentals/data-persistence
+  /docs/current/motoko/main/stable-regions /docs/motoko/data-persistence
+  /docs/current/motoko/main/stablememory /docs/motoko/data-persistence
   /docs/current/motoko/main/structural-equality /docs/motoko/fundamentals/types/subtyping
   /docs/current/motoko/main/timers /docs/motoko/icp-features/timers
   /docs/current/motoko/main/upgrades /docs/building-apps/canister-management/upgrade
-  /docs/current/motoko/main/compiler-ref /docs/motoko/motoko-compiler-ref
-  /docs/current/motoko/main/motoko-grammar /docs/motoko/motoko-style-guide
+  /docs/current/motoko/main/compiler-ref /docs/motoko/compiler-ref
+  /docs/current/motoko/main/motoko-grammar /docs/motoko/style
   /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/motoko-tooling/canpack
   /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/home
   /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
@@ -162,148 +162,289 @@ const redirects = `
   /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
 
   # Motoko old -> new docs
-  /docs/motoko/main/base/ /docs/motoko/base/
-  /docs/motoko/main/base/Array /docs/motoko/base/Array
-  /docs/motoko/main/base/array /docs/motoko/base/Array
-  /docs/motoko/main/base/Array/ /docs/motoko/base/Array
-  /docs/motoko/main/base/AssocList /docs/motoko/base/AssocList
-  /docs/motoko/main/base/Blob /docs/motoko/base/Blob
-  /docs/motoko/main/base/Bool /docs/motoko/base/Bool
-  /docs/motoko/main/base/bool /docs/motoko/base/Bool
-  /docs/motoko/main/base/Buffer /docs/motoko/base/Buffer
-  /docs/motoko/main/base/buffer /docs/motoko/base/Buffer
-  /docs/motoko/main/base/CertifiedData /docs/motoko/base/CertifiedData
-  /docs/motoko/main/base/Char /docs/motoko/base/Char
-  /docs/motoko/main/base/Debug /docs/motoko/base/Debug
-  /docs/motoko/main/base/Debug/ /docs/motoko/base/Debug
-  /docs/motoko/main/base/Deque /docs/motoko/base/Deque
-  /docs/motoko/main/base/Error /docs/motoko/base/Error
-  /docs/motoko/main/base/ExperimentalCycles /docs/motoko/base/ExperimentalCycles
-  /docs/motoko/main/base/experimentalcycles /docs/motoko/base/ExperimentalCycles
-  /docs/motoko/main/base/ExperimentalInternetComputer /docs/motoko/base/ExperimentalInternetComputer
-  /docs/motoko/main/base/ExperimentalStableMemory /docs/motoko/base/ExperimentalStableMemory
-  /docs/motoko/main/base/Float /docs/motoko/base/Float
-  /docs/motoko/main/base/Func /docs/motoko/base/Func
-  /docs/motoko/main/base/Hash /docs/motoko/base/Hash
-  /docs/motoko/main/base/hash /docs/motoko/base/Hash
-  /docs/motoko/main/base/HashMap /docs/motoko/base/HashMap
-  /docs/motoko/main/base/hashmap /docs/motoko/base/HashMap
-  /docs/motoko/main/base/HashMap/ /docs/motoko/base/HashMap
-  /docs/motoko/main/base/Heap /docs/motoko/base/Heap
-  /docs/motoko/main/base/Int /docs/motoko/base/Int
-  /docs/motoko/main/base/Int16 /docs/motoko/base/Int16
-  /docs/motoko/main/base/Int32 /docs/motoko/base/Int32
-  /docs/motoko/main/base/Int64 /docs/motoko/base/Int64
-  /docs/motoko/main/base/Int8 /docs/motoko/base/Int8
-  /docs/motoko/main/base/Iter /docs/motoko/base/Iter
-  /docs/motoko/main/base/iter /docs/motoko/base/Iter
-  /docs/motoko/main/base/IterType /docs/motoko/base/IterType
-  /docs/motoko/main/base/List /docs/motoko/base/List
-  /docs/motoko/main/base/List/ /docs/motoko/base/List
-  /docs/motoko/main/base/Nat /docs/motoko/base/Nat
-  /docs/motoko/main/base/Nat16 /docs/motoko/base/Nat16
-  /docs/motoko/main/base/Nat32 /docs/motoko/base/Nat32
-  /docs/motoko/main/base/Nat64 /docs/motoko/base/Nat64
-  /docs/motoko/main/base/Nat8 /docs/motoko/base/Nat8
-  /docs/motoko/main/base/None /docs/motoko/base/None
-  /docs/motoko/main/base/Option /docs/motoko/base/Option
-  /docs/motoko/main/base/option /docs/motoko/base/Option
-  /docs/motoko/main/base/Order /docs/motoko/base/Order
-  /docs/motoko/main/base/OrderedMap /docs/motoko/base/OrderedMap
-  /docs/motoko/main/base/OrderedSet /docs/motoko/base/OrderedSet
-  /docs/motoko/main/base/Prelude /docs/motoko/base/Prelude
-  /docs/motoko/main/base/Principal /docs/motoko/base/Principal
-  /docs/motoko/main/base/principal /docs/motoko/base/Principal
-  /docs/motoko/main/base/Principal/ /docs/motoko/base/Principal
-  /docs/motoko/main/base/Random /docs/motoko/base/Random
-  /docs/motoko/main/base/random /docs/motoko/base/Random
-  /docs/motoko/main/base/RBTree /docs/motoko/base/RBTree
-  /docs/motoko/main/base/Region /docs/motoko/base/Region
 
+  /docs/motoko/main/base/ /docs/motoko/base/
+  /docs/current/motoko/main/base/ /docs/motoko/base/
+  /docs/motoko/main/base/Array /docs/motoko/base/Array
+  /docs/current/motoko/main/base/Array /docs/motoko/base/Array
+  /docs/motoko/main/base/array /docs/motoko/base/Array
+  /docs/current/motoko/main/base/array /docs/motoko/base/Array
+  /docs/motoko/main/base/Array/ /docs/motoko/base/Array
+  /docs/current/motoko/main/base/Array/ /docs/motoko/base/Array
+  /docs/motoko/main/base/AssocList /docs/motoko/base/AssocList
+  /docs/current/motoko/main/base/AssocList /docs/motoko/base/AssocList
+  /docs/motoko/main/base/Blob /docs/motoko/base/Blob
+  /docs/current/motoko/main/base/Blob /docs/motoko/base/Blob
+  /docs/motoko/main/base/Bool /docs/motoko/base/Bool
+  /docs/current/motoko/main/base/Bool /docs/motoko/base/Bool
+  /docs/motoko/main/base/bool /docs/motoko/base/Bool
+  /docs/current/motoko/main/base/bool /docs/motoko/base/Bool
+  /docs/motoko/main/base/Buffer /docs/motoko/base/Buffer
+  /docs/current/motoko/main/base/Buffer /docs/motoko/base/Buffer
+  /docs/motoko/main/base/buffer /docs/motoko/base/Buffer
+  /docs/current/motoko/main/base/buffer /docs/motoko/base/Buffer
+  /docs/motoko/main/base/CertifiedData /docs/motoko/base/CertifiedData
+  /docs/current/motoko/main/base/CertifiedData /docs/motoko/base/CertifiedData
+  /docs/motoko/main/base/Char /docs/motoko/base/Char
+  /docs/current/motoko/main/base/Char /docs/motoko/base/Char
+  /docs/motoko/main/base/Debug /docs/motoko/base/Debug
+  /docs/current/motoko/main/base/Debug /docs/motoko/base/Debug
+  /docs/motoko/main/base/Debug/ /docs/motoko/base/Debug
+  /docs/current/motoko/main/base/Debug/ /docs/motoko/base/Debug
+  /docs/motoko/main/base/Deque /docs/motoko/base/Deque
+  /docs/current/motoko/main/base/Deque /docs/motoko/base/Deque
+  /docs/motoko/main/base/Error /docs/motoko/base/Error
+  /docs/current/motoko/main/base/Error /docs/motoko/base/Error
+  /docs/motoko/main/base/ExperimentalCycles /docs/motoko/base/ExperimentalCycles
+  /docs/current/motoko/main/base/ExperimentalCycles /docs/motoko/base/ExperimentalCycles
+  /docs/motoko/main/base/experimentalcycles /docs/motoko/base/ExperimentalCycles
+  /docs/current/motoko/main/base/experimentalcycles /docs/motoko/base/ExperimentalCycles
+  /docs/motoko/main/base/ExperimentalInternetComputer /docs/motoko/base/ExperimentalInternetComputer
+  /docs/current/motoko/main/base/ExperimentalInternetComputer /docs/motoko/base/ExperimentalInternetComputer
+  /docs/motoko/main/base/ExperimentalStableMemory /docs/motoko/base/ExperimentalStableMemory
+  /docs/current/motoko/main/base/ExperimentalStableMemory /docs/motoko/base/ExperimentalStableMemory
+  /docs/motoko/main/base/Float /docs/motoko/base/Float
+  /docs/current/motoko/main/base/Float /docs/motoko/base/Float
+  /docs/motoko/main/base/Func /docs/motoko/base/Func
+  /docs/current/motoko/main/base/Func /docs/motoko/base/Func
+  /docs/motoko/main/base/Hash /docs/motoko/base/Hash
+  /docs/current/motoko/main/base/Hash /docs/motoko/base/Hash
+  /docs/motoko/main/base/hash /docs/motoko/base/Hash
+  /docs/current/motoko/main/base/hash /docs/motoko/base/Hash
+  /docs/motoko/main/base/HashMap /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/HashMap /docs/motoko/base/HashMap
+  /docs/motoko/main/base/hashmap /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/hashmap /docs/motoko/base/HashMap
+  /docs/motoko/main/base/HashMap/ /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/HashMap/ /docs/motoko/base/HashMap
+  /docs/motoko/main/base/Heap /docs/motoko/base/Heap
+  /docs/current/motoko/main/base/Heap /docs/motoko/base/Heap
+  /docs/motoko/main/base/Int /docs/motoko/base/Int
+  /docs/current/motoko/main/base/Int /docs/motoko/base/Int
+  /docs/motoko/main/base/Int16 /docs/motoko/base/Int16
+  /docs/current/motoko/main/base/Int16 /docs/motoko/base/Int16
+  /docs/motoko/main/base/Int32 /docs/motoko/base/Int32
+  /docs/current/motoko/main/base/Int32 /docs/motoko/base/Int32
+  /docs/motoko/main/base/Int64 /docs/motoko/base/Int64
+  /docs/current/motoko/main/base/Int64 /docs/motoko/base/Int64
+  /docs/motoko/main/base/Int8 /docs/motoko/base/Int8
+  /docs/current/motoko/main/base/Int8 /docs/motoko/base/Int8
+  /docs/motoko/main/base/Iter /docs/motoko/base/Iter
+  /docs/current/motoko/main/base/Iter /docs/motoko/base/Iter
+  /docs/motoko/main/base/iter /docs/motoko/base/Iter
+  /docs/current/motoko/main/base/iter /docs/motoko/base/Iter
+  /docs/motoko/main/base/IterType /docs/motoko/base/IterType
+  /docs/current/motoko/main/base/IterType /docs/motoko/base/IterType
+  /docs/motoko/main/base/List /docs/motoko/base/List
+  /docs/current/motoko/main/base/List /docs/motoko/base/List
+  /docs/motoko/main/base/List/ /docs/motoko/base/List
+  /docs/current/motoko/main/base/List/ /docs/motoko/base/List
+  /docs/motoko/main/base/Nat /docs/motoko/base/Nat
+  /docs/current/motoko/main/base/Nat /docs/motoko/base/Nat
+  /docs/motoko/main/base/Nat16 /docs/motoko/base/Nat16
+  /docs/current/motoko/main/base/Nat16 /docs/motoko/base/Nat16
+  /docs/motoko/main/base/Nat32 /docs/motoko/base/Nat32
+  /docs/current/motoko/main/base/Nat32 /docs/motoko/base/Nat32
+  /docs/motoko/main/base/Nat64 /docs/motoko/base/Nat64
+  /docs/current/motoko/main/base/Nat64 /docs/motoko/base/Nat64
+  /docs/motoko/main/base/Nat8 /docs/motoko/base/Nat8
+  /docs/current/motoko/main/base/Nat8 /docs/motoko/base/Nat8
+  /docs/motoko/main/base/None /docs/motoko/base/None
+  /docs/current/motoko/main/base/None /docs/motoko/base/None
+  /docs/motoko/main/base/Option /docs/motoko/base/Option
+  /docs/current/motoko/main/base/Option /docs/motoko/base/Option
+  /docs/motoko/main/base/option /docs/motoko/base/Option
+  /docs/current/motoko/main/base/option /docs/motoko/base/Option
+  /docs/motoko/main/base/Order /docs/motoko/base/Order
+  /docs/current/motoko/main/base/Order /docs/motoko/base/Order
+  /docs/motoko/main/base/OrderedMap /docs/motoko/base/OrderedMap
+  /docs/current/motoko/main/base/OrderedMap /docs/motoko/base/OrderedMap
+  /docs/motoko/main/base/OrderedSet /docs/motoko/base/OrderedSet
+  /docs/current/motoko/main/base/OrderedSet /docs/motoko/base/OrderedSet
+  /docs/motoko/main/base/Prelude /docs/motoko/base/Prelude
+  /docs/current/motoko/main/base/Prelude /docs/motoko/base/Prelude
+  /docs/motoko/main/base/Principal /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/Principal /docs/motoko/base/Principal
+  /docs/motoko/main/base/principal /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/principal /docs/motoko/base/Principal
+  /docs/motoko/main/base/Principal/ /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/Principal/ /docs/motoko/base/Principal
+  /docs/motoko/main/base/Random /docs/motoko/base/Random
+  /docs/current/motoko/main/base/Random /docs/motoko/base/Random
+  /docs/motoko/main/base/random /docs/motoko/base/Random
+  /docs/current/motoko/main/base/random /docs/motoko/base/Random
+  /docs/motoko/main/base/RBTree /docs/motoko/base/RBTree
+  /docs/current/motoko/main/base/RBTree /docs/motoko/base/RBTree
+  /docs/motoko/main/base/Region /docs/motoko/base/Region
+  /docs/current/motoko/main/base/Region /docs/motoko/base/Region
   /docs/motoko/main/base/Stack /docs/motoko/base/Stack
+  /docs/current/motoko/main/base/Stack /docs/motoko/base/Stack
   /docs/motoko/main/base/Text /docs/motoko/base/Text
+  /docs/current/motoko/main/base/Text /docs/motoko/base/Text
   /docs/motoko/main/base/text /docs/motoko/base/Text
+  /docs/current/motoko/main/base/text /docs/motoko/base/Text
   /docs/motoko/main/base/Time /docs/motoko/base/Time
+  /docs/current/motoko/main/base/Time /docs/motoko/base/Time
   /docs/motoko/main/base/time /docs/motoko/base/Time
+  /docs/current/motoko/main/base/time /docs/motoko/base/Time
   /docs/motoko/main/base/Time/ /docs/motoko/base/Time
+  /docs/current/motoko/main/base/Time/ /docs/motoko/base/Time
   /docs/motoko/main/base/Timer /docs/motoko/base/Timer
+  /docs/current/motoko/main/base/Timer /docs/motoko/base/Timer
   /docs/motoko/main/base/Trie /docs/motoko/base/Trie
+  /docs/current/motoko/main/base/Trie /docs/motoko/base/Trie
   /docs/motoko/main/base/trie /docs/motoko/base/Trie
+  /docs/current/motoko/main/base/trie /docs/motoko/base/Trie
   /docs/motoko/main/base/TrieMap /docs/motoko/base/TrieMap
+  /docs/current/motoko/main/base/TrieMap /docs/motoko/base/TrieMap
   /docs/motoko/main/base/trieset /docs/motoko/base/TrieSet
+  /docs/current/motoko/main/base/trieset /docs/motoko/base/TrieSet
   /docs/motoko/main/base/TrieSet /docs/motoko/base/TrieSet
+  /docs/current/motoko/main/base/TrieSet /docs/motoko/base/TrieSet
   /docs/motoko/main/canister-maintenance/compatibility /docs/motoko/home
+  /docs/current/motoko/main/canister-maintenance/compatibility /docs/motoko/home
   /docs/motoko/main/canister-maintenance/cycles /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/motoko/main/canister-maintenance/memory /docs/motoko/fundamentals/data-persistence
+  /docs/current/motoko/main/canister-maintenance/cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/motoko/main/canister-maintenance/memory /docs/motoko/data-persistence
+  /docs/current/motoko/main/canister-maintenance/memory /docs/motoko/data-persistence
   /docs/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
-  /docs/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/orthogonal-persistence
-  /docs/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/orthogonal-persistence
-  /docs/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/orthogonal-persistence
+  /docs/current/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/orthogonal-persistence/modes
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/orthogonal-persistence/modes
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/orthogonal-persistence/modes
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/orthogonal-persistence/modes
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/orthogonal-persistence/modes
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/orthogonal-persistence/modes
   /docs/motoko/main/canister-maintenance/upgrades /docs/building-apps/canister-management/upgrade
+  /docs/current/motoko/main/canister-maintenance/upgrades /docs/building-apps/canister-management/upgrade
   /docs/motoko/main/getting-started/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining-an-actor
+  /docs/current/motoko/main/getting-started/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining-an-actor
   /docs/motoko/main/getting-started/dev-env /docs/motoko/install
+  /docs/current/motoko/main/getting-started/dev-env /docs/motoko/install
   /docs/motoko/main/getting-started/examples https://github.com/dfinity/examples/tree/master/motoko
+  /docs/current/motoko/main/getting-started/examples https://github.com/dfinity/examples/tree/master/motoko
   /docs/motoko/main/getting-started/quickstart /docs/motoko/install
+  /docs/current/motoko/main/getting-started/quickstart /docs/motoko/install
   /docs/motoko/main/getting-started/motoko-introduction /docs/motoko/home
+  /docs/current/motoko/main/getting-started/motoko-introduction /docs/motoko/home
   /docs/motoko/main/migration-guides/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
+  /docs/current/motoko/main/migration-guides/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
   /docs/motoko/main/migration-guides/overview /docs/motoko/home
+  /docs/current/motoko/main/migration-guides/overview /docs/motoko/home
   /docs/motoko/main/motoko-packages/cryptography https://mops.one/
+  /docs/current/motoko/main/motoko-packages/cryptography https://mops.one/
   /docs/motoko/main/motoko-packages/data-structures https://mops.one/
+  /docs/current/motoko/main/motoko-packages/data-structures https://mops.one/
   /docs/motoko/main/motoko-packages/databases https://mops.one/
+  /docs/current/motoko/main/motoko-packages/databases https://mops.one/
   /docs/motoko/main/motoko-packages/encoding https://mops.one/
+  /docs/current/motoko/main/motoko-packages/encoding https://mops.one/
   /docs/motoko/main/motoko-packages/http https://mops.one/
+  /docs/current/motoko/main/motoko-packages/http https://mops.one/
   /docs/motoko/main/motoko-packages/icrc https://mops.one/
+  /docs/current/motoko/main/motoko-packages/icrc https://mops.one/
   /docs/motoko/main/motoko-packages/types-interfaces https://mops.one/
+  /docs/current/motoko/main/motoko-packages/types-interfaces https://mops.one/
   /docs/motoko/main/motoko-packages/utilities https://mops.one/
+  /docs/current/motoko/main/motoko-packages/utilities https://mops.one/
   /docs/motoko/main/motoko-tools/embed-motoko https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/embed-motoko https://github.com/dfinity/motoko
   /docs/motoko/main/motoko-tools/mo-dev https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/mo-dev https://github.com/dfinity/motoko
   /docs/motoko/main/motoko-tools/motoko-formatter https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/motoko-formatter https://github.com/dfinity/motoko
   /docs/motoko/main/motoko-tools/motoko-js https://github.com/dfinity/motoko
-  /docs/motoko/main/reference/compiler-ref /docs/motoko/motoko-compiler-ref
-  /docs/motoko/main/reference/error-codes /docs/motoko/fundamentals/error-handling
+  /docs/current/motoko/main/motoko-tools/motoko-js https://github.com/dfinity/motoko
+  /docs/motoko/main/reference/compiler-ref /docs/motoko/compiler-ref
+  /docs/current/motoko/main/reference/compiler-ref /docs/motoko/compiler-ref
+  /docs/motoko/main/reference/error-codes /docs/motoko/
+  /docs/current/motoko/main/reference/error-codes /docs/motoko/
   /docs/motoko/main/reference/generating-docs /docs/motoko/motoko-tooling/mo-doc
+  /docs/current/motoko/main/reference/generating-docs /docs/motoko/motoko-tooling/mo-doc
   /docs/motoko/main/reference/language-manual /docs/motoko/language-manual
+  /docs/current/motoko/main/reference/language-manual /docs/motoko/language-manual
   /docs/motoko/main/reference/language-manual/ /docs/motoko/language-manual
-  /docs/motoko/main/reference/motoko-grammar /docs/motoko/motoko-style-guide
-  /docs/motoko/main/reference/style /docs/motoko/motoko-style-guide
-  /docs/motoko/main/stable-memory/stable-regions /docs/motoko/fundamentals/data-persistence
-  /docs/motoko/main/stable-memory/stablememory /docs/motoko/fundamentals/data-persistence
-  /docs/motoko/main/writing-motoko/actor-classes /docs/motoko/fundamentals/actors-async
-  /docs/motoko/main/writing-motoko/actors-async /docs/motoko/fundamentals/actors-async
+  /docs/current/motoko/main/reference/language-manual/ /docs/motoko/language-manual
+  /docs/motoko/main/reference/motoko-grammar /docs/motoko/style
+  /docs/current/motoko/main/reference/motoko-grammar /docs/motoko/style
+  /docs/motoko/main/reference/style /docs/motoko/style
+  /docs/current/motoko/main/reference/style /docs/motoko/style
+  /docs/motoko/main/stable-memory/stable-regions /docs/motoko/data-persistence
+  /docs/current/motoko/main/stable-memory/stable-regions /docs/motoko/data-persistence
+  /docs/motoko/main/stable-memory/stablememory /docs/motoko/data-persistence
+  /docs/current/motoko/main/stable-memory/stablememory /docs/motoko/data-persistence
+  /docs/motoko/main/writing-motoko/actor-classes /docs/motoko/actors-async
+  /docs/current/motoko/main/writing-motoko/actor-classes /docs/motoko/actors-async
+  /docs/motoko/main/writing-motoko/actors-async /docs/motoko/actors-async
+  /docs/current/motoko/main/writing-motoko/actors-async /docs/motoko/actors-async
   /docs/motoko/main/writing-motoko/arguments /docs/motoko/fundamentals/types/functions
-  /docs/motoko/main/writing-motoko/async-data /docs/motoko/fundamentals/actors-async
-  /docs/motoko/main/writing-motoko/async-star /docs/motoko/fundamentals/actors-async
+  /docs/current/motoko/main/writing-motoko/arguments /docs/motoko/fundamentals/types/functions
+  /docs/motoko/main/writing-motoko/async-data /docs/motoko/actors-async
+  /docs/current/motoko/main/writing-motoko/async-data /docs/motoko/actors-async
+  /docs/motoko/main/writing-motoko/async-star /docs/motoko/actors-async
+  /docs/current/motoko/main/writing-motoko/async-star /docs/motoko/actors-async
   /docs/motoko/main/writing-motoko/caller-id /docs/motoko/icp-features/caller-identification
+  /docs/current/motoko/main/writing-motoko/caller-id /docs/motoko/icp-features/caller-identification
   /docs/motoko/main/writing-motoko/candid /docs/motoko/icp-features/candid-serialization
+  /docs/current/motoko/main/writing-motoko/candid /docs/motoko/icp-features/candid-serialization
   /docs/motoko/main/writing-motoko/candid-ui /docs/motoko/icp-features/candid-serialization
+  /docs/current/motoko/main/writing-motoko/candid-ui /docs/motoko/icp-features/candid-serialization
   /docs/motoko/main/writing-motoko/control-flow /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/current/motoko/main/writing-motoko/control-flow /docs/motoko/fundamentals/control-flow/basic-control-flow
   /docs/motoko/main/writing-motoko/control-flow/ /docs/motoko/fundamentals/control-flow/basic-control-flow
-  /docs/motoko/main/writing-motoko/errors /docs/motoko/fundamentals/error-handling
+  /docs/current/motoko/main/writing-motoko/control-flow/ /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/motoko/main/writing-motoko/errors /docs/motoko/error-handling
+  /docs/current/motoko/main/writing-motoko/errors /docs/motoko/error-handling
   /docs/motoko/main/writing-motoko/heartbeats /docs/motoko/icp-features/system-functions
+  /docs/current/motoko/main/writing-motoko/heartbeats /docs/motoko/icp-features/system-functions
   /docs/motoko/main/writing-motoko/incomplete-code /docs/motoko/home
+  /docs/current/motoko/main/writing-motoko/incomplete-code /docs/motoko/home
   /docs/motoko/main/writing-motoko/integers /docs/motoko/fundamentals/basic-syntax/numbers
-  /docs/motoko/main/writing-motoko/intercanister-calls /docs/motoko/fundamentals/messaging
+  /docs/current/motoko/main/writing-motoko/integers /docs/motoko/fundamentals/basic-syntax/numbers
+  /docs/motoko/main/writing-motoko/intercanister-calls /docs/motoko/messaging
+  /docs/current/motoko/main/writing-motoko/intercanister-calls /docs/motoko/messaging
   /docs/motoko/main/writing-motoko/local-objects-classes /docs/motoko/fundamentals/types/objects-classes
-  /docs/motoko/main/writing-motoko/message-inspection /docs/motoko/fundamentals/messaging
-  /docs/motoko/main/writing-motoko/message-restrictions /docs/motoko/fundamentals/messaging
-  /docs/motoko/main/writing-motoko/modules-and-imports /docs/motoko/fundamentals/basic-syntax/imports
-  /docs/motoko/main/writing-motoko/mutable-state /docs/motoko/fundamentals/state
+  /docs/current/motoko/main/writing-motoko/local-objects-classes /docs/motoko/fundamentals/types/objects-classes
+  /docs/motoko/main/writing-motoko/message-inspection /docs/motoko/messaging
+  /docs/current/motoko/main/writing-motoko/message-inspection /docs/motoko/messaging
+  /docs/motoko/main/writing-motoko/message-restrictions /docs/motoko/messaging
+  /docs/current/motoko/main/writing-motoko/message-restrictions /docs/motoko/messaging
+  /docs/motoko/main/writing-motoko/modules-and-imports /docs/motoko/modules-imports
+  /docs/current/motoko/main/writing-motoko/modules-and-imports /docs/motoko/modules-imports
+  /docs/motoko/main/writing-motoko/mutable-state /docs/motoko/state
+  /docs/current/motoko/main/writing-motoko/mutable-state /docs/motoko/state
   /docs/motoko/main/writing-motoko/object-subtyping /docs/motoko/fundamentals/types/subtyping
-  /docs/motoko/main/writing-motoko/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/motoko/main/writing-motoko/object-subtyping /docs/motoko/fundamentals/types/subtyping
+  /docs/motoko/main/writing-motoko/pattern-matching /docs/motoko/pattern-matching
+  /docs/current/motoko/main/writing-motoko/pattern-matching /docs/motoko/pattern-matching
   /docs/motoko/main/writing-motoko/pipes /docs/motoko/fundamentals/basic-syntax/operators
+  /docs/current/motoko/main/writing-motoko/pipes /docs/motoko/fundamentals/basic-syntax/operators
   /docs/motoko/main/writing-motoko/query-functions /docs/motoko/fundamentals/types/functions
+  /docs/current/motoko/main/writing-motoko/query-functions /docs/motoko/fundamentals/types/functions
   /docs/motoko/main/writing-motoko/query-functions/ /docs/motoko/fundamentals/types/functions
+  /docs/current/motoko/main/writing-motoko/query-functions/ /docs/motoko/fundamentals/types/functions
   /docs/motoko/main/writing-motoko/randomness /docs/motoko/icp-features/randomness
+  /docs/current/motoko/main/writing-motoko/randomness /docs/motoko/icp-features/randomness
   /docs/motoko/main/writing-motoko/recursive-types /docs/motoko/fundamentals/types/advanced-types
+  /docs/current/motoko/main/writing-motoko/recursive-types /docs/motoko/fundamentals/types/advanced-types
   /docs/motoko/main/writing-motoko/sharing /docs/motoko/fundamentals/types/shared-types
+  /docs/current/motoko/main/writing-motoko/sharing /docs/motoko/fundamentals/types/shared-types
   /docs/motoko/main/writing-motoko/static-types /docs/motoko/fundamentals/types/stable-types
+  /docs/current/motoko/main/writing-motoko/static-types /docs/motoko/fundamentals/types/stable-types
   /docs/motoko/main/writing-motoko/structural-equality /docs/motoko/fundamentals/types/subtyping
+  /docs/current/motoko/main/writing-motoko/structural-equality /docs/motoko/fundamentals/types/subtyping
   /docs/motoko/main/writing-motoko/system-capability /docs/motoko/icp-features/system-functions
+  /docs/current/motoko/main/writing-motoko/system-capability /docs/motoko/icp-features/system-functions
   /docs/motoko/main/writing-motoko/timers /docs/motoko/icp-features/timers
+  /docs/current/motoko/main/writing-motoko/timers /docs/motoko/icp-features/timers
   /docs/motoko/main/writing-motoko/writing-intro /docs/motoko/home
+  /docs/current/motoko/main/writing-motoko/writing-intro /docs/motoko/home
   /docs/move-to-motoko/canpack /docs/motoko/motoko-tooling/canpack
+  /docs/current/move-to-motoko/canpack /docs/motoko/motoko-tooling/canpack
   /docs/move-to-motoko/dev-containers /docs/motoko/motoko-tooling/dev-containers
+  /docs/current/move-to-motoko/dev-containers /docs/motoko/motoko-tooling/dev-containers
   /docs/move-to-motoko/vs-code /docs/motoko/motoko-tooling/motoko-vs-code
+  /docs/current/move-to-motoko/vs-code /docs/motoko/motoko-tooling/motoko-vs-code
 
   ## Rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
@@ -1307,14 +1448,14 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/language-manual
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
-  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/fundamentals/actors-async
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/fundamentals/actors-async
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/fundamentals/actors-async
+  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/actors-async
   /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/base/Iter
   /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/base/IterType
   /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/home
   /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/home
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/pattern-matching
   /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/building-apps/canister-management/upgrade
   /docs/current/developer-docs/build/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup /docs/defi/token-ledgers/setup/icp_ledger_setup
