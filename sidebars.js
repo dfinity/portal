@@ -367,6 +367,7 @@ build: [
             "building-apps/network-features/vetkeys/dkms",
             "building-apps/network-features/vetkeys/encrypted-onchain-storage",
             "building-apps/network-features/vetkeys/identity-based-encryption",
+            "building-apps/network-features/vetkeys/timelock-encryption",
           ],
         },
         "building-apps/network-features/randomness",

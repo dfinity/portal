@@ -1,0 +1,36 @@
+---
+keywords: [advanced, concept, random, randomness, onchain randomness, raw_rand]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+# Timelock encryption
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+Timelock encryption builds upon identity-based encryption (IBE). For more information about IBE, please refer to the [identity-based encryption documentation](/docs/building-apps/network-features/vetkeys/identity-based-encryption).
+
+It is useful to add time restrictions on when an IBE private key can be accessed. Additionally, the canister can decrypt IBE-encrypted data when appropriate conditions are met.
+
+## Use cases
+
+### "Dead man's switch"
+
+Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. They can store the information in a dapp, encrypted using IBE that the dapp automatically and publicly recovers when a certain amount of time passes after it last received an authenticated ping from its owner.
+
+### Secret-bid auctions and MEV protection
+
+In a secret-bid auction dapp, users can submit bids that are IBE-encrypted under an identifier so that at the end of the auction, the dapp can decrypt all bids with a single vetKey evaluation. A similar technique can be used to prevent front-running, also known as maximal extractable value (MEV), on a decentralized exchange (DEX). Users submit their IBE-encrypted transactions under a predictable batch identifier. The DEX orders the transactions in encrypted form and, when all transactions for a particular batch have been ordered, triggers the recovery of the decryption key for that batch and executes the decrypted transactions in the fixed order. Note that all of the symmetric-encryption use cases listed above can be modified to encrypt using an IBE instead of a symmetric-key encryption, thereby eliminating the need to perform a vetKey derivation for encryption. Decryption, of course, still requires retrieving a vetKey.
+
+### Advanced timelocks
+
+Anyone can IBE-encrypt their message using a more complex condition as the identity, while a dapp allows anyone who can satisfy that condition, or when the condition is automatically fulfilled, to obtain the corresponding vetKey. This enables interesting use cases by allowing encryption tied to verifiable future events. For example, one could encrypt a message that becomes decryptable only when the price of a stock rises above or falls below a certain level, or implement information escrow and break-the-glass policies.
+
+### Birthday coupon
+
+A user can encrypt a coupon or gift, send it to another user, who can only decrypt it after a certain delay such as the time until their birthday.
