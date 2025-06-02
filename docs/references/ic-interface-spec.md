@@ -2321,7 +2321,7 @@ The optional `settings` parameter can be used to set the following settings:
 
     The maximum number of environment variables is implementation-defined. The maximum length of keys and values is implementation-defined.
 
-    Default value: `null` (i.e., no expplicit environment variables provided).
+    Default value: `null` (i.e., no explicit environment variables provided).
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
