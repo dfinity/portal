@@ -454,6 +454,11 @@ build: [
             },
           ],
         },
+        {
+          type: "doc",
+          label: "Solana",
+          id: "building-apps/chain-fusion/solana/overview",
+        },
         "building-apps/chain-fusion/examples",
       ],
     },

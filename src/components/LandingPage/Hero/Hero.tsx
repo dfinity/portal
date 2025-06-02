@@ -60,7 +60,7 @@ const Hero: React.FC<{
                   data. Build web apps without Big Tech and current IT.
                   Applications are immune to cyber attacks and unstoppable,
                   capable of processing tokens, and can run under exclusive DAO
-                  control. Build web3 social media, games, DeFi, multi-chain
+                  control. Build web3 social media, games, DeFi, multichain
                   apps, secure front-ends, ledgers, enterprise apps, and AI
                   models. TCP/IP connected software. ICP hosts software.
                 </p>
