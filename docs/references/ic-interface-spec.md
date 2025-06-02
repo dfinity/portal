@@ -5172,13 +5172,14 @@ Private_custom_sections = parse_private_custom_sections(A.wasm_module);
 (A.mode = install and S.canisters[A.canister_id] = EmptyCanister) or A.mode = reinstall
 M.caller ∈ S.controllers[A.canister_id]
 
+S.canister_history[A.canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
 if A.preconditions.stopped = opt true:
   S.canister_status[A.canister_id] = Stopped
 if A.preconditions.total_num_changes is not null:
-  S.canister_history[A.canister_id] = {
-    total_num_changes = N;
-    recent_changes = H;
-  }
   A.preconditions.total_num_changes = N
 
 dom(Mod.update_methods) ∩ dom(Mod.query_methods) = ∅
@@ -5226,10 +5227,6 @@ if S.memory_allocation[A.canister_id] > 0:
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
 
-S.canister_history[A.canister_id] = {
-  total_num_changes = N;
-  recent_changes = H;
-}
 New_canister_history = {
   total_num_changes = N + 1;
   recent_changes = H · {
@@ -5302,6 +5299,16 @@ Public_custom_sections = parse_public_custom_sections(A.wasm_module)
 Private_custom_sections = parse_private_custom_sections(A.wasm_module)
 M.caller ∈ S.controllers[A.canister_id]
 S.canisters[A.canister_id] = { wasm_state = Old_state; module = Old_module, …}
+
+S.canister_history[A.canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+if A.preconditions.stopped = opt true:
+  S.canister_status[A.canister_id] = Stopped
+if A.preconditions.total_num_changes is not null:
+  A.preconditions.total_num_changes = N
 
 dom(Mod.update_methods) ∩ dom(Mod.query_methods) = ∅
 dom(Mod.update_methods) ∩ dom(Mod.composite_query_methods) = ∅
@@ -5391,10 +5398,6 @@ if S.memory_allocation[A.canister_id] > 0:
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
 
-S.canister_history[A.canister_id] = {
-  total_num_changes = N;
-  recent_changes = H;
-}
 New_canister_history = {
   total_num_changes = N + 1;
   recent_changes = H · {
