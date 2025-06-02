@@ -81,7 +81,7 @@ Update calls are executed in *replicated* mode, i.e. execution takes place in pa
 
 Internally, a call or a response is transmitted as a *message* from a *sender* to a *receiver*. Messages do not have a response.
 
-WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. Functions, too, have parameters and take arguments.
+WebAssembly *functions* are exported by the WebAssembly module or provided by the System API. These are *invoked* and can either *trap* or *return*, possibly with a return value. A trap is caused by an irrecoverable error in the WebAssembly module (e.g., division by zero) or System API execution (e.g., running out of memory or exceeding the instruction limit for a single message execution imposed by the Internet Computer). Functions, too, have parameters and take arguments.
 
 External *users* interact with the Internet Computer by issuing *requests* on the HTTPS interface. Requests have responses which can either be replies or rejects. Some requests cause internal messages to be created.
 
@@ -246,7 +246,9 @@ A canister can be *empty* (e.g. directly after creation) or *non-empty*. A non-e
 
 -   code, in the form of a canister module
 
--   state (memories, globals etc.)
+-   memories (heap and stable memory)
+
+-   globals
 
 -   possibly further data that is specific to the implementation of the IC (e.g. queues)
 
@@ -868,12 +870,6 @@ The following limits apply to the evaluation of a query call:
 
 -   The wall clock time spent on evaluation of a query call is at most `MAX_WALL_CLOCK_TIME_COMPOSITE_QUERY`.
 
-:::note
-
-Composite query methods are EXPERIMENTAL and there might be breaking changes of their behavior in the future. Use at your own risk!
-
-:::
-
 In order to make a query call to a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/query`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `"query"`.
@@ -1301,7 +1297,7 @@ In order for a WebAssembly module to be usable as the code for the canister, it 
 
 -   It may not have both `icp:public <name>` and `icp:private <name>` with the same `name` as the custom section name.
 
--   It may not have other custom sections the names of which start with the prefix `icp:` besides the \`icp:public \` and \`icp:private \`.
+-   It may not have other custom sections the names of which start with the prefix `icp:` besides the `icp:public ` and `icp:private `.
 
 -   The IC may reject WebAssembly modules that
 
@@ -1444,17 +1440,18 @@ Canister methods can be executed either in *replicated* mode where the method ru
 
 The following table captures the modes that different canister methods can be executed in.
 
-| Canister method          | Replicated Mode | Non-Replicated Mode |
-| ------------------------ | --------------- | ------------------- |
-| canister_update          | Yes             | No                  |
-| canister_query           | Yes             | Yes                 |
-| canister_composite_query | No              | Yes                 |
-| canister_inspect_message | No              | Yes                 |
-| canister_init            | Yes             | No                  |
-| canister_pre_upgrade     | Yes             | No                  |
-| canister_post_upgrade    | Yes             | No                  |
-| canister_heartbeat       | Yes             | No                  |
-| canister_global_timer    | Yes             | No                  |
+| Canister method             | Replicated Mode | Non-Replicated Mode |
+| --------------------------- | --------------- | ------------------- |
+| canister_update             | Yes             | No                  |
+| canister_query              | Yes             | Yes                 |
+| canister_composite_query    | No              | Yes                 |
+| canister_inspect_message    | No              | Yes                 |
+| canister_init               | Yes             | No                  |
+| canister_pre_upgrade        | Yes             | No                  |
+| canister_post_upgrade       | Yes             | No                  |
+| canister_heartbeat          | Yes             | No                  |
+| canister_global_timer       | Yes             | No                  |
+| canister_on_low_wasm_memory | Yes             | No                  |
 
 ### Overview of imports {#system-api-imports}
 
@@ -2265,6 +2262,15 @@ The optional `settings` parameter can be used to set the following settings:
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
 
+-   `log_visibility` (`log_visibility`)
+
+    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can fetch logs
+    - `public`: Anyone can fetch the canister's logs
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can fetch logs, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -2471,7 +2477,16 @@ This method can be called by canisters as well as by external users via ingress 
 
 The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
 
-Stopping a canister is not an atomic action. The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped). The IC will reject all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual. When all outstanding responses have been processed (so there are no open call contexts), the canister status is changed to `stopped` and the management canister responds to the caller of the `stop_canister` request.
+When this method successfully returns, then the canister status is `stopped` at that point.
+However, note that the canister might be restarted at any time due to a concurrent call.
+
+The execution of this method proceeds as follows:
+
+- The immediate effect is that the status of the canister is changed to `stopping` (unless the canister is already stopped).
+- The IC now rejects all calls to a stopping canister, indicating that the canister is stopping. Responses to a stopping canister are processed as usual.
+- When all outstanding responses have been processed (so that there are no open call contexts), the canister status is changed to `stopped`.
+- If the canister status is changed to `stopped` within an implementation-specific timeout, then this method successfully returns.
+- Otherwise, this method returns an error (the canister status is still `stopping` and might eventually become `stopped` if all outstanding responses have been processed and the canister has not been restarted by a separate call).
 
 ### IC method `start_canister` {#ic-start_canister}
 
@@ -2528,12 +2543,6 @@ This call requires that an ECDSA key with ID `key_id` was generated by the IC, t
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
 ### IC method `schnorr_public_key` {#ic-schnorr_public_key}
-
-:::note
-
-Threshold Schnorr API is EXPERIMENTAL and there might be breaking changes of the behavior in the future. Use at your own risk!
-
-:::
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
@@ -2623,12 +2632,6 @@ KTpub((K<sub>par</sub>, c<sub>par</sub>), d) → (K<sub>d</sub>, c<sub>d</sub>):
 
 ### IC method `sign_with_schnorr` {#ic-sign_with_schnorr}
 
-:::note
-
-Threshold Schnorr API is EXPERIMENTAL and there might be breaking changes of the behavior in the future. Use at your own risk!
-
-:::
-
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
 This method returns a Schnorr signature of the given `message` that can be verified against a (derived) public key obtained by calling `schnorr_public_key` using the caller's `canister_id` and the given `derivation_path` and `key_id`.
@@ -2675,7 +2678,7 @@ The **size** of an HTTP request from the canister or an HTTP response from the r
 
 The following parameters should be supplied for the call:
 
--   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt) and its length must not exceed `8192`. The URL may specify a custom port number.
+-   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt), it might contain non-ASCII characters according to [RFC-3987](https://www.ietf.org/rfc/rfc3987.txt), and its length must not exceed `8192`. The URL may specify a custom port number.
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
@@ -2697,7 +2700,7 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `body` - the response's body
 
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is `2MB` (`2,000,000B`). Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is equal to `max_response_bytes`, if provided, otherwise the default value of `2MB` (`2,000,000B`) is used as the limit. Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
 
 When the transform function is invoked by the system due to a canister HTTP request, the caller's identity is the principal of the management canister. This information can be used by developers to implement access control mechanism for this function.
 
@@ -2722,7 +2725,7 @@ Currently, the Internet Computer mainnet only supports URLs that resolve to IPv6
 
 :::warning
 
-If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected network response size to not incur unnecessary cycles costs for your request.
+If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
 
@@ -2813,12 +2816,6 @@ A snapshot may be deleted only by the controllers of the canister for which the 
 ### IC method `fetch_canister_logs` {#ic-fetch_canister_logs}
 
 This method can only be called by external users via non-replicated calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
-
-:::note
-
-The canister logs management canister API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
-
-:::
 
 Given a canister ID as input, this method returns a vector of logs of that canister including its trap messages.
 The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
@@ -5248,7 +5245,7 @@ S' = S with
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     canister_history[A.canister_id] = New_canister_history
-    canister_logs[A.canister_id] = canister_logs
+    canister_logs[A.canister_id] = New_canister_logs
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin;
@@ -5258,7 +5255,7 @@ S' = S with
 
 ```
 
-The logs produced by the canister during the execution of the WebAssembly `start` and `canister_init` functions are modeled via the unspecified `canister_logs` variable; the variable stores a list of logs (each of type `CanisterLog`) with consecutive sequence numbers, timestamps equal to `S.time[A.canister_id]`, and contents produced by the canister calling `ic0.debug_print`, `ic0.trap`, or produced by the WebAssembly runtime when the canister WebAssembly module traps.
+The logs produced by the canister during the execution of the WebAssembly `start` and `canister_init` functions are modeled via the unspecified `New_canister_logs` variable; the variable stores a list of logs (each of type `CanisterLog`) with consecutive sequence numbers, timestamps equal to `S.time[A.canister_id]`, and contents produced by the canister calling `ic0.debug_print`, `ic0.trap`, or produced by the WebAssembly runtime when the canister WebAssembly module traps.
 
 #### IC Management Canister: Code upgrade
 
@@ -6644,12 +6641,6 @@ S with
 
 #### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
 
-:::note
-
-The canister logs management canister API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
-
-:::
-
 This section specifies management canister query calls.
 They are calls to `/api/v2/canister/<effective_canister_id>/query`
 with CBOR body `Q` such that `Q.canister_id = ic_principal`.
@@ -6697,12 +6688,6 @@ This section specifies query calls `Q` whose `Q.canister_id` is a non-empty cani
 Canister query calls to `/api/v2/canister/<ECID>/query` can be executed directly. They can only be executed against non-empty canisters which have a status of `Running` and are also not frozen.
 
 In query and composite query methods evaluated on the target canister of the query call, a certificate is provided to the canister that is valid, contains a current state tree (or "recent enough"; the specification is currently vague about how old the certificate may be), and reveals the canister's [Certified Data](#system-api-certified-data).
-
-:::note
-
-Composite query methods are EXPERIMENTAL and there might be breaking changes of their behavior in the future. Use at your own risk!
-
-:::
 
 Composite query methods can call query methods and composite query methods up to a maximum depth `MAX_CALL_DEPTH_COMPOSITE_QUERY` of the call graph. The total amount of cycles consumed by executing a (composite) query method and all (transitive) calls it makes must be at most `MAX_CYCLES_PER_QUERY`. This limit applies in addition to the limit `MAX_CYCLES_PER_MESSAGE` for executing a single (composite) query method and `MAX_CYCLES_PER_RESPONSE` for executing a single callback of a (composite) query method.
 

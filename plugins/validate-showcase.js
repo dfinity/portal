@@ -200,7 +200,8 @@ module.exports = function validateShowcasePlugin() {
           [fileExists, "project logo file does not exist"],
           [
             (value) => fileMaxSize(value, maximumLogoSize),
-            `project logo file too big, should be <= ${maximumLogoSize / 1024
+            `project logo file too big, should be <= ${
+              maximumLogoSize / 1024
             } kb`,
           ],
         ]);
@@ -234,7 +235,8 @@ module.exports = function validateShowcasePlugin() {
                 value.every((value) =>
                   fileMaxSize(value, maximumScreenshotSize)
                 ),
-              `project screenshot file too big, should be <= ${maximumScreenshotSize / 1024
+              `project screenshot file too big, should be <= ${
+                maximumScreenshotSize / 1024
               } kb`,
             ],
             [
@@ -254,7 +256,8 @@ module.exports = function validateShowcasePlugin() {
             [fileExists, "project video file does not exist"],
             [
               (value) => fileMaxSize(value, maximumVideoSize),
-              `project video file too big, should be <= ${maximumVideoSize / 1024 / 1024
+              `project video file too big, should be <= ${
+                maximumVideoSize / 1024 / 1024
               } mb`,
             ],
             [

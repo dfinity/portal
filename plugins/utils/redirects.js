@@ -29,7 +29,6 @@ const redirects = `
   /docs/building-apps/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
   /docs/current/developer-docs/best-practices/* /docs/building-apps/best-practices/:splat
-  /docs/current/developer-docs/smart-contracts/best-practices/* /docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/daos/sns/* /docs/building-apps/governing-apps/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
@@ -37,7 +36,6 @@ const redirects = `
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
   /docs/current/references/* /docs/references/:splat
-  /docs/current/references/samples/* /docs/references/samples/:splat
 
   ## Explicit redirects
   ## For files that have changed directories & file names, there will need to be
@@ -516,7 +514,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
-  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
+  /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/building-apps/interact-with-canisters/agents/nodejs
   /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/building-apps/interact-with-canisters/agents/overview
@@ -535,12 +533,10 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
-  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/developing-canisters/what-are-canisters
-  /docs/current/references/subnets/subnet-types/ /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
   /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
   /docs/current/developer-docs/smart-contracts/maintain/recovery /docs/building-apps/canister-management/snapshots
-  /docs/current/samples/overview /ecosystem
   /docs/current/references/https-outcalls-how-it-works /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/other/updates/release-notes/ /docs/other/updates/release-notes/
@@ -549,6 +545,35 @@ const redirects = `
   /docs/current/developer-docs/getting-started/troubleshooting /docs/building-apps/best-practices/troubleshooting
   /docs/current/developer-docs/smart-contracts/deploy/custom-testnets /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/canbench /docs/building-apps/advanced/benchmarking
+
+  ## dfx
+  /docs/current/references/cli-reference/dfx-parent /docs/building-apps/developer-tools/dfx/dfx-parent
+  /docs/current/references/cli-reference/dfx-bootstrap /docs/building-apps/developer-tools/dfx/dfx-bootstrap
+  /docs/current/references/cli-reference/dfx-build /docs/building-apps/developer-tools/dfx/dfx-build
+  /docs/current/references/cli-reference/dfx-cache /docs/building-apps/developer-tools/dfx/dfx-cache
+  /docs/current/references/cli-reference/dfx-canister /docs/building-apps/developer-tools/dfx/dfx-canister
+  /docs/current/references/cli-reference/dfx-completion /docs/building-apps/developer-tools/dfx/dfx-completion
+  /docs/current/references/cli-reference/dfx-cycles /docs/building-apps/developer-tools/dfx/dfx-cycles
+  /docs/current/references/cli-reference/dfx-deploy /docs/building-apps/developer-tools/dfx/dfx-deploy
+  /docs/current/references/cli-reference/dfx-deps /docs/building-apps/developer-tools/dfx/dfx-deps
+  /docs/current/references/cli-reference/dfx-generate /docs/building-apps/developer-tools/dfx/dfx-generate
+  /docs/current/references/cli-reference/dfx-help /docs/building-apps/developer-tools/dfx/dfx-help
+  /docs/current/references/cli-reference/dfx-identity /docs/building-apps/developer-tools/dfx/dfx-identity
+  /docs/current/references/cli-reference/dfx-info /docs/building-apps/developer-tools/dfx/dfx-info
+  /docs/current/references/cli-reference/dfx-killall /docs/building-apps/developer-tools/dfx/dfx-killall
+  /docs/current/references/cli-reference/dfx-ledger /docs/building-apps/developer-tools/dfx/dfx-ledger
+  /docs/current/references/cli-reference/dfx-new /docs/building-apps/developer-tools/dfx/dfx-new
+  /docs/current/references/cli-reference/dfx-nns /docs/building-apps/developer-tools/dfx/dfx-nns
+  /docs/current/references/cli-reference/dfx-ping /docs/building-apps/developer-tools/dfx/dfx-ping
+  /docs/current/references/cli-reference/dfx-quickstart /docs/building-apps/developer-tools/dfx/dfx-quickstart
+  /docs/current/references/cli-reference/dfx-replica /docs/building-apps/developer-tools/dfx/dfx-replica
+  /docs/current/references/cli-reference/dfx-schema /docs/building-apps/developer-tools/dfx/dfx-schema
+  /docs/current/references/cli-reference/dfx-sns /docs/building-apps/developer-tools/dfx/dfx-sns
+  /docs/current/references/cli-reference/dfx-start /docs/building-apps/developer-tools/dfx/dfx-start
+  /docs/current/references/cli-reference/dfx-stop /docs/building-apps/developer-tools/dfx/dfx-stop
+  /docs/current/references/cli-reference/dfx-upgrade /docs/building-apps/developer-tools/dfx/dfx-upgrade
+  /docs/current/references/cli-reference/dfx-wallet /docs/building-apps/developer-tools/dfx/dfx-wallet
+  /docs/current/references/cli-reference/dfx-envars /docs/building-apps/developer-tools/dfx/dfx-envars
 
   ## Getting started
   /docs/current/developer-docs/getting-started/accounts /docs/building-apps/getting-started/identities
@@ -676,9 +701,9 @@ const redirects = `
   /docs/current/developer-docs/integrations/storage/cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/integrations/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/references/t-sigs-how-it-works
-  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/encryption/vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/references/vetkeys-overview
-  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/local-quickstart /docs/building-apps/getting-started/install
 
   ## Chain Fusion
@@ -857,8 +882,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
-  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
-  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/encryption/vetkeys
+  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
+  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview /docs/building-apps/essentials/canisters
@@ -944,6 +969,7 @@ const redirects = `
 
   ## Old: Developer's guide
   /docs/current/tutorials/deploy_sample_app /docs/tutorials/developer-liftoff/
+  /docs/developers-guide/webpack-config.html /docs/building-apps/frontends/using-an-asset-canister
   /docs/defi/icp-tokens/icp-index-local-setup /docs/defi/token-indexes/
   /docs/developer-docs /docs/building-apps/essentials/network-overview
   /docs/developers-guide/about-this-guide /docs/motoko/home
@@ -1028,9 +1054,47 @@ const redirects = `
   /docs/current/samples/vetkd-encrypted-notes /samples
   /docs/samples/overview /samples
   /docs/current/samples/overview /samples
+  /docs/references/samples/ADDING_AN_EXAMPLE /samples
+  /docs/references/samples/archive/motoko/actor_reference/ /samples
+  /docs/references/samples/archive/motoko/auth_client_demo/ /samples
+  /docs/references/samples/archive/motoko/calc/ /samples
+  /docs/references/samples/archive/motoko/defi/ /samples
+  /docs/references/samples/archive/motoko/dip721-nft-container/ /samples 
+  /docs/references/samples/archive/motoko/echo/ /samples
+  /docs/references/samples/archive/motoko/factorial/ /samples
+  /docs/references/samples/archive/motoko/hello-world/ /samples
+  /docs/references/samples/archive/motoko/hello/ /samples
+  /docs/references/samples/archive/motoko/ios-notifications/ /samples
+  /docs/references/samples/archive/motoko/persistent-storage/ /samples
+  /docs/references/samples/archive/motoko/phone-book/ /samples
+  /docs/references/samples/archive/motoko/quicksort/ /samples
+  /docs/references/samples/archive/motoko/simple-to-do/ /samples
+  /docs/references/samples/c/adventure  /samples
+  /docs/references/samples/c/qr  /samples
+  /docs/references/samples/c/reverse /samples
+  /docs/references/samples/hosting/ /samples
+  /docs/references/samples/hosting/godot-html5-template/ /samples
+  /docs/references/samples/hosting/react/ /samples
+  /docs/references/samples/hosting/unity-webgl-template/ /samples
+  /docs/references/samples/native-apps/unity_ii_applink  /samples
+  /docs/references/samples/native-apps/unity_ii_deeplink  /samples
+  /docs/references/samples/native-apps/unity_ii_universallink /samples
+  /docs/references/samples/svelte/svelte-motoko-starter  /samples
+  /docs/references/samples/svelte/svelte-starter  /samples
+  /docs/references/samples/svelte/sveltekit-starter /samples
+  /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/deploy-specific-subnet
+  /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
+  /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/security/overview
+  /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
+  /docs/building-apps/developing-canisters/what-are-canisters/ /docs/building-apps/essentials/canisters
+  /docs/building-apps/developing-canisters/what-are-canisters /docs/building-apps/essentials/canisters
   /docs/building-apps/network-features/signatures/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
+  /docs/building-apps/developer-tools/advanced-dfx/networks-json /docs/building-apps/developing-canisters/custom-networks
+  /docs/building-apps/developer-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args /docs/building-apps/developing-canisters/deploy
   /docs/current/references/security/general-security-best-practices /docs/building-apps/security/overview
   /docs/current/references/security/ /docs/building-apps/security/overview
   /docs/current/developer-docs/use-cases/ /docs/home
@@ -1049,12 +1113,11 @@ const redirects = `
   /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/motoko/main/base/rbtree /docs/motoko/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
-  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron
   /docs/current/references/cli-reference/dfx-ledger/ /docs/building-apps/developer-tools/dfx/dfx-ledger
   /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
   /docs/current/samples/host-a-website/ /samples
   /features/serve-web-content/ /capabilities
-  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/intro-canisters
+  /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/tooling
   /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
   /docs/tutorials/developer-liftoff/level-0/intro-languages /docs/tutorials/developer-liftoff/level-0/tooling
   /docs/tutorials/developer-liftoff/level-0/intro-dfx /docs/tutorials/developer-liftoff/level-0/first-dapp
@@ -1079,6 +1142,7 @@ const redirects = `
   /ecosystem.json /ecosystem
   /ethereum /chainfusion
   /img/ /docs/home
+  /olympus /
   /docs/defi /docs/defi/overview
   /docs/current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/download.html /docs/home
@@ -1100,7 +1164,6 @@ const redirects = `
   /docs/candid-guide/candid-intro.html /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/home /docs/home
   /docs/building /docs/home
-  /docs/building-apps/ /docs/home
   /docs/introduction/welcome.html /docs/home
   /docs/rust-guide/rust-quickstart.html /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /install.sh) /docs/building-apps/getting-started/install
@@ -1114,7 +1177,6 @@ const redirects = `
   /docs/candid-guide/candid-howto /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/building-apps/getting-started/quickstart /docs/building-apps/getting-started/quickstart
   /developers-guide/tutorials/phonebook.html /samples
-  /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/tokenomics/identity-auth/ /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
   /docs /docs/home
@@ -1140,7 +1202,6 @@ const redirects = `
   /docs/operators-guide/ops-guide /docs/home
   /docs/videos-tutorials /docs/home
   /education /education-hub
-  /features /capabilities
   /features/ /capabilities
   /features/green /capabilities/sustainability
   /grants https://dfinity.org/grants
@@ -1232,6 +1293,17 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/cdks/ /docs/building-apps/developer-tools/cdks/
   /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/building-apps/developer-tools/cdks/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/main/writing-motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/main/writing-motoko/actor-classes
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/main/writing-motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/main/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/main/base/IterType
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/main/writing-motoko/pattern-matching
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/motoko/main/canister-maintenance/upgrades
   /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/language-manual
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
@@ -1252,8 +1324,7 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/motoko /docs/motoko/home
-  /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/base/
+  /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -1287,7 +1358,10 @@ const redirects = `
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
   /blog/features/vetkey-primer /docs/references/vetkeys-overview
-  `
+
+  /docs/building-apps/network-features/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
+  /docs/building-apps/network-features/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
+`
 
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

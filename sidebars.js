@@ -70,13 +70,13 @@ build: [
                 id: "building-apps/developer-tools/cdks/rust/intro-to-rust",
               },
               items: [
-                "building-apps/developer-tools/cdks/rust/canister-state",
+                "building-apps/developer-tools/cdks/rust/rust-limitations",
                 "building-apps/developer-tools/cdks/rust/generating-candid",
                 "building-apps/developer-tools/cdks/rust/intercanister",
-                "building-apps/developer-tools/cdks/rust/message-inspect",
-                "building-apps/developer-tools/cdks/rust/rust-limitations",
+                "building-apps/developer-tools/cdks/rust/canister-state",
                 "building-apps/developer-tools/cdks/rust/stable-structures",
                 "building-apps/developer-tools/cdks/rust/upgrading",
+                "building-apps/developer-tools/cdks/rust/message-inspect",
               ]
               }
             ],
@@ -128,8 +128,6 @@ build: [
                 items: [
                   "building-apps/developer-tools/advanced-dfx/check-chunk-store",
                   "building-apps/developer-tools/advanced-dfx/dfx-migration",
-                  "building-apps/developer-tools/advanced-dfx/init-args",
-                  "building-apps/developer-tools/advanced-dfx/networks-json",
                   "building-apps/developer-tools/advanced-dfx/specifying-replica-version",
                 ],
               },
@@ -158,7 +156,6 @@ build: [
       label: "Developing canisters",
       items:
       [
-        "building-apps/developing-canisters/what-are-canisters",
         "building-apps/developing-canisters/write",
         "building-apps/developing-canisters/create",
         "building-apps/developing-canisters/compile",
@@ -363,10 +360,12 @@ build: [
         },
         {
           type: "category",
-          label: "Verifiable encryption",
+          label: "vetKeys",
           items: [
-            "building-apps/network-features/encryption/vetkeys",
-            "building-apps/network-features/encryption/using-vetkeys",
+            "building-apps/network-features/vetkeys/introduction",
+            "building-apps/network-features/vetkeys/api",
+            "building-apps/network-features/vetkeys/dkms",
+            "building-apps/network-features/vetkeys/encrypted-onchain-storage",
           ],
         },
         "building-apps/network-features/randomness",
@@ -454,27 +453,27 @@ build: [
             },
           ],
         },
+        {
+          type: "doc",
+          label: "Solana",
+          id: "building-apps/chain-fusion/solana/overview",
+        },
         "building-apps/chain-fusion/examples",
       ],
     },
     {
       type: "category",
       label: "Security",
-      link:
-        {
-          type: "doc",
-          id: "building-apps/security/overview",
-        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          items: [
+          link:
           {
             type: "doc",
-            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
+          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
@@ -602,6 +601,7 @@ build: [
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-sns-topic-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
             },
@@ -772,7 +772,8 @@ defi: [
             label: "ICRC ledger",
             items: [
               "defi/token-ledgers/setup/icrc1_ledger_setup",
-              "defi/token-ledgers/usage/icrc1_ledger_usage"
+              "defi/token-ledgers/usage/icrc1_ledger_usage",
+              "defi/token-ledgers/upgrading/icrc1_ledger_upgrade"
             ],
           },
           "defi/token-ledgers/cycles-ledger",

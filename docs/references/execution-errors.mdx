@@ -421,7 +421,7 @@ An example of this error is:
   Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
 ```
 
-[Installing](/docs/building-apps/developing-canisters/what-are-canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
+[Installing](/docs/building-apps/essentials/canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
 
 If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](/docs/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
 

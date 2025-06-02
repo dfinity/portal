@@ -434,7 +434,7 @@ const footerCards: Array<CarouselCard> = [
   {
     title: <h2 className={"text-white"}>Developer office hours on Discord</h2>,
     subtitle: (
-      <p className={"text-white"}>Every Wednesday 9AM CEST and 10:30AM PST</p>
+      <p className={"text-white"}>Every Wednesday 9AM CET/CEST and 8AM PST/PDT</p>
     ),
     backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
     cta: (
