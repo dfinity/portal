@@ -70,13 +70,13 @@ build: [
                 id: "building-apps/developer-tools/cdks/rust/intro-to-rust",
               },
               items: [
-                "building-apps/developer-tools/cdks/rust/canister-state",
+                "building-apps/developer-tools/cdks/rust/rust-limitations",
                 "building-apps/developer-tools/cdks/rust/generating-candid",
                 "building-apps/developer-tools/cdks/rust/intercanister",
-                "building-apps/developer-tools/cdks/rust/message-inspect",
-                "building-apps/developer-tools/cdks/rust/rust-limitations",
+                "building-apps/developer-tools/cdks/rust/canister-state",
                 "building-apps/developer-tools/cdks/rust/stable-structures",
                 "building-apps/developer-tools/cdks/rust/upgrading",
+                "building-apps/developer-tools/cdks/rust/message-inspect",
               ]
               }
             ],
@@ -360,10 +360,12 @@ build: [
         },
         {
           type: "category",
-          label: "Verifiable encryption",
+          label: "vetKeys",
           items: [
-            "building-apps/network-features/encryption/vetkeys",
-            "building-apps/network-features/encryption/using-vetkeys",
+            "building-apps/network-features/vetkeys/introduction",
+            "building-apps/network-features/vetkeys/api",
+            "building-apps/network-features/vetkeys/dkms",
+            "building-apps/network-features/vetkeys/encrypted-onchain-storage",
           ],
         },
         "building-apps/network-features/randomness",
@@ -450,6 +452,11 @@ build: [
               ],
             },
           ],
+        },
+        {
+          type: "doc",
+          label: "Solana",
+          id: "building-apps/chain-fusion/solana/overview",
         },
         "building-apps/chain-fusion/examples",
       ],

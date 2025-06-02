@@ -21,11 +21,11 @@ Heap memory is limited to a maximum of 4GiB of data.
 
 ## Stable memory
 
-Stable memory is a feature unique to the Internet Computer Protocol that provides a long-term, persistent data storage option separate from a canister's heap memory. Unless a canister is reinstalled or its data is cleared due to cycle depletion, the data stored in stable memory is not cleared or removed. The stable memory is preserved throughout the process, while any other WebAssembly state is discarded.
+Stable memory is a feature unique to the Internet Computer Protocol that provides a long-term, persistent data storage option separate from a canister's heap memory. Unless a canister is reinstalled, uninstalled, or its data is cleared due to cycle depletion, the data stored in stable memory is not cleared or removed. The stable memory is preserved throughout the process, while any other WebAssembly state is discarded.
 
 To use stable memory, you must anticipate which portions of the canister's data you want to persist across upgrades by indicating this within the canister code. More information about this can be found in the section below, [Storage handling in different languages](#storage-handling-in-different-languages).
 
-By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 500GiB if the <GlossaryTooltip>subnet</GlossaryTooltip> the canister is deployed on can accommodate it. If a canister uses more than 500GiB of stable memory, the canister will trap and become unrecoverable.
+By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 500GiB if the <GlossaryTooltip>subnet</GlossaryTooltip> the canister is deployed on can accommodate it.
 
 ## Storage cost
 

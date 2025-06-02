@@ -246,7 +246,9 @@ A canister can be *empty* (e.g. directly after creation) or *non-empty*. A non-e
 
 -   code, in the form of a canister module
 
--   state (memories, globals etc.)
+-   memories (heap and stable memory)
+
+-   globals
 
 -   possibly further data that is specific to the implementation of the IC (e.g. queues)
 
@@ -2260,6 +2262,15 @@ The optional `settings` parameter can be used to set the following settings:
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
 
+-   `log_visibility` (`log_visibility`)
+
+    Controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can fetch logs
+    - `public`: Anyone can fetch the canister's logs
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can fetch logs, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -2679,7 +2690,7 @@ The **size** of an HTTP request from the canister or an HTTP response from the r
 
 The following parameters should be supplied for the call:
 
--   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt) and its length must not exceed `8192`. The URL may specify a custom port number.
+-   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt), it might contain non-ASCII characters according to [RFC-3987](https://www.ietf.org/rfc/rfc3987.txt), and its length must not exceed `8192`. The URL may specify a custom port number.
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
@@ -2701,7 +2712,7 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `body` - the response's body
 
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is `2MB` (`2,000,000B`). Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is equal to `max_response_bytes`, if provided, otherwise the default value of `2MB` (`2,000,000B`) is used as the limit. Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
 
 When the transform function is invoked by the system due to a canister HTTP request, the caller's identity is the principal of the management canister. This information can be used by developers to implement access control mechanism for this function.
 
@@ -2726,7 +2737,7 @@ Currently, the Internet Computer mainnet only supports URLs that resolve to IPv6
 
 :::warning
 
-If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected network response size to not incur unnecessary cycles costs for your request.
+If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
 
@@ -5255,7 +5266,7 @@ S' = S with
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     canister_history[A.canister_id] = New_canister_history
-    canister_logs[A.canister_id] = canister_logs
+    canister_logs[A.canister_id] = New_canister_logs
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin;
@@ -5265,7 +5276,7 @@ S' = S with
 
 ```
 
-The logs produced by the canister during the execution of the WebAssembly `start` and `canister_init` functions are modeled via the unspecified `canister_logs` variable; the variable stores a list of logs (each of type `CanisterLog`) with consecutive sequence numbers, timestamps equal to `S.time[A.canister_id]`, and contents produced by the canister calling `ic0.debug_print`, `ic0.trap`, or produced by the WebAssembly runtime when the canister WebAssembly module traps.
+The logs produced by the canister during the execution of the WebAssembly `start` and `canister_init` functions are modeled via the unspecified `New_canister_logs` variable; the variable stores a list of logs (each of type `CanisterLog`) with consecutive sequence numbers, timestamps equal to `S.time[A.canister_id]`, and contents produced by the canister calling `ic0.debug_print`, `ic0.trap`, or produced by the WebAssembly runtime when the canister WebAssembly module traps.
 
 #### IC Management Canister: Code upgrade
 
