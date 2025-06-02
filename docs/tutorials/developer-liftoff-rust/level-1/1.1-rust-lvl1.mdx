@@ -152,7 +152,7 @@ fn query_function() {
 
 ## Rust Wasm limitations
 
-WebAssembly (Wasm) is a portable binary format that runs in a virtual machine. ICP compiles canister code to standard Wasm and uses a system API to interact with it. The `ic_cdk` includes build tools that compile Rust code to the `wasm32-unknown-unknown` Wasm target.
+WebAssembly (Wasm) is a portable binary format that runs in a virtual machine. ICP compiles canister code to standard Wasm using tools included in the `ic_cdk` that compile Rust code to the `wasm32-unknown-unknown` Wasm target.
 
 Rust relies on the Wasm binary and the associated Candid interface file to define and expose the canister's methods. In a `dfx.json` file that defines a Rust canister, you will need to specify additional fields to indicate where in the project these files are located:
 
