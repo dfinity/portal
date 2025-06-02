@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.41.0 (2025-06-02) {#0_41_0}
+* Management canister API for threshold key derivation (vetKD).
+
 ### 0.40.0 (2025-05-30) {#0_40_0}
 * Non-ASCII characters are allowed in the URL of canister http outcalls.
 * The transformed response size of canister http outcalls must not exceeded `max_response_bytes` (if provided).
