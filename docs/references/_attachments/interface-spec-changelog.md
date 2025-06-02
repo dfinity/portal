@@ -1,5 +1,9 @@
 ## Changelog {#changelog}
 
+### 0.40.0 (2025-05-30) {#0_40_0}
+* Non-ASCII characters are allowed in the URL of canister http outcalls.
+* The transformed response size of canister http outcalls must not exceeded `max_response_bytes` (if provided).
+
 ### 0.39.0 (2025-05-07) {#0_39_0}
 * Threshold Schnorr API, composite query methods, and canister logs management canister API are considered stable.
 
