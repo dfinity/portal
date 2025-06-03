@@ -117,7 +117,7 @@ fn update_function() {
 
 ## Candid interface files
 
-Candid is an interface description file (IDL) used to describe a canister's public methods. Each Candid file defines a service, then adds the canister's public methods and the data types that each method accepts and returns.
+Candid is an interface description language (IDL) used to describe a canister's public methods. Each Candid file defines a service, then adds the canister's public methods and the data types that each method accepts and returns.
 
 Here is an example that defines the public method `greet`, which accepts type `text` and returns type `text` using a `query` call.
 
@@ -220,7 +220,7 @@ Canisters written in Rust have a set of limitations imposed by the Wasm compiler
 
 - You cannot use `tokio`, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/0.16.0/ic_cdk/fn.spawn.html).
 
-- You cannot use crates that make or serve HTTP requests. Instead, use [HTTP outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) or the [gateway API](/docs/references/http-gateway-protocol-spec/).
+- You cannot use crates that make or serve HTTP requests. Instead, use [HTTP outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) or the [gateway API](/docs/references/http-gateway-protocol-spec/) respectively.
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 
