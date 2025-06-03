@@ -384,7 +384,7 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
-    - `/docs/motoko/main/base/`
+    - `/docs/motoko/`
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
 - Internet Identity
@@ -406,7 +406,7 @@ The following submodules and their corresponding repos are currently used:
 
 ### Updating submodules
 
-The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job. 
+The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job.
 
 These versions can be updated to the newest release via commands:
 
@@ -422,7 +422,7 @@ cd submodules/sdk
 git checkout 0.25.1
 ```
 
-For other submodules without release versions, checkout the latest commit hash when updates are requested. 
+For other submodules without release versions, checkout the latest commit hash when updates are requested.
 
 ```
 cd submodules/dfxvm
