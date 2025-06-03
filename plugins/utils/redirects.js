@@ -439,6 +439,17 @@ const redirects = `
   /docs/current/motoko/main/writing-motoko/timers /docs/motoko/icp-features/timers
   /docs/motoko/main/writing-motoko/writing-intro /docs/motoko/home
   /docs/current/motoko/main/writing-motoko/writing-intro /docs/motoko/home
+  /docs/motoko/fundamentals/actors-async /docs/motoko/actors-async
+  /docs/motoko/fundamentals/state /docs/motoko/state
+  /docs/motoko/fundamentals/messaging /docs/motoko/messaging
+  /docs/motoko/fundamentals/modules-imports /docs/motoko/module-imports
+  /docs/motoko/fundamentals/data-persistence /docs/motoko/data-persistence
+  /docs/motoko/fundamentals/pattern-matching /docs/motoko/pattern-matching
+  /docs/motoko/fundamentals/error-handling /docs/motoko/error-handling
+  /docs/motoko/fundamentals/garbage-collection /docs/motoko/garbage-collection
+  /docs/motoko/fundamentals/compiler-ref /docs/motoko/compiler-ref
+  /docs/motoko/fundamentals/language-manual /docs/motoko/language-manual
+  /docs/motoko/fundamentals/style /docs/motoko/style
   /docs/move-to-motoko/canpack /docs/motoko/motoko-tooling/canpack
   /docs/current/move-to-motoko/canpack /docs/motoko/motoko-tooling/canpack
   /docs/move-to-motoko/dev-containers /docs/motoko/motoko-tooling/dev-containers
