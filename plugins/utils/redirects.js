@@ -357,8 +357,8 @@ const redirects = `
   /docs/current/motoko/main/motoko-tools/motoko-js https://github.com/dfinity/motoko
   /docs/motoko/main/reference/compiler-ref /docs/motoko/compiler-ref
   /docs/current/motoko/main/reference/compiler-ref /docs/motoko/compiler-ref
-  /docs/motoko/main/reference/error-codes /docs/motoko/
-  /docs/current/motoko/main/reference/error-codes /docs/motoko/
+  /docs/motoko/main/reference/error-codes /docs/motoko/error-handling
+  /docs/current/motoko/main/reference/error-codes /docs/motoko/error-handling
   /docs/motoko/main/reference/generating-docs /docs/motoko/motoko-tooling/mo-doc
   /docs/current/motoko/main/reference/generating-docs /docs/motoko/motoko-tooling/mo-doc
   /docs/motoko/main/reference/language-manual /docs/motoko/language-manual
@@ -442,7 +442,7 @@ const redirects = `
   /docs/motoko/fundamentals/actors-async /docs/motoko/actors-async
   /docs/motoko/fundamentals/state /docs/motoko/state
   /docs/motoko/fundamentals/messaging /docs/motoko/messaging
-  /docs/motoko/fundamentals/modules-imports /docs/motoko/module-imports
+  /docs/motoko/fundamentals/modules-imports /docs/motoko/modules-imports
   /docs/motoko/fundamentals/data-persistence /docs/motoko/data-persistence
   /docs/motoko/fundamentals/pattern-matching /docs/motoko/pattern-matching
   /docs/motoko/fundamentals/error-handling /docs/motoko/error-handling
@@ -1370,7 +1370,7 @@ const redirects = `
   /how-it-works/threshold-ecdsa-signing https://learn.internetcomputer.org/hc/en-us/articles/34209497587732-Chain-Key-Signatures
   /how-it-works/canister-lifecycle https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts
   /how-it-works/message-routing https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing
-  /how-it-works/motoko https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction
+  /how-it-works/motoko /docs/motoko/home
   /how-it-works/architecture-of-the-internet-computer https://learn.internetcomputer.org/hc/en-us/articles/33694833025172-How-Does-ICP-Work
   /how-it-works/consensus https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus
   /how-it-works/execution-layer https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer
@@ -1445,17 +1445,17 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/cdks/ /docs/building-apps/developer-tools/cdks/
   /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/building-apps/developer-tools/cdks/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/main/writing-motoko/actors-async
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/main/writing-motoko/actor-classes
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/main/writing-motoko/actors-async
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/main/base/Iter
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/main/base/IterType
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/main/writing-motoko/pattern-matching
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/motoko/main/canister-maintenance/upgrades
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/language-manual
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
+  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/base/IterType
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/home
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/home
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/pattern-matching
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/building-apps/canister-management/upgrade
   /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/language-manual
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
@@ -1476,7 +1476,7 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/languages/motoko /docs/motoko/home
   /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
