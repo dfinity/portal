@@ -1550,8 +1550,8 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.env_var_name_size(index: I) -> I;                                                 // *
     ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ();                    // *
 
-    ic0.env_var_value_size(src: i, size: I) -> I;                                         // *
-    ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ();            // *
+    ic0.env_var_value_size(name_src: I, name_size: I) -> I;                                         // *
+    ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ();            // *
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
@@ -2156,29 +2156,64 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     - `1`: Invalid curve or algorithm. Memory at `dst` is left unchanged.
     - `2`: Invalid key name for the given combination of signing scheme and (valid) curve/algorithm. Memory at `dst` is left unchanged.
 
+ This system call traps if `src+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
+
+-   `ic0.stable64_read : (dst : i64, offset : i64, size : i64) → ()`
+
+    Copies the data from location \[offset, offset+size) of the stable memory to the location \[dst, dst+size) in the canister memory.
+
+     This system call traps if `dst+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
+
 ### Environment Variables
 
 The following system calls provide access to the canister's environment variables:
 
 -   `ic0.env_var_count() -> I`; `I ∈ {i32, i64}`
 
-  Returns the number of environment variables set for this canister.
+    Returns the number of environment variables set for this canister.
+
+    This system call traps if:
+      - Invoked from the `(start)` function
 
 -   `ic0.env_var_name_size(index: I) -> I`; `I ∈ {i32, i64}`
 
-  Gets the size in bytes of the name of the environment variable at the given index.
-  
+    Gets the size in bytes of the name of the environment variable at the given index.
+
+    This system call traps if:
+      - Invoked from the `(start)` function
+      - If the index is out of bounds (>= than value provided by `ic0.env_var_count`)
+
 -   `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
 
-  Copies the name of the environment variable at the given index into memory.
+    Copies the name of the environment variable at the given index into memory.
 
--   `ic0.env_var_value_size(src: i, size: I) -> I`; `I ∈ {i32, i64}`
+    This system call traps if:
+      - Invoked from the `(start)` function
+      - The index is out of bounds (>= than value provided by `ic0.env_var_count`)
+      - `offset+size` is greater than the size of the environment variable name
+      - `dst+size` exceeds the size of the WebAssembly memory
 
-  Gets the size in bytes of the value for the environment variable with the given name.
 
--   `ic0.env_var_value_copy(dst: I, offset: I, size: I, src: I, size: I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.env_var_value_size(name_src: I, name_size: I) -> I`; `I ∈ {i32, i64}`
 
-  Copies the value of the environment variable with the given name into memory.
+    Gets the size in bytes of the value for the environment variable with the given name.
+
+    This system call traps if:
+      - Invoked from the `(start)` function
+      - `name_src+name_size` exceeds the size of the WebAssembly memory
+      - The name does not correspond to a valid environment variable
+
+-   `ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ()`; `I ∈ {i32, i64}`
+
+    Copies the value of the environment variable with the given name into memory.
+
+    This system call traps if:
+      - Invoked from the `(start)` function
+      - `name_src+name_size` exceeds the size of the WebAssembly memory
+      - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
+      - The name does not correspond to a valid environment variable
+      - `offset+size` is greater than the size of the environment variable value
+      - `dst+size` exceeds the size of the WebAssembly memory
 
 These system calls allow canisters to:
 - Enumerate all environment variables
@@ -2317,11 +2352,11 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `environment_variables` (`environment_variables`)
 
-    A record containing a vector of key-value pairs where both key and value are text strings. These variables are accessible to the canister during execution and can be used to configure canister behavior without code changes. Each key must be unique.
+    A record containing key-value pairs where both key and value are UTF-8 encoded strings. These variables are accessible to the canister during execution and can be used to configure canister behavior without code changes. Each key must be unique.
 
     The maximum number of environment variables is implementation-defined. The maximum length of keys and values is implementation-defined.
 
-    Default value: `null` (i.e., no explicit environment variables provided).
+    Default value: `null` (i.e., no environment variables provided).
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
@@ -3652,6 +3687,7 @@ SnapshotId = (abstract)
 ChangeDetails
   = Creation {
       controllers : [PrincipalId];
+      environment_variables_hash: opt Blob;
     }
   | CodeUninstall
   | CodeDeployment {
@@ -3663,9 +3699,14 @@ ChangeDetails
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
     }
+  // DEPRECATED: Use `settings_change` instead.
   | ControllersChange {
       controllers : [PrincipalId];
     }
+  | SettingsChange {
+      controllers: [PrincipalId];
+      environment_variables_hash: opt Blob;
+  }
 Change = {
   timestamp_nanos : Timestamp;
   canister_version : CanisterVersion;
@@ -3725,6 +3766,7 @@ S = {
   reserved_balance_limits: CanisterId ↦ Nat;
   wasm_memory_limit: CanisterId ↦ Nat;
   wasm_memory_threshold: CanisterId ↦ Nat;
+  environment_variables: CanisterId ↦ (String ↦ String)
   on_low_wasm_memory_hook_status: CanisterId ↦ OnLowWasmMemoryHookStatus;
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;

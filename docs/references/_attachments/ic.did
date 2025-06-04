@@ -8,7 +8,10 @@ type log_visibility = variant {
     allowed_viewers : vec principal;
 };
 
-type environment_variables = vec record { text; text };
+type environment_variables = vec record { 
+    name: text; 
+    value: text 
+};
 
 type canister_settings = record {
     controllers : opt vec principal;
@@ -47,6 +50,7 @@ type change_origin = variant {
 type change_details = variant {
     creation : record {
         controllers : vec principal;
+        environment_variables_hash : opt blob; 
     };
     code_uninstall;
     code_deployment : record {
@@ -58,11 +62,13 @@ type change_details = variant {
       snapshot_id : snapshot_id;
       taken_at_timestamp : nat64;
     };
+    // DEPRECATED: use `settings_change` instead
     controllers_change : record {
         controllers : vec principal;
     };
-    environment_variables_change: record {
-        hash: blob;
+    settings_change: record {
+        controllers : vec principal;
+        environment_variables_hash: opt blob;
     }
 };
 
