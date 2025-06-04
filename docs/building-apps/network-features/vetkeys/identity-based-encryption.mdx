@@ -72,7 +72,7 @@ The transport public key required for the call is a throw-away key that is gener
 The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
 
 ### Step 4: Decrypt data
-Obtain encrypted data from the canister or other storage location.
+Obtain the encrypted data from the canister or other storage location.
 Decrypt the IBE-encrypted data in the frontend using the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#decrypt).
 See more details on the [API page](/docs/building-apps/network-features/vetkeys/api) for more details regarding the basic flow of obtaining vetKeys.
 
