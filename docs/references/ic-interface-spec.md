@@ -7714,11 +7714,13 @@ copy_cycles_to_canister<es>(dst : I, data : blob) =
 ```
 
 Helper function to get sorted keys from environment variables map.
+```
 get_sorted_env_keys<es>(env_vars : (text -> text)) =
   let keys = []
   for (key, _) in env_vars:
     keys := keys · [key]
   return sort_lexicographically(keys)
+```
 
 #### System imports
 
