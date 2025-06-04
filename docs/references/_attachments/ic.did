@@ -62,10 +62,6 @@ type change_details = variant {
       snapshot_id : snapshot_id;
       taken_at_timestamp : nat64;
     };
-    // DEPRECATED: use `settings_change` instead
-    controllers_change : record {
-        controllers : vec principal;
-    };
     settings_change: record {
         controllers : vec principal;
         environment_variables_hash: opt blob;
