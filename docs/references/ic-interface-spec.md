@@ -2164,8 +2164,6 @@ The following system calls provide access to the canister's environment variable
 
     Returns the number of environment variables set for this canister.
 
-    This system call traps if:
-
 -   `ic0.env_var_name_size(index: I) -> I`; `I ∈ {i32, i64}`
 
     Gets the size in bytes of the name of the environment variable at the given index.

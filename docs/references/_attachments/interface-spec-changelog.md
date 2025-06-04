@@ -1,5 +1,14 @@
 ## Changelog {#changelog}
 
+### 0.40.0 (2025-05-21) {#0_40_0}
+* Added support for canister environment variables in canister settings
+* Added new System API for accessing environment variables:
+  - `ic0.env_var_count`
+  - `ic0.env_var_name_size`
+  - `ic0.env_var_name_copy`
+  - `ic0.env_var_value_size`
+* Added new `SettingChange` variant in canister history setting details
+
 ### 0.39.0 (2025-05-07) {#0_39_0}
 * Threshold Schnorr API, composite query methods, and canister logs management canister API are considered stable.
 
