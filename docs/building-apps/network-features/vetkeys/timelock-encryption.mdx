@@ -11,26 +11,91 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 
 # Timelock encryption
 
-<MarkdownChipRow labels={["Advanced", "Concept"]} />
+<MarkdownChipRow labels={["Advanced", "vetKeys", "Identity-based encryption", "Timelock"]} />
 
-Timelock encryption builds upon identity-based encryption (IBE). For more information about IBE, please refer to the [identity-based encryption documentation](/docs/building-apps/network-features/vetkeys/identity-based-encryption).
-
-It is useful to add time restrictions on when an IBE private key can be accessed. Additionally, the canister can decrypt IBE-encrypted data when appropriate conditions are met.
+A special variant of [identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption) is called timelock encryption.
+It allows a sender to encrypt to a specific timestamp, ensuring that the recipient can only decrypt after the specific time has passed. Canisters can enforce this time-based access control by requesting threshold decryption of a ciphertext only after a predetermined expiry time, keeping sensitive information secret until the appropriate moment.
+This makes it possible to implement time-sensitive applications, like secret-bid auctions, time-locked documents, dead-man switches, and delayed reveal NFTs.
+Timelock encryption also serves as a key building block for protecting against maximal extractable value (MEV). By keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
 
 ## Use cases
 
-### "Dead man's switch"
+### Birthday coupon
 
-Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. They can store the information in a dapp, encrypted using IBE that the dapp automatically and publicly recovers when a certain amount of time passes after it last received an authenticated ping from its owner.
+A user can encrypt a coupon or gift, send it to another user, who can only decrypt it after a certain delay such as the time until their birthday.
 
 ### Secret-bid auctions and MEV protection
 
 In a secret-bid auction dapp, users can submit bids that are IBE-encrypted under an identifier so that at the end of the auction, the dapp can decrypt all bids with a single vetKey evaluation. A similar technique can be used to prevent front-running, also known as maximal extractable value (MEV), on a decentralized exchange (DEX). Users submit their IBE-encrypted transactions under a predictable batch identifier. The DEX orders the transactions in encrypted form and, when all transactions for a particular batch have been ordered, triggers the recovery of the decryption key for that batch and executes the decrypted transactions in the fixed order. Note that all of the symmetric-encryption use cases listed above can be modified to encrypt using an IBE instead of a symmetric-key encryption, thereby eliminating the need to perform a vetKey derivation for encryption. Decryption, of course, still requires retrieving a vetKey.
 
+### "Dead man's switch"
+
+Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. They can store the information in a dapp, encrypted using IBE that the dapp automatically and publicly recovers when a certain amount of time passes after it last received an authenticated ping from its owner.
+
 ### Advanced timelocks
 
 Anyone can IBE-encrypt their message using a more complex condition as the identity, while a dapp allows anyone who can satisfy that condition, or when the condition is automatically fulfilled, to obtain the corresponding vetKey. This enables interesting use cases by allowing encryption tied to verifiable future events. For example, one could encrypt a message that becomes decryptable only when the price of a stock rises above or falls below a certain level, or implement information escrow and break-the-glass policies.
 
-### Birthday coupon
+## How to use timelock encryption?
 
-A user can encrypt a coupon or gift, send it to another user, who can only decrypt it after a certain delay such as the time until their birthday.
+We can categorize timelock encryption into two categories: 1. scenario where the canister decrypts, and 2. scenario where the user decrypts.
+The latter is essentially the same as the [IBE](/docs/building-apps/network-features/vetkeys/identity-based-encryption), only with additional conditions on when the key can be obtained by the authorized users.
+This can be as simple as checking if enough time has passed and either returning the key or an error to the user.
+Therefore, let's focus on getting the first case to work.
+
+The code in the descriptions below is taken from the [secret-bid auction example](https://github.com/dfinity/vetkeys/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe), where any user can create an auction lot with a deadline and other users can create IBE-encrypted bids for the open lots.
+The encrypted bids are decrypted by the canister once the deadline has passed and the lot was closed.
+From that moment on, the bids become public and the canister announces the winner of the lot.
+
+### Step 1: Obtain IBE public key
+
+Expose a canister endpoint that allows to fetch the IBE public key of the canister.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="rs" label="Rust" default>
+
+```rust no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/backend/src/lib.rs#L88-L109
+```
+
+</TabItem>
+</AdornedTabs>
+
+To obtain the public key in the frontend, you now only need to make a call to this endpoint, e.g., like it is done [here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/frontend/src/main.ts#L53).
+The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
+
+### Step 2: Encrypt data in the frontend
+
+Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the canister.
+The `lotId` variable is the identity that we encrypt to to place a bid with the `amount` specified by the user.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="ts" label="TypeScript" default>
+
+```ts no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/frontend/src/main.ts#L406-L429
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 3: Decrypt data in the backend once conditions are met
+
+The condition for decryption in the secret bid auction example is that the current time should be after the deadline time.
+In the example, it is checked by simply comparing the stored timestamp with the timestamp of the current time (see [code here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/backend/src/lib.rs#L217)).
+There, a timer is invoked periodically to check if there are any lots to close which triggers the lot closure and bid decryption.
+The latter is implemented in the `decrypt_bids` function showed below.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="rs" label="Rust" default>
+
+```rust no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/backend/src/lib.rs#L284-L352
+```
+
+</TabItem>
+</AdornedTabs>
+
