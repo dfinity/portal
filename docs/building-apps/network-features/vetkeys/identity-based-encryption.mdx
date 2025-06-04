@@ -5,38 +5,87 @@ keywords: [advanced, concept, vetkd, vetkeys, encryption, identity based encrypt
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Identity-based encryption (IBE)
 
 <MarkdownChipRow labels={["Advanced", "Identity-based encryption"]} />
 
-Identity-based encryption allows you to encrypt information to an **identity**:
+The vetKeys feature enables IBE, allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the dapp. By authenticating with the dapp using their identity, the user can securely retrieve their decryption key and access the data.
 
-An identity is essentially a string of characters. A canister can define who gets a private key for each defined identity.
+Compared to DKMS, IBE works differently. In DKMS, one or more users share the same symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an asymmetric encryption scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them.
 
-No one except the authorized user can "see" the private key. The private key is constructed from secret shares, computed by the network's nodes. The shares are encrypted using the user-provided public transport key. The user decrypts the encrypted private key upon receipt using their private transport key.
+## Using IBE
 
-A simple instantiation of IBE on ICP is encryption to other principals. An identity is a principal, and users encrypt data, such as messages or files, for other users authorized with their principals.
-vetKeys can be used for identity-based encryption (IBE).
+In the following steps, to explain how to use IBE with vetKeys we show parts of the [basic IBE example](https://github.com/dfinity/vetkeys/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe), which implements a simple IBE messaging system between principals.
 
-## Benefits of IBE
+### Step 1: Obtain the public IBE key from the canister.
 
-IBE removes the need for generating, distributing, and storing users' encryption keys and allows a user to obtain the private key for their identity, e.g., a principal.
+Expose a canister endpoint that allows to fetch the public IBE key of the canister.
 
-## Using IBE with vetKeys
+<AdornedTabs groupId="languages">
 
-Any encryption and decryption should happen on the client side. Any data encrypted or decrypted in the canister becomes public data.
+<TabItem value="rs" label="Rust" default>
 
-- **Encryption**: Obtain public key from ICP. Use the frontend library `ic_vetkeys` to encrypt data.
-- **Decryption**: Obtain the encrypted IBE private key, then obtain encrypted data from the canister or other storage location. Decrypt the IBE-encrypted data in the frontend using the frontend `ic_vetkeys` library
+```rust no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/backend/src/lib.rs#L57-L74
+```
 
-TODO: code snippets and explanation
+</TabItem>
+</AdornedTabs>
 
-## Comparison with distributed key management service (DKMS)
+To obtain the public key in the frontend, you now only need to make a call to this endpoint, e.g., like it is done [here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/frontend/src/main.ts#L57).
+The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
 
-Distributed key management service (DKMS) is a key management system that facilitates key derivation and management, as well as encryption. It provides a higher-level abstraction, allowing developers to work with plaintext data without requiring extensive cryptographic knowledge.
+### Step 2: Encrypt data
+Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the canister.
 
-DKMS operates on symmetric key scopes. If the user can encrypt for a key, then that user can also decrypt. This is different in IBE. Any user can encrypt data for any IBE public key, but only the users that can obtain the **IBE private key** can decrypt. This allows for one-way encryption to an identity. Therefore, the use case for IBE is where a set of users encrypts data to another set of users. See also [timelock encryption](/docs/building-apps/network-features/vetkeys/identity-based-encryption) for more use cases of IBE.
+<AdornedTabs groupId="languages">
+
+<TabItem value="ts" label="TypeScript" default>
+
+```ts no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/frontend/src/main.ts#L85-L119
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 3: Obtain the private IBE key
+
+Expose a canister endpoint that allows to fetch the private IBE key of the user making the call.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="rs" label="Rust" default>
+
+```rust no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/backend/src/lib.rs#L76-L96
+```
+
+</TabItem>
+</AdornedTabs>
+
+To obtain the private key in the frontend, you now only need to make a call to this endpoint, e.g., like it is done [here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/frontend/src/main.ts#L71).
+The transport public key required for the call is a throw-away key that is generated by the [`@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.TransportSecretKey.html#random) in the frontend.
+The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
+
+### Step 4: Decrypt data
+Obtain encrypted data from the canister or other storage location.
+Decrypt the IBE-encrypted data in the frontend using the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#decrypt).
+See more details on the [API page](/docs/building-apps/network-features/vetkeys/api) for more details regarding the basic flow of obtaining vetKeys.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="ts" label="TypeScript" default>
+
+```ts no-repl reference
+https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/frontend/src/main.ts#L126-L132
+```
+
+</TabItem>
+</AdornedTabs>
 
 ## Demos
 
