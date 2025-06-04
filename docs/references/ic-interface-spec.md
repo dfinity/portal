@@ -1545,13 +1545,13 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;                 // * s
     ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;                // * s
 
-    ic0.env_var_count() -> I;                                                                         // *
+    ic0.env_var_count : () -> I;                                                                      // *
 
-    ic0.env_var_name_size(index: I) -> I;                                                             // *
-    ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ();                                // *
+    ic0.env_var_name_size : (index: I) -> I;                                                          // *
+    ic0.env_var_name_copy : (dst: I, offset: I, size: I, index: I) -> ();                             // *
 
-    ic0.env_var_value_size(name_src: I, name_size: I) -> I;                                           // *
-    ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ();              // *
+    ic0.env_var_value_size : (name_src: I, name_size: I) -> I;                                        // *
+    ic0.env_var_value_copy : (name_src: I, name_size: I, dst: I, offset: I, size: I) -> ();           // *
 
     ic0.debug_print : (src : I, size : I) -> ();                                                      // * s
     ic0.trap : (src : I, size : I) -> ();                                                             // * s
@@ -2160,18 +2160,18 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 The following system calls provide access to the canister's environment variables:
 
--   `ic0.env_var_count() -> I`; `I ∈ {i32, i64}`
+-   `ic0.env_var_count : () -> I`; `I ∈ {i32, i64}`
 
     Returns the number of environment variables set for this canister.
 
--   `ic0.env_var_name_size(index: I) -> I`; `I ∈ {i32, i64}`
+-   `ic0.env_var_name_size : (index: I) -> I`; `I ∈ {i32, i64}`
 
     Gets the size in bytes of the name of the environment variable at the given index.
 
     This system call traps if:
       - If the index is out of bounds (>= than value provided by `ic0.env_var_count`)
 
--   `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.env_var_name_copy : (dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
 
     Copies the name of the environment variable at the given index into memory.
 
@@ -2181,7 +2181,7 @@ The following system calls provide access to the canister's environment variable
       - `dst+size` exceeds the size of the WebAssembly memory
 
 
--   `ic0.env_var_value_size(name_src: I, name_size: I) -> I`; `I ∈ {i32, i64}`
+-   `ic0.env_var_value_size : (name_src: I, name_size: I) -> I`; `I ∈ {i32, i64}`
 
     Gets the size in bytes of the value for the environment variable with the given name.
 
@@ -2190,7 +2190,7 @@ The following system calls provide access to the canister's environment variable
       - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
       - The name does not match any existing environment variable.
 
--   `ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.env_var_value_copy : (name_src: I, name_size: I, dst: I, offset: I, size: I) -> ()`; `I ∈ {i32, i64}`
 
     Copies the value of the environment variable with the given name into memory.
 
