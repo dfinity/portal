@@ -37,10 +37,10 @@ export const CardsSection = () => {
       className="container-12 mt-30"
       variants={transitions.container}
     >
-      <article className="bg-black rounded-[32px] text-white  overflow-clip mt-6">
+      <article className="bg-black rounded-[32px] text-white  overflow-clip mt-6 md:min-h-[544px] flex flex-col justify-around">
         <div className="flex flex-col items-stretch">
-          <div className="p-1/10 md:py-1/12 text-center">
-            <img src="/img/home/caffeine.svg" alt="Caffeine" />
+          <div className="p-1/10  md:py-1/12 pt-[15%] text-left md:text-center">
+            <img src="/img/home/caffeine.svg" alt="Caffeine" className="w-[80%] md:w-[50%] mx-auto mb-8 md:mb-0" />
 
             <p className="tw-paragraph md:tw-lead-sm mt-6 md:mt-10 mb-0 md:w-4/10 mx-auto">
               Apply for early alpha access and be among the first to experience
@@ -55,14 +55,14 @@ export const CardsSection = () => {
           </div>
         </div>
       </article>
-      <article className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6">
+      <article className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6 md:min-h-[544px] flex flex-col justify-around">
         <img
           loading="lazy"
           src="img/home/alliance-bg.webp"
           className="md:object-cover size-full absolute pointer-events-none"
         />
         <div className="relative flex flex-col md:flex-row items-stretch md:min-h-[34rem]">
-          <div className="basis-1/2 flex items-center">
+          <div className="basis-1/2 flex items-center pt-[2%]">
             <img
               src="/img/home/alliance.webp"
               alt="ICP Alliance"
