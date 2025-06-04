@@ -3700,7 +3700,7 @@ ChangeDetails
       taken_at_timestamp : Timestamp;
     }
   | SettingsChange {
-      controllers: [PrincipalId];
+      controllers: opt [PrincipalId];
       environment_variables_hash: opt Blob;
   }
 Change = {
@@ -3762,7 +3762,7 @@ S = {
   reserved_balance_limits: CanisterId ↦ Nat;
   wasm_memory_limit: CanisterId ↦ Nat;
   wasm_memory_threshold: CanisterId ↦ Nat;
-  environment_variables: CanisterId ↦ (String ↦ String)
+  environment_variables: CanisterId ↦ (Text ↦ Text)
   on_low_wasm_memory_hook_status: CanisterId ↦ OnLowWasmMemoryHookStatus;
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;
@@ -7662,6 +7662,13 @@ copy_cycles_to_canister<es>(dst : I, data : blob) =
   es.wasm_state.store.mem[dst..dst+size] := data[0..size]
 ```
 
+Helper function to get sorted keys from environment variables map.
+get_sorted_env_keys<es>(env_vars : (text -> text)) =
+  let keys = []
+  for (key, _) in env_vars:
+    keys := keys · [key]
+  return sort_lexicographically(keys)
+
 #### System imports
 
 Upon *instantiation* of the WebAssembly module, we can provide the following functions as imports.
@@ -8079,6 +8086,46 @@ ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: 
     return 2
   copy_cycles_to_canister<es>(dst, arbitrary())
   return 0
+
+I ∈ {i32, i64}
+ic0.env_var_count<es>() : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  return |es.params.sysenv.environment_variables|
+
+I ∈ {i32, i64}
+ic0.env_var_name_size<es>(index : I) : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  if index >= |es.params.sysenv.environment_variables| then Trap {cycles_used = es.cycles_used;}
+  let sorted_keys = get_sorted_env_keys<es>(es.params.sysenv.environment_variables)
+  return |sorted_keys[index]|
+
+I ∈ {i32, i64}
+ic0.env_var_name_copy<es>(dst : I, offset : I, size : I, index : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  if index >= |es.params.sysenv.environment_variables| then Trap {cycles_used = es.cycles_used;}
+  let sorted_keys = get_sorted_env_keys<es>(es.params.sysenv.environment_variables)
+  let name_var = sorted_keys[index]
+  if offset+size > |name_var| then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, name_var)
+
+I ∈ {i32, i64}
+ic0.env_var_value_size<es>(name_src : I, name_size : I) : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  let name_var = copy_from_canister<es>(name_src, name_size)
+  if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
+  let value_var = es.params.sysenv.environment_variables[name_var]
+  if value_var = null then Trap {cycles_used = es.cycles_used;}
+  return |value_var|
+
+I ∈ {i32, i64}
+ic0.env_var_value_copy<es>(name_src : I, name_size : I, dst : I, offset : I, size : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  let name_var = copy_from_canister<es>(name_src, name_size)
+  if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
+  let value_var = es.params.sysenv.environment_variables[name_var]
+  if value_var = null then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |value_var| then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, value_var)
 
 I ∈ {i32, i64}
 ic0.debug_print<es>(src : I, size : I) =

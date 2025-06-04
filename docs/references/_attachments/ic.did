@@ -63,7 +63,7 @@ type change_details = variant {
       taken_at_timestamp : nat64;
     };
     settings_change: record {
-        controllers : vec principal;
+        controllers : opt vec principal;
         environment_variables_hash: opt blob;
     }
 };
