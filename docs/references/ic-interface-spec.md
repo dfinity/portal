@@ -3699,6 +3699,7 @@ ChangeDetails
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
     }
+  // Deprecated: `SettingsChange` is used instead.
   | ControllersChange {
       controllers : [PrincipalId];
     }
