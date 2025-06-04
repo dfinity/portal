@@ -3699,6 +3699,9 @@ ChangeDetails
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
     }
+  | ControllersChange {
+      controllers : [PrincipalId];
+    }
   | SettingsChange {
       controllers: opt [PrincipalId];
       environment_variables_hash: opt Blob;
@@ -4986,7 +4989,7 @@ S.canister_history[A.canister_id] = {
 if A.settings.controllers is not null or A.settings.environment_variables is not null:
   New_canister_history = {
     total_num_changes = N + 1;
-    recent_changes = H ·  SettingsChange {
+    recent_changes = H · SettingsChange {
       controllers = if A.settings.controllers is not null then
           opt A.settings.controllers;
         else 
