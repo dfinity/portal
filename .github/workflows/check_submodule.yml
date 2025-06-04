@@ -23,7 +23,7 @@ jobs:
           LATEST_SDK="2c91c38b90850caee98ba968c45c273fa8f43919"
 
           # motoko new docs 6/3/2025
-          LATEST_MOTOKO="f911f4a310dc2dd63e3dbc6ef9e35d18e0deedc0" 
+          LATEST_MOTOKO="92519b57dd068eef2908cc45af0e6c47eb027168" 
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
