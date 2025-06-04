@@ -1515,46 +1515,46 @@ defaulting to `I = i32` if the canister declares no memory.
         reply_env   : I,
         reject_fun  : I,
         reject_env  : I
-      ) -> ();                                                                            // U CQ Ry Rt CRy CRt T
-    ic0.call_on_cleanup : (fun : I, env : I) -> ();                                       // U CQ Ry Rt CRy CRt T
-    ic0.call_data_append : (src : I, size : I) -> ();                                     // U CQ Ry Rt CRy CRt T
-    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                   // U CQ Ry Rt CRy CRt T
-    ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
-    ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
+      ) -> ();                                                                                        // U CQ Ry Rt CRy CRt T
+    ic0.call_on_cleanup : (fun : I, env : I) -> ();                                                   // U CQ Ry Rt CRy CRt T
+    ic0.call_data_append : (src : I, size : I) -> ();                                                 // U CQ Ry Rt CRy CRt T
+    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                               // U CQ Ry Rt CRy CRt T
+    ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                              // U Ry Rt T
+    ic0.call_perform : () -> ( err_code : i32 );                                                      // U CQ Ry Rt CRy CRt T
 
-    ic0.stable64_size : () -> (page_count : i64);                                         // * s
-    ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                      // * s
-    ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
-    ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
+    ic0.stable64_size : () -> (page_count : i64);                                                     // * s
+    ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                                  // * s
+    ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                                 // * s
+    ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                                  // * s
 
-    ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
-    ic0.data_certificate_present : () -> i32;                                             // *
-    ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
-    ic0.data_certificate_copy : (dst : I, offset : I, size : I) -> ();                    // NRQ CQ
+    ic0.certified_data_set : (src : I, size : I) -> ();                                               // I G U Ry Rt T
+    ic0.data_certificate_present : () -> i32;                                                         // *
+    ic0.data_certificate_size : () -> I;                                                              // NRQ CQ
+    ic0.data_certificate_copy : (dst : I, offset : I, size : I) -> ();                                // NRQ CQ
 
-    ic0.time : () -> (timestamp : i64);                                                   // *
-    ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
-    ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
-    ic0.is_controller : (src : I, size : I) -> ( result : i32);                           // * s
-    ic0.in_replicated_execution : () -> (result : i32);                                   // * s
+    ic0.time : () -> (timestamp : i64);                                                               // *
+    ic0.global_timer_set : (timestamp : i64) -> i64;                                                  // I G U Ry Rt C T
+    ic0.performance_counter : (counter_type : i32) -> (counter : i64);                                // * s
+    ic0.is_controller : (src : I, size : I) -> ( result : i32);                                       // * s
+    ic0.in_replicated_execution : () -> (result : i32);                                               // * s
     
-    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
-    ic0.cost_create_canister : (dst : I) -> ();                                           // * s
-    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
-    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
-    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
-    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
+    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();                       // * s
+    ic0.cost_create_canister : (dst : I) -> ();                                                       // * s
+    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();                 // * s
+    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;                 // * s
+    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;                 // * s
+    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;      // * s
 
-    ic0.env_var_count() -> I;                                                             // *
+    ic0.env_var_count() -> I;                                                                         // *
 
-    ic0.env_var_name_size(index: I) -> I;                                                 // *
-    ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ();                    // *
+    ic0.env_var_name_size(index: I) -> I;                                                             // *
+    ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ();                                // *
 
-    ic0.env_var_value_size(name_src: I, name_size: I) -> I;                                         // *
-    ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ();            // *
+    ic0.env_var_value_size(name_src: I, name_size: I) -> I;                                           // *
+    ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ();              // *
 
-    ic0.debug_print : (src : I, size : I) -> ();                                          // * s
-    ic0.trap : (src : I, size : I) -> ();                                                 // * s
+    ic0.debug_print : (src : I, size : I) -> ();                                                      // * s
+    ic0.trap : (src : I, size : I) -> ();                                                             // * s
 ```
 
 The following System API functions are only available if `I = i32`, i.e., if the bit-width of the declared memory is 32
@@ -2156,14 +2156,6 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     - `1`: Invalid curve or algorithm. Memory at `dst` is left unchanged.
     - `2`: Invalid key name for the given combination of signing scheme and (valid) curve/algorithm. Memory at `dst` is left unchanged.
 
- This system call traps if `src+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
-
--   `ic0.stable64_read : (dst : i64, offset : i64, size : i64) → ()`
-
-    Copies the data from location \[offset, offset+size) of the stable memory to the location \[dst, dst+size) in the canister memory.
-
-     This system call traps if `dst+size` exceeds the size of the WebAssembly memory or `offset+size` exceeds the size of the stable memory.
-
 ### Environment Variables
 
 The following system calls provide access to the canister's environment variables:
@@ -2173,14 +2165,12 @@ The following system calls provide access to the canister's environment variable
     Returns the number of environment variables set for this canister.
 
     This system call traps if:
-      - Invoked from the `(start)` function
 
 -   `ic0.env_var_name_size(index: I) -> I`; `I ∈ {i32, i64}`
 
     Gets the size in bytes of the name of the environment variable at the given index.
 
     This system call traps if:
-      - Invoked from the `(start)` function
       - If the index is out of bounds (>= than value provided by `ic0.env_var_count`)
 
 -   `ic0.env_var_name_copy(dst: I, offset: I, size: I, index: I) -> ()`; `I ∈ {i32, i64}`
@@ -2188,7 +2178,6 @@ The following system calls provide access to the canister's environment variable
     Copies the name of the environment variable at the given index into memory.
 
     This system call traps if:
-      - Invoked from the `(start)` function
       - The index is out of bounds (>= than value provided by `ic0.env_var_count`)
       - `offset+size` is greater than the size of the environment variable name
       - `dst+size` exceeds the size of the WebAssembly memory
@@ -2199,19 +2188,17 @@ The following system calls provide access to the canister's environment variable
     Gets the size in bytes of the value for the environment variable with the given name.
 
     This system call traps if:
-      - Invoked from the `(start)` function
       - `name_src+name_size` exceeds the size of the WebAssembly memory
-      - The name does not correspond to a valid environment variable
+      - The name does not match any existing environment variable.
 
 -   `ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ()`; `I ∈ {i32, i64}`
 
     Copies the value of the environment variable with the given name into memory.
 
     This system call traps if:
-      - Invoked from the `(start)` function
       - `name_src+name_size` exceeds the size of the WebAssembly memory
       - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
-      - The name does not correspond to a valid environment variable
+      - The name does not match any existing environment variable.
       - `offset+size` is greater than the size of the environment variable value
       - `dst+size` exceeds the size of the WebAssembly memory
 
@@ -8109,7 +8096,6 @@ ic0.env_var_name_copy<es>(dst : I, offset : I, size : I, index : I) =
   if index >= |es.params.sysenv.environment_variables| then Trap {cycles_used = es.cycles_used;}
   let sorted_keys = get_sorted_env_keys<es>(es.params.sysenv.environment_variables)
   let name_var = sorted_keys[index]
-  if offset+size > |name_var| then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, name_var)
 
 I ∈ {i32, i64}
@@ -8128,7 +8114,6 @@ ic0.env_var_value_copy<es>(name_src : I, name_size : I, dst : I, offset : I, siz
   if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
   let value_var = es.params.sysenv.environment_variables[name_var]
   if value_var = null then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |value_var| then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, value_var)
 
 I ∈ {i32, i64}
