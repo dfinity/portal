@@ -664,6 +664,7 @@ const config = {
             "references/samples/native-apps/**",
             "references/samples/svelte/**",
             "references/samples/wasm/**",
+            "motoko/old/**",
           ],
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins,
