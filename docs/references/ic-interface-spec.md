@@ -2189,6 +2189,7 @@ The following system calls provide access to the canister's environment variable
 
     This system call traps if:
       - `name_src+name_size` exceeds the size of the WebAssembly memory
+      - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
       - The name does not match any existing environment variable.
 
 -   `ic0.env_var_value_copy(name_src: I, name_size: I, dst: I, offset: I, size: I) -> ()`; `I ∈ {i32, i64}`
@@ -3685,10 +3686,6 @@ ChangeDetails
       canister_version : CanisterVersion;
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
-    }
-  // Deprecated: `SettingsChange` is used instead.
-  | ControllersChange {
-      controllers : [PrincipalId];
     }
   | SettingsChange {
       controllers: opt [PrincipalId];
