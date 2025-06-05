@@ -10,7 +10,7 @@ type log_visibility = variant {
 
 type environment_variables = vec record { 
     name: text; 
-    value: text 
+    value: text;
 };
 
 type canister_settings = record {
