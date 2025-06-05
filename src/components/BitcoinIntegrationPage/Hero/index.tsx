@@ -25,8 +25,8 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
           >
             Leveraging Chain Fusion Technology, ICP canister smart contracts can
             hold a Bitcoin public key, sign transactions with it, and directly
-            read and write to the Bitcoin network. Build incredible dapps that
-            natively interact with the Bitcoin network.
+            read and write to the Bitcoin network, including Taproot assets.
+            Build incredible dapps that natively interact with the Bitcoin network.
           </motion.p>
           <motion.div variants={transitions.item} className="flex gap-4 mt-8">
             <Link
