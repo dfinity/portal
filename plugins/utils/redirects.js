@@ -1257,7 +1257,6 @@ const redirects = `
   /docs/current/developer-docs/glossary /docs/references/glossary
   /BTC /bitcoin
   /chain-fusion /chainfusion
-    /ecosystem?tag=Chainfusion /ecosystem?tag=Chain%20Fusion
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
