@@ -121,7 +121,7 @@ function Index() {
       ></motion.div>
       <div className="mb-12 md:mb-24">
         <h2 className="tw-heading-4 md:tw-heading-2 md:mr-5 md:w-7/10 flex-none">
-          Sample Code Examples & Startup Requests 
+          Sample Code Examples & Startup Requests
         </h2>
         <p className="tw-paragraph mt-2 md:w-7/10">
           Explore the integration of Bitcoin with the Internet Computer through
@@ -132,7 +132,7 @@ function Index() {
         </p>
         <Link
           className="link-primary link-with-icon md:mt-4"
-          href="/samples"
+          href="/samples?selectedDomains=Multichain"
           target="_blank"
           rel="noopener noreferrer"
         >
