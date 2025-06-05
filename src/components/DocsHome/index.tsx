@@ -57,7 +57,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/motoko/main/getting-started/motoko-introduction"
+        href="/docs/motoko/home"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Motoko docs"
       >
