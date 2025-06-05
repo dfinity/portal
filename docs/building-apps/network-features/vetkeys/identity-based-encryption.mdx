@@ -12,7 +12,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Advanced", "vetKeys", "Identity-based encryption"]} />
 
-The vetKeys feature enables IBE, allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the dapp. By authenticating with the dapp using their identity, the user can securely retrieve their decryption key and access the data.
+Identity-Based Encryption (IBE) allows you to encrypt data directly to a user's identity, like an email address, a username, a principal ID, or a wallet address, without needing to exchange public keys beforehand or to rely on a public key infrastructure. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the system. Once the user authenticates using their identity, they can securely retrieve their decryption key and access the data.
 
 Compared to DKMS, IBE works differently. In DKMS, one or more users share the same symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an asymmetric encryption scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them.
 
