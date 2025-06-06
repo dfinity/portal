@@ -925,7 +925,7 @@ function ChainFusion() {
                 </a>
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/ecosystem?tag=Chainfusion"
+                  href="https://internetcomputer.org/ecosystem?tag=Chain+Fusion"
                   target="_blank"
                 >
                   <rect
@@ -2051,7 +2051,7 @@ function ChainFusion() {
             </motion.h3>
             <Link
               className="link-white link-with-icon mt-4 md:mt-6 "
-              href="https://internetcomputer.org/ecosystem?tag=Chainfusion"
+              href="https://internetcomputer.org/ecosystem?tag=Chain+Fusion"
             >
               <LinkArrowRight /> Enter the Chain Fusion ecosystem
             </Link>
