@@ -16,6 +16,7 @@ type canister_settings = record {
     reserved_cycles_limit : opt nat;
     log_visibility : opt log_visibility;
     wasm_memory_limit : opt nat;
+    wasm_memory_threshold : opt nat;
 };
 
 type definite_canister_settings = record {
@@ -26,6 +27,7 @@ type definite_canister_settings = record {
     reserved_cycles_limit : nat;
     log_visibility : log_visibility;
     wasm_memory_limit : nat;
+    wasm_memory_threshold: nat;
 };
 
 type change_origin = variant {
@@ -81,6 +83,10 @@ type http_request_result = record {
 
 type ecdsa_curve = variant {
     secp256k1;
+};
+
+type vetkd_curve = variant {
+    bls12_381_g2;
 };
 
 type schnorr_algorithm = variant {
@@ -248,6 +254,16 @@ type canister_status_result = record {
     settings : definite_canister_settings;
     module_hash : opt blob;
     memory_size : nat;
+    memory_metrics : record {
+        wasm_memory_size : nat;
+        stable_memory_size : nat;
+        global_memory_size : nat;
+        wasm_binary_size : nat;
+        custom_sections_size : nat;
+        canister_history_size : nat;
+        wasm_chunk_store_size : nat;
+        snapshots_size : nat;
+    };
     cycles : nat;
     reserved_cycles : nat;
     idle_cycles_burned_per_day : nat;
@@ -338,6 +354,27 @@ type sign_with_schnorr_args = record {
 
 type sign_with_schnorr_result = record {
     signature : blob;
+};
+
+type vetkd_public_key_args = record {
+    canister_id : opt canister_id;
+    context : blob;
+    key_id : record { curve : vetkd_curve; name : text };
+};
+
+type vetkd_public_key_result = record {
+    public_key : blob;
+};
+
+type vetkd_derive_key_args = record {
+    input : blob;
+    context : blob;
+    transport_public_key : blob;
+    key_id : record { curve : vetkd_curve; name : text };
+};
+
+type vetkd_derive_key_result = record {
+    encrypted_key : blob;
 };
 
 type node_metrics_history_args = record {
@@ -449,6 +486,10 @@ service ic : {
     // Threshold Schnorr signature
     schnorr_public_key : (schnorr_public_key_args) -> (schnorr_public_key_result);
     sign_with_schnorr : (sign_with_schnorr_args) -> (sign_with_schnorr_result);
+
+    // Threshold key derivation
+    vetkd_public_key : (vetkd_public_key_args) -> (vetkd_public_key_result);
+    vetkd_derive_key : (vetkd_derive_key_args) -> (vetkd_derive_key_result);
 
     // bitcoin interface
     bitcoin_get_balance : (bitcoin_get_balance_args) -> (bitcoin_get_balance_result);

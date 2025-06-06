@@ -41,22 +41,53 @@ As mentioned above, a Bitcoin address is derived from a public key or a script. 
 An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
 demonstrates how to generate a `P2PKH` address from a canister's public key.
 
+:::info
+
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local development environment with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+:::
+
+:::
+
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
+```motoko reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2pkh.rs#L21-L31
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2pkh_address.rs
 ```
 
 </TabItem>
 </Tabs>
 
+
+### Generating a P2WPKH address
+
+<Tabs groupId="language">
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2wpkh_address.rs
+```
+
+</TabItem>
+</Tabs>
+
+
 ## Generating addresses with threshold Schnorr
+
 A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/references/ic-interface-spec#ic-schnorr_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) also demonstrates how to generate two different types of `P2TR` addresses, a key-only address and an address allowing spending using a key or script, from a canister's public key.
 
 #### Generating a key-only P2TR address
@@ -64,31 +95,34 @@ A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/ref
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L79-L112
+```motoko reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L79-L112
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_key_only.rs#L20-L35
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2tr_key_path_only_address.rs
 ```
 
 </TabItem>
 </Tabs>
 
-#### Generating a P2TR address
+### Generating a P2TR address
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../../../../submodules/samples/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L87-L120
+```motoko reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L87-L120
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust file=../../../../../submodules/samples/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr.rs#L25-L51
-
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2tr_script_path_enabled_address.rs
 ```
 
 </TabItem>

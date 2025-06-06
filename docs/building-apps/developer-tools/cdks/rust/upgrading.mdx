@@ -10,20 +10,25 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Unlike a canister reinstall that preserves the canister identifier but no state, a canister upgrade enables you to preserve the state of a deployed canister and change the code.
 
-For example, assume you have a dapp that manages professional profiles and social connections. If you want to add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
+For example, assume you have a dapp that manages professional profiles and social connections. If you want to add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously stored data.
 
 ## Canister upgrades
 
-When a canister needs to be upgraded, the following workflow is used:
-- The system discards canister memory and instantiates the new version of your WebAssembly module. The system does preserve the stable memory, which is now available in the new version.
-- The system calls a `post_upgrade` hook on the newly created instance if your canister defines it. The `init` function is not executed.
+When a canister is upgraded, the following workflow is used:
+
+- The system discards the canister’s regular memory and instantiates the new version of your WebAssembly module. However, it preserves the stable memory, which remains accessible in the updated version.
+
+- The system calls a `post_upgrade` hook on the newly created instance (if your canister defines one.) The `init` function is not executed.
+
 - If the canister traps (throws an unrecoverable error) in any of the steps above, the system reverts the canister to the pre-upgrade state.
 
-### Versioning stable memory
+## Stable memory
 
-Stable memory is a data persistence feature on ICP. Stable memory is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 500GiB if the subnet can accommodate it.
+Stable memory is a data persistence feature on ICP. It is used to store data that persists across canister upgrades. The maximum data storage size of stable memory is 500GiB as long as the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) can accommodate it.
 
 In comparison, heap memory (also referred to as "main memory") refers to the regular Wasm data storage for a canister. Heap memory is not persisted across canister upgrades and is limited to 4GiB.
+
+### Versioning stable memory
 
 Stable memory can be viewed as the communication channel between old and new versions of a canister. As good practice, communication protocols should be versioned. In some cases, developers may want to radically change something, such as the serialization format or the stable data layout of their canister. In radical changes like these, the stable memory decoding mechanism may need to guess the data's format, which can become messy and complicated. To make this process easier, stable memory versioning should be planned. It can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number.
 
@@ -42,7 +47,6 @@ assert_eq!(data, expected_value);
 Then, your tests should be run twice in two different scenarios:
 - In a scenario without any upgrades, to assure that your tests run successfully without executing an upgrade.
 - In a scenario with an upgrade, to assure that your tests run successfully while executing an upgrade.
-You then run your tests twice in different modes:
 
 By running both of these tests, developers can gain confidence that when an upgrade is applied to a canister, the canister's state is preserved.
 
@@ -74,7 +78,7 @@ Overall, if your canister plans to store gigabytes of state data and upgrade the
 Obtain the canister identifier of the canister(s) you'd like to upgrade. To do so, the following command can be used:
 
 ```bash
-dfx canister id [canister-name]
+dfx canister id <canister_name>
 ```
 
 Then, make any changes to the canister's code that you'd like to be included in the update.
@@ -88,5 +92,5 @@ dfx canister install --all --mode upgrade
 To upgrade a single canister, use the command:
 
 ```bash
-dfx canister install [canister-id] --mode upgrade
+dfx canister install <canister_id> --mode upgrade
 ```

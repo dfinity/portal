@@ -12,9 +12,21 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method. The following snippet shows how to send a signed transaction to the Bitcoin network.
+To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method.
 
+:::info
 
+To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local development environment with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
+
+```json reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
+```
+
+[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
+
+:::
+
+The following snippet shows how to send a signed transaction to the Bitcoin network:
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -27,8 +39,7 @@ https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359d
 <TabItem value="rust" label="Rust">
 
 ```rust reference
-https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L78-L94
-
+https://github.com/dfinity/examples/blob/c06f27d669ed64e3394ad0c4e484157d1b48209d/rust/basic_bitcoin/src/service/send_from_p2pkh_address.rs#L83-L93
 ```
 
 </TabItem>

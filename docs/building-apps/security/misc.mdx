@@ -38,7 +38,7 @@ Canister developers often require access to secure randomness in their canisters
 * **Unbiased:** The value shouldn't be influenced by anyone.
 * **Unpredictable:** The value is unknown to anyone before it is generated.
 
-ICP exposes the system API [`raw_rand`](/docs/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://internetcomputer.org/how-it-works/execution-layer/#random-number-generation). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy, such as current time.
+ICP exposes the system API [`raw_rand`](/docs/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer#h_01JJC3095KD0SV7YXMKNEE8YHZ). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy, such as current time.
 
 To illustrate the usage of `raw_rand`, two examples in Motoko and Rust can be found below, including the benefits and caveats around using them.
 

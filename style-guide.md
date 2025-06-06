@@ -361,7 +361,7 @@ The following language and capitalization of certain terms and phrases should be
         - Before deploying on to the mainnet...
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word the.)
 - maturity
-- multi-chain
+- multichain
 - neuron
 - node provider
 - onchain

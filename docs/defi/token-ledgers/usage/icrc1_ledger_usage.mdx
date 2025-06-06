@@ -8,23 +8,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate" , "Ledgers"]} />
 
-There are three primary methods used to interact with an ICRC-1 ledger:
+How you interact with an ICRC ledger is dependent on whether you want to interact with it from the command line, from your web app, or from another canister.
 
-- `dfx canister`: The generic canister call from `dfx` used to call a canister's methods.
+## From the command line
 
-- `ic-cdk`: Inter-canister calls for the ICRC-1 ledger.
-
-- [`ledger-icrc-js`](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc): A library for interfacing with an ICRC-1 ledger on the Internet Computer.
-
-## Interact with an ICRC-1 canister using `dfx canister call`
-
-### ICRC-1
-
-Use the following command syntax to interact with an ICRC-1 ledger via `dfx canister`:
-
-```
-dfx canister call <canister-id> <method-name> <arguments>
-```
+You can use the `dfx canister call` command, which is a generic command for calling any function's methods, not specifically an ICRC ledger's methods.
 
 For example, to fetch the token symbol of an ICRC-1 ledger, call the `icrc1_symbol` method:
 
@@ -42,24 +30,43 @@ dfx canister call <canister-id> icrc1_supported_standards '()'
 
 You can find all available methods for your ICRC-1 ledger within the ICRC-1 ledger canister's Candid file or, if your ICRC-1 ledger has been deployed to the mainnet, view your ICRC-1 ledger canister [on the dashboard](https://dashboard.internetcomputer.org/canisters). An example of an ICRC-1 ledger deployed on the mainnet that you can reference is the [ckETH ledger canister](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
 
-View the [`dfx canister call` documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) for more information on calling canister methods.
-
-
-### ICRC-2
-
-For ledgers that support ICRC-2, you can call ICRC-2 methods. ICRC-2 methods include those for `approve` workflows. For specifics, see the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve).
+For ledgers that support ICRC-2, you can also call ICRC-2 methods. ICRC-2 methods include those for `approve` workflows. For specifics, see the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve).
 
 View the [`dfx canister call` documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) for more information on calling canister methods.
 
-## Interacting with an ICRC-1 ledger from your web application (`ledger-icrc-js`)
+## From a web application
 
-[View references and examples on how to use the `ledger-icrc-js` library to interact with ICRC-1 ledgers](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc).
 
-## Interacting with an ICRC-1 ledger from another canister (inter-canister calls via `ic-cdk`)
+To simplify working with an ICRC ledger from JavaScript applications, you can use the [ledger-icrc-js](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc) JavaScript library. This package and its dependencies can be installed with `npm`:
 
-When calling into arbitrary ICRC-1 ledgers, we recommend you use [bounded wait (aka best-effort response) calls](/docs/references/async-code). These calls ensure that your canister does not get stuck waiting for a response from the ledger.
+```
+npm i @dfinity/agent @dfinity/candid @dfinity/principal @dfinity/utils npm i @dfinity/ledger-icrc
+```
 
-Here sample code to fetch the transfer fee from an ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister. The example includes retry logic to handle errors when possible.
+Then you can use it programmatically in your application. For example, to get token metadata:
+
+```js
+import { IcrcLedgerCanister } from "@dfinity/ledger-icrc";
+import { createAgent } from "@dfinity/utils";
+
+const agent = await createAgent({
+  identity,
+  host: HOST,
+});
+
+const { metadata } = IcrcLedgerCanister.create({
+  agent,
+  canisterId: MY_LEDGER_CANISTER_ID,
+});
+
+const data = await metadata({});
+```
+
+## From inter-canister calls via `ic-cdk`
+
+When calling into arbitrary ICRC-1 ledgers, it is recommended that you use [bounded wait (aka best-effort response) calls](/docs/references/async-code). These calls ensure that your canister does not get stuck waiting for a response from the ledger.
+
+Below is an example that demonstrates how to fetch the transfer fee from an ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister. This example includes retry logic to handle errors when possible.
 
 ```rust
 pub enum GetFeeError {
@@ -70,7 +77,7 @@ pub enum GetFeeError {
 }
 
 /// Obtain the fee that the ledger canister charges for a transfer.
-/// This functiuon will keep retrying to fetch the fees for as long possible, and for as long as the
+/// This function will keep retrying to fetch the fees for as long possible, and for as long as the
 /// `should_retry` predicate returns true. Note that using a predicate that just always returns
 /// `true` can keep your canister in a retry loop, and potentially unable to upgrade. The
 /// recommended way is to set a limit on the number of retries, use a timeout, or abort when the
@@ -100,7 +107,7 @@ where
 }
 ```
 
-Here's sample code for transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](https://internetcomputer.org/docs/references/icrc1-standard#transaction-deduplication-) of ICRC-1 ledgers. However, if the transaction keeps failing beyond the deduplication window, the transaction state will be unknown and you will need to perform manual recovery.
+Below is an example that demonstrates transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](/docs/references/icrc1-standard#transaction-deduplication-) of ICRC-1 ledgers. However, if the transaction keeps failing beyond the deduplication window, the transaction state will be unknown and you will need to perform manual recovery.
 
 ```rust
 pub enum TransferErrorCause {
@@ -194,19 +201,4 @@ You can find all available methods for your ICRC-1 ledger within the ICRC-1 ledg
 
 ### `icrc-ledger-types` Rust crate
 
-To interact with the ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used.
-This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e., ICRC-2, ICRC-3,...).
-
-The crate can be installed with the command:
-
-```
-cargo add icrc-ledger-types
-```
-
-Or, it can be added to the `Cargo.toml` file:
-
-```
-icrc-ledger-types = "0.1.1"
-```
-
-[View the documentation for this crate](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/).
+You can also use the [`icrc-ledger-types`](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/) Rust crate interact with the ICRC-1 and ICRC-2 endpoints. It can be used for interacting with any canister that supports any of the ICRC-1 methods and its extensions (ICRC-2, ICRC-3, etc.) including the ICP ledger.

@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, vetkeys, vetkd]
+keywords: [advanced, tutorial, developer liftoff, vetkeys, vetkd, what are vet keys, encrypted data, using encrypted data, what is vetkd]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -18,7 +18,7 @@ import '/src/components/CenterImages/center.scss';
 
 Many types of applications rely on secure ways to store user data and keep certain aspects of the dapp private. On a blockchain, transactions are traditionally public, and dapps might rely on the storage within a web browser to store user-side secrets, which can lead to potential security risks.
 
-The Internet Computer's vetKeys feature provides developers with more enhanced privacy, encryption, threshold decryption, and security capabilities for their projects and dapps. The goal of vetKeys is to allow developers to retrieve encrypted information from external locations and share it with different users in a private and secure manner.
+The vetKeys feature provides developers with more enhanced privacy, encryption, threshold decryption, and security capabilities for their projects and dapps. The goal of vetKeys is to allow developers to retrieve encrypted information from external locations and share it with different users in a private and secure manner.
 
 In this tutorial, you'll learn about how vetKeys enables different workflows and use cases for decentralized applications on ICP, and then you'll create a dapp that uses vetKeys to provide a secure, encrypted note-taking application.
 
@@ -28,7 +28,7 @@ The vetKeys feature is still in development, and the proposed system API can be 
 
 ## What are vetKeys?
 
-vetKeys stands for Verifiably Encrypted Threshold Keys and enables several cryptographic functionalities on the Internet Computer. vetKeys focuses on facilitating onchain encryption, data privacy, and security. From a high level, the main objective of vetKeys is to provide a threshold key derivation interface, to allow canisters to obtain encrypted threshold signatures, and to allow for symmetric encryption for public key or identity-based encryption.
+vetKeys stands for Verifiably Encrypted Threshold Keys and enables several cryptographic functionalities on ICP. The feature focuses on facilitating encryption, data privacy, and security. From a high level, the main objective of vetKeys is to provide a threshold key derivation interface, to allow canisters to obtain encrypted threshold signatures, and to allow for symmetric encryption for public key or identity-based encryption.
 
 To understand vetKeys, first let's cover a few fundamental cryptography concepts and some of their disadvantages that vetKeys strives to solve.
 
@@ -70,7 +70,7 @@ An important note about IBE is that it requires a central authority (the KD) to 
 
 ### vetKD
 
-Within vetKeys, the core piece is the key derivation primitive, or vetKD. The key derivation capabilities provided by vetKD are designed to provide key derivation without relying on a central authority by distributing the trust amongst multiple parties, then requiring that a minimum threshold of all parties collaborate to derive the private key. To do this, first a [distributed key generation (DKG)](https://en.wikipedia.org/wiki/Distributed_key_generation) protocol is used to create master keys in a distributed way, resulting in multiple parties (e.g., nodes in a network) holding shares of the master keys. Later, when a user wants to derive a decryption key (or vetKey) based on their identity, a threshold of nodes derives the user's vetKey from the user's identity and the shares of the master key they hold.
+Within vetKeys, the core piece is the key derivation primitive, or vetKD. The key derivation capabilities provided by vetKD are designed to provide key derivation without relying on a central authority by distributing the trust amongst multiple parties, then requiring that a minimum threshold of all parties collaborate to derive the private key. To do this, first a [[distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) (DKG)](https://en.wikipedia.org/wiki/Distributed_key_generation) protocol is used to create master keys in a distributed way, resulting in multiple parties (e.g., nodes in a network) holding shares of the master keys. Later, when a user wants to derive a decryption key (or vetKey) based on their identity, a threshold of nodes derives the user's vetKey from the user's identity and the shares of the master key they hold.
 
 To further understand vetKD, consider the following scenario on ICP:
 
@@ -88,7 +88,7 @@ A crucial point to note is that this allows users to retrieve decryption keys (o
 
 ### BLS signatures
 
-[BLS signatures](https://en.wikipedia.org/wiki/BLS_digital_signature) are a type of digital signature introduced in 2001. The name BLS comes from the authors of the signature, Dan Boneh, Ben Lynn, and Hovav Shacham. Threshold BLS signatures are widely used across the Internet Computer because they are short, unique, easy to port into a distributed setting, and are fast to compute.
+[BLS signatures](https://en.wikipedia.org/wiki/BLS_digital_signature) are a type of digital signature introduced in 2001. The name BLS comes from the authors of the signature, Dan Boneh, Ben Lynn, and Hovav Shacham. Threshold [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) are widely used across the Internet Computer because they are short, unique, easy to port into a distributed setting, and are fast to compute.
 
 BLS signatures use three algorithms:
 
@@ -122,22 +122,28 @@ In this example, you'll create a dapp that allows you to create notes and encryp
 This example uses an insecure implementation of the proposed vetKD system API. This should not be used in production or for encrypting any sensitive data; this example is for demonstration purposes only.
 :::
 
-### Prerequisites
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
 ### Cloning the `encrypted-notes-dapp-vetkd` example
 
-To get started, open a new terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to clone the DFINITY examples repo and navigate into the `encrypted-notes-dapp-vetkd` directory:
+To get started, open a new terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to clone the DFINITY examples repo and navigate into the `encrypted-notes-dapp-vetkd` directory:
 
 ```bash
 git clone https://github.com/dfinity/examples/
 cd examples/motoko/encrypted-notes-dapp-vetkd
 ```
-
-:::info
-A Rust version of this project exists at `examples/rust/encrypted-notes-dapp-vetkd`.
-:::
 
 ### Setting up the project
 
@@ -147,24 +153,13 @@ Since you'll be using the Motoko variation of this project, you will need to set
 export BUILD_ENV=motoko
 ```
 
-If you'd like to use the Rust variation, set this variable to equal `rust`.
-
 Next, run the `pre_deploy.sh` script, which will generate some files specific to the build environment; in this case, these will be files for the Motoko variation:
 
 ```bash
 sh ./pre_deploy.sh
 ```
 
-This command's output will resemble the following:
-
-```bash
-=== Deploying encryptedNotes_motoko ===
---- Generated dfx.json ---
---- Generated src/frontend/src/lib/backend.ts ---
---- Generated src/frontend/src/lib/idlFactory.js ---
-```
-
-Now it's time to install the project's required npm packages with the command:
+Install the project's required npm packages with the command:
 
 ```bash
 npm install
@@ -172,58 +167,10 @@ npm install
 
 ### Reviewing the project's files
 
+
 First, start by opening the project's `dfx.json` file to review the project's canisters and configuration:
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "vetkd_system_api": {
-      "candid": "vetkd_system_api.did",
-      "type": "custom",
-      "wasm": "vetkd_system_api.wasm"
-    },
-    "encrypted_notes_motoko": {
-      "dependencies": [
-        "vetkd_system_api"
-      ],
-      "main": "src/encrypted_notes_motoko/main.mo",
-      "type": "motoko"
-    },
-    "encrypted_notes_rust": {
-      "dependencies": [
-        "vetkd_system_api"
-      ],
-      "type": "rust",
-      "candid": "src/encrypted_notes_rust/src/encrypted_notes_rust.did",
-      "package": "encryptedNotes_rust"
-    },
-    "www": {
-      "dependencies": [
-        "encrypted_notes_motoko",
-        "vetkd_system_api"
-      ],
-      "frontend": {
-        "entrypoint": "src/frontend/public/index.html"
-      },
-      "source": [
-        "src/frontend/public/"
-      ],
-      "type": "assets"
-    },
-    "internet_identity": {
-      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
-      "type": "custom",
-      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
-    }
-  },
-  "networks": {
-    "local": {
-      "bind": "0.0.0.0:8000",
-      "type": "ephemeral"
-    }
-  },
-  "version": 1
-}
+```json file=../../../../submodules/samples/motoko/encrypted-notes-dapp-vetkd/dfx.json.template
 ```
 
 Here, you can see there are five canisters defined:
@@ -246,352 +193,15 @@ Next, review the `src/encrypted_notes_motoko/main.mo` file, which contains the c
 It is important to note that this backend canister does *not* perform any encryption, since it assumes that the notes are encrypted end-to-end by the front end (at the client side).
 :::
 
-```motoko no-repl title="src/encrypted_notes_motoko/main.mo"
-// First, import the necessary libraries:
+```motoko no-repl title="src/encrypted_notes_motoko/main.mo" file=../../../../submodules/samples/motoko/encrypted-notes-dapp-vetkd/src/encrypted_notes_motoko/main.mo
 
-import Map "mo:base/HashMap";
-import Text "mo:base/Text";
-import Array "mo:base/Array";
-import Buffer "mo:base/Buffer";
-import List "mo:base/List";
-import Iter "mo:base/Iter";
-import Int "mo:base/Int";
-import Nat "mo:base/Nat";
-import Bool "mo:base/Bool";
-import Principal "mo:base/Principal";
-import Result "mo:base/Result";
-import Option "mo:base/Option";
-import Debug "mo:base/Debug";
-import Order "mo:base/Order";
-import Blob "mo:base/Blob";
-import Hex "./utils/Hex";
-
-// Declare a shared actor class and bind the caller and the initializer:
-
-shared({ caller = initializer }) actor class() {
-
-    // Currently, a single canister smart contract is limited to 4 GB of storage due to WebAssembly limitations.
-    // To ensure that your canister does not exceed this limit, it is recommended to restrict memory usage to at most 2 GB, as this example does.
-    // This includes the assumption that up to 2x memory may be needed for data serialization during canister upgrades.
-    // Therefore, this example dapp can support up to 1,000 users, each storing up to 2 MB of data.
-    // The data is reserved for storing the notes:
-    //     NOTES_PER_USER = MAX_NOTES_PER_USER x MAX_NOTE_CHARS x (4 bytes per char)
-    //     2 MB = 500 x 1000 x 4 = 2,000,000
-
-    // Next, define the dapp's limits. This is important for security assurance:
-
-    private let MAX_USERS = 1_000;
-    private let MAX_NOTES_PER_USER = 500;
-    private let MAX_NOTE_CHARS = 1000;
-
-    // Define private a type for PrincipalName:
-
-    private type PrincipalName = Text;
-
-    // Define a public type for EncryptedNote:
-
-    public type EncryptedNote = {
-        encryptedTest: Text;
-        id: Nat;
-    };
-
-    // Next, define private fields.
-    // Stable actor fields are automatically retained across canister upgrades.
-    // You can learn more about upgrades in the Motoko docs: https://internetcomputer.org/docs/motoko/main/canister-maintenance/upgrades/
-
-    // As a design choice, this canister uses globally unique note identifiers for all users.
-    // This identifier is a stable variable, which allows the value to persist across canister upgrades.
-
-    private stable var nextNoteId: Nat = 1;
-
-    // Next, the canister stores each user's notes in a separate List.
-
-    private var notesByUser = Map.HashMap<PrincipalName, List.List<EncryptedNote>>(0, Text.equal, Text.hash);
-
-    // While accessing data via [notesByUser] is more efficient, this example uses the following stable array as a buffer to preserve user notes across canister upgrades.
-
-    private stable var stableNotesByUser: [(PrincipalName, List.List<EncryptedNote>)] = [];
-
-    // Next, the canister defines a function to return the current number of users.
-    // This function traps if [users_invariant] is violated:
-
-    private func userCount(): Nat {
-        notesByUser.size()
-    };
-
-    // The canister checks that a note identifier is sane. This is needed since Motoko integers are infinite-precision.
-    // Note: It is recommended to avoid extraneous usage of async functions, hence [userCount]
-
-    private func isIdSane(id: Nat): Bool {
-        0 <= id and id < MAX_NOTES_PER_USER * userCount()
-    };
-
-    // Next, the canister defines a utility function that helps writing assertion-driven code more concisely.
-
-    private func expect<T>(opt: ?T, violation_msg: Text): T {
-        switch (opt) {
-            case (null) {
-                Debug.trap(violation_msg);
-            };
-            case (?x) {
-                x
-            };
-        };
-    };
-
-    // For debugging, the following reflects the [caller]'s identity by returning (a future of) its principal:
-
-    public shared({ caller }) func whoAmI(): async Text {
-        return Principal.toText(caller);
-    };
-
-    // Remember that shared functions, such as those specified with [shared], are accessible to remote callers.
-    // The extra parameter [caller] is the caller's principal.
-    // You can refer to the Motoko docs for more information: https://internetcomputer.org/docs/motoko/main/writing-motoko/actors-async
-
-    // The following shared function adds new note for this [caller].
-    // This function may be called only by those users that have at least one device registered via [register_device].
-    //      [encryptedTest]: (encrypted) content of this note
-    //
-    // This function returns:
-    //      Future of unit
-    // This function traps if any of the following are true:
-    //      [caller] is the anonymous identity
-    //      [encryptedTest] exceeds [MAX_NOTE_CHARS]
-    //      User already has [MAX_NOTES_PER_USER] notes
-    //      [encryptedTest] would be for a new user and [MAX_USERS] is exceeded
-
-    public shared({ caller }) func addNote(encryptedTest: Text): async () {
-        assert not Principal.isAnonymous(caller);
-        assert encryptedTest.size() <= MAX_NOTE_CHARS;
-
-        Debug.print("Adding note...");
-
-        let principalName = Principal.toText(caller);
-        let userNotes : List.List<EncryptedNote> = Option.get(notesByUser.get(principalName), List.nil<EncryptedNote>());
-
-        if (List.isNil(userNotes)) {
-            // If the user didn't have notes yet, so this is a new user, this checks that the user is not going to exceed limits:
-
-            Debug.print("new user: #" # Nat.toText(userCount()));
-            assert userCount() < MAX_USERS;
-        };
-
-        // This also checks that the user is not going to exceed limits:
-
-        assert List.size(userNotes) < MAX_NOTES_PER_USER;
-
-        let newNote: EncryptedNote = {
-            id = nextNoteId;
-            encryptedTest = encryptedTest
-        };
-        nextNoteId += 1;
-        notesByUser.put(principalName, List.push(newNote, userNotes));
-    };
-
-    // Next, the canister defines a method that returns (a future of) the [caller]'s notes.
-    //
-    // Reminder about query calls versus update calls:
-    // This method is declared as an *update* call (see `shared`) rather than *query*.
-    //
-    // While queries are significantly faster than updates, they are not certified by ICP.
-    // Thus, this example avoids using queries throughout this dapp, ensuring that the result of the functions gets through consensus.
-    // Otherwise, this function could act maliciously, such that it may omit some notes if it got executed by a malicious node.
-    // To make the dapp more efficient, one could use an approach in which both queries and updates are combined.
-    // You can learn more in the documentation here: /docs/building-apps/essentials/canisters#query-and-update-methods
-    //
-    // This function returns:
-    //      Future of array of EncryptedNote
-    // This function traps if the following is true:
-    //      [caller] is the anonymous identity
-
-    public shared({ caller }) func getNotes(): async [EncryptedNote] {
-        assert not Principal.isAnonymous(caller);
-
-        let principalName = Principal.toText(caller);
-        let userNotes = Option.get(notesByUser.get(principalName), List.nil());
-        return List.toArray(userNotes);
-    };
-
-    // The canister defines a method to update the [caller]'s note (by replacing it an existing with the same id).
-    // If none of the existing notes have this id, the function does nothing.
-    // [encryptedNote]: the note to be updated
-    //
-    // This function returns:
-    //      Future of unit
-    // This function traps if any of the following are true:
-    //      [caller] is the anonymous identity
-    //      [encryptedNote.encryptedTest] exceeds [MAX_NOTE_CHARS]
-    //      [encryptedNote.id] is unreasonable; see [isIdSane]
-
-    public shared({ caller }) func updateNote(encryptedNote: EncryptedNote): async () {
-        assert not Principal.isAnonymous(caller);
-        assert encryptedNote.encryptedTest.size() <= MAX_NOTE_CHARS;
-        assert isIdSane(encryptedNote.id);
-
-        let principalName = Principal.toText(caller);
-        var existingNotes = expect(notesByUser.get(principalName),
-            "registered user (principal " # principalName # ") w/o allocated notes");
-
-        var updatedNotes = List.map(existingNotes, func (note: EncryptedNote): EncryptedNote {
-            if (note.id == encryptedNote.id) {
-                encryptedNote
-            } else {
-                note
-            }
-        });
-        notesByUser.put(principalName, updatedNotes);
-    };
-
-    // This method deletes the [caller]'s note with given id.
-    // If none of the existing notes have this id, the function does nothing.
-    // [id]: the id of the note to be deleted
-    //
-    // This function returns:
-    //      Future of unit
-    // This function traps if any of the following are true:
-    //      [caller] is the anonymous identity
-    //      [id] is unreasonable; see [isIdSane]
-
-    public shared({ caller }) func deleteNote(id: Nat): async () {
-        assert not Principal.isAnonymous(caller);
-        assert isIdSane(id);
-
-        let principalName = Principal.toText(caller);
-        var notesOfUser = Option.get(notesByUser.get(principalName), List.nil());
-
-        notesByUser.put(
-            principalName,
-            List.filter(notesOfUser, func(note: EncryptedNote): Bool { note.id != id })
-        )
-    };
-
-    // Next, the canister defines the ECDSA methods in the management canister that are required here:
-
-    type VETKD_SYSTEM_API = actor {
-        vetkd_public_key : ({
-            canister_id : ?Principal;
-            derivation_path : [Blob];
-            key_id : { curve: { #bls12_381; } ; name: Text };
-        }) -> async ({ public_key : Blob; });
-        vetkd_encrypted_key : ({
-            public_key_derivation_path : [Blob];
-            derivation_id : Blob;
-            key_id : { curve: { #bls12_381; } ; name: Text };
-            encryption_public_key : Blob;
-        }) -> async ({ encrypted_key : Blob });
-    };
-
-    let vetkd_system_api : VETKD_SYSTEM_API = actor("s55qq-oqaaa-aaaaa-aaakq-cai");
-
-    public shared({ caller }) func app_vetkd_public_key(derivation_path: [Blob]): async Text {
-        let { public_key } = await vetkd_system_api.vetkd_public_key({
-            canister_id = null;
-            derivation_path;
-            key_id = { curve = #bls12_381; name = "test_key_1" };
-        });
-        Hex.encode(Blob.toArray(public_key))
-    };
-
-    public shared({ caller }) func symmetric_key_verification_key(): async Text {
-        let { public_key } = await vetkd_system_api.vetkd_public_key({
-            canister_id = null;
-            derivation_path = Array.make(Text.encodeUtf8("symmetric_key"));
-            key_id = { curve = #bls12_381; name = "test_key_1" };
-        });
-        Hex.encode(Blob.toArray(public_key))
-    };
-
-    public shared ({ caller }) func encrypted_symmetric_key_for_caller(encryption_public_key : Blob) : async Text {
-        let caller_blob = Principal.toBlob(caller);
-        let { encrypted_key } = await vetkd_system_api.vetkd_encrypted_key({
-            derivation_id = Principal.toBlob(caller);
-            public_key_derivation_path = Array.make(Text.encodeUtf8("symmetric_key"));
-            key_id = { curve = #bls12_381; name = "test_key_1" };
-            encryption_public_key;
-        });
-        Hex.encode(Blob.toArray(encrypted_key));
-    };
-
-    // Below, the code implements the upgrade hooks for the canister.
-
-    // This portion defines the work required before a canister upgrade begins.
-    // See [nextNoteId], [stableNotesByUser]
-
-    system func preupgrade() {
-        Debug.print("Starting pre-upgrade hook...");
-        stableNotesByUser := Iter.toArray(notesByUser.entries());
-        Debug.print("pre-upgrade finished.");
-    };
-
-    // This portion defines the work required after a canister upgrade ends.
-    // See [nextNoteId], [stableNotesByUser]
-    system func postupgrade() {
-        Debug.print("Starting post-upgrade hook...");
-        notesByUser := Map.fromIter<PrincipalName, List.List<EncryptedNote>>(
-            stableNotesByUser.vals(), stableNotesByUser.size(), Text.equal, Text.hash);
-
-        stableNotesByUser := [];
-        Debug.print("post-upgrade finished.");
-    };
-};
-```
-
-Finally, briefly review the files that are used for the dapp's frontend:
-
-```bash
-src/frontend
-├── public
-│   ├── build
-│   │   ├── bundle.css
-│   │   ├── main.js
-│   │   └── main.js.map
-│   ├── favicon.png
-│   ├── img
-│   │   ├── ic-badge-powered-by-crypto_label-stripe-dark-text.png
-│   │   ├── ic-badge-powered-by-crypto_label-stripe-white-text.png
-│   │   ├── ic-badge-powered-by-crypto_transparent-dark-text.png
-│   │   └── ic-badge-powered-by-crypto_transparent-white-text.png
-│   └── index.html
-└── src
-    ├── App.svelte
-    ├── components
-    │   ├── Disclaimer.svelte
-    │   ├── DisclaimerCopy.svelte
-    │   ├── EditNote.svelte
-    │   ├── Header.svelte
-    │   ├── Hero.svelte
-    │   ├── LayoutAuthenticated.svelte
-    │   ├── NewNote.svelte
-    │   ├── Note.svelte
-    │   ├── NoteEditor.svelte
-    │   ├── Notes.svelte
-    │   ├── Notifications.svelte
-    │   ├── SidebarLayout.svelte
-    │   ├── Spinner.svelte
-    │   └── TagEditor.svelte
-    ├── global.d.ts
-    ├── lib
-    │   ├── actor.ts
-    │   ├── backend.ts
-    │   ├── crypto.ts
-    │   ├── enums.ts
-    │   ├── idlFactory.js
-    │   ├── note.ts
-    │   └── sleep.ts
-    ├── main.ts
-    └── store
-        ├── auth.ts
-        ├── draft.ts
-        ├── notes.ts
-        └── notifications.ts
 ```
 
 This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/building-apps/frontends/using-an-asset-canister).
 
-### Starting a local replica
+### Starting a local development environment
 
-Before you can deploy the project's canisters, you'll need to ensure that a local replica is running with the command:
+Before you can deploy the project's canisters, you'll need to ensure that a local development environment is running with the command:
 
 ```bash
 dfx start --clean --background
@@ -631,7 +241,8 @@ Once the canister is deployed, the canister's local URL will be returned. You ca
 npm run print-dfx-ii
 ```
 
-This command will return output that resembles the following:
+<details>
+<summary>Output</summary>
 
 ```bash
 > encrypted-notes-dapp@0.2.0 print-dfx-ii
@@ -640,21 +251,18 @@ This command will return output that resembles the following:
 local Internet Identity: http://bkyz2-fmaaa-aaaaa-qaaaq-cai.localhost:8000
 ```
 
+</details>
+
 Navigate to this URL in a web browser and create at least one local Internet Identity that you will use with the encrypted notes dapp.
 
-Need a reminder on how to create an Internet Identity? Review the [3.5 Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth) level of the developer liftoff.
+Need a reminder on how to create an Internet Identity? Review the [3.5 Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth) level of the Developer Liftoff.
 
 ### Deploying the vetKD system API canister
 
-Next, you will need to install and deploy the vetKD system API canister. For this canister, you want to ensure that `dfx` uses the hard-coded canister ID `s55qq-oqaaa-aaaaa-aaakq-cai` that is included in the backend canister's source code. To ensure that `dfx` uses this canister ID, create the vetKD system API canister with the command:
+Next, you will need to install and deploy the vetKD system API canister. For this canister, you want to ensure that `dfx` uses the hard-coded canister ID `s55qq-oqaaa-aaaaa-aaakq-cai` that is included in the backend canister's source code. To ensure that `dfx` uses this canister ID, create and deploy the vetKD system API canister with the command:
 
 ```bash
 dfx canister create vetkd_system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
-```
-
-Then, to deploy the canister, run the command:
-
-```bash
 dfx deploy vetkd_system_api
 ```
 
@@ -687,7 +295,7 @@ This canister provides the following system API that the dapp will use:
 You can learn more about the [vetKD API](https://github.com/dfinity/interface-spec/pull/158).
 
 :::caution
-Remember, this feature is in development and should not be used in production environments at this time.
+This feature is in development and should not be used in production environments at this time.
 :::
 
 ### Deploying the encrypted notes backend canister
@@ -709,7 +317,7 @@ dfx generate "encrypted_notes_$BUILD_ENV"
 
 ### Deploying the frontend canister
 
-Then, deploy the frontend canister with the command:
+Deploy the frontend canister with the command:
 
 ```bash
 dfx deploy www
@@ -768,11 +376,11 @@ Then, you can see the note has been saved in the 'Your notes' section:
 
 ## Resources
 
-- [vetKeys documentation](/docs/building-apps/network-features/encryption/vetkeys).
+- [vetKeys documentation](/docs/building-apps/network-features/vetkeys/introduction).
 
 - [vetKeys technology overview](/docs/references/vetkeys-overview).
 
-- [vetKeys example](/docs/building-apps/network-features/encryption/using-vetkeys).
+- [vetKeys example](/docs/building-apps/network-features/vetkeys/demos/send_file_to_eth).
 
 - [vetKeys discussion forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
 
@@ -783,30 +391,6 @@ Then, you can see the note has been saved in the 'Your notes' section:
 - [vetKeys research paper](https://eprint.iacr.org/2023/616.pdf).
 
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-- [5.2 Deploying an ETH starter project on ICP](/docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial)
+<TutorialFooter />

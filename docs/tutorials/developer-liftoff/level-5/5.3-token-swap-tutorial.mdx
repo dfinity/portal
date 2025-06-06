@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer liftoff, token swap]
+keywords: [advanced, tutorial, developer liftoff, token swap, decentralized exchange, icrc tokens, icrc1, icrc2, tokens, swapping tokens, swap icrc tokens]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -16,7 +16,7 @@ import '/src/components/CenterImages/center.scss';
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/T-TA2llyZxs?si=YttMiRBjQ_AUWwhp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-The Internet Computer enables decentralized finance (DeFi) applications through its design that includes complex, onchain computation. One primary example of a DeFi application is a decentralized exchange (DEX). A DEX is an exchange that can be used to buy, sell, trade, and withdraw cryptocurrencies and other digital assets without a centralized authority that authorizes the trades, such as a bank. Decentralized exchanges are extremely useful, as they allow users to buy and hold cryptocurrencies, trade them directly for another token or coin, then withdraw the tokens to be used elsewhere.
+ICP enables decentralized finance (DeFi) applications through its design that includes complex, onchain computation. One primary example of a DeFi application is a decentralized exchange (DEX). A DEX can be used to buy, sell, trade, and withdraw cryptocurrencies and other digital assets without a centralized authority that authorizes the trades.
 
 ## Decentralized token swap canister
 
@@ -34,14 +34,23 @@ In this example, the token swap canister simply swaps all deposits for two users
 
 This example will use ICRC-2 tokens. To learn more about ICRC tokens, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-### Prerequisites
+<AdornedTabs>
+<TabItem label="Prerequisites">
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
 
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+
+</TabItem>
+</AdornedTabs>
 ### Cloning the `icrc2-swap` example
 
-To get started, open a new terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to clone the DFINITY examples repo and navigate into the `icrc2-swap` directory:
+To get started, open a new terminal window, navigate into your working directory (`developer_liftoff`), then use the following commands to clone the DFINITY examples repo and navigate into the `icrc2-swap` directory:
 
 ```bash
 git clone https://github.com/dfinity/examples/
@@ -49,32 +58,6 @@ cd examples/motoko/icrc2-swap
 ```
 
 ### Reviewing the project's files
-
-First, let's review the files that are in this project:
-
-```bash
-.
-├── Makefile
-├── README.md
-├── babel.config.js
-├── dfx.json
-├── jest.config.ts
-├── package-lock.json
-├── package.json
-├── src
-│   └── swap
-│       ├── ICRC.mo
-│       └── main.mo
-├── test
-│   ├── deploy.sh
-│   └── swap
-│       ├── agent.ts
-│       ├── identity.ts
-│       ├── setup.ts
-│       ├── swap.test.ts
-│       └── teardown.ts
-└── tsconfig.json
-```
 
 In this project, there are two Motoko files in the `src/swap` subdirectory:
 
@@ -86,27 +69,8 @@ This project also includes a `test` subdirectory containing TypeScript files tha
 
 Then, open the project's `dfx.json` file to review the project's canisters and configuration:
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "swap": {
-      "main": "src/swap/main.mo",
-      "type": "motoko"
-    },
-    "token_a": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz"
-    },
-    "token_b": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz"
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
+```json title="dfx.json" file=../../../../submodules/samples/motoko/icrc2-swap/dfx.json
+
 ```
 
 In this project's configuration, you can see the definition of three canisters:
@@ -119,391 +83,14 @@ In this project's configuration, you can see the definition of three canisters:
 
 Next, open the `src/swap/main.mo` file and review its contents. This code has been annotated with notes to explain the program's functionality:
 
-```motoko no-repl title="src/swap/main.mo"
-import Blob "mo:base/Blob";
-import Debug "mo:base/Debug";
-import Iter "mo:base/Iter";
-import Nat "mo:base/Nat";
-import Option "mo:base/Option";
-import P "mo:base/Prelude";
-import Principal "mo:base/Principal";
-import Result "mo:base/Result";
-import TrieMap "mo:base/TrieMap";
+```motoko title="src/swap/main.mo" file=../../../../submodules/samples/motoko/icrc2-swap/src/swap/main.mo
 
-// Import the ICRC type definitions that are stored in the ICRC.mo file:
-import ICRC "./ICRC";
-
-// This swap canister is the primary backend canister in this example.
-// For simplicity, this canister is configured with two tokens that will be swapped:
-shared (init_msg) actor class Swap(
-  init_args : {
-    token_a : Principal;
-    token_b : Principal;
-  }
-) = this {
-
-  // Define private variables to track the deposited balances for token A and token B:
-  private var balancesA = TrieMap.TrieMap<Principal, Nat>(Principal.equal, Principal.hash);
-  private var balancesB = TrieMap.TrieMap<Principal, Nat>(Principal.equal, Principal.hash);
-
-  // Because TrieMaps are not directly storable in stable memory, define a location to store the data during canister upgrades:
-  private stable var stableBalancesA : ?[(Principal, Nat)] = null;
-  private stable var stableBalancesB : ?[(Principal, Nat)] = null;
-
-  // Define a function to check the balances of all users:
-  public query func balances() : async ([(Principal, Nat)], [(Principal, Nat)]) {
-    (Iter.toArray(balancesA.entries()), Iter.toArray(balancesB.entries()));
-  };
-
-  public type DepositArgs = {
-    spender_subaccount : ?Blob;
-    token : Principal;
-    from : ICRC.Account;
-    amount : Nat;
-    fee : ?Nat;
-    memo : ?Blob;
-    created_at_time : ?Nat64;
-  };
-
-  public type DepositError = {
-    #TransferFromError : ICRC.TransferFromError;
-  };
-
-  // Accept deposits:
-  // - Accept TokenA and TokenB
-  // - User approves transfer: `token_a.icrc2_approve({ spender=swap_canister; amount=amount; ... })`
-  // - User deposits their token: `swap_canister.deposit({ token=token_a; amount=amount; ... })`
-  // - These deposit handlers show how to safely accept and register deposits of an ICRC-2 token.
-  public shared (msg) func deposit(args : DepositArgs) : async Result.Result<Nat, DepositError> {
-    let token : ICRC.Actor = actor (Principal.toText(args.token));
-    let balances = which_balances(args.token);
-
-    // Load the fee from the token:
-    // The user can pass a null fee, which means it uses the default. To determine the default, it needs to be retrieved:
-    let fee = switch (args.fee) {
-      case (?f) { f };
-      case (null) { await token.icrc1_fee() };
-    };
-
-    // Define the logic for the token transfer:
-    let transfer_result = await token.icrc2_transfer_from({
-      spender_subaccount = args.spender_subaccount;
-      from = args.from;
-      to = { owner = Principal.fromActor(this); subaccount = null };
-      amount = args.amount;
-      fee = ?fee;
-      memo = args.memo;
-      created_at_time = args.created_at_time;
-    });
-
-    // Check that the transfer was successful:
-    let block_height = switch (transfer_result) {
-      case (#Ok(block_height)) { block_height };
-      case (#Err(err)) {
-        // Transfer failed. There's no cleanup since no state has changed.
-        return #err(#TransferFromError(err));
-      };
-    };
-
-    // Credit the sender's account:
-    let sender = args.from.owner;
-    let old_balance = Option.get(balances.get(sender), 0 : Nat);
-    balances.put(sender, old_balance + args.amount);
-
-    // Return the "block height" of the transfer:
-    #ok(block_height);
-  };
-
-  public type SwapArgs = {
-    user_a : Principal;
-    user_b : Principal;
-  };
-
-  public type SwapError = {
-    // This function is left as a placeholder for future implementors, in case their swap function could fail.
-  };
-
-  public shared (msg) func swap(args : SwapArgs) : async Result.Result<(), SwapError> {
-
-    // In this function, since both tokens will be deposited before the swap is executed, this function can run atomically, meaning there must not be an 'await` call within this function.
-    // Not using 'await' calls makes this function safer, since all state changes applied in the function will either be persisted or reverted.
-
-    // Give user_a's token_a to user_b:
-    // Add the two users' token_a balances, and then give all of it to user_b:
-    balancesA.put(
-      args.user_b,
-      Option.get(balancesA.get(args.user_a), 0 : Nat) +
-      Option.get(balancesA.get(args.user_b), 0 : Nat),
-    );
-    balancesA.delete(args.user_a);
-
-    // Give user_b's token_b to user_a:
-    // Add the two users' token_b balances, and then give all of it to user_a:
-    balancesB.put(
-      args.user_a,
-      Option.get(balancesB.get(args.user_a), 0 : Nat) +
-      Option.get(balancesB.get(args.user_b), 0 : Nat),
-    );
-    balancesB.delete(args.user_b);
-
-    #ok(());
-  };
-
-  public type WithdrawArgs = {
-    token : Principal;
-    to : ICRC.Account;
-    amount : Nat;
-    fee : ?Nat;
-    memo : ?Blob;
-    created_at_time : ?Nat64;
-  };
-
-    // Define a function that catches an error if the caller does not have sufficient funds deposited into the swap.
-    // This error is different from the TransferError(InsufficientFunds) error, which indicates that the canister does not have enough funds to fulfill a withdrawal.
-  public type WithdrawError = {
-    #InsufficientFunds : { balance : ICRC.Tokens };
-    #TransferError : ICRC.TransferError;
-  };
-
-  // Define the functionality for withdrawing tokens:
-  // - Allow users to withdraw any tokens they hold.
-  // - These withdrawal handlers show how to safely send outbound transfers of an ICRC-1 token:
-  public shared (msg) func withdraw(args : WithdrawArgs) : async Result.Result<Nat, WithdrawError> {
-    let token : ICRC.Actor = actor (Principal.toText(args.token));
-    let balances = which_balances(args.token);
-
-    // Load the fee from the token:
-    let fee = switch (args.fee) {
-      case (?f) { f };
-      case (null) { await token.icrc1_fee() };
-    };
-
-    // Check that the user's balance is sufficient:
-    let old_balance = Option.get(balances.get(msg.caller), 0 : Nat);
-    if (old_balance < args.amount + fee) {
-      return #err(#InsufficientFunds { balance = old_balance });
-    };
-
-    // Debit the sender's account:
-    // Since ICP uses asynchronous execution, the sender's account is debited first to ensure that the user cannot withdraw more than they have.
-    // If the transfer was performed first, then debited to the user's account, there would be several malicious attacks that the transfer would be at risk for.
-
-    let new_balance = old_balance - args.amount - fee;
-    if (new_balance == 0) {
-      // Delete zero-balances to keep the balance table tidy:
-      balances.delete(msg.caller);
-    } else {
-      balances.put(msg.caller, new_balance);
-    };
-
-    // Perform the transfer and send the tokens:
-    let transfer_result = await token.icrc1_transfer({
-      from_subaccount = null;
-      to = args.to;
-      amount = args.amount;
-      fee = ?fee;
-      memo = args.memo;
-      created_at_time = args.created_at_time;
-    });
-
-    // Check that the transfer was successful:
-    let block_height = switch (transfer_result) {
-      case (#Ok(block_height)) { block_height };
-      case (#Err(err)) {
-        // If the transfer failed, refund the user's account.
-        let b = Option.get(balances.get(msg.caller), 0 : Nat);
-        balances.put(msg.caller, b + args.amount + fee);
-
-        return #err(#TransferError(err));
-      };
-    };
-
-    // Return the "block height" of the transfer:
-    #ok(block_height);
-  };
-
-  // Define a function that checks which token the user is withdrawing and configures the rest of the transfer.
-  // This function will assert that the token specified must be either token_a or token_b.
-  private func which_balances(t : Principal) : TrieMap.TrieMap<Principal, Nat> {
-    let balances = if (t == init_args.token_a) {
-      balancesA;
-    } else if (t == init_args.token_b) {
-      balancesB;
-    } else {
-      Debug.trap("invalid token canister");
-    };
-  };
-
-  // TrieMaps cannot be directly stored in stable memory, so define a preupgrade and postupgrade to store the balances into stable memory:
-  system func preupgrade() {
-    stableBalancesA := ?Iter.toArray(balancesA.entries());
-    stableBalancesB := ?Iter.toArray(balancesB.entries());
-  };
-
-  system func postupgrade() {
-    switch (stableBalancesA) {
-      case (null) {};
-      case (?entries) {
-        balancesA := TrieMap.fromEntries<Principal, Nat>(entries.vals(), Principal.equal, Principal.hash);
-        stableBalancesA := null;
-      };
-    };
-
-    switch (stableBalancesB) {
-      case (null) {};
-      case (?entries) {
-        balancesB := TrieMap.fromEntries<Principal, Nat>(entries.vals(), Principal.equal, Principal.hash);
-        stableBalancesB := null;
-      };
-    };
-  };
-
-};
 ```
 
 Next, open the `ICRC.mo` file and review its contents. This file defines several types that are imported in the `main.mo` file:
 
-```motoko no-repl title="src/swap/ICRC.mo"
-module ICRC {
-  public type BlockIndex = Nat;
-  public type Subaccount = Blob;
-  // Number of nanoseconds since the UNIX epoch in UTC timezone.
-  public type Timestamp = Nat64;
-  // Number of nanoseconds between two [Timestamp]s.
-  public type Tokens = Nat;
-  public type TxIndex = Nat;
+```motoko no-repl title="src/swap/ICRC.mo" file=../../../../submodules/samples/motoko/icrc2-swap/src/swap/ICRC.mo
 
-  public type Account = {
-    owner : Principal;
-    subaccount : ?Subaccount;
-  };
-
-  public type TransferArg = {
-    from_subaccount : ?Subaccount;
-    to : Account;
-    amount : Tokens;
-    fee : ?Tokens;
-    memo : ?Blob;
-    created_at_time : ?Timestamp;
-  };
-
-  public type TransferError = {
-    #BadFee : { expected_fee : Tokens };
-    #BadBurn : { min_burn_amount : Tokens };
-    #InsufficientFunds : { balance : Tokens };
-    #TooOld;
-    #CreatedInFuture : { ledger_time : Nat64 };
-    #TemporarilyUnavailable;
-    #Duplicate : { duplicate_of : BlockIndex };
-    #GenericError : { error_code : Nat; message : Text };
-  };
-
-  public type TransferResult = {
-    #Ok : BlockIndex;
-    #Err : TransferError;
-  };
-
-  // The value returned from the [icrc1_metadata] endpoint.
-  public type MetadataValue = {
-    #Nat : Nat;
-    #Int : Int;
-    #Text : Text;
-    #Blob : Blob;
-  };
-
-  public type ApproveArgs = {
-    from_subaccount : ?Subaccount;
-    spender : Account;
-    amount : Tokens;
-    expected_allowance : ?Tokens;
-    expires_at : ?Timestamp;
-    fee : ?Tokens;
-    memo : ?Blob;
-    created_at_time : ?Timestamp;
-  };
-
-  public type ApproveError = {
-    #BadFee : { expected_fee : Tokens };
-    #InsufficientFunds : { balance : Tokens };
-    #AllowanceChanged : { current_allowance : Tokens };
-    #Expired : { ledger_time : Nat64 };
-    #TooOld;
-    #CreatedInFuture : { ledger_time : Nat64 };
-    #Duplicate : { duplicate_of : BlockIndex };
-    #TemporarilyUnavailable;
-    #GenericError : { error_code : Nat; message : Text };
-  };
-
-  public type ApproveResult = {
-    #Ok : BlockIndex;
-    #Err : ApproveError;
-  };
-
-  public type AllowanceArgs = {
-    account : Account;
-    spender : Account;
-  };
-
-  public type Allowance = {
-    allowance : Tokens;
-    expires_at : ?Timestamp;
-  };
-
-  public type TransferFromArgs = {
-    spender_subaccount : ?Subaccount;
-    from : Account;
-    to : Account;
-    amount : Tokens;
-    fee : ?Tokens;
-    memo : ?Blob;
-    created_at_time : ?Timestamp;
-  };
-
-  public type TransferFromResult = {
-    #Ok : BlockIndex;
-    #Err : TransferFromError;
-  };
-
-  public type TransferFromError = {
-    #BadFee : { expected_fee : Tokens };
-    #BadBurn : { min_burn_amount : Tokens };
-    #InsufficientFunds : { balance : Tokens };
-    #InsufficientAllowance : { allowance : Tokens };
-    #TooOld;
-    #CreatedInFuture : { ledger_time : Nat64 };
-    #Duplicate : { duplicate_of : BlockIndex };
-    #TemporarilyUnavailable;
-    #GenericError : { error_code : Nat; message : Text };
-  };
-
-  public type Actor = actor {
-    icrc1_name : shared query () -> async Text;
-    icrc1_symbol : shared query () -> async Text;
-    icrc1_decimals : shared query () -> async Nat8;
-    icrc1_metadata : shared query () -> async [(Text, MetadataValue)];
-    icrc1_total_supply : shared query () -> async Tokens;
-    icrc1_fee : shared query () -> async Tokens;
-    icrc1_minting_account : shared query () -> async ?Account;
-    icrc1_balance_of : shared query (Account) -> async Tokens;
-    icrc1_transfer : shared (TransferArg) -> async TransferResult;
-    icrc1_supported_standards : shared query () -> async [{
-      name : Text;
-      url : Text;
-    }];
-    icrc2_approve : shared (ApproveArgs) -> async ApproveResult;
-    icrc2_allowance : shared query (AllowanceArgs) -> async Allowance;
-    icrc2_transfer_from : shared (TransferFromArgs) -> async TransferFromResult;
-  };
-};
-```
-
-
-### Starting a local replica
-
-Before you can deploy the project's canister, you'll need to ensure that a local replica is running with the command:
-
-```bash
-dfx start --clean --background
 ```
 
 ### Creating identities for `user_a` and `user_b`:
@@ -522,10 +109,10 @@ export USER_A=$(dfx identity get-principal --identity user_a)
 export USER_B=$(dfx identity get-principal --identity user_b)
 ```
 
-Next, switch to your DevJourney identity and save its principal as the environmental variable `OWNER`:
+Next, switch to your DevLiftoff identity and save its principal as the environmental variable `OWNER`:
 
 ```bash
-dfx identity use DevJourney
+dfx identity use DevLiftoff
 export OWNER=$(dfx identity get-principal)
 ```
 
@@ -534,6 +121,7 @@ export OWNER=$(dfx identity get-principal)
 Next, deploy `token_a` by deploying the `token_a` canister and passing a series of arguments to the canister to create the token:
 
 ```bash
+dfx start --clean --background
 dfx deploy token_a --argument '
   (variant {
     Init = record {
@@ -569,7 +157,7 @@ In this command, `token_a` is created with the following configuration:
 
 - `token_name`: Defines the token's name as 'Token A.'
 - `token_symbol`: Defines the token's symbol as 'A.'
-- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevJourney identity.
+- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevLiftoff identity.
 - `initial_balances`: Defines the initial balance of tokens as '100_000_000_000'.
     - `owner`: Defines the owner of the initial token balance (100_000_000_000) as the `USER_A` environmental variable. This variable holds the principal of the user_a identity.
 - `transfer_fee`: Defines the transfer fee as '10_000'.
@@ -619,7 +207,7 @@ In this command, `token_b` is created with the following configuration:
 
 - `token_name`: Defines the token's name as 'Token B.'
 - `token_symbol`: Defines the token's symbol as 'B.'
-- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevJourney identity.
+- `minting_account`: Defines the minting account as the `OWNER` environmental variable. This variable holds the principal of your DevLiftoff identity.
 - `initial_balances`: Defines the initial balance of tokens as '100_000_000_000'.
     - `owner`: Defines the owner of the initial token balance (100_000_000_000) as the `USER_B` environmental variable. This variable holds the principal of the user_a identity.
 - `transfer_fee`: Defines the transfer fee as '10_000'.
@@ -803,30 +391,6 @@ dfx canister call token_b icrc1_balance_of 'record {
 ```
 
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-## Next steps
-
-- [5.4 Creating NFTs on ICP](/docs/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial)
+<TutorialFooter />

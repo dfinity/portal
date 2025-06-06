@@ -1,6 +1,6 @@
 {
   "categoryName": "Chain Fusion",
-  "categoryDescription": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multi-chain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
+  "categoryDescription": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multichain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
   "elements": [
     {
       "title": "Threshold EdDSA signing",
@@ -19,7 +19,7 @@
       "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
       "forum": "",
       "proposal": "",
-      "docs": "https://github.com/mfactory-lab/ic-solana",
+      "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
       "eta": "",
       "status": "in_progress",
       "is_community": true,
@@ -33,20 +33,20 @@
       "milestone_id": "Helium",
       "status": "in_progress",
       "eta": "",
-      "eta_to_render": "May 2025"
+      "eta_to_render": "June 2025"
     },
     {
       "title": "Dogecoin integration",
       "is_milestone": true,
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
-      "status": "future",
+      "status": "in_progress",
       "eta_to_render": ""
     },
     {
       "title": "Native Dogecoin integration",
       "overview": "Native Dogecoin integration will extend ICP replicas to also follow the Dogecoin network and collect its UTXO set in a special Dogecoin canister. This allows canisters on ICP to securely read the Dogecoin state. Combined with the existing threshold ECDSA signing functionality, this allows canisters to securely hold and transfer native dogecoin.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Meridian"
     },
     {

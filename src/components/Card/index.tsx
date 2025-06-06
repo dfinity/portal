@@ -11,46 +11,44 @@ interface TileDescriptor {
 
 const languagesTiles: TileDescriptor[] = [
   {
-    label: "ICP Ninja",
-    description:
-      "Explore example projects using a web-based IDE. Create and deploy ICP smart contracts directly in your web browser.",
+    label: "Download and install Motoko",
+    description: "Start building with Motoko in a local development environment.",
     icon: (
       <img
-        src="/img/docs/ninja-star-logo.svg"
-        alt="Motoko docs"
+        src="/img/dfinity_logo.svg"
+        alt="Install Motoko"
         className="w-10 h-10"
         loading="lazy"
       />
     ),
     action: (
       <Link
-        href="/docs/building-apps/developer-tools/icp-ninja"
-        className="button button-ghost bg-white/90 rounded-2xl text-infinite"
-        title="Get started with ICP Ninja"
+        href="/docs/motoko/install"
+        className="button button-ghost bg-white/90 rounded-2xl text-infinite outline outline-2 outline-black flex items-center justify-center text-center"
+        title="Download and install Motoko"
       >
-        <span>Get started with ICP Ninja</span>
+        Download and install
       </Link>
     ),
   },
   {
-    label: "dfx",
-    description:
-      "dfx is a command line tool used to create, deploy, and manage ICP smart contracts. Jump into developing in a local environment.",
+    label: "Try Motoko online",
+    description: "Write, edit, deploy, and share Motoko projects directly in your browser.",
     icon: (
       <img
-        src="/img/dfinity_logo.svg"
-        alt="Get started with dfx"
+        src="/img/docs/ninja-star-logo.svg"
+        alt="Try Motoko online"
         className="w-10 h-10"
         loading="lazy"
       />
     ),
     action: (
       <Link
-        href="/docs/building-apps/getting-started/install"
-        className="button button-ghost bg-white/90 rounded-2xl text-infinite"
-        title="Get started with dfx"
+        href="https://icp.ninja"
+        className="button button-ghost bg-white/90 rounded-2xl text-infinite outline outline-2 outline-black flex items-center justify-center text-center"
+        title="Try Motoko online"
       >
-        <span>Get started with dfx</span>
+        Try Motoko online
       </Link>
     ),
   },
@@ -59,50 +57,34 @@ const languagesTiles: TileDescriptor[] = [
 const Tile = ({ tile }: { tile: TileDescriptor }) => {
   return (
     <div
-      className={`flex flex-col ${
-        tile.isGhostTile
-          ? "bg-grey-200 border-grey-200 hidden lg:block"
-          : "bg-black-60"
-      } rounded-lg border p-4 h-[260px]`}
+      className={`flex flex-col justify-between rounded-xl border-4 border-black outline outline-2 outline-black p-8 h-[260px]
+        shadow-2xl hover:shadow-3xl transition-all`}
     >
-      <div className={"flex flex-col gap-2 items-start"}>
-        <div className={"flex flex-row gap-2"}>
+      <div className="flex flex-col gap-2 items-start">
+        <div className="flex flex-row gap-3 items-center">
           {tile.icon}
-          <span className={"tw-heading-4 mb-6 whitespace-pre-wrap"}>
-            {tile.label}
-          </span>
+          <span className="text-lg font-bold text-gray-900">{tile.label}</span>
         </div>
-        <p>{tile.description}</p>
+        <p className="text-gray-700">{tile.description}</p>
       </div>
-      {tile.action}
+      <div className="mt-auto">{tile.action}</div>
     </div>
   );
 };
 
 
-const DocsCard: FC = () => {
-  return (
-    <div className="flex flex-col gap-10">
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-rows-1
-          grid-cols-1
-          sm:grid-cols-2
-          px-0
-          gap-3
-        "
-        >
-          {languagesTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
-        </div>
-      </section>
 
-    </div>
-  );
-};
+const Card: FC = () => (
+  <div className="flex flex-col gap-8">
+    <section>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {languagesTiles.map((tile, index) => (
+          <Tile tile={tile} key={index} />
+        ))}
+      </div>
+    </section>
+  </div>
+);
 
-export default DocsCard;
+export default Card;
+

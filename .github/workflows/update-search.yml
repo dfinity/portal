@@ -1,8 +1,6 @@
 name: Update search index
 on:
-  # run every 24 hours
-  schedule:
-    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   update-search:
@@ -30,6 +28,11 @@ jobs:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+
+      - name: Remove redirect pages
+        run: |
+          rm -rf build/bitcoin-integration/
+          # Other redirects to remove
 
       - name: Update search index
         run: |

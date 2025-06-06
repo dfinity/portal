@@ -1,0 +1,74 @@
+---
+keywords: [beginner, concept, best practices, generous canister top-up, efficient implementations, state backup and restoration]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Token best practices
+
+<MarkdownChipRow labels={["Beginner", "Best practices"]} />
+
+When developing applications that utilize tokens, or when deploying your own token, consider the following best practices.
+
+## Creating a token
+
+#### Recommendation: Choose the token standard that best fits your needs.
+
+- For basic fungible tokens, use ICRC-1.
+
+- For fungible tokens that support the approve and transfer functionality, implement ICRC-2.
+
+- For non-fungible tokens (NFTs) use ICRC-7 or ICRC-37. ICRC-37 supports the approve and transfer functionality.
+
+#### Recommendation: Include appropriate metadata for your token.
+
+Better metadata results in a better user experience and wallet integration. [Learn more about metadata](/docs/tutorials/hackathon-prep-course/integrating-with-tokens#icrc-1-tokens).
+
+## Transaction deduplication
+
+#### Recommendation: Use the `created_at_time` and `memo` parameters to make transaction calls [idempotent](/docs/building-apps/best-practices/idempotency#id-deduplication).
+
+#### Recommendation: Implement a time window for deduplication using the ICRC configuration parameter `TX_WINDOW`.
+
+#### Recommendation: Consider capacity limits for your deduplication store.
+
+There is a limit for the number of deduplicated transactions that can be stored in the [deduplication store](/docs/building-apps/best-practices/idempotency#id-deduplication). Transactions are rejected once this store is full until older transactions expire at the end of the time window.
+
+## Embedding standards into existing ledgers
+
+#### Recommendation: Utilize flexibility when choosing internal account representations.
+
+#### Recommendation: Use `icrc1_` as the prefix for all methods to prevent conflicts.
+
+#### Recommendation: Handle transaction logs appropriately.
+
+[Learn more about embedding](https://medium.com/dfinity/the-design-and-evolution-of-the-icrc-1-fungible-token-standard-f7f303a33300#88bd).
+
+## Inter-canister call considerations
+
+#### Recommendation: Fully test inter-canister calls and rollbacks.
+
+Issues with [inter-canister calls](/docs/building-apps/security/overview) can lead to time-of-check, time-of-use, or double spending security bugs.
+
+#### Recommendation: Certify query responses if they are relevant for security.
+
+This is important when displaying important financial data to the user that may be used to make decisions on future transactions.
+
+## Controllers
+
+#### Recommendation: Use a decentralized governance system like SNS.
+
+Decentralizing control is a fundamental aspect of decentralized finance applications.
+
+## ckBTC best practices: Write a smart contract that mints and burns ckBTC
+
+When building dapps where users can deposit bitcoin to receive ckBTC or burn ckBTC to withdraw bitcoin, developers are advised to adhere to the following best practices.
+
+In order to mint ckBTC, the user must first deposit bitcoin into the Bitcoin address returned by the endpoint `get_btc_address`, which is tied to the user's principal ID and possibly a subaccount.
+
+Next, the user should issue query calls to the `bitcoin_get_utxos_query` endpoint of the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister) to retrieve the unspent outputs of the Bitcoin address obtained in the first step.
+If the user does not know for which unspent outputs ckBTC has already been minted, the `get_known_utxos` query endpoint can be called on the ckBTC minter, returning the known unspent outputs for the Bitcoin address derived from the user's principal ID (and possibly a subaccount).
+
+If there is an unspent output that the ckBTC minter has not seen yet, the user can issue an update call to the `update_balance` endpoint on the ckBTC minter. The ckBTC minter will then mint ckBTC for each newly discovered unspent output.
+
+The recommended mechanism to withdraw bitcoin is to first create an [ICRC-2 approval](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md#icrc2_approve) by calling the `icrc2_approve` endpoint on the ckBTC ledger, authorizing the ckBTC minter (canister ID: `mqygn-kiaaa-aaaar-qaadq-cai`) to retrieve at least the amount that is to be withdrawn. After that, the user can call the `retrieve_btc_with_approval` endpoint on the ckBTC minter, which will create a transaction to burn the specified amount in ckBTC. When this operation succeeds, the ckBTC minter will then create a Bitcoin transaction to withdraw the corresponding amount in bitcoin to the user's specified Bitcoin address.
