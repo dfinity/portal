@@ -6,6 +6,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # 0.6 Deploying your first dapp
 
@@ -21,9 +23,13 @@ Projects on ICP have a default architecture of two canisters: a frontend caniste
 
 ## Hello, world!
 
+<Tabs groupId="language">
+<TabItem value="Motoko" label="Motoko">
+
 This tutorial will use the Motoko ["Hello, world!" example](https://icp.ninja/projects/hello-world) on ICP Ninja.
 
 Let's review the project's file structure:
+
 
 ```bash
 ├── backend      # Folder containing the source code of your dapp's backend.
@@ -46,7 +52,54 @@ The `dfx.json` file in the root directory defines the canisters that make up the
 
 Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
 
+</TabItem>
+
+<TabItem value="Rust" label="Rust">
+
+This tutorial will use the Rust ["Hello, world!" example](https://icp.ninja/projects/hello-world) on ICP Ninja.
+
+Let's review the project's file structure:
+
+
+```bash
+├── backend      # Folder containing the source code of your dapp's backend.
+│   ├── Cargo.toml # Package configuration file for Rust.
+│   ├── lib.rs   # The default source code file; this is the file you'll be working with in this tutorial.
+├── frontend     # Folder containing the asset files for your dapp's frontend.
+│   ├──  index.html   # Entrypoint file for the frontend.
+│   ├──  package.json
+│   ├──  vite.config.js
+├── dfx.json     # The configuration file for your Internet Computer dapp.
+├── mops.toml    # Package configuration file for Motoko.
+├── README.md    # Information about the project and using ICP Ninja.
+```
+
+
+### dfx.json​
+
+The `dfx.json` file in the root directory defines the canisters that make up the application and where their source code is located. This project uses the following `dfx.json` file:
+
+```json title=dfx.json file=../../../references/samples/rust/hello_world/dfx.json
+```
+
+Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+
+### Cargo.toml
+
+Your project's `Cargo.toml` file in the `backend` folder specifies the path to the main source file and lists the Rust packages (crates) your `lib.rs` file depends on. This configuration allows the Rust compiler to know how to build and link your code. This project uses the following `Cargo.toml` file:
+
+```toml title=Cargo.toml file=../../../references/samples/rust/hello_world/backend/Cargo.toml
+```
+
+</TabItem>
+</Tabs>
+
+
 ## Backend
+
+<Tabs groupId="language">
+<TabItem value="Motoko" label="Motoko">
+
 
 Now, let's review the `backend/app.mo` file to learn about the application's functions.
 
@@ -62,6 +115,26 @@ Now, let's review the `backend/app.mo` file to learn about the application's fun
 :::info
 If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
 :::
+
+</TabItem>
+
+<TabItem value="Rust" label="Rust">
+
+Now, let's review the `backend/lib.rs` file to learn about the application's functions.
+
+```rust title=lib.rs file=../../../references/samples/rust/hello_world/backend/lib.rs
+```
+
+- First the `ic_stable_structures` memory manager is defined, followed by the `thread_local!` macro. This stores the program's variables in stable memory so their values will persist across canister upgrades. Stable memory will be covered at length in a future module.
+- The `set_greeting` method is defined to modify the canister's state and update the text stored in the `greeting` variable.
+- The `greet` method will query and return the text stored in `greeting,` followed by the text passed to the method.
+
+:::info
+If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
+:::
+
+</TabItem>
+</Tabs>
 
 
 ### Calling the backend canister​
@@ -89,9 +162,9 @@ In the `greet` method input box, insert the input "ICP," then select the "Query"
 ("Hello, ICP!")
 ```
 
-In contrast, `setGreeting` is an update call that **does** alter the canister’s state. Calling it will change the data stored in the `greeting` variable, which will then result in the `greet` function returning a different response when called.
+In contrast, `setGreeting` (Motoko variation) / `set_greeting` (Rust variation) is an update call that **does** alter the canister’s state. Calling it will change the data stored in the `greeting` variable, which will then result in the `greet` function returning a different response when called.
 
-Insert "Hi, " into the `setGreeting` function's input, then select "Call." Then, call the `greet` function again and observe the new output.
+Insert "Hi, " into the `setGreeting` (Motoko variation) / `set_greeting` (Rust variation) function's input, then select "Call." Then, call the `greet` function again and observe the new output.
 
 ```
 ("Hi, ICP!")
@@ -126,7 +199,7 @@ For example, the `src/hello_frontend/index.html` file defines a simple HTML page
 ```html title=index.html file=../../../references/samples/motoko/hello_world/frontend/index.html#L20-L33
 ```
 
-In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. Declaration files are generated by `dfx` during the build process. If you build this project locally, you will see them; they are not shown in the ICP Ninja file viewer.
+In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. Motoko declaration files are generated by `dfx` during the build process, while Rust declarations must be exported with the `candid_extractor` tool or written by hand. In this example's Rust variation, the declaration file is exported using the `candid_extractor`. If you build this project locally, you will see the project's declaration files; they are not shown in the ICP Ninja file viewer.
 
 When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 

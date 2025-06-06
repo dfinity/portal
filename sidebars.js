@@ -979,6 +979,31 @@ devjourney: [
   },
 ],
 
+devjourneyRust: [
+  {
+    type: "category",
+    label: "Developer Liftoff: Rust",
+    link: {
+      type: "doc",
+      id: "tutorials/developer-liftoff-rust/index",
+    },
+    items: [
+      {
+        type: "category",
+        label: "Level 0: Pre-flight operations",
+        items: [
+          "tutorials/developer-liftoff-rust/level-0/ic-overview",
+          "tutorials/developer-liftoff-rust/level-0/ic-terms",
+          "tutorials/developer-liftoff-rust/level-0/intro-canisters",
+          "tutorials/developer-liftoff-rust/level-0/intro-languages",
+          "tutorials/developer-liftoff-rust/level-0/tooling",
+          "tutorials/developer-liftoff-rust/level-0/first-dapp",
+    ],
+  },
+],
+},
+],
+
 hackathon: [
   {
     type: "category",
