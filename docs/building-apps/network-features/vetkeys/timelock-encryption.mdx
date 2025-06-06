@@ -32,7 +32,7 @@ In a secret-bid auction dapp, users submit bids encrypted using IBE under a shar
 
 Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. The information is IBE-encrypted and stored it in a dapp, which is configured to automatically decrypt it and publish if it doesn't receive a periodic ping from the autorized user.
 
-### Advanced timelocks
+### Advanced decryption policies
 
 A dapp can enforce additional, programmable conditions before allowing decryption of an IBE-encrypted message. This makes it possible to tie decryption to verifiable future events or complex policies. For example, a message could be encrypted such that it only becomes decryptable when the price of a stock crosses a certain threshold. Other use cases include information escrow, time-triggered disclosures, or break-glass policies that release data under predefined emergency conditions.
 
@@ -71,11 +71,13 @@ https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3
 
 To obtain the public key in the frontend, you now only need to make a call to this endpoint, e.g., like it is done [here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/frontend/src/main.ts#L53).
 The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
+It is a good practice to use a domain separator in `context` to split IBE from other eventual uses of vetKeys the canister may do.
+A domain separator can be any arbitrary unique byte string.
 
 ### Step 2: Encrypt data in the frontend
 
 Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the canister.
-The `lotId` variable is the identity that we encrypt to to place a bid with the `amount` specified by the user.
+To encrypt bids in the example, the bidder uses the auction lot id as the encryption identity (see in the `input` variable of the `vetkd_derive_key` arguments).
 
 <AdornedTabs groupId="languages">
 

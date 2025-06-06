@@ -12,13 +12,29 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Advanced", "vetKeys", "Identity-based encryption"]} />
 
-Identity-Based Encryption (IBE) allows you to encrypt data directly to a user's identity, like an email address, a username, a principal ID, or a wallet address, without needing to exchange public keys beforehand or to rely on a public key infrastructure. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the system. Once the user authenticates using their identity, they can securely retrieve their decryption key and access the data.
+The vetKeys feature enables IBE, allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address.
+
+At a high-level IBE works as follows:
+1. A single master public key is generated and made available to all users. 
+2. The sender encrypts a message using the master public key and the recipient's identity. The same master key can be used to encrypt messages to any recipient. 
+3. The recipient authenticates using their identity to obtain a matching private decryption key, which is then used to decrypt the message.
+
+The underlying design of the vetKD protocol is based on a threshold-variant of [Boneh-Franklin IBE](https://eprint.iacr.org/2001/090), and it incorporates the following features:
+- The master public key is generated and maintained in a distributed way by a subnet of the Internet Computer.
+- The `vetkd_public_key` API can be used to obtain the master public key of an IBE, which is then used to encrypt messages to identities. 
+- The `vetkd_derive_key` API allows to derive the user decryption key. The decryption key is securely encrypted using the user-provided transport key. 
+- Canister can enforce access control, ensuring that users are only able to request keys for their own identities. 
 
 Compared to DKMS, IBE works differently. In DKMS, one or more users share the same symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an asymmetric encryption scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them.
 
 ## How to use IBE?
 
 In the following steps, to explain how to use IBE with vetKeys we show parts of the [basic IBE example](https://github.com/dfinity/vetkeys/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe), which implements a simple IBE messaging system between principals.
+
+In the example, the users authenticate using their principals, encrypt their messages and store the ciphertexts in the canister. 
+Then, the recepient retrieves their messages and encrypted IBE private key, decrypt and verify the private key, and finally decrypt the encrypted messages.
+In this setting, the communication and key retrieval happen in the same canister.
+Note that it is possible to encrypt messages to recipients in another canister, e.g., if in the communication dapp the user controls their own canister with their own inbox.
 
 ### Step 1: Obtain the IBE public key
 
@@ -37,9 +53,12 @@ https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3
 
 To obtain the public key in the frontend, you now only need to make a call to this endpoint, e.g., like it is done [here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_ibe/frontend/src/main.ts#L57).
 The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
+It is a good practice to use a domain separator in `context` to split IBE from other eventual uses of vetKeys the canister may do.
+A domain separator can be any arbitrary unique byte string.
 
 ### Step 2: Encrypt data
 Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the canister.
+To encrypt messages, the sender uses recipient's principal as the encryption identity (set in the `input` variable of the `vetkd_derive_key` arguments).
 
 <AdornedTabs groupId="languages">
 
