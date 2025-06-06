@@ -1237,6 +1237,7 @@ const redirects = `
   /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/current/developer-docs/backend/candid/generating-candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/deploy-specific-subnet
   /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/security/overview
@@ -1257,6 +1258,7 @@ const redirects = `
   /docs/current/developer-docs/glossary /docs/references/glossary
   /BTC /bitcoin
   /chain-fusion /chainfusion
+  /alliance https://dfinity.org/alliance
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
