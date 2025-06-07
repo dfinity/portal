@@ -1,15 +1,11 @@
 import React from "react";
 import transitions from "@site/static/transitions.json";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
-import ExternalLinkIcon from "@site/static/img/external-link.svg";
-import PlaySVG from "@site/static/img/svgIcons/play.svg";
-import { ArrowIconRight } from "../../RoadmapPage/Overlay";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 import { motion } from "framer-motion";
 import VideoCard from "../../Common/VideoCard";
 import { NewsCard } from "../../NewsPage/Cards";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const MotionLink = motion(Link);
 
@@ -25,7 +21,10 @@ function News({ content = "btc" }) {
           className="tw-heading-3 mb-0 md:tw-heading-60"
           variants={transitions.item}
         >
-          News & Events
+          {content === "chainfusion"
+            ? "News & Events"
+            : "News & Articles"
+          }
         </motion.h2>
         <div className="md:flex-1 md:pt-1 ">
           <motion.p
