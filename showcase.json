@@ -391,7 +391,7 @@
       "Wallet",
       "Chain Fusion"
     ],
-    "description": "OISY Wallet is a new browser-based multichain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg",
     "screenshots": [
@@ -1167,6 +1167,23 @@
       "/img/showcase/Orbit_largescreen.jpg"
     ],
     "oneLiner": "Secure, onchain, multi-approver governance for multichain assets."
+  },
+  {
+    "id": "liquity",
+    "name": "Liquity",
+    "display": "Normal",
+    "website": "https://www.liquity.org/",
+    "twitter": "https://x.com/LiquityProtocol",
+    "github": "https://github.com/liquity/bold/",
+    "youtube": "https://www.youtube.com/channel/UCEAFfXgbL5J_BgSTxG07ARw/featured",
+    "tags": [
+      "Ethereum",
+      "DeFi"
+    ],
+    "description": "The immutable and decentralized way to borrow against ETH & staked ETH\n",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Liquity_Protocol.jpg",
+    "oneLiner": "Borrow on your terms"
   },
   {
     "id": "iknows",
@@ -2463,7 +2480,7 @@
       "Ethereum",
       "Chain Fusion"
     ],
-    "description": "The Bitfinity Wallet is a multichain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "logo": "/img/showcase/bitfinitywallet_logo.webp",
     "screenshots": [
       "/img/showcase/bitfinitywallet_screenshot.webp"
@@ -2607,6 +2624,23 @@
     "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Metaversity_logo.webp"
+  },
+  {
+    "id": "bity\n",
+    "name": "Bity",
+    "display": "Normal",
+    "website": "https://www.bity.com/",
+    "twitter": "https://x.com/bity",
+    "youtube": "https://www.youtube.com/@BitySA",
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "Bity is trusted crypto platform, making it easy to buy, sell, and manage digital assets with Swiss-grade security and full regulatory compliance.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Bity_Logo.jpg",
+    "oneLiner": "Trade Crypto & Gold securely while staying in complete control. "
   },
   {
     "id": "datanome",
@@ -3490,7 +3524,7 @@
       "Ethereum",
       "Chain Fusion"
     ],
-    "description": "A decentralized, multichain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
+    "description": "A decentralized, multi-chain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/b3pay_logo.png"
   },
@@ -5524,6 +5558,34 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/FactFund_Logo1748194060.jpg",
     "oneLiner": "Decentralized, transparent crowdfunding on the Internet Computer"
+  },
+  {
+    "id": "ghostmessages",
+    "name": "Ghost Messages",
+    "display": "Normal",
+    "website": "https://ghostmessages.ink/",
+    "github": "https://github.com/internetcomputerpol/GhostMessages",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Disappearing, encrypted messages read once using an ID and password, then gone forever. Share the ID and password to let someone view it a single time.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ghostmessages_logo.svg",
+    "oneLiner": "Messages that disappear like ghosts after being read"
+  },
+  {
+    "id": "A.dna",
+    "name": "A.DNA",
+    "display": "Normal",
+    "website": "https://adna.io/#contact",
+    "tags": [
+      "Enterprise",
+      "Tools / Infrastructure"
+    ],
+    "description": "A.DNA is a software solution that enables your company to store, organize, verify, share and hash its most important data and events on the blockchain.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/a_dna_cover.jpeg",
+    "oneLiner": "Corporate Governance & Compliance, built on validated Data."
   }
-
+  
 ]

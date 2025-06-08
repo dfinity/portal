@@ -1164,7 +1164,7 @@ Additionally, the Internet Computer provides an API endpoint to obtain various s
 
 For this endpoint, the user performs a GET request, and receives a CBOR (see [CBOR](#cbor)) value with the following fields. The IC may include additional implementation-specific fields.
 
--   `root_key` (blob, optional): The public key (a DER-encoded BLS key) of the root key of this instance of the Internet Computer Protocol. This *must* be present in short-lived development instances, to allow the agent to fetch the public key. For the Internet Computer, agents must have an independent trustworthy source for this data, and must not be tempted to fetch it from this insecure location.
+-   `root_key` (blob, optional): The public key (a DER-encoded BLS key) of the root key of this instance of the Internet Computer Protocol. This *must* be present in short-lived development instances, to allow the agent to fetch the public key. For the Internet Computer, agents must have an independent trustworthy source for this data (e.g., the system API `ic0.root_key_size` and `ic0.root_key_copy`), and must not be tempted to fetch it from this insecure location.
 
 See [CBOR encoding of requests and responses](#api-cbor) for details on the precise CBOR encoding of this object.
 
@@ -1527,6 +1527,8 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
     ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
 
+    ic0.root_key_size : () -> I;                                                          // I G U RQ Ry Rt C T
+    ic0.root_key_copy : (dst : I, offset : I, size : I) -> ();                            // I G U RQ Ry Rt C T
     ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
     ic0.data_certificate_present : () -> i32;                                             // *
     ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
@@ -1543,7 +1545,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
     ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
-    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
+    ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
@@ -2080,6 +2082,12 @@ This system call traps if `src+size` exceeds the size of the WebAssembly memory 
 
 For each canister, the IC keeps track of "certified data", a canister-defined blob. For fresh canisters (upon install or reinstall), this blob is the empty blob (`""`).
 
+-   `ic0.root_key_size: () → I` and `ic0.root_key_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    Copies the public key (a DER-encoded BLS key) of the IC root key of this instance of the Internet Computer Protocol to the canister.
+
+    This traps in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
+
 -   `ic0.certified_data_set : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     The canister can update the certified data with this call. The passed data must be no larger than 32 bytes. This can be used any number of times.
@@ -2134,7 +2142,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
--   `ic0.cost_vetkd_derive_encrypted_key(src : I, size : I, vetkd_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+-   `ic0.cost_vetkd_derive_key(src : I, size : I, vetkd_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
     These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
     - `ecdsa_curve: 0 → secp256k1`
@@ -2649,6 +2657,71 @@ This call accepts an optional auxiliary parameter `aux`. The auxiliary parameter
 On the Internet Computer, the tuple of the requested master key, the calling canister, and derivation path determines which private key is used to generate the signature, and which public key is returned by `schnorr_public_key`.
 
 When using BIP341 signatures, the actual signature that is created will be relative to the Schnorr signature derived as described in BIP341's `taproot_sign_script`. The key returned by `schnorr_public_key` is the value identified in BIP341 as `internal_pubkey`.
+
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+
+### IC method `vetkd_public_key` {#ic-vetkd_public_key}
+
+:::note
+
+The vetKD API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+
+:::
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+This method returns the vetKD public (verification) key derived from the vetKD master public key with ID `key_id` for the canister with the given `canister_id` and the given `context`.
+
+If the `canister_id` is unspecified, it will default to the canister id of the caller. The `context` is a byte string of variable length. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
+
+The public key returned for an empty `context` is called _canister public key_. Given this canister public key, the public key for a particular `context` can also be derived offline.
+
+For curve `bls12_381_g2`, the returned `public_key` is a G<sub>2</sub> element in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding.
+
+This call requires that a vetKD master key with ID `key_id` was generated by the IC and the key derivation functionality for that key was enabled, and that the `canister_id` meets the requirement of a canister id. Otherwise, the call is is rejected.
+
+### IC method `vetkd_derive_key` {#ic-vetkd_derive_key}
+
+:::note
+
+The vetKD API is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+
+:::
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+This method returns a vetKD key (aka vetKey) encrypted under `transport_public_key` and derived from the vetKD master key with ID `key_id` based on the caller's `input` for a given `context`.
+
+Both the `input` and the `context` are byte strings of variable length. While both are inputs to the underlying key derivation algorithm (implicitly together with the calling canister's ID), `input` is intended as the primary differentiator when deriving different keys, while `context` is intended as domain separator.
+The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
+
+Both the encrypted and the decrypted form of the vetKD key can be verified by using the respective vetKD public (verification) key, which can be obtained by calling the IC method `vetkd_public_key`.
+
+For curve `bls12_381_g2`, the following holds:
+
+-   The `transport_public_key` is a G<sub>1</sub> element in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding. Transport public keys are created by calculating *tpk = g<sub>1</sub><sup>tsk</sup>*, where the transport secret key *tsk* is chosen uniformly at random from Z<sub>p</sub>.
+
+-   The returned `encrypted_key` is the blob `E1 · E2 · E3`, where E<sub>1</sub> and E<sub>3</sub> are G<sub>1</sub> elements, and E<sub>2</sub> is a G<sub>2</sub> element, all in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding.
+
+    The encrypted key can be verified by ensuring *e(E<sub>1</sub>, g<sub>2</sub>) == e(g<sub>1</sub>, E<sub>2</sub>)*, and *e(E<sub>3</sub>, g<sub>2</sub>) == e(tpk, E<sub>2</sub>) \* e(H(dpk · `input`), dpk)*, where *dpk* is the derived (vetKD) public key associated with the respective `context`, `key_id`, and the canister ID of the caller.
+
+-   The decrypted vetKD key *k* is obtained by calculating E<sub>3</sub> \* E<sub>1</sub><sup>-tsk</sup>, where tsk ∈ Z<sub>p</sub> is the transport secret key that was used to generate the `transport_public_key`.
+
+    The key can be verified by ensuring *e(k, g<sub>2</sub>) == e(H(dpk · `input`), dpk)*, where *dpk* is the derived (vetKD) public key associated with the respective `context`, `key_id`, and the canister ID of the caller. Such verification protects against untrusted canisters returning invalid keys.
+
+where
+
+-   g<sub>1</sub>, g<sub>2</sub> are generators of G<sub>1</sub>, G<sub>2</sub>, which are groups of prime order *p*,
+
+-   \* denotes the group operation in G<sub>1</sub>, G<sub>2</sub>, and G<sub>T</sub>,
+
+-   e: `G1 x G2 → GT` is the pairing (see [BLS Signatures Draft RFC, Appendix A](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381)),
+
+-   H hashes into G<sub>1</sub> according to the [BLS12-381 message augmentation scheme ciphersuite in the BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature#name-message-augmentation-2) (see also [Hashing to Elliptic Curves Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve#name-suites-for-bls12-381)),
+
+-   `·` and · denote concatenation
+
+This call requires that a vetKD master key with ID `key_id` was generated by the IC and the key derivation functionality for that key was enabled. Otherwise, the call is is rejected.
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
@@ -7869,6 +7942,18 @@ ic0.stable64_read<es>(dst : i64, offset : i64, size : i64)
   es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
 
 I ∈ {i32, i64}
+ic0.root_key_size<es>() : I =
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  let root_key = <implementation-specific>
+  return |root_key|
+
+I ∈ {i32, i64}
+ic0.root_key_copy<es>(dst : I, offset : I, size : I) =
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  let root_key = <implementation-specific>
+  copy_to_canister<es>(dst, offset, size, root_key)
+
+I ∈ {i32, i64}
 ic0.certified_data_set<es>(src : I, size : I) =
   if es.context ∉ {I, G, U, Ry, Rt, T} then Trap {cycles_used = es.cycles_used;}
   es.new_certified_data := es.wasm_state[src..src+size]
@@ -7958,7 +8043,7 @@ ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 =
   return 0
 
 I ∈ {i32, i64}
-ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
+ic0.cost_vetkd_derive_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
   known_keys = arbitrary()
   known_curves = arbitrary()
   key_name = copy_from_canister<es>(src, size)
