@@ -40,7 +40,7 @@ A dapp can enforce additional, programmable conditions before allowing decryptio
 
 Timelock encryption can be categorized into two categories depending on whether the result of decryption should be publicly accessible or not: 
 
-1. User-side decryption: The user performs the decryption, ensuring the plaintext remains private.This is suitable for use cases such as delayed private messages or private-data release.
+1. User-side decryption: The user performs the decryption, ensuring the plaintext remains private. This is suitable for use cases such as delayed private messages or private-data release.
 2. Canister-side decryption: The canister performs the decryption to reveal the plaintext. Since canisters do not currently support private or confidential execution, any data they decrypt should be treated as publicly visible. This model is suitable for use cases like time-delayed announcements, secret-bid auctions, or public lotteries, where the decrypted information is meant to be accessible to all users. 
 
 The first category is essentially the same as the [IBE](/docs/building-apps/network-features/vetkeys/identity-based-encryption), with additional restrictions on when the decryption key can be obtained by the authorized users.
