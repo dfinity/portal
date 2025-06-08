@@ -49,7 +49,7 @@ Therefore, we focus on explaining how to integrate the second category of timelo
 
 The code in the descriptions below is taken from the [secret-bid auction example](https://github.com/dfinity/vetkeys/tree/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_timelock_ibe), which works as follows: 
 
-1. A single (auction?) public key is used by all the users across all auctions. 
+1. A single (auction) public key is used by all the users across all auctions. 
 2. Any user can create a new auction lot by specifying a unique lot identifier and a bidding deadline. 
 3. Users can IBE-encrypt their bids using the public key and the lot identifier.
 4. Once the deadline is passed, the auction canister retrieves the decryption key, decrypts all the submitted bids, and determine the highest. From that moment on, the bids become public and the canister announces the winner.
