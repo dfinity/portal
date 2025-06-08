@@ -52,9 +52,9 @@ The code in the descriptions below is taken from the [secret-bid auction example
 1. A single (auction) public key is used by all the users across all auctions. 
 2. Any user can create a new auction lot by specifying a unique lot identifier and a bidding deadline. 
 3. Users can IBE-encrypt their bids using the public key and the lot identifier.
-4. Once the deadline is passed, the auction canister retrieves the decryption key, decrypts all the submitted bids, and determine the highest. From that moment on, the bids become public and the canister announces the winner.
+4. Once the deadline has passed, the auction canister retrieves the decryption key, decrypts all the submitted bids, and determine the highest. From that moment on, the bids become public and the canister announces the winner.
 
-### Step 1: Obtain IBE public key
+### Step 1: Allow to obtain IBE public key from the backend
 
 Expose a canister endpoint that allows to fetch the IBE public key of the canister.
 
@@ -73,10 +73,11 @@ The public key needs to only be fetched once and it can be used to encrypt data 
 It is a good practice to use a domain separator in `context` to split IBE from other eventual uses of vetKeys the canister may do.
 A domain separator can be any arbitrary unique byte string.
 
-### Step 2: Encrypt data in the frontend
+### Step 2: Obtain IBE public key and encrypt data in the frontend
 
 Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the canister.
-To encrypt bids in the example, the bidder uses the auction lot id as the encryption identity (see in the `input` variable of the `vetkd_derive_key` arguments).
+To encrypt bids in the example, the bidder uses the auction lot id as the encryption identity (specified in the `input` variable of the `vetkd_derive_key` arguments).
+The alternative to encrypting to unique ids is encrypting to timestamps that define when the data should be decrypted, which may reduce the number of the required calls to the vetKD API for deriving decryption keys.
 
 <AdornedTabs groupId="languages">
 
@@ -92,7 +93,9 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 ### Step 3: Decrypt data in the backend once conditions are met
 
 The condition for decryption in the secret bid auction example is that the current time should be after the deadline time.
-In the example, it is checked by simply comparing the stored timestamp with the timestamp of the current time.
+In other example, the condition may change with time (e.g., in dead man's switch the deadline may be extended) or be more complex and depend on external factors, such as allowing decryption only when the price of a stock gets higher than some threshold, determined via HTTPS outcalls.
+
+In the code below, the time condition is checked by simply comparing the stored timestamp with the timestamp of the current time obtained using the `ic-cdk` crate.
 There, a timer is invoked periodically to check if there are any lots to close which triggers the lot closure and bid decryption.
 The latter is implemented in the `decrypt_bids` function showed below.
 
