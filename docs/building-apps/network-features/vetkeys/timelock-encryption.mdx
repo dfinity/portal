@@ -47,7 +47,7 @@ The first category is essentially the same as the [IBE](/docs/building-apps/netw
 This can be as simple as checking if enough time has passed and either returning the key or an error to the user.
 Therefore, we focus on explaining how to integrate the second category of timelock encryption into a dapp. 
 
-The code in the descriptions below is taken from the [secret-bid auction example](https://github.com/dfinity/vetkeys/tree/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe), which works as follows: 
+The code in the descriptions below is taken from the [secret-bid auction example](https://github.com/dfinity/vetkeys/tree/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_timelock_ibe), which works as follows: 
 
 1. A single (auction?) public key is used by all the users across all auctions. 
 2. Any user can create a new auction lot by specifying a unique lot identifier and a bidding deadline. 
@@ -63,13 +63,12 @@ Expose a canister endpoint that allows to fetch the IBE public key of the canist
 <TabItem value="rs" label="Rust" default>
 
 ```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/backend/src/lib.rs#L88-L109
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_timelock_ibe/backend/src/lib.rs#L100-L121
 ```
 
 </TabItem>
 </AdornedTabs>
 
-To obtain the public key in the frontend, you now only need to make a call to this endpoint, e.g., like it is done [here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/frontend/src/main.ts#L53).
 The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
 It is a good practice to use a domain separator in `context` to split IBE from other eventual uses of vetKeys the canister may do.
 A domain separator can be any arbitrary unique byte string.
@@ -84,7 +83,7 @@ To encrypt bids in the example, the bidder uses the auction lot id as the encryp
 <TabItem value="ts" label="TypeScript" default>
 
 ```ts no-repl reference
-https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/frontend/src/main.ts#L406-L429
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_timelock_ibe/frontend/src/main.ts#L185-L207
 ```
 
 </TabItem>
@@ -93,7 +92,7 @@ https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3
 ### Step 3: Decrypt data in the backend once conditions are met
 
 The condition for decryption in the secret bid auction example is that the current time should be after the deadline time.
-In the example, it is checked by simply comparing the stored timestamp with the timestamp of the current time (see [code here](https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/backend/src/lib.rs#L217)).
+In the example, it is checked by simply comparing the stored timestamp with the timestamp of the current time.
 There, a timer is invoked periodically to check if there are any lots to close which triggers the lot closure and bid decryption.
 The latter is implemented in the `decrypt_bids` function showed below.
 
@@ -102,7 +101,7 @@ The latter is implemented in the `decrypt_bids` function showed below.
 <TabItem value="rs" label="Rust" default>
 
 ```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/3b1de5d546dcc32daaf22b21baaa2b220bc857f3/examples/basic_timelock_ibe/backend/src/lib.rs#L284-L352
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_timelock_ibe/backend/src/lib.rs#L223-L299
 ```
 
 </TabItem>
