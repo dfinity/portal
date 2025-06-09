@@ -37,7 +37,7 @@ const projects = [
   },
   {
     title: "Runes",
-    subtitle: "Odin.fun",
+    subtitle: "Odin.Fun",
     description:
       "Odin.Fun is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Everything is lightning fast and updates in real-time.",
     imgSrc: "/img/bitcoin-integration/a8.webp",
