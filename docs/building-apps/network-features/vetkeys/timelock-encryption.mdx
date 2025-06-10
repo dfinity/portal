@@ -92,8 +92,14 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 
 ### Step 3: Decrypt data in the backend once conditions are met
 
-The condition for decryption in the secret bid auction example is that the current time should be after the deadline time.
-In other example, the condition may change with time (e.g., in dead man's switch the deadline may be extended) or be more complex and depend on external factors, such as allowing decryption only when the price of a stock gets higher than some threshold, determined via HTTPS outcalls.
+In the secret-bid auction example, the condition for decryption is straightforward: the current time must be after the specified deadline.
+
+In other scenarios, the decryption condition may evolve over time or depend on external factors. For example:
+
+- In a dead man's switch, the deadline may be extended if the user checks in periodically.
+- In a conditional release based on market data, decryption may only be allowed when the price of a stock exceeds a certain threshold, determined via HTTPS outcalls.
+
+These flexible conditions allow timelock encryption to support a wide range of dynamic and context-aware use cases.
 
 In the code below, the time condition is checked by simply comparing the stored timestamp with the timestamp of the current time obtained using the `ic-cdk` crate.
 There, a timer is invoked periodically to check if there are any lots to close which triggers the lot closure and bid decryption.
