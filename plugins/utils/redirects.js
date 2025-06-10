@@ -449,7 +449,6 @@ const redirects = `
   /docs/current/move-to-motoko/dev-containers /docs/motoko/motoko-tooling/dev-containers
   /docs/move-to-motoko/vs-code /docs/motoko/motoko-tooling/motoko-vs-code
   /docs/current/move-to-motoko/vs-code /docs/motoko/motoko-tooling/motoko-vs-code
-  /docs/motoko/fundamentals/async-actors /docs/motoko/fundamentals/actors-async
 
   ## Rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
@@ -1508,12 +1507,13 @@ const redirects = `
   /blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/building-apps/network-features/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/building-apps/network-features/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
-  /docs/current/developer-docs/build/backend/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+    /docs/current/developer-docs/build/backend/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/integrations/sns/get-sns/testflight /docs/building-apps/governing-apps/testing/testing-before-launch
   /docs/building-apps/interact-with-canisters/using-third-party-canisterss/using-third-party-canisters
   /docs/current/developer-docs/build/languages/motoko/quickstart/01-intro
   /docs/current/motoko/base/Array /docs/motoko/base/Array
   /docs/motoko/getting-started/motoko-introduction /docs/motoko/home
+
 `
 
   .split(/[\r\n]+/)
