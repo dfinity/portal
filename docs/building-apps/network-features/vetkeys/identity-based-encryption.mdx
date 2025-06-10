@@ -19,7 +19,7 @@ At a high level, IBE uses the following workflow:
 2. The sender encrypts a message using the master public key and the recipient's identity. The same master key can be used to encrypt messages to any recipient. 
 3. The recipient authenticates using their identity to obtain a matching private decryption key, which is then used to decrypt the message.
 
-The underlying design of the vetKD protocol is based on a threshold-variant of [Boneh-Franklin IBE](https://eprint.iacr.org/2001/090), and it incorporates the following features:
+The underlying design of the vetKD protocol is based on a threshold-variant of [Boneh-Franklin IBE](https://eprint.iacr.org/2001/090), and incorporates the following features:
 
 - The master public key is generated and maintained in a distributed way by a subnet of the Internet Computer.
 
