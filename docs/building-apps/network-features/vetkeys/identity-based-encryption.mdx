@@ -33,7 +33,7 @@ IBE works differently than the [distributed key management service (DKMS)](/docs
 
 ## How to use IBE
 
-In the following steps, to explain how to use IBE with vetKeys we show parts of the [basic IBE example](https://github.com/dfinity/vetkeys/tree/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe), which implements a simple IBE messaging system between principals.
+This example will explain how to use IBE with vetKeys using the [basic IBE example](https://github.com/dfinity/vetkeys/tree/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe), which implements a simple IBE messaging system between principals.
 
 In the example, the users authenticate using their principals, encrypt their messages and store the ciphertexts in the canister.
 Then, the recepient retrieves their messages and encrypted IBE private key, decrypt and verify the private (decryption) key, and finally decrypt the encrypted messages.
