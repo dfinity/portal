@@ -13,7 +13,7 @@
     {
       "title": "Portfolio page",
       "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
-      "status": "in_progress",
+      "status": "deployed",
       "milestone_id": "Neon"
     },
     {
@@ -105,13 +105,7 @@
       "title": "SNS treasury management",
       "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
       "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
+      "status": "in_progress",
       "milestone_id": "Neon"
     },
     {
