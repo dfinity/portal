@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Generating a Bitcoin address
 
-<MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
+<MarkdownChipRow labels={["Bitcoin"]} />
 
 Bitcoin doesn't use accounts; instead, it uses a UTXO model. A UTXO is an unspent transaction output.
 
@@ -43,14 +43,14 @@ An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/refere
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55-L78
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L65-L68
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
 ```rust reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2pkh.rs#L21-L31
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2pkh_address.rs#L9-L26
 ```
 
 </TabItem>
@@ -66,14 +66,14 @@ A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/ref
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L79-L112
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L76-L78
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
 ```rust reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_key_only.rs#L20-L35
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2tr_key_path_only_address.rs
 ```
 
 </TabItem>
@@ -85,15 +85,14 @@ https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea294345251890972
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L87-L120
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L84-L86
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
 ```rust reference
-https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr.rs#L25-L51
-
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_p2tr_script_path_enabled_address.rs
 ```
 
 </TabItem>

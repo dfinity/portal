@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, bitcoin, btc, tutorial, submit transactions]
+keywords: [bitcoin, btc, tutorial, submit transactions, send transactions, submit btc transaction, submit to btc, send to btc, send transaction on btc, btc transaction, send transaction]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -10,21 +10,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Submitting transactions
 
-<MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
+<MarkdownChipRow labels={["Bitcoin"]} />
 
-To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method.
-
-:::info
-
-To test canisters locally that use the following code snippets, you will need to enable local Bitcoin development. To do this, you can either start the local development environment with `dfx start --enable-bitcoin` or you can include the following configuration in the project's `dfx.json` file:
-
-```json reference
-https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/dfx.json#L9-L16
-```
-
-[Learn more about `dfx.json` configuration options](https://internetcomputer.org/docs/building-apps/developer-tools/dfx-json-reference).
-
-:::
+To submit transactions to the Bitcoin network, the Bitcoin API exposes the `bitcoin_send_transaction` method.
 
 The following snippet shows how to send a signed transaction to the Bitcoin network:
 
@@ -32,14 +20,14 @@ The following snippet shows how to send a signed transaction to the Bitcoin netw
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl reference
-https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L76-L86
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L72-L86
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
 ```rust reference
-https://github.com/dfinity/examples/blob/c06f27d669ed64e3394ad0c4e484157d1b48209d/rust/basic_bitcoin/src/service/send_from_p2pkh_address.rs#L83-L93
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/send_from_p2pkh_address.rs#L83-L93
 ```
 
 </TabItem>

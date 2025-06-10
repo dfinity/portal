@@ -14,31 +14,23 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ICP smart contracts can query information about the Bitcoin mainnet or testnet programmatically.
 
-:::info
-
-To implement the following code snippets in your dapp, you will need to setup a [local development environment](https://www.notion.so/dfinityorg/btc-dev-env.mdx) and [create a project](https://www.notion.so/dfinityorg/btc-dev-env.mdx).
-
-:::
-
 ## Reading unspent transaction outputs (UTXOs)
 
-To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx).
+To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` [Bitcoin API method](/docs/build-on-btc/btc-api).
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```
-<https://github.com/dfinity/examples/blob/c00ae71f259d8ac06d9dcc7a18d3f0725251ad06/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L47-L58>
-
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L47-L58
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-<https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L25-L39>
-
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_utxos.rs
 ```
 
 </TabItem>
@@ -51,18 +43,16 @@ To read the current balance of a Bitcoin address, make a call to the `bitcoin_ge
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```
-<https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L34-L45>
-
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L34-L45
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-<https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L9-L23>
-
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_balance.rs
 ```
 
 </TabItem>
@@ -77,18 +67,16 @@ The function returns 101 numbers that are fees measured in millisatoshi per virt
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```
-<https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L60-L70>
-
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L60-L70
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-<https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L66-L76>
-
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_current_fee_percentiles.rs
 ```
 
 </TabItem>
@@ -98,9 +86,9 @@ The function returns 101 numbers that are fees measured in millisatoshi per virt
 
 To read the block headers within a provided range of start and end heights, make a call to the `bitcoin_get_block_headers` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx)
 
-```rust
-<https://github.com/dfinity/examples/blob/a5b05ac27913fe20f01c93c2d65d5e206aa22ddf/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L42-L64>
 
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_block_headers.rs
 ```
 
 ## Resources

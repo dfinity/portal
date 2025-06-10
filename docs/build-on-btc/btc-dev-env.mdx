@@ -120,15 +120,15 @@ EOF
 
 Explanation of settings:
 
-- **regtest=1**: Enables Bitcoin’s regression test mode for local blockchain testing.
+- `regtest=1`: Enables Bitcoin’s regression test mode for local blockchain testing.
 
-- **txindex=1**: Maintains a full transaction index to support lookups by transaction ID.
+- `txindex=1`: Maintains a full transaction index to support lookups by transaction ID.
 
-- **rpcuser=ic-btc-integration**: Sets a default username for JSON-RPC authentication.
+- `rpcuser=ic-btc-integration`: Sets a default username for JSON-RPC authentication.
 
-- **rpcpassword=QPQ…b-E=**: Sets the password for JSON-RPC authentication.
+- `rpcpassword=QPQ…b-E=`: Sets the password for JSON-RPC authentication.
 
-- **rpcauth=ic-btc-integration:cdf…dfa**: Uses an alternative authentication method for RPC, combining the username and a salted hash.
+- `rpcauth=ic-btc-integration:cdf…dfa`: Uses an alternative authentication method for RPC, combining the username and a salted hash.
 
 Find more details about `bitcoin.conf` settings in the [Bitcoin core config generator](https://jlopp.github.io/bitcoin-core-config-generator/).
 
@@ -173,8 +173,8 @@ The Bitcoin API configuration is specified under the `defaults` section of the `
 
 That Bitcoin config in `dfx.json` adds fields under `defaults` as shown above. This configuration won't actually have any effect unless `dfx.json` also defines the local network, **and** `dfx start` is run within the project directory. Below is an example of a full configuration, including the local network definition:
 
-```jsx
-https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/dfx.json#L20-34
+```jsx reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/dfx.json#L20-L34
 ```
 
 Alternatively, you can pass these arguments to the `dfx start` command:
@@ -195,15 +195,11 @@ dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:18444
 
 - `canister_init_arg` (string): Optional initialization arguments for the Bitcoin API. It sets up initial configuration parameters like stability threshold, network type, block sources, fees, syncing state, API access, and more. View all init argument options below.
 
-#### Bitcoin API canister initialization arguments
+#### Bitcoin API initialization arguments
 
-Canister initialization arguments determine the behavior of the Bitcoin API running in the local development environment.
+The Bitcoin API on ICP is deployed as a smart contract. It takes initialization arguments that can determine the behavior of the Bitcoin API running in the local development environment.
 
-By default, the local Bitcoin API mirrors the settings used in the production environment. You can view these settings by searching for the Bitcoin API canisters on the ICP Dashboard and calling their `get_config` endpoint.
-
-- [Mainnet Bitcoin API Canister](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai)
-
-- [Testnet Bitcoin API Canister](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai)
+By default, the local Bitcoin API mirrors the settings used in the production environment. You can view these settings by searching for the Bitcoin API smart contracts ([mainnet Bitcoin API](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai) or [testnet Bitcoin API](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai)) on the ICP Dashboard and calling their `get_config` endpoint.
 
 - `stability_threshold` (u128): Defines the level of difficulty-based stability required for a Bitcoin block to be considered stable.
 
@@ -217,7 +213,7 @@ By default, the local Bitcoin API mirrors the settings used in the production en
 
     - Local development: Only `regtest` is valid when developing locally.
 
-- `syncing` (Flag): Indicates whether the Bitcoin canister is actively ingesting blocks to update its state. -
+- `syncing` (Flag): Indicates whether the Bitcoin smart contract is actively ingesting blocks to update its state.
 
     - Options: `enabled`, `disabled`
 
@@ -244,13 +240,13 @@ By default, the local Bitcoin API mirrors the settings used in the production en
     };
     ```
 
-- `api_access` (Flag): Controls access to the canister's endpoints.
+- `api_access` (Flag): Controls access to the API's endpoints.
 
     - Options: `enabled`, `disabled`
 
     - Default: `enabled`
 
-- `disable_api_if_not_fully_synced` (Flag): Determines whether API access is automatically disabled when the watchdog canister detects that the Bitcoin canister's state is more than **two blocks** behind the Bitcoin blockchain.
+- `disable_api_if_not_fully_synced` (Flag): Determines whether API access is automatically disabled when the watchdog smart contract detects that the Bitcoin smart contract's state is more than **two blocks** behind the Bitcoin blockchain.
 
     - Options: `enabled`, `disabled`
 
@@ -258,7 +254,7 @@ By default, the local Bitcoin API mirrors the settings used in the production en
 
     - Note: This setting is not relevant in a local development environment.
 
-- `watchdog_canister` (`Option<Principal>`): Specifies the principal ID of the watchdog canister. If this canister detects that the Bitcoin canister is lagging behind, it is authorized to disable API access.
+- `watchdog_canister` (`Option<Principal>`): Specifies the principal ID of the watchdog smart contract. If this smart contract detects that the Bitcoin smart contract is lagging behind, it is authorized to disable API access.
 
     - Note: This setting is not relevant in a local development environment.
 

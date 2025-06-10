@@ -40,7 +40,7 @@ start bitcoind
 Next, deploy the project to your local development environment with the `dfx deploy` command and specify the `regtest` network as an init argument for the project:
 
 ```
-dfx start --clean --background // If dfx is not already running
+dfx start --clean --enable-bitcoin --background // If dfx is not already running
 dfx deploy basic_bitcoin --argument '(variant { regtest })'
 ```
 
