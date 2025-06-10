@@ -22,8 +22,8 @@ jobs:
           # dfx 0.27.0
           LATEST_SDK="2c91c38b90850caee98ba968c45c273fa8f43919"
 
-          # motoko new docs 6/3/2025
-          LATEST_MOTOKO="92519b57dd068eef2908cc45af0e6c47eb027168" 
+          # motoko new docs 6/9/2025
+          LATEST_MOTOKO="a70cee8e5bbd6c356cefa56647ac4ce97cf29be8"
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
