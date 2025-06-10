@@ -56,7 +56,7 @@ The public key only needs to be fetched once and can then be reused to encrypt d
 
 ### Step 2: Obtain the IBE public key and encrypt data in the frontend
 Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the frontend canister.
-To encrypt messages, the sender uses recipient's principal as the encryption identity (set in the `input` variable of the `vetkd_derive_key` arguments).
+To encrypt messages, the sender uses the recipient's principal as the encryption identity (set in the `input` variable of the `vetkd_derive_key` arguments).
 
 <AdornedTabs groupId="languages">
 
