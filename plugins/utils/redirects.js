@@ -1456,7 +1456,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
   /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/fundamentals/actors-async
   /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/fundamentals/actors-async
-  /docs/motoko/fundamentals/actors-async /docs/motoko/fundamentals/async-actors
+  /docs/motoko/fundamentals/actors-async /docs/motoko/fundamentals/actors-async
   /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/fundamentals/actors-async
   /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/base/Iter
   /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/base/IterType
