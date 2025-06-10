@@ -14,7 +14,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 The vetKeys feature enables Identity-based encryption (IBE), allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address.
 
-At a high-level IBE works as follows:
+At a high level, IBE uses the following workflow:
 1. A single master public key is generated and made available to all users. 
 2. The sender encrypts a message using the master public key and the recipient's identity. The same master key can be used to encrypt messages to any recipient. 
 3. The recipient authenticates using their identity to obtain a matching private decryption key, which is then used to decrypt the message.
