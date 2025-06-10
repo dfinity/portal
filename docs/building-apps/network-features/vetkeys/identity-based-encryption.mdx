@@ -25,7 +25,7 @@ The underlying design of the vetKD protocol is based on a threshold-variant of [
 
 - The `vetkd_public_key` API can be used to obtain the master public key of an IBE, which is then used to encrypt messages to identities.
 
-- The `vetkd_derive_key` API allows to derive the user decryption key. The decryption key is securely encrypted using the user-provided transport key.
+- The `vetkd_derive_key` API can be used to derive the user decryption key. The decryption key is securely encrypted using the user-provided transport key.
 
 - Canisters can enforce access control, ensuring that users are only able to request keys for their own identities.
 
