@@ -1508,10 +1508,10 @@ const redirects = `
   /blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/building-apps/network-features/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/building-apps/network-features/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
-    /docs/current/developer-docs/build/backend/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/backend/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/integrations/sns/get-sns/testflight /docs/building-apps/governing-apps/testing/testing-before-launch
-  /docs/building-apps/interact-with-canisters/using-third-party-canisterss/using-third-party-canisters
-  /docs/current/developer-docs/build/languages/motoko/quickstart/01-intro
+  /docs/building-apps/interact-with-canisters/using-third-party-canisterss/using-third-party-canisters /docs/building-apps/advanced/using-third-party-canisters
+  /docs/current/developer-docs/build/languages/motoko/quickstart/01-intro /docs/motoko/home
   /docs/current/motoko/base/Array /docs/motoko/base/Array
   /docs/motoko/getting-started/motoko-introduction /docs/motoko/home
 `
