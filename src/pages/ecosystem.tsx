@@ -22,16 +22,17 @@ import { useQueryParam } from "../utils/use-query-param";
 type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
 
 const tagsNavigation = [
-  'Chain Fusion',
-  'DeFi',
-  'Bitcoin',
-  'Wallet',
-  'AI',
-  'Gaming',
-  'Creator Economy',
-  'Enterprise',
-  'Analytics',
-  'Tools / Infrastructure',
+  "Chain Fusion",
+  "DeFi",
+  "Bitcoin",
+  "Wallet",
+  "AI",
+  "Gaming",
+  "Creator Economy",
+  "Enterprise",
+  "Analytics",
+  "Tools / Infrastructure",
+  "NFT",
 ];
 
 function sortDesktopProjects(
@@ -237,7 +238,7 @@ const PromoCard = () => {
         </p>
         <Link
           className="button-white text-center"
-          href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+          href="https://airtable.com/appyWBGCHaZoTzKTN/pagyIkYq3EiBEV0jt/form"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -311,9 +312,7 @@ const reducedTags = projects.reduce((tags, p) => {
   }
   return tags;
 }, {} as Record<string, number>);
-const tags = Object.entries(
-  reducedTags
-)
+const tags = Object.entries(reducedTags)
   .filter(([tag]) => tagsNavigation.includes(tag))
   .sort((a, b) => {
     const priorityOrder = tagsNavigation;
@@ -435,7 +434,7 @@ function ShowcasePage(): JSX.Element {
             </p>
             <p className="mb-0">
               <Link
-                href="https://github.com/dfinity/portal/tree/master#showcase-submission-guidelines"
+                href="https://airtable.com/appyWBGCHaZoTzKTN/pagyIkYq3EiBEV0jt/form"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-primary link-with-icon"

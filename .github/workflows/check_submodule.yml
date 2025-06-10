@@ -19,11 +19,11 @@ jobs:
           # Submodules are very easy to accidentally overwrite with old versions.
           # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
           
-          # dfx 0.26.0
-          LATEST_SDK="6678bd3d7bfd40d8b814836157fc4943fedc9c42"
+          # dfx 0.27.0
+          LATEST_SDK="2c91c38b90850caee98ba968c45c273fa8f43919"
 
-          # motoko 0.14.5
-          LATEST_MOTOKO="51fa74671829c59912c37500773cfaba950b0a1b" 
+          # motoko new docs 6/9/2025
+          LATEST_MOTOKO="a70cee8e5bbd6c356cefa56647ac4ce97cf29be8"
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
