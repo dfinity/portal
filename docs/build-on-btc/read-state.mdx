@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, bitcoin, btc, tutorial, read state, read bitcoin state]
+keywords: [bitcoin, btc, tutorial, read state, read bitcoin state, read btc state, btc state, bitcoin state]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -10,43 +10,35 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Reading the Bitcoin state
 
-<MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
+<MarkdownChipRow labels={["Bitcoin"]} />
 
-To read information about the Bitcoin network's state, the Bitcoin API exposes the following methods:
-
-- `bitcoin_get_utxos`: Returns the unspent transaction outputs (UTXOs) of a Bitcoin address.
-
-- `bitcoin_get_balance`: Returns the balance of a Bitcoin address.
-
-- `bitcoin_get_current_fee_percentiles`: Returns the percentiles of the fees for the last 10_000 transactions. Returns the fee in millisatoshi per virtual byte.
-
-- `bitcoin_get_block_headers`: Returns the block headers within a provided range of start height and end height (optional) for the specified Bitcoin network (testnet or mainnet).
-
-Standard Bitcoin addresses (P2PKH, P2SH, P2WPKH, etc.) are supported.
+ICP smart contracts can query information about the Bitcoin mainnet or testnet programmatically.
 
 :::info
 
-To implement the following code snippets in your dapp, you will need to setup a [local development environment](btc-dev-env.mdx) and [create a project](btc-dev-env.mdx).
+To implement the following code snippets in your dapp, you will need to setup a [local development environment](https://www.notion.so/dfinityorg/btc-dev-env.mdx) and [create a project](https://www.notion.so/dfinityorg/btc-dev-env.mdx).
 
 :::
 
 ## Reading unspent transaction outputs (UTXOs)
 
-To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` [Bitcoin API method](btc-api.mdx). You can create a function in your canister to call this method, such as:
+To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx).
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl reference
-https://github.com/dfinity/examples/blob/c00ae71f259d8ac06d9dcc7a18d3f0725251ad06/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L47-L58
+```
+<https://github.com/dfinity/examples/blob/c00ae71f259d8ac06d9dcc7a18d3f0725251ad06/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L47-L58>
+
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust reference
-https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L25-L39
+```rust
+<https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L25-L39>
+
 ```
 
 </TabItem>
@@ -54,21 +46,23 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 
 ## Reading current balance
 
-To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` [Bitcoin API method](btc-api.mdx).
+To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx).
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl reference
-https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L34-L45
+```
+<https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L34-L45>
+
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust reference
-https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L9-L23
+```rust
+<https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L9-L23>
+
 ```
 
 </TabItem>
@@ -80,20 +74,21 @@ The transaction fees on the Bitcoin network change dynamically based on the numb
 
 The function returns 101 numbers that are fees measured in millisatoshi per virtual byte. The `i`-th element of the result corresponds to the `i`-th percentile fee. For example, to get the median fee over the last few blocks, look at the `50`-th element of the result.
 
-
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl reference
-https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L60-L70
+```
+<https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L60-L70>
+
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust reference
-https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L66-L76
+```rust
+<https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L66-L76>
+
 ```
 
 </TabItem>
@@ -101,17 +96,15 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bit
 
 ## Reading the block headers
 
-To read the block headers within a provided range of start and end heights, make a call to the `bitcoin_get_block_headers` [Bitcoin API method](btc-api.mdx)
+To read the block headers within a provided range of start and end heights, make a call to the `bitcoin_get_block_headers` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx)
 
-```rust reference
-https://github.com/dfinity/examples/blob/a5b05ac27913fe20f01c93c2d65d5e206aa22ddf/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L42-L64
+```rust
+<https://github.com/dfinity/examples/blob/a5b05ac27913fe20f01c93c2d65d5e206aa22ddf/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L42-L64>
+
 ```
-
 
 ## Resources
 
 - [Basic Bitcoin example dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
-
 - [Motoko Bitcoin integration algorithms](https://github.com/tgalal/motoko-bitcoin/tree/10cf7f2efbba9bb4d077013db1b990143f193844).
-
 - [Basic Bitcoin example dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).

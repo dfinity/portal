@@ -1,0 +1,48 @@
+---
+keywords: [bitcoin, btc, chain fusion, bitcoin integration, btc integration, build on bitcoin, how to build btc, btc dapps, building btc dapps, build bitcoin, bitcoin dapps, build btc dapps, build btc apps]
+hide_table_of_contents: true
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Build on Bitcoin
+
+<MarkdownChipRow labels={["Bitcoin" ]} />
+
+ICP brings smart contract functionality to Bitcoin and opens up new possibilities for dapp development.
+
+Through a protocol-level integration with the [Bitcoin network](/docs/building-apps/chain-fusion/bitcoin/overview), smart contracts deployed on ICP can interact with the Bitcoin network directly without using a bridge or oracle.
+
+Threshold signing APIs, including [threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa) and [threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr), enable an ICP smart contract to [hold assets like BTC](LINK) or [sign](LINK) and [submit transactions](LINK) to the Bitcoin network.
+
+When an ICP smart contract wants to submit a Bitcoin transaction, the following steps must occur:
+
+- Request a public key from the threshold signing APIs
+- Create a Bitcoin address from the public key
+- Load unspent UTXOs from the Bitcoin API
+- Build the transaction payload
+- Request a signature of the transaction hash from the threshold signing API
+- Submit the transaction to the Bitcoin API
+
+The Bitcoin API relays the request to the Bitcoin network, which receives and processes the request asynchronously before returning the result of the transaction to the ICP smart contract that initially created it.
+
+ICP smart contracts can call the Bitcoin API to query the [Bitcoin mainnet or testnet](LINK) for network state information, UTXOs, block information, or the balance of any Bitcoin address.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/BTC-diagram.png")}
+    alt="Bitcoin integration"
+    width="1200"
+  />
+</div>
+
+## Additional resources
+
+Building Bitcoin applications on ICP is not trivial. It’s beneficial to understand core Bitcoin concepts, including transactions, UTXOs, the Script language, and Bitcoin’s hash formats.
+
+- [Mastering Bitcoin: Programming the open blockchain](https://github.com/bitcoinbook/bitcoinbook/blob/develop/BOOK.md)
+- [Learn me a Bitcoin](https://learnmeabitcoin.com)
+- [Bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page)
+
+
