@@ -55,7 +55,7 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 The public key only needs to be fetched once and can then be reused to encrypt data for multiple recipients by deriving the corresponding subkeys locally. To ensure cryptographic separation and prevent cross-protocol interference, it's good practice to include a domain separator in the `context` when using IBE. This distinguishes IBE usage from any other potential applications of vetKeys that the canister may support. The domain separator can be any unique and arbitrary byte string.
 
 ### Step 2: Obtain the IBE public key and encrypt data in the frontend
-Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the canister.
+Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the frontend canister.
 To encrypt messages, the sender uses recipient's principal as the encryption identity (set in the `input` variable of the `vetkd_derive_key` arguments).
 
 <AdornedTabs groupId="languages">
