@@ -7,17 +7,17 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { OsType, useOs } from "/src/hooks/useOs";
 
-# BTC developer environment
+# Using Bitcoin regtest
 
 <MarkdownChipRow labels={["Bitcoin"]} />
 
 Before using the local Bitcoin regtest instance, you will need to:
 
-1. [Setup the local developer environment](/docs/build-on-btc/btc-dev-env)
+- [x] [Setup the local developer environment](/docs/build-on-btc/btc-dev-env).
 
-2. Clone the `@dfinity/examples` repo: `git clone https://github.com/dfinity/examples.git`
+- [x] Clone the `@dfinity/examples` repo: `git clone https://github.com/dfinity/examples.git`
 
-This page will demonstrate how to use the `basic_bitcoin` example project written in Rust. Alternatively, you can use the Motoko variation of this project. 
+This page will demonstrate how to use the local Bitcoin regtest instance using the [`basic_bitcoin` example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) project written in Rust. Alternatively, you can use the Motoko variation of this project.
 
 The `basic_bitcoin` example provides a simple smart contract that implements methods for sending and receiving bitcoin. It supports P2PKH (legacy), P2PWKH (SegWit), and P2TR (Taproot) address types. 
 
@@ -26,6 +26,10 @@ Navigate into the `rust/basic_bitcoin` subdirectory of the examples repo:
 ```jsx
 cd examples/rust/basic_bitcoin
 ```
+
+:::caution
+When you set up your [developer environment](/docs/build-on-btc/btc-dev-env), if you created the subdirectory for your `bitcoin_data` files in another project's directory, you either need to [make them again or copy them](/docs/build-on-btc/btc-dev-env#step-2-create-a-subdirectory-for-bitcoin-data) into this project's folder.
+:::
 
 Then start the local Bitcoin regtest network:
 
@@ -36,6 +40,7 @@ start bitcoind
 Next, deploy the project to your local development environment with the `dfx deploy` command and specify the `regtest` network as an init argument for the project:
 
 ```
+dfx start --clean --background // If dfx is not already running
 dfx deploy basic_bitcoin --argument '(variant { regtest })'
 ```
 
@@ -51,17 +56,17 @@ You can call this function from the command line:
 dfx canister call basic_bitcoin get_p2pkh_address
 ```
 
-### Receiving bitcoin
+### Receiving BTC
 
-A key difference between working with a local Bitcoin regtest and the Bitcoin testnet or mainnet is how you receive Bitcoin. In order to receive BTC on your local Bitcoin testnet, you need to manually mine blocks. BTC is issued as a reward for each block mined.
+A key difference between working with a local Bitcoin regtest and the Bitcoin testnet or mainnet is how you receive BTC. In order to receive BTC on your local Bitcoin testnet, you need to manually mine blocks. BTC is issued as a reward for each block mined.
 
 :::info Coinbase maturity
 
-One caveat of using a local Bitcoin regtest and receiving block rewards is that the rewards are subject to the [Coinbase maturity rule](https://github.com/bitcoin/bitcoin/blob/bace615ba31cedec50afa4f296934a186b9afae6/src/consensus/consensus.h#L19), which states that, in order for you to spend rewarded BTC, you will first need to mine 100 blocks.
+One caveat of using a local Bitcoin regtest and receiving block rewards is that the rewards are subject to the [Coinbase maturity rule](https://github.com/bitcoin/bitcoin/blob/bace615ba31cedec50afa4f296934a186b9afae6/src/consensus/consensus.h#L19), which states that in order for you to spend rewarded BTC, you will first need to mine 100 blocks.
 
 :::
 
-In the same directory as `bitcoind`, you can issue the following command to mine blocks.
+In the same directory as `bitcoind`, you can issue the following command to mine blocks:
 
 ```bash
 bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress <number-of-blocks> <btc-address>
@@ -81,17 +86,23 @@ The BTC you mine is valid only in your local Bitcoin regtest and cannot be spent
 
 :::
 
-### Sending bitcoin
+### Sending BTC
 
-You can send bitcoin using the `send_from_${type}` function of the `basic_bitcoin` smart contract, where `${type}` is one of `[p2pkh_address, p2tr_key_only_address, p2tr_address_key_path, p2tr_address_script_path]`:
+You can send BTC using the `send_from_${type}` function of the `basic_bitcoin` smart contract, where `${type}` is one of the following:
+
+- `p2pkh_address`
+
+- `p2tr_key_only_address`
+
+- `p2tr_address_key_path`
+
+- `p2tr_address_script_path`
 
 ```
 dfx canister call basic_bitcoin send_from_p2pkh_address '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
 ```
 
-The command above creates a transaction and sends it out to your local Bitcoin regtest.
-
-Now, you need to mine a block so that the transaction you just sent becomes part of the blockchain:
+This command creates a transaction and sends it to your local Bitcoin regtest. Now, you need to mine a block so that the transaction you just sent becomes part of the blockchain:
 
 ```
 bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 mtbZzVBwLnDmhH4pE9QynWAgh6H3aC1E6M
@@ -104,13 +115,13 @@ bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 mtbZzVBwLnDmhH4pE9QynW
 To get information about a specific block, use the `getblock` command:
 
 ```bash
- bitcoin-cli -conf=$(pwd)/bitcoin.conf -regtest getblock <block-hash> <verbosity>
+bitcoin-cli -conf=$(pwd)/bitcoin.conf -regtest getblock <block-hash> <verbosity>
 ```
 
 This command requires the block’s hash value and an optional verbosity level:
 
 - 0: Hex-encoded data
-- 1:  JSON objects
+- 1: JSON objects
 - 2: JSON objects with transaction data
 
 [View the full details of the `getblock` command](https://developer.bitcoin.org/reference/rpc/getblock.html)
@@ -123,7 +134,7 @@ To get raw information about a transaction, use the `getrawtransaction` command:
 bitcoin-cli -conf=$(pwd)/bitcoin.conf -regtest getrawtransaction <tx-id> <verbosity>
 ```
 
-This command requires the transaction’s ID and an optional verbosity level and block hash value.
+This command requires the transaction’s ID, an optional verbosity level, and block hash value.
 
 [View the full details of the `getrawtransaction` command](https://developer.bitcoin.org/reference/rpc/getrawtransaction.html).
 
@@ -131,7 +142,7 @@ This command requires the transaction’s ID and an optional verbosity level and
 
 ### Sending transactions
 
-If you're trying to send a transaction and the transaction isn't being mined, try sending the same transaction via `bitcoin-cli`, as it can reveal helpful errors:
+If you're trying to send a transaction and the transaction isn't being mined, try sending the same transaction using `bitcoin-cli`, as it can reveal helpful errors:
 
 ```
 bitcoin-cli -conf=$(pwd)/bitcoin.conf sendrawtransaction <tx-in-hex>
@@ -139,9 +150,9 @@ bitcoin-cli -conf=$(pwd)/bitcoin.conf sendrawtransaction <tx-in-hex>
 
 ### Resetting the state
 
-It's often useful to delete all the Bitcoin state you have locally and to start from scratch.
+It's often useful to delete the entire local Bitcoin state and start from scratch. To do this:
 
-- Step 1: Run the following commands in the directory of your `dfx` project to delete the local state of `dfx`.
+- #### Step 1: Run the following commands in the directory of your `dfx` project to delete the local state of `dfx`.
 
 ```
 dfx stop
@@ -152,7 +163,7 @@ rm -rf .dfx
 Running `rm -rf .dfx` will permanently delete *all* the ICP smart contracts you have created locally.
 :::
 
-- Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running, and then delete the chain you created.
+- #### Step 2: In the folder where you're running `bitcoind`, stop the `bitcoind` process if it is running, and then delete the data folder you created.
 
 ```
 rm -r data

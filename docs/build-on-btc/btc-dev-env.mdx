@@ -27,42 +27,42 @@ To develop Bitcoin applications to be deployed on ICP, your local developer envi
 
 - An ICP smart contract project.
 
-## Rust toolchain
+## Install tooling
+
+### Rust toolchain
 
 Before developing BTC applications in Rust, you will need to install the Rust toolchain, including:
 
 - [The Rust programming language.](https://www.rust-lang.org/tools/install)
 - [The `cargo` package manager.](https://doc.rust-lang.org/cargo/getting-started/installation.html)
 
-## Motoko compiler and base library
+### Motoko compiler and base library
 
 The Motoko compiler (`moc`) and base library are included in the IC SDK installation as described below. Alternatively, you can install them on their own through the [Motoko release binaries](https://github.com/dfinity/motoko/releases).
 
-## IC SDK
+### IC SDK
 
 The IC SDK includes a CLI tool called `dfx` that is used for creating, managing, and deploying dapps on ICP. You can install it natively on macOS and Linux; however, Windows users will need to set up WSL 2 before installing the IC SDK.
 
 [Learn more about installing the IC SDK](/docs/building-apps/getting-started/install)
 
-## Local Bitcoin testnet (Bitcoin regression testing mode)
-
-It is recommended that developers set up a local Bitcoin testnet on their machine, as it allows them to mine blocks quickly and at will, which facilitates testing various cases without having to rely on the (slow) Bitcoin testnet or the (even slower) Bitcoin mainnet. Alternatively, you can test dapps using the Bitcoin testnet or mainnet through the ICP Bitcoin API. Both workflows are detailed below.
-
-A local Bitcoin testnet deployed on your computer operates in "regression testing mode," or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode). Regtest mode is used to instantly create a new, private blockchain with the configuration of a testnet. However, there is one key difference: regtest mode enables the developer to have complete control over the environment, including determining when blocks are created. This allows you to test and iterate faster than relying on the Bitcoin testnet or mainnet.
-
 ## Create or download an example project
 
 To set up and test your local Bitcoin testnet, you will need a smart contract that implements methods that call the local Bitcoin API.
 
-Create a new project using`dfx new my_project`or download an example in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) or [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) that already implements basic methods for calling the Bitcoin API.
+Create a new project using `dfx new my_project` or download an example in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) or [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) that already implements basic methods for calling the Bitcoin API.
 
 :::tip
 
-Popular libraries like [Rust's bitcoin crate](https://crates.io/crates/bitcoin) [Motoko's bitcoin package](https://mops.one/bitcoin) can be used within ICP smart contracts.
+Popular libraries like [Rust's bitcoin crate](https://crates.io/crates/bitcoin) and [Motoko's bitcoin package](https://mops.one/bitcoin) can be used within ICP smart contracts.
 
 :::
 
-### Create a local Bitcoin testnet (regtest) with `bitcoind`
+## Create a local Bitcoin testnet (regtest) with `bitcoind`
+
+It is recommended that developers set up a local Bitcoin testnet on their machine, as it allows them to mine blocks quickly and at will, which facilitates testing various cases without having to rely on the (slow) Bitcoin testnet or the (even slower) Bitcoin mainnet. Alternatively, you can test dapps using the Bitcoin testnet or mainnet through the ICP Bitcoin API. Both workflows are detailed below.
+
+A local Bitcoin testnet deployed on your computer operates in "regression testing mode," or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode). Regtest mode is used to instantly create a new, private blockchain with the configuration of a testnet. However, there is one key difference: regtest mode enables the developer to have complete control over the environment, including determining when blocks are created. This allows you to test and iterate faster than relying on the Bitcoin testnet or mainnet.
 
 - #### Step 1: Download [the Bitcoin binaries](https://bitcoin.org/bin/bitcoin-core-27.0/).
 
@@ -140,7 +140,7 @@ bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/bitcoin_data --port=18444
 
 This command assumes that port `18444` on your machine is available. If it isn't, change the specified port accordingly.
 
-### Starting `dfx` with Bitcoin support
+## Starting `dfx` with Bitcoin support
 
 To deploy and test projects locally, first start `dfx` in your local development environment with Bitcoin support enabled.
 
@@ -185,7 +185,7 @@ dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:18444
 :::
 
 
-### Configuration options
+#### Configuration options
 
 - `enabled` (boolean): Determines whether the Bitcoin adapter is enabled.
     - Default: `false`.
@@ -195,7 +195,7 @@ dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:18444
 
 - `canister_init_arg` (string): Optional initialization arguments for the Bitcoin API. It sets up initial configuration parameters like stability threshold, network type, block sources, fees, syncing state, API access, and more. View all init argument options below.
 
-###  Bitcoin API canister initialization arguments
+#### Bitcoin API canister initialization arguments
 
 Canister initialization arguments determine the behavior of the Bitcoin API running in the local development environment.
 
@@ -244,13 +244,13 @@ By default, the local Bitcoin API mirrors the settings used in the production en
     };
     ```
 
-`api_access` (Flag): Controls access to the canister's endpoints.
+- `api_access` (Flag): Controls access to the canister's endpoints.
 
     - Options: `enabled`, `disabled`
 
     - Default: `enabled`
 
-`disable_api_if_not_fully_synced` (Flag): Determines whether API access is automatically disabled when the watchdog canister detects that the Bitcoin canister's state is more than **two blocks** behind the Bitcoin blockchain.
+- `disable_api_if_not_fully_synced` (Flag): Determines whether API access is automatically disabled when the watchdog canister detects that the Bitcoin canister's state is more than **two blocks** behind the Bitcoin blockchain.
 
     - Options: `enabled`, `disabled`
 
@@ -258,7 +258,7 @@ By default, the local Bitcoin API mirrors the settings used in the production en
 
     - Note: This setting is not relevant in a local development environment.
 
-- `watchdog_canister` (Option<Principal>): Specifies the principal ID of the watchdog canister. If this canister detects that the Bitcoin canister is lagging behind, it is authorized to disable API access.
+- `watchdog_canister` (`Option<Principal>`): Specifies the principal ID of the watchdog canister. If this canister detects that the Bitcoin canister is lagging behind, it is authorized to disable API access.
 
     - Note: This setting is not relevant in a local development environment.
 
@@ -270,7 +270,7 @@ By default, the local Bitcoin API mirrors the settings used in the production en
 
     - Note: This setting is not relevant in a local development environment.
 
-`lazily_evaluate_fee_percentiles` (Flag): Controls whether fee percentiles are calculated only when requested, instead of being automatically updated with every new block. When enabled, percentile calculations occur on demand. When disabled, percentiles are automatically updated on every new block.
+- `lazily_evaluate_fee_percentiles` (Flag): Controls whether fee percentiles are calculated only when requested, instead of being automatically updated with every new block. When enabled, percentile calculations occur on demand. When disabled, percentiles are automatically updated on every new block.
 
     - Options: `enabled`, `disabled`
 

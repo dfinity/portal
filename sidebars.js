@@ -809,10 +809,10 @@ defi: [
 ],
 
 btc: [
-  "build-on-btc/overview",
+  "build-on-btc/index",
   "build-on-btc/btc-dev-workflow",
   "build-on-btc/btc-dev-env",
-  "build-on-btc/btc-examples",
+  "build-on-btc/using-regtest",
   "build-on-btc/btc-api",
   {
     type: "category",
@@ -825,26 +825,6 @@ btc: [
     ],
   },
   "build-on-btc/read-state",
-  "build-on-btc/building-an-oracle",
-  {
-    type: "category",
-    label: "Create BTC assets",
-    items: [
-      "build-on-btc/create-assets/brc20",
-      "build-on-btc/create-assets/inscriptions",
-      "build-on-btc/create-assets/ordinals",
-      "build-on-btc/create-assets/runes",
-    ],
-  },
-  "build-on-btc/btc-auth",
-  {
-    type: "category",
-    label: "Using BTC & ckBTC",
-    items: [
-      "build-on-btc/btc-ckbtc/convert-btc-ckbtc",
-      "build-on-btc/btc-ckbtc/wallets",
-    ],
-  },
 ],
 
 references: [
