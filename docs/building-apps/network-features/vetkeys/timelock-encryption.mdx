@@ -78,9 +78,7 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 </TabItem>
 </AdornedTabs>
 
-The public key needs to only be fetched once and it can be used to encrypt data for multiple recipients by deriving corresponding subkeys locally.
-It is a good practice to use a domain separator in `context` to split IBE from other eventual uses of vetKeys the canister may do.
-A domain separator can be any arbitrary unique byte string.
+The public key only needs to be fetched once and can then be reused to encrypt data for multiple recipients by deriving the corresponding subkeys locally. To ensure cryptographic separation and prevent cross-protocol interference, it's good practice to include a domain separator in the `context` when using IBE. This distinguishes IBE usage from any other potential applications of vetKeys that the canister may support. The domain separator can be any unique and arbitrary byte string.
 
 ### Step 2: Obtain IBE public key and encrypt data in the frontend
 
