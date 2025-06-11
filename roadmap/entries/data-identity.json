@@ -107,6 +107,12 @@
       "status": "future",
       "milestone_id": "Plexus"
     },
+     {
+      "title": "Multi-language support",
+      "overview": "Increase reach and adoption of Internet Identity by localizing its UI.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
     {
       "title": "ICP DID (Decentralised Identifier) method",
       "overview": "Specify a canonical ICP DID method for DID creation, resolution, update, delegation and deletion.",

@@ -153,7 +153,7 @@ To address issues around message ordering that can lead to bugs, one usually emp
 
 The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [securely handle traps in callbacks](#securely-handle-traps-in-callbacks). The code examples below show how one can securely implement a lock per caller.
 - In Rust, one can use the drop pattern where each caller lock (`CallerGuard` struct) implements the `Drop` trait to release the lock. From Rust CDK version `0.5.1`, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Recall that `ic0.call_on_cleanup` is executed if the `reply` or the `reject` callback executed and trapped.
-- In Motoko, one can use the [`try`/`finally`](/docs/motoko/main/reference/language-manual/#try) control flow construct. This construct guarantees that the lock is released in the `finally` block regardless of any errors or traps in the `try` or `catch` blocks.
+- In Motoko, one can use the [`try`/`finally`](/docs/motoko/language-manual/#try) control flow construct. This construct guarantees that the lock is released in the `finally` block regardless of any errors or traps in the `try` or `catch` blocks.
 
 <AdornedTabs groupId="language">
 
