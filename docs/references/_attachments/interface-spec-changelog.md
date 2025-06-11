@@ -1,13 +1,5 @@
 ## Changelog {#changelog}
 
-* Added support for canister environment variables in canister settings
-* New System API for accessing environment variables:
-  - `ic0.env_var_count`
-  - `ic0.env_var_name_size`
-  - `ic0.env_var_name_copy`
-  - `ic0.env_var_value_size`
-* New `SettingChange` variant in canister history setting details
-
 ### 0.41.0 (2025-06-02) {#0_41_0}
 * Management canister API for threshold key derivation (vetKD).
 

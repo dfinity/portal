@@ -1515,35 +1515,32 @@ defaulting to `I = i32` if the canister declares no memory.
         reply_env   : I,
         reject_fun  : I,
         reject_env  : I
-      ) -> ();                                                                                        // U CQ Ry Rt CRy CRt T
-    ic0.call_on_cleanup : (fun : I, env : I) -> ();                                                   // U CQ Ry Rt CRy CRt T
-    ic0.call_data_append : (src : I, size : I) -> ();                                                 // U CQ Ry Rt CRy CRt T
-    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                               // U CQ Ry Rt CRy CRt T
-    ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                              // U Ry Rt T
-    ic0.call_perform : () -> ( err_code : i32 );                                                      // U CQ Ry Rt CRy CRt T
-
-    ic0.stable64_size : () -> (page_count : i64);                                                     // * s
-    ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                                  // * s
-    ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                                 // * s
-    ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                                  // * s
-
-    ic0.certified_data_set : (src : I, size : I) -> ();                                               // I G U Ry Rt T
-    ic0.data_certificate_present : () -> i32;                                                         // *
-    ic0.data_certificate_size : () -> I;                                                              // NRQ CQ
-    ic0.data_certificate_copy : (dst : I, offset : I, size : I) -> ();                                // NRQ CQ
-
-    ic0.time : () -> (timestamp : i64);                                                               // *
-    ic0.global_timer_set : (timestamp : i64) -> i64;                                                  // I G U Ry Rt C T
-    ic0.performance_counter : (counter_type : i32) -> (counter : i64);                                // * s
-    ic0.is_controller : (src : I, size : I) -> ( result : i32);                                       // * s
-    ic0.in_replicated_execution : () -> (result : i32);                                               // * s
+      ) -> ();                                                                            // U CQ Ry Rt CRy CRt T
+    ic0.call_on_cleanup : (fun : I, env : I) -> ();                                       // U CQ Ry Rt CRy CRt T
+    ic0.call_data_append : (src : I, size : I) -> ();                                     // U CQ Ry Rt CRy CRt T
+    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                   // U CQ Ry Rt CRy CRt T
+    ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
+    ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
+    ic0.stable64_size : () -> (page_count : i64);                                         // * s
+    ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                      // * s
+    ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
+    ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
+    ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
+    ic0.data_certificate_present : () -> i32;                                             // *
+    ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
+    ic0.data_certificate_copy : (dst : I, offset : I, size : I) -> ();                    // NRQ CQ
+    ic0.time : () -> (timestamp : i64);                                                   // *
+    ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
+    ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
+    ic0.is_controller : (src : I, size : I) -> ( result : i32);                           // * s
+    ic0.in_replicated_execution : () -> (result : i32);                                   // * s
     
-    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();                       // * s
-    ic0.cost_create_canister : (dst : I) -> ();                                                       // * s
-    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();                 // * s
-    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;                 // * s
-    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;                 // * s
-    ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;                // * s
+    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
+    ic0.cost_create_canister : (dst : I) -> ();                                           // * s
+    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
+    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
+    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
+    ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
     ic0.env_var_count : () -> I;                                                                      // *
 
