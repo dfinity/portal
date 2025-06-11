@@ -1521,14 +1521,17 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                   // U CQ Ry Rt CRy CRt T
     ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
     ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
+
     ic0.stable64_size : () -> (page_count : i64);                                         // * s
     ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                      // * s
     ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
     ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
+
     ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
     ic0.data_certificate_present : () -> i32;                                             // *
     ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
     ic0.data_certificate_copy : (dst : I, offset : I, size : I) -> ();                    // NRQ CQ
+    
     ic0.time : () -> (timestamp : i64);                                                   // *
     ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
     ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
