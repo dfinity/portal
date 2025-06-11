@@ -139,7 +139,7 @@ function Index() {
         <br />
         <Link
           className="link-primary link-with-icon md:mt-4"
-          href="/docs/building-apps/chain-fusion/bitcoin/overview"
+          href="/docs/build-on-btc/index"
           target="_blank"
           rel="noopener noreferrer"
         >
