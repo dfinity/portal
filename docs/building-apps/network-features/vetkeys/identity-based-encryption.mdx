@@ -87,9 +87,10 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 The transport public key used for the call is a temporary, throwaway key generated on the frontend by the [`@dfinity/vetkeys`](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.TransportSecretKey.html#random) library. The corresponding private key only needs to be fetched once and can be reused to decrypt multiple cipher texts, regardless of the senders’ identities.
 
 ### Step 4: Obtain the IBE private key and decrypt data in the frontend
-Obtain the encrypted data from the canister or other storage location.
-Decrypt the IBE-encrypted data in the frontend using the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#decrypt).
-See more details on the [API page](/docs/building-apps/network-features/vetkeys/api) for more details regarding the basic flow of obtaining vetKeys.
+Obtain the encrypted data from the canister or another storage location. Decrypt the IBE-encrypted data in the frontend using the [`@dfinity/vetkeys` frontend library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#decrypt).
+
+For a detailed overview of the basic flow for obtaining `vetKeys`, refer to the [API documentation](/docs/building-apps/network-features/vetkeys/api).
+
 
 <AdornedTabs groupId="languages">
 
