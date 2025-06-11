@@ -63,7 +63,7 @@ The code featured below is taken from the [secret-bid auction example](https://g
 3. Users can IBE-encrypt their bids using the public key and the lot identifier.
 4. Once the deadline has passed, the auction canister retrieves the decryption key, decrypts all the submitted bids, and determine the highest. From that moment on, the bids become public and the canister announces the winner.
 
-### Step 1: Allow to obtain IBE public key from the backend
+### Step 1: Obtain IBE public key from the backend
 
 Expose a canister endpoint that allows to fetch the IBE public key of the canister.
 
