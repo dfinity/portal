@@ -13,10 +13,19 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 
 <MarkdownChipRow labels={["Advanced", "vetKeys", "Identity-based encryption", "Timelock"]} />
 
-A special variant of [identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption) is called timelock encryption.
-It allows a sender to encrypt to a specific timestamp, ensuring that the recipient can only decrypt after the specific time has passed. Canisters can enforce this time-based access control by requesting threshold decryption of a ciphertext only after a predetermined expiry time, keeping sensitive information secret until the appropriate moment.
-This makes it possible to implement time-sensitive applications, like secret-bid auctions, time-locked documents, dead-man switches, and delayed reveal NFTs.
-Timelock encryption also serves as a key building block for protecting against maximal extractable value (MEV). By keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
+A special variant of [identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption) is called timelock encryption.  
+It enables a sender to encrypt data to a specific timestamp, ensuring that the recipient can only decrypt it after the specified time has passed.
+
+Canisters enforce this time-based access control by initiating threshold decryption of a cipher text only after a predefined expiry time. This mechanism ensures that sensitive information remains secret until the appropriate moment.
+
+Timelock encryption enables a wide range of time-sensitive applications, such as:
+
+- Secret-bid auctions  
+- Time-locked documents  
+- Dead-man switches  
+- Delayed-reveal NFTs
+
+It also plays a key role in protecting against maximal extractable value (MEV). By keeping transaction details confidential until after block inclusion, it prevents adversaries from front-running or reordering transactions.
 
 ## Use cases
 
