@@ -103,7 +103,7 @@ These flexible conditions allow timelock encryption to support a wide range of d
 
 In the code below, the time condition is checked by simply comparing the stored timestamp with the timestamp of the current time obtained using the `ic-cdk` crate.
 There, a timer is invoked periodically to check if there are any lots to close which triggers the lot closure and bid decryption.
-The latter is implemented in the `decrypt_bids` function showed below.
+The latter is implemented in the `decrypt_bids` function shown below.
 
 <AdornedTabs groupId="languages">
 
