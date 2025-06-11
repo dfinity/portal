@@ -5601,7 +5601,7 @@
       "DeFi",
       "Tools / Infrastructure"
     ],
-    "stats": "Canister deployed and tested on ICP testnet\n\nPull request created for Motoko Bitcoin library\n\nMulti-endpoint consensus engine implemented (51% threshold)\n\nFirst public Motoko-based bridge to Bitcoin-native assets\n",
+    "stats":"",
     "description": "Motoko module and DEX infrastructure enabling Counterparty asset management, order tracking, and liquidity pools on the Internet Computer. ",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/logo-universelle.svg",
