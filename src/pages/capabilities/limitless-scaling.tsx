@@ -95,7 +95,7 @@ function FeaturePage() {
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/build-on-btc/index"
+                href="/docs/build-on-btc/"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>

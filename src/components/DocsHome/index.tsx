@@ -203,7 +203,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/build-on-btc/index"
+        href="/docs/build-on-btc/"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Bitcoin integration"
       >

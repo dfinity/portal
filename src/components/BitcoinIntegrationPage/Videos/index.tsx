@@ -139,7 +139,7 @@ function Index() {
         <br />
         <Link
           className="link-primary link-with-icon md:mt-4"
-          href="/docs/build-on-btc/index"
+          href="/docs/build-on-btc/"
           target="_blank"
           rel="noopener noreferrer"
         >
