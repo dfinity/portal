@@ -14,18 +14,17 @@ The API provides two methods:
 
 Both methods share the following input parameters:
 
-- `input` (`blob`): Arbitrary data used to derive keys. This acts as a key identifier &mdash; different inputs will result in different derived keys. Note that input does not need to be random.
-
 - `context` (`blob`): Serves as a domain separator to ensure that keys are derived within a specific context, preventing collisions between different applications or use cases.
 
 - `key_id` (`record { curve : vetkd_curve; name : text }`): Identifies the master key from which the derived key is created.
 
-Each method also includes a method-specific parameter:
+Each method also includes method-specific parameters:
 
 - `vetkd_public_key`
   - `canister_id` (`opt canister_id`): Optional. If provided, the method returns the public key associated with the specified `canister_id`. If omitted (`null`), the public key for the calling canister is returned.
 
 - `vetkd_derive_key`
+  - `input` (`blob`): Arbitrary data used to derive keys. This acts as a key identifier &mdash; different inputs will result in different derived keys. Note that input does not need to be random.
   - `transport_public_key` (`blob`): The recipient’s public key. This is used to encrypt the derived key for secure transport.
 
 Below is a summary of the vetKD API methods and their parameters.
@@ -135,12 +134,13 @@ In this step, the frontend generates a transport private key and passes the corr
 <TabItem value="ts" label="Typescript" default>
 
 ```ts
-import { DerivedPublicKey, TransportSecretKey } from "@dfinity/vetkeys";
+import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/vetkeys";
 
 const transportSecretKey = TransportSecretKey.random();
 const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
+// the `canisterClient` uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes());
-const encryptedVetKey = EncryptedVetKey.deserialize(encryptedVetKeyBytes);
+const encryptedVetKey = EncryptedVetKey(encryptedVetKeyBytes);
 ```
 
 </TabItem>
@@ -157,6 +157,7 @@ Once retrieved, you must decrypt and verify the received encrypted vetKey.
 const publicKeyBytes = await canisterClient.vetkd_public_key();
 const publicKey = DerivedPublicKey.deserialize(publicKeyBytes);
 const myPrincipalBytes = // serialize caller's principal as `Uint8Array`
+// the `canisterClient` uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, myPrincipalBytes);
 ```
 
