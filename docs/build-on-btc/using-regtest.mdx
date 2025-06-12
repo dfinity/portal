@@ -34,7 +34,7 @@ When you set up your [developer environment](/docs/build-on-btc/btc-dev-env), if
 Then start the local Bitcoin regtest network:
 
 ```jsx
-start bitcoind
+bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/bitcoin_data --port=18444
 ```
 
 Next, deploy the project to your local development environment with the `dfx deploy` command and specify the `regtest` network as an init argument for the project:
