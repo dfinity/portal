@@ -4855,7 +4855,6 @@ M.arg = candid(A)
 is_system_assigned Canister_id
 Canister_id ∉ dom(S.canisters)
 SubnetId ∈ Subnets
-// Environment variables validation conditions
 (A.settings.environment_variables = null or 
   (|A.settings.environment_variables| ≤ MAX_ENV_VAR_COUNT and
    ∀(name, value) ∈ A.settings.environment_variables:
@@ -5002,7 +5001,6 @@ M.callee = ic_principal
 M.method_name = 'update_settings'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
-// Environment variables validation conditions
 (A.settings.environment_variables = null or 
   (|A.settings.environment_variables| ≤ MAX_ENV_VAR_COUNT and
    ∀(name, value) ∈ A.settings.environment_variables:
