@@ -31,8 +31,8 @@ Below is a summary of the vetKD API methods and their parameters.
 
 ```candid
   vetkd_public_key : (record {
-    context : blob;
     canister_id : opt canister_id;
+    context : blob;
     key_id : record { curve : vetkd_curve; name : text };
   }) -> (record { public_key : blob; });
   vetkd_derive_key : (record {
