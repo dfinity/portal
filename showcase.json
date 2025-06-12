@@ -3262,18 +3262,6 @@
     "logo": "/img/showcase/ic_nft_creater_logo.png"
   },
   {
-    "id": "motdex",
-    "name": "Motoko SNS",
-    "display": "Normal",
-    "website": "https://motodex.dexstudios.games",
-    "tags": [
-      "Gaming"
-    ],
-    "description": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/motoko_sns_logo.png"
-  },
-  {
     "id": "codegov",
     "name": "codegov",
     "display": "Normal",
@@ -3621,11 +3609,11 @@
     "id": "motoko-sns",
     "name": "Motoko SNS",
     "display": "Normal",
-    "website": "https://2uktw-yiaaa-aaaah-adwxq-cai.icp0.io/",
+    "website": "https://www.motokoghosts.com/",
     "tags": [
       "SocialFi",
       "DAO",
-      "Creator Economy"
+      "NFT"
     ],
     "description": "A community initiative aiming to drive awareness of the Motoko branding.",
     "usesInternetIdentity": false,
@@ -3877,7 +3865,7 @@
     "name": "Motodex",
     "display": "Normal",
     "website": "https://motodex.dexstudios.games/",
-    "twitter": "https://twitter.com/openbisea",
+    "twitter": "https://x.com/motodex_game",
     "tags": [
       "Gaming",
       "NFT",
@@ -5642,5 +5630,167 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Cypherock_Logo .jpg",
     "oneLiner": "The open-source hardware wallet with decentralized crypto security."
+  },
+  {
+    "id": "blockchain-bingo",
+    "name": "Blockchain Bingo",
+    "display": "Normal",
+    "website": "https://stcjb-wyaaa-aaaap-akm2a-cai.icp0.io/",
+    "github": "https://github.com/dickhery/Blockchain-Bingo-on-ICP?tab=readme-ov-file#description",
+    "tags": [
+      "Gaming",
+      "SocialFi"
+    ],
+    "description": "Blockchain Bingo is a decentralized application (dApp) that brings the classic game of Bingo to the blockchain. Leveraging the power of the Internet Computer, Bingo offers a secure and transparent platform where players can generate unique Bingo cards, participate in real-time games, and experience the thrill of winning wether it's a free game or game for a prize of ICP. Created from the template that is generated with dfx new.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/blockchain-bingo_logo.jpg",
+    "oneLiner": "Live Bingo games hosted 100% on the Internet Computer Protocol blockchain."
+  },
+  {
+    "id": "secure-image-chain",
+    "name": "Secure Image Chain",
+    "display": "Normal",
+    "website": "https://secureimagechain.com",
+    "twitter": "https://x.com/SecureChainDFX",
+    "tags": [
+      "SocialFi",
+      "DeFi"
+    ],
+    "stats": "1000+ Members on OpenChat",
+    "description": "Secure Image Chain is a blockchain-based platform that allows users to securely send and share images. By using our platform, users also earn DFileX (DFX) tokens for their engagement. Built on the ICP blockchain, it provides a fully decentralized and secure environment for image sharing  user data.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/secure-image-chain_logo.webp",
+    "screenshots": [
+      "/img/showcase/secure-image-chain_screenshot.webp"
+    ],
+    "oneLiner": "Send images fully on blockchain securely and earn DFX tokens."
+  },
+  {
+    "id": "icnews",
+    "name": "IC News",
+    "display": "Normal",
+    "website": "https://ic.news",
+    "twitter": "https://x.com/ic_news_",
+    "tags": [
+      "AI"
+    ],
+    "description": "Community-Driven On-Chain News, Powered by Internet Computer.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icnews_logo.svg",
+    "screenshots": [
+      "/img/showcase/icnews_screenshot.png"
+    ]
+  },
+  {
+    "id": "coineo",
+    "name": "Coineo",
+    "display": "Normal",
+    "website": "https://coineo.app",
+    "twitter": "https://x.com/coineo_app",
+    "tags": [
+      "Analytics",
+      "Bitcoin"
+    ],
+    "description": "Coineo is a portfolio tracker for ICP, ICRC tokens, and the Bitcoin network. Track all your wallets in one unified dashboard. Calculate profit and loss. Get insights on your portfolio's performance.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/coineo_logo.webp"
+  },
+  {
+    "id": "linkpin",
+    "name": "Linkpin",
+    "display": "Normal",
+    "website": "https://3sfzu-siaaa-aaaal-qr6uq-cai.icp0.io/",
+    "github": "https://github.com/tagoso/linkpin",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A minimal bookmark manager on ICP. Save your favorite websites securely, using II login. You can also easily check click counts and last visit.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/linkpin_logo.jpg",
+    "screenshots": [
+      "/img/showcase/linkpin_screenshot.webpg"
+    ],
+    "oneLiner": "Bookmark on Blockchain"
+  },
+  {
+    "id": "proof-of-paint",
+    "name": "Proof of paint",
+    "display": "Normal",
+    "website": "https://rqbwu-jaaaa-aaaao-a356a-cai.icp0.io/",
+    "github": "https://github.com/xanderread/proof-of-paint",
+    "submittableId": 48718088,
+    "tags": [
+      "Wallet",
+      "Creator Economy"
+    ],
+    "description": "Proof of paint is a street art gallery dApp where artists can be authed anonymously and choose aliases. ",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Proof_of_paint.jpg"
+  },
+  {
+    "id": "mutual-link",
+    "name": "Mutual link",
+    "display": "Normal",
+    "website": "https://wzt7x-ayaaa-aaaam-qddyq-cai.icp0.io/",
+    "github": "https://github.com/daeu81404/mutual-link",
+    "tags": [
+      "Wallet"
+    ],
+    "description": "Mutualink transforms the medical referral system, enabling individuals to control their medical data and access better healthcare services.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/mutual_link.svg"
+  },
+  {
+    "id": "icp-chainvault",
+    "name": "ICP-ChainVault",
+    "display": "Normal",
+    "website": "https://chain-vault-front-lq0atklpo-samarabdelhameeds-projects.vercel.app/_app.html",
+    "twitter": "https://x.com/icpChainvault/status/1896146028619030679",
+    "github": "https://github.com/samarabdelhameed/icp-chainvault",
+    "youtube": "https://www.youtube.com/watch?v=MYfcEY3ve-U",
+    "submittableId": 45857881,
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Wallet"
+    ],
+    "stats": "",
+    "description": "ICP-ChainVault: A DeFi protocol on ICP enabling Bitcoin liquidity via ckBTC collateral, secure vaults, and trustless smart contract execution.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icp_chainvault.svg"
+  },
+  {
+    "id": "bq-labs",
+    "name": "BQ Labs",
+    "display": "Normal",
+    "website": "https://www.bqlabs.xyz/",
+    "twitter": "https://x.com/bq_labs/",
+    "github": "https://github.com/bitquid-labs/testnet-v1",
+    "submittableId": 48429136,
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "BQ Labs is a decentralized insurance protocol enabling modular underwriting, dynamic risk pricing, and tokenized risk solutions for Bitcoin and DeFi.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/BQ Labs.svg"
+  },
+  {
+    "id": "bitcoin-gift-cards",
+    "name": "Bitcoin Gift Cards",
+    "display": "Normal",
+    "website": "https://btc-gift-cards.com",
+    "twitter": "https://x.com/f0i",
+    "github": "https://github.com/f0i/btcgiftcards",
+    "submittableId": 49162161,
+    "tags": [
+      "Chain Fusion",
+      "Bitcoin"
+    ],
+    "description": "Bitcoin Gift Cards let you send Bitcoin to anyone using just their email.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bitcoin-gift-cards.jpg"
   }
+  
 ]
