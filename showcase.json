@@ -5656,7 +5656,7 @@
     ],
     "description": "Blockchain Bingo is a decentralized application (dApp) that brings the classic game of Bingo to the blockchain. Leveraging the power of the Internet Computer, Bingo offers a secure and transparent platform where players can generate unique Bingo cards, participate in real-time games, and experience the thrill of winning wether it's a free game or game for a prize of ICP. Created from the template that is generated with dfx new.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/blockchain-bingo_logo.svg",
+    "logo": "/img/showcase/blockchain-bingo_logo.jpg",
     "oneLiner": "Live Bingo games hosted 100% on the Internet Computer Protocol blockchain."
   },
   {
@@ -5719,7 +5719,7 @@
     ],
     "description": "A minimal bookmark manager on ICP. Save your favorite websites securely, using II login. You can also easily check click counts and last visit.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/linkpin_logo.webpg",
+    "logo": "/img/showcase/linkpin_logo.jpg",
     "screenshots": [
       "/img/showcase/linkpin_screenshot.webpg"
     ],
@@ -5738,7 +5738,7 @@
     ],
     "description": "Proof of paint is a street art gallery dApp where artists can be authed anonymously and choose aliases. ",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/Proof_of_paint.svg"
+    "logo": "/img/showcase/Proof_of_paint.jpg"
   },
   {
     "id": "mutual-link",
@@ -5767,7 +5767,7 @@
       "Bitcoin",
       "Wallet"
     ],
-    "stats": "ICP-ChainVault Achievements: \n✅ 10,000+ Transactions executed seamlessly on the platform.  \n✅ 5+ Smart Contracts (Canisters) deployed for secure DeFi operations.  \n✅ Multiple Vaults successfully created and tested.  \n✅ Real-time Oracle Integration for accurate Bitcoin price feeds.  \n✅ 100% On-Chain Executionpowered by the Internet Computer.  \nThese achievements lay the foundation for further growth and scalability! 🚀",
+    "stats": "",
     "description": "ICP-ChainVault: A DeFi protocol on ICP enabling Bitcoin liquidity via ckBTC collateral, secure vaults, and trustless smart contract execution.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icp_chainvault.svg"
@@ -5803,7 +5803,7 @@
     ],
     "description": "Bitcoin Gift Cards let you send Bitcoin to anyone using just their email.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bitcoin-gift-cards.svg"
+    "logo": "/img/showcase/bitcoin-gift-cards.jpg"
   }
   
 ]
