@@ -173,7 +173,7 @@ const actor = createActor(effectiveCanisterId, {
 
 ### HTTP headers
 
-An actor can be initialized to include the boundary node HTTP headers using the `Actor.createActor` constructor:
+An actor can be initialized to include the [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) HTTP headers using the `Actor.createActor` constructor:
 
 ```js
 Actor.createActorWithHttpDetails(interfaceFactory: InterfaceFactory, configuration: ActorConfig): ActorSubclass<ActorMethodMappedWithHttpDetails<T>>
@@ -269,7 +269,7 @@ This method returns `Promise<ReadStateResponse>`.
 
 ## Browser
 
-When you are building apps that run in the browser, you can use the `fetch` API as described below. Most apps will be able to determine whether they need to talk to `https://icp0.io` or a local replica, depending on their URL.
+When you are building apps that run in the browser, you can use the `fetch` API as described below. Most apps will be able to determine whether they need to talk to `https://icp0.io` or a local development environment, depending on their URL.
 
 ### Using `fetch`
 
@@ -404,7 +404,7 @@ Below is an example that creates an agent, fetches the root key of the replica, 
 :::caution
 This example uses fetchRootKey. It is not recommended that dapps deployed on the mainnet call this function from the ICP JavaScript agent, since using fetchRootKey on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
 
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the ICP JavaScript agent, so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the ICP JavaScript agent, so this only needs to be called on your local development environment, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
 :::
 
 ```js
@@ -436,7 +436,7 @@ export const createActor = (canisterId, options = {}) => {
   if (process.env.DFX_NETWORK !== "ic") {
     agent.fetchRootKey().catch((err) => {
       console.warn(
-        "Unable to fetch root key. Check to ensure that your local replica is running"
+        "Unable to fetch root key. Check to ensure that your local development environment is running"
       );
       console.error(err);
     });

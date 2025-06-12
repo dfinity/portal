@@ -1,0 +1,75 @@
+name: Update Showcase
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+    # Allows manual triggering
+
+jobs:
+  update-showcase:
+    name: "Update Showcase Data"
+    runs-on: ubuntu-latest
+
+    steps:
+      # Update showcase.json
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - run: git submodule update --init
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install script dependencies
+        run: npm install --no-save node-fetch@2 dotenv
+
+      - name: Update showcase.json
+        run: node update-showcase.js
+        env:
+          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet showcase.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      # Create a PR with the changes
+      - name: Create Pull Request
+        if: steps.git-check.outputs.changed == 'true'
+        id: create-pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update showcase.json from Airtable data [automated]
+          committer: GitHub <noreply@github.com>
+          author:
+            ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          title: "Update showcase.json from Airtable data"
+          body: |
+            ## Automated Showcase Data Update
+
+            This PR updates the showcase.json file with the latest data from Airtable.
+
+            * Generated automatically by the scheduled workflow
+            * Updates project listings in the showcase section
+            * No manual changes required
+
+            Once the required checks pass, this PR can be merged to update the showcase data on the website.
+          branch: automated-showcase-update
+          base: master
+          labels: |
+            automated
+          delete-branch: true
+          add-paths: |
+            showcase.json
+
+      # Output information about the PR that was created
+      - name: Output PR Information
+        if: steps.create-pr.outputs.pull-request-number
+        run: |
+          echo "Pull Request #${{ steps.create-pr.outputs.pull-request-number }} created"
+          echo "View it at ${{ steps.create-pr.outputs.pull-request-url }}"

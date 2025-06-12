@@ -30,7 +30,7 @@ Bitcoin’s scripting language, Script, makes complex smart contracts rather dif
 
 Bitcoin developers who are looking to build complex smart contracts will need to use a Bitcoin smart contract layer (referred to as a Layer-2 or L2), such as ICP. Each L2 solution offers a unique set of developer tools.
 
-Canister smart contracts on ICP have special properties that allow developers to develop scalable services. Canisters can be written in any language that compiles into Wasm, including [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/motoko/main/getting-started/motoko-introduction), and [Python](https://demergent-labs.github.io/kybra/). This allows for greater complexity in smart contract development compared to Bitcoin's Script language.
+Canister smart contracts on ICP have special properties that allow developers to develop scalable services. Canisters can be written in any language that compiles into Wasm, including [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/motoko/home), and [Python](https://demergent-labs.github.io/kybra/). This allows for greater complexity in smart contract development compared to Bitcoin's Script language.
 
 To learn more about full canister smart contract functionality, refer to the [smart contracts documentation](/docs/building-apps/essentials/canisters).
 
@@ -41,7 +41,7 @@ The [Threshold Schnorr integration](/docs/building-apps/network-features/signatu
 To learn more about the Bitcoin integration on ICP, refer to the [Bitcoin integration documentation](/docs/building-apps/chain-fusion/bitcoin/overview).
 
 ## Consensus
-Bitcoin uses proof of work as its consensus mechanism. Using proof of work, the Bitcoin blockchain waits for ten minutes before validating transactions one block at a time, posing challenges to security and scalability.
+Bitcoin uses proof of work as its consensus mechanism. Using proof of work, the Bitcoin blockchain waits for ten minutes before validating transactions one block at a time, posing challenges to security and [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling).
 
 Instead of imposing time constraints, ICP relies on cryptographic signatures to finalize a block. A block maker selects available messages, merging them into a block. The consensus protocol maintains a tree of notarized blocks. Each replica creates a distinct finalization share for every notarized block, serving as a definitive indicator that consensus has been achieved. This entire process could take less than two seconds.
 

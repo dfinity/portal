@@ -18,13 +18,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 const projects = [
   {
-    title: "Ordinals",
-    subtitle: "Bioniq: Bitcoin Marketplace",
+    title: "Lending",
+    subtitle: "Liquidium",
     description:
-      "Sell, trade, and transfer Bitcoin Ordinals and inscriptions without gas fees and transaction speed of less than two seconds.",
-    imgSrc: "/img/bitcoin-integration/a1.webp",
-    altText: "Ordinals project image",
-    link: "https://bioniq.io/",
+      "Liquidium is the leading decentralized Bitcoin lending protocol where users can borrow BTC against Ordinals, Runes & BRC-20. Borrow and Lend any asset on any chain.",
+    imgSrc: "/img/bitcoin-integration/a7.webp",
+    altText: "Liquidium project image",
+    link: "https://liquidium.fi",
   },
   {
     title: "Runes",
@@ -36,13 +36,13 @@ const projects = [
     link: "https://www.omnity.network/",
   },
   {
-    title: "DeFi",
-    subtitle: "Helix Markets",
+    title: "Runes",
+    subtitle: "Odin.Fun",
     description:
-      "Access zero-gas fees and lightning fast swaps between BTC, ETH, or any ERC20 assets. By harnessing the power of chain-key technology on ICP, Helix Markets allows cross-chain swaps in a non-custodial way.",
-    imgSrc: "/img/bitcoin-integration/a4.webp",
+      "Odin.Fun is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Everything is lightning fast and updates in real-time.",
+    imgSrc: "/img/bitcoin-integration/a8.webp",
     altText: "DeFi project image",
-    link: "https://helixmarkets.io",
+    link: "https://odin.fun",
   },
   {
     title: "SocialFi",
@@ -149,7 +149,7 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/references/t-sigs-how-it-works//"
+                  to="/docs/references/t-sigs-how-it-works/"
                 >
                   threshold-ECDSA signatures
                 </Link>
@@ -258,8 +258,8 @@ const Content: React.FC = () => {
                 Live ckBTC dashboard
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Chain-key bitcoin (ckBTC), a multi-chain bitcoin twin on the
-                Internet Computer, is an 
+                Chain-key bitcoin (ckBTC), a multichain bitcoin twin on the
+                Internet Computer, is an
                 <Link
                   className="link-primary !text-white hover:text-white/60"
                   to="/docs/building-apps/network-features/using-http/https-outcalls/overview"

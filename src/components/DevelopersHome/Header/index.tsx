@@ -26,7 +26,7 @@ function Index() {
       >
         <AnnouncementBar
           text={"Direct integration with the Bitcoin network"}
-          link={"/bitcoin-integration"}
+          link={"/bitcoin"}
         />
         <img className={styles.BGShape} src={BGCircle} alt="" />
         <motion.p variants={transitions.item} className={styles.Title}>

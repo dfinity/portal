@@ -30,13 +30,13 @@ In this tutorial, you'll take a look at how to use quill for workflows like inte
 
 ## What is quill?
 
-Quill is a CLI tool used for interacting with ICP's governance and ledger canisters. A unique feature of quill is the ability to create signed messages on a cold wallet.
+Quill is a CLI tool used for interacting with ICP's [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) and ledger canisters. A unique feature of quill is the ability to create signed messages on a cold wallet.
 
 To support cold wallets, quill uses two separate steps to send query and update calls to ICP. First, quill generates a transaction payload and signs the message according to the quill subcommand and its arguments. This step does not require a connection to the internet. Then, the `quill send` command is used to submit the transaction payload to ICP, which requires an internet connection. To connect to the internet, users will need to transport the signed message payload, which is returned in JSON or QR code format, from the cold wallet computer to an online computer.
 
 While it is important to know that quill supports cold wallet workflows, it can also be used on a computer connected to the internet without using any cold wallet workflows.
 
-Transactions that use query requests, such as obtaining an account's balance or returning proposal information, require an internet connection and cannot be run on cold wallets. This is because submitting these query calls locally would not return data, since the mainnet canisters being queried are not running on the local replica. Additionally, query calls do not require the same cryptographic validity that update calls do; therefore, they do not need a signature to be generated and can be submitted directly to the mainnet.
+Transactions that use query requests, such as obtaining an account's balance or returning proposal information, require an internet connection and cannot be run on cold wallets. This is because submitting these query calls locally would not return data, since the mainnet canisters being queried are not running on the local development environment. Additionally, query calls do not require the same cryptographic validity that update calls do; therefore, they do not need a signature to be generated and can be submitted directly to the mainnet.
 
 In this tutorial, you'll see that query calls do not generate JSON output and can be submitted directly to the mainnet, while update calls will generate a JSON response that must be saved and submitted using `quill send`.
 

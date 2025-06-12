@@ -70,7 +70,7 @@ An important note about IBE is that it requires a central authority (the KD) to 
 
 ### vetKD
 
-Within vetKeys, the core piece is the key derivation primitive, or vetKD. The key derivation capabilities provided by vetKD are designed to provide key derivation without relying on a central authority by distributing the trust amongst multiple parties, then requiring that a minimum threshold of all parties collaborate to derive the private key. To do this, first a [distributed key generation (DKG)](https://en.wikipedia.org/wiki/Distributed_key_generation) protocol is used to create master keys in a distributed way, resulting in multiple parties (e.g., nodes in a network) holding shares of the master keys. Later, when a user wants to derive a decryption key (or vetKey) based on their identity, a threshold of nodes derives the user's vetKey from the user's identity and the shares of the master key they hold.
+Within vetKeys, the core piece is the key derivation primitive, or vetKD. The key derivation capabilities provided by vetKD are designed to provide key derivation without relying on a central authority by distributing the trust amongst multiple parties, then requiring that a minimum threshold of all parties collaborate to derive the private key. To do this, first a [[distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) (DKG)](https://en.wikipedia.org/wiki/Distributed_key_generation) protocol is used to create master keys in a distributed way, resulting in multiple parties (e.g., nodes in a network) holding shares of the master keys. Later, when a user wants to derive a decryption key (or vetKey) based on their identity, a threshold of nodes derives the user's vetKey from the user's identity and the shares of the master key they hold.
 
 To further understand vetKD, consider the following scenario on ICP:
 
@@ -88,7 +88,7 @@ A crucial point to note is that this allows users to retrieve decryption keys (o
 
 ### BLS signatures
 
-[BLS signatures](https://en.wikipedia.org/wiki/BLS_digital_signature) are a type of digital signature introduced in 2001. The name BLS comes from the authors of the signature, Dan Boneh, Ben Lynn, and Hovav Shacham. Threshold BLS signatures are widely used across the Internet Computer because they are short, unique, easy to port into a distributed setting, and are fast to compute.
+[BLS signatures](https://en.wikipedia.org/wiki/BLS_digital_signature) are a type of digital signature introduced in 2001. The name BLS comes from the authors of the signature, Dan Boneh, Ben Lynn, and Hovav Shacham. Threshold [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) are widely used across the Internet Computer because they are short, unique, easy to port into a distributed setting, and are fast to compute.
 
 BLS signatures use three algorithms:
 
@@ -132,7 +132,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
 :::
 
-<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
 </TabItem>
 </AdornedTabs>
@@ -199,9 +199,9 @@ It is important to note that this backend canister does *not* perform any encryp
 
 This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/building-apps/frontends/using-an-asset-canister).
 
-### Starting a local replica
+### Starting a local development environment
 
-Before you can deploy the project's canisters, you'll need to ensure that a local replica is running with the command:
+Before you can deploy the project's canisters, you'll need to ensure that a local development environment is running with the command:
 
 ```bash
 dfx start --clean --background
@@ -376,11 +376,11 @@ Then, you can see the note has been saved in the 'Your notes' section:
 
 ## Resources
 
-- [vetKeys documentation](/docs/building-apps/network-features/encryption/vetkeys).
+- [vetKeys documentation](/docs/building-apps/network-features/vetkeys/introduction).
 
 - [vetKeys technology overview](/docs/references/vetkeys-overview).
 
-- [vetKeys example](/docs/building-apps/network-features/encryption/using-vetkeys).
+- [vetKeys example](/docs/building-apps/network-features/vetkeys/demos/send_file_to_eth).
 
 - [vetKeys discussion forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
 
