@@ -8178,6 +8178,7 @@ ic0.env_var_name_copy<es>(index : I, dst : I, offset : I, size : I) =
 I ∈ {i32, i64}
 ic0.env_var_name_exists<es>(name_src : I, name_size : I) : i32 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
+  if name_size > MAX_ENV_VAR_NAME_LENGTH then Trap {cycles_used = es.cycles_used;}
   let name_var = copy_from_canister<es>(name_src, name_size)
   if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
   if value_var ∈ dom(es.params.sysenv.environment_variables) then
@@ -8188,7 +8189,6 @@ ic0.env_var_name_exists<es>(name_src : I, name_size : I) : i32 =
 I ∈ {i32, i64}
 ic0.env_var_value_size<es>(name_src : I, name_size : I) : I =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
-  if name_size > MAX_ENV_VAR_NAME_LENGTH then Trap {cycles_used = es.cycles_used;}
   let name_var = copy_from_canister<es>(name_src, name_size)
   if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
   let value_var = es.params.sysenv.environment_variables[name_var]
