@@ -19,6 +19,8 @@ Before using the local Bitcoin regtest instance, you will need to:
 
 This page will demonstrate how to use the local Bitcoin regtest instance using the [`basic_bitcoin` example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) project written in Rust. Alternatively, you can use the Motoko variation of this project.
 
+If you are using macOS, an `llvm` version that supports the `wasm32-unknown-unknown` target is required. This is because the Rust `bitcoin` library relies on `secp256k1-sys`, which requires `llvm` to build. The default `llvm` version provided by XCode does not meet this requirement. Instead, install the [Homebrew version](https://formulae.brew.sh/formula/llvm), using `brew install llvm`.
+
 The `basic_bitcoin` example provides a simple smart contract that implements methods for sending and receiving bitcoin. It supports P2PKH (legacy), P2PWKH (SegWit), and P2TR (Taproot) address types. 
 
 Navigate into the `rust/basic_bitcoin` subdirectory of the examples repo:

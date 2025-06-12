@@ -825,6 +825,8 @@ btc: [
     ],
   },
   "build-on-btc/read-state",
+  "build-on-btc/ordinals",
+  "build-on-btc/runes",
 ],
 
 references: [

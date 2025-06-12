@@ -866,9 +866,9 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/bitcoin/using-btc/create-transactions /docs/build-on-btc/btc-transactions/create-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/using-btc/generate-addresses /docs/build-on-btc/btc-transactions/generate-addresses
   /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development /docs/build-on-btc/using-regtest
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/ordinals /docs/build-on-btc/
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/ordinals /docs/build-on-btc/ordinals
   /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state /docs/build-on-btc/read-state
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/runes /docs/build-on-btc/
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/runes /docs/build-on-btc/runes
   /docs/current/developer-docs/multi-chain/bitcoin/using-btc/sign-transactions /docs/build-on-btc/btc-transactions/sign-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions /docs/defi/chain-key-tokens/ckbtc/overview
@@ -918,8 +918,8 @@ const redirects = `
   /docs/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions /docs/build-on-btc/btc-transactions/sign-transactions
   /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
   /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state /docs/build-on-btc/read-state
-  /docs/building-apps/chain-fusion/bitcoin/using-btc/ordinals /docs/build-on-btc/
-  /docs/building-apps/chain-fusion/bitcoin/using-btc/runes /docs/build-on-btc/
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/ordinals /docs/build-on-btc/ordinals
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/runes /docs/build-on-btc/runes
   /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development /docs/build-on-btc/using-regtest
 
   ## NNS
