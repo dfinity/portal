@@ -135,6 +135,18 @@ This specification may refer to certain constants and limits without specifying 
 
     The maximum timeout (in seconds) for an inter-canister call.
 
+-   `MAX_ENV_VAR_NAME_LENGTH`
+
+    The maximum length of an environment variable name.
+
+-   `MAX_ENV_VAR_VALUE_LENGTH`
+
+    The maximum length of an environment variable value.
+
+-   `MAX_ENV_VAR_COUNT`
+
+    The maximum number of environment variables allowed.
+
 ### Principals {#principal}
 
 Principals are generic identifiers for canisters, users and possibly other concepts in the future. As far as most uses of the IC are concerned they are *opaque* binary blobs with a length between 0 and 29 bytes, and there is intentionally no mechanism to tell canister ids and user ids apart.
@@ -2186,6 +2198,7 @@ The following system calls provide access to the canister's environment variable
     Gets the size in bytes of the value for the environment variable with the given name.
 
     This system call traps if:
+      - `name_size` exceeds the maximum length of a variable name
       - `name_src+name_size` exceeds the size of the WebAssembly memory
       - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
       - The name does not match any existing environment variable.
@@ -2195,6 +2208,7 @@ The following system calls provide access to the canister's environment variable
     Copies the value of the environment variable with the given name into memory.
 
     This system call traps if:
+      - `name_size` exceeds the maximum length of a variable name
       - `name_src+name_size` exceeds the size of the WebAssembly memory
       - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
       - The name does not match any existing environment variable.
@@ -4841,6 +4855,15 @@ M.arg = candid(A)
 is_system_assigned Canister_id
 Canister_id ∉ dom(S.canisters)
 SubnetId ∈ Subnets
+// Environment variables validation conditions
+(A.settings.environment_variables = null or 
+  (|A.settings.environment_variables| ≤ MAX_ENV_VAR_COUNT and
+   ∀(name, value) ∈ A.settings.environment_variables:
+     |name| ≤ MAX_ENV_VAR_NAME_LENGTH and
+     |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
+     is_valid_utf8(name) and
+     is_valid_utf8(value)))
+
 if A.settings.controllers is not null:
   New_controllers = A.settings.controllers
 else:
@@ -4979,6 +5002,14 @@ M.callee = ic_principal
 M.method_name = 'update_settings'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
+// Environment variables validation conditions
+(A.settings.environment_variables = null or 
+  (|A.settings.environment_variables| ≤ MAX_ENV_VAR_COUNT and
+   ∀(name, value) ∈ A.settings.environment_variables:
+     |name| ≤ MAX_ENV_VAR_NAME_LENGTH and
+     |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
+     is_valid_utf8(name) and
+     is_valid_utf8(value)))
 
 Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
   memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
@@ -8167,6 +8198,7 @@ ic0.env_var_name_copy<es>(index : I, dst : I, offset : I, size : I) =
 I ∈ {i32, i64}
 ic0.env_var_value_size<es>(name_src : I, name_size : I) : I =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
+  if name_size > MAX_ENV_VAR_NAME_LENGTH then Trap {cycles_used = es.cycles_used;}
   let name_var = copy_from_canister<es>(name_src, name_size)
   if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
   let value_var = es.params.sysenv.environment_variables[name_var]
@@ -8176,6 +8208,7 @@ ic0.env_var_value_size<es>(name_src : I, name_size : I) : I =
 I ∈ {i32, i64}
 ic0.env_var_value_copy<es>(name_src : I, name_size : I, dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
+  if name_size > MAX_ENV_VAR_NAME_LENGTH then Trap {cycles_used = es.cycles_used;}
   let name_var = copy_from_canister<es>(name_src, name_size)
   if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
   let value_var = es.params.sysenv.environment_variables[name_var]
