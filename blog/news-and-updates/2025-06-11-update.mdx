@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update June 11, 2025
-description: This week, there is a new release of Motoko, the production key release for vetKeys, and new management canister endpoints to support sleeping in update calls.
+description: This week, there is a new release of Motoko, the production key release for vetKeys, and proposed new management canister endpoints to support sleeping in update calls.
 tags: [Devs]
 image: /img/blog/dev-update-blog-june-11.jpg
 ---
@@ -9,7 +9,7 @@ image: /img/blog/dev-update-blog-june-11.jpg
 
 ![June 11, 2025](../../static/img/blog/dev-update-blog-june-11.jpg)
 
-Hello developers, and welcome to this week's developer weekly update! This week, there is a new release of Motoko, the production key release for vetKeys, and new management canister endpoints to support sleeping in update calls. Let's get started!
+Hello developers, and welcome to this week's developer weekly update! This week, there is a new release of Motoko, the production key release for vetKeys, and proposed new management canister endpoints to support sleeping in update calls. Let's get started!
 
 ## Motoko v0.14.12
 
@@ -33,15 +33,15 @@ As part of the proposal, the production key must be backed up to another subnet.
 
 [Learn more about the proposed production key and important notes about the scheduled downtime](https://forum.dfinity.org/t/vetkeys-production-key-and-ii-subnet-downtime/50370).
 
-## New management canister endpoints
+## Proposal for new management canister endpoints
 
-To support sleeping during update calls, two new management canister endpoints will be added. These endpoints are:
+To support sleeping during update calls, two new management canister endpoints have been proposed. These endpoints would be:
 
-- `observe`: Introduces an `await` condition. This endpoint can only be called by a controller of a given canister or the canister itself. It can only be called through bounded-wait calls.
+- `observe`: Introduces an `await` condition. This endpoint would only be called by a controller of a given canister or the canister itself. It would only be called through bounded-wait calls.
 
-- `notify`: Used to notify callers of the `observe` endpoint of the number of pending calls with a matching canister ID and event ID. This endpoint can only be called by a controller of a given canister or the canister itself. 
+- `notify`: Used to notify callers of the `observe` endpoint of the number of pending calls with a matching canister ID and event ID. This endpoint would only be called by a controller of a given canister or the canister itself. 
 
-[Read more about the new endpoints and view examples of how to use them](https://forum.dfinity.org/t/sleeping-in-update-calls/50345).
+[Read more about the proposal and view examples of how they may be implemented](https://forum.dfinity.org/t/sleeping-in-update-calls/50345).
 
 That'll wrap up this week. Tune back in next week for more developer updates!
 
