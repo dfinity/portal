@@ -368,14 +368,14 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
+    "description": "Juno is next-gen serverless platform that helps developers build and ship secure projects at scale.",
     "usesInternetIdentity": true,
     "authOrigins": [
       "https://console.juno.build"
     ],
     "logo": "/img/showcase/juno_logo.svg",
     "screenshots": [
-      "/img/showcase/juno_social_image.jpg"
+      "/img/showcase/juno_social_image.webp"
     ]
   },
   {
@@ -744,16 +744,17 @@
     "name": "CycleOps",
     "display": "Normal",
     "website": "https://cycleops.dev",
-    "twitter": "https://twitter.com/CycleOps",
+    "twitter": "https://x.com/CycleOps",
     "github": "https://github.com/CycleOperators/CycleOps/",
     "submittableId": 36320431,
     "tags": [
-      "Tools / Infrastructure",
-      "Analytics"
+      "Tools / Infrastructure"
     ],
-    "stats": "450 canisters monitored",
-    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
-    "logo": "/img/showcase/cycleops_logo.png"
+    "stats": "2300+ canisters. 18+ SNS DAOs. >5 quintillion cycles sent to canisters. 2+ years running with 0 downtime.",
+    "description": "The DevOps console home for canister monitoring and management.\n\nTrusted by 2300+ canisters including DFINITY, Liquidium, Oisy, and 18+ SNS DAOs.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/cycleops_logo.png",
+    "oneLiner": "The DevOps console home for canister monitoring and management."
   },
   {
     "id": "dscvr",
@@ -1167,6 +1168,23 @@
       "/img/showcase/Orbit_largescreen.jpg"
     ],
     "oneLiner": "Secure, onchain, multi-approver governance for multichain assets."
+  },
+  {
+    "id": "liquity",
+    "name": "Liquity",
+    "display": "Normal",
+    "website": "https://www.liquity.org/",
+    "twitter": "https://x.com/LiquityProtocol",
+    "github": "https://github.com/liquity/bold/",
+    "youtube": "https://www.youtube.com/channel/UCEAFfXgbL5J_BgSTxG07ARw/featured",
+    "tags": [
+      "Ethereum",
+      "DeFi"
+    ],
+    "description": "The immutable and decentralized way to borrow against ETH & staked ETH\n",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Liquity_Protocol.jpg",
+    "oneLiner": "Borrow on your terms"
   },
   {
     "id": "iknows",
@@ -2607,6 +2625,23 @@
     "description": "Advancing Web3 literacy and diversity with a streamlined data pipeline, integrating robust databases, interactive visualizations, and accessible open-source tools.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Metaversity_logo.webp"
+  },
+  {
+    "id": "bity\n",
+    "name": "Bity",
+    "display": "Normal",
+    "website": "https://www.bity.com/",
+    "twitter": "https://x.com/bity",
+    "youtube": "https://www.youtube.com/@BitySA",
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "Bity is trusted crypto platform, making it easy to buy, sell, and manage digital assets with Swiss-grade security and full regulatory compliance.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Bity_Logo.jpg",
+    "oneLiner": "Trade Crypto & Gold securely while staying in complete control. "
   },
   {
     "id": "datanome",
@@ -5524,6 +5559,69 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/FactFund_Logo1748194060.jpg",
     "oneLiner": "Decentralized, transparent crowdfunding on the Internet Computer"
+  },
+  {
+    "id": "ghostmessages",
+    "name": "Ghost Messages",
+    "display": "Normal",
+    "website": "https://ghostmessages.ink/",
+    "github": "https://github.com/internetcomputerpol/GhostMessages",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Disappearing, encrypted messages read once using an ID and password, then gone forever. Share the ID and password to let someone view it a single time.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ghostmessages_logo.svg",
+    "oneLiner": "Messages that disappear like ghosts after being read"
+  },
+  {
+    "id": "A.dna",
+    "name": "A.DNA",
+    "display": "Normal",
+    "website": "https://adna.io/#contact",
+    "tags": [
+      "Enterprise",
+      "Tools / Infrastructure"
+    ],
+    "description": "A.DNA is a software solution that enables your company to store, organize, verify, share and hash its most important data and events on the blockchain.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/a_dna_cover.jpeg",
+    "oneLiner": "Corporate Governance & Compliance, built on validated Data."
+  },
+  {
+    "id": "counterparty",
+    "name": "CounterpartyICP",
+    "display": "Normal",
+    "website": "https://firemints.xyz/",
+    "twitter": "https://x.com/Universelle_io",
+    "github": "https://github.com/universelle-labs/CounterpartyICP",
+    "submittableId": 50163812,
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats":"",
+    "description": "Motoko module and DEX infrastructure enabling Counterparty asset management, order tracking, and liquidity pools on the Internet Computer. ",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/logo-universelle.svg",
+    "oneLiner": "Bridge Counterparty tokens with ICP via API and DEX"
+  },
+  {
+    "id": "bitoindexer",
+    "name": "BitoIndexer",
+    "display": "Normal",
+    "website": "https://bitomni.io",
+    "twitter": "https://x.com/Bitomni_Global",
+    "github": "https://github.com/CypherBabel-Lab/bito-indexer-canisters",
+    "submittableId": 46521362,
+    "tags": [
+      "Bitcoin"
+    ],
+    "description": "A decentralized Bitcoin meta-protocol indexer on ICP, enabling trustless, real-time indexing of Ordinals and Runes with no central servers.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/logo_bg.svg",
+    "oneLiner": "A Decentralized Bitcoin Meta-protocol Indexer"
   }
 
 ]
