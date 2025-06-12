@@ -10,12 +10,12 @@ const cardsData = [
   {
     news: {
       linkLabel: null,
-      title: "Upcoming Events",
+      title: "Caffeine demo @ WCS25",
       dateHuman: "",
       press: "",
       details: null,
-      url: "https://worldcomputer.com/",
-      imageUrl: "/img/home/news-cards/thumb_worldcomputer.webp",
+      url: "https://www.youtube.com/watch?v=GN_JleruySc",
+      imageUrl: "/img/home/news-cards/caffeine-demo.webp",
     },
   },
   {

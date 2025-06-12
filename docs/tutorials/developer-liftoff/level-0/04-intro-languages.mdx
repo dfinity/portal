@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/sZxbRAwYYMw?si=GufwOp4xBqa2F4JA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-Many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK provides a programming language with the necessary features and tools required to create and manage canisters. The [IC SDK](/docs/building-apps/getting-started/install) natively supports the [Motoko](/docs/motoko/main/getting-started/motoko-introduction) and [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) CDKs. Additionally, there are several community-created CDKs for additional languages, such as [Python](https://demergent-labs.github.io/kybra/) and [TypeScript](https://demergent-labs.github.io/azle/), that can be installed separately.
+Many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK provides a programming language with the necessary features and tools required to create and manage canisters. The [IC SDK](/docs/building-apps/getting-started/install) natively supports the [Motoko](/docs/motoko/home) and [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) CDKs. Additionally, there are several community-created CDKs for additional languages, such as [Python](https://demergent-labs.github.io/kybra/) and [TypeScript](https://demergent-labs.github.io/azle/), that can be installed separately.
 
 It is possible to write different canisters in a project in different languages. Canisters can communicate with one another using an interface description language (IDL) called [Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts), enabling canisters in different languages to share and exchange information.
 
@@ -37,7 +37,7 @@ Candid is an interface description language with the primary purpose of describi
 
 Candid is language-agnostic, allowing for interoperability between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
 
-Candid has a variety of features that make it a particularly good choice for developing dapps on the Internet Computer. These features include:
+Candid has a variety of features that make it a particularly good choice for developing dapps on the [Internet Computer](https://learn.internetcomputer.org/hc/en-us/articles/33152818663444-What-is-ICP). These features include:
 
 - Candid's implementations map the Candid value directly to the values and types of the host language, meaning developers do not construct or deconstruct some abstract Candid value.
 - Candid defines rules for how interfaces can be upgraded simply.

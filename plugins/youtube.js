@@ -13,7 +13,7 @@ const DFINITY_CHANNEL_ID = "UCOyguKlTxoDK3HRzmGbLyAg";
 
 async function getMostRecentVideo() {
   const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${DFINITY_CHANNEL_ID}&part=snippet&order=date&maxResults=1`,
+    `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${DFINITY_CHANNEL_ID}&part=snippet&order=date&maxResults=1&type=video&videoEmbeddable=true`,
     {
       headers: {
         Referer: "https://www.dfinity.org",

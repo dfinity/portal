@@ -1,6 +1,6 @@
 {
   "categoryName": "Digital Assets",
-  "categoryDescription": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of Web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
+  "categoryDescription": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of Web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multichain custody solutions and wallets.",
   "elements": [
     {
       "title": "Enterprise-grade ledgers",
@@ -19,7 +19,7 @@
     {
       "title": "Expanded Orbit framework",
       "description": "Orbit is a secure solution for digital assets and smart contract management, and this milestone will broaden its asset management capabilities by enabling seamless integration of native tokens from other blockchains, starting with ETH and ERC-20. This will create a unified platform for treasury management, allowing users to securely sign and send transactions across multiple chains. Additionally, we will introduce automatic smart contract upgrades, ensuring that users always have access to the latest security updates and features with minimal manual intervention.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Echelon",
       "eta_to_render": ""
@@ -33,7 +33,7 @@
     {
       "title": "Automatic upgrades",
       "overview": "A streamlined update system will allow users to subscribe for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Echelon"
     },
     {
@@ -45,7 +45,7 @@
     {
       "title": "Orbit Wallet v1",
       "description": "To further improve Orbit’s usability and accessibility, we will enhance the user experience through intuitive approval flows, a revamped onboarding, and a comprehensive documentation hub. These improvements will ensure the Orbit App is efficient for both individual users and teams managing their digital assets management needs.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Neutron",
       "eta_to_render": ""
@@ -65,7 +65,7 @@
     {
       "title": "UX improvements",
       "overview": "A revamped configuration flow will simplify the setup of Orbit Station, making it easier for users of all technical levels to integrate smart contracts and manage assets.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Neutron"
     },
     {

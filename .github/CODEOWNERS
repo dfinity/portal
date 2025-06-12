@@ -14,11 +14,12 @@ submodules/sdk @dfinity/sdk
 # Motoko
 submodules/motoko @dfinity/languages
 
-# Cross chain
-docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
-
 # FI
 docs/defi/ @dfinity/finint
+
+# Cross chain
+docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
+docs/building-apps/chain-fusion/ @dfinity/cross-chain-team
 
 # ProdSec
 docs/building-apps/best-practices/security/ @dfinity/product-security

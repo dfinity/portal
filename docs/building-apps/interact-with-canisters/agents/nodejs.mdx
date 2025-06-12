@@ -77,7 +77,7 @@ This implementation is similar to the native browser WebSocket API, though there
 
 - `gatewayUrl`: The WebSocket URL of the gateway.
 
-- `networkUrl`: The URL of the local replica.
+- `networkUrl`: The URL of the local development environment.
 
 - `identity`: The identity that the SDK uses to sign the client’s messages. Here you can pass the user’s Internet Identity or use a `generateRandomIdentity` helper function to generate a random temporary one.
 
@@ -149,7 +149,7 @@ This test will do the following:
 
 - Defines a test method that accepts two arguments. Inside this method, `expect` is used to check the result of the backend canister's `greet` function against the expected result.
 
-This test is written for the [default backend canister](/docs/building-apps/developing-canisters/what-are-canisters).
+This test is written for the [default backend canister](/docs/building-apps/essentials/canisters).
 
 To run this test, you will need to deploy your project and generate the necessary declarations for your canister. [Learn more about creating and deploying a project](https://internetcomputer.org/docs/tutorials/developer-liftoff/level-2/2.5-unit-testing#end-to-end-e2e-testing).
 
