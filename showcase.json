@@ -112,7 +112,7 @@
     "id": "orally-network",
     "name": "Orally",
     "display": "Large",
-    "website": "https://orally.network",
+    "website": "https://obizs-5iaaa-aaaam-abn3a-cai.icp0.io/\n",
     "twitter": "https://twitter.com/orally_network",
     "github": "https://github.com/orally-network",
     "youtube": "https://youtu.be/1ZDEyllqUcA",
@@ -5352,6 +5352,7 @@
       "Chain Fusion",
       "Analytics"
     ],
+    "stats": "5,000 users",
     "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/Mercx logo 4.54.14 PM.png"
@@ -5592,7 +5593,7 @@
     "id": "counterparty",
     "name": "CounterpartyICP",
     "display": "Normal",
-    "website": "https://firemints.xyz/",
+    "website": "https://firemints.xyz",
     "twitter": "https://x.com/Universelle_io",
     "github": "https://github.com/universelle-labs/CounterpartyICP",
     "submittableId": 50163812,
@@ -5601,7 +5602,7 @@
       "DeFi",
       "Tools / Infrastructure"
     ],
-    "stats":"",
+    "stats": "\n",
     "description": "Motoko module and DEX infrastructure enabling Counterparty asset management, order tracking, and liquidity pools on the Internet Computer. ",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/logo-universelle.svg",
@@ -5622,6 +5623,24 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/logo_bg.svg",
     "oneLiner": "A Decentralized Bitcoin Meta-protocol Indexer"
+  },
+  {
+    "id": "cypherock_wallet",
+    "name": "Cypherock Wallet",
+    "display": "Normal",
+    "website": "https://www.cypherock.com/",
+    "twitter": "https://x.com/CypherockWallet",
+    "github": "https://github.com/cypherock",
+    "youtube": "https://www.youtube.com/@CypherockWallet",
+    "submittableId": 46591926,
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "Cypherock X1 supports native ICP asset management with secure, open-source Shamir’s Secret Sharing-based key protection.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Cypherock_Logo .jpg",
+    "oneLiner": "The open-source hardware wallet with decentralized crypto security."
   }
-
 ]
