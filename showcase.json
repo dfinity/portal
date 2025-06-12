@@ -3262,19 +3262,6 @@
     "logo": "/img/showcase/ic_nft_creater_logo.png"
   },
   {
-    "id": "motoko-sns",
-    "name": "Motoko SNS",
-    "display": "Normal",
-    "website": "https://www.motokoghosts.com/",
-    "tags": [
-      "DAO",
-      "NFT"
-    ],
-    "description": "A community initiative aiming to drive awareness of the Motoko branding.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/motoko_sns_logo.png"
-  },
-  {
     "id": "codegov",
     "name": "codegov",
     "display": "Normal",
@@ -3622,11 +3609,11 @@
     "id": "motoko-sns",
     "name": "Motoko SNS",
     "display": "Normal",
-    "website": "https://2uktw-yiaaa-aaaah-adwxq-cai.icp0.io/",
+    "website": "https://www.motokoghosts.com/",
     "tags": [
       "SocialFi",
       "DAO",
-      "Creator Economy"
+      "NFT"
     ],
     "description": "A community initiative aiming to drive awareness of the Motoko branding.",
     "usesInternetIdentity": false,
