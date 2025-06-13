@@ -3611,8 +3611,8 @@
     "display": "Normal",
     "website": "https://www.motokoghosts.com/",
     "tags": [
-      "SocialFi",
       "DAO",
+      "SocialFi",
       "NFT"
     ],
     "description": "A community initiative aiming to drive awareness of the Motoko branding.",
@@ -5754,7 +5754,6 @@
       "Bitcoin",
       "Wallet"
     ],
-    "stats": "",
     "description": "ICP-ChainVault: A DeFi protocol on ICP enabling Bitcoin liquidity via ckBTC collateral, secure vaults, and trustless smart contract execution.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icp_chainvault.svg"
@@ -5791,6 +5790,23 @@
     "description": "Bitcoin Gift Cards let you send Bitcoin to anyone using just their email.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/bitcoin-gift-cards.jpg"
+  },
+  {
+    "id": "the-great-crypto-vc-jobs-board",
+    "name": "The Great Crypto VC Jobs Board",
+    "display": "Normal",
+    "website": "https://hcf2z-5yaaa-aaaal-ajxja-cai.icp0.io/",
+    "github": "https://github.com/ishaaqziyan/VC-Job-Board",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "1000+ Jobs Listed",
+    "description": "A simple platform that connects over 30 major crypto VC job boards at a glance for professionals seeking opportunities in Web3. 100% hosted on the Internet Computer.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/the-great-crypto-vc-jobs-board_logo.webp",
+    "screenshots": [
+      "/img/showcase/the-great-crypto-vc-jobs-board_screenshot.webp"
+    ],
+    "oneLiner": "Over 30 crypto VC job boards in a single glance for Web3 people."
   }
-  
 ]
