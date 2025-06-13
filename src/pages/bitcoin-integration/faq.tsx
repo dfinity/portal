@@ -457,7 +457,7 @@ function BitcoinFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href="/docs/building-apps/chain-fusion/bitcoin/overview"
+            href="/docs/build-on-btc/"
             title="Technical overview of Bitcoin integration"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -473,7 +473,7 @@ function BitcoinFaqPage() {
             title="Native bitcoin API"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/building-apps/chain-fusion/bitcoin/using-btc/local-development"
+            href="/docs/build-on-btc/using-regtest"
             title="Code native bitcoin"
           ></SmallCardWithDescription>
           <SmallCardWithDescription

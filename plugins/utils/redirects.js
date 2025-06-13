@@ -765,11 +765,11 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/references/ckbtc-reference
   /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/defi/chain-key-tokens/ckbtc/overview
-  /docs/current/developer-docs/integrations/bitcoin/ /docs/building-apps/chain-fusion/bitcoin/overview
-  /docs/current/developer-docs/integrations/bitcoin/index /docs/building-apps/chain-fusion/bitcoin/overview
-  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development
-  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state
-  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions
+  /docs/current/developer-docs/integrations/bitcoin/ /docs/build-on-btc/
+  /docs/current/developer-docs/integrations/bitcoin/index /docs/build-on-btc/
+  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/build-on-btc/using-regtest
+  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/build-on-btc/read-state
+  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
   /docs/current/developer-docs/integrations/composite-query /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/integrations /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
@@ -852,25 +852,25 @@ const redirects = `
   /docs/current/developer-docs/local-quickstart /docs/building-apps/getting-started/install
 
   ## Chain Fusion
-  /docs/current/references/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/current/references/bitcoin-how-it-works /docs/build-on-btc/
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps /docs/defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
-  /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development
-  /docs/current/developer-docs/multi-chain/bitcoin/overview /docs/building-apps/chain-fusion/bitcoin/overview
-  /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state
-  /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-comparison /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-comparison
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/create-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/create-transactions
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/generate-addresses /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/ordinals /docs/building-apps/chain-fusion/bitcoin/using-btc/ordinals
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/runes /docs/building-apps/chain-fusion/bitcoin/using-btc/runes
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/sign-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/build-on-btc/using-regtest
+  /docs/current/developer-docs/multi-chain/bitcoin/overview /docs/build-on-btc/
+  /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/build-on-btc/read-state
+  /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-comparison /docs/build-on-btc/
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow /docs/build-on-btc/btc-dev-workflow
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/create-transactions /docs/build-on-btc/btc-transactions/create-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/generate-addresses /docs/build-on-btc/btc-transactions/generate-addresses
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development /docs/build-on-btc/using-regtest
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/ordinals /docs/build-on-btc/ordinals
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state /docs/build-on-btc/read-state
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/runes /docs/build-on-btc/runes
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/sign-transactions /docs/build-on-btc/btc-transactions/sign-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps /docs/defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
@@ -908,6 +908,19 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
   /docs/current/developer-docs/multichain/ethereum/cketh /docs/defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/overview/ /docs/building-apps/essentials/network-overview
+
+  ## Build on BTC
+  /docs/building-apps/chain-fusion/bitcoin/overview /docs/build-on-btc/
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-comparison /docs/build-on-btc/
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow /docs/build-on-btc/btc-dev-workflow
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses /docs/build-on-btc/btc-transactions/generate-addresses
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/create-transactions /docs/build-on-btc/btc-transactions/create-transactions
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions /docs/build-on-btc/btc-transactions/sign-transactions
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state /docs/build-on-btc/read-state
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/ordinals /docs/build-on-btc/ordinals
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/runes /docs/build-on-btc/runes
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development /docs/build-on-btc/using-regtest
 
   ## NNS
 
@@ -1276,7 +1289,7 @@ const redirects = `
   /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger /docs/defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/motoko/main/about-motoko/ /docs/motoko/home
   /docs/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
-  /docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/build-on-btc/
   /docs/developer-docs/integrations/icrc-1/ /docs/defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/motoko/reference/language-manual /docs/motoko/language-manual
   /docs/references/ic-interface /docs/references/ic-interface-spec
@@ -1303,10 +1316,10 @@ const redirects = `
   /docs/current/tutorials/developer-liftoff/level-5/5.4-nft-tutorial /docs/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
   /docs/introduction/ /docs/home
   /docs/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/integrations/bitcoin/btc-address-management /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses
+  /docs/current/developer-docs/integrations/bitcoin/btc-address-management /docs/build-on-btc/btc-transactions/generate-addresses
   /docs/rust/main/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/getting-started/deploy/mainnet /docs/building-apps/developing-canisters/deploy
-  /docs/current/developer-docs/functionality/bitcoin /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/current/developer-docs/functionality/bitcoin /docs/build-on-btc/
   /docs/current/developer-docs/build/cdks/azle-demergent-labs https://demergent-labs.github.io/azle/
   /docs/candid-guide/candid-intro.html /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/home /docs/home

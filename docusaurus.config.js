@@ -83,6 +83,13 @@ const subnavItems = [
   {
     type: "docSidebar",
     position: "left",
+    sidebarId: "btc",
+    label: "Build on Bitcoin",
+    activeBasePath: "/docs/build-on-btc/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
     sidebarId: "motoko",
     label: "Motoko",
     activeBasePath: "/docs/motoko/",
