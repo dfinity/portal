@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/building-apps/getting-started/tokens-and-cycles).
 
-The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of March 12, 2025, the [exchange rate for 1 XDR = $1.33](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
+The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of May 22, 2025, the [exchange rate for 1 XDR = $1.35](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
 
 To estimate how much a project might cost, you can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/).
 
@@ -25,7 +25,7 @@ One downside of the reverse gas model is that it requires ongoing maintenance. C
 
 To prevent a canister from running out of cycles, a [freezing threshold](/docs/building-apps/canister-management/settings/#freezing-threshold) can be set that pauses a canister's execution if the cycles balance is expected to fall below a certain amount, or[ topping up a canister](/docs/building-apps/canister-management/topping-up) can be automated using tools like [CycleOps](https://cycleops.dev/).
 
-Learn more about the [reverse gas model](capabilities/reverse-gas).
+Learn more about the [reverse gas model](/capabilities/reverse-gas).
 
 ## Subnet replication factors
 
@@ -88,13 +88,13 @@ Setting even 1% compute allocation provides a significant advantage over caniste
 
 - **100% compute allocation**: The canister will receive 100% of an execution core and is guaranteed to be scheduled every round.
 
-Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.000013 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
+Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.0000135 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
 
-[View the cost calculation formula for more information about how costs are calculated](/docs/references/cost-calculation-formulas).
+[View the cost calculation formula for more information about how costs are calculated](/docs/references/cycles-cost-formulas).
 
 ### Storage
 
-Canisters pay for the storage used by both their [Wasm memory](/docs/building-apps/canister-management/storage#heap-memory) and [stable memory](/docs/building-apps/canister-management/storage#stable-memory). Cost is calculated based on the amount of storage and length of time, such that storing 1 GiB for 1 second costs 127k cycles, which amounts to \~4T cycles (approximately $5.35 USD) for storing 1 GiB for 1 year.
+Canisters pay for the storage used by both their [Wasm memory](/docs/building-apps/canister-management/storage#heap-memory) and [stable memory](/docs/building-apps/canister-management/storage#stable-memory). Cost is calculated based on the amount of storage and time duration, such that storing 1 GiB for 1 second costs 127k cycles, which amounts to \~4T cycles (approximately $5.35 USD) for storing 1 GiB for 1 year.
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 
@@ -103,13 +103,19 @@ Canisters can reserve storage on a subnet through the `memory_allocation` settin
 
 When a canister allocates new storage bytes, the system moves some number of cycles from the main balance into the canister’s reserved cycles balance to cover future payments for the newly allocated bytes.
 
-Operations that allocate new storage bytes are:
+Operations that potentially allocate new storage bytes are:
 
 - **Wasm instruction**: `memory.grow`.
 
 - **System API calls**: `ic0.stable_grow()` `ic0.stable64_grow()`.
 
 - **Increasing the** `memory_allocation` **in the canister settings.**
+
+- **Installing a new canister Wasm.**
+
+- **Taking and loading canister snapshots.**
+
+- **Uploading chunks to the Wasm chunk store.**
 
 The reserved cycles are not transferable, and the amount depends on how full the subnet’s memory is.
 
@@ -119,12 +125,15 @@ The reserved cycles are not transferable, and the amount depends on how full the
 
 A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in the canister’s settings. Such opted-out canisters are not able to allocate if the subnet usage is above `450GiB`.
 
+To prevent repeated allocations resulting in repeated increases of the canister’s reserved cycles balance, a memory allocation can be specified in the canister settings. This way, the canister will be charged as if the entire amount of allocated storage is being used, but no additional allocations will be performed.
+Hence, the canister’s reserved cycles balance might only increase when setting the memory allocation, but does not increase afterwards.
+The memory allocation must be set to cover the entire memory usage of the canister (Wasm memory, stable memory, snapshots, Wasm chunks, installed Wasm binary, canister history). The canister’s memory usage cannot exceed its memory allocation while a memory allocation is set.
 
 ### Special features
 
 Certain network features incur a special cost based on the feature’s unique infrastructure and functionality. These features include:
 
-- [**HTTPS outcalls**](/docs/references/cost-calculation-formulas)
+- [**HTTPS outcalls**](/docs/references/cycles-cost-formulas#https-outcalls)
 
 - [**Bitcoin API**](/docs/references/bitcoin-how-it-works)
 
@@ -173,5 +182,8 @@ Common errors related to cycles include:
 ### Topping up canisters
 
 - [Top up your canisters](/docs/building-apps/canister-management/topping-up).
-
 - [Cycles management services](/docs/building-apps/canister-management/topping-up#using-a-cycles-management-service).
+
+### Counting instructions
+- [Motoko function `countInstructions`](/docs/motoko/base/ExperimentalInternetComputer#function-countinstructions).
+- [IC interface specification](/docs/references/ic-interface-spec#system-api-performance-counter).

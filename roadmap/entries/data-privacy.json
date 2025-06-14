@@ -7,7 +7,7 @@
       "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
       "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
       "proposal": "",
-      "docs": "https://internetcomputer.org/docs/building-apps/network-features/encryption/vetkeys",
+      "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
       "eta": "Q2 2025",
       "status": "in_progress",
       "is_community": false,
@@ -35,12 +35,12 @@
       "milestone_id": "Niobium",
       "status": "in_progress",
       "eta": "Q2 2025",
-      "eta_to_render": ""
+      "eta_to_render": "June 2025"
     },
     {
       "title": "Confidentiality of canister states",
       "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Containment",
       "eta_to_render": ""
@@ -88,6 +88,17 @@
     {
       "title": "SEV-SNP for app subnets",
       "overview": "Regular app subnets receive SEV-SNP protection to make them harder to tamper with and to enable attestation of running the correct software image.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Remote attestation for users",
+      "overview": "Allowing users to verify that an API boundary node is running trusted software inside a genuine trusted execution environment.",
       "forum": "",
       "proposal": "",
       "docs": "",

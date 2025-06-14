@@ -31,31 +31,32 @@ This page will cover default project structure, how to interact with a backend c
 
 ## Project structure and files​
 
-A default application, such as the [“Hello, world!”](https://icp.ninja/projects/hello-world) example available on ICP Ninja, has the following structure:
+A default application, such as the Motoko [“Hello, world!”](https://icp.ninja/projects/hello-world) example available on ICP Ninja, has the following structure:
 
 ```
-hello
-├── README.md
+hello-world
+├── .devcontainer
+├── backend
+│   └── app.mo
+├── frontend
+│   └── index.html
+│   └── package.json
+│   └── vite.config.js
 ├── dfx.json
+├── mops.toml
 ├── package.json
-├── src
-│   ├── hello_backend
-│   │   └── main.mo
-│   └── hello_frontend
-│       ├── index.html
-│       ├── package.json
-│       └── vite.config.js
+└── README.md
 ```
 
 - `dfx.json`: Defines the project’s structure, including how to build and deploy it.
 
-- `src/hello_backend/`: Contains the backend code. This example uses Motoko.
+- `backend/app.mo`: Contains the backend code. This example uses Motoko.
 
-- `src/hello_frontend/`: Contains the frontend assets.
+- `frontend/index.html`: Contains the frontend assets.
 
 ### dfx.json​
 
-The `dfx.json` file in the root  directory defines the canisters that make up the application and where their source code is located. The `hello` project has two canisters, the backend in Motoko and an asset canister for the frontend:
+The `dfx.json` file in the root directory defines the canisters that make up the application and where their source code is located. The `hello_world` project has two canisters, the backend in Motoko and an asset canister for the frontend:
 
 ```json title=dfx.json file=../../references/samples/motoko/hello_world/dfx.json
 ```
@@ -69,9 +70,9 @@ Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
 
 Let’s breakdown what this code does:
 
-1. The code first defines an [actor](/docs/motoko/main/writing-motoko/actors-async) named `HelloWorld`. An actor is an object that can hold state and interact with the world through message passing.
+1. The code first defines an [actor](/docs/motoko/actors-async) named `HelloWorld`. An actor is an object that can hold state and interact with the world through message passing.
 
-2. Then, it defines a [stable variable](/docs/motoko/main/canister-maintenance/upgrades) called `greeting`. Stable variables are used to store data that will persist across canister upgrades. [Learn more about upgrading canisters.](/docs/building-apps/canister-management/upgrade)
+2. Then, it defines a [stable variable](/docs/building-apps/canister-management/upgrade) called `greeting`. Stable variables are used to store data that will persist across canister upgrades. [Learn more about upgrading canisters.](/docs/building-apps/canister-management/upgrade)
 
 3. Next, an [update method](/docs/building-apps/interact-with-canisters/update-calls) called `setGreeting` is defined. Update methods alter the state of the canister. This method specifically will update the text stored in the `greeting` variable.
 
@@ -97,14 +98,14 @@ If you are using the IC SDK, you can run the commands:
 
 ```
 dfx deploy --playground
-dfx canister call hello_backend --playground greet ICP
+dfx canister call backend --playground greet ICP
 ```
 
 The parts of this command are:
 
 - `dfx canister call`: The `dfx` command used to call canisters.
 
-- `hello_backend`: The canister's name.
+- `backend`: The canister's name.
 
 - `--playground`: The network the canister is deployed and running on.
 
@@ -116,7 +117,7 @@ The canister will return the following output:
 ("Hello, ICP!")
 ```
 
-The `dfx canister call` command sent a call to the `hello_backend` canister that is deployed to mainnet for free using the `--playground` argument. The call was sent to the `greet` method, which was given the input `"ICP."` The backend canister processed the call and returned the response defined in the method.
+The `dfx canister call` command sent a call to the `backend` canister that is deployed to mainnet for free using the `--playground` argument. The call was sent to the `greet` method, which was given the input `"ICP."` The backend canister processed the call and returned the response defined in the method.
 
 Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's state.
 
@@ -125,13 +126,13 @@ In contrast, `setGreeting` is an update call that **does** alter the canister’
 Make a call to the `setGreeting` function with the input `“Hi, “`:
 
 ```
-dfx canister call hello_world_backend --playground setGreeting "Hi, "
+dfx canister call backend --playground setGreeting "Hi, "
 ```
 
 Then, call the `greet` function again: 
 
 ```
-dfx canister call hello_world_backend --playground greet ICP
+dfx canister call backend --playground greet ICP
 ```
 
 Observe the new value of the `greeting` variable:
@@ -164,15 +165,15 @@ The frontend canister is essentially a web server hosting a website. When a user
   />
 </div>
 
-For example, the `src/hello_frontend/index.html` file defines a simple HTML page that embeds the JavaScript code used to communicate with the backend canister:
+For example, the `frontend/index.html` file defines a simple HTML page that embeds the JavaScript code used to communicate with the backend canister:
 
 ```html title=index.html file=../../references/samples/motoko/hello_world/frontend/index.html#L20-L33
 ```
 
-In this script, first, the backend declarations `hello_backend` are imported. Declaration files define the public methods of a canister and their input and output types. For this application, the declarations file will include the backend's `setGreeting` and `greet` methods and their `Text` input and output types. Declaration files are generated by `dfx` during the build process.
+In this script, first, the backend declarations `backend` is imported. Declaration files define the public methods of a canister and their input and output types. For this application, the declarations file will include the backend's `setGreeting` and `greet` methods and their `Text` input and output types. Declaration files are generated by `dfx` during the build process.
 
 When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 
-In this example, the user interface includes a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a `query` request to the `hello_backend` canister's `greet` method that includes the user's text input.
+In this example, the user interface includes a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a `query` request to the `backend` canister's `greet` method that includes the user's text input.
 
 The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!"`

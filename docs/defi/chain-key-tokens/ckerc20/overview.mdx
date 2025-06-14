@@ -21,7 +21,7 @@ Just like other chain-key tokens, such as [ckBTC](/docs/defi/chain-key-tokens/ck
 
 ckERC20 tokens offer the same advantages over their counterparts on Ethereum, including faster and cheaper transactions.
 
-A ckERC20 token can be created for any ERC-20 token. The process of adding a ckERC20 token involves creating an [NNS proposal](https://github.com/dfinity/ic/blob/master/rs/ethereum/ledger-suite-orchestrator/README.adoc#add-new-ckerc20).
+A ckERC20 token can be created for any ERC-20 token. The process of adding a ckERC20 token requires creating an [NNS proposal](https://github.com/dfinity/ic/blob/master/rs/ethereum/ledger-suite-orchestrator/README.adoc#add-new-ckerc20).
 
 :::info
 
@@ -39,13 +39,19 @@ The ckERC20 functionality is provided by two canisters, the **ckETH minter** and
 | [LSO](https://github.com/dfinity/ic/tree/master/rs/ethereum/ledger-suite-orchestrator)                    | [vxkom-oyaaa-aaaar-qafda-cai](https://dashboard.internetcomputer.org/canister/vxkom-oyaaa-aaaar-qafda-cai)                                                                          | [2s5qh-7aaaa-aaaar-qadya-cai](https://dashboard.internetcomputer.org/canister/2s5qh-7aaaa-aaaar-qadya-cai)                                                                          |
 | [Helper](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/minter/ERC20DepositHelper.sol) | [0x6abDA0438307733FC299e9C229FD3cc074bD8cC0](https://etherscan.io/address/0x6abDA0438307733FC299e9C229FD3cc074bD8cC0)                                                             | [0x674Cdbe64Df412DA9bAb1596e00c1520979B5A23](https://sepolia.etherscan.io/address/0x674Cdbe64Df412DA9bAb1596e00c1520979B5A23)                                                       |
 
+:::info
 
-The ckETH minter is responsible for handling ERC-20 deposits and withdrawal requests.
-The ckETH minter handles these tasks because ERC-20 transfers require an Ethereum transaction with a fee in ETH.
+Note that the helper smart contract might change. It is therefore recommended to request the ckETH minter info and extract the helper smart contract address from the response to assure you have the latest contract address.
 
-The ledger suite orchestrator is responsible for a set of _ICRC ledger suites_, one ledger suite per ckERC20 token. Each ledger suite consists of a ledger, an index, and possibly one or more archive canisters.
+:::
+
+The ckETH minter is responsible for handling ERC-20 deposits and withdrawal requests. The ckETH minter handles these tasks because ERC-20 transfers require an Ethereum transaction with a fee in ETH.
+
+The ledger suite orchestrator is responsible for a set of ICRC ledger suites, one ledger suite per ckERC20 token. Each ledger suite consists of a ledger, an index, and possibly one or more archive canisters.
+
 The ledger suite orchestrator makes it possible to handle all ckERC20 tokens in a scalable manner.
-Specifically, it can perform the following actions:
+
+Specifically, it can:
 
 - Spawn a new ICRC ledger suite when adding a new ckERC20 token via an NNS proposal.
 
@@ -53,46 +59,9 @@ Specifically, it can perform the following actions:
 
 - Top up the canisters of all managed ledger suites with cycles.
 
-## Converting ERC-20 tokens to ckERC20 tokens
-In order to convert ERC-20 tokens to the corresponding ckERC20 tokens, the following steps are carried out:
-
-1. The user submits an Ethereum transaction calling the `approve` function of the ERC-20 smart contract to allow the helper smart contract to withdraw some of the user's funds.
-
-2. The user calls the `deposit` function of the helper smart contract, specifying the ERC-20 contract, how many ERC-20 tokens should be withdrawn from the user's account, and the principal ID that should be credited for the minted ckERC20 tokens. The helper smart contract transfers the specified number of ERC-20 tokens to itself and, if successful, emits an `event` to be consumed by the ckETH minter.
-
-3. The ckETH minter periodically fetches the logs from the helper smart contract, minting ckERC20 tokens for every newly discovered `event`.
-## Converting ckERC20 tokens to ERC-20 tokens
-A user can convert ckERC20 tokens to ERC-20 tokens by following these steps:
-
-1. The user calls the `icrc2_approve` function on the ckETH ledger to approve the ckETH minter to burn some of the user's ckETH tokens as payment for the transaction fees.
-
-2. The user calls the `icrc2_approve` function on the ledger of the given ckERC20 token to approve the minter to burn some of the user's ckERC20 tokens.
-
-3. The user calls the `withdraw_erc20` function on the ckETH minter, specifying the canister ID of the ledger for the given ckERC20 token, the amount to be withdrawn, and the Ethereum destination address. The ckETH minter then issues transactions to burn the fee in ckETH and the specified amount of the ckERC20 token. If both operations succeed, it sends an Ethereum transaction that transfers the specified amount from the helper smart contract to the destination address that the user provided.
-
-More details on both flows are provided on the [ckERC20 GitHub page](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/ckerc20.adoc), whereas a detailed description of the ledger suite orchestrator can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/ledger-suite-orchestrator).
-
-The ledger and index canisters in any ckERC20 ledger suite are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [using the ICRC-1 ledger](/docs/defi/token-ledgers/usage/icrc1_ledger_usage) section.
-
 ## Deploying ckERC20 tokens
 
 Tokens deployed on other networks that use the ERC-20 standard can be launched on ICP as ckERC20 tokens. To propose a new ckERC20 be launched on the mainnet, there are several technical and non-technical steps that should be completed. Learn more in [creating a new ckERC20 token.](creating-new-ckerc20.mdx)
-
-## ckERC20 use cases
-
-ckERC20 tokens can be used in the same way as other chain-key tokens. Use cases include:
-
-- Token swaps
-
-- Decentralized exchanges
-
-- Point of sale applications and services
-
-- Crowdfunding applications
-
-- eCommerce platforms
-
-- Faster and cheaper ERC-20 transactions
 
 ## ckERC20 production application examples
 
@@ -104,7 +73,7 @@ ckERC20 tokens can be used in the same way as other chain-key tokens. Use cases 
 
 - [NFID](https://nfid.one/).
 
-## Further reading
+## Resources
 
 - [What are ckETH and ckERC-20 tokens?](https://support.dfinity.org/hc/en-us/articles/20273018220180-What-are-ckETH-and-ckERC-20-tokens)
 
