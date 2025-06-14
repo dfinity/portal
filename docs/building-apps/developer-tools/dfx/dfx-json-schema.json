@@ -997,7 +997,7 @@
         },
         "memory_allocation": {
           "title": "Memory Allocation",
-          "description": "Maximum memory (in bytes) this canister is allowed to occupy. Can be specified as an integer, or as an SI unit string (e.g. \"4KB\", \"2 MiB\")",
+          "description": "Memory (in bytes) this canister is guaranteed to be allowed to occupy. Can be specified as an integer, or as an SI unit string (e.g. \"4KB\", \"2 MiB\")",
           "default": null,
           "anyOf": [
             {
