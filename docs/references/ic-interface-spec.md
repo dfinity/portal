@@ -6130,6 +6130,15 @@ M.method_name = 'provisional_create_canister_with_cycles'
 M.arg = candid(A)
 is_system_assigned Canister_id
 Canister_id ∉ dom(S.canisters)
+// Environment variables validation conditions
+(A.settings.environment_variables = null or 
+  (|A.settings.environment_variables| ≤ MAX_ENV_VAR_COUNT and
+   ∀(name, value) ∈ A.settings.environment_variables:
+     |name| ≤ MAX_ENV_VAR_NAME_LENGTH and
+     |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
+     is_valid_utf8(name) and
+     is_valid_utf8(value)))
+
 if A.specified_id is not null:
   Canister_id = A.specified_id
 if A.settings.controllers is not null:
