@@ -396,6 +396,11 @@ build: [
       items: [
         "building-apps/chain-fusion/supported-chains",
         {
+          type: "doc",
+          label: "Bitcoin",
+          id: "build-on-btc/index",
+        },
+        {
           type: "category",
           label: "Ethereum & EVM chains",
           link: {
