@@ -1561,7 +1561,8 @@ defaulting to `I = i32` if the canister declares no memory.
 
     ic0.env_var_name_size : (index: I) -> I;                                                          // *
     ic0.env_var_name_copy : (index: I, dst: I, offset: I, size: I) -> ();                             // *
-
+    ic0.env_var_name_exists : (name_src: I, name_size: I) -> i32;                                       // *
+    
     ic0.env_var_value_size : (name_src: I, name_size: I) -> I;                                        // *
     ic0.env_var_value_copy : (name_src: I, name_size: I, dst: I, offset: I, size: I) -> ();           // *
 
@@ -2191,6 +2192,16 @@ The following system calls provide access to the canister's environment variable
       - The index is out of bounds (>= than value provided by `ic0.env_var_count`)
       - `offset+size` is greater than the size of the environment variable name
       - `dst+size` exceeds the size of the WebAssembly memory
+
+
+-   `ic0.env_var_name_exists : (name_src: I, name_size: I) -> i32`; `I ∈ {i32, i64}`
+
+    Checks if an environment variable with the given name exists.
+
+    This system call traps if:
+       - `name_size` exceeds the maximum length of a variable name
+       - `name_src+name_size` exceeds the size of the WebAssembly memory
+       - If the data referred to by `name_src`/`name_size` is not valid UTF8. 
 
 
 -   `ic0.env_var_value_size : (name_src: I, name_size: I) -> I`; `I ∈ {i32, i64}`
@@ -8201,6 +8212,17 @@ ic0.env_var_name_copy<es>(index : I, dst : I, offset : I, size : I) =
   let sorted_keys = get_sorted_env_keys<es>(es.params.sysenv.environment_variables)
   let name_var = sorted_keys[index]
   copy_to_canister<es>(dst, offset, size, name_var)
+
+I ∈ {i32, i64}
+ic0.env_var_name_exists<es>(name_src : I, name_size : I) : i32 =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  if name_size > MAX_ENV_VAR_NAME_LENGTH then Trap {cycles_used = es.cycles_used;}
+  let name_var = copy_from_canister<es>(name_src, name_size)
+  if !is_valid_utf8(name_var) then Trap {cycles_used = es.cycles_used;}
+  if value_var ∈ dom(es.params.sysenv.environment_variables) then
+    return 1
+  else 
+    return 0
 
 I ∈ {i32, i64}
 ic0.env_var_value_size<es>(name_src : I, name_size : I) : I =
