@@ -5600,7 +5600,6 @@
     "id": "bitoindexer",
     "name": "BitoIndexer",
     "display": "Normal",
-    "website": "https://bitomni.io",
     "twitter": "https://x.com/Bitomni_Global",
     "github": "https://github.com/CypherBabel-Lab/bito-indexer-canisters",
     "submittableId": 46521362,
