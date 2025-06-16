@@ -23,7 +23,7 @@ The Bitcoin API is hosted as an ICP smart contract. To make calls to the API, yo
 
 ### `bitcoin_get_utxos`
 
-Returns UTXOs for a Bitcoin address. UTXOs can be filtered by minimum confirmations (`min_confirmations`, max 144) or via `page` token.
+Returns UTXOs for a Bitcoin address. UTXOs can be filtered by minimum confirmations (`min_confirmations`, which may be at most 144) or via a `page` reference.
 
 ### `bitcoin_get_utxos_query`
 
