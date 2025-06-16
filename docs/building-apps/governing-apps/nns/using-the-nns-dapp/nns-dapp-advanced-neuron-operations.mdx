@@ -5,26 +5,86 @@ keywords: [intermediate, governance, tutorial, nns]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 
-# Spawn new neurons
+# Advanced neuron operations
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Tutorial"]} />
 
+Once you're more familiar with the NNS, you might want to explore additional
+neuron operations using the NNS dapp.
 
-Once you are a bit more familiar with the NNS, you might want to use the NNS dapp to perform additional neuron operations.
+For more background on neurons—including voting rewards and detailed
+explanations of available operations—refer to the
+[Neurons overview](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons).
 
-For more background on neurons, including the concepts of voting rewards and what the different neuron operations do in details,
-refer to the [Neurons overview](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons).
+## Maturity Disbursement
 
-## Spawn your voting rewards into a new neuron
-As you vote on proposals, either directly or by following the votes of other neurons, the maturity associated with your neuron increases, which in turn increases the rewards you earn for participating in governance.
-When the maturity for a locked stake reaches a minimum threshold of 1 ICP, you can spawn a new neuron. The spawn operation creates a new neuron that locks a new balance of ICP on the ledger.
+As you vote on proposals (either directly or by following other neurons), your
+neuron's maturity increases. This maturity represents your accumulated
+governance rewards.
 
-For example, if you have a neuron that contains 100 ICP utility tokens and it has a maturity of 10 percent, you can spawn a new neuron that contains approximately 10 new ICP tokens. For the neuron with 100 ICP tokens to reach the minimum threshold for spawning, its maturity would need to be greater than 1 percent.
+When the locked maturity reaches a **minimum threshold of 1.05 ICP**, you can
+disburse it. This operation burns the maturity and schedules the minting of new
+ICP tokens. After 7 days, the newly minted ICP will be sent to the selected
+destination address.
 
-After you spawn a new neuron from an existing neuron, the maturity for the existing neuron falls to zero.
+> **Note:** For Ledger devices, [Spawn Neuron](#spawn-new-neurons) is available.
+> Support for **Disburse Maturity** will be added later.
 
-To spawn new neurons from an existing neuron:
+### Disburse Maturity
 
-- #### Step 1:  From the NNS dapp, select 'Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
+- #### Step 1: In the [staking page](https://nns.ic0.app/neurons/?u=qoctq-giaaa-aaaaa-aaaea-cai) of the NNS dapp, navigate to the neuron whose maturity you want to disburse. Click **Disburse** in the **Maturity** section.
 
-- #### Step 2:  Click **Spawn Neuron**.
+![Disbursement button placement](../../_attachments/disburse-maturity-disbursement-button-placement.png)
+
+- #### Step 2: In the form that opens, select both the percentage of maturity to disburse and the destination account.
+
+![Provide disbursement options](../../_attachments/disburse-maturity-provide-disbursement-options.png)
+
+You can choose one of your associated accounts or enter any NNS account
+identifier manually. Manual input is available either as plain text or via QR
+code (found by clicking the **Receive** button on the wallet page).
+
+![Manual destination address](../../_attachments/disburse-maturity-manual-destination-address.png)
+
+You can copy the account identifier from any wallet page.
+
+![Where to get an account identifier](../../_attachments/disburse-maturity-where-to-get-an-account-identifier.png)
+
+- #### Step 3: After clicking **Disburse**, you'll be taken to an overview step where you can review and confirm the disbursement parameters.
+
+![Confirmation step](../../_attachments/disburse-maturity-confirmation-step.png)
+
+- #### Step 4: When a disbursement is in progress, a **View Active Disbursements** button appears in the **Maturity** section.
+
+!["View Active Disbursements" button](../../_attachments/disburse-maturity-view-active-disbursements-button.png)
+
+This opens the **Active Disbursements** modal, which shows all disbursements in
+progress—including their start time, destination address, and the amount of
+maturity being disbursed.
+
+!["Active Disbursements" modal](../../_attachments/disburse-maturity-active-disbursements-modal.png)
+
+---
+
+## Spawn New Neurons
+
+### Spawn your voting rewards into a new neuron
+
+The spawn operation creates a new neuron by locking a new balance of ICP on the
+ledger.
+
+For example, if you have a neuron with 100 ICP and 10% maturity, spawning will
+create a new neuron with approximately 10 ICP. To meet the threshold for
+spawning, maturity must exceed **1%** of the staked amount.
+
+After spawning, the original neuron's maturity resets to zero.
+
+### How to spawn a new neuron
+
+- #### Step 1:
+
+In the NNS dapp, open the **Neuron Staking** section, then select the neuron
+that has reached the required maturity.
+
+- #### Step 2:
+  Click **Spawn Neuron**, then follow the prompts to complete the process.
