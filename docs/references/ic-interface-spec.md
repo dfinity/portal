@@ -3934,6 +3934,7 @@ The initial state of the IC is
   reserved_balance_limits = ();
   wasm_memory_limit = ();
   wasm_memory_threshold = ();
+  environment_variables = ();
   on_low_wasm_memory_hook_status = ();
   certified_data = ();
   canister_history = ();
@@ -4898,7 +4899,7 @@ else:
 if A.settings.environment_variables is not null:
   New_environment_variables = A.settings.environment_variables
 else:
-  New_environment_variables = S.environment_variables[A.canister_id]
+  New_environment_variables = []
 
 Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation, null, EmptyCanister.wasm_state)
 New_balance = M.transferred_cycles - Cycles_reserved
@@ -6130,7 +6131,6 @@ M.method_name = 'provisional_create_canister_with_cycles'
 M.arg = candid(A)
 is_system_assigned Canister_id
 Canister_id ∉ dom(S.canisters)
-// Environment variables validation conditions
 (A.settings.environment_variables = null or 
   (|A.settings.environment_variables| ≤ MAX_ENV_VAR_COUNT and
    ∀(name, value) ∈ A.settings.environment_variables:
@@ -6176,7 +6176,7 @@ else:
 if A.settings.environment_variables is not null:
   New_environment_variables = A.settings.environment_variables
 else:
-  New_environment_variables = S.environment_variables[A.canister_id]
+  New_environment_variables = []
 
 
 Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation,  null, EmptyCanister.wasm_state)
