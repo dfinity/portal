@@ -804,7 +804,7 @@ function ChainFusion() {
               </motion.h2>
               <MotionLink
                 variants={transitions.item}
-                href="/samples?selectedDomains=Multi-chain"
+                href="/samples?selectedDomains=Multichain"
                 className="link-primary link-with-icon mt-4 md:mt-8"
               >
                 <LinkArrowRight /> See all
@@ -2070,7 +2070,7 @@ function ChainFusion() {
               <img
                 src="/img/chainfusion/blockchains.webp"
                 alt=""
-                className="absolute w-1/3 top-[74%] -right-[2%] z-20 pointer-events-none"
+                className="absolute w-1/4 top-[79%] right-[2%] z-20 pointer-events-none"
               />
               <img
                 src="/img/chainfusion/dapps.webp"
@@ -2170,9 +2170,7 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
-        <News content="chainfusion" />
-
-        <section className="mb-24 md:mb-40">
+        <section className="my-24 md:my-40">
           <AnimateSpawn
             className="container-6"
             variants={transitions.container}
