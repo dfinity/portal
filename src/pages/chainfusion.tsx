@@ -178,7 +178,7 @@ const developersData = [
     title: "Bitcoin UTXO API",
     description:
       "Developers can create smart contracts that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. The Bitcoin UTXO API allows reading from and writing to the Bitcoin network, e.g. UTXOs and balances or the percentiles of the fees for the last 10'000 transactions.",
-    link: "/docs/building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow",
+    link: "/docs/build-on-btc/btc-dev-workflow",
   },
   {
     title: "EVM RPC Canister",
