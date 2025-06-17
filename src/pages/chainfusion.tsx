@@ -740,7 +740,7 @@ function ChainFusion() {
                   variants={transitions.fadeIn}
                   src="/img/chainfusion/benefits.webp"
                   alt=""
-                  className="w-full object-cover"
+                  className="w-[70%] object-cover"
                 />
               </div>
             </div>
