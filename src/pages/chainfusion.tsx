@@ -219,7 +219,7 @@ const BenefitFeature: React.FC<FeatureProps> = ({
   description,
   fullW,
 }) => (
-  <div className="flex flex-col items-start text-left bg-infinite rounded-xl p-8 text-white">
+  <div className="flex flex-col items-start text-left bg-[#1E005D] rounded-xl p-8 text-white">
     <div className="flex items-start">
       <img loading="lazy" src={icon} className="w-6 aspect-square" />
     </div>
@@ -576,12 +576,22 @@ function ChainFusion() {
               <div className="tw-heading-5 md:tw-heading-3 self-start mt-8 md:mt-12 text-white">
                 Unifying Web3
               </div>
-              <Link
-                href="#code-snippets"
-                className="button-white self-start mt-8 md:mt-12"
-              >
-                Build Multichain dapps
-              </Link>
+              <div className="flex justify-start md:justify-center items-center gap-6 mt-8 md:mt-12 w-full">
+                <Link
+                  href="/docs/building-apps/chain-fusion/overview"
+                  className="button-white self-start"
+                >
+                  Build dapps
+                </Link>
+                <Link
+                  href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
+                  target="_blank"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  Learn More
+                </Link>
+              </div>
             </div>
           </section>
           <motion.div
@@ -616,7 +626,235 @@ function ChainFusion() {
               blockchains.
             </h3>
           </AnimateSpawn>
+        </section>
+        <section className="container-12 block md:flex gap-4 mt-24 md:mt-32">
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 py-1/10 md:py-2/12 !pb-64">
+                <h5 className="tw-heading-4 md:tw-heading-3">Hello, Bitcoin</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  BUILD on Bitcoin at the speed of ICP. Bitcoin on ICP is not
+                  just a future promise, developers are already building
+                  incredible use cases.
+                </p>
+                <Link className="button-outline-white-30 mt-3" href="/bitcoin">
+                  Bitcoin integration{" "}
+                </Link>
+                <Link
+                  href="/docs/references/bitcoin-how-it-works"
+                  className="link-white link-with-icon mt-5"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  DEV DOCS
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-0 pointer-events-none ">
+                <img
+                  src="/img/chainfusion/bitcoin.webp"
+                  className="object-cover size-[55%] md:translate-y-[15%] translate-x-[20%]"
+                />
+              </div>
+            </div>
+          </article>
 
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 py-1/10 md:py-2/12 !pb-64">
+                <h5 className="tw-heading-4 md:tw-heading-3">GM Ethereum</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  Full support for Ethereum and other EVM chains is now live
+                  allowing ICP smart contracts to augment EVM-based smart
+                  contracts with additional functionality.
+                </p>
+                <Link
+                  className="button-outline-white-30 mt-3"
+                  href="/ethereum-integration"
+                >
+                  Ethereum Integration
+                </Link>
+                <Link
+                  href="/docs/building-apps/chain-fusion/ethereum/overview/"
+                  className="link-white link-with-icon mt-5"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  DEV DOCS
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-0  pointer-events-none ">
+                <img
+                  src="/img/chainfusion/eth.webp"
+                  className="object-cover size-full sm:w-1/2 md:w-full"
+                />
+              </div>
+            </div>
+          </article>
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 py-1/10 md:py-2/12 !pb-64">
+                <h5 className="tw-heading-4 md:tw-heading-3">Hey Solana</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  Support for ICP canisters to communicate directly with the
+                  Solana blockchain is here, enabling blockchain queries and
+                  signed transaction submissions.
+                </p>
+
+                <Link
+                  href="/docs/building-apps/chain-fusion/solana/overview/"
+                  className="link-white link-with-icon"
+                >
+                  <LinkArrowRight></LinkArrowRight>
+                  DEV DOCS
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-0  pointer-events-none ">
+                <img
+                  src="/img/chainfusion/solana.webp"
+                  className="object-cover size-[55%] md:translate-y-[30%] translate-x-1/3"
+                />
+              </div>
+            </div>
+          </article>
+        </section>
+        <section className="container-10 pt-12 md:pt-12 pb-24 md:py-40">
+          <AnimateSpawn
+            className="md:flex md:items-center "
+            variants={transitions.container}
+          >
+            <div className="md:w-[35%] pt-10 md:pt-40 flex flex-col text-left">
+              {isMobile ? (
+                <LogoNewLine className="w-2/3" color="black" />
+              ) : (
+                <LogoNewLine className="w-[88%]" color="black" />
+              )}
+              <motion.h4 className="tw-heading-3 md:tw-heading-60 mt-2 -ml-[3px] md:-ml-1">
+                Benefits
+              </motion.h4>
+              <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
+                Seamless and secure interoperability between different
+                blockchains unlocks new possibilities.
+              </motion.p>
+            </div>
+            <div className="md:w-[65%] relative">
+              <div className="pointer-events-none md:absolute translate-x-1/12 md:-translate-y-5/12 ">
+                <motion.img
+                  variants={transitions.fadeIn}
+                  src="/img/chainfusion/benefits.webp"
+                  alt=""
+                  className="w-[70%] object-cover"
+                />
+              </div>
+            </div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="mt-12 md:mt-30 grid grid-cols-1 md:grid-cols-2 gap-5"
+            variants={transitions.container}
+          >
+            {benefitsData.map((benefit, index) => (
+              <BenefitFeature key={index} {...benefit} />
+            ))}
+          </AnimateSpawn>
+        </section>
+
+        {/* Code Snippets Section */}
+        <section
+          id="code-snippets"
+          className="pt-20 md:pt-30 text-left md:text-center mb-20"
+        >
+          {" "}
+          <AnimateSpawn
+            className="container-6 "
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <motion.h3 className="tw-heading-3 md:tw-heading-60 mb-1 text-gradient-purple">
+              {isMobile ? (
+                <LogoNewLine
+                  className="block w-2/3 mb-2"
+                  color="text-gradient-purple"
+                />
+              ) : (
+                <LogoSm className="w-full" color="text-gradient-purple" />
+              )}
+              enables Bitcoin and Ethereum to talk to each other
+            </motion.h3>
+
+            <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
+              This code snippet is written in both Rust and the Motoko
+              programming language but is also possible for Solidity,
+              TypeScript, Python, and other languages.
+            </motion.p>
+
+            <CodeSnippets />
+          </AnimateSpawn>
+        </section>
+
+        <AnimateSpawn
+          className="container-12 pb-16 md:pb-40"
+          el={motion.section}
+          variants={transitions.container}
+        >
+          <div className="container-10 !px-0 md:grid grid-cols-[1fr,2fr] gap-5 md:gap-10 ">
+            <div>
+              {" "}
+              <motion.h2
+                className="tw-heading-3 mb-0 md:tw-heading-40"
+                variants={transitions.item}
+              >
+                Sample Codes & Startup Requests
+              </motion.h2>
+              <MotionLink
+                variants={transitions.item}
+                href="/samples?selectedDomains=Multichain"
+                className="link-primary link-with-icon mt-4 md:mt-8"
+              >
+                <LinkArrowRight /> See all
+              </MotionLink>
+            </div>
+            <motion.p
+              className="mb-0 mt-2 tw-paragraph md:tw-lead-sm"
+              variants={transitions.item}
+            >
+              Explore the integration of Chain Fusion with the Internet Computer
+              through concise code examples and startup collaboration
+              opportunities. Access ready-to-use code snippets and connect with
+              innovative startups to accelerate your projects. Unleash the
+              potential of Chain Fusion and Internet Computer synergy for your
+              next venture.
+            </motion.p>
+          </div>
+
+          <div className="mt-4 md:mt-20 ">
+            {" "}
+            <ContentCard id="sample-code">
+              <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+                {[
+                  "IC ETH Starter",
+                  "Ordinal Canister",
+                  "OISY",
+                  "PoS app for ckBTC",
+                ]
+                  .map((title) =>
+                    sampleItems.find(
+                      (item) =>
+                        item.title.toLowerCase() === title.toLowerCase()!
+                    )
+                  )
+                  .map((sample) => (
+                    <Card
+                      key={sample.index}
+                      image={sample.image}
+                      title={sample.title}
+                      domain={sample.domains[0]}
+                      body={sample.body}
+                      links={sample.links}
+                    />
+                  ))}
+              </div>
+            </ContentCard>
+          </div>
+        </AnimateSpawn>
+
+        <section className="bg-[#1E005D]">
           <AnimateSpawn
             className="container-6 pt-24 md:pt-24 "
             variants={transitions.container}
@@ -1832,7 +2070,7 @@ function ChainFusion() {
               <img
                 src="/img/chainfusion/blockchains.webp"
                 alt=""
-                className="absolute w-1/3 top-[74%] -right-[2%] z-20 pointer-events-none"
+                className="absolute w-1/4 top-[79%] right-[2%] z-20 pointer-events-none"
               />
               <img
                 src="/img/chainfusion/dapps.webp"
@@ -1848,193 +2086,7 @@ function ChainFusion() {
           </AnimateSpawn>
         </section>
 
-        {/* Code Snippets Section */}
-        <section
-          id="code-snippets"
-          className="pt-20 md:pt-30 text-left md:text-center mb-20"
-        >
-          {" "}
-          <AnimateSpawn
-            className="container-6 "
-            variants={transitions.container}
-            el={motion.section}
-          >
-            <motion.h3 className="tw-heading-3 md:tw-heading-60 mb-1 text-gradient-purple">
-              {isMobile ? (
-                <LogoNewLine
-                  className="block w-2/3 mb-2"
-                  color="text-gradient-purple"
-                />
-              ) : (
-                <LogoSm className="w-full" color="text-gradient-purple" />
-              )}
-              enables Bitcoin and Ethereum to talk to each other
-            </motion.h3>
-
-            <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
-              This code snippet is written in both Rust and the Motoko
-              programming language but is also possible for Solidity,
-              TypeScript, Python, and other languages.
-            </motion.p>
-
-            <CodeSnippets />
-          </AnimateSpawn>
-        </section>
-
-        <section className="container-12 block md:flex gap-4 mt-24 md:mt-32">
-          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
-            <div className="md:flex-row items-stretch	relative z-1">
-              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
-                <h5 className="tw-heading-4 md:tw-heading-3">Hello, Bitcoin</h5>
-                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
-                  BUILD on Bitcoin at the speed of ICP. Bitcoin on ICP is not
-                  just a future promise, developers are already building
-                  incredible use cases.
-                </p>
-                <Link className="button-outline-white-30 mt-6" href="/bitcoin">
-                  Bitcoin integration{" "}
-                </Link>
-              </div>
-              <div className="absolute z-0 bottom-0 pointer-events-none ">
-                <img
-                  src="/img/chainfusion/btc.webp"
-                  className="object-cover size-full md:translate-y-[9%] sm:w-1/2 md:w-full"
-                />
-              </div>
-            </div>
-          </article>
-
-          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
-            <div className="md:flex-row items-stretch	relative z-1">
-              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
-                <h5 className="tw-heading-4 md:tw-heading-3">GM Ethereum</h5>
-                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
-                  Full support for Ethereum and other EVM chains is now live
-                  allowing ICP smart contracts to augment EVM-based smart
-                  contracts with additional functionality.
-                </p>
-                <Link
-                  className="button-outline-white-30 mt-6"
-                  href="/ethereum-integration"
-                >
-                  Ethereum Integration
-                </Link>
-              </div>
-              <div className="absolute z-0 bottom-0  pointer-events-none ">
-                <img
-                  src="/img/chainfusion/eth.webp"
-                  className="object-cover size-full sm:w-1/2 md:w-full"
-                />
-              </div>
-            </div>
-          </article>
-        </section>
-        <section className="container-10 pt-12 md:pt-12 pb-24 md:py-40">
-          <AnimateSpawn
-            className="md:flex md:items-center "
-            variants={transitions.container}
-          >
-            <div className="md:w-[35%] pt-10 md:pt-40 flex flex-col text-left">
-              {isMobile ? (
-                <LogoNewLine className="w-2/3" color="black" />
-              ) : (
-                <LogoNewLine className="w-[88%]" color="black" />
-              )}
-              <motion.h4 className="tw-heading-3 md:tw-heading-60 mt-2 -ml-[3px] md:-ml-1">
-                Benefits
-              </motion.h4>
-              <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
-                Seamless and secure interoperability between different
-                blockchains unlocks new possibilities.
-              </motion.p>
-            </div>
-            <div className="md:w-[65%] relative">
-              <div className="pointer-events-none md:absolute translate-x-1/12 md:-translate-y-5/12 ">
-                <motion.img
-                  variants={transitions.fadeIn}
-                  src="/img/chainfusion/benefits.webp"
-                  alt=""
-                  className="w-full object-cover"
-                />
-              </div>
-            </div>
-          </AnimateSpawn>
-          <AnimateSpawn
-            className="mt-12 md:mt-30 grid grid-cols-1 md:grid-cols-2 gap-5"
-            variants={transitions.container}
-          >
-            {benefitsData.map((benefit, index) => (
-              <BenefitFeature key={index} {...benefit} />
-            ))}
-          </AnimateSpawn>
-        </section>
-
-        <AnimateSpawn
-          className="container-12 pb-16 md:pb-40"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <div className="container-10 !px-0 md:grid grid-cols-[1fr,2fr] gap-5 md:gap-10 ">
-            <div>
-              {" "}
-              <motion.h2
-                className="tw-heading-3 mb-0 md:tw-heading-40"
-                variants={transitions.item}
-              >
-                Sample Codes & Startup Requests
-              </motion.h2>
-              <MotionLink
-                variants={transitions.item}
-                href="/samples?selectedDomains=Multi-chain"
-                className="link-primary link-with-icon mt-4 md:mt-8"
-              >
-                <LinkArrowRight /> See all
-              </MotionLink>
-            </div>
-            <motion.p
-              className="mb-0 mt-2 tw-paragraph md:tw-lead-sm"
-              variants={transitions.item}
-            >
-              Explore the integration of Chain Fusion with the Internet Computer
-              through concise code examples and startup collaboration
-              opportunities. Access ready-to-use code snippets and connect with
-              innovative startups to accelerate your projects. Unleash the
-              potential of Chain Fusion and Internet Computer synergy for your
-              next venture.
-            </motion.p>
-          </div>
-
-          <div className="mt-4 md:mt-20 ">
-            {" "}
-            <ContentCard id="sample-code">
-              <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-                {[
-                  "IC ETH Starter",
-                  "Ordinal Canister",
-                  "OISY",
-                  "PoS app for ckBTC",
-                ]
-                  .map((title) =>
-                    sampleItems.find(
-                      (item) =>
-                        item.title.toLowerCase() === title.toLowerCase()!
-                    )
-                  )
-                  .map((sample) => (
-                    <Card
-                      key={sample.index}
-                      image={sample.image}
-                      title={sample.title}
-                      domain={sample.domains[0]}
-                      body={sample.body}
-                      links={sample.links}
-                    />
-                  ))}
-              </div>
-            </ContentCard>
-          </div>
-        </AnimateSpawn>
-        <section className="bg-infinite text-white pt-20 md:pt-30 pb-24 md:pb-40 text-left md:text-center ">
+        <section className="bg-[#1E005D] text-white pt-20 md:pt-30 pb-24 md:pb-40 text-left md:text-center ">
           {" "}
           <AnimateSpawn
             className="container-6 "
@@ -2118,7 +2170,7 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
-        <section className="mt-24 md:mt-40">
+        <section className="my-24 md:my-40">
           <AnimateSpawn
             className="container-6"
             variants={transitions.container}
@@ -2136,44 +2188,17 @@ function ChainFusion() {
                 href="/docs/building-apps/chain-fusion/overview"
                 className="button-primary"
               >
-                Build now{" "}
+                Build dapps
               </Link>
-              <Link href="/use-cases" className="link-primary link-with-icon">
-                <LinkArrowRight /> See more ICP Use cases
+              <Link
+                href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
+                target="_blank"
+                className="link-primary link-with-icon"
+              >
+                <LinkArrowRight /> LEARN MORE
               </Link>
             </motion.div>
           </AnimateSpawn>
-        </section>
-        <News content="chainfusion" />
-
-        <section className="my-8 md:my-10" id="subscribe">
-          <Newsletter
-            fields={[
-              {
-                name: "EMAIL",
-                placeholder: "Email",
-                type: "email",
-                required: true,
-              },
-            ]}
-            ctaLabel="Get updates!"
-            postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
-            decoration={
-              <img
-                src="/img/newsletter/email-image-2.webp"
-                alt=""
-                loading="lazy"
-              />
-            }
-            className="mb-20 relative "
-          >
-            <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
-              Sign up for email updates{" "}
-              <span className="text-white-60">
-                to keep up to date with the Internet Computer
-              </span>
-            </h2>
-          </Newsletter>
         </section>
       </main>
     </Layout>
