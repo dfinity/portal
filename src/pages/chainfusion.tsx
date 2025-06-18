@@ -445,7 +445,7 @@ function ChainFusion() {
                   "linear-gradient(180deg, rgba(30, 0, 93, 0.00) 0%, #1E005D 100%",
               }}
             ></div>
-            <div className="relative z-1 container-10 m-48 md:m-60 !mx-auto flex flex-col justify-center items-center">
+            <div className="relative z-1 container-10 m-36 mt-48 md:m-60 !mx-auto flex flex-col justify-center items-center">
               <div className="self-end tw-heading-6 md:tw-heading-3 flex-end"></div>
               <svg
                 className="self-center mt-4 md:mt-9 w-full"
@@ -573,7 +573,7 @@ function ChainFusion() {
                   </clipPath>
                 </defs>
               </svg>
-              <div className="tw-heading-5 md:tw-heading-3 self-start mt-8 md:mt-12 text-white">
+              <div className="tw-heading-5 md:tw-heading-3 self-start mt-0 md:mt-12 text-white">
                 Unifying Web3
               </div>
               <div className="flex justify-start md:justify-center items-center gap-6 mt-8 md:mt-12 w-full">
