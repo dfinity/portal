@@ -178,18 +178,6 @@
       "in_beta": false
     },
     {
-      "title": "Native USDC integration",
-      "overview": "Bringing USD Coin (USDC) natively to ICP.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
       "title": "BTC ordinals indexer and inscriber",
       "overview": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help it become more decentralized.",
       "status": "",
