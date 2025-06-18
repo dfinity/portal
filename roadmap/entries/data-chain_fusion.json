@@ -178,8 +178,8 @@
       "in_beta": false
     },
     {
-      "title": "Native USDC integration through CCTP",
-      "overview": "Bringing USD Coin (USDC) natively to ICP via integration with Circle's CCTP (Cross-Chain Transfer Protocol).",
+      "title": "Native USDC integration",
+      "overview": "Bringing USD Coin (USDC) natively to ICP.",
       "forum": "",
       "proposal": "",
       "docs": "",
