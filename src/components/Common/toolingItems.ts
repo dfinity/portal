@@ -106,6 +106,15 @@ export const dfinityToolingItems = [
 ];
 export const communityToolingItems = [
   {
+    title: "Canister DNS",
+    tags: ["operations", "domains", "service",],
+    description: "A tool to easily connect your custom domain to your canister URL, supporting both main domains and subdomains.",
+    links: { 
+      external: "https://canisterdns.stevekimoi.me/", 
+      github: "https://github.com/Stephen-Kimoi/canister-dns" 
+    },
+  }, 
+  {
     title: "ic-repl",
     tags: ["development", "operations", "testing"],
     description:
