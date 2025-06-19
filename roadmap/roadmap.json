@@ -1300,6 +1300,18 @@
             "in_beta": false
           },
           {
+            "title": "Native USDC integration through CCTP",
+            "overview": "Bringing USD Coin (USDC) natively to ICP via integration with Circle's CCTP (Cross-Chain Transfer Protocol).",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "future",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": ""
+          },
+          {
             "title": "BTC ordinals indexer and inscriber",
             "overview": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help it become more decentralized.",
             "status": "",
