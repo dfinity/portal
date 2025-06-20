@@ -748,9 +748,10 @@
     "github": "https://github.com/CycleOperators/CycleOps/",
     "submittableId": 36320431,
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Analytics",
+      "Enterprise"
     ],
-    "stats": "2300+ canisters. 18+ SNS DAOs. >5 quintillion cycles sent to canisters. 2+ years running with 0 downtime.",
     "description": "The DevOps console home for canister monitoring and management.\n\nTrusted by 2300+ canisters including DFINITY, Liquidium, Oisy, and 18+ SNS DAOs.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/cycleops_logo.png",
@@ -5807,6 +5808,54 @@
       "/img/showcase/the-great-crypto-vc-jobs-board_screenshot.webp"
     ],
     "oneLiner": "Over 30 crypto VC job boards in a single glance for Web3 people."
+  },
+  {
+    "id": "scaffold_icp",
+    "name": "Scaffold-ICP",
+    "display": "Normal",
+    "website": "https://github.com/gianalarcon/scaffold-icp",
+    "github": "https://github.com/gianalarcon/scaffold-icp",
+    "submittableId": 50383864,
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Scaffold-ICP is a modern, type-safe development framework designed to accelerate Internet Computer (ICP) dApp development.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/scaffold_icp.svg",
+    "oneLiner": "Toolkit for building dApps on ICP."
+  },
+  {
+    "id": "ictest",
+    "name": "ic-test",
+    "display": "Normal",
+    "website": "https://github.com/wasm-forge/ic-test",
+    "github": "https://github.com/wasm-forge/ic-test",
+    "submittableId": 49468998,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "\"ic-test\" is a command-line tool to set up Rust canister tests on the Internet Computer (IC).\n",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ic-test.svg",
+    "oneLiner": "Use ic-test to setup testing of your canisters"
+  },
+  {
+    "id": "safeldea",
+    "name": "SafeIdea ICP VetKey Prototype Fork",
+    "display": "Normal",
+    "website": "https://vetkeys.shipstone.com/",
+    "twitter": "x.com/Shipstone_labs",
+    "github": "https://github.com/shipstone-labs/vetkd-devkit",
+    "submittableId": 49127160,
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "description": "SafeIdea is a fork of DFINITY's vetKeys, adding timed decryption, anonymous access, enhanced permissions, and audit support. It is a backward-compatible prototype.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/safeidea-logo.svg",
+    "oneLiner": "SafeIdea fork is vetKey with more features but still compatible!"
   }
   
 ]
