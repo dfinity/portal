@@ -844,7 +844,6 @@ references: [
       "references/ii-spec",
       "references/icrc1-standard",
       "references/ledger",
-      "references/supported-signatures",
       "references/t-sigs-how-it-works",
       "references/vc-spec",
       "references/vetkeys-overview"
