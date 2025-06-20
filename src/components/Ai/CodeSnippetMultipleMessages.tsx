@@ -7,32 +7,27 @@ import CodeBlockString from "@site/src/theme/CodeBlock/Content/String";
 const codeSnippets: Record<string, string> = {
   motoko: `import LLM "mo:llm";
 
-await LLM.chat(#Llama3_1_8B, [
-  {
-    role = #system_;
+await LLM.chat(#Llama3_1_8B).withMessages ([
+  #system_ {
     content = "You are a helpful assistant.";
   },
-  {
-    role = #user;
+  #user_ {
     content = "How big is the sun?";
-  }
-]);`,
-  rust: `use ic_llm::{Model, ChatMessage, Role};
+  },
+]).send();`,
+  rust: `use ic_llm::{Model, ChatMessage};
 
-ic_llm::chat(
-  Model::Llama3_1_8B,
-  vec![
-      ChatMessage {
-          role: Role::System,
-          content: "You are a helpful assistant".to_string(),
-      },
-      ChatMessage {
-          role: Role::User,
-          content: "How big is the sun?".to_string(),
-      },
-  ],
-)
-.await;`,
+ic_llm::chat(Model::Llama3_1_8B)
+  .with_messages(vec![
+    ChatMessage::System {
+      content: "You are a helpful assistant".to_string(),
+    },
+    ChatMessage::User {
+      content: "How big is the sun?".to_string(),
+    },
+  ])
+  .send()
+  .await;`,
   typescript: `import * as llm from "@dfinity/llm";
 
 await llm.chat(llm.Model.Llama3_1_8B, [

@@ -149,42 +149,44 @@ Note that in case of high system load, a request to compute a threshold signatur
 
 ## API fees
 
-The fees for the t-sig APIs are as defined below. The threshold ECDSA test key and Schnorr test key reside on a regular-sized (13-node) application subnet, while the threshold ECDSA production key resides on a 31-node-sized fiduciary subnet. The subnet size of the subnet where the t-sig key resides and the signatures are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of November 23, 2022, has been used.
+The fees for the t-sig APIs are as defined below. The threshold ECDSA test key and Schnorr test key reside on a regular-sized (13-node) application subnet, while the threshold ECDSA production key resides on a 31-node-sized fiduciary subnet. The subnet size of the subnet where the t-sig key resides and the signatures are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees.
 
 
 :::note
 If a canister using this feature is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
 :::
 
+Fees in USD are calculated using the XDR conversion rate as of May 22, 2025.
+
 ### Fees for the t-ECDSA test key
 
 | Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10_000_000_000              | $0.0132551                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10_000_000_000              | $0.0135482                  |
 
 ### Fees for the t-ECDSA production key
 
 | Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26_153_846_153              | $0.0346672                  |
+| Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26_153_846_153              | $0.0354325                  |
 
 ### Fees for the t-Schnorr test key
 
 | Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold Schnorr signing              | For computing one threshold Schnorr signature (`sign_with_schnorr`)                                                | 10_000_000_000              | $0.0130886                  |
+| Threshold Schnorr signing              | For computing one threshold Schnorr signature (`sign_with_schnorr`)                                                | 10_000_000_000              | $0.0135482                  |
 
 ### Fees for the t-Schnorr production key
 
 | Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold Schnorr signing              | For computing one threshold Schnorr signature (`sign_with_schnorr`)                                                | 26_153_846_153              | $0.0346672                  |
+| Threshold Schnorr signing              | For computing one threshold Schnorr signature (`sign_with_schnorr`)                                                | 26_153_846_153              | $0.0354325                  |
 
 ## Environments
 
 In order to facilitate developers throughout the canister development lifecycle on ICP, these features are available in both the SDK for local development and testing as well as on ICP for pre-production testing and production operation of canisters.
 
-### SDK
+### Local development environment
 
 The development of canisters is typically done in the developer's local environment, facilitated by the use of the SDK. The SDK has been extended such that the management canister API for threshold ECDSA and threshold Schnorr is available in the local development environment. Thus, canisters using the t-sig APIs can be run locally for development and testing purposes. They are always enabled in the SDK, so no further user action is required in order to make use of the APIs.
 
@@ -192,7 +194,7 @@ When the replica of the SDK environment is first started up, a new t-sig key is 
 
 For the technically interested readers, it is important to note that the SDK uses the exact same implementations of t-sigs as the mainnet, however the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on ICP.
 
-### Internet Computer
+### Mainnet
 
 Any canister on any subnet of ICP can call the t-sig APIs exposed by the management canister. The calls are routed via XNet communication to the t-sig-enabled subnet that holds the keys referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently).
 
