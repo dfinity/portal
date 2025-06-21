@@ -2994,6 +2994,7 @@
     "name": "sneed",
     "display": "Normal",
     "website": "https://icsneed.com/?wp=sneed",
+    "twitter": "https://x.com/icsneed",
     "tags": [
       "DeFi",
       "DAO"
@@ -5856,6 +5857,40 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/safeidea-logo.svg",
     "oneLiner": "SafeIdea fork is vetKey with more features but still compatible!"
+  },
+  {
+    "id": "onesec",
+    "name": "Onesec.to",
+    "display": "Normal",
+    "website": "https://onesec.to/",
+    "twitter": "https://x.com/OneSecBridge",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "description": "Decentralized Cross-Chain Transfers."
+  },
+  {
+    "id": "b4b_app",
+    "name": "B4B.app",
+    "display": "Normal",
+    "website": "https://b4b.app/",
+    "twitter": "https://x.com/b4b_world",
+    "tags": [
+      "Creator Economy"
+    ]
+  },
+  {
+    "id": "Taco_dao",
+    "name": "TacoDao",
+    "display": "Normal",
+    "website": "https://tacodao.com/",
+    "twitter": "https://x.com/tacodaoicp",
+    "tags": [
+      "DAO",
+      "DeFi"
+    ],
+    "usesInternetIdentity": true
   }
-  
 ]
