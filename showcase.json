@@ -112,7 +112,7 @@
     "id": "orally-network",
     "name": "Orally",
     "display": "Large",
-    "website": "https://orally.network",
+    "website": "https://obizs-5iaaa-aaaam-abn3a-cai.icp0.io/\n",
     "twitter": "https://twitter.com/orally_network",
     "github": "https://github.com/orally-network",
     "youtube": "https://youtu.be/1ZDEyllqUcA",
@@ -368,14 +368,14 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "Juno is an open-source platform that combines the power of Web3 with the ease and simplicity of Web2 development, enabling programmers to build decentralized apps faster and easier than ever before.",
+    "description": "Juno is next-gen serverless platform that helps developers build and ship secure projects at scale.",
     "usesInternetIdentity": true,
     "authOrigins": [
       "https://console.juno.build"
     ],
     "logo": "/img/showcase/juno_logo.svg",
     "screenshots": [
-      "/img/showcase/juno_social_image.jpg"
+      "/img/showcase/juno_social_image.webp"
     ]
   },
   {
@@ -744,16 +744,18 @@
     "name": "CycleOps",
     "display": "Normal",
     "website": "https://cycleops.dev",
-    "twitter": "https://twitter.com/CycleOps",
+    "twitter": "https://x.com/CycleOps",
     "github": "https://github.com/CycleOperators/CycleOps/",
     "submittableId": 36320431,
     "tags": [
       "Tools / Infrastructure",
-      "Analytics"
+      "Analytics",
+      "Enterprise"
     ],
-    "stats": "450 canisters monitored",
-    "description": "Proactive, automated, no-code canister management for the Internet Computer.",
-    "logo": "/img/showcase/cycleops_logo.png"
+    "description": "The DevOps console home for canister monitoring and management.\n\nTrusted by 2300+ canisters including DFINITY, Liquidium, Oisy, and 18+ SNS DAOs.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/cycleops_logo.png",
+    "oneLiner": "The DevOps console home for canister monitoring and management."
   },
   {
     "id": "dscvr",
@@ -3261,18 +3263,6 @@
     "logo": "/img/showcase/ic_nft_creater_logo.png"
   },
   {
-    "id": "motdex",
-    "name": "Motoko SNS",
-    "display": "Normal",
-    "website": "https://motodex.dexstudios.games",
-    "tags": [
-      "Gaming"
-    ],
-    "description": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/motoko_sns_logo.png"
-  },
-  {
     "id": "codegov",
     "name": "codegov",
     "display": "Normal",
@@ -3620,11 +3610,11 @@
     "id": "motoko-sns",
     "name": "Motoko SNS",
     "display": "Normal",
-    "website": "https://2uktw-yiaaa-aaaah-adwxq-cai.icp0.io/",
+    "website": "https://www.motokoghosts.com/",
     "tags": [
-      "SocialFi",
       "DAO",
-      "Creator Economy"
+      "SocialFi",
+      "NFT"
     ],
     "description": "A community initiative aiming to drive awareness of the Motoko branding.",
     "usesInternetIdentity": false,
@@ -3876,7 +3866,7 @@
     "name": "Motodex",
     "display": "Normal",
     "website": "https://motodex.dexstudios.games/",
-    "twitter": "https://twitter.com/openbisea",
+    "twitter": "https://x.com/motodex_game",
     "tags": [
       "Gaming",
       "NFT",
@@ -5351,6 +5341,7 @@
       "Chain Fusion",
       "Analytics"
     ],
+    "stats": "5,000 users",
     "description": "MercX brings regulated, institutional-grade mutual funds and fixed income products on-chain, offering seamless access and instant settlement on ICP.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/Mercx logo 4.54.14 PM.png"
@@ -5586,6 +5577,285 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/a_dna_cover.jpeg",
     "oneLiner": "Corporate Governance & Compliance, built on validated Data."
+  },
+  {
+    "id": "counterparty",
+    "name": "CounterpartyICP",
+    "display": "Normal",
+    "website": "https://firemints.xyz",
+    "twitter": "https://x.com/Universelle_io",
+    "github": "https://github.com/universelle-labs/CounterpartyICP",
+    "submittableId": 50163812,
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "stats": "\n",
+    "description": "Motoko module and DEX infrastructure enabling Counterparty asset management, order tracking, and liquidity pools on the Internet Computer. ",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/logo-universelle.svg",
+    "oneLiner": "Bridge Counterparty tokens with ICP via API and DEX"
+  },
+  {
+    "id": "bitoindexer",
+    "name": "BitoIndexer",
+    "display": "Normal",
+    "twitter": "https://x.com/Bitomni_Global",
+    "github": "https://github.com/CypherBabel-Lab/bito-indexer-canisters",
+    "submittableId": 46521362,
+    "tags": [
+      "Bitcoin"
+    ],
+    "description": "A decentralized Bitcoin meta-protocol indexer on ICP, enabling trustless, real-time indexing of Ordinals and Runes with no central servers.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/logo_bg.svg",
+    "oneLiner": "A Decentralized Bitcoin Meta-protocol Indexer"
+  },
+  {
+    "id": "cypherock_wallet",
+    "name": "Cypherock Wallet",
+    "display": "Normal",
+    "website": "https://www.cypherock.com/",
+    "twitter": "https://x.com/CypherockWallet",
+    "github": "https://github.com/cypherock",
+    "youtube": "https://www.youtube.com/@CypherockWallet",
+    "submittableId": 46591926,
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "Cypherock X1 supports native ICP asset management with secure, open-source Shamir’s Secret Sharing-based key protection.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Cypherock_Logo .jpg",
+    "oneLiner": "The open-source hardware wallet with decentralized crypto security."
+  },
+  {
+    "id": "blockchain-bingo",
+    "name": "Blockchain Bingo",
+    "display": "Normal",
+    "website": "https://stcjb-wyaaa-aaaap-akm2a-cai.icp0.io/",
+    "github": "https://github.com/dickhery/Blockchain-Bingo-on-ICP?tab=readme-ov-file#description",
+    "tags": [
+      "Gaming",
+      "SocialFi"
+    ],
+    "description": "Blockchain Bingo is a decentralized application (dApp) that brings the classic game of Bingo to the blockchain. Leveraging the power of the Internet Computer, Bingo offers a secure and transparent platform where players can generate unique Bingo cards, participate in real-time games, and experience the thrill of winning wether it's a free game or game for a prize of ICP. Created from the template that is generated with dfx new.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/blockchain-bingo_logo.jpg",
+    "oneLiner": "Live Bingo games hosted 100% on the Internet Computer Protocol blockchain."
+  },
+  {
+    "id": "secure-image-chain",
+    "name": "Secure Image Chain",
+    "display": "Normal",
+    "website": "https://secureimagechain.com",
+    "twitter": "https://x.com/SecureChainDFX",
+    "tags": [
+      "SocialFi",
+      "DeFi"
+    ],
+    "stats": "1000+ Members on OpenChat",
+    "description": "Secure Image Chain is a blockchain-based platform that allows users to securely send and share images. By using our platform, users also earn DFileX (DFX) tokens for their engagement. Built on the ICP blockchain, it provides a fully decentralized and secure environment for image sharing  user data.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/secure-image-chain_logo.webp",
+    "screenshots": [
+      "/img/showcase/secure-image-chain_screenshot.webp"
+    ],
+    "oneLiner": "Send images fully on blockchain securely and earn DFX tokens."
+  },
+  {
+    "id": "icnews",
+    "name": "IC News",
+    "display": "Normal",
+    "website": "https://ic.news",
+    "twitter": "https://x.com/ic_news_",
+    "tags": [
+      "AI"
+    ],
+    "description": "Community-Driven On-Chain News, Powered by Internet Computer.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icnews_logo.svg",
+    "screenshots": [
+      "/img/showcase/icnews_screenshot.png"
+    ]
+  },
+  {
+    "id": "coineo",
+    "name": "Coineo",
+    "display": "Normal",
+    "website": "https://coineo.app",
+    "twitter": "https://x.com/coineo_app",
+    "tags": [
+      "Analytics",
+      "Bitcoin"
+    ],
+    "description": "Coineo is a portfolio tracker for ICP, ICRC tokens, and the Bitcoin network. Track all your wallets in one unified dashboard. Calculate profit and loss. Get insights on your portfolio's performance.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/coineo_logo.webp"
+  },
+  {
+    "id": "linkpin",
+    "name": "Linkpin",
+    "display": "Normal",
+    "website": "https://3sfzu-siaaa-aaaal-qr6uq-cai.icp0.io/",
+    "github": "https://github.com/tagoso/linkpin",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A minimal bookmark manager on ICP. Save your favorite websites securely, using II login. You can also easily check click counts and last visit.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/linkpin_logo.jpg",
+    "screenshots": [
+      "/img/showcase/linkpin_screenshot.webpg"
+    ],
+    "oneLiner": "Bookmark on Blockchain"
+  },
+  {
+    "id": "proof-of-paint",
+    "name": "Proof of paint",
+    "display": "Normal",
+    "website": "https://rqbwu-jaaaa-aaaao-a356a-cai.icp0.io/",
+    "github": "https://github.com/xanderread/proof-of-paint",
+    "submittableId": 48718088,
+    "tags": [
+      "Wallet",
+      "Creator Economy"
+    ],
+    "description": "Proof of paint is a street art gallery dApp where artists can be authed anonymously and choose aliases. ",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Proof_of_paint.jpg"
+  },
+  {
+    "id": "mutual-link",
+    "name": "Mutual link",
+    "display": "Normal",
+    "website": "https://wzt7x-ayaaa-aaaam-qddyq-cai.icp0.io/",
+    "github": "https://github.com/daeu81404/mutual-link",
+    "tags": [
+      "Wallet"
+    ],
+    "description": "Mutualink transforms the medical referral system, enabling individuals to control their medical data and access better healthcare services.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/mutual_link.svg"
+  },
+  {
+    "id": "icp-chainvault",
+    "name": "ICP-ChainVault",
+    "display": "Normal",
+    "website": "https://chain-vault-front-lq0atklpo-samarabdelhameeds-projects.vercel.app/_app.html",
+    "twitter": "https://x.com/icpChainvault/status/1896146028619030679",
+    "github": "https://github.com/samarabdelhameed/icp-chainvault",
+    "youtube": "https://www.youtube.com/watch?v=MYfcEY3ve-U",
+    "submittableId": 45857881,
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Wallet"
+    ],
+    "description": "ICP-ChainVault: A DeFi protocol on ICP enabling Bitcoin liquidity via ckBTC collateral, secure vaults, and trustless smart contract execution.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icp_chainvault.svg"
+  },
+  {
+    "id": "bq-labs",
+    "name": "BQ Labs",
+    "display": "Normal",
+    "website": "https://www.bqlabs.xyz/",
+    "twitter": "https://x.com/bq_labs/",
+    "github": "https://github.com/bitquid-labs/testnet-v1",
+    "submittableId": 48429136,
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "BQ Labs is a decentralized insurance protocol enabling modular underwriting, dynamic risk pricing, and tokenized risk solutions for Bitcoin and DeFi.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/BQ Labs.svg"
+  },
+  {
+    "id": "bitcoin-gift-cards",
+    "name": "Bitcoin Gift Cards",
+    "display": "Normal",
+    "website": "https://btc-gift-cards.com",
+    "twitter": "https://x.com/f0i",
+    "github": "https://github.com/f0i/btcgiftcards",
+    "submittableId": 49162161,
+    "tags": [
+      "Chain Fusion",
+      "Bitcoin"
+    ],
+    "description": "Bitcoin Gift Cards let you send Bitcoin to anyone using just their email.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/bitcoin-gift-cards.jpg"
+  },
+  {
+    "id": "the-great-crypto-vc-jobs-board",
+    "name": "The Great Crypto VC Jobs Board",
+    "display": "Normal",
+    "website": "https://hcf2z-5yaaa-aaaal-ajxja-cai.icp0.io/",
+    "github": "https://github.com/ishaaqziyan/VC-Job-Board",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "1000+ Jobs Listed",
+    "description": "A simple platform that connects over 30 major crypto VC job boards at a glance for professionals seeking opportunities in Web3. 100% hosted on the Internet Computer.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/the-great-crypto-vc-jobs-board_logo.webp",
+    "screenshots": [
+      "/img/showcase/the-great-crypto-vc-jobs-board_screenshot.webp"
+    ],
+    "oneLiner": "Over 30 crypto VC job boards in a single glance for Web3 people."
+  },
+  {
+    "id": "scaffold_icp",
+    "name": "Scaffold-ICP",
+    "display": "Normal",
+    "website": "https://github.com/gianalarcon/scaffold-icp",
+    "github": "https://github.com/gianalarcon/scaffold-icp",
+    "submittableId": 50383864,
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Scaffold-ICP is a modern, type-safe development framework designed to accelerate Internet Computer (ICP) dApp development.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/scaffold_icp.svg",
+    "oneLiner": "Toolkit for building dApps on ICP."
+  },
+  {
+    "id": "ictest",
+    "name": "ic-test",
+    "display": "Normal",
+    "website": "https://github.com/wasm-forge/ic-test",
+    "github": "https://github.com/wasm-forge/ic-test",
+    "submittableId": 49468998,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "\"ic-test\" is a command-line tool to set up Rust canister tests on the Internet Computer (IC).\n",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ic-test.svg",
+    "oneLiner": "Use ic-test to setup testing of your canisters"
+  },
+  {
+    "id": "safeldea",
+    "name": "SafeIdea ICP VetKey Prototype Fork",
+    "display": "Normal",
+    "website": "https://vetkeys.shipstone.com/",
+    "twitter": "x.com/Shipstone_labs",
+    "github": "https://github.com/shipstone-labs/vetkd-devkit",
+    "submittableId": 49127160,
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "description": "SafeIdea is a fork of DFINITY's vetKeys, adding timed decryption, anonymous access, enhanced permissions, and audit support. It is a backward-compatible prototype.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/safeidea-logo.svg",
+    "oneLiner": "SafeIdea fork is vetKey with more features but still compatible!"
   }
   
 ]

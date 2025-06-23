@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.42.0 (2025-06-06) {#0_42_0}
+* New system API `ic0.root_key_{size, copy}` for fetching the public key of the IC root key.
+
 ### 0.41.0 (2025-06-02) {#0_41_0}
 * Management canister API for threshold key derivation (vetKD).
 

@@ -1,0 +1,69 @@
+---
+title: Developer weekly update June 18, 2025
+description: This week, there are new releases of the stable-structures library and Canbench, plus a new feature for auto-adding cycles to calls to the management canister.
+tags: [Devs]
+image: /img/blog/dev-update-blog-june-18.jpg
+---
+
+# Developer weekly update June 18, 2025
+
+![June 18, 2025](../../static/img/blog/dev-update-blog-june-18.jpg)
+
+Hello developers, and welcome to this week's developer weekly update! This week, there are new releases of the `stable-structures` library and Canbench, plus a new feature for auto-adding cycles to calls to the management canister. Let's get started!
+
+## `stable-structures` v0.6.9
+
+A new release of the `stable-structures` library has been published! This release includes dozens of changes and updates. Here are some of the highlights:
+
+- Performance improvements for read-heavy cases other smaller performance upgrades.
+
+- New BTreeSet structure.
+
+- Initial publication of the Stable Structures Book.
+
+- Improved benchmarks.
+
+- CI and codebase improvements.
+
+[Read the full release notes](https://github.com/dfinity/stable-structures/releases/tag/v0.6.9).
+
+
+## Canbench v0.2.0
+
+Alongside the new `stable-structures` library, a new version of Canbench has also been released. Highlights of `v0.2.0` include:
+
+- Cleaner benchmark output.
+
+- Summary reports that show final status, total benchmarks, improvements, regressions, etc.
+
+- Support for CSV reports through `--csv` flag.
+
+- GitHub CI integration scripts.
+
+[Read the full details on the developer forum](https://forum.dfinity.org/t/canbench-0-2-0-released-improved-output-ci-integration-and-a-breaking-change/50511).
+
+## Automatic cycles attachment to management canister calls
+
+Motoko package `ic` v2.1.0 has an exciting new feature: Automatic cycle calculation!
+
+For example, instead of hardcoding cycles amounts:
+
+```motoko no-repl
+await (with cycles = 230_949_972_000) IC.http_request(args)
+```
+
+Now, you can use:
+
+```motoko no-repl
+import IC "mo:ic/Call";
+...
+await IC.httpRequest(args)
+```
+
+This will calculate the minimum amount of cycles needed and automatically attach them to the call.
+
+[Learn more in the `ic` Mops package documentation](https://mops.one/ic/docs/Call).
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY
