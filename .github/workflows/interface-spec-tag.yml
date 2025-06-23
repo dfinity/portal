@@ -1,0 +1,23 @@
+name: Interface Specification
+on:
+  pull_request_target:
+    paths:
+      - .github/workflows/interface-spec.yml
+      - docs/references/http-gateway-protocol-spec.md
+      - docs/references/ic-interface-spec.md
+      - docs/references/_attachments/certificates.cddl
+      - docs/references/_attachments/http-gateway.did
+      - docs/references/_attachments/ic.did
+      - docs/references/_attachments/interface-spec-changelog.md
+      - docs/references/_attachments/requests.cddl
+jobs:
+  interface-spec-tag:
+    name: Tag PR with interface-spec
+    if: ${{ github.event_name == 'pull_request_target' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Tag PR with interface-spec
+      run: |
+        gh pr edit ${{ github.event.pull_request.number }} --add-label interface-spec
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
