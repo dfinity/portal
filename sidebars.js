@@ -445,11 +445,6 @@ build: [
     {
       type: "category",
       label: "Security",
-      link:
-        {
-          type: "doc",
-          id: "building-apps/security/overview",
-        },
         items: [
         {
           type: "category",
