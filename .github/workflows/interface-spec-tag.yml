@@ -1,4 +1,4 @@
-name: Interface Specification
+name: Interface Specification Tag
 on:
   pull_request_target:
     paths:
@@ -13,7 +13,6 @@ on:
 jobs:
   interface-spec-tag:
     name: Tag PR with interface-spec
-    if: ${{ github.event_name == 'pull_request_target' }}
     runs-on: ubuntu-latest
     steps:
     - name: Tag PR with interface-spec
