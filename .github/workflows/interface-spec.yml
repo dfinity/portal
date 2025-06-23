@@ -34,6 +34,7 @@ jobs:
       run: |
         curl -L https://github.com/dfinity/candid/releases/download/2023-07-25/didc-linux64 -o didc
         chmod +x didc
+        sha256sum docs/references/_attachments/ic.did
         ./didc check docs/references/_attachments/http-gateway.did
         ./didc check docs/references/_attachments/ic.did
   interface-spec-tag:
