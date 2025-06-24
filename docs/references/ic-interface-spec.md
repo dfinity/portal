@@ -2753,11 +2753,11 @@ It is important to note the following for the usage of the `POST` method:
 
 - There is no guarantee that all sent requests are as specified by the canister.
 
-Furthermore, for all types of methods, the following holds:
+Furthermore, for all methods, the following holds:
 
 - There are no confidentiality guarantees on the request or response content.
 
-- In the replicated mode, if the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request. In the non-replicated mode, there are no such guarantees.
+- In the replicated mode, if the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request. In the non-replicated mode, there are no such guarantees. The canister should not assume the integrity of the response and must check it by some other means.
 
 For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
