@@ -2731,19 +2731,33 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 This method makes an HTTP request to a given URL and returns the HTTP response, possibly after a transformation.
 
-The canister should aim to issue *idempotent* requests, meaning that it must not change the state at the remote server, or the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
+The method can be called in either replicated or non-replicated mode. In the replicated mode, the same HTTP request is performed by multiple IC replicas, providing strong guarantees on the integrity of the response. In the non-replicated mode, the request is made by a single replica, with weak integrity guarantees.
 
-The responses for all identical requests must match too. However, a web service could return slightly different responses for identical idempotent requests. For example, it may include some unique identification or a timestamp that would vary across responses.
+:::note
 
-For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request. The final response will only be available to the calling canister.
+The non-replicated mode is considered EXPERIMENTAL. Canister developers must be aware that the API may evolve in a non-backward-compatible way.
+
+:::
+
+Both because of replication and to handle network issues, the canister should aim to issue *idempotent* requests, meaning that it must not change the state at the remote server, or that the remote server has the means to identify duplicated requests. Otherwise, the risk of failure increases.
+
+The responses for all identical requests must match too in the replicated mode. However, a web service could return slightly different responses for identical idempotent requests. For example, it may include some unique identification or a timestamp that would vary across responses.
+
+For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request (both in replicated and non-replicated modes). Only the transformed response will be available to the calling canister.
 
 Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
 
 It is important to note the following for the usage of the `POST` method:
 
-- The calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request.
+- The calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request. This is especially important in the replicated mode.
 
-- There are no confidentiality guarantees on the request content. There is no guarantee that all sent requests are as specified by the canister. If the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request.
+- There is no guarantee that all sent requests are as specified by the canister.
+
+Furthermore, for all types of methods, the following holds:
+
+- There are no confidentiality guarantees on the request or response content.
+
+- In the replicated mode, if the canister receives a response, then at least one request that was sent matched the canister's request, and the response was to that request. In the non-replicated mode, there are no such guarantees.
 
 For security reasons, only HTTPS connections are allowed (URLs must start with `https://`). The IC uses industry-standard root CA lists to validate certificates of remote web servers.
 
@@ -2761,7 +2775,15 @@ The following parameters should be supplied for the call:
 
 -   `body` - optional, the content of the request's body
 
--   `transform` - an optional record that includes a function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function.
+-   `transform` - an optional record that includes a function that transforms raw responses to sanitized responses, and a byte-encoded context that is provided to the function upon invocation, along with the response to be sanitized. If provided, the calling canister itself must export this function
+
+-   `is_replicated` - optional, selecting between replicated and non-replicated modes.
+
+:::note
+
+The `is_replicated` field is considered EXPERIMENTAL.
+
+:::
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
@@ -2775,9 +2797,9 @@ The returned response (and the response provided to the `transform` function, if
 
 The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is equal to `max_response_bytes`, if provided, otherwise the default value of `2MB` (`2,000,000B`) is used as the limit. Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
 
-When the transform function is invoked by the system due to a canister HTTP request, the caller's identity is the principal of the management canister. This information can be used by developers to implement access control mechanism for this function.
+When the transform function is invoked by the system due to a canister HTTP request, the caller's identity is the principal of the management canister. This information can be used by developers to implement an access control mechanism for this function.
 
-The following additional limits apply to HTTP requests and HTTP responses from the remote sever:
+The following additional limits apply to HTTP requests and HTTP responses from the remote server:
 
 -   the number of headers must not exceed `64`,
 
