@@ -27,7 +27,7 @@ To etch a Rune through a canister on ICP, first you will need to call the `schno
 Once you have generated a taproot address for your canister, you will need to write a canister method that creates an etching transaction, then signs that transaction with your canister's Schnorr public key. Here's an example of an etching transaction written in Rust:
 
 ```rust reference
-https://github.com/pramitgaha21/etcher/blob/ca6c9a1423a597b5f544470eb0e6f0954279b4a4/src/etcher_backend/src/lib.rs#L284-L323
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/runes.rs#L79-L107
 ```
 
 ## Querying Rune information
@@ -70,5 +70,7 @@ Returns:
 
 
 ## Resources
+
+- [Basic Bitcoin example project](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).
 
 - [Runes indexer canister](https://github.com/octopus-network/runes-indexer).
