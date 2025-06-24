@@ -73,6 +73,8 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 
 Expose a canister endpoint that can fetch the IBE private key of the user making the call.
 
+Here we use the encoding of the caller as the identity. Since this value is already implicitly authenticated using II, no further verification by the canister is required. In constrast if the canister wished to support some other sort of identity (for example an Ethereum address or an email address) it would have to validate that the caller was the valid owner of the relevant identity type. Likely this would be accomplished using HTTP outcalls.
+
 <AdornedTabs groupId="languages">
 
 <TabItem value="rs" label="Rust" default>
