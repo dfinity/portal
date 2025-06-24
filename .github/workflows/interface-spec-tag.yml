@@ -17,6 +17,6 @@ jobs:
     steps:
     - name: Tag PR with interface-spec
       run: |
-        gh pr edit ${{ github.event.pull_request.number }} --add-label interface-spec
+        gh pr edit ${{ github.event.pull_request.number }} --add-label interface-spec --repo dfinity/portal
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
