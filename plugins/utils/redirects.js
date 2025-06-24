@@ -1527,6 +1527,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/motoko/quickstart/01-intro /docs/motoko/home
   /docs/current/motoko/base/Array /docs/motoko/base/Array
   /docs/motoko/getting-started/motoko-introduction /docs/motoko/home
+  /docs/quickstart/local-quickstart /docs/building-apps/getting-started/quickstart
   /docs/references/supported-signatures /docs/references/t-sigs-how-it-works
 `
 
