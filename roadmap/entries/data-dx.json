@@ -9,7 +9,7 @@
       "proposal": "",
       "docs": "",
       "eta": "Q3 2024",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": true,
       "in_beta": false,
       "imported": true
@@ -122,7 +122,7 @@
     {
       "title": "dfx ergonomics",
       "overview": "Better developer experience when using the ICP SDK.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -205,7 +205,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "future",
+      "status": "in_progress",
       "is_community": true,
       "in_beta": false
     },
@@ -216,7 +216,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false
     },
@@ -256,7 +256,7 @@
     {
       "title": "PoC enabling REST & JSON-centric interfaces",
       "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
