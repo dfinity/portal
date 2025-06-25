@@ -40,7 +40,7 @@ It is a **ready-to-use solution**. It offers:
 
 Each encrypted map is associated with a single vetKey and one access control scope. Regardless of how many key-value pairs it contains, only one `vetKey` is needed per map. All key-value pairs inherit the same access permissions as the map itself.
 
-An encrypted map functions similarly to a standard map in most programming languages, with keys and values represented as byte strings. However, the values are encrypted. The key difference is that encrypted maps are not meant to be used directly by the canister. Any data encrypted or decrypted by the canister is considered public. Instead, users handle encryption and decryption to maintain privacy.
+An encrypted map functions similarly to a standard map in most programming languages, with keys and values represented as byte strings. However, the values are encrypted. The key difference is that encrypted maps are not meant to be used directly by the canister. Any plaintext data in canister memory should be considered publically visible.  To maintain privacy of data in `EncryptedMaps`, encryption and decryption occurs in the frontend, and the canister only ever sees data encrypted under a key it does not know.
 
 A key advantage of `EncryptedMaps` is that encryption is entirely opaque to developers using the frontend APIs. Developers specify where the data should go, namely, the map name and key, but not how it's encrypted or decrypted. The encryption is designed to be secure, efficient, and to minimize the number of `vetKeys` that need to be fetched via the mainnet management canister.
 
@@ -153,9 +153,9 @@ const result = await encryptedMaps.setUserRights(mapOwner, mapName, user, access
 
 A developer using `EncryptedMaps` can add new functionalities to or around `EncryptedMaps` in a few ways:
 
-- Code extensions that don't require functional modifications of `EncryptedMaps` can be implemented very simply. For example, if the developer wants to add a counter that would count how many times a particular user called a particular API.
+- Code extensions that don't require functional modifications of `EncryptedMaps` can be implemented very simply. For example, if the developer wants to add a counter that would count how many times a particular user called a particular API, they can simply choose a unique name cooresponding to the user and API call, and get/set the counter value as required.
 
-- The existing methods of `EncryptedMaps` can be used in different ways. For example, one may want to add a user to multiple keys in one go. To achieve that, the frontend and canister API would need to define the batch addition of access permissions, but there would need to be no changes to the backend `EncryptedMaps` component.
+- The existing methods of `EncryptedMaps` can be used in different ways. For example, one may want to add a user to multiple keys in one go. To achieve that, the frontend and canister API would need to define the batch addition of access permissions, but this would not require any change to the backend `EncryptedMaps` component.
 
 - The internal fields of the `EncryptedMaps` backend components are public, and thus, it is possible to add new functions to `EncryptedMaps`. For example, `EncryptedMaps` provide a method to remove user's access permissions for a key. The developer can easily implement a function that removes user access from all keys in one method.
 

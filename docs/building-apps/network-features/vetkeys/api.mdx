@@ -75,6 +75,11 @@ sequenceDiagram
 
 Expose the vetKD endpoints in the backend canister API so that the frontend can retrieve and verify vetKeys.
 
+In this example, an encoding of the caller's identity is used as the `input` parameter to `VetKDDeriveKeyArgs`.
+Since the caller of a canister is authenticated using II and public key cryptography, the dapp is sure that
+the key returned is both unique to that caller, and that caller is the only party which can retrieve that
+particular key.
+
 <AdornedTabs groupId="languages">
 <TabItem value="rust" label="Rust" default>
 
