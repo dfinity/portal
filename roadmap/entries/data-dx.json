@@ -81,7 +81,7 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Atlas",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Open Caffeine projects",
@@ -90,8 +90,8 @@
       "milestone_id": "Atlas"
     },
     {
-      "title": "Generate a project with AI",
-      "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
+      "title": "Publishing Projects to the ICP Mainnet",
+      "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
       "status": "in_progress",
       "milestone_id": "Atlas"
     },
