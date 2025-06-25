@@ -2749,7 +2749,7 @@ Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests
 
 It is important to note the following for the usage of the `POST` method:
 
-- The calling canister must make sure that the remote server is able to handle idempotent requests sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request. This is especially important in the replicated mode.
+- The calling canister must make sure that the remote server is able to recognize requests as duplicates of each other and apply only one of them, even if they are sent from multiple sources. This may require, for example, to set a certain request header to uniquely identify the request. This is especially important in the replicated mode.
 
 - There is no guarantee that all sent requests are as specified by the canister.
 
