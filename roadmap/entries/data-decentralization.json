@@ -27,7 +27,7 @@
       "milestone_id": "Levitron",
       "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
       "status": "in_progress",
-      "eta_to_render": "June 2025"
+      "eta_to_render": "July 2025"
     },
     {
       "title": "Generation 3 node hardware and rewards",
@@ -46,7 +46,7 @@
     {
       "title": "Generation 3 node hardware",
       "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Knot"
     },
     {
