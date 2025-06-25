@@ -800,7 +800,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "stats": "100,000+ downloads",
+    "stats": "400,000+ downloads",
     "description": "Onchain package manager for Motoko. Mops makes it easy to discover, install, and publish Motoko packages.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/mops_logo.webp"
@@ -1599,7 +1599,7 @@
     "name": "KongSwap",
     "display": "Large",
     "website": "https://www.kongswap.io/",
-    "twitter": "https://x.com/kongswap",
+    "twitter": "https://x.com/KongSwapX",
     "tags": [
       "DeFi",
       "Chain Fusion"
@@ -2994,6 +2994,7 @@
     "name": "sneed",
     "display": "Normal",
     "website": "https://icsneed.com/?wp=sneed",
+    "twitter": "https://x.com/icsneed",
     "tags": [
       "DeFi",
       "DAO"
@@ -5856,6 +5857,62 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/safeidea-logo.svg",
     "oneLiner": "SafeIdea fork is vetKey with more features but still compatible!"
+  },
+  {
+    "id": "onesec",
+    "name": "Onesec",
+    "display": "Normal",
+    "website": "https://onesec.to/",
+    "twitter": "https://x.com/OneSecBridge",
+    "tags": [
+      "Chain Fusion",
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "description": "Decentralized Cross-Chain Transfers.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/onesec-logo.jpg"
+  },
+  {
+    "id": "b4b_app",
+    "name": "B4B.app",
+    "display": "Normal",
+    "website": "https://b4b.app/",
+    "twitter": "https://x.com/b4b_world",
+    "tags": [
+      "Creator Economy"
+    ],
+    "description": "B4B.app is a Web3 influencer marketing protocol that brings transparency, ownership, escrow, and on-chain history from all Socials.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/B4Bapp_logo.jpg"
+  },
+  {
+    "id": "Taco_dao",
+    "name": "TacoDao",
+    "display": "Normal",
+    "website": "https://tacodao.com/",
+    "twitter": "https://x.com/tacodaoicp",
+    "github": "https://github.com/tacodaoicp",
+    "tags": [
+      "DAO",
+      "DeFi"
+    ],
+    "description": "The TACO DAO introduces a transformative approach to digital asset collaboration as a DAO that actively manages a diverse portfolio of digital assets.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Tacodao_logo.jpg"
+  },
+  {
+    "id": "Insane_Clown_Protocol\n",
+    "name": "Insane Clown Protocol",
+    "display": "Normal",
+    "website": "https://social.insaneclownprotocol.com/#my/account",
+    "twitter": "https://x.com/realclownicp?lang=en",
+    "tags": [
+      "Creator Economy",
+      "DeFi"
+    ],
+    "description": "Social Mining DApp hosted on $ICP",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/ClownonICP_logo.jpg"
   }
-  
 ]
