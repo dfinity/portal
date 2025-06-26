@@ -21,7 +21,7 @@
       "proposal": "",
       "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": true,
       "in_beta": false,
       "milestone_id": "Helium"
@@ -31,7 +31,7 @@
       "is_milestone": true,
       "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
       "milestone_id": "Helium",
-      "status": "in_progress",
+      "status": "deployed",
       "eta": "",
       "eta_to_render": "June 2025"
     },
@@ -41,7 +41,7 @@
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
       "status": "in_progress",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Native Dogecoin integration",
