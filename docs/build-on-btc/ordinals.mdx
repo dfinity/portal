@@ -16,37 +16,20 @@ Ordinals are available through an open-source [GitHub project](https://github.co
 
 ## Ordinals on ICP
 
-Canisters deployed on ICP can sign and submit transactions directly to the Bitcoin network through ICP's [Bitcoin integration](../overview.mdx) and [threshold signatures](/docs/references/t-sigs-how-it-works). Specifically, for a canister to inscribe Ordinals, it must sign transactions using [threshold Schnorr signatures](/docs/references/t-sigs-how-it-works#deuterium-schnorr-release-beta) and have a [Bitcoin taproot address](/docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses#generating-addresses-with-threshold-schnorr).
+Canisters deployed on ICP can sign and submit transactions directly to the Bitcoin network through ICP's Bitcoin integration and [threshold signatures](/docs/references/t-sigs-how-it-works). Specifically, for a canister to inscribe Ordinals, it must sign transactions using [threshold Schnorr signatures](/docs/references/t-sigs-how-it-works#deuterium-schnorr-release-beta) and have a [Bitcoin taproot address](/docs/build-on-btc/btc-transactions/generate-addresses#generating-addresses-with-threshold-schnorr).
 
 ## Inscribing an Ordinal
 
-To inscribe an Ordinal through a canister on ICP, first you will need to call the `schnorr_public_key` API to obtain a Schnorr public key. This public key will be used to generate a Bitcoin taproot (P2TR) address for your canister. A taproot address is required to sign and submit Ordinal inscription transactions on Bitcoin. [Learn more about Bitcoin taproot addresses](/docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses#generating-addresses-with-threshold-schnorr).
+To inscribe an Ordinal through a canister on ICP, first you will need to call the `schnorr_public_key` API to obtain a Schnorr public key. This public key will be used to generate a Bitcoin taproot (P2TR) address for your canister. A taproot address is required to sign and submit Ordinal inscription transactions on Bitcoin. [Learn more about Bitcoin taproot addresses](/docs/build-on-btc/btc-transactions/generate-addresses#generating-addresses-with-threshold-schnorr).
 
 Once you have generated a taproot address for your canister, you will need to write a canister method that creates an inscription transaction, then signs that transaction with your canister's Schnorr public key. Here's an example of an inscription transaction written in Rust:
 
 ```rust reference
-https://github.com/domwoe/inscription_canister/blob/main/backend/src/lib.rs#L49-L67
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/inscribe_ordinal.rs#L39-L195
 ```
-
-## Querying Ordinal information
-
-To query Ordinal information about a satoshi, you write a canister method that makes a call to an API service such as Hiro or Bitgems. Here's an example in Rust calling the Hiro API:
-
-```rust reference
-https://github.com/sardariuss/ordinals_canister/blob/aad19989dfa4e8712e6ee7fadf7be9ed7bc1b403/src/btc_ordinals/src/lib.rs#L95-L170
-```
-
-You can also make a call specifically for the Ordinal inscription information and content:
-
-```rust reference
-https://github.com/sardariuss/ordinals_canister/blob/aad19989dfa4e8712e6ee7fadf7be9ed7bc1b403/src/btc_ordinals/src/lib.rs#L129-L170
-```
-
 
 ## Resources
 
-- Deploy the sample [inscription canister example](https://github.com/domwoe/inscription_canister/tree/main).
+- [Basic Bitcoin example project](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).
 
 - Query information about existing Ordinals using the Hiro and Bitgems APIs in the [Ordinals canister example](https://github.com/sardariuss/ordinals_canister).
-
-- [Basic Bitcoin example project](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).
