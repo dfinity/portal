@@ -16,7 +16,7 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 A special variant of [identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption) is called timelock encryption.  
 It enables a sender to encrypt data to a specific timestamp, ensuring that the recipient can only decrypt it after the specified time has passed.
 
-Canisters enforce this time-based access control by initiating threshold decryption of a cipher text only after a predefined expiry time. This mechanism ensures that sensitive information remains secret until the appropriate moment.
+Canisters enforce this time-based access control by initiating threshold decryption of a ciphertext only after a predefined expiry time. This mechanism ensures that sensitive information remains secret until the appropriate moment.
 
 Timelock encryption enables a wide range of time-sensitive applications, such as:
 
@@ -39,7 +39,7 @@ In a secret-bid auction dapp, users submit bids encrypted using IBE under a shar
 
 ### "Dead man's switch"
 
-Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. The information is IBE-encrypted and stored it in a dapp, which is configured to automatically decrypt it and publish if it doesn't receive a periodic ping from the autorized user.
+Journalists or whistleblowers could ensure that compromising information in their possession is automatically published if they were to become incapacitated. The information is IBE-encrypted and stored it in a dapp, which is configured to automatically decrypt it and publish if it doesn't receive a periodic ping from the authorized user.
 
 ### Advanced decryption policies
 
