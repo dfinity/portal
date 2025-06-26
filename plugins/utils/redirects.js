@@ -309,12 +309,12 @@ const redirects = `
   /docs/current/motoko/main/canister-maintenance/memory  /docs/motoko/fundamentals/actors/data-persistence
   /docs/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
   /docs/current/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
-  /docs/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/index
-  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/index
-  /docs/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/index
-  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/index
-  /docs/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/index
-  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/index
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/
   /docs/motoko/main/canister-maintenance/upgrades /docs/building-apps/canister-management/upgrade
   /docs/current/motoko/main/canister-maintenance/upgrades /docs/building-apps/canister-management/upgrade
   /docs/motoko/main/getting-started/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining-an-actor
@@ -452,7 +452,7 @@ const redirects = `
   /docs/motoko/fundamentals/state /docs/motoko/fundamentals/actors/state
   /docs/motoko/fundamentals/messaging /docs/motoko/fundamentals/actors/messaging
   /docs/motoko/fundamentals/data-persistence /docs/motoko/fundamentals/actors/data-persistence
-  /docs/motoko/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/index
+  /docs/motoko/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/
   /docs/motoko/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/enhanced
   /docs/motoko/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/classical
   /docs/motoko/fundamentals/garbage-collection /docs/motoko/compiler-ref
