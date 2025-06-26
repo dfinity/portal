@@ -1,0 +1,226 @@
+---
+keywords: [intermediate, rosetta, examples, scripts, integration, icp, ledger, download, setup, python]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ICP Rosetta Example Scripts
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
+
+The DFINITY Internet Computer repository contains comprehensive Python example scripts specifically designed to help developers integrate with the ICP Rosetta API. These examples provide practical demonstrations of common operations with the ICP ledger and NNS governance canister.
+
+## Overview
+
+The ICP Rosetta example scripts are located in the [DFINITY IC repository](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/examples/icp/python) under `rs/rosetta-api/examples/icp/python/`. These Python scripts demonstrate how to:
+
+- Check account balances and derive account information
+- Transfer ICP tokens between accounts
+- Read blockchain blocks and search transactions
+- Interact with NNS governance proposals
+- Manage cryptographic keys (Ed25519 and secp256k1)
+- Perform comprehensive testing of all operations
+
+## Setup and Prerequisites
+
+### Install Dependencies
+
+Each example directory includes its own `requirements.txt` file. Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Access to a Rosetta Node
+
+You'll need access to a Rosetta API endpoint, either:
+- Local node running at `http://localhost:8081`
+- Public endpoint (if available)
+
+### Key Generation
+
+The Internet Computer supports both Ed25519 and secp256k1 cryptographic curves for ICP operations.
+
+#### Ed25519 Keys
+
+Generate an Ed25519 private key:
+
+```bash
+# Generate a private key in PEM format using ed25519 curve
+openssl genpkey -algorithm ed25519 -out my_ed25519_key.pem
+
+# Extract compressed public key in hex format for Ed25519 (32 bytes)
+openssl pkey -in my_ed25519_key.pem -pubout -outform DER | tail -c 32 | xxd -p -c 32
+```
+
+#### secp256k1 Keys
+
+Generate a secp256k1 private key:
+
+```bash
+# Generate a private key in PEM format using secp256k1 curve
+openssl ecparam -name secp256k1 -genkey -noout -out my_secp256k1_key.pem
+
+# Extract compressed public key in hex format for secp256k1 (33 bytes)
+openssl ec -in my_secp256k1_key.pem -pubout -conv_form compressed -outform DER | tail -c 33 | xxd -p -c 33
+```
+
+**Note**: Ed25519 public keys are 32 bytes, while secp256k1 compressed public keys are 33 bytes starting with `02` or `03`.
+
+## Available Example Scripts
+
+### Account Information
+
+**Derive Public Key and Principal ID**:
+```bash
+python3 derive_key_info.py --private-key-path ./my_private_key.pem
+```
+
+This script extracts public key information and derives a principal ID from a private key file. Support options:
+- `--verbose`: Detailed output
+- `--json`: JSON formatted output
+
+**Get Account Identifier**:
+```bash
+python3 get_account_id.py --public-key <public_key_hex> --curve-type <ed25519|secp256k1>
+```
+
+### Balance Queries
+
+**Check Account Balance**:
+```bash
+python3 get_account_balance.py --node-address http://localhost:8081 \
+  --account-id <account_identifier>
+```
+
+**Check Balance by Principal**:
+```bash
+python3 get_account_balance.py --node-address http://localhost:8081 \
+  --principal-id <principal_id> \
+  --sub-account <sub_account_hex>
+```
+
+### Transferring ICP
+
+**Transfer ICP Tokens**:
+```bash
+python3 transfer.py --node-address http://localhost:8081 \
+  --private-key-path ./my_private_key.pem \
+  --signature-type <ecdsa|ed25519> \
+  --to-account <destination_account_id> \
+  --amount <amount_in_e8s> \
+  --fee <fee_in_e8s>
+```
+
+### Reading Blocks
+
+**Fetch Recent Blocks**:
+```bash
+python3 read_blocks.py --node-address http://localhost:8081
+```
+
+**Get Specific Block**:
+```bash
+python3 read_blocks.py --node-address http://localhost:8081 \
+  --block-index <block_number>
+```
+
+**Search Transactions**:
+```bash
+python3 search_transactions.py --node-address http://localhost:8081 \
+  --account-id <account_identifier>
+```
+
+### Network Information
+
+**Get Network Status**:
+```bash
+python3 get_network_info.py --node-address http://localhost:8081
+```
+
+### NNS Governance
+
+**List Known Neurons**:
+```bash
+python3 list_known_neurons.py --node-address http://localhost:8081
+```
+
+**Get Pending Proposals**:
+```bash
+python3 get_pending_proposals.py --node-address http://localhost:8081
+```
+
+**Get Proposal Info**:
+```bash
+python3 get_proposal_info.py --node-address http://localhost:8081 \
+  --proposal-id <proposal_id>
+```
+
+### Testing All Examples
+
+**Comprehensive Test Script**:
+```bash
+python3 test_all.py --node-address http://localhost:8081 \
+  --principal-id <your_principal_id>
+```
+
+For transfer testing (requires funded account):
+```bash
+python3 test_all.py --node-address http://localhost:8081 \
+  --principal-id <your_principal_id> \
+  --private-key-path ./my_private_key.pem \
+  --to-account <destination_account> \
+  --amount <amount> \
+  --fee <fee>
+```
+
+**Automated Test Script**:
+The `run_tests.sh` script provides a complete testing environment:
+```bash
+./run_tests.sh --node-address http://localhost:8081 \
+  --principal-id <your_principal_id>
+```
+
+
+
+## Understanding Response Formats
+
+Most scripts support debugging and output options:
+
+**Raw JSON Output**:
+```bash
+python3 read_blocks.py --node-address http://localhost:8081 --raw
+```
+
+**Verbose Output** (shows API requests and responses):
+```bash
+python3 get_network_info.py --node-address http://localhost:8081 --verbose
+```
+
+## Common Issues
+
+1. **Error: Unable to connect to Rosetta node**
+   - Ensure your Rosetta node is running
+   - Check the URL format (e.g., `http://localhost:8081`)
+
+2. **Error during transaction signing**
+   - Verify that your private key file is in PEM format
+   - Ensure you're using the correct signature type
+
+3. **Error: Insufficient funds**
+   - Check that your account has enough ICP for the transaction plus the fee
+
+4. **Error: Unable to derive account identifier**
+   - Make sure your public key is valid and in the correct format
+   - For secp256k1, ensure the public key is in compressed format (33 bytes, starting with 02 or 03)
+   - For ed25519, ensure the public key is 32 bytes
+   - Ensure you've specified the correct curve type with `--curve-type`
+
+5. **Error: Invalid public key**
+   - Double-check that the extracted public key matches the required format for the specified curve type
+   - For secp256k1, use: `openssl ec -in key.pem -pubout -conv_form compressed -outform DER | tail -c 33 | xxd -p -c 33`
+   - For ed25519, use: `openssl pkey -in key.pem -pubout -outform DER | tail -c 32 | xxd -p -c 32`
+
+## Getting Help
+
+For troubleshooting the Python example scripts, refer to the specific README files for [ICP examples](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/examples/icp/python/README.md#common-issues) in the DFINITY IC repository. 
