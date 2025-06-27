@@ -56,11 +56,11 @@ The developer's role in the implementation is to define which canister APIs need
 
 To set up `KeyManager` for your dapp, you need to instantiate the backend `KeyManager` component in your canister and configure how your frontend will communicate with it.
 
-In the **backend**, you can define logic so that when specific canister APIs are called, the canister delegates those calls to the corresponding methods on a `KeyManager` instance. For example, when the `set_user_rights` API of a canister is invoked, the canister internally calls the `set_user_rights` method on its `KeyManager`.
+In the **backend**, you can define logic so that when specific canister APIs are called, the canister delegates those calls to the corresponding methods on a `KeyManager` instance. For example, when the `get_encrypted_vetkey` API of a canister is invoked, the canister internally calls the `get_encrypted_vetkey` method on its `KeyManager`.
 
 For reference, see the [default `KeyManager` canister implementation](https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
 
-In the **frontend**, you can define that when the `set_user_rights` method of the `KeyManager` is called, it triggers a call to the corresponding canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://dfinity.github.io/vetkeys/interfaces/_dfinity_vetkeys_key_manager.KeyManagerClient.html) interface.
+In the **frontend**, you can define that when the `get_encrypted_vetkey` method of the `KeyManager` is called, it triggers a call to the corresponding canister API `get_encrypted_vetkey`. This is done by implementing the [`KeyManagerClient`](https://dfinity.github.io/vetkeys/interfaces/_dfinity_vetkeys_key_manager.KeyManagerClient.html) interface.
 
 For an example implementation, see [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts), which connects the frontend logic to the canister APIs.
 
