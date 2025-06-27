@@ -30,17 +30,18 @@ Each example directory includes its own `requirements.txt` file. Install the dep
 pip install -r requirements.txt
 ```
 
-### Access to a Rosetta Node
+### Access a Rosetta node
 
 You'll need access to a Rosetta API endpoint, either:
-- Local node running at `http://localhost:8081`
-- Public endpoint (if available)
+- A local node running at `http://localhost:8081`.
 
-### Key Generation
+- A public endpoint (if available).
+
+### Key generation
 
 The Internet Computer supports both Ed25519 and secp256k1 cryptographic curves for ICP operations.
 
-#### Ed25519 Keys
+#### Ed25519 keys
 
 Generate an Ed25519 private key:
 
@@ -52,7 +53,7 @@ openssl genpkey -algorithm ed25519 -out my_ed25519_key.pem
 openssl pkey -in my_ed25519_key.pem -pubout -outform DER | tail -c 32 | xxd -p -c 32
 ```
 
-#### secp256k1 Keys
+#### secp256k1 keys
 
 Generate a secp256k1 private key:
 
@@ -66,11 +67,11 @@ openssl ec -in my_secp256k1_key.pem -pubout -conv_form compressed -outform DER |
 
 **Note**: Ed25519 public keys are 32 bytes, while secp256k1 compressed public keys are 33 bytes starting with `02` or `03`.
 
-## Available Example Scripts
+## Available example scripts
 
-### Account Information
+### Account information
 
-**Derive Public Key and Principal ID**:
+**Derive public key and principal ID**:
 ```bash
 python3 derive_key_info.py --private-key-path ./my_private_key.pem
 ```
@@ -79,20 +80,20 @@ This script extracts public key information and derives a principal ID from a pr
 - `--verbose`: Detailed output
 - `--json`: JSON formatted output
 
-**Get Account Identifier**:
+**Get account identifier**:
 ```bash
 python3 get_account_id.py --public-key <public_key_hex> --curve-type <ed25519|secp256k1>
 ```
 
-### Balance Queries
+### Balance queries
 
-**Check Account Balance**:
+**Check account balance**:
 ```bash
 python3 get_account_balance.py --node-address http://localhost:8081 \
   --account-id <account_identifier>
 ```
 
-**Check Balance by Principal**:
+**Check balance by principal**:
 ```bash
 python3 get_account_balance.py --node-address http://localhost:8081 \
   --principal-id <principal_id> \
@@ -101,7 +102,7 @@ python3 get_account_balance.py --node-address http://localhost:8081 \
 
 ### Transferring ICP
 
-**Transfer ICP Tokens**:
+**Transfer ICP tokens**:
 ```bash
 python3 transfer.py --node-address http://localhost:8081 \
   --private-key-path ./my_private_key.pem \
@@ -111,53 +112,53 @@ python3 transfer.py --node-address http://localhost:8081 \
   --fee <fee_in_e8s>
 ```
 
-### Reading Blocks
+### Reading blocks
 
-**Fetch Recent Blocks**:
+**Fetch recent blocks**:
 ```bash
 python3 read_blocks.py --node-address http://localhost:8081
 ```
 
-**Get Specific Block**:
+**Get a specific block**:
 ```bash
 python3 read_blocks.py --node-address http://localhost:8081 \
   --block-index <block_number>
 ```
 
-**Search Transactions**:
+**Search transactions**:
 ```bash
 python3 search_transactions.py --node-address http://localhost:8081 \
   --account-id <account_identifier>
 ```
 
-### Network Information
+### Network information
 
-**Get Network Status**:
+**Get network status**:
 ```bash
 python3 get_network_info.py --node-address http://localhost:8081
 ```
 
-### NNS Governance
+### NNS governance
 
-**List Known Neurons**:
+**List known neurons**:
 ```bash
 python3 list_known_neurons.py --node-address http://localhost:8081
 ```
 
-**Get Pending Proposals**:
+**Get pending proposals**:
 ```bash
 python3 get_pending_proposals.py --node-address http://localhost:8081
 ```
 
-**Get Proposal Info**:
+**Get proposal info**:
 ```bash
 python3 get_proposal_info.py --node-address http://localhost:8081 \
   --proposal-id <proposal_id>
 ```
 
-### Testing All Examples
+### Testing all examples
 
-**Comprehensive Test Script**:
+**Comprehensive test script**:
 ```bash
 python3 test_all.py --node-address http://localhost:8081 \
   --principal-id <your_principal_id>
@@ -173,7 +174,7 @@ python3 test_all.py --node-address http://localhost:8081 \
   --fee <fee>
 ```
 
-**Automated Test Script**:
+**Automated test script**:
 The `run_tests.sh` script provides a complete testing environment:
 ```bash
 ./run_tests.sh --node-address http://localhost:8081 \
@@ -182,21 +183,21 @@ The `run_tests.sh` script provides a complete testing environment:
 
 
 
-## Understanding Response Formats
+## Understanding response formats
 
 Most scripts support debugging and output options:
 
-**Raw JSON Output**:
+**Raw JSON output**:
 ```bash
 python3 read_blocks.py --node-address http://localhost:8081 --raw
 ```
 
-**Verbose Output** (shows API requests and responses):
+**Verbose output** (shows API requests and responses):
 ```bash
 python3 get_network_info.py --node-address http://localhost:8081 --verbose
 ```
 
-## Common Issues
+## Common issues
 
 1. **Error: Unable to connect to Rosetta node**
    - Ensure your Rosetta node is running.
@@ -220,6 +221,6 @@ python3 get_network_info.py --node-address http://localhost:8081 --verbose
    - For secp256k1, use: `openssl ec -in key.pem -pubout -conv_form compressed -outform DER | tail -c 33 | xxd -p -c 33`
    - For ed25519, use: `openssl pkey -in key.pem -pubout -outform DER | tail -c 32 | xxd -p -c 32`
 
-## Getting Help
+## Resources
 
 For troubleshooting the Python example scripts, refer to the specific README files for [ICP examples](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/examples/icp/python/README.md#common-issues) in the DFINITY IC repository. 
