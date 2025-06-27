@@ -43,7 +43,7 @@
     },
     {
       "title": "Caffeine platform",
-      "overview": "First release of the Caffeine platform for prompt-based ICP applicationapp creation. Integrating the fine-tuned models for Motoko code generation into a chat-like user experience. Complemented by a first version of an App marketplace allowing users to publish their apps so that others can clone and evolve them.",
+      "overview": "First release of the Caffeine platform for prompt-based ICP application creation. Integrating the fine-tuned models for Motoko code generation into a chat-like user experience. Complemented by a first version of an app marketplace allowing users to publish their apps so that others can clone and evolve them.",
       "status": "in_progress",
       "milestone_id": "Vertex"
     },
