@@ -103,7 +103,7 @@
     {
       "title": "Zero to Degen-Hero",
       "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Apex",
       "eta_to_render": ""
@@ -117,7 +117,7 @@
     {
       "title": "Faster institutional integrations of new tokens",
       "overview": "Support multi-token Rosetta",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Apex"
     },
     {
