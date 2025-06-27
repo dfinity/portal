@@ -8,7 +8,6 @@
       "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
       "proposal": "",
       "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
-      "eta": "Q2 2025",
       "status": "in_progress",
       "is_community": false,
       "in_beta": false,
@@ -35,7 +34,7 @@
       "milestone_id": "Niobium",
       "status": "in_progress",
       "eta": "Q2 2025",
-      "eta_to_render": "June 2025"
+      "eta_to_render": "July 1st 2025"
     },
     {
       "title": "Confidentiality of canister states",
