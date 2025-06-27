@@ -199,24 +199,24 @@ python3 get_network_info.py --node-address http://localhost:8081 --verbose
 ## Common Issues
 
 1. **Error: Unable to connect to Rosetta node**
-   - Ensure your Rosetta node is running
-   - Check the URL format (e.g., `http://localhost:8081`)
+   - Ensure your Rosetta node is running.
+   - Check the URL format (e.g., `http://localhost:8081`).
 
 2. **Error during transaction signing**
-   - Verify that your private key file is in PEM format
-   - Ensure you're using the correct signature type
+   - Verify that your private key file is in PEM format.
+   - Ensure you're using the correct signature type.
 
 3. **Error: Insufficient funds**
-   - Check that your account has enough ICP for the transaction plus the fee
+   - Check that your account has enough ICP for the transaction plus the fee.
 
 4. **Error: Unable to derive account identifier**
-   - Make sure your public key is valid and in the correct format
-   - For secp256k1, ensure the public key is in compressed format (33 bytes, starting with 02 or 03)
-   - For ed25519, ensure the public key is 32 bytes
-   - Ensure you've specified the correct curve type with `--curve-type`
+   - Make sure your public key is valid and in the correct format.
+   - For secp256k1, ensure the public key is in compressed format (33 bytes, starting with 02 or 03).
+   - For ed25519, ensure the public key is 32 bytes.
+   - Ensure you've specified the correct curve type with `--curve-type`.
 
 5. **Error: Invalid public key**
-   - Double-check that the extracted public key matches the required format for the specified curve type
+   - Double-check that the extracted public key matches the required format for the specified curve type.
    - For secp256k1, use: `openssl ec -in key.pem -pubout -conv_form compressed -outform DER | tail -c 33 | xxd -p -c 33`
    - For ed25519, use: `openssl pkey -in key.pem -pubout -outform DER | tail -c 32 | xxd -p -c 32`
 
