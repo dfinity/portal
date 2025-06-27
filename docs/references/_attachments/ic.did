@@ -327,6 +327,21 @@ type http_request_args = record {
     pricing_version : opt nat32;
 };
 
+type flexible_http_request_args = record {
+    url : text;
+    method : variant { get; head; post };
+    headers : vec http_header;
+    body : opt blob;
+    transform : opt record {
+        function : func(record { response : http_request_result; context : blob }) -> (http_request_result) query;
+        context : blob;
+    };
+    responses_from : variant {
+        all_replicas;
+        replica_count: nat32;
+    };
+}
+
 type ecdsa_public_key_args = record {
     canister_id : opt canister_id;
     derivation_path : vec blob;
@@ -609,6 +624,7 @@ service ic : {
     deposit_cycles : (deposit_cycles_args) -> ();
     raw_rand : () -> (raw_rand_result);
     http_request : (http_request_args) -> (http_request_result);
+    flexible_http_request : (flexible_http_request_args) -> (vec http_request_result);
 
     // Threshold ECDSA signature
     ecdsa_public_key : (ecdsa_public_key_args) -> (ecdsa_public_key_result);

@@ -1565,6 +1565,7 @@ defaulting to `I = i32` if the canister declares no memory.
 
     ic0.subnet_self_size : () -> I;                                                       // *
     ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
+    ic0.subnet_self_replica_count : () -> i32;                                            // *
 
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
@@ -1797,9 +1798,10 @@ A canister can learn about its own identity:
 
 A canister can learn about the subnet it is running on:
 
--   `ic0.subnet_self_size : () → I` and `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+-   `ic0.subnet_self_size : () → I`, `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`, and `ic0.subnet_self_replica_count : () -> i32`
 
-    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running.
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running, and to retrieve the number of replicas that are currently on the subnet.
+
 
 ### Canister status {#system-api-canister-status}
 
@@ -3007,6 +3009,34 @@ The Internet Computer mainnet supports requests to both IPv6 and IPv4 destinatio
 If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
+
+### IC method `flexible_http_request` {#ic-flexible_http_request}
+
+This is a variant of the [`http_request`](#ic-http_request) method that allows the caller to select how many IC replicas issue the request, and returns potentially multiple responses instead of a single one, one from each replica issuing the request. Use cases include calling HTTP endpoints that provide rapidly changing information, calling non-idempotent endpoints (by issuing the request from a single replica only), calling endpoints that provide signed data whose authenticity can be checked without trusting the endpoint, and letting the user pick a trade-off between cheaper calls (fewer replicas responding) and stronger integrity guarantees (more replicas responding).
+
+The arguments of the call are as for `http_request`, except that:
+
+- there is an additional argument `responses_from`, which can be set to either `all_replicas` or to a particular `replica_count` with a given (positive) number of replicas. The number of replicas must not exceed the subnet size.
+
+- `max_response_bytes` argument is not needed.
+
+The other arguments, `url`, `method`, `headers`, `body`, and `transform` are the same as for `http_request`. The result is a vector of responses, with each individual response having the same structure as a `http_request` response, providing `status`, `headers`, and `body` fields.
+
+As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when a `replica_count` of 1 is used in `responses_from`. The request restrictions are also the same as for the `http_request` method:
+
+- The total number of bytes in the request must not exceed `2MB` (`2,000,000`) bytes.
+
+- Only the `GET`, `HEAD`, and `POST` methods are supported.
+
+- The number of headers must not exceed `64`.
+
+- The number of bytes representing a header name or value must not exceed `8KiB`.
+
+- The total number of bytes representing the header names and values must not exceed `48KiB`.
+
+The response from the remote server must not exceed `2MB`. Moreover, the total size of the result, that is, the sum of the responses returned by the different replicas (possibly after the transform function), must also not exceed 2MB.
+
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The upfront cycles cost covers a call that maxes out the resource usage during processing, for example, hitting the `2MB` limit on the size of the response. The unused cycles are then refunded to the caller.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
