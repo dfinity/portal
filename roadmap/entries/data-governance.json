@@ -3,12 +3,18 @@
   "categoryDescription": "ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
   "elements": [
     {
-      "title": "Enabling governance token holdings and broader participation",
+      "title": "Intuitive staking and broader DAO participation",
       "is_milestone": true,
-      "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
+      "description": "The Neon milestone focuses on helping users quickly understand their portfolio. New features highlight personalized insights on their staking reward potential and provide more engaging and dynamic information about DAOs, presenting users with opportunities to participate in launches. Governance participation is becoming more accessible, with simplified processes for liquidity pool integration and DAO management operations, laying the groundwork for what's next.",
       "milestone_id": "Neon",
       "status": "in_progress",
       "eta_to_render": "July 2025"
+    },
+    {
+      "title": "Staking overview",
+      "overview": "This feature focuses on making it easy for users to understand their staking potential and reward opportunities. Personalized insights encourage deeper engagement and understanding—like how staking more or adjusting neuron configurations can lead to more voting rewards.",
+      "status": "in_progress",
+      "milestone_id": "Neon"
     },
     {
       "title": "Portfolio page",
@@ -34,7 +40,6 @@
       "status": "deployed",
       "is_community": true,
       "in_beta": false,
-      "imported": true,
       "milestone_id": "Neon"
     },
     {
