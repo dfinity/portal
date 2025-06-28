@@ -1,1 +1,0 @@
-../../submodules/motoko/doc/md/10-pattern-matching.md
