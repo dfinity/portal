@@ -56,11 +56,11 @@ The developer's role in the implementation is to define which canister APIs need
 
 To set up `KeyManager` for your dapp, you need to instantiate the backend `KeyManager` component in your canister and configure how your frontend will communicate with it.
 
-In the **backend**, you can define logic so that when specific canister APIs are called, the canister delegates those calls to the corresponding methods on a `KeyManager` instance. For example, when the `set_user_rights` API of a canister is invoked, the canister internally calls the `set_user_rights` method on its `KeyManager`.
+In the **backend**, you can define logic so that when specific canister APIs are called, the canister delegates those calls to the corresponding methods on a `KeyManager` instance. For example, when the `get_encrypted_vetkey` API of a canister is invoked, the canister internally calls the `get_encrypted_vetkey` method on its `KeyManager`.
 
 For reference, see the [default `KeyManager` canister implementation](https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs).
 
-In the **frontend**, you can define that when the `set_user_rights` method of the `KeyManager` is called, it triggers a call to the corresponding canister API `set_user_rights`. This is done by implementing the [`KeyManagerClient`](https://dfinity.github.io/vetkeys/interfaces/_dfinity_vetkeys_key_manager.KeyManagerClient.html) interface.
+In the **frontend**, you can define that when the `get_encrypted_vetkey` method of the `KeyManager` is called, it triggers a call to the corresponding canister API `get_encrypted_vetkey`. This is done by implementing the [`KeyManagerClient`](https://dfinity.github.io/vetkeys/interfaces/_dfinity_vetkeys_key_manager.KeyManagerClient.html) interface.
 
 For an example implementation, see [`DefaultKeyManagerClient`](https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts), which connects the frontend logic to the canister APIs.
 
@@ -95,20 +95,20 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 
 <TabItem value="rs" label="Rust" default>
 
-Below is an example of how to create a backend canister API that allows the frontend to interact with the `set_user_rights` method of the `KeyManager` component. You can follow a similar pattern to expose additional methods of the `KeyManager` through canister APIs.
+Below is an example of how to create a backend canister API that allows the frontend to interact with the `get_encrypted_vetkey` method of the `KeyManager` component. You can follow a similar pattern to expose additional methods of the `KeyManager` through canister APIs.
 
 ```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L105-L119
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L71-L88
 ```
 
 </TabItem>
 
 <TabItem value="motoko" label="Motoko">
 
-Below is an example of how to create a backend canister API that allows the frontend to interact with the `set_user_rights` method of the `KeyManager` component. You can follow a similar pattern to expose additional methods of the `KeyManager` through canister APIs.
+Below is an example of how to create a backend canister API that allows the frontend to interact with the `getEncryptedVetkey` method of the `KeyManager` component. You can follow a similar pattern to expose additional methods of the `KeyManager` through canister APIs.
 
 ```motoko no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/mo/canisters/ic_vetkeys_manager_canister/src/Main.mo#L62-L69
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/mo/canisters/ic_vetkeys_manager_canister/src/Main.mo#L42-L52
 ```
 
 </TabItem>
@@ -120,10 +120,10 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 
 <TabItem value="ts" label="Typescript" default>
 
-Below is an example of how to provide a `KeyManagerClient` implementation to interact with the backend `KeyManager` component’s `set_user_rights` method. Implementations for other methods of `KeyManager` can be added in a similar fashion.
+Below is an example of how to provide a `KeyManagerClient` implementation to interact with the backend `KeyManager` component’s method for obtaining an encrypted vetKey. Implementations for other methods of `KeyManager` can be added in a similar fashion.
 
 ```ts no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts#L25-L32
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts#L50-L60
 ```
 
 </TabItem>
@@ -136,25 +136,16 @@ Your application's frontend can communicate with a backend canister that exposes
 <AdornedTabs groupId="languages">
 <TabItem value="ts" label="Typescript" default>
 
-
 ```ts
 import { KeyManager } from "ic_vetkeys/key_manager";
 
 // Initialize the KeyManager
 const keyManager = new KeyManager(keyManagerClientInstance);
 
-// Retrieve shared keys
-const sharedKeys = await keyManager.getAccessibleSharedKeyIds();
-
 // Request and decrypt a vetKey
 const keyOwner = Principal.fromText("aaaaa-aa");
 const vetkeyName = "my_secure_key";
 const vetkey = await keyManager.getVetKey(keyOwner, vetkeyName);
-
-// Manage user access rights
-const user = Principal.fromText("bbbbbb-bb");
-const accessRights = { Read: null };
-const result = await keyManager.setUserRights(keyOwner, vetkeyName, user, accessRights);
 ```
 
 </TabItem>
@@ -162,10 +153,8 @@ const result = await keyManager.setUserRights(keyOwner, vetkeyName, user, access
 
 ## Resources
 
+- [Motpoko backend `KeyManager` code documentation](https://mops.one/ic-vetkeys/docs/key_manager/KeyManager).
+
 - [Rust backend `KeyManager` code documentation](https://docs.rs/ic-vetkeys/latest/ic_vetkeys/key_manager/struct.KeyManager.html).
 
 - [Typescript frontend `KeyManager` code documentation](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys_key_manager.KeyManager.html).
-
-<!----
-- TODO: end-to-end example
------>
