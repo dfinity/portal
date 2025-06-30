@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Just like users can call canisters, canisters can also call other canisters. This tutorial provides an introduction to using these inter-canister calls in Rust.
 
-This example will show how to call the counter canister, which provides four operations on a counter:
+This example will demonstrate how to call an example counter canister, which provides four operations:
 1. Getting the counter value.
 2. Incrementing the counter.
 3. Setting the counter to an arbitrary value.
@@ -18,9 +18,9 @@ This example will show how to call the counter canister, which provides four ope
 
 ## Prerequisites
 
-To follow along, clone the [Git repository](https://github.com/dfinity/examples) of the example repo. The code for this tutorial is in the `rust/inter-canister-calls` directory, where you can find the completed code in the `caller` package. Note that this example uses the alpha version of the Rust CDK.
+To follow along, clone the [Git examples repository](https://github.com/dfinity/examples). The code for this tutorial is in the `rust/inter-canister-calls` directory, where you can find the completed code in the `caller` package. Note that this example uses the alpha version of the Rust CDK.
 
-Check out the Git repository of the tutorial. Then, in the tutorial directory, start a local IC instance in the background and install the counter canister:
+Check out the Git repository of the tutorial. Then, in the tutorial directory, start a local development environment in the background and deploy the counter canister:
 
 ```bash
 dfx start --background
@@ -29,15 +29,15 @@ dfx deploy counter
 
 ## Basic example: getting and setting the counter value
 
-Your first example will be a `call_get_and_set` method on the caller canister, which simply invokes the `get_and_set` method on the counter project and forwards the result. This method sets the counter to the new value and returns the previous counter value.
+Your first example will be calling the `call_get_and_set` method on a second canister, the `caller` canister, which simply invokes the `get_and_set` method on the `counter` canister and forwards the result. This method sets the counter to the new value and returns the previous counter value.
 
-The finished code for the project is already available in `src/caller`. You can clear the contents of `src/caller/src/lib.rs`, and paste the following code. The explanation is within the comments.
+The finished code for the project is already available in `src/caller`, or you can clear the contents of `src/caller/src/lib.rs` and paste the following code. The explanation is within the comments.
 
 ```rust reference
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
 ```
 
-Now, deploy this code to the local replica. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
+Now, deploy the `caller` canister to the local development environment. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
 
 ```bash
 dfx deploy caller
@@ -51,7 +51,7 @@ dfx canister call caller call_get_and_set
 
 Now, `dfx` will use the `dfx.json` file provided in this tutorial's repository to search what parameters the different endpoints of the `caller` canister require. The `dfx.json` points to the `src/caller/caller.did` file, which describes the parameters of `call_get_and_set`. With this, `dfx` will first prompt you to provide a principal for the `counter` parameter of the `call_get_and_set` method.
 
-You can type `counter` and press `TAB` on your keyboard to pass the principal of the counter canister as the parameter, and then `Enter` to confirm. Also, select a number to set the counter to, say `42`.  Then, you will see an output such as:
+You can type `counter` and press `TAB` on your keyboard to pass the principal of the `counter` canister as the parameter, and then `Enter` to confirm. Also, select a number to set the counter to, say `42`.  Then, you will see an output such as:
 
 ```bash
 (0 : nat, 42 : nat)
@@ -59,13 +59,13 @@ You can type `counter` and press `TAB` on your keyboard to pass the principal of
 
 Here, the counter was increased from `0` to `42`.
 
-As the example notes, panicking when handling call errors is generally a bad idea past trivial examples such as this one. This is due to the nature of the Internet Computer's messaging model.
+As the example notes, panicking when handling call errors is generally a bad idea past trivial examples such as this one. This is due to the nature of ICP's messaging model.
 
 ## IC calls are asynchronous: non-atomic set-then-get
 
 You have already seen that the inter-canister calls use the Rust `async/await` syntax, hinting at the fact that these calls are **asynchronous**. This is a profound difference to the messaging model of some other chains (e.g., Ethereum). It enables significantly higher throughput, but can also affect correctness.
 
-To illustrate, let's look at the following example, where it first calls the `set` method on the counter, and then calls `get` afterwards. Add the following code to your `src/caller/src/lib.rs`.
+To illustrate, let's look at the following example, where it first calls the `set` method on the `counter` canister, and then calls `get` afterwards. Add the following code to your `src/caller/src/lib.rs`.
 
 ```rust reference
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L42-L60
@@ -83,23 +83,25 @@ You should get the expected result:
 (7 : nat)
 ```
 
-The value that is read from the counter is exactly the same as the value that was set. But as noted in the comments, this doesn't always have to hold! As IC calls are executed asynchronously, in between when the `set` and `get` calls in `call_get_and_set` execute, another canister could also call the `counter` canister and change the counter value. This of course cannot happen on your local installation since you control exactly which calls are made, but it can happen as soon as you install the code on the IC mainnet.
+The value that is read from the counter is exactly the same as the value that was set. But as noted in the comments, this doesn't always have to hold! As ICP calls are executed asynchronously, in between when the `set` and `get` calls in `call_get_and_set` execute, another canister could also call the `counter` canister and change the counter value. This of course cannot happen on your local installation since you control exactly which calls are made, but it can happen as soon as you install the code on the ICP mainnet.
 
-This behavior enables much higher concurrent throughput between different canisters, since the `counter` canister isn't blocked from processing other requests while the caller canister is doing its processing. But it also has correctness and security implications. One particularly important aspect is that state changes aren't atomic. If you make multiple calls, the failure of a later call doesn't roll back the effects of previous calls.
+This behavior enables much higher concurrent throughput between different canisters, since the `counter` canister isn't blocked from processing other requests while the `caller` canister is doing its processing. However, it also has correctness and security implications. One particularly important aspect is that state changes aren't atomic. If you make multiple calls, the failure of a later call doesn't roll back the effects of previous calls.
 
-This also holds true for the effects on the caller canister itself. In particular, a caller that panics after making a call can end up in an inconsistent state. This is not an issue for the examples demonstrated so far, as the caller's internal state doesn't exist and thus can't become inconsistent.
+This also holds true for the effects on the `caller` canister itself. In particular, a caller that panics after making a call can end up in an inconsistent state. This is not an issue for the examples demonstrated so far, as the caller's internal state doesn't exist and thus can't become inconsistent.
 
 For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/docs/references/async-code), [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls).
 
 :::info
-To summarize, the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling), but you need to understand the implications, especially around when and how state is persisted.
+To summarize, the Internet Computer has an asynchronous messaging model that is different from Ethereum and many other blockchains. While it improves [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling), you need to understand the implications, especially around when and how state is persisted.
 :::
 
 ## Unbounded-wait calls: semantics and error cases
 
-The examples so far we have relied on *unbounded-wait calls*, without elaborating on what these are. An unbounded wait call instructs the system to wait for however long it takes in order to receive a response. This allows the system to always provide the caller with the exact response to the call. Since the response is thus guaranteed to be delivered to the caller, these calls are also referred to as *guaranteed response*  calls.
+The examples so far we have relied on *unbounded-wait calls*, without elaborating on what these are. An unbounded wait call instructs the system to wait for however long it takes in order to receive a response. This allows the system to always provide the caller with the exact response to the call. Since the response is thus guaranteed to be delivered to the caller, these calls are also referred to as *guaranteed response* calls.
 
-Note that this response can still be a failure. For example, a call might fail because the called canister does not exist (e.g., it has been deleted), but also because the system is overloaded and can't deliver the call to the callee, so it just returns an error to the caller. It can also fail if the callee fails, for example, if it panics. In the absence of callee failure, an error result from an unbounded-wait call ensures that the call did not execute, that is, that it's cleanly rejected. Extend the example by adding this code to `src/caller/src/lib`:
+Note that this response can still be a failure. For example, a call might fail because the called canister does not exist (e.g., it has been deleted), but also because the system is overloaded and can't deliver the call to the callee, so it just returns an error to the caller. It can also fail if the callee fails, for example, if it panics. In the absence of callee failure, an error result from an unbounded-wait call ensures that the call did not execute, that is, that it's cleanly rejected.
+
+Extend the example by adding this code to `src/caller/src/lib`:
 
 ```rust reference
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L62-L80
@@ -121,9 +123,9 @@ dfx canister call counter get
 (8: nat)
 ```
 
-However, on mainnet, without further precautions even incrementing our simple counter canister may trap because it fails to allocate memory for processing the request. To cope, the [best practice](/docs/building-apps/best-practices/idempotency) is to modify the callee to provide an endpoint that allows callers to query the result of state-changing calls. Furthermore, where possible, it is also good practice to make endpoints *idempotent*, where executing a call twice (and thus also multiple times) has the same effect as executing it just once, allowing the caller to simply retry its call. Such practices are also helpful for ingress calls, i.e., for outside users and applications interacting with your application over HTTP.
+However, on the mainnet, without further precautions even incrementing our simple counter canister may trap because it fails to allocate memory for processing the request. To cope, the [best practice](/docs/building-apps/best-practices/idempotency) is to modify the callee to provide an endpoint that allows callers to query the result of state-changing calls. Furthermore, where possible, it is also good practice to make endpoints *idempotent*, where executing a call twice (and thus also multiple times) has the same effect as executing it just once, allowing the caller to simply retry its call. Such practices are also helpful for ingress calls, i.e., for outside users and applications interacting with your application over HTTP.
 
-Unbounded-wait calls thus can provide a simple error handling semantics, as long as you are very confident that the callee won't trap, or you for some reason don't care about the cases of the callee trapping. However, the fact that these calls will wait for as long as it takes to receive a response means that they don't return for as long as the callee is delaying providing an answer. In the case of buggy — or even malicious — callees, the caller may end up waiting forever. This can block the caller from upgrading cleanly, since a clean upgrade requires all of the caller's outstanding calls to complete. As an alternative, you can use *bounded-wait* calls, which we will look at next.
+Unbounded-wait calls thus can provide a simple error handling semantics, as long as you are very confident that the callee won't trap, or you for some reason don't care about the cases of the callee trapping. However, the fact that these calls will wait for as long as it takes to receive a response means that they don't return for as long as the callee is delaying providing an answer. In the case of buggy (or even malicious) callees, the caller may end up waiting forever. This can block the caller from upgrading cleanly, since a clean upgrade requires all of the caller's outstanding calls to complete. As an alternative, you can use *bounded-wait* calls, as demonstrated next.
 
 :::info
 To summarize, unbounded wait calls wait for a response forever, but the response might still be a failure. With unbounded wait calls, failures mean that either the call wasn't executed, or that the callee trapped or rejected the call. Waiting forever carries risks when calling untrusted canisters.
@@ -136,11 +138,11 @@ To summarize, unbounded wait calls wait for a response forever, but the response
 1. They ensure that your canister won't stall (in particular, become unable to stop and upgrade) if it calls into canisters you don't control or trust.
 2. They scale much better.
 
-However, they have more complicated error handling: non-clean rejects — where you don't know whether the call was executed – can result not only from panics on the caller, but also from timing the call out. This increases the chance of non-clean rejects significantly. Callee panics should be an edge case, but timeouts will also occur whenever the load on the system or the callee is high.
+However, they have more complicated error handling: non-clean rejects, where you don't know whether the call was executed, can result not only from panics on the caller, but also from timing the call out. This increases the chance of non-clean rejects significantly. Callee panics should be an edge case, but timeouts will also occur whenever the load on the system or the callee is high.
 
 Thus, bounded-wait calls are suitable only for reads, or for state-changing calls that follow the best practice of providing a separate query endpoint for the result, and/or are idempotent.
 
-For example, you can safely call the counter's `get` endpoint using a bounded-wait call, since this is just a read. Edit `src/caller/src/lib.rs` to add the following method:
+For example, you can safely call the `counter` canister's `get` endpoint using a bounded-wait call, since this is just a read. Edit `src/caller/src/lib.rs` to add the following method:
 
 ```rust reference
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L82-L99
@@ -177,7 +179,7 @@ To summarize, bounded-wait calls will time out after a while, but you might not 
 
 ## Attaching cycles: canister signatures
 
-A canister can attach [cycles](/docsbuilding-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
+A canister can attach [cycles](/docs/building-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
 
 Cycle transfers are generally either used to pay for the callee's costs of processing the call or to move and store cycles as assets. An example where they are used to pay for call processing costs is the IC [threshold signature feature](/docs/building-apps/network-features/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger/).
 
@@ -187,7 +189,7 @@ Below is a threshold signature example that shows how to attach cycles to a call
 https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
 ```
 
-Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local replica.
+Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local development environment.
 
 ```bash
 dfx canister call caller sign_message '("Some text to be signed")'
@@ -210,7 +212,7 @@ To summarize, you can transfer cycles to the callee by attaching them to a bound
 
 More details on how inter-canister calls execute and how the different call types work is provided in the documentation on [inter-canister calls and async code](/docs/references/async-code). Also consult the documentation on [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls). To allow your callers to handle call errors robustly, follow the [best practice](/docs/building-apps/best-practices/idempotency) document on retries and idempotency.
 
-As noted in our examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
+As noted in the above examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
 
 For a real-life example of how to handle errors when calling canisters, see the [ICRC-1 examples](/docs/defi/token-ledgers/usage/icrc1_ledger_usage)
 

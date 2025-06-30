@@ -20,7 +20,7 @@ const cardsContent = [
   },
   {
     title: "Dev Discord Office Hours",
-    body: "Every Wednesday at 9am CET and 7pm CET",
+    body: "Every Wednesday at 9AM CET/CEST and 8AM PST/PDT",
     link: "https://discord.internetcomputer.org",
   },
   {

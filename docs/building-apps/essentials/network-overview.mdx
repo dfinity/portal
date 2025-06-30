@@ -12,304 +12,60 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 **The Internet Computer is the first "World Computer" network. It enables you to build web applications and internet services using a 100% decentralized platform without Big Tech and traditional IT. While traditional blockchains struggle to store a single phone photo onchain, ICP already hosts social networks, multiple ledgers, AI, and much more, fully onchain.**
 
-It was carefully designed to give smart contracts near-native performance and [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling) while maintaining the security of decentralized execution.
-In addition to classical DeFi smart contracts, such as ledgers and exchanges, ICP can run compute- and storage-heavy applications such as [image classification](https://github.com/dfinity/examples/tree/master/rust/image-classification) fully onchain.
 
-Another important design aspect of ICP is its seamless and secure integration with existing ecosystems.
-Smart contracts on ICP can host web assets and serve HTTP requests from users, thus fulfilling the promise of Web3.
-They can also interact with RPC nodes on other blockchains and Web2 servers through secure HTTP requests.
-These features, combined with threshold signatures, give smart contracts the ability to hold assets and make transactions on other blockchains such as Bitcoin and Ethereum.
-
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/icp-intro.png")}
-    alt="Overview of ICP"
-    width="500"
-  />
-</div>
-
-Read on to learn more about how these features are made possible.
+It is designed to give applications near-native performance and scalability while maintaining the security of decentralized execution. [Smart contracts](/docs/building-apps/essentials/canisters) on ICP can [host web assets](/docs/building-apps/frontends/uploading-serving-assets), [hold tokens](/docs/defi/create), and serve HTTP requests from users. They can also interact with [RPC nodes](/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview) on other blockchains and Web2 servers through secure [HTTP requests](/docs/building-apps/network-features/using-http/https-outcalls/overview), seamlessly and securely integrating with other ecosystems.
 
 ## Subnets
-A blockchain can only run as fast and offer as many resources as a single node.
-One of the keys to overcoming this limit is sharding.
-ICP shards smart contracts over multiple instances of the blockchain.
-Each instance is called a **[subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation)** and has its own set of decentralized nodes running the [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) algorithm among themselves, building their own chain of blocks, and executing smart contracts.
-Each subnet runs in parallel with other subnets.
-A smart contract on one subnet can communicate with another smart contract on a different subnet through sending messages.
-Users can also send messages to smart contracts.
-The following diagram shows the flow of a message on ICP:
 
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/icp-overview.png")}
-    alt="Flow of a message on ICP"
-    width="600"
-  />
-</div>
+The ICP network is made up of multiple blockchain instances called subnets. Each subnet is a set of decentralized nodes running the network’s consensus algorithm among themselves. They build their own chain of blocks and execute smart contracts. Subnets run in parallel to one another. Smart contracts deployed on one subnet can communicate with smart contracts on another subnet through messages.
 
-1. The message goes to one of the boundary nodes (RPC nodes).
-1. The [boundary node](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) routes the message to the subnet that hosts the target smart contract.
-1. The consensus algorithm of that subnet adds the message to a new block in the subnet's blockchain.
-1. The message is added to the input queue of the target smart contract.
-1. The smart contract executes the message.
+Subnets have different sizes, which determine the cost of running smart contracts on that subnet. Subnet size also impacts the time to finality, replication factor for smart contracts, and security. Currently, subnets contain between 13 and 40 geographically distributed nodes. However, there can also be localized subnets to support applications that need to [comply with local regulations](/docs/building-apps/developing-canisters/deploy-specific-subnet) (GDPR compliance, etc.).
 
-Note that steps 3-5 are asynchronous and decoupled from each other, which may be unusual for developers who are used to Ethereum-style atomic transactions that are executed when they are added to a block.
-The motivation for this design is scalability.
-
-Subnets can have different sizes, i.e., replication factors, which determine the cost of running smart contracts on that subnet.
-It also impacts the time to finality and security.
-
-## Threshold signatures
-
-Each ICP subnet has a fixed public key.
-The corresponding private key is not stored on a single node, nor is it ever available on any node.
-Instead, it is split into multiple secret shares and distributed over all nodes using threshold cryptography.
-Nodes can collectively sign messages to users and other subnets using these secret shares.
-This makes validation of the state and results trivial for users since all they need to do is verify the digital signature against the fixed public key without downloading and validating blocks in the blockchain.
-
-This feature has profound implications and use cases:
-
-- There is no need to keep the blocks in the blockchain available forever, which would be a scalability bottleneck.
-  In fact, ICP actively garbage collects old blocks to keep storage usage bounded.
-- Smart contracts [can have their own secret keys](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846) and can sign transactions for other blockchains such as Bitcoin and Ethereum.
-  This enables trustless interaction with those blockchains.
-
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/icp-threshold-signature.png")}
-    alt="Threshold signature"
-    width="500"
-  />
-</div>
-
-:::info
-This feature is called **Chain-Key Cryptography** on ICP.
-:::
-
-## Canister smart contracts
-
-ICP uses [WebAssembly](https://internetcomputer.org/capabilities/webassembly) as the virtual machine for executing smart contracts.
-This means developers can write smart contracts in popular programming languages such as JavaScript, TypeScript, Rust, Python, and Motoko, which is specifically designed for ICP.
-
-Furthermore, a single smart contract on ICP is powerful enough to host an entire Ethereum Virtual Machine (EVM).
-This allows the deployment of EVM smart contracts written in Solidity.
-
-:::info
-In the context of ICP, smart contracts are referred to as **canisters**.
-:::
-
-A unique feature of ICP is that canisters can handle HTTP requests and serve web assets such as HTML, JS, and CSS.
-In other words, it is possible to write a Web3 application with both the backend and frontend fully hosted onchain.
-Smart contracts can also make requests to other Web2 services outside ICP.
-
-Ethereum developers may be used to the notion that smart contracts run sequentially within an atomic transaction.
-ICP embraces scalability and runs canisters in parallel.
-In that regard, canisters are similar to processes or microservices from traditional programming.
-Smart contracts can be fully autonomous and can schedule execution using timers without relying on users sending messages.
-
-In terms of storage, a canister can store arbitrary data in its WebAssembly memory.
-Additionally, a canister can use a larger **stable memory**.
-The difference between the two memories is important for upgradable canisters: the WebAssembly memory is cleared on an upgrade, whereas the stable memory is preserved (hence the name “stable”).
-For immutable canisters, there is no observable difference between the two memories except for the size and functions to access them.
-
-## Accounts and keys
-
-ICP derives the address of a user account from the user’s public key by hashing it.
-
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/icp-keys.png")}
-    alt="Accounts, keys, principals"
-    width="500"
-  />
-</div>
-
-The textual encoding of an address includes a checksum that looks something like this:
-
-```
-mh4eq-xsi7l-lgz7s-gmxoh-stiey-277n4-lev4o-q6hah-22sk6-ahlhm-qae
-```
-
-ICP supports multiple types of keys (ECDSA, Ed25519, BLS).
-Developer tools usually generate and accept keys in PEM format.
-
-Canisters can provide user accounts as a service. **Internet Identity** is an example of a canister that allows Web2 users to have blockchain accounts that leverage user authentication to map the user to an identity and provide delegation to the relying party.
-
-You can also use hardware and browser-extension wallets.
-
-:::info
-In the context of ICP, addresses are referred to as **principals**.
-:::
-
-## Tokens
-
-Accounts on ICP do not have built-in balances, which is a large design difference when compared to other chains like Ethereum.
-All tokens are implemented by canisters.
-ICP has an equivalent of the ERC-20 standard, called [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md).
-If a canister implements ICRC-2, then it implements a fungible token and has a ledger for it.
-
-## Messages
-
-The programming model of ICP is similar to the [Actor model](https://en.wikipedia.org/wiki/Actor_model), where calls are made by sending messages instead of transactions.
-The difference between a transaction and a message becomes apparent only when the canister calls other canisters.
-A transaction is atomic in the sense that it rolls back all state changes if any of the calls fail.
-A message does not have such atomicity guarantees across calls.
-Programming on ICP is more asynchronous compared to Ethereum.
-If the canister does not make any calls, then the message behaves exactly like a transaction.
-
-## Cycles
-
-On other blockchains, such as Ethereum, users pay a variable fee for sending and executing transactions depending on the current gas price.
-In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model,” where <GlossaryTooltip>canisters</GlossaryTooltip> pay for consumed resources by burning **cycles**.
-This is similar to gas in Ethereum but has a fixed price correlating to a group of fiat currencies.
-
-## Governance
-
-ICP is governed by a decentralized autonomous organization (DAO) community called the Network Nervous System (NNS).
-It is implemented as a set of canisters running on ICP itself.
-Community members can participate in [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) by staking ICP tokens and voting on proposals.
-All operational changes to ICP, such as upgrading nodes, go through voting.
-NNS automatically executes proposals that have passed voting, which ensures that nodes run the same version of the protocol and thus avoids hard forks.
-
-:::info
-Governance and node ownership are decoupled.
-It is possible to participate in governance without having a node and vice versa.
-:::
+[Learn more about subnets](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
 ## Nodes
 
-Becoming a node provider on ICP requires voting from the DAO community.
-There are two reasons for this:
+Each node runs software called the **replica**. The replica contains the protocol components necessary for a node to participate in a subnet.
 
-1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, 30TiB of NVMe SSD. Such nodes can sustain high throughput and enable powerful Web3 applications.
-1. It ensures that the identity of the node provider is known to the community. The node provider has signed a declaration of good intent and may be liable if the node misbehaves.
-This makes Sybil attacks harder to pull off and allows for the ability to reduce the number of nodes while keeping the Nakamoto coefficient high. Nodes are assigned to subnets such that they maximize decentralization, in terms of operators, geography, and jurisdiction. This is called **deterministic decentralization**.
+Nodes are assigned to subnets such that they maximize decentralization in terms of operators, geography, and jurisdiction. This is called **deterministic decentralization**.
 
-Currently, subnets contain between 13 and 40 nodes, and most of them are geographically distributed. However, there can also be localized subnets to support applications that need to comply with local regulations.
+Nodes are owned and operated by **node providers**, who are responsible for monitoring and maintaining their nodes. In return, node providers receive ICP tokens as payment for providing compute resources to the network.
 
-## Quick comparison with Ethereum
+Node providers on ICP must be voted on by the network’s governance. This ensures that the hardware of each node meets ICP’s high standards and that the identity of the node provider is known to the community. Each node provider must sign a declaration of good intent and may be liable if the node misbehaves.
 
-<table>
-<thead>
-<tr>
-  <th> </th>
-  <th> Ethereum </th>
-  <th> ICP </th>
-</tr>
-</thead>
+## Canister smart contracts
 
-<tbody>
-<tr>
-  <td> Virtual machine </td>
-  <td> EVM </td>
-  <td> WebAssembly </td>
-</tr>
+In the context of ICP, smart contracts are referred to as [canisters](/docs/building-apps/essentials/canisters). When a canister is deployed to the network, it gets deployed to a subnet and replicated across all nodes of that subnet.
 
-<tr>
-  <td> Onchain Web3 </td>
-  <td> - </td>
-  <td> Yes </td>
-</tr>
+ICP uses WebAssembly (Wasm) as the virtual machine for executing canisters, allowing developers to write canisters in their programming language of choice, including JavaScript, TypeScript, Rust, Python, or Motoko.
 
-<tr>
-  <td> Bridgeless Bitcoin </td>
-  <td> - </td>
-  <td> Yes </td>
-</tr>
+ICP embraces scalability and runs canisters in parallel. In that regard, canisters are similar to processes or microservices used in traditional programming workflows. Canisters can be fully autonomous by scheduling execution using timers rather than relying on users sending messages.
 
-<tr>
-  <td> Smart contracts can sign messages </td>
-  <td> - </td>
-  <td> Yes </td>
-</tr>
+[Learn more about canister smart contracts](https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts).
 
-<tr>
-  <td> HTTP calls to Web2 from smart contracts </td>
-  <td> - </td>
-  <td> Yes </td>
-</tr>
+## Chain-key cryptography
 
-<tr>
-  <td> Languages </td>
-  <td> Solidity, Vyper, Yul </td>
-  <td> JS, Python, Rust, Solidity, Motoko, and more </td>
-</tr>
+Chain-key cryptography is a suite of cryptographic mechanisms that facilitate many of ICP’s unique features and capabilities. One of these cryptographic mechanisms is [threshold signing](/docs/references/t-sigs-how-it-works), enabling each ICP subnet to have a fixed public key and corresponding private key that is not stored on a single node, nor is it ever available on any node. Instead, it is split into multiple secret shares and distributed over all nodes using threshold cryptography.
 
-<tr>
-  <td> Programming model </td>
-  <td> Atomic transactions </td>
-  <td> Async message passing </td>
-</tr>
+Nodes can collectively sign messages to users and other subnets using these secret shares. This makes validation of the state and results trivial for users, since all they need to do is verify the digital signature against the fixed public key.
 
-<tr>
-  <td> Upgradeability </td>
-  <td> Immutable </td>
-  <td> Upgradable or immutable </td>
-</tr>
+[Chain-key signatures](/docs/defi/chain-key-tokens/overview) are another component of chain-key cryptography that allows smart contracts to sign transactions targeted specifically at other blockchain networks like [Bitcoin](/docs/build-on-btc/) and [Ethereum](/docs/building-apps/chain-fusion/ethereum/overview). These transactions are submitted directly to the target chains without needing a bridge or oracle to facilitate the communication.
 
-<tr>
-  <td> Gas model </td>
-  <td> User pays </td>
-  <td> Smart contract pays </td>
-</tr>
+[Learn more about chain-key cryptography](https://learn.internetcomputer.org/hc/en-us/articles/34209497587732-Chain-Key-Signatures).
 
-<tr>
-  <td> Gas price </td>
-  <td> Variable </td>
-  <td> Fixed </td>
-</tr>
+## Governance
 
-<tr>
-  <td> Compute </td>
-  <td>
-    {" "}
-    Few million instructions per block (based on the 30 million gas limit){" "}
-  </td>
-  <td> 2 billion instructions per block (per subnet) </td>
-</tr>
+ICP is governed by a decentralized autonomous organization (DAO) community called the [Network Nervous System (NNS)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview). It is implemented as a set of canisters running on ICP itself. Community members can participate in the network’s governance by [staking ICP tokens in neurons](/docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron) in return for voting power. All operational changes to ICP go through voting.
 
-<tr>
-  <td> Finality </td>
-  <td> ~15min </td>
-  <td> ~1.4s </td>
-</tr>
+The NNS automatically executes proposals that have passed voting, which ensures that nodes run the same version of the protocol and thus avoids hard forks.
 
-<tr>
-  <td> Average tx/msg fee </td>
-  <td> ~$1 </td>
-  <td> ~$0.000001 </td>
-</tr>
+Governance and node ownership are decoupled. It is possible to participate in governance without having a node, and vice versa.
 
-<tr>
-  <td>Stack size</td>
-  <td> 32KiB (1024 of 256-bit values) </td>
-  <td> 5MiB </td>
-</tr>
+Smart contracts on ICP can be governed by a [Service Nervous System (SNS)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview), a type of DAO that is based on the design of the NNS but instead allows a community to stake tokens in SNS-specific [neurons](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-Neurons) and vote on proposals for upgrades to the smart contract.
 
-<tr>
-  <td> Code size </td>
-  <td> 24KiB (more with code sharing) </td>
-  <td> 10MiB </td>
-</tr>
+[Learn more about governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance).
 
-<tr>
-  <td> Memory size </td>
-  <td> Few KB </td>
-  <td> 504GiB (4GiB Wasm memory + 500GiB of stable memory) </td>
-</tr>
 
-<tr>
-  <td> Storage cost </td>
-  <td> $18M per GiB (based on 640K gas per KB) </td>
-  <td> $5 per GiB per year </td>
-</tr>
 
-<tr>
-  <td> Number of nodes </td>
-  <td> ~7K </td>
-  <td> ~500 in total, 13-40 per subnet </td>
-</tr>
 
-</tbody>
-</table>
+

@@ -18,13 +18,12 @@ There are several different ways to interact with ckERC20 tokens:
 - Transferring ckERC20 tokens
 - Viewing ckERC20 token transactions
 
+More details on these flows are provided on the [ckERC20 GitHub page](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/ckerc20.adoc), whereas a detailed description of the ledger suite orchestrator can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/ledger-suite-orchestrator).
+
+The ledger and index canisters in any ckERC20 ledger suite are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [using the ICRC-1 ledger](/docs/defi/token-ledgers/usage/icrc1_ledger_usage) section.
+
+
 ## Converting ERC-20 tokens to ckERC20 tokens
-
-The list of supported ckERC20 tokens can be obtained by running the following command:
-
-```
-dfx canister --ic call sv3dd-oaaaa-aaaar-qacoa-cai get_minter_info
-```
 
 :::info
 
@@ -32,9 +31,6 @@ Note that ERC-20 tokens can only be converted if the ICRC ledger suite for the
 corresponding ckERC20 token exists.
 
 :::
-
-The return value contains a vector, `supported_ckerc20_tokens`, which lists all ckERC20 tokens.
-The return value also contains the field `erc20_helper_contract_address`, which states the **helper smart contract** address on Ethereum used in the conversion flows.
 
 The ckERC20 helper contract addresses can be found below:
 
@@ -49,12 +45,11 @@ Note that the helper smart contract might change. It is therefore recommended to
 
 :::
 
+1. [Download the ckETH repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh). Then, navigate into the subdirectory for either the mainnet (`ic/rs/ethereum/cketh/mainnet`) or testnet (`ic/rs/ethereum/cketh/testnet`).
 
-If the targeted ckERC20 token is listed, [download the ckETH repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh). Then, navigate into the subdirectory for either the mainnet (`ic/rs/ethereum/cketh/mainnet`) or testnet (`ic/rs/ethereum/cketh/testnet`).
+2. The user submits an Ethereum transaction calling the `approve` function of the ERC-20 smart contract to allow the helper smart contract to withdraw some of the user's funds.
 
-Create an Ethereum transaction that calls the `approve` function on the corresponding ERC-20 contract address, allowing the helper smart contract to withdraw some of the user's funds.
-
-The next step is to call the `deposit` function of the helper smart contract, specifying the ERC-20 smart contract address, the amount to be deposited, and the principal ID that should be credited for the deposit. The principal ID must be encoded as a `bytes32` array. A convenient way to obtain the correct encoding is to use the `Principal → Bytes32 conversion` function on the ckETH minter [dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard).
+3. The user calls the `deposit` function of the helper smart contract, specifying the ERC-20 contract, how many ERC-20 tokens should be withdrawn from the user's account, and the principal ID that should be credited for the minted ckERC20 tokens. The principal ID must be encoded as a `bytes32` array. A convenient way to obtain the correct encoding is to use the `Principal → Bytes32 conversion` function on the ckETH minter [dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard).
 
 :::warning
 
@@ -62,19 +57,25 @@ If your encoded principal ID is incorrect, funds will be lost.
 
 :::
 
+4. The helper smart contract transfers the specified number of ERC-20 tokens to itself and, if successful, emits an `event` to be consumed by the ckETH minter.
+
+5. The ckETH minter periodically fetches the logs from the helper smart contract, minting ckERC20 tokens for every newly discovered `event`.
+
 No further user action is required. The `icrc1_balance_of` function can be called on the corresponding ckERC20 ledger to check if the ckERC20 tokens have been minted, which usually takes about 20 minutes.
+
 
 
 ## Converting ckERC20 tokens to ERC-20 tokens
 
-Since the user must pay the transaction fees, the `icrc2_approve` function must be called on the ckETH ledger, allowing the ckETH minter to spend some of the user's ckETH tokens.
+1. The user calls the `icrc2_approve` function on the ckETH ledger to approve the ckETH minter to burn some of the user's ckETH tokens as payment for the transaction fees.
+
 For example, the following command approves the ckETH minter to take up to 1 ckETH from the user's account.
 
 ```
 dfx canister --ic call ledger icrc2_approve "(record { spender = record { owner = principal \"$(dfx canister id minter --ic)\" }; amount = 1_000_000_000_000_000_000:nat })"
 ```
 
-The user must further approve the ckETH minter to transfer the desired amount of the targeted ckERC20 token:
+2. The user calls the `icrc2_approve` function on the ledger of the given ckERC20 token to approve the minter to burn some of the user's ckERC20 tokens.
 
 ```
 dfx canister --ic call CKERC20_LEDGER icrc2_approve "(record { spender = record { owner = principal \"$(dfx canister id minter --ic)\" }; amount = CKERC20_TOKEN_AMOUNT:nat })"
@@ -82,14 +83,15 @@ dfx canister --ic call CKERC20_LEDGER icrc2_approve "(record { spender = record 
 
 The placeholder `CKERC20_LEDGER` must be replaced by the canister ID of the corresponding ckERC20 ledger, and `CKERC20_TOKEN_AMOUNT` must be replaced by the desired amount, denominated in the smallest unit of the token. For example, USDC and ckUSDC use 6 decimals, so 1 USDC must be written as `1_000_000`.
 
-The last step is to call the `withdraw_erc20` function on the ckETH minter as follows.
+3. The user calls the `withdraw_erc20` function on the ckETH minter, specifying the canister ID of the ledger for the given ckERC20 token, the amount to be withdrawn, and the Ethereum destination address.
 
 ```
 dfx canister --ic call minter withdraw_erc20 "(record { amount = CKERC20_TOKEN_AMOUNT:nat; ckerc20_ledger_id = principal \"CKERC20_LEDGER\"; recipient = \"ETH_ADDRESS\"})"
 ```
 
-As before, `CKERC20_TOKEN_AMOUNT` and `CKERC20_LEDGER` must be replaced by the desired amount in the smallest unit and the canister ID of the ckERC20 ledger, respectively.
 Lastly, `ETH_ADDRESS` must be replaced by the desired Ethereum destination address.
+
+After having called `withdraw_erc20`, the user does not need to do anything else. The minter will take care of the rest and send an Ethereum transaction transferring the desired amount of corresponding ERC-20 tokens to the specified address. See the [ckERC20 documentation](https://github.com/dfinity/ic/blob/974d10d2884487ac9c77db99de56020a6ff845cc/rs/ethereum/cketh/docs/ckerc20.adoc?plain=1#L267) for more details.
 
 ## Transferring ckERC20 tokens
 
@@ -109,23 +111,15 @@ Transferring ckERC20 tokens incurs a small fee. The exact amount depends on the 
 
 ## Viewing ckERC20 token transactions
 
-The Internet Computer dashboard shows the transactions of all ckERC20 tokens:
-
-- [ckUSDC transactions](https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai/transactions)
-
-- [ckLINK transactions](https://dashboard.internetcomputer.org/ethereum/g4tto-rqaaa-aaaar-qageq-cai/transactions)
-
-- [ckPEPE transactions](https://dashboard.internetcomputer.org/ethereum/etik7-oiaaa-aaaar-qagia-cai)
-
-- [ckOCT transactions](https://dashboard.internetcomputer.org/ethereum/ebo5g-cyaaa-aaaar-qagla-cai)
+The [Internet Computer dashboard](https://dashboard.internetcomputer.org/) shows the transactions of all ckERC20 tokens.
 
 Alternatively, the history of transactions can be obtained from the index canister of the ckERC20 ledger suite.
+
 The following command can be used to retrieve the canister IDs of all canisters in the ledger suite of a particular ckERC20 token.
 
 ```
 dfx canister --network ic call LSO canister_ids "(record { chain_id = CHAIN_ID:nat; address = "ERC_20_CONTRACT_ADDRESS"})"
 ```
-
 
 Replace the following values:
 

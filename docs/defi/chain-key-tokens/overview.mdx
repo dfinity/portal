@@ -17,11 +17,13 @@ Chain-key tokens can be swapped for one another seamlessly. Making transactions 
 
 ## How to use chain-key tokens in a canister
 
-Each implementation of a chain-key token implements an [ICRC](/docs/defi/token-standards/#icrc-1) token standard so that they can be easily integrated by services such as wallets and DEXs. ICRC standards are used to define the token type, such as fungible or non-fungible, and how that token can be used. To implement smart contracts that use chain-key tokens, simply make calls from a smart contract to the ICRC ledger for the chain-key token you wish to use. Using chain-key tokens does not require implementing a specific type of smart contract, and implementation is not restricted to a specific programming language.
+Each implementation of a chain-key token adheres to an [ICRC](/docs/defi/token-standards/#icrc-1) token standard so that they can be easily integrated by services such as wallets and DEXs. ICRC standards are used to define the token type, such as fungible or non-fungible, and how that token can be used. To implement smart contracts that use chain-key tokens, simply make calls from a smart contract to the ICRC ledger for the chain-key token you wish to use. Using chain-key tokens does not require implementing a specific type of smart contract, and implementation is not restricted to a specific programming language.
 
 ## Requirements for chain-key tokens
 
-In addition to the requirement that a chain-key token must adhere to an [ICRC](/docs/defi/token-standards/#icrc-1) token standard, there are additional requirements to ensure a high degree of security and decentralization for all chain-key tokens:
+There are requirements to ensure a high degree of security and decentralization for all chain-key tokens:
+
+- Must adhere to an [ICRC](/docs/defi/token-standards/#icrc-1) token standard.
 
 - The chain-key token must be a true digital "twin" in the sense that any user can convert the native token to the chain-key token and vice versa, paying only for the transfer and conversion fees. This implies that the chain-key token must be fully backed by the corresponding native token at all times. Conversions may be delayed if one chain is temporarily unavailable, but all conversions must be finalized eventually.
 
@@ -37,12 +39,6 @@ In addition to the requirement that a chain-key token must adhere to an [ICRC](/
 
     - The canisters must be immutable or controlled by a DAO, for example, an [SNS](https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System) with a large number of verified voters.
 
-## Know-your-transaction (KYT) checks
-
-The ckBTC minter interacts with a dedicated KYT canister that executes KYT checks. Checks are applied to both incoming and outgoing transactions.
-
-The ckETH and ckERC20 minters implement a local OFAC checklist for both incoming and outgoing transactions.
-
 ## Available chain-key tokens
 
 The current chain-key tokens are supported:
@@ -53,12 +49,20 @@ The current chain-key tokens are supported:
 
 - [ckERC20 tokens](./ckerc20/overview.mdx) such as ckLINK, ckPEPE, and ckUSDC.
 
-## Further reading
+## Chain-key token use cases
+
+- Token swaps.
+
+- Decentralized exchanges.
+
+- Point of sale applications and services.
+
+- Crowdfunding applications.
+
+- eCommerce platforms.
+
+- Faster and cheaper transactions
+
+## Resources
 
 - [Chain-key tokens: How it works](https://learn.internetcomputer.org/hc/en-us/articles/34211397080980-Chain-Key-Tokens).
-
-- [ckBTC](./ckbtc/overview.mdx).
-
-- [ckETH](./cketh/overview.mdx).
-
-- [ckERC20](./ckerc20/overview.mdx).
