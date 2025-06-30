@@ -676,34 +676,35 @@ defi: [
         label: "DeFi on ICP",
         id: "defi/overview",
       },
-      {
-        type: "category",
-        label: "ICP Rosetta implementation",
-        link: {
-          type: "doc",
-          id: "defi/rosetta/icp_rosetta/index",
-        },
-        items: [
-          {
+              {
+          type: "category",
+          label: "ICP Rosetta implementation",
+          link: {
             type: "doc",
-            label: "Data API",
-            id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-          {
-            type: "category",
-            label: "Construction API",
-            link: {
+            id: "defi/rosetta/icp_rosetta/index",
+          },
+          items: [
+            "defi/rosetta/icp_rosetta/running-rosetta",
+            {
               type: "doc",
-              id: "defi/rosetta/icp_rosetta/construction_api/index",
-            },
-            items: [
-            "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-            "defi/rosetta/icp_rosetta/construction_api/staking",
-            "defi/rosetta/icp_rosetta/construction_api/voting",
+              label: "Data API",
+              id: "defi/rosetta/icp_rosetta/data_api/index",
+              },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+              "defi/rosetta/icp_rosetta/construction_api/operations-flow",
+              "defi/rosetta/icp_rosetta/construction_api/staking",
+              "defi/rosetta/icp_rosetta/construction_api/voting",
+              ],
+              },
             ],
-            },
-          ],
-        },
+          },
         {
           type: "category",
           label: "ICRC Rosetta implementation",
@@ -712,6 +713,7 @@ defi: [
             id: "defi/rosetta/icrc_rosetta/index",
           },
           items: [
+            "defi/rosetta/icrc_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",

@@ -10,142 +10,126 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ICP Rosetta allows for communication with the [ICP ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) and the [NNS governance canister](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) through the Rosetta-API standard.
 
-## Set up an ICP Rosetta node
+## Overview
 
-You can set up a Rosetta API-compliant node to interact with the Internet Computer and interact with ICP tokens. To keep the instructions simple, you can use a Docker image to create the integration with the Rosetta API. You can also build and run the binary using the source code.
+The Rosetta API is a standardized specification for blockchain integrations developed by Coinbase. ICP Rosetta provides a Rosetta-compliant interface that enables:
 
-If you don’t already have [Docker](https://docs.docker.com/get-docker/) on your computer, download and install the latest version.
+- **Custody platforms** to integrate with the Internet Computer Protocol
+- **Analytics and compliance tools** to pull ledger and governance data
+- **KYC (Know Your Customer)** and **AML (Anti-Money Laundering)** compliance
+- **Transaction preparation and submission** to the ICP ledger and NNS governance
 
-Then, to set up a Rosetta node (which connects to a testnet):
+## Supported operations
 
-### Step 1: [Install Docker](https://docs.docker.com/get-docker/) and [start the Docker daemon](https://docs.docker.com/config/daemon/).
+ICP Rosetta supports various operations through its APIs:
 
-The Docker daemon (`dockerd`) should automatically start when you reboot your computer. If you start the Docker daemon manually, the instructions vary depending on the local operating system.
+### Ledger operations
+- Account balance queries
+- Transaction history retrieval
+- Transaction construction and submission
+- Transfer operations
 
-### Step 2:  Pull the latest `dfinity/rosetta-api` image from the Docker Hub.
+### Governance operations
+- Neuron management (stake, dissolve, spawn)
+- Voting on governance proposals
+- Reward distribution queries
+- Network nervous system interactions
 
-Run the following command:
+### Supported endpoints
 
-``` bash
-docker pull dfinity/rosetta-api
-```
+ICP Rosetta implements the complete Rosetta specification including:
 
-### Step 3:  Start the integration software.
+- **Data API**: For querying blockchain data
+- **Construction API**: For creating and submitting transactions
+- **Network API**: For network information and status
 
-Run the following command:
+## Getting started
 
-``` bash
-docker run \
-    --interactive \
-    --tty \
-    --publish 8081:8081 \
-    --rm \
-    dfinity/rosetta-api
-```
+To start using ICP Rosetta, you'll need to set up a Rosetta node. There are multiple deployment options available:
 
-This command starts the software on the local host and displays output similar to the following:
+- **Docker deployment** (recommended for most users)
+- **Building from source** (for development and customization)
+- **Local cluster setup** (for testing with monitoring tools)
+- **Managed endpoints** (no local setup required)
 
-```
-Listening on 0.0.0.0:8081
-Starting Rosetta API server
-```
+### Test environment
 
-By default, the software connects to a testnet.
-It **does not** connect to the ledger canister running on the Internet Computer blockchain mainnet.
+For testing and development, you can connect to the test ICP ledger (`xafvr-biaaa-aaaai-aql5q-cai`) that runs on mainnet but uses test tokens (TESTICP). Get free test tokens from [Validation Cloud's faucet](https://docs.validationcloud.io/v1/about/faucets) to start experimenting without using real ICP.
 
-If you have been assigned a test network and corresponding ledger canister identifier, you can run the command against that network by specifying an additional `canister` argument.
-For example, the following command illustrates connecting to the ledger canister on a test network by setting the `canister` argument to `2xh5f-viaaa-aaaab-aae3q-cai`.
-
-``` bash
-docker run \
-    --interactive \
-    --tty \
-    --publish 8081:8081 \
-    --rm \
-    dfinity/rosetta-api \
-    --canister 2xh5f-viaaa-aaaab-aae3q-cai
-```
-
-:::info
-The first time you run the command, it might take some time for the node to catch up to the current tip of the chain.
-When the node is caught up, you should see output similar to the following:
-
-You are all caught up to block height 109
-:::
-
-After completing this step, the node continues to run as a **passive** node that does not participate in block making.
-
-### Step 4:  Open a new terminal window or tab and run the `ps` command to verify the status of the service.
-
-If you need to stop the service, press <kbd>Ctrl-C</kbd>. You might want to do this to change the canister identifier you are using, for example.
-
-To test the integration after setting up the node, you will need to write a program to simulate a principal submitting a transaction or looking up an account balance.
-
-## Run the Rosetta node in production
-
-When you are finished testing, you should run the Docker image in production mode without the `--interactive`, `--tty`, and `--rm` command-line options.
-These command-line options are used to attach an interactive terminal session and remove the container and are primarily intended for testing purposes.
-To run the software in a production environment, you can start the Docker image using the `--detach` option to run the container in the background and, optionally, specify the `--volume` command for storing blocks.
-
-To connect the Rosetta node instance to the mainnet, add flags: `--mainnet` and `--not-whitelisted`. The flag for whitelisting is reserved for certain IP addresses that need to connect to permissioned testnets.
-
-For more information about Docker command-line options, see the [Docker reference documentation](https://docs.docker.com/engine/reference/commandline/run/).
+For detailed setup instructions, see the [Running Rosetta](./running-rosetta) guide.
 
 ## Requirements and limitations
 
-The integration software provided in the Docker image has one requirement that is not part of the standard Rosetta API specification.
+The integration software provided has specific requirements and limitations:
 
-For transactions involving ICP tokens, the unsigned transaction must be created less than 24 hours before the network receives the signed transaction.
-The reason for this is the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
-Any submitted transaction that refers back to a too old transaction is rejected to maintain operational efficiency.
+### Transaction timing requirement
 
-Other than this requirement, the Rosetta API integration software fully complies with all standard Rosetta endpoints and passes all of the `rosetta-cli` tests.
-The software can accept any valid Rosetta request.
-However, the integration software only prompts for transactions to be signed using Ed25519 and SECP256k1, rather than all the [signature schemes listed](https://www.rosetta-api.org/docs/models/SignatureType.html#values), and only replies with a small subset of the potential responses that the specification supports.
-For example, the software doesn’t implement any of the UTXO features of Rosetta, so you won’t see any UTXO messages in any of the software responses.
+For transactions involving ICP tokens, the unsigned transaction must be created less than 24 hours before the network receives the signed transaction. This is due to the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). Any submitted transaction that refers back to a transaction older than 24 hours is rejected to maintain operational efficiency.
+
+### Signature schemes
+
+The examples and documentation typically use:
+- **Ed25519** 
+- **SECP256k1**
+
+For the complete list of supported signature schemes, refer to the [Rosetta specification](https://www.rosetta-api.org/docs/models/SignatureType.html#values).
+
+### Response format
+
+The integration software only replies with a subset of the potential responses that the specification supports. For example:
+- No UTXO features are implemented
+- No UTXO messages appear in any software responses
+
+### Compliance
+
+Other than the 24-hour transaction timing requirement, the Rosetta API integration software:
+- ✅ Fully complies with all standard Rosetta endpoints
+- ✅ Passes all `rosetta-cli` tests
+- ✅ Accepts any valid Rosetta request
 
 ## Frequently asked questions
 
-The following questions come from the most commonly reported questions and blockers from the developer community regarding Rosetta integration with the Internet Computer.
+### How do I run an instance of the Rosetta node?
 
-#### How do I run an instance of the Rosetta node?
+The easiest way is to use the [`dfinity/rosetta-api`](https://hub.docker.com/r/dfinity/rosetta-api/tags?page=1&ordering=last_updated) Docker image. See the [Running Rosetta](./running-rosetta) guide for detailed instructions on all deployment methods.
 
-An easy way to accomplish this is to use the [`dfinity/rosetta-api`](https://hub.docker.com/r/dfinity/rosetta-api/tags?page=1&ordering=last_updated) Docker image.
-Once the node initializes and syncs all blocks, you can perform queries and submit transactions by invoking the Rosetta API on the node.
-The node listens on the `8081` port.
+### How do I connect the Rosetta node to the mainnet?
 
-#### How do I connect the Rosetta node to the mainnet?
+Use the flags `--mainnet` and `--not-whitelisted` when starting your Rosetta node.
 
-Use flags `--mainnet` and `--not-whitelisted`
+### How do I know if the node has caught up with the network?
 
-#### How do I know if the node has caught up with the test net?
+Look for the log entry: `You are all caught up to block XX` in the startup logs after `Starting Rosetta API server`. This confirms synchronization with all blocks.
 
-Search the `Starting Rosetta API server` startup log. There will be a log entry that says, `You are all caught up to block XX`.
-This message confirms that you are caught up with all blocks.
+### How do I persist synced block data?
 
-#### How to persist synced blocks data?
-Mount the `/data` directory as a [volume](https://docs.docker.com/storage/volumes/).
+Mount the `/data` directory as a Docker volume:
 
 ```bash
 docker volume create rosetta
-```
-```bash
 docker run \
-    --volume rosetta:/data \
-    --interactive \
-    --tty \
-    --publish 8081:8081 \
-    --rm \
-   dfinity/rosetta-api
+    --volume rosetta:/data \
+    --publish 8081:8081 \
+    --detach \
+    dfinity/rosetta-api
 ```
 
-#### Is the Rosetta node versioned?
-Yes, new versions are regularly published on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
-It is recommended to use a specific version in production settings, e.g., `dfinity/rosetta-api:v2.0.0`.
-You can query the version of a running Rosetta node using the `/network/options` endpoint.
+### Is the Rosetta node versioned?
+
+Yes, new versions are regularly published on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags). It's recommended to use specific versions in production (e.g., `dfinity/rosetta-api:v2.0.0`).
+
+You can query the version of a running node using the `/network/options` endpoint:
 
 ```bash
-$ curl -s -q -H 'Content-Type: application/json' -d '{"network_identifier": {"blockchain": "Internet Computer", "network": "00000000000000020101"}}' -X POST http://localhost:8080/network/options | jq '.version.node_version'
-
-"2.0.0"
+curl -H 'Content-Type: application/json' \
+  -d '{"network_identifier": {"blockchain": "Internet Computer", "network": "00000000000000020101"}}' \
+  -X POST http://localhost:8081/network/options | jq '.version.node_version'
 ```
+
+### What's the default port?
+
+The Rosetta node listens on port **8081** by default.
+
+### How do I get test tokens for development?
+
+Use [Validation Cloud's free faucet](https://docs.validationcloud.io/v1/about/faucets) to get TESTICP tokens from the test ICP ledger (`xafvr-biaaa-aaaai-aql5q-cai`). This allows you to test ICP Rosetta functionality without using real ICP tokens.

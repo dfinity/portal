@@ -1,0 +1,339 @@
+---
+keywords: [intermediate, rosetta, tutorial, docker, source, icrc, ledger, deployment]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Running ICRC Rosetta
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta"]} />
+
+There are several ways to run ICRC Rosetta depending on your use case and requirements. This guide covers all available deployment methods for connecting to ICRC-1 compatible ledgers like ckBTC and ckETH.
+
+## Docker (Recommended)
+
+The easiest way to run ICRC Rosetta is using the official Docker image. This method is recommended for most users.
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) installed and running
+- [Docker daemon](https://docs.docker.com/config/daemon/) started
+- ICRC-1 ledger canister IDs you want to connect to
+
+### Step 1: Pull the latest image
+
+```bash
+docker pull dfinity/ic-icrc-rosetta-api
+```
+
+### Step 2: Run the container
+
+#### Multi-token tracking (v2.1.0+)
+
+Connect to multiple ICRC-1 ledgers simultaneously:
+
+```bash
+docker run \
+    --interactive \
+    --tty \
+    --publish 8082:8082 \
+    --rm \
+    dfinity/ic-icrc-rosetta-api \
+    --port 8082 \
+    --network-type mainnet \
+    --multi-tokens mxzaz-hqaaa-aaaar-qaada-cai,ss2fx-dyaaa-aaaar-qacoq-cai \
+    --multi-tokens-store-dir /data
+```
+
+This example connects to both ckBTC (`mxzaz-hqaaa-aaaar-qaada-cai`) and ckETH (`ss2fx-dyaaa-aaaar-qacoq-cai`) ledgers.
+
+#### Single token tracking (legacy)
+
+Connect to a single ICRC-1 ledger:
+
+```bash
+docker run \
+    --interactive \
+    --tty \
+    --publish 8082:8082 \
+    --rm \
+    dfinity/ic-icrc-rosetta-api \
+    --port 8082 \
+    --network-type mainnet \
+    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
+    --store-file /data/db.sqlite
+```
+
+### Step 3: Production deployment
+
+For production environments, run without interactive flags and persist data:
+
+```bash
+# Create a volume for data persistence
+docker volume create ic-icrc-rosetta
+
+# Run in production mode with multi-token support
+docker run \
+    --volume ic-icrc-rosetta:/data \
+    --publish 8082:8082 \
+    --detach \
+    dfinity/ic-icrc-rosetta-api \
+    --port 8082 \
+    --network-type mainnet \
+    --multi-tokens mxzaz-hqaaa-aaaar-qaada-cai,ss2fx-dyaaa-aaaar-qacoq-cai \
+    --multi-tokens-store-dir /data
+```
+
+### Common ledger canister IDs
+
+#### Mainnet tokens
+- **ckBTC**: `mxzaz-hqaaa-aaaar-qaada-cai`
+- **ckETH**: `ss2fx-dyaaa-aaaar-qacoq-cai`
+
+#### Test tokens (on mainnet)
+- **TICRC1** (Test ICRC token): `3jkp5-oyaaa-aaaaj-azwqa-cai`
+- **ckTestBTC**: `mc6ru-gyaaa-aaaar-qaaaq-cai`
+- **ckTestETH**: `apia6-jaaaa-aaaar-qabma-cai`
+
+:::tip
+Get free TICRC1 test tokens from [Validation Cloud's faucet](https://docs.validationcloud.io/v1/about/faucets) to start testing ICRC Rosetta without using real tokens.
+:::
+
+### Docker versioning
+
+It's recommended to use specific versions in production:
+
+```bash
+docker run \
+    --publish 8082:8082 \
+    --detach \
+    dfinity/ic-icrc-rosetta-api:v2.1.0 \
+    --port 8082 \
+    --network-type mainnet \
+    --multi-tokens mxzaz-hqaaa-aaaar-qaada-cai
+```
+
+Check available versions on [DockerHub](https://hub.docker.com/r/dfinity/ic-icrc-rosetta-api/tags).
+
+### Getting help
+
+View all available options:
+
+```bash
+docker run \
+    --rm \
+    dfinity/ic-icrc-rosetta-api \
+    --help
+```
+
+## From Source
+
+You can build and run ICRC Rosetta directly from the Internet Computer source code.
+
+### Prerequisites
+
+- [Bazel](https://bazel.build/) build system
+- Internet Computer repository cloned locally
+
+### Building and running
+
+```bash
+# Clone the IC repository (if not already done)
+git clone https://github.com/dfinity/ic.git
+cd ic
+
+# Build and run ICRC Rosetta
+bazel run //rs/rosetta-api/icrc1:ic-icrc-rosetta-api -- \
+    --port 8082 \
+    --network-type mainnet \
+    --multi-tokens mxzaz-hqaaa-aaaar-qaada-cai \
+    --multi-tokens-store-dir /tmp/icrc-rosetta-data
+```
+
+This method gives you the latest development version and allows for custom modifications.
+
+## Local Cluster
+
+For development and testing purposes, you can set up a complete local Kubernetes cluster with monitoring tools that includes ICRC Rosetta.
+
+### Overview
+
+The local cluster setup provides:
+- Minikube-based Kubernetes cluster
+- Prometheus and Grafana for monitoring
+- cAdvisor for container metrics
+- Both ICP and ICRC1 Rosetta services
+
+### Prerequisites
+
+The deployment script will help install missing dependencies:
+- Docker
+- Minikube
+- kubectl
+- Helm
+
+### Deploying production images
+
+```bash
+# Clone the IC repository
+git clone https://github.com/dfinity/ic.git
+cd ic/rs/rosetta-api/local/cluster
+
+# Deploy with default configuration
+./deploy.sh
+
+# Deploy with specific ICRC1 ledger
+./deploy.sh --icrc1-ledger mxzaz-hqaaa-aaaar-qaada-cai
+```
+
+### Deploying local images
+
+First, build the containers from within the dev container:
+
+```bash
+# Enter dev container
+./ci/container/container-run.sh
+
+# Build ICRC1 Rosetta
+bazel build //rs/rosetta-api/icrc1:icrc_rosetta_image.tar
+mv bazel-bin/rs/rosetta-api/icrc1/icrc_rosetta_image.tar /tmp
+
+# Exit dev container
+exit
+```
+
+Then deploy the local images:
+
+```bash
+./deploy.sh --local-icrc1-image-tar /tmp/icrc_rosetta_image.tar
+```
+
+### Monitoring with Grafana
+
+Access Grafana at `http://localhost:3000` with:
+- Username: `admin`
+- Password: `admin`
+
+Import the dashboard using the `rosetta_load_dashboard.json` file in the cluster directory.
+
+## Validation Cloud
+
+For those who prefer not to run Rosetta locally, Validation Cloud offers managed ICRC Rosetta endpoints that you can use for learning, development, and production.
+
+### Features
+
+- Managed infrastructure (no local setup required)
+- Global distribution with multi-region support
+- 99.99% uptime SLA
+- 24/7 customer support
+- SOC 2 Type 2 compliance
+
+### Getting started
+
+1. Visit [Validation Cloud ICP page](https://www.validationcloud.io/icp)
+2. Sign up for an account
+3. Choose between Free tier (50M Compute Units) or Scale plan (unlimited)
+4. Get your API endpoint and start building
+
+### Supported APIs
+
+- ICRC API for token interactions
+- Access to chain-key token ledgers (ckBTC, ckETH)
+- Multi-token support
+
+This option is useful for:
+- Quick prototyping and learning
+- Development without local infrastructure setup
+- Production applications that prefer managed services
+
+## Verification and testing
+
+Regardless of the deployment method, you can verify your ICRC Rosetta node is working:
+
+### Check node status
+
+```bash
+curl -H "Content-Type: application/json" \
+  -d '{
+    "network_identifier": {
+      "blockchain": "Internet Computer",
+      "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    }
+  }' \
+  -X POST http://localhost:8082/network/status
+```
+
+### Check version
+
+```bash
+curl -H "Content-Type: application/json" \
+  -d '{
+    "network_identifier": {
+      "blockchain": "Internet Computer", 
+      "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    }
+  }' \
+  -X POST http://localhost:8082/network/options | jq '.version.node_version'
+```
+
+### Wait for sync
+
+Look for these messages in the logs to confirm synchronization:
+
+```
+Synced Up to block height: XXXXX
+Account Balances have been updated successfully
+```
+
+## Understanding the logs
+
+ICRC Rosetta logs include token-specific prefixes for multi-token deployments:
+
+```
+INFO sync{token=ckBTC-mxzaz}: Fully synched to block height: 2365800
+INFO sync{token=ckETH-ss2fx}: Fully synched to block height: 801941
+```
+
+The `sync{token=...}` prefix indicates which tracked token is generating the logs.
+
+## Requirements and limitations
+
+- **Transaction timing**: Unsigned transactions must be created less than 24 hours before submission due to the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication)
+- **Signature schemes**: Examples typically use Ed25519 and SECP256k1
+- **Default port**: 8082 (vs 8081 for ICP Rosetta)
+- **Network support**: Mainnet (test ledgers are also available on mainnet)
+- **Data persistence**: Mount `/data` directory as a volume for Docker deployments
+- **Database files**: Each token uses a separate SQLite database when using multi-token mode
+
+## Common configuration examples
+
+### ckBTC only
+```bash
+docker run -p 8082:8082 --detach \
+  dfinity/ic-icrc-rosetta-api \
+  --network-type mainnet \
+  --ledger-id mxzaz-hqaaa-aaaar-qaada-cai
+```
+
+### ckBTC + ckETH
+```bash
+docker run -p 8082:8082 --detach \
+  dfinity/ic-icrc-rosetta-api \
+  --network-type mainnet \
+  --multi-tokens mxzaz-hqaaa-aaaar-qaada-cai,ss2fx-dyaaa-aaaar-qacoq-cai
+```
+
+### Test tokens for development
+```bash
+# TICRC1 test token only
+docker run -p 8082:8082 --detach \
+  dfinity/ic-icrc-rosetta-api \
+  --network-type mainnet \
+  --ledger-id 3jkp5-oyaaa-aaaaj-azwqa-cai
+
+# Multiple test tokens
+docker run -p 8082:8082 --detach \
+  dfinity/ic-icrc-rosetta-api \
+  --network-type mainnet \
+  --multi-tokens 3jkp5-oyaaa-aaaaj-azwqa-cai,mc6ru-gyaaa-aaaar-qaaaq-cai,apia6-jaaaa-aaaar-qabma-cai
+``` 
