@@ -81,7 +81,38 @@ the key returned is both unique to that caller, and that caller is the only part
 particular key.
 
 <AdornedTabs groupId="languages">
-<TabItem value="rust" label="Rust" default>
+
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl
+import Debug "mo:base/Debug";
+import ManagementCanister "mo:ic-vetkeys/ManagementCanister";
+import Principal "mo:base/Principal";
+import Text "mo:base/Text";
+
+actor class () {
+  let DOMAIN_SEPARATOR : Blob = Text.encodeUtf8("example-vetkd-dapp");
+
+  /// Derive encrypted vetKey for caller's principal.
+  public shared ({ caller }) func vetkd_derive_key(transportKey : Blob) : async Blob {
+    let input = Principal.toBlob(caller);
+    await ManagementCanister.vetKdDeriveKey(input, DOMAIN_SEPARATOR, testKeyId(), transportKey);
+  };
+
+  public shared func publicKey() : async Blob {
+    await ManagementCanister.vetKdPublicKey(null, DOMAIN_SEPARATOR, testKeyId());
+  };
+
+  private func testKeyId() : ManagementCanister.VetKdKeyid {
+    { curve = #bls12_381_g2; name = "test_key_1" };
+  };
+};
+
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
 
 ```rust
 use ic_cdk::management_canister::{VetKDCurve, VetKDDeriveKeyArgs, VetKDKeyId, VetKDPublicKeyArgs};
@@ -129,7 +160,6 @@ fn bls12_381_g2_test_key() -> VetKDKeyId {
 
 </TabItem>
 </AdornedTabs>
-
 
 ### Step 2: Generate a transport key pair and pass the transport public key to the canister
 
