@@ -431,7 +431,7 @@ function FeaturesPage() {
               ))}
             </div>
           </SingleCard>
-          {cardsData.slice(2, 3).map((card, index) => (
+          {cardsData.slice(3, 3).map((card, index) => (
             <SplitCard
               key={index}
               className="md:col-span-2"
