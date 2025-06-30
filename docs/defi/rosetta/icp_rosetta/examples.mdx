@@ -23,6 +23,21 @@ The ICP Rosetta example scripts are located in the [DFINITY IC repository](https
 
 ## Setup and Prerequisites
 
+### Create a Virtual Environment (Recommended)
+
+Before installing dependencies, it's recommended to create a virtual environment to isolate the project dependencies:
+
+```bash
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+# On macOS/Linux:
+source venv/bin/activate
+# On Windows:
+# venv\Scripts\activate
+```
+
 ### Install Dependencies
 
 Each example directory includes its own `requirements.txt` file. Install the dependencies:
@@ -127,8 +142,17 @@ python3 read_blocks.py --node-address http://localhost:8081 \
 
 **Search Transactions**:
 ```bash
+# Search by account identifier
 python3 search_transactions.py --node-address http://localhost:8081 \
   --account-id <account_identifier>
+
+# Search by transaction hash
+python3 search_transactions.py --node-address http://localhost:8081 \
+  --transaction-hash <transaction_hash>
+
+# Search by operation type: BURN, MINT, TRANSFER or APPROVE
+python3 search_transactions.py --node-address http://localhost:8081 \
+  --operation-type <operation_type>
 ```
 
 ### Network Information
