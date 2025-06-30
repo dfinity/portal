@@ -43,7 +43,7 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Pulse",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Sing in with OpenID",

@@ -1164,7 +1164,7 @@ Additionally, the Internet Computer provides an API endpoint to obtain various s
 
 For this endpoint, the user performs a GET request, and receives a CBOR (see [CBOR](#cbor)) value with the following fields. The IC may include additional implementation-specific fields.
 
--   `root_key` (blob, optional): The public key (a DER-encoded BLS key) of the root key of this instance of the Internet Computer Protocol. This *must* be present in short-lived development instances, to allow the agent to fetch the public key. For the Internet Computer, agents must have an independent trustworthy source for this data, and must not be tempted to fetch it from this insecure location.
+-   `root_key` (blob, optional): The public key (a DER-encoded BLS key) of the root key of this instance of the Internet Computer Protocol. This *must* be present in short-lived development instances, to allow the agent to fetch the public key. For the Internet Computer, agents must have an independent trustworthy source for this data (e.g., the system API `ic0.root_key_size` and `ic0.root_key_copy`), and must not be tempted to fetch it from this insecure location.
 
 See [CBOR encoding of requests and responses](#api-cbor) for details on the precise CBOR encoding of this object.
 
@@ -1527,6 +1527,8 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
     ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
 
+    ic0.root_key_size : () -> I;                                                          // I G U RQ Ry Rt C T
+    ic0.root_key_copy : (dst : I, offset : I, size : I) -> ();                            // I G U RQ Ry Rt C T
     ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
     ic0.data_certificate_present : () -> i32;                                             // *
     ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
@@ -2079,6 +2081,12 @@ This system call traps if `src+size` exceeds the size of the WebAssembly memory 
 ### Certified data {#system-api-certified-data}
 
 For each canister, the IC keeps track of "certified data", a canister-defined blob. For fresh canisters (upon install or reinstall), this blob is the empty blob (`""`).
+
+-   `ic0.root_key_size: () → I` and `ic0.root_key_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    Copies the public key (a DER-encoded BLS key) of the IC root key of this instance of the Internet Computer Protocol to the canister.
+
+    This traps in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
 
 -   `ic0.certified_data_set : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
@@ -7932,6 +7940,18 @@ ic0.stable64_read<es>(dst : i64, offset : i64, size : i64)
   if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
 
   es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
+
+I ∈ {i32, i64}
+ic0.root_key_size<es>() : I =
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  let root_key = <implementation-specific>
+  return |root_key|
+
+I ∈ {i32, i64}
+ic0.root_key_copy<es>(dst : I, offset : I, size : I) =
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  let root_key = <implementation-specific>
+  copy_to_canister<es>(dst, offset, size, root_key)
 
 I ∈ {i32, i64}
 ic0.certified_data_set<es>(src : I, size : I) =
