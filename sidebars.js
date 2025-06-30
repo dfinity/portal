@@ -710,7 +710,7 @@ defi: [
               },
             {
               type: "doc",
-              label: "Example Scripts",
+              label: "Example scripts",
               id: "defi/rosetta/icp_rosetta/examples",
               },
             ],
@@ -735,7 +735,7 @@ defi: [
               },
             {
               type: "doc",
-              label: "Example Scripts",
+              label: "Example scripts",
               id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
