@@ -120,7 +120,7 @@ const cardsData: CardData[] = [
     description:
       "VetKeys enables developers on the Internet Computer to build decentralized apps with strong privacy and confidentiality by allowing onchain encryption of data and management of cryptographic keys. Keys are securely derived and encrypted, with no single party, including the network's nodes, able to access the full key.",
     image: "/img/features/vetkeys.webp",
-    href: "/",
+    href: "/docs/building-apps/network-features/vetkeys/introduction",
     refText: "Explore vetKeys",
     imageSide: "right",
   },
