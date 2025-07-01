@@ -68,16 +68,6 @@ For an example implementation, see [`DefaultKeyManagerClient`](https://github.co
 
 <AdornedTabs groupId="languages">
 
-<TabItem value="rs" label="Rust" default>
-
-Below is an example of how to instantiate the backend `KeyManager` component inside a canister.
-
-```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L1-L36
-```
-
-</TabItem>
-
 <TabItem value="motoko" label="Motoko">
 
 Below is an example of how to instantiate the backend `KeyManager` component inside a canister.
@@ -87,21 +77,21 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 ```
 
 </TabItem>
+
+<TabItem value="rs" label="Rust">
+
+Below is an example of how to instantiate the backend `KeyManager` component inside a canister.
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L1-L36
+```
+
+</TabItem>
 </AdornedTabs>
 
 ### Step 2: Define backend canister APIs for the frontend to communicate with
 
 <AdornedTabs groupId="languages">
-
-<TabItem value="rs" label="Rust" default>
-
-Below is an example of how to create a backend canister API that allows the frontend to interact with the `get_encrypted_vetkey` method of the `KeyManager` component. You can follow a similar pattern to expose additional methods of the `KeyManager` through canister APIs.
-
-```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L71-L88
-```
-
-</TabItem>
 
 <TabItem value="motoko" label="Motoko">
 
@@ -112,17 +102,27 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 ```
 
 </TabItem>
+
+<TabItem value="rs" label="Rust">
+
+Below is an example of how to create a backend canister API that allows the frontend to interact with the `get_encrypted_vetkey` method of the `KeyManager` component. You can follow a similar pattern to expose additional methods of the `KeyManager` through canister APIs.
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_manager_canister/src/lib.rs#L71-L88
+```
+
+</TabItem>
 </AdornedTabs>
 
 ### Step 3: Implement `KeyManagerClient` in the frontend
 
 <AdornedTabs groupId="languages">
 
-<TabItem value="ts" label="Typescript" default>
+<TabItem value="ts" label="Typescript">
 
 Below is an example of how to provide a `KeyManagerClient` implementation to interact with the backend `KeyManager` component’s method for obtaining an encrypted vetKey. Implementations for other methods of `KeyManager` can be added in a similar fashion.
 
-```ts no-repl reference
+```ts reference
 https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/frontend/ic_vetkeys/src/key_manager/key_manager_canister.ts#L50-L60
 ```
 
@@ -134,7 +134,7 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 Your application's frontend can communicate with a backend canister that exposes `KeyManager` API methods using the following TypeScript code:
 
 <AdornedTabs groupId="languages">
-<TabItem value="ts" label="Typescript" default>
+<TabItem value="ts" label="Typescript">
 
 ```ts
 import { KeyManager } from "ic_vetkeys/key_manager";
