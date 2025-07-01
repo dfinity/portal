@@ -116,6 +116,15 @@ const cardsData: CardData[] = [
     imageSide: "left",
   },
   {
+    title: "End-to-End Privacy and Confidentiality",
+    description:
+      "VetKeys enables developers on the Internet Computer to build decentralized apps with strong privacy and confidentiality by allowing onchain encryption of data and management of cryptographic keys. Keys are securely derived and encrypted, with no single party, including the network's nodes, able to access the full key.",
+    image: "/img/features/vetkeys.webp",
+    href: "/docs/building-apps/network-features/vetkeys/introduction",
+    refText: "Explore vetKeys",
+    imageSide: "right",
+  },
+  {
     title: "First googleable smart contracts in the world",
     description:
       "Search engines like Google can’t index smart contracts running on other blockchains. As developers have to use centralized cloud providers to store the frontends, at least those become searchable. A compromise. The Internet Computer hosts smart contracts that can directly be indexed by all popular search engines. No frontends on public cloud required. This is how true Web3 works.",
@@ -275,12 +284,43 @@ function FeaturesPage() {
           </div>
         </AnimateSpawn>
         <section className="container-12 grid md:grid-cols-2 gap-5">
-          {cardsData.slice(0, 2).map((card, index) => (
+          {cardsData.slice(0, 3).map((card, index) => (
             <SplitCard
-              className="md:col-span-2"
+              className={clsx(
+                "md:col-span-2",
+                // Special handling for vetKeys card (index 2) - image at top on mobile
+                index === 2 && "flex-col-reverse md:flex-row"
+              )}
               key={index}
               imageSide={card.imageSide}
-              image={<img src={card.image} alt="" loading="lazy"></img>}
+              imageSideClassName={
+                // Make vetKeys image smaller and properly sized
+                index === 2
+                  ? "flex-[2] self-center max-w-[800px] md:pl-60"
+                  : undefined
+              }
+              image={
+                index === 2 ? (
+                  <>
+                    {/* Mobile image */}
+                    <img
+                      src="/img/features/vetkeys-mobile.webp"
+                      alt=""
+                      loading="lazy"
+                      className="block md:hidden"
+                    />
+                    {/* Desktop image */}
+                    <img
+                      src={card.image}
+                      alt=""
+                      loading="lazy"
+                      className="hidden md:block"
+                    />
+                  </>
+                ) : (
+                  <img src={card.image} alt="" loading="lazy"></img>
+                )
+              }
             >
               <motion.h3
                 className="tw-heading-4 md:tw-heading-3 mb-4"
@@ -391,7 +431,7 @@ function FeaturesPage() {
               ))}
             </div>
           </SingleCard>
-          {cardsData.slice(2, 3).map((card, index) => (
+          {cardsData.slice(3, 3).map((card, index) => (
             <SplitCard
               key={index}
               className="md:col-span-2"
