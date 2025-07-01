@@ -68,6 +68,32 @@
       "status": "in_progress",
       "milestone_id": "Neutron"
     },
+        {
+      "title": "Zero to Degen-Hero",
+      "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Apex",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Ledgers as a first class citizen on ICP",
+      "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Faster institutional integrations of new tokens",
+      "overview": "Support multi-token Rosetta",
+      "status": "in_progress",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Fiat on-ramp",
+      "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
     {
       "title": "Decentralized marketplace for sovereign apps",
       "description": "A new foundation for a decentralized software marketplace is built, providing developers with a clear path to adoption for their applications without reliance on centralized platforms. By integrating transparent deployment flows and seamless discovery tools, this initiative lays the groundwork for a sovereign software ecosystem where developers can easily package and distribute their applications, and users retain full control over their installed apps.",
@@ -100,33 +126,6 @@
       "status": "future",
       "milestone_id": "Dynamo"
     },
-    {
-      "title": "Zero to Degen-Hero",
-      "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
-      "status": "future",
-      "is_milestone": true,
-      "milestone_id": "Apex",
-      "eta_to_render": ""
-    },
-    {
-      "title": "Ledgers as a first class citizen on ICP",
-      "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
-      "status": "future",
-      "milestone_id": "Apex"
-    },
-    {
-      "title": "Faster institutional integrations of new tokens",
-      "overview": "Support multi-token Rosetta",
-      "status": "future",
-      "milestone_id": "Apex"
-    },
-    {
-      "title": "Fiat on-ramp",
-      "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
-      "status": "future",
-      "milestone_id": "Apex"
-    },
-
     {
       "title": "Rosetta for ICRC ledgers",
       "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
