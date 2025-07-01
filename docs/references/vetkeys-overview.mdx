@@ -22,7 +22,7 @@ At the core of vetKeys there is a cryptographic protocol called [verifiably encr
 
 ## Protocol overview
 
-The Internet Computer integrates the vetKD protocol as a threshold key derivation service operated by vetkD-enabled subnets. Each such subnet maintains a threshold-shared vetKD master key. The protocol involves three main actors:
+The Internet Computer integrates the vetKD protocol as a threshold key derivation service operated by vetkD-enabled subnets. Each such subnet maintains a vetKD master key that is threshold-shared among its nodes and generated using a [distributed key generation protocol](/docs/references/vetkeys-overview#master-key-generation). The protocol involves three main actors:
 
 * **Users**: Typically interacting through a dapp frontend. They request derived keys and provide a public key for secure delivery.  
 * **Canisters**: Perform access control and forward user requests to the vetKD protocol using the system API.  
@@ -31,9 +31,11 @@ The Internet Computer integrates the vetKD protocol as a threshold key derivatio
 
 The protocol proceeds as follows:
 
+![vetKD protocol flow](./_attachments/vetkd_diagram.png)
+
 1. **Transport Key Generation:** The user generates a fresh key pair, which is referred to as a *transport* key pair. The public key is sent to the canister to be used for encrypting the derived key. The user may also supply an *input* argument of the vetKD key derivation call, such as a key ID or a session identifier, which determines the derived key and can later be used for the verification of the encrypted vetKey.  
 
-2. **Access Control & Routing:** The canister authenticates the user and enforces any access control policies. If the request is authorized, the canister invokes the [vetKD system API](/docs/building-apps/network-features/vetkeys/api), specifying:  
+2. **Access Control & Routing:** The canister authenticates the user and enforces any access control policies (e.g. whether the user is allowed to derive the key for the given input). If the request is authorized, the canister invokes the [vetKD system API](/docs/building-apps/network-features/vetkeys/api), specifying:  
    * **Context:** used to domain-separate the key derivation requests. This could be a key purpose, a user ID, or other application-specific identifier.   
    * **Input:** application-specific data that serves as the basis for key derivation. It can be provided by the user or determined by the canister, depending on the use case.  
    * **Transport public key:** the user’s public key, used to encrypt the derived key.  
@@ -43,13 +45,9 @@ The protocol proceeds as follows:
 
 3. **Key Derivation:** All the nodes in the designated vetKD subnet run the threshold key derivation protocol:  
     * **Share Computation**: Each node uses its share of the master key to compute an encrypted share of the derived key, which is encrypted with the user’s transport public key. These encrypted shares are broadcast to the other subnet nodes.  
-    * **Share Combination**: Once a quorum (2f + 1 shares in a subnet of 3f + 1 nodes) is available, any node can combine the shares into a single **encrypted derived key**. The final result remains encrypted under the user’s transport key.  
+    * **Share Combination**: Once a quorum of two-thirds is available (`2f + 1` shares in a subnet with `3f + 1` nodes, and up to `f` Byzantine nodes), any node can combine the shares into a single **encrypted derived key**. The final result remains encrypted under the user’s transport key.  
 4. **Response Delivery:** The combined encrypted key is returned to the canister, which delivers it to the user.  
-5. **Verification and Decryption:** The user verifies that:  
-    * The key corresponds to the provided **context** and **input**  
-    * It was encrypted with their **transport public key**  
-
-  If verification passes, the user decrypts the result using their private key. The derived key can then be used, for instance, as a seed for generating user keys, session keys, or for application-specific cryptographic operations.
+5. **Verification and Decryption:** The user verifies that the key is valid, i.e. that key corresponds to the provided **context** and **input** and it was encrypted with their **transport public key**. If verification passes, the user decrypts the result using their private key. The derived key can then be used, for instance, as a seed for generating user keys, session keys, or for application-specific cryptographic operations.
 
 ## Master key generation
 
@@ -67,7 +65,7 @@ On the Internet Computer, DKG protocols are executed between nodes of subnets. T
 For vetKeys, the Internet Computer uses Jens Groth’s [non-interactive DKG protocol](https://eprint.iacr.org/2021/339). This protocol offers several important advantages that make it particularly well-suited for generating and maintaining threshold keys in a decentralized setting:
 
 * **Non-interactive:** The protocol consists of a single communication round, where dealers broadcast their contributions which can be publicly verified. At a later stage, receivers can obtain the resulting transcript of the protocol to independently compute their key shares.  
-* **High Reconstruction Threshold:** Unlike interactive protocols, it supports a higher reconstruction threshold. Specifically, it enables the reconstruction threshold of up to \`2f+1\` for subnets with \`n\>= 3f+1\` nodes, where \`f\` is the number of Byzantine nodes the subnet can tolerate. For vetKeys, a high reconstruction threshold is used, meaning that two-thirds of the nodes must cooperate to reconstruct the master key.  
+* **High Reconstruction Threshold:** Unlike interactive protocols, it supports a higher reconstruction threshold. Specifically, it enables the reconstruction threshold of up to `2f+1` for subnets with `n ≥ 3f+1` nodes, where `f` is the number of Byzantine nodes the subnet can tolerate. For vetKeys, a high reconstruction threshold is used, meaning that two-thirds of the nodes must cooperate to reconstruct the master key.  
 * **Key Resharing:** It enables not only the generation of fresh keys but also resharing of existing keys. This is essential for periodic key refreshes, subnet membership changes, and key backup and recovery operations.   
 * **Forward-Secure Encryption:** The key shares are distributed using a forward-secure encryption scheme. Nodes periodically update their decryption key and erase old key shares from memory. This ensures that even if a node is later compromised, previously distributed shares cannot be recovered.
 
