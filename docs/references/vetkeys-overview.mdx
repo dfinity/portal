@@ -1,167 +1,80 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# vetKeys reference
+# How vetKeys work
 
 <MarkdownChipRow labels={["Reference"]} />
 
-vetKeys stands for ‘**V**erifiable Encrypted Threshold Keys’. This feature enables a number of cryptographic functionalities on ICP, with the primary motivation of the feature being to facilitate a decentralized key management service on ICP. There are many use cases and motivations for [building vetKD](https://youtu.be/baM6jHnmMq8).
+This page outlines how **vetKeys** work and how they are integrated into the Internet Computer. While some of the information here isn’t necessary for using vetKeys, it provides helpful background for technically inclined readers who want to better understand the underlying cryptography and system design. [Learn more about what vetKeys are](/docs/building-apps/network-features/vetkeys/introduction) and how to use them in your canister.
 
-This page contains a high-level view and description of vetKD and its building blocks. The goal of this page is to build intuition for developers building on ICP who are interested in knowing more about the technical choices but who may lack the cryptographic background necessary to read research papers.
+## What is vetKD?
 
-## Background
+At the core of vetKeys there is a cryptographic protocol called [verifiably encrypted threshold Key Derivation](https://eprint.iacr.org/2023/616) (vetKD). To understand how vetKeys work, it’s helpful to first unpack the meaning of each part of this protocol’s name:
 
-In cryptography, a ‘[primitive](https://en.wikipedia.org/wiki/Cryptographic_primitive)’ is a kind of foundational building block that can be used solely for its given functionality or to build other, more complex, cryptographic tools and protocols.
+* **Key Derivation:** A process to derive new cryptographic keys from an existing master key.  
 
-Some examples of the core primitives include:
+* **Threshold:** The protocol uses threshold cryptography, meaning the master key is not held by a single party. Instead, it is split among multiple nodes. A quorum of nodes must cooperate in a protocol to derive new keys from the master key. At a high level, each node uses its share of the master key to compute a share of the derived key. Once enough shares are collected (meeting the threshold), they can be combined to produce the full derived key. This ensures there is no single point of failure or trust, and security is maintained as long as a minimum number of nodes remain honest.  
 
-* Block ciphers (e.g., [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard))
+* **Encrypted:** Users of the key derivation service can supply an encryption (transport) public key, which is used to securely deliver the derived key. The derived key is encrypted at all times, including during intermediate steps, and even individual shares are never revealed in plaintext. Only the requester, who holds the matching private key, can decrypt the final result.  
 
-* Hash functions (e.g., [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
+* **Verifiable:** The protocol provides cryptographic guarantees that the encrypted derived key is correct and has not been tampered with. Specifically, it is publicly verifiable that:  
+  * The derived key was correctly computed from the master key using the user’s input and context.  
+  * It was encrypted using the correct transport key provided by the user.
 
-* Key exchange (e.g., [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
+## Protocol overview
 
-* Signature schemes (e.g., [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
+The Internet Computer integrates the vetKD protocol as a threshold key derivation service operated by vetkD-enabled subnets. Each such subnet maintains a vetKD master key that is threshold-shared among its nodes and generated using a [distributed key generation protocol](/docs/references/vetkeys-overview#master-key-generation). The protocol involves three main actors:
 
-* Public key encryption schemes (e.g., [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)), [ElGamal](https://en.wikipedia.org/wiki/ElGamal_encryption))
+* **Users**: Typically interacting through a dapp frontend. They request derived keys and provide a public key for secure delivery.  
+* **Canisters**: Perform access control and forward user requests to the vetKD protocol using the system API.  
+* **Subnet nodes**: Execute the key derivation protocol, each using its share of the vetKD master key.
 
-vetKeys introduces new primitives, and most notably vetKD. vetKD extends an older primitive called identity-based encryption (IBE), which itself is an extension of public key encryption.
 
-### Public key encryption (PKE)
+The protocol proceeds as follows:
 
-PKE allows you to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob; a PKE scheme will run somewhat as follows:
+![vetKD protocol flow](./_attachments/vetkd_diagram.png)
 
-* Bob uses a key generation algorithm $\mathsf{KG}$ to generate a private and public key pair $\{ \mathit{sk}_{\mathit{bob}}, \mathit{pk}_{\mathit{bob}} \}$.
+1. **Transport key generation:** The user generates a fresh key pair, which is referred to as a *transport* key pair. The public key is sent to the canister to be used for encrypting the derived key. The user may also supply an *input* argument of the vetKD key derivation call, such as a key ID or a session identifier, which determines the derived key and can later be used for the verification of the encrypted vetKey.  
 
-* Bob stores his public key online (e.g., in a public key infrastructure (PKI)).
+2. **Access control and routing:** The canister authenticates the user and enforces any access control policies (e.g. whether the user is allowed to derive the key for the given input). If the request is authorized, the canister invokes the [vetKD system API](/docs/building-apps/network-features/vetkeys/api), specifying:  
+   * **Context:** used to domain-separate the key derivation requests. This could be a key purpose, a user ID, or other application-specific identifier.   
+   * **Input:** application-specific data that serves as the basis for key derivation. It can be provided by the user or determined by the canister, depending on the use case.  
+   * **Transport public key:** the user’s public key, used to encrypt the derived key.  
+   * **Master key ID:** identifies the vetKD master key managed by a specific subnet on the Internet Computer. 
 
-* Alice retrieves Bob's public key $\mathit{pk}_{\mathit{bob}}$ (e.g., from the PKI) and uses it to encrypt a message to Bob using an encryption algorithm $\mathsf{Enc}$ and sends the resulting ciphertext to Bob.
+   The canister can submit this request from any subnet, the system then routes it to the correct vetKD-enabled subnet based on the master key ID. 
 
-* When Bob wants to decrypt the ciphertext from Alice, he uses his secret key $\mathit{sk}_{\mathit{bob}}$ with a decryption algorithm $\mathsf{Dec}$ to decrypt and retrieve the message.
+3. **Key derivation:** All the nodes in the designated vetKD subnet run the threshold key derivation protocol:  
+    * **Share computation**: Each node uses its share of the master key to compute an encrypted share of the derived key, which is encrypted with the user’s transport public key. These encrypted shares are broadcast to the other subnet nodes.  
+    * **Share combination**: Once a quorum of two-thirds is available (`2f + 1` shares in a subnet with `3f + 1` nodes, and up to `f` Byzantine nodes), any node can combine the shares into a single **encrypted derived key**. The final result remains encrypted under the user’s transport key.  
+4. **Response delivery:** The combined encrypted key is returned to the canister, which delivers it to the user.  
+5. **Verification and decryption:** The user verifies that the key is valid, i.e. that key corresponds to the provided **context** and **input** and it was encrypted with their **transport public key**. If verification passes, the user decrypts the result using their private key. The derived key can then be used, for instance, as a seed for generating user keys, session keys, or for application-specific cryptographic operations.
 
-:::info
-The standard practice in public key cryptography is to generate a secret key and derive a public key from it. This gives little control over how the public key looks and results in us needing to rely on a trusted public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly and discourages the use of cryptography in practical applications.
-:::
+## Master key generation
 
-### Identity-based encryption (IBE)
+To enable secure threshold key derivation, each vetKD master key is generated and maintained by the nodes of a dedicated subnet. For fault tolerance and resilience, the master key is also backed up on at least one additional subnet so it can be restored in the event of subnet failure or recovery. The processes of key generation, backup, and recovery are all governed by the [Network Nervous System](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview) (NNS) through proposals, ensuring that these critical operations are subject to decentralized control and transparent governance.
 
-IBE addresses some of the usability issues with PKE. It allows you to take an arbitrary string as the public key (say, “alice@email.com” or “@alicetweets”) and derive the secret key from that.
+### Distributed key generation
 
-To see how an IBE scheme can work, let's consider the following scenario. Suppose Alice wants to encrypt a message to Bob using $\mathit{id}_{\mathit{bob}}$. The typical scenario requires that there be a trusted Key Deriver (KD) and runs as follows:
+To eliminate single points of failure and ensure that the master key remains decentralized at all times, a **distributed key generation (DKG)** protocol is used to generate and maintain it. In a DKG protocol, there are two roles: a set of **dealers** that collaboratively generate the key, and a set of **receivers**, each of whom receives a share of the secret key. 
 
-* KD runs the IBE key generation algorithm to generate a master (private and public) key pair ($\mathit{msk}, \mathit{mpk}$).
+On the Internet Computer, DKG protocols are executed between nodes of subnets. There are two primary configurations:
 
-* Alice runs the IBE encryption algorithm to encrypt a message to Bob using $\mathit{id}_{\mathit{bob}}$ and KD’s $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
+* **Local DKG**: Both dealers and receivers are nodes of the same subnet. This is the common case during regular operation. The two sets may not be identical, for instance, when the subnet membership changes (e.g., nodes are added or removed).  
+* **Remote DKG**: Dealers belong to one subnet, while receivers are nodes of a different subnet. This configuration is used for scenarios such as backing up a vetKD master key to another subnet or restoring a key during subnet recovery.
 
-* Bob authenticates $\mathit{id}_{\mathit{bob}}$ to KD and requests a corresponding decryption (private) key ($\mathit{sk}_{\mathit{bob}}$).
+For vetKeys, the Internet Computer uses Jens Groth’s [non-interactive DKG protocol](https://eprint.iacr.org/2021/339). This protocol offers several important advantages that make it particularly well-suited for generating and maintaining threshold keys in a decentralized setting:
 
-* KD derives $\mathit{sk}_{\mathit{bob}}$ from $\mathit{id}_{\mathit{bob}}$ using $\mathit{msk}$ and then sends it to Bob.
+* **Non-interactive:** The protocol consists of a single communication round, where dealers broadcast their contributions which can be publicly verified. At a later stage, receivers can obtain the resulting transcript of the protocol to independently compute their key shares.  
+* **High reconstruction threshold:** Unlike interactive protocols, it supports a higher reconstruction threshold. Specifically, it enables the reconstruction threshold of up to `2f+1` for subnets with `n ≥ 3f+1` nodes, where `f` is the number of Byzantine nodes the subnet can tolerate. For vetKeys, a high reconstruction threshold is used, meaning that two-thirds of the nodes must cooperate to reconstruct the master key.  
+* **Key resharing:** It enables not only the generation of fresh keys but also resharing of existing keys. This is essential for periodic key refreshes, subnet membership changes, and key backup and recovery operations.   
+* **Forward-secure encryption:** The key shares are distributed using a forward-secure encryption scheme. Nodes periodically update their decryption key and erase old key shares from memory. This ensures that even if a node is later compromised, previously distributed shares cannot be recovered.
 
-* Bob uses $\mathit{sk}_{\mathit{bob}}$ and $\mathit{id}_{\mathit{bob}}$ to decrypt the ciphertext from Alice to retrieve the message.
+### Canister master keys
 
-:::info
+To provide a scalable and efficient key derivation service, the Internet Computer maintains a single (or a small number of) vetKD master keys within a subnet, rather than generating independent master keys for each dapp or canister. While in theory every dapp could use its own dedicated master key, this approach does not scale well in practice. In particular, resharing master keys is computationally expensive, and doing so for every canister whenever subnet membership changes would quickly become infeasible.
 
-In this IBE scheme, a central authority derives (decryption) keys. One core goal of vetKD is to decentralize the key derivation procedure of IBE.
+![vetKD public key derivation](./_attachments/vetkd_derivation.png)
 
-:::
+Instead, the system derives a single canister-level master key from the subnet’s vetKD master key using an additive key derivation scheme, similar to those used for [threshold ECDSA and Schnorr](/docs/references/t-sigs-how-it-works#key-derivation). Each canister can then derive additional subkeys by specifying a *context*, such as a user identifier or key purpose. This context acts as a domain separator, ensuring that derived subkeys are isolated and application-specific, even though they originate from the same canister master key. The canister master _public_ key can be obtained by calling the `vetkd_public_key` system API with an empty context. Subkeys can be retrieved onchain by calling the same API with a non-empty context, or computed off-chain from the canister master public key using a key derivation library ([Rust](https://docs.rs/ic-vetkeys/latest/ic_vetkeys/), [Typescript](https://dfinity.github.io/vetkeys/modules/_dfinity_vetkeys.html)). 
 
-## vetKD
-
-Considering that blockchains are public places where transparency is a crucial factor in gaining integrity and availability, it is not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of vetKD.
-
-### Threshold
-
-The secret key derivation is the most sensitive part, which should avoid being controlled by one central (potentially untrusted, unauthorized, or compromised) party, and hence the KD in vetKD. Assuming there is no one trusted party, trust is distributed amongst multiple parties and requires that some threshold of them collaborate on shares of the master secret key to derive decryption keys.
-
-Parties get shares of the master secret key by leveraging a [distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
-
-### Syntax
-
-Suppose Alice wants to send an encrypted message across a public blockchain to Bob. It's desirable to be able to derive keys on demand. The scenario runs as follows:
-
-* Nodes in the network participate in the $\mathsf{DKG\ protocol}$ to obtain shares of a master secret key ($\mathit{msk}$) and a master public key ($\mathit{mpk}$). This results in each node $i$ holding key shares $(\mathit{msk}_i, \mathit{mpk}_i)$.
-
-* Alice encrypts a message under Bob's identity $\mathit{id}_{\mathit{bob}}$ and the master public key $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
-
-* Bob wants to decrypt and authenticates $\mathit{id}_{\mathit{bob}}$ to ICP and requests to derive a decryption key.
-
-If this scenario continues, the nodes will derive a decryption key and send the shares to Bob, but on a public network, those shares can be seen and combined by an observer. **vetKD** requires that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain $\mathit{sk}_{\mathit{bob}}$.
-
-### Encryption
-
-* Bob wants to decrypt and authenticate $\mathit{id}_{\mathit{bob}}$ to ICP. He uses a transport key generation algorithm $\mathsf{TKG}$ to generate and send a transport public key $\mathit{tpk}$ and requests to derive a decryption key. By sending $\mathit{tpk}$, Bob gives the nodes a way to encrypt their responses to him.
-
-  * If Bob’s authentication to $\mathit{id}_{\mathit{bob}}$ passes, nodes in the network use an $\mathsf{EKDerive}$ algorithm to derive decryption key shares using $\mathit{msk}$ and $\mathit{id}_{\mathit{bob}}$, and encrypt them under $\mathit{tpk}_{\mathit{bob}}$.
-
-### Verification
-
-In a threshold system, sufficiently many key shares are required to produce a valid key. In this case, it is useful to know when or if we have sufficiently many valid key shares so that the process can stop.
-
-Anyone can use an $\mathsf{EKSVerify}$ algorithm to verify that the encrypted key shares do indeed contain a legitimate decryption key share and thus can know when "enough" valid shares exist.
-
-* Nodes can also combine encrypted shares to produce the full encrypted derived key $\mathit{ek}$ using a $\mathsf{Combine}$ algorithm.
-
-* An $\mathsf{EKVerify}$ algorithm allows anyone to verify that $\mathit{ek}$ does indeed contain a legitimate derived key for $\mathit{id}_{\mathit{bob}}$ under $\mathit{mpk}$, encrypted under $\mathit{tpk}_{\mathit{bob}}$.
-
-* Finally, a recovery algorithm $\mathsf{Recover}$ enables Bob to decrypt the derived key corresponding to $\mathit{id}_{\mathit{bob}}$ under $\mathit{msk}$ using Bob’s TSK.
-
-* Bob can now decrypt.
-
-This picture is taken directly from the paper, where you can read the full scenario.
-
-All algorithms mentioned ($\mathsf{DKG}$, $\mathsf{TKG}$, $\mathsf{EKDerive}$, $\mathsf{EKSVerify}$, $\mathsf{Combine}$, $\mathsf{EKVerify}$, $\mathsf{Recover}$) form the syntax that describes the vetKD primitive. To describe a primitive fully, it's also needed to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness, and security). Correctness and security differ depending on the application (signatures, IBE, etc.), so we defer to the paper to get an overview of these.
-
-## How the vetKD primitive is constructed
-
-Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. The main feature of [BLS signatures](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least). This makes them a great candidate signature scheme for the blockchain setting.
-
-As with any signature scheme, BLS comprises three algorithms:
-
-1. A (potentially distributed) key generation algorithm $\mathsf{DKG}$.
-
-2. A signing algorithm $\mathsf{Sign}$.
-
-3. A verification algorithm $\mathsf{Verify}$.
-
-In the threshold setting, this is extended to include a fourth combination algorithm $\mathsf{Combine}$.
-
-Threshold BLS signatures are used a lot on ICP. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from ICP. At a very high level, the scenario will run as follows:
-
-* Nodes in the network participate in the DKG process and obtain private key shares.
-
-* Each node computes a signature share on a message $m$ using its share of the signing key.
-
-* Nodes participate in a $\mathsf{Combine}$ process to combine signature shares and produce a single signature, which is then sent to Alice.
-
-* Alice uses a verification algorithm $\mathsf{Verify}$ to check whether the signature sent from the nodes verifies under the public key of the Internet Computer.
-
-IBE implies signatures. From the [BF01] paper, the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE, then set the public key for the signature scheme to be the system parameters of the IBE. The signature on a message M is the IBE decryption key for ID = M.
-
-In the vetKD scenario, the master key of the IBE scheme is a BLS signature key secret shared over the nodes. The derivation identity will be threshold signed, resulting in a signature that can act as a symmetric encryption key but also as a Boneh-Franklin decryption key.
-
-## Putting everything together
-
-vetKD is a new primitive that can be used to extend identity-based encryption in a decentralized setting. The main tools needed to build vetKD are a DKG, a PKE (ElGamal), and threshold BLS signatures, and they are used to obtain keys as follows:
-
-* Master key—DKG issued BLS signing key.
-
-* Transport keys—ElGamal key pair.
-
-* Encrypted key share—BLS signature shares on the identity, encrypted under the ElGamal public key.
-
-* Combined encrypted key—A threshold of valid encrypted key shares is combined (in the blockchain scenario, likely by a block maker) to give the encrypted derived key.
-
-* Decryption key—ElGamal decryption of the combined encrypted derived key.
-
-Having these vetKeys opens a goldmine of functionality. There are further descriptions of the VETKey family, i.e., extending vetKD to vetIBE, to vetSigs, to a vetPRF, and to vetVRF.
-
-## References
-
-* [BS23](https://toc.cryptobook.us/): The Boneh-Shoup Book.
-
-* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf): The IBE paper.
-
-* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf): The BLS paper.
-
-* [DH76](https://ee.stanford.edu/~hellman/publications/24.pdf): Diffie and Hellman's New Directions paper.
-
-* [vetKD Youtube](https://youtu.be/baM6jHnmMq8): The vetKD Community Conversation intro.
+Each canister-level key can then be used in the vetKD protocol to derive user-requested keys by calling the `vetkd_derive_key` system API and specifying the corresponding context. To do so, the canister supplies an input, typically user-generated or application-specific data, that serves as the basis for the derived key. This input does not need to be random or secret. Since the key derivation process is deterministic (given the same canister, context, and input), the input can effectively serve as an identifier for the derived key within the application.
