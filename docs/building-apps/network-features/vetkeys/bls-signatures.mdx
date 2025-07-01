@@ -12,11 +12,11 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Advanced", "BLS signatures"]} />
 
-The vetKeys feature supports threshold signing using the BLS signature scheme. BLS signatures are widely used across chains, including within the ICP, due to its many useful properties, especially short deterministic signatures, excellent aggregation properties, and efficient verification.
+The vetKeys feature supports threshold signing using the BLS signature scheme. BLS signatures are widely used across chains, including within ICP, due to its many useful properties, especially short deterministic signatures, excellent aggregation properties, and efficient verification.
 
 The specific variant of BLS that can be implemented using vetKeys is `BLS_SIG_BLS12381G1_XMD:SHA-256_SSWU_RO_AUG_` as described in the BLS internet draft.
 
-Something to understand when using vetKeys to implement BLS signatures is that under the hood all vetKeys are BLS signatures, where the message that is signed is the `input` field of `VetKDDeriveKeyArgs`, and the private key that is used is derived from a master key using the `context` string.
+Something to understand when using vetKeys to implement BLS signatures is that under the hood, all vetKeys are BLS signatures, where the message that is signed is the `input` field of `VetKDDeriveKeyArgs` and the private key that is used is derived from a master key using the `context` string.
 
 ## Signing process
 
@@ -48,13 +48,13 @@ The canister can also implement a method which returns the public key that can b
 https://github.com/dfinity/vetkeys/blob/32215004e9204ba0caf8b4752ebd4a81a1be1b85/examples/basic_bls_signing/backend/src/lib.rs#L92-L105
 ```
 
-In this example the context string, which defines the BLS key that will be used, is derived using a combination of the caller's principal and an application specific identifier. In addition, the management canister implicitly includes the ID of the calling canister; this prevents any other canister from generating the same signatures, even if they provide the same context string during derivation.
+In this example, the context string which defines the BLS key that will be used, is derived using a combination of the caller's principal and an application specific identifier. In addition, the management canister implicitly includes the ID of the calling canister; this prevents any other canister from generating the same signatures, even if they provide the same context string during derivation.
 
 ```rust reference
 https://github.com/dfinity/vetkeys/blob/b37e8288c50b6cb5110dfad8ffa026904cdcafdc/examples/basic_bls_signing/backend/src/lib.rs#L106-L115
 ```
 
-This example uses a helper function from the `ic_vetkeys` crate, `management_canister::sign_with_bls`. This function in turn calls the management canister interface. BLS signatures can be implemented using the direct management canister interface, but using `sign_with_bls` is a bit simpler and makes the intended usage of the derived vetKey clear. However `sign_with_bls` assumes that it is acceptable for the generated BLS signature to be visible to the canister. If the signature itself needs to remain confidential, the application should follow the normal vetKey flow of generating a transport secret key on the client side and returning the encrypted signature to the caller.
+This example uses a helper function from the `ic_vetkeys` crate, `management_canister::sign_with_bls`. This function in turn calls the management canister interface. BLS signatures can be implemented using the direct management canister interface, but using `sign_with_bls` is a bit simpler and makes the intended usage of the derived vetKey clear. However, `sign_with_bls` assumes that it is acceptable for the generated BLS signature to be visible to the canister. If the signature itself needs to remain confidential, the application should follow the normal vetKey flow of generating a transport secret key on the client side and returning the encrypted signature to the caller.
 
 ```rust reference
 https://github.com/dfinity/vetkeys/blob/b37e8288c50b6cb5110dfad8ffa026904cdcafdc/backend/rs/ic_vetkeys/src/utils/mod.rs#L911-L917
