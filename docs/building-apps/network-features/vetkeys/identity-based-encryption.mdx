@@ -33,7 +33,7 @@ IBE works differently than the [distributed key management service (DKMS)](/docs
 
 ## How to use IBE
 
-This example will explain how to use IBE with vetKeys using the [basic IBE example](https://github.com/dfinity/vetkeys/tree/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe), which implements a simple IBE messaging system between principals.
+This example will explain how to use IBE with vetKeys using the [basic IBE example](https://github.com/dfinity/vetkeys/tree/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe), which implements a simple IBE messaging system between principals.
 
 In the example, users authenticate using their principals, encrypt messages, then store the cipher texts in the canister. Then, the recipient retrieves their messages and encrypted IBE private key, decrypts and verifies the private (decryption) key, and finally decrypts the encrypted messages. In this scenario, communication and key retrieval happen in the same canister.
 
@@ -43,18 +43,10 @@ Expose a canister endpoint that can fetch the IBE public key of the canister.
 
 <AdornedTabs groupId="languages">
 
-<TabItem value="mo" label="Motoko">
-
-```motoko no-repl reference
-https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/motoko/backend/src/Main.mo#L96-L111
-```
-
-</TabItem>
-
-<TabItem value="rs" label="Rust">
+<TabItem value="rs" label="Rust" default>
 
 ```rust reference
-https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/rust/backend/src/lib.rs#L70-L83
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe/backend/src/lib.rs#L70-L83
 ```
 
 </TabItem>
@@ -71,7 +63,7 @@ To encrypt messages, the sender uses the recipient's principal as the encryption
 <TabItem value="ts" label="TypeScript" default>
 
 ```ts reference
-https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/frontend/src/main.ts#L46-L66
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe/frontend/src/main.ts#L49-L69
 ```
 
 </TabItem>
@@ -85,18 +77,10 @@ This example uses the encoding of the caller as the identity. Since this value i
 
 <AdornedTabs groupId="languages">
 
-<TabItem value="mo" label="Motoko">
-
-```motoko no-repl reference
-https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/motoko/backend/src/Main.mo#L114-L131
-```
-
-</TabItem>
-
 <TabItem value="rs" label="Rust" default>
 
 ```rust reference
-https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/rust/backend/src/lib.rs#L85-L101
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe/backend/src/lib.rs#L85-L101
 ```
 
 </TabItem>
@@ -115,7 +99,7 @@ For a detailed overview of the basic flow for obtaining `vetKeys`, refer to the 
 <TabItem value="ts" label="TypeScript" default>
 
 ```ts reference
-https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/frontend/src/main.ts#L68-L96
+https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/examples/basic_ibe/frontend/src/main.ts#L71-L97
 ```
 
 </TabItem>
