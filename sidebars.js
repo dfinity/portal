@@ -366,6 +366,7 @@ build: [
             "building-apps/network-features/vetkeys/api",
             "building-apps/network-features/vetkeys/dkms",
             "building-apps/network-features/vetkeys/encrypted-onchain-storage",
+            "building-apps/network-features/vetkeys/bls-signatures",
             "building-apps/network-features/vetkeys/identity-based-encryption",
             "building-apps/network-features/vetkeys/timelock-encryption",
           ],
@@ -834,6 +835,7 @@ btc: [
   "build-on-btc/read-state",
   "build-on-btc/ordinals",
   "build-on-btc/runes",
+  "build-on-btc/brc20",
 ],
 
 references: [
@@ -857,7 +859,6 @@ references: [
       "references/ii-spec",
       "references/icrc1-standard",
       "references/ledger",
-      "references/supported-signatures",
       "references/t-sigs-how-it-works",
       "references/vc-spec",
       "references/vetkeys-overview"
