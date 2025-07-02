@@ -250,7 +250,14 @@ type canister_status_args = record {
 };
 
 type canister_status_result = record {
-    status : variant { running; stopping; stopped };
+    status : variant {
+        running;
+        stopping;
+        stopped : record {
+            ready_for_migration : bool;
+        };
+    };
+    version : nat64;
     settings : definite_canister_settings;
     module_hash : opt blob;
     memory_size : nat;
