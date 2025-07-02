@@ -280,7 +280,7 @@ The canister status can be used to control whether the canister is processing ca
 
 -   In status `running`, calls to the canister are processed as normal.
 
--   In status `stopping`, calls to the canister are rejected by the IC with reject code `CANISTER_ERROR` (5), but responses to the canister are processed as normal. This status contains an additional boolean, `ready_for_migration` which indicates whether the status has empty queues and flushed queues and thus if it is ready to be migrated. 
+-   In status `stopping`, calls to the canister are rejected by the IC with reject code `CANISTER_ERROR` (5), but responses to the canister are processed as normal. This status contains an additional boolean, `ready_for_migration` which indicates whether the canister has empty queues and flushed streams and thus if it is ready to be migrated. 
 
 -   In status `stopped`, calls to the canister are rejected by the IC with reject code `CANISTER_ERROR` (5), and there are no outstanding responses.
 
