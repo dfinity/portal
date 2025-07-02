@@ -1,0 +1,95 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, signature, BLS, threshold decryption, encrypted threshold key derivation]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# Threshold BLS signatures
+
+<MarkdownChipRow labels={["Advanced", "BLS signatures"]} />
+
+The vetKeys feature supports threshold signing using the BLS signature scheme. BLS signatures are widely used across chains, including within ICP, due to its many useful properties, especially short deterministic signatures, excellent aggregation properties, and efficient verification.
+
+The specific variant of BLS that can be implemented using vetKeys is `BLS_SIG_BLS12381G1_XMD:SHA-256_SSWU_RO_AUG_` as described in the BLS internet draft.
+
+Something to understand when using vetKeys to implement BLS signatures is that under the hood, all vetKeys are BLS signatures, where the message that is signed is the `input` field of `VetKDDeriveKeyArgs` and the private key that is used is derived from a master key using the `context` string.
+
+## Signing process
+
+### Step 1. Define Authentication Mechanism
+
+The backend generates signatures, and, like any other usage of vetKeys, must define some way of checking which clients are allowed to access which keys (or, here, signatures).
+
+In this example, the `context` string, which defines the BLS key that will be used, is derived using a combination of the caller's principal and an application specific identifier. This ensures that each BLS key that is used is unique to that particular user. In addition, the management canister implicitly includes the ID of the calling canister; this prevents any other canister from generating the same signatures, even if they provide the same context string during derivation.
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/b37e8288c50b6cb5110dfad8ffa026904cdcafdc/examples/basic_bls_signing/backend/src/lib.rs#L106-L115
+```
+
+### Step 2. Generate Signature in Backend
+
+The backend implements a method to create signatures, applying suitable access control. The signature that is returned will be a valid signature over the bytestring `input`, and the key that is used to generate the signature depends on both the canister's identifier and the `context` string. This example uses the caller's principal as part of the `context` input. This means that, while anyone can request that the canister generate a signature, only the specific caller will be able to generate signatures for their principal-specific public key.
+
+This example uses a helper function from the `ic_vetkeys` crate, `management_canister::sign_with_bls`. This function in turn calls the management canister interface. BLS signatures can be implemented using the direct management canister interface, but using `sign_with_bls` is a bit simpler and makes the intended usage of the derived vetKey clear. However, `sign_with_bls` assumes that it is acceptable for the generated BLS signature to be visible to the canister. If the signature itself needs to remain confidential, the application should follow the normal vetKey flow of generating a transport secret key on the client side and returning the encrypted signature to the caller.
+
+<AdornedTabs groupId="languages">
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/b37e8288c50b6cb5110dfad8ffa026904cdcafdc/examples/basic_bls_signing/backend/src/lib.rs#L45-L53
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 3. Request Signature In Frontend
+
+The application frontend can then invoke the canister method which returns a BLS signature for the provided message.
+
+<AdornedTabs groupId="languages">
+<TabItem value="ts" label="TypeScript" default>
+
+```ts reference
+https://github.com/dfinity/vetkeys/blob/32215004e9204ba0caf8b4752ebd4a81a1be1b85/examples/basic_bls_signing/frontend/src/main.ts#L156-L168
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 4. Determine The Public Key
+
+The canister can also implement a method which returns the public key that can be used to verify the generated signatures. This example returns the public key of the specific caller, but it could safely return the public key associated with any specified principal.
+
+<AdornedTabs groupId="languages">
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/32215004e9204ba0caf8b4752ebd4a81a1be1b85/examples/basic_bls_signing/backend/src/lib.rs#L92-L105
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 5. Verify The Signature
+
+In this example, the canister returns an unencrypted BLS signature. This signature should be verified before use, since a misbehaving canister might return an incorrect signature. The signature can be verified by any party using the `verifyBlsSignature` utility function provided in the `ic_vetkeys` TypeScript library, or alternately by using third party libraries such as TypeScript's `noble-curves` or Rust's `zkcrypto/bls12_381`.
+
+<AdornedTabs groupId="languages">
+<TabItem value="ts" label="TypeScript" default>
+
+```ts reference
+https://github.com/dfinity/vetkeys/blob/32215004e9204ba0caf8b4752ebd4a81a1be1b85/examples/basic_bls_signing/frontend/src/main.ts#L196-L215
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Resources
+
+- [Example BLS signing dapp](https://github.com/dfinity/vetkeys/tree/main/examples/basic_bls_signing).
+
+- [Internet Draft Specification for BLS signatures](https://datatracker.ietf.org/doc/draft-irtf-cfrg-bls-signature/)

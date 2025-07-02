@@ -34,11 +34,9 @@ Managing user keys, especially in multi-device and multi-user settings, is notor
 
 A core application of DKMS is the generation of encryption keys for securing data, whether stored in a canister, on another blockchain, or off-chain entirely. With vetKeys, these keys can be securely shared across devices and between users, enabling powerful privacy-preserving use cases. This includes private storage solutions, end-to-end encrypted messaging, password managers, and collaborative applications operating on confidential data.
 
-## Threshold BLS signatures
+## [Threshold BLS signatures](/docs/building-apps/network-features/vetkeys/bls-signatures)
 
 [Chain Fusion technology](https://internetcomputer.org/chainfusion) allows canisters to natively interact with other blockchains, such as Bitcoin or Ethereum, without relying on external bridges or trusted intermediaries. This is made possible through threshold signature schemes, which enable canisters to instruct subnet nodes to collectively compute ECDSA, Schnorr and EdDSA signatures. vetKeys extends this capability by introducing a new threshold signature scheme to canisters: threshold BLS signatures. BLS signatures are particularly well-suited for multichain applications due to their compact size and efficient aggregation properties. By supporting threshold BLS, vetKeys further enhances ICP’s interoperability, empowering canisters to participate in more advanced multichain dapps and protocols.
-
-The corresponding documentation will be added soon.
 
 ## [Identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption)
 
