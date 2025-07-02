@@ -15,11 +15,11 @@
       "imported": true
     },
     {
-      "title": "User-space libraries and example dapps for vetKeys",
+      "title": "Developer libraries and example dapps for vetKeys",
       "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
       "forum": "",
       "proposal": "",
-      "docs": "",
+      "docs": "https://github.com/dfinity/vetkeys",
       "eta": "Q2 2025",
       "status": "deployed",
       "is_community": false,
