@@ -115,6 +115,12 @@ export const communityToolingItems = [
     },
   },
   {
+    title: "ic-deploy-action",
+    tags: ["CI/CD", "automation"],
+    description: "A GitHub Action for automating deployments on the Internet Computer, supporting both backend canisters and frontend assets.",
+    links: { github: "https://github.com/Stephen-Kimoi/ic-deploy-action" },
+  }, 
+  {
     title: "ic-repl",
     tags: ["development", "operations", "testing"],
     description:
