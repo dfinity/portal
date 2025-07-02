@@ -3,41 +3,6 @@
   "categoryDescription": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
   "elements": [
     {
-      "title": "ICP integrates the vetKeys protocol",
-      "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
-      "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
-      "proposal": "",
-      "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
-      "eta": "Q2 2025",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Niobium",
-      "imported": true
-    },
-    {
-      "title": "User-space libraries and example dapps for vetKeys",
-      "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q2 2025",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Niobium",
-      "imported": false
-    },
-    {
-      "title": "vetKeys for decentralized key management",
-      "is_milestone": true,
-      "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
-      "milestone_id": "Niobium",
-      "status": "in_progress",
-      "eta": "Q2 2025",
-      "eta_to_render": "June 2025"
-    },
-    {
       "title": "Confidentiality of canister states",
       "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
       "status": "in_progress",

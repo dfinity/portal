@@ -162,6 +162,39 @@
       "status": "deployed",
       "eta": "2024-08-13",
       "eta_to_render": "August 13, 2024"
+    },
+    {
+      "title": "Threshold EdDSA signing",
+      "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
+      "status": "deployed",
+      "eta": "2024",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": "Helium"
+    },
+    {
+      "title": "Solana RPC canister",
+      "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": "Helium"
+    },
+    {
+      "title": "Chain Fusion supports Solana",
+      "is_milestone": true,
+      "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
+      "milestone_id": "Helium",
+      "status": "deployed",
+      "eta": "",
+      "eta_to_render": "June 2025"
     }
   ]
 }
