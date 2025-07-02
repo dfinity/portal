@@ -112,6 +112,7 @@ export const communityToolingItems = [
     links: { 
       external: "https://canisterdns.stevekimoi.me/", 
       github: "https://github.com/Stephen-Kimoi/canister-dns" 
+    },
   },
   {
     title: "ic-deploy-action",
