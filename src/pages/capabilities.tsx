@@ -118,7 +118,7 @@ const cardsData: CardData[] = [
   {
     title: "End-to-End Privacy and Confidentiality",
     description:
-      "VetKeys enables developers on the Internet Computer to build decentralized apps with strong privacy and confidentiality by allowing onchain encryption of data and management of cryptographic keys. Keys are securely derived and encrypted, with no single party, including the network's nodes, able to access the full key.",
+      "vetKeys enables developers on the Internet Computer to build decentralized apps with strong privacy and confidentiality by enabling smart contracts to request encrypted keys for securing data. Keys are securely derived and encrypted, with no single party, including the network's nodes, able to access the full key.",
     image: "/img/features/vetkeys.webp",
     href: "/docs/building-apps/network-features/vetkeys/introduction",
     refText: "Explore vetKeys",
