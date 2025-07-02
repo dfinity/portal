@@ -106,6 +106,15 @@ export const dfinityToolingItems = [
 ];
 export const communityToolingItems = [
   {
+    title: "generate-did",
+    tags: ["CLI", "development", "Rust", "Candid"],
+    description: "A CLI tool to generate Candid (.did) files for Internet Computer Rust canisters.",
+    links: { 
+      external: "https://crates.io/crates/generate-did", 
+      github: "https://github.com/Stephen-Kimoi/generate-did" 
+    },
+  },
+  {
     title: "Canister DNS",
     tags: ["operations", "domains", "service",],
     description: "A tool to easily connect your custom domain to your canister URL, supporting both main domains and subdomains.",
