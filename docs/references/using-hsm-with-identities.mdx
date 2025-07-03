@@ -1,0 +1,186 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# Using HSM with dfx identities
+
+<MarkdownChipRow labels={["Reference"]} />
+
+dfx identities can be secured using a Hardware Security Module (HSM) to protect private keys during development and deployment. This setup enhances key management by ensuring cryptographic operations are performed inside the HSM, without exposing sensitive material to the host system.
+
+## Step 1: Download and install OpenSC
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+If using Ubuntu 22.04 or later:
+
+1. Install prerequisite software: 1sudo apt install pcscd opensc opensc-pkcs111
+
+If using earlier Ubuntu:
+
+1. Install pcscd: sudo apt install `pcscd`
+
+2. Download the most recent tarball from https://github.com/OpenSC/OpenSC/releases
+
+3. Extract it: `tar xf opensc-0.21.0.tar.gz`
+
+4. Run `configure: ./configure`
+
+    - This step may fail due to missing libraries and headers. You will have to figure out which ones are missing and install the relevant packages.
+
+5. Run `make`
+
+6. Run `sudo make install`
+
+    - The binary may not be linked properly and you may have to run the commands with `LD_LIBRARY_PATH=/usr/local/lib sc-hsm-tool`
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+1. Download the most recent `.dmg` file from https://github.com/OpenSC/OpenSC/releases
+
+2. Install the downloaded `.dmg` file.
+
+    - On newer versions of macOS the file may be quarantined. You will need to copy the `.pkg` file out of the disk image and run `xattr -d com.apple.quarantine <name of pkg here>` before installing it.
+
+3. Verify your installation by running `/Library/OpenSC/bin/pkcs11-tool --login --test`
+
+    - If this doesn’t work and you get a `CKR_DEVICE_ERROR`, view the [GitHub issue](https://github.com/OpenSC/OpenSC/issues/2887#issuecomment-1810783804) pertaining to this error.
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+1. Download the latest Windows version: https://github.com/OpenSC/OpenSC/releases
+
+2. Install it. Windows will create a folder called `OpenSC Project` in your `C:/Program Files` folder.
+
+3. Open Windows Explorer and navigate to `C:/Program Files/OpenSC Project/OpenSC`.
+
+</TabItem>
+
+</AdornedTabs>
+
+
+## Step 2: Initialize and generate your HSM
+
+Plug your Nitrokey HSM USB into your computer. Throughout these instructions, make sure you do not have any other security keys (Yubikey, etc.) also plugged into the computer.
+
+1. Open your terminal and enter the following commands:
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+1. `sudo systemctl restart pcscd pcscd.socket`
+
+2. `sudo systemctl enable pcscd.socket`
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+Continue with the following steps.
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+
+
+Click Start and type cmd to open the command prompt
+Type cd.. And hit enter to go up a folder in the directory
+Repeat as necessary until you are at the C:\> prompt
+Go to the folder that the OpenSC tools are in which should be in your Program Files folder. If it is, then you would go there by typing this: 
+cd Program Files/OpenSC Project/OpenSC/tools
+Continue with the following directions. (You can copy and paste with Control-V into the command prompt if you wish)
+
+
+</TabItem>
+
+</AdornedTabs>
+
+2. `-hsm-tool --initialize --so-pin 3537363231383830 --pin 648219`
+
+The numbers used are the factory defaults and will be changed in the next steps.
+
+3. `pkcs11-tool --login --login-type so --so-pin 3537363231383830 --change-pin`
+
+Come up with a 16-digit numerical string to change the pin.
+
+4. `pkcs11-tool --login --login-type user --pin 648219 --change-pin`
+
+Come up with a 6-digit string to change your pin.
+
+:::caution
+For HSMs that are used as node operators for onboarding nodes, the PIN needs to stay 648219. The orchestrator needs this PIN pre-set to sign the join request to the NNS.
+:::
+
+```
+
+5. `pkcs11-tool -k --key-type EC:prime256v1 --login -d 01`
+
+Enter the same pin that you entered in the previous step. This creates the key on the HSM.
+
+
+## Step 3: Install the IC SDK
+
+```
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
+
+## Step 4: Retrieve your principal ID
+
+1. Create an HSM identity in `dfx`:
+
+    - In Ubuntu 22.04 or later: `dfx identity new hsm --hsm-key-id 01 --hsm-pkcs11-lib-path /usr/lib/x86_64-linux-gnu/pkcs11/opensc-pkcs11.so`
+
+    - In earlier Ubuntu or macOS: `dfx identity new hsm --hsm-key-id 01 --hsm-pkcs11-lib-path /usr/local/lib/opensc-pkcs11.so`
+
+The path in the final parameter might be different for you. You should find it by running `find /usr /Library -name opensc-pkcs11.so 2>/dev/null` or `mdfind -name opensc-pkcs11.so`
+
+On macOS, the file might be found under `/Library/OpenSC/lib/opensc-pkcs11.so`.
+
+The steps above will have created two identities, a default one and an HSM one. You will use the HSM identity in the steps below.
+
+2. Print the associated principal ID:
+
+```
+dfx identity use hsm
+echo -n PIN:; read -s DFX_HSM_PIN; export DFX_HSM_PIN; echo; dfx identity get-principal; DFX_HSM_PIN=""
+```
+
+This command will prompt you for your PIN.
+
+
+### Troubleshooting
+
+If you receive the error: `I0: dlopen(/usr/local/lib/opensc-pkcs11.so, 2) image not found`:
+
+1. `ls ~/.config/dfx/identity/hsm/identity.json`
+
+2. `nano ~/.config/dfx/identity/hsm/identity.json`
+
+You should see a text file containing a line with `"pkcs11_lib_path"`.
+
+4. Replace the section in line 3 after "pkcs11_lib_path:" with "/Library/OpenSC/lib/opensc-pkcs11.so"
+
+5. Then, press "ctrl O" on your keyboard.
+
+6. Then press "ctrl X" to close the text file.
+
+Once complete, enter this command: `echo -n PIN:; read -s DFX_HSM_PIN; export DFX_HSM_PIN; echo; dfx identity get-principal; DFX_HSM_PIN=""`
+
+
+## Frequently ask questions
+
+#### What happens if the initialization is repeated? Will the previously generated key be lost in an unrecoverable way?
+
+Initializing an HSM typically involves setting up the device, configuring security parameters, and generating the initial key material. In most cases, during the initialization process, the device generates a master key or a set of initial keys that are used to protect other keys stored within the HSM.
+
+If you repeat the initialization process of an HSM, it overwrites the existing key material and replaces it with new keys. Consequently, any previously generated keys would be lost in an unrecoverable manner, as they would be replaced by the new keys generated during the repeated initialization.
+
+#### What if the ID in `pkcs11-tool -k --key-type EC:prime256v1 --login -d 01` was already used?
+
+The "-d" flag is used to specify the slot number or slot identifier when interacting with a PKCS#11 compliant device, such as an HSM. Using that ID would override the same device if no other device was added that changed the device order. Use `pkcs11-tool --list-slots` to list all devices and their ID.
+
+
