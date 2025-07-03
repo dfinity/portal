@@ -17,7 +17,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Flux"
@@ -843,8 +843,8 @@
       {
         "name": "Caffeine alpha launch – dawn of the self-writing internet",
         "milestone_id": "Vertex",
-        "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
-        "eta": null,
+        "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, canister snapshots, and AI models for Motoko code generation meet, creating the self-writing internet.",
+        "eta": "July 15th, 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -860,14 +860,8 @@
             "milestone_id": "Vertex"
           },
           {
-            "title": "Caffeine integration",
-            "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
-            "status": "in_progress",
-            "milestone_id": "Vertex"
-          },
-          {
             "title": "Caffeine platform",
-            "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
+            "overview": "First release of the Caffeine platform for prompt-based ICP application creation. Integrating the fine-tuned models for Motoko code generation into a chat-like user experience. Complemented by a first version of an app marketplace allowing users to publish their apps so that others can clone and evolve them.",
             "status": "in_progress",
             "milestone_id": "Vertex"
           }
@@ -949,43 +943,10 @@
     "description": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multichain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
     "milestones": [
       {
-        "name": "Chain Fusion supports Solana",
-        "milestone_id": "Helium",
-        "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
-        "eta": "June 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Threshold EdDSA signing",
-            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-            "status": "deployed",
-            "eta": "2024",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Helium"
-          },
-          {
-            "title": "Solana RPC canister",
-            "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
-            "forum": "",
-            "proposal": "",
-            "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Helium"
-          }
-        ]
-      },
-      {
         "name": "Dogecoin integration",
         "milestone_id": "Meridian",
         "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
-        "eta": null,
+        "eta": "September 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1078,6 +1039,39 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Deuterium"
+          }
+        ]
+      },
+      {
+        "name": "Chain Fusion supports Solana",
+        "milestone_id": "Helium",
+        "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
+        "eta": "June 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Threshold EdDSA signing",
+            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
+            "status": "deployed",
+            "eta": "2024",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Helium"
+          },
+          {
+            "title": "Solana RPC canister",
+            "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
+            "forum": "",
+            "proposal": "",
+            "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Helium"
           }
         ]
       },
@@ -1319,41 +1313,6 @@
     "description": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
     "milestones": [
       {
-        "name": "vetKeys for decentralized key management",
-        "milestone_id": "Niobium",
-        "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
-        "eta": "June 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "ICP integrates the vetKeys protocol",
-            "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
-            "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
-            "proposal": "",
-            "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
-            "eta": "Q2 2025",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Niobium",
-            "imported": true
-          },
-          {
-            "title": "User-space libraries and example dapps for vetKeys",
-            "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "Q2 2025",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Niobium",
-            "imported": false
-          }
-        ]
-      },
-      {
         "name": "Confidentiality of canister states",
         "milestone_id": "Containment",
         "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
@@ -1365,6 +1324,40 @@
             "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
             "status": "in_progress",
             "milestone_id": "Containment"
+          }
+        ]
+      },
+      {
+        "name": "vetKeys for decentralized key management",
+        "milestone_id": "Niobium",
+        "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
+        "eta": "July 1st 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "ICP integrates the vetKeys protocol",
+            "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
+            "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
+            "proposal": "",
+            "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Niobium",
+            "imported": true
+          },
+          {
+            "title": "Developer libraries and example dapps for vetKeys",
+            "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
+            "forum": "",
+            "proposal": "",
+            "docs": "https://github.com/dfinity/vetkeys",
+            "eta": "Q2 2025",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Niobium",
+            "imported": false
           }
         ]
       },
@@ -1484,7 +1477,7 @@
         "name": "Decentralized access logs and metrics",
         "milestone_id": "Levitron",
         "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
-        "eta": "June 2025",
+        "eta": "July 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1522,7 +1515,7 @@
           {
             "title": "Generation 3 node hardware",
             "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Knot"
           },
           {
@@ -1969,7 +1962,7 @@
         "name": "Rethinking the Internet Identity user experience",
         "milestone_id": "Pulse",
         "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
-        "eta": null,
+        "eta": "September 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -2409,6 +2402,33 @@
         ]
       },
       {
+        "name": "Zero to Degen-Hero",
+        "milestone_id": "Apex",
+        "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Ledgers as a first class citizen on ICP",
+            "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
+            "status": "future",
+            "milestone_id": "Apex"
+          },
+          {
+            "title": "Faster institutional integrations of new tokens",
+            "overview": "Support multi-token Rosetta",
+            "status": "in_progress",
+            "milestone_id": "Apex"
+          },
+          {
+            "title": "Fiat on-ramp",
+            "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
+            "status": "future",
+            "milestone_id": "Apex"
+          }
+        ]
+      },
+      {
         "name": "Decentralized marketplace for sovereign apps",
         "milestone_id": "Dynamo",
         "description": "A new foundation for a decentralized software marketplace is built, providing developers with a clear path to adoption for their applications without reliance on centralized platforms. By integrating transparent deployment flows and seamless discovery tools, this initiative lays the groundwork for a sovereign software ecosystem where developers can easily package and distribute their applications, and users retain full control over their installed apps.",
@@ -2438,33 +2458,6 @@
             "overview": "A set of initial applications designed to showcase the power of sovereign software, serving as reference for future developers.",
             "status": "future",
             "milestone_id": "Dynamo"
-          }
-        ]
-      },
-      {
-        "name": "Zero to Degen-Hero",
-        "milestone_id": "Apex",
-        "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
-        "eta": null,
-        "status": "future",
-        "elements": [
-          {
-            "title": "Ledgers as a first class citizen on ICP",
-            "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
-            "status": "future",
-            "milestone_id": "Apex"
-          },
-          {
-            "title": "Faster institutional integrations of new tokens",
-            "overview": "Support multi-token Rosetta",
-            "status": "future",
-            "milestone_id": "Apex"
-          },
-          {
-            "title": "Fiat on-ramp",
-            "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
-            "status": "future",
-            "milestone_id": "Apex"
           }
         ]
       },
@@ -2820,12 +2813,18 @@
     "description": "ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
     "milestones": [
       {
-        "name": "Enabling governance token holdings and broader participation",
+        "name": "Intuitive staking and broader DAO participation",
         "milestone_id": "Neon",
-        "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
+        "description": "The Neon milestone focuses on helping users quickly understand their portfolio. New features highlight personalized insights on their staking reward potential and provide more engaging and dynamic information about DAOs, presenting users with opportunities to participate in launches. Governance participation is becoming more accessible, with simplified processes for liquidity pool integration and DAO management operations, laying the groundwork for what's next.",
         "eta": "July 2025",
         "status": "in_progress",
         "elements": [
+          {
+            "title": "Staking overview",
+            "overview": "This feature focuses on making it easy for users to understand their staking potential and reward opportunities. Personalized insights encourage deeper engagement and understanding—like how staking more or adjusting neuron configurations can lead to more voting rewards.",
+            "status": "in_progress",
+            "milestone_id": "Neon"
+          },
           {
             "title": "Portfolio page",
             "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
@@ -2838,12 +2837,9 @@
             "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
             "forum": "https://forum.dfinity.org/t/periodic-confirmation-design/34215",
             "proposal": "https://dashboard.internetcomputer.org/proposal/55651",
-            "docs": "",
-            "eta": "",
             "status": "deployed",
             "is_community": true,
             "in_beta": false,
-            "imported": true,
             "milestone_id": "Neon"
           },
           {
@@ -2877,8 +2873,8 @@
           },
           {
             "title": "Leverage liquid democracy in SNS DAOs",
-            "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics and a notion of named or known neurons.",
-            "status": "in_progress",
+            "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics.",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Neon"
@@ -2887,11 +2883,7 @@
             "title": "Disburse maturity for NNS neurons",
             "overview": "Unlike SNS neurons, NNS neurons spawn maturity into a newly created neuron. This feature will move to a flow where NNS neurons would also disburse maturity.",
             "description": "In its current implementation, NNS neurons spawn maturity into a new neuron, whereas SNS DAOs disburse maturity directly into the user's account, which greatly simplifies the flow and reduces the new neurons created.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Neon"
@@ -2906,11 +2898,7 @@
           {
             "title": "Launchpad redesign",
             "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Neon"
@@ -2940,10 +2928,6 @@
           {
             "title": "SNS communities portal",
             "overview": "A redesign of the voting interface that encourages community involvement and a sense of belonging, for example by allowing for announcement and updates.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
             "status": "future",
             "is_community": false,
             "in_beta": false,
@@ -2953,10 +2937,6 @@
             "title": "Improve staking user experience",
             "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
             "description": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
             "status": "future",
             "is_community": false,
             "in_beta": false,
@@ -3705,7 +3685,7 @@
         "name": "Amazing first time developer experience with ICP Ninja",
         "milestone_id": "Atlas",
         "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-        "eta": null,
+        "eta": "September 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -3715,8 +3695,8 @@
             "milestone_id": "Atlas"
           },
           {
-            "title": "Generate a project with AI",
-            "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
+            "title": "Publishing projects to the ICP mainnet",
+            "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
             "status": "in_progress",
             "milestone_id": "Atlas"
           },
@@ -3906,6 +3886,50 @@
         "milestone_id": "Past features",
         "eta": "none",
         "elements": [
+          {
+            "title": "PoC enabling REST & JSON-centric interfaces",
+            "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "PocketIC shipped and bundled with dfx",
+            "overview": "PocketIC, the new recommended standard tool for testing of dapps, is shipped and packaged with the dfx SDK.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "dfx ergonomics",
+            "overview": "Better developer experience when using the ICP SDK.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "dfx extensions",
+            "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "Q3 2024",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "imported": true
+          },
           {
             "title": "Motoko package manager shipped with dfx",
             "overview": "Integrating the Mops package manager with dfx to improve DX.",
@@ -4185,29 +4209,6 @@
         "eta": "none",
         "elements": [
           {
-            "title": "dfx extensions",
-            "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "Q3 2024",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
-          },
-          {
-            "title": "dfx ergonomics",
-            "overview": "Better developer experience when using the ICP SDK.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
             "title": "Tutorials",
             "overview": "More and improved tutorials for faster successful onboarding of devs into the ICP ecosystem.",
             "status": "in_progress",
@@ -4282,19 +4283,8 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "future",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "PocketIC shipped and bundled with dfx",
-            "overview": "PocketIC, the new recommended standard tool for testing of dapps, is shipped and packaged with the dfx SDK.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
             "status": "in_progress",
-            "is_community": false,
+            "is_community": true,
             "in_beta": false
           },
           {
@@ -4328,16 +4318,6 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "PoC enabling REST & JSON-centric interfaces",
-            "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": true,
             "in_beta": false
           },
           {
