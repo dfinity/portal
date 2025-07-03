@@ -2,6 +2,50 @@
   "categoryName": "",
   "categoryDescription": "",
   "elements": [
+   {
+      "title": "PoC enabling REST & JSON-centric interfaces",
+      "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "PocketIC shipped and bundled with dfx",
+      "overview": "PocketIC, the new recommended standard tool for testing of dapps, is shipped and packaged with the dfx SDK.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "dfx ergonomics",
+      "overview": "Better developer experience when using the ICP SDK.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    }, 
+    {
+      "title": "dfx extensions",
+      "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q3 2024",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
     {
       "title": "Motoko package manager shipped with dfx",
       "overview": "Integrating the Mops package manager with dfx to improve DX.",

@@ -312,8 +312,8 @@ function EnterprisePage() {
                 documents via emails with no audit trail of who accessed and
                 edited them, or using expensive US hosted SaaS services with the
                 associated vendor lock-in and geographical data protection
-                issues. Onchain encryption enabled by 'Verifiable Encrypted
-                Threshold Keys' (VETKeys) will enable customized cross-org
+                issues. Onchain key derivation enabled by 'Verifiably Encrypted
+                Threshold Keys' (vetKeys) enable customized cross-org
                 workflows via tamperproof smart contract that store private data
                 securely encrypted on chain.
               </p>
@@ -337,7 +337,7 @@ function EnterprisePage() {
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Privately share documents with other organizations and
-                  customers, using onchain encryption enabled by VETKeys.
+                  customers, using onchain key derivation enabled by vetKeys.
                 </p>
               </div>
               <div className="flex flex-col">
