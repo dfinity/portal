@@ -12,7 +12,7 @@ System canisters are canisters that provide a necessary function to the ICP netw
 
 ## Bitcoin mainnet
 
-The [Bitcoin mainnet](/docs/building-apps/chain-fusion/bitcoin/overview) system canister is used to facilitate connection from the ICP mainnet to the Bitcoin mainnet.
+The [Bitcoin mainnet](/docs/build-on-btc/) system canister is used to facilitate connection from the ICP mainnet to the Bitcoin mainnet.
 
 It has canister ID [`ghsi2-tqaaa-aaaan-aaaca-cai`](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai).
 
@@ -22,7 +22,7 @@ View the [Bitcoin specification](https://github.com/dfinity/bitcoin-canister/blo
 
 ## Bitcoin testnet
 
-The [Bitcoin testnet](/docs/building-apps/chain-fusion/bitcoin/overview) system canister is used to facilitate connection from the ICP mainnet to the Bitcoin testnet.
+The [Bitcoin testnet](/docs/build-on-btc/) system canister is used to facilitate connection from the ICP mainnet to the Bitcoin testnet.
 
 It has canister ID [`g4xu7-jiaaa-aaaan-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai).
 
@@ -52,11 +52,71 @@ View the [cycles ledger specification](https://github.com/dfinity/cycles-ledger/
 
 ## Cycles minting
 
-The [cycles minting](/docs/building-apps/essentials/gas-cost) canister is used to mint cycles on the mainnet.
+The cycles minting canister (CMC) has canister ID [`rkp4c-7iaaa-aaaaa-aaaca-cai`](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai).
 
-It has canister ID [`rkp4c-7iaaa-aaaaa-aaaca-cai`](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai).
+Cycles are used by canisters to pay for the resources they use, such as data storage, compute power, or network bandwidth. The CMC converts ICP into [cycles](/docs/building-apps/essentials/gas-cost) by burning ICP and creating cycles. This operation is referred to as cycles "minting."
 
-The cycles ledger canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+The CMC canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+### Using the CMC 
+
+To use the CMC, you must first send ICP to the CMC by calling the ICP ledger canister, then tell the CMC about the ICP that was sent.
+When minting cycles, the ICP transfer parameters must meet the following requirements:
+
+1. `subaccount`: The recipient of the new cycles. More on this below.
+2. `memo`: Indicates what type of operation will be performed using the ICP.
+
+The subaccount corresponding to a recipient principal is constructed as follows:
+
+1. Start with an array of length `32` with all elements set to `0`.
+2. The first byte is set to the length of the principal as a `blob`.
+3. The principal bytes are copied into the remaining bytes of the subaccount.
+
+For example, to send 4.2 ICP to CMC such that `principal "mcj7w-qq3pa-zsxyt-fjs6f-4s7px-mrq3c-i6wmj-ciqw6-7q4aj-odhgc-4ae"` will end up getting the newly created cycles, ICP could be sent to the CMC like this:
+
+```bash
+CYCLES_MINTING_CANISTER_ID=rkp4c-7iaaa-aaaaa-aaaca-cai
+ICP_LEDGER_CANISTER_ID=ryjl3-tyaaa-aaaaa-aaaba-cai
+
+dfx canister --ic call $ICP_LEDGER_CANSITER_ID icrc1_transfer "(record {
+  to = record {
+    owner = principal "${CYCLES_MINTING_CANISTER_ID}";
+
+    // This corresponds to principal "mcj7w-qq3pa-zsxyt-fjs6f-4s7px-mrq3c-i6wmj-ciqw6-7q4aj-odhgc-4ae".
+    subaccount = opt blob "\1d\1b\78\33\2b\e2\65\4c\bc\5e\4b\ef\bb\23\0d\89\1e\b3\12\24\42\de\fc\38\04\b8\67\30\b8\02\00\00";
+  };
+
+  // This matches what the CMC's notify_mint_cycles method requires.
+  memo = opt blob "\4d\49\4e\54\00\00\00\00";
+
+  // 4.2 ICP, denominated in 1/100_000_000ths of of an ICP, known as an e8.
+  amount = 420_000_000 : nat;
+
+  // Also in e8s. Transfers are very inexpensive in ICP :D
+  fee = opt (10_000 : nat);
+})"
+```
+
+This transaction will be recorded in a block whose index is returned by the above command. For example, suppose the block index is `123_456_789`. This index used in the next step:
+
+```bash
+dfx canister --ic call $CYCLES_MINTING_CANISTER_ID notify_mint_cycles '(record {
+  block_index = 123_456_789 : nat64;
+})'
+```
+
+The destination principal now has a higher cycles balance. To read the balance, the cycles ledger canister can be queried:
+
+```bash
+CYCLES_LEDGER_CANISTER_ID=um5iw-rqaaa-aaaaq-qaaba-cai
+
+dfx canister --ic call $CYCLES_LEDGER icrc1_balance_of '(record {
+    owner = principal "mcj7w-qq3pa-zsxyt-fjs6f-4s7px-mrq3c-i6wmj-ciqw6-7q4aj-odhgc-4ae";
+})'
+```
+
+The exchange rate from ICP to cycles varies, depending on the price of ICP in XDR (see the exchange rate canister). The result is that the price of cycles in XRD is relatively stable.
 
 ## Exchange rate
 
@@ -114,17 +174,17 @@ View the [Internet Identity specification](/docs/references/ii-spec).
 
 The NNS is comprised of the following canisters:
 
-- [NNS governance](/docs/building-apps/governing-apps/nns/overview): Canister ID [`rrkah-fqaaa-aaaaa-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai)
-- [NNS lifeline](/docs/building-apps/governing-apps/nns/overview): Canister ID [`rno2w-sqaaa-aaaaa-aaacq-cai`](https://dashboard.internetcomputer.org/canister/rno2w-sqaaa-aaaaa-aaacq-cai)
-- [NNS registry](/docs/building-apps/governing-apps/nns/overview): Canister ID [`rwlgt-iiaaa-aaaaa-aaaaa-cai`](https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai)
-- [NNS root](/docs/building-apps/governing-apps/nns/overview): Canister ID [`r7inp-6aaaa-aaaaa-aaabq-cai`](https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai)
-- [NNS UI](/docs/building-apps/governing-apps/nns/overview): Canister ID [`qoctq-giaaa-aaaaa-aaaea-cai`](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai)
+- [NNS governance](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System): Canister ID [`rrkah-fqaaa-aaaaa-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai)
+- [NNS lifeline](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System): Canister ID [`rno2w-sqaaa-aaaaa-aaacq-cai`](https://dashboard.internetcomputer.org/canister/rno2w-sqaaa-aaaaa-aaacq-cai)
+- [NNS registry](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System): Canister ID [`rwlgt-iiaaa-aaaaa-aaaaa-cai`](https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai)
+- [NNS root](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System): Canister ID [`r7inp-6aaaa-aaaaa-aaabq-cai`](https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai)
+- [NNS UI](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System): Canister ID [`qoctq-giaaa-aaaaa-aaaea-cai`](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai)
 
 The NNS canisters are hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
 
 ## SNS Wasm
 
-The [SNS Wasm](/docs/building-apps/governing-apps/overview) canister is used for deploying and updating SNSes.
+The [SNS Wasm](https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System) canister is used for deploying and updating SNSes.
 
 It has canister ID [`qaa6y-5yaaa-aaaaa-aaafa-cai`](https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai).
 

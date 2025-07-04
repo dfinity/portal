@@ -83,6 +83,13 @@ const subnavItems = [
   {
     type: "docSidebar",
     position: "left",
+    sidebarId: "btc",
+    label: "Build on Bitcoin",
+    activeBasePath: "/docs/build-on-btc/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
     sidebarId: "motoko",
     label: "Motoko",
     activeBasePath: "/docs/motoko/",
@@ -417,7 +424,12 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/building-apps/developing-canisters/what-are-canisters",
+              href: "/docs/building-apps/essentials/canisters",
+            },
+            {
+              name: "Build on BTC",
+              description: "Leveraging Chain Fusion Technology",
+              href: "/bitcoin",
             },
             {
               name: "Hackathons",
@@ -509,16 +521,16 @@ const marketingNav = {
               description: "Keep up to date",
             },
             {
-              name: "OLYMPUS",
-              href: "/olympus",
-              description: "The Onchain Acceleration Platform",
+              name: "ICP Alliance",
+              href: "https://dfinity.org/alliance",
+              description: "Lead the Next Web",
             },
           ],
           featured: {
-            title: "OLYMPUS",
-            subtitle: "The Onchain Acceleration Platform",
-            href: "/olympus",
-            image: "/img/nav/featured-olympus.webp",
+            title: "ICP Alliance",
+            subtitle: "Lead the Next Web",
+            href: "https://dfinity.org/alliance",
+            image: "/img/nav/featured-alliance.webp",
           },
         },
       ],
@@ -571,7 +583,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP connected software. Now ICP hosts software.",
+    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multichain apps, secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP connected software. Now ICP hosts software.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -653,7 +665,19 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           breadcrumbs: false,
-
+          exclude: [
+            "references/samples/ADDING_AN_EXAMPLE.md",
+            "references/samples/archive/**",
+            "references/samples/c/**",
+            "references/samples/hosting/README.md",
+            "references/samples/hosting/godot-html5-template/**",
+            "references/samples/hosting/react/**",
+            "references/samples/hosting/unity-webgl-template/**",
+            "references/samples/native-apps/**",
+            "references/samples/svelte/**",
+            "references/samples/wasm/**",
+            "motoko/old/**",
+          ],
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins,
           rehypePlugins,

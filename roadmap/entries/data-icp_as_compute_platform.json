@@ -18,7 +18,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Flux"
@@ -57,13 +57,19 @@
     },
     {
       "title": "TEE-capable IC-OS",
-      "overview": "Adapt IC-OS to run inside SEV-SNP, ensuring it boots securely and allows for mutual remote attestation among all nodes.",
+      "overview": "Adapting IC-OS to run inside SEV-SNP, ensuring it is reproducibly built, securely boots, and maintains integrity throughout its lifecycle.",
       "status": "in_progress",
       "milestone_id": "Magnetosphere"
     },
     {
-      "title": "Remote attestation for users",
-      "overview": "Allowing users to verify that an API boundary node is running trusted software inside a genuine trusted execution environment.",
+      "title": "TEE Upgrades",
+      "overview": "Re-architecting the upgrade process to securely handover the confidential state from the old to the new release, guaranteeing continuous integrity.",
+      "status": "in_progress",
+      "milestone_id": "Magnetosphere"
+    },
+    {
+      "title": "TEE-enabled Replica Nodes",
+      "overview": "Deploying single node machines with TEE-protection that can be used both as replicas and API boundary nodes.",
       "status": "in_progress",
       "milestone_id": "Magnetosphere"
     },
@@ -356,6 +362,17 @@
     {
       "title": "Inter-subnet messaging across trust zones",
       "overview": "Sovereign subnets are typically more centralized than ICP mainnet. Thus, messaging between subnets needs to consider the trust zones the subnets are in to maintain overall security.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Maximize Canister Availability During Subnet Upgrade",
+      "overview": "Currently, a subnet upgrade takes about two minutes, during which canisters do not process messages. Theoretically, the period during which a canister is unavailable can be reduced to a few seconds for upgrade calls, and to virtually zero downtime for query calls. Achieving this will require significant changes to the protocol (e.g., how the different layers interact) and/or to the software architecture of the replica and host OS. The goal of this feature is to develop a design and implementation plan to realize these improvements.",
       "forum": "",
       "proposal": "",
       "docs": "",

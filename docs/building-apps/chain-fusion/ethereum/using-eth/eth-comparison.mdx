@@ -21,15 +21,15 @@ This table summarizes the key terminology differences between Ethereum and ICP:
 | Shard          | Subnet   |       |
 | Node           | Replica  |       |
 | Account        | Principal |       |
-| DAO            | SNS       | An SNS refers to a DAO using ICP's [unique framework](/docs/building-apps/governing-apps/overview) However, ICP DAOs can launch without using this framework.|
+| DAO            | SNS       | An SNS refers to a DAO using ICP's [unique framework](https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System) However, ICP DAOs can launch without using this framework.|
 | Message        | Memo      | On Ethereum, you can encode data, often referred to as a message, as a hexadecimal in the optional `data` field of any transaction. Some tools allow you to input text, which they then convert to hexadecimal in the background. On ICP, you can encode data as an arbitrary blob, provided it is less than 32 bytes, in the optional `memo` field of any [ICRC1 transaction](/docs/references/icrc1-standard/#icrc1_transfer). |
 
 In addition, ICP has implemented similar token standards as Ethereum:
 
 | Ethereum standard | ICP standard |
 |-------------------|--------------|
-| ERC-20            |[ICRC-1/ICRC-2](../../../../references/icrc1-standard) |
-| ERC-721           | [ICRC-7](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md) |
+| ERC-20            | [ICRC-1](/docs/defi/token-standards/#icrc-1)/[ICRC-2](/docs/defi/token-standards/#icrc-2) |
+| ERC-721           | [ICRC-7](/docs/defi/token-standards/#icrc-7) |
 
 
 ## Smart contracts
@@ -42,7 +42,7 @@ This comparison provides an overview of the key differences in smart contract de
 
 #### Creation
 **Ethereum**: Smart contracts are written in Solidity and deployed immutably onto the blockchain.
-**ICP**: Canisters can be written in any language that compiles into [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm, including [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/motoko/main/getting-started/motoko-introduction), and [Python](https://demergent-labs.github.io/kybra/).
+**ICP**: Canisters can be written in any language that compiles into [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm, including [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/motoko/home), and [Python](https://demergent-labs.github.io/kybra/).
 
 #### Accounts
 **Ethereum**: On Ethereum, there are two main types of accounts: externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.

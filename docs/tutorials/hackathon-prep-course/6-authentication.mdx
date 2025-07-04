@@ -1,24 +1,21 @@
 ---
-keywords: [beginner, tutorial, hackathon, hackathon prep course]
+keywords: [beginner, tutorial, hackathon, hackathon prep course, user authentication, add user auth, add user login, authentication, auth, login]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 
-
-# 6:  Authentication
+# 6: Add user authentication to a dapp
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-
-
-For end-users to interact with the frontend of applications on ICP, Internet Identity can be used. Internet Identity is ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local device's hardware.
+End users can authenticate with applications on ICP through [Internet Identity](https://identity.ic0.app/). It is ICP's native form of digital identity commonly used for dapps such as the NNS dashboard. Instead of having to manage a username or password, Internet Identity uses a cryptographic key pair that's stored in your local device's hardware.
 
 This allows you to authenticate to your Internet Identity using methods that unlock your device, such as TouchID, FaceID, or another method. Through this simple and flexible authentication method, developers can provide end users with a frictionless way to authenticate and use their application.
 
 ## Creating an Internet Identity
 
-To create an Internet Identity, navigate to the II frontend URL: https://identity.ic0.app/
+To create an Internet Identity, navigate to the II frontend URL: https://identity.internetcomputer.org/
 
 Select 'Create New' from the UI.
 
@@ -54,148 +51,38 @@ If you scroll down, you will see an option to add another passkey, and you will 
 
 ## Integrating Internet Identity into your dapp
 
-To integrate II into your dapp, you can **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered briefly in the previous module, [3: Exploring the backend](/docs/tutorials/hackathon-prep-course/exploring-the-backend).
+Now let's look at a simple example of how to integrate Internet Identity into the frontend of a dapp.
 
-Using the same `vite-motoko-react` example project directory, edit your `dfx.json` file to reflect the following content:
+Open the [ICP Ninja Who am I? example](https://icp.ninja/projects/who-am-i). In the project's `dfx.json` file, you will see a definition for the Internet Identity canister:
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "backend": {
-      "type": "motoko",
-      "main": "backend/Backend.mo",
-    },
-    "internet_identity": {
-        "type": "pull",
-        "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-    },
-    "frontend": {
-      "dependencies": [
-        "backend",
-        "internet_identity"
-      ],
-      "type": "assets",
-      "source": ["dist/"]
-    }
-  },
-  "defaults": {
-    "build": {
-      "packtool": "npm run --silent sources"
-    }
-  },
-  "output_env_file": ".env",
-  "version": 2
-}
+```json title="dfx.json" file=../../references/samples/motoko/who_am_i/dfx.json
 ```
 
-Now let's redeploy this project locally. First, pull the II canister using `dfx deps`, then deploy the project:
+### Initialize `AuthClient`
 
-```bash
-dfx deps pull
+In the `App.jsx` file, you will see the code that initializes and creates the `AuthClient`, which uses Internet Identity to provide user authentication:
+
+```js title="frontend/src/App.jsx" file=../../references/samples/motoko/who_am_i/frontend/src/App.jsx
 ```
 
-Then, you need to initialize the canister. By running the `dfx deps init` command, it'll show that our II canister requires an init argument:
+This code does the following:
 
-```bash
-dfx deps init
+- First, it creates an `AuthClient` instance using `AuthClient.create()`. This is from the [`auth-client`](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent#authentication) library used for handling authentication with Internet Identity.
+
+- It gets the user's identity from the `authClient`.
+
+- Then it creates an actor using the `createActor` function.
+
+- It checks if the user is authenticated using `authClient.isAuthenticated()`.
+
+- It updates the component's state with the new actor, `authClient`, and `isAuthenticated` status.
+
+- Lastly, the `result` variable awaits the response of a call to the backend's `whoami` function. When the response is returned, the `principal` variable stores it as a `String` data type.
+
+
+### `whoami` function
+
+The backend's `whoami` function is defined in `backend/app.mo`:
+
+```motoko title="backend/app.mo" file=../../references/samples/motoko/who_am_i/backend/app.mo
 ```
-
-This command will return an error showing the following:
-
-```bash
-WARN: The following canister(s) require an init argument. Please run `dfx deps init <NAME/PRINCIPAL>` to set them individually:
-rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity)
-```
-
-This output shows you that the Internet Identity canister requires an init argument but doesn't include what that init argument is. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that includes more information:
-
-```bash
-Error: Canister rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity) requires an init argument. The following info might be helpful:
-init => Use '(null)' for sensible defaults. See the Candid interface for more details.
-candid:args => (opt InternetIdentityInit)
-```
-
-From this error message, you can see that the `(null)` value can be passed to the init command to use the defaults. To do so, run the command:
-
-```
-dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument null
-```
-
-Then, you'll need to edit your frontend canister's JavaScript code to include some logic to interact with the II canister. First, import the `AuthClient` from `@dfinity/auth-client`:
-
-```javascript title="src/declarations/frontend/index.js"
-import { AuthClient } from "@dfinity/auth-client";
-import { handleAuthenticated, renderIndex } from "./views";
-```
-
-Then, define some variables to define a day in nanoseconds:
-
-```javascript title="src/declarations/frontend/index.js"
-// One day in nanoseconds
-const days = BigInt(1);
-const hours = BigInt(24);
-const nanoseconds = BigInt(3600000000000);
-```
-
-Next, set some default options, including the `loginOptions`, which will allow the `identityProvider` to be either the II mainnet canister if you are using the local environmental variable `DFX_NETWORK` set to `ic` or the locally deployed II canister. Your local replica will not accept signatures from the mainnet canister.
-
-```javascript title="src/declarations/frontend/index.js"
-export const defaultOptions = {
-  createOptions: {
-    idleOptions: {
-      // Set to true if you do not want idle functionality
-      disableIdle: true,
-    },
-  },
-  loginOptions: {
-    identityProvider:
-      process.env.DFX_NETWORK === "ic"
-        ? "https://identity.ic0.app/#authorize"
-        : `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize`,
-    // Maximum authorization expiration is 8 days
-    maxTimeToLive: days * hours * nanoseconds,
-  },
-};
-```
-
-Next, initialize the AuthClient. Then, check to see if the user has previously logged in. If so, their previous identity is verified:
-
-```javascript title="src/declarations/frontend/index.js"
-const init = async () => {
-  const authClient = await AuthClient.create(defaultOptions.createOptions);
-
-  if (await authClient.isAuthenticated()) {
-    handleAuthenticated(authClient);
-  }
-  renderIndex();
-  setupToast();
-};
-```
-
-Lastly, define a function that listens for the button on the frontend to be clicked and initializes the client:
-
-```javascript title="src/declarations/frontend/index.js"
-async function setupToast() {
-  const status = document.getElementById("status");
-  const closeButton = status?.querySelector("button");
-  closeButton?.addEventListener("click", () => {
-    status?.classList.add("hidden");
-  });
-}
-
-
-init();
-```
-
-Then, you can deploy the II canister and the other canisters in the project with the command:
-
-```bash
-dfx deps deploy
-dfx deploy
-```
-
-You can learn more about Internet Identity and integrating it into a dapp in the tutorial [here](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).
-
-## Next steps
-
-- [7: Obtaining cycles](/docs/tutorials/hackathon-prep-course/obtaining-cycles).

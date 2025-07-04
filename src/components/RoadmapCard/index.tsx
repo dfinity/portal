@@ -11,6 +11,7 @@ const RoadmapCard: React.FC<{
   className?: string;
   contentClassName?: string;
   imageClassName?: string;
+  aspectRatio?: boolean;
 }> = ({
   reverse,
   imgUrl,
@@ -19,6 +20,7 @@ const RoadmapCard: React.FC<{
   className,
   contentClassName,
   imageClassName,
+  aspectRatio = false,
 }) => {
   return (
     <motion.article
@@ -31,7 +33,9 @@ const RoadmapCard: React.FC<{
       <img
         src={imgUrl}
         className={clsx(
-          `h-[200px] object-cover md:h-auto md:w-[400px] aspect-[400/350] self-stretch object-center`,
+          `h-[200px] object-cover md:h-auto md:w-[400px] ${
+            aspectRatio ? "" : "aspect-[400/350]"
+          } self-stretch object-center`,
           reverse ? "md:order-1" : "",
           imageClassName
         )}

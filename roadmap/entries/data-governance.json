@@ -3,17 +3,23 @@
   "categoryDescription": "ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
   "elements": [
     {
-      "title": "Enabling governance token holdings and broader participation",
+      "title": "Intuitive staking and broader DAO participation",
       "is_milestone": true,
-      "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
+      "description": "The Neon milestone focuses on helping users quickly understand their portfolio. New features highlight personalized insights on their staking reward potential and provide more engaging and dynamic information about DAOs, presenting users with opportunities to participate in launches. Governance participation is becoming more accessible, with simplified processes for liquidity pool integration and DAO management operations, laying the groundwork for what's next.",
       "milestone_id": "Neon",
       "status": "in_progress",
-      "eta_to_render": ""
+      "eta_to_render": "July 2025"
+    },
+    {
+      "title": "Staking overview",
+      "overview": "This feature focuses on making it easy for users to understand their staking potential and reward opportunities. Personalized insights encourage deeper engagement and understanding—like how staking more or adjusting neuron configurations can lead to more voting rewards.",
+      "status": "in_progress",
+      "milestone_id": "Neon"
     },
     {
       "title": "Portfolio page",
       "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
-      "status": "in_progress",
+      "status": "deployed",
       "milestone_id": "Neon"
     },
     {
@@ -31,12 +37,9 @@
       "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
       "forum": "https://forum.dfinity.org/t/periodic-confirmation-design/34215",
       "proposal": "https://dashboard.internetcomputer.org/proposal/55651",
-      "docs": "",
-      "eta": "",
       "status": "deployed",
       "is_community": true,
       "in_beta": false,
-      "imported": true,
       "milestone_id": "Neon"
     },
     {
@@ -47,7 +50,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Neon"
@@ -55,7 +58,7 @@
     {
       "title": "Large Wasm support for SNS controlled dapp canisters",
       "overview": "This simplifies owning large dapp canisters for SNS DAO communities by a built-in process to do so in the SNS framework.",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Neon"
@@ -70,8 +73,8 @@
     },
     {
       "title": "Leverage liquid democracy in SNS DAOs",
-      "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics and a notion of named or known neurons.",
-      "status": "in_progress",
+      "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics.",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Neon"
@@ -80,11 +83,7 @@
       "title": "Disburse maturity for NNS neurons",
       "overview": "Unlike SNS neurons, NNS neurons spawn maturity into a newly created neuron. This feature will move to a flow where NNS neurons would also disburse maturity.",
       "description": "In its current implementation, NNS neurons spawn maturity into a new neuron, whereas SNS DAOs disburse maturity directly into the user's account, which greatly simplifies the flow and reduces the new neurons created.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Neon"
@@ -92,10 +91,6 @@
     {
       "title": "SNS communities portal",
       "overview": "A redesign of the voting interface that encourages community involvement and a sense of belonging, for example by allowing for announcement and updates.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
       "status": "future",
       "is_community": false,
       "in_beta": false,
@@ -105,14 +100,8 @@
       "title": "SNS treasury management",
       "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
       "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
+      "status": "in_progress",
+      "milestone_id": "Neon"
     },
     {
       "title": "Council-based digital assets management",
@@ -144,11 +133,6 @@
       "title": "Improve staking user experience",
       "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
       "description": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
       "status": "future",
       "is_community": false,
       "in_beta": false,
@@ -158,11 +142,7 @@
     {
       "title": "Launchpad redesign",
       "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Neon"

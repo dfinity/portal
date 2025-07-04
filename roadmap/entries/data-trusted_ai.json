@@ -42,24 +42,18 @@
       "milestone_id": "Vertex"
     },
     {
-      "title": "Caffeine integration",
-      "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
-      "status": "in_progress",
-      "milestone_id": "Vertex"
-    },
-    {
       "title": "Caffeine platform",
-      "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
+      "overview": "First release of the Caffeine platform for prompt-based ICP application creation. Integrating the fine-tuned models for Motoko code generation into a chat-like user experience. Complemented by a first version of an app marketplace allowing users to publish their apps so that others can clone and evolve them.",
       "status": "in_progress",
       "milestone_id": "Vertex"
     },
     {
       "title": "Caffeine alpha launch – dawn of the self-writing internet",
-      "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
+      "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, canister snapshots, and AI models for Motoko code generation meet, creating the self-writing internet.",
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Vertex",
-      "eta_to_render": ""
+      "eta_to_render": "July 15th, 2025"
     }
   ]
 }

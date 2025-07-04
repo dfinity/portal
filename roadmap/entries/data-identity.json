@@ -43,7 +43,7 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Pulse",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Sing in with OpenID",
@@ -64,8 +64,8 @@
       "milestone_id": "Pulse"
     },
     {
-      "title": "One account, multiple identities",
-      "overview": "Internet Identity provides users with the tools to manage multiple identities.",
+      "title": "One identity, multiple accounts",
+      "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
       "status": "future",
       "milestone_id": "Pulse"
     },
@@ -73,16 +73,14 @@
       "title": "Disentangle identity / wallet / app",
       "overview": "Resolve the confusion that exists between Internet Identity and wallets. Clearly define the role that Internet Identity plays for applications.",
       "status": "future",
-      "milestone_id": "Pulse"
+      "milestone_id": "Plexus"
     },
     {
       "title": "Additional measures for securing accounts",
       "overview": "Implement additional security measures for protecting accounts when a device is compromised or stolen.",
       "status": "future",
-      "milestone_id": "Pulse"
+      "milestone_id": "Plexus"
     },
-
-
     {
       "title": "Credentials solution for everyone",
       "description": "Make the credential solution that Internet Identity offers a preferred option for a diverse range of issuers.",
@@ -90,12 +88,6 @@
       "is_milestone": true,
       "milestone_id": "Plexus",
       "eta_to_render": ""
-    },
-    {
-      "title": "Bring the verifiable credentials protocol closer to the industry standard",
-      "overview": "Evolve the verifiable credentials protocol by bringing it closer to the industry standards.",
-      "status": "future",
-      "milestone_id": "Plexus"
     },
     {
       "title": "Credential issuers discoverability",
@@ -112,6 +104,12 @@
     {
       "title": "Sustainable business model for issuers and verifiers",
       "overview": "Define and implement a sustainable business model for all: issuers, verifiers, users.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
+     {
+      "title": "Multi-language support",
+      "overview": "Increase reach and adoption of Internet Identity by localizing its UI.",
       "status": "future",
       "milestone_id": "Plexus"
     },
@@ -138,18 +136,6 @@
       "milestone_id": ""
     },
     {
-      "title": "Verifiable Credentials billing",
-      "overview": "Billing for provisioning of verifiable credentials. Enables a business model for identity providers.",
-      "forum": "",
-      "proposal": "",
-      "docs": "https://github.com/dfinity/wg-identity-authentication",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
       "title": "External services authentication to canisters",
       "overview": "Allowing users to authenticate to canisters via Web2-based authentication services. True Web2-Web3-X-SSO.",
       "forum": "",
@@ -158,18 +144,6 @@
       "eta": "",
       "status": "",
       "is_community": false,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
-      "title": "Usernames instead of Anchors",
-      "overview": "Usernames are easier to remember and better reflect what users are used to from Web2 to identify to services.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
       "in_beta": false,
       "milestone_id": ""
     },
@@ -203,17 +177,6 @@
       "docs": "",
       "eta": "",
       "status": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "Root domain name independence",
-      "overview": "Make internet identities independent of the domain II was executing in when the II has been created. Important to ensure II anchors remain accessible even if II's root domain needs to be switched.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
       "is_community": true,
       "in_beta": false
     },
