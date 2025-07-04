@@ -126,14 +126,14 @@ docker run \
     --help
 ```
 
-## From Source
+## Build from source
 
 You can build and run ICRC Rosetta directly from the Internet Computer source code.
 
 ### Prerequisites
 
-- [Bazel](https://bazel.build/) build system
-- Internet Computer repository cloned locally
+- [x] [Bazel](https://bazel.build/) build system.
+- [x] Internet Computer repository cloned locally: `git clone https://github.com/dfinity/ic.git`
 
 ### Building and running
 
@@ -152,11 +152,10 @@ bazel run //rs/rosetta-api/icrc1:ic-icrc-rosetta-api -- \
 
 This method gives you the latest development version and allows for custom modifications.
 
-## Local Cluster
+## Local cluster
 
 For development and testing purposes, you can set up a complete local Kubernetes cluster with monitoring tools that includes ICRC Rosetta.
 
-### Overview
 
 The local cluster setup provides:
 - Minikube-based Kubernetes cluster

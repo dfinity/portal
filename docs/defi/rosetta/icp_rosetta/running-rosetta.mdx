@@ -16,8 +16,8 @@ The easiest way to run ICP Rosetta is using the official Docker image. This meth
 
 ### Prerequisites
 
-- [Docker](https://docs.docker.com/get-docker/) installed and running
-- [Docker daemon](https://docs.docker.com/config/daemon/) started
+- [x] [Docker](https://docs.docker.com/get-docker/) installed and running.
+- [x] [Docker daemon](https://docs.docker.com/config/daemon/) started.
 
 ### Step 1: Pull the latest image
 
@@ -104,16 +104,16 @@ docker run \
 
 Check available versions on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
 
-## From Source
+## Building from source
 
 You can build and run ICP Rosetta directly from the Internet Computer source code.
 
 ### Prerequisites
 
-- [Bazel](https://bazel.build/) build system
-- Internet Computer repository cloned locally
+- [x] [Bazel](https://bazel.build/) build system.
+- [x] Internet Computer repository cloned locally: `git clone https://github.com/dfinity/ic.git`
 
-### Building and running
+### Build and run
 
 ```bash
 # Clone the IC repository (if not already done)
@@ -134,11 +134,10 @@ The `--store-location` parameter is important when running from source as it spe
 
 This method gives you the latest development version and allows for custom modifications.
 
-## Local Cluster
+## Local cluster
 
 For development and testing purposes, you can set up a complete local Kubernetes cluster with monitoring tools.
 
-### Overview
 
 The local cluster setup provides:
 - Minikube-based Kubernetes cluster
