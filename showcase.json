@@ -3785,17 +3785,23 @@
   },
   {
     "id": "syron",
-    "name": "Syron",
+    "name": "TyronDAO",
     "display": "Normal",
     "website": "https://tyrondao.org",
     "twitter": "https://twitter.com/tyrondao_org",
-    "github": "https://github.com/tyrondao/tyron-icp",
+    "github": "https://github.com/tyrondao",
+    "youtube": "https://www.youtube.com/@tyronDAO",
     "tags": [
       "Chain Fusion",
-      "Bitcoin"
+      "Bitcoin",
+      "DeFi",
+      "Wallet",
+      "Tools / Infrastructure"
     ],
-    "description": "A USD-pegged stablecoin, overcollateralized with Bitcoin and powered by Chain Fusion.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
+    "stats": "3000+ signups",
+    "description": "TyronDAO is a gateway to the next generation of decentralized finance. At its core is Syron, a Bitcoin-backed stablecoin metaprotocol designed for secure, permissionless payments and loans. With sovereign digital identity and transparent infrastructure, TyronDAO is empowering users to take full control of their crypto and participate in a truly open financial system.",
+    "oneLiner": "TyronDAO powers Bitcoin-backed payments with Syron SUSD and sovereign identity.",
     "logo": "/img/showcase/syron_logo.png"
   },
   {
