@@ -35,6 +35,22 @@ IBE works differently than the [distributed key management service (DKMS)](/docs
 
 This example will explain how to use IBE with vetKeys using the [basic IBE example](https://github.com/dfinity/vetkeys/tree/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe), which implements a simple IBE messaging system between principals.
 
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/basic_ibe/motoko)
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/basic_ibe/rust)
+
+</TabItem>
+
+</AdornedTabs>
+
 In the example, users authenticate using their principals, encrypt messages, then store the cipher texts in the canister. Then, the recipient retrieves their messages and encrypted IBE private key, decrypts and verifies the private (decryption) key, and finally decrypts the encrypted messages. In this scenario, communication and key retrieval happen in the same canister.
 
 ### Step 1: Obtain the IBE public key from the backend
