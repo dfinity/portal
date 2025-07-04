@@ -5925,7 +5925,7 @@
     "oneLiner": "ICDapps is a community-driven database for the ICP ecosystem"
   },
   {
-    "id": "limininal",
+    "id": "liminal",
     "name": "Liminal",
     "display": "Normal",
     "website": "https://github.com/edjCase/",
@@ -5974,5 +5974,4 @@
     "logo": "/img/showcase/SubHub_logo.svg",
     "oneLiner": "The Future of Tokenized Web3 Messaging"
   }
-  
 ]
