@@ -147,11 +147,27 @@ To deploy and test projects locally, first start `dfx` in your local development
 dfx start --enable-bitcoin --background
 ```
 
-`dfx` will run a local instance of the Bitcoin API deployed as a smart contract for your application to interact with.
+`dfx` will run a local instance of the Bitcoin API deployed as a smart contract for your application to interact with. The `--enable-bitcoin` flag uses the default Bitcoin node configuration, `127.0.0.1:18444`. This address and port can be manually configured with the `--bitcoin-node` flag:
+
+```jsx
+dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:[port]
+```
+
+:::caution
+
+If you get a failure to connect error:
+
+```
+Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
+```
+
+This indicates that `dfx` isn't able to connect to your Bitcoin network. Make sure your Bitcoin network is up and running and you're setting the correct port (default is `18444`). The port used can be changed in your project's `dfx.json` file.
+
+:::
 
 ### Configuring the local Bitcoin API
 
-The Bitcoin API can be configured either using command line options provided to `dfx` or by modifying the project’s `dfx.json` file.
+The Bitcoin API can be configured either using the command line option provided to `dfx` (`dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:[port]`) or by modifying the project’s `dfx.json` file.
 
 If both command line options and `dfx.json` configurations are provided, the command line options take precedence.
 
@@ -176,13 +192,7 @@ That Bitcoin config in `dfx.json` adds fields under `defaults` as shown above. 
 https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/dfx.json#L20-L30
 ```
 
-Alternatively, you can pass these arguments to the `dfx start` command:
-
-```jsx
-dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:18444
-```
 :::
-
 
 #### Configuration options
 
@@ -290,20 +300,3 @@ For local testing using Bitcoin regtest:
    }
 }
 ```
-
-## Connecting to the local Bitcoin regtest
-
-To connect your project to the local Bitcoin regtest, first confirm that your local Bitcoin regtest is running and that the Bitcoin settings in `dfx.json` have been added. Then, run `dfx start --clean` to start the local smart contract development environment.
-
-:::caution
-
-If you get a failure to connect error:
-
-```
-Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
-```
-
-This indicates that `dfx` isn't able to connect to your Bitcoin network. Make sure your Bitcoin network is up and running and you're setting the correct port (default is `18444`). The port used can be changed in your project's `dfx.json` file.
-
-:::
-
