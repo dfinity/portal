@@ -129,6 +129,9 @@ All commands shown below are for workflows involving mainnet development. For lo
 
 ### Transferring cycles from a wallet to the cycles ledger
 
+To transfer cycles from a cycles wallet to the cycles ledger, you must call the ledger’s deposit method. When doing so, avoid transferring the wallet's entire balance and ensure a small buffer of cycles remains to cover the transaction's execution cost. Failing to leave this margin will result in a `Failed to send` error.
+
+Additionally, it’s recommended not to delete the cycles wallet, as it may still control a canister you might need to access in the future.
 To transfer all cycles from a cycles wallet to the cycles ledger, then stop using the cycles wallet, run the following command:
 
 ```
