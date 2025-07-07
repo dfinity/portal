@@ -899,6 +899,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
