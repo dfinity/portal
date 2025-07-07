@@ -1,0 +1,300 @@
+---
+keywords: [intermediate, rosetta, examples, scripts, integration, icrc, ledger, download, setup, ckbtc, cketh, python]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ICRC Rosetta example scripts
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
+
+The `@dfinity/ic` GitHub repository contains comprehensive Python example scripts and a client library specifically designed to help developers integrate with ICRC Rosetta API. These examples provide practical demonstrations for working with ICRC-1 compatible ledgers like ckBTC, ckETH, and SNS tokens.
+
+The ICRC Rosetta example scripts are located in the [DFINITY IC repository](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/examples/icrc1/python) under `rs/rosetta-api/examples/icrc1/python/`. These Python scripts and libraries demonstrate how to:
+
+- Use the `RosettaClient` Python library for ICRC-1 token operations.
+- Automatically discover token information (symbol and decimals).
+- Manage accounts with principal IDs and subaccounts.
+- Query token balances and process transfers.
+- Read block data and search for transactions.
+- Handle multi-token environments efficiently.
+
+## Python client library features
+
+The ICRC Rosetta Python client provides a robust interface with several key features:
+
+### Automatic token discovery
+
+The client automatically discovers token information using multiple methods:
+
+1. **Network options API**: First tries to get token info from `/network/options` endpoint.
+2. **Block history scanning**: Examines recent blocks for transaction data.
+3. **Fallback to defaults**: Uses ICRC1 symbol and 8 decimals if no other information is available.
+4. **Manual override**: Allows explicit setting via `client.token_override = {"symbol": "...", "decimals": ...}`.
+
+### Code design principles
+
+- **Helper methods**: Complex functionality broken down into focused helper methods.
+- **Clean structure**: Early returns instead of deep nesting for improved readability.
+- **Clear abstractions**: Each component has a single responsibility.
+- **Robust testing**: Unit tests with mocking validate functionality without network calls.
+- **Consistent patterns**: Standardized error handling and response formatting.
+
+## Setup and prerequisites
+
+### Create a Virtual Environment (Recommended)
+
+Before installing dependencies, it's recommended to create a virtual environment to isolate the project dependencies (similar to what the `run_tests.sh` script does):
+
+```bash
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+# On macOS/Linux:
+source venv/bin/activate
+# On Windows:
+# venv\Scripts\activate
+```
+
+### Install dependencies
+
+Each example directory includes its own `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Access to a Rosetta node
+
+You'll need access to an ICRC Rosetta API endpoint:
+- Local node running at `http://localhost:8082`.
+- Properly configured canister ID for the ICRC-1 ledger you want to interact with.
+
+### Key generation
+
+Both Ed25519 and secp256k1 key types can be used with ICRC-1 tokens. See the [main examples README](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/examples) for detailed key generation instructions.
+
+## Using the `RosettaClient` library
+
+### Basic client initialization
+
+```python
+from rosetta_client import RosettaClient
+
+# Initialize the client
+client = RosettaClient(
+    node_address="http://localhost:8080",
+    canister_id="3jkp5-oyaaa-aaaaj-azwqa-cai"
+)
+
+# The client automatically discovers token information
+print(f"Token: {client.token_info['symbol']} (decimals: {client.token_info['decimals']})")
+```
+
+### Checking account balance
+
+```python
+# Get account balance (with auto-discovered token info)
+balance = client.get_balance(principal="abc123...")
+print(f"Balance: {int(balance['balances'][0]['value']) / 10**balance['balances'][0]['currency']['decimals']} {balance['balances'][0]['currency']['symbol']}")
+```
+
+### Making a transfer
+
+```python
+# Setup with private key (for signing transactions)
+client.setup_keys(private_key_path="./my_key.pem")
+
+# Transfer tokens
+result = client.transfer(
+    from_principal="sender-principal",
+    to_principal="recipient-principal",
+    amount=1000000,  # Raw token amount
+    fee=10000,       # Transaction fee
+    private_key_path="./my_key.pem"
+)
+print(f"Transaction hash: {result['transaction_identifier']['hash']}")
+```
+
+## Available example tools
+
+### Token information discovery
+
+**get_token_info.py**: Shows the token information discovery process
+```bash
+python3 get_token_info.py --node-address http://localhost:8082 \
+  --canister-id <canister_id>
+```
+
+**test_token_info.py**: Demonstrates and tests the token info discovery process
+```bash
+python3 test_token_info.py --node-address http://localhost:8082 \
+  --canister-id <canister_id>
+```
+
+### Account balance queries
+
+**get_account_balance.py**: Displays account balance with human-readable formatting
+```bash
+python3 get_account_balance.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --principal-id <principal_id> \
+  --sub-account <sub_account_hex>
+```
+
+### Key information
+
+**derive_key_info.py**: Extract public key information and derive principal ID
+```bash
+python3 derive_key_info.py --private-key-path ./my_private_key.pem
+```
+
+With additional options:
+```bash
+python3 derive_key_info.py --private-key-path ./my_private_key.pem --verbose --json
+```
+
+### Token transfers
+
+**transfer.py**: Transfer tokens between accounts
+```bash
+python3 transfer.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --private-key-path ./my_private_key.pem \
+  --signature-type ecdsa \
+  --to-principal <destination_principal> \
+  --amount <amount> \
+  --fee <fee>
+```
+
+### Reading blocks
+
+**read_blocks.py**: Fetch and display recent blocks
+```bash
+python3 read_blocks.py --node-address http://localhost:8082 \
+  --canister-id <canister_id>
+```
+
+Get a specific block:
+```bash
+python3 read_blocks.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --block-index <block_number>
+```
+
+### Network information
+
+**get_network_info.py**: Get information about the ICRC-1 ledger network
+```bash
+python3 get_network_info.py --node-address http://localhost:8082 \
+  --canister-id <canister_id>
+```
+
+## Testing all examples
+
+### Python test script
+
+The `test_all.py` script allows you to test all examples at once:
+
+```bash
+# Basic test of all non-destructive examples (requires principal ID)
+python3 test_all.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --principal-id <principal_id>
+```
+
+For comprehensive testing, including transfers (requires a funded account):
+```bash
+python3 test_all.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --principal-id <principal_id> \
+  --private-key-path ./my_private_key.pem \
+  --to-principal <destination_principal> \
+  --amount <amount> \
+  --fee <fee>
+```
+
+The default values are 100 for amount and 10 for fee if not specified.
+
+### Automated test script
+
+The `run_tests.sh` script provides a complete testing environment:
+
+1. Checks if `virtualenv` is installed (attempts to install if not).
+2. Creates a new virtual environment.
+3. Installs all dependencies from `requirements.txt`.
+4. Runs the `test_all.py` script with provided arguments.
+5. Cleans up the virtual environment afterward.
+
+```bash
+# Run tests with all required parameters
+./run_tests.sh --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --principal-id <principal_id>
+
+# Run with additional test options including transfer
+./run_tests.sh --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --principal-id <principal_id> \
+  --private-key-path ./my_private_key.pem \
+  --to-principal <destination_principal> \
+  --amount 1000 \
+  --fee 10
+```
+
+## Understanding response formats
+
+Most scripts support debugging options:
+
+**Raw JSON output**:
+```bash
+python3 read_blocks.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --raw
+```
+
+**Verbose output** (shows API requests and responses):
+```bash
+python3 get_network_info.py --node-address http://localhost:8082 \
+  --canister-id <canister_id> \
+  --verbose
+```
+
+## Common issues
+
+1. **Error: Unable to connect to Rosetta node**
+   - Ensure your ICRC Rosetta node is running.
+   - Check the URL format (e.g., `http://localhost:8082`).
+
+2. **Error during transaction signing**
+   - Verify that your private key file is in PEM format.
+   - Ensure you're using the correct signature type.
+
+3. **Error: Insufficient funds**
+   - Check that your account has enough tokens for the transaction plus the fee.
+
+4. **Error: Unable to derive account identifier**
+   - Make sure your private key is valid and in the correct format.
+
+## Important notes
+
+- **No default values**: Canister IDs and principal IDs must be explicitly provided in all commands.
+- **Canister ID required**: The `--canister-id` parameter identifies the specific ICRC-1 ledger canister (e.g., ckBTC, CHAT) you want to interact with.
+- **Principal ID requirement**: Most examples require a principal ID parameter.
+- **Multi-layered token discovery**: The client uses multiple methods to discover token information, ensuring robust operation across different ICRC-1 implementations.
+
+## Token information discovery process
+
+The ICRC Rosetta client implements multiple ways to discover token information:
+
+1. **Network options**: First tries to get token info from the `/network/options` endpoint.
+2. **Block history**: If network options don't contain token info, examines recent blocks (transactions).
+3. **Default fallback**: Uses ICRC1 symbol and 8 decimals if no other information is available.
+4. **Manual override**: Allows explicit setting via `client.token_override = {"symbol": "...", "decimals": ...}`.
+
+This multi-layered approach ensures the client always has access to token information for proper formatting and display of token amounts.
+
+## Resources
+
+For troubleshooting the Python example scripts, refer to the specific README files for [ICRC-1 examples](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/examples/icrc1/python/README.md#common-issues) in the DFINITY IC repository. 
