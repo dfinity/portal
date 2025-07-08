@@ -111,7 +111,7 @@ You can build and run ICP Rosetta directly from the Internet Computer source cod
 ### Prerequisites
 
 - [x] [Bazel](https://bazel.build/) build system.
-- [x] Internet Computer repository cloned locally: `git clone https://github.com/dfinity/ic.git`
+- [x] Internet Computer repository cloned locally: `git clone https://github.com/dfinity/ic.git`.
 
 ### Build and run
 
@@ -140,16 +140,16 @@ For development and testing purposes, you can set up a complete local Kubernetes
 
 
 The local cluster setup provides:
-- Minikube-based Kubernetes cluster
-- Prometheus and Grafana for monitoring
-- cAdvisor for container metrics
-- Both ICP and ICRC1 Rosetta services
+- Minikube-based Kubernetes cluster.
+- Prometheus and Grafana for monitoring.
+- cAdvisor for container metrics.
+- Both ICP and ICRC1 Rosetta services.
 
 The deployment script will help install missing dependencies:
-- Docker
-- Minikube
-- kubectl
-- Helm
+- Docker.
+- Minikube.
+- kubectl.
+- Helm.
 
 ### Deploying production images
 
@@ -199,8 +199,8 @@ Then deploy the local images:
 ### Monitoring with Grafana
 
 Access Grafana at `http://localhost:3000` with:
-- Username: `admin`
-- Password: `admin`
+- Username: `admin`.
+- Password: `admin`.
 
 Import the dashboard using the `rosetta_load_dashboard.json` file in the cluster directory.
 
@@ -218,29 +218,29 @@ For those who prefer not to run Rosetta locally, Validation Cloud offers managed
 
 ### Features
 
-- Managed infrastructure (no local setup required)
-- Global distribution with multi-region support
-- 99.99% uptime SLA
-- 24/7 customer support
-- SOC 2 Type 2 compliance
+- Managed infrastructure (no local setup required).
+- Global distribution with multi-region support.
+- 99.99% uptime SLA.
+- 24/7 customer support.
+- SOC 2 Type 2 compliance.
 
 ### Getting started
 
-1. Visit [Validation Cloud ICP page](https://www.validationcloud.io/icp)
-2. Sign up for an account
-3. Choose between Free tier (50M Compute Units) or Scale plan (unlimited)
-4. Get your API endpoint and start building
+1. Visit [Validation Cloud ICP page](https://www.validationcloud.io/icp).
+2. Sign up for an account.
+3. Choose between Free tier (50M Compute Units) or Scale plan (unlimited).
+4. Get your API endpoint and start building.
 
 ### Supported APIs
 
-- ICP Rosetta nodes for ledger communication
-- ICRC API for token interactions
-- Access to NNS governance canister
+- ICP Rosetta nodes for ledger communication.
+- ICRC API for token interactions.
+- Access to NNS governance canister.
 
 This option is useful for:
-- Quick prototyping and learning
-- Development without local infrastructure setup
-- Production applications that prefer managed services
+- Quick prototyping and learning.
+- Development without local infrastructure setup.
+- Production applications that prefer managed services.
 
 ## Verification and testing
 
@@ -268,7 +268,7 @@ Look for the message: `You are all caught up to block XX` in the logs to confirm
 
 ## Requirements and limitations
 
-- **Transaction timing**: Unsigned transactions must be created less than 24 hours before submission due to the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication)
-- **Signature schemes**: Examples typically use Ed25519 and SECP256k1
-- **Port**: Default listening port is 8081
-- **Data persistence**: Mount `/data` directory as a volume for Docker deployments 
+- **Transaction timing**: Unsigned transactions must be created less than 24 hours before submission due to the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
+- **Signature schemes**: Examples typically use Ed25519 and SECP256k1.
+- **Port**: Default listening port is 8081.
+- **Data persistence**: Mount `/data` directory as a volume for Docker deployments.
