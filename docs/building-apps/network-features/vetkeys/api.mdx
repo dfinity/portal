@@ -6,44 +6,39 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 Verifiably encrypted threshold key derivation (vetKD) is a distributed protocol for securely deriving cryptographic keys, referred to as  _vetKeys_. 
 The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by providing different inputs. 
 
-The API provides two methods:
-
-- `vetkd_derive_key`: Derive keys based on the provided inputs.
-
-- `vetkd_public_key`: Returns a public key that can be used to verify keys derived using `vetkd_derive_key`.
-
-Both methods share the following input parameters:
-
-- `context` (`blob`): Serves as a domain separator to ensure that keys are derived within a specific context, preventing collisions between different applications or use cases.
-
-- `key_id` (`record { curve : vetkd_curve; name : text }`): Identifies the master key from which the derived key is created.
-
-Each method also includes method-specific parameters:
-
-- `vetkd_public_key`
-  - `canister_id` (`opt canister_id`): Optional. If provided, the method returns the public key associated with the specified `canister_id`. If omitted (`null`), the public key for the calling canister is returned.
-
-- `vetkd_derive_key`
-  - `input` (`blob`): Arbitrary data used to derive keys. This acts as a key identifier &mdash; different inputs will result in different derived keys. Note that input does not need to be random.
-  - `transport_public_key` (`blob`): The recipient’s public key. This is used to encrypt the derived key for secure transport.
-
-Below is a summary of the vetKD API methods and their parameters.
+Below is a summary of the vetKD API methods and their parameters described in [Candid notation](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
 
 ```candid
-  vetkd_public_key : (record {
-    canister_id : opt canister_id;
-    context : blob;
-    key_id : record { curve : vetkd_curve; name : text };
-  }) -> (record { public_key : blob; });
+  // Derives keys based on the provided inputs.
   vetkd_derive_key : (record {
+    // Arbitrary data used to derive keys. This acts as a key identifier - different
+    // inputs will result in different derived keys. The input does not need to be random.
     input : blob;
+    // A domain separator to ensure that keys are derived within a specific context,
+    // preventing collisions between different applications or use cases.
     context : blob;
+    // The recipient’s public key, used to encrypt the derived key for secure transport.
     transport_public_key : blob;
+    // The master key from which the derived key is created.
     key_id : record { curve : vetkd_curve; name : text };
   }) -> (record { encrypted_key : blob; });
+
+  // Returns a public key that can be used to verify keys derived using `vetkd_derive_key`.
+  vetkd_public_key : (record {
+    // Optional. If provided, the method returns the public key associated with
+    // the specified `canister_id`. If omitted (`null`), the public key for
+    // the calling canister is returned.
+    canister_id : opt canister_id;
+    // Same as in `vetkd_derive_key`.
+    context : blob;
+    // Same as in `vetkd_derive_key`.
+    key_id : record { curve : vetkd_curve; name : text };
+  }) -> (record { public_key : blob; });
 ```
 
-The following key names are supported:
+## Available master keys
+
+The following key names are supported for curve `bls12_381_g2`:
 
 - `dfx_test_key`: Only available on the local development environment started by `dfx`.
 
@@ -67,7 +62,7 @@ sequenceDiagram
     Canister->>ManagementCanister: vetkd_derive_key(..., transport_public_key)
     ManagementCanister->>Canister: encrypted_key
     Canister->>Frontend: encrypted_key
-    Frontend->>Frontend: decrypt and verify encrypted_key using the transport secret key
+    Frontend->>Frontend: decrypt and verify encrypted_key<br>using the transport secret key
     Frontend->>Frontend: Use decrypted vetKey
 ```
 
