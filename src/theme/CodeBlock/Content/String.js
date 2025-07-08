@@ -46,6 +46,7 @@ export default function StringWrapper(props) {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
+  const idprops = {...props, id: props.name };
   const showRunButton =
     props.className === "language-motoko" && !props.hasOwnProperty("no-repl");
 
@@ -55,7 +56,8 @@ export default function StringWrapper(props) {
         {showRunButton && (
           <div className={styles.buttonGroup}>
             <CopyButton className={styles.copyButton} code={code} />
-            <RunButton
+              <RunButton
+              id={props.name}
               code={code}
               setOutput={setOutput}
               setError={setError}
@@ -63,7 +65,7 @@ export default function StringWrapper(props) {
             />
           </div>
         )}
-        <String {...props} />
+          <String {...idprops }/>
       </Container>
       {(output || error) && showRunButton ? (
         <Container as="div">

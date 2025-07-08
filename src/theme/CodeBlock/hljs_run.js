@@ -15,8 +15,10 @@ export function extractConfig(props) {
 
 function saveIncluded(include) {
   var codes = {};
-  include.forEach((id) => {
+   include.forEach((id) => {
+    console.log("includeing" + id);	
     const node = document.getElementById(id);
+    console.log("found" + node);	       
     const code = node.innerText;
     const name = id + ".mo";
     Motoko.saveFile(name, code);
