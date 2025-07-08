@@ -42,11 +42,11 @@ function RunButton(props) {
 }
 
 export default function StringWrapper(props) {
+  console.log(props);
   const [code, _] = useState(props.children || "");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
-  const idprops = {...props, id: props.name };
   const showRunButton =
     props.className === "language-motoko" && !props.hasOwnProperty("no-repl");
 
@@ -65,7 +65,7 @@ export default function StringWrapper(props) {
             />
           </div>
         )}
-          <String {...idprops }/>
+          <div id ={props.name}> <String {...props }/> </div>
       </Container>
       {(output || error) && showRunButton ? (
         <Container as="div">
