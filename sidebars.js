@@ -366,6 +366,7 @@ build: [
             "building-apps/network-features/vetkeys/api",
             "building-apps/network-features/vetkeys/dkms",
             "building-apps/network-features/vetkeys/encrypted-onchain-storage",
+            "building-apps/network-features/vetkeys/bls-signatures",
             "building-apps/network-features/vetkeys/identity-based-encryption",
             "building-apps/network-features/vetkeys/timelock-encryption",
           ],
@@ -703,6 +704,11 @@ defi: [
               "defi/rosetta/icp_rosetta/construction_api/voting",
               ],
               },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icp_rosetta/examples",
+              },
             ],
           },
         {
@@ -723,6 +729,11 @@ defi: [
               type: "doc",
               label: "Construction API",
               id: "defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
         },
@@ -890,6 +901,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
