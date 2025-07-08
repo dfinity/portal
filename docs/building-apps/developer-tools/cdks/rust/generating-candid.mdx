@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, rust, tutorial, generating candid, candid]
+keywords: [beginner, rust]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -10,33 +10,77 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Beginner", "Rust"]} />
 
-Candid interface files (`.did`) are not generated automatically for Rust canisters like they are for Motoko canisters. For Rust canisters, you must write the `.did` file yourself or you can use a tool like the [candid-extractor](https://crates.io/crates/candid-extractor) to extract the Candid from the canister's Wasm.
+Candid interface files (`.did`) are not generated automatically for Rust canisters like they are for Motoko canisters. For Rust canisters, you can: 
+1. Write the `.did` file yourself
+2. Or use the [`candid-extractor`](https://crates.io/crates/candid-extractor) and [`generate-did`](https://crates.io/crates/generate-did) tools to extract the Candid from the canister's Wasm.
 
-Install the candid-extractor with cargo:
+---
 
-```
+## Using [`candid-extractor`](https://crates.io/crates/candid-extractor) and [`generate-did`](https://crates.io/crates/generate-did) tools:
+
+### Step 1: Install `candid-extractor`
+
+You need to install the `candid-extractor`, which is required for extracting the `.did` file in both approaches:
+
+```bash
 cargo install candid-extractor
-```
+``` 
 
-Then, in your Rust canister code, call the `export_candid` macro at the end of your `lib.rs` file:
+### Step 2: Add the ``export_candid!`` macro 
+In your Rust canister code, call the ``export_candid!`` macro at the end of your ``lib.rs`` file:
 
-```rust title="lib.rs"
+```rust
 use ic_cdk::query;
 use ic_cdk::update;
 
 #[query]
 fn hello(name: String) -> String {
-    format!("Hello, {}!", name)
+    format!("Hello, {}!", name)
 }
 
 #[update]
 fn world(name: String) -> String {
-    format!("World, {}!", name)
+    format!("World, {}!", name)
 }
 
 // Enable Candid export
 ic_cdk::export_candid!();
-```
+``` 
+
+### Step 3: Generate the .did file: 
+
+You can now choose one of the following options:
+
+**Option 1: Automatic generation using ``generate-did`` crate:**
+
+[``generate-did``](https://crates.io/crates/generate-did) automates the build and extraction process into a single command.
+
+Install it with:
+```bash
+cargo install generate-did
+``` 
+
+Then run from your project root:
+```bash
+generate-did <canister_name>
+``` 
+
+Replace ``<canister_name>`` with the directory name of your canister (which must include a valid ``Cargo.toml``).
+
+This command will:
+- Build the canister to Wasm
+- Extract the Candid interface
+- Place the .did file directly into the canister directory
+
+> **Requirements**:
+   - ``candid-extractor`` must be installed and in your PATH
+   - The canister must be buildable to Wasm
+
+For more details, see:
+- [generate-did crate](https://crates.io/crates/generate-did)
+- [GitHub repository](https://github.com/Stephen-Kimoi/generate-did)
+
+**Option 2: Manual extraction using candid-extractor:**
 
 Before extracting the Candid interface, you must first compile the canister's Wasm module:
 
