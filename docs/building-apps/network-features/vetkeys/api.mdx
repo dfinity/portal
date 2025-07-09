@@ -173,7 +173,7 @@ import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/
 
 const transportSecretKey = TransportSecretKey.random();
 const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
-// the `canisterClient` uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
+// the called canister uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes());
 const encryptedVetKey = EncryptedVetKey(encryptedVetKeyBytes);
 ```
@@ -192,14 +192,14 @@ Once retrieved, you must decrypt and verify the received encrypted vetKey.
 const publicKeyBytes = await canisterClient.vetkd_public_key();
 const publicKey = DerivedPublicKey.deserialize(publicKeyBytes);
 const myPrincipalBytes = // serialize caller's principal as `Uint8Array`
-// the `canisterClient` uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
+// the called canister uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, myPrincipalBytes);
 ```
 
 </TabItem>
 </AdornedTabs>
 
-The full specification of the vetKD APIs can be found in the [IC interface specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
+The full specification of the vetKD APIs can be found in the [IC interface specification](https://internetcomputer.org/docs/references/ic-interface-spec).
 
 ## API fees
 
@@ -215,3 +215,8 @@ Fees for deriving one vetKey using the `vetkd_derive_key` API of the management 
 |--------------------------------------|-----------------------------|-----------------------------|
 | Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  |
 | Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  |
+
+## Resources
+
+- [IC Interface Specification: `vetkd_derive_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key).
+- [IC Interface Specification: `vetkd_public_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
