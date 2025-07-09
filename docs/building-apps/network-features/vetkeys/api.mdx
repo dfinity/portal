@@ -52,21 +52,7 @@ Note that any canister on the ICP can use any available master key, independent 
 
 Deriving a vetKey typically involves both the frontend and backend components of a dapp, as the transport key is usually provided by the user.
 
-```mermaid
-sequenceDiagram
-    participant Frontend as frontend
-    participant Canister as canister
-    participant ManagementCanister as vetKD API
-
-    Frontend->>Frontend: Generate transport key pair<br>(transport secret key, transport public key)
-    Frontend->>Canister: Send transport public key
-    Canister->>Canister: Perform access control
-    Canister->>ManagementCanister: vetkd_derive_key(..., transport_public_key)
-    ManagementCanister->>Canister: encrypted_key
-    Canister->>Frontend: encrypted_key
-    Frontend->>Frontend: decrypt and verify encrypted_key<br>using the transport secret key
-    Frontend->>Frontend: Use decrypted vetKey
-```
+![vetKD protocol flow](./_attachments/vetkd_diagram.png)
 
 ### Step 1: Implement canister endpoints
 
