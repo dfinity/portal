@@ -1,0 +1,60 @@
+---
+keywords: [beginner, tutorial, rust, rust storage, rust canister storage, maintain canisters, storage, canister storage]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 2.2: Canister storage
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+When building projects on ICP, canisters have access to two main types of data storage:
+
+1. Heap memory: Also known as *main memory*, this is the canister’s temporary working memory. Data stored here is **not persistent** and will be lost when the canister is reinstalled or upgraded.
+
+2. Stable memory: A persistent storage unique to ICP. Unlike heap memory, data in stable memory survives canister upgrades and reinstalls, making it ideal for long-term storage.
+
+Stable memory exists separately from the Wasm heap and is specifically designed for preserving important data across canister lifecycle events.
+
+## Heap memory
+
+Heap memory is a canister’s standard WebAssembly (Wasm) memory used for temporary data storage. It does not persist across upgrades or reinstallations, meaning any data stored in heap memory is lost when the canister is updated.
+
+By default, heap memory is used to store things like variables, function results, and input arguments. It is limited to a **maximum size of 4 GiB**.
+
+## Stable memory
+
+Stable memory is a persistent storage feature unique to ICP. Unlike heap memory, stable memory retains data across upgrades as long as the canister isn't reinstalled, deleted, or its data is cleared due to cycle depletion.
+
+While the WebAssembly heap is reset during upgrades, stable memory is preserved. By default, it starts empty and must be managed explicitly by the developer.
+
+The maximum stable memory size is 500 GiB, depending on the capacity of the <GlossaryTooltip>subnet</GlossaryTooltip> where the canister is deployed.
+
+## Storage cost
+
+Storage costs are based on the amount of data a canister uses per second, measured in GiB:
+
+- On a 13-node subnet, storing 1 GiB costs `127_000` <GlossaryTooltip>cycles</GlossaryTooltip> per second.
+
+- On a 34-node subnet, the cost is proportionally higher: `127_000 / 13 * 34` cycles per second.
+
+In practical terms, this equals approximately $0.43 (13-node) or $1.13 (34-node) to store 1 GiB of data for a 30-day month. The cost is the same whether the data is stored in heap memory, stable memory, or both.
+
+[Learn more about storage costs](/docs/building-apps/essentials/gas-cost)
+
+## Rust storage handling
+
+To work with stable memory in Rust canisters, you can use the [`ic-stable-structures`](https://github.com/dfinity/stable-structures) crate. It's used for managing persistent data structures across upgrades. The future tutorial [2.4: Stable structures](2.4-stable-memory.mdx) will cover this in depth.
+
+When upgrading a Rust canister while preserving stable memory, the following process happens:
+
+1. Stop the canister.
+2. The canister's heap memory is cleared and a new Wasm module is prepared.
+3. The new Wasm code is installed using `--mode upgrade`.
+4. The canister starts running the upgraded code. The `init` function is not called during this process.
+5. The previous stable memory is retained and accessible in the new version.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

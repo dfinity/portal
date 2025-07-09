@@ -7,8 +7,150 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 2.1 Canister calls
 
-Execution model
-Query vs update calls
-Composite and certified queries
-Inter-canister call examples: publisher/subscriber
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
+In the previous tutorial where you [created your first dapp](/docs/tutorials/developer-liftoff/level-0/first-dapp), you briefly learned about query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
+
+Let's first define the different types of canister calls and how they differ from one another:
+
+- **Query calls** are executed on a single node within a <GlossaryTooltip>subnet</GlossaryTooltip>. Query calls do not alter the state of a canister. They are executed synchronously and answered immediately once received.
+
+- **Update calls** are able to alter the canister's state. They are executed on all nodes of a subnet since the result must go through the subnet's [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) process. Update calls are submitted and answered asynchronously.
+
+- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via [ingress messages](/docs/building-apps/essentials/message-execution) using `dfx` or through an agent such as a browser front-end. They cannot be invoked by other canisters.
+
+- **Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
+
+- **Atomic transactions** refer to the execution of message handlers, which are done in isolation from one another.
+
+- **Inter-canister calls** are used to make calls between different canisters.
+
+## The ICP execution model
+
+To understand how different types of canister calls are executed on ICP, first let's take a look at ICP's execution model and how it is structured.
+
+At a high level, a canister is used to expose **methods**. A method is a piece of code specifying a task that declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
+
+A single method can consist of multiple **message handlers**. A message handler is a piece of code that can change the canister's state by taking a message, such as a request or a response, and in return produce either a response or another request. In Motoko, message handlers are separated in code by the `await` keyword, which indicates that one message handler is to be executed at one time. That's because message handlers are executed **atomically**, or in isolation from one another.
+
+No two message handlers within the same canister can be running at the same time. When a message handler starts executing, it receives exclusive access to the canister's memory until it finishes its execution. While no two message handlers can execute at the same time, two **methods** can execute at the same time.
+
+Want to take a deeper dive? Check out an [in-depth look at the ICP execution model](https://mynosefroze.com/blog/2023-08-09-tla_for_canisters).
+
+## Query calls
+
+Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that hosting the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+
+Setting functions as query functions where appropriate can be an effective way to improve application performance, as query calls are returned faster than update calls. However, compared to update calls, the trade-off of a query call's increased performance is decreased security, since their response is not verified through consensus.
+
+The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the call's response is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
+
+### Example `query` call
+
+Queries are defined by `ic_cdk_macros::query` in Rust. Below is a simple query call:
+
+```Rust
+/// Get the value of the counter.
+#[ic_cdk::query]
+fn get() -> Nat {
+    COUNTER.with(|counter| (*counter.borrow()).clone())
+}
+```
+
+[View this example on ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/counter).
+
+## Update calls
+
+Update calls are used to alter the state of the canister. Update calls are submitted to all nodes on a subnet and answered asynchronously. This is because update calls must go through consensus on the subnet to return the result of the call.
+
+In comparison to query calls, update calls have the opposite trade-off of performance and security: they have a higher security level since two-thirds of the replicas in a subnet must agree on the result, but returning the result takes longer since the consensus process must be completed first.
+
+### Example update call
+
+Below is a simple update call:
+
+```rust
+/// Increment the value of the counter.
+#[ic_cdk::update]
+fn inc() {
+    COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
+}
+```
+
+[View this example on ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/counter).
+
+## Inter-canister calls
+
+Inter-canister calls are used to make calls between different canisters. This is crucial for developers building complex dapps, as it enables you to use third-party canisters in your project or reuse functionality for several different services.
+
+For example, consider a scenario where you want to create a social media dapp that includes the ability to organize events and make posts. The dapp might include social profiles for each user. When creating this dapp, you may create a single canister for storing the social profiles, then another canister that addresses event organization, and a third canister that handles social posts. By isolating the social profiles into one canister, you can create endless canisters that make calls to the social profile canister, allowing your dapp to continue to scale.
+
+## Using inter-canister calls
+
+This example demonstrates how to interact with a sample counter canister, which supports the following four operations:
+
+1. Retrieve the current counter value.
+2. Increment the counter by one.
+3. Set the counter to a specific value.
+4. Set the counter to a specific value and return the previous value.
+
+[Open the example in ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/inter-canister-calls).
+
+Let's take a look at the project's files:
+
+```bash
+├── Makefile
+├── README.md
+├── dfx.json
+└── src
+    ├── caller
+    │   └── src
+             └── lib.rs     // The smart contract code for the 'caller' canister.
+    └── counter
+    │   └── src
+             └── lib.rs     // The smart contract code for the 'counter' canister.
+```
+
+### Writing a `caller` canister
+
+In the `caller` canister, you'll define a function to call the `call_get_and_set` method on the caller canister. Internally, this invokes the `get_and_set` function on the `counter` canister, which sets the `counter` to a new value and returns its previous value.
+
+The complete implementation is already available in `src/caller/src/lib.rs`. Alternatively, you can clear the contents of `src/caller/src/lib.rs` and paste the code provided below. The comments in the code explain each step.
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
+```
+
+Deploy the project by selecting the [ICP Ninja 'Run' button](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/inter-canister-calls). Alternatively, you can deploy this project locally with `dfx`.
+
+Once deployed, open the Candid interface. Call the `call_get_and_set` method by entering the principal of the `caller` canister (found by viewing the `caller` canister's Candid UI and copying the principal ID shown at the top of the window.) and a numerical value. This will set the value of the `counter` canister's `counter` variable.
+
+As you've seen, inter-canister calls use the Rust `async/await` syntax, indicating that these calls are asynchronous. This represents a key difference from the messaging model used by some other blockchains. While this approach allows for significantly higher throughput, it also introduces considerations around execution order and correctness.
+
+To demonstrate this, consider the following example, which first calls the `set` method on the `counter` canister, followed by a call to `get`::
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/caller/src/lib.rs#L42-L60
+```
+
+To try it out, call the `caller` canister's `set_then_get` method.
+
+The value read from the `counter` is the same as the value that was set, but this isn't always guaranteed. Since inter-canister calls on ICP are **asynchronous**, another canister could update the counter in between the `set` and `get` calls in `call_get_and_set`.
+
+This won’t happen when running the project locally or on ICP Ninja because you control all the calls. For public projects deployed on the ICP mainnet, other canisters can call the `counter` at any time, which can lead to unexpected results.
+
+This async model allows for better performance and higher throughput, since canisters don't block each other. However, it also means that:
+
+- State changes aren't atomic. If a later call fails, earlier changes won’t be undone.
+
+- Callers can end up in an inconsistent state if they panic after making a call.
+
+In the examples so far, this hasn’t been an issue, because the caller canister doesn’t store any state, although it’s important to keep in mind when building real applications.
+
+## Next steps
+
+[Learn more about Rust inter-canister calls, such as bounded- and unbounded-wait calls.](https://internetcomputer.org/docs/building-apps/developer-tools/cdks/rust/intercanister)
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

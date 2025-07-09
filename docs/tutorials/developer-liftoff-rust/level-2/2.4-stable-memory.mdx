@@ -1,0 +1,40 @@
+---
+keywords: [intermediate, rust, tutorial, stable memory, rust stable memory, stable structures, rust stable structures]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# 2.4: Stable memory
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+
+
+Stable structures are a set of scalable data structures designed storing data and allowing it to grow to gigabytes in size without the need for `pre_upgrade`/`post_upgrade` hooks. Using `pre_` and `post_upgrade` hooks is discouraged. It is error-prone and can render a canister unusable.
+
+When a stable structure is initialized, memory is provided to the data structure. Each data structure manages is own memory and cannot share memories with other structures.
+
+To use stable structures, the Rust [stable structure library](https://github.com/dfinity/stable-structures#readme) exists. It simplifies managing data structures directly in stable memory and provides example code templates. A brief example can be found below:
+
+```rust reference
+https://github.com/dfinity/stable-structures/blob/main/examples/src/basic_example/src/lib.rs
+```
+
+### Available data structures
+
+The stable structures library includes:
+
+- [BTreeMap](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/btreemap/struct.BTreeMap.html)
+
+- [BTreeSet](https://github.com/dfinity/stable-structures/blob/133a1a46bb8f572922017779dfd0fb430c7c9c5d/src/btreeset.rs)
+
+- [Vec](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/vec/struct.Vec.html)
+
+- [Log](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/log/struct.Log.html)
+
+- [Cell](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/cell/struct.Cell.html)
+
+- [MinHeap](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/min_heap/struct.MinHeap.html)
+
+For more information about stable structures, please see the [stable structures library](https://github.com/dfinity/stable-structures) and [Roman's tutorial on stable structures](https://mmapped.blog/posts/14-stable-structures.html).
+
