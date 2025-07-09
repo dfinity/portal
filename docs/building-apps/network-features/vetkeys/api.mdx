@@ -40,11 +40,11 @@ Below is a summary of the vetKD API methods and their parameters described in [C
 
 The following key names are supported for curve `bls12_381_g2`:
 
+- `key_1`:  Production key available on the ICP mainnet on subnet [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) (backed up on [`uzr34`](https://dashboard.internetcomputer.org/network/subnets/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe)).
+
+- `test_key_1`: Test key available on the ICP mainnet on subnet [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) (backed up on [`2fq7c`](https://dashboard.internetcomputer.org/network/subnets/2fq7c-slacv-26cgz-vzbx2-2jrcs-5edph-i5s2j-tck77-c3rlz-iobzx-mqe)).
+
 - `dfx_test_key`: Only available on the local development environment started by `dfx`.
-
-- `test_key_1`: Test key available on the ICP mainnet.
-
-- `key_1`:  Production key available on the ICP mainnet.
 
 ## Obtaining a vetKey
 
@@ -56,7 +56,7 @@ sequenceDiagram
     participant Canister as canister
     participant ManagementCanister as vetKD API
 
-    Frontend->>Frontend: Generate transport secret key
+    Frontend->>Frontend: Generate transport key pair<br>(transport secret key, transport public key)
     Frontend->>Canister: Send transport public key
     Canister->>Canister: Perform access control
     Canister->>ManagementCanister: vetkd_derive_key(..., transport_public_key)
@@ -198,7 +198,7 @@ The full specification of the vetKD APIs can be found in the [IC interface speci
 
 ## API fees
 
-The fees for the vetKD APIs are defined below. The threshold vetKD test key resides on a 13-node application subnet, while the threshold vetKD production key resides on a 34-node-sized fiduciary subnet. The subnet size where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of May 22, 2025, has been used.
+The fees for the vetKD APIs are defined below. The threshold vetKD test key resides on the 13-node application subnet [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae), while the threshold vetKD production key resides on the 34-node-sized fiduciary subnet [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae). The subnet size where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of May 22, 2025, has been used.
 
 :::note
 If a canister using this feature is intended to be blackholed or used by other canisters, it's recommended to send more cycles with each call than the currently advertised cost. This ensures that, if the subnet's size increases in the future (leading to higher signature costs), the call will still succeed. Any unused cycles are automatically refunded.
@@ -206,7 +206,7 @@ If a canister using this feature is intended to be blackholed or used by other c
 
 Fees for deriving one vetKey using the `vetkd_derive_key` API of the management canister:
 
-| Key type                             | Cycles                      | USD                         |
-|--------------------------------------|-----------------------------|-----------------------------|
-| Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  |
-| Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  |
+| Key type (key name)                  | Cycles                      | USD                         | Signing subnet (size) |
+|--------------------------------------|-----------------------------|-----------------------------|--------------|
+| Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  | [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) (34) |
+| Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  | [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) (13) |
