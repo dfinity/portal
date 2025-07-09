@@ -40,11 +40,13 @@ Below is a summary of the vetKD API methods and their parameters described in [C
 
 The following key names are supported for curve `bls12_381_g2`:
 
-- `key_1`:  Production key available on the ICP mainnet on subnet [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) (backed up on [`uzr34`](https://dashboard.internetcomputer.org/network/subnets/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe)).
+- `key_1`:  Production key available on the ICP mainnet (resides on subnet [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) and backed up on [`uzr34`](https://dashboard.internetcomputer.org/network/subnets/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe)).
 
-- `test_key_1`: Test key available on the ICP mainnet on subnet [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) (backed up on [`2fq7c`](https://dashboard.internetcomputer.org/network/subnets/2fq7c-slacv-26cgz-vzbx2-2jrcs-5edph-i5s2j-tck77-c3rlz-iobzx-mqe)).
+- `test_key_1`: Test key available on the ICP mainnet (resides on subnet [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) and backed up on [`2fq7c`](https://dashboard.internetcomputer.org/network/subnets/2fq7c-slacv-26cgz-vzbx2-2jrcs-5edph-i5s2j-tck77-c3rlz-iobzx-mqe)).
 
 - `dfx_test_key`: Only available on the local development environment started by `dfx`.
+
+Note that any canister on the ICP can use any available master key, independent of the subnet on which the canister or the key resides, because the management canister automatically redirects the calls for obtaining vetKeys to the subnet where the master key resides.
 
 ## Obtaining a vetKey
 
