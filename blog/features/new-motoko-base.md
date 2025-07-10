@@ -7,7 +7,7 @@ image: /img/blog/new-motoko-base.jpg
 
 # Try the new Motoko core library: feedback requested!
 
-[![Motoko core library](/img/blog/motoko-core.jpg)](https://github.com/dfinity/motoko-core)
+[![Motoko core library](/img/blog/new-motoko-base.jpg)](https://github.com/dfinity/motoko-core)
 
 * [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
 * [GitHub repository](https://github.com/dfinity/motoko-core)
