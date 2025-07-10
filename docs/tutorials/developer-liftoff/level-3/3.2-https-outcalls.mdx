@@ -65,7 +65,7 @@ When deploying applications to the Internet Computer, HTTPS outcalls can be made
 
 - Direct Connection (IPv6): The system first attempts to connect directly from the IC replicas. This is the ideal path for IPv6-enabled services.
 
-- Proxied Connection (Fallback): If the direct connection fails for any reason (e.g., the server is IPv4-only, or a firewall is blocking the direct connection), the system automatically retries the request through a proxy.
+- Proxied Connection (Fallback): If the direct connection fails for any reason (e.g., the server is IPv4-only, or a firewall is blocking the direct connection), the system automatically retries the request through a SOCKS proxy.
 
 To see which connection method might be used for a specific service, you can check if its domain supports IPv6 using a tool such as https://ready.chair6.net/.
 
