@@ -5,9 +5,9 @@ tags: [Motoko, New features, Technology]
 image: /img/blog/new-motoko-base.jpg
 ---
 
-# Try the new Motoko base library: feedback requested!
+# Try the new Motoko core library: feedback requested!
 
-[![New Motoko base library](/img/blog/motoko-core.jpg)](https://github.com/dfinity/motoko-core)
+[![Motoko core library](/img/blog/motoko-core.jpg)](https://github.com/dfinity/motoko-core)
 
 * [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
 * [GitHub repository](https://github.com/dfinity/motoko-core)
@@ -27,10 +27,10 @@ Here is a quick summary of the biggest features and improvements:
 
 ## Try it yourself
 
-Last week, we released a preview of the new base library with a few different options for trying it out. One is through the [`new-base`](https://mops.one/new-base) Mops package. Add the following to your `mops.toml` config file:
+Last week, we released a preview of the new core library with a few different options for trying it out. One is through the [`core`](https://mops.one/core) Mops package. Add the following to your `mops.toml` config file:
 
 ```toml
-new-base = "0.3.0" # Check https://mops.one/new-base for the latest version
+core = "0.0.0" # Check https://mops.one/core for the latest version
 ```
 
 Alternatively, you can directly replace the `mo:base` imports in an existing project:
@@ -39,11 +39,7 @@ Alternatively, you can directly replace the `mo:base` imports in an existing pro
 base = "https://github.com/dfinity/motoko-core"
 ```
 
-We even prepared an online demo which you can use to explore the new base library using ICP Ninja: https://icp.ninja/s/kwKkw
-
-In the future, we intend to remove the `new-base` preview and distribute these changes as the official `base`. We will do our best to ensure that packages relying on previous base library versions continue to work as expected. 
-
-If you want to use this preview for anything important, keep in mind that it's under active development. Expect future breaking changes and the possibility of bugs or outdated documentation. Please let us know if you run into something unexpected by opening a [GitHub issue](https://github.com/dfinity/motoko-core/issues).
+Let us know if you run into anything unexpected by opening a [GitHub issue](https://github.com/dfinity/motoko-core/issues).
 
 ## What's changed?
 
@@ -60,8 +56,8 @@ We chose implementations with good all-round performance, deferring specialized 
 Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [Andrii Stepanov and Timo Hanke](https://github.com/research-ag)):
 
 ```motoko no-repl
-import List "mo:base/List";
-import Nat "mo:base/Nat";
+import List "mo:core/List";
+import Nat "mo:core/Nat";
 
 actor {
   stable let list = List.empty<Nat>(); // Persistent data structure
@@ -73,7 +69,7 @@ actor {
 The above code snippet can be rewritten as a new `persistent` actor:
 
 ```motoko no-repl
-import List "mo:base/List";
+import List "mo:core/List";
 
 persistent actor {
   let list = List.empty<Nat>(); // Persistent data structure
@@ -84,7 +80,7 @@ persistent actor {
 You can also use the purely functional `List` module:
 
 ```motoko no-repl
-import PureList "mo:base/pure/List";
+import PureList "mo:core/pure/List";
 
 persistent actor {
   var list = PureList.empty<Text>(); // Persistent data structure
@@ -97,9 +93,9 @@ persistent actor {
 We also included an efficient [stable BTree map implementation](https://github.com/canscale/StableHeapBTreeMap) (big thanks to [Byron Becker](https://github.com/ByronBecker)):
 
 ```motoko no-repl
-import Map "mo:base/Map";
-import Text "mo:base/Text";
-import Array "mo:base/Array";
+import Map "mo:core/Map";
+import Text "mo:core/Text";
+import Array "mo:core/Array";
 
 persistent actor {
   let map = Map.empty<Text, Nat>();
@@ -127,9 +123,9 @@ Since the new base library includes imperative and functional data structures,
 we made it easy to convert between them:
 
 ```motoko no-repl
-import List "mo:base/List";
-import PureList "mo:base/pure/List";
-import Text "mo:base/Text";
+import List "mo:core/List";
+import PureList "mo:core/pure/List";
+import Text "mo:core/Text";
 
 persistent actor {
   let list = List.singleton<Text>("A");
@@ -143,8 +139,8 @@ persistent actor {
 We also added missing primitive type conversions such as those between `Int` and `Nat`:
 
 ```motoko no-repl
-import Int "mo:base/Int";
-import Nat "mo:base/Nat";
+import Int "mo:core/Int";
+import Nat "mo:core/Nat";
 
 persistent actor {
   let number = -5;
@@ -163,8 +159,8 @@ We removed 32-bit hashing from the base library in favor of comparison-based dat
 `Iter.range()` has been removed in favor of type-specific range functions such as `Nat.range()`, `Int.range()`, `Nat32.range()`, etc. These functions have an **exclusive upper bound**, in contrast to the original inclusive upper bound of `Iter.range()`. 
 
 ```motoko no-repl
-import Int "mo:base/Int";
-import Debug "mo:base/Debug";
+import Int "mo:core/Int";
+import Debug "mo:core/Debug";
 
 persistent actor {
   // Iterate through -3, -2, -1, 0, 1, 2 (exclusive upper bound)
@@ -185,13 +181,13 @@ Helper functions have been added, such as `allValues()`, for each finite type in
 
 ### VarArray module
 
-For convenience, we created a separate `mo:base/VarArray` module with the same API as `mo:base/Array` but for mutable arrays. This reduces the need to convert back and forth between mutable and immutable arrays:
+For convenience, we created a separate `mo:core/VarArray` module with the same API as `mo:core/Array` but for mutable arrays. This reduces the need to convert back and forth between mutable and immutable arrays:
 
 ```motoko no-repl
-import Array "mo:base/Array";
-import VarArray "mo:base/VarArray";
-import Char "mo:base/Char";
-import Nat "mo:base/Nat";
+import Array "mo:core/Array";
+import VarArray "mo:core/VarArray";
+import Char "mo:core/Char";
+import Nat "mo:core/Nat";
 
 persistent actor {
   let array = Array.repeat<Char>('A', 3);
@@ -215,7 +211,7 @@ We also fixed naming inconsistencies in functions by replacing `ArrayMut` with `
 We completely redesigned the `Random` module, which is now a lot simpler to use:
 
 ```motoko no-repl
-import Random "mo:base/Random";
+import Random "mo:core/Random";
 
 actor {
   let random = Random.crypto(); // Cryptographic random numbers from ICP runtime
@@ -233,7 +229,7 @@ actor {
 Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Andrii Stepanov and Timo Hanke](https://github.com/research-ag)):
 
 ```motoko no-repl
-import Random "mo:base/Random";
+import Random "mo:core/Random";
 
 actor {
   let seed : Nat64 = 12345;
