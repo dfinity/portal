@@ -7,10 +7,10 @@ image: /img/blog/new-motoko-base.jpg
 
 # Try the new Motoko base library: feedback requested!
 
-[![New Motoko base library](/img/blog/new-motoko-base.jpg)](https://github.com/dfinity/new-motoko-base)
+[![New Motoko base library](/img/blog/motoko-core.jpg)](https://github.com/dfinity/motoko-core)
 
 * [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
-* [GitHub repository](https://github.com/dfinity/new-motoko-base)
+* [GitHub repository](https://github.com/dfinity/motoko-core)
 * [Online starter project](https://icp.ninja/s/kwKkw)
 
 The Motoko team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
@@ -36,14 +36,14 @@ new-base = "0.3.0" # Check https://mops.one/new-base for the latest version
 Alternatively, you can directly replace the `mo:base` imports in an existing project:
 
 ```toml
-base = "https://github.com/dfinity/new-motoko-base"
+base = "https://github.com/dfinity/motoko-core"
 ```
 
 We even prepared an online demo which you can use to explore the new base library using ICP Ninja: https://icp.ninja/s/kwKkw
 
 In the future, we intend to remove the `new-base` preview and distribute these changes as the official `base`. We will do our best to ensure that packages relying on previous base library versions continue to work as expected. 
 
-If you want to use this preview for anything important, keep in mind that it's under active development. Expect future breaking changes and the possibility of bugs or outdated documentation. Please let us know if you run into something unexpected by opening a [GitHub issue](https://github.com/dfinity/new-motoko-base/issues).
+If you want to use this preview for anything important, keep in mind that it's under active development. Expect future breaking changes and the possibility of bugs or outdated documentation. Please let us know if you run into something unexpected by opening a [GitHub issue](https://github.com/dfinity/motoko-core/issues).
 
 ## What's changed?
 
@@ -268,6 +268,6 @@ We want to give a huge thanks to the community members who provided high-quality
 * [Byron Becker](https://github.com/ByronBecker): [`StableHeapBTreeMap`](https://github.com/canscale/StableHeapBTreeMap)
 * [Zen Voich](https://github.com/ZenVoich): [`test`](https://github.com/ZenVoich/test)
 
-Please consider providing feedback on the [developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766) or [GitHub discussions page](https://github.com/dfinity/new-motoko-base/discussions). This is the best time to voice your opinion, since we have the most flexibility now before we lock in the final design. 
+Please consider providing feedback on the [developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766) or [GitHub discussions page](https://github.com/dfinity/motoko-core/discussions). This is the best time to voice your opinion, since we have the most flexibility now before we lock in the final design. 
 
 Thank you for reading, and we look forward to hearing your feedback on the new base library!
