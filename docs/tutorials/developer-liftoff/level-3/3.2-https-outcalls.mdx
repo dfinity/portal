@@ -59,9 +59,15 @@ The returned response, including the response to the `transform` function if spe
 
 - `body`: Specifies the response's body.
 
-### IPv6
+### IPv6 and IPv4
 
-When deploying applications to ICP, HTTPS outcalls can **only** be made to APIs that support **IPv6**. You can check if an API supports IPv6 by using a tool such as https://ready.chair6.net/.
+When deploying applications to the Internet Computer, HTTPS outcalls can be made to APIs hosted on servers with either IPv6 or IPv4 addresses. The connection method is determined by a fallback mechanism designed for maximum reliability.
+
+- Direct Connection (IPv6): The system first attempts to connect directly from the IC replicas. This is the ideal path for IPv6-enabled services.
+
+- Proxied Connection (Fallback): If the direct connection fails for any reason (e.g., the server is IPv4-only, or a firewall is blocking the direct connection), the system automatically retries the request through a proxy.
+
+To see which connection method might be used for a specific service, you can check if its domain supports IPv6 using a tool such as https://ready.chair6.net/.
 
 ## HTTP GET
 
