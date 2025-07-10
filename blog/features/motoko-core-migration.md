@@ -285,18 +285,17 @@ Helper functions have been added, such as `allValues()`, for each finite type in
 The `Random` module has been completely redesigned in the core package with a new API that provides better control over random number generation and supports both pseudo-random and cryptographic random number generation.
 
 ```motoko
-import Random "mo:base/Random";
+import Random "mo:core/Random";
 
-actor {
-  let random = Random.crypto();
+persistent actor {
+  transient let random = Random.crypto();
 
-  public func coinFlip() : async Bool {
-    await* random.bool()
-  };
-
-  public func randomItem(items : [Text]) : async Text {
-    items[await* random.natRange(0, items.size())]
-  };
+  public func main() : async () {
+    let coin = await* random.bool(); // true or false
+    let byte = random.nat8(); // 0 to 255
+    let number = random.nat64(); // 0 to 2^64
+    let numberInRange = random.natRange(0, 10); // 0 to 9
+  }
 }
 ```
 
