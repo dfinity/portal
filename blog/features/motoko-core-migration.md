@@ -292,9 +292,9 @@ persistent actor {
 
   public func main() : async () {
     let coin = await* random.bool(); // true or false
-    let byte = random.nat8(); // 0 to 255
-    let number = random.nat64(); // 0 to 2^64
-    let numberInRange = random.natRange(0, 10); // 0 to 9
+    let byte = await* random.nat8(); // 0 to 255
+    let number = await* random.nat64(); // 0 to 2^64
+    let numberInRange = await* random.natRange(0, 10); // 0 to 9
   }
 }
 ```
