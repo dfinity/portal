@@ -1,6 +1,6 @@
 ---
 title: "Migrate from the Motoko `base` to `core` package"
-description: 
+description: Get started with Motoko's new and improved standard library.
 tags: [Motoko, New features, Technology]
 image: /img/blog/new-motoko-base.jpg
 ---
