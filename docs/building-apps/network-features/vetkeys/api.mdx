@@ -6,7 +6,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 Verifiably encrypted threshold key derivation (vetKD) is a distributed protocol for securely deriving cryptographic keys, referred to as  _vetKeys_. 
 The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by providing different inputs. 
 
-Below is a summary of the vetKD API methods and their parameters described in [Candid notation](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
+Below is a summary of the vetKD API methods and their parameters, described in [Candid notation](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
 
 ```candid
   // Derives keys based on the provided inputs.
@@ -35,6 +35,8 @@ Below is a summary of the vetKD API methods and their parameters described in [C
     key_id : record { curve : vetkd_curve; name : text };
   }) -> (record { public_key : blob; });
 ```
+
+The full vetKD API specification can be found in the [IC interface specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
 
 ## Available master keys
 
@@ -156,7 +158,7 @@ import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/
 
 const transportSecretKey = TransportSecretKey.random();
 const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
-// the `canisterClient` uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
+// the called canister uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes());
 const encryptedVetKey = EncryptedVetKey(encryptedVetKeyBytes);
 ```
@@ -175,14 +177,12 @@ Once retrieved, you must decrypt and verify the received encrypted vetKey.
 const publicKeyBytes = await canisterClient.vetkd_public_key();
 const publicKey = DerivedPublicKey.deserialize(publicKeyBytes);
 const myPrincipalBytes = // serialize caller's principal as `Uint8Array`
-// the `canisterClient` uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
+// the called canister uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
 const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, myPrincipalBytes);
 ```
 
 </TabItem>
 </AdornedTabs>
-
-The full specification of the vetKD APIs can be found in the [IC interface specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
 
 ## API fees
 
@@ -198,3 +198,8 @@ Fees for deriving one vetKey using the `vetkd_derive_key` API of the management 
 |--------------------------------------|-----------------------------|-----------------------------|--------------|
 | Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  | [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) (34) |
 | Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  | [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) (13) |
+
+## Resources
+
+- [IC Interface Specification: `vetkd_derive_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key).
+- [IC Interface Specification: `vetkd_public_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
