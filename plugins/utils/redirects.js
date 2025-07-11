@@ -163,6 +163,7 @@ const redirects = `
 
   # Motoko old -> new docs
 
+  /docs/motoko /docs/motoko/home
   /docs/motoko/main/base/ /docs/motoko/base/
   /docs/current/motoko/main/base/ /docs/motoko/base/
   /docs/motoko/main/base/Array /docs/motoko/base/Array
