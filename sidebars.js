@@ -685,6 +685,7 @@ defi: [
             id: "defi/rosetta/icp_rosetta/index",
           },
           items: [
+            "defi/rosetta/icp_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",
@@ -718,6 +719,7 @@ defi: [
             id: "defi/rosetta/icrc_rosetta/index",
           },
           items: [
+            "defi/rosetta/icrc_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",
