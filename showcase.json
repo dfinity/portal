@@ -1212,6 +1212,19 @@
     "logo": "/img/showcase/motokoplayground_logo.webp"
   },
   {
+    "id": "nfid_wallet",
+    "name": "NFID Wallet",
+    "display": "Normal",
+    "website": "https://nfid.one/",
+    "twitter": "https://x.com/IdentityMaxis",
+    "github": "https://github.com/internet-identity-labs",
+    "tags": [
+      "Wallet"
+    ],
+    "description": "Web3's easiest to use, hardest to lose, and only wallet governed by a DAO.",
+    "logo": "/img/showcase/NFID_wallet_logo.png"
+  },
+  {
     "id": "scinet",
     "name": "SCINET",
     "display": "Normal",
@@ -5977,6 +5990,19 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/SubHub_logo.svg",
     "oneLiner": "The Future of Tokenized Web3 Messaging"
+  },
+  {
+    "id": "ic_pack\n",
+    "name": "IC Pack",
+    "display": "Normal",
+    "website": "https://docs.package-manager.com",
+    "github": "https://github.com/vporton/icp-package-manager",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A package manager for installing apps into user's canisters for user to be self-sovereign over apps.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icpack-logo.svg",
+    "oneLiner": "Self-sovereign apps in user's canisters."
   }
-  
 ]
