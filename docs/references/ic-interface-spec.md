@@ -2792,7 +2792,7 @@ to the above limits on HTTP request headers.
 
 :::note
 
-The Internet Computer mainnet supports requests to both IPv6 and IPv4 destinations. The system prioritizes a direct connection to IPv6 addresses (i.e., the domain has a AAAA DNS record). If a direct connection cannot be established (e.g., the domain only has an IPv4 address via an A record), the request is automatically retried through a proxy.
+The Internet Computer mainnet supports requests to both IPv6 and IPv4 destinations. The system prioritizes a direct connection to IPv6 addresses (i.e., the domain has a `AAAA` DNS record). If a direct connection cannot be established (e.g., the domain only has an IPv4 address via an A record), the request is automatically retried through a proxy.
 
 :::
 
