@@ -40,7 +40,7 @@ As you can see, the transformation function and the Internet Computer Protocol's
 
 The trust model for canister HTTPS outcalls is based on the trust model of the called HTTP server and that of ICP:
 * It is assumed that the HTTP service is honest; otherwise, it can provide any response to the calling replicas. This is a standard assumption when interacting with any external API.
-* The trust model of ICP assumes that at least 2/3 of the replicas are honest. This trust in the protocol extends to the IC-managed infrastructure that proxies certain requests (e.g., to IPv4 addresses). This ensures that honest replicas can reach a consensus on the response to be returned to the canister.
+* The trust model of ICP assumes that at least 2/3 of the replicas are honest. Moreover, the IC-managed infrastructure that proxies certain requests (e.g., to IPv4 addresses) is assumed to not block traffic. This ensures that honest replicas can reach a consensus on the response to be returned to the canister. Note that the proxy infrastructure cannot tamper with the response, it can only block it.
 
 A dishonest server can easily make requests fail or provide wrong data. Also, $1/3$ or more of dishonest subnet replicas can make requests fail. For providing wrong data, more than $2/3$ of the replicas need to be compromised.
 
