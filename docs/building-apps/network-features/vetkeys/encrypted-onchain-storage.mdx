@@ -22,7 +22,9 @@ Below is an example implementation of encrypted onchain storage using the `Encry
 
 It is a **ready-to-use solution**. It offers:
 
-- **Simple, cleartext frontend APIs** for key derivation and data encryption. No need to define or manage your own cryptographic primitives.
+- **Simple frontend APIs** for key derivation and data encryption. No need to define or manage your own cryptographic primitives.
+
+- **Transparent encryption/decryption** in the frontend. Data is automatically and transparently both encrypted before storage and decrypted upon retrieval in the frontend.
 
 - **Efficiency** in design. Reduce the number of `vetKey` derivation calls, saving on compute, time, and API fees.
 
