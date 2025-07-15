@@ -136,7 +136,7 @@
     "name": "NFID Wallet",
     "display": "Normal",
     "website": "https://nfid.one/",
-    "twitter": "https://twitter.com/IdentityMaxis",
+    "twitter": "https://x.com/NFIDWallet",
     "github": "https://github.com/internet-identity-labs",
     "tags": [
       "Wallet",
@@ -144,13 +144,14 @@
       "Chain Fusion",
       "Bitcoin"
     ],
-    "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
+    "description": "Secure your assets with the most audited wallet on ICP and start exploring ICP applications in seconds.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nfid_logo.webp"
+    "logo": "/img/showcase/NFID_Wallet_logo.jpg",
+    "oneLiner": "The easiest to use, hardest to lose, and only wallet governed by a DAO."
   },
   {
     "id": "chainsight",
-    "name": "Chainsight",
+    "name": "ChainSight",
     "display": "Large",
     "website": "https://chainsight.network",
     "twitter": "https://twitter.com/Chainsight_",
@@ -212,7 +213,7 @@
     "name": "Gold DAO",
     "display": "Normal",
     "website": "https://www.gold-dao.org/",
-    "twitter": "https://twitter.com/gldrwa",
+    "twitter": "https://x.com/TheGoldDAO",
     "tags": [
       "DeFi",
       "DAO"
@@ -5994,5 +5995,4 @@
     "logo": "/img/showcase/icpack-logo.svg",
     "oneLiner": "Self-sovereign apps in user's canisters."
   }
-  
 ]
