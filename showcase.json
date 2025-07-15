@@ -133,14 +133,16 @@
   },
   {
     "id": "nfid",
-    "name": "NFID",
+    "name": "NFID Wallet",
     "display": "Normal",
     "website": "https://nfid.one/",
     "twitter": "https://twitter.com/IdentityMaxis",
+    "github": "https://github.com/internet-identity-labs",
     "tags": [
       "Wallet",
       "Ethereum",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
     "usesInternetIdentity": true,
@@ -1210,19 +1212,6 @@
     "description": "The Motoko Playground is an IDE for developers to learn Motoko - the native language for the Internet Computer blockchain. Deploy canister smart contracts for free, directly within a browser, without needing to download an SDK or set up a wallet.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/motokoplayground_logo.webp"
-  },
-  {
-    "id": "nfid_wallet",
-    "name": "NFID Wallet",
-    "display": "Normal",
-    "website": "https://nfid.one/",
-    "twitter": "https://x.com/IdentityMaxis",
-    "github": "https://github.com/internet-identity-labs",
-    "tags": [
-      "Wallet"
-    ],
-    "description": "Web3's easiest to use, hardest to lose, and only wallet governed by a DAO.",
-    "logo": "/img/showcase/NFID_wallet_logo.png"
   },
   {
     "id": "scinet",
