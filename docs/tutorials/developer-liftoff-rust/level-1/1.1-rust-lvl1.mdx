@@ -19,18 +19,18 @@ Rust is especially well-suited for developing canisters on the ICP because:
 
 - Has a strong tooling ecosystem.
 
-## The `ic-cdk`
+## The `ic_cdk`
 
-The `ic-cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module that can be installed into a canister and deployed on ICP. Each canister must define entry points. An entry point can be exposed (or made 'public') so that it can be called by other canisters or users.
+The `ic_cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module that can be installed into a canister and deployed on ICP. Each canister must define entry points. An entry point can be exposed (or made 'public') so that it can be called by other canisters or users.
 
-To use the `ic-cdk`, first include it in a project's `Cargo.toml` file:
+To use the `ic_cdk`, first include it in a project's `Cargo.toml` file:
 
 ```toml
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-ic-cdk = "0.17"
+ic_cdk = "0.17"
 candid = "0.10" # required if you want to define Candid data types
 ```
 
@@ -49,7 +49,7 @@ fn greet(name: String) -> String {
 
 The public entry points of a canister are called methods. They can be called by other canisters or external users. There are three primary types of Rust canister entry points:
 
-- `init`: The initialization entry point of the canister.
+- `init`: The initialization method of the canister.
 
 - `query`: A method that returns query data (read-only) from the canister.
 
@@ -129,18 +129,18 @@ service : {
 };
 ```
 
-Candid interface description files (`.did`) for Rust canisters must be handwritten or manually exported by first defining the `export_candid!` macro, which exposes a method called `get_candid_pointer`. Then, you must use the [`candid-extractor`](https://crates.io/crates/candid-extractor) tool to extract the canister's Candid file. This macro must be called once at the end of your canister's code outside of any query or update definitions.
+Candid interface description files (`.did`) for Rust canisters must be handwritten or manually exported by first defining the `export_candid!` macro, which exposes a method called `get_candid_pointer`, which `dfx` uses to extract the canister's Candid definition. Then you must use the [`candid-extractor`](https://crates.io/crates/candid-extractor) tool to extract the canister's Candid file. This macro must be called once at the end of your canister's code outside of any query or update definitions.
 
 ```rust
 use candid::Principal;
 
 #[ic_cdk::query]
 fn whoami() -> Principal {
-    ic-cdk::caller()
+    ic_cdk::caller()
 }
 
 // Export the Candid interface
-ic-cdk::export_candid!();
+ic_cdk::export_candid!();
 ```
 
 `query` and `update` methods can be hidden from the Candid exporter by setting `hidden` to equal `true`. If a method is hidden, it still exists in the canister but will not have a Candid interface generated through `export_candid!`
@@ -152,24 +152,30 @@ fn query_function() {
 }
 ```
 
-## WebAssembly (Wasm)
+## Rust Wasm limitations
 
-WebAssembly (Wasm) is a portable binary format that runs in a virtual machine. ICP compiles canister code to standard Wasm using tools included in the `ic-cdk` that compile Rust code to the `wasm32-unknown-unknown` Wasm target.
+WebAssembly (Wasm) is a portable binary format that runs in a virtual machine. ICP compiles canister code to standard Wasm using tools included in the `ic_cdk` that compile Rust code to the `wasm32-unknown-unknown` Wasm target.
 
-Rust relies on the Wasm binary and the associated Candid interface file to define and expose the canister's methods. In a `dfx.json` file that defines a Rust canister (`"type": "rust"`), you will need to specify the package's name and where in the project the Candid file is located:
+Rust relies on the Wasm binary and the associated Candid interface file to define and expose the canister's methods. In a `dfx.json` file that defines a Rust canister, you will need to specify additional fields to indicate where in the project these files are located:
+
+- `build` field: Specifies the command to produce the Wasm binary (using Cargo). If you've defined a package name in the project's `Cargo.toml` file, you can specify the `package` name instead.
+
+- `wasm` field: The path to the resulting Wasm file if `build` is defined.
+
+- `candid` field: The path to the Candid file that describes the canister's interface.
 
 For example:
 
-
 ```json
     "hello_world_rust": {
-      "candid": "src/hello_world_rust/hello_world_rust.did",
-      "package": "hello_world_rust",
-      "type": "rust"
+    "type": "custom",
+    "build": "cargo build --target wasm32-unknown-unknown --package hello_world_rust --release",
+    "wasm": "target/wasm32-unknown-unknown/release/hello_world_rust.wasm",
+    "candid": "src/hello_world_rust/src/hello_world_rust.did"
     },
 ```
 
-Specify the `package` name in your Cargo.toml file, such as:
+Alternatively, if you have specified the `package` name in your Cargo.toml file, such as:
 
 ```toml
 [package]
@@ -188,24 +194,33 @@ ic-cdk = "0.17"
 ic-cdk-timers = "0.11" # Feel free to remove this dependency if you don't need timers
 ```
 
+Then you can omit the `build` and `wasm` fields in favor of the `package` and `type` fields:
 
-### Rust Wasm limitations
+```json
+    "hello_world_rust": {
+      "candid": "src/hello_world_rust/hello_world_rust.did",
+      "package": "hello_world_rust",
+      "type": "rust"
+    },
+```
+
+## Rust Wasm limitations
 
 Canisters written in Rust have a set of limitations imposed by the Wasm compiler due to the fact that the IC does not provide a file system, network access, or other functionalities at the moment. These limitations include:
 
-- You cannot create threads. Instead, use [`ic-cdk::spawn`](https://docs.rs/ic-cdk/0.18.3/ic_cdk/futures/fn.spawn.html).
+- You cannot create threads. Instead, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/latest/ic_cdk/fn.spawn.html).
 
-- You cannot sleep. Instead, use [`ic-cdk-timers`](https://docs.rs/ic-cdk/0.18.3/ic_cdk/futures/ic-cdk-timers/).
+- You cannot sleep. Instead, use [`ic_cdk_timers`](https://docs.rs/ic_cdk-timers/latest/ic_cdk_timers/).
 
-- You cannot use `Instant`. Instead, use [`ic-cdk::api::time`](https://docs.rs/ic-cdk/0.18.3/ic_cdk/api/fn.time.html).
+- You cannot use `Instant`. Instead, use [`ic_cdk::api::time`](https://docs.rs/ic_cdk/0.16.0/ic_cdk/api/fn.time.html).
 
 - You cannot access environment variables with `std::env::var`, but you can embed compile-time environment variables with the `env!` macro.
 
 - Any crate that performs input/output will not work; however, if you use a crate that performs input/output, it may work as long as you don't call the function that executes it.
 
-- Crates that specifically have a Wasm mode usually do not work as expected. These crates will typically assume they are operating in a web browser with access to the JS environment. Canisters instead execute in so-called 'headless' Wasm, with no standard environment besides the IC system functions.
+- Crates that specifically have a Wasm mode usually do not work as expected.
 
-- You cannot use `tokio`, use [`ic_cdk::spawn`](https://docs.rs/ic-cdk/0.18.3/ic_cdk/futures/fn.spawn.html).
+- You cannot use `tokio`, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/0.16.0/ic_cdk/fn.spawn.html).
 
 - You cannot use crates that make or serve HTTP requests. Instead, use [HTTP outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) or the [gateway API](/docs/references/http-gateway-protocol-spec/) respectively.
 
