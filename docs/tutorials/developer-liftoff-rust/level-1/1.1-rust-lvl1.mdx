@@ -1,0 +1,227 @@
+---
+keywords: [beginner, tutorial, developer liftoff, motoko, fundamentals, basics, motoko basics, motoko fundamentals]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 1.1 Rust level 1
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+Rust is a powerful programming language known for its rich type system, memory efficiency, and safety guarantees. Much of the Internet Computer Protocol (ICP) stack is written in Rust because it is fast and ensures both memory safety and thread safety.
+
+Rust is especially well-suited for developing canisters on the ICP because:
+
+- It compiles to WebAssembly and implements strict compile-time checks to help prevent common bugs.
+
+- Performs close to that of other low-level languages like C/C++.
+
+- Has a strong tooling ecosystem.
+
+## The `ic_cdk`
+
+The `ic_cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module that can be installed into a canister and deployed on ICP. Each canister must define entry points. An entry point can be exposed (or made 'public') so that it can be called by other canisters or users.
+
+To use the `ic_cdk`, first include it in a project's `Cargo.toml` file:
+
+```toml
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ic_cdk = "0.17"
+candid = "0.10" # required if you want to define Candid data types
+```
+
+Then, in a Rust source code file, typically `<project_name>/<canister_name>/src/lib.rs`, define your canister's code, such as the following example that registers a `query` entry point named `hello`:
+
+```rust
+#[ic_cdk::query]
+fn greet(name: String) -> String {
+    format!("Hello, {}!", name)
+}
+```
+
+## Canister entry points
+
+The public entry points of a canister are called methods. They can be called by other canisters or external users. There are three primary types of Rust canister entry points:
+
+- `init`: The initialization method of the canister.
+
+- `query`: A method that returns query data (read-only) from the canister.
+
+- `update`: A method that is allowed to make changes to the canister's state and return data from the canister.
+
+### `init`
+
+If a canister's `init` entry point is defined, it is the first function that the network calls when a canister is installed. If the execution of the `init` entrypoint finishes successfully, the network considers the canister fully set up. But if it traps, the installation is canceled and the canister is rolled back to its previous state.
+
+A canister's `init` entry point should match the initialization parameters in the Candid interface. It must have no return value. Each canister can only have one `init` entry point.
+
+```rust
+#[ic_cdk::init]
+fn init_function() {
+    // ...
+}
+```
+
+Refer to the [`canister_init` specification](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-init) for more information.
+
+### `query`
+
+A `query` endpoint provides a callable method that only returns information. `query` endpoints cannot alter the state of a canister.
+
+```rust
+#[ic_cdk::query]
+fn query_function() {
+    // ...
+}
+```
+
+If you specify a name for the method, the canister will expose the method on the public interface with that name. Otherwise, the name of the function will be used:
+
+```rust
+#[ic_cdk::query(name = "method_name")]
+fn query_function() {
+    // ...
+}
+```
+
+If a `query` endpoint must have a prerequisite executed before it can be called, you can define a `guard` function that must be executed before the query function can be executed. If the `guard` function returns an error, the `query` function does not execute.
+
+```rust
+fn guard_function() -> Result<(), String> {
+    // ...
+}
+
+#[ic_cdk::query(guard = "guard_function")]
+fn query_function() {
+    // ...
+}
+```
+
+### `update`
+
+An `update` entry point provides a callable method that can make changes to the canister's state. `update` methods may return a response or they may return an empty type.
+
+
+```rust
+#[ic_cdk::update]
+fn update_function() {
+    // ...
+}
+```
+
+`update` methods can be named or configured to use `guard` functions in the same ways that `query` methods can.
+
+## Candid interface files
+
+Candid is an interface description language (IDL) used to describe a canister's public methods. Each Candid file defines a service, then adds the canister's public methods and the data types that each method accepts and returns.
+
+Here is an example that defines the public method `greet`, which accepts type `text` and returns type `text` using a `query` call.
+
+```did
+service : {
+    "greet" : (text) -> (text) query;
+};
+```
+
+Candid interface description files (`.did`) for Rust canisters must be handwritten or manually exported by first defining the `export_candid!` macro, which exposes a method called `get_candid_pointer`, which `dfx` uses to extract the canister's Candid definition. Then you must use the [`candid-extractor`](https://crates.io/crates/candid-extractor) tool to extract the canister's Candid file. This macro must be called once at the end of your canister's code outside of any query or update definitions.
+
+```rust
+use candid::Principal;
+
+#[ic_cdk::query]
+fn whoami() -> Principal {
+    ic_cdk::caller()
+}
+
+// Export the Candid interface
+ic_cdk::export_candid!();
+```
+
+`query` and `update` methods can be hidden from the Candid exporter by setting `hidden` to equal `true`. If a method is hidden, it still exists in the canister but will not have a Candid interface generated through `export_candid!`
+
+```rust
+#[query(hidden = true)]
+fn query_function() {
+    // ...
+}
+```
+
+## Rust Wasm limitations
+
+WebAssembly (Wasm) is a portable binary format that runs in a virtual machine. ICP compiles canister code to standard Wasm using tools included in the `ic_cdk` that compile Rust code to the `wasm32-unknown-unknown` Wasm target.
+
+Rust relies on the Wasm binary and the associated Candid interface file to define and expose the canister's methods. In a `dfx.json` file that defines a Rust canister, you will need to specify additional fields to indicate where in the project these files are located:
+
+- `build` field: Specifies the command to produce the Wasm binary (using Cargo). If you've defined a package name in the project's `Cargo.toml` file, you can specify the `package` name instead.
+
+- `wasm` field: The path to the resulting Wasm file if `build` is defined.
+
+- `candid` field: The path to the Candid file that describes the canister's interface.
+
+For example:
+
+```json
+    "hello_world_rust": {
+    "type": "custom",
+    "build": "cargo build --target wasm32-unknown-unknown --package hello_world_rust --release",
+    "wasm": "target/wasm32-unknown-unknown/release/hello_world_rust.wasm",
+    "candid": "src/hello_world_rust/src/hello_world_rust.did"
+    },
+```
+
+Alternatively, if you have specified the `package` name in your Cargo.toml file, such as:
+
+```toml
+[package]
+name = "hello_world_rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = "0.10"
+ic-cdk = "0.17"
+ic-cdk-timers = "0.11" # Feel free to remove this dependency if you don't need timers
+```
+
+Then you can omit the `build` and `wasm` fields in favor of the `package` and `type` fields:
+
+```json
+    "hello_world_rust": {
+      "candid": "src/hello_world_rust/hello_world_rust.did",
+      "package": "hello_world_rust",
+      "type": "rust"
+    },
+```
+
+## Rust Wasm limitations
+
+Canisters written in Rust have a set of limitations imposed by the Wasm compiler due to the fact that the IC does not provide a file system, network access, or other functionalities at the moment. These limitations include:
+
+- You cannot create threads. Instead, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/latest/ic_cdk/fn.spawn.html).
+
+- You cannot sleep. Instead, use [`ic_cdk_timers`](https://docs.rs/ic_cdk-timers/latest/ic_cdk_timers/).
+
+- You cannot use `Instant`. Instead, use [`ic_cdk::api::time`](https://docs.rs/ic_cdk/0.16.0/ic_cdk/api/fn.time.html).
+
+- You cannot access environment variables with `std::env::var`, but you can embed compile-time environment variables with the `env!` macro.
+
+- Any crate that performs input/output will not work; however, if you use a crate that performs input/output, it may work as long as you don't call the function that executes it.
+
+- Crates that specifically have a Wasm mode usually do not work as expected.
+
+- You cannot use `tokio`, use [`ic_cdk::spawn`](https://docs.rs/ic_cdk/0.16.0/ic_cdk/fn.spawn.html).
+
+- You cannot use crates that make or serve HTTP requests. Instead, use [HTTP outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) or the [gateway API](/docs/references/http-gateway-protocol-spec/) respectively.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
