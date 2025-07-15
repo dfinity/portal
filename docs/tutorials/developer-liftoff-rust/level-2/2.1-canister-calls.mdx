@@ -137,15 +137,15 @@ To try it out, call the `caller` canister's `set_then_get` method.
 
 The value read from the `counter` is the same as the value that was set, but this isn't always guaranteed. Since inter-canister calls on ICP are **asynchronous**, another canister could update the counter in between the `set` and `get` calls in `call_get_and_set`.
 
-This won’t happen when running the project locally or on ICP Ninja because you control all the calls. For public projects deployed on the ICP mainnet, other canisters can call the `counter` at any time, which can lead to unexpected results.
+This won't happen when running the project locally or on ICP Ninja because you control all the calls. For public projects deployed on the ICP mainnet, other canisters can call the `counter` at any time, which can lead to unexpected results.
 
 This async model allows for better performance and higher throughput, since canisters don't block each other. However, it also means that:
 
-- State changes aren't atomic. If a later call fails, earlier changes won’t be undone.
+- State changes aren't atomic. If a later call fails, earlier changes won't be undone.
 
 - Callers can end up in an inconsistent state if they panic after making a call.
 
-In the examples so far, this hasn’t been an issue, because the caller canister doesn’t store any state, although it’s important to keep in mind when building real applications.
+In the examples so far, this hasn't been an issue, because the caller canister doesn't store any state, although it's important to keep in mind when building real applications.
 
 ## Next steps
 

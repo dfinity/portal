@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 When building projects on ICP, canisters have access to two main types of data storage:
 
-1. Heap memory: Also known as *main memory*, this is the canister’s temporary working memory. Data stored here is **not persistent** and will be lost when the canister is reinstalled or upgraded.
+1. Heap memory: Also known as *main memory*, this is the canister's temporary working memory. Data stored here is **not persistent** and will be lost when the canister is reinstalled or upgraded.
 
 2. Stable memory: A persistent storage unique to ICP. Unlike heap memory, data in stable memory survives canister upgrades and reinstalls, making it ideal for long-term storage.
 
@@ -19,7 +19,7 @@ Stable memory exists separately from the Wasm heap and is specifically designed 
 
 ## Heap memory
 
-Heap memory is a canister’s standard WebAssembly (Wasm) memory used for temporary data storage. It does not persist across upgrades or reinstallations, meaning any data stored in heap memory is lost when the canister is updated.
+Heap memory is a canister's standard WebAssembly (Wasm) memory used for temporary data storage. It does not persist across upgrades or reinstallations, meaning any data stored in heap memory is lost when the canister is updated.
 
 By default, heap memory is used to store things like variables, function results, and input arguments. It is limited to a **maximum size of 4 GiB**.
 

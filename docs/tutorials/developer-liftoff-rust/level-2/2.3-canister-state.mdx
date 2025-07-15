@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Globally mutable state refers to data that exists across your entire program, is accessible from anywhere, and can be changed during runtime.
 
-On ICP, canisters are designed in a way that naturally encourages the use of globally mutable state. However, Rust’s language design discourages or restricts global mutable variables, which means Rust developers need to adopt code organization strategies that align with ICP’s architecture while respecting Rust’s safety principles. One of these strategies is using `thread_local!` with `Cell/RefCell` for state variables.
+On ICP, canisters are designed in a way that naturally encourages the use of globally mutable state. However, Rust's language design discourages or restricts global mutable variables, which means Rust developers need to adopt code organization strategies that align with ICP's architecture while respecting Rust's safety principles. One of these strategies is using `thread_local!` with `Cell/RefCell` for state variables.
 
 Globally mutable state typically requires thread safety. However, the `RefCell` type in Rust is not thread-safe by default. To safely use `RefCell` for global mutable state, you can wrap it inside a `thread_local!` variable. Since `thread_local!` creates data local to each thread, it does not require thread safety, allowing safe mutation without synchronization overhead.
 
@@ -21,7 +21,7 @@ thread_local! {
 }
 ```
 
-It’s recommended to organize most of your canister’s code into loosely coupled modules and packages that can be tested independently. Code that directly interacts with the system API should generally reside in the main file.
+It's recommended to organize most of your canister's code into loosely coupled modules and packages that can be tested independently. Code that directly interacts with the system API should generally reside in the main file.
 
 Additionally, you can create a thin abstraction layer over the system API to facilitate testing. For example, you might define a trait to abstract the stable memory API like this:
 

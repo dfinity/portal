@@ -1,0 +1,112 @@
+---
+keywords: [intermediate, rust, tutorial, stable memory, rust stable memory, stable structures, rust stable structures, upgrading, upgrade rust, upgrade canister]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# 2.5: Upgrading Rust canisters
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+As mentioned in the previous tutorial, [2.4: Stable memory](2.4-stable-memory.mdx), when a canister is upgraded on ICP, its Wasm module is replaced. In Rust, this creates a challenge because the new code version may not recognize the memory layout of the previous version. Since Rust doesn't guarantee consistent memory layouts across builds, the main memory is wiped during upgrades by default to prevent errors.
+
+To preserve data across upgrades, ICP provides stable memory, a separate memory space that persists even when the code is updated. The traditional approach involves:
+
+- Serializing the canister's state into stable memory using the `pre_upgrade` hook.
+
+- Upgrading the canister, which clears its main memory.
+
+- Deserializing the state in the `post_upgrade` hook.
+
+While this works for small data sets, it doesn't scale well. Large-scale serialization and deserialization can be slow, expensive in cycles, and risky. Stable structures solve this problem by storing data directly in stable memory, eliminating the need for `pre_upgrade` and `post_upgrade` hooks. They are designed to scale safely to gigabytes of data.
+
+Each stable structure is initialized with its own memory and must manage that memory independently. Memory cannot be shared between structures.
+
+To use stable structures in Rust, the [stable-structures library](https://github.com/dfinity/stable-structures#readme) provides simple, scalable tools and examples to help you get started.
+
+## Interactive example
+
+Let's take a look at defining and using a stable structures in a Rust canister.
+
+This project can be opened in [ICP Ninja](https://icp.ninja/i?s=GV86o) or you can create a new local project with the command `dfx new stable_storage_example --type=rust --no-frontend` and replace the code in `src/stable_storage_example_backend/src/lib.rs` with the code detailed below.
+
+### Using stable structures
+
+```rust title="src/stable_storage_example_backend/src/lib.rs"
+use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemory};
+use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap};
+use std::cell::RefCell;
+
+type Memory = VirtualMemory<DefaultMemoryImpl>;
+
+thread_local! {
+    // The memory manager is used for simulating multiple memories. Given a `MemoryId` it can
+    // return a memory that can be used by stable structures.
+    static MEMORY_MANAGER: RefCell<MemoryManager<DefaultMemoryImpl>> =
+        RefCell::new(MemoryManager::init(DefaultMemoryImpl::default()));
+
+    // Initialize a `StableBTreeMap` with `MemoryId(0)`.
+    static MAP: RefCell<StableBTreeMap<u128, u128, Memory>> = RefCell::new(
+        StableBTreeMap::init(
+            MEMORY_MANAGER.with(|m| m.borrow().get(MemoryId::new(0))),
+        )
+    );
+}
+
+// Retrieves the value associated with the given key if it exists.
+#[ic_cdk_macros::query]
+fn get(key: u128) -> Option<u128> {
+    MAP.with(|p| p.borrow().get(&key))
+}
+
+// Inserts an entry into the map and returns the previous value of the key if it exists.
+#[ic_cdk_macros::update]
+fn insert(key: u128, value: u128) -> Option<u128> {
+    MAP.with(|p| p.borrow_mut().insert(key, value))
+}
+
+ic_cdk::export_candid!();
+```
+
+
+### Deploying the example
+
+To upgrade your canister, first you need to deploy the initial version of the canister. Deploy the canister by clicking the "Run" button on ICP Ninja or use the `dfx deploy` command if developing locally.
+
+You can interact with the counter dapp through the Candid UI URL returned in the output log of ICP Ninja or in the output of the `dfx deploy` command, such as:
+
+```bash
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    stable_storage_example_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+Open the URL in a web browser, then interact with the `get` and `insert` methods by entering a `Nat` value in each input box and clicking the 'Call' button.
+
+Since the values that are inserted are being stored in a stable structure, they will persist through a canister upgrade.
+
+### Stable structures in action
+
+Now, let's make some changes to upgrade the canister. If you're developing locally with `dfx`, first stop the canister with the command:
+
+```bash
+dfx canister stop stable_storage_example_backend
+```
+
+Then, alter the code of your canister, such as renaming a variable or adding a new method.
+
+Now, to upgrade the canister, either click "Update" in ICP Ninja or use the following `dfx` commands:
+
+```bash
+dfx build
+dfx canister install stable_storage_example_backend --mode upgrade
+dfx canister start stable_storage_example_backend
+dfx deploy stable_storage_example_backend
+```
+
+Redeploy the canister and observe your changes. The values that you inserted using the `insert` method prior t0o the upgrade can still be retrieved with the `get` method.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
