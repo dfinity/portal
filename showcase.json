@@ -12,11 +12,11 @@
       "Analytics"
     ],
     "stats": "3,000,000+ searches",
-    "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
+    "description": "Kinic is your personal AI memory — a verifiable, searchable vault for everything you care about. Store bookmarks, emails, notes, and retrieve them instantly with AI-powered queries.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/kinic_logo.webp",
     "screenshots": [
-      "/img/showcase/kinic_screenshot.webp"
+      "/img/showcase/Kinic_logo_screenshot.jpg"
     ]
   },
   {
@@ -3004,14 +3004,17 @@
     "name": "Formyfi",
     "display": "Normal",
     "website": "https://formyfi.io",
-    "github": "https://github.com/Talentum-id/formify",
+    "twitter": "https://x.com/formyfi_io",
+    "github": "https://github.com/Talentum-id/formyfi",
     "submittableId": 44539692,
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Creator Economy"
     ],
     "description": "Decentralized & fully onchain forms. Toolset for conducting surveys in Web3, ensuring security and completeness of data.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/formify_logo.jpeg"
+    "logo": "/img/showcase/Formyfi_logo_new.jpg",
+    "oneLiner": "Web3-native form builder for user verification and data collection."
   },
   {
     "id": "blendsafe",
@@ -5995,5 +5998,4 @@
     "logo": "/img/showcase/icpack-logo.svg",
     "oneLiner": "Self-sovereign apps in user's canisters."
   }
-  
 ]
