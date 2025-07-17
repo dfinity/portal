@@ -26,20 +26,9 @@ Among other things, developers can use the `sns-testing` repo to:
 `sns-testing` is just one form of testing the SNS process locally. Developers should feel free to use others, fork/modify `sns-testing`, or create their own.
 :::
 
+It is also recommended that **developers test how the dapp works *after* it has been decentralized and that the dapp can be managed fully by a DAO.** This might require giving some of the permissions that were previously given to admins to DAO canisters or adding new custom proposals and testing that all required flows are covered by these new mechanisms.
 
-## Testing on the mainnet
-
-Once a developer has tested the process of an SNS, it is highly recommended they do [an **"SNS testflight" on mainnet**](./testing-on-mainnet.mdx). An SNS test flight is when a developer deploys their dapp (to the mainnet) and hands control of it to a mock SNS (on the mainnet).
-
-**The main intent of performing an SNS test flight is for developers to experience how a dapp works *after* it has been decentralized, so developers can make sure their dapp is ready for decentralization. It does not test the actual process of decentralizing it.**
-
-:::info
-A test flight is not a repository or a set of tools but an *activity* (deploying a dapp and handing control of it to a mock SNS), so the [instructions for testing on mainnet](./testing-on-mainnet.mdx) utilize various tools, but developers can of course use any tools they wish.
-:::
-
-Among other things, here are some examples of issues developers find when running an SNS test flight:
+Among other things, here are some examples of issues developers find when testing a post-launch SNS:
 - They need a better pipeline for creating proposals to update a dapp.
 - They may have decentralized prematurely and need to fix some things.
 - They may need better monitoring before decentralizing.
-
-The mock SNS used in an SNS test flight gives developers the ability to see what the post-decentralization lifecycle of a dapp looks like but still provides a way for a developer to keep control of their dapp. **Therefore, developers are encouraged to run and perform an SNS test flight on the mainnet, potentially for multiple days or weeks, to ensure that all aspects have been covered.**
