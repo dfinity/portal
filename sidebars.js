@@ -651,7 +651,6 @@ build: [
           },
           items: [
             "building-apps/governing-apps/testing/testing-locally",
-            "building-apps/governing-apps/testing/testing-on-mainnet",
           ],
         },
         {
