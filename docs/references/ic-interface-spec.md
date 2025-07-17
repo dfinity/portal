@@ -2204,7 +2204,7 @@ The following system calls provide access to the canister's environment variable
 
 -   `ic0.env_var_name_exists : (name_src: I, name_size: I) -> i32`; `I ∈ {i32, i64}`
 
-    Checks if an environment variable with the given name exists.
+    Checks if an environment variable with the given name exists. If yes, then a value of 1 is returned, otherwise a 0 is returned.
 
     This system call traps if:
        - `name_size` exceeds the maximum length of a variable name
