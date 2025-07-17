@@ -63,7 +63,7 @@ export default function StringWrapper(props) {
             />
           </div>
         )}
-        <String {...props} />
+        <div id={props.name}><String {...props} /></div>
       </Container>
       {(output || error) && showRunButton ? (
         <Container as="div">

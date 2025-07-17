@@ -87,8 +87,8 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
   },
 
   "67bll-riaaa-aaaaq-aaauq-cai": {
-    // Hot or Not
-    twitter: "https://twitter.com/hotornot_dapp",
+    // DOLR_AI
+    twitter: "https://x.com/DOLR_AI",
     description: (
       <>
         A decentralized short-video social media platform governed by the people

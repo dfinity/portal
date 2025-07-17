@@ -366,6 +366,7 @@ build: [
             "building-apps/network-features/vetkeys/api",
             "building-apps/network-features/vetkeys/dkms",
             "building-apps/network-features/vetkeys/encrypted-onchain-storage",
+            "building-apps/network-features/vetkeys/bls-signatures",
             "building-apps/network-features/vetkeys/identity-based-encryption",
             "building-apps/network-features/vetkeys/timelock-encryption",
           ],
@@ -676,34 +677,39 @@ defi: [
         label: "DeFi on ICP",
         id: "defi/overview",
       },
-      {
-        type: "category",
-        label: "ICP Rosetta implementation",
-        link: {
-          type: "doc",
-          id: "defi/rosetta/icp_rosetta/index",
-        },
-        items: [
-          {
+              {
+          type: "category",
+          label: "ICP Rosetta implementation",
+          link: {
             type: "doc",
-            label: "Data API",
-            id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-          {
-            type: "category",
-            label: "Construction API",
-            link: {
+            id: "defi/rosetta/icp_rosetta/index",
+          },
+          items: [
+            {
               type: "doc",
-              id: "defi/rosetta/icp_rosetta/construction_api/index",
-            },
-            items: [
-            "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-            "defi/rosetta/icp_rosetta/construction_api/staking",
-            "defi/rosetta/icp_rosetta/construction_api/voting",
+              label: "Data API",
+              id: "defi/rosetta/icp_rosetta/data_api/index",
+              },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+              "defi/rosetta/icp_rosetta/construction_api/operations-flow",
+              "defi/rosetta/icp_rosetta/construction_api/staking",
+              "defi/rosetta/icp_rosetta/construction_api/voting",
+              ],
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icp_rosetta/examples",
+              },
             ],
-            },
-          ],
-        },
+          },
         {
           type: "category",
           label: "ICRC Rosetta implementation",
@@ -721,6 +727,11 @@ defi: [
               type: "doc",
               label: "Construction API",
               id: "defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
         },
@@ -834,6 +845,7 @@ btc: [
   "build-on-btc/read-state",
   "build-on-btc/ordinals",
   "build-on-btc/runes",
+  "build-on-btc/brc20",
 ],
 
 references: [
@@ -857,7 +869,6 @@ references: [
       "references/ii-spec",
       "references/icrc1-standard",
       "references/ledger",
-      "references/supported-signatures",
       "references/t-sigs-how-it-works",
       "references/vc-spec",
       "references/vetkeys-overview"
@@ -888,6 +899,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
