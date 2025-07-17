@@ -4,13 +4,13 @@ keywords: [advanced, governance, concept, sns, test sns, testing]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# SNS testing before launch
+# SNS testing
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
 Before SNS creation, it is advisable to thoroughly test the process.
 
-## Testing on a local machine
+## Testing the SNS launch
 
 Developers can **[test on a local machine](./testing-locally.mdx)**. The [sns-testing repository](https://github.com/dfinity/sns-testing) contains scripts that help developers test the SNS creation process. They can deploy the dapp in a local canister development environment and run through [the stages of decentralizing their dapp](../launching/launch-summary-1proposal.mdx).
 
@@ -26,9 +26,13 @@ Among other things, developers can use the `sns-testing` repo to:
 `sns-testing` is just one form of testing the SNS process locally. Developers should feel free to use others, fork/modify `sns-testing`, or create their own.
 :::
 
-It is also recommended that **developers test how the dapp works *after* it has been decentralized and that the dapp can be managed fully by a DAO.** This might require giving some of the permissions that were previously given to admins to DAO canisters or adding new custom proposals and testing that all required flows are covered by these new mechanisms.
+## Testing dapp maintenance under SNS control
+
+While [test on a local machine](./testing-locally.mdx) primarily focuses on testing the launch, it is also recommended that **developers test how the dapp works *after* it has been decentralized and that the dapp can be managed fully by a DAO.** This might require giving some of the permissions that were previously given to admins to DAO canisters or adding new custom proposals and testing that all required flows are covered by these new mechanisms.
 
 Among other things, here are some examples of issues developers find when testing a post-launch SNS:
 - They need a better pipeline for creating proposals to update a dapp.
 - They may have decentralized prematurely and need to fix some things.
 - They may need better monitoring before decentralizing.
+
+These post-launch aspects can also be tested on a local machine. However, as the details are very dapp-specific, the next page focuses on explaining the testing of the SNS launch.
