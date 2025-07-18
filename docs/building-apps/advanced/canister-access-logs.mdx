@@ -1,4 +1,13 @@
-# Streaming Canister Access Logs
+---
+keywords: [intermediate, developer tools, observability, canister monitoring, api boundary nodes, access logs, canister logs]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Streaming canister access logs
+
+<MarkdownChipRow labels={["Intermediate", "Developer tools", "Observability"]} />
 
 API Boundary Nodes (API BNs) form the public edge of the Internet Computer. They handle every incoming request and forward it to the appropriate subnet, replica node, and canister. API BNs log every request and expose these access logs through a WebSocket interface.
 
@@ -6,7 +15,7 @@ This feature allows developers to stream real-time access logs and gain insights
 
 This guide covers the access log format and explains how to stream API BN access logs for your canisters.
 
-## Access Log Format
+## Access log format
 
 Each access log entry is a JSON object with the following fields:
 
@@ -57,7 +66,7 @@ Example:
 }
 ```
 
-## Connecting to API BNs and Streaming Access Logs
+## Connecting to API BNs and streaming access logs
 
 To stream access logs for a specific canister, you need to:
 
@@ -90,7 +99,7 @@ let api_bn_domains: Vec<String> = api_bns
     .collect();
 ```
 
-## Connecting to the WebSocket Endpoint
+## Connecting to the WebSocket endpoint
 
 After obtaining the API BN domains, you can subscribe to them to access logs for a specific canister using the following WebSocket URL format:
 
@@ -105,9 +114,12 @@ Replace `{api_bn_domain}` with the domain of an API BN and `{canister_id}` with 
 wss://api-bn.icp/logs/canister/qoctq-giaaa-aaaaa-aaaea-cai
 ```
 
-**Important:** Each API BN only streams logs for requests it receives. To get complete log coverage, you must connect to all API BNs, as incoming traffic is distributed among them.
 
-## Example Implementation
+:::info
+Each API BN only streams logs for requests it receives. To get complete log coverage, you must connect to all API BNs, as incoming traffic is distributed among them.
+:::
+
+## Example implementation
 
 A complete working example is available in the [dfinity/ic-bn-logs GitHub repository](https://github.com/dfinity/ic-bn-logs).
 
