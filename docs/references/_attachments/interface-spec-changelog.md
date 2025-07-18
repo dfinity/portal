@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.43.0 (2025-07-17) {$0_43_0}
+* VetKD API is considered stable.
+
 ### 0.42.0 (2025-06-06) {#0_42_0}
 * New system API `ic0.root_key_{size, copy}` for fetching the public key of the IC root key.
 
