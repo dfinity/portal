@@ -1,0 +1,118 @@
+# Streaming Canister Access Logs
+
+API Boundary Nodes (API BNs) form the public edge of the Internet Computer. They handle every incoming request and forward it to the appropriate subnet, replica node, and canister. API BNs log every request and expose these access logs through a WebSocket interface.
+
+This feature allows developers to stream real-time access logs and gain insights into how their canisters are being used, particularly for query calls that were previously unobservable.
+
+This guide covers the access log format and explains how to stream API BN access logs for your canisters.
+
+## Access Log Format
+
+Each access log entry is a JSON object with the following fields:
+
+| **Key**                | **Description**                                                                                       |
+|------------------------|-------------------------------------------------------------------------------------------------------|
+| `cache_status`         | Indicates whether the response was served from the API BN cache. Possible values: `HIT`, `MISS`, `BYPASS`, or `DISABLED`. |
+| `cache_bypass_reason`  | Reason the cache was bypassed (e.g., `non_anonymous`).                                                |
+| `client_country_code`  | Two-letter country code of the client (currently always `N/A`).                                       |
+| `client_id`            | A salted hash of the client's IP address and sender principal. Serves as a proxy identifier for the user. |
+| `client_ip_family`     | IP address family of the client: `4` for IPv4 or `6` for IPv6.                                        |
+| `duration`             | Time taken to process the request, in seconds.                                                        |
+| `error_cause`          | Categorical cause of error (e.g., `malformed_request`, `canister_not_found`).                         |
+| `error_details`        | Additional details about the error, if available.                                                     |
+| `http_status`          | HTTP response status code (e.g., `200`, `404`, `500`).                                                |
+| `http_version`         | HTTP version used for the request (e.g., `1.1`, `2.0`).                                               |
+| `ic_canister_id`       | The principal ID of the canister that was targeted.                                                   |
+| `ic_method`            | Name of the canister method invoked (e.g., `http_request`).                                           |
+| `ic_node_id`           | ID of the replica node that processed the request.                                                    |
+| `ic_subnet_id`         | ID of the subnet where the canister resides.                                                          |
+| `request_id`           | Request ID used internally for logging/tracing in the boundary node infrastructure.                   |
+| `request_size`         | Size of the incoming request in bytes.                                                                |
+| `request_type`         | Type of IC request: `query`, `call`, `sync_call`, or `read_state` (see the [interface spec](https://internetcomputer.org/docs/references/ic-interface-spec#http-interface) for more information).                                  |
+| `response_size`        | Size of the response in bytes.                                                                        |
+| `timestamp`            | UTC timestamp when the request was received (ISO 8601-compliant timestamp with nanosecond precision). |
+
+Example:
+```
+{
+  "cache_bypass_reason": "none",
+  "cache_status": "DISABLED",
+  "client_country_code": "N/A",
+  "client_id": "ab6e7b821eb97295e3d20cec94160288",
+  "client_ip_family": 4,
+  "duration": 0.028693668,
+  "error_cause": null,
+  "error_details": null,
+  "http_status": 200,
+  "http_version": "2.0",
+  "ic_canister_id": "qoctq-giaaa-aaaaa-aaaea-cai",
+  "ic_method": "http_request",
+  "ic_node_id": "zatyv-4l26n-3lecc-xpeme-ul34o-yiye2-3d447-aiiz4-5pxtm-v44nh-cqe",
+  "ic_subnet_id": "tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe",
+  "request_id": "01981771-547c-7ea3-9d72-05b2ddbdda3d",
+  "request_size": 694,
+  "request_type": "query",
+  "response_size": 2818,
+  "timestamp": "2025-07-17T08:12:39.964131788Z"
+}
+```
+
+## Connecting to API BNs and Streaming Access Logs
+
+To stream access logs for a specific canister, you need to:
+
+1. Obtain the list of all API BN domains
+2. Set up a WebSocket connection with each API BN
+3. Stream the logs
+
+A sample implementation in Rust is available at [dfinity/ic-bn-logs](https://github.com/dfinity/ic-bn-logs).
+
+## Discovering API BNs
+
+To obtain the current list of API BNs, fetch them from the certified state of any subnet using `agent-rs`:
+
+```rust
+use candid::Principal;
+use ic_agent::Agent;
+
+let agent = Agent::builder()
+    .with_url("https://icp-api.io")
+    .build()?;
+
+let subnet_id = Principal::from_text("tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe")?;
+let api_bns = agent
+    .fetch_api_boundary_nodes_by_subnet_id(subnet_id)
+    .await?;
+
+let api_bn_domains: Vec<String> = api_bns
+    .iter()
+    .map(|node| node.domain.clone())
+    .collect();
+```
+
+## Connecting to the WebSocket Endpoint
+
+After obtaining the API BN domains, you can subscribe to them to access logs for a specific canister using the following WebSocket URL format:
+
+```
+wss://{api_bn_domain}/logs/canister/{canister_id}
+```
+
+Replace `{api_bn_domain}` with the domain of an API BN and `{canister_id}` with your target canister's ID.
+
+**Example:**
+```
+wss://api-bn.icp/logs/canister/qoctq-giaaa-aaaaa-aaaea-cai
+```
+
+**Important:** Each API BN only streams logs for requests it receives. To get complete log coverage, you must connect to all API BNs, as incoming traffic is distributed among them.
+
+## Example Implementation
+
+A complete working example is available in the [dfinity/ic-bn-logs GitHub repository](https://github.com/dfinity/ic-bn-logs).
+
+This Rust implementation demonstrates how to:
+* Use `agent-rs` to fetch all API boundary nodes
+* Open WebSocket connections to each API BN
+* Subscribe to logs for a specified canister
+* Stream the logs to stdout in real-time
