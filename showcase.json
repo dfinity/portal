@@ -5997,6 +5997,37 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpack-logo.svg",
     "oneLiner": "Self-sovereign apps in user's canisters."
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado",
+    "display": "Normal",
+    "website": "https://avcd.hodl.fyi/",
+    "twitter": "https://x.com/av8cado",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Avocado ($AVCD) is a highly deflationary governance token that powers the Avocado DAO on the Internet Computer ecosystem",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/AVCD_logo.png",
+    "oneLiner": "$AVCD is the most deflationary token in the $ICP ecosystem"
+  },
+  {
+    "id": "webhash",
+    "name": "Webhash",
+    "display": "Normal",
+    "website": "https://webhash.com/",
+    "twitter": "https://x.com/webhash_eth",
+    "github": "https://github.com/WebHash-eth/ICP",
+    "youtube": "https://www.youtube.com/@webhash_eth",
+    "submittableId": 48953717,
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "description": "Webhash is a no-code builder to design and deploy websites on the Internet Computer (ICP) with one-click publishing and custom domain support.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/webhash logo.svg",
+    "oneLiner": "Decentralised website builder for ICP"
   }
-  
 ]
