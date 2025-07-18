@@ -36,6 +36,7 @@ docs/building-apps/canister-management/backtraces.mdx @dfinity/execution
 
 # Boundary Node
 docs/building-apps/frontends/custom-domains/ @dfinity/boundary-node
+docs/building-apps/advanced/canister-access-logs.mdx @dfinity/boundary-node
 
 # Trust
 docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust
