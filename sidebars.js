@@ -271,6 +271,7 @@ build: [
             "building-apps/advanced/optimize/rust",
           ],
         },
+        "building-apps/advanced/canister-access-logs",
       ],
     },
     {
