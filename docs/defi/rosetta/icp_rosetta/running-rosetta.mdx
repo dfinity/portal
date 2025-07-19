@@ -1,0 +1,274 @@
+---
+keywords: [intermediate, rosetta, tutorial, docker, source, local cluster, validation cloud, deployment]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Running ICP Rosetta
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta"]} />
+
+There are several ways to run ICP Rosetta depending on your use case and requirements. This guide covers all available deployment methods.
+
+## Docker (Recommended)
+
+The easiest way to run ICP Rosetta is using the official Docker image. This method is recommended for most users.
+
+### Prerequisites
+
+- [x] [Docker](https://docs.docker.com/get-docker/) installed and running.
+- [x] [Docker daemon](https://docs.docker.com/config/daemon/) started.
+
+### Step 1: Pull the latest image
+
+```bash
+docker pull dfinity/rosetta-api
+```
+
+### Step 2: Run the container
+
+For the **test ICP ledger** on mainnet (recommended for testing):
+
+```bash
+docker run \
+    --interactive \
+    --tty \
+    --publish 8081:8081 \
+    --rm \
+    dfinity/rosetta-api \
+    --canister-id xafvr-biaaa-aaaai-aql5q-cai \
+    --token-sybol TESTICP \
+    --mainnet \
+    --not-whitelisted
+```
+
+For the **official ICP ledger** on mainnet:
+
+```bash
+docker run \
+    --interactive \
+    --tty \
+    --publish 8081:8081 \
+    --rm \
+    dfinity/rosetta-api \
+    --mainnet \
+    --not-whitelisted
+```
+
+:::info
+To get TESTICP tokens for testing, you can use [Validation Cloud's free faucet](https://docs.validationcloud.io/v1/about/faucets). This provides test tokens without needing to use real ICP on mainnet.
+:::
+
+For a specific **test ledger canister**:
+
+```bash
+docker run \
+    --interactive \
+    --tty \
+    --publish 8081:8081 \
+    --rm \
+    dfinity/rosetta-api \
+    --canister 2xh5f-viaaa-aaaab-aae3q-cai
+```
+
+### Step 3: Production deployment
+
+For production environments, run without interactive flags and optionally persist data:
+
+```bash
+# Create a volume for data persistence
+docker volume create rosetta
+
+# Run in production mode
+docker run \
+    --volume rosetta:/data \
+    --publish 8081:8081 \
+    --detach \
+    dfinity/rosetta-api \
+    --mainnet \
+    --not-whitelisted
+```
+
+### Docker versioning
+
+It's recommended to use specific versions in production:
+
+```bash
+docker run \
+    --publish 8081:8081 \
+    --detach \
+    dfinity/rosetta-api:v2.0.0 \
+    --mainnet \
+    --not-whitelisted
+```
+
+Check available versions on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
+
+## Building from source
+
+You can build and run ICP Rosetta directly from the Internet Computer source code.
+
+### Prerequisites
+
+- [x] [Bazel](https://bazel.build/) build system.
+- [x] Internet Computer repository cloned locally: `git clone https://github.com/dfinity/ic.git`.
+
+### Build and run
+
+```bash
+# Clone the IC repository (if not already done)
+git clone https://github.com/dfinity/ic.git
+cd ic
+
+# Build and run ICP Rosetta
+bazel run //rs/rosetta-api/icp:ic-rosetta-api -- \
+    --port 8081 \
+    --mainnet \
+    --not-whitelisted \
+    --store-location /tmp
+```
+
+:::info
+The `--store-location` parameter is important when running from source as it specifies where the database files will be stored. Without this parameter, the default location may not be writable or accessible.
+:::
+
+This method gives you the latest development version and allows for custom modifications.
+
+## Local cluster
+
+For development and testing purposes, you can set up a complete local Kubernetes cluster with monitoring tools.
+
+
+The local cluster setup provides:
+- Minikube-based Kubernetes cluster.
+- Prometheus and Grafana for monitoring.
+- cAdvisor for container metrics.
+- Both ICP and ICRC1 Rosetta services.
+
+The deployment script will help install missing dependencies:
+- Docker.
+- Minikube.
+- kubectl.
+- Helm.
+
+### Deploying production images
+
+```bash
+# Clone the IC repository
+git clone https://github.com/dfinity/ic.git
+cd ic/rs/rosetta-api/local/cluster
+
+# Deploy with default test ledgers
+./deploy.sh
+
+# Deploy pointing to specific ledgers
+./deploy.sh \
+    --icp-ledger xafvr-biaaa-aaaai-aql5q-cai \
+    --icp-symbol TESTICP \
+    --icrc1-ledger 3jkp5-oyaaa-aaaaj-azwqa-cai
+```
+
+### Deploying local images
+
+First, build the containers from within the dev container:
+
+```bash
+# Enter dev container
+./ci/container/container-run.sh
+
+# Build ICP Rosetta
+bazel build //rs/rosetta-api/icp:rosetta_image.tar
+mv bazel-bin/rs/rosetta-api/icp/rosetta_image.tar /tmp
+
+# Build ICRC1 Rosetta
+bazel build //rs/rosetta-api/icrc1:icrc_rosetta_image.tar
+mv bazel-bin/rs/rosetta-api/icrc1/icrc_rosetta_image.tar /tmp
+
+# Exit dev container
+exit
+```
+
+Then deploy the local images:
+
+```bash
+./deploy.sh \
+    --local-icp-image-tar /tmp/rosetta_image.tar \
+    --local-icrc1-image-tar /tmp/icrc_rosetta_image.tar
+```
+
+### Monitoring with Grafana
+
+Access Grafana at `http://localhost:3000` with:
+- Username: `admin`.
+- Password: `admin`.
+
+Import the dashboard using the `rosetta_load_dashboard.json` file in the cluster directory.
+
+### Cleaning up
+
+To start fresh:
+
+```bash
+./deploy.sh --clean
+```
+
+## Validation Cloud
+
+For those who prefer not to run Rosetta locally, Validation Cloud offers managed ICP Rosetta endpoints that you can use for learning, development, and production.
+
+### Features
+
+- Managed infrastructure (no local setup required).
+- Global distribution with multi-region support.
+- 99.99% uptime SLA.
+- 24/7 customer support.
+- SOC 2 Type 2 compliance.
+
+### Getting started
+
+1. Visit [Validation Cloud ICP page](https://www.validationcloud.io/icp).
+2. Sign up for an account.
+3. Choose between Free tier (50M Compute Units) or Scale plan (unlimited).
+4. Get your API endpoint and start building.
+
+### Supported APIs
+
+- ICP Rosetta nodes for ledger communication.
+- ICRC API for token interactions.
+- Access to NNS governance canister.
+
+This option is useful for:
+- Quick prototyping and learning.
+- Development without local infrastructure setup.
+- Production applications that prefer managed services.
+
+## Verification and testing
+
+Regardless of the deployment method, you can verify your Rosetta node is working:
+
+### Check node status
+
+```bash
+curl -H "Content-Type: application/json" \
+  -d '{"network_identifier": {"blockchain": "Internet Computer", "network": "00000000000000020101"}}' \
+  -X POST http://localhost:8081/network/status
+```
+
+### Check version
+
+```bash
+curl -H "Content-Type: application/json" \
+  -d '{"network_identifier": {"blockchain": "Internet Computer", "network": "00000000000000020101"}}' \
+  -X POST http://localhost:8081/network/options | jq '.version.node_version'
+```
+
+### Wait for sync
+
+Look for the message: `You are all caught up to block XX` in the logs to confirm the node is synchronized.
+
+## Requirements and limitations
+
+- **Transaction timing**: Unsigned transactions must be created less than 24 hours before submission due to the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
+- **Signature schemes**: Examples typically use Ed25519 and SECP256k1.
+- **Port**: Default listening port is 8081.
+- **Data persistence**: Mount `/data` directory as a volume for Docker deployments.
