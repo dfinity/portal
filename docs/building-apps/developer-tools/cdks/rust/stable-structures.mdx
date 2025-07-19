@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Stable structures are a set of scalable data structures designed storing data and allowing it to grow to gigabytes in size without the need for `pre_upgrade`/`post_upgrade` hooks. Using `pre_` and `post_upgrade` hooks is discouraged. It is error-prone and can render a canister unusable.
 
-When a stable structure is initialized, memory is provided to the data structure. Each data structure manages is own memory and cannot share memories with other structures.
+When a stable structure is initialized, memory is provided to the data structure. Each data structure manages its own memory and cannot share memories with other structures.
 
 To use stable structures, the Rust [stable structure library](https://github.com/dfinity/stable-structures#readme) exists. It simplifies managing data structures directly in stable memory and provides example code templates. A brief example can be found below:
 
