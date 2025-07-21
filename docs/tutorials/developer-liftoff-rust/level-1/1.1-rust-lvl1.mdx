@@ -19,11 +19,13 @@ Rust is especially well-suited for developing canisters on the ICP because:
 
 - Has a strong tooling ecosystem.
 
+
 ## The `ic-cdk`
 
 The `ic-cdk` provides a library for writing canister code in Rust that can be compiled into a WebAssembly module that can be installed into a canister and deployed on ICP. Each canister must define entry points. An entry point can be exposed (or made 'public') so that it can be called by other canisters or users.
 
 To use the `ic-cdk`, first include it in a project's `Cargo.toml` file:
+
 
 ```toml
 [lib]
@@ -202,8 +204,6 @@ Then you can omit the `build` and `wasm` fields in favor of the `package` and `t
       "type": "rust"
     },
 ```
-
-### Rust Wasm limitations
 
 Canisters written in Rust have a set of limitations imposed by the Wasm compiler due to the fact that the IC does not provide a file system, network access, or other functionalities at the moment. These limitations include:
 
