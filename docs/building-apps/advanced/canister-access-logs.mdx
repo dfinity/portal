@@ -83,20 +83,28 @@ To obtain the current list of API BNs, fetch them from the certified state of an
 ```rust
 use candid::Principal;
 use ic_agent::Agent;
+use anyhow::Result;
 
-let agent = Agent::builder()
-    .with_url("https://icp-api.io")
-    .build()?;
+#[tokio::main]
+async fn main() -> Result<()> {
+    let agent = Agent::builder()
+        .with_url("https://icp-api.io")
+        .build()?;
 
-let subnet_id = Principal::from_text("tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe")?;
-let api_bns = agent
-    .fetch_api_boundary_nodes_by_subnet_id(subnet_id)
-    .await?;
+    let subnet_id = Principal::from_text("tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe")?;
+    let api_bns = agent
+        .fetch_api_boundary_nodes_by_subnet_id(subnet_id)
+        .await?;
 
-let api_bn_domains: Vec<String> = api_bns
-    .iter()
-    .map(|node| node.domain.clone())
-    .collect();
+    let api_bn_domains: Vec<String> = api_bns
+        .iter()
+        .map(|node| node.domain.clone())
+        .collect();
+
+    println!("API Boundary Node Domains: {:?}", api_bn_domains);
+
+    Ok(())
+}
 ```
 
 ## Connecting to the WebSocket endpoint
