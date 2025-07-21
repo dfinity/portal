@@ -14,7 +14,7 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Validate Submodule Commits
+      - name: Validate submodule commits
         run: |
           # Submodules are very easy to accidentally overwrite with old versions.
           # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
