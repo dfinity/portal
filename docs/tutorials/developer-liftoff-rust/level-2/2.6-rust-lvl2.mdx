@@ -31,7 +31,7 @@ For unbounded-wait calls, the only causes of non-clean rejects are panics or exp
 
 It's also recommended to design idempotent endpoints, which are calls that have the same effect whether executed once or multiple times. These practices are especially helpful for ingress calls from users or external applications interacting with your canister via HTTP.
 
-While unbounded-wait calls offer simple error handling, they rely on the assumption that the callee won't trap. A callee trap produces a return value and allows the caller to continue, same as a callee response. There is a failure to upgrade risk if the call is delayed, not halted, because of either serious system load or a pathological callee that will keep making more outcalls to keep the context alive.
+While unbounded-wait calls offer simple error handling, they rely on the assumption that the callee will return swiftly. An unbounded-wait call can be delayed for long periods of time by serious system load, or a pathological callee that will keep making more outcalls to keep the context alive. This creates the risk of being unable to upgrade a canister since all the canister's existing calls must return before upgrading it.
 
 To avoid this scenario, you can use bounded-wait calls, which give you more control over how long the caller waits for a response. This approach is safer, especially when dealing with unreliable or potentially buggy callees.
 
