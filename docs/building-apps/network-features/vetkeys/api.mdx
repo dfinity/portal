@@ -181,8 +181,11 @@ import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/
 
 const transportSecretKey = TransportSecretKey.random();
 const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
-// the called canister uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
-const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes(), new Uint8Array(0));
+// unique input should be provided for each derived vetKey
+// we only need one vetKey in this example, so we choose to have the simplest possible `input` - an empty vector
+const input = new Uint8Array(0);
+// the called canister uses the caller's principal as part of `context` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
+const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes(), input);
 const encryptedVetKey = EncryptedVetKey(encryptedVetKeyBytes);
 ```
 
@@ -197,11 +200,11 @@ Once retrieved, you must decrypt and verify the received encrypted vetKey.
 <TabItem value="ts" label="Typescript" default>
 
 ```ts
+// the called canister uses the caller's principal as part of `context` when calling the management canisters `vetkd_public_key` endpoint under the hood (see code in Step 1)
 const publicKeyBytes = await canisterClient.vetkd_public_key();
 const publicKey = DerivedPublicKey.deserialize(publicKeyBytes);
-const myPrincipalBytes = // serialize caller's principal as `Uint8Array`
-// the called canister uses the caller's principal as `input` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
-const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, myPrincipalBytes);
+// pass `input` from Step 2 to the verification function
+const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, input);
 ```
 
 </TabItem>
