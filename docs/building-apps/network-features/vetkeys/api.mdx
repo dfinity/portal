@@ -60,9 +60,9 @@ Deriving a vetKey typically involves both the frontend and backend components of
 
 Expose the vetKD endpoints in the backend canister API so that the frontend can retrieve and verify vetKeys.
 
-In this example, an encoding of the caller's identity is used part of the `context` parameter to `VetKDDeriveKeyArgs`.
+In this example, an encoding of the caller's identity is used as part of the `context` parameter to `VetKDDeriveKeyArgs`.
 Since the caller of a canister is authenticated using II and public key cryptography, the dapp is sure that
-the key returned is both unique to that caller, and that caller is the only party which can retrieve that
+the key returned is both unique to that caller and `input`, and that caller is the only party which can retrieve that
 particular key.
 
 Using the caller-provided `input` parameter, the caller can derive arbitrarily many unique vetKeys that only that user can retrieve and decrypt.
@@ -181,7 +181,7 @@ import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/
 
 const transportSecretKey = TransportSecretKey.random();
 const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
-// unique input should be provided for each derived vetKey
+// unique `input` should be provided for each derived vetKey
 // we only need one vetKey in this example, so we choose to have the simplest possible `input` - an empty vector
 const input = new Uint8Array(0);
 // the called canister uses the caller's principal as part of `context` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
