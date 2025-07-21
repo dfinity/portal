@@ -22,7 +22,9 @@ Below is an example implementation of encrypted onchain storage using the `Encry
 
 It is a **ready-to-use solution**. It offers:
 
-- **Simple, cleartext frontend APIs** for key derivation and data encryption. No need to define or manage your own cryptographic primitives.
+- **Simple frontend APIs** for key derivation and data encryption. No need to define or manage your own cryptographic primitives.
+
+- **Transparent encryption/decryption** in the frontend. Data is automatically and transparently both encrypted before storage and decrypted upon retrieval in the frontend.
 
 - **Efficiency** in design. Reduce the number of `vetKey` derivation calls, saving on compute, time, and API fees.
 
@@ -166,8 +168,39 @@ const result = await encryptedMaps.setUserRights(mapOwner, mapName, user, access
 
 - **[Password manager](https://github.com/dfinity/vetkeys/tree/main/examples/password_manager)**: Use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encrypted using vetKeys.
 
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager/motoko)
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager/rust)
+
+</TabItem>
+
+</AdornedTabs>
+
 - **[Password manager with metadata](https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata)**: Store additional metadata in the canister (both user-provided and canister-generated) and include this metadata alongside the encrypted data in atomic password addition or removal operations.
 
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata/motoko)
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata/rust)
+
+</TabItem>
+
+</AdornedTabs>
 
 ## Extensibility
 

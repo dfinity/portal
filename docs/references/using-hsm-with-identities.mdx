@@ -1,6 +1,7 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { OsType, useOs } from "/src/hooks/useOs";
 
 # Using HSM with dfx identities
 
@@ -85,15 +86,13 @@ Continue with the following steps.
 
 <TabItem value={OsType.Windows} label="Windows">
 
+1. Click Start and type `cmd` to open the command prompt.
 
+2. Type `cd..` then hit `Enter` to go up a folder in the directory.
 
-Click Start and type cmd to open the command prompt
-Type cd.. And hit enter to go up a folder in the directory
-Repeat as necessary until you are at the C:\> prompt
-Go to the folder that the OpenSC tools are in which should be in your Program Files folder. If it is, then you would go there by typing this: 
-cd Program Files/OpenSC Project/OpenSC/tools
-Continue with the following directions. (You can copy and paste with Control-V into the command prompt if you wish)
+3. Repeat as necessary until you are at the `C:\>` prompt.
 
+4. Go to the folder that the OpenSC tools are in, which should be in your `Program Files` folder. If it is, then you would go there by typing: `cd Program Files/OpenSC Project/OpenSC/tools`.
 
 </TabItem>
 
@@ -114,8 +113,6 @@ Come up with a 6-digit string to change your pin.
 :::caution
 For HSMs that are used as node operators for onboarding nodes, the PIN needs to stay 648219. The orchestrator needs this PIN pre-set to sign the join request to the NNS.
 :::
-
-```
 
 5. `pkcs11-tool -k --key-type EC:prime256v1 --login -d 01`
 

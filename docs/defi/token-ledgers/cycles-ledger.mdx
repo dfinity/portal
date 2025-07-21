@@ -22,6 +22,14 @@ It is important to note that the cycles ledger does not provide the ability to m
 
 If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used.
 
+:::caution 
+When deploying a new canister, if a cycles wallet is configured, then `dfx` will use that, otherwise the cycles ledger will be used. 
+
+A cycles wallet can be removed using `rm ~/.config/dfx/identity/<identity name>/wallets.json`.
+
+A cycles wallet can be removed using `rm ~/.config/dfx/identity/<identity name>/wallets.json`.
+:::
+
 The cycles ledger complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, it also interacts with the <GlossaryTooltip>NNS</GlossaryTooltip> canisters and user canisters to provide specific functions:
 
 - Accepting incoming cycles sent from other canisters.
@@ -119,9 +127,19 @@ All commands shown below are for workflows involving mainnet development. For lo
 |-----------------------|-----------------------|-----------------------|
 | Checking the cycles balance | `dfx wallet balance --network ic`  | `dfx cycles balance --network ic` |
 | Converting ICP tokens into cycles | `dfx ledger create-canister PRINCIPAL_ID --amount AMOUNT --network ic` |  `dfx cycles convert --amount AMOUNT --network ic` |
-| Transferring cycles |  `dfx wallet send PRINCIPAL_ID AMOUNT --network ic`   | `dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic` |
 | Redeeming a cycles coupon |  `dfx wallet redeem-faucet-coupon 'ABCDE-ABCDE-ABCDE'`     |  `dfx cycles redeem-faucet-coupon ABCDE-ABCDE-ABCDE --network ic`  |
 | Topping up a canister     | `dfx wallet send PRINCIPAL_ID AMOUNT --network ic` | `dfx cycles top-up CANISTER_ID AMOUNT --network ic` |
 | Creating a canister with cycles | `dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic` |  `dfx canister create CANISTER_NAME --with-cycles AMOUNT --no-wallet --network ic` |
 
+### Transferring cycles from a wallet to the cycles ledger
 
+To transfer cycles from a cycles wallet to the cycles ledger, you must call the ledger’s deposit method. When doing so, avoid transferring the wallet's entire balance and ensure a small buffer of cycles remains to cover the transaction's execution cost. Failing to leave this margin will result in a `Failed to send` error.
+
+Additionally, it’s recommended not to delete the cycles wallet, as it may still control a canister you might need to access in the future.
+To transfer all cycles from a cycles wallet to the cycles ledger, then stop using the cycles wallet, run the following command:
+
+```
+dfx canister call --ic um5iw-rqaaa-aaaaq-qaaba-cai deposit "(record { to = record { owner = principal \"$(dfx identity get-principal)\"} })" --with-cycles 1_000_000_000_000 --wallet $(dfx identity get-wallet --ic)
+```
+
+Change the number of cycles to the amount you'd like to transfer.
