@@ -22,7 +22,7 @@ While this works for small data sets, it doesn't scale well. Large-scale seriali
 
 Each stable structure is initialized with its own memory and must manage that memory independently. Memory cannot be shared between structures.
 
-To use stable structures in Rust, the [stable-structures library](https://github.com/dfinity/stable-structures#readme) provides simple, scalable tools and examples to help you get started.
+To use stable structures in Rust, the [`ic-stable-structures` library](https://github.com/dfinity/stable-structures#readme) provides simple, scalable tools and examples to help you get started.
 
 ## Interactive example
 
@@ -54,13 +54,13 @@ thread_local! {
 }
 
 // Retrieves the value associated with the given key if it exists.
-#[ic_cdk_macros::query]
+#[ic_cdk::query]
 fn get(key: u128) -> Option<u128> {
     MAP.with(|p| p.borrow().get(&key))
 }
 
 // Inserts an entry into the map and returns the previous value of the key if it exists.
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 fn insert(key: u128, value: u128) -> Option<u128> {
     MAP.with(|p| p.borrow_mut().insert(key, value))
 }

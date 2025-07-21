@@ -20,10 +20,10 @@ However, the response can still indicate a failure. For instance, the call might
 For example, consider the following:
 
 ```rust reference
-https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/caller/src/lib.rs#L62-L80
+https://github.com/dfinity/examples/blob/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls/src/caller/src/lib.rs#L62-L80
 ```
 
-[Open this example in ICP Ninja to make calls and experiment with this code](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/inter-canister-calls).
+[Open this example in ICP Ninja to make calls and experiment with this code](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls).
 
 A clean reject when calling `increment` means the counter hasn't changed. In general, if a call that modifies the callee's state is cleanly rejected, the state remains untouched. However, with a non-clean reject, you can't be sure what happened on the callee's side.
 
@@ -31,7 +31,7 @@ For unbounded-wait calls, the only causes of non-clean rejects are panics or exp
 
 It's also recommended to design idempotent endpoints, which are calls that have the same effect whether executed once or multiple times. These practices are especially helpful for ingress calls from users or external applications interacting with your canister via HTTP.
 
-While unbounded-wait calls offer simple error handling, they rely on the assumption that the callee won't trap. If it does, and the caller is waiting indefinitely, that wait can block clean upgrades of the caller canister since upgrades require all outstanding calls to complete.
+While unbounded-wait calls offer simple error handling, they rely on the assumption that the callee won't trap. A callee trap produces a return value and allows the caller to continue, same as a callee response. There is a failure to upgrade risk if the call is delayed, not halted, because of either serious system load or a pathological callee that will keep making more outcalls to keep the context alive.
 
 To avoid this scenario, you can use bounded-wait calls, which give you more control over how long the caller waits for a response. This approach is safer, especially when dealing with unreliable or potentially buggy callees.
 
@@ -50,7 +50,7 @@ Bounded-wait calls use a more complex error handling. With unbounded calls, non-
 Consider the following:
 
 ```rust reference
-https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/caller/src/lib.rs#L82-L99
+https://github.com/dfinity/examples/blob/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls/src/caller/src/lib.rs#L82-L99
 ```
 
 [Open this example in ICP Ninja to make calls and experiment with bounded-wait calls](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/inter-canister-calls).
@@ -68,7 +68,7 @@ There are two main reasons why you would need to attach cycles to a call:
 In the following example, the `sign_message` method is called, and cycles are attached to cover the cost of the signature:
 
 ```rust reference
-https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
+https://github.com/dfinity/examples/blob/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
 ```
 
 You can attach cycles to both bounded and unbounded wait calls. With unbounded calls, unused cycles are always refunded if the call fails. With bounded calls, cycles may be lost if the call fails with a `SysUnknown` reject code (which means it timed out).

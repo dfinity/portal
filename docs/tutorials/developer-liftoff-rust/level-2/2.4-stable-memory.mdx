@@ -24,7 +24,7 @@ Stable structures are scalable data that solve this problem by storing data dire
 
 Each stable structure is initialized with its own memory and must manage its memory independently. Memory cannot be shared between structures.
 
-To use stable structures in Rust, you can leverage the [stable-structures library](https://github.com/dfinity/stable-structures#readme), which simplifies working with stable memory and provides example templates to help you get started.
+To use stable structures in Rust, you can leverage the [`ic-stable-structures` library](https://github.com/dfinity/stable-structures#readme), which simplifies working with stable memory and provides example templates to help you get started.
 
 ### Available data structures
 
@@ -81,18 +81,9 @@ Stable structures use the abstract `Memory` trait, meaning they can work with an
 
 ## Each structure requires its own memory
 
-Stable structures can't share the same memory. If you try to initialize two data structures with the same memory, they'll interfere with each other. For example:
+Stable structures can't share the same memory. If you try to initialize two data structures with the same memory, they'll interfere with each other.
 
-```rust
-let mut map_1 = BTreeMap::init(DefaultMemoryImpl::default());
-let mut map_2 = BTreeMap::init(DefaultMemoryImpl::default()); // Shares the same memory
-
-map_1.insert(1, 2);
-map_2.insert(1, 3);
-assert_eq!(map_1.get(&1), Some(2)); // This may fail
-```
-
-## Using `MemoryManager`
+### Using `MemoryManager`
 
 To avoid conflicts, use the `MemoryManager` to create separate virtual memories. You can create up to 255 of them:
 

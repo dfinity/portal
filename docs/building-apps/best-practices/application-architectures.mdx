@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 A common question when developing an application is how and where to store the data. In contrast to traditional platforms, ICP does not provide a database.
 Instead, ICP can persist changes in a <GlossaryTooltip>canister</GlossaryTooltip>'s state using stable memory.
-This means that developers have a lot of freedom with regards to how they can organize and store data. The recommended practice is to use already existing libraries, such as the Motoko [stable regions](/docs/motoko/main/stable-memory/stable-regions) library or the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
+This means that developers have a lot of freedom with regards to how they can organize and store data. The recommended practice is to use already existing libraries, such as the Motoko [stable regions](/docs/motoko/main/stable-memory/stable-regions) library or the Rust [`ic-stable-structures`](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
 
 Another question that developers should ask is how to structure their application. It is possible to build an application using a single canister or multiple canisters that communicate with each other.
 
