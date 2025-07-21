@@ -39,7 +39,7 @@ Want to take a deeper dive? Check out an [in-depth look at the ICP execution mod
 
 ## Query calls
 
-Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that hosting the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that hosts the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
 Setting functions as query functions where appropriate can be an effective way to improve application performance, as query calls are returned faster than update calls. However, compared to update calls, the trade-off of a query call's increased performance is decreased security, since their response is not verified through consensus.
 
@@ -123,11 +123,11 @@ https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/ca
 
 Deploy the project by selecting the [ICP Ninja 'Run' button](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/inter-canister-calls). Alternatively, you can deploy this project locally with `dfx`.
 
-Once deployed, open the Candid interface. Call the `call_get_and_set` method by entering the principal of the `caller` canister (found by viewing the `caller` canister's Candid UI and copying the principal ID shown at the top of the window.) and a numerical value. This will set the value of the `counter` canister's `counter` variable.
+Once deployed, open the Candid interface. Call the `call_get_and_set` method by entering the principal of the `caller` canister (found by viewing the `caller` canister's Candid UI and copying the principal ID shown at the top of the window) and a numerical value. This will set the value of the `counter` canister's `counter` variable.
 
 As you've seen, inter-canister calls use the Rust `async/await` syntax, indicating that these calls are asynchronous. This represents a key difference from the messaging model used by some other blockchains. While this approach allows for significantly higher throughput, it also introduces considerations around execution order and correctness.
 
-To demonstrate this, consider the following example, which first calls the `set` method on the `counter` canister, followed by a call to `get`::
+To demonstrate this, consider the following example, which first calls the `set` method on the `counter` canister, followed by a call to `get`:
 
 ```rust reference
 https://github.com/dfinity/examples/blob/master/rust/inter-canister-calls/src/caller/src/lib.rs#L42-L60

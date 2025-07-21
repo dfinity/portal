@@ -52,7 +52,7 @@ When upgrading a Rust canister while preserving stable memory, the following pro
 1. Stop the canister.
 2. The canister's heap memory is cleared and a new Wasm module is prepared.
 3. The new Wasm code is installed using `--mode upgrade`.
-4. The canister starts running the upgraded code. The `init` function is not called during this process.
+4. The canister starts running the upgraded code. The `#[init]` function is not called during this process.
 5. The previous stable memory is retained and accessible in the new version.
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
