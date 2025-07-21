@@ -29,7 +29,7 @@ Timers are implemented on two layers:
 
     - [Rust](https://crates.io/crates/ic-cdk-timers)
 
-    - [Motoko](/docs/motoko/main/writing-motoko/timers)
+    - [Motoko](/docs/motoko/icp-features/timers)
 
     - [TypeScript (Azle)](https://demergent-labs.github.io/azle/timers.html)
 
@@ -55,7 +55,7 @@ For the code composability reasons, i.e., to be able to use different libraries 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl file=../../motoko/main/examples/Reminder.mo
+```motoko no-repl file=../../motoko/examples/Reminder.mo
 
 ```
 
@@ -105,7 +105,7 @@ Once an Internet Computer canister exports the `canister_heartbeat` function, it
 
 The only way to disable the heartbeats is to upgrade the canister to a version that does not export the `canister_heartbeat` method. Also, the heartbeat interval is implementation-defined, and there is no way to adjust it.
 
-Because of those limitations, in most cases, the CDK timers library for [Rust](https://crates.io/crates/ic-cdk-timers) or [Motoko](/docs/motoko/main/writing-motoko/timers) is a better option to schedule periodic tasks.
+Because of those limitations, in most cases, the CDK timers library for [Rust](https://crates.io/crates/ic-cdk-timers) or [Motoko](/docs/motoko/icp-features/timers) is a better option to schedule periodic tasks.
 
 ## Frequently asked questions
 
@@ -122,8 +122,8 @@ If there are no await points in the timer handler, the periodic timer will be re
 
 ### Examples using Motoko
 
-- [Timers](/docs/motoko/main/writing-motoko/timers).
-- [Heartbeats](/docs/motoko/main/writing-motoko/heartbeats).
+- [Timers](/docs/motoko/icp-features/timers).
+- [Heartbeats](/docs/motoko/icp-features/system-functions).
 
 ### Examples using Rust
 

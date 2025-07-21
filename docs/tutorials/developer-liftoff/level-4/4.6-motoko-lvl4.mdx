@@ -26,7 +26,7 @@ In this final Motoko module of the Developer Liftoff series, you'll learn about:
 
 ## Mutable state
 
-Every actor in Motoko uses an internal, mutable state. This internal state is private and cannot be directly shared with other actors. This is a core Motoko design feature, where mutable data is always kept private to the actor that has allocated it.
+Every actor in Motoko uses an internal, mutable state. This internal state is private and cannot be directly shared with other actors. This is a key Motoko design feature, where mutable data is always kept private to the actor that has allocated it.
 
 Mutable states are not shareable, since sharing them would mean moving an object's code among other actors and executing it remotely, which poses a security risk, or alternatively sharing the state with a bit of remote logic, which poses another risk.
 
@@ -546,7 +546,7 @@ actor {
 
 This call site returns more detailed errors, such as 'There is no todo with that ID,' or 'You've already completed this todo,' which is much more useful than 'Something went wrong.'
 
-[Learn more about working with `Option` and `Result` types](/docs/motoko/main/writing-motoko/errors#working-with-optionresult).
+[Learn more about working with `Option` and `Result` types](/docs/motoko/error-handling#working-with-optionresult).
 
 ### Asynchronous errors
 
@@ -595,13 +595,13 @@ actor {
 
 ## Resources
 
-- [Motoko mutable state](/docs/motoko/main/writing-motoko/mutable-state).
+- [Motoko mutable state](/docs/motoko/state).
 
-- [Motoko message inspection](/docs/motoko/main/writing-motoko/message-inspection).
+- [Motoko message inspection](/docs/motoko/messaging).
 
-- [Local object classes](/docs/motoko/main/writing-motoko/local-objects-classes).
+- [Local object classes](/docs/motoko/fundamentals/types/objects-classes).
 
-- [Motoko error handling](/docs/motoko/main/writing-motoko/errors).
+- [Motoko error handling](/docs/motoko/error-handling).
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 

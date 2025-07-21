@@ -18,7 +18,7 @@ The canister HTTPS outcalls feature is implemented as part of the Internet Compu
 - #### Step 2: The request is stored temporarily in the replicated state of the subnet.
 - #### Step 3: Periodically (each round), an **adapter** at the networking layer in each replica fetches the pending HTTPS outcalls from replicated state.
 (In fact, a &lsquo;shim&rsquo; layer of the adapter that is inside the replica process does so as the adapter itself is sandboxed into a separate OS-level process for security reasons.)
-- #### Step 4: The adapter on each replica executes the HTTP request by sending it to the target server.
+- #### Step 4: The adapter on each replica attempts to send the request directly to the target server, which is the standard path for IPv6-enabled services. If this direct connection fails for any reason (e.g., the server is IPv4-only or a firewall blocks the connection), the adapter automatically retries the request through a SOCKS proxy.
 - #### Step 5: The corresponding HTTP response from the server is received by the adapter on each replica of the subnet and provided to a component in the replica process.
 The adapter limits the network response size to `max_response_bytes`, which defaults to $2$ MB and can be set to lower values. It is important to set this as low as reasonably possible for the expected response, as it affects the price of the request. The price increases with the size of `max_response_bytes`, and the actual response size is not considered, only the maximum.
 - #### Step 6: An optional transformation function implemented as part of the canister is invoked on the respective response on each replica to transform the response.
@@ -39,8 +39,9 @@ As you can see, the transformation function and the Internet Computer Protocol's
 ### Trust model and programming model
 
 The trust model for canister HTTPS outcalls is based on the trust model of the called HTTP server and that of ICP:
-* It is assumed that the HTTP service is honest; otherwise, it can provide any responses to any of the calling replicas of the subnet. This is also the case for calls to the service from a Web 2.0 service or an oracle; thus, the situation is the same as in our scenario of a blockchain making the call to the service.
-* The trust model of ICP assumes that at least $2/3$ of the replicas are honest. In this case, the honest replicas will obtain the same response (after optional transformation), and consensus will be able to agree on the response so that the response can be provided back to the calling canister.
+* It is assumed that the HTTP service is honest; otherwise, it can provide any response to the calling replicas. This is a standard assumption when interacting with any external API.
+* The trust model of ICP assumes that at least 2/3 of the replicas are honest. Moreover, the IC-managed infrastructure that proxies certain requests (e.g., to IPv4 addresses) is assumed to not block traffic. This ensures that honest replicas can reach a consensus on the response to be returned to the canister. Note that the proxy infrastructure cannot tamper with the response, it can only block it.
+
 A dishonest server can easily make requests fail or provide wrong data. Also, $1/3$ or more of dishonest subnet replicas can make requests fail. For providing wrong data, more than $2/3$ of the replicas need to be compromised.
 
 The programming model for this feature is such that the canister making an HTTPS outcall acts as an **HTTP client**, i.e., it needs to, in the general case, interpret various headers and act accordingly. For use cases such as API requests, this is rather straightforward and does not require many specific considerations in the standard case. The ICP protocol stack can conceptually be simply seen as a communication pipe between the canister and the conventional HTTP server that makes sure that the HTTP response makes it through consensus and all honest replicas receive the exact same response in execution, i.e., the calling canister receives an agreed-upon response.
@@ -98,10 +99,6 @@ One example of securing the write integration between the Internet Computer and 
 
 As you have seen, completely removing the impact that dishonest replicas can have on `POST` calls may require support by the HTTP 2.0 service. With such support, seamless and secure interoperability between Web 3.0 and Web 2.0 can be achieved.
 
-### IPv6-only support
-
-Currently, as ICP itself is an IPv6-based system, the canister HTTPS outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that the Internet Computer does not have sufficiently many IPv4 addresses such that every replica of ICP could get its own IPv4 address, and thus it would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
-
 ### Rate limiting by servers
 
 Most web servers offering services to the general public implement some sort of rate limiting. Rate limiting means to constrain how many requests can be made from an IPv4 address or IPv6 prefix in a given time interval. Once the quota for an address of prefix is used up, requests from this IP or prefix would not be served, but an appropriate error response would be served instead.
@@ -115,8 +112,8 @@ The ICP does currently not implement any rate limiting in the ICP protocol stack
 ## Future extensions
 
 As mentioned already further above, there are multiple possible extensions under consideration to be implemented in the future, based on demand in the community. The current MVP does not include them, as it allows us to go to market faster because of the reduced feature set.
-* **IPv4 support:** IPv4 support would help canisters reach servers that are not available on IPv6 but only on IPv4.
-* **Reduced quorum:** A canister can define that a reduced quorum should be used for a request, e.g., only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests. It may also be interesting for making reads where trust does not matter, but where the Internet Computer wants to reduce the request amplification instead, e.g., because of quotas the server has in place.
+* **Flexible quorum:** A canister can define that a custom quorum should be used for a request, e.g., only $1$ replica of the subnet making the request instead of all $n$ replicas. This trivially helps resolve the idempotency problem with `POST` requests. It may also be interesting for making reads where trust does not matter, but where the Internet Computer wants to reduce the request amplification instead, e.g., because of quotas the server has in place.
+* **Multiple responses:** A canister could choose to receive all responses from the replicas instead of a single consensus response. This would allow the canister to resolve consensus on the application side, enabling use cases like querying very fast-moving data without sacrificing reliability or security.
 
 ## Coding HTTPS outcalls
 

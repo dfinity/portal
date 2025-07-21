@@ -202,7 +202,7 @@ function BitcoinFaqPage() {
             }
           >
             <Faq title="What is ckBTC?">
-              Chain-key bitcoin (ckBTC) is a multi-chain bitcoin twin that can
+              Chain-key bitcoin (ckBTC) is a multichain bitcoin twin that can
               be sent with 1-2 second finality and negligible fees. It is
               trustlessly created by chain-key cryptography and a pair of
               canister smart contracts that directly hold raw bitcoin without
@@ -340,7 +340,7 @@ function BitcoinFaqPage() {
                 standard, it is a pair of canister smart contracts that allow
                 bitcoin to be freely sent between addresses either on the
                 Bitcoin network or the Internet Computer, making it the first
-                true multi-chain asset.
+                true multichain asset.
               </p>
             </Faq>
             <Faq
@@ -457,7 +457,7 @@ function BitcoinFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href="/docs/building-apps/chain-fusion/bitcoin/overview"
+            href="/docs/build-on-btc/"
             title="Technical overview of Bitcoin integration"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -473,7 +473,7 @@ function BitcoinFaqPage() {
             title="Native bitcoin API"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/building-apps/chain-fusion/bitcoin/using-btc/local-development"
+            href="/docs/build-on-btc/using-regtest"
             title="Code native bitcoin"
           ></SmallCardWithDescription>
           <SmallCardWithDescription

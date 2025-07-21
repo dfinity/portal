@@ -1,4 +1,3 @@
-.github/ @dfinity/idx
 * @dfinity/editorial
 
 # Certain areas of documentation must be owned by the respective teams
@@ -16,6 +15,7 @@ submodules/motoko @dfinity/languages
 
 # FI
 docs/defi/ @dfinity/finint
+docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/finint @dfinity/sdk
 
 # Cross chain
 docs/defi/chain-key-tokens/ @dfinity/cross-chain-team
