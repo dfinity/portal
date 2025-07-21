@@ -12,11 +12,11 @@
       "Analytics"
     ],
     "stats": "3,000,000+ searches",
-    "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
+    "description": "Kinic is your personal AI memory — a verifiable, searchable vault for everything you care about. Store bookmarks, emails, notes, and retrieve them instantly with AI-powered queries.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/kinic_logo.webp",
     "screenshots": [
-      "/img/showcase/kinic_screenshot.webp"
+      "/img/showcase/Kinic_logo_screenshot.jpg"
     ]
   },
   {
@@ -133,22 +133,25 @@
   },
   {
     "id": "nfid",
-    "name": "NFID",
+    "name": "NFID Wallet",
     "display": "Normal",
     "website": "https://nfid.one/",
-    "twitter": "https://twitter.com/IdentityMaxis",
+    "twitter": "https://x.com/NFIDWallet",
+    "github": "https://github.com/internet-identity-labs",
     "tags": [
       "Wallet",
       "Ethereum",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
-    "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
+    "description": "Secure your assets with the most audited wallet on ICP and start exploring ICP applications in seconds.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nfid_logo.webp"
+    "logo": "/img/showcase/NFID_Wallet_logo.jpg",
+    "oneLiner": "The easiest to use, hardest to lose, and only wallet governed by a DAO."
   },
   {
     "id": "chainsight",
-    "name": "Chainsight",
+    "name": "ChainSight",
     "display": "Large",
     "website": "https://chainsight.network",
     "twitter": "https://twitter.com/Chainsight_",
@@ -210,7 +213,7 @@
     "name": "Gold DAO",
     "display": "Normal",
     "website": "https://www.gold-dao.org/",
-    "twitter": "https://twitter.com/gldrwa",
+    "twitter": "https://x.com/TheGoldDAO",
     "tags": [
       "DeFi",
       "DAO"
@@ -3001,14 +3004,17 @@
     "name": "Formyfi",
     "display": "Normal",
     "website": "https://formyfi.io",
-    "github": "https://github.com/Talentum-id/formify",
+    "twitter": "https://x.com/formyfi_io",
+    "github": "https://github.com/Talentum-id/formyfi",
     "submittableId": 44539692,
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Creator Economy"
     ],
     "description": "Decentralized & fully onchain forms. Toolset for conducting surveys in Web3, ensuring security and completeness of data.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/formify_logo.jpeg"
+    "logo": "/img/showcase/Formyfi_logo_new.jpg",
+    "oneLiner": "Web3-native form builder for user verification and data collection."
   },
   {
     "id": "blendsafe",
@@ -5977,6 +5983,52 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/SubHub_logo.svg",
     "oneLiner": "The Future of Tokenized Web3 Messaging"
+  },
+  {
+    "id": "ic_pack\n",
+    "name": "IC Pack",
+    "display": "Normal",
+    "website": "https://docs.package-manager.com",
+    "github": "https://github.com/vporton/icp-package-manager",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A package manager for installing apps into user's canisters for user to be self-sovereign over apps.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icpack-logo.svg",
+    "oneLiner": "Self-sovereign apps in user's canisters."
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado",
+    "display": "Normal",
+    "website": "https://avcd.hodl.fyi/",
+    "twitter": "https://x.com/av8cado",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Avocado ($AVCD) is a highly deflationary governance token that powers the Avocado DAO on the Internet Computer ecosystem",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/AVCD_logo.png",
+    "oneLiner": "$AVCD is the most deflationary token in the $ICP ecosystem"
+  },
+  {
+    "id": "webhash",
+    "name": "Webhash",
+    "display": "Normal",
+    "website": "https://webhash.com/",
+    "twitter": "https://x.com/webhash_eth",
+    "github": "https://github.com/WebHash-eth/ICP",
+    "youtube": "https://www.youtube.com/@webhash_eth",
+    "submittableId": 48953717,
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "description": "Webhash is a no-code builder to design and deploy websites on the Internet Computer (ICP) with one-click publishing and custom domain support.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/webhash logo.svg",
+    "oneLiner": "Decentralised website builder for ICP"
   }
   
 ]
