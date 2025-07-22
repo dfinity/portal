@@ -62,8 +62,6 @@ export const smallSnsCards = snsDataFiltered.filter(
   (dao) => !excludedFromSmallCards.includes(dao.rootCanisterId)
 );
 
-console.log(smallSnsCards)
-
 const aggregateSnsData = [
   {
     label: "SNS DAOs",
