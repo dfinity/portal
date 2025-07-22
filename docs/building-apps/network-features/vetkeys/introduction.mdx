@@ -12,11 +12,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 vetKeys (verifiably encrypted threshold keys) on the Internet Computer (ICP) make it easier for developers to implement encryption, threshold decryption, and threshold signing in their dapps. They are powered by the vetKD (verifiably encrypted threshold key derivation) protocol, which enables secure, on-demand key derivation. With vetKeys, a public blockchain like ICP can hold and work with secret data securely.
 
-The goal of vetKeys is to simplify the use of security and privacy tools on ICP. Encrypting data locally and storing it onchain is straightforward, since the secret key stays on the device. However, challenges arise when a user wants to access that data from another device or share it with someone else, as there’s no easy, privacy-preserving way to transmit secret key material across public channels. vetKeys solve this by enabling secure, on-demand key access without exposing secrets to any node in the Internet Computer network.
+The goal of vetKeys is to simplify the use of security and privacy tools on ICP. Encrypting data locally and storing it onchain is straightforward, since the secret key stays on the end-user's device. However, challenges arise when a user wants to access that data from another device or share it with someone else, as there’s no easy, privacy-preserving way to transmit secret key material across public channels. vetKeys solve this by enabling secure, on-demand key access without exposing secrets to any node in the Internet Computer network.
 
 ### Why are they called "vetKeys"?
 
-- **Verifiable**: Users can verify the correctness of the derived vetKeys and that they have not being tampered with.
+- **Verifiable**: Users can verify the correctness of the derived vetKeys and that they have not been tampered with.
 
 - **Encrypted**: The derived vetKeys are encrypted under a user-provided transport key. This ensures that neither individual nodes nor the network ever have access to user’s private vetKeys.
 
@@ -36,11 +36,11 @@ A core application of DKMS is the generation of encryption keys for securing dat
 
 ## [Threshold BLS signatures](/docs/building-apps/network-features/vetkeys/bls-signatures)
 
-[Chain Fusion technology](https://internetcomputer.org/chainfusion) allows canisters to natively interact with other blockchains, such as Bitcoin or Ethereum, without relying on external bridges or trusted intermediaries. This is made possible through threshold signature schemes, which enable canisters to instruct subnet nodes to collectively compute ECDSA, Schnorr and EdDSA signatures. vetKeys extends this capability by introducing a new threshold signature scheme to canisters: threshold BLS signatures. BLS signatures are particularly well-suited for multichain applications due to their compact size and efficient aggregation properties. By supporting threshold BLS, vetKeys further enhances ICP’s interoperability, empowering canisters to participate in more advanced multichain dapps and protocols.
+[Chain Fusion technology](https://internetcomputer.org/chainfusion) allows canisters to natively interact with other blockchains, such as Bitcoin or Ethereum or Solana, without relying on external bridges or trusted intermediaries. This is made possible through threshold signature schemes, which enable canisters to instruct subnet nodes to collectively compute ECDSA, Schnorr and EdDSA signatures. vetKeys extends this capability by introducing a new threshold signature scheme to canisters: threshold BLS signatures. BLS signatures are particularly well-suited for multichain applications due to their compact size and efficient aggregation properties. By supporting threshold BLS, vetKeys further enhances ICP’s interoperability, empowering canisters to participate in more advanced multichain dapps and protocols.
 
 ## [Identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption)
 
-The vetKeys feature enables IBE, allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the dapp. By authenticating with the dapp using their identity, the user can securely retrieve their decryption key and access the data.
+The vetKeys feature enables IBE, allowing data to be encrypted directly to an identity, such as a principal, a canister ID, an Internet Identity, an email address, or even an Ethereum address. This makes it possible to encrypt data for a specific user or account, even if that user has never previously interacted with the dapp. By authenticating with the dapp using their identity, the user can securely retrieve their decryption key and access the data.
 
 Compared to DKMS, IBE works differently. In DKMS, one or more users share **the same** symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an **asymmetric encryption** scheme. Anyone can encrypt messages to a given identity, including other users or canisters, but only the holder of the corresponding decryption key can decrypt them.
 

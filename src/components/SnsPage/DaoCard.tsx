@@ -49,11 +49,11 @@ export const SmallDaoCard: React.FC<DaoCardProps> = ({
       variants={transitions.item}
       className="bg-white/90 p-6 rounded-2xl h-full flex flex-col"
     >
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center justify-start gap-2 mb-2">
         <img
           src={`https://3r4gx-wqaaa-aaaaq-aaaia-cai.icp0.io${logo}`}
           alt=""
-          className="w-16 h-16 object-contain object-center"
+          className="w-16 h-16 object-contain object-center mx-0"
         />
         <span className="tw-heading-5">{name}</span>
       </div>
