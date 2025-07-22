@@ -1,0 +1,98 @@
+---
+keywords: [bitcoin, btc, tutorial, read state, read bitcoin state, read btc state, btc state, bitcoin state]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Reading the Bitcoin state
+
+<MarkdownChipRow labels={["Bitcoin"]} />
+
+ICP smart contracts can query information about the Bitcoin mainnet or testnet programmatically.
+
+## Reading unspent transaction outputs (UTXOs)
+
+To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` [Bitcoin API method](/docs/build-on-btc/btc-api).
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L47-L58
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_utxos.rs
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Reading current balance
+
+To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx).
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L34-L45
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_balance.rs
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Reading the fee percentile
+
+The transaction fees on the Bitcoin network change dynamically based on the number of pending transactions. In order to get fee percentiles of the last 10_000 transactions mined into blocks, call `bitcoin_get_current_fee_percentiles`.
+
+The function returns 101 numbers that are fees measured in millisatoshi per virtual byte. The `i`-th element of the result corresponds to the `i`-th percentile fee. For example, to get the median fee over the last few blocks, look at the `50`-th element of the result.
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L60-L70
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_current_fee_percentiles.rs
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Reading the block headers
+
+To read the block headers within a provided range of start and end heights, make a call to the `bitcoin_get_block_headers` [Bitcoin API method](https://www.notion.so/dfinityorg/btc-api.mdx)
+
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/get_block_headers.rs
+```
+
+## Resources
+
+- [Basic Bitcoin example dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+- [Motoko Bitcoin integration algorithms](https://github.com/tgalal/motoko-bitcoin/tree/10cf7f2efbba9bb4d077013db1b990143f193844).
+- [Basic Bitcoin example dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).

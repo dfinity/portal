@@ -1,15 +1,11 @@
 import React from "react";
 import transitions from "@site/static/transitions.json";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
-import ExternalLinkIcon from "@site/static/img/external-link.svg";
-import PlaySVG from "@site/static/img/svgIcons/play.svg";
-import { ArrowIconRight } from "../../RoadmapPage/Overlay";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 import { motion } from "framer-motion";
 import VideoCard from "../../Common/VideoCard";
 import { NewsCard } from "../../NewsPage/Cards";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const MotionLink = motion(Link);
 
@@ -25,7 +21,7 @@ function News({ content = "btc" }) {
           className="tw-heading-3 mb-0 md:tw-heading-60"
           variants={transitions.item}
         >
-          News & Events
+          {content === "chainfusion" ? "News & Events" : "News & Articles"}
         </motion.h2>
         <div className="md:flex-1 md:pt-1 ">
           <motion.p
@@ -120,61 +116,7 @@ function News({ content = "btc" }) {
             </Link>
           </>
         )}
-        <Link
-          href="https://www.theblock.co/post/288634/internet-computer-protocol-bitcoin-layer-zero-threshold-schnorr-implementation"
-          className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-        >
-          <NewsCard
-            news={{
-              title:
-                "Internet Computer Protocol aims to become a Bitcoin 'layer zero' with threshold-Schnorr implementation",
-              dateHuman: "Apr 16, 2024",
-              press: "James Hunt",
-              details: `Internet Computer Protocol aims to be leveraged as a Bitcoin “layer zero” following the planned implementation of threshold-Schnorr signatures, announced today.`,
-              url: "https://www.theblock.co/post/288634/internet-computer-protocol-bitcoin-layer-zero-threshold-schnorr-implementation",
-              imageUrl: "/img/bitcoin-integration/n1.webp",
-            }}
-            linkLabel="Read Now"
-            clampText
-          />
-        </Link>
-        <Link
-          href="https://decrypt.co/226630/bitcoin-runes-arrive-halving-internet-computer-support"
-          className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-        >
-          <NewsCard
-            news={{
-              title:
-                "Bitcoin Runes Arrive at the Halving—And Internet Computer Will Support Them",
-              dateHuman: "Apr 16, 2024",
-              press: " Jason Nelson",
-              details: `With the Bitcoin halving and Runes protocol launch taking place this weekend, Dfinity is continuing Internet Computer's embrace of the Bitcoin ecosystem by adding support for etching Runes tokens and other BTC-centric functionality, the company said on Tuesday.`,
-              url: "https://decrypt.co/226630/bitcoin-runes-arrive-halving-internet-computer-support",
-              imageUrl: "/img/bitcoin-integration/n2.webp",
-            }}
-            linkLabel="Read Now"
-            clampText
-          />
-        </Link>
 
-        <Link
-          href="https://medium.com/dfinity/ckbtc-a-decentralized-mechanism-for-efficient-bitcoin-transfers-42b128bc44d9"
-          className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-        >
-          <NewsCard
-            news={{
-              title:
-                "ckBTC: A Decentralized Mechanism for Efficient Bitcoin Transfers",
-              dateHuman: "Apr 18, 2024",
-              press: "Dfinity",
-              details: `On September 7, 2021, Bitcoin obtained the status of legal tender within El Salvador. Shortly after the adoption of the so-called ‘Bitcoin law’, many Salvadorans had already opened Bitcoin wallets. However, as per a recent study done by the José Simeón Cañas Central American University, in 2023 just 12% of the local population engaged in cryptocurrency transactions in 2023.`,
-              url: "https://medium.com/dfinity/ckbtc-a-decentralized-mechanism-for-efficient-bitcoin-transfers-42b128bc44d9",
-              imageUrl: "/img/bitcoin-integration/n3.webp",
-            }}
-            linkLabel="Read Now"
-            clampText
-          />
-        </Link>
         {content === "chainfusion" ? (
           <></>
         ) : (

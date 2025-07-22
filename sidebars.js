@@ -60,7 +60,7 @@ build: [
             {
               type: "doc",
               label: "Motoko",
-              id: "motoko/main/getting-started/motoko-introduction",
+              id: "motoko/home",
             },
             {
               type: "category",
@@ -360,10 +360,15 @@ build: [
         },
         {
           type: "category",
-          label: "Verifiable encryption",
+          label: "vetKeys",
           items: [
-            "building-apps/network-features/encryption/vetkeys",
-            "building-apps/network-features/encryption/using-vetkeys",
+            "building-apps/network-features/vetkeys/introduction",
+            "building-apps/network-features/vetkeys/api",
+            "building-apps/network-features/vetkeys/dkms",
+            "building-apps/network-features/vetkeys/encrypted-onchain-storage",
+            "building-apps/network-features/vetkeys/bls-signatures",
+            "building-apps/network-features/vetkeys/identity-based-encryption",
+            "building-apps/network-features/vetkeys/timelock-encryption",
           ],
         },
         "building-apps/network-features/randomness",
@@ -392,30 +397,9 @@ build: [
       items: [
         "building-apps/chain-fusion/supported-chains",
         {
-          type: "category",
+          type: "doc",
           label: "Bitcoin",
-          link: {
-            type: "doc",
-            id: "building-apps/chain-fusion/bitcoin/overview",
-          },
-          items: [
-            "building-apps/chain-fusion/bitcoin/using-btc/btc-comparison",
-            "building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow",
-            {
-              type: "category",
-              label: "Interacting with Bitcoin",
-              items: [
-                "building-apps/chain-fusion/bitcoin/using-btc/generate-addresses",
-                "building-apps/chain-fusion/bitcoin/using-btc/create-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/sign-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/submit-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/read-state",
-                "building-apps/chain-fusion/bitcoin/using-btc/ordinals",
-                "building-apps/chain-fusion/bitcoin/using-btc/runes",
-                "building-apps/chain-fusion/bitcoin/using-btc/local-development",
-              ],
-            },
-          ],
+          id: "build-on-btc/index",
         },
         {
           type: "category",
@@ -451,22 +435,32 @@ build: [
             },
           ],
         },
+        {
+          type: "doc",
+          label: "Solana",
+          id: "building-apps/chain-fusion/solana/overview",
+        },
         "building-apps/chain-fusion/examples",
       ],
     },
     {
       type: "category",
       label: "Security",
+      link:
+        {
+          type: "doc",
+          id: "building-apps/security/overview",
+        },
         items: [
         {
           type: "category",
           label: "Security best practices",
-          link:
+          items: [
           {
             type: "doc",
+            label: "What are security best practices?",
             id: "building-apps/security/overview",
           },
-          items: [
           {
             type: "doc",
             label: "Inter-canister calls",
@@ -683,34 +677,40 @@ defi: [
         label: "DeFi on ICP",
         id: "defi/overview",
       },
-      {
-        type: "category",
-        label: "ICP Rosetta implementation",
-        link: {
-          type: "doc",
-          id: "defi/rosetta/icp_rosetta/index",
-        },
-        items: [
-          {
+              {
+          type: "category",
+          label: "ICP Rosetta implementation",
+          link: {
             type: "doc",
-            label: "Data API",
-            id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-          {
-            type: "category",
-            label: "Construction API",
-            link: {
+            id: "defi/rosetta/icp_rosetta/index",
+          },
+          items: [
+            "defi/rosetta/icp_rosetta/running-rosetta",
+            {
               type: "doc",
-              id: "defi/rosetta/icp_rosetta/construction_api/index",
-            },
-            items: [
-            "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-            "defi/rosetta/icp_rosetta/construction_api/staking",
-            "defi/rosetta/icp_rosetta/construction_api/voting",
+              label: "Data API",
+              id: "defi/rosetta/icp_rosetta/data_api/index",
+              },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+              "defi/rosetta/icp_rosetta/construction_api/operations-flow",
+              "defi/rosetta/icp_rosetta/construction_api/staking",
+              "defi/rosetta/icp_rosetta/construction_api/voting",
+              ],
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icp_rosetta/examples",
+              },
             ],
-            },
-          ],
-        },
+          },
         {
           type: "category",
           label: "ICRC Rosetta implementation",
@@ -719,6 +719,7 @@ defi: [
             id: "defi/rosetta/icrc_rosetta/index",
           },
           items: [
+            "defi/rosetta/icrc_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",
@@ -728,6 +729,11 @@ defi: [
               type: "doc",
               label: "Construction API",
               id: "defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
         },
@@ -820,8 +826,29 @@ defi: [
             },
           ],
         },
-        ],
+],
 
+btc: [
+  "build-on-btc/index",
+  "build-on-btc/btc-dev-workflow",
+  "build-on-btc/btc-dev-env",
+  "build-on-btc/using-regtest",
+  "build-on-btc/btc-api",
+  {
+    type: "category",
+    label: "Bitcoin transactions",
+    items: [
+      "build-on-btc/btc-transactions/generate-addresses",
+      "build-on-btc/btc-transactions/create-transactions",
+      "build-on-btc/btc-transactions/sign-transactions",
+      "build-on-btc/btc-transactions/submit-transactions",
+    ],
+  },
+  "build-on-btc/read-state",
+  "build-on-btc/ordinals",
+  "build-on-btc/runes",
+  "build-on-btc/brc20",
+],
 
 references: [
   {
@@ -844,7 +871,6 @@ references: [
       "references/ii-spec",
       "references/icrc1-standard",
       "references/ledger",
-      "references/supported-signatures",
       "references/t-sigs-how-it-works",
       "references/vc-spec",
       "references/vetkeys-overview"
@@ -875,6 +901,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
@@ -972,6 +999,7 @@ devjourney: [
   },
 ],
 
+
 hackathon: [
   {
     type: "category",
@@ -997,44 +1025,8 @@ hackathon: [
 
   motoko: [
     {
-      type: "category",
-      label: "Motoko language book",
-      items: [
-        {
-          type: "link",
-          label: "1. Introduction",
-          href: "https://motoko-book.dev/introduction.html",
-        },
-        {
-          type: "link",
-          label: "2. Common programming concepts",
-          href: "https://motoko-book.dev/common-programming-concepts.html",
-        },
-        {
-          type: "link",
-          label: "3. Internet Computer programming concepts",
-          href: "https://motoko-book.dev/internet-computer-programming-concepts.html",
-        },
-        {
-          type: "link",
-          label: "4. Advanced types",
-          href: "https://motoko-book.dev/advanced-types.html",
-        },
-        {
-          type: "link",
-          label: "5. The base library",
-          href: "https://motoko-book.dev/base-library.html",
-        },
-        {
-          type: "link",
-          label: "6. Advanced concepts",
-          href: "https://motoko-book.dev/advanced-concepts.html",
-        },
-      ],
-    },
-    {
       type: "autogenerated",
-      dirName: "motoko/main",
+      dirName: "motoko",
     },
   ],
 }

@@ -13,15 +13,16 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior. Only a controller of the canister can read and modify a canister's settings.
 
-Currently, there are seven canister setting fields:
+Currently, there are eight canister setting fields:
 
 1. `controllers`: The list of controllers of the canister.
-1. `compute_allocation`: Amount of compute that the canister has allocated.
-1. `memory_allocation`: Amount of memory (storage) that the canister has allocated.
-1. `freezing_threshold`: A safety threshold to prevent the canister from running out of cycles and avoid being deleted.
-1. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
-1. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
-1. `log_visibility`: Controls who can read the canister logs.
+2. `compute_allocation`: Amount of compute that the canister has allocated.
+3. `memory_allocation`: Amount of memory (storage) that the canister has allocated.
+4. `freezing_threshold`: A safety threshold to prevent the canister from running out of cycles and avoid being deleted.
+5. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
+6. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
+7. `log_visibility`: Controls who can read the canister logs.
+8. `wasm_memory_threshold`: A threshold that triggers the "on low wasm memory" hook when the canister's remaining wasm memory falls below the provided value. 
 
 ## Viewing current settings
 
