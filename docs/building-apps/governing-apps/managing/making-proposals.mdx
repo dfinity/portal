@@ -122,18 +122,29 @@ This article describes the different kinds of proposals that can be submitted to
 For each native proposal that is built in the SNS framework and can be used by all SNSs, we describe what's the proposal's topic and some more details about the proposal's type - often with a concrete example how to submit it.
 For the generic proposals, that are custom to each SNS, we describe the proposal required to add them.
 
-## Native proposals
 
-An SNS comes with built-in proposals called “native proposals" that are of the following types:
+An SNS comes with the built-in, called “native", proposals of the following types:
 
 - [`Motion`](#motion).
-- [`UpgradeSnsToNextVersion`](#upgradesnstonextversion).
+- [`ManageNervousSystemParameters`](#managenervoussystemparameters).
+- [`ManageSnsMetadata`](#managesnsmetadata).
+- [`ManageLedgerParameters`](#ManageLedgerParameters).
 - [`RegisterDappCanisters`](#registerdappcanisters).
 - [`DeregisterDappCanisters`](#deregisterdappcanisters).
-- [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
+- [`RegisterExtension`](#RegisterExtension).
 - [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister).
-- [`ManageSnsMetadata`](#managesnsmetadata).
+- [`ManageDappCanisterSettings`](#managedappcanistersettings).
+- [`UpgradeSnsToNextVersion`](#upgradesnstonextversion).
+- [`AdvanceSnsTargetVersion`](#AdvanceSnsTargetVersion).
+- [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
 - [`MintSnsTokens`](#mintsnstokens).
+
+Each SNS also has the following native proposals for handling, that is adding and removing, custom proposals:
+- [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction).
+- [`RemoveGenericNervousSystemFunction`](#RemoveGenericNervousSystemFunction).
+- [`ExecuteGenericNervousSystemFunction`](#ExecuteGenericNervousSystemFunction).
+- [`SetTopicsForCustomProposals`](#settopicsforcustomproposals).
+
 
 All of the proposals used to manage an SNS are executed on the SNS governance canister, so it helps to have for reference what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
 
@@ -172,6 +183,10 @@ Below are the most important types for the purpose of this article:
 See the [types in the code](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405)—they are called “action” in the code.
 :::
 
+
+## Native proposals
+
+===========
 ### Critical proposal types
 
 Some proposal types are considered "critical." These are `DeregisterDappCanisters`, `TransferSnsTreasuryFunds`, and `MintSnsTokens`. Critical proposal types have more strict rules to ensure they are only passed with broad community consensus.
