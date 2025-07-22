@@ -10,32 +10,34 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Tutorial"]} />
 
-To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have.
+In an SNS DAO, all decisions and changes happy by proposals.
+Therefore, to manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have.
 
-This article explains the different kinds of proposals and provides an example quill command that can be used to submit each.
+The [Learn Hub page on SNS proposals](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals) contains more information on the SNS proposals' lifecycle, the concept of are *native proposals* that all SNSs have and *custom proposals* that are SNS-specific, and an introduction to proposal topics. 
+Here we explain more technical details of proposals, focusing on how proposals can be submitted.
 
 ## Background
-
 On a high level, a proposal is defined by a particular method on a particular canister that is called if the proposal is adopted by the SNS.
 When the proposal is adopted, this method is called and executed fully on chain.
 
 In some cases, this method is on the SNS governance itself, and in other cases, the method that is called can be defined in another canister.
 
 :::warning
-Most proposals can be submitted at any time. However, some proposals are not allowed during the SNS launch until the swap has finished:
-
-1. `ManageNervousSystemParameters`
-2. `TransferSnsTreasuryFunds`
-3. `MintSnsTokens`
-4. `UpgradeSnsControlledCanister`
-5. `RegisterDappCanisters`
-6. `DeregisterDappCanisters`
-
-This means that it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
+Note that some proposals cannot be submitted while the SNS DAO is still being launched. This is to ensure that fundamental decisions can only be made once the governance is fully decentralized and the community can participate.
+As a consequence of this, it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
 :::
 
+## How to submit proposals
+On a high level, a proposals can be submitted by any eligible neuron. 
+Practically, there are different tools that provide an interface to users to do so.
+Any tool needs to access the neuron to be able to submit a proposal - this can for example be achieved by adding the principal in the tool as a hotkey to an eligible neurons. 
+We give a brief overview of some options here, but later focus on submitting proposals via the command line.
 
-## Using quill to submit proposals
+### Using community tools
+One of the easiest ways to submit proposals is to use community-provided tools. 
+For example, you can go on `https://ic-toolkit.app/sns-management` and link it to an SNS neuron to submit a proposal in this SNS DAO.
+
+### Using quill's `sns make-proposal` command
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -48,9 +50,9 @@ This means that it is not easy to upgrade an SNS-controlled dapp canister during
 </TabItem>
 </Tabs>
 
-### Submitting via `sns make-proposal` command
+#### Submitting via `sns make-proposal` command
 
-Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/)
+Since you need an eligible neuron to submit a proposal, the command to [submit a proposal](https://github.com/dfinity/quill/)
 `sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` proposal) to be voted on by other neuron holders.
 
 The structure of the commands is as follows:
@@ -113,9 +115,12 @@ quill send message.json
 This guide will not repeat the `export PROPOSAL_NEURON_ID` and `export PEM_FILE` lines for each example proposal, but it is recommended you set these variables in your terminal before submitting proposals.
 :::
 
+
 ## Proposal types
 
-This article describes the different kinds of proposals that can be submitted to an SNS: [Native proposals](#native-proposals) and [generic proposals](#generic-proposals).
+This article describes the different kinds of proposals that can be submitted to an SNS in terms of [Native proposals](#native-proposals) and [generic proposals](#generic-proposals).
+For each native proposal that is built in the SNS framework and can be used by all SNSs, we describe what's the proposal's topic and some more details about the proposal's type - often with a concrete example how to submit it.
+For the generic proposals, that are custom to each SNS, we describe the proposal required to add them.
 
 ## Native proposals
 
@@ -144,16 +149,20 @@ Below are the most important types for the purpose of this article:
     type Action = variant {
         ManageNervousSystemParameters : NervousSystemParameters;
         AddGenericNervousSystemFunction : NervousSystemFunction;
+        SetTopicsForCustomProposals : SetTopicsForCustomProposals;
+        ManageDappCanisterSettings : ManageDappCanisterSettings;
         RemoveGenericNervousSystemFunction : nat64;
         UpgradeSnsToNextVersion : record {};
+        AdvanceSnsTargetVersion : AdvanceSnsTargetVersion;
         RegisterDappCanisters : RegisterDappCanisters;
+        RegisterExtension : RegisterExtension;
         TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
         UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
         DeregisterDappCanisters : DeregisterDappCanisters;
         MintSnsTokens : MintSnsTokens;
-        Unspecified : record {};
-        ManageSnsMetadata : ManageSnsMetadata;
-        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
+        Unspecified : record {}; 
+        ManageSnsMetadata : ManageSnsMetadata; 
+        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction; 
         ManageLedgerParameters : ManageLedgerParameters;
         Motion : Motion;
     };
