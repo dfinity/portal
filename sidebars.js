@@ -271,6 +271,7 @@ build: [
             "building-apps/advanced/optimize/rust",
           ],
         },
+        "building-apps/advanced/canister-access-logs",
       ],
     },
     {
@@ -677,34 +678,40 @@ defi: [
         label: "DeFi on ICP",
         id: "defi/overview",
       },
-      {
-        type: "category",
-        label: "ICP Rosetta implementation",
-        link: {
-          type: "doc",
-          id: "defi/rosetta/icp_rosetta/index",
-        },
-        items: [
-          {
+              {
+          type: "category",
+          label: "ICP Rosetta implementation",
+          link: {
             type: "doc",
-            label: "Data API",
-            id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-          {
-            type: "category",
-            label: "Construction API",
-            link: {
+            id: "defi/rosetta/icp_rosetta/index",
+          },
+          items: [
+            "defi/rosetta/icp_rosetta/running-rosetta",
+            {
               type: "doc",
-              id: "defi/rosetta/icp_rosetta/construction_api/index",
-            },
-            items: [
-            "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-            "defi/rosetta/icp_rosetta/construction_api/staking",
-            "defi/rosetta/icp_rosetta/construction_api/voting",
+              label: "Data API",
+              id: "defi/rosetta/icp_rosetta/data_api/index",
+              },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+              "defi/rosetta/icp_rosetta/construction_api/operations-flow",
+              "defi/rosetta/icp_rosetta/construction_api/staking",
+              "defi/rosetta/icp_rosetta/construction_api/voting",
+              ],
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icp_rosetta/examples",
+              },
             ],
-            },
-          ],
-        },
+          },
         {
           type: "category",
           label: "ICRC Rosetta implementation",
@@ -713,6 +720,7 @@ defi: [
             id: "defi/rosetta/icrc_rosetta/index",
           },
           items: [
+            "defi/rosetta/icrc_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",
@@ -722,6 +730,11 @@ defi: [
               type: "doc",
               label: "Construction API",
               id: "defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
         },
@@ -889,6 +902,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
