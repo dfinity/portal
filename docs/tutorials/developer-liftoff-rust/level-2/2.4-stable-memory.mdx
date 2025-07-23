@@ -1,0 +1,114 @@
+---
+keywords: [intermediate, rust, tutorial, stable memory, rust stable memory, stable structures, rust stable structures]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# 2.4 Stable memory
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+When a canister is upgraded, its Wasm module is replaced. In Rust, this poses a problem, as the new version of the code may not understand the memory layout of the previous version. Rust does not guarantee a consistent memory layout across builds, making it unsafe to rely on the old memory state. As a result, main memory is wiped during upgrades by default.
+
+To persist data across upgrades, the ICP provides stable memory, a separate memory space that survives code updates. The traditional method of persisting state involves:
+
+- Serializing the canister's state into stable memory in the `pre_upgrade` hook.
+
+- Upgrading the canister (which clears main memory).
+
+- Deserializing the stored state in the `post_upgrade` hook.
+
+This approach works for small datasets but does not scale well. Serialization and deserialization of large memory can slow down or even break canister upgrades, making them risky.
+
+Stable structures are scalable data that solve this problem by storing data directly in stable memory, avoiding the need for `pre_upgrade` and `post_upgrade` hooks. Stable structures can scale to gigabytes of data safely.
+
+Each stable structure is initialized with its own memory and must manage its memory independently. Memory cannot be shared between structures.
+
+To use stable structures in Rust, you can leverage the [`ic-stable-structures` library](https://github.com/dfinity/stable-structures#readme), which simplifies working with stable memory and provides example templates to help you get started.
+
+### Available data structures
+
+The stable structures library includes:
+
+- [BTreeMap](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/btreemap/struct.BTreeMap.html)
+
+- [BTreeSet](https://github.com/dfinity/stable-structures/blob/133a1a46bb8f572922017779dfd0fb430c7c9c5d/src/btreeset.rs)
+
+- [Vec](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/vec/struct.Vec.html)
+
+- [Log](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/log/struct.Log.html)
+
+- [Cell](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/cell/struct.Cell.html)
+
+- [MinHeap](https://docs.rs/ic-stable-structures/latest/ic_stable_structures/min_heap/struct.MinHeap.html)
+
+## Examples
+
+To demonstrate stable structures, consider a `BTreeMap` that can store key-value pairs in stable memory:
+
+```rust
+use ic_stable_structures::{BTreeMap, DefaultMemoryImpl};
+
+let mut map: BTreeMap<u64, u64, _> = BTreeMap::init(DefaultMemoryImpl::default());
+
+map.insert(1, 2);
+assert_eq!(map.get(&1), Some(2));
+Stable Set (BTreeSet)
+```
+
+Or, consider a `BTreeSet` that stores unique elements efficiently:
+
+```rust
+use ic_stable_structures::{BTreeSet, DefaultMemoryImpl};
+
+let mut set: BTreeSet<u64, _> = BTreeSet::new(DefaultMemoryImpl::default());
+
+set.insert(42);
+assert!(set.contains(&42));
+assert_eq!(set.pop_first(), Some(42));
+assert!(set.is_empty());
+```
+
+## How do stable structures work?
+
+Stable structures use the abstract `Memory` trait, meaning they can work with any compatible storage backend, such as:
+
+- Stable memory: The default for canisters.
+
+- Vector memory: Used for local testing.
+
+- File memory: Used for simulations.
+
+## Each structure requires its own memory
+
+Stable structures can't share the same memory. If you try to initialize two data structures with the same memory, they'll interfere with each other.
+
+### Using `MemoryManager`
+
+To avoid conflicts, use the `MemoryManager` to create separate virtual memories. You can create up to 255 of them:
+
+```rust
+use ic_stable_structures::{
+   memory_manager::{MemoryId, MemoryManager},
+   BTreeMap, DefaultMemoryImpl,
+};
+let mem_mgr = MemoryManager::init(DefaultMemoryImpl::default());
+let mut map_1: BTreeMap<u64, u64, _> = BTreeMap::init(mem_mgr.get(MemoryId::new(0)));
+let mut map_2: BTreeMap<u64, u64, _> = BTreeMap::init(mem_mgr.get(MemoryId::new(1)));
+
+map_1.insert(1, 2);
+map_2.insert(1, 3);
+assert_eq!(map_1.get(&1), Some(2)); // Succeeds, as expected.
+```
+
+If you intend to perform serialization and deserialization of the heap data, you must use the `MemoryManager`. Refer to the [stable structures quickstart example](https://github.com/dfinity/stable-structures/tree/main/examples/src/quick_start) and the [stable structures book](https://dfinity.github.io/stable-structures/concepts/memory-manager.html) for more information.
+
+## Next steps
+
+In the next tutorial, [2.5: Upgrading Rust canisters](2.5-upgrading-rust.mdx), you will view an interactive example of a canister that implements stable structures.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
+
+
