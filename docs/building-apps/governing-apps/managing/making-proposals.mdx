@@ -256,7 +256,7 @@ All parameters that should _not_ be changed are declared as `null` in the propos
 
 ### `ManageSnsMetadata`
 
-Each SNS has metadata that defines the SNS project and includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example, if there is a rebranding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the below attributes.
+Each SNS has metadata that defines the SNS project and includes, e.g., a URL under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a re-branding for the associated project. To do so, the SNS DAO can use the `ManageSnsMetadata` proposal which defines all of the below attributes.
 
 #### Relevant type signatures
 
@@ -401,8 +401,6 @@ The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanist
 If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so.
 To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
 
-This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
-
 #### Relevant type signatures
 
 ```candid
@@ -452,7 +450,7 @@ This feature is under developement and will soon allow SNS DAOs to integrate wit
 ```
 ### `UpgradeSnsControlledCanister`
 
-The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm.
+The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm module.
 
 #### Relevant type signatures
 
@@ -599,7 +597,7 @@ dfx canister call $SNS_GOVERNANCE_CANISTER_ID manage_neuron '(
 ```
 
 ### `ManageDappCanisterSettings`
-This proposal allows upgrading the settings of one or more SNS DAO-controlled dapp canisters. The canisters whose settings should be updated are specified in `canister_ids`, and the proposal allows updating the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or the public), the memory allocation, the compute allocation, and hte wasm memory threshold.
+This proposal allows upgrading the settings of one or more SNS DAO-controlled dapp canisters. The canisters whose settings should be updated are specified in `canister_ids`, and the proposal allows updating the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or the public), the memory allocation, the compute allocation, and the wasm memory threshold.
 
 #### Relevant type signatures
 
@@ -786,8 +784,6 @@ quill send message.json
 
 Each SNS can have SNS tokens in its treasury, but it also has the ability to mint new SNS tokens to a particular user.
 
-This is a ["critical" proposal type](#criticalproposaltypes), which means it is subject to higher voting thresholds before it is accepted.
-
 #### Relevant type signatures
 
 ```candid
@@ -833,15 +829,7 @@ quill send message.json
 
 Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it, but that might be very dapp-specific. Custom proposals, also called generic proposals, generic functions, or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
 
-Some examples:
-
-- A dapp may have a very complicated procedure to upgrade dapp canisters. For example, they may have a canister for each user, in which case they orchestrate over a “user root canister.” For this workflow, they would have to tell this canister what the user canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp, this should happen via proposal.
-- Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore you need a custom way to update the assets.
-- Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments, etc.
-
-For these cases, SNSes have so-called "custom proposals" that each SNS community can define itself.
-
-This guide describes the use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
+For additional motivation and examples, also refer to the [Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals#h_01K0V8PJ2MV9T0YNCZ12ZZFRA9).
 
 Typically a generic proposal will have the following structure: a developer sends a proposal to add, execute, remove, or assign a topic to a custom proposal, i.e., a "generic nervous system function". So even though the proposal types below are technically "native proposal types," they are used to manage generic proposals.
 
@@ -852,13 +840,13 @@ Typically a generic proposal will have the following structure: a developer send
 
 ### Defining a generic proposal
 
-A generic proposal is defined by two parts:
+Fundamentally, a generic proposal is just a call to a method on a canister with a certain argument. A generic proposal is defined by two parts:
 
 1. **A target method and canister** (respectively called `target_method_name` and `target_canister_id` in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing within a target method on a canister and then registering that target method in a generic proposal.
 
 2. **A validator method and canister** (respectively called `validator_method_name` and `validator_canister_id` in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on a different one). This method is then called whenever such a generic proposal is submitted. If the validator method fails, the proposal will not be put to vote in the SNS.
 
-Putting this together, this is how generic proposals work. When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will execute the proposal by calling the target method on the target canister.
+The overall flow is then as follows. When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will execute the proposal by calling the target method on the target canister.
 
 Together, this is the type of a generic proposal in the code:
 
@@ -881,7 +869,7 @@ There are a few important, security-critical considerations to make when adding 
 
 - **Make sure that the target and validator methods always return an answer.** If this is not the case, there is a risk that the SNS governance canister has some open call contexts, which in turn means that it cannot be stopped and therefore cannot be upgraded. This is very risky, e.g., if an urgent upgrade of governance is needed. Therefore it is recommended to only call trusted code.
 
-- **Validate everything that your code relies on again during the execution time.** Even though one method is “validator,” its main purpose is to disregard proposal contents that are obviously wrong. However, due to the fact that a proposal is voted on for multiple days, any validation that you did when the proposal was submitted might have become incorrect by the time the proposal is executed. Therefore, it is of utmost importance to repeat any validation in the target method, which is important for the validation of the proposal.
+- **Validate everything that your code relies on again during the execution time.** Even though one method is called “validator,” its main purpose is to disregard proposal contents that are obviously wrong. However, due to the fact that a proposal is voted on for multiple days, any validation that was done when the proposal was submitted might have become incorrect by the time the proposal is executed. Therefore, it is of utmost importance to repeat any validation in the target method which is important for the validation of the proposal.
 
 -  **Avoid asynchronous inter-canister calls in the validator and target method to minimize the risk for re-entrancy bugs.** During the execution of inter-canister calls, other executions can happen (thus interleaving with your method) and change the state of the system. The easiest way to avoid this risk is to avoid inter-canister calls.
 
