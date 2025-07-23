@@ -27,6 +27,15 @@ import {
 } from "../data/sns";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
+const excludedRootCanisterId = [
+  "ibahq-taaaa-aaaaq-aadna-cai",
+  "u67kc-jyaaa-aaaaq-aabpq-cai",
+];
+
+const snsDataFiltered = snsData.filter((data) => {
+  return !excludedRootCanisterId.includes(data.rootCanisterId);
+});
+
 /*
 
   This page pulls data dynamically from  multiple sources via a plugin at /plugins/sns-data.js:
@@ -49,30 +58,30 @@ export const excludedFromSmallCards = [
   openChatDao.rootCanisterId,
 ];
 
-export const smallSnsCards = snsData.filter(
+export const smallSnsCards = snsDataFiltered.filter(
   (dao) => !excludedFromSmallCards.includes(dao.rootCanisterId)
 );
 
 const aggregateSnsData = [
   {
     label: "SNS DAOs",
-    value: snsData.length,
+    value: snsDataFiltered.length,
   },
   {
     label: "Proposals executed",
-    value: snsData.reduce((acc, sns) => acc + sns.proposalCount, 0),
+    value: snsDataFiltered.reduce((acc, sns) => acc + sns.proposalCount, 0),
     format: (value) =>
       value > 1000 ? Math.floor(value / 100) + "00+" : value.toFixed(0),
   },
   {
     label: "Swap participants",
-    value: snsData.reduce((acc, sns) => acc + sns.participants, 0),
+    value: snsDataFiltered.reduce((acc, sns) => acc + sns.participants, 0),
     format: (value) =>
       value > 1000 ? (value / 1000).toFixed(1) + "k+" : value.toFixed(0),
   },
   {
     label: "ICP raised",
-    value: snsData.reduce((acc, sns) => acc + sns.icpRaised, 0),
+    value: snsDataFiltered.reduce((acc, sns) => acc + sns.icpRaised, 0),
 
     format: (value) =>
       value > 1000000 ? (value / 1000000).toFixed(1) + "m+" : value.toFixed(0),
