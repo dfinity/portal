@@ -13,7 +13,7 @@ import Tabs from "@theme/Tabs";
 In an SNS DAO, all decisions and changes happen through proposals.
 Therefore, to manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted and voted on, and what effect they have.
 
-The [Learn Hub page on SNS proposals](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals) contains more information on the SNS proposals' lifecycle, the concept of are *native proposals* that all SNSs have and *custom proposals* that are SNS-specific, and an introduction to proposal topics. 
+The [Learn Hub page on SNS proposals](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals) contains more information on the SNS proposals' lifecycle, the concepts of native proposals and custom proposals, and an introduction to proposal topics. 
 Here we explain more technical details of proposals, focusing on how proposals can be submitted.
 
 ## Background
@@ -28,10 +28,8 @@ As a consequence of this, it is not easy to upgrade an SNS-controlled dapp canis
 :::
 
 ## How to submit proposals
-On a high level, a proposals can be submitted by any eligible neuron. 
-Practically, there are different tools that provide an interface to users to do so.
-Any tool needs to access the neuron to be able to submit a proposal - this can for example be achieved by adding the principal in the tool as a hotkey to an eligible neurons. 
-We give a brief overview of some options here, but later focus on submitting proposals via the command line.
+On a high level, a proposal can be submitted by any eligible neuron. There are different tools that provide an interface to users to do so.
+A tool needs to access the neuron to be able to submit a proposal. For example, this can be achieved by adding the principal in the tool as a hotkey to an eligible neurons. 
 
 ### Using community tools
 One of the easiest ways to submit proposals is to use community-provided tools. 
@@ -309,7 +307,7 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-Then the resulting metadata will end like this, where only the `description` field changed:
+The resulting metadata will resemble the following, where only the `description` field has changed:
 
 ```
     url = "https://sns-examples.com/proposal/42";
@@ -331,7 +329,7 @@ type ManageLedgerParameters = record {
 };
 ```
 
-Example in bash that only changes the transfer fee and token symbol:
+Below is an example using quill that only changes the transfer fee and token symbol:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
@@ -437,7 +435,7 @@ quill send message.json
 ```
 ### `RegisterExtension`
 
-This allows an SNS to register an extension. An extension is a canister that need not be part of each SNS, so it is not an SNS framework canister, but it is an NNS-approved canister that can be added to those SNSs that need it.
+This allows an SNS to register an extension. An extension is a canister that does not need to be part of an SNS, so it is not an SNS framework canister, but it is an NNS-approved canister that can be added to any SNSs that need it.
 This feature is under developement and will soon allow SNS DAOs to integrate with DEX liquidity pools more easily. In the future it might support other extensions.
 
 #### Relevant type signatures
@@ -450,7 +448,7 @@ This feature is under developement and will soon allow SNS DAOs to integrate wit
 ```
 ### `UpgradeSnsControlledCanister`
 
-The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm module.
+The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new Wasm module.
 
 #### Relevant type signatures
 
@@ -467,7 +465,7 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
 ```
 
 :::warning
-Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/) command in `quill sns`.
+Since this proposal requires passing a Wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/) command in `quill sns`.
 
 
 ```bash
@@ -487,15 +485,15 @@ quill send message.json
 Due to the fact that ICP ingress messages can be at most 2 MiB, it is not possible to upgrade larger dapp canisters embedding their Wasm directly in the proposal. 
 Instead, to upgrade such large dapp canisters, a user can upload the necessary Wasm _chunks_ to a store canister and then make a proposal that upgrades the target canister to the corresponding Wasm.
 
-To make a concrete example, assume we want to upgrade the canister under the ID `$TARGET` using a large Wasm (more than 2 MiB).
+To make a concrete example, assume you want to upgrade the canister under the ID `$TARGET` using a large Wasm (more than 2 MiB).
 
-*1. Give the store canister a name* 
+#### Step 1. Give the store canister a name.
 ```
 touch dfx.json
 jq '.canisters += { "store": {} }' dfx.json > dfx.json
 ```
 
-*2. Create the store canister using the current DFX identity* 
+#### Step 2. Create the store canister using the current `dfx` identity.
 ```
 SNS_GOVERNANCE_CANISTER_ID=...
 SNS_ROOT_CANISTER_ID=...
@@ -506,9 +504,9 @@ dfx canister create \
     --controller "$(dfx identity get-principal)" \
          store
 ```
-Set the output canister id into the variable `STORE`.
+Set the output canister ID in the variable `STORE`.
         
-*3. Prepare the Wasm chunks*
+#### Step 3. Prepare the Wasm chunks.
 ```
 CHUNK_SIZE=1048576  # 1 MiB
 PATH_TO_LARGE_WASM="../ic/image-classification.wasm.gz"
@@ -540,7 +538,7 @@ a0808a12521416b32990e600878452a5b55880b5f050afde0da3d1f25934b454 *image-classifi
 bcf80bf0a1347bd2314e7684c3906393220f3349584318352ae05fe7509baec5 *image-classification.wasm.gz-15
 ```
 
-*4.  Upload the Wasm chunks, one-by-one.*
+#### Step 4.  Upload the Wasm chunks, one-by-one.
 ```
 dfx canister call --candid icp.did aaaaa-aa upload_chunk
 ```
@@ -560,7 +558,7 @@ Next, check that the expected chunks were uploaded successfully
 dfx canister call aaaaa-aa stored_chunks '(record { canister_id = principal "'${STORE}'" })'
 ```
 
-*5. Submit the `UpgradeSnsControlledCanister` proposal to upgrade the SNS-controlled canister using the chunks.*
+#### Step 5. Submit the `UpgradeSnsControlledCanister` proposal to upgrade the SNS-controlled canister using the chunks.
 You may use any frontend for creating SNS proposals, or do it via the CLI. For example:
 
 ```
@@ -597,7 +595,7 @@ dfx canister call $SNS_GOVERNANCE_CANISTER_ID manage_neuron '(
 ```
 
 ### `ManageDappCanisterSettings`
-This proposal allows upgrading the settings of one or more SNS DAO-controlled dapp canisters. The canisters whose settings should be updated are specified in `canister_ids`, and the proposal allows updating the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or the public), the memory allocation, the compute allocation, and the wasm memory threshold.
+This proposal allows upgrading the settings of one or more SNS DAO-controlled dapp canisters. The canisters whose settings should be updated are specified in `canister_ids`, and the proposal allows updating the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or the public), the memory allocation, the compute allocation, and the Wasm memory threshold.
 
 #### Relevant type signatures
 
@@ -619,7 +617,7 @@ enum LogVisibility {
 }
 ```
 
-Example in bash:
+Example using quill:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
@@ -640,7 +638,7 @@ quill send message.json
 ```
 
 ### `AdvanceSnsTargetVersion`
-As explained on in [Framework and Architecture](https://learn.internetcomputer.org/hc/en-us/articles/34140764336788-Framework-and-Architecture), all approved SNS canister versions are stored on the NNS canister SNS-W.
+As explained in the [Framework and Architecture](https://learn.internetcomputer.org/hc/en-us/articles/34140764336788-Framework-and-Architecture) article, all approved SNS canister versions are stored on the NNS canister SNS-W.
 New SNS canister Wasm codes are approved by NNS proposals and then added to SNS-W.
 An SNS community can then specify by proposal that they would like to follow the upgrade path up to a specific version.
 
@@ -661,11 +659,11 @@ type AdvanceSnsTargetVersion = record {
 While this proposal can still be used to update the SNS framework canisters, it is recommended to use `AdvanceSnsTargetVersion` explained above instead, which is the newer version of this.
 :::
 
-As explained on in [Framework and Architecture](https://learn.internetcomputer.org/hc/en-us/articles/34140764336788-Framework-and-Architecture), all approved SNS canister versions are stored on the NNS canister SNS-W.
+As explained in the [Framework and Architecture](https://learn.internetcomputer.org/hc/en-us/articles/34140764336788-Framework-and-Architecture) article, all approved SNS canister versions are stored on the NNS canister SNS-W.
 New SNS canister Wasm codes are approved by NNS proposals and then added to SNS-W.
 Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W.
 
-To do so, they can use an `UpgradeSnsToNextVersion` proposal. If this proposal is adopted, it will trigger a call to SNS root that will ask SNS-W which new wasm version is available and then upgrade to this new version.
+To do so, they can use an `UpgradeSnsToNextVersion` proposal. If this proposal is adopted, it will trigger a call to the SNS root that will ask the SNS-W canister which new Wasm version is available, then trigger an upgrade to that version.
 
 #### Relevant type signatures
 
@@ -675,7 +673,7 @@ To do so, they can use an `UpgradeSnsToNextVersion` proposal. If this proposal i
 
 #### Putting it together
 
-Example in bash:
+Example using quill:
 
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
@@ -831,7 +829,7 @@ Each SNS community might have functions that they would like to only execute if 
 
 For additional motivation and examples, also refer to the [Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals#h_01K0V8PJ2MV9T0YNCZ12ZZFRA9).
 
-Typically a generic proposal will have the following structure: a developer sends a proposal to add, execute, remove, or assign a topic to a custom proposal, i.e., a "generic nervous system function". So even though the proposal types below are technically "native proposal types," they are used to manage generic proposals.
+Typically a generic proposal will have the following structure: a developer sends a proposal to add, execute, remove, or assign a topic to a custom proposal, i.e., a "generic nervous system function". Therefore, even though the proposal types below are technically "native proposal types," they are used to manage generic proposals.
 
 - [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction).
 - [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction).
