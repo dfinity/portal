@@ -2864,6 +2864,8 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots.
 
+The results notably include the snapshot's unique identifier and its size in bytes.
+
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
 This method can be called by canisters as well as by external users via ingress messages.
