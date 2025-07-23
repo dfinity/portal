@@ -43,7 +43,7 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Pulse",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Sing in with OpenID",
@@ -104,6 +104,12 @@
     {
       "title": "Sustainable business model for issuers and verifiers",
       "overview": "Define and implement a sustainable business model for all: issuers, verifiers, users.",
+      "status": "future",
+      "milestone_id": "Plexus"
+    },
+     {
+      "title": "Multi-language support",
+      "overview": "Increase reach and adoption of Internet Identity by localizing its UI.",
       "status": "future",
       "milestone_id": "Plexus"
     },

@@ -1,0 +1,142 @@
+---
+
+keywords: [advanced, concept, vetkd, vetkeys, encryption, identity based encryption, threshold decryption, encrypted threshold key derivation]
+
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# Identity-based encryption (IBE)
+
+<MarkdownChipRow labels={["Advanced", "vetKeys", "Identity-based encryption"]} />
+
+The vetKeys feature enables Identity-based encryption (IBE), allowing data to be encrypted directly to an identity, such as a principal, an Internet Identity, an email address, or even an Ethereum address.
+
+At a high level, IBE uses the following workflow:
+1. A single master public key is generated and made available to all users. 
+2. The sender encrypts a message using the master public key and the recipient's identity. The same master key can be used to encrypt messages to any recipient. 
+3. The recipient authenticates using their identity to obtain a matching private decryption key, which is then used to decrypt the message.
+
+The underlying design of the vetKD protocol is based on a threshold-variant of [Boneh-Franklin IBE](https://eprint.iacr.org/2001/090), and incorporates the following features:
+
+- The master public key is generated and maintained in a distributed manner on an ICP subnet.
+
+- The `vetkd_public_key` API can be used to obtain the master public key of an IBE, which is then used to encrypt messages to identities.
+
+- The `vetkd_derive_key` API can be used to derive the user decryption key. The decryption key is securely encrypted using the user-provided transport key.
+
+- Canisters can enforce access control, ensuring that users are only able to request keys for their own identities.
+
+IBE works differently than the [distributed key management service (DKMS)](/docs/building-apps/network-features/vetkeys/dkms). In DKMS, one or more users share the same symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an asymmetric encryption scheme. Anyone can encrypt messages to a given identity, but only the holder of the corresponding decryption key can decrypt them.
+
+## How to use IBE
+
+This example will explain how to use IBE with vetKeys using the [basic IBE example](https://github.com/dfinity/vetkeys/tree/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe), which implements a simple IBE messaging system between principals.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/basic_ibe/motoko)
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/basic_ibe/rust)
+
+</TabItem>
+
+</AdornedTabs>
+
+In the example, users authenticate using their principals, encrypt messages, and then store the ciphertexts in the canister. Afterwards, the recipient retrieves their messages and their encrypted IBE private key, decrypts and verifies the private (decryption) key, and finally decrypts the encrypted messages. In this scenario, communication and key retrieval happen in the same canister.
+
+### Step 1: Obtain the IBE public key from the backend
+
+Expose a canister endpoint that can fetch the IBE public key of the canister.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+```motoko no-repl reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/motoko/backend/src/Main.mo#L96-L111
+```
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/rust/backend/src/lib.rs#L70-L83
+```
+
+</TabItem>
+</AdornedTabs>
+
+The public key only needs to be fetched once and can then be reused to encrypt data for multiple recipients by deriving the corresponding subkeys locally. To ensure cryptographic separation and prevent cross-protocol interference, it's good practice to include a domain separator in the `context` when using IBE. This distinguishes IBE usage from any other potential applications of vetKeys that the canister may support. The domain separator can be any unique and arbitrary byte string.
+
+### Step 2: Obtain the IBE public key and encrypt data in the frontend
+Use the [frontend `@dfinity/vetkeys` library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#encrypt) to encrypt data and store it in the frontend canister.
+To encrypt messages, the sender uses the recipient's principal as the encryption identity (set in the `input` variable of the `vetkd_derive_key` arguments).
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="ts" label="TypeScript" default>
+
+```ts reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/frontend/src/main.ts#L46-L66
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 3: Obtain the IBE private key from the backend
+
+Expose a canister endpoint that can fetch the IBE private key of the user making the call.
+
+This example uses the encoding of the caller as the identity. Since this value is already implicitly authenticated using II, no further verification by the canister is required. In constrast, if the canister wished to support some other sort of identity (for example an Ethereum address or an email address) it would have to validate that the caller was the valid owner of the relevant identity type. Likely, this would be accomplished using HTTP outcalls.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+```motoko no-repl reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/motoko/backend/src/Main.mo#L114-L131
+```
+
+</TabItem>
+
+<TabItem value="rs" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/rust/backend/src/lib.rs#L85-L101
+```
+
+</TabItem>
+</AdornedTabs>
+
+The transport public key used for the call is a temporary, throwaway key generated on the frontend by the [`@dfinity/vetkeys`](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.TransportSecretKey.html#random) library. The corresponding private key only needs to be fetched once and can be reused to decrypt multiple cipher texts, regardless of the senders’ identities.
+
+### Step 4: Obtain the IBE private key and decrypt data in the frontend
+Obtain the encrypted data from the canister or another storage location. Decrypt the IBE-encrypted data in the frontend using the [`@dfinity/vetkeys` frontend library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#decrypt).
+
+For a detailed overview of the basic flow for obtaining `vetKeys`, refer to the [API documentation](/docs/building-apps/network-features/vetkeys/api).
+
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="ts" label="TypeScript" default>
+
+```ts reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/examples/basic_ibe/frontend/src/main.ts#L68-L96
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Examples
+
+- [Use IBE to encrypt and send files to Ethereum wallets using a React frontend and Rust backend](https://github.com/kristoferlund/send_file_to_eth_demo).

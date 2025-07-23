@@ -26,7 +26,6 @@ const Hero: React.FC<{
 
   return (
     <>
-      <MarqueeBanner />
       <section className="bg-[#1B025A]" id="home" ref={darkRef}>
         {isDark && <DarkHeroStyles bgColor="transparent" />}
         <div
