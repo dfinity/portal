@@ -1,0 +1,71 @@
+---
+keywords: [beginner, tutorial, developer liftoff, canister snapshots, take a snapshot ]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 3.3 Canister snapshots
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+A canister is managed by controllers, which can be:
+
+- A single developer identity.
+
+- Multiple developer identities.
+
+- Another canister.
+
+If a canister has no controller, or if access to all controllers is lost, it cannot be upgraded, deleted, or maintained. In cases where a canister traps with an unrecoverable error and cannot be upgraded, it might still be possible to recover it using canister snapshot.
+
+One method of recovery is rolling the canister back to a previously saved snapshot (if one exists).
+
+## What are canister snapshots?
+
+A canister contains compiled Wasm code and data such as the canister ID, settings, and Wasm memory. If a canister stops functioning, traps, or needs to be restored to a previous state, developers can use canister snapshots. Snapshots save the current:
+
+- Stable memory.
+- Heap memory.
+- Wasm module.
+- Canister metadata.
+
+Snapshots can only be taken when a canister is stopped, and only controllers are permitted to create, load, or delete snapshots. If a canister has no controller and no access to the controller identities can be regained, there is no supported method to recover the canister.
+
+## Creating a snapshot
+
+To create a snapshot:
+
+```bash
+dfx canister stop <canister-name>
+dfx canister snapshot create <canister-name>
+```
+
+Only 10 snapshots can be stored per canister.
+
+To create a snapshot on the mainnet, add `--network ic` to both commands.
+
+To list existing snapshots:
+
+```bash
+dfx canister snapshot list <canister-name>
+```
+
+## Loading a snapshot
+
+To restore a canister from a saved snapshot:
+
+```bash
+dfx canister stop <canister-name>
+dfx canister snapshot load <canister-name> <snapshot-id>
+```
+
+This will overwrite the canister’s current code and data. Any changes made since the snapshot was taken will be lost.
+
+## Deleting a snapshot
+
+To delete a snapshot:
+
+```bash
+dfx canister snapshot delete <canister-name> <snapshot-id>
+```

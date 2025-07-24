@@ -1,0 +1,114 @@
+---
+keywords: [beginner, tutorial, developer liftoff, message inspection, inspect message, rust inspect message, msg inspection ]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 3.5 Message inspection
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+The `inspect_message` feature in Rust lets a canister examine incoming ingress messages before they are executed. To use it, define a function with the `#[ic_cdk::inspect_message]` attribute.
+
+This `inspect_message` function will be automatically called before each ingress update message. It is not called for query calls, inter-canister calls, or management canister calls. Only one `inspect_message` function can be defined per canister.
+
+This function does not return a value. Instead, it must explicitly call `ic_cdk::api::call::accept_message()` to approve the message. If `accept_message()` is not** called, or the function traps, the message is rejected.
+
+```rust
+#[ic_cdk::inspect_message]
+fn inspect_message() {
+    let method_name = ic_cdk::api::call::method_name();
+    if method_name == "allowed_method" {
+        ic_cdk::api::call::accept_message();
+    }
+    // If accept_message() is not called, the message is automatically rejected.
+}
+```
+
+The function runs on a single replica and does not go through consensus. Therefore, it should not be used for secure or definitive access control as it can be spoofed by a malicious boundary node.
+
+If no `inspect_message` function is defined, all ingress messages are accepted by default.
+
+## Caller identification
+
+In Rust canisters, the identity of the caller is securely determined using the `ic_cdk::api::caller()` function. This function returns the principal that invoked the current method.
+
+The returned principal is provided by the system and cannot be spoofed, making this the only trustworthy way to identify the caller.
+
+```rust
+use ic_cdk::api;
+
+fn my_function() {
+    let caller = api::caller();
+    // Use `caller` for access control, logging, etc.
+}
+```
+
+Passing the principal as a function argument is not secure, since the caller can provide any arbitrary value. Always use `ic_cdk::api::caller()` to obtain the verified caller identity as seen by the replica.
+
+## Basic access control
+
+Access control in Rust canisters is typically enforced by verifying the caller’s identity using the system-provided `ic_cdk::api::caller()` function. This enables you to restrict specific canister actions to trusted users or other canisters.
+
+You should consider enforcing access restrictions, such as checking membership in an approved list by comparing the caller’s principal against a stored value (e.g. an `owner` or `admin` principal).
+
+For secure operations, you should reject requests from `Principal::anonymous()` to ensure only authenticated users or canisters are allowed. You should also consider performing access checks at the start of your methods to prevent unauthorized activity and avoid unnecessary computation.
+
+### Example: Owner-only access
+
+```rust
+use ic_cdk::api;
+use ic_cdk::trap;
+use ic_principal::Principal;
+
+fn only_owner_action(owner: Principal) {
+    let caller = api::caller();
+    if caller != owner {
+        trap("Access denied: only the owner can call this function.");
+    }
+    // Safe to proceed
+}
+```
+
+### Restricting anonymous principals
+
+To restrict access to authenticated principals only, you can reject calls made by the anonymous principal:
+
+```rust
+use ic_cdk::api;
+use ic_principal::Principal;
+
+fn caller() -> Result<Principal, String> {
+    let caller = api::caller();
+    if caller == Principal::anonymous() {
+        Err(String::from("Anonymous principal not allowed to make calls."))
+    } else {
+        Ok(caller)
+    }
+}
+```
+
+
+### Access control best practices
+
+- Always use `ic_cdk::api::caller()`. Never trust a caller's identity passed as a function argument.
+
+- Do not rely on `inspect_message` for authentication. It does not go through consensus and can be spoofed by boundary nodes.
+
+- Centralize your checks: Create a reusable helper function to handle identity checks and anonymous rejection, such as:
+
+```rust
+fn ensure_authenticated() -> Result<Principal, String> {
+    let caller = ic_cdk::api::caller();
+    if caller == Principal::anonymous() {
+        Err("Access denied: anonymous principals are not allowed.".to_string())
+    } else {
+        Ok(caller)
+    }
+}
+```
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
