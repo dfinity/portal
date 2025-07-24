@@ -121,22 +121,29 @@ function Index() {
       ></motion.div>
       <div className="mb-12 md:mb-24">
         <h2 className="tw-heading-4 md:tw-heading-2 md:mr-5 md:w-7/10 flex-none">
-          Sample Code Examples & Startup Requests 
+          Sample Code & Tutorials
         </h2>
         <p className="tw-paragraph mt-2 md:w-7/10">
-          Explore the integration of Bitcoin with the Internet Computer through
-          concise code examples and startup collaboration opportunities. Access
-          ready-to-use code snippets and connect with innovative startups to
-          accelerate your projects. Unleash the potential of Bitcoin and
-          Internet Computer synergy for your next venture.
+          Learn how to build with Bitcoin on the Internet Computer using clear
+          code examples and step-by-step video guides. Get started quickly with
+          ready-to-use snippets and see what’s possible when Bitcoin meets ICP.
         </p>
         <Link
           className="link-primary link-with-icon md:mt-4"
-          href="/samples"
+          href="/samples?selectedDomains=Multichain"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LinkArrowRight /> See all
+          <LinkArrowRight /> See all samples
+        </Link>
+        <br />
+        <Link
+          className="link-primary link-with-icon md:mt-4"
+          href="/docs/build-on-btc/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkArrowRight /> Developer documentation
         </Link>
       </div>
       <motion.div
@@ -146,7 +153,7 @@ function Index() {
         <VideoCard
           image="https://i.ytimg.com/vi/OTAKkWAlfJE/maxresdefault.jpg"
           title="Internet Computer BUIDL Bitcoin Hackathon Powered by Encode"
-          label="Demo Day"
+          label="Tutorials"
           link={`https://www.youtube.com/playlist?list=PLfEHHr3qexv_cMqcKj6ay8cDUq0BNOGGb`}
           description={
             <>

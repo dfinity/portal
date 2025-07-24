@@ -1,0 +1,302 @@
+---
+keywords: [bitcoin, btc dev, btc dev environment, developer environment for btc, dev env btc, setup environment, btc environment, deploy bitcoin locally, local bitcoin, local bitcoin development, develop environment, development environment]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { OsType, useOs } from "/src/hooks/useOs";
+
+# BTC developer environment
+
+<MarkdownChipRow labels={["Bitcoin"]} />
+
+To develop Bitcoin applications to be deployed on ICP, your local developer environment will need to include:
+
+- Necessary tools and packages for the language you’d like to build your dapp in:
+
+    - The Rust toolchain for installing Rust packages and compiling Rust code.
+
+    - The Motoko compiler and base library for writing and compiling Motoko code.
+
+- The IC SDK for creating, deploying, and managing smart contracts.
+
+- A local Bitcoin testnet.
+
+- A local instance of the Bitcoin API.
+
+- An ICP smart contract project.
+
+## Install tooling
+
+### Rust toolchain
+
+Before developing BTC applications in Rust, you will need to install the Rust toolchain, including:
+
+- [The Rust programming language.](https://www.rust-lang.org/tools/install)
+- [The `cargo` package manager.](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+
+### Motoko compiler and base library
+
+The Motoko compiler (`moc`) and base library are included in the IC SDK installation as described below. Alternatively, you can install them on their own through the [Motoko release binaries](https://github.com/dfinity/motoko/releases).
+
+### IC SDK
+
+The IC SDK includes a CLI tool called `dfx` that is used for creating, managing, and deploying dapps on ICP. You can install it natively on macOS and Linux; however, Windows users will need to set up WSL 2 before installing the IC SDK.
+
+[Learn more about installing the IC SDK](/docs/building-apps/getting-started/install)
+
+## Create or download an example project
+
+To set up and test your local Bitcoin testnet, you will need a smart contract that implements methods that call the local Bitcoin API.
+
+Create a new project using `dfx new my_project` or download an example in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) or [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) that already implements basic methods for calling the Bitcoin API.
+
+:::tip
+
+Popular libraries like [Rust's bitcoin crate](https://crates.io/crates/bitcoin) and [Motoko's bitcoin package](https://mops.one/bitcoin) can be used within ICP smart contracts.
+
+:::
+
+## Create a local Bitcoin testnet (regtest) with `bitcoind`
+
+It is recommended that developers set up a local Bitcoin testnet on their machine, as it allows them to mine blocks quickly and at will, which facilitates testing various cases without having to rely on the Bitcoin testnet or the Bitcoin mainnet. Alternatively, you can test dapps using the Bitcoin testnet or mainnet through the ICP Bitcoin API. Both workflows are detailed below.
+
+A local Bitcoin testnet deployed on your computer operates in "regression testing mode," or [regtest mode](https://developer.bitcoin.org/examples/testing.html#regtest-mode). Regtest mode is used to instantly create a new, private blockchain with the configuration of a testnet. However, there is one key difference: regtest mode enables the developer to have complete control over the environment, including determining when blocks are created. This allows you to test and iterate faster than relying on the Bitcoin testnet or mainnet.
+
+- #### Step 1: Download [the Bitcoin binaries](https://bitcoin.org/bin/bitcoin-core-27.0/).
+
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
+
+Using [snap](https://snapcraft.io/) is recommended.
+
+```bash
+sudo snap install bitcoin-core
+```
+
+For other installation options, see [download Bitcoin core](https://bitcoin.org/en/download).
+
+</TabItem>
+<TabItem value={OsType.macOs} label="macOS">
+
+Using [Homebrew](https://brew.sh/) is recommended.
+
+```bash
+brew install bitcoin
+```
+
+For other installation options, see [download Bitcoin core](https://bitcoin.org/en/download).
+
+</TabItem>
+
+<TabItem value={OsType.Windows} label="Windows">
+
+Use the Windows installer at [download Bitcoin core](https://bitcoin.org/en/download).
+
+</TabItem>
+</AdornedTabs>
+
+- #### Step 2: Create a subdirectory for Bitcoin data.
+
+This should be created in the project folder root. This allows you to run different local Bitcoin testing networks for different projects.
+
+```bash
+mkdir bitcoin_data
+```
+
+- #### Step 3: Create a file called `bitcoin.conf`:
+
+```
+cat > bitcoin.conf <<EOF
+regtest=1
+txindex=1
+rpcuser=ic-btc-integration
+rpcpassword=QPQiNaph19FqUsCrBRN0FII7lyM26B51fAMeBQzCb-E=
+rpcauth=ic-btc-integration:cdf2741387f3a12438f69092f0fdad8e\$62081498c98bee09a0dce2b30671123fa561932992ce377585e8e08bb0c11dfa
+EOF
+```
+
+Explanation of settings:
+
+- `regtest=1`: Enables Bitcoin’s regression test mode for local blockchain testing.
+
+- `txindex=1`: Maintains a full transaction index to support lookups by transaction ID.
+
+- `rpcuser=ic-btc-integration`: Sets a default username for JSON-RPC authentication.
+
+- `rpcpassword=QPQ…b-E=`: Sets the password for JSON-RPC authentication.
+
+- `rpcauth=ic-btc-integration:cdf…dfa`: Uses an alternative authentication method for RPC, combining the username and a salted hash.
+
+Find more details about `bitcoin.conf` settings in the [Bitcoin core config generator](https://jlopp.github.io/bitcoin-core-config-generator/).
+
+- #### Step 4: Run `bitcoind` to start the Bitcoin client:
+
+```
+bitcoind -conf=$(pwd)/bitcoin.conf -datadir=$(pwd)/bitcoin_data --port=18444
+```
+
+This command assumes that port `18444` on your machine is available. If it isn't, change the specified port accordingly.
+
+## Starting `dfx` with Bitcoin support
+
+To deploy and test projects locally, first start `dfx` in your local development environment with Bitcoin support enabled.
+
+```
+dfx start --enable-bitcoin --background
+```
+
+`dfx` will run a local instance of the Bitcoin API deployed as a smart contract for your application to interact with. The `--enable-bitcoin` flag uses the default Bitcoin node configuration, `127.0.0.1:18444`. This address and port can be manually configured with the `--bitcoin-node` flag:
+
+```jsx
+dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:[port]
+```
+
+:::caution
+
+If you get a failure to connect error:
+
+```
+Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
+```
+
+This indicates that `dfx` isn't able to connect to your Bitcoin network. Make sure your Bitcoin network is up and running and you're setting the correct port (default is `18444`). The port used can be changed in your project's `dfx.json` file.
+
+:::
+
+### Configuring the local Bitcoin API
+
+The Bitcoin API can be configured either using the command line option provided to `dfx` (`dfx start --enable-bitcoin --bitcoin-node 127.0.0.1:[port]`) or by modifying the project’s `dfx.json` file.
+
+If both command line options and `dfx.json` configurations are provided, the command line options take precedence.
+
+The Bitcoin API configuration is specified under the `defaults` section of the `dfx.json` file. Below is an example configuration:
+
+```json
+{
+  "defaults": {
+    "bitcoin": {
+      "enabled": true,
+      "nodes": ["127.0.0.1:18444"],
+    }
+  }
+}
+```
+
+:::caution
+
+That Bitcoin config in `dfx.json` adds fields under `defaults` as shown above. This configuration won't actually have any effect unless `dfx.json` also defines the local network, **and** `dfx start` is run within the project directory. Below is an example of a full configuration, including the local network definition:
+
+```jsx reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/dfx.json#L20-L30
+```
+
+:::
+
+#### Configuration options
+
+- `enabled` (boolean): Determines whether the Bitcoin adapter is enabled.
+    - Default: `false`.
+
+- `nodes` (array of strings or null): Lists node addresses to connect to. Most likely, you may want to set this to the default IP and port of `bitcoind`, `127.0.0.1:18444`.
+    - Default: `null`.
+
+- `canister_init_arg` (string): Optional initialization arguments for the Bitcoin API. It sets up initial configuration parameters like stability threshold, network type, block sources, fees, syncing state, API access, and more. View all init argument options below.
+
+#### Bitcoin API initialization arguments
+
+The Bitcoin API on ICP is deployed as a smart contract. It takes initialization arguments that can determine the behavior of the Bitcoin API running in the local development environment.
+
+By default, the local Bitcoin API mirrors the settings used in the production environment. You can view these settings by searching for the Bitcoin API smart contracts ([mainnet Bitcoin API](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai) or [testnet Bitcoin API](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai)) on the ICP Dashboard and calling their `get_config` endpoint.
+
+- `stability_threshold` (u128): Defines the level of difficulty-based stability required for a Bitcoin block to be considered stable.
+
+    - When a block reaches this stability threshold, its transactions are applied to the UTXO set and the block can be discarded to free up memory. This mechanism is essential for efficiently managing blockchain forks.
+
+    - Note: This setting is not relevant in a local development environment.
+
+- `network` (enum): Indicates which Bitcoin network to connect to and ingest data from.
+
+    - Options: `mainnet`, `testnet` (v4), `regtest`
+
+    - Local development: Only `regtest` is valid when developing locally.
+
+- `syncing` (Flag): Indicates whether the Bitcoin smart contract is actively ingesting blocks to update its state.
+
+    - Options: `enabled`, `disabled`
+
+    - Default: `enabled`
+
+-  `fees` (record): Specifies the amount of cycles required when invoking individual endpoints. These fees help cover the cost of processing requests.
+
+    - Defaults: see below.
+
+    ```json
+    type fees = record {
+        get_current_fee_percentiles = 10_000_000 : nat;
+        get_utxos_maximum = 10_000_000_000 : nat;
+        get_block_headers_cycles_per_ten_instructions = 10 : nat;
+        get_current_fee_percentiles_maximum = 100_000_000 : nat;
+        send_transaction_per_byte = 20_000_000 : nat;
+        get_balance = 10_000_000 : nat;
+        get_utxos_cycles_per_ten_instructions = 10 : nat;
+        get_block_headers_base = 50_000_000 : nat;
+        get_utxos_base = 50_000_000 : nat;
+        get_balance_maximum = 100_000_000 : nat;
+        send_transaction_base = 5_000_000_000 : nat;
+        get_block_headers_maximum = 10_000_000_000 : nat;
+    };
+    ```
+
+- `api_access` (Flag): Controls access to the API's endpoints.
+
+    - Options: `enabled`, `disabled`
+
+    - Default: `enabled`
+
+- `disable_api_if_not_fully_synced` (Flag): Determines whether API access is automatically disabled when the watchdog smart contract detects that the Bitcoin smart contract's state is more than **two blocks** behind the Bitcoin blockchain.
+
+    - Options: `enabled`, `disabled`
+
+    - Default: `enabled`
+
+    - Note: This setting is not relevant in a local development environment.
+
+- `watchdog_canister` (`Option<Principal>`): Specifies the principal ID of the watchdog smart contract. If this smart contract detects that the Bitcoin smart contract is lagging behind, it is authorized to disable API access.
+
+    - Note: This setting is not relevant in a local development environment.
+
+- `burn_cycles` (Flag): Indicates whether received cycles are burned, contributing to the ICP burn rate requirements.
+
+    - Options: `enabled`, `disabled`
+
+    - Default: `disabled`
+
+    - Note: This setting is not relevant in a local development environment.
+
+- `lazily_evaluate_fee_percentiles` (Flag): Controls whether fee percentiles are calculated only when requested, instead of being automatically updated with every new block. When enabled, percentile calculations occur on demand. When disabled, percentiles are automatically updated on every new block.
+
+    - Options: `enabled`, `disabled`
+
+    - Default: `disabled`
+
+    - Note: This setting is not relevant in a local development environment.
+
+### Example configuration using init args
+
+For local testing using Bitcoin regtest:
+
+```json
+{
+   "defaults":{
+      "bitcoin":{
+         "enabled":true,
+         "nodes":[
+            "127.0.0.1:18444"
+         ],
+         "canister_init_arg":"(record { stability_threshold = 0 : nat; network = variant { regtest }; blocks_source = principal \"aaaaa-aa\"; fees = record { get_utxos_base = 0 : nat; get_utxos_cycles_per_ten_instructions = 0 : nat; get_utxos_maximum = 0 : nat; get_balance = 0 : nat; get_balance_maximum = 0 : nat; get_current_fee_percentiles = 0 : nat; get_current_fee_percentiles_maximum = 0 : nat;  send_transaction_base = 0 : nat; send_transaction_per_byte = 0 : nat; }; syncing = variant { enabled }; api_access = variant { enabled }; disable_api_if_not_fully_synced = variant { enabled }})"
+      }
+   }
+}
+```

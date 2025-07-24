@@ -24,9 +24,17 @@ export const goldDao = snsData.find(
 );
 
 export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
+  "jmod6-4iaaa-aaaaq-aadkq-cai": {
+    // waterneuron
+    twitter: "https://x.com/WaterNeuron",
+  },
+  "ormnc-tiaaa-aaaaq-aadyq-cai": {
+    // KongSwap
+    twitter: "https://x.com/KongSwapX",
+  },
   "tw2vt-hqaaa-aaaaq-aab6a-cai": {
     // Gold DAO
-    twitter: "https://twitter.com/gldrwa",
+    twitter: "https://x.com/TheGoldDAO",
     description: (
       <>
         The Gold DAO represents a groundbreaking fusion of traditional gold and
@@ -87,8 +95,8 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
   },
 
   "67bll-riaaa-aaaaq-aaauq-cai": {
-    // Hot or Not
-    twitter: "https://twitter.com/hotornot_dapp",
+    // DOLR_AI
+    twitter: "https://x.com/DOLR_AI",
     description: (
       <>
         A decentralized short-video social media platform governed by the people
@@ -109,8 +117,8 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
   },
 
   "x4kx5-ziaaa-aaaaq-aabeq-cai": {
-    // Modclub
-    twitter: "https://twitter.com/ModclubApp",
+    // Decide AI
+    twitter: "https://x.com/DecideAI_",
     description: (
       <>
         A decentralized crowdwork platform that supports dapps by handling
