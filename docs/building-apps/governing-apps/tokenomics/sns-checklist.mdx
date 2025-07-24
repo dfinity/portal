@@ -86,23 +86,18 @@ It should be possible to create a reproducible build from the open-sourced code 
 
 Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The [documentation](/docs/building-apps/best-practices/reproducible-builds) provides more information how reproducible builds can be created using Docker.
 
-## 2.4. Test dapp operations under SNS on mainnet with SNS testflight
-Before requesting an SNS launch in production, developers are strongly encouraged to test their deployed dapp’s operation (e.g., upgrading the dapp’s canisters) via SNS proposals, as if the live version of the dapp was managed by SNS.
+## 2.4. Test the SNS launch 
+It is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. [View detailed instructions on how to set up SNS locally for testing are available](https://github.com/dfinity/sns-testing).
 
-Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing/cycles-usage.mdx), so canisters never run out of cycles. The longer the test runs, the better, ideally several weeks.
+## 2.5. Test dapp operations
+In addition to testing the launch, before requesting an SNS launch in production, developers are strongly encouraged to ensure that all operations for maintaining and evolving the dapp can be done via SNS proposals.
 
-The developer can keep direct control over the dapp’s canisters registered with test flight SNS.
-The test flight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the test flight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
+Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing/cycles-usage.mdx), so canisters never run out of cycles. 
+[View information on how to test an locally](https://github.com/dfinity/sns-testing).
 
-To use the SNS testflight on the mainnet, pass the `–-network ic` parameter to the deploy command. The documentation for [Running the test flight is the same as for deploying it locally](../testing/testing-on-mainnet.mdx) - except for the added parameter.
+## 2.6. Integrate an SNS frontend into the dapp
+Developers can choose to integrate a frontend for the SNS functionality in the dapp. A good example of a useful integration is SNS proposal voting. This allows neurons to vote on proposals directly in the dapp frontend. Integrations should be tested thoroughly, for example by [local testing](https://github.com/dfinity/sns-testing).
 
-See the documentation for more information about testing [SNS Testflight on mainnet](../testing/testing-on-mainnet.mdx), including setup instructions.
-
-## 2.5. Integrate an SNS frontend into the dapp
-Developers can choose to integrate a frontend for the SNS functionality in the dapp. A good example of a useful integration is SNS proposal voting. This allows neurons to vote on proposals directly in the dapp frontend. Integrations should be tested thoroughly with the SNS Testflight or the local SNS test before the SNS launch.
-
-## 2.6. Test the SNS launch locally
-In addition to performing comprehensive testing of all dapp operations using the SNS (as explained in section 2.4), it is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. [View detailed instructions on how to set up SNS locally for testing are available](https://github.com/dfinity/sns-testing).
 
 # 3. Community consultation
 
