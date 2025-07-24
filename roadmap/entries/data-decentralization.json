@@ -14,22 +14,6 @@
       "in_beta": false
     },
     {
-      "title": "Public API boundary node logs and metrics",
-      "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
-      "forum": "",
-      "proposal": "",
-      "status": "in_progress",
-      "milestone_id": "Levitron"
-    },
-    {
-      "title": "Decentralized access logs and metrics",
-      "is_milestone": true,
-      "milestone_id": "Levitron",
-      "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
-      "status": "in_progress",
-      "eta_to_render": "July 2025"
-    },
-    {
       "title": "Generation 3 node hardware and rewards",
       "is_milestone": true,
       "milestone_id": "Knot",
