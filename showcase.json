@@ -218,7 +218,7 @@
       "DeFi",
       "DAO"
     ],
-    "description": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
+    "description": "The Gold DAO represents a groundbreaking fusion of traditional gold and modern blockchain technology, allowing anyone in the world to access physical gold instantaneously, without depending on banks.",
     "logo": "/img/showcase/golddao_logo.png"
   },
   {
@@ -892,7 +892,7 @@
     "name": "Trax",
     "display": "Normal",
     "website": "https://trax.so/",
-    "twitter": "https://twitter.com/onlyontrax",
+    "twitter": "https://x.com/trax_so",
     "tags": [
       "SocialFi",
       "DAO",
@@ -900,7 +900,7 @@
     ],
     "description": "Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/trax_logo.webp"
+    "logo": "/img/showcase/Trax_logo.jpeg"
   },
   {
     "id": "w3ns",
@@ -3050,34 +3050,19 @@
     "logo": "/img/showcase/pado_logo.webp"
   },
   {
-    "id": "openfpl",
-    "name": "OpenFPL",
+    "id": "icfc",
+    "name": "ICFC",
     "display": "Normal",
-    "website": "https://openfpl.xyz/",
-    "twitter": "https://twitter.com/OpenFPL_DAO",
-    "github": "https://github.com/jamesbeadle/OpenFPL",
+    "website": "https://icfc.app/",
+    "twitter": "https://x.com/icfc_app",
     "tags": [
       "SocialFi",
       "DAO",
       "Creator Economy"
     ],
-    "description": "Decentralised Fantasy Football.",
+    "description": "The ICFC football ecosystem designed to reward fans for their love of football.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/openfpl_logo.png"
-  },
-  {
-    "id": "icghost",
-    "name": "ICGhost",
-    "display": "Normal",
-    "website": "https://yadjb-mqaaa-aaaan-qaqlq-cai.icp0.io/",
-    "twitter": "https://x.com/ghost_icp",
-    "tags": [
-      "DeFi",
-      "DAO"
-    ],
-    "description": "The First Decentralized Meme Coin on IC.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/icghost.png"
+    "logo": "/img/showcase/ICFC_logo.png"
   },
   {
     "id": "sneed",
@@ -3454,7 +3439,7 @@
     "stats": "229 tokens and 90 liquidity pools created",
     "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm that is committed to becoming the leading decentralized financial hub serving Web3.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/icpex_logo.png"
+    "logo": "/img/showcase/ICPex_logo.jpg"
   },
   {
     "id": "candb",
@@ -5997,6 +5982,81 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpack-logo.svg",
     "oneLiner": "Self-sovereign apps in user's canisters."
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado",
+    "display": "Normal",
+    "website": "https://avcd.hodl.fyi/",
+    "twitter": "https://x.com/av8cado",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Avocado ($AVCD) is a highly deflationary governance token that powers the Avocado DAO on the Internet Computer ecosystem",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/AVCD_logo.png",
+    "oneLiner": "$AVCD is the most deflationary token in the $ICP ecosystem"
+  },
+  {
+    "id": "webhash",
+    "name": "Webhash",
+    "display": "Normal",
+    "website": "https://webhash.com/",
+    "twitter": "https://x.com/webhash_eth",
+    "github": "https://github.com/WebHash-eth/ICP",
+    "youtube": "https://www.youtube.com/@webhash_eth",
+    "submittableId": 48953717,
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "description": "Webhash is a no-code builder to design and deploy websites on the Internet Computer (ICP) with one-click publishing and custom domain support.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/webhash logo.svg",
+    "oneLiner": "Decentralised website builder for ICP"
+  },
+  {
+    "id": "dolr_ai",
+    "name": "DORL AI",
+    "display": "Normal",
+    "website": "https://dolr.ai/",
+    "twitter": "https://x.com/DOLR_AI",
+    "tags": [
+      "DAO",
+      "AI"
+    ],
+    "description": "A decentralized short-video social media platform governed by the people for the people. Monetized time on social media.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Dolr_ai_logo.jpg",
+    "oneLiner": "World's First AI-Powered Unstoppable Social Cloud"
+  },
+  {
+    "id": "icvc",
+    "name": "ICVC",
+    "display": "Normal",
+    "website": "https://mnc6b-aaaaa-aaaap-qhnrq-cai.icp0.io/projects",
+    "twitter": "https://x.com/icvcofficial",
+    "tags": [
+      "DAO"
+    ],
+    "description": "ICVC DAO is a community governed Web3 venture builder.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/ICVC_logo.jpg",
+    "oneLiner": "We back founders building the new internet"
+  },
+  {
+    "id": "Cecil_the_lion_dao",
+    "name": "Cecil The Lion DAO",
+    "display": "Normal",
+    "website": "https://cecildao.org/",
+    "twitter": "https://x.com/dao_cecil",
+    "tags": [
+      "DAO",
+      "AI"
+    ],
+    "description": "The Cecil The Lion DAO project is the first-ever AI-driven humanitarian DAO, an initiative dedicated to supporting vital humanitarian projects across the globe.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Cecil_the_lion_dao.jpg"
   }
   
 ]
