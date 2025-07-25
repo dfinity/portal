@@ -47,7 +47,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
   "qtooy-2yaaa-aaaaq-aabvq-cai": {
     // Sonic
     name: "Sonic",
-    twitter: "https://twitter.com/sonic_ooo",
+    twitter: "https://x.com/sonic_ooo",
     description: (
       <>
         The open DeFi suite on the Internet Computer blockchain governed by the
@@ -59,7 +59,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "3e3x2-xyaaa-aaaaq-aaalq-cai": {
     // OpenChat
-    twitter: "https://twitter.com/OpenChat",
+    twitter: "https://x.com/OpenChat",
     name: "OpenChat raises 1M ICP in 6 hours",
     description: (
       <>
@@ -72,7 +72,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "zxeu2-7aaaa-aaaaq-aaafa-cai": {
     // Dragginz
-    twitter: "https://twitter.com/dragginzgame",
+    twitter: "https://x.com/dragginzgame",
     description: (
       <>
         A virtual pets game from the creators of Neopets. Non-profit, 100%
@@ -84,7 +84,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "7jkta-eyaaa-aaaaq-aaarq-cai": {
     // Kinic
-    twitter: "https://twitter.com/kinic_app",
+    twitter: "https://x.com/kinic_app",
     description: (
       <>
         The first and only dedicated search engine for Web3 content that runs on
@@ -107,7 +107,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "4m6il-zqaaa-aaaaq-aaa2a-cai": {
     // IC Ghost
-    twitter: "https://twitter.com/ghost_icp",
+    twitter: "https://x.com/ghost_icp",
     description: (
       <>
         The first decentralized meme coin on the Internet Computer. GHOST is
@@ -130,7 +130,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "xjngq-yaaaa-aaaaq-aabha-cai": {
     // BOOM DAO
-    twitter: "https://twitter.com/boomdaosns",
+    twitter: "https://x.com/boomdaosns",
     description: (
       <>
         A collaborative hub for all things Web3 gaming. Plus an all-in-one web3
@@ -142,7 +142,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "uly3p-iqaaa-aaaaq-aabma-cai": {
     // Catalyze
-    twitter: "https://twitter.com/catalyze_one",
+    twitter: "https://x.com/catalyze_one",
     description: (
       <>
         A one-stop social-fi application for organising Web3 experiences and
@@ -154,11 +154,11 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "u67kc-jyaaa-aaaaq-aabpq-cai": {
     // ICX
-    twitter: "https://twitter.com/icxdao",
+    twitter: "https://x.com/icxdao",
     description: (
       <>
         A decentralized social network with the functionalities you love on
-        platforms like Twitter, but with privacy, ownership, and
+        platforms like X, but with privacy, ownership, and
         community-driven governance.
       </>
     ),
@@ -166,7 +166,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "rzbmc-yiaaa-aaaaq-aabsq-cai": {
     // Nuance
-    twitter: "https://twitter.com/nuancedapp",
+    twitter: "https://x.com/nuancedapp",
     description: (
       <>
         The world's first publishing platform built entirely onchain. In the
@@ -178,7 +178,7 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "extk7-gaaaa-aaaaq-aacda-cai": {
     // Neutrinite
-    twitter: "https://twitter.com/ICPCoins",
+    twitter: "https://x.com/ICPCoins",
     description: (
       <>
         Neutrinite SNS DAO for ICPCoins. This platform is dedicated to securely
@@ -189,10 +189,100 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
 
   "ecu3s-hiaaa-aaaaq-aacaq-cai": {
     // Trax
-    twitter: "https://twitter.com/onlyontrax",
+    twitter: "https://x.com/onlyontrax",
     description: (
       <>A decentralised music platform own and governed by artists and fans.</>
     ),
+  },
+
+  "fp274-iaaaa-aaaaq-aacha-cai": {
+    // Sneed
+    twitter: "https://x.com/icsneed",
+  },
+
+  "gkoex-viaaa-aaaaq-aacmq-cai": {
+    // Elna
+    twitter: "https://x.com/ELNA_DeAi",
+  },
+
+  "hjcnr-bqaaa-aaaaq-aacka-cai": {
+    // IC Lighthouse
+    twitter: "https://x.com/ICLighthouse",
+  },
+
+  "d7wvo-iiaaa-aaaaq-aacsq-cai": {
+    // ICPanda
+    twitter: "https://x.com/ICPandaDAO",
+  },
+
+  "csyra-haaaa-aaaaq-aacva-cai": {
+    // ICPSwap
+    twitter: "https://x.com/ICPSwap",
+  },
+
+  "cj5nf-5yaaa-aaaaq-aacxq-cai": {
+    // Yuku
+    twitter: "https://x.com/yukuapp",
+  },
+
+  "l7ra6-uqaaa-aaaaq-aadea-cai": {
+    // Swampies
+    twitter: "https://x.com/dragginzgame",
+  },
+
+  "leu43-oiaaa-aaaaq-aadgq-cai": {
+    // Origyn
+    twitter: "https://x.com/origyntech",
+  },
+
+  "nb7he-piaaa-aaaaq-aadqq-cai": {
+    // PokedBots
+    twitter: "https://x.com/pokedstudiouk",
+  },
+
+  "nuywj-oaaaa-aaaaq-aadta-cai": {
+    // ICVC
+    twitter: "https://x.com/icvcofficial",
+  },
+
+  "oh4fn-kyaaa-aaaaq-aaega-cai": {
+    // Alice
+    twitter: "https://x.com/alicedotfun",
+  },
+
+  "m2blf-zqaaa-aaaaq-aaejq-cai": {
+    // NFID Wallet
+    twitter: "https://x.com/IdentityMaxis",
+  },
+
+  "n6mex-aqaaa-aaaaq-aaepq-cai": {
+    // ICExplorer
+    twitter: "https://x.com/ICExplorer_io",
+  },
+
+  "izscx-raaaa-aaaaq-aaesq-cai": {
+    // Personal DAO
+    twitter: "https://x.com/Personal_DAO",
+  },
+
+  "ju4gz-6iaaa-aaaaq-aaeva-cai": {
+    // Cecil the Lion
+    twitter: "https://x.com/dao_cecil",
+  },
+
+  "jpz24-eqaaa-aaaaq-aaexq-cai": {
+    // ICPEx
+    twitter: "https://x.com/ICPExchange",
+  },
+
+  "lacdn-3iaaa-aaaaq-aae3a-cai": {
+    // TACO DAO
+    twitter: "https://x.com/tacodaoicp",
+  },
+
+  "abhsa-pyaaa-aaaaq-aac3q-cai": {
+    // EstateDAO
+    twitter: "https://x.com/estatedao_icp",
   },
 };
 
