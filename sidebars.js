@@ -1054,7 +1054,7 @@ devjourneyRust: [
         "tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots",
         "tutorials/developer-liftoff-rust/level-3/3.4-identity-auth",
         "tutorials/developer-liftoff-rust/level-3/3.5-access-control",
-        "tutorials/developer-liftoff-rst/level-3/3.6-rust-lvl3",
+        "tutorials/developer-liftoff-rust/level-3/3.6-rust-lvl3",
     ],
     },
 ],
