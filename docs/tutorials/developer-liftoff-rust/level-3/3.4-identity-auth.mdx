@@ -17,7 +17,7 @@ First, let's clearly define the identity and authentication terminology on ICP:
 
 - **Developer identity**: Created using `dfx`. It contains a private/public key pair and has a `principal` data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
 
-- **Principals**: Generic identifiers that are used for users, canisters, and potentially other future concepts. There is intentionally no way to tell canister principal IDs and user principal IDs apart. You can learn more in the IC [specification](/docs/references/ic-interface-spec#principal).
+- **Principals**: Generic identifiers that are used for users, canisters, and potentially other future concepts. You can learn more in the IC [specification](/docs/references/ic-interface-spec#principal).
 
 - **Account identifier**: The identifier associated with your ICP ledger account, as specified in the [ledger](/docs/defi/token-standards/) specification.
 
@@ -39,7 +39,7 @@ A different identity is issued for each dapp a user authenticates to and cannot 
 
 ### Internet Identity architecture
 
-Internet Identity uses an implementation of the WebAuthn API that runs within a single canister that serves both the II frontend application code and handles the authentication requests. The app's authentication service issues 'delegations' on the user's behalf, which are signed with private cryptographic material created by the WebAuth API that is owned by the user. This private material never leaves the user's device, as it is stored in the local hardware securely. Then, the II frontend uses the WebAuthn API to sign the delegation with the cryptographic material.
+An implementation of the WebAuthn API is used to prove your identity to Internet Identity by signing a challenge issued by Internet Identity. Once signed, Internet Identity issues 'delegations' on the user's behalf, which are signed by with the delegation's own keys. This private material never leaves the user's device, as it is stored in the local hardware securely. 
 
 For more details on how the Internet Identity architecture works, please refer to the [official Internet Identity specification](/docs/references/ic-interface).
 
