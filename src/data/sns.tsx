@@ -284,6 +284,11 @@ export const extraMetadata: Record<string, Partial<DaoCardProps>> = {
     // EstateDAO
     twitter: "https://x.com/estatedao_icp",
   },
+
+  "gyito-zyaaa-aaaaq-aacpq-cai": {
+    // ICFC
+    twitter: "https://x.com/icfc_app",
+  },
 };
 
 export function dashboardUrlFromRootCanisterId(rootCanisterId: string) {
