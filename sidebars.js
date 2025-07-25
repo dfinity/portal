@@ -1045,6 +1045,18 @@ devjourneyRust: [
         "tutorials/developer-liftoff-rust/level-2/2.6-rust-lvl2",
       ],
     },
+    {
+      type: "category",
+      label: "Level 3: Space engineer",
+      items: [
+        "tutorials/developer-liftoff-rust/level-3/3.1-testing-rust",
+        "tutorials/developer-liftoff-rust/level-3/3.2-logging-history",
+        "tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots",
+        "tutorials/developer-liftoff-rust/level-3/3.4-identity-auth",
+        "tutorials/developer-liftoff-rust/level-3/3.5-access-control",
+        "tutorials/developer-liftoff-rst/level-3/3.6-rust-lvl3",
+    ],
+    },
 ],
 },
 ],

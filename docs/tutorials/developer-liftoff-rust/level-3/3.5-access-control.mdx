@@ -26,7 +26,11 @@ fn inspect_message() {
 }
 ```
 
-The function runs on a single replica and does not go through consensus. Therefore, it should not be used for secure or definitive access control as it can be spoofed by a malicious boundary node.
+The function runs on a single replica and does not go through consensus.
+
+The `inspect_message` function is primarily used to determine whether the caller is attaching their own cycles to a call. Based on this, the canister can decide whether to accept the incoming call and potentially spend cycles to process it.
+
+If the caller isn't contributing any cycles, it may be inefficient for the receiving canister to bear the cost. This limits the effectiveness of `inspect_message` for access control, as it mainly serves to avoid resource costs in some cases rather than enforce strict access restrictions.
 
 If no `inspect_message` function is defined, all ingress messages are accepted by default.
 
