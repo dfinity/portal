@@ -34,7 +34,7 @@ Your first example will be calling the `call_get_and_set` method on a second can
 The finished code for the project is already available in `src/caller`, or you can clear the contents of `src/caller/src/lib.rs` and paste the following code. The explanation is within the comments.
 
 ```rust reference
-https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
+https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
 ```
 
 Now, deploy the `caller` canister to the local development environment. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
@@ -68,7 +68,7 @@ You have already seen that the inter-canister calls use the Rust `async/await` s
 To illustrate, let's look at the following example, where it first calls the `set` method on the `counter` canister, and then calls `get` afterwards. Add the following code to your `src/caller/src/lib.rs`.
 
 ```rust reference
-https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L42-L60
+https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L41-L59
 ```
 
 Let's try this out. As shown below, you can also pass the arguments directly to `dfx` instead of using the menu by encoding [Candid values](/docs/building-apps/interact-with-canisters/candid/candid-concepts) manually.
@@ -104,7 +104,7 @@ Note that this response can still be a failure. For example, a call might fail b
 Extend the example by adding this code to `src/caller/src/lib`:
 
 ```rust reference
-https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L62-L80
+https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L61-L79
 ```
 
 A clean reject of the increment call means that the counter hasn't changed. In general, if a call that changes the callee's state (such as `increment`) is rejected, this means that the state hasn't changed. With a non-clean reject you may not know what happened on the callee side and a thorough analysis may be needed.
@@ -145,7 +145,7 @@ Thus, bounded-wait calls are suitable only for reads, or for state-changing call
 For example, you can safely call the `counter` canister's `get` endpoint using a bounded-wait call, since this is just a read. Edit `src/caller/src/lib.rs` to add the following method:
 
 ```rust reference
-https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L82-L99
+https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L81-L98
 ```
 
 Let's try it out. Redeploy the canister and call the new method:
@@ -161,7 +161,7 @@ Idempotent endpoints give the caller a chance to try and clean errors up by simp
 Furthermore, there are also errors that are likely to be hit again if you just retry immediately. In this case, you will have to leave the clean up to the upstream caller. Let's see an example of what a retry strategy might look like.
 
 ```rust reference
-https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L101-L137
+https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L100-L136
 ```
 
 To test, let's call the new endpoint with the value 42.
@@ -186,7 +186,7 @@ Cycle transfers are generally either used to pay for the callee's costs of proce
 Below is a threshold signature example that shows how to attach cycles to a call:
 
 ```rust reference
-https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
+https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L138-L187        
 ```
 
 Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local development environment.
