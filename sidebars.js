@@ -271,6 +271,7 @@ build: [
             "building-apps/advanced/optimize/rust",
           ],
         },
+        "building-apps/advanced/canister-access-logs",
       ],
     },
     {
@@ -677,34 +678,40 @@ defi: [
         label: "DeFi on ICP",
         id: "defi/overview",
       },
-      {
-        type: "category",
-        label: "ICP Rosetta implementation",
-        link: {
-          type: "doc",
-          id: "defi/rosetta/icp_rosetta/index",
-        },
-        items: [
-          {
+              {
+          type: "category",
+          label: "ICP Rosetta implementation",
+          link: {
             type: "doc",
-            label: "Data API",
-            id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-          {
-            type: "category",
-            label: "Construction API",
-            link: {
+            id: "defi/rosetta/icp_rosetta/index",
+          },
+          items: [
+            "defi/rosetta/icp_rosetta/running-rosetta",
+            {
               type: "doc",
-              id: "defi/rosetta/icp_rosetta/construction_api/index",
-            },
-            items: [
-            "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-            "defi/rosetta/icp_rosetta/construction_api/staking",
-            "defi/rosetta/icp_rosetta/construction_api/voting",
+              label: "Data API",
+              id: "defi/rosetta/icp_rosetta/data_api/index",
+              },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+              "defi/rosetta/icp_rosetta/construction_api/operations-flow",
+              "defi/rosetta/icp_rosetta/construction_api/staking",
+              "defi/rosetta/icp_rosetta/construction_api/voting",
+              ],
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icp_rosetta/examples",
+              },
             ],
-            },
-          ],
-        },
+          },
         {
           type: "category",
           label: "ICRC Rosetta implementation",
@@ -713,6 +720,7 @@ defi: [
             id: "defi/rosetta/icrc_rosetta/index",
           },
           items: [
+            "defi/rosetta/icrc_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",
@@ -722,6 +730,11 @@ defi: [
               type: "doc",
               label: "Construction API",
               id: "defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
         },
@@ -889,6 +902,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
@@ -986,6 +1000,66 @@ devjourney: [
   },
 ],
 
+devjourneyRust: [
+  {
+    type: "category",
+    label: "Developer Liftoff: Rust",
+    link: {
+      type: "doc",
+      id: "tutorials/developer-liftoff-rust/index",
+    },
+    items: [
+      {
+        type: "category",
+        label: "Level 0: Pre-flight operations",
+        items: [
+          "tutorials/developer-liftoff-rust/level-0/ic-overview",
+          "tutorials/developer-liftoff-rust/level-0/ic-terms",
+          "tutorials/developer-liftoff-rust/level-0/intro-canisters",
+          "tutorials/developer-liftoff-rust/level-0/intro-languages",
+          "tutorials/developer-liftoff-rust/level-0/tooling",
+          "tutorials/developer-liftoff-rust/level-0/first-dapp",
+    ],
+  },
+        {
+        type: "category",
+        label: "Level 1: Space cadet",
+        items: [
+          "tutorials/developer-liftoff-rust/level-1/1.1-rust-lvl1",
+          "tutorials/developer-liftoff-rust/level-1/1.2-rust-dev-env",
+          "tutorials/developer-liftoff-rust/level-1/1.3-intro-dfx",
+          "tutorials/developer-liftoff-rust/level-1/1.4-using-cycles",
+          "tutorials/developer-liftoff-rust/level-1/1.5-deploying-canisters",
+          "tutorials/developer-liftoff-rust/level-1/1.6-managing-canisters",
+      ],
+    },
+    {
+      type: "category",
+      label: "Level 2: Space explorer",
+      items: [
+        "tutorials/developer-liftoff-rust/level-2/2.1-canister-calls",
+        "tutorials/developer-liftoff-rust/level-2/2.2-storage-memory",
+        "tutorials/developer-liftoff-rust/level-2/2.3-canister-state",
+        "tutorials/developer-liftoff-rust/level-2/2.4-stable-memory",
+        "tutorials/developer-liftoff-rust/level-2/2.5-upgrading-rust",
+        "tutorials/developer-liftoff-rust/level-2/2.6-rust-lvl2",
+      ],
+    },
+    {
+      type: "category",
+      label: "Level 3: Space engineer",
+      items: [
+        "tutorials/developer-liftoff-rust/level-3/3.1-testing-rust",
+        "tutorials/developer-liftoff-rust/level-3/3.2-logging-history",
+        "tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots",
+        "tutorials/developer-liftoff-rust/level-3/3.4-identity-auth",
+        "tutorials/developer-liftoff-rust/level-3/3.5-access-control",
+        "tutorials/developer-liftoff-rust/level-3/3.6-rust-lvl3",
+    ],
+    },
+],
+},
+],
 
 hackathon: [
   {
