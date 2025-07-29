@@ -2391,7 +2391,9 @@ This method can be called by canisters as well as by external users via ingress 
 
 Indicates various information about the canister. It contains:
 
--   The status of the canister. It could be one of `running`, `stopping` or `stopped`.
+-   The status of the canister. It could be one of `running`, `stopping` or `stopped`. The `stopped` variant contains a bool that indicates whether the canister is ready to be migrated to another subnet (i.e., whether the canister has empty queues and flushed streams).
+
+-   The canister version.
 
 -   The "settings" of the canister containing:
 
