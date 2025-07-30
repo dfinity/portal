@@ -282,7 +282,7 @@ The canister status can be used to control whether the canister is processing ca
 
 -   In status `stopping`, calls to the canister are rejected by the IC with reject code `CANISTER_ERROR` (5), but responses to the canister are processed as normal.
 
--   In status `stopped`, calls to the canister are rejected by the IC with reject code `CANISTER_ERROR` (5), and there are no outstanding responses. This status contains an additional boolean, `ready_for_migration` which indicates whether the canister is ready to be migrated to another subnet (in more detail, whether the canister has empty queues and flushed streams).
+-   In status `stopped`, calls to the canister are rejected by the IC with reject code `CANISTER_ERROR` (5), and there are no outstanding responses.
 
 In all cases, calls to the [management canister](#ic-management-canister) are processed, regardless of the state of the managed canister.
 
@@ -297,6 +297,12 @@ This status is orthogonal to whether a canister is empty or not: an empty canist
 :::note
 
 This status is orthogonal to whether a canister is frozen or not: a frozen canister can be in status `running`. Calls to such a canister are still rejected by the IC, but because the canister is frozen, the returned reject code is `SYS_TRANSIENT`.
+
+:::
+
+:::note
+
+If a canister is in the `stopped` state, an additional boolean may be of interest: `ready_for_migration` indicates whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
 
 :::
 
@@ -2391,7 +2397,9 @@ This method can be called by canisters as well as by external users via ingress 
 
 Indicates various information about the canister. It contains:
 
--   The status of the canister. It could be one of `running`, `stopping` or `stopped`. The `stopped` variant contains a bool that indicates whether the canister is ready to be migrated to another subnet (i.e., whether the canister has empty queues and flushed streams).
+-   The status of the canister. It could be one of `running`, `stopping` or `stopped`.
+
+-   A bool `ready_for_migration` indicating whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` variant (see above) is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
 
 -   The canister version.
 
