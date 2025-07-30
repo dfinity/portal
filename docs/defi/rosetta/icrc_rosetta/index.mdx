@@ -8,199 +8,192 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
 
-The ICRC Rosetta implementation allows for communication with the ICRC-1 compatible ledgers through the [Rosetta-API standard](https://docs.cdp.coinbase.com/mesh/docs/welcome). Examples include the [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) and the [ckETH ledger](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
-This documentation covers the endpoints of the [Data-API](/docs/defi/rosetta/icrc_rosetta/data_api/) and the [Construction-API](/docs/defi/rosetta/icrc_rosetta/construction_api/).
-
-## Set up an ICRC Rosetta node
-
-You can set up a Rosetta API-compliant node for ICRC to interact with the Internet Computer and your ICRC-1 ledgers of choice.
-For simplicity, these instructions will describe how to use a Docker image to create the integration with the Rosetta API.
-You can also build and run the binary using the source code.
-
-If you don’t already have [Docker](https://docs.docker.com/get-docker/) in your environment, download and install the latest version.
-
-### Step 1:  [Install Docker](https://docs.docker.com/get-docker/) and [start the Docker daemon](https://docs.docker.com/config/daemon/).
-
-The Docker daemon (`dockerd`) should automatically start when you reboot your computer. If you start the Docker daemon manually, the instructions vary depending on the local operating system.
-
-### Step 2:  Pull the latest `dfinity/ic-icrc-rosetta-api` image from the Docker Hub.
-
-Run the following command:
-
-``` bash
-docker pull dfinity/ic-icrc-rosetta-api
-```
-
-### Step 3: Start the integration software.
-
-#### From v2.1.0 - Multitoken tracking
-Run the following command:
-You can have a single ICRC Rosetta instance integrate with multiple tokens at the same time.
-You will need to know the canister IDs of the ICRC-1 ledgers you are trying to connect to. For example, to connect the ckBTC ICRC-1 ledger with the canister ID `mxzaz-hqaaa-aaaar-qaada-cai` and ckETH ICRC-1 (`ss2fx-dyaaa-aaaar-qacoq-cai`) which are running on the mainnet, the following call could be used:
-``` bash
-docker run \
-    --interactive \
-    --tty \
-    --publish 8082:8082 \
-    --rm \
-    dfinity/ic-icrc-rosetta-api \
-    --port 8082 \
-    --network-type mainnet \
-    --multi-tokens mxzaz-hqaaa-aaaar-qaada-cai,ss2fx-dyaaa-aaaar-qacoq-cai \
-    --multi-tokens-store-dir /data
-```
-
-In this case, each token will use a separate SQLite database in the specified directory, named `/data/mxzaz-hqaaa-aaaar-qaada-cai.db` and `/data/ss2fx-dyaaa-aaaar-qacoq-cai.db` respectively.
-
-#### Before v2.1.0 - Single token tracking
-Run the following command:
-You will need to know the canister ID of the ICRC-1 ledger you are trying to connect to. For example, to connect the ckBTC ICRC-1 ledger with the canister ID `mxzaz-hqaaa-aaaar-qaada-cai` which is running on the mainnet, the following call could be used:
-``` bash
-docker run \
-    --interactive \
-    --tty \
-    --publish 8082:8082 \
-    --rm \
-    dfinity/ic-icrc-rosetta-api \
-    --port 8082 \
-    --network-type mainnet \
-    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
-    --store-file /data/db.sqlite
-
-```
-
-#### Initialization logs
-In either case (Multi-token or legacy single token), the call specifies a port using `--port` which is used to publish through Docker.
-The default port, if not specified, is `8080`. The default network is the testnet.
-This command starts the software on the local host and displays output similar to the following:
-
-```
-2025-04-04T11:15:25.840527Z  INFO rs/rosetta-api/icrc1/src/main.rs:447: ICRC Rosetta is connected to the ICRC-1 ledger: mxzaz-hqaaa-aaaar-qaada-cai
-2025-04-04T11:15:25.840649Z  INFO rs/rosetta-api/icrc1/src/main.rs:451: The token symbol of the ICRC-1 ledger is: ckBTC
-2025-04-04T11:15:30.467654Z  INFO rs/rosetta-api/icrc1/src/main.rs:447: ICRC Rosetta is connected to the ICRC-1 ledger: ss2fx-dyaaa-aaaar-qacoq-cai
-2025-04-04T11:15:30.467725Z  INFO rs/rosetta-api/icrc1/src/main.rs:451: The token symbol of the ICRC-1 ledger is: ckETH
-2025-04-04T11:15:30.468149Z  INFO rs/rosetta-api/icrc1/src/main.rs:603: Starting Rosetta server
-2025-04-04T11:15:30.468181Z  INFO rs/rosetta-api/icrc1/src/main.rs:604: Rosetta server is listening at: 0.0.0.0:8080
-2025-04-04T11:15:32.792226Z  INFO sync{token=ckETH-ss2fx}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:288: Fully synched to block height: 801941
-2025-04-04T11:15:37.490971Z  INFO sync{token=ckBTC-mxzaz}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:276: Progress: 99.01% (fetching 23356 of 2365800), ETA: 0.6min (607.4 blocks/s)
-2025-04-04T11:15:43.036138Z  INFO sync{token=ckBTC-mxzaz}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:276: Progress: 99.18% (fetching 19354 of 2365800), ETA: 0.5min (659.7 blocks/s)
-2025-04-04T11:15:48.416439Z  INFO sync{token=ckBTC-mxzaz}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:276: Progress: 99.44% (fetching 13351 of 2365800), ETA: 0.3min (799.8 blocks/s)
-2025-04-04T11:15:54.144698Z  INFO sync{token=ckBTC-mxzaz}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:276: Progress: 99.77% (fetching 5347 of 2365800), ETA: 0.1min (947.0 blocks/s)
-2025-04-04T11:16:00.456019Z  INFO sync{token=ckBTC-mxzaz}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:276: Progress: 100.00% (fetching 1 of 2365800), ETA: 0.0min (925.7 blocks/s)
-2025-04-04T11:16:00.456344Z  INFO sync{token=ckBTC-mxzaz}: rs/rosetta-api/icrc1/src/ledger_blocks_synchronization/blocks_synchronizer.rs:288: Fully synched to block height: 2365800
-```
-
-Notice that most logs are labeled with a `sync{token=...}` prefix, which indicates which of the tracked tokens is generating those logs.
+The ICRC Rosetta implementation allows for communication with ICRC-1 compatible ledgers through the [Rosetta-API standard](https://docs.cdp.coinbase.com/mesh/docs/welcome). Examples include the [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) and the [ckETH ledger](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
 
 
-For further help on what the options for ICRC Rosetta are, you can run the following command:
-``` bash
-docker run \
-    --interactive \
-    --tty \
-    --publish 8082:8082 \
-    --rm \
-    dfinity/ic-icrc-rosetta-api \
-    --help
-```
+The Rosetta API is a standardized specification for blockchain integrations developed by Coinbase. ICRC Rosetta provides a Rosetta-compliant interface specifically designed for ICRC-1 compatible tokens on the Internet Computer Protocol.
 
-By default, this software **does not** connect to any ICRC-1 ledger canister running on the Internet Computer blockchain mainnet.
+### Key capabilities
 
-Currently, there is no ICRC-1 ledger running on the testnet. However, there are several test tokens running on mainnet such as ckTestBTC (`mc6ru-gyaaa-aaaar-qaaaq-cai`) and ckTestETH (`apia6-jaaaa-aaaar-qabma-cai`).
+ICRC Rosetta enables:
+- **Multi-token support**: Connect to multiple ICRC-1 ledgers simultaneously (v2.1.0+).
+- **Chain-key token integration**: Native support for ckBTC, ckETH, and other chain-key tokens.
+- **Custody platform integration**: Standardized interface for wallet and custody providers.
+- **Analytics and compliance**: Access to comprehensive transaction and balance data.
+- **DeFi application support**: Reliable infrastructure for decentralized finance applications.
 
-:::info
-The first time you run the command, it might take some time for the node to catch up to the current link of the chain.
-When the node is caught up, you should see output similar to the following:
+### Supported tokens
 
-```
-Synced Up to block height: 1357644
-```
+ICRC Rosetta works with any ICRC-1 compatible token, including:
 
-After that, ICRC Rosetta will update the account balances. Please wait for any queries that include fetching account balances until this process is done.
-The corresponding message you will see is:
+#### Production tokens (mainnet)
+- **ckBTC** (Chain-key Bitcoin): `mxzaz-hqaaa-aaaar-qaada-cai`.
+- **ckETH** (Chain-key Ethereum): `ss2fx-dyaaa-aaaar-qacoq-cai`.
 
+#### Test tokens (mainnet)
+- **TICRC1** (Test ICRC token): `3jkp5-oyaaa-aaaaj-azwqa-cai`.
+- **ckTestBTC**: `mc6ru-gyaaa-aaaar-qaaaq-cai`.
+- **ckTestETH**: `apia6-jaaaa-aaaar-qabma-cai`.
 
-```
-Account Balances have been updated successfully
-```
+## Supported operations
 
-:::
+ICRC Rosetta supports various operations through its APIs:
 
-After completing this step, the node continues to run as a **passive** node that does not participate in block making.
+### Token operations
+- Account balance queries for multiple tokens.
+- Transaction history retrieval across different ledgers.
+- Transfer operations between accounts.
+- Multi-token transaction construction and submission.
 
-### Step 4:  Open a new terminal window or tab and run the `ps` command to verify the status of the service.
+### Network operations
+- Network status and configuration queries.
+- Token metadata retrieval (symbols, decimals, fees).
+- Block synchronization and monitoring.
+- Real-time balance updates.
 
-If you need to stop the service, press <kbd>Ctrl-C</kbd>. You might want to do this to change the canister identifier you are using, for example.
+### Supported endpoints
 
-To test the integration after setting up the node, you will need to write a program to simulate a principal submitting a transaction or looking up an account balance.
+ICRC Rosetta implements the complete Rosetta specification including:
 
-## Run the Rosetta node in production
+- **Data API**: For querying blockchain data and account information.
+- **Construction API**: For creating and submitting transactions.
+- **Network API**: For network information and status.
 
-When you are finished testing, you should run the Docker image in production mode without the `--interactive`, `--tty`, and `--rm` command-line options.
-These command-line options are used to attach an interactive terminal session and remove the container and are primarily intended for testing purposes.
-To run the software in a production environment, you can start the Docker image using the `--detach` option to run the container in the background and, optionally, specify the `--volume` command for storing blocks.
+For detailed endpoint documentation, see the [Data API](./data_api/) and [Construction API](./construction_api/) sections.
 
-For more information about Docker command-line options, see the [Docker reference documentation](https://docs.docker.com/engine/reference/commandline/run/).
+## Getting started
+
+To start using ICRC Rosetta, you'll need to set up a Rosetta node and configure it for the ICRC-1 ledgers you want to interact with. There are multiple deployment options available:
+
+- **Docker deployment** (recommended for most users).
+- **Building from source** (for development and customization).
+- **Local cluster setup** (for testing with monitoring tools).
+- **Managed endpoints** (no local setup required).
+
+### Test environment
+
+For testing and development, you can connect to the TICRC1 test token (`3jkp5-oyaaa-aaaaj-azwqa-cai`) that runs on mainnet but uses test tokens. Get free TICRC1 tokens from [Validation Cloud's faucet](https://docs.validationcloud.io/v1/about/faucets) to start experimenting with ICRC-1 functionality.
+
+For detailed setup instructions, see the [Running Rosetta](./running-rosetta) guide.
+
+## Multi-token architecture
+
+ICRC Rosetta supports tracking multiple tokens simultaneously:
+
+### Database structure
+- Each token maintains a separate SQLite database.
+- Database files are named after the canister ID (e.g., `mxzaz-hqaaa-aaaar-qaada-cai.db`).
+- Centralized logging with token-specific prefixes.
+
+### Network identification
+- Each token uses its canister ID as the network identifier.
+- Rosetta calls must specify the target token's canister ID.
+- Single node can serve multiple token networks.
 
 ## Requirements and limitations
 
-The integration software provided in the Docker image has one requirement that is not part of the standard Rosetta API specification.
+The ICRC Rosetta implementation has specific requirements and limitations:
 
-For transactions involving ICRC-1 tokens, the unsigned transaction must be created less than 24 hours before the network receives the signed transaction.
-The reason for this is the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
-Any submitted transaction that refers back to a too old transaction is rejected to maintain operational efficiency.
+### Transaction timing requirement
 
-Other than this requirement, the Rosetta API integration software fully complies with all standard Rosetta endpoints and passes all of the `rosetta-cli` tests.
-The software can accept any valid Rosetta request.
-However, the integration software only prompts for transactions to be signed using Ed25519 and SECP256k1, rather than all the [signature schemes listed](https://www.rosetta-api.org/docs/models/SignatureType.html#values), and only replies with a small subset of the potential responses that the specification supports.
-For example, the software doesn’t implement any of the UTXO features of Rosetta, so you won’t see any UTXO messages in any of the software responses.
+For transactions involving ICRC-1 tokens, the unsigned transaction must be created less than 24 hours before the network receives the signed transaction. This is due to the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). Any submitted transaction that refers back to a transaction older than 24 hours is rejected to maintain operational efficiency.
+
+### Signature schemes
+
+The examples and documentation typically use:
+- **Ed25519**.
+- **SECP256k1**.
+
+For the complete list of supported signature schemes, refer to the [Rosetta specification](https://www.rosetta-api.org/docs/models/SignatureType.html#values).
+
+### Response format
+
+The integration software only replies with a subset of the potential responses that the specification supports. For example:
+- No UTXO features are implemented.
+- No UTXO messages appear in any software responses.
+
+### Network limitations
+
+- **Network support**: All production and test tokens run on mainnet.
+- **Test ledgers**: Test tokens are available as separate ledgers on mainnet.
+- **Default port**: 8082 (different from ICP Rosetta's 8081).
+
+### Compliance
+
+Other than the 24-hour transaction timing requirement, the ICRC Rosetta API integration software:
+- [x] Fully complies with all standard Rosetta endpoints.
+- [x] Passes all `rosetta-cli` tests.
+- [x] Accepts any valid Rosetta request.
 
 ## Frequently asked questions
-The following questions come from the most commonly reported questions and blockers from the developer community regarding Rosetta integration with the Internet Computer.
 
-#### How do I connect the Rosetta node to the mainnet?
-Use flags `--network-type mainnet`
+### How do I run an instance of ICRC Rosetta?
 
-#### How do I know if the node has caught up with the testnet?
-Search the `Starting Rosetta API server` startup log. There will be a log entry that says `Synced Up to block height: XX`.
-This message confirms that you are caught up with all blocks.
+The easiest way is to use the [`dfinity/ic-icrc-rosetta-api`](https://hub.docker.com/r/dfinity/ic-icrc-rosetta-api/tags) Docker image. See the [Running Rosetta](./running-rosetta) guide for detailed instructions on all deployment methods.
 
-#### How to persist synced blocks data?
-Mount the `/data` directory as a [volume](https://docs.docker.com/storage/volumes/).
+### How do I connect to multiple tokens?
+
+Use the `--multi-tokens` flag with comma-separated canister IDs:
+
+```bash
+--multi-tokens mxzaz-hqaaa-aaaar-qaada-cai,ss2fx-dyaaa-aaaar-qacoq-cai
+```
+
+### How do I connect to mainnet?
+
+Use the flag `--network-type mainnet` when starting your ICRC Rosetta node.
+
+### How do I know if the node has caught up?
+
+Look for these log entries for each token:
+```
+Synced Up to block height: XXXXX
+Account Balances have been updated successfully
+```
+
+### How do I persist synced block data?
+
+Mount the `/data` directory as a Docker volume:
 
 ```bash
 docker volume create ic-icrc-rosetta
+docker run \
+    --volume ic-icrc-rosetta:/data \
+    --publish 8082:8082 \
+    --detach \
+    dfinity/ic-icrc-rosetta-api \
+    --multi-tokens-store-dir /data
 ```
+
+### Is ICRC Rosetta versioned?
+
+Yes, new versions are regularly published on [DockerHub](https://hub.docker.com/r/dfinity/ic-icrc-rosetta-api/tags). It's recommended to use specific versions in production (e.g., `dfinity/ic-icrc-rosetta-api:v2.1.0`).
+
+You can query the version using the `/network/options` endpoint:
 
 ```bash
-docker run \
-    --volume ic-icrc-rosetta:/data \
-    --interactive \
-    --tty \
-    --publish 8082:8082 \
-    --rm \
-   dfinity/ic-icrc-rosetta-api \
-    --network-type mainnet \
-    --port 8082 \
-    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
-    --store-file /data/db.sqlite
-
+curl -H 'Content-Type: application/json' \
+  -d '{
+    "network_identifier": {
+      "blockchain": "Internet Computer",
+      "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    }
+  }' \
+  -X POST http://localhost:8082/network/options | jq '.version.node_version'
 ```
 
-#### Is the Rosetta node versioned?
+### What's the default port?
 
-Yes, new versions are regularly published on [DockerHub](https://hub.docker.com/r/dfinity/ic-icrc-rosetta-api/tags).
-It is recommended to use a specific version in production settings, e.g., `dfinity/ic-icrc-rosetta-api:v1.0.0`
-You can query the version of a running Rosetta node using the `/network/options` endpoint.
+ICRC Rosetta listens on port **8082** by default (different from ICP Rosetta which uses 8081).
 
-```console
-$ curl -s -q -H 'Content-Type: application/json' -d '{
-    "network_identifier": {
-            "blockchain": "Internet Computer",
-            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
-    },
-    "metadata": {}
-}' --location '0.0.0.0:8082/network/options' | jq '.version.node_version'
+### Can I track custom ICRC-1 tokens?
 
-"1.0.0"
-```
+Yes, ICRC Rosetta can connect to any ICRC-1 compatible ledger. Simply provide the canister ID of your custom token when starting the node.
+
+### How do I get test tokens for development?
+
+Use [Validation Cloud's free faucet](https://docs.validationcloud.io/v1/about/faucets) to get:
+- **TICRC1** tokens for testing ICRC-1 functionality.
+- **TESTICP** tokens for testing ICP Rosetta.
+
+These test tokens run on mainnet but are separate from production tokens, making them perfect for development and testing.
