@@ -19,35 +19,32 @@ As you've seen so far, **actors** are the core functionality of canisters writte
 
 ## Actor types
 
-Actors can have different actor types. To demonstrate this, let's look at an example actor that defines a simple counter. This counter simply increments a value by `1`.
+Actors can have different actor types. To demonstrate this, let's look at an example actor that defines a simple greeting service. It greets the user with a configurable greeting.
 
-```motoko file=../../../references/samples/motoko/counter/src/Main.mo
+```motoko file=../../../references/samples/motoko/hello_world/backend/Main.mo
 
 ```
 
-This actor declares three public functions and one field:
+This actor declares two public functions and one field:
 
-- The field `count` is mutable. It is initialized as `0` and implicitly private.
+- The field `greeting` is mutable. It is initialized as `Hello, ` and implicitly private.
 
-- The function `inc()` asynchronously increments the value of `count`, then returns an `async` type.
+- The function `setGreeting()` asynchronously sets the value of `greeting`.
 
-- The function `read()` asynchronously reads the value of `count` and returns a type `async Nat`.
-
-- The function `bump()` asynchronously increments and reads the `count` value; this also returns a type `async Nat`.
+- The function `greet()` asynchronously reads the value of `greeting` and returns a greeting of type `async Text`.
 
 ### Actor type definition
 
-This actor `Counter` has the following type definition:
+This actor `HelloWorld` has the following type definition:
 
 ```motoko no-repl
 actor {
-  inc  : shared () -> async ();
-  read : shared () -> async Nat;
-  bump : shared () -> async Nat;
+  setGreeting : shared () -> async ();
+  greet       : shared () -> async Text;
 }
 ```
 
-In this definition, there are three 'members' of the actor that correlate to the three functions within the actor. Each member has the type that they return, such as `async ()` and `async Nat`.
+In this definition, there are two 'members' of the actor that correlate to the two functions within the actor. Each member has the type that they return, such as `async ()` and `async Text`.
 
 ### Shared functions
 
@@ -63,35 +60,34 @@ Shared functions are accessible through remote calls, meaning a user can submit 
 
 ```motoko no-repl
 actor {
-  inc  : () -> async ();
-  read : () -> async Nat;
-  bump : () -> async Nat;
+  setGreeting : () -> async ();
+  greet       : () -> async Text;
 }
 ```
 
 
 ## Actors and async data
 
-To access the result of an async value, the receiver of the future uses an `await` expression. For example, using the `Counter` example, you can use the result of `Counter.read()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Nat` return value, `n`:
+To access the result of an async value, the receiver of the future uses an `await` expression. For example, using the `HelloWorld` example, you can use the result of `HelloWorld.greet()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Text` return value, `n`:
 
 ```motoko no-repl
 actor {
-  let a : async Nat = Counter.read();
-  let n : Nat = await a;
+  let a : async Text = HelloWorld.greet();
+  let n : Text = await a;
 }
 ```
 
 In this code, the following happens:
 
-- First, the return value of `Counter.read()` is retrieved immediately; the code does not wait. Since the code does not wait, the value cannot be used as a `Nat` value yet.
+- First, the return value of `HelloWorld.greet()` is retrieved immediately; the code does not wait. Since the code does not wait, the value cannot be used as a `Text` value yet.
 
-- Then, the `Nat` value awaits the result of `a` and extracts the result as a `Nat` value. This line is not executed until `a` has completed, since it uses the `await` expression.
+- Then, the `Text` value awaits the result of `a` and extracts the result as a `Text` value. This line is not executed until `a` has completed, since it uses the `await` expression.
 
 These two lines can be combined into one to await an asynchronous call directly, such as:
 
 ```motoko no-repl
 actor {
-  let n : Nat = await Counter.read();
+  let n : Text = await HelloWorld.greet();
 }
 ```
 
