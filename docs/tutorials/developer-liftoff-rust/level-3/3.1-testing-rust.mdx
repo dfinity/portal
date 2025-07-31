@@ -1,0 +1,146 @@
+---
+keywords: [beginner, tutorial, developer liftoff, canister testing, test canister, rust testing, test rust, rust pocket ic]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 3.1 Testing Rust canisters
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+Testing code is a critical phase in any development workflow. Without thorough testing before deployment, bugs and errors that could have been identified early may cause significant issues in production environments.
+
+There are three main types of testing:
+
+- **Unit testing:** Focuses on individual functions or components to ensure they produce the correct output. It tests one unit of code in isolation.
+
+- **Integration testing:** Verifies that multiple units or components work together as expected. This type of testing checks how different parts of the code integrate. A common practice in this category is continuous integration (CI) testing.
+
+- **End-to-end (E2E) testing:** Simulates real user interactions by testing the entire application workflow—from the user interface to the backend. This includes testing elements like buttons, forms, and frontend behavior to ensure the app functions correctly end to end.
+
+## Rust PocketIC
+
+The Rust PocketIC library can be used to create comprehensive canister testing scenarios. The PocketIC library works in conjunction with the PocketIC server to provide a local canister testing solution.
+
+### Install Rust PocketIC
+
+- Download the latest version of [dfx](/docs/building-apps/getting-started/install) or the standalone [PocketIC server binary](https://github.com/dfinity/pocketic).
+
+    - If you downloaded the standalone binary, set the path to the downloaded binary by using the function `PocketIcBuilder::with_server_binary` or the environment variable `POCKET_IC_BIN`.
+
+- Add PocketIC Rust to your project with `cargo add pocket-ic`.
+
+- Import PocketIC into your canister with `use pocket_ic::PocketIc` and create a new PocketIC instance with `let pic = PocketIc::new()`.
+
+### Unit testing
+
+Below is an example of how to use PocketIC to run a unit test scenario that adds cycles to the canister:
+
+```rust
+use candid::{Principal, encode_one};
+use pocket_ic::PocketIc;
+
+// 2T cycles
+const INIT_CYCLES: u128 = 2_000_000_000_000;
+
+#[test]
+fn test_counter_canister() {
+    let pic = PocketIc::new();
+
+    // Create a canister and charge it with 2T cycles.
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, INIT_CYCLES);
+}
+```
+
+### Integration testing
+
+Below is an example of how to use PocketIC to run an integration test to create a canister with a specific canister ID:
+
+```rust
+#[test]
+fn test_create_canister_with_id() {
+    let pic = PocketIcBuilder::new()
+        .with_nns_subnet()
+        .with_ii_subnet()
+        .build();
+    // goes on NNS
+    let canister_id = Principal::from_text("rrkah-fqaaa-aaaaa-aaaaq-cai").unwrap();
+    let actual_canister_id = pic
+        .create_canister_with_id(None, None, canister_id)
+        .unwrap();
+    assert_eq!(actual_canister_id, canister_id);
+    assert_eq!(
+        pic.get_subnet(canister_id).unwrap(),
+        pic.topology().get_nns().unwrap()
+    );
+    // goes on II
+    let canister_id = Principal::from_text("rdmx6-jaaaa-aaaaa-aaadq-cai").unwrap();
+    let actual_canister_id = pic
+        .create_canister_with_id(None, None, canister_id)
+        .unwrap();
+    assert_eq!(actual_canister_id, canister_id);
+    assert_eq!(
+        pic.get_subnet(canister_id).unwrap(),
+        pic.topology().get_ii().unwrap()
+    );
+}
+```
+
+### End-to-end testing
+
+Below is an example of how to use PocketIC to run a canister's end-to-end testing that includes adding cycles to the canister, installing the canister's Wasm modules, and testing an update call to the canister:
+
+```rust
+use candid::{Principal, encode_one};
+use pocket_ic::PocketIc;
+
+// 2T cycles
+const INIT_CYCLES: u128 = 2_000_000_000_000;
+
+#[test]
+fn test_counter_canister() {
+    let pic = PocketIc::new();
+
+    // Create a canister and charge it with 2T cycles.
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, INIT_CYCLES);
+
+    // Install the counter canister wasm file on the canister.
+    let counter_wasm = todo!();
+    pic.install_canister(canister_id, counter_wasm, vec![], None);
+
+    // Make some calls to the canister.
+    let reply = call_counter_can(&pic, canister_id, "read");
+    assert_eq!(reply, vec![0, 0, 0, 0]);
+    let reply = call_counter_can(&pic, canister_id, "write");
+    assert_eq!(reply, vec![1, 0, 0, 0]);
+    let reply = call_counter_can(&pic, canister_id, "write");
+    assert_eq!(reply, vec![2, 0, 0, 0]);
+    let reply = call_counter_can(&pic, canister_id, "read");
+    assert_eq!(reply, vec![2, 0, 0, 0]);
+}
+
+fn call_counter_can(pic: &PocketIc, canister_id: Principal, method: &str) -> Vec<u8> {
+    pic.update_call(
+        canister_id,
+        Principal::anonymous(),
+        method,
+        encode_one(()).unwrap(),
+    )
+    .expect("Failed to call counter canister")
+}
+```
+
+## Resources
+
+- [Rust PocketIC](https://crates.io/crates/pocket-ic)
+
+- [PocketIC documentation](https://internetcomputer.org/docs/building-apps/test/pocket-ic)
+
+- [Rust PocketIC examples](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs)
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

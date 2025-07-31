@@ -102,6 +102,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/mo-doc /docs/motoko/motoko-tooling/mo-doc
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/motoko/home
+  /docs/motoko/fundamentals/messaging /docs/references/async-code
   /motoko/main/motoko /docs/motoko/home
   /docs/current/motoko/main/base/array /docs/motoko/base/Array
   /docs/current/motoko/main/base/buffer /docs/motoko/base/Buffer
