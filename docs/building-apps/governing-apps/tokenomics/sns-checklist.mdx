@@ -90,7 +90,7 @@ Provide the build and deploy instructions with the source code. Ideally the inst
 It is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. [View detailed instructions on how to set up SNS locally for testing are available](https://github.com/dfinity/ic/blob/master/rs/sns/testing/README.md).
 
 ## 2.5. Test dapp operations
-In addition to testing the launch, before requesting an SNS launch in production, developers are strongly encouraged to ensure that all operations for maintaining and evolving the dapp can be done via SNS proposals.
+In addition to testing the launch, before requesting an SNS launch in mainnet, developers are strongly encouraged to ensure that all operations for maintaining and evolving the dapp can be done via SNS proposals.
 
 Make sure to test upgrading canisters through SNS proposals, test updating asset canister content through SNS proposals, and other typical upgrade and maintenance operations. Also establish a [cycles management strategy](../managing/cycles-usage.mdx), so canisters never run out of cycles. 
 [View information on how to test an locally](https://github.com/dfinity/sns-testing).
