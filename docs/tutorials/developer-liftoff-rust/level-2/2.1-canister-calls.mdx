@@ -50,14 +50,14 @@ The amount of security your dapp needs depends on your dapp's use case and funct
 Queries are defined by `ic_cdk_macros::query` in Rust. Below is a simple query call:
 
 ```Rust
-/// Get the value of the counter.
+// This query method returns the currently persisted greeting with the given name.
 #[ic_cdk::query]
-fn get() -> Nat {
-    COUNTER.with(|counter| (*counter.borrow()).clone())
+fn greet(name: String) -> String {
+    GREETING.with_borrow(|greeting| format!("{}{name}!", greeting.get()))
 }
 ```
 
-[View this example on ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/counter).
+[View this example on ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/hello_world).
 
 ## Update calls
 
@@ -70,14 +70,14 @@ In comparison to query calls, update calls have the opposite trade-off of perfor
 Below is a simple update call:
 
 ```rust
-/// Increment the value of the counter.
+// This update method stores the greeting prefix in stable memory.
 #[ic_cdk::update]
-fn inc() {
-    COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
+fn set_greeting(prefix: String) {
+    GREETING.with_borrow_mut(|greeting| greeting.set(prefix).unwrap());
 }
 ```
 
-[View this example on ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/counter).
+[View this example on ICP Ninja](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/hello_world).
 
 ## Inter-canister calls
 
