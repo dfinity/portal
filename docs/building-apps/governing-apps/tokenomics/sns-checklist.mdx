@@ -87,7 +87,7 @@ It should be possible to create a reproducible build from the open-sourced code 
 Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The [documentation](/docs/building-apps/best-practices/reproducible-builds) provides more information how reproducible builds can be created using Docker.
 
 ## 2.4. Test the SNS launch 
-It is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. [View detailed instructions on how to set up SNS locally for testing are available](https://github.com/dfinity/sns-testing).
+It is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. [View detailed instructions on how to set up SNS locally for testing are available](https://github.com/dfinity/ic/blob/master/rs/sns/testing/README.md).
 
 ## 2.5. Test dapp operations
 In addition to testing the launch, before requesting an SNS launch in production, developers are strongly encouraged to ensure that all operations for maintaining and evolving the dapp can be done via SNS proposals.
