@@ -30,14 +30,20 @@ function ConfirmYourEmailPage(): JSX.Element {
                 className="tw-heading-3 md:tw-heading-2 mb-10"
                 variants={transitions.item}
               >
-                Almost there...
+                You're Almost In!
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-10"
                 variants={transitions.item}
               >
-                Check your inbox and click the link to verify your email
-                address.
+                We've sent a confirmation email to your inbox. To complete your subscription and start receiving updates, please click the link inside to confirm your email address.
+              </motion.p>
+              <motion.p
+                className="tw-lead-xs mb-10"
+                variants={transitions.item}
+              >
+                Note: If you don’t see the email in your inbox, please check your spam or promotions folder and mark it as “Not Spam” to make sure you don’t miss future updates.
+
               </motion.p>
             </div>
           </section>
