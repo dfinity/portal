@@ -3926,21 +3926,6 @@
     "logo": "/img/showcase/dappradar_logo.png"
   },
   {
-    "id": "motodex",
-    "name": "Motodex",
-    "display": "Normal",
-    "website": "https://motodex.dexstudios.games/",
-    "twitter": "https://x.com/motodex_game",
-    "tags": [
-      "Gaming",
-      "NFT",
-      "Creator Economy"
-    ],
-    "description": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/motodex_logo.png"
-  },
-  {
     "id": "fomowell",
     "name": "Fomowell",
     "display": "Normal",
@@ -6058,5 +6043,4 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Cecil_the_lion_dao.jpg"
   }
-  
 ]
