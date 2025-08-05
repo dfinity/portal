@@ -12,11 +12,11 @@
       "Analytics"
     ],
     "stats": "3,000,000+ searches",
-    "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
+    "description": "Kinic is your personal AI memory — a verifiable, searchable vault for everything you care about. Store bookmarks, emails, notes, and retrieve them instantly with AI-powered queries.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/kinic_logo.webp",
     "screenshots": [
-      "/img/showcase/kinic_screenshot.webp"
+      "/img/showcase/Kinic_logo_screenshot.jpg"
     ]
   },
   {
@@ -36,7 +36,7 @@
     "screenshots": [
       "/img/showcase/odinfun_screenshot.webp"
     ],
-    "oneLiner": "Runes launchpad powered by Chain Fusion."
+    "oneLiner": "Runes launchpad powered by Chain Fusion"
   },
   {
     "id": "liquidium",
@@ -133,22 +133,25 @@
   },
   {
     "id": "nfid",
-    "name": "NFID",
+    "name": "NFID Wallet",
     "display": "Normal",
     "website": "https://nfid.one/",
-    "twitter": "https://twitter.com/IdentityMaxis",
+    "twitter": "https://x.com/NFIDWallet",
+    "github": "https://github.com/internet-identity-labs",
     "tags": [
       "Wallet",
       "Ethereum",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
-    "description": "Embrace the new era of personal empowerment with NFID, the most advanced digital identity to keep your personal information private and digital assets secure.",
+    "description": "Secure your assets with the most audited wallet on ICP and start exploring ICP applications in seconds.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/nfid_logo.webp"
+    "logo": "/img/showcase/NFID_Wallet_logo.jpg",
+    "oneLiner": "The easiest to use, hardest to lose, and only wallet governed by a DAO."
   },
   {
     "id": "chainsight",
-    "name": "Chainsight",
+    "name": "ChainSight",
     "display": "Large",
     "website": "https://chainsight.network",
     "twitter": "https://twitter.com/Chainsight_",
@@ -210,12 +213,12 @@
     "name": "Gold DAO",
     "display": "Normal",
     "website": "https://www.gold-dao.org/",
-    "twitter": "https://twitter.com/gldrwa",
+    "twitter": "https://x.com/TheGoldDAO",
     "tags": [
       "DeFi",
       "DAO"
     ],
-    "description": "Gold DAO governs Gold Token (GLDT), a fungible token allowing fractional gold ownership; and a USD-pegged stablecoin (USDG), backed by gold (GLDT).",
+    "description": "The Gold DAO represents a groundbreaking fusion of traditional gold and modern blockchain technology, allowing anyone in the world to access physical gold instantaneously, without depending on banks.",
     "logo": "/img/showcase/golddao_logo.png"
   },
   {
@@ -837,7 +840,7 @@
     "screenshots": [
       "/img/showcase/Orbit_largescreen.jpg"
     ],
-    "oneLiner": "Secure, onchain, multi-approver governance for multichain assets."
+    "oneLiner": "Secure, onchain, multi-approver governance for multichain assets"
   },
   {
     "id": "stakedicp",
@@ -882,14 +885,14 @@
     "description": "The DevOps console home for canister monitoring and management.\n\nTrusted by 2300+ canisters including DFINITY, Liquidium, Oisy, and 18+ SNS DAOs.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/cycleops_logo.png",
-    "oneLiner": "The DevOps console home for canister monitoring and management."
+    "oneLiner": "The DevOps console home for canister monitoring and management"
   },
   {
     "id": "trax",
     "name": "Trax",
     "display": "Normal",
     "website": "https://trax.so/",
-    "twitter": "https://twitter.com/onlyontrax",
+    "twitter": "https://x.com/trax_so",
     "tags": [
       "SocialFi",
       "DAO",
@@ -897,7 +900,7 @@
     ],
     "description": "Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/trax_logo.webp"
+    "logo": "/img/showcase/Trax_logo.jpeg"
   },
   {
     "id": "w3ns",
@@ -2726,7 +2729,7 @@
     "description": "Bity is trusted crypto platform, making it easy to buy, sell, and manage digital assets with Swiss-grade security and full regulatory compliance.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Bity_Logo.jpg",
-    "oneLiner": "Trade Crypto & Gold securely while staying in complete control. "
+    "oneLiner": "Trade Crypto & Gold securely while staying in complete control"
   },
   {
     "id": "datanome",
@@ -2960,7 +2963,7 @@
     ],
     "description": "ELNA.ai is the world's first fully onchain decentralized GenAI Companion.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/elnaai_logo.png"
+    "logo": "/img/showcase/Elna_logo.jpg"
   },
   {
     "id": "bookie",
@@ -3001,14 +3004,17 @@
     "name": "Formyfi",
     "display": "Normal",
     "website": "https://formyfi.io",
-    "github": "https://github.com/Talentum-id/formify",
+    "twitter": "https://x.com/formyfi_io",
+    "github": "https://github.com/Talentum-id/formyfi",
     "submittableId": 44539692,
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Creator Economy"
     ],
     "description": "Decentralized & fully onchain forms. Toolset for conducting surveys in Web3, ensuring security and completeness of data.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/formify_logo.jpeg"
+    "logo": "/img/showcase/Formyfi_logo_new.jpg",
+    "oneLiner": "Web3-native form builder for user verification and data collection."
   },
   {
     "id": "blendsafe",
@@ -3044,34 +3050,19 @@
     "logo": "/img/showcase/pado_logo.webp"
   },
   {
-    "id": "openfpl",
-    "name": "OpenFPL",
+    "id": "icfc",
+    "name": "ICFC",
     "display": "Normal",
-    "website": "https://openfpl.xyz/",
-    "twitter": "https://twitter.com/OpenFPL_DAO",
-    "github": "https://github.com/jamesbeadle/OpenFPL",
+    "website": "https://icfc.app/",
+    "twitter": "https://x.com/icfc_app",
     "tags": [
       "SocialFi",
       "DAO",
       "Creator Economy"
     ],
-    "description": "Decentralised Fantasy Football.",
+    "description": "The ICFC football ecosystem designed to reward fans for their love of football.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/openfpl_logo.png"
-  },
-  {
-    "id": "icghost",
-    "name": "ICGhost",
-    "display": "Normal",
-    "website": "https://yadjb-mqaaa-aaaan-qaqlq-cai.icp0.io/",
-    "twitter": "https://x.com/ghost_icp",
-    "tags": [
-      "DeFi",
-      "DAO"
-    ],
-    "description": "The First Decentralized Meme Coin on IC.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/icghost.png"
+    "logo": "/img/showcase/ICFC_logo.png"
   },
   {
     "id": "sneed",
@@ -3448,7 +3439,7 @@
     "stats": "229 tokens and 90 liquidity pools created",
     "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm that is committed to becoming the leading decentralized financial hub serving Web3.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/icpex_logo.png"
+    "logo": "/img/showcase/ICPex_logo.jpg"
   },
   {
     "id": "candb",
@@ -3785,33 +3776,40 @@
   },
   {
     "id": "syron",
-    "name": "Syron",
+    "name": "TyronDao",
     "display": "Normal",
     "website": "https://tyrondao.org",
     "twitter": "https://twitter.com/tyrondao_org",
-    "github": "https://github.com/tyrondao/tyron-icp",
+    "github": "https://github.com/tyrondao",
+    "youtube": "https://www.youtube.com/@tyronDAO",
     "tags": [
       "Chain Fusion",
-      "Bitcoin"
+      "Bitcoin",
+      "DeFi"
     ],
-    "description": "A USD-pegged stablecoin, overcollateralized with Bitcoin and powered by Chain Fusion.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/syron_logo.png"
+    "stats": "3000+ signups",
+    "description": "TyronDAO is a gateway to the next generation of decentralized finance. At its core is Syron, a Bitcoin-backed stablecoin metaprotocol designed for secure, permissionless payments and loans. With sovereign digital identity and transparent infrastructure, TyronDAO is empowering users to take full control of their crypto and participate in a truly open financial system.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/syron_tyrondao_logo.png",
+    "oneLiner": "TyronDAO powers Bitcoin-backed payments with Syron SUSD and sovereign identity."
   },
   {
     "id": "doxa",
     "name": "Doxa",
     "display": "Normal",
-    "website": "https://i7m4z-gqaaa-aaaak-qddtq-cai.icp0.io/",
-    "twitter": "https://twitter.com/doxa_dollar",
+    "website": "https://doxadao.org/",
+    "twitter": "https://x.com/doxausd",
     "github": "https://github.com/DoxaFoundation/doxa-v3",
+    "youtube": "https://www.youtube.com/@DoxaDollar",
     "tags": [
+      "DeFi",
       "Chain Fusion",
-      "DeFi"
+      "Enterprise"
     ],
-    "description": "A multi-stablecoin plartform with the doxa dollar.",
+    "description": "Doxa is a multi-stablecoin protocol/platform with DoxaUSD and other stablecoins.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/doxa_logo.jpeg"
+    "logo": "/img/showcase/DoxaFoundation_logo.svg",
+    "oneLiner": "Doxa is a multi-stablecoin platform with DoxaUSD"
   },
   {
     "id": "tezsign",
@@ -4303,17 +4301,20 @@
     "id": "upas",
     "name": "User Public Achievement Standard (UPAS)",
     "display": "Normal",
-    "website": "https://5j4ti-jqaaa-aaaaj-qncma-cai.icp0.io/",
-    "github": "https://github.com/relinkd/UPAS",
+    "website": "https://github.com/luckerninja/UPAS-loyalty/blob/main/docs/whitepaper.md",
+    "twitter": "https://x.com/UPAS_reputation",
+    "github": "https://github.com/luckerninja/UPAS-loyalty/",
+    "youtube": "https://www.youtube.com/watch?v=RMXrqwDTVsg&t=4s",
     "submittableId": 45854414,
     "tags": [
-      "SocialFi",
       "Tools / Infrastructure",
-      "Creator Economy"
+      "Creator Economy",
+      "DeFi"
     ],
-    "description": "A decentralized open-source reputation standard that utilizes ICP securely and autonomously verify user achievements and issue credentials.",
+    "description": "UPAS is a standard for loyalty programs, giving users control over their achievements and businesses flexible, verifiable reward programs.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/upas_logo.png"
+    "logo": "/img/showcase/upas_logo.png",
+    "oneLiner": "Universal decentralized standard for loyalty programs"
   },
   {
     "id": "civic",
@@ -5222,7 +5223,7 @@
     "description": "Multi is an asset-backed currency using crowdsourced intelligence to optimize its reserve. Users stake on strategies, earning rewards for performance.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/multi_logo.svg",
-    "oneLiner": "Asset-backed currency optimized by crowdsourced intelligence."
+    "oneLiner": "Asset-backed currency optimized by crowdsourced intelligence"
   },
   {
     "id": "beproactive",
@@ -5239,7 +5240,7 @@
     "screenshots": [
       "/img/showcase/beproactive_screenshot.webp"
     ],
-    "oneLiner": "Track and share your daily workouts with the community and friends."
+    "oneLiner": "Track and share your daily workouts with the community and friends"
   },
   {
     "id": "BlockID",
@@ -5462,7 +5463,7 @@
     "description": "First non-custodial BTC staking: native BTC via Lightning & Internet Computer, rewards from routing, stBTC on Ethereum for trustless Bitcoin DeFi.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/tricorn-btc-lightning-staking-protocol_logo.svg",
-    "oneLiner": "Bitcoin staking bridging BTC with Ethereum DeFi  "
+    "oneLiner": "Bitcoin staking bridging BTC with Ethereum DeFi"
   },
   {
     "id": "knowledge-foundation-nft-system",
@@ -5592,7 +5593,7 @@
     "description": "A.DNA is a software solution that enables your company to store, organize, verify, share and hash its most important data and events on the blockchain.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/a_dna_cover.jpeg",
-    "oneLiner": "Corporate Governance & Compliance, built on validated Data."
+    "oneLiner": "Corporate Governance & Compliance, built on validated Data"
   },
   {
     "id": "counterparty",
@@ -5645,7 +5646,7 @@
     "description": "Cypherock X1 supports native ICP asset management with secure, open-source Shamir’s Secret Sharing-based key protection.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Cypherock_Logo .jpg",
-    "oneLiner": "The open-source hardware wallet with decentralized crypto security."
+    "oneLiner": "The open-source hardware wallet with decentralized crypto security"
   },
   {
     "id": "blockchain-bingo",
@@ -5660,7 +5661,7 @@
     "description": "Blockchain Bingo is a decentralized application (dApp) that brings the classic game of Bingo to the blockchain. Leveraging the power of the Internet Computer, Bingo offers a secure and transparent platform where players can generate unique Bingo cards, participate in real-time games, and experience the thrill of winning wether it's a free game or game for a prize of ICP. Created from the template that is generated with dfx new.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/blockchain-bingo_logo.jpg",
-    "oneLiner": "Live Bingo games hosted 100% on the Internet Computer Protocol blockchain."
+    "oneLiner": "Live Bingo games hosted 100% on the Internet Computer Protocol blockchain"
   },
   {
     "id": "secure-image-chain",
@@ -5679,7 +5680,7 @@
     "screenshots": [
       "/img/showcase/secure-image-chain_screenshot.webp"
     ],
-    "oneLiner": "Send images fully on blockchain securely and earn DFX tokens."
+    "oneLiner": "Send images fully on blockchain securely and earn DFX tokens"
   },
   {
     "id": "icnews",
@@ -5823,7 +5824,7 @@
     "screenshots": [
       "/img/showcase/the-great-crypto-vc-jobs-board_screenshot.webp"
     ],
-    "oneLiner": "Over 30 crypto VC job boards in a single glance for Web3 people."
+    "oneLiner": "Over 30 crypto VC job boards in a single glance for Web3 people"
   },
   {
     "id": "scaffold_icp",
@@ -5839,7 +5840,7 @@
     "description": "Scaffold-ICP is a modern, type-safe development framework designed to accelerate Internet Computer (ICP) dApp development.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/scaffold_icp.svg",
-    "oneLiner": "Toolkit for building dApps on ICP."
+    "oneLiner": "Toolkit for building dApps on ICP"
   },
   {
     "id": "ictest",
@@ -5847,14 +5848,16 @@
     "display": "Normal",
     "website": "https://github.com/wasm-forge/ic-test",
     "github": "https://github.com/wasm-forge/ic-test",
+    "youtube": "https://www.youtube.com/watch?v=FlMZEbN3u2k",
     "submittableId": 49468998,
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Chain Fusion"
     ],
-    "description": "\"ic-test\" is a command-line tool to set up Rust canister tests on the Internet Computer (IC).\n",
+    "description": "ic-test helps to create high-level tests and enables canister call compile time checks.\n",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ic-test.svg",
-    "oneLiner": "Use ic-test to setup testing of your canisters"
+    "oneLiner": "Use ic-test to create your canister test project"
   },
   {
     "id": "safeldea",
@@ -5901,6 +5904,159 @@
     "description": "Social Mining DApp hosted on $ICP.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/ClownonICP_logo.jpg"
+  },
+  {
+    "id": "icdapps",
+    "name": "ICDapps",
+    "display": "Normal",
+    "website": "https://icdapps.io/",
+    "twitter": "https://x.com/icdapps",
+    "tags": [
+      "Analytics"
+    ],
+    "description": "ICDapps is the definitive hub and community-driven project database for the ICP ecosystem.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/icd-logo.svg",
+    "oneLiner": "ICDapps is a community-driven database for the ICP ecosystem"
+  },
+  {
+    "id": "liminal",
+    "name": "Liminal",
+    "display": "Normal",
+    "website": "https://github.com/edjCase/",
+    "github": "https://github.com/edjCase/liminal",
+    "submittableId": 49622877,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Liminal: open source HTTP framework for Motoko with middleware, routing & auth for easy development.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/liminal_logo.svg",
+    "oneLiner": "A Motoko Http Framework to help create HTTP compatible canisters"
+  },
+  {
+    "id": "abell_finance",
+    "name": "Abell Finance",
+    "display": "Normal",
+    "website": "https://abellfi.com/",
+    "twitter": "https://x.com/abell_finance",
+    "github": "https://github.com/Abell-Labs",
+    "submittableId": 48834917,
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Ethereum"
+    ],
+    "description": "AbellFi offers AI-driven crypto trading with ICP, Chain Fusion, smart contracts, cross-chain support, and full asset control.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Abell_logo.svg",
+    "oneLiner": "AbellFi: Decentralized AI crypto trading with wallet-based control"
+  },
+  {
+    "id": "subhub",
+    "name": "SUBHUB",
+    "display": "Normal",
+    "website": "https://sub-hub.ai/",
+    "twitter": "https://x.com/SubHubStack",
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy",
+      "AI"
+    ],
+    "stats": "550+ projects onboarded\n",
+    "description": "SubHub is the premier cross-chain messaging and marketing hub for Web3.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/SubHub_logo.svg",
+    "oneLiner": "The Future of Tokenized Web3 Messaging"
+  },
+  {
+    "id": "ic_pack\n",
+    "name": "IC Pack",
+    "display": "Normal",
+    "website": "https://docs.package-manager.com",
+    "github": "https://github.com/vporton/icp-package-manager",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A package manager for installing apps into user's canisters for user to be self-sovereign over apps.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icpack-logo.svg",
+    "oneLiner": "Self-sovereign apps in user's canisters."
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado",
+    "display": "Normal",
+    "website": "https://avcd.hodl.fyi/",
+    "twitter": "https://x.com/av8cado",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "Avocado ($AVCD) is a highly deflationary governance token that powers the Avocado DAO on the Internet Computer ecosystem",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/AVCD_logo.png",
+    "oneLiner": "$AVCD is the most deflationary token in the $ICP ecosystem"
+  },
+  {
+    "id": "webhash",
+    "name": "Webhash",
+    "display": "Normal",
+    "website": "https://webhash.com/",
+    "twitter": "https://x.com/webhash_eth",
+    "github": "https://github.com/WebHash-eth/ICP",
+    "youtube": "https://www.youtube.com/@webhash_eth",
+    "submittableId": 48953717,
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "description": "Webhash is a no-code builder to design and deploy websites on the Internet Computer (ICP) with one-click publishing and custom domain support.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/webhash logo.svg",
+    "oneLiner": "Decentralised website builder for ICP"
+  },
+  {
+    "id": "dolr_ai",
+    "name": "DORL AI",
+    "display": "Normal",
+    "website": "https://dolr.ai/",
+    "twitter": "https://x.com/DOLR_AI",
+    "tags": [
+      "DAO",
+      "AI"
+    ],
+    "description": "A decentralized short-video social media platform governed by the people for the people. Monetized time on social media.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Dolr_ai_logo.jpg",
+    "oneLiner": "World's First AI-Powered Unstoppable Social Cloud"
+  },
+  {
+    "id": "icvc",
+    "name": "ICVC",
+    "display": "Normal",
+    "website": "https://mnc6b-aaaaa-aaaap-qhnrq-cai.icp0.io/projects",
+    "twitter": "https://x.com/icvcofficial",
+    "tags": [
+      "DAO"
+    ],
+    "description": "ICVC DAO is a community governed Web3 venture builder.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/ICVC_logo.jpg",
+    "oneLiner": "We back founders building the new internet"
+  },
+  {
+    "id": "Cecil_the_lion_dao",
+    "name": "Cecil The Lion DAO",
+    "display": "Normal",
+    "website": "https://cecildao.org/",
+    "twitter": "https://x.com/dao_cecil",
+    "tags": [
+      "DAO",
+      "AI"
+    ],
+    "description": "The Cecil The Lion DAO project is the first-ever AI-driven humanitarian DAO, an initiative dedicated to supporting vital humanitarian projects across the globe.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Cecil_the_lion_dao.jpg"
   }
   
 ]
