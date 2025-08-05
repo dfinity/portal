@@ -74,7 +74,7 @@ docs
 │   │   ├── query-calls
 │   │   ├── update-calls
 │   ├── network-features
-│   │   ├── encryption
+│   │   ├── vetkeys
 │   │   ├── signatures
 │   │   ├── using-http
 │   │   ├── verifiable-credentials
@@ -163,7 +163,7 @@ This audience should be kept in mind when writing docs. For example:
 
 	- Smart contracts on ICP are referred to as canisters.
 	- Accounts on ICP are referred to as principals.
-	- Multi-chain applications on ICP use Chain Fusion capabilities.
+	- Multichain applications on ICP use Chain Fusion capabilities.
 
 - When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
 
@@ -298,7 +298,7 @@ Additional, optional (but recommended) tags include:
 
 	- Motoko / Rust / Python / Typescript / Solidity
 
-- Multi-chain integration
+- Multichain integration
 
 	- Bitcoin / Ethereum
 
@@ -384,7 +384,7 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
-    - `/docs/motoko/main/base/`
+    - `/docs/motoko/`
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
 - Internet Identity
@@ -406,10 +406,27 @@ The following submodules and their corresponding repos are currently used:
 
 ### Updating submodules
 
-To update all submodules, run the command:
+The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job.
+
+These versions can be updated to the newest release via commands:
 
 ```
-git submodule update --remote
+cd submodules/motoko
+git checkout 0.14.1
+```
+
+and
+
+```
+cd submodules/sdk
+git checkout 0.25.1
+```
+
+For other submodules without release versions, checkout the latest commit hash when updates are requested.
+
+```
+cd submodules/dfxvm
+git checkout 69adb0cc8edd532dcdcb465cfcc2166692a51448
 ```
 
 ### Reverting submodule changes

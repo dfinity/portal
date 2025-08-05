@@ -37,7 +37,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 <AdornedTabs>
 <TabItem label="Prerequisites">
 
-<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
 </TabItem>
 </AdornedTabs>
@@ -129,7 +129,7 @@ dfx ledger balance --network=ic
 Converting ICP to cycles is done through the **cycles ledger**, a system canister that enables developer identities to convert, hold, send, and receive cycles.
 
 :::danger
-These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica.
+These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local development environment.
 :::
 
 Next, convert ICP into cycles. Replace `AMOUNT` with the number of ICP tokens you want to convert into cycles.
@@ -140,7 +140,7 @@ dfx cycles convert --amount AMOUNT --network=ic
 
 :::info Calculating how many cycles you need
 
-The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/cost-estimations-and-examples).
+The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/gas-cost).
 
 :::
 

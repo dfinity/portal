@@ -9,7 +9,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
 
-Developers on ICP can create canisters and dapps that interact with the Ethereum mainnet, Sepolia testnet, and other EVM-compatible networks through ICP's Ethereum integration. To use this integration, developers must implement a specific workflow that makes JSON-RPC calls to the EVM RPC canister in order to query network information and submit transactions to an EVM-compatible network. Developers can also integrate and interact with chain-key Ethereum (ckETH) from within a canister, which uses the ICRC-1 token implementation.
+Developers on ICP can create canisters and dapps that interact with the Ethereum mainnet, Sepolia testnet, and other EVM-compatible networks through ICP's Ethereum integration. To use this integration, developers must implement a specific workflow that makes JSON-RPC calls to the EVM RPC canister in order to query network information and submit transactions to an EVM-compatible network.
+
+Interactions with the EVM RPC canister can be made directly to the EVM RPC canister's methods or you can use [`ic-alloy`](https://ic-alloy.dev/getting-started.html), a fork of the Ethereum tool Alloy specifically for ICP.
+
+Developers can also integrate and interact with chain-key Ethereum (ckETH) from within a canister, which uses the ICRC-1 token implementation.
 
 ## Using the Ethereum integration
 
@@ -19,7 +23,7 @@ To interact with the Ethereum network or another EVM-compatible network, a devel
 
 2. [Sign a transaction](./signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/references/t-sigs-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
 
-3. [Submit a transaction](./submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
+3. [Submit a transaction](./submit-transactions.mdx): Signed raw transactions can be submitted using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) (recommended) or the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
 
 4. [Read information from the Ethereum network](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister): Information from the Ethereum network can be queried using RPC methods such as:
 

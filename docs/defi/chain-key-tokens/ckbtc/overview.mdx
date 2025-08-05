@@ -30,7 +30,7 @@ Choosing ckBTC for your dapp or product can provide several advantages:
 
 - Easy integration: ckBTC is compatible with the ICRC-1 and ICRC-2 token standards.
 
-- Verifiable: All ckBTC activity is verifiable onchain, and ckBTC transactions go through KYT checks to ensure that no tainted bitcoin is used on ICP or transferred to tainted Bitcoin addresses.
+- Verifiable: All ckBTC activity is verifiable onchain, and ckBTC transactions go through checks to ensure that no tainted bitcoin is used on ICP or transferred to tainted Bitcoin addresses.
 
 ## How it works
 
@@ -45,11 +45,9 @@ The ckBTC functionality is provided through an interplay of two canisters:
 | [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)                    | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)                                                                          | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai)                                                                          |
 
 
-The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts. It provides the following functionality:
-- Enables the ckBTC minter to mint and burn ckBTC.
-- Facilitates the transfer of ckBTC among users.
+The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts.
 
-The **ckBTC minter** is responsible for the minting and burning of ckBTC tokens. It uses the following workflow:
+The **ckBTC minter** is responsible for minting and burning ckBTC tokens. It uses the following workflow:
 
 - Tokens are minted when a user transfers bitcoins to a specific Bitcoin address under the ckBTC minter's control. The Bitcoin address uniquely identifies the owner of the sent bitcoins.
 
@@ -65,29 +63,7 @@ A simplified overview of the process to mint and transfer ckBTC is depicted in t
 
 Learn more in the [Bitcoin integration technical overview](/docs/references/bitcoin-how-it-works).
 
-## ckBTC use cases
-
-- Token swaps
-
-- Decentralized exchanges
-
-- Point of sale applications and services
-
-- Crowdfunding applications
-
-- eCommerce platforms
-
-- Faster and cheaper BTC transactions
-
-## ckBTC production application examples
-
-- [ICDex](https://iclight.io/ICDex/DKP/ICP).
-
-- [ICPSwap](https://icpswap.com/).
-
-- [Bitcoin point of sale app](/docs/references/samples/motoko/ic-pos/).
-
-## Further reading
+## Resources
 
 - [ckBTC API reference](/docs/references/ckbtc-reference).
 
@@ -99,7 +75,7 @@ Learn more in the [Bitcoin integration technical overview](/docs/references/bitc
 
 - [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
-- [Local development workflow](/docs/building-apps/chain-fusion/bitcoin/using-btc/local-development).
+- [Local development workflow](/docs/build-on-btc/using-regtest).
 
 - [Developer Liftoff: ckBTC and Bitcoin integration](/docs/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin).
 

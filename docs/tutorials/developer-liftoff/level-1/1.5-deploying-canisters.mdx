@@ -29,7 +29,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 <AdornedTabs>
 <TabItem label="Prerequisites">
 
-<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
+<input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/docs/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
 </TabItem>
 </AdornedTabs>
@@ -64,7 +64,7 @@ Now, you can deploy your dapp to the mainnet by running the following command:
 dfx deploy --network ic
 ```
 
-In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. This tutorial series covered these in module [1.1: exploring a live demo](/docs/tutorials/developer-liftoff/level-1/1.1-live-demo).
+In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. This tutorial series covered these in module [0.6: Deploying your first dapp](/docs/tutorials/developer-liftoff/level-0/06-first-dapp).
 
 Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
 
@@ -104,7 +104,7 @@ Now, let's use your dapp! To access the dapp's frontend, open the "Frontend cani
     hello_world_frontend: https://75wat-qqaaa-aaaak-apbsa-cai.icp0.io/
 ```
 
-When you open this URL in your web browser, you will see the app's frontend user interface. Your dapp is hosted 100% onchain, does not rely on your local <GlossaryTooltip>replica</GlossaryTooltip> to keep running, and you can send this URL to your friends and get them to use your app!
+When you open this URL in your web browser, you will see the app's frontend user interface. Your dapp is hosted 100% onchain, does not rely on your [local development environment](/docs/building-apps/test/pocket-ic) to keep running, and you can send this URL to your friends and get them to use your app!
 
 :::caution
 To avoid burning through your cycles, once you are finished with this tutorial, consider stopping your project's canisters with the `dfx canister stop` command.

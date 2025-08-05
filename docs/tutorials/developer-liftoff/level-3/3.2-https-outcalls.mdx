@@ -59,9 +59,15 @@ The returned response, including the response to the `transform` function if spe
 
 - `body`: Specifies the response's body.
 
-### IPv6
+### IPv6 and IPv4
 
-When deploying applications to ICP, HTTPS outcalls can **only** be made to APIs that support **IPv6**. You can check if an API supports IPv6 by using a tool such as https://ready.chair6.net/.
+When deploying applications to the Internet Computer, HTTPS outcalls can be made to APIs hosted on servers with either IPv6 or IPv4 addresses. The connection method is determined by a fallback mechanism designed for maximum reliability.
+
+- Direct Connection (IPv6): The system first attempts to connect directly from the IC replicas. This is the ideal path for IPv6-enabled services.
+
+- Proxied Connection (Fallback): If the direct connection fails for any reason (e.g., the server is IPv4-only, or a firewall is blocking the direct connection), the system automatically retries the request through a SOCKS proxy.
+
+To see which connection method might be used for a specific service, you can check if its domain supports IPv6 using a tool such as https://ready.chair6.net/.
 
 ## HTTP GET
 
@@ -69,59 +75,8 @@ To demonstrate how to use the HTTPS `GET` outcall, open the [ICP Ninja Daily Pla
 
 In the project's `backend/app.mo` file, the HTTPS outcall is defined through the following lines:
 
-```motoko
-  // Update function to fetch and store "On This Day" data via HTTPS outcall.
-  public func fetchAndStoreOnThisDay(date : Text) : async Result.Result<Text, Text> {
-    let currentData : DayData = switch (HashMap.get(dayData, thash, date)) {
-      case null { { notes = []; onThisDay = null } };
-      case (?data) { data };
-    };
-
-    // Perform HTTPS outcall only if needed.
-    if (currentData.onThisDay == null) {
-      let parts = Iter.toArray(Text.split(date, #char '-'));
-      let month = Option.get(Nat.fromText(parts[1]), 1);
-      let day = Option.get(Nat.fromText(parts[2]), 1);
-
-      // Prepare the https request.
-      // "transform" is used to specify how the HTTP response is processed before consensus tries to agree on a response.
-      // This is useful to e.g. filter out timestamps out of headers that will be different across the responses the different replicas receive.
-      // You can read more about it here: https://internetcomputer.org/docs/building-apps/network-features/using-http/https-outcalls/overview
-      let http_request : IC.http_request_args = {
-        // API must support IPv6
-        url = "https://byabbe.se/on-this-day/" # Nat.toText(month) # "/" # Nat.toText(day) # "/events.json";
-        max_response_bytes = null; //optional for request
-        headers = [];
-        body = null; //optional for request
-        method = #get;
-        transform = ?{
-          function = transform;
-          context = Blob.fromArray([]);
-        };
-      };
-
-      // Perform HTTPS outcall using roughly 100B cycles.
-      // See https outcall cost calculator: https://7joko-hiaaa-aaaal-ajz7a-cai.icp0.io.
-      // Unused cycles are returned.
-      Cycles.add<system>(100_000_000_000);
-
-      // Execute the https outcall
-      let http_response : IC.http_request_result = await IC.http_request(http_request);
-
-...
-
-        // Transforms the raw HTTPS call response to an HttpResponsePayload on which the nodes can run consensus on.
-        public query func transform({
-            context : Blob;
-            response : IC.http_request_result;
-        }) : async IC.http_request_result {
-            {
-            response with headers = []; // not intersted in the headers
-            };
-        };
-    };
+```motoko no-repl title="backend/app.mo" file=../../../references/samples/motoko/daily_planner/backend/app.mo#L113-L203
 ```
-
 
 The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 

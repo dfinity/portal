@@ -1,0 +1,77 @@
+---
+keywords: [beginner, tutorial, hackathon, hackathon prep course, icrc1, icrc-1, fungible tokens, non-fungible tokens, create a token, tokenmania, icrc-2, icrc-7, create token, custom token, tokens, make token, deploy token]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# 5: Create and deploy a token
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+When building dapps on the Internet Computer, integrating tokens into your dapp may be necessary for enabling DeFi, governance, a marketplace, or other tokenomics functions. There are several types of tokens in the Internet Computer ecosystem, such as the protocol's native token ICP, fungible tokens that use the ICRC-1 or ICRC-2 standards, and non-fungible tokens that use the ICRC-7 standard.
+
+## Fungible and non-fungible tokens
+
+A **fungible token** is a type of token that can always be transferred 1:1 for another token of the same type.
+
+A **non-fungible token** (NFT) is a tokenized asset that is assigned a unique identifier and cannot be exchanged 1:1 for another token of the same type, as the value of each non-fungible token may vary.
+
+For example, 1 USD can always be exchanged for 1 USD. However, 1 unique painting cannot be exchanged for another unique painting, since the value of the two paintings will be different. On the Internet Computer, ICP is a fungible token that can always be exchanged for ICP of equal value. However, a non-fungible token deployed on ICP cannot be traded 1:1 with another NFT token deployed on ICP.
+
+On the Internet Computer, there are several different token standards for both fungible tokens and non-fungible tokens. Some of these standards include:
+
+- **ICRC-1:** A fungible token standard used to create custom fungible tokens on the Internet Computer. The ICRC-1 standard was designed to create a universally accepted standard for creating and recording token transactions on the Internet Computer. The ICRC-1 standard defines the general functionalities of ledgers; any tokens and their corresponding ledgers that want to support the ICRC-1 standard must fulfill all requirements within the standard. [View a detailed account of the standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+
+- **ICRC-2:** An extension of the ICRC-1 standard that enables the approve-transfer-from pattern that became popular in the Ethereum ecosystem with the ERC-20 token standard. It specifies a way for an account owner to delegate token transfers to a third party, usually a canister, on the owner's behalf. [View a detailed account of the standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md).
+
+- **ICRC-7:** A standard for non-fungible tokens on the Internet Computer. It is designed to be a minimal standard for allowing an NFT collection to be deployed on ICP. In an NFT collection, each NFT may have unique metadata information. This metadata may include a unique image, traits or tags, or a description describing the NFT. [View a detailed account of the standard](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md).
+
+## Create an ICRC-1 token
+
+To create a custom token on ICP, you will need to support the ICRC-1 token standard. To demonstrate this, open the [ICP Ninja 'Tokenmania'](https://icp.ninja/projects/tokenmania) example.
+
+:::caution
+This example is for demonstration purposes. It does not reflect a best practices workflow for creating and minting tokens on ICP. Actual production tokens deployed on ICP use a dedicated ledger smart contract and an index smart contract. For this example's demonstration, this functionality has been simplified, and the ledger functionality is included in the backend smart contract. Tokens deployed using this example are only available for 20 minutes and will be deleted afterwards. They should be treated as "testnet" assets and should not be given real value. For more information on creating tokens using a recommended production workflow, view the [create a token documentation.](/docs/defi/create)
+:::
+
+Tokenmania is a simplified token minting application. When the project is deployed, it creates a blank placeholder token that will be overwritten once you interact with the frontend of the application:
+
+```motoko title="backend/app.mo" reference
+https://github.com/dfinity/examples/blob/master/motoko/tokenmania/backend/app.mo#L17-L39
+```
+
+### Deploy the project
+
+To create your token, click the "Run" button in ICP Ninja, then open the application's URL returned in the output log:
+
+```
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://zihhr-qiaaa-aaaab-qblla-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
+```
+
+### Configure token parameters & mint
+
+Once you open the application, you will be required to authenticate with [Internet Identity](/docs/building-apps/authentication/integrate-internet-identity). Then you'll be prompted to input the configuration details for your new token:
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/tokenmania.png")}
+    alt="Tokenmania"
+    width="800"
+  />
+</div>
+
+### Use your tokens
+
+Once you have entered your token details and click "Create token", your token will be minted. Now, you can check the balance of how many tokens your principal holds, send tokens to other principals, or approve principals to spend tokens. You can also import your token into the NNS. However, recall that ICP Ninja projects are only deployed for 20 minutes. This also applies to your token; **after 20 minutes, your token will cease to exist. It should not be used for production applications**.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/tokenmania2.png")}
+    alt="Tokenmania minted tokens"
+    width="800"
+  />
+</div>

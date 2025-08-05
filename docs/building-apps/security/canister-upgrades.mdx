@@ -48,6 +48,6 @@ Using the Rust CDK, the recurring timer is also lost on upgrade as explained in 
 
 - In Motoko canisters, global timers should be set up in the actor initializer for canister installation or reinstallation. Canister-wide timers should be set in the `post_upgrade` hook for upgrades, as timers do not survive upgrades and must be explicitly set up thereafter.
 
-- See the Motoko documentation on [recurringTimer](/docs/motoko/main/base/Timer).
+- See the Motoko documentation on [recurringTimer](/docs/motoko/base/Timer#function-recurringtimer).
 
 - See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).

@@ -80,7 +80,7 @@ The remaining cycles are returned to the requesting canister. Note that at least
 To call the XRC directly, you can send a request such as one to get the BTC/USD rate, with the following command:
 
 ```
-dfx canister call --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
+dfx canister call --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })' --network=ic
 ```
 
 ## Exchange rate canister demo
@@ -111,9 +111,9 @@ npm install
 dfx canister create xrc_demo
 ```
 
-### Deployment
+### Local deployment
 
-To test the XRC demo locally, first start the local <GlossaryTooltip>replica</GlossaryTooltip> with the command:
+To test the XRC demo locally, first start the [local development environment](/docs/building-apps/test/pocket-ic) with the command:
 
 ```
 dfx start --clean --background
@@ -174,7 +174,7 @@ Open the link for the `xrc_demo` canister in a web browser to view the Candid in
 Alternatively, you can send commands to the `xrc_demo` canister directly from the terminal, such as:
 
 ```
-dfx canister call --network ic xrc_demo get_exchange_rate "ICP"
+dfx canister call xrc_demo get_exchange_rate "ICP"
 ```
 
 The output will resemble the following, depending asset requested and its current exchange rate. This example uses ICP.

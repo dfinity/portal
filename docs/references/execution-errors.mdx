@@ -82,11 +82,11 @@ To fix this error, consider installing code using [`dfx deploy`](/docs/building-
 
 
 ### Out of memory
-The canister was tried to request more memory than its allocation allowed during execution, causing the execution to fail.
+The canister was tried to request more memory than available during execution, causing the execution to fail.
 
 An example of this error is:
 ```
-  Canister exceeded its allowed memory allocation.
+  Canister cannot grow its memory usage.
 ```
 
 There are [system-wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
@@ -257,7 +257,7 @@ An example of this error is:
   Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
 ```
 
-Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/main/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
+Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
 
 
 ### Canister made a call with too large a payload
@@ -421,7 +421,7 @@ An example of this error is:
   Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
 ```
 
-[Installing](/docs/building-apps/developing-canisters/what-are-canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
+[Installing](/docs/building-apps/essentials/canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
 
 If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](/docs/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
 

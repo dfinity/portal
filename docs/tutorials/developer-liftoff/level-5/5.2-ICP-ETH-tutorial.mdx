@@ -17,7 +17,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/3XHbK5yn_8s?si=yU2zp9Ju5nQ4tlB_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-As you explored in a previous tutorial, the Internet Computer is integrated with the Bitcoin network, allowing for smart contracts to seamlessly communicate from ICP to Bitcoin for multi-chain functionality. ICP also has an integration with Ethereum and EVM networks, but in a different manner than the Bitcoin integration.
+As you explored in a previous tutorial, the Internet Computer is integrated with the Bitcoin network, allowing for smart contracts to seamlessly communicate from ICP to Bitcoin for multichain functionality. ICP also has an integration with Ethereum and EVM networks, but in a different manner than the Bitcoin integration.
 
 The Bitcoin integration is a direct integration, meaning there are nodes running on the ICP mainnet that run the Bitcoin node software. ICP currently does not have any nodes running the Ethereum node software and instead communicates with the Ethereum and EVM-compatible networks through a decentralized RPC integration. To facilitate communication with RPC services, the **EVM RPC** canister is used.
 
@@ -35,48 +35,13 @@ Through ICP's chain-key cryptography feature, the ETH integration also includes 
 
 ## EVM block explorer example
 
-Open the [ICP Ninja EVM block explorer example](https://icp.ninja/projects/who-am-i).
+Open the [ICP Ninja EVM block explorer example](https://icp.ninja/projects/evm-block-explorer).
 
 ### Exploring the project's files
 
 First, let's start by looking at the contents of the project's `dfx.json` file. This file will contain the following:
 
-```json
-{
-  "canisters": {
-    "backend": {
-      "dependencies": ["evm_rpc"],
-      "main": "backend/app.mo",
-      "type": "motoko",
-      "args": "--enhanced-orthogonal-persistence"
-    },
-    "frontend": {
-      "dependencies": ["backend"],
-      "frontend": {
-        "entrypoint": "frontend/index.html"
-      },
-      "source": ["frontend/dist"],
-      "type": "assets"
-    },
-    "evm_rpc": {
-      "candid": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc.did",
-      "type": "custom",
-      "specified_id": "7hfb6-caaaa-aaaar-qadga-cai",
-      "remote": {
-        "id": {
-          "ic": "7hfb6-caaaa-aaaar-qadga-cai"
-        }
-      },
-      "wasm": "https://github.com/dfinity/evm-rpc-canister/releases/latest/download/evm_rpc.wasm.gz",
-      "init_arg": "(record {})"
-    }
-  },
-  "output_env_file": ".env",
-  "defaults": {
-    "build": {
-      "packtool": "mops sources"
-    }
-  }
+```json title="dfx.json" file=../../../references/samples/motoko/evm_block_explorer/dfx.json
 ```
 
 In this file, you can see the definitions for the project's three canisters:
@@ -89,100 +54,7 @@ In this file, you can see the definitions for the project's three canisters:
 
 Next, let's take a look at the source code for the backend canister. Open the `backend/app.mo` file, which will contain the following content. This code has been annotated with notes to explain the code's logic:
 
-```motoko no-repl title="backend/app.mo"
-import EvmRpc "canister:evm_rpc";
-import IC "ic:aaaaa-aa";
-import Sha256 "mo:sha2/Sha256";
-import Base16 "mo:base16/Base16";
-import Debug "mo:base/Debug";
-import Blob "mo:base/Blob";
-import Text "mo:base/Text";
-import Cycles "mo:base/ExperimentalCycles";
-
-persistent actor EvmBlockExplorer {
-  transient let key_name = "test_key_1"; // Use "key_1" for production and "dfx_test_key" locally
-
-  public func get_evm_block(height : Nat) : async EvmRpc.Block {
-    // Ethereum Mainnet RPC providers
-    // Read more here: https://internetcomputer.org/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview#supported-json-rpc-providers
-    let services : EvmRpc.RpcServices = #EthMainnet(
-      ?[
-        #Llama,
-        // #Alchemy,
-        // #Cloudflare
-      ]
-    );
-
-    // Base Mainnet RPC providers
-    // Get chain ID and RPC providers from https://chainlist.org/
-    // let services : EvmRpc.RpcServices = #Custom {
-    //   chainId = 8453;
-    //   services = [
-    //     {url = "https://base.llamarpc.com"; headers = null},
-    //     {url = "https://base-rpc.publicnode.com"; headers = null}
-    //   ];
-    // };
-
-    // Call `eth_getBlockByNumber` RPC method (unused cycles will be refunded)
-    Cycles.add<system>(10_000_000_000);
-    let result = await EvmRpc.eth_getBlockByNumber(services, null, #Number(height));
-
-    switch result {
-      // Consistent, successful results.
-      case (#Consistent(#Ok block)) {
-        block;
-      };
-      // All RPC providers return the same error.
-      case (#Consistent(#Err error)) {
-        Debug.trap("Error: " # debug_show error);
-      };
-      // Inconsistent results between RPC providers. Should not happen if a single RPC provider is used.
-      case (#Inconsistent(results)) {
-        Debug.trap("Inconsistent results" # debug_show results);
-      };
-    };
-  };
-
-  public func get_ecdsa_public_key() : async Text {
-    let { public_key } = await IC.ecdsa_public_key({
-      canister_id = null;
-      derivation_path = [];
-      key_id = { curve = #secp256k1; name = key_name };
-    });
-    Base16.encode(public_key);
-  };
-
-  public func sign_message_with_ecdsa(message : Text) : async Text {
-    let message_hash : Blob = Sha256.fromBlob(#sha256, Text.encodeUtf8(message));
-    Cycles.add<system>(25_000_000_000);
-    let { signature } = await IC.sign_with_ecdsa({
-      message_hash;
-      derivation_path = [];
-      key_id = { curve = #secp256k1; name = key_name };
-    });
-    Base16.encode(signature);
-  };
-
-  public func get_schnorr_public_key() : async Text {
-    let { public_key } = await IC.schnorr_public_key({
-      canister_id = null;
-      derivation_path = [];
-      key_id = { algorithm = #ed25519; name = key_name };
-    });
-    Base16.encode(public_key);
-  };
-
-  public func sign_message_with_schnorr(message : Text) : async Text {
-    Cycles.add<system>(25_000_000_000);
-    let { signature } = await IC.sign_with_schnorr({
-      message = Text.encodeUtf8(message);
-      derivation_path = [];
-      key_id = { algorithm = #ed25519; name = key_name };
-      aux = null;
-    });
-    Base16.encode(signature);
-  };
-};
+```motoko no-repl title="backend/app.mo" file=../../../references/samples/motoko/evm_block_explorer/backend/app.mo
 ```
 
 #### What this code does
@@ -193,13 +65,13 @@ This backend code has five functions:
 
 - `get_ecdsa_public_key`: Returns the canister's ECDSA public key.
 
-- `sign_message_with_ecdsa`: Signs an inputted message using the canister's ECDSA key.
+- `sign_message_with_ecdsa`: Signs a message using the canister's ECDSA key.
 
 - `get_schnorr_public_key`: Returns the canister's Schnorr public key.
 
-- `sign_message_with_schnorr`: Signs an inputted message using the canister's Schnorr key.
+- `sign_message_with_schnorr`: Signs a message using the canister's Schnorr key.
 
-To use the dapp, click the "Deploy" button in ICP Ninja, then open application's URL returned in the output log:
+To use the dapp, click the "Run" button in ICP Ninja, then open the application's URL returned in the output log:
 
 ```
 🥷🚀🎉 Your dapp's Internet Computer URL is ready:
@@ -215,7 +87,7 @@ When this button is clicked, the following is happening in the background:
 
 - The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-call) RPC request to an Ethereum JSON-RPC API using the Llama provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
 
-- This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
+  - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
 
 - The block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider, and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
 

@@ -47,6 +47,17 @@ const cveData = [
     cvss: "High (7.5/10)",
     issued: "Sep 05, 2024",
   },
+  {
+    cve: "CVE-2024-11991",
+    description:
+      "Uninitialized memory access in Motoko incremental garbage collector",
+    reference:
+      "https://github.com/dfinity/motoko/security/advisories/GHSA-9rhg-3qf8-hrv3",
+    products: "moc (OCaml)",
+    versions: ">= 0.9.0, < 0.13.4",
+    cvss: "Medium (5.6/10)",
+    issued: "Dec 09, 2024",
+  },
 ];
 
 const TableCell = ({ children }) => (

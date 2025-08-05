@@ -1,0 +1,80 @@
+---
+keywords: [beginner, tutorial, hackathon, hackathon prep course, chain fusion, chain, fusion, evm, ethereum, block explorer, evm rpc, evm rpc canister, evm example, query evm, evm block, ethereum blocks]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+
+# 4: Chain Fusion: EVM block explorer
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+**Chain Fusion** refers to ICP's unique ability to interconnect with other blockchains without needing an intermediary to facilitate the connection. Canister smart contracts can hold assets and sign and submit transactions directly on other chains, including Bitcoin and Ethereum.
+
+To facilitate the connection to Ethereum and other EVM networks, the **EVM RPC canister** can be used. It receives calls from other canisters or users, then sends RPC requests to the destination chain using [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) and [threshold ECDSA signatures](/docs/building-apps/network-features/signatures/t-ecdsa). Once it receives the result of the RPC request, it sends the response to the original caller. Calls can be simple data queries such as block information or they can be signed transactions that are submitted for processing on the EVM chain.
+
+To explore Chain Fusion using the EVM RPC canister, let's take a look at a simple project that can be used to query information from the Ethereum network and sign messages using threshold ECDSA and Schnorr.
+
+Open the [ICP Ninja 'EVM block explorer' example](https://icp.ninja/projects/evm-block-explorer).
+
+## Exploring the project's files
+
+First, let's start by looking at the contents of the project's `dfx.json` file. This file will contain the following:
+
+```json title="dfx.json" file=../../references/samples/motoko/evm_block_explorer/dfx.json
+```
+
+In this file, you can see the definitions for three canisters:
+
+- `frontend`: The dapp's frontend canister, which has type "assets" to declare it as an asset canister, and uses the files stored in the `dist` directory. This canister has a dependency on the `backend` canister.
+
+- `backend`: The dapp's backend canister, which has type "motoko" since it uses Motoko source code stored in the file `backend/app.mo`. This canister has the dependency of `evm_rpc`.
+
+- `evm_rpc`: This canister is responsible for facilitating communication from the backend canister to RPC services that interact with the Ethereum network. This canister is a system canister and has the canister ID `7hfb6-caaaa-aaaar-qadga-cai`.
+
+### `backend/app.mo`
+
+Next, let's take a look at the source code for the backend canister. Open the `backend/app.mo` file, which will contain the following:
+
+```motoko no-repl title="backend/app.mo" file=../../references/samples/motoko/evm_block_explorer/backend/app.mo
+```
+
+#### What this code does
+
+This backend code has five functions:
+
+- `get_evm_block`: Returns an Ethereum block according to the specified block number. It makes the call through the Llama RPC provider and attaches cycles to the call.
+
+- `get_ecdsa_public_key`: Returns the canister's ECDSA public key.
+
+- `sign_message_with_ecdsa`: Signs a message using the canister's ECDSA key.
+
+- `get_schnorr_public_key`: Returns the canister's Schnorr public key.
+
+- `sign_message_with_schnorr`: Signs a message using the canister's Schnorr key.
+
+## Deploying the project
+
+To use the dapp, click the "Run" button in ICP Ninja, then open the application's URL returned in the output log:
+
+```
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://zihhr-qiaaa-aaaab-qblla-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
+```
+
+Insert a block number, such as `10001` and click on the "Get block" button. If no block number is inserted, the latest block from the Ethereum mainnet is returned.
+
+When this button is clicked, the application executes the following:
+
+- The frontend canister triggers the `get_evm_block` method of the backend canister.
+
+- The backend canister uses HTTPS outcalls to send an [`eth_getBlockByNumber`](https://docs.alchemy.com/reference/eth-getblockbynumber) RPC request to an Ethereum JSON-RPC API using the Llama provider. By default, the EVM RPC canister replicates this call across at least 2 other RPC providers.
+
+    - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
+
+- The block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
+
+- Then, the frontend displays the block information that was returned.
+
+You can also test the buttons for "Get ECDSA public key" or "Get Schnorr public key" buttons to return the canister's public keys, or enter and sign messages with either signature type.

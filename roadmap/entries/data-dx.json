@@ -2,18 +2,7 @@
   "categoryName": "Developer Experience",
   "categoryDescription": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
   "elements": [
-    {
-      "title": "dfx extensions",
-      "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q3 2024",
-      "status": "in_progress",
-      "is_community": true,
-      "in_beta": false,
-      "imported": true
-    },
+
     {
       "title": "Canister lifecycle hooks",
       "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
@@ -78,27 +67,27 @@
     {
       "title": "Amazing first time developer experience with ICP Ninja",
       "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-      "status": "future",
+      "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Atlas",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Open Caffeine projects",
       "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
-      "title": "Generate a project with AI",
-      "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
-      "status": "future",
+      "title": "Publishing projects to the ICP mainnet",
+      "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
       "title": "More sample projects to get you started",
       "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
@@ -118,17 +107,6 @@
       "overview": "Introduce dark mode for the app",
       "status": "future",
       "milestone_id": "Atlas"
-    },
-    {
-      "title": "dfx ergonomics",
-      "overview": "Better developer experience when using the ICP SDK.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
     },
     {
       "title": "Tutorials",
@@ -205,19 +183,8 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "PocketIC shipped and bundled with dfx",
-      "overview": "PocketIC, the new recommended standard tool for testing of dapps, is shipped and packaged with the dfx SDK.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
       "status": "in_progress",
-      "is_community": false,
+      "is_community": true,
       "in_beta": false
     },
     {
@@ -251,16 +218,6 @@
       "eta": "",
       "status": "",
       "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "REST- & JSON-centric interfaces",
-      "overview": "REST and JSON-centric philosophy of interacting with ICP. Makes it easier for Web2 devs to onboard the ICP ecosystem.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": true,
       "in_beta": false
     },
     {

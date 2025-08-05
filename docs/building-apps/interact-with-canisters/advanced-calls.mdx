@@ -7,7 +7,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Advanced types of calls
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 In addition to queries and updates, there are advanced types of calls that can be made to canisters.
 
@@ -17,14 +17,18 @@ Certified queries ensure the integrity of the data being retrieved. They use use
 
 ## Replicated queries
 
-Replicated queries, also referred to as the "query-as-update" execution model, are query calls executed as updates. The query still discards the state changes, but execution happens on all subnet nodes, and the results go through consensus.
+Replicated queries, also referred to as the "query-as-update" execution model, are query calls executed as updates. The query still discards the state changes, but execution happens on all [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) nodes, and the results go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus).
 
 
 ## Inter-canister calls
 
-Inter-canister calls are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
+[Inter-canister calls](/docs/references/async-code/) are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
 
 One example of inter-canister calls is the [parallel calls Motoko example](https://github.com/dfinity/examples/tree/master/motoko/parallel_calls).
+
+Learn more about inter-canister calls:
+
+- [Making inter-canister calls with Rust](/docs/building-apps/developer-tools/cdks/rust/intercanister/)
 
 ## Authorized calls
 
