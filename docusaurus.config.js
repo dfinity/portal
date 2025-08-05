@@ -604,6 +604,7 @@ const config = {
     {
       src: "https://widget.kapa.ai/kapa-widget.bundle.js",
       "data-website-id": "08910249-851f-465b-b60f-238d84e1afc1",
+      "data-bot-protection-mechanism": "hcaptcha",
       "data-project-name": "Internet Computer",
       "data-project-color": "#172234",
       "data-project-logo":
