@@ -22,7 +22,6 @@ const redirects = `
   ## /docs/current/quill/* https://github.com
   ##
   ##
-  /docs/current/motoko/* /docs/motoko:splat
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/* /docs/building-apps/developer-tools/dfx:splat
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/tutorials/developer-liftoff/* /docs/tutorials/developer-liftoff/:splat
@@ -81,79 +80,80 @@ const redirects = `
   /docs/current/developer-docs/ai/machine-learning-sample /ecosystem
 
   ## Motoko
-  /docs/current/developer-docs/backend/motoko/infrastructure /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/main/getting-started/basic-concepts
-  /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/main/getting-started/dev-env
-  /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/main/getting-started/quickstart
-  /docs/current/developer-docs/backend/motoko/upgrading /docs/motoko/main/canister-maintenance/upgrades
-  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/motoko/main/writing-motoko/intercanister-calls
-  /docs/current/developer-docs/backend/motoko/optimizing /docs/motoko/main/canister-maintenance/optimization
-  /docs/current/developer-docs/backend/motoko/phonebook /docs/motoko/main/writing-motoko/modules-and-imports
-  /docs/current/developer-docs/backend/motoko/calculator /docs/motoko/main/writing-motoko/integers
-  /docs/current/developer-docs/backend/motoko/counter-tutorial /docs/motoko/main/writing-motoko/local-objects-classes
-  /docs/current/developer-docs/backend/motoko/hello-location /docs/motoko/main/writing-motoko/arguments
-  /docs/current/developer-docs/backend/motoko/simple-cycles /docs/motoko/main/canister-maintenance/cycles
-  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/motoko/main/writing-motoko/actors-async
-  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/motoko/main/writing-motoko/actor-classes
-  /docs/current/developer-docs/backend/motoko/access-control /docs/motoko/main/writing-motoko/caller-id
-  /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/main/writing-motoko/candid-ui
-  /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/infrastructure /docs/motoko/home
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/install
+  /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/home
+  /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/install
+  /docs/current/developer-docs/backend/motoko/upgrading /docs/building-apps/canister-management/upgrade
+  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/motoko/fundamentals/actors/messaging
+  /docs/current/developer-docs/backend/motoko/optimizing /docs/building-apps/advanced/optimize/motoko
+  /docs/current/developer-docs/backend/motoko/phonebook /docs/motoko/fundamentals/modules-imports
+  /docs/current/developer-docs/backend/motoko/calculator /docs/motoko/fundamentals/basic-syntax/numbers
+  /docs/current/developer-docs/backend/motoko/counter-tutorial /docs/motoko/fundamentals/types/objects-classes
+  /docs/current/developer-docs/backend/motoko/hello-location /docs/motoko/fundamentals/types/functions
+  /docs/current/developer-docs/backend/motoko/simple-cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/backend/motoko/access-control /docs/motoko/icp-features/caller-identification
+  /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/icp-features/candid-serialization
+  /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/motoko/home
   /docs/current/developer-docs/backend/motoko/sample-apps /samples
-  /docs/current/developer-docs/backend/motoko/mo-doc /docs/motoko/main/reference/generating-docs
-  /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/motoko/main/migration-guides/0.11.0-migration-guide
-  /docs/current/motoko/main/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
-  /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/main/base/array /docs/motoko/main/base/Array
-  /docs/current/motoko/main/base/buffer /docs/motoko/main/base/Buffer
-  /docs/current/motoko/main/base/char /docs/motoko/main/base/Char
-  /docs/current/motoko/main/base/experimentalstablememory /docs/motoko/main/base/ExperimentalStableMemory
-  /docs/current/motoko/main/base/float /docs/motoko/main/base/Float
-  /docs/current/motoko/main/base/hash /docs/motoko/main/base/Hash
-  /docs/current/motoko/main/base/hashmap /docs/motoko/main/base/HashMap
-  /docs/current/motoko/main/base/list /docs/motoko/main/base/List
-  /docs/current/motoko/main/base/option /docs/motoko/main/base/Option
-  /docs/current/motoko/main/base/principal /docs/motoko/main/base/Principal
-  /docs/current/motoko/main/base/random /docs/motoko/main/base/Random
-  /docs/current/motoko/main/base/text /docs/motoko/main/base/Text
-  /docs/current/motoko/main/base/time /docs/motoko/main/base/Time
-  /docs/current/motoko/main/base/trie /docs/motoko/main/base/Trie
-  /docs/current/motoko/main/base/triemap  /docs/motoko/main/base/TrieMap
-  /docs/current/motoko/main/base/debug /docs/motoko/main/base/Debug
-  /docs/current/motoko/main/base/int8 /docs/motoko/main/base/Int8
-  /docs/current/motoko/main/base/nat /docs/motoko/main/base/Nat
+  /docs/current/developer-docs/backend/motoko/mo-doc /docs/motoko/motoko-tooling/mo-doc
+  /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
+  /docs/current/motoko/main/about-this-guide /docs/motoko/home
+  /docs/motoko/fundamentals/messaging /docs/references/async-code
+  /motoko/main/motoko /docs/motoko/home
+  /docs/current/motoko/main/base/array /docs/motoko/base/Array
+  /docs/current/motoko/main/base/buffer /docs/motoko/base/Buffer
+  /docs/current/motoko/main/base/char /docs/motoko/base/Char
+  /docs/current/motoko/main/base/experimentalstablememory /docs/motoko/base/ExperimentalStableMemory
+  /docs/current/motoko/main/base/float /docs/motoko/base/Float
+  /docs/current/motoko/main/base/hash /docs/motoko/base/Hash
+  /docs/current/motoko/main/base/hashmap /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/list /docs/motoko/base/List
+  /docs/current/motoko/main/base/option /docs/motoko/base/Option
+  /docs/current/motoko/main/base/principal /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/random /docs/motoko/base/Random
+  /docs/current/motoko/main/base/text /docs/motoko/base/Text
+  /docs/current/motoko/main/base/time /docs/motoko/base/Time
+  /docs/current/motoko/main/base/trie /docs/motoko/base/Trie
+  /docs/current/motoko/main/base/triemap  /docs/motoko/base/TrieMap
+  /docs/current/motoko/main/base/debug /docs/motoko/base/Debug
+  /docs/current/motoko/main/base/int8 /docs/motoko/base/Int8
+  /docs/current/motoko/main/base/nat /docs/motoko/base/Nat
   /docs/rust/main/motoko-packages/databases /docs/home
-  /docs/current/motoko/main/motoko-introduction /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/main/basic-concepts /docs/motoko/main/getting-started/basic-concepts
-  /docs/current/motoko/main/overview /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/main/language-manual /docs/motoko/main/reference/language-manual
-  /docs/current/motoko/main/style /docs/motoko/main/reference/style
-  /docs/current/motoko/main/base-intro /docs/motoko/main/writing-motoko/modules-and-imports
-  /docs/current/motoko/main/actors-async /docs/motoko/main/writing-motoko/actors-async
-  /docs/current/motoko/main/actor-classes /docs/motoko/main/writing-motoko/actor-classes
-  /docs/current/motoko/main/caller-id /docs/motoko/main/writing-motoko/caller-id
-  /docs/current/motoko/main/compatibility /docs/motoko/main/canister-maintenance/compatibility
-  /docs/current/motoko/main/control-flow /docs/motoko/main/writing-motoko/control-flow
-  /docs/current/motoko/main/cycles /docs/motoko/main/canister-maintenance/cycles
-  /docs/current/motoko/main/errors /docs/motoko/main/writing-motoko/errors
-  /docs/current/motoko/main/heartbeats /docs/motoko/main/writing-motoko/heartbeats
-  /docs/current/motoko/main/local-objects-classes /docs/motoko/main/writing-motoko/local-objects-classes
-  /docs/current/motoko/main/message-inspection /docs/motoko/main/writing-motoko/message-inspection
-  /docs/current/motoko/main/modules-and-imports /docs/motoko/main/writing-motoko/modules-and-imports
-  /docs/current/motoko/main/mutable-state /docs/motoko/main/writing-motoko/mutable-state
-  /docs/current/motoko/main/pattern-matching /docs/motoko/main/writing-motoko/pattern-matching
-  /docs/current/motoko/main/pipes /docs/motoko/main/writing-motoko/pipes
-  /docs/current/motoko/main/sharing /docs/motoko/main/writing-motoko/sharing
-  /docs/current/motoko/main/stable-regions /docs/motoko/main/stable-memory/stable-regions
-  /docs/current/motoko/main/stablememory /docs/motoko/main/stable-memory/stablememory
-  /docs/current/motoko/main/structural-equality /docs/motoko/main/writing-motoko/structural-equality
-  /docs/current/motoko/main/timers /docs/motoko/main/writing-motoko/timers
-  /docs/current/motoko/main/upgrades /docs/motoko/main/canister-maintenance/upgrades
-  /docs/current/motoko/main/compiler-ref /docs/motoko/main/reference/compiler-ref
-  /docs/current/motoko/main/motoko-grammar /docs/motoko/main/reference/motoko-grammar
-  /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko-introduction /docs/motoko/home
+  /docs/current/motoko/main/motoko /docs/motoko/home
+  /docs/current/motoko/main/basic-concepts /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/overview /docs/motoko/home
+  /docs/current/motoko/main/language-manual /docs/motoko/language-manual
+  /docs/current/motoko/main/style /docs/motoko/style
+  /docs/current/motoko/main/base-intro /docs/motoko/fundamentals/modules-imports
+  /docs/current/motoko/main/actors-async /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/actor-classes /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/caller-id /docs/motoko/icp-features/caller-identification
+  /docs/current/motoko/main/compatibility /docs/motoko/home
+  /docs/current/motoko/main/control-flow /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/current/motoko/main/cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/current/motoko/main/errors /docs/motoko/fundamentals/error-handling
+  /docs/current/motoko/main/heartbeats /docs/motoko/icp-features/system-functions
+  /docs/current/motoko/main/local-objects-classes /docs/motoko/fundamentals/types/objects-classes
+  /docs/current/motoko/main/message-inspection /docs/motoko/fundamentals/actors/messaging
+  /docs/current/motoko/main/modules-and-imports /docs/motoko/fundamentals/modules-imports
+  /docs/current/motoko/main/mutable-state /docs/motoko/fundamentals/actors/state
+  /docs/current/motoko/main/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/motoko/main/pipes /docs/motoko/fundamentals/basic-syntax/operators
+  /docs/current/motoko/main/sharing /docs/motoko/fundamentals/types/shared-types
+  /docs/current/motoko/main/stable-regions  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/current/motoko/main/stablememory  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/current/motoko/main/structural-equality /docs/motoko/fundamentals/types/subtyping
+  /docs/current/motoko/main/timers /docs/motoko/icp-features/timers
+  /docs/current/motoko/main/upgrades /docs/building-apps/canister-management/upgrade
+  /docs/current/motoko/main/compiler-ref /docs/motoko/compiler-ref
+  /docs/current/motoko/main/motoko-grammar /docs/motoko/style
+  /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/motoko-tooling/canpack
+  /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/home
   /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/icp-ninja /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
@@ -161,6 +161,304 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/dev-tools-overview /docs/building-apps/developer-tools/dev-tools-overview
   /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
+
+  # Motoko old -> new docs
+
+  /docs/motoko /docs/motoko/home
+  /docs/motoko/main/base/ /docs/motoko/base/
+  /docs/current/motoko/main/base/ /docs/motoko/base/
+  /docs/motoko/main/base/Array /docs/motoko/base/Array
+  /docs/current/motoko/main/base/Array /docs/motoko/base/Array
+  /docs/motoko/main/base/array /docs/motoko/base/Array
+  /docs/current/motoko/main/base/array /docs/motoko/base/Array
+  /docs/motoko/main/base/Array/ /docs/motoko/base/Array
+  /docs/current/motoko/main/base/Array/ /docs/motoko/base/Array
+  /docs/motoko/main/base/AssocList /docs/motoko/base/AssocList
+  /docs/current/motoko/main/base/AssocList /docs/motoko/base/AssocList
+  /docs/motoko/main/base/Blob /docs/motoko/base/Blob
+  /docs/current/motoko/main/base/Blob /docs/motoko/base/Blob
+  /docs/motoko/main/base/Bool /docs/motoko/base/Bool
+  /docs/current/motoko/main/base/Bool /docs/motoko/base/Bool
+  /docs/motoko/main/base/bool /docs/motoko/base/Bool
+  /docs/current/motoko/main/base/bool /docs/motoko/base/Bool
+  /docs/motoko/main/base/Buffer /docs/motoko/base/Buffer
+  /docs/current/motoko/main/base/Buffer /docs/motoko/base/Buffer
+  /docs/motoko/main/base/buffer /docs/motoko/base/Buffer
+  /docs/current/motoko/main/base/buffer /docs/motoko/base/Buffer
+  /docs/motoko/main/base/CertifiedData /docs/motoko/base/CertifiedData
+  /docs/current/motoko/main/base/CertifiedData /docs/motoko/base/CertifiedData
+  /docs/motoko/main/base/Char /docs/motoko/base/Char
+  /docs/current/motoko/main/base/Char /docs/motoko/base/Char
+  /docs/motoko/main/base/Debug /docs/motoko/base/Debug
+  /docs/current/motoko/main/base/Debug /docs/motoko/base/Debug
+  /docs/motoko/main/base/Debug/ /docs/motoko/base/Debug
+  /docs/current/motoko/main/base/Debug/ /docs/motoko/base/Debug
+  /docs/motoko/main/base/Deque /docs/motoko/base/Deque
+  /docs/current/motoko/main/base/Deque /docs/motoko/base/Deque
+  /docs/motoko/main/base/Error /docs/motoko/base/Error
+  /docs/current/motoko/main/base/Error /docs/motoko/base/Error
+  /docs/motoko/main/base/ExperimentalCycles /docs/motoko/base/ExperimentalCycles
+  /docs/current/motoko/main/base/ExperimentalCycles /docs/motoko/base/ExperimentalCycles
+  /docs/motoko/main/base/experimentalcycles /docs/motoko/base/ExperimentalCycles
+  /docs/current/motoko/main/base/experimentalcycles /docs/motoko/base/ExperimentalCycles
+  /docs/motoko/main/base/ExperimentalInternetComputer /docs/motoko/base/ExperimentalInternetComputer
+  /docs/current/motoko/main/base/ExperimentalInternetComputer /docs/motoko/base/ExperimentalInternetComputer
+  /docs/motoko/main/base/ExperimentalStableMemory /docs/motoko/base/ExperimentalStableMemory
+  /docs/current/motoko/main/base/ExperimentalStableMemory /docs/motoko/base/ExperimentalStableMemory
+  /docs/motoko/main/base/Float /docs/motoko/base/Float
+  /docs/current/motoko/main/base/Float /docs/motoko/base/Float
+  /docs/motoko/main/base/Func /docs/motoko/base/Func
+  /docs/current/motoko/main/base/Func /docs/motoko/base/Func
+  /docs/motoko/main/base/Hash /docs/motoko/base/Hash
+  /docs/current/motoko/main/base/Hash /docs/motoko/base/Hash
+  /docs/motoko/main/base/hash /docs/motoko/base/Hash
+  /docs/current/motoko/main/base/hash /docs/motoko/base/Hash
+  /docs/motoko/main/base/HashMap /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/HashMap /docs/motoko/base/HashMap
+  /docs/motoko/main/base/hashmap /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/hashmap /docs/motoko/base/HashMap
+  /docs/motoko/main/base/HashMap/ /docs/motoko/base/HashMap
+  /docs/current/motoko/main/base/HashMap/ /docs/motoko/base/HashMap
+  /docs/motoko/main/base/Heap /docs/motoko/base/Heap
+  /docs/current/motoko/main/base/Heap /docs/motoko/base/Heap
+  /docs/motoko/main/base/Int /docs/motoko/base/Int
+  /docs/current/motoko/main/base/Int /docs/motoko/base/Int
+  /docs/motoko/main/base/Int16 /docs/motoko/base/Int16
+  /docs/current/motoko/main/base/Int16 /docs/motoko/base/Int16
+  /docs/motoko/main/base/Int32 /docs/motoko/base/Int32
+  /docs/current/motoko/main/base/Int32 /docs/motoko/base/Int32
+  /docs/motoko/main/base/Int64 /docs/motoko/base/Int64
+  /docs/current/motoko/main/base/Int64 /docs/motoko/base/Int64
+  /docs/motoko/main/base/Int8 /docs/motoko/base/Int8
+  /docs/current/motoko/main/base/Int8 /docs/motoko/base/Int8
+  /docs/motoko/main/base/Iter /docs/motoko/base/Iter
+  /docs/current/motoko/main/base/Iter /docs/motoko/base/Iter
+  /docs/motoko/main/base/iter /docs/motoko/base/Iter
+  /docs/current/motoko/main/base/iter /docs/motoko/base/Iter
+  /docs/motoko/main/base/IterType /docs/motoko/base/IterType
+  /docs/current/motoko/main/base/IterType /docs/motoko/base/IterType
+  /docs/motoko/main/base/List /docs/motoko/base/List
+  /docs/current/motoko/main/base/List /docs/motoko/base/List
+  /docs/motoko/main/base/List/ /docs/motoko/base/List
+  /docs/current/motoko/main/base/List/ /docs/motoko/base/List
+  /docs/motoko/main/base/Nat /docs/motoko/base/Nat
+  /docs/current/motoko/main/base/Nat /docs/motoko/base/Nat
+  /docs/motoko/main/base/Nat16 /docs/motoko/base/Nat16
+  /docs/current/motoko/main/base/Nat16 /docs/motoko/base/Nat16
+  /docs/motoko/main/base/Nat32 /docs/motoko/base/Nat32
+  /docs/current/motoko/main/base/Nat32 /docs/motoko/base/Nat32
+  /docs/motoko/main/base/Nat64 /docs/motoko/base/Nat64
+  /docs/current/motoko/main/base/Nat64 /docs/motoko/base/Nat64
+  /docs/motoko/main/base/Nat8 /docs/motoko/base/Nat8
+  /docs/current/motoko/main/base/Nat8 /docs/motoko/base/Nat8
+  /docs/motoko/main/base/None /docs/motoko/base/None
+  /docs/current/motoko/main/base/None /docs/motoko/base/None
+  /docs/motoko/main/base/Option /docs/motoko/base/Option
+  /docs/current/motoko/main/base/Option /docs/motoko/base/Option
+  /docs/motoko/main/base/option /docs/motoko/base/Option
+  /docs/current/motoko/main/base/option /docs/motoko/base/Option
+  /docs/motoko/main/base/Order /docs/motoko/base/Order
+  /docs/current/motoko/main/base/Order /docs/motoko/base/Order
+  /docs/motoko/main/base/OrderedMap /docs/motoko/base/OrderedMap
+  /docs/current/motoko/main/base/OrderedMap /docs/motoko/base/OrderedMap
+  /docs/motoko/main/base/OrderedSet /docs/motoko/base/OrderedSet
+  /docs/current/motoko/main/base/OrderedSet /docs/motoko/base/OrderedSet
+  /docs/motoko/main/base/Prelude /docs/motoko/base/Prelude
+  /docs/current/motoko/main/base/Prelude /docs/motoko/base/Prelude
+  /docs/motoko/main/base/Principal /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/Principal /docs/motoko/base/Principal
+  /docs/motoko/main/base/principal /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/principal /docs/motoko/base/Principal
+  /docs/motoko/main/base/Principal/ /docs/motoko/base/Principal
+  /docs/current/motoko/main/base/Principal/ /docs/motoko/base/Principal
+  /docs/motoko/main/base/Random /docs/motoko/base/Random
+  /docs/current/motoko/main/base/Random /docs/motoko/base/Random
+  /docs/motoko/main/base/random /docs/motoko/base/Random
+  /docs/current/motoko/main/base/random /docs/motoko/base/Random
+  /docs/motoko/main/base/RBTree /docs/motoko/base/RBTree
+  /docs/current/motoko/main/base/RBTree /docs/motoko/base/RBTree
+  /docs/motoko/main/base/Region /docs/motoko/base/Region
+  /docs/current/motoko/main/base/Region /docs/motoko/base/Region
+  /docs/motoko/main/base/Stack /docs/motoko/base/Stack
+  /docs/current/motoko/main/base/Stack /docs/motoko/base/Stack
+  /docs/motoko/main/base/Text /docs/motoko/base/Text
+  /docs/current/motoko/main/base/Text /docs/motoko/base/Text
+  /docs/motoko/main/base/text /docs/motoko/base/Text
+  /docs/current/motoko/main/base/text /docs/motoko/base/Text
+  /docs/motoko/main/base/Time /docs/motoko/base/Time
+  /docs/current/motoko/main/base/Time /docs/motoko/base/Time
+  /docs/motoko/main/base/time /docs/motoko/base/Time
+  /docs/current/motoko/main/base/time /docs/motoko/base/Time
+  /docs/motoko/main/base/Time/ /docs/motoko/base/Time
+  /docs/current/motoko/main/base/Time/ /docs/motoko/base/Time
+  /docs/motoko/main/base/Timer /docs/motoko/base/Timer
+  /docs/current/motoko/main/base/Timer /docs/motoko/base/Timer
+  /docs/motoko/main/base/Trie /docs/motoko/base/Trie
+  /docs/current/motoko/main/base/Trie /docs/motoko/base/Trie
+  /docs/motoko/main/base/trie /docs/motoko/base/Trie
+  /docs/current/motoko/main/base/trie /docs/motoko/base/Trie
+  /docs/motoko/main/base/TrieMap /docs/motoko/base/TrieMap
+  /docs/current/motoko/main/base/TrieMap /docs/motoko/base/TrieMap
+  /docs/motoko/main/base/trieset /docs/motoko/base/TrieSet
+  /docs/current/motoko/main/base/trieset /docs/motoko/base/TrieSet
+  /docs/motoko/main/base/TrieSet /docs/motoko/base/TrieSet
+  /docs/current/motoko/main/base/TrieSet /docs/motoko/base/TrieSet
+  /docs/motoko/main/canister-maintenance/compatibility /docs/motoko/home
+  /docs/current/motoko/main/canister-maintenance/compatibility /docs/motoko/home
+  /docs/motoko/main/canister-maintenance/cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/current/motoko/main/canister-maintenance/cycles /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/motoko/main/canister-maintenance/memory  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/current/motoko/main/canister-maintenance/memory  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
+  /docs/current/motoko/main/canister-maintenance/optimization /docs/building-apps/advanced/optimize/motoko
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/current/motoko/main/canister-maintenance/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/motoko/main/canister-maintenance/upgrades /docs/building-apps/canister-management/upgrade
+  /docs/current/motoko/main/canister-maintenance/upgrades /docs/building-apps/canister-management/upgrade
+  /docs/motoko/main/getting-started/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining-an-actor
+  /docs/current/motoko/main/getting-started/basic-concepts /docs/motoko/fundamentals/basic-syntax/defining-an-actor
+  /docs/motoko/main/getting-started/dev-env /docs/motoko/install
+  /docs/current/motoko/main/getting-started/dev-env /docs/motoko/install
+  /docs/motoko/main/getting-started/examples https://github.com/dfinity/examples/tree/master/motoko
+  /docs/current/motoko/main/getting-started/examples https://github.com/dfinity/examples/tree/master/motoko
+  /docs/motoko/main/getting-started/quickstart /docs/motoko/install
+  /docs/current/motoko/main/getting-started/quickstart /docs/motoko/install
+  /docs/motoko/main/getting-started/motoko-introduction /docs/motoko/home
+  /docs/current/motoko/main/getting-started/motoko-introduction /docs/motoko/home
+  /docs/motoko/main/migration-guides/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
+  /docs/current/motoko/main/migration-guides/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
+  /docs/motoko/main/migration-guides/overview /docs/motoko/home
+  /docs/current/motoko/main/migration-guides/overview /docs/motoko/home
+  /docs/motoko/main/motoko-packages/cryptography https://mops.one/
+  /docs/current/motoko/main/motoko-packages/cryptography https://mops.one/
+  /docs/motoko/main/motoko-packages/data-structures https://mops.one/
+  /docs/current/motoko/main/motoko-packages/data-structures https://mops.one/
+  /docs/motoko/main/motoko-packages/databases https://mops.one/
+  /docs/current/motoko/main/motoko-packages/databases https://mops.one/
+  /docs/motoko/main/motoko-packages/encoding https://mops.one/
+  /docs/current/motoko/main/motoko-packages/encoding https://mops.one/
+  /docs/motoko/main/motoko-packages/http https://mops.one/
+  /docs/current/motoko/main/motoko-packages/http https://mops.one/
+  /docs/motoko/main/motoko-packages/icrc https://mops.one/
+  /docs/current/motoko/main/motoko-packages/icrc https://mops.one/
+  /docs/motoko/main/motoko-packages/types-interfaces https://mops.one/
+  /docs/current/motoko/main/motoko-packages/types-interfaces https://mops.one/
+  /docs/motoko/main/motoko-packages/utilities https://mops.one/
+  /docs/current/motoko/main/motoko-packages/utilities https://mops.one/
+  /docs/motoko/main/motoko-tools/embed-motoko https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/embed-motoko https://github.com/dfinity/motoko
+  /docs/motoko/main/motoko-tools/mo-dev https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/mo-dev https://github.com/dfinity/motoko
+  /docs/motoko/main/motoko-tools/motoko-formatter https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/motoko-formatter https://github.com/dfinity/motoko
+  /docs/motoko/main/motoko-tools/motoko-js https://github.com/dfinity/motoko
+  /docs/current/motoko/main/motoko-tools/motoko-js https://github.com/dfinity/motoko
+  /docs/motoko/main/reference/compiler-ref /docs/motoko/compiler-ref
+  /docs/current/motoko/main/reference/compiler-ref /docs/motoko/compiler-ref
+  /docs/motoko/main/reference/error-codes /docs/motoko/fundamentals/error-handling
+  /docs/current/motoko/main/reference/error-codes /docs/motoko/fundamentals/error-handling
+  /docs/motoko/main/reference/generating-docs /docs/motoko/motoko-tooling/mo-doc
+  /docs/current/motoko/main/reference/generating-docs /docs/motoko/motoko-tooling/mo-doc
+  /docs/motoko/main/reference/language-manual /docs/motoko/language-manual
+  /docs/current/motoko/main/reference/language-manual /docs/motoko/language-manual
+  /docs/motoko/main/reference/language-manual/ /docs/motoko/language-manual
+  /docs/current/motoko/main/reference/language-manual/ /docs/motoko/language-manual
+  /docs/motoko/main/reference/motoko-grammar /docs/motoko/style
+  /docs/current/motoko/main/reference/motoko-grammar /docs/motoko/style
+  /docs/motoko/main/reference/style /docs/motoko/style
+  /docs/current/motoko/main/reference/style /docs/motoko/style
+  /docs/motoko/main/stable-memory/stable-regions  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/current/motoko/main/stable-memory/stable-regions  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/motoko/main/stable-memory/stablememory  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/current/motoko/main/stable-memory/stablememory  /docs/motoko/fundamentals/actors/data-persistence
+  /docs/motoko/main/writing-motoko/actor-classes /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/writing-motoko/actor-classes /docs/motoko/fundamentals/actors/actors-async
+  /docs/motoko/main/writing-motoko/actors-async /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/writing-motoko/actors-async /docs/motoko/fundamentals/actors/actors-async
+  /docs/motoko/main/writing-motoko/arguments /docs/motoko/fundamentals/types/functions
+  /docs/current/motoko/main/writing-motoko/arguments /docs/motoko/fundamentals/types/functions
+  /docs/motoko/main/writing-motoko/async-data /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/writing-motoko/async-data /docs/motoko/fundamentals/actors/actors-async
+  /docs/motoko/main/writing-motoko/async-star /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/motoko/main/writing-motoko/async-star /docs/motoko/fundamentals/actors/actors-async
+  /docs/motoko/main/writing-motoko/caller-id /docs/motoko/icp-features/caller-identification
+  /docs/current/motoko/main/writing-motoko/caller-id /docs/motoko/icp-features/caller-identification
+  /docs/motoko/main/writing-motoko/candid /docs/motoko/icp-features/candid-serialization
+  /docs/current/motoko/main/writing-motoko/candid /docs/motoko/icp-features/candid-serialization
+  /docs/motoko/main/writing-motoko/candid-ui /docs/motoko/icp-features/candid-serialization
+  /docs/current/motoko/main/writing-motoko/candid-ui /docs/motoko/icp-features/candid-serialization
+  /docs/motoko/main/writing-motoko/control-flow /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/current/motoko/main/writing-motoko/control-flow /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/motoko/main/writing-motoko/control-flow/ /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/current/motoko/main/writing-motoko/control-flow/ /docs/motoko/fundamentals/control-flow/basic-control-flow
+  /docs/motoko/main/writing-motoko/errors /docs/motoko/fundamentals/error-handling
+  /docs/current/motoko/main/writing-motoko/errors /docs/motoko/fundamentals/error-handling
+  /docs/motoko/main/writing-motoko/heartbeats /docs/motoko/icp-features/system-functions
+  /docs/current/motoko/main/writing-motoko/heartbeats /docs/motoko/icp-features/system-functions
+  /docs/motoko/main/writing-motoko/incomplete-code /docs/motoko/home
+  /docs/current/motoko/main/writing-motoko/incomplete-code /docs/motoko/home
+  /docs/motoko/main/writing-motoko/integers /docs/motoko/fundamentals/basic-syntax/numbers
+  /docs/current/motoko/main/writing-motoko/integers /docs/motoko/fundamentals/basic-syntax/numbers
+  /docs/motoko/main/writing-motoko/intercanister-calls /docs/motoko/fundamentals/actors/messaging
+  /docs/current/motoko/main/writing-motoko/intercanister-calls /docs/motoko/fundamentals/actors/messaging
+  /docs/motoko/main/writing-motoko/local-objects-classes /docs/motoko/fundamentals/types/objects-classes
+  /docs/current/motoko/main/writing-motoko/local-objects-classes /docs/motoko/fundamentals/types/objects-classes
+  /docs/motoko/main/writing-motoko/message-inspection /docs/motoko/fundamentals/actors/messaging
+  /docs/current/motoko/main/writing-motoko/message-inspection /docs/motoko/fundamentals/actors/messaging
+  /docs/motoko/main/writing-motoko/message-restrictions /docs/motoko/fundamentals/actors/messaging
+  /docs/current/motoko/main/writing-motoko/message-restrictions /docs/motoko/fundamentals/actors/messaging
+  /docs/motoko/main/writing-motoko/modules-and-imports /docs/motoko/fundamentals/modules-imports
+  /docs/current/motoko/main/writing-motoko/modules-and-imports /docs/motoko/fundamentals/modules-imports
+  /docs/motoko/main/writing-motoko/mutable-state /docs/motoko/fundamentals/actors/state
+  /docs/current/motoko/main/writing-motoko/mutable-state /docs/motoko/fundamentals/actors/state
+  /docs/motoko/main/writing-motoko/object-subtyping /docs/motoko/fundamentals/types/subtyping
+  /docs/current/motoko/main/writing-motoko/object-subtyping /docs/motoko/fundamentals/types/subtyping
+  /docs/motoko/main/writing-motoko/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/motoko/main/writing-motoko/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/motoko/main/writing-motoko/pipes /docs/motoko/fundamentals/basic-syntax/operators
+  /docs/current/motoko/main/writing-motoko/pipes /docs/motoko/fundamentals/basic-syntax/operators
+  /docs/motoko/main/writing-motoko/query-functions /docs/motoko/fundamentals/types/functions
+  /docs/current/motoko/main/writing-motoko/query-functions /docs/motoko/fundamentals/types/functions
+  /docs/motoko/main/writing-motoko/query-functions/ /docs/motoko/fundamentals/types/functions
+  /docs/current/motoko/main/writing-motoko/query-functions/ /docs/motoko/fundamentals/types/functions
+  /docs/motoko/main/writing-motoko/randomness /docs/motoko/icp-features/randomness
+  /docs/current/motoko/main/writing-motoko/randomness /docs/motoko/icp-features/randomness
+  /docs/motoko/main/writing-motoko/recursive-types /docs/motoko/fundamentals/types/advanced-types
+  /docs/current/motoko/main/writing-motoko/recursive-types /docs/motoko/fundamentals/types/advanced-types
+  /docs/motoko/main/writing-motoko/sharing /docs/motoko/fundamentals/types/shared-types
+  /docs/current/motoko/main/writing-motoko/sharing /docs/motoko/fundamentals/types/shared-types
+  /docs/motoko/main/writing-motoko/static-types /docs/motoko/fundamentals/types/stable-types
+  /docs/current/motoko/main/writing-motoko/static-types /docs/motoko/fundamentals/types/stable-types
+  /docs/motoko/main/writing-motoko/structural-equality /docs/motoko/fundamentals/types/subtyping
+  /docs/current/motoko/main/writing-motoko/structural-equality /docs/motoko/fundamentals/types/subtyping
+  /docs/motoko/main/writing-motoko/system-capability /docs/motoko/icp-features/system-functions
+  /docs/current/motoko/main/writing-motoko/system-capability /docs/motoko/icp-features/system-functions
+  /docs/motoko/main/writing-motoko/timers /docs/motoko/icp-features/timers
+  /docs/current/motoko/main/writing-motoko/timers /docs/motoko/icp-features/timers
+  /docs/motoko/main/writing-motoko/writing-intro /docs/motoko/home
+  /docs/current/motoko/main/writing-motoko/writing-intro /docs/motoko/home
+  /docs/motoko/fundamentals/compiler-ref /docs/motoko/compiler-ref
+  /docs/motoko/fundamentals/language-manual /docs/motoko/language-manual
+  /docs/motoko/fundamentals/style /docs/motoko/style
+  /docs/move-to-motoko/canpack /docs/motoko/motoko-tooling/canpack
+  /docs/current/move-to-motoko/canpack /docs/motoko/motoko-tooling/canpack
+  /docs/move-to-motoko/dev-containers /docs/motoko/motoko-tooling/dev-containers
+  /docs/current/move-to-motoko/dev-containers /docs/motoko/motoko-tooling/dev-containers
+  /docs/move-to-motoko/vs-code /docs/motoko/motoko-tooling/motoko-vs-code
+  /docs/current/move-to-motoko/vs-code /docs/motoko/motoko-tooling/motoko-vs-code
+  /docs/motoko/fundamentals/actors-async /docs/motoko/fundamentals/actors/actors-async
+  /docs/motoko/fundamentals/state /docs/motoko/fundamentals/actors/state
+  /docs/motoko/fundamentals/messaging /docs/motoko/fundamentals/actors/messaging
+  /docs/motoko/fundamentals/data-persistence /docs/motoko/fundamentals/actors/data-persistence
+  /docs/motoko/orthogonal-persistence/modes /docs/motoko/fundamentals/actors/orthogonal-persistence/
+  /docs/motoko/orthogonal-persistence/enhanced /docs/motoko/fundamentals/actors/orthogonal-persistence/enhanced
+  /docs/motoko/orthogonal-persistence/classical /docs/motoko/fundamentals/actors/orthogonal-persistence/classical
+  /docs/motoko/fundamentals/garbage-collection /docs/motoko/compiler-ref
+
 
   ## Rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
@@ -477,11 +775,11 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/references/ckbtc-reference
   /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/defi/chain-key-tokens/ckbtc/overview
-  /docs/current/developer-docs/integrations/bitcoin/ /docs/building-apps/chain-fusion/bitcoin/overview
-  /docs/current/developer-docs/integrations/bitcoin/index /docs/building-apps/chain-fusion/bitcoin/overview
-  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development
-  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state
-  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions
+  /docs/current/developer-docs/integrations/bitcoin/ /docs/build-on-btc/
+  /docs/current/developer-docs/integrations/bitcoin/index /docs/build-on-btc/
+  /docs/current/developer-docs/integrations/bitcoin/local-development /docs/build-on-btc/using-regtest
+  /docs/current/developer-docs/integrations/bitcoin/read-state /docs/build-on-btc/read-state
+  /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
   /docs/current/developer-docs/integrations/composite-query /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/integrations /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
@@ -558,31 +856,31 @@ const redirects = `
   /docs/current/developer-docs/integrations/storage/cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/integrations/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/references/t-sigs-how-it-works
-  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/encryption/vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/ /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/references/vetkeys-overview
-  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/local-quickstart /docs/building-apps/getting-started/install
 
   ## Chain Fusion
-  /docs/current/references/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/current/references/bitcoin-how-it-works /docs/build-on-btc/
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps /docs/defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
-  /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development
-  /docs/current/developer-docs/multi-chain/bitcoin/overview /docs/building-apps/chain-fusion/bitcoin/overview
-  /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state
-  /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-comparison /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-comparison
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/create-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/create-transactions
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/generate-addresses /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/ordinals /docs/building-apps/chain-fusion/bitcoin/using-btc/ordinals
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/runes /docs/building-apps/chain-fusion/bitcoin/using-btc/runes
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/sign-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions
-  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/build-on-btc/using-regtest
+  /docs/current/developer-docs/multi-chain/bitcoin/overview /docs/build-on-btc/
+  /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/build-on-btc/read-state
+  /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-comparison /docs/build-on-btc/
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow /docs/build-on-btc/btc-dev-workflow
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/create-transactions /docs/build-on-btc/btc-transactions/create-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/generate-addresses /docs/build-on-btc/btc-transactions/generate-addresses
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development /docs/build-on-btc/using-regtest
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/ordinals /docs/build-on-btc/ordinals
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state /docs/build-on-btc/read-state
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/runes /docs/build-on-btc/runes
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/sign-transactions /docs/build-on-btc/btc-transactions/sign-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps /docs/defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
@@ -620,6 +918,19 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/using-eth/evm-rpc/evm-rpc /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
   /docs/current/developer-docs/multichain/ethereum/cketh /docs/defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/overview/ /docs/building-apps/essentials/network-overview
+
+  ## Build on BTC
+  /docs/building-apps/chain-fusion/bitcoin/overview /docs/build-on-btc/
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-comparison /docs/build-on-btc/
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow /docs/build-on-btc/btc-dev-workflow
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses /docs/build-on-btc/btc-transactions/generate-addresses
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/create-transactions /docs/build-on-btc/btc-transactions/create-transactions
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions /docs/build-on-btc/btc-transactions/sign-transactions
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions /docs/build-on-btc/btc-transactions/submit-transactions
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/read-state /docs/build-on-btc/read-state
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/ordinals /docs/build-on-btc/ordinals
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/runes /docs/build-on-btc/runes
+  /docs/building-apps/chain-fusion/bitcoin/using-btc/local-development /docs/build-on-btc/using-regtest
 
   ## NNS
 
@@ -739,8 +1050,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
-  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
-  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/encryption/vetkeys
+  /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
+  /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview /docs/building-apps/essentials/canisters
@@ -829,8 +1140,8 @@ const redirects = `
   /docs/developers-guide/webpack-config.html /docs/building-apps/frontends/using-an-asset-canister
   /docs/defi/icp-tokens/icp-index-local-setup /docs/defi/token-indexes/
   /docs/developer-docs /docs/building-apps/essentials/network-overview
-  /docs/developers-guide/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
-  /docs/developers-guide/basic-syntax-rules /docs/motoko/main/reference/language-manual
+  /docs/developers-guide/about-this-guide /docs/motoko/home
+  /docs/developers-guide/basic-syntax-rules /docs/motoko/language-manual
   /docs/developers-guide/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/developers-guide/computation-and-storage-costs.html /docs/building-apps/essentials/gas-cost
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin
@@ -841,7 +1152,7 @@ const redirects = `
   /docs/developers-guide/default-wallet.html /docs/building-apps/getting-started/tokens-and-cycles
   /docs/developers-guide/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/developers-guide/design-apps /docs/building-apps/essentials/canisters
-  /docs/developers-guide/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/ /docs/motoko/home
   /docs/developers-guide/glossary /docs/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/icp-ninja
@@ -850,9 +1161,9 @@ const redirects = `
   /docs/developers-guide/sdk-guide.html /docs/building-apps/getting-started/install
   /docs/developers-guide/sdk-guide /docs/building-apps/getting-started/install
   /docs/developers-guide/troubleshooting /docs/building-apps/getting-started/troubleshooting
-  /docs/developers-guide/tutorials-intro /docs/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/tutorials-intro /docs/motoko/home
   /docs/developers-guide/tutorials/default-frontend /docs/building-apps/frontends/using-an-asset-canister
-  /docs/developers-guide/tutorials/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/tutorials/ /docs/motoko/home
   /docs/developers-guide/tutorials/my-contacts /docs/building-apps/frontends/using-an-asset-canister
   /docs/developers-guide/webpack-config /docs/building-apps/frontends/using-an-asset-canister
   /docs/developers-guide/work-with-languages /docs/building-apps/essentials/canisters
@@ -885,8 +1196,8 @@ const redirects = `
   /docs/current/developer-docs/defi/tokens/icrc-1/ /docs/defi/token-standards/
   /docs/current/developer-docs/integrations/http-requests /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/nns/nns-app-quickstart https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/language-guide/compiler-ref.html /docs/motoko/main/reference/language-manual
-  /docs/current/motoko/main/motokolimbajul /docs/motoko/main/getting-started/motoko-introduction
+  /docs/language-guide/compiler-ref.html /docs/motoko/language-manual
+  /docs/current/motoko/main/motokolimbajul /docs/motoko/home
   /docs/samples/codelabs/minimalistic-motoko-dapp /samples
   /docs/samples/codelabs/minimalistic-rust-dapp /samples
   /docs/samples/codelabs /samples
@@ -942,6 +1253,8 @@ const redirects = `
   /docs/references/samples/wasm/counter /samples
 
   ## Misc
+  /docs/current/developer-docs/backend/candid/generating-candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
+  /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/deploy-specific-subnet
   /docs/references/motoko/encrypted-notes-dapp-vetkd/ /docs/references/samples/motoko/encrypted-notes-dapp-vetkd/
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/security/overview
   /docs/current/developer-docs/setup/local-quickstart/ /docs/building-apps/getting-started/install
@@ -961,13 +1274,14 @@ const redirects = `
   /docs/current/developer-docs/glossary /docs/references/glossary
   /BTC /bitcoin
   /chain-fusion /chainfusion
+  /alliance https://dfinity.org/alliance
   /docs/current/developer-docs/backend/actors-programming /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/rust/rust-canister-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/deploy/cycles /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/sdk-installation/ /docs/building-apps/getting-started/install
   /docs/current/developer-docs/frontend/candid-ui /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/motoko/main/base/rbtree /docs/motoko/main/base/RBTree
+  /docs/current/motoko/main/base/rbtree /docs/motoko/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
   /docs/current/references/cli-reference/dfx-ledger/ /docs/building-apps/developer-tools/dfx/dfx-ledger
   /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
@@ -983,11 +1297,11 @@ const redirects = `
   /docs/building-apps/developer-tools/cdks/rust/candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/concepts/glossary /docs/references/glossary
   /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger /docs/defi/token-ledgers/setup/icrc1_ledger_setup
-  /docs/current/motoko/main/about-motoko/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/about-motoko/ /docs/motoko/home
   /docs/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
-  /docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/build-on-btc/
   /docs/developer-docs/integrations/icrc-1/ /docs/defi/token-ledgers/setup/icrc1_ledger_setup
-  /docs/motoko/reference/language-manual /docs/motoko/main/reference/language-manual
+  /docs/motoko/reference/language-manual /docs/motoko/language-manual
   /docs/references/ic-interface /docs/references/ic-interface-spec
   /docs/building-apps/chain-fusion/ethereum/evm-rpc/ /docs/building-apps/chain-fusion/ethereum/evm-rpc/overview
   /docs/building-apps/developing-canisters/creates /docs/building-apps/developing-canisters/create
@@ -1003,7 +1317,7 @@ const redirects = `
   /docs/current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/download.html /docs/home
   /docs/ic-identity-guide/what-is-ic-identity.html /docs/home
-  /docs/language-guide/style.html /docs/motoko/main/getting-started/motoko-introduction
+  /docs/language-guide/style.html /docs/motoko/home
   /docs/current/tutorials/developer-journey/level-5/5.2-icp-eth-tutorial /docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.4-nft-tutorial /docs/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.1-vetkeys-tutorial /docs/tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial
@@ -1012,10 +1326,10 @@ const redirects = `
   /docs/current/tutorials/developer-liftoff/level-5/5.4-nft-tutorial /docs/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
   /docs/introduction/ /docs/home
   /docs/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/integrations/bitcoin/btc-address-management /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses
+  /docs/current/developer-docs/integrations/bitcoin/btc-address-management /docs/build-on-btc/btc-transactions/generate-addresses
   /docs/rust/main/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/getting-started/deploy/mainnet /docs/building-apps/developing-canisters/deploy
-  /docs/current/developer-docs/functionality/bitcoin /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/current/developer-docs/functionality/bitcoin /docs/build-on-btc/
   /docs/current/developer-docs/build/cdks/azle-demergent-labs https://demergent-labs.github.io/azle/
   /docs/candid-guide/candid-intro.html /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/home /docs/home
@@ -1025,9 +1339,9 @@ const redirects = `
   /install.sh) /docs/building-apps/getting-started/install
   /become-a-member /news
   /docs/agent /docs/building-apps/interact-with-canisters/agents/overview
-  /docs/base-libraries/int.html /docs/motoko/main/getting-started/motoko-introduction
-  /docs/base-libraries/iter.html /docs/motoko/main/getting-started/motoko-introduction
-  /docs/base-libraries/option.html /docs/motoko/main/getting-started/motoko-introduction
+  /docs/base-libraries/int.html /docs/motoko/home
+  /docs/base-libraries/iter.html /docs/motoko/home
+  /docs/base-libraries/option.html /docs/motoko/home
   /docs/building-apps/ /docs/building-apps/getting-started/quickstart
   /docs/building-apps/getting-started/ /docs/building-apps/getting-started/quickstart
   /docs/candid-guide/candid-howto /docs/building-apps/interact-with-canisters/candid/candid-concepts
@@ -1049,9 +1363,9 @@ const redirects = `
   /docs/interface-spec /docs/references/ic-interface-spec
   /docs/introduction/welcome /docs/home
   /docs/language-guide/cycles.html /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/language-guide/ /docs/motoko/main/base/
-  /docs/language-guide/language-manual.html /docs/motoko/main/getting-started/motoko-introduction
-  /docs/language-guide/motoko.html /docs/motoko/main/getting-started/motoko-introduction
+  /docs/language-guide/ /docs/motoko/base/
+  /docs/language-guide/language-manual.html /docs/motoko/home
+  /docs/language-guide/motoko.html /docs/motoko/home
   /docs/languages/languages-overview /docs/building-apps/essentials/canisters
   /docs/local-quickstart.html /docs/building-apps/getting-started/install
   /docs/network-quickstart.html /docs/building-apps/getting-started/install
@@ -1074,7 +1388,7 @@ const redirects = `
   /how-it-works/threshold-ecdsa-signing https://learn.internetcomputer.org/hc/en-us/articles/34209497587732-Chain-Key-Signatures
   /how-it-works/canister-lifecycle https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts
   /how-it-works/message-routing https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing
-  /how-it-works/motoko https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction
+  /how-it-works/motoko /docs/motoko/home
   /how-it-works/architecture-of-the-internet-computer https://learn.internetcomputer.org/hc/en-us/articles/33694833025172-How-Does-ICP-Work
   /how-it-works/consensus https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus
   /how-it-works/execution-layer https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer
@@ -1138,28 +1452,41 @@ const redirects = `
   /docs/current/developer-docs/production/system-canisters /docs/references/system-canisters/
   /docs/current/developer-docs/production/topping-up-canister/ /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
+  /docs/current/developer-docs/backend/solidity/ https:/docs.bitfinity.network/
   /docs/current/developer-docs/backend/subnet-types /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/backend/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/defi/overview
-  /docs/current/developer-docs/build/backend/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/backend/ /docs/motoko/home
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/cdks/ /docs/building-apps/developer-tools/cdks/
   /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/building-apps/developer-tools/cdks/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/main/writing-motoko/actors-async
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/main/writing-motoko/actor-classes
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/main/writing-motoko/actors-async
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/main/base/Iter
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/main/base/IterType
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/main/writing-motoko/pattern-matching
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/motoko/main/canister-maintenance/upgrades
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/language-manual
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
+  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/base/IterType
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/home
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/home
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/building-apps/canister-management/upgrade
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/base/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/language-manual
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/home
+  /docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/fundamentals/actors/actors-async
+  /docs/motoko/fundamentals/async-actors /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/fundamentals/actors/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/base/IterType
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/home
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/home
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/fundamentals/pattern-matching
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/building-apps/canister-management/upgrade
   /docs/current/developer-docs/build/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup /docs/defi/token-ledgers/setup/icrc1_ledger_setup
@@ -1168,7 +1495,7 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/languages/motoko /docs/motoko/home
   /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -1195,14 +1522,24 @@ const redirects = `
   /docs/current/developer-docs/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
   /docs/current/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
   /apis/site/proxy /docs/references/http-gateway-protocol-spec
-  /base-libraries/ /docs/motoko/main/base/
+  /base-libraries/ /docs/motoko/base/
   /basics /what-is-the-ic
-  /bitcoin-integration /bitcoin 
+  /bitcoin-integration /bitcoin
   /bootcamp /education-hub
   /docs/current/blog/features/vetkey-primer /docs/references/vetkeys-overview
   /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
   /blog/features/vetkey-primer /docs/references/vetkeys-overview
-  `
+  /docs/building-apps/network-features/encryption/vetkeys /docs/building-apps/network-features/vetkeys/introduction
+  /docs/building-apps/network-features/encryption/using-vetkeys /docs/building-apps/network-features/vetkeys/demos/send_file_to_eth
+  /docs/current/developer-docs/build/backend/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/integrations/sns/get-sns/testflight /docs/building-apps/governing-apps/testing/testing-before-launch
+  /docs/building-apps/interact-with-canisters/using-third-party-canisterss/using-third-party-canisters /docs/building-apps/advanced/using-third-party-canisters
+  /docs/current/developer-docs/build/languages/motoko/quickstart/01-intro /docs/motoko/home
+  /docs/current/motoko/base/Array /docs/motoko/base/Array
+  /docs/motoko/getting-started/motoko-introduction /docs/motoko/home
+  /docs/quickstart/local-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/references/supported-signatures /docs/references/t-sigs-how-it-works
+`
 
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

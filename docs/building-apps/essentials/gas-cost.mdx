@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/building-apps/getting-started/tokens-and-cycles).
 
-The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of March 12, 2025, the [exchange rate for 1 XDR = $1.33](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
+The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of May 22, 2025, the [exchange rate for 1 XDR = $1.35](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
 
 To estimate how much a project might cost, you can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/).
 
@@ -88,7 +88,7 @@ Setting even 1% compute allocation provides a significant advantage over caniste
 
 - **100% compute allocation**: The canister will receive 100% of an execution core and is guaranteed to be scheduled every round.
 
-Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.000013 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
+Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.0000135 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
 
 [View the cost calculation formula for more information about how costs are calculated](/docs/references/cycles-cost-formulas).
 
@@ -182,5 +182,8 @@ Common errors related to cycles include:
 ### Topping up canisters
 
 - [Top up your canisters](/docs/building-apps/canister-management/topping-up).
-
 - [Cycles management services](/docs/building-apps/canister-management/topping-up#using-a-cycles-management-service).
+
+### Counting instructions
+- [Motoko function `countInstructions`](/docs/motoko/base/ExperimentalInternetComputer#function-countinstructions).
+- [IC interface specification](/docs/references/ic-interface-spec#system-api-performance-counter).

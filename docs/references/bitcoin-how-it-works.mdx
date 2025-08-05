@@ -78,30 +78,30 @@ The final stage of the development of a Bitcoin smart contract is its deployment
 
 The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mainnet APIs are presented in the following tables. As a general principle for the Bitcoin API, some API calls must have a minimum number of cycles attached to them, as indicated in the column *Minimum cycles to send with call*. Cycles not consumed by the call are returned to the caller. Requiring a relatively large minimum number of cycles makes it possible to change the pricing of API calls without breaking existing smart contracts when the Bitcoin subnet grows in terms of its replication factor in the future. The call for submitting a Bitcoin transaction to the Bitcoin network does not require extra cycles to be attached as the charged cost is independent of the replication factor of the subnet.
 
-The cost per API call in USD uses the USD/XDR exchange rate of July 23, 2024.
+The cost per API call in USD uses the USD/XDR exchange rate of May 22, 2025 ($1.354820 USD).
 
 ### Bitcoin Testnet
 
-| Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
-| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 4_000_000                 | $0.00000530204                    | 40_000_000 |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4_000_000                 | $0.00000530204                   | 40_000_000 |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2_000_000_000             | $0.00265102                    | n.a.       |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8_000_000                 | $0.00001060408                    | n.a.       |
-| Bitcoin block headers                | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)                              | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
+| Transaction                         | Description                                                                                   | Price (Cycles)                                   | Price (USD)                            | Minimum cycles to send with call |
+|-----------------------------------|-----------------------------------------------------------------------------------------------|-------------------------------------------------|--------------------------------------|---------------------------------|
+| Bitcoin UTXO set for an address    | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                        | 20_000_000 + 0.4 cycles per Wasm instruction    | $0.00002710 + Wasm instruction cost | 4_000_000_000                   |
+| Bitcoin fee percentiles            | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`) | 4_000_000                                       | $0.00000542                         | 40_000_000                      |
+| Bitcoin balance for an address     | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                  | 4_000_000                                       | $0.00000542                         | 40_000_000                      |
+| Bitcoin transaction submission     | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`) | 2_000_000_000                                   | $0.00271                           | N/A                           |
+| Bitcoin transaction payload        | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`) | 8_000_000                                       | $0.00001084                         | N/A                           |
+| Bitcoin block headers              | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)              | 20_000_000 + 0.4 cycles per Wasm instruction    | $0.00002710 + Wasm instruction cost | 4_000_000_000                   |
 
 
 ### Bitcoin Mainnet
 
-| Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 50_000_000 + 1 cycle per Wasm instruction | $0.0000662755 + Wasm instruction cost | 10_000_000_000 |
-| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 10_000_000                 | $0.0000132551 | 100_000_000 |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 10_000_000                 | $0.0000132551                    | 100_000_000 |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5_000_000_000             | $0.00662755                    | n.a.       |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 20_000_000                 | $0.0000265102                    | n.a.       |
-| Bitcoin block headers                | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)                              | 50_000_000 + 1 cycle per Wasm instruction | $0.0000662755 + Wasm instruction cost | 10_000_000_000 |
+| Transaction                         | Description                                                                                   | Price (Cycles)                          | Price (USD)                          | Minimum cycles to send with call |
+|-----------------------------------|-----------------------------------------------------------------------------------------------|---------------------------------------|------------------------------------|---------------------------------|
+| Bitcoin UTXO set for an address    | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                        | 50_000_000 + 1 cycle per Wasm instruction | $0.00006774 + Wasm instruction cost | 10_000_000_000                 |
+| Bitcoin fee percentiles            | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`) | 10_000_000                            | $0.00001355                       | 100_000_000                    |
+| Bitcoin balance for an address     | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                  | 10_000_000                            | $0.00001355                       | 100_000_000                    |
+| Bitcoin transaction submission     | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`) | 5_000_000_000                        | $0.00677                         | N/A                           |
+| Bitcoin transaction payload        | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`) | 20_000_000                           | $0.00002710                      | N/A                           |
+| Bitcoin block headers              | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)              | 50_000_000 + 1 cycle per Wasm instruction | $0.00006774 + Wasm instruction cost | 10_000_000_000                 |
 
 :::note
 Note that the fees for calling the `bitcoin_get_utxos` and `bitcoin_get_block_headers` endpoints depend on the number of Wasm instructions that the Bitcoin canister consumes when processing the requests to ensure fair charging.
@@ -113,4 +113,4 @@ To start building your own apps with Bitcoin, see the following tutorials:
 
 - [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
 
-- [Local development](/docs/building-apps/chain-fusion/bitcoin/using-btc/local-development).
+- [Local development](/docs/build-on-btc/using-regtest).

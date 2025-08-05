@@ -124,6 +124,43 @@ As a Candid user, you do not have to worry about the details of this binary form
 
 -   As long as the sender serializes the arguments as the type that the receiving side expects, deserialization will succeed.
 
+Here's a cleaned-up and professional documentation version of your note, suitable for inclusion in a developer guide or technical documentation:
+
+## Passing function or service references via Candid
+
+Candid supports passing function or service references. Consider the following Motoko example, which defines a type for a function and a record that includes a function and a value. The `call_via_record` function takes the record and calls the provided function with the provided input:
+
+```motoko no-repl
+actor {
+  public type Fn = query Nat -> async Nat;
+  public type R = {
+    x : Nat;
+    fn : Fn;
+  };
+  public shared func call_via_record(r : R) : async Nat {
+    return await r.fn(r.x);
+  };
+
+  public shared func add_two(x : Nat) : async Nat {
+    return x + 2
+  }
+};
+```
+
+This pattern can then be called via `agent-js`:
+
+```javascript
+my_canister.call_via_record({ x: 10, fn: [Actor.canisterIdOf(my_canister), "add_two"] })
+```
+
+[View this example on ICP Ninja.](https://icp.ninja/s/w1OWR)
+
+:::info 
+You cannot pass `my_canister.add_two` directly. Instead, the function reference must be passed as a `[Principal, string]` tuple representing the canister and method name.
+:::
+
+This approach also works for inter-canister calls, as long as the receiving canister knows how to handle the passed function reference.
+
 ## Service upgrades
 
 Services evolve over time; they gain new methods, existing methods return more data, or expect additional arguments. Usually, developers want to do that without breaking existing clients.

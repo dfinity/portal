@@ -25,7 +25,7 @@ However, this feature is almost nonexistent when developing a decentralized appl
 
 ---
 
-This is where the [Motoko programming language](/docs/motoko/main/getting-started/motoko-introduction) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/motoko/main/canister-maintenance/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
+This is where the [Motoko programming language](/docs/motoko/home) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/building-apps/canister-management/upgrade) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
 
 Over the past six months, DFINITY has adopted full-stack live reloading in our internal Motoko projects, saving a huge amount of development time and allowing us to quickly try lots of different ideas to improve the end-user experience of our Internet Computer dapps.
 
