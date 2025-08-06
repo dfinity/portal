@@ -8,28 +8,13 @@
       "description": "The Neon milestone focuses on helping users quickly understand their portfolio. New features highlight personalized insights on their staking reward potential and provide more engaging and dynamic information about DAOs, presenting users with opportunities to participate in launches. Governance participation is becoming more accessible, with simplified processes for liquidity pool integration and DAO management operations, laying the groundwork for what's next.",
       "milestone_id": "Neon",
       "status": "in_progress",
-      "eta_to_render": "July 2025"
-    },
-    {
-      "title": "Staking overview",
-      "overview": "This feature focuses on making it easy for users to understand their staking potential and reward opportunities. Personalized insights encourage deeper engagement and understanding—like how staking more or adjusting neuron configurations can lead to more voting rewards.",
-      "status": "in_progress",
-      "milestone_id": "Neon"
+      "eta_to_render": "August 2025"
     },
     {
       "title": "Portfolio page",
       "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
       "status": "deployed",
       "milestone_id": "Neon"
-    },
-    {
-      "title": "Engaged and active DAO communities",
-      "is_milestone": true,
-      "description": "This milestone focuses on boosting user involvement in governance. It aims to create a sense of belonging to DAO communities and encourage users to contribute to the liquid democracy processes. SNS communities can apply their decisions easily by proposals.",
-      "milestone_id": "Nucleon",
-      "status": "future",
-      "eta": "",
-      "eta_to_render": ""
     },
     {
       "title": "Periodic followee confirmation",
@@ -50,6 +35,14 @@
       "proposal": "",
       "docs": "",
       "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Neon"
+    },
+        {
+      "title": "Launchpad redesign",
+      "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
       "status": "deployed",
       "is_community": false,
       "in_beta": false,
@@ -80,6 +73,19 @@
       "milestone_id": "Neon"
     },
     {
+      "title": "Fiat values in the NNS dapp",
+      "overview": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
+      "description": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
+      "status": "deployed",
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Governance basic portfolio reporting capabilities",
+      "overview": "Reporting functionality that allows users to obtain summary information about their NNS neurons.",
+      "status": "deployed",
+      "milestone_id": "Neon"
+    },
+    {
       "title": "Disburse maturity for NNS neurons",
       "overview": "Unlike SNS neurons, NNS neurons spawn maturity into a newly created neuron. This feature will move to a flow where NNS neurons would also disburse maturity.",
       "description": "In its current implementation, NNS neurons spawn maturity into a new neuron, whereas SNS DAOs disburse maturity directly into the user's account, which greatly simplifies the flow and reduces the new neurons created.",
@@ -87,6 +93,22 @@
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Neon"
+    },
+        {
+      "title": "SNS treasury management",
+      "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
+      "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
+      "status": "in_progress",
+      "milestone_id": "Neon"
+    },
+    {
+      "title": "Engaged and active DAO communities",
+      "is_milestone": true,
+      "description": "This milestone focuses on boosting user involvement in governance. It aims to create a sense of belonging to DAO communities and encourage users to contribute to the liquid democracy processes. SNS communities can apply their decisions easily by proposals.",
+      "milestone_id": "Nucleon",
+      "status": "future",
+      "eta": "",
+      "eta_to_render": ""
     },
     {
       "title": "SNS communities portal",
@@ -97,11 +119,52 @@
       "milestone_id": "Nucleon"
     },
     {
-      "title": "SNS treasury management",
-      "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-      "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-      "status": "in_progress",
-      "milestone_id": "Neon"
+      "title": "Improve staking user experience",
+      "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
+      "description": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Guide users from swap participating to governance",
+      "overview": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Incentivise exceptional voting",
+      "overview": "All ICP governance participants are rewarded equally whether they vote manually or follow other neurons, even if the former takes significantly more effort. This roadmap item aims to explore ways to find a better balance.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "NNS known and named neurons",
+      "overview": "Currently there are a lot of known neurons and some that only focus on a few topics. It is hard for users to find good candidates to follow / delegate their  vote to for different topics. This feature aims to improve this and to consider introducing names also for other public neurons.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Proposal error visibility",
+      "overview": "Make it easier for SNS communities to execute decisions via proposals by making potential errors visible. For example, if an SNS proposal fails to execute, users of the NNS dapp do not see the reason for why this happened. This feature introduces user-readable error messages.",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Expand reporting functionality",
+      "overview": "Extending the reporting functionality, for example with SNS neurons or fiat values.",
+      "status": "future",
+      "milestone_id": "Nucleon"
     },
     {
       "title": "Council-based digital assets management",
@@ -128,129 +191,32 @@
       "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
       "status": "future"
     },
-
-    {
-      "title": "Improve staking user experience",
-      "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
-      "description": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "imported": false,
-      "milestone_id": "Nucleon"
-    },
-    {
-      "title": "Launchpad redesign",
-      "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Neon"
-    },
-    {
-      "title": "Guide users from swap participating to governance",
-      "overview": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
-    },
-    {
-      "title": "Fiat values in the NNS dapp",
-      "overview": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
-      "description": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
-      "status": "deployed",
-      "milestone_id": "Neon"
-    },
-    {
-      "title": "Incentivise exceptional voting",
-      "overview": "All ICP governance participants are rewarded equally whether they vote manually or follow other neurons, even if the former takes significantly more effort. This roadmap item aims to explore ways to find a better balance.",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
-    },
-    {
-      "title": "NNS known and named neurons",
-      "overview": "Currently there are a lot of known neurons and some that only focus on a few topics. It is hard for users to find good candidates to follow / delegate their  vote to for different topics. This feature aims to improve this and to consider introducing names also for other public neurons.",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
-    },
     {
       "title": "Reduce min dissolve delay to 3 months",
       "overview": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
       "description": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
       "forum": "https://forum.dfinity.org/t/reducing-the-minimum-dissolve-delay-to-3-months/32714",
       "proposal": "https://dashboard.internetcomputer.org/proposal/131010",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
       "status": "future",
-      "is_community": true,
-      "in_beta": false
+      "is_community": true
     },
     {
       "title": "Ledger support for SNS tokens",
       "overview": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
       "description": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "Earn badges for activities",
       "overview": "Depending on different activities, reward users with badges in the NNS dapp such as #8YearGang.",
       "description": "Depending on different activities, reward users with badges in the NNS dapp such as #8YearGang.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
-    {
-      "title": "Proposal error visibility",
-      "overview": "Make it easier for SNS communities to execute decisions via proposals by making potential errors visible. For example, if an SNS proposal fails to execute, users of the NNS dapp do not see the reason for why this happened. This feature introduces user-readable error messages.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
-    },
-    {
-      "title": "Expand reporting functionality",
-      "overview": "Extending the reporting functionality, for example with SNS neurons or fiat values.",
-      "status": "future",
-      "milestone_id": "Nucleon"
-    },
-    {
-      "title": "Governance basic portfolio reporting capabilities",
-      "overview": "Reporting functionality that allows users to obtain summary information about their NNS neurons.",
-      "status": "deployed",
-      "milestone_id": "Neon"
-    },
-
     {
       "title": "Allow ecosystem wallets to connect to the NNS dapp",
       "overview": "Allow ecosystem wallets to control tokens and governance neurons in the NNS dapp to foster an interoperable ICP ecosystem.",
       "description": "The ICRC signer standards are being developed in collaboration with the ICP community to enable secure, and standardized communication between canisters. Adopting ICRC signer standards will foster an ecosystem of ICP dapps where the end-user has full control over their tokens, while managing them across dapps is much simplified. The NNS dapp will open up and provide an example implementation using these standards to allow ecosystem wallets to control assets in the NNS dapp. ICP wallets and dapps are encouraged to follow suit and together create an interoperable ICP ecosystem.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "Manual overwriting of following-triggered votes",
@@ -258,90 +224,44 @@
       "description": "This feature enables manual (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron. This roadmap item is based on the community proposal 38985.",
       "forum": "https://forum.dfinity.org/t/proposal-to-enable-manual-voting-throughout-the-entire-voting-period-of-governance-proposals/9815",
       "proposal": "https://dashboard.internetcomputer.org/proposal/38985",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
       "status": "future",
-      "is_community": true,
-      "in_beta": false,
-      "imported": true
+      "is_community": true
     },
     {
       "title": "Archiving of NNS proposals",
       "overview": "Storing NNS proposals long term instead of deleting them after a defined time period as done currently to increase transparency and accountability of governance.",
       "description": "Currently, NNS proposals are only kept for a limited time and are then deleted. This feature intends to archive governance proposals to enhance transparency and accountability of the governance system.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "Maintain neurons’ voting history",
       "overview": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
       "description": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "Private voting",
       "overview": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
       "description": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "SNS cycles management",
       "overview": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
       "description": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "SNS swap participation with additional tokens",
       "overview": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
       "description": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     },
     {
       "title": "Neurons' Fund phase II",
       "overview": "Addresses the end-of-investment phase of the Neuron's Fund.",
       "description": "Addresses the end-of-investment phase of the Neuron's Fund.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
+      "status": "future"
     }
   ]
 }
