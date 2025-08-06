@@ -19,7 +19,9 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useInView } from "react-intersection-observer";
 import { useQueryParam } from "../utils/use-query-param";
 
-type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
+type EnrichedShowcaseProjects = Array<
+  ShowcaseProject | "promo" | "newsletter" | "report"
+>;
 
 const tagsNavigation = [
   "Chain Fusion",
@@ -47,9 +49,13 @@ function sortDesktopProjects(
 
   const promoSlots = [8 - 1, 20 - 3, 32 - 2, 48 - 4, 64 - 1];
 
-  for (const slot of promoSlots) {
+  for (let i = 0; i < promoSlots.length; i++) {
+    const slot = promoSlots[i];
     if (small.length >= slot) {
-      small.splice(slot, 0, "promo");
+      // 1st promo: Submit project, 2nd promo: Newsletter, 3rd & 4th promo: Submit project, 5th promo (last): Newsletter
+      const cardType =
+        i === 1 || i === promoSlots.length - 1 ? "newsletter" : "promo";
+      small.splice(slot, 0, cardType);
     }
   }
 
@@ -249,6 +255,28 @@ const PromoCard = () => {
   );
 };
 
+const NewsletterCard = () => {
+  return (
+    <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6]">
+      <div className="flex flex-col gap-2">
+        <h3 className="tw-title-sm mb-0">Get Developer Updates</h3>
+        <p className="tw-paragraph text-white/60 flex-1 mb-12">
+          Want to receive developer-focused content and R&D updates? Subscribe
+          for the ICP Dev Newsletter.
+        </p>
+        <Link
+          className="button-white text-center"
+          href="https://dfinity.us16.list-manage.com/track/click?u=33c727489e01ff5b6e1fb6cc6&id=01daf2dccd&e=d173e9aea9"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sign up now
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 const ReportCard = () => {
   return (
     <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
@@ -410,9 +438,13 @@ function ShowcasePage(): JSX.Element {
         </section>
         <section className="container-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative -mt-48 md:-mt-40">
           {filteredProjects.map((project, index) =>
-            project === "promo" || project === "report" ? (
+            project === "promo" ||
+            project === "newsletter" ||
+            project === "report" ? (
               project === "promo" ? (
                 <PromoCard key={`promo_${index}`} />
+              ) : project === "newsletter" ? (
+                <NewsletterCard key={`newsletter_${index}`} />
               ) : (
                 <ReportCard key={`report_${index}`} />
               )
