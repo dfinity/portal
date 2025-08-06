@@ -64,7 +64,8 @@
     "twitter": "https://x.com/KongSwapX",
     "tags": [
       "DeFi",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "description": "The one-stop token shop - Trade tokens across all chains with ease using KongSwap.",
     "usesInternetIdentity": true,
@@ -122,7 +123,8 @@
       "Ethereum",
       "DeFi",
       "Wallet",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
     "usesInternetIdentity": true,
@@ -374,7 +376,8 @@
     "tags": [
       "SocialFi",
       "DAO",
-      "Creator Economy"
+      "Creator Economy",
+      "Bitcoin"
     ],
     "stats": "360+ Communities",
     "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer, all in one place.",
@@ -1083,23 +1086,6 @@
     "description": "A forum for critical thinkers, builders and writers. Earn by providing human-to-human feedback.  ",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/kawak_logo.webp"
-  },
-  {
-    "id": "iclighthouse",
-    "name": "ICLightHouse",
-    "display": "Normal",
-    "website": "https://iclight.house/",
-    "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure",
-      "Bitcoin",
-      "Ethereum",
-      "DAO",
-      "Chain Fusion"
-    ],
-    "description": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
-    "logo": "/img/showcase/iclighthouse_logo.webp"
   },
   {
     "id": "nuance",
@@ -2561,7 +2547,7 @@
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
-    "display": "Large",
+    "display": "Normal",
     "website": "https://wallet.infinityswap.one/",
     "tags": [
       "Wallet",
@@ -3171,13 +3157,14 @@
     "submittableId": 44548318,
     "tags": [
       "Creator Economy",
-      "Chain Fusion"
+      "Chain Fusion",
+      "AI"
     ],
-    "stats": "400+ influencers",
-    "description": "On-chain marketplace for booking, managing advertising campaigns on ICP. Native ICP deployment with ckUSDC, zero gas fees.",
+    "stats": "400+ KOLs onboarded from 42 countries",
+    "description": "B4B.app is a Web3 influencer marketing protocol—a platform connecting brands with global content creators across all social media platforms.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/B4B.jpg",
-    "oneLiner": "Protocol for Influencer Marketing"
+    "oneLiner": "KOLs protocol"
   },
   {
     "id": "pochi",
@@ -3924,21 +3911,6 @@
     "description": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/dappradar_logo.png"
-  },
-  {
-    "id": "motodex",
-    "name": "Motodex",
-    "display": "Normal",
-    "website": "https://motodex.dexstudios.games/",
-    "twitter": "https://x.com/motodex_game",
-    "tags": [
-      "Gaming",
-      "NFT",
-      "Creator Economy"
-    ],
-    "description": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/motodex_logo.png"
   },
   {
     "id": "fomowell",
@@ -5536,6 +5508,52 @@
     "oneLiner": "Explore dapps, complete quests, earn XP"
   },
   {
+    "id": "maestro",
+    "name": "Maestro",
+    "display": "Normal",
+    "website": "https://www.gomaestro.org/",
+    "twitter": "https://x.com/GoMaestroOrg",
+    "github": "https://github.com/maestro-org",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "description": "The Developer Platform for UTxO Blockchains.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Maestro_logo.png"
+  },
+  {
+    "id": "kairos",
+    "name": "Kairos",
+    "display": "Normal",
+    "website": "https://www.kairos.win/",
+    "twitter": "https://x.com/kairosdotwin",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "SocialFi"
+    ],
+    "description": "The first Bitcoin-denominated prediction market.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Kairos_logo.jpg"
+  },
+  {
+    "id": "richswap",
+    "name": "RichSwap",
+    "display": "Normal",
+    "website": "https://www.richswap.io/swap",
+    "twitter": "https://x.com/RichSwap_REE",
+    "github": "https://github.com/octopus-network/richswap-canister",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "description": "RichSwap is the first trustless AMM DEX on Bitcoin L1",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Richswap_logo.jpg"
+  },
+  {
     "id": "quotex",
     "name": "Quotex",
     "display": "Normal",
@@ -6057,6 +6075,37 @@
     "description": "The Cecil The Lion DAO project is the first-ever AI-driven humanitarian DAO, an initiative dedicated to supporting vital humanitarian projects across the globe.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Cecil_the_lion_dao.jpg"
+  },
+  {
+    "id": "mindvault",
+    "name": "MindVault",
+    "display": "Normal",
+    "website": "https://aucs2-4yaaa-aaaab-abqba-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "MindVault is a simple, decentralized note-taking application. Designed with minimalism and privacy in mind.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/MindVault_logo.png",
+    "oneLiner": "Decentralized, on-chain note-taking — simple, private, forever"
+  },
+  {
+    "id": "helix_vault",
+    "name": "Helix Vault",
+    "display": "Normal",
+    "website": "https://www.helixlabs.org/",
+    "twitter": "https://x.com/zkhelixlabs",
+    "github": "https://github.com/HelixLabsDev/helix-vault-monorepo",
+    "submittableId": 46734349,
+    "tags": [
+      "DeFi",
+      "Chain Fusion",
+      "Ethereum"
+    ],
+    "description": "Helix Vault enables liquid staking for ICP, bridging nICP to EVM chains via Chain Fusion with 22K+ testnet users, governance, and restaking utility.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/HelixLabs_logo.png",
+    "oneLiner": "Liquid staking for ICP with cross-chain DeFi via Chain Fusion"
   }
   
 ]
