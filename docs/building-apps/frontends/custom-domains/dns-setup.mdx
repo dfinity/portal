@@ -195,3 +195,11 @@ The resulting configuration should look similar to the following screenshot:
 ![DNS Configuration for `example.ic-domain.live` on Amazon Route 53](route53-subdomain.png)
 
 Now, you are all set to register your custom domain with the HTTP gateways, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
+
+## Cloudflare
+
+When using Cloudflare as DNS provider, you need to apply the following settings such that the
+custom domain works as intended and does not fail to renew:
+
+* Under SSL/TLS > Edge Certificates at the very bottom, you have to disable "Universal SSL".
+* You should not proxy traffic through Cloudflare ("DNS only").

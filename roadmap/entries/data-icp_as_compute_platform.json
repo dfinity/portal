@@ -8,8 +8,7 @@
       "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and taking checkpoints asynchronously. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
       "milestone_id": "Flux",
       "status": "in_progress",
-      "eta": "",
-      "eta_to_render": ""
+      "eta_to_render": "September 2025"
     },
     {
       "title": "Asynchronous checkpointing",
