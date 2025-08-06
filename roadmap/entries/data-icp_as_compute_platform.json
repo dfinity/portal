@@ -379,6 +379,38 @@
       "status": "",
       "is_community": false,
       "in_beta": false
+    },
+    {
+      "title": "Immutable Blob Storage",
+      "is_milestone": true,
+      "description": "This milestone introduces an efficient and scalable storage solution for handling immutable data blobs for apps on the Internet Computer. It provides secure, cost-effective storage of large data with streamlined access and management.",
+      "milestone_id": "Protium",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Immutable Blob Storage Support for Caffeine",
+      "overview": "This feature enables the Immutable Blob Storage support for Caffeine “out of the box”. Developers can create canisters with immutable storage capabilities.",
+      "status": "in_progress",
+      "milestone_id": "Protium"
+    },
+    {
+      "title": "Immutable Blob Storage Service for ICP",
+      "overview": "This feature enables canisters to use an immutable blob storage service to store petabytes of data, seamlessly paying for the resource consumption in cycles.",
+      "status": "future",
+      "milestone_id": "Protium"
+    },
+    {
+      "title": "Motoko Support for Immutable Blob Storage",
+      "overview": "This feature provides Motoko developers with an easy-to-use language integration, abstracting away the complexities of blob registration and deletion.",
+      "status": "future",
+      "milestone_id": "Protium"
+    },
+    {
+      "title": "Rust Support for Immutable Blob Storage",
+      "overview": "To ensure broad adoption, this feature delivers an idiomatic Rust interface, enabling developers in the Rust ecosystem to seamlessly use the immutable blob storage.",
+      "status": "future",
+      "milestone_id": "Protium"
     }
   ]
 }
