@@ -2818,7 +2818,9 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Given a subnet ID as input, this method returns a record `subnet_info` containing metadata about that subnet.
 
-Currently, the only field returned is the `replica_version` (`text`) of the targeted subnet.
+The fields returned are:
+- `replica_version` (`text`) of the targeted subnet
+- `registry_version` (`nat64`) of the targeted subnet
 
 ### IC method `take_canister_snapshot` {#ic-take_canister_snapshot}
 
