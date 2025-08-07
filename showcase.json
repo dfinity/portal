@@ -21,7 +21,7 @@
   },
   {
     "id": "odinfun",
-    "name": "Odin.fun",
+    "name": "ODIN•FUN",
     "display": "Large",
     "website": "https://odin.fun/",
     "twitter": "https://x.com/Odin_GodOfRunes",
@@ -30,7 +30,7 @@
       "Chain Fusion"
     ],
     "stats": "2,000+ BTC Volume",
-    "description": "Odin.Fun is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Lightning fast experience leveraging ICP's Chain Fusion.",
+    "description": "ODIN•FUN is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Lightning fast experience leveraging ICP's Chain Fusion.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/odinfun_logo.webp",
     "screenshots": [
@@ -363,26 +363,6 @@
     "stats": "150,000+ users",
     "description": "Your Plug into the #InternetComputer Identity + Wallet in one Principal ID Hold, send, swap, deposit cycles, ICP, NFTs and log into IC apps in a click! Available on mobile IOS & Android, and as a browser extension on Chrome & Firefox.",
     "logo": "/img/showcase/plug_logo.webp"
-  },
-  {
-    "id": "catalyze",
-    "name": "Catalyze",
-    "display": "Normal",
-    "website": "https://catalyze.one/",
-    "twitter": "https://x.com/catalyze_one",
-    "tags": [
-      "SocialFi",
-      "DAO",
-      "Creator Economy",
-      "Bitcoin"
-    ],
-    "stats": "360+ Communities",
-    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer, all in one place.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/catalyze_logo.png",
-    "screenshots": [
-      "/img/showcase/catalyze_screenshot.png"
-    ]
   },
   {
     "id": "maestro",
@@ -724,25 +704,6 @@
     "description": "Self-custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/airgap_logo.webp"
-  },
-  {
-    "id": "funded",
-    "name": "Funded",
-    "display": "Normal",
-    "website": "https://funded.app/",
-    "twitter": "https://twitter.com/funded_app",
-    "tags": [
-      "SocialFi",
-      "DeFi",
-      "Bitcoin",
-      "Ethereum",
-      "Chain Fusion",
-      "Creator Economy"
-    ],
-    "stats": "100,000+ ICP funded",
-    "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/funded_logo.webp"
   },
   {
     "id": "taurus",
@@ -1214,22 +1175,6 @@
     "logo": "/img/showcase/motokoplayground_logo.webp"
   },
   {
-    "id": "scinet",
-    "name": "SCINET",
-    "display": "Normal",
-    "website": "https://www.scinet.one/",
-    "twitter": "https://twitter.com/scinet_inc",
-    "submittableId": 33285268,
-    "tags": [
-      "NFT",
-      "Tools / Infrastructure",
-      "Creator Economy"
-    ],
-    "description": "A licensing application for life-sciences companies. Easily monetize your intellectual property using NFTs.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/scinet_logo.webp"
-  },
-  {
     "id": "factland",
     "name": "Factland DAO",
     "display": "Normal",
@@ -1575,6 +1520,26 @@
     "logo": "/img/showcase/aviatelabs_logo.webp"
   },
   {
+    "id": "catalyze",
+    "name": "Catalyze",
+    "display": "Normal",
+    "website": "https://catalyze.one/",
+    "twitter": "https://x.com/catalyze_one",
+    "tags": [
+      "SocialFi",
+      "DAO",
+      "Creator Economy",
+      "Bitcoin"
+    ],
+    "stats": "360+ Communities",
+    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer, all in one place.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/catalyze_logo.png",
+    "screenshots": [
+      "/img/showcase/catalyze_screenshot.png"
+    ]
+  },
+  {
     "id": "goagent",
     "name": "Go Agent ",
     "display": "Normal",
@@ -1682,6 +1647,25 @@
     ],
     "description": "This Python Agent built for the Internet Computer opens the door for Python developers to more easily become Web3 builders. Featuring basic modules to interact with canisters on the Internet Computer, this Agent, still under development, was a prize winner at the Warpspeed Internet Computer ecosystem hackathon in China.",
     "logo": "/img/showcase/pythonagent_logo.webp"
+  },
+  {
+    "id": "funded",
+    "name": "Funded",
+    "display": "Normal",
+    "website": "https://funded.app/",
+    "twitter": "https://twitter.com/funded_app",
+    "tags": [
+      "SocialFi",
+      "DeFi",
+      "Bitcoin",
+      "Ethereum",
+      "Chain Fusion",
+      "Creator Economy"
+    ],
+    "stats": "100,000+ ICP funded",
+    "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/funded_logo.webp"
   },
   {
     "id": "icpulse",
@@ -6106,6 +6090,59 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/HelixLabs_logo.png",
     "oneLiner": "Liquid staking for ICP with cross-chain DeFi via Chain Fusion"
+  },
+  {
+    "id": "sela_network",
+    "name": "Sela Network",
+    "display": "Normal",
+    "website": "https://www.selanetwork.io/",
+    "twitter": "https://x.com/SelaNetwork",
+    "github": "https://github.com/sela-network",
+    "submittableId": 47180882,
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "AI"
+    ],
+    "description": "Sela Network is a decentralized data infrastructure network powered by everyday devices where users run nodes on mobile or desktop and earn reward.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Sela_Logo.svg",
+    "oneLiner": "Sela Network’s DePIN is on ICP! Store jobs, track nodes, earn rewards."
+  },
+  {
+    "id": "axiom",
+    "name": "Axiom",
+    "display": "Normal",
+    "website": "https://axiom.info",
+    "twitter": "https://x.com/axiom_info",
+    "github": "https://github.com/freedomengineer/axiom",
+    "youtube": "https://www.youtube.com/@axiom_show",
+    "tags": [
+      "Gaming",
+      "Creator Economy"
+    ],
+    "description": "Axiom is built to withstand authoritarian censorship and will always provide members a space to debate both sides of any hypothesis.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Axiom_logo.jpg",
+    "oneLiner": "Axiom introduces 'Proof of Thought' - Mine Crypto with your Mind. "
+  },
+  {
+    "id": "rumi_protocol",
+    "name": "Rumi Protocol",
+    "display": "Normal",
+    "website": "https://rumiprotocol.io/",
+    "twitter": "https://x.com/rumilabsxyz",
+    "github": "https://github.com/Rumi-Protocol/Rumi-protocol",
+    "submittableId": 49391865,
+    "tags": [
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "stats": "We are not open for public use yet, but we are proud of our MVP",
+    "description": "Rumi Protocol lets users mint icUSD by locking ICP, ckBTC, or ckETH—bringing decentralized, collateral-backed stablecoins to the ICP ecosystem.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Rumi_protocol.jpg",
+    "oneLiner": "A decentralized stablecoin on ICP"
   }
   
 ]
