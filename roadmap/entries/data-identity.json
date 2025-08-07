@@ -46,7 +46,7 @@
       "eta_to_render": "September 2025"
     },
     {
-      "title": "Sing in with OpenID",
+      "title": "Sign in with OpenID",
       "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
       "status": "in_progress",
       "milestone_id": "Pulse"

@@ -64,7 +64,8 @@
     "twitter": "https://x.com/KongSwapX",
     "tags": [
       "DeFi",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "description": "The one-stop token shop - Trade tokens across all chains with ease using KongSwap.",
     "usesInternetIdentity": true,
@@ -122,7 +123,8 @@
       "Ethereum",
       "DeFi",
       "Wallet",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
     "usesInternetIdentity": true,
@@ -132,22 +134,19 @@
     ]
   },
   {
-    "id": "nfid",
-    "name": "NFID Wallet",
+    "id": "kairos",
+    "name": "Kairos",
     "display": "Normal",
-    "website": "https://nfid.one/",
-    "twitter": "https://x.com/NFIDWallet",
-    "github": "https://github.com/internet-identity-labs",
+    "website": "https://www.kairos.win/",
+    "twitter": "https://x.com/kairosdotwin",
     "tags": [
-      "Wallet",
-      "Ethereum",
-      "Chain Fusion",
-      "Bitcoin"
+      "Bitcoin",
+      "DeFi",
+      "SocialFi"
     ],
-    "description": "Secure your assets with the most audited wallet on ICP and start exploring ICP applications in seconds.",
+    "description": "The first Bitcoin-denominated prediction market.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/NFID_Wallet_logo.jpg",
-    "oneLiner": "The easiest to use, hardest to lose, and only wallet governed by a DAO."
+    "logo": "/img/showcase/Kairos_logo.jpg"
   },
   {
     "id": "chainsight",
@@ -368,13 +367,14 @@
   {
     "id": "catalyze",
     "name": "Catalyze",
-    "display": "Large",
+    "display": "Normal",
     "website": "https://catalyze.one/",
     "twitter": "https://x.com/catalyze_one",
     "tags": [
       "SocialFi",
       "DAO",
-      "Creator Economy"
+      "Creator Economy",
+      "Bitcoin"
     ],
     "stats": "360+ Communities",
     "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer, all in one place.",
@@ -385,23 +385,20 @@
     ]
   },
   {
-    "id": "funded",
-    "name": "Funded",
+    "id": "maestro",
+    "name": "Maestro",
     "display": "Normal",
-    "website": "https://funded.app/",
-    "twitter": "https://twitter.com/funded_app",
+    "website": "https://www.gomaestro.org/",
+    "twitter": "https://x.com/GoMaestroOrg",
+    "github": "https://github.com/maestro-org",
     "tags": [
-      "SocialFi",
-      "DeFi",
       "Bitcoin",
-      "Ethereum",
-      "Chain Fusion",
-      "Creator Economy"
+      "DeFi",
+      "Chain Fusion"
     ],
-    "stats": "100,000+ ICP funded",
-    "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/funded_logo.webp"
+    "description": "The Developer Platform for UTxO Blockchains.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Maestro_logo.png"
   },
   {
     "id": "juno",
@@ -683,19 +680,19 @@
     "logo": "/img/showcase/Querio_Logo.webp"
   },
   {
-    "id": "icdex",
-    "name": "ICDex",
+    "id": "richswap",
+    "name": "RichSwap",
     "display": "Normal",
-    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
-    "twitter": "https://twitter.com/ICLighthouse",
+    "website": "https://www.richswap.io/swap",
+    "twitter": "https://x.com/RichSwap_REE",
+    "github": "https://github.com/octopus-network/richswap-canister",
     "tags": [
-      "DeFi",
       "Bitcoin",
-      "Chain Fusion"
+      "DeFi"
     ],
-    "description": "ICDex is the flagship product by ICLighthouse, an orderbook-based DEX that runs 100% onchain. The world's first order book DEX - made possible by advanced ICP smart contracts.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/icdex_logo.webp"
+    "description": "RichSwap is the first trustless AMM DEX on Bitcoin L1",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Richswap_logo.jpg"
   },
   {
     "id": "cubetopia",
@@ -727,6 +724,25 @@
     "description": "Self-custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/airgap_logo.webp"
+  },
+  {
+    "id": "funded",
+    "name": "Funded",
+    "display": "Normal",
+    "website": "https://funded.app/",
+    "twitter": "https://twitter.com/funded_app",
+    "tags": [
+      "SocialFi",
+      "DeFi",
+      "Bitcoin",
+      "Ethereum",
+      "Chain Fusion",
+      "Creator Economy"
+    ],
+    "stats": "100,000+ ICP funded",
+    "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/funded_logo.webp"
   },
   {
     "id": "taurus",
@@ -1085,41 +1101,24 @@
     "logo": "/img/showcase/kawak_logo.webp"
   },
   {
-    "id": "iclighthouse",
-    "name": "ICLightHouse",
+    "id": "bookie",
+    "name": "Bookie",
     "display": "Normal",
-    "website": "https://iclight.house/",
-    "twitter": "https://twitter.com/ICLighthouse?s=20&t=hL-7QAUfiWo75L8pZzJ7fw",
+    "website": "https://www.bookie.win/exchange",
+    "twitter": "https://x.com/BookieDex",
     "tags": [
+      "Gaming",
       "DeFi",
-      "Tools / Infrastructure",
       "Bitcoin",
       "Ethereum",
-      "DAO",
-      "Chain Fusion"
-    ],
-    "description": "Incubating true web3 DeFi infrastructure on the Internet Computer. Defi development framework and Defi ecosystem on IC blockchain.",
-    "logo": "/img/showcase/iclighthouse_logo.webp"
-  },
-  {
-    "id": "nuance",
-    "name": "Nuance",
-    "display": "Normal",
-    "website": "https://exwqn-uaaaa-aaaaf-qaeaa-cai.ic0.app/",
-    "twitter": "https://x.com/nuancedapp",
-    "tags": [
-      "SocialFi",
-      "DAO",
-      "Bitcoin",
+      "NFT",
       "Chain Fusion",
       "Creator Economy"
     ],
-    "description": "Nuance is a Web3.0 blogging platform that is hosted onchain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world's first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/nuance_logo.webp",
-    "screenshots": [
-      "/img/showcase/nuance_screenshot_0.webp"
-    ]
+    "stats": "1000+ Monthly Users",
+    "description": "Bookie is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/bookie_logo.jpeg"
   },
   {
     "id": "cosmicrafts",
@@ -1398,6 +1397,21 @@
     ]
   },
   {
+    "id": "icdex",
+    "name": "ICDex",
+    "display": "Normal",
+    "website": "https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex",
+    "twitter": "https://twitter.com/ICLighthouse",
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "description": "ICDex is the flagship product by ICLighthouse, an orderbook-based DEX that runs 100% onchain. The world's first order book DEX - made possible by advanced ICP smart contracts.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icdex_logo.webp"
+  },
+  {
     "id": "icpexplorer",
     "name": "ICP Explorer",
     "display": "Normal",
@@ -1414,23 +1428,20 @@
     ]
   },
   {
-    "id": "bitshop",
-    "name": "Bitshop",
+    "id": "blockminer",
+    "name": "Blockminer",
     "display": "Normal",
-    "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
-    "twitter": "https://twitter.com/bitshopicp",
-    "github": "https://github.com/lukasvozda/bitshop",
+    "website": "https://blockminer.fun/",
+    "twitter": "https://x.com/blockminerfun",
+    "youtube": "https://www.youtube.com/@blockminerfun",
+    "submittableId": 48493500,
     "tags": [
-      "Tools / Infrastructure",
       "Bitcoin",
-      "Chain Fusion"
+      "DeFi"
     ],
-    "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    "description": "Token launch pad for creating and mining tokens with Bitcoin like proof-of-work and tokeconomics.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/bitshop_logo.webp",
-    "screenshots": [
-      "/img/showcase/bitshop.webp"
-    ]
+    "logo": "/img/showcase/blockminer_logo.svg"
   },
   {
     "id": "missionispossible",
@@ -1443,6 +1454,24 @@
     "description": "Mission is Possible - 3rd place winner of the DSCVR Hackathon Season 2 - is a PVP third-person shooter hosted on the Internet Computer blockchain. The John Wick-inspired game is built using the Unity 3D Game Engine and hosted on the IC enabling decentralized login with Internet Identity. ",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/missionispossible_logo.webp"
+  },
+  {
+    "id": "nfid",
+    "name": "NFID Wallet",
+    "display": "Normal",
+    "website": "https://nfid.one/",
+    "twitter": "https://x.com/NFIDWallet",
+    "github": "https://github.com/internet-identity-labs",
+    "tags": [
+      "Wallet",
+      "Ethereum",
+      "Chain Fusion",
+      "Bitcoin"
+    ],
+    "description": "Secure your assets with the most audited wallet on ICP and start exploring ICP applications in seconds.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/NFID_Wallet_logo.jpg",
+    "oneLiner": "The easiest to use, hardest to lose, and only wallet governed by a DAO."
   },
   {
     "id": "canlista",
@@ -1621,6 +1650,26 @@
     "description": "A DePIN project that provides tokenized incentive solutions to electric power charging platforms.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/piggycell_logo.svg"
+  },
+  {
+    "id": "nuance",
+    "name": "Nuance",
+    "display": "Normal",
+    "website": "https://exwqn-uaaaa-aaaaf-qaeaa-cai.ic0.app/",
+    "twitter": "https://x.com/nuancedapp",
+    "tags": [
+      "SocialFi",
+      "DAO",
+      "Bitcoin",
+      "Chain Fusion",
+      "Creator Economy"
+    ],
+    "description": "Nuance is a Web3.0 blogging platform that is hosted onchain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world's first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/nuance_logo.webp",
+    "screenshots": [
+      "/img/showcase/nuance_screenshot_0.webp"
+    ]
   },
   {
     "id": "pythonagent",
@@ -1919,6 +1968,25 @@
     "logo": "/img/showcase/gooble_logo.webp",
     "screenshots": [
       "/img/showcase/gooble_screenshot.webp"
+    ]
+  },
+  {
+    "id": "bitshop",
+    "name": "Bitshop",
+    "display": "Normal",
+    "website": "https://ughim-6qaaa-aaaah-qc7qa-cai.ic0.app/",
+    "twitter": "https://twitter.com/bitshopicp",
+    "github": "https://github.com/lukasvozda/bitshop",
+    "tags": [
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "description": "A proof of concept project that demonstrates capabilities of the Internet Computer blockchain to serve as a Bitcoin e-shop.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/bitshop_logo.webp",
+    "screenshots": [
+      "/img/showcase/bitshop.webp"
     ]
   },
   {
@@ -2561,7 +2629,7 @@
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
-    "display": "Large",
+    "display": "Normal",
     "website": "https://wallet.infinityswap.one/",
     "tags": [
       "Wallet",
@@ -2966,26 +3034,6 @@
     "logo": "/img/showcase/Elna_logo.jpg"
   },
   {
-    "id": "bookie",
-    "name": "Bookie",
-    "display": "Normal",
-    "website": "https://www.bookie.win/exchange",
-    "twitter": "https://x.com/BookieDex",
-    "tags": [
-      "Gaming",
-      "DeFi",
-      "Bitcoin",
-      "Ethereum",
-      "NFT",
-      "Chain Fusion",
-      "Creator Economy"
-    ],
-    "stats": "1000+ Monthly Users",
-    "description": "Bookie is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/bookie_logo.jpeg"
-  },
-  {
     "id": "icp-governor",
     "name": "ICP Governor",
     "display": "Normal",
@@ -3171,13 +3219,14 @@
     "submittableId": 44548318,
     "tags": [
       "Creator Economy",
-      "Chain Fusion"
+      "Chain Fusion",
+      "AI"
     ],
-    "stats": "400+ influencers",
-    "description": "On-chain marketplace for booking, managing advertising campaigns on ICP. Native ICP deployment with ckUSDC, zero gas fees.",
+    "stats": "400+ KOLs onboarded from 42 countries",
+    "description": "B4B.app is a Web3 influencer marketing protocol—a platform connecting brands with global content creators across all social media platforms.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/B4B.jpg",
-    "oneLiner": "Protocol for Influencer Marketing"
+    "oneLiner": "KOLs protocol"
   },
   {
     "id": "pochi",
@@ -3924,21 +3973,6 @@
     "description": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/dappradar_logo.png"
-  },
-  {
-    "id": "motodex",
-    "name": "Motodex",
-    "display": "Normal",
-    "website": "https://motodex.dexstudios.games/",
-    "twitter": "https://x.com/motodex_game",
-    "tags": [
-      "Gaming",
-      "NFT",
-      "Creator Economy"
-    ],
-    "description": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/motodex_logo.png"
   },
   {
     "id": "fomowell",
@@ -5306,22 +5340,6 @@
     "logo": "/img/showcase/friescoin_logo.jpg"
   },
   {
-    "id": "blockminer",
-    "name": "Blockminer",
-    "display": "Normal",
-    "website": "https://blockminer.fun/",
-    "twitter": "https://x.com/blockminerfun",
-    "youtube": "https://www.youtube.com/@blockminerfun",
-    "submittableId": 48493500,
-    "tags": [
-      "Bitcoin",
-      "DeFi"
-    ],
-    "description": "Token launch pad for creating and mining tokens with Bitcoin like proof-of-work and tokeconomics.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/blockminer_logo.svg"
-  },
-  {
     "id": "ic-cose",
     "name": "IC-COSE",
     "display": "Normal",
@@ -6057,6 +6075,37 @@
     "description": "The Cecil The Lion DAO project is the first-ever AI-driven humanitarian DAO, an initiative dedicated to supporting vital humanitarian projects across the globe.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Cecil_the_lion_dao.jpg"
+  },
+  {
+    "id": "mindvault",
+    "name": "MindVault",
+    "display": "Normal",
+    "website": "https://aucs2-4yaaa-aaaab-abqba-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "MindVault is a simple, decentralized note-taking application. Designed with minimalism and privacy in mind.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/MindVault_logo.png",
+    "oneLiner": "Decentralized, on-chain note-taking — simple, private, forever"
+  },
+  {
+    "id": "helix_vault",
+    "name": "Helix Vault",
+    "display": "Normal",
+    "website": "https://www.helixlabs.org/",
+    "twitter": "https://x.com/zkhelixlabs",
+    "github": "https://github.com/HelixLabsDev/helix-vault-monorepo",
+    "submittableId": 46734349,
+    "tags": [
+      "DeFi",
+      "Chain Fusion",
+      "Ethereum"
+    ],
+    "description": "Helix Vault enables liquid staking for ICP, bridging nICP to EVM chains via Chain Fusion with 22K+ testnet users, governance, and restaking utility.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/HelixLabs_logo.png",
+    "oneLiner": "Liquid staking for ICP with cross-chain DeFi via Chain Fusion"
   }
   
 ]
