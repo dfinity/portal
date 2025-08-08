@@ -561,7 +561,7 @@
     "name": "Tyche Bitomni",
     "display": "Normal",
     "website": "https://tyche.run/",
-    "twitter": "https://x.com/Bitomni_Global",
+    "twitter": "https://x.com/tyche_run",
     "github": "https://github.com/CypherBabel-Lab",
     "tags": [
       "Bitcoin",
@@ -597,7 +597,7 @@
     "id": "waterneuron",
     "name": "Water Neuron",
     "display": "Large",
-    "website": "https://waterneuron.fi/stake/",
+    "website": "https://waterneuron.fi/\n",
     "twitter": "https://x.com/WaterNeuron",
     "tags": [
       "DeFi",
@@ -725,7 +725,6 @@
     "id": "azle",
     "name": "Azle",
     "display": "Normal",
-    "website": "https://demergent-labs.github.io/azle/azle.html",
     "github": "https://github.com/demergent-labs/azle",
     "tags": [
       "Tools / Infrastructure"
@@ -820,20 +819,6 @@
     "oneLiner": "Secure, onchain, multi-approver governance for multichain assets"
   },
   {
-    "id": "stakedicp",
-    "name": "StakedICP",
-    "display": "Normal",
-    "website": "https://stakedicp.com",
-    "twitter": "https://twitter.com/StakedICP",
-    "github": "https://github.com/AegirFinance/StakedICP",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "StakedICP is the liquid-staking protocol revolutionizing staking on the Internet Computer, putting control in investors' hands. ICP is staked in the NNS DAO, and stakers receive rewards just by holding the stICP token. The stICP token is DeFi-compatible, to support protocols building on the Internet Computer, and always fully-backed by ICP staked in the NNS.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/stakedicp_logo.webp"
-  },
-  {
     "id": "canscale",
     "name": "CanScale",
     "display": "Normal",
@@ -878,24 +863,6 @@
     "description": "Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/Trax_logo.jpeg"
-  },
-  {
-    "id": "w3ns",
-    "name": "W3NS - Multichain",
-    "display": "Normal",
-    "website": "https://www.argonstudios.xyz",
-    "twitter": "https://twitter.com/ArgonStudiosXYZ",
-    "github": "https://github.com/miguelToscano/w3ns",
-    "youtube": "https://www.youtube.com/@argonstudios",
-    "tags": [
-      "Tools / Infrastructure",
-      "Ethereum",
-      "Chain Fusion"
-    ],
-    "stats": "3 early launch partners sending notifications from Polygon",
-    "description": "A service to support sending of email, SMS and push notifications (both mobile and web) via Internet Computer for IC, EVM (currently supports Polygon, more to come) and off-chain applications wanting to use a distributed and open source sending mechanism. Simply integrate our Polygon contract, or our IC canister, to use it today.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/w3ns_logo.png"
   },
   {
     "id": "orally-network",
@@ -983,19 +950,6 @@
     "screenshots": [
       "/img/showcase/beamfi_screenshot_0.webp"
     ]
-  },
-  {
-    "id": "eimolad",
-    "name": "Eimolad",
-    "display": "Normal",
-    "website": "https://eimolad.com/",
-    "twitter": "https://twitter.com/eimolad",
-    "submittableId": 28118212,
-    "tags": [
-      "Gaming"
-    ],
-    "description": "This is an amazing world inhabited by humans, dwarves, orcs, elves, and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers, and incredible adventures. ",
-    "logo": "/img/showcase/eimolad_logo.webp"
   },
   {
     "id": "mora",
@@ -1477,6 +1431,37 @@
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp"
   },
   {
+    "id": "elnaai",
+    "name": "ELNA.ai",
+    "display": "Normal",
+    "website": "https://www.elna.ai/",
+    "twitter": "https://twitter.com/ELNA_DeAi",
+    "github": "https://github.com/elna-ai",
+    "submittableId": 44027684,
+    "tags": [
+      "Tools / Infrastructure",
+      "AI",
+      "DAO"
+    ],
+    "description": "ELNA.ai is the world's first fully onchain decentralized GenAI Companion.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Elna_logo.jpg"
+  },
+  {
+    "id": "onicai",
+    "name": "Onicai",
+    "display": "Normal",
+    "website": "https://onicai.com/",
+    "twitter": "https://x.com/onicaiHQ",
+    "github": "https://github.com/onicai",
+    "tags": [
+      "AI"
+    ],
+    "description": "A B2B Platform for configuring Generative AI white label solutions.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/onicai_logo.png"
+  },
+  {
     "id": "difibase",
     "name": "Difibase",
     "display": "Normal",
@@ -1587,19 +1572,6 @@
     ]
   },
   {
-    "id": "bink",
-    "name": "Bink",
-    "display": "Normal",
-    "website": "https://b.ink",
-    "tags": [
-      "SocialFi",
-      "Creator Economy"
-    ],
-    "description": "Connect, engage and inspire your audience while owning your data and your identity.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.svg"
-  },
-  {
     "id": "piggycell",
     "name": "Piggycell",
     "display": "Normal",
@@ -1666,25 +1638,6 @@
     "description": "Web3 crowdfunding! Thanks to ICP's low transaction fees and advanced smart contract technology, you can participate in crowdfunding with ICP, BTC and ETH without worrying about losing money on gas fees.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/funded_logo.webp"
-  },
-  {
-    "id": "icpulse",
-    "name": "ICPulse",
-    "display": "Normal",
-    "website": "https://icpulse.io/",
-    "twitter": "https://twitter.com/CrossChain_Labs/status/1626495037734285312?s=20",
-    "github": "https://github.com/CrossChainLabs-ICP",
-    "submittableId": 32418389,
-    "tags": [
-      "Tools / Infrastructure",
-      "Analytics"
-    ],
-    "description": " ICPulse increases the transparency on ICP’s developer ecosystem by aggregating the activity data from GitHub and displaying visual metrics in an effective dashboard.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/icpulse_logo.svg",
-    "screenshots": [
-      "static/img/showcase/ICPulse_screenshot.jpg"
-    ]
   },
   {
     "id": "sly",
@@ -1833,20 +1786,6 @@
     "logo": "/img/showcase/icmojiorigins_logo.webp"
   },
   {
-    "id": "dbox",
-    "name": "Dbox",
-    "display": "Normal",
-    "website": "https://dbox.foundation/",
-    "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
-    "submittableId": 22737412,
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "The decentralized inbox built on Internet Computer.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/dbox_logo.png"
-  },
-  {
     "id": "icpcoins",
     "name": "ICP Coins",
     "display": "Normal",
@@ -1974,22 +1913,6 @@
     ]
   },
   {
-    "id": "football-god",
-    "name": "FootballGod",
-    "display": "Normal",
-    "website": "https://43loz-3yaaa-aaaal-qbxrq-cai.ic0.app/",
-    "twitter": "https://twitter.com/beadle1989",
-    "tags": [
-      "Gaming"
-    ],
-    "description": "A weekly sweepstake where players predict Premier League scores.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/football-god_logo.webp",
-    "screenshots": [
-      "/img/showcase/football-god_screenshot.webp"
-    ]
-  },
-  {
     "id": "oneblock",
     "name": "One Block",
     "display": "Normal",
@@ -2031,29 +1954,6 @@
     "description": "Collaborative Product Design Innovation Hub.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/dsign_logo.webp"
-  },
-  {
-    "id": "metaforo-icp",
-    "name": "Metaforo ICP deployment",
-    "display": "Normal",
-    "website": "https://can1.metaforo.io/",
-    "twitter": "https://twitter.com/realmetaforo",
-    "github": "https://github.com/metaforo/metaforo-icp",
-    "youtube": "https://www.youtube.com/watch?v=d5zHu3D0SQQ",
-    "submittableId": 35907100,
-    "tags": [
-      "SocialFi",
-      "Creator Economy"
-    ],
-    "stats": "1,000+ users",
-    "description": "Metaforo: a Web3 forum prioritizing decentralization, community ownership, and token-gated governance. By shifting the Front-End to IC, we boost reliability, security, and scalability, enabling a seamless user experience without intermediaries.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/metaforo-icp_logo.png",
-    "screenshots": [
-      "/img/showcase/metaforo-icp_screenshot_1.jpg",
-      "/img/showcase/metaforo-icp_screenshot_2.jpg",
-      "/img/showcase/metaforo-icp_screenshot_3.jpg"
-    ]
   },
   {
     "id": "rakeoff",
@@ -2401,26 +2301,6 @@
     "logo": "/img/showcase/bravo-app_logo.webp"
   },
   {
-    "id": "dflow",
-    "name": "dFlow",
-    "display": "Normal",
-    "website": "https://dcentra.io/dflow",
-    "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
-    "submittableId": 26384395,
-    "tags": [
-      "Tools / Infrastructure",
-      "DeFi",
-      "DAO",
-      "SocialFi",
-      "Enterprise",
-      "Creator Economy"
-    ],
-    "description": "BPMN workflows on ICP. Automate interactions between organizations. Build user forms, define scriptable decisions, schedule payments and more.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/dflow_logo.png",
-    "video": "https://youtu.be/Ik9FSpgHREw?t=139"
-  },
-  {
     "id": "doocoins",
     "name": "DooCoins",
     "display": "Normal",
@@ -2559,7 +2439,7 @@
     "id": "bitbasel-art-marketplace",
     "name": "BitBasel Art Marketplace",
     "display": "Normal",
-    "website": "https://bitbasel.com/",
+    "website": "https://www.bitbasel.miami/",
     "twitter": "https://twitter.com/bitbaselart?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
     "github": "https://github.com/BitBasel",
     "submittableId": 41349769,
@@ -2609,23 +2489,6 @@
     "description": "icRouter is a cross-chain network of assets based on threshold signature technology, with no off-chain bridges, supporting Bitcoin, IC, and EVM networks (e.g., Ethereum).",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icrouter_logo.webp"
-  },
-  {
-    "id": "bitfinitywallet",
-    "name": "Bitfinity Wallet",
-    "display": "Normal",
-    "website": "https://wallet.infinityswap.one/",
-    "tags": [
-      "Wallet",
-      "Bitcoin",
-      "Ethereum",
-      "Chain Fusion"
-    ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
-    "logo": "/img/showcase/bitfinitywallet_logo.webp",
-    "screenshots": [
-      "/img/showcase/bitfinitywallet_screenshot.webp"
-    ]
   },
   {
     "id": "vault-k8s",
@@ -2893,7 +2756,7 @@
     "id": "relinkdxyz",
     "name": "{r}elinkd",
     "display": "Normal",
-    "website": "https://relinkd.xyz/",
+    "website": "https://relinkd.gitbook.io/docs/",
     "twitter": "https://twitter.com/relinkdxyz",
     "github": "https://github.com/relinkd",
     "tags": [
@@ -3001,23 +2864,6 @@
     "logo": "/img/showcase/mnist.png"
   },
   {
-    "id": "elnaai",
-    "name": "ELNA.ai",
-    "display": "Normal",
-    "website": "https://www.elna.ai/",
-    "twitter": "https://twitter.com/ELNA_DeAi",
-    "github": "https://github.com/elna-ai",
-    "submittableId": 44027684,
-    "tags": [
-      "Tools / Infrastructure",
-      "AI",
-      "DAO"
-    ],
-    "description": "ELNA.ai is the world's first fully onchain decentralized GenAI Companion.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/Elna_logo.jpg"
-  },
-  {
     "id": "icp-governor",
     "name": "ICP Governor",
     "display": "Normal",
@@ -3047,23 +2893,6 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/Formyfi_logo_new.jpg",
     "oneLiner": "Web3-native form builder for user verification and data collection."
-  },
-  {
-    "id": "blendsafe",
-    "name": "Blendsafe",
-    "display": "Normal",
-    "website": "https://blendsafe.com/",
-    "github": "https://github.com/deep-ink-ventures/blend-safe",
-    "submittableId": 44514818,
-    "tags": [
-      "Tools / Infrastructure",
-      "Wallet",
-      "Ethereum",
-      "Chain Fusion"
-    ],
-    "description": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/blendsafe.svg"
   },
   {
     "id": "pado",
@@ -3100,7 +2929,7 @@
     "id": "sneed",
     "name": "sneed",
     "display": "Normal",
-    "website": "https://icsneed.com/?wp=sneed",
+    "website": "https://sneeddao.com/",
     "twitter": "https://x.com/icsneed",
     "tags": [
       "DeFi",
@@ -3128,7 +2957,7 @@
     "id": "gitcoin-passport-client",
     "name": "Gitcoin Passport Client",
     "display": "Normal",
-    "website": "https://internet-computer.vporton.name/gitcoin-passport-client/",
+    "website": "https://github.com/vporton/passport-client-dfinity",
     "github": "https://github.com/vporton/passport-client-dfinity",
     "tags": [
       "Tools / Infrastructure",
@@ -3210,6 +3039,9 @@
     "description": "B4B.app is a Web3 influencer marketing protocol—a platform connecting brands with global content creators across all social media platforms.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/B4B.jpg",
+    "screenshots": [
+      "/img/showcase/B4B_Screenshot 2025.jpg"
+    ],
     "oneLiner": "KOLs protocol"
   },
   {
@@ -3401,20 +3233,6 @@
     "logo": "/img/showcase/deai_chat_logo.jpeg"
   },
   {
-    "id": "onicai",
-    "name": "Onicai",
-    "display": "Normal",
-    "website": "https://onicai.com/",
-    "twitter": "https://x.com/onicaiHQ",
-    "github": "https://github.com/onicai",
-    "tags": [
-      "AI"
-    ],
-    "description": "A B2B Platform for configuring Generative AI white label solutions.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/onicai_logo.png"
-  },
-  {
     "id": "entrepot",
     "name": "Entrepot",
     "display": "Normal",
@@ -3492,7 +3310,7 @@
     "id": "personal-dao",
     "name": "Personal DAO",
     "display": "Normal",
-    "website": "https://fkkq7-siaaa-aaaap-qaaya-cai.ic0.app/",
+    "website": "https://gsnnn-ziaaa-aaaag-acaaa-cai.icp0.io/",
     "twitter": "https://x.com/Personal_DAO",
     "tags": [
       "DAO"
@@ -3547,23 +3365,10 @@
     "logo": "/img/showcase/ic_footprint_logo.svg"
   },
   {
-    "id": "galactic-bridge",
-    "name": "Galactic Bridge",
-    "display": "Normal",
-    "website": "https://galactic-bridge-tzbjl.ondigitalocean.app/",
-    "github": "https://github.com/weichain/galactic-bridge-icp",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "A cross-chain bridge that allows users to move between Solana and ICP.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/gBridge_logo.png"
-  },
-  {
     "id": "amplify-e2e-platform",
     "name": "Amplify Platform",
     "display": "Normal",
-    "website": "https://amplify-icp.com/",
+    "website": "https://linktr.ee/Amplify_ICP",
     "twitter": "https://twitter.com/Amplify_ICP",
     "tags": [
       "SocialFi",
@@ -3609,20 +3414,6 @@
     "logo": "/img/showcase/b3pay_logo.png"
   },
   {
-    "id": "pass",
-    "name": "Pass",
-    "display": "Normal",
-    "website": "https://www.ic-pass.app/",
-    "twitter": "https://twitter.com/pass_ic",
-    "github": "https://github.com/IC-Pass",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "First blockchain password manager.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/pass_logo.svg"
-  },
-  {
     "id": "hamster",
     "name": "Hamster",
     "display": "Normal",
@@ -3654,7 +3445,7 @@
     "id": "riide",
     "name": "RIIDE",
     "display": "Normal",
-    "website": "https://riide.org/",
+    "website": "https://linktr.ee/riidedapp",
     "twitter": "https://twitter.com/RiideDapp",
     "tags": [
       "SocialFi",
@@ -3776,10 +3567,10 @@
     "logo": "/img/showcase/pyor_logo.png"
   },
   {
-    "id": "replicatr",
-    "name": "Replicatr",
+    "id": "pyor",
+    "name": "Pyor",
     "display": "Normal",
-    "website": "https://replicatr.dev/",
+    "website": "https://www.pyor.xyz/",
     "twitter": "https://twitter.com/pyorxyz",
     "github": "https://github.com/Hubmakerlabs/replicatr",
     "tags": [
@@ -3898,22 +3689,6 @@
     "description": "A SocialFi blockchain-powered platform designed for movie lovers, offering a space to share reviews, ratings, and discover films.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Raters_logo.png"
-  },
-  {
-    "id": "incheon-universe",
-    "name": "Incheon Universe",
-    "display": "Normal",
-    "website": "https://incheon.world/#/main",
-    "twitter": "https://twitter.com//incheon_heroes",
-    "tags": [
-      "SocialFi",
-      "DAO",
-      "NFT",
-      "Creator Economy"
-    ],
-    "description": "Empowering citizens with NFT-based civic rights and DAO-driven participation, collaboration, and rewards for urban development.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/incheonuniverse_logo.png"
   },
   {
     "id": "idempotent-proxy",
@@ -4319,7 +4094,7 @@
     "id": "upas",
     "name": "User Public Achievement Standard (UPAS)",
     "display": "Normal",
-    "website": "https://github.com/luckerninja/UPAS-loyalty/blob/main/docs/whitepaper.md",
+    "website": "https://relinkd.gitbook.io/upas",
     "twitter": "https://x.com/UPAS_reputation",
     "github": "https://github.com/luckerninja/UPAS-loyalty/",
     "youtube": "https://www.youtube.com/watch?v=RMXrqwDTVsg&t=4s",
@@ -4448,18 +4223,6 @@
     ],
     "description": "NFID IdentityKit is the best way to connect an ICP wallet to your dapp.",
     "logo": "/img/showcase/nfididentitykit_logo.svg"
-  },
-  {
-    "id": "dfxdashboard",
-    "name": "DFX Dashboard",
-    "display": "Normal",
-    "website": "https://dfx-dashboard-docs.netlify.app/",
-    "github": "https://github.com/tolgayayci/dfx-dashboard",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "DFX Dashboard is a GUI for using dfx, the CLI tool for ICP development.",
-    "logo": "/img/showcase/dfxdashboard_logo.svg"
   },
   {
     "id": "icptokens",
@@ -5126,7 +4889,7 @@
     "id": "vfans",
     "name": "VFANS",
     "display": "Normal",
-    "website": "https://vfans.org",
+    "website": "https://www.vfans.org/lander",
     "twitter": "https://x.com/VFansDAO",
     "github": "https://github.com/VFans-org/VFANS-IC-Public",
     "tags": [
@@ -6144,5 +5907,4 @@
     "logo": "/img/showcase/Rumi_protocol.jpg",
     "oneLiner": "A decentralized stablecoin on ICP"
   }
-  
 ]
