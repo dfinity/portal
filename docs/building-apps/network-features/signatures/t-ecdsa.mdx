@@ -95,6 +95,8 @@ https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_e
 </TabItem>
 </AdornedTabs>
 
+Note that, in some cases, a signature may be computed when requested, but not returned to the requesting canister. Thus, canisters should not rely on the signature not existing even if the signing request fails.
+
 ## Obtaining public keys
 
 To verify a signature, the public key that corresponds to the private key that was used to sign the message is needed. Furthermore, the public key can be used to derive addresses controlled by the canister on various blockchain networks.

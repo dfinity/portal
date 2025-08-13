@@ -20,11 +20,11 @@ Specifically, threshold Schnorr signatures on ICP provide:
 
 - Support for Ed25519 signatures, which are used by chains such as Solana, Cardano, Polkadot, and Ripple. Ed25519 is also a popular signature scheme outside of blockchains for Web2 functions such as signing X.509 certificates.
 
-- Provide higher signature throughput than threshold ECDSA signatures.
+- Higher signature throughput than threshold ECDSA signatures.
 
-- Allow canisters to obtain their own Schnorr public key and address, unlocking the ability for them to derive addresses on other chains, then authorize and submit transactions on those chains.
+- The possibility for canisters to obtain their own Schnorr public key and address, unlocking the ability for them to derive addresses on other chains, then authorize and submit transactions on those chains.
 
-- Enable Schnorr signatures to be computed on arbitrary messages.
+- The ability to create Schnorr signatures to be computed on arbitrary messages.
 
 ## Signing messages and transactions
 
@@ -48,7 +48,7 @@ The `sign_with_schnorr` endpoint takes a full message to sign as input rather th
 
 ## Signing messages
 
-Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister. Note that, in some cases, a signature may be computed when requested, but not returned to the requesting canister. Thus, canisters should not rely on the signature not existing even if the signing request fails. Furthermore, signatures (including Ed25519) are non-deterministic and a different signature may be computed every time that is requested.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
