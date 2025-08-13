@@ -52,7 +52,7 @@
       "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
       "milestone_id": "Magnetosphere",
       "status": "in_progress",
-      "eta_to_render": ""
+      "eta_to_render": "October 2025"
     },
     {
       "title": "TEE-capable IC-OS",
