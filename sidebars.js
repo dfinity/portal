@@ -25,12 +25,9 @@ build: [
         id: "building-apps/essentials/network-overview",
       },
       {
-        type: "category",
-        label: "Fees",
-        items:[
-          "building-apps/essentials/gas-cost",
-          "building-apps/essentials/cost-estimations-and-examples"
-        ]
+        type: "doc",
+        label: "Fee breakdown",
+        id: "building-apps/essentials/gas-cost",
       },
       {
         type: "doc",
@@ -63,7 +60,7 @@ build: [
             {
               type: "doc",
               label: "Motoko",
-              id: "motoko/main/getting-started/motoko-introduction",
+              id: "motoko/home",
             },
             {
               type: "category",
@@ -73,13 +70,13 @@ build: [
                 id: "building-apps/developer-tools/cdks/rust/intro-to-rust",
               },
               items: [
-                "building-apps/developer-tools/cdks/rust/canister-state",
+                "building-apps/developer-tools/cdks/rust/rust-limitations",
                 "building-apps/developer-tools/cdks/rust/generating-candid",
                 "building-apps/developer-tools/cdks/rust/intercanister",
-                "building-apps/developer-tools/cdks/rust/message-inspect",
-                "building-apps/developer-tools/cdks/rust/rust-limitations",
+                "building-apps/developer-tools/cdks/rust/canister-state",
                 "building-apps/developer-tools/cdks/rust/stable-structures",
                 "building-apps/developer-tools/cdks/rust/upgrading",
+                "building-apps/developer-tools/cdks/rust/message-inspect",
               ]
               }
             ],
@@ -131,8 +128,6 @@ build: [
                 items: [
                   "building-apps/developer-tools/advanced-dfx/check-chunk-store",
                   "building-apps/developer-tools/advanced-dfx/dfx-migration",
-                  "building-apps/developer-tools/advanced-dfx/init-args",
-                  "building-apps/developer-tools/advanced-dfx/networks-json",
                   "building-apps/developer-tools/advanced-dfx/specifying-replica-version",
                 ],
               },
@@ -161,7 +156,6 @@ build: [
       label: "Developing canisters",
       items:
       [
-        "building-apps/developing-canisters/what-are-canisters",
         "building-apps/developing-canisters/write",
         "building-apps/developing-canisters/create",
         "building-apps/developing-canisters/compile",
@@ -182,7 +176,7 @@ build: [
     },
     {
       type: "category",
-      label: "Interact with canisters",
+      label: "Interacting with canisters",
       items: [
         {
           type: "category",
@@ -211,6 +205,17 @@ build: [
             "building-apps/interact-with-canisters/agents/rust-agent",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Testing canisters",
+      link: {
+        type: "doc",
+        id: "building-apps/test/overview",
+      },
+      items: [
+        "building-apps/test/pocket-ic"
       ],
     },
     {
@@ -256,17 +261,6 @@ build: [
       label: "Advanced development",
       items:
       [
-         {
-          type: "category",
-          label: "Testing canisters",
-          link: {
-            type: "doc",
-            id: "building-apps/advanced/test/overview",
-          },
-          items: [
-            "building-apps/advanced/test/pocket-ic"
-          ],
-        },
         "building-apps/advanced/using-third-party-canisters",
         "building-apps/advanced/benchmarking",
         {
@@ -277,6 +271,7 @@ build: [
             "building-apps/advanced/optimize/rust",
           ],
         },
+        "building-apps/advanced/canister-access-logs",
       ],
     },
     {
@@ -285,7 +280,9 @@ build: [
       items: [
         "building-apps/authentication/overview",
         "building-apps/authentication/integrate-internet-identity",
+        "building-apps/authentication/integrate-misc-wallets",
         "building-apps/authentication/alternative-origins",
+        "building-apps/authentication/independently-verifying-ic-signatures",
       ],
     },
     {
@@ -326,6 +323,16 @@ build: [
                   id: "building-apps/network-features/using-http/http-certification/serving-static-assets-over-http",
                   label: "Serving static assets over HTTP (custom)",
                 },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/upgrading-http-query-calls-to-update-calls",
+                  label: "Upgrading HTTP query calls to update calls",
+                },
+                {
+                  type: "doc",
+                  id: "building-apps/network-features/using-http/http-certification/skipping-certification-for-http-responses",
+                  label: "Skipping certification for HTTP responses",
+                },
               ],
             },
             {
@@ -350,15 +357,19 @@ build: [
           items: [
             "building-apps/network-features/signatures/t-ecdsa",
             "building-apps/network-features/signatures/t-schnorr",
-            "building-apps/network-features/signatures/independently-verifying-ic-signatures",
           ],
         },
         {
           type: "category",
-          label: "Verifiable encryption",
+          label: "vetKeys",
           items: [
-            "building-apps/network-features/encryption/vetkeys",
-            "building-apps/network-features/encryption/using-vetkeys",
+            "building-apps/network-features/vetkeys/introduction",
+            "building-apps/network-features/vetkeys/api",
+            "building-apps/network-features/vetkeys/dkms",
+            "building-apps/network-features/vetkeys/encrypted-onchain-storage",
+            "building-apps/network-features/vetkeys/bls-signatures",
+            "building-apps/network-features/vetkeys/identity-based-encryption",
+            "building-apps/network-features/vetkeys/timelock-encryption",
           ],
         },
         "building-apps/network-features/randomness",
@@ -387,30 +398,9 @@ build: [
       items: [
         "building-apps/chain-fusion/supported-chains",
         {
-          type: "category",
+          type: "doc",
           label: "Bitcoin",
-          link: {
-            type: "doc",
-            id: "building-apps/chain-fusion/bitcoin/overview",
-          },
-          items: [
-            "building-apps/chain-fusion/bitcoin/using-btc/btc-comparison",
-            "building-apps/chain-fusion/bitcoin/using-btc/btc-dev-workflow",
-            {
-              type: "category",
-              label: "Interacting with Bitcoin",
-              items: [
-                "building-apps/chain-fusion/bitcoin/using-btc/generate-addresses",
-                "building-apps/chain-fusion/bitcoin/using-btc/create-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/sign-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/submit-transactions",
-                "building-apps/chain-fusion/bitcoin/using-btc/read-state",
-                "building-apps/chain-fusion/bitcoin/using-btc/ordinals",
-                "building-apps/chain-fusion/bitcoin/using-btc/runes",
-                "building-apps/chain-fusion/bitcoin/using-btc/local-development",
-              ],
-            },
-          ],
+          id: "build-on-btc/index",
         },
         {
           type: "category",
@@ -445,6 +435,11 @@ build: [
               ],
             },
           ],
+        },
+        {
+          type: "doc",
+          label: "Solana",
+          id: "building-apps/chain-fusion/solana/overview",
         },
         "building-apps/chain-fusion/examples",
       ],
@@ -579,10 +574,6 @@ build: [
         {
           type: "category",
           label: "Network Nervous System (NNS)",
-          link: {
-            type: "doc",
-            id: "building-apps/governing-apps/nns/overview",
-          },
           items: [
             {
               type: "category",
@@ -598,6 +589,7 @@ build: [
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-sns-topic-following",
                 "building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
             },
@@ -609,10 +601,6 @@ build: [
                 type: "category",
                 label: "Neurons",
                 items: [
-                  "building-apps/governing-apps/nns/concepts/neurons/neuron-overview",
-                  "building-apps/governing-apps/nns/concepts/neurons/neuron-following",
-                  "building-apps/governing-apps/nns/concepts/neurons/staking-voting-rewards",
-                  "building-apps/governing-apps/nns/concepts/neurons/neuron-management",
                   "building-apps/governing-apps/nns/concepts/neurons/becoming-a-known-neuron",
                 ],
               },
@@ -620,22 +608,14 @@ build: [
                 type: "category",
                 label: "Proposals",
                 items: [
-                  "building-apps/governing-apps/nns/concepts/proposals/proposal-overview",
-                  "building-apps/governing-apps/nns/concepts/proposals/direct-voting",
-                  "building-apps/governing-apps/nns/concepts/proposals/proposal-topics",
+
                   "building-apps/governing-apps/nns/concepts/proposals/verify-proposals",
                   "building-apps/governing-apps/nns/concepts/proposals/proposal-submit",
                 ],
               },
-            "building-apps/governing-apps/nns/concepts/neurons-fund",
           ],
         },
         ],
-        },
-        {
-          label: "What is an SNS?",
-          type: "doc",
-          id: "building-apps/governing-apps/overview",
         },
         {
           type: "category",
@@ -646,8 +626,6 @@ build: [
           },
           items: [
             "building-apps/governing-apps/tokenomics/predeployment-considerations",
-            "building-apps/governing-apps/tokenomics/tokenomics-intro",
-            "building-apps/governing-apps/tokenomics/rewards",
             "building-apps/governing-apps/tokenomics/preparation",
             "building-apps/governing-apps/tokenomics/sns-checklist",
           ],
@@ -674,7 +652,6 @@ build: [
           },
           items: [
             "building-apps/governing-apps/testing/testing-locally",
-            "building-apps/governing-apps/testing/testing-on-mainnet",
           ],
         },
         {
@@ -688,7 +665,6 @@ build: [
             "building-apps/governing-apps/managing/making-proposals",
             "building-apps/governing-apps/managing/cycles-usage",
             "building-apps/governing-apps/managing/sns-asset-canister",
-            "building-apps/governing-apps/managing/managing-nervous-system-parameters",
           ],
         },
       ],
@@ -701,34 +677,40 @@ defi: [
         label: "DeFi on ICP",
         id: "defi/overview",
       },
-      {
-        type: "category",
-        label: "ICP Rosetta implementation",
-        link: {
-          type: "doc",
-          id: "defi/rosetta/icp_rosetta/index",
-        },
-        items: [
-          {
+              {
+          type: "category",
+          label: "ICP Rosetta implementation",
+          link: {
             type: "doc",
-            label: "Data API",
-            id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-          {
-            type: "category",
-            label: "Construction API",
-            link: {
+            id: "defi/rosetta/icp_rosetta/index",
+          },
+          items: [
+            "defi/rosetta/icp_rosetta/running-rosetta",
+            {
               type: "doc",
-              id: "defi/rosetta/icp_rosetta/construction_api/index",
-            },
-            items: [
-            "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-            "defi/rosetta/icp_rosetta/construction_api/staking",
-            "defi/rosetta/icp_rosetta/construction_api/voting",
+              label: "Data API",
+              id: "defi/rosetta/icp_rosetta/data_api/index",
+              },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+              "defi/rosetta/icp_rosetta/construction_api/operations-flow",
+              "defi/rosetta/icp_rosetta/construction_api/staking",
+              "defi/rosetta/icp_rosetta/construction_api/voting",
+              ],
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icp_rosetta/examples",
+              },
             ],
-            },
-          ],
-        },
+          },
         {
           type: "category",
           label: "ICRC Rosetta implementation",
@@ -737,6 +719,7 @@ defi: [
             id: "defi/rosetta/icrc_rosetta/index",
           },
           items: [
+            "defi/rosetta/icrc_rosetta/running-rosetta",
             {
               type: "doc",
               label: "Data API",
@@ -746,6 +729,11 @@ defi: [
               type: "doc",
               label: "Construction API",
               id: "defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+            {
+              type: "doc",
+              label: "Example scripts",
+              id: "defi/rosetta/icrc_rosetta/examples",
               },
           ],
         },
@@ -783,7 +771,8 @@ defi: [
             label: "ICRC ledger",
             items: [
               "defi/token-ledgers/setup/icrc1_ledger_setup",
-              "defi/token-ledgers/usage/icrc1_ledger_usage"
+              "defi/token-ledgers/usage/icrc1_ledger_usage",
+              "defi/token-ledgers/upgrading/icrc1_ledger_upgrade"
             ],
           },
           "defi/token-ledgers/cycles-ledger",
@@ -791,6 +780,7 @@ defi: [
         ],
         },
         "defi/token-indexes/index",
+        "defi/defi-best-practices",
         {
           type: "category",
           label: "Chain-key tokens",
@@ -836,8 +826,29 @@ defi: [
             },
           ],
         },
-        ],
+],
 
+btc: [
+  "build-on-btc/index",
+  "build-on-btc/btc-dev-workflow",
+  "build-on-btc/btc-dev-env",
+  "build-on-btc/using-regtest",
+  "build-on-btc/btc-api",
+  {
+    type: "category",
+    label: "Bitcoin transactions",
+    items: [
+      "build-on-btc/btc-transactions/generate-addresses",
+      "build-on-btc/btc-transactions/create-transactions",
+      "build-on-btc/btc-transactions/sign-transactions",
+      "build-on-btc/btc-transactions/submit-transactions",
+    ],
+  },
+  "build-on-btc/read-state",
+  "build-on-btc/ordinals",
+  "build-on-btc/runes",
+  "build-on-btc/brc20",
+],
 
 references: [
   {
@@ -860,12 +871,12 @@ references: [
       "references/ii-spec",
       "references/icrc1-standard",
       "references/ledger",
-      "references/supported-signatures",
       "references/t-sigs-how-it-works",
       "references/vc-spec",
       "references/vetkeys-overview"
     ],
   },
+  "references/cycles-cost-formulas",
   {
     type: "category",
     label: "System canisters",
@@ -890,6 +901,7 @@ references: [
       "references/async-code",
       "references/execution-errors",
       "references/message-execution-properties",
+      "references/using-hsm-with-identities",
   {
     type: "doc",
     label: "Dashboard API reference",
@@ -917,19 +929,19 @@ devjourney: [
           items: [
             "tutorials/developer-liftoff/level-0/ic-overview",
             "tutorials/developer-liftoff/level-0/ic-terms",
-            "tutorials/developer-liftoff/level-0/dev-env",
             "tutorials/developer-liftoff/level-0/intro-canisters",
             "tutorials/developer-liftoff/level-0/intro-languages",
-            "tutorials/developer-liftoff/level-0/intro-dfx",
+            "tutorials/developer-liftoff/level-0/tooling",
+            "tutorials/developer-liftoff/level-0/first-dapp",
       ],
     },
       {
         type: "category",
         label: "Level 1: Space cadet",
         items: [
-          "tutorials/developer-liftoff/level-1/1.1-live-demo",
-          "tutorials/developer-liftoff/level-1/1.2-motoko-lvl1",
-          "tutorials/developer-liftoff/level-1/1.3-first-dapp",
+          "tutorials/developer-liftoff/level-1/1.1-motoko-lvl1",
+          "tutorials/developer-liftoff/level-1/1.2-dev-env",
+          "tutorials/developer-liftoff/level-1/1.3-intro-dfx",
           "tutorials/developer-liftoff/level-1/1.4-using-cycles",
           "tutorials/developer-liftoff/level-1/1.5-deploying-canisters",
           "tutorials/developer-liftoff/level-1/1.6-managing-canisters",
@@ -987,6 +999,67 @@ devjourney: [
   },
 ],
 
+devjourneyRust: [
+  {
+    type: "category",
+    label: "Developer Liftoff: Rust",
+    link: {
+      type: "doc",
+      id: "tutorials/developer-liftoff-rust/index",
+    },
+    items: [
+      {
+        type: "category",
+        label: "Level 0: Pre-flight operations",
+        items: [
+          "tutorials/developer-liftoff-rust/level-0/ic-overview",
+          "tutorials/developer-liftoff-rust/level-0/ic-terms",
+          "tutorials/developer-liftoff-rust/level-0/intro-canisters",
+          "tutorials/developer-liftoff-rust/level-0/intro-languages",
+          "tutorials/developer-liftoff-rust/level-0/tooling",
+          "tutorials/developer-liftoff-rust/level-0/first-dapp",
+    ],
+  },
+        {
+        type: "category",
+        label: "Level 1: Space cadet",
+        items: [
+          "tutorials/developer-liftoff-rust/level-1/1.1-rust-lvl1",
+          "tutorials/developer-liftoff-rust/level-1/1.2-rust-dev-env",
+          "tutorials/developer-liftoff-rust/level-1/1.3-intro-dfx",
+          "tutorials/developer-liftoff-rust/level-1/1.4-using-cycles",
+          "tutorials/developer-liftoff-rust/level-1/1.5-deploying-canisters",
+          "tutorials/developer-liftoff-rust/level-1/1.6-managing-canisters",
+      ],
+    },
+    {
+      type: "category",
+      label: "Level 2: Space explorer",
+      items: [
+        "tutorials/developer-liftoff-rust/level-2/2.1-canister-calls",
+        "tutorials/developer-liftoff-rust/level-2/2.2-storage-memory",
+        "tutorials/developer-liftoff-rust/level-2/2.3-canister-state",
+        "tutorials/developer-liftoff-rust/level-2/2.4-stable-memory",
+        "tutorials/developer-liftoff-rust/level-2/2.5-upgrading-rust",
+        "tutorials/developer-liftoff-rust/level-2/2.6-rust-lvl2",
+      ],
+    },
+    {
+      type: "category",
+      label: "Level 3: Space engineer",
+      items: [
+        "tutorials/developer-liftoff-rust/level-3/3.1-testing-rust",
+        "tutorials/developer-liftoff-rust/level-3/3.2-logging-history",
+        "tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots",
+        "tutorials/developer-liftoff-rust/level-3/3.4-identity-auth",
+        "tutorials/developer-liftoff-rust/level-3/3.5-access-control",
+        "tutorials/developer-liftoff-rust/level-3/3.6-rust-lvl3",
+    ],
+    },
+],
+},
+],
+
 hackathon: [
   {
     type: "category",
@@ -996,15 +1069,15 @@ hackathon: [
       id: "tutorials/hackathon-prep-course/index",
     },
     items: [
-      "tutorials/hackathon-prep-course/what-is-icp",
-      "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
-      "tutorials/hackathon-prep-course/exploring-the-backend",
-      "tutorials/hackathon-prep-course/exploring-the-frontend",
-      "tutorials/hackathon-prep-course/integrating-with-tokens",
+      "tutorials/hackathon-prep-course/hello-world",
+      "tutorials/hackathon-prep-course/static-website",
+      "tutorials/hackathon-prep-course/first-fullstack-dapp",
+      "tutorials/hackathon-prep-course/evm-block-explorer",
+      "tutorials/hackathon-prep-course/create-deploy-token",
       "tutorials/hackathon-prep-course/authentication",
-      "tutorials/hackathon-prep-course/obtaining-cycles",
+      "tutorials/hackathon-prep-course/setup-dev-env",
       "tutorials/hackathon-prep-course/managing-canisters",
-      "tutorials/hackathon-prep-course/sample-starter-projects",
+      "tutorials/hackathon-prep-course/advanced-features",
       "tutorials/hackathon-prep-course/resources",
     ],
   },
@@ -1012,44 +1085,8 @@ hackathon: [
 
   motoko: [
     {
-      type: "category",
-      label: "Motoko language book",
-      items: [
-        {
-          type: "link",
-          label: "1. Introduction",
-          href: "https://motoko-book.dev/introduction.html",
-        },
-        {
-          type: "link",
-          label: "2. Common programming concepts",
-          href: "https://motoko-book.dev/common-programming-concepts.html",
-        },
-        {
-          type: "link",
-          label: "3. Internet Computer programming concepts",
-          href: "https://motoko-book.dev/internet-computer-programming-concepts.html",
-        },
-        {
-          type: "link",
-          label: "4. Advanced types",
-          href: "https://motoko-book.dev/advanced-types.html",
-        },
-        {
-          type: "link",
-          label: "5. The base library",
-          href: "https://motoko-book.dev/base-library.html",
-        },
-        {
-          type: "link",
-          label: "6. Advanced concepts",
-          href: "https://motoko-book.dev/advanced-concepts.html",
-        },
-      ],
-    },
-    {
       type: "autogenerated",
-      dirName: "motoko/main",
+      dirName: "motoko",
     },
   ],
 }

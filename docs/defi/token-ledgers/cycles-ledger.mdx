@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, tutorial, cycles]
+keywords: [beginner, cycles ledger, cycles, ledger, cycles wallet, cycles wallets, how to use cycles ledger, how to use cycles, differences between ledger and wallet]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -7,29 +7,34 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Cycles ledger
 
-<MarkdownChipRow labels={["Beginner", "Cycles", "Ledger"]} />
+<MarkdownChipRow labels={["Beginner", "Ledgers"]} />
 
-When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management.
+Developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. Cycles can be managed using either a cycles wallet or the cycles ledger.
 
-The biggest difference between the cycles <GlossaryTooltip>ledger</GlossaryTooltip> and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to use. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
+The cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for each developer. The cycles ledger can be used to load a cycles wallet with cycles.
 
-- Cycles wallets are a complex solution to associate cycles with <GlossaryTooltip>principal</GlossaryTooltip> IDs.
+The cycles wallet has some considerations that the cycles ledger does not:
+
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
-- If a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost.
+- If a cycles wallet canister ID is lost, the cycles in it are also lost.
 
-In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles.
+It is important to note that the cycles ledger does not provide the ability to make arbitrary calls to other canisters with cycles, while the cycles wallet can. This is because open call contexts may cause complications with the cycles ledger.
 
-The cycles ledger currently complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, the cycles ledger also interacts with the <GlossaryTooltip>NNS</GlossaryTooltip> canisters and user canisters to provide cycles ledger-specific functions, such as:
+If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used.
+
+:::caution 
+When deploying a new canister, if a cycles wallet is configured, then `dfx` will use that, otherwise the cycles ledger will be used. 
+
+A cycles wallet can be removed using `rm ~/.config/dfx/identity/<identity name>/wallets.json`.
+
+A cycles wallet can be removed using `rm ~/.config/dfx/identity/<identity name>/wallets.json`.
+:::
+
+The cycles ledger complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, it also interacts with the <GlossaryTooltip>NNS</GlossaryTooltip> canisters and user canisters to provide specific functions:
 
 - Accepting incoming cycles sent from other canisters.
 - Sending cycles to other canisters.
 - Creating new canisters using cycles.
-
-:::caution
-It is important to note that the cycles ledger does not provide the ability to make arbitrary calls to other canisters with cycles, while the cycles wallet can. This is because open call contexts may cause complications with the cycles ledger.
-
-If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used as before. The cycles ledger can be used to load the cycles wallet with cycles.
-:::
 
 ## Canister IDs
 
@@ -46,63 +51,7 @@ The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/d
 
 ### Obtaining ICP
 
-To use the cycles ledger, first, you need ICP tokens. There are a few different ways to obtain ICP tokens, such as:
-
-- Purchasing ICP tokens directly through an exchange that lists [ICP tokens available for trade](https://coinmarketcap.com/currencies/internet-computer/markets/).
-- Trading other tokens for ICP on a decentralized exchange.
-- Receiving tokens as rewards for participating in the governance of the Internet Computer.
-- Receiving a grant of tokens through the Internet Computer Association (ICA) or the DFINITY Foundation.
-- Receiving tokens as remuneration for providing computing capacity as a node provider.
-
-Once you have obtained ICP, you also need to have an account controlled via `dfx` to transfer those tokens. This step is necessary to create cycles and canisters. To get an account ID for an account controlled via `dfx`, first determine which `dfx` identity you are using with the command:
-
-```
-dfx identity whoami
-```
-
-If you're using the default identity, you should create a new identity with the command:
-
-```
-dfx identity new IDENTITY_NAME
-```
-
-Replace `IDENTITY_NAME` with the identity name of your choice, such as 'MyIdentity`.
-
-Your identity's seed phrase will be returned. Be sure to save this in a secure location. Then, set this identity to be used by the current session:
-
-```
-dfx identity use IDENTITY_NAME
-```
-
-Then, to get the account ID for this identity, use the command:
-
-```
-dfx ledger account-id
-```
-
-This will display your account ID on the ICP ledger. It looks similar to this:
-
-```
-e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
-```
-
-This account ID will be where you need to send your ICP tokens to create cycles and canisters.
-
-Then, to return the principal ID associated with your identity, run the command:
-
-```
-dfx identity get-principal
-```
-
-Your cycles on the cycles ledger will be stored under this principal ID.
-
-### Checking your cycles balance
-
-To check the cycles balance of your user principal ID, use the command:
-
-```
-dfx cycles balance --network ic
-```
+To use the cycles ledger, first, you also need to have [a developer identity](/docs/building-apps/getting-started/identities), then you need to [obtain ICP tokens](/docs/building-apps/getting-started/tokens-and-cycles). These steps are necessary to create cycles and canisters.
 
 ### Converting ICP to cycles
 
@@ -140,14 +89,12 @@ Replace `CANISTER_ID` with the canister ID you'd like to transfer the cycles to,
 
 New canisters can be created using the cycles ledger by using the `dfx canister create` and `dfx deploy` commands.
 
-Both of these commands have the following options and syntax to create a new canister:
+Both of these commands use the following options and syntax to create a new canister:
 
 ```
 dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic
 dfx deploy CANISTER_NAME --network ic
 ```
-
-Replace `CANISTER_NAME` with a name for the new canister and `AMOUNT` with the number of cycles to deposit into the canister's cycles balance.
 
 With these two commands, there are two **optional** flags that can be used:
 
@@ -162,11 +109,11 @@ If no flag is specified and the project contains canisters on multiple subnets, 
 
 ## Fees
 
-Most functions of the cycle ledger incur a fee. The full breakdown of fees can be found below:
+Most functions of the cycle ledger incur a fee. The full breakdown of fees can be found below.
 
 - To transfer cycles between different principal IDs using the cycles ledger, the transfer fee is 100M cycles per transaction.
 - To send cycles from the cycles ledger to another canister, the fee is 100M cycles.
-- To create a canister, the fee is the transfer fee (100M cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](/docs/building-apps/essentials/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 100B cycles. This means the total fee will be 100_100_000_000 cycles.
+- To create a canister, the fee is the transfer fee (100M cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](/docs/building-apps/essentials/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 500B cycles. This means the total fee will be 500_100_000_000 cycles.
 
 ## Switching from the cycles wallet to cycles ledger
 
@@ -180,9 +127,19 @@ All commands shown below are for workflows involving mainnet development. For lo
 |-----------------------|-----------------------|-----------------------|
 | Checking the cycles balance | `dfx wallet balance --network ic`  | `dfx cycles balance --network ic` |
 | Converting ICP tokens into cycles | `dfx ledger create-canister PRINCIPAL_ID --amount AMOUNT --network ic` |  `dfx cycles convert --amount AMOUNT --network ic` |
-| Transferring cycles |  `dfx wallet send PRINCIPAL_ID AMOUNT --network ic`   | `dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic` |
 | Redeeming a cycles coupon |  `dfx wallet redeem-faucet-coupon 'ABCDE-ABCDE-ABCDE'`     |  `dfx cycles redeem-faucet-coupon ABCDE-ABCDE-ABCDE --network ic`  |
 | Topping up a canister     | `dfx wallet send PRINCIPAL_ID AMOUNT --network ic` | `dfx cycles top-up CANISTER_ID AMOUNT --network ic` |
 | Creating a canister with cycles | `dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic` |  `dfx canister create CANISTER_NAME --with-cycles AMOUNT --no-wallet --network ic` |
 
+### Transferring cycles from a wallet to the cycles ledger
 
+To transfer cycles from a cycles wallet to the cycles ledger, you must call the ledger’s deposit method. When doing so, avoid transferring the wallet's entire balance and ensure a small buffer of cycles remains to cover the transaction's execution cost. Failing to leave this margin will result in a `Failed to send` error.
+
+Additionally, it’s recommended not to delete the cycles wallet, as it may still control a canister you might need to access in the future.
+To transfer all cycles from a cycles wallet to the cycles ledger, then stop using the cycles wallet, run the following command:
+
+```
+dfx canister call --ic um5iw-rqaaa-aaaaq-qaaba-cai deposit "(record { to = record { owner = principal \"$(dfx identity get-principal)\"} })" --with-cycles 1_000_000_000_000 --wallet $(dfx identity get-wallet --ic)
+```
+
+Change the number of cycles to the amount you'd like to transfer.

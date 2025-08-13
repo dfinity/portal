@@ -1,0 +1,100 @@
+---
+keywords: [beginner, tutorial, hackathon, hackathon prep course, icp ninja, static website, frontend, frontend only, asset canister, simple website, blog, static blog, create a website, host a website]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
+# 2: Creating a static website
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+Canister smart contracts are able to serve HTTP content natively, allowing for dapp frontends to be served directly in a web browser using the canister's URL at `http://<canister id>.icp0.io` and `http://<canister id>.raw.icp0.io`. Frontend canisters can be used to deliver HTML, CSS, and JavaScript pages and answer API requests.
+
+If a canister wants to serve HTTP content, it should implement a method that consumes an HTTP request, which contains a URL, HTTP method, and headers, then outputs an HTTP response that contains a status, headers, and the response body. The canister method can return HTML, CSS, and JavaScript content as part of the HTTP response.
+
+To compile frontend assets like CSS and JavaScript into a Wasm module that can be deployed to ICP as a canister, `dfx` uses Rust boilerplate code to create an **asset canister**.
+
+:::info
+The terms 'asset canister' and 'frontend canister' are sometimes used interchangeably. **Asset** canister is typically used to describe the Rust code `dfx` uses in the background to compile a project's frontend assets into Wasm. **Frontend** canister is typically used as a general term to describe a project's frontend.
+:::
+
+Applications deployed on ICP can have frontends that:
+
+- Are deployed on ICP and communicate with backend canister(s) to create a fully onchain dapp.
+
+- Are hosted externally (off-chain) and communicate with backend canister(s) deployed on ICP.
+
+- Only provide web assets and do not communicate with a backend canister.
+
+In the previous tutorial, you deployed a project with a single backend canister and then interacted with that canister through the Candid API interface. In this tutorial, let's explore how a canister can host a static website that does not interact with a backend canister and is used only to serve web assets.
+
+## Crypto blog example
+
+Open the [ICP Ninja 'My Crypto Blog' project](https://icp.ninja/s/GQVBz). View the [ICP Ninja demo video](https://www.youtube.com/watch?v=19d8TrhWWQk) for more details about using the platform.
+
+Let's review the project's file structure:
+
+```bash
+├── frontend     # Folder containing the asset files for your dapp's frontend.
+│   ├──  public
+|   │   ├── favicon.ico
+│   ├──  src
+|   │   ├── main.jsx # Source code for a simple React application.
+│   ├──  index.css
+│   ├──  index.html
+│   ├──  package.json
+│   ├──  postcss.config.js
+│   ├──  tailwind.config.js
+│   ├──  vite.config.js
+├── dfx.json     # The configuration file for your Internet Computer dapp.
+├── package-lock.json
+├── package.json
+├── README.md    # Information about the project and using ICP Ninja.
+```
+
+### `dfx.json​`
+
+The `dfx.json` file for this project will closely resemble the one used for the [Hello, world!](./1-hello-world.mdx) example; however there is one key difference. Rather than defining what the canister is `"type": "motoko"`, this project will define the canister as `"type": "asset"` which prompts `dfx` to compile the canister's assets into a Wasm module using Rust boilerplate code.
+
+```json title=dfx.json file=../../references/samples/hosting/my_crypto_blog/dfx.json
+```
+
+### `frontend/src/main.jsx`
+
+This project's `main.jsx` file defines the source code for a simple app using React, Vite, and Tailwind CSS that the canister will host. This app will create a very basic blog website with three randomly generated placeholder blog post entries.
+
+```jsx title=main.jsx file=../../references/samples/hosting/my_crypto_blog/frontend/src/main.jsx
+```
+
+:::info
+If you want to learn more about this code, you can right-click and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
+:::
+
+## Deploying the canister
+
+Click the "Run" button in the upper right corner of the code editor. ICP Ninja will deploy the project and return the canister's URL:
+
+```
+→ Reserving canisters onchain
+→ Building frontend
+→ Uploading frontend assets
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://rueiq-3qaaa-aaaab-qbk7q-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
+```
+
+Open the dapp's "Internet Computer URL" in your web browser. This will open the React application, which will include a button you can click to generate the three random blog posts.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/my-crypto-blog.png")}
+    alt="My Crypto Blog"
+    width="800"
+  />
+</div>
+
+To edit the website's content, make adjustments to either the `main.jsx` file or change the styling in the `index.css` file. For example, you can change the page's title, body text, or button functionality, or add photos and videos to be embedded on the page.
+
+Since this is a static website, however, if you'd like to add any backend functionality such as user authentication and profiles, saving data to a user's account, or uploading and editing data, you will need to add a backend canister to your project.

@@ -13,6 +13,8 @@ import Tabs from "@theme/Tabs";
 
 The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates.
 
+[View the latest release of the XRC canister](https://github.com/dfinity/exchange-rate-canister/releases).
+
 The XRC canister can be used by dapps such as decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the <GlossaryTooltip>NNS</GlossaryTooltip> uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
 
 The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp.
@@ -78,7 +80,7 @@ The remaining cycles are returned to the requesting canister. Note that at least
 To call the XRC directly, you can send a request such as one to get the BTC/USD rate, with the following command:
 
 ```
-dfx canister call --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })'
+dfx canister call --with-cycles 10000000000 uf6dk-hyaaa-aaaaq-qaaaq-cai get_exchange_rate '(record { base_asset = record { symbol = "BTC"; class = variant { Cryptocurrency } }; quote_asset = record { symbol = "USD"; class = variant { FiatCurrency } } })' --network=ic
 ```
 
 ## Exchange rate canister demo
@@ -109,15 +111,15 @@ npm install
 dfx canister create xrc_demo
 ```
 
-### Deployment
+### Local deployment
 
-To test the XRC demo locally, first start the local <GlossaryTooltip>replica</GlossaryTooltip> with the command:
+To test the XRC demo locally, first start the [local development environment](/docs/building-apps/test/pocket-ic) with the command:
 
 ```
 dfx start --clean --background
 ```
 
-Before you deploy the XRC demo, you must set your local subnet network to be type 'system' by editing your `networks.json` configuration file for dfx. This file's location can be found by running the command `dfx info networks-json-path`.
+Before you deploy the XRC demo, you must set your local subnet network to be type 'system' by editing your `networks.json` configuration file for `dfx`. This file's location can be found by running the command `dfx info networks-json-path`.
 
 Adjust the file's default contents to configure the local replica as type 'system':
 
@@ -129,6 +131,20 @@ Adjust the file's default contents to configure the local replica as type 'syste
         }
     }
 }
+```
+
+Ensure that the project's `dfx.json` file includes:
+
+- Definition of the XRC canister, its [Candid](https://raw.githubusercontent.com/dfinity/exchange-rate-canister/refs/heads/main/src/xrc/xrc.did) and [Wasm](https://github.com/dfinity/exchange-rate-canister/releases/download/2024.11.12/xrc.wasm.gz) files, and its canister ID `uf6dk-hyaaa-aaaaq-qaaaq-cai`.
+
+- Configuration for the project to use the `system` subnet type defined in `networks.json`.
+
+- A binding for `127.0.0.1:4812` to enable local development.
+
+An example of these configurations can be found below:
+
+```json reference
+https://github.com/THLO/xrc_demo/blob/main/dfx.json
 ```
 
 Then, you can deploy the XRC canisters with the command:
@@ -158,7 +174,7 @@ Open the link for the `xrc_demo` canister in a web browser to view the Candid in
 Alternatively, you can send commands to the `xrc_demo` canister directly from the terminal, such as:
 
 ```
-dfx canister call --network ic xrc_demo get_exchange_rate "ICP"
+dfx canister call xrc_demo get_exchange_rate "ICP"
 ```
 
 The output will resemble the following, depending asset requested and its current exchange rate. This example uses ICP.

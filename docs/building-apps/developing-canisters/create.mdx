@@ -2,43 +2,34 @@
 keywords: [beginner, tutorial, create, create canister, compile code, compile canister, compile, build, install, canister install, install code]
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from '@theme/Tabs';
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Create
 
 <MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
-Before a canister can be deployed, it must be created and registered with ICP, either locally, on the playground, or on the mainnet. When a canister is initially created, it is empty and does not contain code or state; it only contains the canister settings, canister ID, cycles balance, and controllers. Then, the canister's source code must then be compiled into WebAssembly and installed into the canister.
+Canisters are created with [`dfx canister create`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create). They are initially empty and do not contain program code. The code must be [compiled](/docs/building-apps/developing-canisters/what-are-canisters) into Wasm and [installed](/docs/building-apps/developing-canisters/what-are-canisters) into the empty canister before it can be deployed.
 
-Once you have a project that contains a `dfx.json` file defining a project's canisters, you can create one of those canisters using the `dfx canister create` command.
+<div class="text--center">
+<img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
+</div>
+
+Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
 
 :::info
 Canister creation is done automatically in the background of the `dfx deploy` command. However, there may be certain workflows where creating an empty canister is necessary.
 :::
 
-Canisters are created with [`dfx canister create`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create). They are initially empty and do not contain program code. The code must be [compiled](/docs/building-apps/developing-canisters/what-are-canisters) into Wasm and [installed](/docs/building-apps/developing-canisters/what-are-canisters) into the empty canister before it can be deployed.
+Create a canister from within a project's directory:
 
-Create your canisters from within the project's directory:
+```
+dfx canister create <canister-name> --network=<NETWORK>
+```
 
-- `dfx canister create <canister-name> --network=local`: Create a canister locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
-
-- `dfx canister create <canister-name> --network=playground`: Create a canister on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Creating a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
-
-- `dfx canister create <canister-name> --network=ic`: Create a canister on the mainnet. Creating a canister on the mainnet will cost [cycles](/docs/building-apps/essentials/gas-cost).
-
-- `dfx canister create --all --network=ic`: Create all canisters in the project's `dfx.json` file on the mainnet.
-
-Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
 
 When a canister is created, the following steps happen:
 
-- A canister ID is registered with the local replica or the mainnet for each canister in the project's `dfx.json` file.
+- A canister ID is registered with the local replica or the mainnet for each canister in the project's `dfx.json` file. Each canister ID is returned to the command line.
 
 - The following canister components are created:
   - List of controllers.
@@ -46,8 +37,6 @@ When a canister is created, the following steps happen:
   - Reserved cycles balance.
   - Canister status.
   - Resource reservations.
-
-- Each canister ID is returned in the command line.
 
 ### Errors related to canister creation
 

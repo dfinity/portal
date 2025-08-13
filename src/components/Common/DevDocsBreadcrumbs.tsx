@@ -49,7 +49,7 @@ export function DevDocsBreadcrumbs() {
   }, []);
 
   return (
-    <div className="flex flex-row gap-2 items-center tw-title-navigation-on-page whitespace-nowrap max-w-full">
+    <div className="flex flex-row gap-2 items-center tw-title-navigation-on-page whitespace-nowrap max-w-full cursor-pointer">
       {breadcrumbs.map((item, index) => (
         <React.Fragment key={item.href}>
           <Link

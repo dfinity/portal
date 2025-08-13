@@ -55,7 +55,7 @@ The resulting configuration should look similar to the following screenshot:
 
 ![DNS Configuration for `example.ic-domain.live` on Namecheap](namecheap-subdomain.png)
 
-Now, you are all set to register your custom domain with the boundary nodes, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
+Now, you are all set to register your custom domain with the HTTP gateways, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
 
 ## GoDaddy
 
@@ -75,7 +75,7 @@ There are two options:
 
 - [**Recommended**: Relying on a different DNS provider (e.g., Cloudflare).](#rely-on-an-alternative-dns-provider-recommended)
 
-- [Directly configuring the IP addresses of the boundary nodes.](#directly-configure-the-ip-addresses-not-recommended-use-at-your-own-risk)
+- [Directly configuring the IP addresses of the HTTP gateways.](#directly-configure-the-ip-addresses-not-recommended-use-at-your-own-risk)
 
 Directly configuring the IP addresses is simpler compared to relying on another
 DNS provider, but is less resilient and performant. Therefore, it is advised to use
@@ -129,10 +129,10 @@ The resulting configuration should look similar to the following screenshot:
 #### Directly configure the IP addresses (not recommended; use at your own risk).
 
 :::caution
-By directly configuring the IP addresses of the boundary nodes, you always need to make sure to keep your DNS records up-to-date. If a boundary node is retired or changes its IP addresses, you need to remove or update your DNS records. Otherwise, you risk that your dapp becomes inaccessible.
+By directly configuring the IP addresses of the HTTP gateways, you always need to make sure to keep your DNS records up-to-date. If a [HTTP gateway](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure) is retired or changes its IP addresses, you need to remove or update your DNS records. Otherwise, you risk that your dapp becomes inaccessible.
 :::
 
-- #### Step 1: First, you need to look up the IP addresses of the boundary nodes (`icp1.io`).
+- #### Step 1: First, you need to look up the IP addresses of the HTTP gateways (`icp1.io`).
 To this end, use an online DNS lookup service (e.g., [nslookup.io](https://nslookup.io)) and take a note of the IPv4- and IPv6-addresses, the `A` and `AAAA` records, respectively.
 
 ![Resulting `A` and `AAAA` records from querying `icp1.io` on nslookup.io](nslookup-results.png)
@@ -164,7 +164,7 @@ The resulting configuration should look similar to the following screenshot:
 
 ![DNS Configuration for `example.ic-domain.live` on GoDaddy](godaddy-subdomain.png)
 
-Now, you are all set to register your custom domain with the boundary nodes, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
+Now, you are all set to register your custom domain with the HTTP gateways, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
 
 ## Amazon Route 53
 
@@ -182,7 +182,7 @@ For instructions, take a look at the steps outlined for GoDaddy under ["Rely on 
 - #### Step 2: Click on the domain to open the DNS settings.
 
 - #### Step 3: Configure your DNS records.
-To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Add new record**:
+To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Create record**:
 
 * Create a `CNAME` record for which you set the host field to `example` and the target field to `example.ic-domain.live.icp1.io`.
 
@@ -194,4 +194,12 @@ The resulting configuration should look similar to the following screenshot:
 
 ![DNS Configuration for `example.ic-domain.live` on Amazon Route 53](route53-subdomain.png)
 
-Now, you are all set to register your custom domain with the boundary nodes, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
+Now, you are all set to register your custom domain with the HTTP gateways, and you can continue with step 2 of the [general custom domains instructions](./using-custom-domains#custom-domains-on-the-boundary-nodes).
+
+## Cloudflare
+
+When using Cloudflare as DNS provider, you need to apply the following settings such that the
+custom domain works as intended and does not fail to renew:
+
+* Under SSL/TLS > Edge Certificates at the very bottom, you have to disable "Universal SSL".
+* You should not proxy traffic through Cloudflare ("DNS only").

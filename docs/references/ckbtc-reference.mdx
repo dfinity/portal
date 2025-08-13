@@ -7,10 +7,10 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## ckBTC minter API endpoints
 The ckBTC minter canister is controlled by the NNS and running on the [pzp6e](https://dashboard.internetcomputer.org/subnet/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) subnet. In the configuration of the ckBTC minter canister, the following are set:
 
-- `retrieve_btc_min_amount`: The minimum ckBTC amount that can be burned and, correspondingly, the minimum BTC amount that can be withdrawn. The parameter is set to 0.001 BTC, or 100_000 Satoshi.
+- `retrieve_btc_min_amount`: The minimum ckBTC amount that can be burned and, correspondingly, the minimum BTC amount that can be withdrawn. The parameter is set to 0.0005 BTC, or 50_000 Satoshi.
 - `max_time_in_queue_nanos`: Any BTC retrieval request should be kept in a queue for, at most, this time. Caching requests rather than handling them right away has the advantage that multiple requests can be served in a single transaction, saving Bitcoin miner fees. The parameter is set to 10 minutes, which corresponds to the expected time between Bitcoin blocks.
 - `min_confirmations`: The number of confirmations required for the ckBTC minter to accept a Bitcoin transaction. The ckBTC minter does not mint ckBTC before a transaction transferring BTC reaches this number of transactions. The parameter is set to 6.
-- `kyt_fee`: The fee that must be paid for KYT checks, set to 2_000 Satoshi.
+- `kyt_fee`: The fee that must be paid for know-your-token (KYT) checks, set to 100 Satoshi.
 
 There are other parameters that are self-explanatory and can be found in the [ckBTC minter Candid file](https://github.com/dfinity/ic/blob/master/rs/bitcoin/ckbtc/minter/ckbtc_minter.did).
 
@@ -18,15 +18,20 @@ There are other parameters that are self-explanatory and can be found in the [ck
 The ckBTC minter provides the following API endpoints that can be used to interact with the canister:
 
 - [`get_btc_address`](#get_btc_addressowner-opt-principal-subaccount-opt-blob): Returns a specific Bitcoin address that the caller can use to obtain ckBTC by sending BTC to this address.
+- [`get_known_utxos`](#get_known_utxosowner-opt-principal-subaccount-opt-blob): Returns UTXOs of the given account known by the minter.
 - [`update_balance`](#update_balanceowner-opt-principal-subaccount-opt-blob): Instructs the ckBTC minter to check the balance of a Bitcoin address and mint ckBTC into the account of the owner.
 - [`estimate_withdrawal_fee`](#estimate_withdrawal_feeamount-opt-nat64): Returns a current estimate for the fee to be paid when retrieving a certain BTC amount.
 - [`get_deposit_fee`](#get_deposit_fee): Returns the fee charged when minting ckBTC.
 - [`retrieve_btc_with_approval`](#retrieve_btc_with_approvaladdress-text-amount-nat64-from_subaccount-opt-blob): Instructs the ckBTC minter to burn a certain ckBTC amount and send the corresponding BTC amount, minus fees, to a provided Bitcoin address.
 - [`retrieve_btc`](#retrieve_btcaddress-text-amount-nat64): This endpoint provides the same function as `retrieve_btc_with_approval` but with a different retrieval flow. Developers are encouraged to use the `retrieve_btc_with_approval` endpoint.
 - [`get_withdrawal_account`](#get_withdrawal_account): Returns a specific ckBTC account where the owner must transfer ckBTC before being able to retrieve BTC when using the `retrieve_btc` endpoint.
-- [`retrieve_btc_status`](#retrieve_btc_statusblock_index-nat64): Returns the status of a previous `retrieve_btc` call.
+- [`retrieve_btc_status_v2`](#retrieve_btc_status_v2block_index-nat64): Returns the status of a previous `retrieve_btc` call or `retrieve_btc_with_approval` call.
+- [`retrieve_btc_status_v2_by_account`](#retrieve_btc_status_v2_by_accountaccount): Returns the status of all recent `retrieve_btc` or `retrieve_btc_with_approval` calls associated with the provided account.
+- [`retrieve_btc_status`](#retrieve_btc_statusblock_index-nat64): Serves the same purpose as `retrieve_btc_status_v2` but returns less status information. This endpoint is considered *deprecated*.
 - [`get_minter_info`](#get_minter_info): Returns information about the ckBTC minter itself.
+- [`get_canister_status`](#get_canister_status): Returns canister status information.
 - [`get_events`](#get_eventsstart-nat64-length-nat64): Returns a set of events at the ckBTC minter.
+
 The endpoints are discussed in more detail in the following.
 
 ### `get_btc_address(owner: opt principal, subaccount: opt blob)`
@@ -35,6 +40,10 @@ The provided principal ID and subaccount are concatenated to form the derivation
 This public key is encoded as a pay-to-witness-public-key-hash (P2WPKH) Bitcoin address and returned as text.
 
 Note that the key derivation is not BIP-32 compliant, where 31 bits are used for each derivation level. Instead, a single derivation is performed based on the full principal ID and subaccount. Since the derivation is deterministic, a canister can derive the Bitcoin address for a given principal ID and subaccount itself.
+
+### `get_known_utxos(owner: opt principal, subaccount: opt blob)`
+
+The ckBTC minter keeps track of UTXOs for which it has minted ckBTC before. This query endpoint returns the list of all known, i.e., already processed, UTXOs that are tied to the Bitcoin address associated with the provided principal ID and subaccount. If no principal ID is provided, the Bitcoin address is derived from the sender's principal ID. The all-zero subaccount is used if no subaccount is provided.
 
 ### `update_balance(owner: opt principal, subaccount: opt blob)`
 The `update_balance` function is invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
@@ -68,8 +77,7 @@ The function returns the caller’s withdrawal account, which is the account der
 
 A user can only retrieve BTC using the `retrieve_btc` endpoint by first transferring ckBTC to this particular account.
 
-
-### `retrieve_btc_status(block_index: nat64)`
+### `retrieve_btc_status_v2(block_index: nat64)`
 The status of a BTC retrieval request can be checked using this function. The different possible statuses are:
 
 - `Unknown`: There is no information available on the ckBTC minter because there is no retrieval request associated with the given block index, or the retrieval request is old and the corresponding information has already been removed.
@@ -79,6 +87,14 @@ The status of a BTC retrieval request can be checked using this function. The di
 - `Submitted`: The Bitcoin transaction has been transmitted. The transaction ID is returned.
 - `AmountTooLow`: The BTC retrieval request could not be served because the Bitcoin miner fees are prohibitively high.
 - `Confirmed`: The Bitcoin transaction serving the BTC retrieval request is confirmed inside the ckBTC minter, which happens when the transaction has at least the minimum required number of confirmations specified in the `min_confirmations` parameter above.
+- `Reimbursed`: There has been an error when processing the BTC retrieval and the ckBTC amount has been reimbursed.
+- `WillReimburse`: There has been an eror when processing the BTC retrieval and the ckBTC amount will be reimbursed.
+
+### `retrieve_btc_status_v2_by_account(owner : principal, subaccount : opt blob)`
+This endpoint returns the status of all recent `retrieve_btc` or `retrieve_btc_with_approval` calls associated with the provided account.
+
+### `retrieve_btc_status(block_index: nat64)`
+This endpoint returns a subset of the status information of the `retrieve_btc_status` endpoint. This endpoint is considered *deprecated*.
 
 ### `get_minter_info`
 The function returns the following parameters internal to the ckBTC minter:
@@ -86,6 +102,9 @@ The function returns the following parameters internal to the ckBTC minter:
 - `kyt_fee`
 - `min_confirmations`
 - `retrieve_btc_min_amount`
+
+### `get_canister_status`
+This endpoint returns canister status information.
 
 ### `get_events(start: nat64, length: nat64)`
 The ckBTC minter tracks the events that change its internal state. Given a start index and a length parameter, the ckBTC minter returns all events sequentially from the event at the given `start` index up to the event at index `start+length-1`.

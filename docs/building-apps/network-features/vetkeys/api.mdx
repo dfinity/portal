@@ -1,0 +1,298 @@
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+
+# vetKD API
+
+Verifiably encrypted threshold key derivation (vetKD) is a distributed protocol for securely deriving cryptographic keys, referred to as  _vetKeys_. 
+The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by providing different inputs. 
+
+Below is a summary of the vetKD API methods and their parameters, described in [Candid notation](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
+
+```candid
+  // Derives keys based on the provided inputs.
+  vetkd_derive_key : (record {
+    // Arbitrary data used to derive keys. This acts as a key identifier - different
+    // inputs will result in different derived keys. The input does not need to be random.
+    input : blob;
+    // A domain separator to ensure that keys are derived within a specific context,
+    // preventing collisions between different applications or use cases.
+    context : blob;
+    // The recipient’s public key, used to encrypt the derived key for secure transport.
+    transport_public_key : blob;
+    // The master key from which the derived key is created.
+    key_id : record { curve : vetkd_curve; name : text };
+  }) -> (record { encrypted_key : blob; });
+
+  // Returns a public key that can be used to verify keys derived using `vetkd_derive_key`.
+  vetkd_public_key : (record {
+    // Optional. If provided, the method returns the public key associated with
+    // the specified `canister_id`. If omitted (`null`), the public key for
+    // the calling canister is returned.
+    canister_id : opt canister_id;
+    // Same as in `vetkd_derive_key`.
+    context : blob;
+    // Same as in `vetkd_derive_key`.
+    key_id : record { curve : vetkd_curve; name : text };
+  }) -> (record { public_key : blob; });
+```
+
+The full vetKD API specification can be found in the [IC interface specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
+
+## Available master keys
+
+The following key names are supported for curve `bls12_381_g2`:
+
+- `key_1`:  Production key available on the ICP mainnet (resides on subnet [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) and backed up on [`uzr34`](https://dashboard.internetcomputer.org/network/subnets/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe)).
+
+- `test_key_1`: Test key available on the ICP mainnet (resides on subnet [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) and backed up on [`2fq7c`](https://dashboard.internetcomputer.org/network/subnets/2fq7c-slacv-26cgz-vzbx2-2jrcs-5edph-i5s2j-tck77-c3rlz-iobzx-mqe)).
+
+- `dfx_test_key`: Only available on the local development environment started by `dfx`.
+
+Note that any canister on the ICP can use any available master key, independent of the subnet on which the canister or the key resides, because the management canister automatically redirects the calls for obtaining vetKeys to the subnet where the master key resides.
+
+## Obtaining a vetKey
+
+Deriving a vetKey typically involves both the frontend and backend components of a dapp, as the transport key is usually provided by the user.
+
+![vetKD protocol flow](./_attachments/vetkd_diagram.png)
+
+### Step 1: Implement canister endpoints
+
+Expose the vetKD endpoints in the backend canister API so that the frontend can retrieve and verify vetKeys.
+
+In this example, an encoding of the caller's identity is used as part of the `context` parameter to `VetKDDeriveKeyArgs`.
+Since the dapp uses the caller's identity for derivation, the dapp is sure that
+the vetKey returned is both unique to that caller and `input`, and that caller is the only party which can retrieve that
+particular key.
+
+Using the caller-provided `input` parameter, the caller can derive arbitrarily many unique vetKeys that only that user can retrieve and decrypt.
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl
+import Array "mo:base/Array";
+import Blob "mo:base/Blob";
+import ManagementCanister "mo:ic-vetkeys/ManagementCanister";
+import Nat8 "mo:base/Nat8";
+import Principal "mo:base/Principal";
+import Text "mo:base/Text";
+
+actor class () {
+  let DOMAIN_SEPARATOR = Blob.toArray(Text.encodeUtf8("example-vetkd-dapp"));
+
+  /// Derive encrypted vetKey for caller's principal.
+  public shared ({caller}) func vetkd_derive_key(transportKey : Blob, input : Blob) : async Blob {
+    await ManagementCanister.vetKdDeriveKey(input, context(caller), testKeyId(), transportKey)
+  };
+
+  public shared ({caller}) func publicKey() : async Blob {
+    await ManagementCanister.vetKdPublicKey(null, context(caller), testKeyId())
+  };
+
+  private func testKeyId() : ManagementCanister.VetKdKeyid {
+    {curve = #bls12_381_g2; name = "test_key_1"}
+  };
+
+  private func context(principal : Principal) : Blob {
+    let principalBytes = Blob.toArray(Principal.toBlob(principal));
+    let flattened = Array.flatten([[Nat8.fromNat(DOMAIN_SEPARATOR.size())], DOMAIN_SEPARATOR, principalBytes]);
+    Blob.fromArray(flattened);
+  }
+}
+
+
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
+use candid::Principal;
+use ic_cdk::management_canister::{VetKDCurve, VetKDDeriveKeyArgs, VetKDKeyId, VetKDPublicKeyArgs};
+use ic_cdk::update;
+
+const DOMAIN_SEPARATOR: &[u8] = b"example-vetkd-dapp".as_slice();
+
+/// Derive encrypted vetKey for caller's principal.
+#[update]
+async fn vetkd_derive_key(transport_public_key: Vec<u8>, input: Vec<u8>) -> Vec<u8> {
+    let caller = ic_cdk::api::msg_caller();
+    let request = VetKDDeriveKeyArgs {
+        input,
+        context: context(caller),
+        transport_public_key,
+        key_id: bls12_381_g2_test_key(),
+    };
+    let reply = ic_cdk::management_canister::vetkd_derive_key(&request)
+        .await
+        .expect("failed to derive key");
+    reply.encrypted_key
+}
+
+#[update]
+async fn vetkd_public_key() -> Vec<u8> {
+    let caller = ic_cdk::api::msg_caller();
+    let request = VetKDPublicKeyArgs {
+        canister_id: None,
+        context: context(caller),
+        key_id: bls12_381_g2_test_key(),
+    };
+
+    let reply = ic_cdk::management_canister::vetkd_public_key(&request)
+        .await
+        .expect("failed to derive key");
+    reply.public_key
+}
+
+fn bls12_381_g2_test_key() -> VetKDKeyId {
+    VetKDKeyId {
+        curve: VetKDCurve::Bls12_381_G2,
+        name: "test_key_1".to_string(),
+    }
+}
+
+fn context(principal: Principal) -> Vec<u8> {
+    [DOMAIN_SEPARATOR.len() as u8]
+        .into_iter()
+        .chain(DOMAIN_SEPARATOR.to_vec().into_iter())
+        .chain(principal.as_slice().to_vec().into_iter())
+        .collect()
+}
+
+// Export the interface for the smart contract.
+ic_cdk::export_candid!();
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 2: Generate a transport key pair and pass the transport public key to the canister
+
+In this step, the frontend generates a transport private key and passes the corresponding transport public key to the canister in order to obtain the encrypted vetKeys that can only be decrypted by the frontend.
+
+<AdornedTabs groupId="languages">
+<TabItem value="ts" label="Typescript" default>
+
+```ts
+import { DerivedPublicKey, TransportSecretKey, EncryptedVetKey } from "@dfinity/vetkeys";
+
+const transportSecretKey = TransportSecretKey.random();
+const canisterClient = // get canister client, usually auto-generated code from canister's candid interface
+// unique `input` should be provided for each derived vetKey
+// we only need one vetKey in this example, so we choose to have the simplest possible `input` - an empty vector
+const input = new Uint8Array(0);
+// the called canister uses the caller's principal as part of `context` when calling the management canisters `vetkd_derive_key` endpoint under the hood (see code in Step 1)
+const encryptedVetKeyBytes = await canisterClient.vetkd_derive_key(transportSecretKey.publicKeyBytes(), input);
+const encryptedVetKey = EncryptedVetKey(encryptedVetKeyBytes);
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Step 3: Retrieve the vetKD public key from the backend canister
+
+Once retrieved, you must decrypt and verify the received encrypted vetKey.
+
+<AdornedTabs groupId="languages">
+<TabItem value="ts" label="Typescript" default>
+
+```ts
+// the called canister uses the caller's principal as part of `context` when calling the management canisters `vetkd_public_key` endpoint under the hood (see code in Step 1)
+const publicKeyBytes = await canisterClient.vetkd_public_key();
+const publicKey = DerivedPublicKey.deserialize(publicKeyBytes);
+// pass `input` from Step 2 to the verification function
+const vetKey = encryptedVetKey.decryptAndVerify(transportSecretKey, publicKey, input);
+```
+
+</TabItem>
+</AdornedTabs>
+
+## API fees
+
+The fees for the vetKD APIs are defined below. The threshold vetKD test key resides on the 13-node application subnet [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae), while the threshold vetKD production key resides on the 34-node-sized fiduciary subnet [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae). The subnet size where the vetKD key resides and the vetKeys are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of May 22, 2025, has been used.
+
+:::note
+If a canister using this feature is intended to be blackholed or used by other canisters, it's recommended to send more cycles with each call than the currently advertised cost. This ensures that, if the subnet's size increases in the future (leading to higher signature costs), the call will still succeed. Any unused cycles are automatically refunded.
+:::
+
+Fees for deriving one vetKey using the `vetkd_derive_key` API of the management canister:
+
+| Key type (key name)                  | Cycles                      | USD                         | Signing subnet (size) |
+|--------------------------------------|-----------------------------|-----------------------------|--------------|
+| Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  | [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) (34) |
+| Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  | [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) (13) |
+
+## Offline Key Derivation
+
+As an alternative to using `vetkd_public_key` to perform key derivation, it is also possible to perform the key derivation
+completely offline, avoiding network cost.
+
+These example snippets demonstrate using the vetkeys utility libraries to perform the derivation for
+`key_1`, with a canister "urq22-tyaaa-aaaag-audia-cai", and a `context` string of "context-string".
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let key_id = VetKDKeyId {
+    curve: VetKDCurve::Bls12_381_G2,
+    name: "key_1".to_string(),
+};
+let key1 = MasterPublicKey::for_mainnet_key(&key_id)?;
+let canister_id = candid::Principal::from_text("urq22-tyaaa-aaaag-audia-cai")?;
+let canister_key = key1.derive_canister_key(canister_id.as_slice());
+let derived_key = canister_key.derive_sub_key(b"context-string");
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+const masterKey = MasterPublicKey.productionKey();
+const canisterId = hexToBytes("0000000000c0a0d00101"); // the byte encoding of the canister identifier
+const canisterKey = masterKey.deriveCanisterKey(canisterId);
+const derivedKey = canisterKey.deriveSubKey(new TextEncoder().encode("context-string"));
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Master Public Keys
+
+The value of the master public keys used in the production network are:
+
+- `key_1`: `a9caf9ae8af0c7c7272f8a122133e2e0c7c0899b75e502bda9e109ca8193ded3ef042ed96db1125e1bdaad77d8cc60d917e122fe2501c45b96274f43705edf0cfd455bc66c3c060faa2fcd15486e76351edf91fecb993797273bbc8beaa47404`
+- `test_key_1`: `ad86e8ff845912f022a0838a502d763fdea547c9948f8cb20ea7738dd52c1c38dcb4c6ca9ac29f9ac690fc5ad7681cb41922b8dffbd65d94bff141f5fb5b6624eccc03bf850f222052df888cf9b1e47203556d7522271cbb879b2ef4b8c2bfb1`
+
+These can be loaded using the VetKD utility libraries as follows:
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let key1_bytes = "a9caf...";
+let key1 = MasterPublicKey::deserialize(hex::decode(key_1)?)?;
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+let key1_bytes = "a9caf...";
+let key1 = MasterPublicKey.deserialize(Uint8Array.fromHex(key1_bytes));
+```
+
+</TabItem>
+</AdornedTabs>
+
+Using the `MasterPublicKey` is is possible to perform offline key
+derivation as described above in the section "Offline Key Derivation".
+
+## Resources
+
+- [IC Interface Specification: `vetkd_derive_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key).
+- [IC Interface Specification: `vetkd_public_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
+- [VetKD utility library](https://github.com/dfinity/vetkd)

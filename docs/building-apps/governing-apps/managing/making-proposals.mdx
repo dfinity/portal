@@ -10,32 +10,32 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Tutorial"]} />
 
-To manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted, voted on, and what effect they have.
+In an SNS DAO, all decisions and changes happen through proposals.
+Therefore, to manage an SNS, the SNS community needs to understand how proposals work, how they can be submitted and voted on, and what effect they have.
 
-This article explains the different kinds of proposals and provides an example quill command that can be used to submit each.
+The [Learn Hub page on SNS proposals](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals) contains more information on the SNS proposals' lifecycle, the concepts of native proposals and custom proposals, and an introduction to proposal topics. 
+Here we explain more technical details of proposals, focusing on how proposals can be submitted.
 
 ## Background
-
 On a high level, a proposal is defined by a particular method on a particular canister that is called if the proposal is adopted by the SNS.
 When the proposal is adopted, this method is called and executed fully on chain.
 
 In some cases, this method is on the SNS governance itself, and in other cases, the method that is called can be defined in another canister.
 
 :::warning
-Most proposals can be submitted at any time. However, some proposals are not allowed during the SNS launch until the swap has finished:
-
-1. `ManageNervousSystemParameters`
-2. `TransferSnsTreasuryFunds`
-3. `MintSnsTokens`
-4. `UpgradeSnsControlledCanister`
-5. `RegisterDappCanisters`
-6. `DeregisterDappCanisters`
-
-This means that it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
+Note that some proposals cannot be submitted while the SNS DAO is still being launched. This is to ensure that fundamental decisions can only be made once the governance is fully decentralized and the community can participate.
+As a consequence of this, it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
 :::
 
+## How to submit proposals
+On a high level, a proposal can be submitted by any eligible neuron. There are different tools that provide an interface to users to do so.
+A tool needs to access the neuron to be able to submit a proposal. For example, this can be achieved by adding the principal in the tool as a hotkey to an eligible neurons. 
 
-## Using quill to submit proposals
+### Using community tools
+One of the easiest ways to submit proposals is to use community-provided tools. 
+For example, you can go on `https://ic-toolkit.app/sns-management` and link it to an SNS neuron to submit a proposal in this SNS DAO.
+
+### Using quill's `sns make-proposal` command
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -48,9 +48,9 @@ This means that it is not easy to upgrade an SNS-controlled dapp canister during
 </TabItem>
 </Tabs>
 
-### Submitting via `sns make-proposal` command
+#### Submitting via `sns make-proposal` command
 
-Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/)
+Since you need an eligible neuron to submit a proposal, the command to [submit a proposal](https://github.com/dfinity/quill/)
 `sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` proposal) to be voted on by other neuron holders.
 
 The structure of the commands is as follows:
@@ -113,78 +113,78 @@ quill send message.json
 This guide will not repeat the `export PROPOSAL_NEURON_ID` and `export PEM_FILE` lines for each example proposal, but it is recommended you set these variables in your terminal before submitting proposals.
 :::
 
+
 ## Proposal types
 
-This article describes the different kinds of proposals that can be submitted to an SNS: [Native proposals](#native-proposals) and [generic proposals](#generic-proposals).
+This article describes the different kinds of proposals that can be submitted to an SNS in terms of [Native proposals](#native-proposals) and [generic proposals](#generic-proposals).
+For each native proposal that is built in the SNS framework and can be used by all SNSs, we describe what's the proposal's topic and some more details about the proposal's type - often with a concrete example how to submit it.
+For the generic proposals, that are custom to each SNS, we describe the proposal required to add them.
 
-## Native proposals
 
-An SNS comes with built-in proposals called “native proposals" that are of the following types:
+An SNS comes with the built-in, called “native", proposals of the following types:
 
 - [`Motion`](#motion).
-- [`UpgradeSnsToNextVersion`](#upgradesnstonextversion).
+- [`ManageNervousSystemParameters`](#managenervoussystemparameters).
+- [`ManageSnsMetadata`](#managesnsmetadata).
+- [`ManageLedgerParameters`](#ManageLedgerParameters).
 - [`RegisterDappCanisters`](#registerdappcanisters).
 - [`DeregisterDappCanisters`](#deregisterdappcanisters).
-- [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
+- [`RegisterExtension`](#RegisterExtension).
 - [`UpgradeSnsControlledCanister`](#upgradesnscontrolledcanister).
-- [`ManageSnsMetadata`](#managesnsmetadata).
+- [`ManageDappCanisterSettings`](#managedappcanistersettings).
+- [`UpgradeSnsToNextVersion`](#upgradesnstonextversion).
+- [`AdvanceSnsTargetVersion`](#AdvanceSnsTargetVersion).
+- [`TransferSnsTreasuryFunds`](#transfersnstreasuryfunds).
 - [`MintSnsTokens`](#mintsnstokens).
 
-All of the proposals used to manage an SNS are executed on the SNS governance canister, so it helps to have for reference what the [interface for the governance canister](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/canister/governance.did) is.
+Each SNS also has the following native proposals for handling custom proposals:
+- [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction).
+- [`RemoveGenericNervousSystemFunction`](#RemoveGenericNervousSystemFunction).
+- [`ExecuteGenericNervousSystemFunction`](#ExecuteGenericNervousSystemFunction).
+- [`SetTopicsForCustomProposals`](#settopicsforcustomproposals).
+
+All of the proposals used to manage an SNS are executed on the SNS governance canister, so it helps to have for reference the [interface for the governance canister](https://github.com/dfinity/ic/blob/master/rs/sns/governance/canister/governance.did).
 
 Below are the most important types for the purpose of this article:
 
 ```candid
     type Account = record {
-        owner : opt principal;
-        subaccount : opt Subaccount
+        owner : opt principal;
+        subaccount : opt Subaccount;
     };
 
     //proposals types for managing an SNS
     type Action = variant {
         ManageNervousSystemParameters : NervousSystemParameters;
         AddGenericNervousSystemFunction : NervousSystemFunction;
+        SetTopicsForCustomProposals : SetTopicsForCustomProposals;
+        ManageDappCanisterSettings : ManageDappCanisterSettings;
         RemoveGenericNervousSystemFunction : nat64;
         UpgradeSnsToNextVersion : record {};
+        AdvanceSnsTargetVersion : AdvanceSnsTargetVersion;
         RegisterDappCanisters : RegisterDappCanisters;
+        RegisterExtension : RegisterExtension;
         TransferSnsTreasuryFunds : TransferSnsTreasuryFunds;
         UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
         DeregisterDappCanisters : DeregisterDappCanisters;
         MintSnsTokens : MintSnsTokens;
-        Unspecified : record {};
-        ManageSnsMetadata : ManageSnsMetadata;
-        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction;
+        Unspecified : record {}; 
+        ManageSnsMetadata : ManageSnsMetadata; 
+        ExecuteGenericNervousSystemFunction : ExecuteGenericNervousSystemFunction; 
         ManageLedgerParameters : ManageLedgerParameters;
         Motion : Motion;
     };
 ```
 
 :::info
-See the [types in the code](https://sourcegraph.com/github.com/dfinity/ic@4732d8281404c0a7c1e0a91937ffd0e54f2beced/-/blob/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto?L405)—they are called “action” in the code.
+See the [types in the code](https://github.com/dfinity/ic/blob/794a2e7182b30c7e38dd54c22fe4ef3e54d11620/rs/sns/governance/proto/ic_sns_governance/pb/v1/governance.proto#L568)—they are called “action” in the code.
 :::
 
-### Critical proposal types
+We first go through the main native proposals and then explain custom proposals.
 
-Some proposal types are considered "critical." These are `DeregisterDappCanisters`, `TransferSnsTreasuryFunds`, and `MintSnsTokens`. Critical proposal types have more strict rules to ensure they are only passed with broad community consensus.
-In the following we list all differences to non-critical proposals.
 
-1. Voting thresholds
+## Native proposals
 
-Non-critical proposal types can be passed if 3% of the total voting power votes yes and 50% of the exercised voting power votes yes.
-
-Critical proposal types can only be passed if 20% of the total voting power votes yes and 67% of the exercised voting power votes yes.
-
-2. Catch-all following
-
-Voters can follow other neurons on critical proposal types, but each neuron has to make an active decision to follow for each critical proposal type, as the catch-all following “All topics” is not applied to critical proposal types. Users who have multiple neurons can actively vote with just one of them and follow this one neuron with all their other neurons.
-
-3. Voting period
-
-The voting period for critical proposal types is 5-10 days and cannot be changed by the SNS. In contrast, for non-critical proposals, the default is 4-8 days, and this can be adjusted by each SNS DAO.
-
-Critical proposals have a longer voting period as they require a larger voting participation, and it is therefore beneficial to give voters a bit more time to participate.
-
-As with all proposals, the [wait-for-quiet algorithm](https://wiki.internetcomputer.org/wiki/NNS_Canisters#Proposal_decision_and_wait-for-quiet) ensures that controversial proposals will have a longer voting period (up to 10 days for critical proposals) while proposals where everyone agrees to have a shorter voting period (5 days for critical proposals).
 
 ### `Motion`
 
@@ -218,37 +218,135 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send message.json
 ```
+### `ManageNervousSystemParameters`
 
+While each SNS DAO uses the same NNS-approved Wasm code for their canisters, each SNS community can tweak the settings of their DAO to their needs. This is done by defining SNS-specific settings, called the *Nervous System Parameters*. 
+Find more information about the detailed settings in the Learn Hub's [DAO Settings](https://learn.internetcomputer.org/hc/en-us/articles/34142964565396-DAO-Settings).
 
-### `UpgradeSnsToNextVersion`
+```candid
+  type NervousSystemParameters = record {
+        default_followees : opt DefaultFollowees;
+        max_dissolve_delay_seconds : opt nat64;
+        max_dissolve_delay_bonus_percentage : opt nat64;
+        max_followees_per_function : opt nat64;
+        neuron_claimer_permissions : opt NeuronPermissionList;
+        neuron_minimum_stake_e8s : opt nat64;
+        max_neuron_age_for_age_bonus : opt nat64;
+        initial_voting_period_seconds : opt nat64;
+        neuron_minimum_dissolve_delay_to_vote_seconds : opt nat64;
+        reject_cost_e8s : opt nat64;
+        max_proposals_to_keep_per_action : opt nat32;
+        wait_for_quiet_deadline_increase_seconds : opt nat64;
+        max_number_of_neurons : opt nat64;
+        transaction_fee_e8s : opt nat64;
+        max_number_of_proposals_with_ballots : opt nat64;
+        max_age_bonus_percentage : opt nat64;
+        neuron_grantable_permissions : opt NeuronPermissionList;
+        voting_rewards_parameters : opt VotingRewardsParameters;
+        maturity_modulation_disabled : opt bool;
+        max_number_of_principals_per_neuron : opt nat64;
+        automatically_advance_target_version : opt bool;
+  };
+```
 
-Recall that all approved SNS canister versions are stored on the NNS canister [SNS-W](../overview.mdx).
-New SNS canister Wasm codes are approved by NNS proposals and then added to SNS-W.
-Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W.
+The input of the proposal are all nervous system parameters. 
+All parameters that should _not_ be changed are declared as `null` in the proposal, which has the effect that those are not updated. 
 
-To do so, they can use an `UpgradeSnsToNextVersion` proposal. If this proposal is adopted, it will trigger a call to SNS root that will ask SNS-W which new wasm version is available and then upgrade to this new version.
+### `ManageSnsMetadata`
+
+Each SNS has metadata that defines the SNS project and includes, e.g., a URL under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a re-branding for the associated project. To do so, the SNS DAO can use the `ManageSnsMetadata` proposal which defines all of the below attributes.
 
 #### Relevant type signatures
 
 ```candid
-    type UpgradeSnsToNextVersion : record {};
+    type  ManageSnsMetadata : ManageSnsMetadata;
+
+    type ManageSnsMetadata = record {
+        url : opt text;
+        logo : opt text;
+        name : opt text;
+        description : opt text;
+    };
+```
+#### Putting it together
+
+Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this, but you want to change the `description` field only:
+
+```
+    url = "https://sns-examples.com/proposal/42";
+    logo : "https://sns-examples.com/logo/img.jpg";
+    name : "SNS Example #42";
+    description : "Sample SNS used for educational purposes";
 ```
 
-#### Putting it together
+To update the `description` field, you can use the following command (where untouched fields get marked `null`).
 
 Example in bash:
 
 ```bash
 quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
     record {
-        title = "Upgrade SNS to next available version";
+        title = "lorem ipsum";
         url = "https://sns-examples.com/proposal/42";
-        summary = "A proposal to upgrade the SNS DAO to the next available version on SNS-W";
+        summary = "lorem ipsum";
         action = opt variant {
-            UpgradeSnsToNextVersion = record {};
+            ManageSnsMetadata = record {
+
+                url = null;
+
+                logo = null;
+
+                name = null;
+
+                description = opt "UPDATED Sample SNS used for educational purposes";
+            };
         };
     }
 )' > message.json
+
+quill send message.json
+```
+
+The resulting metadata will resemble the following, where only the `description` field has changed:
+
+```
+    url = "https://sns-examples.com/proposal/42";
+    logo : "https://sns-examples.com/logo/img.jpg";
+    name : "SNS Example #42";
+    description : "UPDATED Sample SNS used for educational purposes";
+```
+### `ManageLedgerParameters`
+The proposal `ManageLedgerParameters` can be used to update some of the SNS ledger canister's parameters. The ledger parameters that can be changed are the transfer fee, the token symbol, the token name, and the token logo. Later, additional parameters might be added. Fields where a value is set to `None` will remain unchanged.
+
+#### Relevant type signatures
+
+```candid
+type ManageLedgerParameters = record {
+  token_symbol : opt text;
+  transfer_fee : opt nat64;
+  token_logo : opt text;
+  token_name : opt text;
+};
+```
+
+Below is an example using quill that only changes the transfer fee and token symbol:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = \"Change Our Transfer Fee to 314_159 e8s and token symbol to TEST\";
+        url = \"https://sns-examples.com/proposal/42\";
+        summary = \"Change our transfer fee to 314_159 e8s and token symbol to TEST.\";
+        action = opt variant {
+            ManageLedgerParameters = record {
+                token_symbol = opt \"TEST\";
+                transfer_fee = opt 314_159;
+                token_logo = null;
+                token_name = null;
+            }
+        };
+    }
+)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
 
 quill send message.json
 ```
@@ -301,8 +399,6 @@ The proposal `DeregisterDappCanisters` is the counterpart of `RegisterDappCanist
 If an SNS community decides that they would like to give up the control of a given dapp canister, they can use this proposal to do so.
 To this end, the proposal defines the canister ID of the dapp canister to be deregistered and a principal to whom the canister will be handed over to (i.e., this principal will be set as the new controller of the specified dapp canister).
 
-This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
-
 #### Relevant type signatures
 
 ```candid
@@ -337,12 +433,265 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 
 quill send message.json
 ```
+### `RegisterExtension`
 
+This allows an SNS to register an extension. An extension is a canister that does not need to be part of an SNS, so it is not an SNS framework canister, but it is an NNS-approved canister that can be added to any SNSs that need it.
+This feature is under developement and will soon allow SNS DAOs to integrate with DEX liquidity pools more easily. In the future it might support other extensions.
+
+#### Relevant type signatures
+
+```candid
+   type RegisterExtension = record {
+        chunked_canister_wasm : opt ChunkedCanisterWasm;
+        extension_init : opt ExtensionInit;
+   };
+```
+### `UpgradeSnsControlledCanister`
+
+The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new Wasm module.
+
+#### Relevant type signatures
+
+```candid
+    type UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
+
+    type UpgradeSnsControlledCanister = record {
+        new_canister_wasm : vec nat8;
+        chunked_canister_wasm : opt ChunkedCanisterWasm;
+        mode : opt int32;
+        canister_id : opt principal;
+        canister_upgrade_arg : opt vec nat8;
+    };
+```
+
+:::warning
+Since this proposal requires passing a Wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/) command in `quill sns`.
+
+
+```bash
+quill sns make-upgrade-canister-proposal <PROPOSER_NEURON_ID> --target-canister-id <TARGET_CANISTER_ID> --wasm-path <WASM_PATH> [option]
+```
+
+```bash
+export $WASM_PATH="/home/user/new_wasm.wasm"
+quill sns make-upgrade-canister-proposal --target-canister-id "4ijyc-kiaaa-aaaaf-aaaja-cai" --wasm-path $WASM_PATH $PROPOSAL_NEURON_ID > message.json
+quill send message.json
+```
+
+:::
+
+#### Upgrading a dapp with a large Wasm
+
+Due to the fact that ICP ingress messages can be at most 2 MiB, it is not possible to upgrade larger dapp canisters embedding their Wasm directly in the proposal. 
+Instead, to upgrade such large dapp canisters, a user can upload the necessary Wasm _chunks_ to a store canister and then make a proposal that upgrades the target canister to the corresponding Wasm.
+
+To make a concrete example, assume you want to upgrade the canister under the ID `$TARGET` using a large Wasm (more than 2 MiB).
+
+#### Step 1. Give the store canister a name.
+```
+touch dfx.json
+jq '.canisters += { "store": {} }' dfx.json > dfx.json
+```
+
+#### Step 2. Create the store canister using the current `dfx` identity.
+```
+SNS_GOVERNANCE_CANISTER_ID=...
+SNS_ROOT_CANISTER_ID=...
+dfx canister create \
+    --next-to $TARGET \
+    --controller $SNS_GOVERNANCE_CANISTER_ID \
+    --controller $SNS_ROOT_CANISTER_ID \
+    --controller "$(dfx identity get-principal)" \
+         store
+```
+Set the output canister ID in the variable `STORE`.
+        
+#### Step 3. Prepare the Wasm chunks.
+```
+CHUNK_SIZE=1048576  # 1 MiB
+PATH_TO_LARGE_WASM="../ic/image-classification.wasm.gz"
+WASM_CHUNK_PREFIX="$(basename ${PATH_TO_LARGE_WASM})-"
+split \
+    --bytes=$CHUNK_SIZE \
+    -d "${PATH_TO_LARGE_WASM}" "${WASM_CHUNK_PREFIX}"
+for chunk in "${WASM_CHUNK_PREFIX}"*; do
+    sha256sum $chunk
+done
+```
+Example output:
+```
+88291c10f020dbc8b51cecd445e9478bfe5140b0262b2e8cdfc537bc12ab09e7 *image-classification.wasm.gz-00
+6c5327b964d581a2a7e1d7c4cae742a9487cb439f320ea3b316fb031ecb37228 *image-classification.wasm.gz-01
+c28b87f613b7c2b1e5a912d8d05970e59688a70e53a28eebc2266477fc3fb1d5 *image-classification.wasm.gz-02
+b7e7eeca7a3559a43bb3cc690b3846a55e7234baff99fdf24b850dcc1b58a22d *image-classification.wasm.gz-03
+94eeaadaa5cd857ed9c0bf1077aafa490d9204eb3dc05ebd6504c8500f3a6163 *image-classification.wasm.gz-04
+03b2dfea8e19a028361f58589d3006ed716e48a4457ce1044a2fe30f0c88f287 *image-classification.wasm.gz-05
+8365f355c6912a85560b645d870484d8de89f7c2672c082204d4a0d18598ff34 *image-classification.wasm.gz-06
+9ab1a40bbd7b89889667b45127ce61606adba6e498ec72e978874fbd42ad4fcd *image-classification.wasm.gz-07
+4c01daa5a37cd8793b9f72b144389377370bc1a2ef62c805a276f025b1fb1b4e *image-classification.wasm.gz-08
+6499adff752a81873030dd6d4b69239577f7a9ea78dee8f28f4b907c5760b931 *image-classification.wasm.gz-09
+00ffd1d7ccfa794ba28d48274d62a8cbbed640937503acacf3cc2fc46df94257 *image-classification.wasm.gz-10
+57083003180aa606bef58750112afd6cc017ba625e3b18d14eb34239bdd7a722 *image-classification.wasm.gz-11
+a0808a12521416b32990e600878452a5b55880b5f050afde0da3d1f25934b454 *image-classification.wasm.gz-12
+10facbec8b6c4e77215b615d5e1d345416bbe95d9e17f7ba570babcd5302615d *image-classification.wasm.gz-13
+57e78bd4bf5a9e6379bfb8ac05bb6fa71e84997c63381733192100b4e1b513af *image-classification.wasm.gz-14
+bcf80bf0a1347bd2314e7684c3906393220f3349584318352ae05fe7509baec5 *image-classification.wasm.gz-15
+```
+
+#### Step 4.  Upload the Wasm chunks, one-by-one.
+```
+dfx canister call --candid icp.did aaaaa-aa upload_chunk
+```
+Interactively fill out the details for the 0th chunk (image-classification.wasm.gz-00).
+```
+dfx canister call --candid icp.did aaaaa-aa upload_chunk
+```
+Interactively fill out the details for the 1st chunk (image-classification.wasm.gz-01).
+...
+```
+dfx canister call --candid icp.did aaaaa-aa upload_chunk
+```
+Interactively fill out the details for the 1st chunk (image-classification.wasm.gz-15).
+
+Next, check that the expected chunks were uploaded successfully
+```
+dfx canister call aaaaa-aa stored_chunks '(record { canister_id = principal "'${STORE}'" })'
+```
+
+#### Step 5. Submit the `UpgradeSnsControlledCanister` proposal to upgrade the SNS-controlled canister using the chunks.
+You may use any frontend for creating SNS proposals, or do it via the CLI. For example:
+
+```
+dfx canister call $SNS_GOVERNANCE_CANISTER_ID manage_neuron '(
+ record {
+   subaccount = blob "proposer-subaccount";
+   command = opt variant {
+     MakeProposal = record {
+       url = "https://example.com";
+       title = "Test chunked upgrades";
+       action = opt variant {
+         UpgradeSnsControlledCanister = record {
+           new_canister_wasm = blob "";
+           mode = opt (1 : int32);
+           canister_id = opt principal "'${TARGET}'";
+           chunked_canister_wasm = opt record {
+             wasm_module_hash = blob "ABC";
+             chunk_hashes_list = vec {
+               blob "abc";
+               ...
+               blob "abc";
+             };
+             store_canister_id = opt principal "'${STORE}'";
+           };
+           canister_upgrade_arg = opt blob "XYZ";
+         }
+       };
+       summary = "Test chunked upgrades";
+     }
+   };
+ },
+)'
+
+```
+
+### `ManageDappCanisterSettings`
+This proposal allows upgrading the settings of one or more SNS DAO-controlled dapp canisters. The canisters whose settings should be updated are specified in `canister_ids`, and the proposal allows updating the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or the public), the memory allocation, the compute allocation, and the Wasm memory threshold.
+
+#### Relevant type signatures
+
+```candid
+type ManageDappCanisterSettings = record {
+  freezing_threshold : opt nat64;
+  canister_ids : vec principal;
+  reserved_cycles_limit : opt nat64;
+  log_visibility : opt int32;
+  wasm_memory_limit : opt nat64;
+  memory_allocation : opt nat64;
+  compute_allocation : opt nat64;
+  wasm_memory_threshold : opt nat64;
+};
+enum LogVisibility {
+  LOG_VISIBILITY_UNSPECIFIED = 0;
+  LOG_VISIBILITY_CONTROLLERS = 1;
+  LOG_VISIBILITY_PUBLIC = 2;
+}
+```
+
+Example using quill:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Set the Memory Allocation of the Widget Canister to 314_159 Bytes";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Set the memory allocation of the Widget Canister to 314_159 bytes.";
+        action = opt variant {
+            ManageDappCanisterSettings = record {
+                canister_ids = vec { principal "WIDGET-CANISTER-ID" };
+                memory_allocation = opt 314_159;
+            }
+        }
+    }
+)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
+
+quill send message.json
+```
+
+### `AdvanceSnsTargetVersion`
+As explained in the [Framework and Architecture](https://learn.internetcomputer.org/hc/en-us/articles/34140764336788-Framework-and-Architecture) article, all approved SNS canister versions are stored on the NNS canister SNS-W.
+New SNS canister Wasm codes are approved by NNS proposals and then added to SNS-W.
+An SNS community can then specify by proposal that they would like to follow the upgrade path up to a specific version.
+
+:::info
+To simplify maintenance further for SNS communities, an SNS community can also set `automatically_advance_target_version` in the nervous system parameters to true. In that case, the SNS will automatically upgrade the SNS to the newest available version as soon as it is approved by the NNS community.
+:::
+
+#### Relevant type signatures
+```candid
+type AdvanceSnsTargetVersion = record {
+  new_target : opt SnsVersion;
+};
+```
+
+### `UpgradeSnsToNextVersion`
+
+:::warning
+While this proposal can still be used to update the SNS framework canisters, it is recommended to use `AdvanceSnsTargetVersion` explained above instead, which is the newer version of this.
+:::
+
+As explained in the [Framework and Architecture](https://learn.internetcomputer.org/hc/en-us/articles/34140764336788-Framework-and-Architecture) article, all approved SNS canister versions are stored on the NNS canister SNS-W.
+New SNS canister Wasm codes are approved by NNS proposals and then added to SNS-W.
+Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W.
+
+To do so, they can use an `UpgradeSnsToNextVersion` proposal. If this proposal is adopted, it will trigger a call to the SNS root that will ask the SNS-W canister which new Wasm version is available, then trigger an upgrade to that version.
+
+#### Relevant type signatures
+
+```candid
+    type UpgradeSnsToNextVersion : record {};
+```
+
+#### Putting it together
+
+Example using quill:
+
+```bash
+quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
+    record {
+        title = "Upgrade SNS to next available version";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "A proposal to upgrade the SNS DAO to the next available version on SNS-W";
+        action = opt variant {
+            UpgradeSnsToNextVersion = record {};
+        };
+    }
+)' > message.json
+
+quill send message.json
+```
 ### `TransferSnsTreasuryFunds`
 
 The SNS DAO has control over a treasury from which funds can be sent to other accounts by `TransferSnsTreasuryFunds` proposals.
-
-This is a ["critical" proposal type](#criticalproposals), which means it is subject to higher voting thresholds before it is accepted.
 
 #### Maximum 7-day amount total
 
@@ -429,111 +778,9 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 quill send message.json
 ```
 
-See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/202).
-
-### `UpgradeSnsControlledCanister`
-
-The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that is controlled by the SNS DAO to a new wasm.
-
-#### Relevant type signatures
-
-```candid
-    type UpgradeSnsControlledCanister : UpgradeSnsControlledCanister;
-
-    type UpgradeSnsControlledCanister = record {
-        new_canister_wasm : vec nat8;
-        mode : opt int32;
-        canister_id : opt principal;
-        canister_upgrade_arg : opt vec nat8;
-    };
-```
-
-:::warning
-Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/) command in `quill sns`.
-
-
-```bash
-quill sns make-upgrade-canister-proposal <PROPOSER_NEURON_ID> --target-canister-id <TARGET_CANISTER_ID> --wasm-path <WASM_PATH> [option]
-```
-
-```bash
-export $WASM_PATH="/home/user/new_wasm.wasm"
-quill sns make-upgrade-canister-proposal --target-canister-id "4ijyc-kiaaa-aaaaf-aaaja-cai" --wasm-path $WASM_PATH $PROPOSAL_NEURON_ID > message.json
-quill send message.json
-```
-
-:::
-
-### `ManageSnsMetadata`
-
-Each SNS has metadata that defines the SNS project and includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example, if there is a rebranding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the below attributes.
-
-#### Relevant type signatures
-
-```candid
-    type  ManageSnsMetadata : ManageSnsMetadata;
-
-    type ManageSnsMetadata = record {
-        url : opt text;
-        logo : opt text;
-        name : opt text;
-        description : opt text;
-    };
-```
-
-#### Putting it together
-
-Sometimes a user wants to change only part of the metadata. Suppose the metadata currently looks like this, but you want to change the `description` field only:
-
-```
-    url = "https://sns-examples.com/proposal/42";
-    logo : "https://sns-examples.com/logo/img.jpg";
-    name : "SNS Example #42";
-    description : "Sample SNS used for educational purposes";
-```
-
-To update the `description` field, you can use the following command (where untouched fields get marked `null`).
-
-Example in bash:
-
-```bash
-quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
-    record {
-        title = "lorem ipsum";
-        url = "https://sns-examples.com/proposal/42";
-        summary = "lorem ipsum";
-        action = opt variant {
-            ManageSnsMetadata = record {
-
-                url = null;
-
-                logo = null;
-
-                name = null;
-
-                description = opt "UPDATED Sample SNS used for educational purposes";
-            };
-        };
-    }
-)' > message.json
-
-quill send message.json
-```
-
-Then the resulting metadata will end like this, where only the `description` field changed:
-
-```
-    url = "https://sns-examples.com/proposal/42";
-    logo : "https://sns-examples.com/logo/img.jpg";
-    name : "SNS Example #42";
-    description : "UPDATED Sample SNS used for educational purposes";
-```
-
 ### `MintSnsTokens`
 
 Each SNS can have SNS tokens in its treasury, but it also has the ability to mint new SNS tokens to a particular user.
-
-This is a ["critical" proposal type](#criticalproposaltypes), which means it is subject to higher voting thresholds before it is accepted.
 
 #### Relevant type signatures
 
@@ -576,112 +823,28 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 quill send message.json
 ```
 
-### `ManageLedgerParameters`
-The proposal `ManageLedgerParameters` can be used to update some of the SNS ledger canister's parameters. The ledger parameters that can be changed are the transfer fee, the token symbol, the token name, and the token logo. Later, additional parameters might be added. Fields where a value is set to `None` will remain unchanged.
+## Custom proposals
 
-#### Relevant type signatures
+Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it, but that might be very dapp-specific. Custom proposals, also called generic proposals, generic functions, or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
 
-```candid
-type ManageLedgerParameters = record {
-  token_symbol : opt text;
-  transfer_fee : opt nat64;
-  token_logo : opt text;
-  token_name : opt text;
-};
-```
+For additional motivation and examples, also refer to the [Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34146571133204-Proposals#h_01K0V8PJ2MV9T0YNCZ12ZZFRA9).
 
-Example in bash that only changes the transfer fee and token symbol:
-
-```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
-    record {
-        title = \"Change Our Transfer Fee to 314_159 e8s and token symbol to TEST\";
-        url = \"https://sns-examples.com/proposal/42\";
-        summary = \"Change our transfer fee to 314_159 e8s and token symbol to TEST.\";
-        action = opt variant {
-            ManageLedgerParameters = record {
-                token_symbol = opt \"TEST\";
-                transfer_fee = opt 314_159;
-                token_logo = null;
-                token_name = null;
-            }
-        };
-    }
-)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
-
-quill send message.json
-```
-
-### `ManageDappCanisterSettings`
-This proposal allows upgrading the settings of one or more SNS DAO-controlled dapp canisters. The canisters whose settings should be updated are specified in `canister_ids`, and the proposal allows updating the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or the public), the memory allocation, and the compute allocation.
-
-#### Relevant type signatures
-
-```candid
-type ManageDappCanisterSettings = record {
-  freezing_threshold : opt nat64;
-  canister_ids : vec principal;
-  reserved_cycles_limit : opt nat64;
-  log_visibility : opt int32;
-  memory_allocation : opt nat64;
-  compute_allocation : opt nat64;
-};
-enum LogVisibility {
-  LOG_VISIBILITY_UNSPECIFIED = 0;
-  LOG_VISIBILITY_CONTROLLERS = 1;
-  LOG_VISIBILITY_PUBLIC = 2;
-}
-```
-
-Example in bash:
-
-```bash
-quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
-    record {
-        title = "Set the Memory Allocation of the Widget Canister to 314_159 Bytes";
-        url = "https://sns-examples.com/proposal/42";
-        summary = "Set the memory allocation of the Widget Canister to 314_159 bytes.";
-        action = opt variant {
-            ManageDappCanisterSettings = record {
-                canister_ids = vec { principal "WIDGET-CANISTER-ID" };
-                memory_allocation = opt 314_159;
-            }
-        }
-    }
-)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
-
-quill send message.json
-```
-
-## Generic proposals
-
-Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it, but that might be very dapp-specific. Generic proposals, also called generic functions or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
-
-Some examples:
-
-- A dapp may have a very complicated procedure to upgrade dapp canisters. For example, they may have a canister for each user, in which case they orchestrate over a “user root canister.” For this workflow, they would have to tell this canister what the user canisters should be upgraded to and then trigger this upgrade. In a DAO-governed dapp, this should happen via proposal.
-- Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore you need a custom way to update the assets.
-- Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments, etc.
-
-For these cases, SNSes have so-called "generic proposals." These are custom proposals that each SNS community can define itself.
-
-This guide describes the use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
-
-Typically a generic proposal will have the following structure: a developer sends a proposal to add/execute/remove (e.g., `AddGenericNervousSystemFunction`) a "generic" nervous system function. So even though the proposal types below are technically "native proposal types," they are used to manage generic proposals.
+Typically a generic proposal will have the following structure: a developer sends a proposal to add, execute, remove, or assign a topic to a custom proposal, i.e., a "generic nervous system function". Therefore, even though the proposal types below are technically "native proposal types," they are used to manage generic proposals.
 
 - [`AddGenericNervousSystemFunction`](#addgenericnervoussystemfunction).
 - [`RemoveGenericNervousSystemFunction`](#removegenericnervoussystemfunction).
 - [`ExecuteGenericNervousSystemFunction`](#executegenericnervoussystemfunction).
+- [`SetTopicsForCustomProposals`](#settopicsforcustomproposals).
 
 ### Defining a generic proposal
 
-A generic proposal is defined by two parts:
+Fundamentally, a generic proposal is just a call to a method on a canister with a certain argument. A generic proposal is defined by two parts:
 
 1. **A target method and canister** (respectively called `target_method_name` and `target_canister_id` in the code): This is the method that will be called if this generic proposal is adopted. A community can implement any behavior in a proposal by writing within a target method on a canister and then registering that target method in a generic proposal.
 
 2. **A validator method and canister** (respectively called `validator_method_name` and `validator_canister_id` in the code): Since the governance canister is not aware of what a generic proposal does or in which context it will be applied, it cannot validate the proposal’s payload. Therefore, to check whether a proposal’s payload is valid at proposal submission time, the SNS community must implement this validation in a separate method (this can be on the same canister as the target method or on a different one). This method is then called whenever such a generic proposal is submitted. If the validator method fails, the proposal will not be put to vote in the SNS.
 
-Putting this together, this is how generic proposals work. When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will execute the proposal by calling the target method on the target canister.
+The overall flow is then as follows. When a generic proposal is submitted to SNS governance, SNS governance calls the validator method on the validator canister to see if the payload makes sense. If this is the case, the proposal is created and can be voted on. If the proposal is adopted, then the SNS governance canister will execute the proposal by calling the target method on the target canister.
 
 Together, this is the type of a generic proposal in the code:
 
@@ -704,7 +867,7 @@ There are a few important, security-critical considerations to make when adding 
 
 - **Make sure that the target and validator methods always return an answer.** If this is not the case, there is a risk that the SNS governance canister has some open call contexts, which in turn means that it cannot be stopped and therefore cannot be upgraded. This is very risky, e.g., if an urgent upgrade of governance is needed. Therefore it is recommended to only call trusted code.
 
-- **Validate everything that your code relies on again during the execution time.** Even though one method is “validator,” its main purpose is to disregard proposal contents that are obviously wrong. However, due to the fact that a proposal is voted on for multiple days, any validation that you did when the proposal was submitted might have become incorrect by the time the proposal is executed. Therefore, it is of utmost importance to repeat any validation in the target method, which is important for the validation of the proposal.
+- **Validate everything that your code relies on again during the execution time.** Even though one method is called “validator,” its main purpose is to disregard proposal contents that are obviously wrong. However, due to the fact that a proposal is voted on for multiple days, any validation that was done when the proposal was submitted might have become incorrect by the time the proposal is executed. Therefore, it is of utmost importance to repeat any validation in the target method which is important for the validation of the proposal.
 
 -  **Avoid asynchronous inter-canister calls in the validator and target method to minimize the risk for re-entrancy bugs.** During the execution of inter-canister calls, other executions can happen (thus interleaving with your method) and change the state of the system. The easiest way to avoid this risk is to avoid inter-canister calls.
 
@@ -714,7 +877,7 @@ There are a few important, security-critical considerations to make when adding 
 
 See more [security best practices](/docs/building-apps/security/overview).
 
-### Adding/removing generic proposals
+### Handling generic proposals
 
 **To use a generic proposal, it first needs to be added to the SNS governance system.** This means that the SNS DAO needs to approve that this is a proposal that should be supported going forward. As you have seen, generic proposals also have security implications; it is important to have this explicit approval.
 
@@ -722,9 +885,12 @@ Generic proposals can then also be removed again from SNS governance if they are
 
 To use a generic proposal, i.e., submit such a proposal, one uses the “execute generic nervous system function” proposal type and specifies which of the registered generic proposals should be used. Next it is explained how to submit each of these proposals.
 
+Finally, all SNS proposal types have assigned topics that are used for filtering and for vote delegation. Since custom proposals are SNS-specific, each SNS community must define which topic fits best a particular generic proposal. This is done when the generic proposal is registered. Later, the community can re-assign a proposal to a new topic.
+
 ### `AddGenericNervousSystemFunction`
 
 This *native proposal* type is used to **add** a *generic function* as a *generic proposal* to the SNS governance system. Proposers must select and `id` to be used to identify this generic proposal, and this id is then used to follow other neurons on this proposal. Ids 0-999 are reserved for native proposal types that may be added in the future, all other ids are valid.
+The proposer must also define what topic the new generic function should fall under. This also inform whether the proposal will be treated as a critical proposal. 
 
 #### Relevant type signatures
 
@@ -748,6 +914,7 @@ This *native proposal* type is used to **add** a *generic function* as a *generi
         target_canister_id : opt principal;
         validator_method_name : opt text;
         target_method_name : opt text;
+        topic : opt Topic;
     };
 ```
 
@@ -764,50 +931,15 @@ This *native proposal* type is used to **add** a *generic function* as a *generi
                 target_canister_id : opt principal;
                 validator_method_name : opt text;
                 target_method_name : opt text;
+                topic : opt Topic;
             }
         };
     };
 ```
 
-Example in bash:
-
-```bash
-quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-proposal $PROPOSAL_NEURON_ID --proposal '(
-    record {
-        title = "Add a new custom SNS function to \"Import proposals group into community\"";
-        url = "https://github.com/open-chat-labs/open-chat/blob/252b85a1877240dfea17512647ac42ac36e969db/backend/canisters/proposals_bot/impl/src/updates/import_proposals_group_into_community.rs";
-        summary = "Adding a new generic proposal that allows changing the background color of the dapp. Specifically, proposals of this kind will trigger a call to the method change_colour on canister dapp_canister.";
-        action = opt variant {
-            AddGenericNervousSystemFunction = record {
-                id = 4_003 : nat64;
-                name = "Import proposals group into community";
-                description = opt "Import the specified proposals group into the specified community.";
-                function_type = opt variant {
-                    GenericNervousSystemFunction = record {
-
-                        validator_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai";
-
-                        target_canister_id = opt principal "iywa7-ayaaa-aaaaf-aemga-cai";
-
-                        validator_method_name = opt "import_proposals_group_into_community_validate";
-
-                        target_method_name = opt "import_proposals_group_into_community";
-                    }
-                };
-            }
-        };
-    }
-)' > message.json
-
-quill send message.json
-```
-
-See example [proposal of an active SNS](https://dashboard.internetcomputer.org/sns/3e3x2-xyaaa-aaaaq-aaalq-cai/proposal/177).
-
 ### `ExecuteGenericNervousSystemFunction`
 
 This *native proposal* type is used to **execute** a *generic function* as a *generic proposal* to the SNS governance system.
-
 
 After a generic proposal has been registered with a `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so-called `function_id`) and, in addition, defines a payload.
@@ -883,7 +1015,11 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-### Case study: Adding a generic proposal
+
+
+<!-- 
+
+### Case study: Adding a generic proposal [we can add this again when we checked it works]
 
 The [SNS asset canister](/docs/building-apps/governing-apps/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister.
 
@@ -960,7 +1096,8 @@ quill sns --canister-ids-file ./sns_canister_ids.json --pem-file $PEM_FILE make-
 quill send message.json
 ```
 
-<!-- ## SNS Proposal lifecycle
+
+## SNS Proposal lifecycle
 
 
 (not only how generic ones are added but also how a normal proposal works (who can submit it, what they

@@ -200,6 +200,32 @@
       "in_beta": false,
       "milestone_id": "Solenoid",
       "imported": true
+    },
+    {
+      "title": "Public API boundary node logs and metrics",
+      "overview": "All API boundary nodes expose a WebSocket endpoint that allows anyone to directly stream canister access logs.",
+      "forum": "https://forum.dfinity.org/t/levitron-milestone-decentralized-api-boundary-node-access-logs/53773",
+      "docs": "https://internetcomputer.org/docs/building-apps/advanced/canister-access-logs",
+      "proposal": "",
+      "status": "deployed",
+      "milestone_id": "Levitron"
+    },
+    {
+      "title": "Decentralized access logs and metrics",
+      "is_milestone": true,
+      "milestone_id": "Levitron",
+      "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
+      "status": "deployed",
+      "eta_to_render": "July 2025"
+    },
+    {
+      "title": "Privacy-preserving logs",
+      "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
+      "forum": "https://forum.dfinity.org/t/observability-with-the-new-boundary-node-architecture/41725",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/135629",
+      "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/salt_sharing",
+      "status": "deployed",
+      "milestone_id": "Levitron"
     }
   ]
 }

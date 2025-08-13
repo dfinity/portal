@@ -37,6 +37,56 @@ export const CardsSection = () => {
       className="container-12 mt-30"
       variants={transitions.container}
     >
+      <article className="bg-black rounded-[32px] text-white  overflow-clip mt-6 md:min-h-[544px] flex flex-col justify-around">
+        <div className="flex flex-col items-stretch">
+          <div className="p-1/10  md:py-1/12 pt-[15%] text-left md:text-center">
+            <img src="/img/home/caffeine.svg" alt="Caffeine" className="w-[80%] md:w-[50%] mx-auto mb-8 md:mb-0" />
+
+            <p className="tw-paragraph md:tw-lead-sm mt-6 md:mt-10 mb-0 md:w-4/10 mx-auto">
+              Apply for early alpha access and be among the first to experience
+              the decentralized internet.
+            </p>
+            <Link
+              className="button-outline-white-30 mt-6"
+              href="https://join.caffeine.ai/"
+            >
+              Apply for early access
+            </Link>
+          </div>
+        </div>
+      </article>
+      <article className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6 md:min-h-[544px] flex flex-col justify-around">
+        <img
+          loading="lazy"
+          src="img/home/alliance-bg.webp"
+          className="md:object-cover size-full absolute pointer-events-none"
+        />
+        <div className="relative flex flex-col md:flex-row items-stretch md:min-h-[34rem]">
+          <div className="basis-1/2 flex items-center pt-[2%]">
+            <img
+              src="/img/home/alliance.webp"
+              alt="ICP Alliance"
+              className="w-6/10 md:translate-x-1/3 md:translate-y-0 translate-y-1/2"
+            />
+          </div>
+          <div className="basis-1/2 p-1/10 flex items-center">
+            <div>
+              <div className="tw-paragraph md:tw-lead-sm mt-12 md:mt-6 mb-0">
+                Become the go-to partner for clients racing towards data
+                sovereignty and self-writing apps. ICP Alliance offers leads,
+                solution blueprints, early tech access, and engineering support
+                for faster delivery.
+              </div>
+              <Link
+                className="button-outline-white-30 mt-4"
+                href="https://dfinity.org/alliance"
+              >
+                Join the ICP alliance
+              </Link>
+            </div>
+          </div>
+        </div>
+      </article>
       <article
         aria-label="powered by chain fusion"
         className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6"

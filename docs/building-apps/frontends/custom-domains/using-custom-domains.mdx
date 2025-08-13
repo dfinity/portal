@@ -10,30 +10,36 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 By default, all canisters on the Internet Computer are accessible through the domain `icp0.io` and their canister ID. In addition to that default domain, one can also make a canister accessible under a custom domain using one of the following approaches:
 
-- [Register the domain with the boundary nodes](#custom-domains-on-the-boundary-nodes).
+- [Register the domain with the HTTP gateways](#custom-domains-on-the-http-gateways).
 - [Hosting the domain on your own infrastructure](#custom-domains-using-your-own-infrastructure).
 
 For both approaches, you need to acquire a domain through any registry, such as NameCheap or GoDaddy.
 
-The two approaches differ in the ease of use and configurability. When registering the domain with the boundary nodes, you simply have to configure the DNS records of the custom domain, and the boundary nodes take care of obtaining a certificate, renewing the certificate before its expiration, and SEO.
+The two approaches differ in the ease of use and configurability. When registering the domain with the HTTP gateways, you simply have to configure the DNS records of the custom domain, and the HTTP gateways take care of obtaining a certificate, renewing the certificate before its expiration, and SEO.
 
 When hosting the domain on your own infrastructure, you need to obtain and renew the certificates and provide your own infrastructure with support for the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md). However, there is more configuration flexibility using this approach.
 
-## Register the domain with the boundary nodes
+## Register the domain with the HTTP gateways
 
-By following the steps below, you can host your canister under your custom domain using the boundary nodes. First, the configuration steps are described, then an [example is used to illustrate these steps](#concrete-example), followed by some instructions on [troubleshooting](#troubleshooting).
+By following the steps below, you can host your canister under your custom domain using the HTTP gateways. First, the configuration steps are described, then an [example is used to illustrate these steps](#concrete-example), followed by some instructions on [troubleshooting](#troubleshooting).
 
 - #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
 
-  - Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes.
+  - Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the HTTP gateways.
 
   - Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
 
-  - Add a `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
+  - Add a `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the HTTP gateways to acquire the certificate.
 
 :::caution
 
 These records must be configured before continuing with the next steps.
+
+:::
+
+:::caution
+
+Make sure to disable any certificate/SSL/TLS offering of your DNS provider (e.g., [Universal SSL by Cloudflare](./dns-setup.mdx#cloudflare)) as they interfere with the custom domain registration and can even prevent certificate renewal.
 
 :::
 
@@ -67,7 +73,7 @@ By default, `dfx` excludes all files and directories whose names start with a `.
 ├── src
 │ ├── project_frontend
 │ │ ├── src
-│ │ │ ├── .ic-assets.json
+│ │ │ ├── .ic-assets.json5
 │ │ │ ├── .well-known
 │ │ │ │ └──ic-domains
 ```
@@ -98,7 +104,7 @@ Configure the `.well-known` directory to be included by writing the following co
 
 - #### Step 3: Deploy the updated canister.
 
-- #### Step 4: Register the domain with the boundary nodes by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
+- #### Step 4: Register the domain with the HTTP gateways by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
 
 ```sh
 curl -sL -X POST \
@@ -156,7 +162,7 @@ The status will be one of the following:
 
 `Failed`: The registration request failed.
 
-- #### Step 6: Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes.
+- #### Step 6: Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all HTTP gateways.
 
 After that, you should be able to access your canister using the custom domain.
 
@@ -238,11 +244,11 @@ const agent = await HttpAgent.create({ host });
 
 ## Updating a custom domain
 
-In case you want to update the domain to point to a different canister, you first need to update the DNS record of your domain, then notify a boundary node:
+In case you want to update the domain to point to a different canister, you first need to update the DNS record of your domain, then notify a [HTTP gateway](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure):
 
 - #### Step 1: Update the `TXT` entry to contain the new canister ID for the `_canister-id` subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`).
 
-- #### Step 2: Notify a boundary node of the change using a `PUT` request and the ID of your registration (`REQUEST_ID`).
+- #### Step 2: Notify a HTTP gateway of the change using a `PUT` request and the ID of your registration (`REQUEST_ID`).
 
 ```sh
 curl -sL -X PUT \
@@ -251,16 +257,16 @@ curl -sL -X PUT \
 
 :::info
 
-In case you forgot the ID of your registration, you can just submit another registration request for your domain, and the boundary node will return the corresponding ID.
+In case you forgot the ID of your registration, you can just submit another registration request for your domain, and the HTTP gateway will return the corresponding ID.
 
 :::
 
 ## Removing a custom domain
 
-In case you want to remove your domain, you just need to remove the DNS records and notify a boundary node:
+In case you want to remove your domain, you just need to remove the DNS records and notify a HTTP gateway:
 
 - #### Step 1: Remove the `TXT` entry containing the canister ID for the `_canister-id` subdomain (e.g., `_canister-id.CUSTOM_DOMAIN`) and the `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`).
-- #### Step 2: Notify a boundary node of the removal using a `DELETE` request.
+- #### Step 2: Notify a HTTP gateway of the removal using a `DELETE` request.
 
 ```sh
 curl -sL -X DELETE \
@@ -269,7 +275,7 @@ curl -sL -X DELETE \
 
 :::info
 
-In case you forgot the ID of your registration, you can just submit another registration request for your domain, and the boundary node will return the corresponding ID.
+In case you forgot the ID of your registration, you can just submit another registration request for your domain, and the HTTP gateway will return the corresponding ID.
 
 :::
 

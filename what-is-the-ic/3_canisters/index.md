@@ -12,4 +12,4 @@ Canisters can be executed concurrently and are capable of communicating within a
 - perform substantial amounts of computation at a low cost, and
 - pay for their own computation ([reverse gas model](/capabilities/reverse-gas/)).
 
-Canisters can be implemented in any language that compiles to WebAssembly. See selection of canister development kits ([CDKs])(/docs/building-apps/developing-canisters/what-are-canisters).
+Canisters can be implemented in any language that compiles to WebAssembly. See selection of canister development kits ([CDKs])(/docs/building-apps/essentials/canisters).

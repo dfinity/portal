@@ -1,0 +1,88 @@
+---
+keywords: [advanced, bitcoin, bitcoin api, api reference, api endpoints, bitcoin reference, bitcoin endpoints, btc api]
+hide_table_of_contents: true
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Bitcoin API endpoints
+
+<MarkdownChipRow labels={["Bitcoin"]} />
+
+The Bitcoin API is hosted as an ICP smart contract. To make calls to the API, you must target the smart contract address for either the Bitcoin mainnet or Bitcoin testnet:
+
+- Mainnet: [`ghsi2-tqaaa-aaaan-aaaca-cai`](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai)
+
+- Testnet (v4): [`g4xu7-jiaaa-aaaan-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai)
+
+[View the full Bitcoin API specification for details.](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md)
+
+## Available endpoints
+
+### `bitcoin_get_utxos`
+
+Returns UTXOs for a Bitcoin address. UTXOs can be filtered by minimum confirmations (`min_confirmations`, which may be at most 144) or via a `page` reference.
+
+### `bitcoin_get_utxos_query`
+
+Used to query `bitcoin_get_utxos`. Since this is a query call, it returns quickly but results are not trustworthy.
+
+### `bitcoin_get_balance`
+
+Returns the balance of a Bitcoin address in satoshis. Takes an optional argument of `min_confirmations`.
+
+### `bitcoin_get_balance_query`
+
+Used to query `bitcoin_get_balance`. Since this is a query call, it returns quickly but results are not trustworthy.
+
+### `bitcoin_get_current_fee_percentiles`
+
+Returns fee percentiles (in millisatoshis/vbyte) from the most recent 10_000 Bitcoin transactions.
+
+### `bitcoin_get_block_headers`
+
+Returns raw block headers for a given range of heights.
+
+### `bitcoin_send_transaction`
+
+Sends a raw Bitcoin transaction to the network after validation.
+
+## Threshold signature system API endpoints
+
+### `ecdsa_public_key`
+
+Returns a SEC1-encoded ECDSA public key derived from a specified `key_id` (curve and key name) and `derivation_path` (up to 255 byte strings of any length). Can only be called by canisters.
+
+For `secp256k1`, derivation follows a generalization of BIP32 (non-BIP32-compatible keys possible).
+
+### `sign_with_ecdsa`
+
+Generates an ECDSA signature over a 32-byte `message_hash`, using a derived private key defined by `key_id` and `derivation_path`. `key_id` and `derivation_path` must match those used in the `ecdsa_public_key` call. Can only be called by canisters.
+
+This API endpoint will cost cycles that must be transferred explicitly with the call.
+
+### `schnorr_public_key`
+
+Returns a derived Schnorr public key using `key_id` and `derivation_path`.
+
+Supports the algorithms:
+  - `bip340secp256k1`: Follows BIP32-like derivation. Returns compressed SEC1 key (remove first byte for BIP340).
+  - `ed25519`: Uses custom hierarchical derivation. Returns 32-byte RFC8032-compliant key.
+
+### `sign_with_schnorr`
+
+Returns a Schnorr signature over a `message`, using a derived key defined by `key_id` and `derivation_path`. `key_id` and `derivation_path` must match those used in the `schnorr_public_key` call. Can only be called by canisters.
+
+Supports signature types of:
+  - `bip340secp256k1`: 64-byte BIP340 signature.
+  - `ed25519`: 64-byte RFC8032 signature.
+
+Supports optional `aux` parameter (`bip341` only for Taproot signatures).
+
+## API costs
+
+Each call to the Bitcoin API has a cost of [cycles](/docs/building-apps/getting-started/tokens-and-cycles); therefore, a sufficient amount of cycles must be sent with each call.
+
+Cycles costs vary between the Bitcoin testnet and mainnet. For a breakdown of the costs, see [Bitcoin API costs](/docs/references/bitcoin-how-it-works).

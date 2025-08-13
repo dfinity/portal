@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, user sign in, user login, internet identity]
+keywords: [intermediate, tutorial, user sign in, user login, internet identity, integrate with ii, ii, integrate ii, integrate internet identity, enable user login, user auth, auth client, auth testing, ii testing, playwright, ii test, pullable canister, configure ii, local development]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -18,51 +18,34 @@ This guide demonstrates an example of how to integrate Internet Identity authent
 </TabItem>
 </Tabs>
 
-## Creating a simple app with II authentication
-
 ### Step 1: Create or open a project.
 
-First, use `dfx start` to start a [local instance of the replica](/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+First, use `dfx start` to start a [local development environment](/docs/building-apps/test/pocket-ic)(/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+
+Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/tree/master/motoko/who_am_i).
 
 #### Creating a new project
 
-When creating a new project with the command `dfx new`, you will have the option to **Add extra features**. From this prompt, select **Internet Identity**.
+Create a new project with the command:
 
-This extra feature will add the **pullable** version of the Internet identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/building-apps/advanced/using-third-party-canisters).
+```
+dfx new internet_identity_app --type=motoko --no-frontend --extras internet-identity
+cd internet_identity_app
+```
+
+:::info
+To use a Rust backend canister, use `--type=rust` instead.
+:::
+
+The `--extras` flag will add the **pullable** version of the Internet identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/building-apps/advanced/using-third-party-canisters).
 
 #### Using an existing project
 
 If you already have a project that was not created with the extra Internet Identity feature, you can modify the project to use the pullable Internet Identity canister.
 First, add the canister configuration to the project's `dfx.json` file:
-```json title="dfx.json"
-{
-  "canisters": {
-    "internet_identity": {
-      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
-      "frontend": {},
-      "remote": {
-        "id": {
-          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-      },
-      "type": "custom",
-      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
-    }
-  }
-}
+
+```json file=../../references/samples/motoko/who_am_i/dfx.json
 ```
-
-Then deploy the canister locally:
-```bash
-dfx deploy
-```
-
-
-:::info
-
-This example's frontend was created based on the **Vanilla JS** framework option that can be selected when creating a project with `dfx new`. If you used another framework or template for your project, you'll need to adapt the code.
-
-:::
 
 ### Step 2: Create a "Who am I" function.
 
@@ -71,90 +54,40 @@ To add a simple "Who am I?" function, insert the following code into the backend
 <Tabs>
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko title="src/ii-integration-backend/main.mo"
-actor {
-  public shared query (msg) func whoami() : async Principal {
-    msg.caller
-  };
-};
+```motoko file=../../references/samples/motoko/who_am_i/backend/app.mo
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-```rust title="src/ii-integration-backend/main.rs"
-#[query]
-async fn whoami() -> Principal {
-  caller()
-}
+```rust file=../../references/samples/rust/who_am_i/backend/lib.rs
 ```
 
 </TabItem>
 </Tabs>
 
-Then, build the project to make the new backend declarations available to the frontend:
-```bash
-dfx build
+
+### Step 3: Edit frontend code.
+
+In the frontend canister code, add a method to the `App` class to call the backend function and initialize the auth client:
+
+```js file=../../references/samples/motoko/who_am_i/frontend/src/App.jsx
 ```
 
-In the frontend canister code, add a method to the `App` class to call the backend function:
-```js title="src/ii-integration-frontend/src/App.js"
-/**
- * Call the new backend function and render the returned principal to the screen
- */
-#handleWhoAmI = async () => {
-  const principal = await ii_integration_backend.whoami();
-  this.greeting = `Your principal is: ${principal.toText()}`;
-  this.#render();
-};
-```
+:::warning
 
-Lastly, update the `#render` method to add a new "Who am I?" button and a click listener:
-```js title="src/ii-integration-frontend/src/App.js"
-#render() {
-  let body = html`
-    <main>
-      <img src="${logo}" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#">
-        <label for="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-// highlight-start
-      <center>
-        <button id="whoami">Who am I?</button>
-      </center>
-// highlight-end
-      <section id="greeting">${this.greeting}</section>
-    </main>
-  `;
-  render(body, document.getElementById('root'));
-  document
-    .querySelector('form')
-    .addEventListener('submit', this.#handleSubmit);
-// highlight-start
-  document
-    .querySelector('#whoami')
-    .addEventListener('click', this.#handleWhoAmI);
-// highlight-end
-}
-```
+Make sure to always create a single `AuthClient` instance on page load and reuse it within your click handlers.
 
-Deploy the project:
-```bash
-dfx deploy
-```
+:::
 
-View the deployed application's frontend. Click the "Who am I?" button, it should return the anonymous principal:
-```
-Your principal is: 2vxsx-fae
-```
+:::info
 
-### Step 3: Implement authentication.
+If you are developing using the Safari web browser, you need to change the value returned for the local development environment to `http://localhost:4943?canisterId=<canister_id>`.
+
+:::
 
 Install the required `npm` package:
+
 ```bash
 npm install @dfinity/auth-client
 ```
@@ -165,133 +98,19 @@ Make sure that all **@dfinity/&lt;package&gt;** dependencies in **package.json**
 
 :::
 
-Add a method to the `App` class to get the correct Internet Identity URL:
-```js title="src/ii-integration-frontend/src/App.js"
-/**
- * Get the correct Internet Identity URL based on the current environment
- */
-#identityProvider = () => {
-  if (process.env.DFX_NETWORK === "local") {
-    return `http://${process.env.CANISTER_ID_INTERNET_IDENTITY}.localhost:4943`;
-  } else if (process.env.DFX_NETWORK === "ic") {
-    return `https://${process.env.CANISTER_ID_INTERNET_IDENTITY}.ic0.app`;
-  } else {
-    return `https://${process.env.CANISTER_ID_INTERNET_IDENTITY}.dfinity.network`;
-  }
-};
-```
 
-:::info
+### Step 4: Deploy the application:
 
-If you are developing using the Safari web browser, you need to change the value returned for the local development environment to `http://localhost:4943?canisterId=<canister_id>`.
-
-:::
-
-Add a method to create an `AuthClient` instance, then call it in the `App` class constructor:
-```js title="src/ii-integration-frontend/src/App.js"
-constructor() {
-  this.#render();
-  await this.#createAuthClient();
-}
-
-/**
- * Replace backend actor identity with the identity from AuthClient,
- * additionally re-render to show the updated authentication status
- */
-#onIdentityUpdate = async () => {
-  Actor.agentOf(ii_integration_backend).replaceIdentity(this.authClient.getIdentity());
-  this.isAuthenticated = await this.authClient.isAuthenticated();
-  this.#render();
-}
-
-/**
- * Create AuthClient, this loads an existing session if available
- */
-#createAuthClient = async () => {
-  this.authClient = await AuthClient.create();
-  await this.#onIdentityUpdate();
-}
-```
-
-Add methods to the `App` class to facilitate logging in and logging out:
-```js title="src/ii-integration-frontend/src/App.js"
-/**
- * Login with AuthClient, this should be called without any delay in a click handler
- */
-#handleLogin = async () => {
-  await new Promise((resolve, reject) => this.authClient.login({
-    identityProvider: this.#identityProvider(),
-    onSuccess: resolve,
-    onError: reject
-  }));
-  await this.#onIdentityUpdate();
-}
-
-/**
- * Logout with AuthClient
- */
-#handleLogout = async () => {
-  await this.authClient.logout();
-  await this.#onIdentityUpdate();
-}
-```
-
-:::warning
-
-Make sure to always create a single `AuthClient` instance on page load and reuse it within your click handlers as shown in the previous and current steps.
-
-:::
-
-Lastly, update the `#render` method to add the new "Login" and "Logout" buttons and click listeners:
-```js title="src/ii-integration-frontend/src/App.js"
-#render() {
-  let body = html`
-    <main>
-      <img src="${logo}" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#">
-        <label for="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <center>
-// highlight-start
-        ${this.isAuthenticated
-          ? html`<button id="logout">Logout</button>`
-          : html`<button id="login">Login</button>`}
-// highlight-end
-        <button id="whoami">Who am I?</button>
-      </center>
-      <section id="greeting">${this.greeting}</section>
-    </main>
-  `;
-  render(body, document.getElementById('root'));
-  document
-    .querySelector('form')
-    .addEventListener('submit', this.#handleSubmit);
-  document
-    .querySelector('#whoami')
-    .addEventListener('click', this.#handleWhoAmI);
-// highlight-start
-  document
-    .querySelector('#login')
-    ?.addEventListener('click', this.#handleLogin);
-  document
-    .querySelector('#logout')
-    ?.addEventListener('click', this.#handleLogout);
-// highlight-end
-}
-```
-
-Deploy the updated application:
 ```bash
 dfx deploy
 ```
 
+Open the frontend URL that is returned in the deployment output. Your dapp's frontend will be displayed.
+
 Click the "Login" button. You'll be redirected to the Internet Identity frontend. Since you're running this locally, you will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
 Click the "Who am I" button and it should return your Internet Identity principal:
+
 ```
 Your principal is: 5uylz-j7fcd-isj73-gp57f-xwwyy-po2ib-7iboa-fdkdv-nrsam-3bd3r-qqe
 ```
@@ -365,7 +184,7 @@ testWithII('should sign-in with an existing new user', async ({page, iiPage}) =>
 });
 ```
 
-If desired, you can have the test wait for Internet Identity to be ready by providing the local replica URL and the canister ID of your local Internet Identity instance:
+If desired, you can have the test wait for Internet Identity to be ready by providing the local development environment URL and the canister ID of your local Internet Identity instance:
 
 ```typescript title="e2e/login.spec.ts"
 testWithII.beforeEach(async ({iiPage, browser}) => {
@@ -398,7 +217,7 @@ npx playwright test
 
 ## Resources
 
-- [Internet Identity dashboard](https://identity.ic0.app/).
+- [Internet Identity dashboard](https://identity.internetcomputer.org/).
 - [Internet Identity specification](/docs/references/ii-spec).
 - [Internet Identity GitHub repository](https://github.com/dfinity/internet-identity).
 - [Internet Identity alternative frontend origins](/docs/building-apps/authentication/alternative-origins).

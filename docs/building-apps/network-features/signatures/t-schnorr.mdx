@@ -48,7 +48,7 @@ The `sign_with_schnorr` endpoint takes a full message to sign as input rather th
 
 ## Signing messages
 
-Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
@@ -56,7 +56,7 @@ The `sign_with_schnorr` method requires cycles to be attached. [Learn more about
 
 To deploy code using the `sign_with_schnorr` method, you will need to specify the correct `key_ID` for the environment in the canister's source code. The following key IDs are supported:
 
-- `dfx_test_key`: Only available on the local replica started by `dfx`.
+- `dfx_test_key`: Only available on the local development environment started by `dfx`.
 - `test_key_1`: Test key available on the ICP mainnet.
 - `key_1`: Production key available on the ICP mainnet.
 
@@ -155,6 +155,21 @@ https://github.com/dfinity/examples/blob/master/rust/threshold-schnorr/src/schno
 
 </TabItem>
 </AdornedTabs>
+
+## Master Public Keys
+
+The master public keys used for BIP-340 are:
+
+- `key_1`: `02246e29785f06d37a8a50c49f6152a34df74738f8c13a44f59fef4cbe90eb13ac`
+- `test_key_1`: `037a651a2e5ef3d1ef63e84c4c4caa029fa4a43a347a91e4d84a8e846853d51be1`
+
+The master public keys used for Ed25519 are:
+
+- `key_1`: `476374d9df3a8af28d3164dc2422cff894482eadd1295290b6d9ad92b2eeaa5c`
+- `test_key_1`: `6c0824beb37621bcca6eecc237ed1bc4e64c9c59dcb85344aa7f9cc8278ee31f`
+
+These can be used to perform key derivation offline without requiring
+using the `schnorr_public_key` management canister call.
 
 ## Resources
 

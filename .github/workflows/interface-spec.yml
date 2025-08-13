@@ -1,6 +1,6 @@
 name: Interface Specification
 on:
-  pull_request_target:
+  pull_request:
     paths:
       - .github/workflows/interface-spec.yml
       - docs/references/http-gateway-protocol-spec.md
@@ -36,15 +36,3 @@ jobs:
         chmod +x didc
         ./didc check docs/references/_attachments/http-gateway.did
         ./didc check docs/references/_attachments/ic.did
-  interface-spec-tag:
-    name: Tag PR with interface-spec
-    if: ${{ github.event_name == 'pull_request_target' }}
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Tag PR with interface-spec
-      run: |
-        gh pr edit ${{ github.event.pull_request.number }} --add-label interface-spec
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

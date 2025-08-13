@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tokens, tutorial, index]
+keywords: [intermediate, tokens, token index, index canister, token indexes, index]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -42,46 +42,22 @@ Go to the [releases overview](https://dashboard.internetcomputer.org/releases) a
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
 
-Replace $IC_VERSION with the latest replica version.
-
-**Wasm URL:** https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icp-index-canister.wasm.gz
-
-Command to download this Wasm file using curl:
+Download the Wasm and Candid files from the [latest ledger release](https://github.com/dfinity/ic/releases?q=%22ledger-suite-icp%22&expanded=false).
 
 ```
-curl -o index.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icp-index-canister.wasm.gz"
-```
-
-**Candid URL:** https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/ledger_suite/icp/index/index.did
-
-Command to download this Candid file using curl:
-
-```
-curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/ledger_suite/icp/index/index.did"
+curl -o index.wasm.gz "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icp-index-canister.wasm.gz"
+curl -o index.did "https://github.com/dfinity/ic/releases/download/<RELEASE>/index.did"
 ```
 
 </TabItem>
 
 <TabItem value="icrc" label="ICRC" default>
 
-Replace $IC_VERSION with the latest replica version.
-
-**Wasm URL:** https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-index-ng.wasm.gz
-
-To download this Wasm file using curl, run the command:
+Download the Wasm and Candid files from the [latest ledger release](https://github.com/dfinity/ic/releases?q=%22ledger-suite-icrc%22&expanded=false).
 
 ```
-curl -o index.wasm.gz "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-index-ng.wasm.gz"
-```
-
-
-**ICRC-1 index Candid URL:** https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/ledger_suite/icrc1/index-ng/index-ng.did
-
-
-To download this Candid file using curl, run the command:
-
-```
-curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/ledger_suite/icrc1/index-ng/index-ng.did"
+curl -o index.wasm.gz "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-index-ng.wasm.gz"
+curl -o index.did "https://github.com/dfinity/ic/releases/download/<RELEASE>/index-ng.did"
 ```
 
 </TabItem>
@@ -89,22 +65,20 @@ curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/l
 
 ## Setting up the index
 
-### Step 1: Configure the `dfx.json` file.
+### Step 1: Configure the `dfx.json` file
 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
 
-Open the `dfx.json` file in your project's directory. Add the `icp_index_canister` Candid and Wasm configuration, and if necessary, insert the canister data for your ICP ledger.
-
-If you followed the guide on local ledger setup and used the same project folder for both the ICP ledger and ICP index, your `dfx.json` file should look like this:
+Open the `dfx.json` file in your project's directory. Add the `icp_index_canister` Candid and Wasm configuration.
 
 ``` json
 {
   "canisters": {
     "icp_index_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/ledger_suite/icp/index/index.did",
-      "wasm": "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icp-index-canister.wasm.gz"
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/index.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icp-index-canister.wasm.gz"
             "remote": {
         "id": {
           "ic": "qhbym-qaaaa-aaaaa-aaafq-cai"
@@ -113,8 +87,8 @@ If you followed the guide on local ledger setup and used the same project folder
     },
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ledger-canister.wasm.gz"
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger-canister_notify-method.wasm.gz"
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -127,26 +101,24 @@ If you followed the guide on local ledger setup and used the same project folder
 }
 ```
 
-In an existing project, you would need to add the `icp_index_canister` and `icp_ledger_canister` canisters to the `canisters` section.
-
 </TabItem>
 
 <TabItem value="icrc" label="ICRC" default>
 
-Open the `dfx.json` file in your project's directory. Add the `icrc1_index_canister` Candid and Wasm configuration, and if necessary, insert the canister data for your ICRC-1 ledger. If you followed the guide on local ICRC-1 ledger setup and used the same project folder for both the ICRC-1 ledger and ICRC-1 index, your `dfx.json` file should look like this:
+Open the `dfx.json` file in your project's directory. Add the `icrc1_index_canister` Candid and Wasm configuration.
 
 ``` json
 {
   "canisters": {
     "icrc1_index_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/index-ng/index-ng.did",
-      "wasm": "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-index-ng.wasm.gz"
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/index-ng.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-index-ng.wasm.gz"
     },
     "icrc1_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-ledger.wasm.gz"
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz"
     }
   },
   "output_env_file": ".env",
@@ -154,13 +126,11 @@ Open the `dfx.json` file in your project's directory. Add the `icrc1_index_canis
 }
 ```
 
-In an existing project, you would need to add the `icrc1_index_canister` and `icrc1_ledger_canister` canisters to the `canisters` section.
-
 </TabItem>
 </AdornedTabs>
 
 
-### Step 2: Start a local replica.
+### Step 2: Start a local development environment
 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
@@ -189,14 +159,8 @@ dfx start --clean --background
 
 Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`; otherwise, replace it with your ICP ledger canister ID.
 
-:::caution
-Deploying to the playground is ICP's equivalent of deploying to a testnet network.
-
-In this workflow, you cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
-:::
-
 ```
-dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai")'
+dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record { ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai" })'
 ```
 
 The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds.
@@ -210,12 +174,6 @@ Here it is assumed that the canister ID of your local ICRC-1 ledger is `mxzaz-hq
 ```
 dfx deploy icrc1_index_canister --argument '(opt variant { Init = record { ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai"; retrieve_blocks_from_ledger_interval_seconds = opt 10; } })'
 ```
-
-:::caution
-Deploying to the playground is ICP's equivalent of deploying to a testnet network.
-
-In this workflow, you cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
-:::
 
 The ICRC-1 index canister will start syncing right away and will automatically try to fetch new blocks according to the seconds specified in `retrieve_blocks_from_ledger_interval_seconds`.
 
@@ -233,23 +191,30 @@ You can check that the correct ledger ID was set by running the following comman
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai ledger_id '()'
 ```
 
-The result is the ledger canister ID that the index canister is using to sync.
+<details>
+<summary>Output</summary>
 
 ```
 (principal "ryjl3-tyaaa-aaaaa-aaaba-cai")
 ```
+
+</details>
 
 To check how many blocks have been synced, call:
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```
 
-It should return something like this:
+<details>
+<summary>Output</summary>
+
 ```
 (record { num_blocks_synced = 1 : nat64 })
 ```
 
-Depending on how many mint operations you created while setting up your ICP ledger, the number of synced blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used, and there was only one initial balance parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1.
+</details>
+
+Depending on how many mint operations you created while setting up your ICP ledger, the number of synced blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed.
 
 </TabItem>
 
@@ -259,20 +224,32 @@ You can check that the correct ledger ID was set by running the following comman
 ```
 dfx canister call icrc1_index_canister ledger_id '()'
 ```
-The result is the ledger canister ID that the index canister is using to sync.
+
+<details>
+<summary>Output</summary>
+
 ```
 (principal "mxzaz-hqaaa-aaaar-qaada-cai")
 ```
 
+</details>
+
 To check how many blocks have been synced, call:
+
 ```
 dfx canister call icrc1_index_canister status '()'
 ```
-It should return something like this:
+
+<details>
+<summary>Output</summary>
+
 ```
 (record { num_blocks_synced = 1 : nat64 })
 ```
-Depending on how many mint operations you created while setting up your ICRC-1 ledger, the number of synched blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used, and there was only one initial balance parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1.
+
+</details>
+
+Depending on how many mint operations you created while setting up your ICRC-1 ledger, the number of synched blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed.
 
 </TabItem>
 </AdornedTabs>
@@ -291,25 +268,35 @@ dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = rec
 ```
 
 Then, check the status with the command:
+
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```
 
 It should now indicate that an additional block was synced compared to the last time you called the status endpoint. You may have to wait a couple of seconds for the index canister to sync.
+
+<details>
+<summary>Output</summary>
+
 ```
 (record { num_blocks_synced = 2 : nat64 })
 ```
 
+</details>
+
 #### Fetch blocks
 
-You can use the ICP index canister to fetch blocks like so.
-You have to specify the block at which you want to start fetching from (i.e., the lowest index you want to fetch). If you want to start from the beginning, you have to set `start` to 0. Similarly, the `length` parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks, it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
+You can use the ICP index canister to fetch blocks. You have to specify the block at which you want to start fetching from (i.e., the lowest index you want to fetch). If you want to start from the beginning, you have to set `start` to 0. Similarly, the `length` parameter indicates the number of blocks you would like to fetch. Note that if you specify more than the total amount of blocks, it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
 
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_blocks '(record{start=0:nat;length=2:nat})'
 ```
 
-Which will return a vector of the encoded blocks:
+This will return a vector of the encoded blocks.
+
+<details>
+<summary>Output</summary>
+
 ```
 (
   record {
@@ -322,26 +309,33 @@ Which will return a vector of the encoded blocks:
 )
 ```
 
-To fetch a vector of all transactions your default account was involved in you can use the following commands:
-Find out the principal of your default account:
+</details>
+
+To fetch a vector of all transactions your account was involved in, first get the principal of your account:
 
 ```
 dfx identity get-principal
 ```
 
-In the case of this tutorial, this returns:
+<details>
+<summary>Output</summary>
 
 ```
 hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
 ```
 
-Then you can query the transactions for this principal with the default subaccount set by calling:
+</details>
+
+Then you can query the transactions for this principal's subaccount:
 
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
 The result will include the initial mint operation as well as the transfer that you made.
+
+<details>
+<summary>Output</summary>
 
 ```
 (
@@ -388,17 +382,22 @@ The result will include the initial mint operation as well as the transfer that 
 )
 ```
 
+</details>
+
 </TabItem>
 
 <TabItem value="icrc" label="ICRC" default>
 
-
 You can check that the synchronization of the index is working by creating a transaction on the ICRC-1 ledger and then checking the status of that transaction.
 If you followed the guide on setting up an ICRC-1 ledger locally, your default identity should have some ICRC-1 to be sent.
+
 Send some ICRC-1 to any principal.
+
 ```
 dfx canister call icrc1_ledger_canister icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
 ```
+
+Then, check the status with the command:
 
 ```
 dfx canister call icrc1_index_canister status '()'
@@ -406,20 +405,27 @@ dfx canister call icrc1_index_canister status '()'
 
 It should now indicate that an additional block was synced compared to the last time you called the status endpoint.
 
+<details>
+<summary>Output</summary>
+
 ```
 (record { num_blocks_synced = 2 : nat64 })
 ```
 
+</details>
+
 #### Fetch blocks
 
-You can use the ICRC-1 index canister to fetch blocks like so.
-You have to specify the block at which you want to start fetching from (i.e., the lowest index you want to fetch). If you want to start from the beginning, you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks, it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
+You can use the ICRC-1 index canister to fetch blocks. You have to specify the block at which you want to start fetching from (i.e., the lowest index you want to fetch). If you want to start from the beginning, you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Note that if you specify more than the total number of blocks, it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
 
 ```
 dfx canister call icrc1_index_canister get_blocks '(record{start=0:nat;length=2:nat})'
 ```
 
-Which will return a vector of the encoded blocks:
+This will return a vector of the encoded blocks.
+
+<details>
+<summary>Output</summary>
 
 ```
 (
@@ -485,23 +491,33 @@ Which will return a vector of the encoded blocks:
 )
 ```
 
-To fetch a vector of all transactions your default account was involved in you can use the following commands.
-To find out the principal of your default account:
+</details>
+
+To fetch a vector of all transactions your account was involved in, first get the principal of your account:
+
 ```
 dfx identity get-principal
 ```
-In the case of this tutorial, this command returns:
+
+<details>
+<summary>Output</summary>
 
 ```
 hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
 ```
 
-Then you can query the transactions for this principal with the default subaccount set by calling:
+</details>
+
+Then you can query the transactions for this principal's subaccount:
+
 ```
 dfx canister call icrc1_index_canister get_account_transactions '(record{account=record {owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"}; max_results=2:nat})'
 ```
 
-The result will include the initial mint operation as well as the transfer that you made:
+The result will include the initial mint operation as well as the transfer that you made.
+
+<details>
+<summary>Output</summary>
 
 ```
 (
@@ -535,71 +551,7 @@ The result will include the initial mint operation as well as the transfer that 
 )
 ```
 
-</TabItem>
-</AdornedTabs>
-
-
-## Accounts
-
-<AdornedTabs groupId="standards">
-<TabItem value="icp" label="ICP" default>
-
-The ICP ledger uses an `AccountIdentifier`, which is calculated by hashing a Principal and Subaccount. This also means that the returned transactions will show accounts as the hash in bytes.
-
-For example, the default principal `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe` with no subaccount set results in the hash `0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27`.
-
-You can check a principal's `AccountIdentifier` by running:
-
-```
-dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
-```
-
-It will return the `AccountIdentifier`.
-
-```
-0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27
-```
-
-Alternatively, you can also add a subaccount. This will change the `AccountIdentifier` although the principal is the same:
-
-```
-dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe --subaccount 0000000000000000000000000000000000000000000000000000000000000001
-```
-```
-bd719f30834fe34f420904cde95a2cef6404ef7a8489cde57056b4daddab28b1
-```
-
-You can also always check the current balance of an account by calling:
-```
-dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
-```
-```
-(99_999_890_000 : nat64)
-```
-
-</TabItem>
-
-<TabItem value="icrc" label="ICRC" default>
-
-The ICRC-1 ledger uses an account identifier specified by `<principal>-<checksum>.<compressed-subaccount>`. You can check a principal's account identifier by running:
-
-```
-dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
-```
-
-```
-0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27
-```
-
-You can also always check the current balance of an account by calling:
-
-```
-dfx canister call icrc1_index_canister icrc1_balance_of '(record{owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe"})'
-```
-
-```
-(99_989_880_000 : nat64)
-```
+</details>
 
 </TabItem>
 </AdornedTabs>
