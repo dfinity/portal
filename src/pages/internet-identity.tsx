@@ -95,11 +95,17 @@ const developers = [
     ),
   },
   {
+    icon: "img/internet-identity/platforms-1.svg",
+    title: "Used by Caffeine",
+    description:
+      "Internet Identity 2.0 is the sign in option for Caffeine, the AI platform that builds and deploys web apps from natural language prompts.",
+  },
+  {
     icon: "img/internet-identity/features-2.svg",
     title: "Build fully onchain dapps",
     description:
-      "Build the next generation of secure, tamperproof and fully-on chain web3 applications on the Internet Computer.\
-       Dynamic web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
+      "Build the next generation of secure, tamperproof and fully-on chain Web3 applications on the Internet Computer.\
+       Dynamic Web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
        authenticated sessions, which Internet Identity provides.",
   },
   {
@@ -107,7 +113,7 @@ const developers = [
     title: "Avoid app store blocking",
     description: (
       <>
-        Internet Identity makes it possible to build great web3 applications
+        Internet Identity makes it possible to build great Web3 applications
         that users access with just their browsers. Your dapp can securely hold
         and interact with tokens and smart contracts across chains (thanks to{" "}
         <Link
@@ -293,7 +299,7 @@ function InternetIdentityPage() {
   return (
     <Layout
       title="Secure, seamless and, privacy-preserving digital identity"
-      description="Internet Identity is a decentralized federated service running end-to-end on the Internet Computer."
+      description="Internet Identity is a self-sovereign single sign-on solution for dapps."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.webp"></ShareMeta>
 
@@ -318,15 +324,22 @@ function InternetIdentityPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Internet Identity is a decentralized federated service running
-                end-to-end on the Internet Computer.
+                Internet Identity is a self-sovereign single sign-on solution
+                for dapps.
               </motion.p>
               <Link
                 className="mt-3 md:mt-6 link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                 href="https://id.ai/"
               >
                 <LinkArrowRight />
-                <span>Launch Internet Identity</span>
+                <span>Upgrade to Internet Identity 2.0</span>
+              </Link>
+              <Link
+                className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                href="https://identity.internetcomputer.org/"
+              >
+                <LinkArrowRight />
+                <span>Launch legacy Internet Identity 1.0</span>
               </Link>
             </div>
           </div>
@@ -361,12 +374,14 @@ function InternetIdentityPage() {
               <motion.h3 className="tw-heading-4 md:tw-heading-60">
                 Access dapps quickly and securely{" "}
               </motion.h3>
-              <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                Internet Identity is a self-sovereign single sign-on solution
-                for dapps.
-              </motion.p>
               <Link className="button-primary mt-6" href="https://id.ai/">
-                Launch Internet Identity
+                Launch Internet Identity 2.0
+              </Link>
+              <Link
+                className="button-primary mt-2"
+                href="https://identity.internetcomputer.org/ "
+              >
+                Launch Internet Identity 1.0
               </Link>
             </div>
             <div className="md:w-1/2 relative mt-6  md:mt-64 md:mb-64">
