@@ -53,6 +53,10 @@ type change_details = variant {
         canister_version : nat64;
         snapshot_id : snapshot_id;
         taken_at_timestamp : nat64;
+        source : variant {
+          taken_from_canister : reserved;
+          metadata_upload : reserved;
+        };
     };
     controllers_change : record {
         controllers : vec principal;
