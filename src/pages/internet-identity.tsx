@@ -108,8 +108,21 @@ const developers = [
   {
     icon: "img/internet-identity/platforms-1.svg",
     title: "Used by Caffeine",
-    description:
-      "Internet Identity 2.0 is the sign in option for Caffeine, the AI platform that builds and deploys web apps from natural language prompts.",
+    description: (
+      <>
+        Internet Identity 2.0 is the sign in option for{" "}
+        <Link
+          href="https://caffeine.ai"
+          className="link-primary-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Caffeine
+        </Link>
+        , the AI platform that builds and deploys web apps from natural language
+        prompts.
+      </>
+    ),
   },
   {
     icon: "img/internet-identity/features-2.svg",
