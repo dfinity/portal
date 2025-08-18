@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.44.0 (2025-08-11) {$0_44_0}
+* The management canister method `subnet_info` returns a new field `registry_version` providing the registry version of the corresponding subnet.
+
 ### 0.43.0 (2025-07-17) {$0_43_0}
 * VetKD API is considered stable.
 
