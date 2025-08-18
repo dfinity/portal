@@ -1,5 +1,22 @@
 [
   {
+    "id": "caffeine",
+    "name": "Caffeine",
+    "display": "Large",
+    "website": "https://caffeine.ai/",
+    "twitter": "https://x.com/caffeineai",
+    "tags": [
+      "AI"
+    ],
+    "description": "Caffeine is a new platform that allows anyone, from individuals and entrepreneurs to large enterprises, to create custom websites, online apps, and full-featured digital services simply by describing them in a natural language conversation with AI.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Caffeine_logo.jpg",
+    "screenshots": [
+      "/img/showcase/Caffeine_screenshot_logo.jpeg\n"
+    ],
+    "oneLiner": "Build through conversation."
+  },
+  {
     "id": "kinic",
     "name": "Kinic",
     "display": "Large",
@@ -5934,5 +5951,4 @@
     ],
     "oneLiner": "RhinoSpider: Get rewarded for sharing your internet bandwidth!"
   }
-  
 ]
