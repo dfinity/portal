@@ -17,6 +17,17 @@ import { ArrowIconRight } from "../components/RoadmapPage/Overlay";
 
 const users = [
   {
+    icon: "img/internet-identity/users-1.svg",
+    title: "Google Integration",
+    description: (
+      <>
+        Internet Identity 2.0 includes the option for users to use their Google
+        Account as an authentication option. This makes Internet Identity
+        accessible to an even wider audience.
+      </>
+    ),
+  },
+  {
     icon: "img/internet-identity/users-2.svg",
     title: "Secure access to 100s of dapps",
     description: (
@@ -232,28 +243,7 @@ const StickySectionNav: React.FC<{
   title: React.ReactNode;
   items: string[];
 }> = ({ className, highlightedIndex, onItemClick, items, title }) => {
-  return (
-    <div className={clsx("sticky top-10", className)}>
-      {title}
-      <ul className="list-none p-0 space-y-4 m-0 hidden md:block">
-        {items.map((card, index) => (
-          <li key={card}>
-            <button
-              onClick={(e) => onItemClick(e, index)}
-              className={clsx(
-                "border-none bg-transparent appearance-none text-left font-circular",
-                highlightedIndex !== index
-                  ? "text-black-30 tw-heading-7"
-                  : "tw-heading-6"
-              )}
-            >
-              {card}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div className={clsx("sticky top-10", className)}>{title}</div>;
 };
 
 function InternetIdentityPage() {
