@@ -1,5 +1,22 @@
 [
   {
+    "id": "caffeine",
+    "name": "Caffeine",
+    "display": "Large",
+    "website": "https://caffeine.ai/",
+    "twitter": "https://x.com/caffeineai",
+    "tags": [
+      "AI"
+    ],
+    "description": "Caffeine is a new platform that allows anyone, from individuals and entrepreneurs to large enterprises, to create custom websites, online apps, and full-featured digital services simply by describing them in a natural language conversation with AI.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Caffeine_logo.jpg",
+    "screenshots": [
+      "/img/showcase/Caffeine_screenshot_logo.jpeg"
+    ],
+    "oneLiner": "Build through conversation."
+  },
+  {
     "id": "kinic",
     "name": "Kinic",
     "display": "Large",
@@ -75,21 +92,24 @@
     ]
   },
   {
-    "id": "omnitynetwork",
-    "name": "Omnity Network",
+    "id": "omnity_hub",
+    "name": "Omnity Hub",
     "display": "Normal",
-    "website": "https://www.omnity.network/",
+    "website": "https://hub.omnity.network/runes",
     "twitter": "https://x.com/OmnityNetwork",
+    "youtube": "https://www.youtube.com/channel/UCkMYDmXdgjCBTBggSEAy0ZQ",
     "tags": [
       "Bitcoin",
-      "Ethereum",
       "Tools / Infrastructure",
-      "Chain Fusion",
-      "AI"
+      "Chain Fusion"
     ],
-    "description": "A turbo engine for the Bitcoin Token Boom. Includes the first 100% trustless omnichain interoperability protocol that extends all Runes primitives and AI agent for dynamic token distribution.",
+    "description": "Omnity Hub solves the challenges of BTCFi by providing a fully on-chain interoperable omnichain protocol operating without the need for any off-chain components such as relayers or indexers. Omnity stands out for its remarkable speed and cost-efficiency, establishing itself as one of the most ideal cross-chain infrastructures for the modular blockchain world.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/omnitynetwork_logo.jpeg"
+    "logo": "/img/showcase/omnitynetwork_logo.jpeg",
+    "screenshots": [
+      "/img/showcase/Omnity_hub_screenshot.png"
+    ],
+    "oneLiner": "Omnity Hub: The Fully On-Chain Bitcoin Interoperability"
   },
   {
     "id": "icpswap",
@@ -219,6 +239,23 @@
     ],
     "description": "The Gold DAO represents a groundbreaking fusion of traditional gold and modern blockchain technology, allowing anyone in the world to access physical gold instantaneously, without depending on banks.",
     "logo": "/img/showcase/golddao_logo.png"
+  },
+  {
+    "id": "omnity_ree",
+    "name": "Omnity Ree",
+    "display": "Normal",
+    "website": "https://www.omnity.network/ree",
+    "twitter": "https://x.com/OmnityNetwork",
+    "youtube": "https://www.youtube.com/channel/UCkMYDmXdgjCBTBggSEAy0ZQ",
+    "tags": [
+      "Bitcoin",
+      "Tools / Infrastructure",
+      "Chain Fusion"
+    ],
+    "description": "REE is a revolutionary Bitcoin execution layer built on ICP Chain Fusion, enabling composable Turing-complete smart contracts without the need for bridges or non-Bitcoin wallets. REE opens up a new world of decentralized applications and financial instruments on Bitcoin.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/omnitynetwork_logo.jpeg",
+    "oneLiner": "Unlock Bitcoin-native programmability with a decentralized Turing-complete execution layer."
   },
   {
     "id": "dragginz",
@@ -1276,24 +1313,6 @@
     "description": "iKnows is a decentralized application platform built on the Internet Computer (IC), based on the IC network, with knowledge as the core, and through a social approach.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/iknows_logo.png"
-  },
-  {
-    "id": "metamob",
-    "name": "Metamob",
-    "display": "Normal",
-    "website": "https://site.metamob.app/",
-    "twitter": "https://twitter.com/metamob_app",
-    "github": "https://github.com/av1ctor/metamob",
-    "submittableId": 32331652,
-    "tags": [
-      "SocialFi",
-      "Creator Economy"
-    ],
-    "description": "A decentralized web3 app, running 100% onchain on the Internet Computer, that lets any user start mobilizations by creating campaigns of four different kinds: donations, votes, signatures, and fundraising.",
-    "logo": "/img/showcase/metamob_logo.webp",
-    "screenshots": [
-      "/img/showcase/metamob_screenshot_0.webp"
-    ]
   },
   {
     "id": "icdex",
@@ -2909,21 +2928,6 @@
     "description": "A zk-attestation and computation network that breaks down barriers between datasets, enriches smart contract functionalities, and enables secure monetization of personal data within privacy-protected data flows.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/pado_logo.webp"
-  },
-  {
-    "id": "icfc",
-    "name": "ICFC",
-    "display": "Normal",
-    "website": "https://icfc.app/",
-    "twitter": "https://x.com/icfc_app",
-    "tags": [
-      "SocialFi",
-      "DAO",
-      "Creator Economy"
-    ],
-    "description": "The ICFC football ecosystem designed to reward fans for their love of football.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/ICFC_logo.png"
   },
   {
     "id": "sneed",
@@ -5251,19 +5255,19 @@
     "id": "staex-dvault",
     "name": "Staex dVault",
     "display": "Normal",
-    "website": "https://staex.io",
+    "website": "https://tc.staex.io",
     "twitter": "https://x.com/@Staex_io",
     "github": "https://github.com/staex-io/dvault",
-    "youtube": "https://youtube.com/@staex5585?si=L9vvwYDCfsxniqHx",
+    "youtube": "https://www.youtube.com/channel/UC5299saG-oRoXbsBCPKaR8A",
     "submittableId": 47374595,
     "tags": [
       "Tools / Infrastructure",
       "Enterprise"
     ],
     "description": "Staex dVault is intended to improve security and usability of secret data delivering to the edge and make a distributed chain of trust.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "logo": "/img/showcase/staex-dvault_logo.svg",
-    "oneLiner": " "
+    "oneLiner": "Improve security and usability of secret data delivering. "
   },
   {
     "id": "cashier",
@@ -5837,22 +5841,23 @@
     "oneLiner": "Decentralized, on-chain note-taking — simple, private, forever"
   },
   {
-    "id": "helix_vault",
-    "name": "Helix Vault",
+    "id": "icp_vault",
+    "name": "ICP Vault",
     "display": "Normal",
-    "website": "https://www.helixlabs.org/",
+    "website": "https://app.helixlabs.org/",
     "twitter": "https://x.com/zkhelixlabs",
-    "github": "https://github.com/HelixLabsDev/helix-vault-monorepo",
+    "github": "https://github.com/HelixLabsDev",
+    "youtube": "https://www.youtube.com/watch?v=4pjZAYWgDdI",
     "submittableId": 46734349,
     "tags": [
       "DeFi",
       "Chain Fusion",
-      "Ethereum"
+      "AI"
     ],
-    "description": "Helix Vault enables liquid staking for ICP, bridging nICP to EVM chains via Chain Fusion with 22K+ testnet users, governance, and restaking utility.",
+    "description": "ICP Vault lets ICP stakers mint hstICP for DeFi and restaking via Chain Fusion, with SNS + NNS governance for a seamless, secure on-chain experience.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/HelixLabs_logo.png",
-    "oneLiner": "Liquid staking for ICP with cross-chain DeFi via Chain Fusion"
+    "oneLiner": "Cross-chain DeFi access for ICP stakers with SNS governance."
   },
   {
     "id": "sela_network",
@@ -5906,6 +5911,45 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Rumi_protocol.jpg",
     "oneLiner": "A decentralized stablecoin on ICP"
+  },
+  {
+    "id": "covault",
+    "name": "Covault Tokenized Yield Vault",
+    "display": "Normal",
+    "website": "https://Covault.xyz",
+    "twitter": "X.com/COVAULTxyz",
+    "github": "https://github.com/covault",
+    "submittableId": 50007512,
+    "tags": [
+      "Tools / Infrastructure",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "description": "A production-ready, tokenized vault standard for ICP, enabling yield strategies, ICRC-2 compliance, and full developer SDK support.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/covault_logo.jpg",
+    "oneLiner": "Tokenized yield vaults & SDK for DeFi on Internet Computer."
+  },
+  {
+    "id": "rhino_spider",
+    "name": "RhinoSpider",
+    "display": "Normal",
+    "website": "https://www.rhinospider.com",
+    "twitter": "https://x.com/rhino_spider",
+    "github": "https://www.github.com/rhinospider",
+    "submittableId": 50301602,
+    "tags": [
+      "AI",
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "RhinoSpider is a peer-to-peer resource-sharing network that rewards users for contributing idle bandwidth for AI model training. ",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Rhino_spider_logo.jpg",
+    "screenshots": [
+      "/img/showcase/Rhino_spider_screenshot.png"
+    ],
+    "oneLiner": "RhinoSpider: Get rewarded for sharing your internet bandwidth!"
   }
   
 ]

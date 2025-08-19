@@ -19,90 +19,75 @@ The easiest way to run ICP Rosetta is using the official Docker image. This meth
 - [x] [Docker](https://docs.docker.com/get-docker/) installed and running.
 - [x] [Docker daemon](https://docs.docker.com/config/daemon/) started.
 
-### Step 1: Pull the latest image
-
 ```bash
 docker pull dfinity/rosetta-api
 ```
 
-### Step 2: Run the container
+### Quick Start - Test Environment
 
-For the **test ICP ledger** on mainnet (recommended for testing):
-
-```bash
-docker run \
-    --interactive \
-    --tty \
-    --publish 8081:8081 \
-    --rm \
-    dfinity/rosetta-api \
-    --canister-id xafvr-biaaa-aaaai-aql5q-cai \
-    --token-sybol TESTICP \
-    --mainnet \
-    --not-whitelisted
-```
-
-For the **official ICP ledger** on mainnet:
+Start here for learning and development. The test environment uses `TESTICP` tokens that have no real value.
 
 ```bash
 docker run \
-    --interactive \
-    --tty \
     --publish 8081:8081 \
     --rm \
     dfinity/rosetta-api \
-    --mainnet \
-    --not-whitelisted
+    --environment test
 ```
 
 :::info
 To get TESTICP tokens for testing, you can use [Validation Cloud's free faucet](https://docs.validationcloud.io/v1/about/faucets). This provides test tokens without needing to use real ICP on mainnet.
 :::
 
-For a specific **test ledger canister**:
+### Basic Production Deployment
+
+For quick production setup using the official ICP ledger on mainnet. **Note**: Data will be lost when the container restarts.
 
 ```bash
 docker run \
-    --interactive \
-    --tty \
     --publish 8081:8081 \
     --rm \
     dfinity/rosetta-api \
-    --canister 2xh5f-viaaa-aaaab-aae3q-cai
+    --environment production
 ```
 
-### Step 3: Production deployment
+### Production with Data Persistence
 
-For production environments, run without interactive flags and optionally persist data:
+For production environments where you need to persist blockchain data across container restarts:
 
 ```bash
 # Create a volume for data persistence
 docker volume create rosetta
 
-# Run in production mode
+# Run in production mode with data persistence
 docker run \
     --volume rosetta:/data \
     --publish 8081:8081 \
     --detach \
-    dfinity/rosetta-api \
-    --mainnet \
-    --not-whitelisted
+    dfinity/rosetta-api:v2.1.7 \
+    --environment production
 ```
 
-### Docker versioning
+This setup ensures that your node doesn't need to re-sync from scratch if the container is restarted.
 
-It's recommended to use specific versions in production:
+:::info
+It's recommended to use specific versions in production for consistency and predictable deployments.
+Check available versions on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
+:::
+
+
+### Custom Configurations
+
+To connect to a custom test ledger canister instance (useful for development with specific test setups):
 
 ```bash
 docker run \
     --publish 8081:8081 \
-    --detach \
-    dfinity/rosetta-api:v2.0.0 \
-    --mainnet \
-    --not-whitelisted
+    --rm \
+    dfinity/rosetta-api \
+    --environment test \
+    --canister <ledger-canister-id>
 ```
-
-Check available versions on [DockerHub](https://hub.docker.com/r/dfinity/rosetta-api/tags).
 
 ## Building from source
 
@@ -123,8 +108,7 @@ cd ic
 # Build and run ICP Rosetta
 bazel run //rs/rosetta-api/icp:ic-rosetta-api -- \
     --port 8081 \
-    --mainnet \
-    --not-whitelisted \
+    --environment production \
     --store-location /tmp
 ```
 
