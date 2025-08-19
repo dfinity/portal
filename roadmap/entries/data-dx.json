@@ -73,15 +73,9 @@
       "eta_to_render": "September 2025"
     },
     {
-      "title": "Open Caffeine projects",
-      "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
-      "status": "in_progress",
-      "milestone_id": "Atlas"
-    },
-    {
       "title": "Publishing projects to the ICP mainnet",
       "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
-      "status": "in_progress",
+      "status": "deployed",
       "milestone_id": "Atlas"
     },
     {
@@ -97,27 +91,20 @@
       "milestone_id": "Atlas"
     },
     {
-      "title": "Structured learning through mini tutorials",
-      "overview": "Add tutorials that teach ICP programming concepts and design patterns.",
-      "status": "future",
-      "milestone_id": "Atlas"
-    },
-    {
       "title": "Dark mode",
       "overview": "Introduce dark mode for the app",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Atlas"
     },
     {
       "title": "Tutorials",
       "overview": "More and improved tutorials for faster successful onboarding of devs into the ICP ecosystem.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
+      "status": "in_progress"
+    },
+    {
+      "title": "Open Caffeine projects",
+      "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
+      "status": "future" 
     },
     {
       "title": "Streaming support for the Asset Canister",
