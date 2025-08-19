@@ -35,7 +35,7 @@
       "milestone_id": "Synchrotron",
       "eta": "Q4 2024",
       "status": "in_progress",
-      "eta_to_render": ""
+      "eta_to_render": "August 2025"
     },
     {
       "title": "Rethinking the Internet Identity user experience",
@@ -54,19 +54,19 @@
     {
       "title": "Make account numbers obsolete",
       "overview": "Account numbers are confusing and hard to remember. Explore ways to deprecate them through the use of the latest WebAuthn features.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Pulse"
     },
     {
       "title": "Streamline the authentication flow",
       "overview": "Make the authentication flow clear to the user. Avoid pitfalls and frustrations.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Pulse"
     },
     {
       "title": "One identity, multiple accounts",
       "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
-      "status": "future",
+      "status": "in_progress",
       "milestone_id": "Pulse"
     },
     {
