@@ -2940,11 +2940,12 @@ Uploaded metadata of a snapshot contain:
 
 - the [certified data](#system-api-certified-data);
 
-- (optional) the state of the [global timer](#global-timer), i.e., whether it is inactive or active with a deadline (in nanoseconds since 1970-01-01),
-  the default value is an inactive global timer (if no state of the global timer is provided);
+- (optional) the state of the [global timer](#global-timer), i.e., whether it is inactive or active with a deadline (in nanoseconds since 1970-01-01);
 
-- (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed,
-  the default value is that the hook has already been executed (if no state of the on low wasm memory hook is provided).
+- (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed.
+
+If the state of the global timer and/or the on low wasm memory hook are not provided in the uploaded metadata,
+then their state is not updated when loading the snapshot using the method `load_canister_snapshot`.
 
 ### IC method `upload_canister_snapshot_data` {#ic-upload_canister_snapshot_data}
 
