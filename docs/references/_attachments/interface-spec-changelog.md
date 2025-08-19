@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.45.0 (2025-08-19) {$0_45_0}
+* The management canister method `canister_status` returns two new fields: `version` indicating the canister version, and `ready_for_migration` indicating whether a canister's queues are empty and its streams flushed. The value only makes sense when the canister status is `stopped`. 
+
 ### 0.44.0 (2025-08-11) {$0_44_0}
 * The management canister method `subnet_info` returns a new field `registry_version` providing the registry version of the corresponding subnet.
 
