@@ -1409,7 +1409,7 @@ While an implementation will likely try to keep the interval between `canister_h
 
 :::
 
-#### Global timer
+#### Global timer {#global-timer}
 
 For time-based execution, the WebAssembly module can export a function with name `canister_global_timer`. This function is called if the canister has set its global timer (using the System API function `ic0.global_timer_set`) and the current time (as returned by the System API function `ic0.time`) has passed the value of the global timer.
 
@@ -2838,9 +2838,9 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method takes a snapshot of the specified canister. A snapshot consists of the wasm memory, stable memory, certified variables, wasm chunk store and wasm binary.
 
-Subsequent `take_canister_snapshot` calls will create a new snapshot. However, a `take_canister_snapshot` call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing a snapshot ID via the optional `replace_snapshot` parameter. The snapshot identified by the specified ID will be deleted once a new snapshot has been successfully created.
+A `take_canister_snapshot` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created.
 
-It's important to note that a snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
+It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
@@ -2870,6 +2870,103 @@ It is expected that the canister controllers (or their tooling) do this separate
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
+### IC method `read_canister_snapshot_metadata` {#ic-read_canister_snapshot_metadata}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can read metadata of a snapshot of that canister.
+
+This method returns all metadata of a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
+
+The returned metadata of a snapshot contain:
+
+- the "source" of the snapshot, i.e., whether the snapshot was created by taking the canister state using the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or by (snapshot) metadata upload using the method [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata);
+
+- the timestamp at which the snapshot was created, i.e., the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata) executed;
+
+- the size of the canister WASM;
+
+- values of WASM globals exported by the canister WASM (not to be confused with global variables in a high-level programming language);
+
+- sizes of WASM (a.k.a. heap) and stable memory;
+
+- hashes of chunks in the WASM chunk store;
+
+- the [canister version](#system-api-canister-version) when the snapshot was created, i.e., the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata) executed;
+
+- the [certified data](#system-api-certified-data);
+
+- (optional) the state of the [global timer](#global-timer), i.e., whether it is inactive or active with a deadline (in nanoseconds since 1970-01-01);
+
+- (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed.
+
+The state of the global timer and on low wasm memory hook are `null` for snapshots created before release [release-2025-04-03_03-15-base (68fc31a141b25f842f078c600168d8211339f422](https://dashboard.internetcomputer.org/release/68fc31a141b25f842f078c600168d8211339f422) rolled out between April 7, 2025, and April 14, 2025, in the ICP mainnet.
+
+### IC method `read_canister_snapshot_data` {#ic-read_canister_snapshot_data}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can read data of a snapshot of that canister.
+
+This method returns a requested kind of (binary) data from a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
+
+The following kinds of (binary) data from a snapshot can be requested:
+
+- chunk of the canister WASM starting at a given `offset` and with a given `size` of the chunk;
+
+- chunk of the WASM (a.k.a. heap) memory starting at a given `offset` and with a given `size` of the chunk;
+
+- chunk of the stable memory starting at a given `offset` and with a given `size` of the chunk;
+
+- a (full) chunk in the WASM chunk store identified by its `hash`.
+
+### IC method `upload_canister_snapshot_metadata` {#ic-upload_canister_snapshot_metadata}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can create a snapshot of that canister by uploading the snapshot's metadata.
+
+An `upload_canister_snapshot_metadata` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created (in particular, before data is uploaded to that new snapshot using subsequent `upload_canister_snapshot_data` calls).
+
+It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
+
+Uploaded metadata of a snapshot contain:
+
+- the size of the canister WASM;
+
+- values of WASM globals exported by the canister WASM (not to be confused with global variables in a high-level programming language);
+
+- sizes of WASM (a.k.a. heap) and stable memory;
+
+- the [certified data](#system-api-certified-data);
+
+- (optional) the state of the [global timer](#global-timer), i.e., whether it is inactive or active with a deadline (in nanoseconds since 1970-01-01),
+  the default value is an inactive global timer (if no state of the global timer is provided);
+
+- (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed,
+  the default value is that the hook has already been executed (if no state of the on low wasm memory hook is provided).
+
+### IC method `upload_canister_snapshot_data` {#ic-upload_canister_snapshot_data}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can upload data to a snapshot of that canister.
+
+This method uploads a provided (binary) chunk of a provided kind of (binary) data to a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister or if the snapshot with the specified `snapshot_id` has been created using the method `take_canister_snapshot` (i.e., not by uploading metadata).
+
+The following kinds of (binary) data can be uploaded to a snapshot:
+
+- chunk of the canister WASM starting at a given `offset`;
+
+- chunk of the WASM (a.k.a. heap) memory starting at a given `offset`;
+
+- chunk of the stable memory starting at a given `offset`;
+
+- a (full) chunk in the WASM chunk store.
+
+It's important to note that uploading a chunk to the WASM chunk store will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen. On the other hand, uploading a chunk to the canister WASM and WASM (a.k.a.) heap and stable memory
+does increase the memory footprint of the canister since their sizes have been fixed when uploading the snapshot's metadata.
+
 ### IC method `list_canister_snapshots` {#ic-list_canister_snapshots}
 
 This method can be called by canisters as well as by external users via ingress messages.
@@ -2882,7 +2979,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method deletes a specified snapshot that belongs to an existing canister. An error will be returned if the snapshot is not found. 
 
-A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` request, or if the canister itself has been deleted or run out of cycles.
+A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` or `upload_canister_snapshot_metadata` request, or if the canister itself has been deleted or run out of cycles.
 
 A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
 
