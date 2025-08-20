@@ -35,32 +35,6 @@
       "milestone_id": "Fission"
     },
     {
-      "title": "Integrity of node state",
-      "is_milestone": true,
-      "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
-      "milestone_id": "Magnetosphere",
-      "status": "in_progress",
-      "eta_to_render": "October 2025"
-    },
-    {
-      "title": "TEE-capable IC-OS",
-      "overview": "Adapting IC-OS to run inside SEV-SNP, ensuring it is reproducibly built, securely boots, and maintains integrity throughout its lifecycle.",
-      "status": "in_progress",
-      "milestone_id": "Magnetosphere"
-    },
-    {
-      "title": "TEE Upgrades",
-      "overview": "Re-architecting the upgrade process to securely handover the confidential state from the old to the new release, guaranteeing continuous integrity.",
-      "status": "in_progress",
-      "milestone_id": "Magnetosphere"
-    },
-    {
-      "title": "TEE-enabled Replica Nodes",
-      "overview": "Deploying single node machines with TEE-protection that can be used both as replicas and API boundary nodes.",
-      "status": "in_progress",
-      "milestone_id": "Magnetosphere"
-    },
-    {
       "title": "Subnet splitting with minimal downtime",
       "overview": "In a previous feature, subnet splitting became possible via a sequence of NNS proposals, which would incur significant downtime. In this feature, the goal is to make subnet splitting practically possible with minimal downtime for the subnet.",
       "status": "in_progress",
