@@ -168,7 +168,11 @@ async function processEventsData(records) {
 
       // Only fetch share image for current/future events
       let imageUrl = null;
-      if (parsedRecord.endDate >= today) {
+
+      // Check if this is the Bitcoin DeFi Bootcamp event
+      if (parsedRecord.eventName === "Bitcoin DeFi Bootcamp") {
+        imageUrl = "/img/events/icp-edu.webp";
+      } else if (parsedRecord.endDate >= today) {
         imageUrl = await fetchShareImage(parsedRecord.eventLink);
       }
 
