@@ -47,21 +47,26 @@ function sortDesktopProjects(
   const sorted: EnrichedShowcaseProjects = [];
   const columns = 4;
 
-  const promoSlots = [8 - 1, 20 - 3, 32 - 2, 48 - 4, 64 - 1];
+  // add submit project promo card at the beginning for prominent position
+  if (small.length > 0) {
+    small.unshift("promo");
+  }
+
+  const promoSlots = [12 - 1, 24 - 3, 36 - 2, 52 - 4, 68 - 1];
 
   for (let i = 0; i < promoSlots.length; i++) {
     const slot = promoSlots[i];
     if (small.length >= slot) {
-      // 1st promo: Submit project, 2nd promo: Newsletter, 3rd & 4th promo: Submit project, 5th promo (last): Newsletter
+      // Additional promos: 1st: Submit project, 2nd: Newsletter, 3rd & 4th: Submit project, 5th (last): Newsletter
       const cardType =
         i === 1 || i === promoSlots.length - 1 ? "newsletter" : "promo";
       small.splice(slot, 0, cardType);
     }
   }
 
-  // add report card after the 1st promo card
-  if (small.length >= 8) {
-    small.splice(0, 0, "report");
+  // add report card at a less prominent position (after position 28)
+  if (small.length >= 28) {
+    small.splice(28, 0, "report");
   }
 
   while (true) {
