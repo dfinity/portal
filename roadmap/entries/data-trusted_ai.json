@@ -4,7 +4,7 @@
   "elements": [
     {
       "title": "Caffeine future plans",
-      "description": "Imagine you could create a website, app, or online service just by talking to an AI. That's the power of Caffeine. Caffeine lets you build and update production-ready services instantly through a natural language conversation. The AI handles the complex coding, and your creations appear live on a URL, ready for use. Whether you're building a simple app or a service for thousands of users, Caffeine is designed to prevent accidental data loss, so you can iterate with confidence at the speed of chat. Want to learn more? Visit caffeine.ai and follow @caffeineai for updates.",
+      "description": "Imagine you could create a website, app, or online service just by talking to AI. That's the power of Caffeine. Caffeine lets you build and update production-ready services instantly through a natural language conversation. The AI handles the complex coding, and your creations appear live on a URL, ready for use. Whether you're building a simple app or a service for thousands of users, Caffeine is designed to prevent accidental data loss, so you can iterate with confidence at the speed of chat. Want to learn more? Visit caffeine.ai and follow @caffeineai on X for updates.",
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Caffeine"
