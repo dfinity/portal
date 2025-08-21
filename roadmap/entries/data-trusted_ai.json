@@ -8,6 +8,12 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Caffeine"
+    },
+    {
+      "title": "Caffeine",
+      "overview": "Future releases and plans will be announced directly on https://caffeine.ai/ and https://x.com/caffeineai.",
+      "status": "in_progress",
+      "milestone_id": "Caffeine"
     }
   ]
 }
