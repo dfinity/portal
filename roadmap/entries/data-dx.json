@@ -2,68 +2,6 @@
   "categoryName": "Developer Experience",
   "categoryDescription": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
   "elements": [
-
-    {
-      "title": "Canister lifecycle hooks",
-      "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
-      "forum": "https://forum.dfinity.org/t/canister-lifecycle-hooks/17089",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/106146",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Thorium",
-      "imported": true
-    },
-    {
-      "title": "Cycles and instruction insights",
-      "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "upcoming",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Thorium",
-      "imported": true
-    },
-    {
-      "title": "Cycles Ledger",
-      "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q2 2024",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Thorium",
-      "imported": true
-    },
-    {
-      "title": "Live canister metrics",
-      "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Thorium"
-    },
-    {
-      "title": "Canister resource management",
-      "is_milestone": true,
-      "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
-      "milestone_id": "Thorium",
-      "eta": "",
-      "status": "in_progress",
-      "eta_to_render": ""
-    },
-
     {
       "title": "Amazing first time developer experience with ICP Ninja",
       "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
@@ -95,6 +33,67 @@
       "overview": "Introduce dark mode for the app",
       "status": "in_progress",
       "milestone_id": "Atlas"
+    },
+    {
+      "title": "Canister lifecycle hooks",
+      "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
+      "forum": "https://forum.dfinity.org/t/canister-lifecycle-hooks/17089",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/106146",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": "Thorium",
+      "imported": true
+    },
+    {
+      "title": "Cycles and instruction insights",
+      "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": "Thorium",
+      "imported": true
+    },
+    {
+      "title": "Cycles Ledger",
+      "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q2 2024",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": "Thorium",
+      "imported": true
+    },
+    {
+      "title": "Live canister metrics",
+      "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
+      "is_community": true,
+      "status": "in_progress",
+      "milestone_id": "Thorium"
+    },
+    {
+      "title": "Canister logging extensions",
+      "overview": "This feature introduces cross-canister log fetching, enabling larger log storage and making future extensions like log levels and filtering possible — all within the Internet Computer ecosystem.",
+      "status": "in_progress",
+      "milestone_id": "Thorium"
+    },
+    {
+      "title": "Canister resource management",
+      "is_milestone": true,
+      "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
+      "milestone_id": "Thorium",
+      "eta": "",
+      "status": "in_progress",
+      "eta_to_render": ""
     },
     {
       "title": "Tutorials",
