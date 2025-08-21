@@ -254,7 +254,7 @@
     ],
     "description": "REE is a revolutionary Bitcoin execution layer built on ICP Chain Fusion, enabling composable Turing-complete smart contracts without the need for bridges or non-Bitcoin wallets. REE opens up a new world of decentralized applications and financial instruments on Bitcoin.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/omnitynetwork_logo.jpeg",
+    "logo": "/img/showcase/ree-omnity_logo.png",
     "oneLiner": "Unlock Bitcoin-native programmability with a decentralized Turing-complete execution layer."
   },
   {
@@ -4258,18 +4258,19 @@
     "logo": "/img/showcase/regex_engine_logo.svg"
   },
   {
-    "id": "icspore",
-    "name": "ICSpore",
+    "id": "yieldex",
+    "name": "Yieldex",
     "display": "Normal",
-    "website": "https://qnoqa-vaaaa-aaaap-qhima-cai.icp0.io/",
-    "twitter": "https://x.com/icspore",
-    "github": "https://github.com/ICSpore/dca-v1",
+    "website": "https://yieldex.xyz/",
+    "twitter": "https://x.com/YieldexAi",
     "tags": [
-      "DeFi"
+      "DeFi",
+      "AI"
     ],
-    "description": "An automated, dollar-cost-averaging solution for purchasing ICP.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/icspore_logo.png"
+    "description": "Asset management vault offering passive yield optimization across multichain DeFi protocols facilitated by AI agents.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/yieldex_logo.jpg",
+    "oneLiner": "Stable Yield Simplified"
   },
   {
     "id": "stable-fs",
@@ -5951,5 +5952,4 @@
     ],
     "oneLiner": "RhinoSpider: Get rewarded for sharing your internet bandwidth!"
   }
-  
 ]
