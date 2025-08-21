@@ -1,33 +1,13 @@
 {
-  "categoryName": "Decentralized AI",
+  "categoryName": "AI",
   "categoryDescription": "AI and ICP have significant potential to benefit one another. First, AI and ICP together enable the self-writing Internet. Given a description of an application, AI can write the application for you and, by deploying it as an ICP smart contract, make it available to you at a URL – just like that.  Second, AI running as a smart contract on ICP addresses the problem of users having to blindly trust AI models running on centralized servers by providing transparency into data usage and response generation.",
   "elements": [
     {
-      "title": "Foundational LLMs",
-      "description": "AI agents are a growing paradigm in software, and the Internet Computer is uniquely positioned to be the home of AI agents. Compared to the traditional IT stack, AI agents on the Internet Computer can securely and easily manage digital assets, transact amongst each other, be fully sovereign, and be tokenized and managed by DAOs. This milestone focuses on providing access to foundational LLMs, along with basic tools to make it as simple as possible to deploy agents on the Internet Computer.",
-      "status": "deployed",
+      "title": "Caffeine future plans",
+      "description": "Imagine you could create a website, app, or online service just by talking to an AI. That's the power of Caffeine. Caffeine lets you build and update production-ready services instantly through a natural language conversation. The AI handles the complex coding, and your creations appear live on a URL, ready for use. Whether you're building a simple app or a service for thousands of users, Caffeine is designed to prevent accidental data loss, so you can iterate with confidence at the speed of chat. Want to learn more? Visit caffeine.ai and follow @caffeineai for updates.",
+      "status": "in_progress",
       "is_milestone": true,
-      "milestone_id": "Ignition",
-      "eta": "",
-      "eta_to_render": ""
-    },
-    {
-      "title": "LLM canister MVP",
-      "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
-      "status": "deployed",
-      "milestone_id": "Ignition"
-    },
-    {
-      "title": "LLM developer experience",
-      "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
-      "status": "deployed",
-      "milestone_id": "Ignition"
-    },
-    {
-      "title": "LLM workers",
-      "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
-      "status": "deployed",
-      "milestone_id": "Ignition"
+      "milestone_id": "Caffeine"
     }
   ]
 }
