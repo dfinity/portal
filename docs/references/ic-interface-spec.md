@@ -2840,7 +2840,7 @@ This method takes a snapshot of the specified canister. A snapshot consists of t
 
 A `take_canister_snapshot` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created.
 
-It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
+It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen.
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
@@ -2884,11 +2884,11 @@ The returned metadata of a snapshot contain:
 
 - the timestamp at which the snapshot was created, i.e., the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata) executed;
 
-- the size of the canister WASM;
+- the size of the canister WASM (in bytes);
 
-- values of WASM globals exported by the canister WASM (not to be confused with global variables in a high-level programming language);
+- values of WASM globals (not to be confused with global variables in a high-level programming language) that are either exported or mutable in the canister WASM;
 
-- sizes of WASM (a.k.a. heap) and stable memory;
+- sizes of WASM (a.k.a. heap) and stable memory (in bytes);
 
 - hashes of chunks in the WASM chunk store;
 
@@ -2900,7 +2900,7 @@ The returned metadata of a snapshot contain:
 
 - (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed.
 
-The state of the global timer and on low wasm memory hook are `null` for snapshots created before release [release-2025-04-03_03-15-base (68fc31a141b25f842f078c600168d8211339f422](https://dashboard.internetcomputer.org/release/68fc31a141b25f842f078c600168d8211339f422) rolled out between April 7, 2025, and April 14, 2025, in the ICP mainnet.
+The state of the global timer and on low wasm memory hook are `null` for existing snapshots created before release [release-2025-04-03_03-15-base (68fc31a141b25f842f078c600168d8211339f422](https://dashboard.internetcomputer.org/release/68fc31a141b25f842f078c600168d8211339f422) rolled out between April 7, 2025, and April 14, 2025, in the ICP mainnet.
 
 ### IC method `read_canister_snapshot_data` {#ic-read_canister_snapshot_data}
 
@@ -2912,13 +2912,13 @@ This method returns a requested kind of (binary) data from a snapshot identified
 
 The following kinds of (binary) data from a snapshot can be requested:
 
-- chunk of the canister WASM starting at a given `offset` and with a given `size` of the chunk;
+- chunk of the canister WASM starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the canister WASM size as in the snapshot metadata);
 
-- chunk of the WASM (a.k.a. heap) memory starting at a given `offset` and with a given `size` of the chunk;
+- chunk of the WASM (a.k.a. heap) memory starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the WASM memory size as in the snapshot metadata);
 
-- chunk of the stable memory starting at a given `offset` and with a given `size` of the chunk;
+- chunk of the stable memory starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the stable memory size as in the snapshot metadata);
 
-- a (full) chunk in the WASM chunk store identified by its `hash`.
+- a (full) chunk in the WASM chunk store identified by its `hash` (`hash` must be present in the snapshot metadata).
 
 ### IC method `upload_canister_snapshot_metadata` {#ic-upload_canister_snapshot_metadata}
 
@@ -2928,15 +2928,15 @@ Only controllers of a canister can create a snapshot of that canister by uploadi
 
 An `upload_canister_snapshot_metadata` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created (in particular, before data is uploaded to that new snapshot using subsequent `upload_canister_snapshot_data` calls).
 
-It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
+It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen.
 
 Uploaded metadata of a snapshot contain:
 
-- the size of the canister WASM;
+- the size of the canister WASM (in bytes);
 
-- values of WASM globals exported by the canister WASM (not to be confused with global variables in a high-level programming language);
+- values of WASM globals (not to be confused with global variables in a high-level programming language) that are either exported or mutable in the canister WASM;
 
-- sizes of WASM (a.k.a. heap) and stable memory;
+- sizes of WASM (a.k.a. heap) and stable memory (in bytes);
 
 - the [certified data](#system-api-certified-data);
 
@@ -2953,19 +2953,19 @@ This method can be called by canisters as well as by external users via ingress 
 
 Only controllers of a canister can upload data to a snapshot of that canister.
 
-This method uploads a provided (binary) chunk of a provided kind of (binary) data to a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister or if the snapshot with the specified `snapshot_id` has been created using the method `take_canister_snapshot` (i.e., not by uploading metadata).
+This method uploads a provided (binary) chunk of a provided kind of (binary) data to a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister or if the snapshot with the specified `snapshot_id` has been created using the method `take_canister_snapshot` (i.e., not by uploading snapshot metadata).
 
 The following kinds of (binary) data can be uploaded to a snapshot:
 
-- chunk of the canister WASM starting at a given `offset`;
+- chunk of the canister WASM starting at a given `offset` (`offset + |chunk|` must not exceed the canister WASM size as in the snapshot metadata);
 
-- chunk of the WASM (a.k.a. heap) memory starting at a given `offset`;
+- chunk of the WASM (a.k.a. heap) memory starting at a given `offset` (`offset + |chunk|` must not exceed the WASM memory size as in the snapshot metadata);
 
-- chunk of the stable memory starting at a given `offset`;
+- chunk of the stable memory starting at a given `offset` (`offset + |chunk|` must not exceed the stable memory size as in the snapshot metadata);
 
-- a (full) chunk in the WASM chunk store.
+- a (full) chunk in the WASM chunk store (the length `|chunk|` of the provided chunk must be at most 1MiB and the maximum number of chunks in the chunk store of the snapshot is `CHUNK_STORE_SIZE` chunks).
 
-It's important to note that uploading a chunk to the WASM chunk store will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen. On the other hand, uploading a chunk to the canister WASM and WASM (a.k.a.) heap and stable memory
+It's important to note that uploading a chunk to the WASM chunk store of the snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. On the other hand, uploading a chunk to the canister WASM and WASM (a.k.a.) heap and stable memory
 does increase the memory footprint of the canister since their sizes have been fixed when uploading the snapshot's metadata.
 
 ### IC method `list_canister_snapshots` {#ic-list_canister_snapshots}
