@@ -3482,12 +3482,22 @@ MethodName = Text
 
 The [WebAssembly System API](#system-api) is relatively low-level, and some of its details (e.g. that the argument data is queried using separate calls, and that closures are represented by a function pointer and a number, that method names need to be mangled) would clutter this section. Therefore, we abstract over the WebAssembly details as follows:
 
--   The state of a WebAssembly module (memory, tables, globals) is hidden behind an abstract `WasmState`. The `WasmState` contains the `StableMemory`, which can be extracted using `pre_upgrade` and passed to `post_upgrade`.
+-   The state of a WebAssembly module `WasmState` is represented by its WASM (a.k.a. heap) and stable memory, and a list of (exported or mutable) globals. For notational simplicity, the principal of the canister with state represented by `WasmState` is also stored in `WasmState`.
 
--   A canister module `CanisterModule` consists of an initial state, and a (pure) function that models function invocation. It either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
+-   A canister module `CanisterModule` consists of an initial state, and (pure) functions that model function invocation. A function return value either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
     ```
-    WasmState = (abstract)
-    StableMemory = (abstract)
+    WasmState = {
+      wasm_memory : Blob;
+      stable_memory : Blob;
+      globals : [Global];
+      self_id : Principal;
+    }
+    Global
+      = I32(Int)
+      | I64(Int)
+      | F32(Real)
+      | F64(Real)
+      | V128(Nat);
     Callback = (abstract)
     ChunkStore = Hash -> Blob
 
@@ -3560,6 +3570,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
     RefundedCycles = Nat
 
     CanisterModule = {
+      initial_globals : [Global];
       init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
         new_state : WasmState;
         new_certified_data : NoCertifiedData | Blob;
@@ -4444,9 +4455,9 @@ Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
 if S.memory_allocation[C] = 0:
   Wasm_memory_capacity = S.wasm_memory_limit[C]
 else:
-  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.store.mem|), S.wasm_memory_limit[C])
+  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.wasm_memory|), S.wasm_memory_limit[C])
 
-if Wasm_memory_capacity < |S.canisters[C].wasm_state.store.mem| + S.wasm_memory_threshold[C]:
+if Wasm_memory_capacity < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
   if S.on_low_wasm_memory_hook_status[C] = ConditionNotSatisfied:
     On_low_wasm_memory_hook_status = Ready
   else:
@@ -4594,7 +4605,7 @@ if
     memory_usage_chunk_store(S.chunk_store[M.receiver]) +
     memory_usage_snapshots(S.snapshots[M.receiver])
   (S.memory_allocation[M.receiver] = 0) or (Total_memory_usage ≤ S.memory_allocation[M.receiver])
-  (Wasm_memory_limit = 0) or |res.new_state.store.mem| <= Wasm_memory_limit
+  (Wasm_memory_limit = 0) or |res.new_state.wasm_memory| <= Wasm_memory_limit
   (res.response = NoResponse) or Ctxt.needs_to_respond
 then
   S with
@@ -5017,7 +5028,7 @@ if New_memory_allocation > 0:
   Total_memory_usage ≤ New_memory_allocation
 
 if New_wasm_memory_limit > 0:
-  |S.canisters[A.canister_id].wasm_state.store.mem| ≤ New_wasm_memory_limit
+  |S.canisters[A.canister_id].wasm_state.wasm_memory| ≤ New_wasm_memory_limit
 
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
@@ -5374,7 +5385,7 @@ Total_memory_usage = memory_usage_wasm_state(New_state) +
 if S.memory_allocation[A.canister_id] > 0:
   Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
-(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
+(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
@@ -5431,8 +5442,6 @@ The logs produced by the canister during the execution of the WebAssembly `start
 #### IC Management Canister: Code upgrade
 
 Only the controllers of the given canister can install new code. This changes the code of an *existing* canister, preserving the state in the stable memory. This involves invoking the `canister_pre_upgrade` method, if the `skip_pre_upgrade` flag is not set to `opt true`, on the old and `canister_post_upgrade` method on the new canister, which must succeed and must not invoke other methods. If the `wasm_memory_persistence` flag is set to `opt keep`, then the WebAssembly memory is preserved.
-
-In the following, the `initial_wasm_store` is the store of the WebAssembly module after instantiation (as per WebAssembly spec) of the WebAssembly module contained in `A.wasm_module`, before executing a potential `(start)` function. The store `initialize_store(State, A.wasm_module)` is the store of the WebAssembly module after instantiation (as per WebAssembly spec) of the WebAssembly module contained in `A.wasm_module` while reusing the WebAssembly memory of `State`.
 
 If the old canister module exports a private custom section with the name "enhanced-orthogonal-persistence", then the `wasm_memory_persistence` option must be set to `opt keep` or `opt replace`, i.e., the option must not be `null`.
 
@@ -5496,12 +5505,22 @@ or
 
 (
   (A.mode = upgrade U and U.wasm_memory_persistence ≠ keep)
-  Persisted_state = {store = initial_wasm_store; self_id = A.canister_id; stable_mem = Intermediate_state.stable_memory}
+  Persisted_state = {
+    wasm_memory = "";
+    stable_memory = Intermediate_state.stable_memory;
+    globals = Mod.initial_globals;
+    self_id = A.canister_id;
+  }
 )
 or
 (
   (A.mode = upgrade U and U.wasm_memory_persistence = keep)
-  Persisted_state = initialize_store(Intermediate_state, A.wasm_module)
+  Persisted_state = {
+    wasm_memory = Intermediate_state.wasm_memory;
+    stable_memory = Intermediate_state.stable_memory;
+    globals = Mod.initial_globals;
+    self_id = A.canister_id;
+  }
 )
 
 (A.mode = upgrade U and U.wasm_memory_persistence = keep)
@@ -5539,7 +5558,7 @@ Total_memory_usage = memory_usage_wasm_state(New_state) +
 if S.memory_allocation[A.canister_id] > 0:
   Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
-(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
+(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
@@ -7139,19 +7158,7 @@ and where `lookup_in_tree` is a function that returns `Found v` for a value `v`,
 
 In Section [Abstract canisters](#abstract-canisters) we introduced an abstraction over the interface to a canister, to avoid cluttering the abstract specification of the Internet Computer from WebAssembly details. In this section, we will fill the gap and explain how the abstract canister interface maps to the [concrete System API](#system-api) and the WebAssembly concepts as defined in the [WebAssembly specification](https://webassembly.github.io/spec/core/index.html).
 
-#### The concrete `WasmState`
-
-The abstract `WasmState` above models the WebAssembly *store* `S`, which encompasses the functions, tables, memories and globals of the WebAssembly program, plus additional data maintained by the IC, such as the stable memory:
-```
-WasmState = {
-  store : S; // a store as per WebAssembly spec
-  self_id : CanId;
-  stable_mem : Blob
-}
-```
-As explained in Section "[WebAssembly module requirements](#system-api-module)", the WebAssembly module imports at most *one* memory and at most *one* table; in the following, *the* memory (resp. table) and the fields `mem` and `table` of `S` refer to that. Any system call that accesses the memory (resp. table) will trap if the module does not import the memory (resp. table).
-
-We model `mem` as an array of bytes, and `table` as an array of execution functions.
+#### The concrete `Callback`
 
 The abstract `Callback` type above models an entry point for responses:
 ```
@@ -7169,7 +7176,7 @@ Callback = {
 
 #### The execution state
 
-We can model the execution of WebAssembly functions as stateful functions that have access to the WebAssembly store. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
+We can model the execution of WebAssembly functions as stateful functions that have access to the WASM memory (a.k.a.) and (exported or mutable) globals in `WasmState`. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
 ```
 Params = {
   arg : NoArg | Blob;
@@ -7200,12 +7207,6 @@ ExecutionState = {
 ```
 
 This allows us to model WebAssembly functions, including host-provided imports, as functions with implicit mutable access to an `ExecutionState`, dubbed *execution functions*. Syntactically, we express this using an implicit argument of type `ref ExecutionState` in angle brackets (e.g. `func<es>(x)` for the invocation of a WebAssembly function with type `(x : i32) -> ()`). The lifetime of the `ExecutionState` data structure is that of one such function invocation.
-
-:::warning
-
-It is nonsensical to pass to an execution function a WebAssembly store `S` that comes from a different WebAssembly module than one defining the function.
-
-:::
 
 The "liquid" balance of a canister with a given `ExecutionState` can be obtained as follows:
 ```
@@ -7261,7 +7262,9 @@ liquid_balance(es) =
 
 Finally, we can specify the abstract `CanisterModule` that models a concrete WebAssembly module.
 
--   The `initial_wasm_store` mentioned below is the store of the WebAssembly module after *instantiation* (as per WebAssembly spec) of the WebAssembly module contained in the [canister module](#canister-module-format), before executing a potential `(start)` function.
+-   We define the initial values `initial_globals` of the (exported or mutable) globals declared in the WebAssembly module.
+
+-   We define a helper `table` which is an array of all functions of the WebAssembly module listed in its (unique according to Section [WebAssembly module requirements](#system-api-module)) table.
 
 -   We define a helper function
     ```
@@ -7303,7 +7306,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
     If the WebAssembly module does not export a function called under the name `canister_init`, then
     ```
     init = λ (self_id, arg, caller, sysenv) →
-      match start({store = initial_wasm_store; self_id = self_id; stable_mem = ""}) with
+      match start({wasm_memory = ""; stable_memory = ""; globals = Initial_globals; self_id = self_id;}) with
         Trap trap → Trap trap
         Return res → Return {
             new_state = res.wasm_state;
@@ -7316,7 +7319,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
     Otherwise, if the WebAssembly module exports a function `func` under the name `canister_init`, it is
     ```
     init = λ (self_id, arg, caller, sysenv) →
-      match start({store = initial_wasm_store; self_id = self_id; stable_mem = ""}) with
+      match start({wasm_memory = ""; stable_memory = ""; globals = Initial_globals; self_id = self_id;}) with
         Trap trap → Trap trap
         Return res →
           let es = ref {empty_execution_state with
@@ -7579,8 +7582,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         context = context;
       }
       try
-        if fun > |es.wasm_state.store.table| then Trap
-        let func = es.wasm_state.store.table[fun]
+        if fun > |table| then Trap
+        let func = table[fun]
         if typeof(func) ≠ func (I) -> () then Trap
         func<es>(env)
         discard_pending_call<es>()
@@ -7595,8 +7598,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         }
       with Trap
         if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
-        if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
-        let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
+        if callbacks.on_cleanup.fun > |table| then Trap {cycles_used = es.cycles_used;}
+        let func = table[callbacks.on_cleanup.fun]
         if typeof(func) ≠ func (I) -> () then Trap {cycles_used = es.cycles_used;}
 
       let es' = ref { empty_execution_state with
@@ -7638,8 +7641,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         context = context;
       }
       try
-        if fun > |es.wasm_state.store.table| then Trap
-        let func = es.wasm_state.store.table[fun]
+        if fun > |table| then Trap
+        let func = table[fun]
         if typeof(func) ≠ func (I) -> () then Trap
         func<es>(env)
         discard_pending_call<es>()
@@ -7651,8 +7654,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         }
       with Trap
         if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
-        if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
-        let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
+        if callbacks.on_cleanup.fun > |table| then Trap {cycles_used = es.cycles_used;}
+        let func = table[callbacks.on_cleanup.fun]
         if typeof(func) ≠ func (I) -> () then Trap {cycles_used = es.cycles_used;}
 
       let es' = ref { empty_execution_state with
@@ -7704,13 +7707,13 @@ In the following section, we use the these helper functions
 I ∈ {i32, i64}
 copy_to_canister<es>(dst : I, offset : I, size : I, data : blob) =
   if offset+size > |data| then Trap {cycles_used = es.cycles_used;}
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  es.wasm_state.store.mem[dst..dst+size] := data[offset..offset+size]
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  es.wasm_state.wasm_memory[dst..dst+size] := data[offset..offset+size]
 
 I ∈ {i32, i64}
 copy_from_canister<es>(src : I, size : I) blob =
-  if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  return es.wasm_state.store.mem[src..src+size]
+  if src+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  return es.wasm_state.wasm_memory[src..src+size]
 ```
 
 Cycles are represented by 128-bit values so they require 16 bytes of memory.
@@ -7718,8 +7721,8 @@ Cycles are represented by 128-bit values so they require 16 bytes of memory.
 I ∈ {i32, i64}
 copy_cycles_to_canister<es>(dst : I, data : blob) =
   let size = 16;
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  es.wasm_state.store.mem[dst..dst+size] := data[0..size]
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  es.wasm_state.wasm_memory[dst..dst+size] := data[0..size]
 ```
 
 #### System imports
@@ -7987,57 +7990,57 @@ discard_pending_call<es>() =
     es.pending_call := NoPendingCall
 
 ic0.stable_size<es>() : (page_count : i32) =
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
-  page_count := |es.wasm_state.stable_mem| / 64k
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  page_count := |es.wasm_state.stable_memory| / 64k
   return page_count
 
 ic0.stable_grow<es>(new_pages : i32) : (old_page_count : i32) =
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
   if arbitrary() then return -1
   else
-    old_size := |es.wasm_state.stable_mem| / 64k
+    old_size := |es.wasm_state.stable_memory| / 64k
     if old_size + new_pages > 2^16 then return -1
-    es.wasm_state.stable_mem :=
-      es.wasm_state.stable_mem · repeat(0x00, new_pages * 64k)
+    es.wasm_state.stable_memory :=
+      es.wasm_state.stable_memory · repeat(0x00, new_pages * 64k)
     return old_size
 
 ic0.stable_write<es>(offset : i32, src : i32, size : i32)
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
-  if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  if src+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.stable_mem[offset..offset+size] := es.wasm_state.store.mem[src..src+size]
+  es.wasm_state.stable_memory[offset..offset+size] := es.wasm_state.wasm_memory[src..src+size]
 
 ic0.stable_read<es>(dst : i32, offset : i32, size : i32)
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
+  es.wasm_state.wasm_memory[offset..offset+size] := es.wasm_state.stable_memory[src..src+size]
 
 ic0.stable64_size<es>() : (page_count : i64) =
-  return |es.wasm_state.stable_mem| / 64k
+  return |es.wasm_state.stable_memory| / 64k
 
 ic0.stable64_grow<es>(new_pages : i64) : (old_page_count : i64) =
   if arbitrary()
   then return -1
   else
-    old_size := |es.wasm_state.stable_mem| / 64k
-    es.wasm_state.stable_mem :=
-      es.wasm_state.stable_mem · repeat(0x00, new_pages * 64k)
+    old_size := |es.wasm_state.stable_memory| / 64k
+    es.wasm_state.stable_memory :=
+      es.wasm_state.stable_memory · repeat(0x00, new_pages * 64k)
     return old_size
 
 ic0.stable64_write<es>(offset : i64, src : i64, size : i64)
-  if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
+  if src+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.stable_mem[offset..offset+size] := es.wasm_state.store.mem[src..src+size]
+  es.wasm_state.stable_memory[offset..offset+size] := es.wasm_state.wasm_memory[src..src+size]
 
 ic0.stable64_read<es>(dst : i64, offset : i64, size : i64)
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
+  es.wasm_state.wasm_memory[offset..offset+size] := es.wasm_state.stable_memory[src..src+size]
 
 I ∈ {i32, i64}
 ic0.root_key_size<es>() : I =
