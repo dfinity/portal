@@ -245,6 +245,60 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: a
 }'
 ```
 
+## Disburse maturity
+
+|                      |        |
+|----------------------|--------|
+| Since version        | 2.1.7  |
+| Idempotent?          | No    |
+| Minimal access level | controller |
+
+This section will show you how to use Rosetta to disburse maturity associated with a neuron.
+
+### Preconditions
+
+* `account.address` is the ledger address of the neuron controller.
+* `metadata.percentage_to_disburse` is the percentage of the maturity associated with the neuron that is going to be disbursed.
+* `metadata.recipient` contains an account_identifier that should receive the ICP disbursed from the maturity. If not specified, the maturity will be disbursed to `account.address`.
+*  The disbursed amount (disbursed percentage * total maturity assigned to the neuron), needs to be at least the minimum disburse amount plus maturity modulation.
+
+### Postconditions
+
+* The neuron's maturity was reduced by the percentage specified in the request.
+* `metadata.recipient` or `account.address` (if recipient was not specified) received the specified percentage of maturity.
+
+```json
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "DISBURSE",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 2,
+        "percentage_to_disburse": 60
+        "recipient": "47e0ae0de8af04a961c4b3225cd77b9652777286ce142c2a07fab98da5263100"
+      }
+    }
+  ],
+  "metadata": null
+}'
+```
+
 ## Start or stop dissolving
 
 |                      |            |
