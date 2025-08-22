@@ -3784,6 +3784,9 @@ CodeDeploymentMode
   | Reinstall
   | Upgrade
 SnapshotId = (abstract)
+SnapshotSource
+  = TakenFromCanister
+  | MetadataUpload
 ChangeDetails
   = Creation {
       controllers : [PrincipalId];
@@ -3835,12 +3838,15 @@ Subnet = {
   subnet_size : Nat;
 }
 Snapshot = {
-  wasm_state : WasmState;
-  raw_module : Blob;
-  chunk_store : ChunkStore;
-  certified_data : Blob;
-  canister_version : CanisterVersion;
+  source : SnapshotSource;
   taken_at_timestamp : Timestamp;
+  raw_module : Blob;
+  wasm_state : WasmState;
+  chunk_store : ChunkStore;
+  canister_version : CanisterVersion;
+  certified_data : Blob;
+  global_timer : Timestamp | null;
+  on_low_wasm_memory_hook_status : OnLowWasmMemoryHookStatus | null;
 }
 S = {
   requests : Request ↦ (RequestStatus, Principal);
@@ -6287,12 +6293,15 @@ else:
   |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
 
 New_snapshot = Snapshot {
-  wasm_state = S.canisters[A.canister_id].wasm_state;
-  raw_module = S.canisters[A.canister_id].raw_module;
-  chunk_store = S.chunk_store[A.canister_id];
-  certified_data = S.certified_data[A.canister_id];
-  canister_version = S.canister_version[A.canister_id];
+  source = TakenFromCanister;
   take_at_timestamp = S.time[A.canister_id];
+  raw_module = S.canisters[A.canister_id].raw_module;
+  wasm_state = S.canisters[A.canister_id].wasm_state;
+  chunk_store = S.chunk_store[A.canister_id];
+  canister_version = S.canister_version[A.canister_id];
+  certified_data = S.certified_data[A.canister_id];
+  global_timer = S.global_timer[A.canister_id];
+  on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id];
 }
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshot, S.canisters[A.canister_id])
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
