@@ -249,7 +249,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: a
 
 |                      |        |
 |----------------------|--------|
-| Since version        | 2.1.7  |
+| Since version        | 2.1.8  |
 | Idempotent?          | No    |
 | Minimal access level | controller |
 
@@ -258,7 +258,7 @@ This section will show you how to use Rosetta to disburse maturity associated wi
 ### Preconditions
 
 * `account.address` is the ledger address of the neuron controller.
-* `metadata.percentage_to_disburse` is the percentage of the maturity associated with the neuron that is going to be disbursed.
+* `metadata.percentage_to_disburse` is the percentage of the neuron's maturity that is going to be disbursed.
 * `metadata.recipient` contains an account_identifier that should receive the ICP disbursed from the maturity. If not specified, the maturity will be disbursed to `account.address`.
 *  The disbursed amount (disbursed percentage * total maturity assigned to the neuron), needs to be at least the minimum disburse amount plus maturity modulation.
 
@@ -284,7 +284,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: a
       "operation_identifier": {
         "index": 0
       },
-      "type": "DISBURSE",
+      "type": "DISBURSE_MATURITY",
       "account": {
         "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
       },
