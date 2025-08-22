@@ -2918,7 +2918,7 @@ The following kinds of (binary) data from a snapshot can be requested:
 
 - chunk of the stable memory starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the stable memory size as in the snapshot metadata);
 
-- a (full) chunk in the WASM chunk store identified by its `hash` (`hash` must be present in the snapshot metadata).
+- (full) chunk in the WASM chunk store identified by its `hash` (`hash` must be present in the snapshot metadata).
 
 ### IC method `upload_canister_snapshot_metadata` {#ic-upload_canister_snapshot_metadata}
 
@@ -2963,7 +2963,7 @@ The following kinds of (binary) data can be uploaded to a snapshot:
 
 - chunk of the stable memory starting at a given `offset` (`offset + |chunk|` must not exceed the stable memory size as in the snapshot metadata);
 
-- a (full) chunk in the WASM chunk store (the length `|chunk|` of the provided chunk must be at most 1MiB and the maximum number of chunks in the chunk store of the snapshot is `CHUNK_STORE_SIZE` chunks).
+- (full) chunk in the WASM chunk store (the length `|chunk|` of the provided chunk must be at most 1MiB and the maximum number of chunks in the chunk store of the snapshot is `CHUNK_STORE_SIZE` chunks).
 
 It's important to note that uploading a chunk to the WASM chunk store of the snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. On the other hand, uploading a chunk to the canister WASM and WASM (a.k.a.) heap and stable memory
 does increase the memory footprint of the canister since their sizes have been fixed when uploading the snapshot's metadata.
@@ -3482,7 +3482,7 @@ MethodName = Text
 
 The [WebAssembly System API](#system-api) is relatively low-level, and some of its details (e.g. that the argument data is queried using separate calls, and that closures are represented by a function pointer and a number, that method names need to be mangled) would clutter this section. Therefore, we abstract over the WebAssembly details as follows:
 
--   The state of a WebAssembly module `WasmState` is represented by its WASM (a.k.a. heap) and stable memory, and a list of (exported or mutable) globals. For notational simplicity, the principal of the canister with state represented by `WasmState` is also stored in `WasmState`.
+-   The state of a WebAssembly module `WasmState` is represented by its WASM (a.k.a. heap) and stable memory and a list of (exported or mutable) globals. For notational simplicity, the principal of the canister with state represented by `WasmState` is also stored in `WasmState`.
 
 -   A canister module `CanisterModule` consists of an initial state, and (pure) functions that model function invocation. A function return value either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
     ```
@@ -6347,16 +6347,67 @@ M.callee = ic_principal
 M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
+
+Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
+  memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
+  memory_usage_canister_history(S.canister_history[A.canister_id]) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
+  memory_usage_snapshots(S.snapshots[A.canister_id])
+
+if S.memory_allocation[A.canister_id] = 0:
+  Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
+else:
+  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |S.canisters[A.canister_id].wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
+
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+
+Mod = parse_wasm_mod(Snapshot.raw_module);
+
+|Snapshot.wasm_state.globals| = |Mod.initial_globals|
+for i in [0..|Snapshot.wasm_state.globals|]
+  if Snapshot.wasm_state.globals[i] = I32(_):
+    Mod.initial_globals = I32(_)
+  else if Snapshot.wasm_state.globals[i] = I64(_):
+    Mod.initial_globals = I64(_)
+  else if Snapshot.wasm_state.globals[i] = F32(_):
+    Mod.initial_globals = F32(_)
+  else if Snapshot.wasm_state.globals[i] = F64(_):
+    Mod.initial_globals = F64(_)
+  else if Snapshot.wasm_state.globals[i] = V128(_):
+    Mod.initial_globals = V128(_)
+
+if Snapshot.source = MetadataUpload:
+  if Snapshot.on_low_wasm_memory_hook_status = ConditionNotSatisfied:
+    HookConditionInSnapshotField = false
+  else:
+    HookConditionInSnapshotField = true
+  if Wasm_memory_capacity < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
+    HookConditionInSnapshotState = true
+  else:
+    HookConditionInSnapshotState = false
+  (HookConditionInSnapshotField and HookConditionInSnapshotState)
+  or
+  ((not HookConditionInSnapshotField) and (not HookConditionInSnapshotState))
 
 New_state = {
   wasm_state = Snapshot.wasm_state;
   raw_module = Snapshot.raw_module;
-  module = parse_wasm_mod(Snapshot.raw_module);
+  module = Mod;
   public_custom_sections = parse_public_custom_sections(Snapshot.raw_module);
   private_custom_sections = parse_private_custom_sections(Snapshot.raw_module);
 }
+
+if Snapshot.source = MetadataUpload and Snapshot.global_timer is not null:
+  New_global_timer = Snapshot.global_timer
+else:
+  New_global_timer = S.global_timer[A.canister_id]
+
+if Snapshot.source = MetadataUpload and Snapshot.on_low_wasm_memory_hook_status is not null:
+  New_on_low_wasm_memory_hook_status = Snapshot.on_low_wasm_memory_hook_status
+else:
+  New_on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id]
+
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], S.snapshots[A.canister_id], New_state)
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
 New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
@@ -6399,6 +6450,8 @@ S' = S with
     canisters[A.canister_id] = New_state
     chunk_store[A.canister_id] = Snapshot.chunk_store
     certified_data[A.canister_id] = Snapshot.certified_data
+    global_timer[A.canister_id] = New_global_timer
+    on_low_wasm_memory_hook_status[A.canister_id] = New_on_low_wasm_memory_hook_status
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     canister_history[A.canister_id] = New_canister_history
@@ -6425,6 +6478,7 @@ M.method_name = 'read_canister_snapshot_metadata'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 
 SnapshotMetadata = {
@@ -6470,6 +6524,7 @@ M.method_name = 'read_canister_snapshot_data'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 
 if A.kind = WasmModule { offset, size }:
@@ -6583,6 +6638,7 @@ M.method_name = 'upload_canister_snapshot_data'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 Snapshot.source = MetadataUpload
 
