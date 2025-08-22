@@ -4106,6 +4106,7 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.method_name ∈
     { "install_code", "install_chunked_code", "uninstall_code", "update_settings", "start_canister", "stop_canister",
       "canister_status", "delete_canister", "upload_chunk", "clear_chunk_store", "stored_chunks",
+      "read_canister_snapshot_metadata", "read_canister_snapshot_data", "upload_canister_snapshot_metadata", "upload_canister_snapshot_data",
       "provisional_top_up_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
@@ -6175,7 +6176,7 @@ if A.settings.wasm_memory_threshold is not null:
 else:
   New_wasm_memory_threshold = 0
 
-Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation,  null, EmptyCanister.wasm_state)
+Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation, null, EmptyCanister.wasm_state)
 if A.amount is not null:
   New_balance = A.amount - Cycles_reserved
 else:
@@ -6303,12 +6304,13 @@ New_snapshot = Snapshot {
   global_timer = S.global_timer[A.canister_id];
   on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id];
 }
-Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshot, S.canisters[A.canister_id])
+New_snapshots = S.snapshots[A.canister_id] ∪ {Snapshot_id ↦ New_snapshot} \ {A.replace_snapshot ↦ _};
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
 New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
 New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
 
-liquid_balance(S, A.canister_id) ≥ 0
+liquid_balance(S', A.canister_id) ≥ 0
 ```
 
 State after  
@@ -6316,8 +6318,7 @@ State after
 ```html
 
 S' = S with
-    snapshots[A.canister_id][A.replace_snapshot] = (deleted)
-    snapshots[A.canister_id][Snapshot_id] = New_snapshot
+    snapshots[A.canister_id] = New_snapshots
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     messages = Older_messages · Younger_messages ·
@@ -6332,7 +6333,6 @@ S' = S with
       }
 
 ```
-
 
 #### IC Management Canister: Load canister snapshot
 
@@ -6412,6 +6412,234 @@ S' = S with
 
 ```
 
+#### IC Management Canister: Read snapshot metadata
+
+Only the controllers of the given canister can read metadata of its snapshots.
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'read_canister_snapshot_metadata'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+
+SnapshotMetadata = {
+  source = Snapshot.source;
+  taken_at_timestamp = Snapshot.taken_at_timestamp;
+  wasm_module_size = |Snapshot.raw_module|;
+  globals = Snapshot.wasm_state.globals;
+  wasm_memory_size = |Snapshot.wasm_state.wasm_memory|;
+  stable_memory_size = |Snapshot.wasm_state.stable_memory|;
+  wasm_chunk_store = [{hash: hash} | hash <- dom(Snapshot.chunk_store)]
+  canister_version = Snapshot.canister_version;
+  certified_data = Snapshot.certified_data;
+  global_timer = Snapshot.global_timer;
+  on_low_wasm_memory_hook_status = Snapshot.on_low_wasm_memory_hook_status;
+}
+
+```
+
+State after
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Reply (candid(SnapshotMetadata))
+        refunded_cycles = M.transferred_cycles
+      }
+
+```
+
+#### IC Management Canister: Read snapshot data
+
+Only the controllers of the given canister can read (binary) data of its snapshots.
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'read_canister_snapshot_data'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+
+if A.kind = WasmModule { offset, size }:
+  offset + size <= |Snapshot.raw_module|
+else if A.kind = MainMemory { offset, size }:
+  offset + size <= |Snapshot.wasm_state.wasm_memory|
+else if A.kind = StableMemory { offset, size }:
+  offset + size <= |Snapshot.wasm_state.stable_memory|
+else if A.kind = WasmChunk { hash }:
+  hash in dom(Snapshot.chunk_store)
+
+if A.kind = WasmModule { offset, size }:
+  Chunk = Snapshot.raw_module[offset..offset+size]
+else if A.kind = MainMemory { offset, size }:
+  Chunk = Snapshot.wasm_state.wasm_memory[offset..offset+size]
+else if A.kind = StableMemory { offset, size }:
+  Chunk = Snapshot.wasm_state.stable_memory[offset..offset+size]
+else if A.kind = WasmChunk { hash }:
+  Chunk = Snapshot.chunk_store[hash]
+
+```
+
+State after
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Reply (candid({chunk = Chunk}))
+        refunded_cycles = M.transferred_cycles
+      }
+
+```
+
+#### IC Management Canister: Upload canister snapshot metadata
+
+Only the controllers of the given canister can create a new snapshot by uploading its metadata.
+A snapshot will be identified internally by a system-generated opaque `Snapshot_id`.
+
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'upload_canister_snapshot_metadata'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+if A.replace_snapshot is not null:
+  A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
+else:
+  |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
+
+New_snapshot = Snapshot {
+  source = MetadataUpload;
+  take_at_timestamp = S.time[A.canister_id];
+  raw_module = [0 | _ <- [0..A.wasm_module_size]];
+  wasm_state = {
+    wasm_memory = [0 | _ <- [0..A.wasm_memory_size]];
+    stable_memory = [0 | _ <- [0..A.stable_memory_size]];
+    globals = A.globals;
+    self_id = A.canister_id;
+  };
+  chunk_store = [];
+  canister_version = S.canister_version[A.canister_id];
+  certified_data = A.certified_data;
+  global_timer = A.global_timer;
+  on_low_wasm_memory_hook_status = A.on_low_wasm_memory_hook_status;
+}
+New_snapshots = S.snapshots[A.canister_id] ∪ {Snapshot_id ↦ New_snapshot} \ {A.replace_snapshot ↦ _};
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
+New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
+New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
+New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
+
+liquid_balance(S', A.canister_id) ≥ 0
+```
+
+State after
+
+```html
+
+S' = S with
+    snapshots[A.canister_id] = New_snapshots
+    balances[A.canister_id] = New_balance
+    reserved_balances[A.canister_id] = New_reserved_balance
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin;
+        response = Reply (candid({
+          snapshot_id = Snapshot_id;
+        }));
+        refunded_cycles = M.transferred_cycles;
+      }
+
+```
+
+#### IC Management Canister: Upload canister snapshot data
+
+Only the controllers of the given canister can upload (binary) data to its snapshots.
+
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'upload_canister_snapshot_data'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+Snapshot.source = MetadataUpload
+
+if A.kind = WasmModule { offset }:
+  offset + |A.chunk| <= |Snapshot.raw_module|
+else if A.kind = MainMemory { offset }:
+  offset + |A.chunk| <= |Snapshot.wasm_state.wasm_memory|
+else if A.kind = StableMemory { offset }:
+  offset + |A.chunk| <= |Snapshot.wasm_state.stable_memory|
+else if A.kind = WasmChunk { hash }:
+  |dom(Snapshot.chunk_store) ∪ {SHA-256(A.chunk)}| <= CHUNK_STORE_SIZE
+
+if A.kind = WasmModule { offset }:
+  New_raw_module = Snapshot.raw_module[0..offset] · A.chunk · Snapshot.raw_module[offset+|A.chunk|..|Snapshot.raw_module|]
+  New_snapshot = Snapshot with
+    raw_module = New_raw_module
+else if A.kind = MainMemory { offset }:
+  New_wasm_memory = Snapshot.wasm_memory[0..offset] · A.chunk · Snapshot.wasm_memory[offset+|A.chunk|..|Snapshot.wasm_memory|]
+  New_snapshot = Snapshot with
+    wasm_memory = New_wasm_memory
+else if A.kind = StableMemory { offset }:
+  New_stable_memory = Snapshot.stable_memory[0..offset] · A.chunk · Snapshot.stable_memory[offset+|A.chunk|..|Snapshot.stable_memory|]
+  New_snapshot = Snapshot with
+    stable_memory = New_stable_memory
+else if A.kind = WasmChunk:
+  New_chunk_store = Snapshot.chunk_store ∪ {SHA-256(A.chunk) ↦ A.chunk}
+  New_snapshot = Snapshot with
+    chunk_store = New_chunk_store
+
+New_snapshots = S.snapshots[A.canister_id] with
+  Snapshot_id = New_snapshot
+
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
+New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
+New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
+New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
+
+liquid_balance(S', A.canister_id) ≥ 0
+```
+
+State after
+
+```html
+
+S' = S with
+    snapshots[A.canister_id] = New_snapshots
+    balances[A.canister_id] = New_balance
+    reserved_balances[A.canister_id] = New_reserved_balance
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin;
+        response = Reply (candid());
+        refunded_cycles = M.transferred_cycles;
+      }
+
+```
+
 #### IC Management Canister: List canister snapshots
 
 Only the controllers of the given canister can get a list of the existing snapshots.
@@ -6446,6 +6674,7 @@ S with
       }
 
 ```
+
 #### IC Management Canister: Delete canister snapshot
 
 A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
