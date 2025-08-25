@@ -172,6 +172,10 @@ async function processEventsData(records) {
         imageUrl = await fetchShareImage(parsedRecord.eventLink);
       }
 
+      if (parsedRecord.eventName === "Bitcoin DeFi Bootcamp") {
+        imageUrl = "/img/events/icp-edu.webp";
+      }
+
       // If no share image is found, use a default image
       if (!imageUrl) {
         imageUrl = getDefaultEventImage(parsedRecord);

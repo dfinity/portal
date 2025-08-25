@@ -5,7 +5,7 @@
     {
       "title": "Foundational LLMs",
       "description": "AI agents are a growing paradigm in software, and the Internet Computer is uniquely positioned to be the home of AI agents. Compared to the traditional IT stack, AI agents on the Internet Computer can securely and easily manage digital assets, transact amongst each other, be fully sovereign, and be tokenized and managed by DAOs. This milestone focuses on providing access to foundational LLMs, along with basic tools to make it as simple as possible to deploy agents on the Internet Computer.",
-      "status": "in_progress",
+      "status": "deployed",
       "is_milestone": true,
       "milestone_id": "Ignition",
       "eta": "",
@@ -20,13 +20,13 @@
     {
       "title": "LLM developer experience",
       "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
-      "status": "in_progress",
+      "status": "deployed",
       "milestone_id": "Ignition"
     },
     {
       "title": "LLM workers",
       "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
-      "status": "future",
+      "status": "deployed",
       "milestone_id": "Ignition"
     }
   ]
