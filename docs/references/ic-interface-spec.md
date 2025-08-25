@@ -6429,7 +6429,7 @@ New_canister_history = {
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
-      source = TakenFromCanister
+      source = Snapshot.source
     };
   };
 }
