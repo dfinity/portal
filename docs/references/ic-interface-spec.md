@@ -300,6 +300,12 @@ This status is orthogonal to whether a canister is frozen or not: a frozen canis
 
 :::
 
+:::note
+
+If a canister is in the `stopped` state, an additional boolean may be of interest: `ready_for_migration` indicates whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
+
+:::
+
 ### Signatures {#signatures}
 
 Digital signature schemes are used for authenticating messages in various parts of the IC infrastructure. Signatures are domain separated, which means that every message is prefixed with a byte string that is unique to the purpose of the signature.
@@ -2392,6 +2398,10 @@ This method can be called by canisters as well as by external users via ingress 
 Indicates various information about the canister. It contains:
 
 -   The status of the canister. It could be one of `running`, `stopping` or `stopped`.
+
+-   A bool `ready_for_migration` indicating whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` variant (see above) is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
+
+-   The canister version.
 
 -   The "settings" of the canister containing:
 
