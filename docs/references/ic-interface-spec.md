@@ -6303,7 +6303,9 @@ New_snapshot = Snapshot {
   global_timer = S.global_timer[A.canister_id];
   on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id];
 }
-New_snapshots = S.snapshots[A.canister_id] ∪ {Snapshot_id ↦ New_snapshot} \ {A.replace_snapshot ↦ _};
+New_snapshots = S.snapshots[A.canister_id] with
+  A.replace_snapshot = (undefined)
+  Snapshot_id = New_snapshot
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
 New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
@@ -6595,7 +6597,9 @@ New_snapshot = Snapshot {
   global_timer = A.global_timer;
   on_low_wasm_memory_hook_status = A.on_low_wasm_memory_hook_status;
 }
-New_snapshots = S.snapshots[A.canister_id] ∪ {Snapshot_id ↦ New_snapshot} \ {A.replace_snapshot ↦ _};
+New_snapshots = S.snapshots[A.canister_id] with
+  A.replace_snapshot = (undefined)
+  Snapshot_id = New_snapshot
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
 New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
@@ -6663,7 +6667,8 @@ else if A.kind = StableMemory { offset }:
   New_snapshot = Snapshot with
     stable_memory = New_stable_memory
 else if A.kind = WasmChunk:
-  New_chunk_store = Snapshot.chunk_store ∪ {SHA-256(A.chunk) ↦ A.chunk}
+  New_chunk_store = Snapshot.chunk_store with
+    SHA-256(A.chunk) = A.chunk
   New_snapshot = Snapshot with
     chunk_store = New_chunk_store
 
