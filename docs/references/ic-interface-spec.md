@@ -2965,8 +2965,7 @@ The following kinds of (binary) data can be uploaded to a snapshot:
 
 - (full) chunk in the WASM chunk store (the length `|chunk|` of the provided chunk must be at most 1MiB and the maximum number of chunks in the chunk store of the snapshot is `CHUNK_STORE_SIZE` chunks).
 
-It's important to note that uploading a chunk to the WASM chunk store of the snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. On the other hand, uploading a chunk to the canister WASM and WASM (a.k.a.) heap and stable memory
-does increase the memory footprint of the canister since their sizes have been fixed when uploading the snapshot's metadata.
+It's important to note that uploading a chunk to the WASM chunk store of the snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. On the other hand, uploading a chunk to the canister WASM, WASM (a.k.a.) heap memory, and stable memory does increase the memory footprint of the canister since their sizes have been fixed when uploading the snapshot's metadata.
 
 ### IC method `list_canister_snapshots` {#ic-list_canister_snapshots}
 
@@ -3482,9 +3481,9 @@ MethodName = Text
 
 The [WebAssembly System API](#system-api) is relatively low-level, and some of its details (e.g. that the argument data is queried using separate calls, and that closures are represented by a function pointer and a number, that method names need to be mangled) would clutter this section. Therefore, we abstract over the WebAssembly details as follows:
 
--   The state of a WebAssembly module `WasmState` is represented by its WASM (a.k.a. heap) and stable memory and a list of (exported or mutable) globals. For notational simplicity, the principal of the canister with state represented by `WasmState` is also stored in `WasmState`.
+-   The state `WasmState` of a WebAssembly module is represented by its WASM (a.k.a. heap) and stable memory and a list of (exported or mutable) globals. For notational simplicity, the principal of the canister with state represented by `WasmState` is also stored in `WasmState`.
 
--   A canister module `CanisterModule` consists of an initial state, and (pure) functions that model function invocation. A function return value either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
+-   A canister module `CanisterModule` consists of an initial state, and (pure) functions that model function invocation on the canister. A function return value either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
     ```
     WasmState = {
       wasm_memory : Blob;
@@ -6348,16 +6347,16 @@ M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
-Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
-  memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
-  memory_usage_canister_history(S.canister_history[A.canister_id]) +
+Total_memory_usage = memory_usage_wasm_state(Snapshot.wasm_state) +
+  memory_usage_raw_module(Snapshot.raw_module) +
+  memory_usage_canister_history(New_canister_history) +
   memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
   memory_usage_snapshots(S.snapshots[A.canister_id])
 
 if S.memory_allocation[A.canister_id] = 0:
   Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
 else:
-  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |S.canisters[A.canister_id].wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
+  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |Snapshot.wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -6365,7 +6364,7 @@ Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 Mod = parse_wasm_mod(Snapshot.raw_module);
 
 |Snapshot.wasm_state.globals| = |Mod.initial_globals|
-for i in [0..|Snapshot.wasm_state.globals|]
+for i in [0..|Snapshot.wasm_state.globals|]:
   if Snapshot.wasm_state.globals[i] = I32(_):
     Mod.initial_globals = I32(_)
   else if Snapshot.wasm_state.globals[i] = I64(_):
@@ -6382,7 +6381,7 @@ if Snapshot.source = MetadataUpload:
     HookConditionInSnapshotField = false
   else:
     HookConditionInSnapshotField = true
-  if Wasm_memory_capacity < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
+  if Wasm_memory_capacity < |Snapshot.wasm_state.wasm_memory| + S.wasm_memory_threshold[A.canister_id]:
     HookConditionInSnapshotState = true
   else:
     HookConditionInSnapshotState = false
@@ -7470,7 +7469,7 @@ Callback = {
 
 #### The execution state
 
-We can model the execution of WebAssembly functions as stateful functions that have access to the WASM memory (a.k.a.) and (exported or mutable) globals in `WasmState`. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
+We can model the execution of WebAssembly functions as stateful functions that have access to the WASM memory (a.k.a. heap) and (exported or mutable) globals in `WasmState`. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
 ```
 Params = {
   arg : NoArg | Blob;
@@ -7600,7 +7599,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
     If the WebAssembly module does not export a function called under the name `canister_init`, then
     ```
     init = λ (self_id, arg, caller, sysenv) →
-      match start({wasm_memory = ""; stable_memory = ""; globals = Initial_globals; self_id = self_id;}) with
+      match start({wasm_memory = ""; stable_memory = ""; globals = initial_globals; self_id = self_id;}) with
         Trap trap → Trap trap
         Return res → Return {
             new_state = res.wasm_state;
@@ -7613,7 +7612,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
     Otherwise, if the WebAssembly module exports a function `func` under the name `canister_init`, it is
     ```
     init = λ (self_id, arg, caller, sysenv) →
-      match start({wasm_memory = ""; stable_memory = ""; globals = Initial_globals; self_id = self_id;}) with
+      match start({wasm_memory = ""; stable_memory = ""; globals = initial_globals; self_id = self_id;}) with
         Trap trap → Trap trap
         Return res →
           let es = ref {empty_execution_state with
