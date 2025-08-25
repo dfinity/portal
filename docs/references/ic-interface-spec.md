@@ -6532,7 +6532,7 @@ Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 
 if A.kind = WasmModule { offset, size }:
   offset + size <= |Snapshot.raw_module|
-else if A.kind = MainMemory { offset, size }:
+else if A.kind = WasmMemory { offset, size }:
   offset + size <= |Snapshot.wasm_state.wasm_memory|
 else if A.kind = StableMemory { offset, size }:
   offset + size <= |Snapshot.wasm_state.stable_memory|
@@ -6541,7 +6541,7 @@ else if A.kind = WasmChunk { hash }:
 
 if A.kind = WasmModule { offset, size }:
   Chunk = Snapshot.raw_module[offset..offset+size]
-else if A.kind = MainMemory { offset, size }:
+else if A.kind = WasmMemory { offset, size }:
   Chunk = Snapshot.wasm_state.wasm_memory[offset..offset+size]
 else if A.kind = StableMemory { offset, size }:
   Chunk = Snapshot.wasm_state.stable_memory[offset..offset+size]
@@ -6649,7 +6649,7 @@ Snapshot.source = MetadataUpload
 
 if A.kind = WasmModule { offset }:
   offset + |A.chunk| <= |Snapshot.raw_module|
-else if A.kind = MainMemory { offset }:
+else if A.kind = WasmMemory { offset }:
   offset + |A.chunk| <= |Snapshot.wasm_state.wasm_memory|
 else if A.kind = StableMemory { offset }:
   offset + |A.chunk| <= |Snapshot.wasm_state.stable_memory|
@@ -6660,7 +6660,7 @@ if A.kind = WasmModule { offset }:
   New_raw_module = Snapshot.raw_module[0..offset] · A.chunk · Snapshot.raw_module[offset+|A.chunk|..|Snapshot.raw_module|]
   New_snapshot = Snapshot with
     raw_module = New_raw_module
-else if A.kind = MainMemory { offset }:
+else if A.kind = WasmMemory { offset }:
   New_wasm_memory = Snapshot.wasm_memory[0..offset] · A.chunk · Snapshot.wasm_memory[offset+|A.chunk|..|Snapshot.wasm_memory|]
   New_snapshot = Snapshot with
     wasm_memory = New_wasm_memory
