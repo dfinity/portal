@@ -7,7 +7,7 @@ Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://i
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
-This repo is built and deployed using the latest version of `dfx` (v0.25.0) and `moc` v0.14.3.
+This repo is built and deployed using the latest version of `dfx` (v0.25.0) and `moc` v0.16.0.
 
 # Developer documentation
 

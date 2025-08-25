@@ -5,46 +5,34 @@
     {
       "title": "Load balancing & increased compute capacity",
       "is_milestone": true,
-      "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and taking checkpoints asynchronously. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
-      "milestone_id": "Flux",
+      "description": "ICP subnets can now handle greater computational loads by better managing multiple canisters and taking checkpoints asynchronously. When a subnet's workload becomes too high, the Network Nervous System (NNS) can decide to split the subnet in two, distributing the workload between them. Additionally, canister controllers can migrate individual canisters to a less-utilized subnet. These features work together to balance the load across all ICP subnets, ensuring optimal utilization and preventing overload.",
+      "milestone_id": "Fission",
       "status": "in_progress",
-      "eta_to_render": "September 2025"
+      "eta_to_render": ""
     },
     {
       "title": "Asynchronous checkpointing",
       "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
       "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Flux"
+      "milestone_id": "Fission"
     },
     {
       "title": "Canister migration",
       "overview": "Allows controllers to migrate a canister to another subnet, without changing its canister id. This is crucial to balance load across subnets and fully benefit from ICP’s scaling via subnets. It also allows canisters to move to another subnet which may differ in features or replication factor.",
       "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Flux"
+      "milestone_id": "Fission"
     },
     {
       "title": "Canister snapshots can be imported and exported",
       "overview": "With canister snapshots, it became possible for controllers to take a full snapshot of their canister, allowing it to revert back to this state at a later point in time. This feature is an extension to the canister snapshot functionality, allowing controllers to retrieve snapshots and upload snapshots. This would enable storing canister snapshots in a canister or off-chain, using snapshots for testing purposes in a local environment, or loading a state snapshot of canister A into another canister B. The latter can be useful for testing purposes and is also a building block towards canister migration.",
       "status": "in_progress",
-      "milestone_id": "Flux"
+      "milestone_id": "Fission"
     },
     {
       "title": "Enhance subnet capacity for active canisters",
       "overview": "Increase the maximum number of concurrently active canisters supported by a subnet. This will be achieved through optimizations to the canister scheduling algorithm, improvements to canister sandbox management, and increased memory efficiency within canister sandboxes. This enhancement is crucial for ICP scaling and more predictable handling of peak loads.",
       "status": "deployed",
-      "milestone_id": "Flux"
+      "milestone_id": "Fission"
     },
     {
       "title": "Integrity of node state",
@@ -52,7 +40,7 @@
       "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
       "milestone_id": "Magnetosphere",
       "status": "in_progress",
-      "eta_to_render": ""
+      "eta_to_render": "October 2025"
     },
     {
       "title": "TEE-capable IC-OS",
@@ -71,14 +59,6 @@
       "overview": "Deploying single node machines with TEE-protection that can be used both as replicas and API boundary nodes.",
       "status": "in_progress",
       "milestone_id": "Magnetosphere"
-    },
-    {
-      "title": "Load balancing via subnet splitting",
-      "is_milestone": true,
-      "description": "This milestone introduces subnet splitting, which allows one subnet to split into two, each subnet hosting half of the workload of the original subnet. Whenever a subnet is overloaded, the NNS can decide to split the subnet, which helps balance load across multiple subnets and avoids overloaded subnets. The first subnet split on ICP mainnet will mark the completion of this milestone.",
-      "milestone_id": "Fission",
-      "status": "in_progress",
-      "eta_to_render": ""
     },
     {
       "title": "Subnet splitting with minimal downtime",

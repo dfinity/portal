@@ -2,7 +2,38 @@
   "categoryName": "Developer Experience",
   "categoryDescription": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
   "elements": [
-
+    {
+      "title": "Amazing first time developer experience with ICP Ninja",
+      "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Atlas",
+      "eta_to_render": "September 2025"
+    },
+    {
+      "title": "Publishing projects to the ICP mainnet",
+      "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
+      "status": "deployed",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "More sample projects to get you started",
+      "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
+      "status": "in_progress",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Community published projects",
+      "overview": "Show your coding skills to the community by publishing your project to the gallery.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Dark mode",
+      "overview": "Introduce dark mode for the app",
+      "status": "in_progress",
+      "milestone_id": "Atlas"
+    },
     {
       "title": "Canister lifecycle hooks",
       "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
@@ -23,7 +54,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "upcoming",
+      "status": "in_progress",
       "is_community": true,
       "in_beta": false,
       "milestone_id": "Thorium",
@@ -45,13 +76,14 @@
     {
       "title": "Live canister metrics",
       "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
       "is_community": true,
-      "in_beta": false,
+      "status": "in_progress",
+      "milestone_id": "Thorium"
+    },
+    {
+      "title": "Canister logging extensions",
+      "overview": "This feature introduces cross-canister log fetching, enabling larger log storage and making future extensions like log levels and filtering possible — all within the Internet Computer ecosystem.",
+      "status": "in_progress",
       "milestone_id": "Thorium"
     },
     {
@@ -63,61 +95,15 @@
       "status": "in_progress",
       "eta_to_render": ""
     },
-
     {
-      "title": "Amazing first time developer experience with ICP Ninja",
-      "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-      "status": "in_progress",
-      "is_milestone": true,
-      "milestone_id": "Atlas",
-      "eta_to_render": "September 2025"
+      "title": "Tutorials",
+      "overview": "More and improved tutorials for faster successful onboarding of devs into the ICP ecosystem.",
+      "status": "in_progress"
     },
     {
       "title": "Open Caffeine projects",
       "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
-      "status": "in_progress",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Publishing projects to the ICP mainnet",
-      "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
-      "status": "in_progress",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "More sample projects to get you started",
-      "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-      "status": "in_progress",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Community published projects",
-      "overview": "Show your coding skills to the community by publishing your project to the gallery.",
-      "status": "future",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Structured learning through mini tutorials",
-      "overview": "Add tutorials that teach ICP programming concepts and design patterns.",
-      "status": "future",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Dark mode",
-      "overview": "Introduce dark mode for the app",
-      "status": "future",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Tutorials",
-      "overview": "More and improved tutorials for faster successful onboarding of devs into the ICP ecosystem.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
+      "status": "future" 
     },
     {
       "title": "Streaming support for the Asset Canister",

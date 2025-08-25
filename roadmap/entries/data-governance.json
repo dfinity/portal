@@ -170,7 +170,7 @@
       "title": "Council-based digital assets management",
       "is_milestone": true,
       "description": "This milestone integrates Orbit’s multi-approval framework with the Network Nervous System (NNS), designating the NNS as the root of trust. By having the NNS “bless” new versions, Orbit gains a robust, decentralized governance layer without requiring each council to implement its own governance from scratch.",
-      "milestone_id": "Nucleus",
+      "milestone_id": "Quantum",
       "status": "future",
       "eta_to_render": ""
     },
@@ -178,13 +178,13 @@
       "title": "Root of trust integration",
       "overview": "The Orbit control panel and core user interface are placed under NNS control. New versions of Orbit must be “blessed” by the NNS, ensuring a community-vetted approach to upgrades and governance.",
       "status": "future",
-      "milestone_id": "Nucleus"
+      "milestone_id": "Quantum"
     },
     {
       "title": "Public councils",
       "overview": "Projects can create open, trackable councils using Orbit’s multi approval tools. All key actions—like canister upgrades—are fully transparent, enabling end users to monitor and verify changes in real time.",
       "status": "future",
-      "milestone_id": "Nucleus"
+      "milestone_id": "Quantum"
     },
     {
       "title": "NNS Neuron index",

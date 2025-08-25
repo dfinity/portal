@@ -18,11 +18,14 @@ import { ArrowIconRight } from "../components/RoadmapPage/Overlay";
 const users = [
   {
     icon: "img/internet-identity/users-1.svg",
-    title: "Verifiable credentials",
-    description:
-      "Share cryptographically-signed information about yourself and gain access to gated experiences. \
-      Internet Identity guarantees that sharing attributes is private and done selectively. \
-      Issuers cannot know which dapp is requesting the credential and you are in control of the sharing process.",
+    title: "Google Integration",
+    description: (
+      <>
+        Internet Identity 2.0 includes the option for users to use their Google
+        Account as an authentication option. This makes Internet Identity
+        accessible to an even wider audience.
+      </>
+    ),
   },
   {
     icon: "img/internet-identity/users-2.svg",
@@ -103,11 +106,30 @@ const developers = [
     ),
   },
   {
+    icon: "img/internet-identity/platforms-1.svg",
+    title: "Used by Caffeine",
+    description: (
+      <>
+        Internet Identity 2.0 is the sign in option for{" "}
+        <Link
+          href="https://caffeine.ai"
+          className="link-primary-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Caffeine
+        </Link>
+        , the AI platform that builds and deploys web apps from natural language
+        prompts.
+      </>
+    ),
+  },
+  {
     icon: "img/internet-identity/features-2.svg",
     title: "Build fully onchain dapps",
     description:
-      "Build the next generation of secure, tamperproof and fully-on chain web3 applications on the Internet Computer.\
-       Dynamic web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
+      "Build the next generation of secure, tamperproof and fully-on chain Web3 applications on the Internet Computer.\
+       Dynamic Web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
        authenticated sessions, which Internet Identity provides.",
   },
   {
@@ -115,7 +137,7 @@ const developers = [
     title: "Avoid app store blocking",
     description: (
       <>
-        Internet Identity makes it possible to build great web3 applications
+        Internet Identity makes it possible to build great Web3 applications
         that users access with just their browsers. Your dapp can securely hold
         and interact with tokens and smart contracts across chains (thanks to{" "}
         <Link
@@ -134,14 +156,9 @@ const developers = [
     icon: "img/internet-identity/features-4.svg",
     title: "Existing user base",
     description:
-      "Plug into a user base of 2.5 million internet identities and 100,000 monthly active unique users.",
+      "Plug into a user base of 2.5 million internet identities and 70,000 monthly active unique users.",
   },
-  {
-    icon: "img/internet-identity/features-5.svg",
-    title: "Compliant with W3C standards",
-    description:
-      "Benefit from an existing ecosystem of tooling and libraries that support the W3C verifiable credentials standards.",
-  },
+
   {
     icon: "img/internet-identity/features-6.svg",
     title: "Built with WebAuthn",
@@ -239,28 +256,7 @@ const StickySectionNav: React.FC<{
   title: React.ReactNode;
   items: string[];
 }> = ({ className, highlightedIndex, onItemClick, items, title }) => {
-  return (
-    <div className={clsx("sticky top-10", className)}>
-      {title}
-      <ul className="list-none p-0 space-y-4 m-0 hidden md:block">
-        {items.map((card, index) => (
-          <li key={card}>
-            <button
-              onClick={(e) => onItemClick(e, index)}
-              className={clsx(
-                "border-none bg-transparent appearance-none text-left font-circular",
-                highlightedIndex !== index
-                  ? "text-black-30 tw-heading-7"
-                  : "tw-heading-6"
-              )}
-            >
-              {card}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div className={clsx("sticky top-10", className)}>{title}</div>;
 };
 
 function InternetIdentityPage() {
@@ -306,7 +302,7 @@ function InternetIdentityPage() {
   return (
     <Layout
       title="Secure, seamless and, privacy-preserving digital identity"
-      description="Internet Identity is a decentralized federated service running end-to-end on the Internet Computer."
+      description="Internet Identity is a self-sovereign single sign-on solution for dapps."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.webp"></ShareMeta>
 
@@ -331,15 +327,22 @@ function InternetIdentityPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Internet Identity is a decentralized federated service running
-                end-to-end on the Internet Computer.
+                Internet Identity is a self-sovereign single sign-on solution
+                for dapps.
               </motion.p>
               <Link
                 className="mt-3 md:mt-6 link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                href="https://id.ai/"
+              >
+                <LinkArrowRight />
+                <span>Upgrade to Internet Identity 2.0</span>
+              </Link>
+              <Link
+                className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                 href="https://identity.internetcomputer.org/"
               >
                 <LinkArrowRight />
-                <span>Launch Internet Identity</span>
+                <span>Launch legacy Internet Identity 1.0</span>
               </Link>
             </div>
           </div>
@@ -356,55 +359,6 @@ function InternetIdentityPage() {
         </section>
 
         <section className="container-10 relative mt-40 sm:mt-52 md:mt-60">
-          <AnimateSpawn
-            variants={transitions.container}
-            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-40 rounded-xl "
-          >
-            <motion.div>
-              <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
-                <div className="md:w-1/2">
-                  <motion.h5
-                    className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
-                    variants={transitions.item}
-                  >
-                    Verifiable credentials are live!
-                  </motion.h5>
-                  <motion.p>
-                    Having reached the{" "}
-                    <Link href="https://internetcomputer.org/roadmap/#Identity-Separatrix">
-                      Separatrix milestone
-                    </Link>
-                    , the Internet Computer offers the infrastructure and
-                    tooling to issue, share, and consume credentials in a
-                    privacy-preserving fashion. Users are always in control of
-                    their digital identity and decide which attributes to share.
-                    At the same time, new issuers, offering Proof of Humanity
-                    credentials are going live on the Internet Computer and will
-                    enable new use cases such as security tokens subject to
-                    financial regulations.
-                  </motion.p>
-                  <p className="mb-12 md:mb-0 mt-8">
-                    <Link
-                      className="link-primary link-with-icon"
-                      href="https://medium.com/@dfinity/introducing-verifiable-credentials-to-the-internet-computer-898f5538dcfb"
-                    >
-                      <LinkArrowRight />
-                      READ THE BLOG POST
-                    </Link>
-                  </p>
-                </div>
-                <div className="md:w-1/2 relative md:mt-6 md:mb-3">
-                  <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
-                    <motion.img
-                      className="w-[55%] h-full object-cover"
-                      src="/img/internet-identity/separatrix.svg"
-                      alt="roadmap"
-                    />
-                  </div>
-                </div>
-              </aside>
-            </motion.div>
-          </AnimateSpawn>
           {/* <AnimateSpawn
             className="mt-16 md:mt-40 "
             variants={transitions.container}
@@ -423,15 +377,14 @@ function InternetIdentityPage() {
               <motion.h3 className="tw-heading-4 md:tw-heading-60">
                 Access dapps quickly and securely{" "}
               </motion.h3>
-              <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                Internet Identity is a self-sovereign single sign-on solution
-                for dapps.
-              </motion.p>
+              <Link className="button-primary mt-6" href="https://id.ai/">
+                Launch Internet Identity 2.0
+              </Link>
               <Link
-                className="button-primary mt-6"
-                href="https://identity.internetcomputer.org/"
+                className="button-primary mt-2"
+                href="https://identity.internetcomputer.org/ "
               >
-                Launch Internet Identity
+                Launch Internet Identity 1.0
               </Link>
             </div>
             <div className="md:w-1/2 relative mt-6  md:mt-64 md:mb-64">
@@ -500,7 +453,7 @@ function InternetIdentityPage() {
           </div>
         </section>
         {/* ISSUERS */}
-        <section className="text-black">
+        {/* <section className="text-black">
           <div className="container-10 relative">
             <AnimateSpawn
               className="md:flex md:items-center "
@@ -542,7 +495,7 @@ function InternetIdentityPage() {
               ))}
             </AnimateSpawn>
           </div>
-        </section>
+        </section> */}
         {/* A platform designed  */}
         <section className="bg-infinite text-white">
           <div className="container-10 relative">
@@ -632,7 +585,11 @@ function InternetIdentityPage() {
                       <li>
                         Dapps must make authenticated calls to their own
                         canisters as well as shared infrastructure canisters,
-                        for instance the <Link href="/docs/defi/token-ledgers/usage/icp_ledger_usage">IC Ledger canister</Link>.
+                        for instance the{" "}
+                        <Link href="/docs/defi/token-ledgers/usage/icp_ledger_usage">
+                          IC Ledger canister
+                        </Link>
+                        .
                       </li>
                     </ul>
                   </p>
@@ -665,43 +622,6 @@ function InternetIdentityPage() {
                     loading="lazy"
                   />
                 </ContentCard>
-                <ContentCard
-                  className="content-card-with-id"
-                  id="verifiable-credentials"
-                >
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Verifiable Credentials
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Verifiable Credentials is an emerging W3C standard and a
-                    solution to the ever increasing problem of forged physical
-                    and digital identities. It is the technical term for a list
-                    of identity attributes that are cryptographically secured.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Internet Identity has a built-in verifiable credential (VC)
-                    protocol, which is unique because it is walletless and
-                    privacy-preserving. Users interact with issuers and relying
-                    parties under different identities using only a browser.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Internet Identity's VC platform has been designed to easily
-                    integrate with both dapps and web2 applications. For any web
-                    application requiring a verifiable credential to unlock part
-                    of its functionality, the VC protocol uses Internet Identity
-                    as a trusted intermediary and issues a temporary alias when
-                    requesting and sharing credentials, instead of the user's
-                    existing identity.
-                    <div>
-                      <Link
-                        href="/docs/building-apps/network-features/verifiable-credentials/how-it-works"
-                        className="mt-6 md:mt-12 link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                      >
-                        <LinkArrowRight /> Find out more
-                      </Link>
-                    </div>
-                  </p>
-                </ContentCard>
               </div>
             </div>
           </div>
@@ -728,23 +648,26 @@ function InternetIdentityPage() {
             </Faq>
             <Faq title="What makes Internet Identity privacy-preserving?">
               <p>
-              Internet Identity derives a new principle (address) for each dapp instead of
-              using a single global principle. This design protects you from malicious dapps
-              and makes financial transactions harder to trace. Internet Identity also
-              extends its privacy-preserving design to verifiable credentials. The relying party
-              forwards the credential request to the issuer using Internet Identity as the proxy.
-              To guarantee privacy, Internet Identity creates a new principle alias, and using
-              threshold signatures, signs two attestations. These attestations prove that the alias
-              can be used instead of the different principles the user holds with the relying party
-              and the issuer.
+                Internet Identity derives a new principle (address) for each
+                dapp instead of using a single global principle. This design
+                protects you from malicious dapps and makes financial
+                transactions harder to trace. Internet Identity also extends its
+                privacy-preserving design to verifiable credentials. The relying
+                party forwards the credential request to the issuer using
+                Internet Identity as the proxy. To guarantee privacy, Internet
+                Identity creates a new principle alias, and using threshold
+                signatures, signs two attestations. These attestations prove
+                that the alias can be used instead of the different principles
+                the user holds with the relying party and the issuer.
               </p>
             </Faq>
             <Faq title="How does Internet Identity compare to other Web3 authentication tools?">
               <p>
                 On most blockchains, you need to authenticate every time you
                 make a request. The Internet Computer enables you to temporarily
-                and securely delegate authentication to the dapp after you connect. This is made possible by
-                creating sessions every time you use an app and leverages chain-key cryptography.
+                and securely delegate authentication to the dapp after you
+                connect. This is made possible by creating sessions every time
+                you use an app and leverages chain-key cryptography.
               </p>
               <Link
                 href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28"

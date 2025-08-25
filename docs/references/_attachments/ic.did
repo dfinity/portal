@@ -53,6 +53,10 @@ type change_details = variant {
         canister_version : nat64;
         snapshot_id : snapshot_id;
         taken_at_timestamp : nat64;
+        source : variant {
+          taken_from_canister : reserved;
+          metadata_upload : reserved;
+        };
     };
     controllers_change : record {
         controllers : vec principal;
@@ -250,7 +254,13 @@ type canister_status_args = record {
 };
 
 type canister_status_result = record {
-    status : variant { running; stopping; stopped };
+    status : variant {
+        running;
+        stopping;
+        stopped;
+    };
+    ready_for_migration : bool;
+    version : nat64;
     settings : definite_canister_settings;
     module_hash : opt blob;
     memory_size : nat;

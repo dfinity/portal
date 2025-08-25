@@ -1,6 +1,6 @@
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-const MOC_VERSION = "0.14.3";
+const MOC_VERSION = "0.16.0";
 
 async function addPackage(name, repo, version, dir) {
   const meta_url = `https://data.jsdelivr.com/v1/package/gh/${repo}@${version}/flat`;
@@ -25,16 +25,21 @@ function attachOnRunButton() {
     script.async = true;
     script.src = `/moc-interpreter-${MOC_VERSION}.js`;
 
-    script.addEventListener("load", () => {
-      addPackage("base", "dfinity/motoko-base", `moc-${MOC_VERSION}`, "src")
-        .then(() => {
-          console.log(`moc ${MOC_VERSION} loaded`);
-          // Run code
-          const btns = document.getElementsByClassName("run-button run");
-          for (var i = 0; i < btns.length; i++) {
-            btns[i].click();
-          }
-        });
+    script.addEventListener("load", async () => {
+      try {
+        await addPackage("base", "dfinity/motoko-base", `moc-${MOC_VERSION}`, "src");
+        await addPackage("core", "dfinity/motoko-core", `moc-${MOC_VERSION}`, "src");
+        console.log(`moc ${MOC_VERSION} loaded`);
+        // Run code
+        const btns = document.getElementsByClassName("run-button run");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].click();
+        }
+      }
+      catch (err) {
+        console.error('Error while loading packages for Motoko interpreter:');
+        console.error(e?.stack ?? e);
+      }
     });
     document.head.appendChild(script);
   } else {
