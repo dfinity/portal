@@ -300,6 +300,12 @@ This status is orthogonal to whether a canister is frozen or not: a frozen canis
 
 :::
 
+:::note
+
+If a canister is in the `stopped` state, an additional boolean may be of interest: `ready_for_migration` indicates whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
+
+:::
+
 ### Signatures {#signatures}
 
 Digital signature schemes are used for authenticating messages in various parts of the IC infrastructure. Signatures are domain separated, which means that every message is prefixed with a byte string that is unique to the purpose of the signature.
@@ -2413,6 +2419,10 @@ Indicates various information about the canister. It contains:
 
 -   The status of the canister. It could be one of `running`, `stopping` or `stopped`.
 
+-   A bool `ready_for_migration` indicating whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` variant (see above) is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
+
+-   The canister version.
+
 -   The "settings" of the canister containing:
 
     -   The controllers of the canister. The order of returned controllers may vary depending on the implementation.
@@ -2479,7 +2489,7 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID and timestamp at which the snapshot was taken. Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID, timestamp at which the snapshot was taken, and the source of the snapshot (canister state or metadata upload). Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -3685,6 +3695,9 @@ CodeDeploymentMode
   | Reinstall
   | Upgrade
 SnapshotId = (abstract)
+SnapshotSource
+  = TakenFromCanister
+  | MetadataUpload
 ChangeDetails
   = Creation {
       controllers : [PrincipalId];
@@ -3698,6 +3711,7 @@ ChangeDetails
       canister_version : CanisterVersion;
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
+      source : SnapshotSource;
     }
   | ControllersChange {
       controllers : [PrincipalId];
@@ -6260,6 +6274,7 @@ New_canister_history = {
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
+      source = TakenFromCanister
     };
   };
 }

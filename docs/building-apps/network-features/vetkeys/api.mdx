@@ -225,7 +225,74 @@ Fees for deriving one vetKey using the `vetkd_derive_key` API of the management 
 | Production key (`key_1`)             | 26_153_846_153              | $0.0354325                  | [`pzp6e`](https://dashboard.internetcomputer.org/network/subnets/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) (34) |
 | Test key (`test_key_1`)              | 10_000_000_000              | $0.0135482                  | [`fuqsr`](https://dashboard.internetcomputer.org/network/subnets/fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae) (13) |
 
+## Offline Key Derivation
+
+As an alternative to using `vetkd_public_key` to perform key derivation, it is also possible to perform the key derivation
+completely offline, avoiding network cost.
+
+These example snippets demonstrate using the vetkeys utility libraries to perform the derivation for
+`key_1`, with a canister "urq22-tyaaa-aaaag-audia-cai", and a `context` string of "context-string".
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let key_id = VetKDKeyId {
+    curve: VetKDCurve::Bls12_381_G2,
+    name: "key_1".to_string(),
+};
+let key1 = MasterPublicKey::for_mainnet_key(&key_id)?;
+let canister_id = candid::Principal::from_text("urq22-tyaaa-aaaag-audia-cai")?;
+let canister_key = key1.derive_canister_key(canister_id.as_slice());
+let derived_key = canister_key.derive_sub_key(b"context-string");
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+const masterKey = MasterPublicKey.productionKey();
+const canisterId = hexToBytes("0000000000c0a0d00101"); // the byte encoding of the canister identifier
+const canisterKey = masterKey.deriveCanisterKey(canisterId);
+const derivedKey = canisterKey.deriveSubKey(new TextEncoder().encode("context-string"));
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Master Public Keys
+
+The value of the master public keys used in the production network are:
+
+- `key_1`: `a9caf9ae8af0c7c7272f8a122133e2e0c7c0899b75e502bda9e109ca8193ded3ef042ed96db1125e1bdaad77d8cc60d917e122fe2501c45b96274f43705edf0cfd455bc66c3c060faa2fcd15486e76351edf91fecb993797273bbc8beaa47404`
+- `test_key_1`: `ad86e8ff845912f022a0838a502d763fdea547c9948f8cb20ea7738dd52c1c38dcb4c6ca9ac29f9ac690fc5ad7681cb41922b8dffbd65d94bff141f5fb5b6624eccc03bf850f222052df888cf9b1e47203556d7522271cbb879b2ef4b8c2bfb1`
+
+These can be loaded using the VetKD utility libraries as follows:
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let key1_bytes = "a9caf...";
+let key1 = MasterPublicKey::deserialize(hex::decode(key_1)?)?;
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+let key1_bytes = "a9caf...";
+let key1 = MasterPublicKey.deserialize(Uint8Array.fromHex(key1_bytes));
+```
+
+</TabItem>
+</AdornedTabs>
+
+Using the `MasterPublicKey` is is possible to perform offline key
+derivation as described above in the section "Offline Key Derivation".
+
 ## Resources
 
 - [IC Interface Specification: `vetkd_derive_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key).
 - [IC Interface Specification: `vetkd_public_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
+- [VetKD utility library](https://github.com/dfinity/vetkd)
