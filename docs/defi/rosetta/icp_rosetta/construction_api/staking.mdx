@@ -260,7 +260,7 @@ This section will show you how to use Rosetta to disburse maturity associated wi
 * `account.address` is the ledger address of the neuron controller.
 * `metadata.percentage_to_disburse` is the percentage of the neuron's maturity that is going to be disbursed.
 * `metadata.recipient` contains an account_identifier that should receive the ICP disbursed from the maturity. If not specified, the maturity will be disbursed to `account.address`.
-*  The disbursed amount (disburse percentage * total nauron's maturity), needs to be at least 1 ICP plus the worst-case maturity modulation (`500` `e8s`) - `100_000_500` `e8s`.
+*  The disbursed amount (disburse percentage * total neuron's maturity), needs to be at least 1 ICP plus the worst-case maturity modulation (`500` `e8s`), i.e., at least `100_000_500` `e8s`.
 
 ### Postconditions
 
