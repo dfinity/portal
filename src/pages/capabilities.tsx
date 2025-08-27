@@ -364,7 +364,7 @@ function FeaturesPage() {
                 variants={transitions.item}
                 className="tw-heading-4 md:tw-heading-3 mb-4 "
               >
-                Internet Identity—Secure and Convenient Authentication
+                Internet Identity — Secure and Convenient Authentication
               </motion.h3>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm  mb-6 text-white-80"
