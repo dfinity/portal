@@ -238,7 +238,7 @@
       "DAO"
     ],
     "description": "The Gold DAO represents a groundbreaking fusion of traditional gold and modern blockchain technology, allowing anyone in the world to access physical gold instantaneously, without depending on banks.",
-    "logo": "/img/showcase/golddao_logo.png"
+    "logo": "/img/showcase/GLDGov.svg"
   },
   {
     "id": "omnity_ree",
@@ -3105,7 +3105,9 @@
     "name": "AppIC DAO",
     "display": "Normal",
     "website": "https://app.appic.solutions/",
+    "twitter": "https://x.com/Appic_ICP",
     "github": "https://github.com/Appic-Solutions",
+    "youtube": "https://www.youtube.com/@AppIC-DAO",
     "submittableId": 44626035,
     "tags": [
       "Tools / Infrastructure",
@@ -5951,6 +5953,37 @@
       "/img/showcase/Rhino_spider_screenshot.png"
     ],
     "oneLiner": "RhinoSpider: Get rewarded for sharing your internet bandwidth!"
+  },
+  {
+    "id": "cordial_treasury",
+    "name": "Cordial Treasury",
+    "display": "Normal",
+    "website": "https://cordialsystems.com/",
+    "twitter": "https://x.com/cordialsys",
+    "submittableId": 50738612,
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Cordial Treasury is the MPC wallet platform built by Cordial Systems, used by institutions such as Jump Trading Group, Figure.com, and SwissBorg. ",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/cordial_treasury_logo.svg",
+    "oneLiner": "Adding ICP native coin and tokens to our MPC wallet."
+  },
+  {
+    "id": "one_million_pixel",
+    "name": "One Million Pixel Billboard",
+    "display": "Normal",
+    "website": "https://fnavb-oqaaa-aaaai-q3jvq-cai.icp0.io/",
+    "tags": [
+      "Creator Economy",
+      "Enterprise",
+      "NFT"
+    ],
+    "description": "The ONE MILLION PIXEL BILLBOARD on ICP is a decentralised, permanent, community-owned canvas—part ad space, part art, part history.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/one_million_pixel_logo.png",
+    "oneLiner": "A decentralised, community-owned canvas."
   }
-  
 ]
