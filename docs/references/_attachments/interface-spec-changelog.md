@@ -1,7 +1,12 @@
 ## Changelog {#changelog}
 
-### 0.45.0 (2025-08-25) {$0_45_0}
+### 0.46.0 (2025-08-25) {$0_46_0}
 * The management canister method `canister_status` returns two new fields: `version` indicating the canister version, and `ready_for_migration` indicating whether a canister's queues are empty and its streams flushed. The value only makes sense when the canister status is `stopped`. 
+* Canister history provides the source of a snapshot in the entry for loading the snapshot.
+
+### 0.45.0 (2025-08-18) {$0_45_0}
+* Canister ranges of every subnet are now available at a dedicated prefix `/canister_ranges` in the state tree,
+  facilitating fragmentation due to canister migration.
 
 ### 0.44.0 (2025-08-11) {$0_44_0}
 * The management canister method `subnet_info` returns a new field `registry_version` providing the registry version of the corresponding subnet.
