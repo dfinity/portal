@@ -81,6 +81,16 @@
       "status": "deployed",
       "eta": "2024-07-15",
       "eta_to_render": "July 15, 2024"
+    },
+    {
+      "title": "Caffeine",
+      "description": "Caffeine is a self-writing apps platform: the first complete tech stack designed for AI, where humans build through conversation.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Caffeine",
+      "eta": "",
+      "eta_to_render": "",
+      "url": "https://caffeine.ai"
     }
   ]
 }

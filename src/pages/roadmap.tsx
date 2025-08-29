@@ -178,6 +178,43 @@ const milestoneComponent = (
     wrapperClasses += ` order-4 mr-[100dvw]`;
   }
 
+  if (milestone.milestone_id === "Caffeine") {
+    return (
+      <article
+        key={milestone.name}
+        className={wrapperClasses.replace("bg-[var(--color)]", "")} // Remove background
+        style={{ "--color": "#DDF730" } as React.CSSProperties}
+        onClick={overlayTrigger}
+      >
+        {isOrphan ? (
+          <div className={`grow flex flex-col justify-end`}>
+            <div className="min-w-[140px]"></div>
+          </div>
+        ) : (
+          <div className="flex min-h-full gap-8 md:gap-20 relative">
+            <div className="grow flex flex-col justify-between">
+              <header>
+                <h2 className="mb-0 tw-heading-5">
+                  {milestone.milestone_id == "none"
+                    ? milestoneName(milestone.name)
+                    : milestone.milestone_id}
+                </h2>
+                <p className="text-xs mb-0">
+                  <span className="">caffeine.ai</span>{" "}
+                </p>
+              </header>
+              <p className="mb-0 mt-3 font-bold">
+                Caffeine is a self-writing apps platform: the first complete
+                tech stack designed for AI, where humans build through
+                conversation.
+              </p>
+            </div>
+          </div>
+        )}
+      </article>
+    );
+  }
+
   return (
     <article
       key={milestone.name}
@@ -460,7 +497,8 @@ const RoadmapPage: React.FC = () => {
                       15
                     );
                     return (
-                      milestone.elements.length > 0 &&
+                      (milestone.elements.length > 0 ||
+                        milestone.milestone_id === "Caffeine") &&
                       milestoneComponent(
                         milestone,
                         index,
