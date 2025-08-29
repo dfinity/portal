@@ -526,7 +526,7 @@ const MilestoneDetail: React.FC<{
       >
         {status === "in_progress" && <CardBlobs />}
         <Blobs />
-        <div className="p-5 py-12 relative z-3">
+        <div className="p-5 py-6 md:py-12 relative z-3">
           <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
             <div>
               <div className=" flex items-center group mb-8">
@@ -624,11 +624,11 @@ const MilestoneDetail: React.FC<{
                   href="https://caffeine.ai/"
                   className="button-outline-white !normal-case"
                 >
-                  <span className="flex items-center gap-2 !normal-case">
+                  <span className="flex items-center gap-2 !normal-case text-nowrap">
                     Try it out <LinkArrowUpRight />
                   </span>
                 </Link>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 md:gap-2">
                   <Link
                     className="basis-10 w-10 grow-0 shrink-0 link-primary"
                     to="https://www.youtube.com/channel/UCPjtUmto8faF1p04Qoa6KDg"

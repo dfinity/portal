@@ -182,8 +182,16 @@ const milestoneComponent = (
     return (
       <article
         key={milestone.name}
-        className={wrapperClasses.replace("bg-[var(--color)]", "")} // Remove background
-        style={{ "--color": "#DDF730" } as React.CSSProperties}
+        className={`${wrapperClasses.replace(
+          "bg-[var(--color)] w-[450px]",
+          "w-full md:w-[450px] max-w-[85vw] md:max-w-[450px]"
+        )} border-[#DDF730]`} // Constrain mobile width
+        style={
+          {
+            "--color": "#DDF730",
+            "--color2": color[1],
+          } as React.CSSProperties
+        }
         onClick={overlayTrigger}
       >
         {isOrphan ? (
@@ -192,7 +200,7 @@ const milestoneComponent = (
           </div>
         ) : (
           <div className="flex min-h-full gap-8 md:gap-20 relative">
-            <div className="grow flex flex-col justify-between">
+            <div className="grow flex flex-col justify-between md:max-w-full max-w-[80vw]">
               <header>
                 <h2 className="mb-0 tw-heading-5">
                   {milestone.milestone_id == "none"
@@ -203,7 +211,7 @@ const milestoneComponent = (
                   <span className="">caffeine.ai</span>{" "}
                 </p>
               </header>
-              <p className="mb-0 mt-3 font-bold">
+              <p className="mb-0 mt-3 font-bold word-break-normal">
                 Caffeine is a self-writing apps platform: the first complete
                 tech stack designed for AI, where humans build through
                 conversation.
