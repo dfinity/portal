@@ -5909,7 +5909,6 @@
       "DeFi",
       "Chain Fusion"
     ],
-    "stats": "We are not open for public use yet, but we are proud of our MVP",
     "description": "Rumi Protocol lets users mint icUSD by locking ICP, ckBTC, or ckETH—bringing decentralized, collateral-backed stablecoins to the ICP ecosystem.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Rumi_protocol.jpg",
@@ -5986,5 +5985,4 @@
     "logo": "/img/showcase/one_million_pixel_logo.png",
     "oneLiner": "A decentralised, community-owned canvas."
   }
-  
 ]
