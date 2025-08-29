@@ -600,26 +600,26 @@ const MilestoneDetail: React.FC<{
                 </p>
               )}
 
-              <p className="tw-paragraph font-bold mb-2 ">
-                Caffeine is a self-writing apps platform: the first complete
-                tech stack designed for AI, where humans build through
-                conversation.
+              <p className="tw-paragraph  mb-2 md:w-[90%] ">
+                Caffeine is the world's first commercially-available platform
+                for creating self-writing apps.
               </p>
             </div>
             <div className="mt-2">
               {" "}
               <p className="text-white/60 tw-paragraph md:mr-9">
-                What if anybody could imagine a website, online app or service,
-                and create it by having a natural language conversation with AI?
-                What if this online functionality simply appears on URLs,
-                available for immediate use, and can be improved through
-                continued conversation? What if talking can create and update
-                serious production services — which might support large numbers
-                of users or customers—under the auspices of a guarantee that
-                changes and updates made by AI at the speed of chat will never
-                result in an accidental loss of data?
+                Imagine you could create a website, app, or online service just
+                by talking to AI. That's the power of Caffeine. Caffeine lets
+                you build and update production-ready services instantly through
+                a natural language conversation. The AI handles the complex
+                coding, and your creations appear live on a URL, ready for use.
+                Whether you're building a simple app or a service for thousands
+                of users, Caffeine is designed to prevent accidental data loss,
+                so you can iterate with confidence at the speed of chat. Want to
+                learn more? Visit caffeine.ai and follow @caffeineai on X for
+                updates.
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 md:gap-6">
                 <Link
                   href="https://caffeine.ai/"
                   className="button-outline-white !normal-case"
@@ -631,7 +631,7 @@ const MilestoneDetail: React.FC<{
                 <div className="flex items-center gap-1 md:gap-2">
                   <Link
                     className="basis-10 w-10 grow-0 shrink-0 link-primary"
-                    to="https://www.youtube.com/channel/UCPjtUmto8faF1p04Qoa6KDg"
+                    to="https://www.youtube.com/@caffeineai"
                   >
                     {youtubeIcon}
                   </Link>

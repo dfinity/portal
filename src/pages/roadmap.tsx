@@ -212,9 +212,8 @@ const milestoneComponent = (
                 </p>
               </header>
               <p className="mb-0 mt-3 font-bold word-break-normal">
-                Caffeine is a self-writing apps platform: the first complete
-                tech stack designed for AI, where humans build through
-                conversation.
+                Caffeine is the world's first commercially-available platform
+                for creating self-writing apps.
               </p>
             </div>
           </div>
