@@ -28,8 +28,10 @@ function listFilesRecursive(dir, shouldProcessFile) {
 	return results;
 }
 
+
 module.exports = function constantsReplacerPlugin(context, options) {
 	const constantsPath = options?.constantsPath || "site-constants.json";
+	const includeBuildSubdir = options?.includeBuildSubdir || "docs/building-apps"; // only process this subtree under outDir
 	const includeExtensions = options?.includeExtensions || [
 		".html",
 		".js",
@@ -41,7 +43,6 @@ module.exports = function constantsReplacerPlugin(context, options) {
 	const excludePaths = options?.excludePaths || [
 		"/img/",
 		"/fonts/",
-		"/assets/",
 		"/static/",
 	];
 
@@ -55,6 +56,7 @@ module.exports = function constantsReplacerPlugin(context, options) {
 
 			const shouldProcessFile = (filePath) => {
 				const rel = path.relative(outDir, filePath);
+				if (!rel.startsWith(includeBuildSubdir)) return false; // outside target subtree
 				if (!includeExtensions.includes(path.extname(filePath))) return false;
 				return !excludePaths.some((p) => rel.includes(p));
 			};

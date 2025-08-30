@@ -16,6 +16,7 @@ function buildTokenRegex(constantsKeys) {
 
 module.exports = function remarkConstants(options = {}) {
 	const constantsPath = options.constantsPath || "site-constants.json";
+	const includePathPrefix = options.includePathPrefix || "docs/building-apps/";
 	const constants = readConstants(constantsPath);
 	const keys = Object.keys(constants);
 	if (keys.length === 0) return () => {};
@@ -26,7 +27,11 @@ module.exports = function remarkConstants(options = {}) {
 		return value.replace(tokenRegex, (_, key) => String(constants[key] ?? ""));
 	}
 
-	return function transformer(tree) {
+	return function transformer(tree, file) {
+		const filePath = file && (file.path || (file.history && file.history[0]));
+		if (filePath && !filePath.includes(includePathPrefix)) {
+			return; // skip files outside the allowed area
+		}
 		visitNodes(tree, (node) => {
 			if (node.type === "text" || node.type === "html" || node.type === "inlineCode" || node.type === "code") {
 				node.value = replaceInValue(node.value);
