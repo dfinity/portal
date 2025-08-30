@@ -36,6 +36,20 @@ module.exports = function remarkConstants(options = {}) {
 			if (node.type === "text" || node.type === "html" || node.type === "inlineCode" || node.type === "code") {
 				node.value = replaceInValue(node.value);
 			}
+			// Replace in MDX JSX element attributes as well
+			if (node.type === "mdxJsxFlowElement" || node.type === "mdxJsxTextElement") {
+				if (Array.isArray(node.attributes)) {
+					for (const attr of node.attributes) {
+						if (attr && attr.type === "mdxJsxAttribute") {
+							if (typeof attr.value === "string") {
+								attr.value = replaceInValue(attr.value);
+							} else if (attr.value && typeof attr.value.value === "string") {
+								attr.value.value = replaceInValue(attr.value.value);
+							}
+						}
+					}
+				}
+			}
 		});
 	};
 };
