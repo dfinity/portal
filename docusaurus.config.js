@@ -642,7 +642,6 @@ const config = {
     snsDataPlugin,
     airtablePlugin,
     youtubePlugin,
-    [require.resolve("./plugins/constants-replacer"), { constantsPath: "docs/building-apps/site-constants.json" }],
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],

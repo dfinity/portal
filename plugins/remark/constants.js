@@ -29,7 +29,9 @@ module.exports = function remarkConstants(options = {}) {
 
 	return function transformer(tree, file) {
 		const filePath = file && (file.path || (file.history && file.history[0]));
-		if (filePath && !filePath.includes(includePathPrefix)) {
+		const isVersioned = filePath && filePath.includes("versioned_docs") && filePath.includes("/building-apps/");
+		const isCurrent = filePath && filePath.includes(includePathPrefix);
+		if (filePath && !(isCurrent || isVersioned)) {
 			return; // skip files outside the allowed area
 		}
 		visitNodes(tree, (node) => {
