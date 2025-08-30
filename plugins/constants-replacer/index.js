@@ -31,7 +31,8 @@ function listFilesRecursive(dir, shouldProcessFile) {
 
 module.exports = function constantsReplacerPlugin(context, options) {
 	const constantsPath = options?.constantsPath || "site-constants.json";
-	const includeBuildSubdir = options?.includeBuildSubdir || "docs/building-apps"; // only process this subtree under outDir
+	// Only process built routes for building-apps, including versioned paths
+	const includeBuildSubdir = options?.includeBuildSubdir || "docs";
 	const includeExtensions = options?.includeExtensions || [
 		".html",
 		".js",
@@ -56,7 +57,13 @@ module.exports = function constantsReplacerPlugin(context, options) {
 
 			const shouldProcessFile = (filePath) => {
 				const rel = path.relative(outDir, filePath);
-				if (!rel.startsWith(includeBuildSubdir)) return false; // outside target subtree
+				if (!rel.startsWith(includeBuildSubdir)) return false; // outside /docs
+				// Allow only these route patterns within /docs
+				const inBuildingApps =
+					rel.startsWith("docs/building-apps/") ||
+					rel.startsWith("docs/next/building-apps/") ||
+					rel.includes("/docs/version-") && rel.includes("/building-apps/");
+				if (!inBuildingApps) return false;
 				if (!includeExtensions.includes(path.extname(filePath))) return false;
 				return !excludePaths.some((p) => rel.includes(p));
 			};
