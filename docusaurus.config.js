@@ -43,6 +43,7 @@ const remarkPlugins = [
   simplePlantUML,
   require("remark-code-import"),
   require("./plugins/remark/validate-links.js"),
+  [require("./plugins/remark/constants.js"), { constantsPath: "site-constants.json" }],
 ];
 const rehypePlugins = [katex];
 
@@ -641,6 +642,7 @@ const config = {
     snsDataPlugin,
     airtablePlugin,
     youtubePlugin,
+    [require.resolve("./plugins/constants-replacer"), { constantsPath: "site-constants.json" }],
     validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
