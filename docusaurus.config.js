@@ -43,6 +43,7 @@ const remarkPlugins = [
   simplePlantUML,
   require("remark-code-import"),
   require("./plugins/remark/validate-links.js"),
+  [require("./plugins/remark/constants.js"), { constantsPath: "docs/building-apps/site-constants.json" }],
 ];
 const rehypePlugins = [katex];
 
