@@ -119,11 +119,11 @@ Operations that potentially allocate new storage bytes are:
 
 The reserved cycles are not transferable, and the amount depends on how full the subnet’s memory is.
 
-- If subnet usage is below `450GiB`, then the amount of reserved cycles per allocated byte is `0`.
+- If subnet usage is below `750GiB`, then the amount of reserved cycles per allocated byte is `0`.
 
-- If subnet usage is above `450GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage, from `0` to `10` years worth of payments at the subnet capacity (`1TiB`).
+- If subnet usage is above `750GiB`, then the amount of reserved cycles per allocated byte grows linearly depending on the subnet usage, from `0` to `10` years worth of payments at the subnet capacity (`2TiB`).
 
-A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in the canister’s settings. Such opted-out canisters are not able to allocate if the subnet usage is above `450GiB`.
+A controller of a canister can disable resource reservation by setting the `reserved_cycles_limit=0` in the canister’s settings. Such opted-out canisters are not able to allocate if the subnet usage is above `750GiB`.
 
 To prevent repeated allocations resulting in repeated increases of the canister’s reserved cycles balance, a memory allocation can be specified in the canister settings. This way, the canister will be charged as if the entire amount of allocated storage is being used, but no additional allocations will be performed.
 Hence, the canister’s reserved cycles balance might only increase when setting the memory allocation, but does not increase afterwards.
