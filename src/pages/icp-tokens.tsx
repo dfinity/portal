@@ -657,6 +657,12 @@ function TokenHolders(): JSX.Element {
                     link="https://www.taurushq.com/"
                     icon="/img/showcase/taurus_logo.png"
                   />
+                  <WalletCard
+                    title="Cobo"
+                    description="Institutional custody infrastructure with strong footprint in Asia and bitcoin ecosystem"
+                    link="https://www.cobo.com/"
+                    icon="/img/showcase/cobo_logo.webp"
+                  />
                 </div>
               </motion.div>
             </AnimateSpawn>
