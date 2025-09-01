@@ -81,6 +81,16 @@
       "status": "deployed",
       "eta": "2024-07-15",
       "eta_to_render": "July 15, 2024"
+    },
+    {
+      "title": "Caffeine",
+      "description": "Caffeine is the world's first commercially-available platform for creating self-writing apps.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Caffeine",
+      "eta": "",
+      "eta_to_render": "",
+      "url": "https://caffeine.ai"
     }
   ]
 }
