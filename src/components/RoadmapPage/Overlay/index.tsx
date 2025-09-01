@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CardBlobs, createId } from "@site/src/pages/roadmap";
 import Tooltip from "../../Common/Tooltip";
 import LinkIcon from "@site/static/img/svgIcons/link.svg";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
@@ -228,6 +229,42 @@ const docsIcon = (
         />
       </clipPath>
     </defs>
+  </svg>
+);
+
+const youtubeIcon = (
+  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect
+      x="0.5"
+      y="0.5"
+      width="39"
+      height="39"
+      rx="19.5"
+      stroke="white"
+      stroke-opacity="0.3"
+    />
+    <path
+      d="M30.2359 13.8103C30.75 15.815 30.75 20 30.75 20C30.75 20 30.75 24.185 30.2359 26.1898C29.9501 27.2979 29.1143 28.1698 28.0556 28.4645C26.133 29 19.5 29 19.5 29C19.5 29 12.8704 29 10.9444 28.4645C9.88125 28.1653 9.0465 27.2945 8.76412 26.1898C8.25 24.185 8.25 20 8.25 20C8.25 20 8.25 15.815 8.76412 13.8103C9.04988 12.7021 9.88575 11.8302 10.9444 11.5355C12.8704 11 19.5 11 19.5 11C19.5 11 26.133 11 28.0556 11.5355C29.1187 11.8347 29.9535 12.7055 30.2359 13.8103ZM17.25 23.9375L24 20L17.25 16.0625V23.9375Z"
+      fill="white"
+    />
+  </svg>
+);
+
+const twitterIcon = (
+  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect
+      x="0.5"
+      y="0.5"
+      width="39"
+      height="39"
+      rx="19.5"
+      stroke="white"
+      stroke-opacity="0.3"
+    />
+    <path
+      d="M10.0494 11.011C10.0412 11.0228 10.7058 11.891 11.5221 12.936C12.3385 13.981 14.0739 16.2046 15.3785 17.8743L17.7497 20.9111L17.5979 21.0761C17.5117 21.1664 15.7682 22.9696 13.7252 25.0832C11.6821 27.2007 10.0042 28.945 10.0001 28.9646C9.99193 28.9843 10.3488 29 10.8617 28.9961L11.7355 28.9921L12.0226 28.6896C12.1826 28.5246 13.6677 26.9886 15.3251 25.2718C16.9825 23.555 18.3856 22.1014 18.443 22.0386L18.5456 21.9246L19.366 22.9775C19.8173 23.555 21.0604 25.15 22.127 26.5171L24.0716 29H27.0458C29.5196 29 30.016 28.9921 29.9996 28.9489C29.9873 28.9175 29.2325 27.9432 28.3217 26.7764C27.411 25.6136 26.3689 24.2779 26.0079 23.8143C25.6428 23.3507 24.5721 21.9718 23.6203 20.7578C22.6685 19.54 21.8891 18.5264 21.8891 18.5107C21.8891 18.4832 26.9187 13.2543 28.6294 11.506L29.1176 11.0071H28.2191L27.3248 11.011L26.2787 12.0953C25.7043 12.6925 24.2972 14.1539 23.1485 15.3364L21.0686 17.4893L18.5456 14.26L16.0184 11.0268L13.0442 11.0071C11.4073 10.9953 10.0576 10.9993 10.0494 11.011ZM17.0974 14.4918C18.0697 15.7411 19.5712 17.6621 20.4327 18.7661C21.2942 19.8661 23.2059 22.3175 24.6828 24.2071C26.1597 26.1007 27.3822 27.6682 27.4028 27.6957C27.4274 27.7311 27.1361 27.7429 26.0736 27.7429H24.7156L22.0244 24.2936C15.8133 16.3461 12.679 12.331 12.6421 12.2721C12.6175 12.2368 12.8965 12.225 13.9672 12.225H15.3251L17.0974 14.4918Z"
+      fill="white"
+    />
   </svg>
 );
 
@@ -470,6 +507,159 @@ const MilestoneDetail: React.FC<{
                 proposal={element.proposal}
               />
             ))}
+            {emptyCards.map((_, i) => (
+              <div
+                key={i + elementsCount}
+                className="hidden md:block bg-white bg-opacity-5 rounded-lg"
+              ></div>
+            ))}
+          </div>
+        </div>
+      </article>
+    );
+  }
+  if (name === "Caffeine") {
+    return (
+      <article
+        id={name}
+        className={`milestone-large border-2 border-solid border-[#DDF730] !bg-black rounded-xl mb-15 md:mb-30 relative scroll-mt-48 md:scroll-mt-32`}
+      >
+        {status === "in_progress" && <CardBlobs />}
+        <Blobs />
+        <div className="p-5 py-8 md:py-12 relative z-3">
+          <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
+            <div>
+              <div className=" flex items-center group mb-8">
+                <svg
+                  width="231"
+                  height="40"
+                  viewBox="0 0 231 40"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 25.1892C0 16.3784 7.18919 10.3243 17.1351 10.3243C25.6216 10.3243 31.1351 15.027 32.6486 19.7297L25.1892 22.9189C24.2162 19.9459 21.2973 17.4054 17.0811 17.4054C12.1081 17.4054 8.43243 20.3243 8.43243 25.1892C8.43243 30 12.1081 32.973 17.0811 32.973C21.2973 32.973 24.2162 30.4324 25.1892 27.4054L32.6486 30.7027C31.0811 35.3514 25.6216 40 17.1351 40C7.18919 40 0 33.9459 0 25.1892Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M47.1281 40C40.1011 40 35.0741 36.8108 35.0741 31.1892C35.0741 25.6216 39.993 22.8649 46.6957 22.2162L58.047 21.1892V21.027C58.047 18.8649 56.2092 17.1351 51.6146 17.1351C47.7227 17.1351 44.7497 18.7568 43.8849 20.973L36.1011 18.8649C37.8849 13.7297 44.1551 10.3243 51.993 10.3243C61.0741 10.3243 66.4254 13.9459 66.4254 21.0811V26.2703V39.4047H58.8578V36.2703C56.2632 38.5405 52.1551 40 47.1281 40ZM58.047 28.4865V26.973L47.9389 28C44.966 28.2703 43.4524 28.973 43.4524 30.8649C43.4524 32.7027 45.3443 33.6757 48.6957 33.6757C53.1281 33.6757 58.047 31.7838 58.047 28.4865Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M71.0131 10.4865C71.0131 3.40541 75.9861 0 84.4186 0C87.0672 0 89.824 0.378377 91.5537 1.02703L90.4186 7.78378C88.6348 7.2973 86.9591 7.02703 84.9591 7.02703C81.2834 7.02703 79.5537 8.10811 79.5537 10.6486V10.9189H90.0402V18.0541H79.5537V39.4054H71.0131V10.4865Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M93.6588 10.4865C93.6588 3.40541 98.6318 0 107.064 0C109.713 0 112.47 0.378377 114.199 1.02703L113.064 7.78378C111.28 7.2973 109.605 7.02703 107.605 7.02703C103.929 7.02703 102.199 8.10811 102.199 10.6486V10.9189H112.686V18.0541H102.199V39.4054H93.6588V18.0541H87.2264V10.9189H93.6588V10.4865Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M130.044 33.1351C133.828 33.1351 136.855 31.4054 138.098 28.6486L145.72 31.4054C143.666 36.4324 137.557 40 130.098 40C119.99 40 112.909 34 112.909 25.1351C112.909 16.7027 119.99 10.3243 130.044 10.3243C140.26 10.3243 146.206 16.9189 146.206 25.027V27.4054H121.341C122.314 31.027 125.612 33.1351 130.044 33.1351ZM129.774 17.027C125.99 17.027 122.747 18.7568 121.557 22.1081H137.503C137.125 19.7297 134.314 17.027 129.774 17.027Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M149.947 8V0.594593H158.758V8H149.947ZM158.65 10.9189V39.4054H150.001V10.9189H158.65Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M163.475 39.4054V10.9189H172.123V14.3784C174.339 12.0541 177.907 10.3243 182.502 10.3243C189.907 10.3243 194.934 15.2973 194.934 23.1892V39.4054H186.285V25.7297C186.285 20.9189 183.961 18 179.529 18C174.826 18 172.123 20.8649 172.123 25.7838V39.4054H163.475Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M214.807 33.1351C218.591 33.1351 221.618 31.4054 222.861 28.6486L230.483 31.4054C228.429 36.4324 222.321 40 214.861 40C204.753 40 197.672 34 197.672 25.1351C197.672 16.7027 204.753 10.3243 214.807 10.3243C225.023 10.3243 230.969 16.9189 230.969 25.027V27.4054H206.104C207.077 31.027 210.375 33.1351 214.807 33.1351ZM214.537 17.027C210.753 17.027 207.51 18.7568 206.321 22.1081H222.267C221.888 19.7297 219.077 17.027 214.537 17.027Z"
+                    fill="white"
+                  />
+                </svg>
+
+                {!showCopied ? (
+                  <span
+                    onClick={handleLinkClick}
+                    className="ml-2 cursor-pointer hidden group-hover:inline"
+                  >
+                    <LinkIcon />
+                  </span>
+                ) : (
+                  <motion.span
+                    initial={{ opacity: 0.8 }}
+                    animate={{ opacity: 0.3 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                    className="ml-2 basis-5 w-5 grow-0 shrink-0 opacity-80 "
+                  >
+                    <CheckmarkIcon />
+                  </motion.span>
+                )}
+              </div>
+              {eta && eta != "none" && (
+                <p className="tw-paragraph mb-2">
+                  <span className="text-white/60">
+                    {" "}
+                    {status === "deployed" ? "Completed" : "Due Date"}
+                  </span>{" "}
+                  {eta}
+                </p>
+              )}
+
+              <p className="tw-paragraph  mb-2 md:w-[90%] ">
+                Caffeine is the world's first commercially-available platform
+                for creating self-writing apps.
+              </p>
+            </div>
+            <div className="mt-2">
+              {" "}
+              <p className="text-white/60 tw-paragraph md:mr-9">
+                Imagine you could create a website, app, or online service just
+                by talking to AI. That's the power of Caffeine. Caffeine lets
+                you build and update production-ready services instantly through
+                a natural language conversation. The AI handles the complex
+                coding, and your creations appear live on a URL, ready for use.
+                Whether you're building a simple app or a service for thousands
+                of users, Caffeine is designed to prevent accidental data loss,
+                so you can iterate with confidence at the speed of chat. Want to
+                learn more? Visit caffeine.ai and follow @caffeineai on X for
+                updates.
+              </p>
+              <div className="flex items-center gap-4 md:gap-6">
+                <Link
+                  href="https://caffeine.ai/"
+                  className="button-outline-white !normal-case"
+                >
+                  <span className="flex items-center !justify-center gap-2 !normal-case text-nowrap">
+                    <span className="text-nowrap ml-1">Try it out</span>{" "}
+                    <LinkArrowUpRight />
+                  </span>
+                </Link>
+                <div className="flex items-center gap-1 md:gap-2">
+                  <Link
+                    className="basis-10 w-10 grow-0 shrink-0 link-primary"
+                    to="https://www.youtube.com/@caffeineai"
+                  >
+                    {youtubeIcon}
+                  </Link>
+                  <Link
+                    className="basis-10 w-10 grow-0 shrink-0 link-primary"
+                    to="https://x.com/caffeineai"
+                  >
+                    {twitterIcon}
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="m-1 relative z-3">
+          <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            {elements.map((element, i) => (
+              <MilestoneCard
+                key={i}
+                title={element.title}
+                overview={element.overview}
+                status={element.status}
+                forum={element.forum}
+                docs={element.docs}
+                proposal={element.proposal}
+              />
+            ))}{" "}
             {emptyCards.map((_, i) => (
               <div
                 key={i + elementsCount}
