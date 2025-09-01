@@ -183,8 +183,8 @@ const milestoneComponent = (
       <article
         key={milestone.name}
         className={`${wrapperClasses.replace(
-          "!bg-black w-[450px]",
-          "w-full md:w-[450px] max-w-[85vw] md:max-w-[450px] "
+          " w-[450px]",
+          "w-full md:w-[450px] !max-w-[85vw] md:max-w-[450px] "
         )} border-[#DDF730] hover:!border-white`} // Constrain mobile width
         style={
           {

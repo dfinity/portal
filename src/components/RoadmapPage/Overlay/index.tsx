@@ -526,7 +526,7 @@ const MilestoneDetail: React.FC<{
       >
         {status === "in_progress" && <CardBlobs />}
         <Blobs />
-        <div className="p-5 py-6 md:py-12 relative z-3">
+        <div className="p-5 py-8 md:py-12 relative z-3">
           <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
             <div>
               <div className=" flex items-center group mb-8">
