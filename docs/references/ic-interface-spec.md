@@ -3270,7 +3270,7 @@ extract_der : Blob -> Blob
 
 implements DER decoding of the public key, following [RFC5480](https://datatracker.ietf.org/doc/html/rfc5480) using OID 1.3.6.1.4.1.44668.5.3.1.2.1 for the algorithm and 1.3.6.1.4.1.44668.5.3.2.1 for the curve.
 
-Delegations are *scoped*, i.e., they indicate which set of canister principals the delegatee subnet may certify for. This set can be obtained from a delegation `d` using `lookup*(["canister_ranges",d.subnet_id],d.certificate)`. The various applications of certificates describe if and how the subnet scope comes into play.
+Delegations are *scoped*, i.e., they indicate which set of canister principals the delegatee subnet may certify for. This set can be obtained from a delegation `d` using `lookup*(["canister_ranges",d.subnet_id],d.certificate)`. See [lookup]{#lookup} for the definition of `lookup*` and [Canister ranges](#state-tree-canister-ranges) for the description of the encoding used. The various applications of certificates describe if and how the subnet scope comes into play.
 
 ### Encoding of certificates {#certification-encoding}
 
