@@ -183,13 +183,17 @@ const milestoneComponent = (
       <article
         key={milestone.name}
         className={`${wrapperClasses.replace(
-          "bg-[var(--color)] w-[450px]",
-          "w-full md:w-[450px] max-w-[85vw] md:max-w-[450px]"
-        )} border-[#DDF730]`} // Constrain mobile width
+          "!bg-black w-[450px]",
+          "w-full md:w-[450px] max-w-[85vw] md:max-w-[450px] "
+        )} border-[#DDF730] hover:!border-white`} // Constrain mobile width
         style={
           {
             "--color": "#DDF730",
             "--color2": color[1],
+            backgroundColor: "black",
+            hover: {
+              borderColor: "white",
+            },
           } as React.CSSProperties
         }
         onClick={overlayTrigger}
@@ -199,7 +203,7 @@ const milestoneComponent = (
             <div className="min-w-[140px]"></div>
           </div>
         ) : (
-          <div className="flex min-h-full gap-8 md:gap-20 relative">
+          <div className="flex min-h-full gap-8 md:gap-20 relative p-2">
             <div className="grow flex flex-col justify-between md:max-w-full max-w-[80vw]">
               <header>
                 <h2 className="mb-0 tw-heading-5">

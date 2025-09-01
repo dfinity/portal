@@ -522,7 +522,7 @@ const MilestoneDetail: React.FC<{
     return (
       <article
         id={name}
-        className={`milestone-large border-2 border-solid border-[#DDF730] rounded-xl mb-15 md:mb-30 relative scroll-mt-48 md:scroll-mt-32`}
+        className={`milestone-large border-2 border-solid border-[#DDF730] !bg-black rounded-xl mb-15 md:mb-30 relative scroll-mt-48 md:scroll-mt-32`}
       >
         {status === "in_progress" && <CardBlobs />}
         <Blobs />
@@ -624,8 +624,9 @@ const MilestoneDetail: React.FC<{
                   href="https://caffeine.ai/"
                   className="button-outline-white !normal-case"
                 >
-                  <span className="flex items-center gap-2 !normal-case text-nowrap">
-                    Try it out <LinkArrowUpRight />
+                  <span className="flex items-center !justify-center gap-2 !normal-case text-nowrap">
+                    <span className="text-nowrap ml-1">Try it out</span>{" "}
+                    <LinkArrowUpRight />
                   </span>
                 </Link>
                 <div className="flex items-center gap-1 md:gap-2">
