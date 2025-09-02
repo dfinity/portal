@@ -598,7 +598,7 @@ The concrete mechanism that users use to send requests to the Internet Computer 
 
 -   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
 
--   At `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, and `/api/v3/subnet/<subnet_id>/read_state`, the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
+-   At `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, and `/api/v3/subnet/<effective_subnet_id>/read_state`, the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
 
 -   At `/api/v2/canister/<effective_canister_id>/query` (deprecated) and `/api/v3/canister/<effective_canister_id>/query`, the user can perform (synchronous, non-state-changing) query calls.
 
@@ -860,15 +860,15 @@ All requested paths must have the following form:
 
 -   `/api_boundary_nodes`, `/api_boundary_nodes/<node_id>`, `/api_boundary_nodes/<node_id>/domain`,  `/api_boundary_nodes/<node_id>/ipv4_address`, `/api_boundary_nodes/<node_id>/ipv6_address`. Can always be requested.
 
--   `/canister_ranges/<subnet_id>`. Can be requested at `/api/v2/subnet/<subnet_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state` (i.e., if `<effective_subnet_id>` matches `<subnet_id>`). Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
+-   `/canister_ranges/<subnet_id>`. Can only be requested at `/api/v2/subnet/<subnet_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state` (i.e., if `<effective_subnet_id>` matches `<subnet_id>`). In particular, cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
 -   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
 -   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is the root subnet ID. Can always be requested.
 
--   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is not the root subnet ID. Can be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v2/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v3/canister/<effective_canister_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state`.
+-   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is not the root subnet ID. Can be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v2/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v3/canister/<effective_canister_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
--   `/subnet/<subnet_id>/metrics`. Can be requested at `/api/v2/subnet/<subnet_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state` (i.e., if `<effective_subnet_id>` matches `<subnet_id>`). Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
+-   `/subnet/<subnet_id>/metrics`. Can only be requested at `/api/v2/subnet/<subnet_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state` (i.e., if `<effective_subnet_id>` matches `<subnet_id>`). In particular, cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
 -   `/request_status/<request_id>`, `/request_status/<request_id>/status`, `/request_status/<request_id>/reply`, `/request_status/<request_id>/reject_code`, `/request_status/<request_id>/reject_message`, `/request_status/<request_id>/error_code`. Can be requested if no path with such a prefix exists in the state tree or
 
@@ -6957,13 +6957,13 @@ S' with
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v3/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/subnet` at `/api/v3/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v3/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<subnet_id>/read_state`.
+The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
 Submitted request to `/api/v3/canister/<ECID>/read_state`
 `E`
@@ -7017,7 +7017,7 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/v3/subnet/<subnet_id>/read_state`
+Submitted request to `/api/v3/subnet/<effective_subnet_id>/read_state`
 `E`
 
 Conditions  
