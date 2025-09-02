@@ -833,7 +833,11 @@ If the `certificate` includes a subnet delegation (see [Delegation](#certificati
 
 The returned certificate reveals all values whose path has a requested path as a prefix except for
 
--   paths with prefix `/subnet/<subnet_id>/canister_ranges` which are only contained in the returned certificate for requests to `/api/v2/canister/<effective_canister_id>/read_state` (deprecated) and `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated);
+-   paths with prefix `/subnet/<subnet_id>/canister_ranges` which are only contained in the returned certificate
+
+    - for requests to `/api/v2/canister/<effective_canister_id>/read_state` (deprecated) and `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated);
+
+    - if `<subnet_id>` is the root subnet ID;
 
 -   paths with prefix `/subnet/<subnet_id>/metrics` and `/subnet/<subnet_id>/node` which are only contained in the returned certificate if `<effective_canister_id>` belongs to the canister ranges of the subnet `<subnet_id>`, i.e., if `<effective_canister_id>` belongs to the value at a path with prefix `/canister_ranges/<subnet_id>` in the state tree, or if `<effective_subnet_id>` matches `<subnet_id>`.
 
@@ -860,7 +864,9 @@ All requested paths must have the following form:
 
 -   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
--   `/subnet/<subnet_id>/canister_ranges`. Can be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v2/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v3/canister/<effective_canister_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state`.
+-   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is the root subnet ID. Can always be requested.
+
+-   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is not the root subnet ID. Can be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v2/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v3/canister/<effective_canister_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state`.
 
 -   `/subnet/<subnet_id>/metrics`. Can be requested at `/api/v2/subnet/<subnet_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state` (i.e., if `<effective_subnet_id>` matches `<subnet_id>`). Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
@@ -966,11 +972,9 @@ Given a query (the `content` map from the request body) `Q`, a response `R`, and
 ```
 verify_response(Q, R, Cert)
   = verify_cert(Cert) ∧
-    ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId) ∨
-     (Cert.delegation ≠ NoDelegation ∧
-       SubnetId = Cert.delegation.subnet_id ∧
-       lookup*(["canister_ranges",SubnetId], Cert.delegation.certificate) = Ranges ∧
-       effective_canister_id ∈ Ranges)) ∧
+    ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId ∧ lookup(["subnet",SubnetId,"canister_ranges"], Cert) = Found Ranges) ∨
+     (Cert.delegation ≠ NoDelegation ∧ SubnetId = Cert.delegation.subnet_id ∧ lookup*(["canister_ranges",SubnetId], Cert.delegation.certificate) = Ranges)) ∧
+    effective_canister_id ∈ Ranges ∧
     ∀ {timestamp: T, signature: Sig, identity: NodeId} ∈ R.signatures.
       lookup(["subnet",SubnetId,"node",NodeId,"public_key"], Cert) = Found PK ∧
       if R.status = "replied" then
@@ -6988,6 +6992,7 @@ may_read_path_for_canister(S, _, ["time"]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_canister(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -7040,6 +7045,7 @@ may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == subnet_id
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
@@ -7056,6 +7062,7 @@ state_tree(S) = {
   "time": S.system_time;
   "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
   "subnet": { subnet_id : { "public_key" : subnet_pk; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
+  "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == root_subnet_id };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
     { canister_id :
