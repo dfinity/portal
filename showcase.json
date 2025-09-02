@@ -57,12 +57,12 @@
   },
   {
     "id": "liquidium",
-    "name": "Liquidium",
+    "name": "LiquidiumWTF",
     "display": "Large",
-    "website": "https://liquidium.fi/",
-    "twitter": "https://x.com/LiquidiumFi",
+    "website": "https://liquidium.wtf/",
+    "twitter": "https://x.com/LiquidiumWTF",
     "tags": [
-      "Chain Fusion",
+      "DeFi",
       "Bitcoin"
     ],
     "description": "Borrow Bitcoin against Ordinals, Runes, and BRC-20. Lend and earn up to 380% APY.",
@@ -457,6 +457,21 @@
       "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app"
     ],
     "logo": "/img/showcase/taggr_logo.webp"
+  },
+  {
+    "id": "liquidiumfi",
+    "name": "LiquidiumFi",
+    "display": "Normal",
+    "website": "https://liquidium.fi/",
+    "twitter": "https://x.com/liquidiumfi",
+    "github": "https://github.com/Liquidium-Inc",
+    "tags": [
+      "Chain Fusion",
+      "DeFi"
+    ],
+    "description": "Liquidium is the first truly decentralized cross-chain lending protocol. Instantly supply or borrow any asset across Bitcoin, Ethereum, and top blockchains—no bridges, no wrapping, no borders. Secure, non-custodial, and built for the future of DeFi.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/LiquidiumFi_logo.jpg"
   },
   {
     "id": "kleverio",
@@ -5984,6 +5999,26 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/one_million_pixel_logo.png",
     "oneLiner": "A decentralised, community-owned canvas."
+  },
+  {
+    "id": "tradeos",
+    "name": "TradeOS",
+    "display": "Normal",
+    "website": "https://www.tradeos.xyz",
+    "twitter": "https://x.com/TradeOS_ai",
+    "github": "https://github.com/mind-link-ai/contracts-motoko",
+    "youtube": "https://www.youtube.com/watch?v=e3k6ej5uECI",
+    "submittableId": 49730243,
+    "tags": [
+      "Chain Fusion",
+      "AI",
+      "DeFi"
+    ],
+    "stats": "6M users, 20K demands, 3M transactions",
+    "description": "TradeOS is a universal commerce stack powering P2P and AI-native marketplaces with unified discovery, checkout, and on-chain settlement.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/tradeos_logo_.svg",
+    "oneLiner": "Universal commerce stack for P2P and AI-driven marketplaces."
   }
   
 ]
