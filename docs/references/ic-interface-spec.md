@@ -753,7 +753,7 @@ If the `certificate` includes a subnet delegation (see [Delegation](#certificati
 
 - for requests to `/api/v4/canister/<effective_canister_id>/call`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at a path with prefix `/canister_ranges/<subnet_id>`.
 
-This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for cycle balance change due to message execution).
+This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for transient state such as cycle balance, canister logs, and canister version).
 
 ### Request: Asynchronous Call {#http-async-call}
 
