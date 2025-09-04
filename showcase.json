@@ -3133,7 +3133,7 @@
     ],
     "description": "First-ever infrastructure layer that allows transferring and swapping of tokens between ICP and blockchains such as Bitcoin, Ethereum, and Solana.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/appic_logo.png"
+    "logo": "/img/showcase/Appic_Logo.svg"
   },
   {
     "id": "optigames",
