@@ -7,7 +7,7 @@
       "is_milestone": true,
       "description": "The Neon milestone focuses on helping users quickly understand their portfolio. New features highlight personalized insights on their staking reward potential and provide more engaging and dynamic information about DAOs, presenting users with opportunities to participate in launches. Governance participation is becoming more accessible, with simplified processes for liquidity pool integration and DAO management operations, laying the groundwork for what's next.",
       "milestone_id": "Neon",
-      "status": "in_progress",
+      "status": "deployed",
       "eta_to_render": "August 2025"
     },
     {
@@ -96,9 +96,9 @@
     },
         {
       "title": "SNS treasury management",
-      "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-      "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-      "status": "in_progress",
+      "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury and focuses on interaction with DEXs.",
+      "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury and focuses on interaction with DEXs.",
+      "status": "deployed",
       "milestone_id": "Neon"
     },
     {
@@ -111,8 +111,8 @@
       "eta_to_render": ""
     },
     {
-      "title": "SNS communities portal",
-      "overview": "A redesign of the voting interface that encourages community involvement and a sense of belonging, for example by allowing for announcement and updates.",
+      "title": "Modernized NNS dapp",
+      "overview": "A redesign of the NNS dapp will introduce a sleeker, more modern user interface and improved performance, including for users interacting with multiple DAOs. The dapp will make it easier for both new and existing users to learn about and navigate DAO functionality through cleaner design and enhanced in-app guidance.",
       "status": "future",
       "is_community": false,
       "in_beta": false,
@@ -129,14 +129,6 @@
       "milestone_id": "Nucleon"
     },
     {
-      "title": "Guide users from swap participating to governance",
-      "overview": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
-    },
-    {
       "title": "Incentivise exceptional voting",
       "overview": "All ICP governance participants are rewarded equally whether they vote manually or follow other neurons, even if the former takes significantly more effort. This roadmap item aims to explore ways to find a better balance.",
       "status": "future",
@@ -147,14 +139,14 @@
     {
       "title": "NNS known and named neurons",
       "overview": "Currently there are a lot of known neurons and some that only focus on a few topics. It is hard for users to find good candidates to follow / delegate their  vote to for different topics. This feature aims to improve this and to consider introducing names also for other public neurons.",
-      "status": "future",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Nucleon"
     },
     {
-      "title": "Proposal error visibility",
-      "overview": "Make it easier for SNS communities to execute decisions via proposals by making potential errors visible. For example, if an SNS proposal fails to execute, users of the NNS dapp do not see the reason for why this happened. This feature introduces user-readable error messages.",
+      "title": "NNS Neuron index",
+      "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
       "status": "future",
       "is_community": false,
       "in_beta": false,
@@ -163,6 +155,13 @@
     {
       "title": "Expand reporting functionality",
       "overview": "Extending the reporting functionality, for example with SNS neurons or fiat values.",
+      "status": "future",
+      "milestone_id": "Nucleon"
+    },
+    {
+      "title": "Archiving of NNS proposals",
+      "overview": "Storing NNS proposals long term instead of deleting them after a defined time period as done currently to increase transparency and accountability of governance.",
+      "description": "Currently, NNS proposals are only kept for a limited time and are then deleted. This feature intends to archive governance proposals to enhance transparency and accountability of the governance system.",
       "status": "future",
       "milestone_id": "Nucleon"
     },
@@ -185,11 +184,6 @@
       "overview": "Projects can create open, trackable councils using Orbit’s multi approval tools. All key actions—like canister upgrades—are fully transparent, enabling end users to monitor and verify changes in real time.",
       "status": "future",
       "milestone_id": "Quantum"
-    },
-    {
-      "title": "NNS Neuron index",
-      "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
-      "status": "future"
     },
     {
       "title": "Reduce min dissolve delay to 3 months",
@@ -226,12 +220,6 @@
       "proposal": "https://dashboard.internetcomputer.org/proposal/38985",
       "status": "future",
       "is_community": true
-    },
-    {
-      "title": "Archiving of NNS proposals",
-      "overview": "Storing NNS proposals long term instead of deleting them after a defined time period as done currently to increase transparency and accountability of governance.",
-      "description": "Currently, NNS proposals are only kept for a limited time and are then deleted. This feature intends to archive governance proposals to enhance transparency and accountability of the governance system.",
-      "status": "future"
     },
     {
       "title": "Maintain neurons’ voting history",
