@@ -627,41 +627,70 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <div className="space-y-4">
                   <WalletCard
-                    title="Coinbase Custody"
-                    description="Institutional ICP custody since 2021"
-                    link="https://www.coinbase.com/"
-                    icon="/img/showcase/coinbase_logo.webp"
+                    title="Bitgo"
+                    description="Institutional ICP custody"
+                    link="https://www.bitgo.com/"
+                    icon="/img/showcase/app-logo-bitgo.png"
                   />
                   <WalletCard
-                    title="Copper"
-                    description="Institutional ICP & token custody and ICP staking"
-                    link="https://copper.co/en"
-                    icon="/img/showcase/logo_cooper.png"
-                  />
-                  <WalletCard
-                    title="Primevault"
-                    description="Institutional ICP & token custody with DeFi access"
-                    link="https://www.primevault.com/"
-                    icon="/img/showcase/logo_primevault.png"
-                  />
-                  <WalletCard
-                    title="Sygnum"
-                    description="Institutional ICP custody & staking since 2021"
-                    link="https://www.sygnum.com/"
-                    icon="/img/showcase/sygnum_logo.webp"
-                  />
-
-                  <WalletCard
-                    title="Taurus"
-                    description="Swiss custody technology with HSM & MPC"
-                    link="https://www.taurushq.com/"
-                    icon="/img/showcase/taurus_logo.png"
+                    title="Ceffu"
+                    description="ICP custody powering solutions for hundreds of institutions"
+                    link="https://www.ceffu.com/"
+                    icon="/img/showcase/app-logo-ceffu.png"
                   />
                   <WalletCard
                     title="Cobo"
                     description="Institutional custody infrastructure with strong footprint in Asia and bitcoin ecosystem"
                     link="https://www.cobo.com/"
-                    icon="/img/showcase/cobo_logo.webp"
+                    icon="/img/showcase/app-logo-cobo.png"
+                  />
+                  <WalletCard
+                    title="Coinbase"
+                    description="Institutional ICP custody"
+                    link="https://www.coinbase.com/"
+                    icon="/img/showcase/app-logo-coinbase.png"
+                  />
+                  <WalletCard
+                    title="Copper"
+                    description="Institutional ICP & ecosystem token custody and ICP staking"
+                    link="https://copper.co/"
+                    icon="/img/showcase/app-logo-copper.png"
+                  />
+                  <WalletCard
+                    title="Cordial Systems"
+                    description="High security MPC, supporting Institutional ICP custody"
+                    link="https://cordial.systems/"
+                    icon="/img/showcase/app-logo-cordial.png"
+                  />
+                  <WalletCard
+                    title="DFNS"
+                    description="Institutional ICP custody"
+                    link="https://www.dfns.co/"
+                    icon="/img/showcase/app-logo-DFNS.png"
+                  />
+                  <WalletCard
+                    title="Primevault"
+                    description="Institutional ICP & ecosystem token custody with DeFi access"
+                    link="https://www.primevault.com/"
+                    icon="/img/showcase/app-logo-primevault.png"
+                  />
+                  <WalletCard
+                    title="Sygnum"
+                    description="Institutional ICP custody & staking"
+                    link="https://www.sygnum.com/"
+                    icon="/img/showcase/app-logo-sygnum.png"
+                  />
+                  <WalletCard
+                    title="Taurus"
+                    description="Institutional ICP & ecosystem token custody and staking"
+                    link="https://www.taurushq.com/"
+                    icon="/img/showcase/app-logo-taurus.png"
+                  />
+                  <WalletCard
+                    title="Zodia"
+                    description="Leading institutional custody provider serving the funds market"
+                    link="https://zodia.io/"
+                    icon="/img/showcase/app-logo-zodia.png"
                   />
                 </div>
               </motion.div>
