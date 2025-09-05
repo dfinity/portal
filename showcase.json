@@ -3116,24 +3116,25 @@
     ]
   },
   {
-    "id": "appicdao",
-    "name": "AppIC DAO",
+    "id": "appic",
+    "name": "Appic",
     "display": "Normal",
     "website": "https://app.appic.solutions/",
     "twitter": "https://x.com/Appic_ICP",
     "github": "https://github.com/Appic-Solutions",
-    "youtube": "https://www.youtube.com/@AppIC-DAO",
-    "submittableId": 44626035,
+    "youtube": "https://www.youtube.com/@AppicDAO",
+    "submittableId": 49991253,
     "tags": [
-      "Tools / Infrastructure",
+      "Chain Fusion",
       "Bitcoin",
-      "Ethereum",
       "DeFi",
+      "Ethereum",
       "Chain Fusion"
     ],
-    "description": "First-ever infrastructure layer that allows transferring and swapping of tokens between ICP and blockchains such as Bitcoin, Ethereum, and Solana.",
+    "description": "Appic is a cross-chain decentralized exchange (DEX) that enables seamless any-to-any token swaps across EVM chains, Solana and Bitcoin.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/Appic_Logo.svg"
+    "logo": "/img/showcase/Appic_Logo.svg",
+    "oneLiner": "Seamless Swaps. One Layer, All Chains!"
   },
   {
     "id": "optigames",
