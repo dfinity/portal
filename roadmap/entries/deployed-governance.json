@@ -569,6 +569,6 @@
       "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury and focuses on interaction with DEXs.",
       "status": "deployed",
       "milestone_id": "Neon"
-    },
+    }
   ]
 }
