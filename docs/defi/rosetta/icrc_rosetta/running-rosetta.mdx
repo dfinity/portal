@@ -131,69 +131,6 @@ bazel run //rs/rosetta-api/icrc1:ic-icrc-rosetta-bin -- \
 
 This method gives you the latest development version and allows for custom modifications.
 
-## Local cluster
-
-For development and testing purposes, you can set up a complete local Kubernetes cluster with monitoring tools that includes ICRC Rosetta.
-
-
-The local cluster setup provides:
-- Minikube-based Kubernetes cluster.
-- Prometheus and Grafana for monitoring.
-- cAdvisor for container metrics.
-- Both ICP and ICRC1 Rosetta services.
-
-### Prerequisites
-
-The deployment script will help install missing dependencies:
-- Docker.
-- Minikube.
-- kubectl.
-- Helm.
-
-### Deploying production images
-
-```bash
-# Clone the IC repository
-git clone https://github.com/dfinity/ic.git
-cd ic/rs/rosetta-api/local/cluster
-
-# Deploy with default configuration
-./deploy.sh
-
-# Deploy with specific ICRC1 ledger
-./deploy.sh --icrc1-ledger mxzaz-hqaaa-aaaar-qaada-cai
-```
-
-### Deploying local images
-
-First, build the containers from within the dev container:
-
-```bash
-# Enter dev container
-./ci/container/container-run.sh
-
-# Build ICRC1 Rosetta
-bazel build //rs/rosetta-api/icrc1:icrc_rosetta_image.tar
-mv bazel-bin/rs/rosetta-api/icrc1/icrc_rosetta_image.tar /tmp
-
-# Exit dev container
-exit
-```
-
-Then deploy the local images:
-
-```bash
-./deploy.sh --local-icrc1-image-tar /tmp/icrc_rosetta_image.tar
-```
-
-### Monitoring with Grafana
-
-Access Grafana at `http://localhost:3000` with:
-- Username: `admin`.
-- Password: `admin`.
-
-Import the dashboard using the `rosetta_load_dashboard.json` file in the cluster directory.
-
 ## Validation Cloud
 
 For those who prefer not to run Rosetta locally, Validation Cloud offers managed ICRC Rosetta endpoints that you can use for learning, development, and production.
