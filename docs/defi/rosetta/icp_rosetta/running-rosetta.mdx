@@ -95,7 +95,7 @@ You can build and run ICP Rosetta directly from the Internet Computer source cod
 
 ### Prerequisites
 
-- [x] [Rust](https://www.rust-lang.org/) Rust
+- [x] [Bazel](https://bazel.build/) build system.
 - [x] Internet Computer repository cloned locally: `git clone https://github.com/dfinity/ic.git`.
 
 ### Build and run
@@ -106,7 +106,7 @@ git clone https://github.com/dfinity/ic.git
 cd ic
 
 # Build and run ICP Rosetta
-cargo run --release --package ic-rosetta-api -- \
+bazel run //rs/rosetta-api/icp:ic-rosetta-api -- \
     --port 8081 \
     --environment production \
     --store-location /tmp
