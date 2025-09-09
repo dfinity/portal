@@ -892,7 +892,11 @@ All requested paths must have the following form:
 
     -   `<name>` is a private custom section and the sender of the read state request is a controller of the canister.
 
-Moreover, all paths with prefix `/request_status/<request_id>` must refer to the same request ID `<request_id>`.
+Moreover,
+
+- all paths with prefix `/request_status/<request_id>` must refer to the same request ID `<request_id>`; and
+
+- all paths with prefix `/canister_ranges/<subnet_id>` must refer to the same subnet ID `<subnet_id>`.
 
 If a path cannot be requested, then the HTTP response to the read state request is undefined.
 
