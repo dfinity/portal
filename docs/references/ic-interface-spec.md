@@ -474,24 +474,6 @@ The state tree contains information about all API boundary nodes (the source of 
     Public IPv6 address of a node in the hexadecimal notation with colons.
     Example: `3002:0bd6:0000:0000:0000:ee00:0033:6778`.
 
-### Canister ranges {#state-tree-canister-ranges}
-
-The state tree contains information about the canister ranges of subnets on the Internet Computer.
-
--   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
-
-    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
-    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
-    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
-    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
-    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
-    ```
-    canister_ranges = tagged<[*canister_range]>
-    canister_range = [principal principal]
-    principal = bytes .size (0..29)
-    tagged<t> = #6.55799(t) ; the CBOR tag
-    ```
-
 ### Subnet information {#state-tree-subnet}
 
 The state tree contains information about the topology of the Internet Computer.
@@ -529,6 +511,25 @@ Because this uses the lexicographic ordering of principals, and the byte disting
 -   `/subnet/<subnet_id>/node/<node_id>/public_key` (blob)
 
     The public key of a node (a DER-encoded Ed25519 signing key, see [RFC 8410](https://tools.ietf.org/html/rfc8410) for reference) with principal `<node_id>` belonging to the subnet with principal `<subnet_id>`.
+
+
+### Canister ranges {#state-tree-canister-ranges}
+
+The state tree contains information about the canister ranges of subnets on the Internet Computer.
+
+-   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
+
+    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
+    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
+    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
+    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
+    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
+    ```
+    canister_ranges = tagged<[*canister_range]>
+    canister_range = [principal principal]
+    principal = bytes .size (0..29)
+    tagged<t> = #6.55799(t) ; the CBOR tag
+    ```
 
 ### Request status {#state-tree-request-status}
 
