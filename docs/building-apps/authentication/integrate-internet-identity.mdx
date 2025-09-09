@@ -10,7 +10,9 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-This guide demonstrates an example of how to integrate Internet Identity authentication into an application. In this example, a user can interact with the application's user interface to log in with their Internet Identity and then make a call to the backend canister's `whoami` method that returns the principal of the user.
+This guide demonstrates an example of how to integrate Internet Identity as an application authentication service. In this example, a user can interact with the application's website to log in with their identity and then call a backend canister's function whose behavior depends on the identity of the caller.
+
+For simplicity, we use the `whoami` function that simply returns the caller's principal. (While real-world use cases for Internet Identity are out of scope of this guide, note that the most common use case is *authentication*, for example, letting the backend process certain requests only from an authorized caller while rejecting calls from everyone else.)
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -20,7 +22,7 @@ This guide demonstrates an example of how to integrate Internet Identity authent
 
 ### Step 1: Create or open a project.
 
-First, use `dfx start` to start a [local development environment](/docs/building-apps/test/pocket-ic)(/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+First, use `dfx start` to start a [local development environment](/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
 
 Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/tree/master/motoko/who_am_i).
 
@@ -29,7 +31,7 @@ Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projec
 Create a new project with the command:
 
 ```
-dfx new internet_identity_app --type=motoko --no-frontend --extras internet-identity
+dfx new internet_identity_app --type=motoko --frontend react --extras internet-identity
 cd internet_identity_app
 ```
 
@@ -37,14 +39,15 @@ cd internet_identity_app
 To use a Rust backend canister, use `--type=rust` instead.
 :::
 
-The `--extras` flag will add the **pullable** version of the Internet identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/building-apps/advanced/using-third-party-canisters).
+The `--extras` flag will add the *pullable* version of the Internet Identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/building-apps/advanced/using-third-party-canisters).
 
 #### Using an existing project
 
 If you already have a project that was not created with the extra Internet Identity feature, you can modify the project to use the pullable Internet Identity canister.
 First, add the canister configuration to the project's `dfx.json` file:
 
-```json file=../../references/samples/motoko/who_am_i/dfx.json
+```json no-repl reference
+https://github.com/dfinity/examples/blob/arshavir/fix-ii-docs/motoko/who_am_i/dfx.json
 ```
 
 ### Step 2: Create a "Who am I" function.
@@ -54,7 +57,8 @@ To add a simple "Who am I?" function, insert the following code into the backend
 <Tabs>
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko file=../../references/samples/motoko/who_am_i/backend/app.mo
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/arshavir/fix-ii-docs/motoko/who_am_i/internet_identity_app_backend/app.mo
 ```
 
 </TabItem>
@@ -71,7 +75,8 @@ To add a simple "Who am I?" function, insert the following code into the backend
 
 In the frontend canister code, add a method to the `App` class to call the backend function and initialize the auth client:
 
-```js file=../../references/samples/motoko/who_am_i/frontend/src/App.jsx
+```js no-repl reference
+https://github.com/dfinity/examples/blob/arshavir/fix-ii-docs/motoko/who_am_i/internet_identity_app_frontend/src/App.jsx
 ```
 
 :::warning
