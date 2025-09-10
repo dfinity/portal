@@ -408,11 +408,6 @@ const marketingNav = {
               description: "Find the resources you need quickly",
             },
             {
-              name: "Sample code",
-              href: "/samples",
-              description: "Get inspired by existing projects",
-            },
-            {
               name: "Web IDE",
               href: "https://icp.ninja",
               description: "Deploy your first dapp with ICP.Ninja",

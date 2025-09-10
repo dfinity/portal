@@ -503,7 +503,7 @@ function SocialMediaDappsPage() {
           >
             <CardWithDescription
               title="Sample code"
-              description="Get inspired bys sample dapps on ICP Ninja."
+              description="Get inspired by sample dapps on ICP Ninja."
               href="https://icp.ninja/"
             ></CardWithDescription>
             <CardWithDescription
