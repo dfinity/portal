@@ -30,14 +30,17 @@ As a result, upgrading an ICRC ledger suite that still uses heap-based data stor
 A versioned release process for the ledger suite was introduced in late 2024.
 Releases are formally tagged using the format `ledger-suite-icrc-<year>-<month>-<day>`.
 
-At the time of writing, [officially released versions](https://github.com/dfinity/ic/releases?q=ledger-suite-icrc&expanded=false) include (from oldest to latest):
+At the time of writing, [officially released versions](https://github.com/dfinity/ic/releases?q="ledger-suite-icrc"&expanded=false) include (from oldest to latest):
 
-  1. [Release September 13, 2024 (`ledger-suite-icrc-2024-09-13`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-09-13)
-  2. [Release October 17, 2024 (`ledger-suite-icrc-2024-10-17`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-10-17)
-  3. [Release November 28, 2024 (`ledger-suite-icrc-2024-11-28`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28)
-  4. [Release January 7, 2025 (`ledger-suite-icrc-2025-01-07`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-01-07)
-  5. [Release January 21, 2025 (`ledger-suite-icrc-2025-01-21`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-01-21)
-  6. [Release February 27, 2025 (`ledger-suite-icrc-2025-02-27`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-02-27)
+  1. [Release October 17, 2024 (`ledger-suite-icrc-2024-10-17`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-10-17)
+  2. [Release November 28, 2024 (`ledger-suite-icrc-2024-11-28`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28)
+  3. [Release January 7, 2025 (`ledger-suite-icrc-2025-01-07`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-01-07)
+  4. [Release January 21, 2025 (`ledger-suite-icrc-2025-01-21`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-01-21)
+  5. [Release February 27, 2025 (`ledger-suite-icrc-2025-02-27`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-02-27)
+  6. [Release April 14, 2025 (`ledger-suite-icrc-2025-04-14`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-04-14)
+  7. [Release May 22, 2025 (`ledger-suite-icrc-2025-05-22`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-05-22)
+  8. [Release June 10, 2025 (`ledger-suite-icrc-2025-06-10`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-06-10)
+  9. [Release June 19, 2025 (`ledger-suite-icrc-2025-06-19`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2025-06-19)
 
 ## Sequential upgrades
 
@@ -48,11 +51,14 @@ It is crucial to upgrade versions sequentially. Skipping a release can result in
 
 
 Upgrades must follow this order:
-  1. Upgrade your suite from `2024-09-13` to `2024-10-17`.
-  2. Once the upgrade to `2024-10-17` has been completed, upgrade to `2024-11-28`.
-  3. Once the upgrade to ` 2024-11-28` has been completed, upgrade to `2025-01-07`.
-  4. Once the upgrade to `2025-01-07` has been completed, upgrade to `2024-01-21`.
-  5. Once the upgrade to `2025-01-21` has been completed, upgrade to `2024-02-27`.
+  1. Upgrade your suite from `2024-10-17` to `2024-11-28`.
+  2. Once the upgrade to ` 2024-11-28` has been completed, upgrade to `2025-01-07`.
+  3. Once the upgrade to `2025-01-07` has been completed, upgrade to `2024-01-21`.
+  4. Once the upgrade to `2025-01-21` has been completed, upgrade to `2024-02-27`.
+  5. Once the upgrade to `2025-02-27` has been completed, upgrade to `2024-04-14`.
+  6. Once the upgrade to `2025-04-14` has been completed, upgrade to `2024-05-22`.
+  7. Once the upgrade to `2025-05-22` has been completed, upgrade to `2024-06-10`.
+  8. Once the upgrade to `2025-06-10` has been completed, upgrade to `2024-06-19`.
 
 Note that starting from the [November 28, 2024 release (`ledger-suite-icrc-2024-11-28`)](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28) release, not all releases are backwards compatible since they perform data migration from the heap to stable structures and migration back to the heap in case a ledger downgrade is not supported.
 Learn more in [Upgrade and downgrade notes](#upgrade-and-downgrade-notes).
@@ -90,6 +96,7 @@ If your ledger is running a non-released version—or if you're unsure which ver
 
  - Look at the module hash of the canister, e.g., from the dashboard (`https://dashboard.internetcomputer.org/canister/<canister_id>`) and see if it matches one of the officially released versions.
  - The `dfx canister metadata <canister_id> git_commit_id` may also be helpful.
+   - Look for the commit ID in [the IC repository](https://github.com/dfinity/ic). Note that the commit may be from e.g., a `release` or `rc` branch.
 
 ### Step 2: Determine the canister version to upgrade to.
 
