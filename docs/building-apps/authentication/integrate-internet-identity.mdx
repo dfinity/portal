@@ -24,7 +24,7 @@ For simplicity, we use the `whoami` function that simply returns the caller's pr
 
 First, use `dfx start` to start a [local development environment](/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
 
-Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/tree/master/motoko/who_am_i).
+Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/blob/master/motoko/who_am_i).
 
 #### Creating a new project
 
@@ -47,7 +47,7 @@ If you already have a project that was not created with the extra Internet Ident
 First, add the canister configuration to the project's `dfx.json` file:
 
 ```json no-repl reference
-https://github.com/dfinity/examples/tree/master/motoko/who_am_i/dfx.json
+https://github.com/dfinity/examples/blob/master/motoko/who_am_i/dfx.json
 ```
 
 ### Step 2: Create a "Who am I" function.
@@ -58,7 +58,7 @@ To add a simple "Who am I?" function, insert the following code into the backend
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl reference
-https://github.com/dfinity/examples/tree/master/motoko/who_am_i/src/internet_identity_app_backend/main.mo
+https://github.com/dfinity/examples/blob/master/motoko/who_am_i/src/internet_identity_app_backend/main.mo
 ```
 
 Note that the Motoko standard library requires the [Mops package manager](https://cli.mops.one/).
@@ -68,7 +68,7 @@ After installing Mops, make sure your project has a mops.toml file in its root, 
 <TabItem value="rust" label="Rust">
 
 ```rust no-repl reference
-https://github.com/dfinity/examples/tree/master/rust/who_am_i/backend/lib.rs
+https://github.com/dfinity/examples/blob/master/rust/who_am_i/backend/lib.rs
 ```
 
 </TabItem>
@@ -80,7 +80,7 @@ https://github.com/dfinity/examples/tree/master/rust/who_am_i/backend/lib.rs
 In the frontend canister code, add a method to the `App` class to call the backend function and initialize the auth client:
 
 ```js no-repl reference
-https://github.com/dfinity/examples/tree/master/motoko/who_am_i/src/internet_identity_app_frontend/src/App.jsx
+https://github.com/dfinity/examples/blob/master/motoko/who_am_i/src/internet_identity_app_frontend/src/App.jsx
 ```
 
 :::warning
