@@ -111,10 +111,6 @@ const subnavItems = [
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
       {
-        label: "Sample projects",
-        href: "https://internetcomputer.org/samples",
-      },
-      {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",

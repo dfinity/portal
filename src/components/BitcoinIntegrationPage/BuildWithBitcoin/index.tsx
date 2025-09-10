@@ -23,10 +23,6 @@ function Index() {
       href: "/docs/references/t-sigs-how-it-works/",
     },
     {
-      title: "Sample Code",
-      href: "https://internetcomputer.org/samples?term=bitcoin",
-    },
-    {
       title: "Bitcoin integration FAQ",
       href: "/bitcoin-integration/faq",
     },
