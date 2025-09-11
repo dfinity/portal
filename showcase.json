@@ -3756,21 +3756,6 @@
     "logo": "/img/showcase/dappradar_logo.png"
   },
   {
-    "id": "fomowell",
-    "name": "Fomowell",
-    "display": "Normal",
-    "website": "https://fomowell.com/",
-    "twitter": "https://twitter.com/fomowell",
-    "tags": [
-      "SocialFi",
-      "Creator Economy"
-    ],
-    "stats": "300 users, daily transactions of $3k",
-    "description": "The fairest Web3 project launch platform.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/fomowell_logo.png"
-  },
-  {
     "id": "metaviz",
     "name": "Metaviz",
     "display": "Normal",
@@ -5308,6 +5293,20 @@
     "oneLiner": "Non-coders can build & share web3 transactions in minutes on the phone"
   },
   {
+    "id": "fomowell",
+    "name": "Fomowell",
+    "display": "Normal",
+    "website": "https://btc.fomowell.com/",
+    "twitter": "https://x.com/FomowellX",
+    "tags": [
+      "SocialFi",
+      "Creator Economy"
+    ],
+    "description": "Secure, Efficient, Decentralized BTC Asset Issuance and Trading Platform.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/fomowell_logo.png"
+  },
+  {
     "id": "icquests",
     "name": "ICQuests",
     "display": "Normal",
@@ -6020,6 +6019,23 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/tradeos_logo_.svg",
     "oneLiner": "Universal commerce stack for P2P and AI-driven marketplaces."
+  },
+  {
+    "id": "icpay",
+    "name": "icpay",
+    "display": "Normal",
+    "website": "https://icpay.org",
+    "twitter": "https://x.com/icpay_",
+    "github": "https://github.com/icpay",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "Chain Fusion"
+    ],
+    "description": "Free-to-use SDK for developers who want to accept crypto payments globally with instant settlement, minimal fees, and no chargebacks.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icpay.svg",
+    "oneLiner": "Stripe for Web3"
   }
   
 ]
