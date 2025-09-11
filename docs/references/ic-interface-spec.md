@@ -2524,7 +2524,7 @@ The following parameters should be supplied for the call:
 -   `canister_id` (`principal`): the canister ID of the canister to retrieve metadata from.
 
 -   `name` (`text`): identifies canister's metadata contained in a custom section whose name has the form `icp:public <name>` or `icp:private <name>`
-    (note that a canister cannot have custom sections with both `icp:public <name>` or `icp:private <name>` as names, see [Canister module format](#canister-module-format)).
+    (note that a canister cannot have custom sections with both `icp:public <name>` or `icp:private <name>` as names for the same `<name>`, see [Canister module format](#canister-module-format)).
 
 The returned response contains the following fields:
 
