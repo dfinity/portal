@@ -2528,7 +2528,7 @@ The following parameters should be supplied for the call:
 
 The returned response contains the following fields:
 
--   `content` (`blob`): the content of canister's metadata identified by the given `name`.
+-   `value` (`blob`): the content of canister's metadata identified by the given `name`.
 
 ### IC method `stop_canister` {#ic-stop_canister}
 
@@ -5195,7 +5195,7 @@ S with
       ResponseMessage {
         origin = M.origin
         response = candid({
-          content = Content;
+          value = Content;
         })
         refunded_cycles = M.transferred_cycles
       }
