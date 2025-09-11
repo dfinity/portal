@@ -2509,6 +2509,27 @@ The returned response contains the following fields:
 
 -   `controllers`: the current set of canister controllers. The order of returned controllers may vary depending on the implementation.
 
+### IC method `canister_metadata` {#ic-canister_metadata}
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+Provides access to canister's metadata contained in custom sections whose names have the form `icp:public <name>` or `icp:private <name>`
+(see [Canister module format](#canister-module-format) for requirements on custom sections).
+Every canister can call this method on every other canister (including itself). Users cannot call this method.
+
+Only controllers of a canister can access metadata contained in custom sections whose names have the form `icp:private <name>`.
+
+The following parameters should be supplied for the call:
+
+-   `canister_id` (`principal`): the canister ID of the canister to retrieve metadata from.
+
+-   `name` (`text`): identifies canister's metadata contained in a custom section whose name has the form `icp:public <name>` or `icp:private <name>`
+    (note that a canister cannot have custom sections with both `icp:public <name>` or `icp:private <name>` as names, see [Canister module format](#canister-module-format)).
+
+The returned response contains the following fields:
+
+-   `content` (`blob`): the content of canister's metadata identified by the given `name`.
+
 ### IC method `stop_canister` {#ic-stop_canister}
 
 This method can be called by canisters as well as by external users via ingress messages.
@@ -5137,6 +5158,44 @@ S with
             then null
             else opt (SHA-256(S.canisters[A.canister_id].raw_module));
           controllers = S.controllers[A.canister_id];
+        })
+        refunded_cycles = M.transferred_cycles
+      }
+
+```
+
+#### IC Management Canister: Canister metadata
+
+Every canister can retrieve public metadata of every other canister (including itself)
+and private metadata of canisters controlled by the requesting canister.
+
+Conditions  
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ CallMessage M' | FuncMessage M' ∈ Older_messages. M'.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'canister_metadata'
+M.arg = candid(A)
+A.name ∈ dom(S.canisters[A.canister_id].public_custom_sections) ∨ (A.name ∈ dom(S.canisters[A.canister_id].private_custom_sections) ∧ M.caller ∈ S.controllers[A.canister_id])
+if A.name ∈ dom(S.canisters[A.canister_id].public_custom_sections):
+  Content = S.canisters[A.canister_id].public_custom_sections[A.name]
+else:
+  Content = S.canisters[A.canister_id].private_custom_sections[A.name]
+
+```
+
+State after  
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = candid({
+          content = Content;
         })
         refunded_cycles = M.transferred_cycles
       }
