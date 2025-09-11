@@ -5167,7 +5167,7 @@ S with
 #### IC Management Canister: Canister metadata
 
 Every canister can retrieve public metadata of every other canister (including itself)
-and private metadata of canisters controlled by the requesting canister.
+and private metadata of canisters controlled by the caller.
 
 Conditions  
 
