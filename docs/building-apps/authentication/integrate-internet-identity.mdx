@@ -98,7 +98,14 @@ If you are developing using the Safari web browser, you need to change the value
 Install the required `npm` package:
 
 ```bash
-npm install @dfinity/auth-client
+# Check that all versions of @dfinity packages are the same
+VERSIONS=$(npm ls | grep '@dfinity/' | awk -F@ '{print $3}')
+echo "Your project has npm packages from @dfinity with the following versions (should all be the same):"
+echo $VERSIONS
+
+# Install the right version of @dfinity/auth-client
+VERSION="$(echo $VERSIONS | head -n 1)"
+npm install @dfinity/auth-client@^"$VERSION"
 ```
 
 :::caution
@@ -107,8 +114,22 @@ Make sure that all **@dfinity/&lt;package&gt;** dependencies in **package.json**
 
 :::
 
+### Step 4
 
-### Step 4: Deploy the application:
+Make sure you have a local network up and running:
+
+```
+dfx start --clean --background
+```
+
+If you see the error `Error: dfx is already running`, that's fine, it just means that your local network is ready.
+
+Sometimes you might see a local network port being occupied by another process, preventing `dfx` from being able to bind
+the local network to that local port. To diagnose which process is occupying a particular port number, e.g., `1234`, 
+run `lsof -i :1234` (the actual port number will be reported in the error from the `dfx start` command).
+
+
+### Step 5: Deploy the application:
 
 ```bash
 dfx deploy
