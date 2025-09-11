@@ -20,15 +20,13 @@ For simplicity, we use the `whoami` function that simply returns the caller's pr
 </TabItem>
 </Tabs>
 
-### Step 1: Create or open a project.
+**You can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i)**, a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/blob/master/motoko/who_am_i). Keep reading if you want to develop locally from scratch or extend an existing project with an Internet Identity integration.
 
-First, use `dfx start` to start a [local development environment](/docs/building-apps/developer-tools/dfx/dfx-start) (if necessary) and [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+### Step 1: Get an ICP dapp project.
 
-Alternatively, you can open this project in [ICP Ninja](https://icp.ninja/projects/who-am-i), a web-based IDE for temporary project deployments, or [clone the "Who am I?" sample from GitHub](https://github.com/dfinity/examples/blob/master/motoko/who_am_i).
+You may either [create a new project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
 
-#### Creating a new project
-
-Create a new project with the command:
+To crete a new project:
 
 ```
 dfx new internet_identity_app --type=motoko --frontend react --extras internet-identity
@@ -36,21 +34,27 @@ cd internet_identity_app
 ```
 
 :::info
-To use a Rust backend canister, use `--type=rust` instead.
+To use a Rust backend canister, pass `--type=rust` instead.
 :::
 
 The `--extras` flag will add the *pullable* version of the Internet Identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/building-apps/advanced/using-third-party-canisters).
 
-#### Using an existing project
-
-If you already have a project that was not created with the extra Internet Identity feature, you can modify the project to use the pullable Internet Identity canister.
-First, add the canister configuration to the project's `dfx.json` file:
+For a new project, add the follwoing canister configuration to the project's `dfx.json` file:
 
 ```json no-repl reference
+title="dfx.json"
 https://github.com/dfinity/examples/blob/master/motoko/who_am_i/dfx.json
 ```
 
-### Step 2: Create a "Who am I" function.
+:::info
+If you already have a project that was not created with the extra Internet Identity feature, you can modify the project to use the pullable Internet Identity canister.
+
+In this tutorial, we use frontend code that assumes that the Internet Identity canister is installed with ID [rdmx6-jaaaa-aaaaa-aaadq-cai](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai),
+the same ID as this canister has on the mainnet.
+To ensure the correct Internet Identity canister ID, be sure to add `"specified_id": "rdmx6-jaaaa-aaaaa-aaadq-cai"` to your `.canisters.internet_identity` section in dfx.json.
+:::
+
+### Step 2: Edit backend code.
 
 To add a simple "Who am I?" function, insert the following code into the backend canister's source code file:
 
@@ -58,10 +62,11 @@ To add a simple "Who am I?" function, insert the following code into the backend
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl reference
+title="src/internet_identity_app_backend/main.mo"
 https://github.com/dfinity/examples/blob/master/motoko/who_am_i/src/internet_identity_app_backend/main.mo
 ```
 
-Note that the Motoko standard library requires the [Mops package manager](https://cli.mops.one/).
+Compiling this Motoko code requires the [Mops package manager](https://cli.mops.one/).
 After installing Mops, make sure your project has a mops.toml file in its root, e.g., by running `mops init -y`.
 
 </TabItem>
@@ -80,11 +85,10 @@ https://github.com/dfinity/examples/blob/master/rust/who_am_i/backend/lib.rs
 In the frontend canister code, add a method to the `App` class to call the backend function and initialize the auth client:
 
 ```js no-repl reference
+title="src/internet_identity_app_frontend/src/App.jsx"
 https://github.com/dfinity/examples/blob/master/motoko/who_am_i/src/internet_identity_app_frontend/src/App.jsx
 ```
 
-Note to those using a custom dfx.json configuration file. In this example, the frontend assumes that the Internet Identity canister is installed with ID [rdmx6-jaaaa-aaaaa-aaadq-cai](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai),
-the same ID as this canister has on the mainnet. To ensure the correct Internet Identity canister ID, be sure to add `"specified_id": "rdmx6-jaaaa-aaaaa-aaadq-cai"` to your `.canisters.internet_identity` section in dfx.json.
 
 :::warning
 
@@ -101,13 +105,6 @@ If you are developing using the Safari web browser, you need to change the value
 Install the required `npm` package:
 
 ```bash
-# Check that all versions of @dfinity packages are the same
-VERSIONS=$(npm ls | grep '@dfinity/' | awk -F@ '{print $3}')
-echo "Your project has npm packages from @dfinity with the following versions (should all be the same):"
-echo $VERSIONS
-
-# Install the right version of @dfinity/auth-client
-VERSION="$(echo $VERSIONS | head -n 1)"
 npm install @dfinity/auth-client@^"$VERSION"
 ```
 
@@ -119,7 +116,7 @@ Make sure that all **@dfinity/&lt;package&gt;** dependencies in **package.json**
 
 ### Step 4
 
-Make sure you have a local network up and running:
+Make sure you have a [local development environment](/docs/building-apps/developer-tools/dfx/dfx-start):
 
 ```
 dfx start --clean --background
