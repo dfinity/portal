@@ -802,13 +802,6 @@ function ChainFusion() {
               >
                 Sample Codes & Startup Requests
               </motion.h2>
-              <MotionLink
-                variants={transitions.item}
-                href="/samples?selectedDomains=Multichain"
-                className="link-primary link-with-icon mt-4 md:mt-8"
-              >
-                <LinkArrowRight /> See all
-              </MotionLink>
             </div>
             <motion.p
               className="mb-0 mt-2 tw-paragraph md:tw-lead-sm"

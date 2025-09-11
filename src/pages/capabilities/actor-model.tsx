@@ -162,8 +162,8 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              description="Explore code samples in ICP Ninja."
+              href="https://icp.ninja/"
             />
             <CardWithDescription
               title="'Parallelism' article on the IC Wiki"

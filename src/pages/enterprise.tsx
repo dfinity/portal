@@ -572,10 +572,9 @@ function EnterprisePage() {
             />
 
             <CardWithDescription
-              title="Sample code"
+              title="Sample code on ICP Ninja"
               description=""
-              href="https://internetcomputer.org/samples?selectedDomains=Asynchronous+DeFi
-"
+              href="https://icp.ninja/"
             />
             <CardWithDescription
               title="Developer docs"

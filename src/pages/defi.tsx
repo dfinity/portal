@@ -513,10 +513,9 @@ function DefiPage() {
               href="https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh"
             />
             <CardWithDescription
-              title="DeFi sample code"
+              title="Sample code on ICP Ninja"
               description=""
-              href="https://internetcomputer.org/samples?selectedDomains=Asynchronous+DeFi
-"
+              href="https://icp.ninja/"
             />
             <CardWithDescription
               title="Code ckBTC"

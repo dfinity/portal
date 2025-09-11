@@ -503,8 +503,8 @@ function SocialMediaDappsPage() {
           >
             <CardWithDescription
               title="Sample code"
-              description="Get inspired by existing social dapps on the Internet Computer."
-              href="/samples"
+              description="Get inspired by sample dapps on ICP Ninja."
+              href="https://icp.ninja/"
             ></CardWithDescription>
             <CardWithDescription
               title="Quick start"
