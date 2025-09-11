@@ -2515,9 +2515,9 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides access to canister's metadata contained in custom sections whose names have the form `icp:public <name>` or `icp:private <name>`
 (see [Canister module format](#canister-module-format) for requirements on custom sections).
-Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-Only controllers of a canister can access metadata contained in custom sections whose names have the form `icp:private <name>`.
+Every canister can retrieve public metadata (in custom sections whose names have the form `icp:public <name>`) of every other canister (including itself).
+Only controllers of a canister can access its private metadata (in custom sections whose names have the form `icp:private <name>`).
 
 The following parameters should be supplied for the call:
 
