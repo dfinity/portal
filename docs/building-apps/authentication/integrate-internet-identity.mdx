@@ -42,8 +42,8 @@ The `--extras` flag will add the *pullable* version of the Internet Identity can
 For a new project, add the follwoing canister configuration to the project's `dfx.json` file:
 
 ```json no-repl reference
-title="dfx.json"
 https://github.com/dfinity/examples/blob/master/motoko/who_am_i/dfx.json
+title="dfx.json"
 ```
 
 :::info
@@ -62,12 +62,19 @@ To add a simple "Who am I?" function, insert the following code into the backend
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl reference
-title="src/internet_identity_app_backend/main.mo"
 https://github.com/dfinity/examples/blob/master/motoko/who_am_i/src/internet_identity_app_backend/main.mo
+title="src/internet_identity_app_backend/main.mo"
 ```
 
 Compiling this Motoko code requires the [Mops package manager](https://cli.mops.one/).
-After installing Mops, make sure your project has a mops.toml file in its root, e.g., by running `mops init -y`.
+
+So make sure the project has a mops.toml file in its root.
+
+If not, install Mops and simply run the following command to initialize mops.toml:
+
+```
+mops init -y
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -85,8 +92,8 @@ https://github.com/dfinity/examples/blob/master/rust/who_am_i/backend/lib.rs
 In the frontend canister code, add a method to the `App` class to call the backend function and initialize the auth client:
 
 ```js no-repl reference
-title="src/internet_identity_app_frontend/src/App.jsx"
 https://github.com/dfinity/examples/blob/master/motoko/who_am_i/src/internet_identity_app_frontend/src/App.jsx
+title="src/internet_identity_app_frontend/src/App.jsx"
 ```
 
 
@@ -96,16 +103,10 @@ Make sure to always create a single `AuthClient` instance on page load and reuse
 
 :::
 
-:::info
-
-If you are developing using the Safari web browser, you need to change the value returned for the local development environment to `http://localhost:4943?canisterId=<canister_id>`.
-
-:::
-
 Install the required `npm` package:
 
 ```bash
-npm install @dfinity/auth-client@^"$VERSION"
+npm install @dfinity/auth-client@^3.0.0
 ```
 
 :::caution
@@ -122,7 +123,7 @@ Make sure you have a [local development environment](/docs/building-apps/develop
 dfx start --clean --background
 ```
 
-If you see the error `Error: dfx is already running`, that's fine, it just means that your local network is ready.
+If you see the error `Error: dfx is already running`, that's fine, it just means that your local development environment is ready.
 
 Sometimes you might see a local network port being occupied by another process, preventing `dfx` from being able to bind
 the local network to that local port. To diagnose which process is occupying a particular port number, e.g., `1234`, 
@@ -135,7 +136,24 @@ run `lsof -i :1234` (the actual port number will be reported in the error from t
 dfx deploy
 ```
 
+:::info
+If you see an error, e.g., `Canister rdmx6-jaaaa-aaaaa-aaadq-cai is already installed.`
+this means your local development environment needs to be restarted:
+
+```
+dfx stop
+```
+
+Once the above command finishes, go back to Step 4.
+:::
+
 Open the frontend URL that is returned in the deployment output. Your dapp's frontend will be displayed.
+
+:::info
+
+If you are developing using the Safari web browser, you need to change the value returned for the local development environment to `http://localhost:4943?canisterId=<canister_id>`.
+
+:::
 
 Click the "Login" button. You'll be redirected to the Internet Identity frontend. Since you're running this locally, you will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
