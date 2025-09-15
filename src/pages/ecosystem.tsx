@@ -393,7 +393,7 @@ function ShowcasePage(): JSX.Element {
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-showcase.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ecosystem.png"></ShareMeta>
       <main
         className="overflow-hidden relative"
         style={{
@@ -469,7 +469,7 @@ function ShowcasePage(): JSX.Element {
               See a project missing? All community members are invited to submit
               their projects to this page.
             </p>
-            <p className="mb-0">
+            <p className="mb-2">
               <Link
                 href="https://airtable.com/appyWBGCHaZoTzKTN/pagyIkYq3EiBEV0jt/form"
                 target="_blank"
@@ -477,6 +477,17 @@ function ShowcasePage(): JSX.Element {
                 className="link-primary link-with-icon"
               >
                 Submit your project
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                href="https://dfinityorg.notion.site/icp-ecosystem-hub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-primary link-with-icon"
+              >
+                ICP Ecosystem Resource Hub
                 <LinkArrowUpRight />
               </Link>
             </p>
