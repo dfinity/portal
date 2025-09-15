@@ -23,7 +23,7 @@ function Index() {
       href: "/docs/references/t-sigs-how-it-works/",
     },
     {
-      title: "Build on BTC developer documentation",
+      title: "Build on Bitcoin developer documentation",
       href: "/docs/build-on-btc",
     },
     {
