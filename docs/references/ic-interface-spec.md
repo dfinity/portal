@@ -2877,9 +2877,13 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method loads a snapshot identified by `snapshot_id` onto the canister. It fails if no snapshot with the specified `snapshot_id` can be found.
 
-The snapshot can only be loaded onto the canister for which the snapshot was taken.
+The snapshot can only be loaded onto a canister that belongs to the same subnet as the canister for which the snapshot was taken.
 
-Only controllers can take a snapshot of a canister and load it back to the canister.
+The caller must be a controller of
+
+- the canister onto which the snapshot is loaded; and
+
+- the canister for which the snapshot was taken.
 
 :::note
 
@@ -6235,7 +6239,7 @@ S' = S with
 #### IC Management Canister: Load canister snapshot
 
 
-Only the controllers of the given canister can load a snapshot.
+Controllers of a canister can load a snapshot taken for a canister on the same subnet and also controlled by the caller.
 
 ```html
 
@@ -6245,8 +6249,10 @@ M.callee = ic_principal
 M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
-A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
-Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+A.snapshot_id ∈ dom(S.snapshots[Canister_id])
+S.canister_subnet[A.canister_id].subnet_id = S.canister_subnet[Canister_id].subnet_id
+M.caller ∈ S.controllers[Canister_id]
+Snapshot = S.snapshots[Canister_id][A.snapshot_id]
 
 New_state = {
   wasm_state = Snapshot.wasm_state;
