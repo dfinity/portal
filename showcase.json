@@ -6019,23 +6019,5 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/tradeos_logo_.svg",
     "oneLiner": "Universal commerce stack for P2P and AI-driven marketplaces."
-  },
-  {
-    "id": "icpay",
-    "name": "icpay",
-    "display": "Normal",
-    "website": "https://icpay.org",
-    "twitter": "https://x.com/icpay_",
-    "github": "https://github.com/icpay",
-    "tags": [
-      "Tools / Infrastructure",
-      "Enterprise",
-      "Chain Fusion"
-    ],
-    "description": "Free-to-use SDK for developers who want to accept crypto payments globally with instant settlement, minimal fees, and no chargebacks.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/icpay.svg",
-    "oneLiner": "Stripe for Web3"
   }
-  
 ]
