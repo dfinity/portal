@@ -2189,6 +2189,7 @@ Canister can produce logs available through the management canister endpoint [`f
 -   `ic0.debug_print : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     This copies out the data specified by `src` and `size` and appends that data to canister logs.
+    The data can be trimmed to an implementation defined maximum size.
 
     This function never traps, even if the `src+size` exceeds the size of the memory.
 
@@ -2196,7 +2197,11 @@ Similarly, the System API allows the canister to effectively trap and give some 
 
 -   `ic0.trap : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
-    This copies out the data specified by `src` and `size` and appends that data to canister logs. Moreover, the data specified by `src` and `size` might be included in a reject message (omitting bytes that are not valid UTF-8).
+    This copies out the data specified by `src` and `size` and appends that data to canister logs.
+    The data can be trimmed to an implementation defined maximum size.
+
+    Moreover, the data specified by `src` and `size` might be included in a reject message
+    (trimmed to an implementation defined maximum size and omitting bytes that are not valid UTF-8).
 
     This function always traps.
 
