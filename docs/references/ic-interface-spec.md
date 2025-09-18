@@ -2489,7 +2489,7 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID, timestamp at which the snapshot was taken, and the source of the snapshot (canister state or metadata upload). Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, canister ID of the canister owning the snapshot, snapshot ID, timestamp at which the snapshot was taken, and the source of the snapshot (canister state or metadata upload). Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -3713,6 +3713,7 @@ ChangeDetails
     }
   | LoadSnapshot {
       canister_version : CanisterVersion;
+      owning_canister_id : PrincipalId;
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
       source : SnapshotSource;
@@ -6277,6 +6278,7 @@ New_canister_history = {
     canister_version = S.canister_version[A.canister_id] + 1
     origin = change_origin(M.caller, A.sender_canister_version, M.origin);
     details = LoadSnapshot {
+      owning_canister_id = Canister_id
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
