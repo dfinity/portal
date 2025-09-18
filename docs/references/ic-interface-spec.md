@@ -2191,7 +2191,7 @@ Canister can produce logs available through the management canister endpoint [`f
     This copies out the data specified by `src` and `size` and appends that data to canister logs.
     The data can be trimmed to an implementation defined maximum size.
 
-    This function never traps, even if the `src+size` exceeds the size of the memory.
+    This function never traps, even if the `src+size` exceeds the size of the memory (in which case system-generated data are used instead).
 
 Similarly, the System API allows the canister to effectively trap and give some indication about why it trapped:
 
