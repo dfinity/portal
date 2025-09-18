@@ -77,6 +77,4 @@ Then, read the `BUILD.md` file included in the downloaded files. It contains fur
 
 ICP Ninja is currently undergoing active development and has implemented a few limitations that should be noted. These limitations will be removed and changed as the platform develops.
 
-- **Supported packages**: Only certain npm packages are supported by ICP Ninja projects. The `package-lock.json` file in each project contains the supported list. This list cannot be edited.
-
-- **Project structure**: Projects created and deployed on ICP Ninja must follow a specific project structure. They can only contain at maximum two canisters, a backend and a frontend. The frontend source code folder may only contain one subfolder, `frontend/src`.
+- **Project size**: Only projects up to 5MB in size and up to 2 canisters (dependency canisters that are not part of the project itself don't count) per project are allowed by the build server.
