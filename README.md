@@ -606,7 +606,6 @@ The list of tags is not final, and will be updated as the project evolves. For n
   },
 ```
 
-
 ## Running a local development instance of this repo
 
 ### Requirements
