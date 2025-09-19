@@ -51,6 +51,7 @@ type change_details = variant {
     };
     load_snapshot : record {
         canister_version : nat64;
+        owning_canister_id : principal;
         snapshot_id : snapshot_id;
         taken_at_timestamp : nat64;
         source : variant {
