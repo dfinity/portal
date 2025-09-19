@@ -56,7 +56,7 @@ This project can be opened in [ICP Ninja](https://icp.ninja/s/JwL2z) or you can 
 
 ### Defining a stable variable
 
-```motoko title="src/counter_backend/main.mo"
+```motoko title="src/stable_storage_example_backend/main.mo"
 import Nat "mo:base/Nat";
 
 actor Counter {
@@ -76,11 +76,11 @@ actor Counter {
 The Motoko `stable` or `flexible` variable modifications can only be used on `let` and `var` declarations that are within actor fields. These modifiers cannot be used elsewhere in the program.
 :::
 
-[Take a deeper dive into stable variables](https://internetcomputer.org/docs/motoko/main/canister-maintenance/upgrades#declaring-stable-variables).
+[Take a deeper dive into stable variables](https://internetcomputer.org/docs/building-apps/canister-management/upgrade#declaring-stable-variables).
 
 ### Deploying the example
 
-To upgrade your canister, first you need to deploy the initial version of the canister. Deploy the canister by clicking the "Deploy" button on ICP Ninja or use the `dfx deploy` command if developing locally.
+To upgrade your canister, first you need to deploy the initial version of the canister. Deploy the canister by clicking the "Run" button on ICP Ninja or use the `dfx deploy` command if developing locally.
 
 You can interact with the counter dapp through the Candid UI URL returned in the output log of ICP Ninja or in the output of the `dfx deploy` command, such as:
 
@@ -102,12 +102,12 @@ Since this value is being stored in a stable variable, this value of '3' will pe
 Now, let's make some changes to upgrade the canister. If you're developing locally with `dfx`, first stop the canister with the command:
 
 ```bash
-dfx canister stop counter_backend
+dfx canister stop stable_storage_example_backend
 ```
 
 Then, let's alter the code of your canister. To keep things simple, you're going to change the counter increment value from '1' to '3'. Your altered code looks like this:
 
-```motoko title="src/counter_backend/main.mo"
+```motoko title="src/stable_storage_example_backend/main.mo"
 import Nat "mo:base/Nat";
 
 actor Counter {
@@ -121,13 +121,13 @@ actor Counter {
 }
 ```
 
-Now, to upgrade the canister, either click "Update code" in ICP Ninja or use the following `dfx` commands:
+Now, to upgrade the canister, either click "Update" in ICP Ninja or use the following `dfx` commands:
 
 ```bash
 dfx build
-dfx canister install counter_backend --mode upgrade
-dfx canister start counter_backend
-dfx deploy counter_backend
+dfx canister install stable_storage_example_backend --mode upgrade
+dfx canister start stable_storage_example_backend
+dfx deploy stable_storage_example_backend
 ```
 
 Now, navigate back to the Candid UI URL provided in the output and click the 'Call' button twice. This time, the counter should increment by 3, resulting in the value '9,' since our stable variable held our previous counter value of '3' that was saved prior to the upgrade.

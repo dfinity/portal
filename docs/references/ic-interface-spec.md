@@ -300,6 +300,12 @@ This status is orthogonal to whether a canister is frozen or not: a frozen canis
 
 :::
 
+:::note
+
+If a canister is in the `stopped` state, an additional boolean may be of interest: `ready_for_migration` indicates whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
+
+:::
+
 ### Signatures {#signatures}
 
 Digital signature schemes are used for authenticating messages in various parts of the IC infrastructure. Signatures are domain separated, which means that every message is prefixed with a byte string that is unique to the purpose of the signature.
@@ -467,6 +473,24 @@ The state tree contains information about all API boundary nodes (the source of 
 
     Public IPv6 address of a node in the hexadecimal notation with colons.
     Example: `3002:0bd6:0000:0000:0000:ee00:0033:6778`.
+
+### Canister ranges {#state-tree-canister-ranges}
+
+The state tree contains information about the canister ranges of subnets on the Internet Computer.
+
+-   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
+
+    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
+    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
+    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
+    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
+    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
+    ```
+    canister_ranges = tagged<[*canister_range]>
+    canister_range = [principal principal]
+    principal = bytes .size (0..29)
+    tagged<t> = #6.55799(t) ; the CBOR tag
+    ```
 
 ### Subnet information {#state-tree-subnet}
 
@@ -767,13 +791,13 @@ The functionality exposed via the [The IC management canister](#ic-management-ca
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/canister_ranges` and `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/canister_ranges` and `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v2/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`. The subnet form should be used when the information to be retrieved is subnet specific, i.e., when requesting paths with the prefix `/time` or `/subnet`, and the subnet form must be used when requesting paths of the form `/subnet/<subnet_id>/metrics`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`. The subnet form should be used when the information to be retrieved is subnet specific, i.e., when requesting paths with the prefix `/time`, `/canister_ranges`, or `/subnet`, and the subnet form must be used when requesting paths of the form `/subnet/<subnet_id>/metrics`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `read_state`
 
@@ -821,6 +845,8 @@ All requested paths must have the following form:
 -   `/time`. Can always be requested.
 
 -   `/api_boundary_nodes`, `/api_boundary_nodes/<node_id>`, `/api_boundary_nodes/<node_id>/domain`,  `/api_boundary_nodes/<node_id>/ipv4_address`, `/api_boundary_nodes/<node_id>/ipv6_address`. Can always be requested.
+
+-   `/canister_ranges/<subnet_id>`. Can always be requested.
 
 -   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/canister_ranges`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
@@ -1164,7 +1190,7 @@ Additionally, the Internet Computer provides an API endpoint to obtain various s
 
 For this endpoint, the user performs a GET request, and receives a CBOR (see [CBOR](#cbor)) value with the following fields. The IC may include additional implementation-specific fields.
 
--   `root_key` (blob, optional): The public key (a DER-encoded BLS key) of the root key of this instance of the Internet Computer Protocol. This *must* be present in short-lived development instances, to allow the agent to fetch the public key. For the Internet Computer, agents must have an independent trustworthy source for this data, and must not be tempted to fetch it from this insecure location.
+-   `root_key` (blob, optional): The public key (a DER-encoded BLS key) of the root key of this instance of the Internet Computer Protocol. This *must* be present in short-lived development instances, to allow the agent to fetch the public key. For the Internet Computer, agents must have an independent trustworthy source for this data (e.g., the system API `ic0.root_key_size` and `ic0.root_key_copy`), and must not be tempted to fetch it from this insecure location.
 
 See [CBOR encoding of requests and responses](#api-cbor) for details on the precise CBOR encoding of this object.
 
@@ -1527,6 +1553,8 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
     ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
 
+    ic0.root_key_size : () -> I;                                                          // I G U RQ Ry Rt C T
+    ic0.root_key_copy : (dst : I, offset : I, size : I) -> ();                            // I G U RQ Ry Rt C T
     ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
     ic0.data_certificate_present : () -> i32;                                             // *
     ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
@@ -1543,7 +1571,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
     ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
-    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
+    ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
@@ -2080,6 +2108,12 @@ This system call traps if `src+size` exceeds the size of the WebAssembly memory 
 
 For each canister, the IC keeps track of "certified data", a canister-defined blob. For fresh canisters (upon install or reinstall), this blob is the empty blob (`""`).
 
+-   `ic0.root_key_size: () → I` and `ic0.root_key_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    Copies the public key (a DER-encoded BLS key) of the IC root key of this instance of the Internet Computer Protocol to the canister.
+
+    This traps in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
+
 -   `ic0.certified_data_set : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     The canister can update the certified data with this call. The passed data must be no larger than 32 bytes. This can be used any number of times.
@@ -2134,7 +2168,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
--   `ic0.cost_vetkd_derive_encrypted_key(src : I, size : I, vetkd_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
+-   `ic0.cost_vetkd_derive_key(src : I, size : I, vetkd_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
     These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
     - `ecdsa_curve: 0 → secp256k1`
@@ -2384,6 +2418,10 @@ Indicates various information about the canister. It contains:
 
 -   The status of the canister. It could be one of `running`, `stopping` or `stopped`.
 
+-   A bool `ready_for_migration` indicating whether a stopped canister is ready to be migrated to another subnet (i.e., whether it has empty queues and flushed streams). This flag can only ever be `true` if the `status` variant (see above) is `stopped`. This property is guaranteed by the protocol, but deliberately not on the type level in order to facilitate backwards compatible service evolution.
+
+-   The canister version.
+
 -   The "settings" of the canister containing:
 
     -   The controllers of the canister. The order of returned controllers may vary depending on the implementation.
@@ -2450,7 +2488,7 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID and timestamp at which the snapshot was taken. Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID, timestamp at which the snapshot was taken, and the source of the snapshot (canister state or metadata upload). Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -2651,6 +2689,59 @@ When using BIP341 signatures, the actual signature that is created will be relat
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
+### IC method `vetkd_public_key` {#ic-vetkd_public_key}
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+This method returns the vetKD public (verification) key derived from the vetKD master public key with ID `key_id` for the canister with the given `canister_id` and the given `context`.
+
+If the `canister_id` is unspecified, it will default to the canister id of the caller. The `context` is a byte string of variable length. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
+
+The public key returned for an empty `context` is called _canister public key_. Given this canister public key, the public key for a particular `context` can also be derived offline.
+
+For curve `bls12_381_g2`, the returned `public_key` is a G<sub>2</sub> element in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding.
+
+This call requires that a vetKD master key with ID `key_id` was generated by the IC and the key derivation functionality for that key was enabled, and that the `canister_id` meets the requirement of a canister id. Otherwise, the call is is rejected.
+
+### IC method `vetkd_derive_key` {#ic-vetkd_derive_key}
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+This method returns a vetKD key (aka vetKey) encrypted under `transport_public_key` and derived from the vetKD master key with ID `key_id` based on the caller's `input` for a given `context`.
+
+Both the `input` and the `context` are byte strings of variable length. While both are inputs to the underlying key derivation algorithm (implicitly together with the calling canister's ID), `input` is intended as the primary differentiator when deriving different keys, while `context` is intended as domain separator.
+The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
+
+Both the encrypted and the decrypted form of the vetKD key can be verified by using the respective vetKD public (verification) key, which can be obtained by calling the IC method `vetkd_public_key`.
+
+For curve `bls12_381_g2`, the following holds:
+
+-   The `transport_public_key` is a G<sub>1</sub> element in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding. Transport public keys are created by calculating *tpk = g<sub>1</sub><sup>tsk</sup>*, where the transport secret key *tsk* is chosen uniformly at random from Z<sub>p</sub>.
+
+-   The returned `encrypted_key` is the blob `E1 · E2 · E3`, where E<sub>1</sub> and E<sub>3</sub> are G<sub>1</sub> elements, and E<sub>2</sub> is a G<sub>2</sub> element, all in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding.
+
+    The encrypted key can be verified by ensuring *e(E<sub>1</sub>, g<sub>2</sub>) == e(g<sub>1</sub>, E<sub>2</sub>)*, and *e(E<sub>3</sub>, g<sub>2</sub>) == e(tpk, E<sub>2</sub>) \* e(H(dpk · `input`), dpk)*, where *dpk* is the derived (vetKD) public key associated with the respective `context`, `key_id`, and the canister ID of the caller.
+
+-   The decrypted vetKD key *k* is obtained by calculating E<sub>3</sub> \* E<sub>1</sub><sup>-tsk</sup>, where tsk ∈ Z<sub>p</sub> is the transport secret key that was used to generate the `transport_public_key`.
+
+    The key can be verified by ensuring *e(k, g<sub>2</sub>) == e(H(dpk · `input`), dpk)*, where *dpk* is the derived (vetKD) public key associated with the respective `context`, `key_id`, and the canister ID of the caller. Such verification protects against untrusted canisters returning invalid keys.
+
+where
+
+-   g<sub>1</sub>, g<sub>2</sub> are generators of G<sub>1</sub>, G<sub>2</sub>, which are groups of prime order *p*,
+
+-   \* denotes the group operation in G<sub>1</sub>, G<sub>2</sub>, and G<sub>T</sub>,
+
+-   e: `G1 x G2 → GT` is the pairing (see [BLS Signatures Draft RFC, Appendix A](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381)),
+
+-   H hashes into G<sub>1</sub> according to the [BLS12-381 message augmentation scheme ciphersuite in the BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature#name-message-augmentation-2) (see also [Hashing to Elliptic Curves Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-hash-to-curve#name-suites-for-bls12-381)),
+
+-   `·` and · denote concatenation
+
+This call requires that a vetKD master key with ID `key_id` was generated by the IC and the key derivation functionality for that key was enabled. Otherwise, the call is is rejected.
+
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+
 ### IC method `http_request` {#ic-http_request}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
@@ -2677,7 +2768,7 @@ The **size** of an HTTP request from the canister or an HTTP response from the r
 
 The following parameters should be supplied for the call:
 
--   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt) and its length must not exceed `8192`. The URL may specify a custom port number.
+-   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt), it might contain non-ASCII characters according to [RFC-3987](https://www.ietf.org/rfc/rfc3987.txt), and its length must not exceed `8192`. The URL may specify a custom port number.
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
@@ -2699,7 +2790,7 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `body` - the response's body
 
-The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is `2MB` (`2,000,000B`). Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
+The `transform` function may, for example, transform the body in any way, add or remove headers, modify headers, etc. The maximal number of bytes representing the response produced by the `transform` function is equal to `max_response_bytes`, if provided, otherwise the default value of `2MB` (`2,000,000B`) is used as the limit. Note that the number of bytes representing the response produced by the `transform` function includes the serialization overhead of the encoding produced by the canister.
 
 When the transform function is invoked by the system due to a canister HTTP request, the caller's identity is the principal of the management canister. This information can be used by developers to implement access control mechanism for this function.
 
@@ -2718,13 +2809,13 @@ to the above limits on HTTP request headers.
 
 :::note
 
-Currently, the Internet Computer mainnet only supports URLs that resolve to IPv6 destinations (i.e., the domain has a `AAAA` DNS record) in HTTP requests.
+The Internet Computer mainnet supports requests to both IPv6 and IPv4 destinations. The system prioritizes a direct connection to IPv6 addresses (i.e., the domain has a `AAAA` DNS record). If a direct connection cannot be established (e.g., the domain only has an IPv4 address via an A record), the request is automatically retried through a proxy.
 
 :::
 
 :::warning
 
-If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected network response size to not incur unnecessary cycles costs for your request.
+If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
 
@@ -2756,7 +2847,9 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Given a subnet ID as input, this method returns a record `subnet_info` containing metadata about that subnet.
 
-Currently, the only field returned is the `replica_version` (`text`) of the targeted subnet.
+The fields returned are:
+- `replica_version` (`text`) of the targeted subnet
+- `registry_version` (`nat64`) of the targeted subnet
 
 ### IC method `take_canister_snapshot` {#ic-take_canister_snapshot}
 
@@ -3601,6 +3694,9 @@ CodeDeploymentMode
   | Reinstall
   | Upgrade
 SnapshotId = (abstract)
+SnapshotSource
+  = TakenFromCanister
+  | MetadataUpload
 ChangeDetails
   = Creation {
       controllers : [PrincipalId];
@@ -3614,6 +3710,7 @@ ChangeDetails
       canister_version : CanisterVersion;
       snapshot_id : SnapshotId;
       taken_at_timestamp : Timestamp;
+      source : SnapshotSource;
     }
   | ControllersChange {
       controllers : [PrincipalId];
@@ -6126,6 +6223,7 @@ New_canister_history = {
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
+      source = TakenFromCanister
     };
   };
 }
@@ -6812,6 +6910,7 @@ A record with
 The predicate `may_read_path_for_canister` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 ```
 may_read_path_for_canister(S, _, ["time"]) = True
+may_read_path_for_canister(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
@@ -6864,6 +6963,7 @@ A record with
 The predicate `may_read_path_for_subnet` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 ```
 may_read_path_for_subnet(S, _, ["time"]) = True
+may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
@@ -6882,6 +6982,7 @@ where `state_tree` constructs a labeled tree from the IC state `S` and the (so f
 ```
 state_tree(S) = {
   "time": S.system_time;
+  "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
   "subnet": { subnet_id : { "public_key" : subnet_pk; "canister_ranges" : subnet_ranges; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
@@ -7811,6 +7912,18 @@ ic0.stable64_read<es>(dst : i64, offset : i64, size : i64)
   es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
 
 I ∈ {i32, i64}
+ic0.root_key_size<es>() : I =
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  let root_key = <implementation-specific>
+  return |root_key|
+
+I ∈ {i32, i64}
+ic0.root_key_copy<es>(dst : I, offset : I, size : I) =
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  let root_key = <implementation-specific>
+  copy_to_canister<es>(dst, offset, size, root_key)
+
+I ∈ {i32, i64}
 ic0.certified_data_set<es>(src : I, size : I) =
   if es.context ∉ {I, G, U, Ry, Rt, T} then Trap {cycles_used = es.cycles_used;}
   es.new_certified_data := es.wasm_state[src..src+size]
@@ -7900,7 +8013,7 @@ ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 =
   return 0
 
 I ∈ {i32, i64}
-ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
+ic0.cost_vetkd_derive_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
   known_keys = arbitrary()
   known_curves = arbitrary()
   key_name = copy_from_canister<es>(src, size)

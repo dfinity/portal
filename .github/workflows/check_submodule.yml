@@ -14,16 +14,16 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Validate Submodule Commits
+      - name: Validate submodule commits
         run: |
           # Submodules are very easy to accidentally overwrite with old versions.
           # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
           
-          # dfx 0.26.1
-          LATEST_SDK="d4875108cb4f4043e1553dd41a3ff810381c288e"
+          # dfx 0.29.1
+          LATEST_SDK="d3a8c3908995ae2e434e17a45d1c8de6a32988c4"
 
-          # motoko 0.14.5
-          LATEST_MOTOKO="51fa74671829c59912c37500773cfaba950b0a1b" 
+          # motoko new docs 7/21/2025
+          LATEST_MOTOKO="3ec4d7300e3ad9af8abffe6d5c436707781c5906"
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')

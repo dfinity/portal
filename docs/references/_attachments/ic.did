@@ -27,7 +27,7 @@ type definite_canister_settings = record {
     reserved_cycles_limit : nat;
     log_visibility : log_visibility;
     wasm_memory_limit : nat;
-    wasm_memory_threshold: nat;
+    wasm_memory_threshold : nat;
 };
 
 type change_origin = variant {
@@ -50,9 +50,13 @@ type change_details = variant {
         module_hash : blob;
     };
     load_snapshot : record {
-      canister_version : nat64;
-      snapshot_id : snapshot_id;
-      taken_at_timestamp : nat64;
+        canister_version : nat64;
+        snapshot_id : snapshot_id;
+        taken_at_timestamp : nat64;
+        source : variant {
+          taken_from_canister : reserved;
+          metadata_upload : reserved;
+        };
     };
     controllers_change : record {
         controllers : vec principal;
@@ -67,7 +71,7 @@ type change = record {
 };
 
 type chunk_hash = record {
-  hash : blob;
+    hash : blob;
 };
 
 type http_header = record {
@@ -83,6 +87,10 @@ type http_request_result = record {
 
 type ecdsa_curve = variant {
     secp256k1;
+};
+
+type vetkd_curve = variant {
+    bls12_381_g2;
 };
 
 type schnorr_algorithm = variant {
@@ -156,7 +164,7 @@ type bitcoin_send_transaction_args = record {
 type bitcoin_get_block_headers_args = record {
     start_height : bitcoin_block_height;
     end_height : opt bitcoin_block_height;
-    network: bitcoin_network;
+    network : bitcoin_network;
 };
 
 type bitcoin_get_block_headers_result = record {
@@ -246,7 +254,13 @@ type canister_status_args = record {
 };
 
 type canister_status_result = record {
-    status : variant { running; stopping; stopped };
+    status : variant {
+        running;
+        stopping;
+        stopped;
+    };
+    ready_for_migration : bool;
+    version : nat64;
     settings : definite_canister_settings;
     module_hash : opt blob;
     memory_size : nat;
@@ -263,11 +277,11 @@ type canister_status_result = record {
     cycles : nat;
     reserved_cycles : nat;
     idle_cycles_burned_per_day : nat;
-    query_stats: record {
-        num_calls_total: nat;
-        num_instructions_total: nat;
-        request_payload_bytes_total: nat;
-        response_payload_bytes_total: nat;
+    query_stats : record {
+        num_calls_total : nat;
+        num_instructions_total : nat;
+        request_payload_bytes_total : nat;
+        response_payload_bytes_total : nat;
     };
 };
 
@@ -336,20 +350,41 @@ type schnorr_public_key_result = record {
 };
 
 type schnorr_aux = variant {
-    bip341: record {
-      merkle_root_hash: blob;
-   }
+    bip341 : record {
+        merkle_root_hash : blob;
+    };
 };
 
 type sign_with_schnorr_args = record {
     message : blob;
     derivation_path : vec blob;
     key_id : record { algorithm : schnorr_algorithm; name : text };
-    aux: opt schnorr_aux;
+    aux : opt schnorr_aux;
 };
 
 type sign_with_schnorr_result = record {
     signature : blob;
+};
+
+type vetkd_public_key_args = record {
+    canister_id : opt canister_id;
+    context : blob;
+    key_id : record { curve : vetkd_curve; name : text };
+};
+
+type vetkd_public_key_result = record {
+    public_key : blob;
+};
+
+type vetkd_derive_key_args = record {
+    input : blob;
+    context : blob;
+    transport_public_key : blob;
+    key_id : record { curve : vetkd_curve; name : text };
+};
+
+type vetkd_derive_key_result = record {
+    encrypted_key : blob;
 };
 
 type node_metrics_history_args = record {
@@ -368,6 +403,7 @@ type subnet_info_args = record {
 
 type subnet_info_result = record {
     replica_version : text;
+    registry_version : nat64;
 };
 
 type provisional_create_canister_with_cycles_args = record {
@@ -393,33 +429,33 @@ type stored_chunks_result = vec chunk_hash;
 type upload_chunk_result = chunk_hash;
 
 type snapshot = record {
-  id : snapshot_id;
-  taken_at_timestamp : nat64;
-  total_size : nat64;
+    id : snapshot_id;
+    taken_at_timestamp : nat64;
+    total_size : nat64;
 };
 
 type take_canister_snapshot_args = record {
-  canister_id : canister_id;
-  replace_snapshot : opt snapshot_id;
+    canister_id : canister_id;
+    replace_snapshot : opt snapshot_id;
 };
 
 type take_canister_snapshot_result = snapshot;
 
 type load_canister_snapshot_args = record {
-  canister_id : canister_id;
-  snapshot_id : snapshot_id;
-  sender_canister_version : opt nat64;
+    canister_id : canister_id;
+    snapshot_id : snapshot_id;
+    sender_canister_version : opt nat64;
 };
 
 type list_canister_snapshots_args = record {
-  canister_id : canister_id;
+    canister_id : canister_id;
 };
 
 type list_canister_snapshots_result = vec snapshot;
 
 type delete_canister_snapshot_args = record {
-  canister_id : canister_id;
-  snapshot_id : snapshot_id;
+    canister_id : canister_id;
+    snapshot_id : snapshot_id;
 };
 
 type fetch_canister_logs_args = record {
@@ -427,13 +463,13 @@ type fetch_canister_logs_args = record {
 };
 
 type canister_log_record = record {
-    idx: nat64;
-    timestamp_nanos: nat64;
-    content: blob;
+    idx : nat64;
+    timestamp_nanos : nat64;
+    content : blob;
 };
 
 type fetch_canister_logs_result = record {
-    canister_log_records: vec canister_log_record;
+    canister_log_records : vec canister_log_record;
 };
 
 service ic : {
@@ -461,6 +497,10 @@ service ic : {
     // Threshold Schnorr signature
     schnorr_public_key : (schnorr_public_key_args) -> (schnorr_public_key_result);
     sign_with_schnorr : (sign_with_schnorr_args) -> (sign_with_schnorr_result);
+
+    // Threshold key derivation
+    vetkd_public_key : (vetkd_public_key_args) -> (vetkd_public_key_result);
+    vetkd_derive_key : (vetkd_derive_key_args) -> (vetkd_derive_key_result);
 
     // bitcoin interface
     bitcoin_get_balance : (bitcoin_get_balance_args) -> (bitcoin_get_balance_result);

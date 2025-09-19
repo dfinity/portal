@@ -1,0 +1,35 @@
+---
+keywords: [advanced, bitcoin, tutorial, btc, brc-20, brc20, brc, bitcoin assets, assets, tokens]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# BRC-20 tokens
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
+
+A BRC-20 token is a type of fungible token created using the [Bitcoin Ordinals protocol](/docs/build-on-btc/ordinals). These tokens are inscribed on the Bitcoin blockchain using JSON payloads that defines the token's properties. Like other fungible tokens, BRC-20 tokens can be minted and transferred between Bitcoin addresses.
+
+BRC-20 tokens are deployed by embedding structured JSON into a Taproot witness script. This is similar to standard Ordinals inscriptions but follows a specific format that defines token metadata. The deployment process involves two transactions:
+
+- Commit: Sends satoshis to a Taproot address that commits to the inscription (the BRC-20 script).
+
+- Reveal: Spends the committed satoshis, revealing the JSON inscription that contains the token definition.
+
+Once deployed, the BRC-20 inscription becomes permanently linked to the specific satoshis used in the reveal transaction. According to BRC-20 standards, the first valid deployment of a ticker symbol is treated as the canonical version that establishes the official instance of that token.
+
+## Inscribe a BRC-20 token
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/inscribe_brc20.rs#L42-L210
+```
+
+This implementation uses fixed deployment parameters for simplicity:
+
+- Max supply: 21_000_000 tokens.
+
+- Mint limit: 1_000 tokens per mint operation.
+
+## Resources
+
+- [Basic Bitcoin example project](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin).

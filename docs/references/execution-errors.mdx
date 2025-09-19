@@ -82,11 +82,11 @@ To fix this error, consider installing code using [`dfx deploy`](/docs/building-
 
 
 ### Out of memory
-The canister was tried to request more memory than the system can provide during execution, causing the execution to fail.
+The canister tried to request more memory than the system can provide during execution, causing the execution to fail.
 
 An example of this error is:
 ```
-  Canister exceeded its allowed memory allocation.
+  Canister cannot grow its memory usage.
 ```
 
 There are [system-wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
@@ -253,7 +253,7 @@ An example of this error is:
   Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
 ```
 
-Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/main/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
+Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
 
 
 ### Canister made a call with too large a payload

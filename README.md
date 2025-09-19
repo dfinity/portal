@@ -7,7 +7,7 @@ Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://i
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
-This repo is built and deployed using the latest version of `dfx` (v0.25.0) and `moc` v0.14.3.
+This repo is built and deployed using the latest version of `dfx` (v0.25.0) and `moc` v0.16.0.
 
 # Developer documentation
 
@@ -163,7 +163,7 @@ This audience should be kept in mind when writing docs. For example:
 
 	- Smart contracts on ICP are referred to as canisters.
 	- Accounts on ICP are referred to as principals.
-	- Multi-chain applications on ICP use Chain Fusion capabilities.
+	- Multichain applications on ICP use Chain Fusion capabilities.
 
 - When introducing blockchain-specific concepts, it is not necessary to relate concepts to Web2 or traditional programming concepts. It can be assumed that the reader is familiar with blockchain terminology.
 
@@ -298,7 +298,7 @@ Additional, optional (but recommended) tags include:
 
 	- Motoko / Rust / Python / Typescript / Solidity
 
-- Multi-chain integration
+- Multichain integration
 
 	- Bitcoin / Ethereum
 
@@ -384,7 +384,7 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
-    - `/docs/motoko/main/base/`
+    - `/docs/motoko/`
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
 - Internet Identity
@@ -406,7 +406,7 @@ The following submodules and their corresponding repos are currently used:
 
 ### Updating submodules
 
-The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job. 
+The SDK and Motoko submodules must be on the latest release version for their respective package release, i.e., IC SDK v0.25.1 or Motoko v0.14.5. These versions are checked by the Check Submodule CI job.
 
 These versions can be updated to the newest release via commands:
 
@@ -422,7 +422,7 @@ cd submodules/sdk
 git checkout 0.25.1
 ```
 
-For other submodules without release versions, checkout the latest commit hash when updates are requested. 
+For other submodules without release versions, checkout the latest commit hash when updates are requested.
 
 ```
 cd submodules/dfxvm
@@ -536,12 +536,6 @@ Please make sure to add appropriate tags to make the tool easy to discover for o
 possible.
 
 ## Community-created sample projects
-
-You can submit your sample project to be displayed on the [samples page](https://internetcomputer.org/samples).
-
-Add your submission to [the community projects file](/community/communityProjects.ts) and open a pull request. You can
-use an editor with TypeScript support to make sure your submission
-follows [the schema](/src/components/Common/sampleItems.ts).
 
 ### Showcase submission guidelines
 

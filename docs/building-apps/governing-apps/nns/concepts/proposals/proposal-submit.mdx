@@ -84,7 +84,7 @@ Alternatively, you can also import your identity using the seed file:
 dfx identity import --seed-file seed.txt
 ```
 
-[Learn more about dfx identities](https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-identity).
+[Learn more about dfx identities](/docs/building-apps/getting-started/identities).
 
 #### Send ICP to the previously created `account id`.
 
@@ -122,7 +122,7 @@ quill send message.json
 
 ### How to send a proposal
 
-This sections shows how to create a [motion proposal](https://dashboard.internetcomputer.org/proposal/42626).
+This sections shows how to create a motion proposal, such as proposal #42626, [Open Governance canister for SNS, Design proposal](https://dashboard.internetcomputer.org/proposal/42626).
 
 #### Craft a proposal in markdown
 
@@ -133,7 +133,10 @@ Below is an example of using markdown for a NNS motion proposal:
 ```md
 ## Objective
 
-Service nervous systems (SNSes) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
+Service nervous systems (SNSes) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems 
+for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) 
+but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is 
+also presented and discussed in this forum post: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
 
 ## Background
 
@@ -155,11 +158,9 @@ To get the design approved by the community, the following schedule was followed
 * Participate in technical discussions as the motion moves forward
 ```
 
-#### Send proposal via dfx
+#### Proposal submission
 
-Below is an example structure of sending an NNS motion proposal with placeholders `$TITLE`, `$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID`. These are not variables and you need to replace them with real values directly within the command:
-
-`rrkah-fqaaa-aaaaa-aaaaq-cai` is the ID of the governance canister on the NNS so this command is sending a message to the `manage_neuron` method of the governance canister of the NNS.
+Below is an abstract example of a motion proposal submission. `dfx` is used to call the `manage_neuron` method of the NNS' governance canister, where `rrkah-fqaaa-aaaaa-aaaaq-cai` is the governance canister's ID. The placeholders `$TITLE`, `$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID` are not variables. For a real submission, you need to replace them with real values directly within the command.
 
 ```
 dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron '(record {id = null; command=opt variant {MakeProposal=record {url=""; title=opt "$TITLE";action=opt variant {Motion=record {motion_text="$MOTION_TEXT"}}; summary="
@@ -169,7 +170,7 @@ $SUMMARY
 "}}; neuron_id_or_subaccount=opt variant {NeuronId=record {id=$NEURON_ID:nat64}}})'
 ```
 
-Below is an example NNS motion proposal with`$TITLE`,`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID` filled out:
+Next is an example of a submission where the placeholders are replaced with real values:
 
 ```
 dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron '(record {id = null; command=opt variant {MakeProposal=record {url=""; title="Open Governance canister for SNS | Design proposal";action=opt variant {Motion=record {motion_text="Present design proposal for Open Governance canister"}}; summary="
@@ -200,7 +201,7 @@ To get the design approved by the community, the following schedule was followed
 "}}; neuron_id_or_subaccount=opt variant {NeuronId=record {id=9218890096040352708:nat64}}})'
 ```
 
-#### Check dashboard to see proposal was successful
+##### Check successful submission 
 
 If successful, `dfx` will return an output such as:
 
@@ -216,15 +217,14 @@ If successful, `dfx` will return an output such as:
 )
 ```
 
-In this example, `42_626` (or rather `42626`) is the ID of the proposal. Your proposal will have a different ID.
+In this example, `42_626` (or rather `42626`) is the ID of the proposal. Your proposal will have a different ID. You will be able to see your proposal at the URL `https://dashboard.internetcomputer.org/proposal/42626`.
 
-You will be able to see the proposal at the URL `https://dashboard.internetcomputer.org/proposal/42626`.
 
 ### Best practices for motion proposals
 
 #### Writing the proposal
 
-The proposal can accept any free form text. Below is a recommended starting template for anyone starting to think about how to write one:
+The proposal can accept any free form text. Additional information may be referenced but the text should be self-contained. This is an outline that may be used as starting point:
 
 ```
 # Example Motion Project Proposal
@@ -259,11 +259,11 @@ Lorem Ipsum
 
 * Vote accept or reject on NNS Motion
 
-Developer forum: https://forum.dfinity.org/t/long-term-r-d-tokenomics-proposal/9392/3
+Link to forum discussion: https://forum.dfinity.org/t/long-term-r-d-tokenomics-proposal/9392/3
 ```
 
 #### Communicating the proposal
 
 Once the proposal is live, it will be open to voting for 4 days, and if there is a lot of contesting of votes, that deadline will be automatically extended up to an additional 4 days.
 
-Proposals typically require significant communication and promotion (like in any organization) to make sure enough people vote for it. It is very common for proposals to be promoted 'before' submission so its intended voters are aware of it.
+Proposals typically require significant communication and promotion (like in any organization) to make sure enough people vote for it. It is very common for proposals to be promoted 'before' submission so its intended voters are aware of it. It is good practice to reference such preceding discussions in the motion proposal but voters should not be required to read them.

@@ -19,7 +19,7 @@ The limits depend on the message type as shown in the following table.
 
 | Message resource limits                                                              | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
-| Message queue limit, messages per <GlossaryTooltip>canister</GlossaryTooltip>                                           | 500         |
+| Message queue limit, messages between a pair of <GlossaryTooltip>canister</GlossaryTooltip>s | 500         |
 | Maximum ingress message payload                                                      | 2MiB         |
 | Maximum cross-net inter-canister message payload                                     | 2MiB         |
 | Maximum same-<GlossaryTooltip>subnet</GlossaryTooltip> inter-canister request payload (may be deprecated at some point) | 10MiB        |
@@ -36,8 +36,8 @@ The limits depend on the message type as shown in the following table.
 
 | <Tooltip text="A collection of nodes that run their own instance of the ICP [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
-| Subnet capacity (total memory available per subnet)                                  | 1TiB        |
-| Maximum number of snapshots per canister                                              | 1           |
+| Subnet capacity (total memory available per subnet)                                  | 2TiB        |
+| Maximum number of snapshots per canister                                              | 10         |
 
 | Memory resource limits                                                               | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
@@ -77,7 +77,7 @@ Since ICP decouples message reception from message execution, the messages inclu
 Messages for different canisters may be executed in parallel on multiple threads.
 ICP currently has 4 execution threads, and each thread can execute up to 1000 messages.
 Another limiting factor in execution throughput is the number of executed Wasm instructions.
-ICP currently targets 2B instructions per block.
+ICP currently targets a throughput of 2B instructions per thread per second.
 
 ## Additional notes
 

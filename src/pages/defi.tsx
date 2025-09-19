@@ -84,7 +84,7 @@ function DefiPage() {
   return (
     <Layout
       title="DeFi"
-      description="From fully onchain order book DEXs, to bridgeless multi-chain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
+      description="From fully onchain order book DEXs, to bridgeless multichain swaps, the Internet Computer provides an unmatched tech stack for DEXs to thrive on and DeFi to flourish."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-defi.jpg"></ShareMeta>
@@ -108,13 +108,13 @@ function DefiPage() {
                   className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                   variants={transitions.item}
                 >
-                  Multi-chain DeFi
+                  Multichain DeFi
                 </motion.h1>
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  From fully onchain order book DEXs, to bridgeless multi-chain
+                  From fully onchain order book DEXs, to bridgeless multichain
                   swaps, the Internet Computer provides an unmatched tech stack
                   for DEXs to thrive on and DeFi to flourish.
                 </motion.p>
@@ -188,7 +188,7 @@ function DefiPage() {
             <div className="md:container-10 px-8 pb-10 md:py-30 relative">
               <div className="md:w-1/2">
                 <h2 className="text-gradient tw-heading-4 md:tw-heading-60 md:mb-6">
-                  Multi-chain swaps
+                  Multichain swaps
                 </h2>
                 <p className="tw-paragraph md:tw-lead text-black mb-8">
                   Via Chain-Key Signatures, the Internet Computer has the
@@ -333,7 +333,7 @@ function DefiPage() {
                     className="md:tw-lead mb-6 md:mb-6"
                     variants={transitions.item}
                   >
-                    Multi-chain wallets already exist on the Internet Computer
+                    Multichain wallets already exist on the Internet Computer
                     that allow users to store and transfer ckBTC, ckETH and more
                     with ease.
                   </motion.p>
@@ -409,7 +409,7 @@ function DefiPage() {
                 className="tw-heading-3 md:tw-heading-2 text-gradient text-center mb-4"
                 variants={transitions.item}
               >
-                Build multi-chain DeFi
+                Build multichain DeFi
               </motion.h2>
 
               <motion.p
@@ -513,10 +513,9 @@ function DefiPage() {
               href="https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh"
             />
             <CardWithDescription
-              title="DeFi sample code"
+              title="Sample code on ICP Ninja"
               description=""
-              href="https://internetcomputer.org/samples?selectedDomains=Asynchronous+DeFi
-"
+              href="https://icp.ninja/"
             />
             <CardWithDescription
               title="Code ckBTC"

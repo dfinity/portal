@@ -176,7 +176,7 @@ function HTTPSOutcalls() {
             <CardWithBackground
               title="Sample Code"
               description="Build a dapp with canister outgoing HTTPS outcalls"
-              href="https://internetcomputer.org/samples?term=https+outcalls"
+              href="https://icp.ninja/"
               bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription

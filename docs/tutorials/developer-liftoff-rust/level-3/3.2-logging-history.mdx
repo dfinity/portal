@@ -1,0 +1,101 @@
+---
+keywords: [beginner, tutorial, developer liftoff, canister logging, canister history, logging, history]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 3.2 Canister history & logging
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+The Internet Computer tracks the history of a deployed <GlossaryTooltip>canister</GlossaryTooltip> through changes in its Wasm module hashes and controller settings. This allows users to view a canister’s history, including which code was used and which controller deployed it.
+
+Reviewing a canister’s history can be useful in several scenarios, such as:
+
+- Ensuring that a controller has not maliciously altered the canister's code.
+
+- Confirming that the list of controllers has not been tampered with. For instance, if the controller list only shows the [governance](https://learn.internetcomputer.org/hc/en-us/articles/34574082263700-Tokenomics-Governance) canister, users can have confidence that the canister’s code remains trustworthy.
+
+This feature is accessed via the `canister_info` method on the IC management canister, using the target canister's ID. The system records the 20 most recent changes, including:
+
+- Canister creation.
+- Wasm module installations, reinstalls, and upgrades.
+- Changes to the controller list.
+
+Only the 20 latest changes are stored.
+
+To retrieve a canister’s history, call the `canister_info` method on the IC management canister with the canister ID as the argument.
+
+```rust file=../../../references/samples/rust/canister-info/src/lib.rs
+```
+
+## Accessing canister logs
+
+The <GlossaryTooltip>canister</GlossaryTooltip> logging feature gives developers visibility into their canister’s behavior and helps diagnose issues. It supports logging for:
+
+- Heartbeat functions
+- Timers
+- `canister_init`, `pre_upgrade`, and `post_upgrade` hooks
+- Update calls
+- Queries (only when called in replicated mode)
+
+Canister logs can be retrieved by the controller, even if the canister traps, using the following command:
+
+```bash
+dfx canister logs <canister-name>
+```
+
+By default, only the canister's controllers can access its logs. To make logs public, update the canister’s settings with:
+
+```bash
+dfx canister update-settings <canister-name> --log-visibility public
+```
+
+However, canister log allow lists can let specific principals who are not controllers view the logs without making them public. This feature is supported in `dfx` version `0.24.2` and above.
+
+Use the following commands to manage log viewers:
+
+- Set a log viewer (replaces any existing viewers):
+
+```bash
+dfx canister update-settings <canister-name> --set-log-viewer <principal-id>
+```
+
+- Add a log viewer:
+
+```bash
+dfx canister update-settings <canister-name> --add-log-viewer <principal-id>
+```
+
+- Remove a log viewer:
+
+```bash
+dfx canister update-settings <canister-name> --remove-log-viewer <principal-id>
+```
+
+You can also set log viewers during canister creation:
+
+```bash
+dfx canister create <canister-name> --log-viewer <principal-id>
+```
+
+Or configure allowed log viewers in your `dfx.json`:
+
+```json
+{
+  "canisters": {
+    "<canister-name>": {
+      "initialization_values": {
+        "log_visibility": {
+          "allowed_viewers": ["<principal-id>"]
+        }
+      }
+    }
+  }
+}
+```
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />
