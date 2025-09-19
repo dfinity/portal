@@ -168,8 +168,8 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Sample Code"
-              description="Learn about IC capabilities from community samples."
-              href="/samples"
+              description="Learn from samples in ICP Ninja."
+              href="https://icp.ninja/"
             />
             <CardWithDescription
               title="'Trustless multichain Web3' article on the IC Wiki"
