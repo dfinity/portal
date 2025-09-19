@@ -537,12 +537,6 @@ possible.
 
 ## Community-created sample projects
 
-You can submit your sample project to be displayed on the [samples page](https://internetcomputer.org/samples).
-
-Add your submission to [the community projects file](/community/communityProjects.ts) and open a pull request. You can
-use an editor with TypeScript support to make sure your submission
-follows [the schema](/src/components/Common/sampleItems.ts).
-
 ### Showcase submission guidelines
 
 _Disclaimer: You should have a working canister for your product to be showcased. Our team will review the PR and get
