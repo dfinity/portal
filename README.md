@@ -552,7 +552,7 @@ Your logo/video/screenshots files should be prefixed with your project id, and p
 folder. For example, if your project id is `awesome-icp-project`, your logo file should be
 named `awesome-icp-project_logo.webp` and placed in the `/static/img/showcase` folder.
 
-he [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an onchain tool that helps you submit your project to internetcomputer.org. It helps with image conversion, resizing, previewing the project cards used throughout the website, and it produces a valid JSON document you can use. Fill out the form and download the asset bundle in a zip file.
+The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an onchain tool that helps you submit your project to internetcomputer.org. It helps with image conversion, resizing, previewing the project cards used throughout the website, and it produces a valid JSON document you can use. Fill out the form and download the asset bundle in a zip file.
 
 ### Asset guidelines
 
