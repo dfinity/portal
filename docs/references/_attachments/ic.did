@@ -50,9 +50,9 @@ type change_details = variant {
         module_hash : blob;
     };
     load_snapshot : record {
-        canister_version : nat64;
-        owning_canister_id : principal;
+        from_canister_id : opt principal;
         snapshot_id : snapshot_id;
+        canister_version : nat64;
         taken_at_timestamp : nat64;
         source : variant {
           taken_from_canister : reserved;
