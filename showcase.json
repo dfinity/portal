@@ -57,12 +57,12 @@
   },
   {
     "id": "liquidium",
-    "name": "Liquidium",
+    "name": "LiquidiumWTF",
     "display": "Large",
-    "website": "https://liquidium.fi/",
-    "twitter": "https://x.com/LiquidiumFi",
+    "website": "https://liquidium.wtf/",
+    "twitter": "https://x.com/LiquidiumWTF",
     "tags": [
-      "Chain Fusion",
+      "DeFi",
       "Bitcoin"
     ],
     "description": "Borrow Bitcoin against Ordinals, Runes, and BRC-20. Lend and earn up to 380% APY.",
@@ -238,7 +238,7 @@
       "DAO"
     ],
     "description": "The Gold DAO represents a groundbreaking fusion of traditional gold and modern blockchain technology, allowing anyone in the world to access physical gold instantaneously, without depending on banks.",
-    "logo": "/img/showcase/golddao_logo.png"
+    "logo": "/img/showcase/GLDGov.svg"
   },
   {
     "id": "omnity_ree",
@@ -457,6 +457,21 @@
       "https://6qfxa-ryaaa-aaaai-qbhsq-cai.ic0.app"
     ],
     "logo": "/img/showcase/taggr_logo.webp"
+  },
+  {
+    "id": "liquidiumfi",
+    "name": "LiquidiumFi",
+    "display": "Normal",
+    "website": "https://liquidium.fi/",
+    "twitter": "https://x.com/liquidiumfi",
+    "github": "https://github.com/Liquidium-Inc",
+    "tags": [
+      "Chain Fusion",
+      "DeFi"
+    ],
+    "description": "Liquidium is the first truly decentralized cross-chain lending protocol. Instantly supply or borrow any asset across Bitcoin, Ethereum, and top blockchains—no bridges, no wrapping, no borders. Secure, non-custodial, and built for the future of DeFi.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/LiquidiumFi_logo.jpg"
   },
   {
     "id": "kleverio",
@@ -3101,22 +3116,25 @@
     ]
   },
   {
-    "id": "appicdao",
-    "name": "AppIC DAO",
+    "id": "appic",
+    "name": "Appic",
     "display": "Normal",
     "website": "https://app.appic.solutions/",
+    "twitter": "https://x.com/Appic_ICP",
     "github": "https://github.com/Appic-Solutions",
-    "submittableId": 44626035,
+    "youtube": "https://www.youtube.com/@AppicDAO",
+    "submittableId": 49991253,
     "tags": [
-      "Tools / Infrastructure",
+      "Chain Fusion",
       "Bitcoin",
-      "Ethereum",
       "DeFi",
+      "Ethereum",
       "Chain Fusion"
     ],
-    "description": "First-ever infrastructure layer that allows transferring and swapping of tokens between ICP and blockchains such as Bitcoin, Ethereum, and Solana.",
+    "description": "Appic is a cross-chain decentralized exchange (DEX) that enables seamless any-to-any token swaps across EVM chains, Solana and Bitcoin.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/appic_logo.png"
+    "logo": "/img/showcase/Appic_Logo.svg",
+    "oneLiner": "Seamless Swaps. One Layer, All Chains!"
   },
   {
     "id": "optigames",
@@ -3736,21 +3754,6 @@
     "description": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/dappradar_logo.png"
-  },
-  {
-    "id": "fomowell",
-    "name": "Fomowell",
-    "display": "Normal",
-    "website": "https://fomowell.com/",
-    "twitter": "https://twitter.com/fomowell",
-    "tags": [
-      "SocialFi",
-      "Creator Economy"
-    ],
-    "stats": "300 users, daily transactions of $3k",
-    "description": "The fairest Web3 project launch platform.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/fomowell_logo.png"
   },
   {
     "id": "metaviz",
@@ -5290,6 +5293,20 @@
     "oneLiner": "Non-coders can build & share web3 transactions in minutes on the phone"
   },
   {
+    "id": "fomowell",
+    "name": "Fomowell",
+    "display": "Normal",
+    "website": "https://btc.fomowell.com/",
+    "twitter": "https://x.com/FomowellX",
+    "tags": [
+      "SocialFi",
+      "Creator Economy"
+    ],
+    "description": "Secure, Efficient, Decentralized BTC Asset Issuance and Trading Platform.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/fomowell_logo.png"
+  },
+  {
     "id": "icquests",
     "name": "ICQuests",
     "display": "Normal",
@@ -5907,7 +5924,6 @@
       "DeFi",
       "Chain Fusion"
     ],
-    "stats": "We are not open for public use yet, but we are proud of our MVP",
     "description": "Rumi Protocol lets users mint icUSD by locking ICP, ckBTC, or ckETH—bringing decentralized, collateral-backed stablecoins to the ICP ecosystem.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/Rumi_protocol.jpg",
@@ -5951,6 +5967,58 @@
       "/img/showcase/Rhino_spider_screenshot.png"
     ],
     "oneLiner": "RhinoSpider: Get rewarded for sharing your internet bandwidth!"
+  },
+  {
+    "id": "cordial_treasury",
+    "name": "Cordial Treasury",
+    "display": "Normal",
+    "website": "https://cordialsystems.com/",
+    "twitter": "https://x.com/cordialsys",
+    "submittableId": 50738612,
+    "tags": [
+      "Wallet",
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Cordial Treasury is the MPC wallet platform built by Cordial Systems, used by institutions such as Jump Trading Group, Figure.com, and SwissBorg. ",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/cordial_treasury_logo.svg",
+    "oneLiner": "Adding ICP native coin and tokens to our MPC wallet."
+  },
+  {
+    "id": "one_million_pixel",
+    "name": "One Million Pixel Billboard",
+    "display": "Normal",
+    "website": "https://fnavb-oqaaa-aaaai-q3jvq-cai.icp0.io/",
+    "tags": [
+      "Creator Economy",
+      "Enterprise",
+      "NFT"
+    ],
+    "description": "The ONE MILLION PIXEL BILLBOARD on ICP is a decentralised, permanent, community-owned canvas—part ad space, part art, part history.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/one_million_pixel_logo.png",
+    "oneLiner": "A decentralised, community-owned canvas."
+  },
+  {
+    "id": "tradeos",
+    "name": "TradeOS",
+    "display": "Normal",
+    "website": "https://www.tradeos.xyz",
+    "twitter": "https://x.com/TradeOS_ai",
+    "github": "https://github.com/mind-link-ai/contracts-motoko",
+    "youtube": "https://www.youtube.com/watch?v=e3k6ej5uECI",
+    "submittableId": 49730243,
+    "tags": [
+      "Chain Fusion",
+      "AI",
+      "DeFi"
+    ],
+    "stats": "6M users, 20K demands, 3M transactions",
+    "description": "TradeOS is a universal commerce stack powering P2P and AI-native marketplaces with unified discovery, checkout, and on-chain settlement.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/tradeos_logo_.svg",
+    "oneLiner": "Universal commerce stack for P2P and AI-driven marketplaces."
   }
   
 ]

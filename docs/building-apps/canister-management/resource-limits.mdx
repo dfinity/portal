@@ -19,7 +19,7 @@ The limits depend on the message type as shown in the following table.
 
 | Message resource limits                                                              | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
-| Message queue limit, messages per <GlossaryTooltip>canister</GlossaryTooltip>                                           | 500         |
+| Message queue limit, messages between a pair of <GlossaryTooltip>canister</GlossaryTooltip>s | 500         |
 | Maximum ingress message payload                                                      | 2MiB         |
 | Maximum cross-net inter-canister message payload                                     | 2MiB         |
 | Maximum same-<GlossaryTooltip>subnet</GlossaryTooltip> inter-canister request payload (may be deprecated at some point) | 10MiB        |
@@ -36,8 +36,8 @@ The limits depend on the message type as shown in the following table.
 
 | <Tooltip text="A collection of nodes that run their own instance of the ICP [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
-| Subnet capacity (total memory available per subnet)                                  | 1TiB        |
-| Maximum number of snapshots per canister                                              | 1           |
+| Subnet capacity (total memory available per subnet)                                  | 2TiB        |
+| Maximum number of snapshots per canister                                              | 10         |
 
 | Memory resource limits                                                               | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |

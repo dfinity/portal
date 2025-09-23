@@ -474,6 +474,24 @@ The state tree contains information about all API boundary nodes (the source of 
     Public IPv6 address of a node in the hexadecimal notation with colons.
     Example: `3002:0bd6:0000:0000:0000:ee00:0033:6778`.
 
+### Canister ranges {#state-tree-canister-ranges}
+
+The state tree contains information about the canister ranges of subnets on the Internet Computer.
+
+-   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
+
+    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
+    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
+    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
+    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
+    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
+    ```
+    canister_ranges = tagged<[*canister_range]>
+    canister_range = [principal principal]
+    principal = bytes .size (0..29)
+    tagged<t> = #6.55799(t) ; the CBOR tag
+    ```
+
 ### Subnet information {#state-tree-subnet}
 
 The state tree contains information about the topology of the Internet Computer.
@@ -773,13 +791,13 @@ The functionality exposed via the [The IC management canister](#ic-management-ca
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/canister_ranges` and `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/canister_ranges` and `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v2/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`. The subnet form should be used when the information to be retrieved is subnet specific, i.e., when requesting paths with the prefix `/time` or `/subnet`, and the subnet form must be used when requesting paths of the form `/subnet/<subnet_id>/metrics`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`. The subnet form should be used when the information to be retrieved is subnet specific, i.e., when requesting paths with the prefix `/time`, `/canister_ranges`, or `/subnet`, and the subnet form must be used when requesting paths of the form `/subnet/<subnet_id>/metrics`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `read_state`
 
@@ -827,6 +845,8 @@ All requested paths must have the following form:
 -   `/time`. Can always be requested.
 
 -   `/api_boundary_nodes`, `/api_boundary_nodes/<node_id>`, `/api_boundary_nodes/<node_id>/domain`,  `/api_boundary_nodes/<node_id>/ipv4_address`, `/api_boundary_nodes/<node_id>/ipv6_address`. Can always be requested.
+
+-   `/canister_ranges/<subnet_id>`. Can always be requested.
 
 -   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/canister_ranges`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
@@ -7360,6 +7380,7 @@ A record with
 The predicate `may_read_path_for_canister` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 ```
 may_read_path_for_canister(S, _, ["time"]) = True
+may_read_path_for_canister(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
@@ -7412,6 +7433,7 @@ A record with
 The predicate `may_read_path_for_subnet` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 ```
 may_read_path_for_subnet(S, _, ["time"]) = True
+may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
@@ -7430,6 +7452,7 @@ where `state_tree` constructs a labeled tree from the IC state `S` and the (so f
 ```
 state_tree(S) = {
   "time": S.system_time;
+  "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
   "subnet": { subnet_id : { "public_key" : subnet_pk; "canister_ranges" : subnet_ranges; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
