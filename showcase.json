@@ -3756,21 +3756,6 @@
     "logo": "/img/showcase/dappradar_logo.png"
   },
   {
-    "id": "fomowell",
-    "name": "Fomowell",
-    "display": "Normal",
-    "website": "https://fomowell.com/",
-    "twitter": "https://twitter.com/fomowell",
-    "tags": [
-      "SocialFi",
-      "Creator Economy"
-    ],
-    "stats": "300 users, daily transactions of $3k",
-    "description": "The fairest Web3 project launch platform.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/fomowell_logo.png"
-  },
-  {
     "id": "metaviz",
     "name": "Metaviz",
     "display": "Normal",
@@ -5306,6 +5291,20 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/favicon_green.svg",
     "oneLiner": "Non-coders can build & share web3 transactions in minutes on the phone"
+  },
+  {
+    "id": "fomowell",
+    "name": "Fomowell",
+    "display": "Normal",
+    "website": "https://btc.fomowell.com/",
+    "twitter": "https://x.com/FomowellX",
+    "tags": [
+      "SocialFi",
+      "Creator Economy"
+    ],
+    "description": "Secure, Efficient, Decentralized BTC Asset Issuance and Trading Platform.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/fomowell_logo.png"
   },
   {
     "id": "icquests",
