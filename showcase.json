@@ -3,7 +3,7 @@
     "id": "caffeine",
     "name": "Caffeine",
     "display": "Large",
-    "website": "https://caffeine.ai/",
+    "website": "https://caffeine.ai/?utm_source=ICP-web&utm_medium=&utm_campaign=ICP-ecosystem&utm_content=showcase&utm_term=",
     "twitter": "https://x.com/caffeineai",
     "tags": [
       "AI"
@@ -12,7 +12,7 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/Caffeine_logo.jpg",
     "screenshots": [
-      "/img/showcase/Caffeine_screenshot_logo.jpeg"
+      "/img/showcase/caffeine-screenshot.jpg"
     ],
     "oneLiner": "Build through conversation."
   },
@@ -235,7 +235,8 @@
     "twitter": "https://x.com/TheGoldDAO",
     "tags": [
       "DeFi",
-      "DAO"
+      "DAO",
+      "Enterprise"
     ],
     "description": "The Gold DAO represents a groundbreaking fusion of traditional gold and modern blockchain technology, allowing anyone in the world to access physical gold instantaneously, without depending on banks.",
     "logo": "/img/showcase/GLDGov.svg"
@@ -318,7 +319,8 @@
     "github": "https://github.com/diodechain/zone_availability_canister",
     "tags": [
       "Chain Fusion",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "description": "A decentralized full self-custody alternative for team collaboration applications such as Discord, Slack, and Teams.",
     "usesInternetIdentity": false,
@@ -647,7 +649,7 @@
   },
   {
     "id": "waterneuron",
-    "name": "Water Neuron",
+    "name": "WaterNeuron",
     "display": "Large",
     "website": "https://waterneuron.fi/\n",
     "twitter": "https://x.com/WaterNeuron",
@@ -688,9 +690,10 @@
     "github": "https://github.com/origyn-sa",
     "tags": [
       "NFT",
-      "Tools / Infrastructure",
+      "Enterprise",
       "DAO",
-      "Creator Economy"
+      "Creator Economy",
+      "Tools / Infrastructure"
     ],
     "description": "The Origyn Foundation is blending luxury goods with NFTs by providing digital verifications for physical objects. Only possible on the Internet Computer. ",
     "logo": "/img/showcase/origyn_logo.webp",
@@ -816,23 +819,6 @@
     "description": "Jump into this proof of concept battle royale 2D shooter on ICP. Grab gear, outplay the competition, and stay alive as the battleground shrinks. It's all about thinking a few steps ahead. Upgrade weapons, toss grenades, and pull off sneaky ambushes. Invite your pals for a quick match and make sure you play the tutorial to get used to the mechanics.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/autoroyale_logo.png"
-  },
-  {
-    "id": "bitfinity-evm",
-    "name": "Bitfinity EVM",
-    "display": "Normal",
-    "website": "https://bitfinity.network/",
-    "twitter": "https://twitter.com/bitfinitynet",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure",
-      "Ethereum",
-      "Chain Fusion"
-    ],
-    "stats": "1,000+ TPS",
-    "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of its many advantageous DeFi capabilities: HTTPS Outcalls, the BTC integration, and more.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/bitfinity_evm.svg"
   },
   {
     "id": "signals",
@@ -2959,6 +2945,21 @@
     "logo": "/img/showcase/sneed.png"
   },
   {
+    "id": "albus_protocol",
+    "name": "Albus Protocol",
+    "display": "Normal",
+    "website": "https://albus.finance/",
+    "twitter": "https://x.com/AlbusProtocol",
+    "github": "https://github.com/mfactory-lab/albus",
+    "youtube": "https://www.youtube.com/playlist?list=PLBNYJyseTkot8lJsox4KY1XBuzgR1yS1f",
+    "tags": [
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "Albus Protocol is a highly adaptable decentralized identity (DID) infrastructure that creates a secure environment where identities are controlled by users and can be monetized through a revenue-sharing model.",
+    "logo": "/img/showcase/albus-logo.png"
+  },
+  {
     "id": "windoge98",
     "name": "Windoge98",
     "display": "Normal",
@@ -4989,7 +4990,8 @@
     "website": "https://coreledger.net/",
     "twitter": "https://x.com/CoreLedger",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "description": "Build and launch blockchain-powered products quickly and effortlessly with our plug-and-play, blockchain-agnostic infrastructure. Designed for businesses of all sizes, our platform makes it easy to integrate blockchain technology into your software—without the complexity.",
     "usesInternetIdentity": true,
