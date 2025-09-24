@@ -524,8 +524,8 @@ The state tree also stores the canister ID ranges of subnets on the Internet Com
 
     Specifically:
     1. Each shard contains a non-empty list of ranges.  
-    2. The first range in the shard starts with the `<canister_id>` in its path.  
-    3. The shard ends just before the starting canister ID of the next shard.  
+    2. The first range in the shard starts with the `<canister_id>` in its path.
+    3. The next shard (if any) begins with a strictly greater starting canister ID.  
     4. All shards together cover the entire set of canister ID ranges for the subnet without overlap.  
 
     **Example:** Suppose a subnet has these canister ID ranges:  
