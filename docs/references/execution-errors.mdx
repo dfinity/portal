@@ -719,7 +719,26 @@ An example of this error is:
 To fix this error, try resending the message after omitting or modifying the invalid field.
 
 
+### Canister snapshot not loadable
+Snapshot is not loadable on the target canister in case the canister you're trying to load the snapshot onto is different than the one that was used to create the snapshot.
 
+An example of this error is:
+```
+  Snapshot is not currently loadable on the specified canister. Try again later. The call should succeed if you wait sufficiently long (usually ten minutes)."
+```
+
+To fix this error, try resending the message after waiting for at least 10 minutes.
+
+
+### Canister snapshot not controller
+This indicates that you are not a controller of the canister that a snapshot belongs to and so you cannot load it (on this or another canister).
+
+An example of this error is:
+```
+  Only a controller of the canister that the snapshot belongs to can load it."
+```
+
+To fix this error, ensure that you are a controller of the canister that the snapshot belongs to.
 
 
 [canbench]: /docs/building-apps/advanced/benchmarking
