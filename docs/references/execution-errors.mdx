@@ -719,6 +719,45 @@ An example of this error is:
 To fix this error, try resending the message after omitting or modifying the invalid field.
 
 
+### Environment variables too many
+The canister has been configured with more environment variables than allowed.
+
+An example of this error is:
+```
+  Too many environment variables: 11 (max: 10).
+```
+
+This error occurs when the total number of environment variables in the canister settings exceeds the maximum allowed limit.
+
+To fix this error, try reducing the number of environment variables provided.
+
+
+### Environment variable name too long
+An environment variable name exceeds the maximum allowed length.
+
+An example of this error is:
+```
+  Environment variable name "xxx-xxxx" exceeds the maximum allowed length of 128.
+```
+
+Environment variable names must stay within the defined character limit.
+
+To fix this error, shorten the environment variable name to fit within the allowed limit.
+
+
+### Environment variable value too long
+An environment variable value exceeds the maximum allowed length.
+
+An example of this error is:
+```
+  Environment variable value "xxx-xxxx" exceeds the maximum allowed length.
+```
+
+Environment variable values must stay within the defined character limit.
+
+To fix this error, shorten the environment variable value to fit within the allowed limit. Consider breaking large values into smaller, separate variables.
+
+
 
 
 
