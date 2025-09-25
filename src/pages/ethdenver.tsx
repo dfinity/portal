@@ -85,7 +85,7 @@ function EthDenverPage() {
               {
                 title: "Sample Code",
                 body: "From a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
-                link: "/samples",
+                link: "https://icp.ninja/",
               }
             ]}
           />

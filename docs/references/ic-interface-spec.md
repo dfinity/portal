@@ -474,24 +474,6 @@ The state tree contains information about all API boundary nodes (the source of 
     Public IPv6 address of a node in the hexadecimal notation with colons.
     Example: `3002:0bd6:0000:0000:0000:ee00:0033:6778`.
 
-### Canister ranges {#state-tree-canister-ranges}
-
-The state tree contains information about the canister ranges of subnets on the Internet Computer.
-
--   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
-
-    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
-    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
-    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
-    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
-    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
-    ```
-    canister_ranges = tagged<[*canister_range]>
-    canister_range = [principal principal]
-    principal = bytes .size (0..29)
-    tagged<t> = #6.55799(t) ; the CBOR tag
-    ```
-
 ### Subnet information {#state-tree-subnet}
 
 The state tree contains information about the topology of the Internet Computer.
@@ -522,13 +504,32 @@ The state tree contains information about the topology of the Internet Computer.
 
 :::note
 
-Because this uses the lexicographic ordering of princpials, and the byte distinguishing the various classes of ids is at the *end*, this range by construction conceptually includes principals of various classes. This specification needs to take care that the fact that principals that are not canisters may appear in these ranges does not cause confusion.
+Because this uses the lexicographic ordering of principals, and the byte distinguishing the various classes of ids is at the *end*, this range by construction conceptually includes principals of various classes. This specification needs to take care that the fact that principals that are not canisters may appear in these ranges does not cause confusion.
 
 :::
 
 -   `/subnet/<subnet_id>/node/<node_id>/public_key` (blob)
 
     The public key of a node (a DER-encoded Ed25519 signing key, see [RFC 8410](https://tools.ietf.org/html/rfc8410) for reference) with principal `<node_id>` belonging to the subnet with principal `<subnet_id>`.
+
+
+### Canister ranges {#state-tree-canister-ranges}
+
+The state tree contains information about the canister ranges of subnets on the Internet Computer.
+
+-   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
+
+    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
+    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
+    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
+    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
+    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
+    ```
+    canister_ranges = tagged<[*canister_range]>
+    canister_range = [principal principal]
+    principal = bytes .size (0..29)
+    tagged<t> = #6.55799(t) ; the CBOR tag
+    ```
 
 ### Request status {#state-tree-request-status}
 
@@ -1429,7 +1430,7 @@ While an implementation will likely try to keep the interval between `canister_h
 
 :::
 
-#### Global timer
+#### Global timer {#global-timer}
 
 For time-based execution, the WebAssembly module can export a function with name `canister_global_timer`. This function is called if the canister has set its global timer (using the System API function `ic0.global_timer_set`) and the current time (as returned by the System API function `ic0.time`) has passed the value of the global timer.
 
@@ -2863,9 +2864,9 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method takes a snapshot of the specified canister. A snapshot consists of the wasm memory, stable memory, certified variables, wasm chunk store and wasm binary.
 
-Subsequent `take_canister_snapshot` calls will create a new snapshot. However, a `take_canister_snapshot` call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing a snapshot ID via the optional `replace_snapshot` parameter. The snapshot identified by the specified ID will be deleted once a new snapshot has been successfully created.
+A `take_canister_snapshot` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created.
 
-It's important to note that a snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles to not become frozen.
+It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen.
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
@@ -2895,6 +2896,103 @@ It is expected that the canister controllers (or their tooling) do this separate
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
+### IC method `read_canister_snapshot_metadata` {#ic-read_canister_snapshot_metadata}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can read metadata of a snapshot of that canister.
+
+This method returns all metadata of a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
+
+The returned metadata of a snapshot contain:
+
+- the "source" of the snapshot, i.e., whether the snapshot was created by taking the canister state using the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or by (snapshot) metadata upload using the method [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata);
+
+- the timestamp at which the snapshot was created, i.e., the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata) executed;
+
+- the size of the canister WASM (in bytes);
+
+- values of WASM globals (not to be confused with global variables in a high-level programming language) that are either exported or mutable in the canister WASM;
+
+- sizes of WASM (a.k.a. heap) and stable memory (in bytes);
+
+- hashes of chunks in the WASM chunk store;
+
+- the [canister version](#system-api-canister-version) when the snapshot was created, i.e., the method [`take_canister_snapshot`](#ic-take_canister_snapshot) or [`upload_canister_snapshot_metadata`](#ic_upload_canister_snapshot_metadata) executed;
+
+- the [certified data](#system-api-certified-data);
+
+- (optional) the state of the [global timer](#global-timer), i.e., whether it is inactive or active with a deadline (in nanoseconds since 1970-01-01);
+
+- (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed.
+
+The state of the global timer and on low wasm memory hook are `null` for existing snapshots created before release [release-2025-04-03_03-15-base (68fc31a141b25f842f078c600168d8211339f422](https://dashboard.internetcomputer.org/release/68fc31a141b25f842f078c600168d8211339f422) rolled out between April 7, 2025, and April 14, 2025, in the ICP mainnet.
+
+### IC method `read_canister_snapshot_data` {#ic-read_canister_snapshot_data}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can read data of a snapshot of that canister.
+
+This method returns a requested kind of (binary) data from a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
+
+The following kinds of (binary) data from a snapshot can be requested:
+
+- chunk of the canister WASM starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the canister WASM size as in the snapshot metadata);
+
+- chunk of the WASM (a.k.a. heap) memory starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the WASM memory size as in the snapshot metadata);
+
+- chunk of the stable memory starting at a given `offset` and with a given `size` of the chunk (`offset + size` must not exceed the stable memory size as in the snapshot metadata);
+
+- (full) chunk in the WASM chunk store identified by its `hash` (`hash` must be present in the snapshot metadata).
+
+### IC method `upload_canister_snapshot_metadata` {#ic-upload_canister_snapshot_metadata}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can create a snapshot of that canister by uploading the snapshot's metadata.
+
+An `upload_canister_snapshot_metadata` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created (in particular, before data is uploaded to that new snapshot using subsequent `upload_canister_snapshot_data` calls).
+
+It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen.
+
+Uploaded metadata of a snapshot contain:
+
+- the size of the canister WASM (in bytes);
+
+- values of WASM globals (not to be confused with global variables in a high-level programming language) that are either exported or mutable in the canister WASM;
+
+- sizes of WASM (a.k.a. heap) and stable memory (in bytes);
+
+- the [certified data](#system-api-certified-data);
+
+- (optional) the state of the [global timer](#global-timer), i.e., whether it is inactive or active with a deadline (in nanoseconds since 1970-01-01);
+
+- (optional) the state of the [on low wasm memory](#on-low-wasm-memory) hook, i.e., whether the condition for the hook to be scheduled is not satisfied, the hook is ready to be executed (i.e., the hook has been scheduled), or the hook has already been executed.
+
+If the state of the global timer and/or the on low wasm memory hook are not provided in the uploaded metadata,
+then their state is not updated when loading the snapshot using the method `load_canister_snapshot`.
+
+### IC method `upload_canister_snapshot_data` {#ic-upload_canister_snapshot_data}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+Only controllers of a canister can upload data to a snapshot of that canister.
+
+This method uploads a provided (binary) chunk of a provided kind of (binary) data to a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister or if the snapshot with the specified `snapshot_id` has been created using the method `take_canister_snapshot` (i.e., not by uploading snapshot metadata).
+
+The following kinds of (binary) data can be uploaded to a snapshot:
+
+- chunk of the canister WASM starting at a given `offset` (`offset + |chunk|` must not exceed the canister WASM size as in the snapshot metadata);
+
+- chunk of the WASM (a.k.a. heap) memory starting at a given `offset` (`offset + |chunk|` must not exceed the WASM memory size as in the snapshot metadata);
+
+- chunk of the stable memory starting at a given `offset` (`offset + |chunk|` must not exceed the stable memory size as in the snapshot metadata);
+
+- (full) chunk in the WASM chunk store (the length `|chunk|` of the provided chunk must be at most 1MiB and the maximum number of chunks in the chunk store of the snapshot is `CHUNK_STORE_SIZE` chunks).
+
+It's important to note that uploading a chunk to the WASM chunk store of the snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. On the other hand, uploading a chunk to the canister WASM, WASM (a.k.a.) heap memory, and stable memory does increase the memory footprint of the canister since their sizes have been fixed when uploading the snapshot's metadata.
+
 ### IC method `list_canister_snapshots` {#ic-list_canister_snapshots}
 
 This method can be called by canisters as well as by external users via ingress messages.
@@ -2907,7 +3005,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method deletes a specified snapshot that belongs to an existing canister. An error will be returned if the snapshot is not found. 
 
-A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` request, or if the canister itself has been deleted or run out of cycles.
+A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` or `upload_canister_snapshot_metadata` request, or if the canister itself has been deleted or run out of cycles.
 
 A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
 
@@ -3409,12 +3507,22 @@ MethodName = Text
 
 The [WebAssembly System API](#system-api) is relatively low-level, and some of its details (e.g. that the argument data is queried using separate calls, and that closures are represented by a function pointer and a number, that method names need to be mangled) would clutter this section. Therefore, we abstract over the WebAssembly details as follows:
 
--   The state of a WebAssembly module (memory, tables, globals) is hidden behind an abstract `WasmState`. The `WasmState` contains the `StableMemory`, which can be extracted using `pre_upgrade` and passed to `post_upgrade`.
+-   The state `WasmState` of a WebAssembly module is represented by its WASM (a.k.a. heap) and stable memory and a list of (exported or mutable) globals. For notational simplicity, the principal of the canister with state represented by `WasmState` is also stored in `WasmState`.
 
--   A canister module `CanisterModule` consists of an initial state, and a (pure) function that models function invocation. It either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
+-   A canister module `CanisterModule` consists of an initial state, and (pure) functions that model function invocation on the canister. A function return value either indicates that the canister function traps, or returns a new state together with a description of the invoked asynchronous System API calls.
     ```
-    WasmState = (abstract)
-    StableMemory = (abstract)
+    WasmState = {
+      wasm_memory : Blob;
+      stable_memory : Blob;
+      globals : [Global];
+      self_id : Principal;
+    }
+    Global
+      = I32(Int)
+      | I64(Int)
+      | F32(Real)
+      | F64(Real)
+      | V128(Nat);
     Callback = (abstract)
     ChunkStore = Hash -> Blob
 
@@ -3487,6 +3595,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
     RefundedCycles = Nat
 
     CanisterModule = {
+      initial_globals : [Global];
       init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
         new_state : WasmState;
         new_certified_data : NoCertifiedData | Blob;
@@ -3755,12 +3864,15 @@ Subnet = {
   subnet_size : Nat;
 }
 Snapshot = {
-  wasm_state : WasmState;
-  raw_module : Blob;
-  chunk_store : ChunkStore;
-  certified_data : Blob;
-  canister_version : CanisterVersion;
+  source : SnapshotSource;
   taken_at_timestamp : Timestamp;
+  raw_module : Blob;
+  wasm_state : WasmState;
+  chunk_store : ChunkStore;
+  canister_version : CanisterVersion;
+  certified_data : Blob;
+  global_timer : Timestamp | null;
+  on_low_wasm_memory_hook_status : OnLowWasmMemoryHookStatus | null;
 }
 S = {
   requests : Request ↦ (RequestStatus, Principal);
@@ -4020,6 +4132,7 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.method_name ∈
     { "install_code", "install_chunked_code", "uninstall_code", "update_settings", "start_canister", "stop_canister",
       "canister_status", "delete_canister", "upload_chunk", "clear_chunk_store", "stored_chunks",
+      "read_canister_snapshot_metadata", "read_canister_snapshot_data", "upload_canister_snapshot_metadata", "upload_canister_snapshot_data",
       "provisional_top_up_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
@@ -4375,9 +4488,9 @@ Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
 if S.memory_allocation[C] = 0:
   Wasm_memory_capacity = S.wasm_memory_limit[C]
 else:
-  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.store.mem|), S.wasm_memory_limit[C])
+  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.wasm_memory|), S.wasm_memory_limit[C])
 
-if Wasm_memory_capacity < |S.canisters[C].wasm_state.store.mem| + S.wasm_memory_threshold[C]:
+if Wasm_memory_capacity < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
   if S.on_low_wasm_memory_hook_status[C] = ConditionNotSatisfied:
     On_low_wasm_memory_hook_status = Ready
   else:
@@ -4525,7 +4638,7 @@ if
     memory_usage_chunk_store(S.chunk_store[M.receiver]) +
     memory_usage_snapshots(S.snapshots[M.receiver])
   (S.memory_allocation[M.receiver] = 0) or (Total_memory_usage ≤ S.memory_allocation[M.receiver])
-  (Wasm_memory_limit = 0) or |res.new_state.store.mem| <= Wasm_memory_limit
+  (Wasm_memory_limit = 0) or |res.new_state.wasm_memory| <= Wasm_memory_limit
   (res.response = NoResponse) or Ctxt.needs_to_respond
 then
   S with
@@ -4948,7 +5061,7 @@ if New_memory_allocation > 0:
   Total_memory_usage ≤ New_memory_allocation
 
 if New_wasm_memory_limit > 0:
-  |S.canisters[A.canister_id].wasm_state.store.mem| ≤ New_wasm_memory_limit
+  |S.canisters[A.canister_id].wasm_state.wasm_memory| ≤ New_wasm_memory_limit
 
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
@@ -5305,7 +5418,7 @@ Total_memory_usage = memory_usage_wasm_state(New_state) +
 if S.memory_allocation[A.canister_id] > 0:
   Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
-(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
+(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
@@ -5362,8 +5475,6 @@ The logs produced by the canister during the execution of the WebAssembly `start
 #### IC Management Canister: Code upgrade
 
 Only the controllers of the given canister can install new code. This changes the code of an *existing* canister, preserving the state in the stable memory. This involves invoking the `canister_pre_upgrade` method, if the `skip_pre_upgrade` flag is not set to `opt true`, on the old and `canister_post_upgrade` method on the new canister, which must succeed and must not invoke other methods. If the `wasm_memory_persistence` flag is set to `opt keep`, then the WebAssembly memory is preserved.
-
-In the following, the `initial_wasm_store` is the store of the WebAssembly module after instantiation (as per WebAssembly spec) of the WebAssembly module contained in `A.wasm_module`, before executing a potential `(start)` function. The store `initialize_store(State, A.wasm_module)` is the store of the WebAssembly module after instantiation (as per WebAssembly spec) of the WebAssembly module contained in `A.wasm_module` while reusing the WebAssembly memory of `State`.
 
 If the old canister module exports a private custom section with the name "enhanced-orthogonal-persistence", then the `wasm_memory_persistence` option must be set to `opt keep` or `opt replace`, i.e., the option must not be `null`.
 
@@ -5427,12 +5538,22 @@ or
 
 (
   (A.mode = upgrade U and U.wasm_memory_persistence ≠ keep)
-  Persisted_state = {store = initial_wasm_store; self_id = A.canister_id; stable_mem = Intermediate_state.stable_memory}
+  Persisted_state = {
+    wasm_memory = "";
+    stable_memory = Intermediate_state.stable_memory;
+    globals = Mod.initial_globals;
+    self_id = A.canister_id;
+  }
 )
 or
 (
   (A.mode = upgrade U and U.wasm_memory_persistence = keep)
-  Persisted_state = initialize_store(Intermediate_state, A.wasm_module)
+  Persisted_state = {
+    wasm_memory = Intermediate_state.wasm_memory;
+    stable_memory = Intermediate_state.stable_memory;
+    globals = Mod.initial_globals;
+    self_id = A.canister_id;
+  }
 )
 
 (A.mode = upgrade U and U.wasm_memory_persistence = keep)
@@ -5470,7 +5591,7 @@ Total_memory_usage = memory_usage_wasm_state(New_state) +
 if S.memory_allocation[A.canister_id] > 0:
   Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
-(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
+(S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
@@ -6081,7 +6202,7 @@ if A.settings.wasm_memory_threshold is not null:
 else:
   New_wasm_memory_threshold = 0
 
-Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation,  null, EmptyCanister.wasm_state)
+Cycles_reserved = cycles_to_reserve(S, Canister_id, New_compute_allocation, New_memory_allocation, null, EmptyCanister.wasm_state)
 if A.amount is not null:
   New_balance = A.amount - Cycles_reserved
 else:
@@ -6199,19 +6320,25 @@ else:
   |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
 
 New_snapshot = Snapshot {
-  wasm_state = S.canisters[A.canister_id].wasm_state;
-  raw_module = S.canisters[A.canister_id].raw_module;
-  chunk_store = S.chunk_store[A.canister_id];
-  certified_data = S.certified_data[A.canister_id];
-  canister_version = S.canister_version[A.canister_id];
+  source = TakenFromCanister;
   take_at_timestamp = S.time[A.canister_id];
+  raw_module = S.canisters[A.canister_id].raw_module;
+  wasm_state = S.canisters[A.canister_id].wasm_state;
+  chunk_store = S.chunk_store[A.canister_id];
+  canister_version = S.canister_version[A.canister_id];
+  certified_data = S.certified_data[A.canister_id];
+  global_timer = S.global_timer[A.canister_id];
+  on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id];
 }
-Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshot, S.canisters[A.canister_id])
+New_snapshots = S.snapshots[A.canister_id] with
+  A.replace_snapshot = (undefined)
+  Snapshot_id = New_snapshot
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
 New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
 New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
 
-liquid_balance(S, A.canister_id) ≥ 0
+liquid_balance(S', A.canister_id) ≥ 0
 ```
 
 State after  
@@ -6219,8 +6346,7 @@ State after
 ```html
 
 S' = S with
-    snapshots[A.canister_id][A.replace_snapshot] = (deleted)
-    snapshots[A.canister_id][Snapshot_id] = New_snapshot
+    snapshots[A.canister_id] = New_snapshots
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     messages = Older_messages · Younger_messages ·
@@ -6236,7 +6362,6 @@ S' = S with
 
 ```
 
-
 #### IC Management Canister: Load canister snapshot
 
 
@@ -6250,16 +6375,67 @@ M.callee = ic_principal
 M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
+
+Total_memory_usage = memory_usage_wasm_state(Snapshot.wasm_state) +
+  memory_usage_raw_module(Snapshot.raw_module) +
+  memory_usage_canister_history(New_canister_history) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
+  memory_usage_snapshots(S.snapshots[A.canister_id])
+
+if S.memory_allocation[A.canister_id] = 0:
+  Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
+else:
+  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |Snapshot.wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
+
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+
+Mod = parse_wasm_mod(Snapshot.raw_module);
+
+|Snapshot.wasm_state.globals| = |Mod.initial_globals|
+for i in [0..|Snapshot.wasm_state.globals|]:
+  if Snapshot.wasm_state.globals[i] = I32(_):
+    Mod.initial_globals = I32(_)
+  else if Snapshot.wasm_state.globals[i] = I64(_):
+    Mod.initial_globals = I64(_)
+  else if Snapshot.wasm_state.globals[i] = F32(_):
+    Mod.initial_globals = F32(_)
+  else if Snapshot.wasm_state.globals[i] = F64(_):
+    Mod.initial_globals = F64(_)
+  else if Snapshot.wasm_state.globals[i] = V128(_):
+    Mod.initial_globals = V128(_)
+
+if Snapshot.source = MetadataUpload:
+  if Snapshot.on_low_wasm_memory_hook_status = ConditionNotSatisfied:
+    HookConditionInSnapshotField = false
+  else:
+    HookConditionInSnapshotField = true
+  if Wasm_memory_capacity < |Snapshot.wasm_state.wasm_memory| + S.wasm_memory_threshold[A.canister_id]:
+    HookConditionInSnapshotState = true
+  else:
+    HookConditionInSnapshotState = false
+  (HookConditionInSnapshotField and HookConditionInSnapshotState)
+  or
+  ((not HookConditionInSnapshotField) and (not HookConditionInSnapshotState))
 
 New_state = {
   wasm_state = Snapshot.wasm_state;
   raw_module = Snapshot.raw_module;
-  module = parse_wasm_mod(Snapshot.raw_module);
+  module = Mod;
   public_custom_sections = parse_public_custom_sections(Snapshot.raw_module);
   private_custom_sections = parse_private_custom_sections(Snapshot.raw_module);
 }
+
+if Snapshot.source = MetadataUpload and Snapshot.global_timer is not null:
+  New_global_timer = Snapshot.global_timer
+else:
+  New_global_timer = S.global_timer[A.canister_id]
+
+if Snapshot.source = MetadataUpload and Snapshot.on_low_wasm_memory_hook_status is not null:
+  New_on_low_wasm_memory_hook_status = Snapshot.on_low_wasm_memory_hook_status
+else:
+  New_on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id]
+
 Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], S.snapshots[A.canister_id], New_state)
 New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
 New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
@@ -6279,7 +6455,7 @@ New_canister_history = {
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
-      source = TakenFromCanister
+      source = Snapshot.source
     };
   };
 }
@@ -6303,10 +6479,246 @@ S' = S with
     canisters[A.canister_id] = New_state
     chunk_store[A.canister_id] = Snapshot.chunk_store
     certified_data[A.canister_id] = Snapshot.certified_data
+    global_timer[A.canister_id] = New_global_timer
+    on_low_wasm_memory_hook_status[A.canister_id] = New_on_low_wasm_memory_hook_status
     balances[A.canister_id] = New_balance
     reserved_balances[A.canister_id] = New_reserved_balance
     canister_history[A.canister_id] = New_canister_history
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin;
+        response = Reply (candid());
+        refunded_cycles = M.transferred_cycles;
+      }
+
+```
+
+#### IC Management Canister: Read snapshot metadata
+
+Only the controllers of the given canister can read metadata of its snapshots.
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'read_canister_snapshot_metadata'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+
+SnapshotMetadata = {
+  source = Snapshot.source;
+  taken_at_timestamp = Snapshot.taken_at_timestamp;
+  wasm_module_size = |Snapshot.raw_module|;
+  globals = Snapshot.wasm_state.globals;
+  wasm_memory_size = |Snapshot.wasm_state.wasm_memory|;
+  stable_memory_size = |Snapshot.wasm_state.stable_memory|;
+  wasm_chunk_store = [{hash: hash} | hash <- dom(Snapshot.chunk_store)]
+  canister_version = Snapshot.canister_version;
+  certified_data = Snapshot.certified_data;
+  global_timer = Snapshot.global_timer;
+  on_low_wasm_memory_hook_status = Snapshot.on_low_wasm_memory_hook_status;
+}
+
+```
+
+State after
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Reply (candid(SnapshotMetadata))
+        refunded_cycles = M.transferred_cycles
+      }
+
+```
+
+#### IC Management Canister: Read snapshot data
+
+Only the controllers of the given canister can read (binary) data of its snapshots.
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'read_canister_snapshot_data'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+
+if A.kind = WasmModule { offset, size }:
+  offset + size <= |Snapshot.raw_module|
+else if A.kind = WasmMemory { offset, size }:
+  offset + size <= |Snapshot.wasm_state.wasm_memory|
+else if A.kind = StableMemory { offset, size }:
+  offset + size <= |Snapshot.wasm_state.stable_memory|
+else if A.kind = WasmChunk { hash }:
+  hash in dom(Snapshot.chunk_store)
+
+if A.kind = WasmModule { offset, size }:
+  Chunk = Snapshot.raw_module[offset..offset+size]
+else if A.kind = WasmMemory { offset, size }:
+  Chunk = Snapshot.wasm_state.wasm_memory[offset..offset+size]
+else if A.kind = StableMemory { offset, size }:
+  Chunk = Snapshot.wasm_state.stable_memory[offset..offset+size]
+else if A.kind = WasmChunk { hash }:
+  Chunk = Snapshot.chunk_store[hash]
+
+```
+
+State after
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = Reply (candid({chunk = Chunk}))
+        refunded_cycles = M.transferred_cycles
+      }
+
+```
+
+#### IC Management Canister: Upload canister snapshot metadata
+
+Only the controllers of the given canister can create a new snapshot by uploading its metadata.
+A snapshot will be identified internally by a system-generated opaque `Snapshot_id`.
+
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'upload_canister_snapshot_metadata'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+if A.replace_snapshot is not null:
+  A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
+else:
+  |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
+
+New_snapshot = Snapshot {
+  source = MetadataUpload;
+  take_at_timestamp = S.time[A.canister_id];
+  raw_module = [0 | _ <- [0..A.wasm_module_size]];
+  wasm_state = {
+    wasm_memory = [0 | _ <- [0..A.wasm_memory_size]];
+    stable_memory = [0 | _ <- [0..A.stable_memory_size]];
+    globals = A.globals;
+    self_id = A.canister_id;
+  };
+  chunk_store = [];
+  canister_version = S.canister_version[A.canister_id];
+  certified_data = A.certified_data;
+  global_timer = A.global_timer;
+  on_low_wasm_memory_hook_status = A.on_low_wasm_memory_hook_status;
+}
+New_snapshots = S.snapshots[A.canister_id] with
+  A.replace_snapshot = (undefined)
+  Snapshot_id = New_snapshot
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
+New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
+New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
+New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
+
+liquid_balance(S', A.canister_id) ≥ 0
+```
+
+State after
+
+```html
+
+S' = S with
+    snapshots[A.canister_id] = New_snapshots
+    balances[A.canister_id] = New_balance
+    reserved_balances[A.canister_id] = New_reserved_balance
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin;
+        response = Reply (candid({
+          snapshot_id = Snapshot_id;
+        }));
+        refunded_cycles = M.transferred_cycles;
+      }
+
+```
+
+#### IC Management Canister: Upload canister snapshot data
+
+Only the controllers of the given canister can upload (binary) data to its snapshots.
+
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'upload_canister_snapshot_data'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+
+A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
+Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+Snapshot.source = MetadataUpload
+
+if A.kind = WasmModule { offset }:
+  offset + |A.chunk| <= |Snapshot.raw_module|
+else if A.kind = WasmMemory { offset }:
+  offset + |A.chunk| <= |Snapshot.wasm_state.wasm_memory|
+else if A.kind = StableMemory { offset }:
+  offset + |A.chunk| <= |Snapshot.wasm_state.stable_memory|
+else if A.kind = WasmChunk { hash }:
+  |dom(Snapshot.chunk_store) ∪ {SHA-256(A.chunk)}| <= CHUNK_STORE_SIZE
+
+if A.kind = WasmModule { offset }:
+  New_raw_module = Snapshot.raw_module[0..offset] · A.chunk · Snapshot.raw_module[offset+|A.chunk|..|Snapshot.raw_module|]
+  New_snapshot = Snapshot with
+    raw_module = New_raw_module
+else if A.kind = WasmMemory { offset }:
+  New_wasm_memory = Snapshot.wasm_memory[0..offset] · A.chunk · Snapshot.wasm_memory[offset+|A.chunk|..|Snapshot.wasm_memory|]
+  New_snapshot = Snapshot with
+    wasm_memory = New_wasm_memory
+else if A.kind = StableMemory { offset }:
+  New_stable_memory = Snapshot.stable_memory[0..offset] · A.chunk · Snapshot.stable_memory[offset+|A.chunk|..|Snapshot.stable_memory|]
+  New_snapshot = Snapshot with
+    stable_memory = New_stable_memory
+else if A.kind = WasmChunk:
+  New_chunk_store = Snapshot.chunk_store with
+    SHA-256(A.chunk) = A.chunk
+  New_snapshot = Snapshot with
+    chunk_store = New_chunk_store
+
+New_snapshots = S.snapshots[A.canister_id] with
+  Snapshot_id = New_snapshot
+
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
+New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
+New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
+New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
+
+liquid_balance(S', A.canister_id) ≥ 0
+```
+
+State after
+
+```html
+
+S' = S with
+    snapshots[A.canister_id] = New_snapshots
+    balances[A.canister_id] = New_balance
+    reserved_balances[A.canister_id] = New_reserved_balance
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin;
@@ -6350,6 +6762,7 @@ S with
       }
 
 ```
+
 #### IC Management Canister: Delete canister snapshot
 
 A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
@@ -7074,19 +7487,7 @@ and where `lookup_in_tree` is a function that returns `Found v` for a value `v`,
 
 In Section [Abstract canisters](#abstract-canisters) we introduced an abstraction over the interface to a canister, to avoid cluttering the abstract specification of the Internet Computer from WebAssembly details. In this section, we will fill the gap and explain how the abstract canister interface maps to the [concrete System API](#system-api) and the WebAssembly concepts as defined in the [WebAssembly specification](https://webassembly.github.io/spec/core/index.html).
 
-#### The concrete `WasmState`
-
-The abstract `WasmState` above models the WebAssembly *store* `S`, which encompasses the functions, tables, memories and globals of the WebAssembly program, plus additional data maintained by the IC, such as the stable memory:
-```
-WasmState = {
-  store : S; // a store as per WebAssembly spec
-  self_id : CanId;
-  stable_mem : Blob
-}
-```
-As explained in Section "[WebAssembly module requirements](#system-api-module)", the WebAssembly module imports at most *one* memory and at most *one* table; in the following, *the* memory (resp. table) and the fields `mem` and `table` of `S` refer to that. Any system call that accesses the memory (resp. table) will trap if the module does not import the memory (resp. table).
-
-We model `mem` as an array of bytes, and `table` as an array of execution functions.
+#### The concrete `Callback`
 
 The abstract `Callback` type above models an entry point for responses:
 ```
@@ -7104,7 +7505,7 @@ Callback = {
 
 #### The execution state
 
-We can model the execution of WebAssembly functions as stateful functions that have access to the WebAssembly store. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
+We can model the execution of WebAssembly functions as stateful functions that have access to the WASM memory (a.k.a. heap) and (exported or mutable) globals in `WasmState`. In order to also model the behavior of the system imports, which have access to additional data structures, we extend the state as follows:
 ```
 Params = {
   arg : NoArg | Blob;
@@ -7135,12 +7536,6 @@ ExecutionState = {
 ```
 
 This allows us to model WebAssembly functions, including host-provided imports, as functions with implicit mutable access to an `ExecutionState`, dubbed *execution functions*. Syntactically, we express this using an implicit argument of type `ref ExecutionState` in angle brackets (e.g. `func<es>(x)` for the invocation of a WebAssembly function with type `(x : i32) -> ()`). The lifetime of the `ExecutionState` data structure is that of one such function invocation.
-
-:::warning
-
-It is nonsensical to pass to an execution function a WebAssembly store `S` that comes from a different WebAssembly module than one defining the function.
-
-:::
 
 The "liquid" balance of a canister with a given `ExecutionState` can be obtained as follows:
 ```
@@ -7196,7 +7591,9 @@ liquid_balance(es) =
 
 Finally, we can specify the abstract `CanisterModule` that models a concrete WebAssembly module.
 
--   The `initial_wasm_store` mentioned below is the store of the WebAssembly module after *instantiation* (as per WebAssembly spec) of the WebAssembly module contained in the [canister module](#canister-module-format), before executing a potential `(start)` function.
+-   We define the initial values `initial_globals` of the (exported or mutable) globals declared in the WebAssembly module.
+
+-   We define a helper `table` which is an array of all functions of the WebAssembly module listed in its (unique according to Section [WebAssembly module requirements](#system-api-module)) table.
 
 -   We define a helper function
     ```
@@ -7238,7 +7635,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
     If the WebAssembly module does not export a function called under the name `canister_init`, then
     ```
     init = λ (self_id, arg, caller, sysenv) →
-      match start({store = initial_wasm_store; self_id = self_id; stable_mem = ""}) with
+      match start({wasm_memory = ""; stable_memory = ""; globals = initial_globals; self_id = self_id;}) with
         Trap trap → Trap trap
         Return res → Return {
             new_state = res.wasm_state;
@@ -7251,7 +7648,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
     Otherwise, if the WebAssembly module exports a function `func` under the name `canister_init`, it is
     ```
     init = λ (self_id, arg, caller, sysenv) →
-      match start({store = initial_wasm_store; self_id = self_id; stable_mem = ""}) with
+      match start({wasm_memory = ""; stable_memory = ""; globals = initial_globals; self_id = self_id;}) with
         Trap trap → Trap trap
         Return res →
           let es = ref {empty_execution_state with
@@ -7514,8 +7911,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         context = context;
       }
       try
-        if fun > |es.wasm_state.store.table| then Trap
-        let func = es.wasm_state.store.table[fun]
+        if fun > |table| then Trap
+        let func = table[fun]
         if typeof(func) ≠ func (I) -> () then Trap
         func<es>(env)
         discard_pending_call<es>()
@@ -7530,8 +7927,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         }
       with Trap
         if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
-        if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
-        let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
+        if callbacks.on_cleanup.fun > |table| then Trap {cycles_used = es.cycles_used;}
+        let func = table[callbacks.on_cleanup.fun]
         if typeof(func) ≠ func (I) -> () then Trap {cycles_used = es.cycles_used;}
 
       let es' = ref { empty_execution_state with
@@ -7573,8 +7970,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         context = context;
       }
       try
-        if fun > |es.wasm_state.store.table| then Trap
-        let func = es.wasm_state.store.table[fun]
+        if fun > |table| then Trap
+        let func = table[fun]
         if typeof(func) ≠ func (I) -> () then Trap
         func<es>(env)
         discard_pending_call<es>()
@@ -7586,8 +7983,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
         }
       with Trap
         if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
-        if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
-        let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
+        if callbacks.on_cleanup.fun > |table| then Trap {cycles_used = es.cycles_used;}
+        let func = table[callbacks.on_cleanup.fun]
         if typeof(func) ≠ func (I) -> () then Trap {cycles_used = es.cycles_used;}
 
       let es' = ref { empty_execution_state with
@@ -7639,13 +8036,13 @@ In the following section, we use the these helper functions
 I ∈ {i32, i64}
 copy_to_canister<es>(dst : I, offset : I, size : I, data : blob) =
   if offset+size > |data| then Trap {cycles_used = es.cycles_used;}
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  es.wasm_state.store.mem[dst..dst+size] := data[offset..offset+size]
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  es.wasm_state.wasm_memory[dst..dst+size] := data[offset..offset+size]
 
 I ∈ {i32, i64}
 copy_from_canister<es>(src : I, size : I) blob =
-  if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  return es.wasm_state.store.mem[src..src+size]
+  if src+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  return es.wasm_state.wasm_memory[src..src+size]
 ```
 
 Cycles are represented by 128-bit values so they require 16 bytes of memory.
@@ -7653,8 +8050,8 @@ Cycles are represented by 128-bit values so they require 16 bytes of memory.
 I ∈ {i32, i64}
 copy_cycles_to_canister<es>(dst : I, data : blob) =
   let size = 16;
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  es.wasm_state.store.mem[dst..dst+size] := data[0..size]
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  es.wasm_state.wasm_memory[dst..dst+size] := data[0..size]
 ```
 
 #### System imports
@@ -7922,57 +8319,57 @@ discard_pending_call<es>() =
     es.pending_call := NoPendingCall
 
 ic0.stable_size<es>() : (page_count : i32) =
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
-  page_count := |es.wasm_state.stable_mem| / 64k
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  page_count := |es.wasm_state.stable_memory| / 64k
   return page_count
 
 ic0.stable_grow<es>(new_pages : i32) : (old_page_count : i32) =
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
   if arbitrary() then return -1
   else
-    old_size := |es.wasm_state.stable_mem| / 64k
+    old_size := |es.wasm_state.stable_memory| / 64k
     if old_size + new_pages > 2^16 then return -1
-    es.wasm_state.stable_mem :=
-      es.wasm_state.stable_mem · repeat(0x00, new_pages * 64k)
+    es.wasm_state.stable_memory :=
+      es.wasm_state.stable_memory · repeat(0x00, new_pages * 64k)
     return old_size
 
 ic0.stable_write<es>(offset : i32, src : i32, size : i32)
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
-  if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  if src+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.stable_mem[offset..offset+size] := es.wasm_state.store.mem[src..src+size]
+  es.wasm_state.stable_memory[offset..offset+size] := es.wasm_state.wasm_memory[src..src+size]
 
 ic0.stable_read<es>(dst : i32, offset : i32, size : i32)
-  if |es.wasm_state.store.mem| > 2^32 then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
+  if |es.wasm_state.wasm_memory| > 2^32 then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
+  es.wasm_state.wasm_memory[offset..offset+size] := es.wasm_state.stable_memory[src..src+size]
 
 ic0.stable64_size<es>() : (page_count : i64) =
-  return |es.wasm_state.stable_mem| / 64k
+  return |es.wasm_state.stable_memory| / 64k
 
 ic0.stable64_grow<es>(new_pages : i64) : (old_page_count : i64) =
   if arbitrary()
   then return -1
   else
-    old_size := |es.wasm_state.stable_mem| / 64k
-    es.wasm_state.stable_mem :=
-      es.wasm_state.stable_mem · repeat(0x00, new_pages * 64k)
+    old_size := |es.wasm_state.stable_memory| / 64k
+    es.wasm_state.stable_memory :=
+      es.wasm_state.stable_memory · repeat(0x00, new_pages * 64k)
     return old_size
 
 ic0.stable64_write<es>(offset : i64, src : i64, size : i64)
-  if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
+  if src+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.stable_mem[offset..offset+size] := es.wasm_state.store.mem[src..src+size]
+  es.wasm_state.stable_memory[offset..offset+size] := es.wasm_state.wasm_memory[src..src+size]
 
 ic0.stable64_read<es>(dst : i64, offset : i64, size : i64)
-  if offset+size > |es.wasm_state.stable_mem| then Trap {cycles_used = es.cycles_used;}
-  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
+  if offset+size > |es.wasm_state.stable_memory| then Trap {cycles_used = es.cycles_used;}
+  if dst+size > |es.wasm_state.wasm_memory| then Trap {cycles_used = es.cycles_used;}
 
-  es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
+  es.wasm_state.wasm_memory[offset..offset+size] := es.wasm_state.stable_memory[src..src+size]
 
 I ∈ {i32, i64}
 ic0.root_key_size<es>() : I =

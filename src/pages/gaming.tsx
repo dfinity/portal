@@ -596,9 +596,9 @@ function GamingPage() {
               href="/docs/home"
             />
             <CardWithDescription
-              title="Sample Code"
+              title="Sample Code on ICP Ninja"
               description=""
-              href="/samples"
+              href="https://icp.ninja/"
             />
           </AnimateSpawn>
         </section>
