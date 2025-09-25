@@ -66,14 +66,9 @@ type change_details = variant {
           metadata_upload : reserved;
         };
     };
-    // Deprecated: `settings_change` is used instead.
     controllers_change : record {
         controllers : vec principal;
     };
-    settings_change: record {
-        controllers : opt vec principal;
-        environment_variables_hash: opt blob;
-    }
 };
 
 type change = record {
