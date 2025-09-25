@@ -2264,7 +2264,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `memory_allocation` (`nat`)
 
-    Must be a number between 0 and 2<sup>48</sup> (i.e 256TB), inclusively.
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively.
     It indicates an amount of memory that the canister is guaranteed to be allowed to use in total.
     If the IC cannot guarantee the requested memory allocation, for example because it is oversubscribed, then the call will be rejected.
 
