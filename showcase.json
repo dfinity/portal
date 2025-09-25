@@ -6021,6 +6021,157 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/tradeos_logo_.svg",
     "oneLiner": "Universal commerce stack for P2P and AI-driven marketplaces."
+  },
+  {
+    "id": "ai_driven_governance",
+    "name": "AI-Driven Governance & Security for ICP",
+    "display": "Normal",
+    "website": "https://kcyll-maaaa-aaaak-quk5q-cai.icp0.io/",
+    "github": "https://github.com/CrossChainLabs-ICP/ai-neuron",
+    "submittableId": 49799648,
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "description": "Fetches proposals from NNS, audits code diffs with AI, stores structured reports on-chain, and delivers results through a web app and OpenChat bot.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Ai-driven-governance.svg",
+    "oneLiner": "Bridges the Eliza AI Agent with NNS to automate proposal analysis."
+  },
+  {
+    "id": "bifipal",
+    "name": "BifiPal",
+    "display": "Normal",
+    "website": "https://www.bifipal.com",
+    "twitter": "https://x.com/BifiPal",
+    "github": "https://github.com/bitcoinOS/bitcoinOS",
+    "submittableId": 47621906,
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "description": "BifiPal is a financial management platform based on Bitcoin DeFi, which treats BTC as an interest-bearing asset.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Bifipal.svg",
+    "oneLiner": "BifiPal is Bitcoin DeFi Pal, Making money with money."
+  },
+  {
+    "id": "world_cloud",
+    "name": "World Cloud",
+    "display": "Normal",
+    "website": "https://worldcloud.app",
+    "twitter": "https://x.com/WorldCloud_IC",
+    "submittableId": 50594918,
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "Creator Economy"
+    ],
+    "description": "WorldCloud is a platform facilitating web application hosting on the Internet Computer, 100% on-chain.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/World_cloud.svg",
+    "oneLiner": "WorldCloud puts your site on the blockchain, for pennies on the dollar."
+  },
+  {
+    "id": "vybers",
+    "name": "Vybers",
+    "display": "Normal",
+    "website": "https://vybers.app/",
+    "tags": [
+      "Gaming",
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Users can map their vibes and favorite songs so they can have a playlist of places and songs where others can also explore.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/vybers_simplified.svg",
+    "oneLiner": "You can save your places, songs and moods on a map and share it."
+  },
+  {
+    "id": "afritokeni",
+    "name": "afritokeni",
+    "display": "Normal",
+    "website": "https://www.afritokeni.com/",
+    "github": "https://github.com/AfriTokeni/afritokeni-mvp",
+    "tags": [
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "AfriTokeni: SMS blockchain platform serving Uganda's 14.6M unbanked via feature phones. Bitcoin-cash exchange through agent network. 83% cheaper.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/afritokeni_logo.svg",
+    "oneLiner": "Financial Freedom for All: Crypto Banking On Any Device, Anywhere."
+  },
+  {
+    "id": "chronolock",
+    "name": "Chronolock",
+    "display": "Normal",
+    "website": "https://l4pdm-ziaaa-aaaal-qssxq-cai.icp0.io/",
+    "twitter": "https://x.com/ChronoLockICP",
+    "github": "https://github.com/crnlicp/Chronolock-React-Rust",
+    "youtube": "https://www.youtube.com/@ChronoLock-icp",
+    "submittableId": 49477569,
+    "tags": [
+      "NFT",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "description": "Chronolock: Time-locked NFTs on Internet Computer with encrypted media, token economy, multi-recipient access & on-chain decentralized storage.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Chronolock_logo.jpg",
+    "oneLiner": "A dapp to create time and principal locked NFT and vetKD encryption."
+  },
+  {
+    "id": "strike",
+    "name": "STRIKE",
+    "display": "Normal",
+    "website": "https://strike.oranj.co",
+    "twitter": "https://x.com/strike_internet ",
+    "github": "https://github.com/oranj-base/strike ",
+    "youtube": "https://youtu.be/EDgnSk63wMU",
+    "submittableId": 48516330,
+    "tags": [
+      "Tools / Infrastructure",
+      "Chain Fusion"
+    ],
+    "description": "STRIKE enables users to share actionable links that unfurl into interactive Strike Cards on social media platforms.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/strike.svg",
+    "oneLiner": "Create interactive DApp actions with STRIKE on X and more!"
+  },
+  {
+    "id": "cmhunt",
+    "name": "CMHunt",
+    "display": "Normal",
+    "website": "https://cmhunt.xyz/",
+    "twitter": "https://x.com/CMHunt_Game",
+    "github": "https://github.com/temokoki/IC_Crypto_Miners_Hunt",
+    "submittableId": 49761542,
+    "tags": [
+      "Gaming"
+    ],
+    "description": "Fully on-chain P2E game with PvE mining, solo and team staking matches, plus open-world creation for fun, community-driven token drops.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/CMHunt_Logo.svg",
+    "oneLiner": "World's 1st fully-onchain real-time multiplayer P2E game!"
+  },
+  {
+    "id": "icpay",
+    "name": "icpay",
+    "display": "Normal",
+    "website": "https://icpay.org",
+    "twitter": "https://x.com/icpay_",
+    "github": "https://github.com/icpay",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "Chain Fusion"
+    ],
+    "description": "Free-to-use SDK for developers who want to accept crypto payments globally with instant settlement, minimal fees, and no chargebacks.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/icpay.svg",
+    "oneLiner": "Stripe for Web3"
   }
   
 ]
