@@ -1565,7 +1565,7 @@ defaulting to `I = i32` if the canister declares no memory.
 
     ic0.subnet_self_size : () -> I;                                                       // *
     ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
-    ic0.subnet_self_replica_count : () -> i32;                                            // *
+    ic0.subnet_self_node_count : () -> i32;                                            // *
 
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
@@ -1798,9 +1798,9 @@ A canister can learn about its own identity:
 
 A canister can learn about the subnet it is running on:
 
--   `ic0.subnet_self_size : () → I`, `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`, and `ic0.subnet_self_replica_count : () -> i32`
+-   `ic0.subnet_self_size : () → I`, `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`, and `ic0.subnet_self_node_count : () -> i32`
 
-    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running, and to retrieve the number of replicas that are currently on the subnet.
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running, and to retrieve the number of nodes that are currently on the subnet.
 
 
 ### Canister status {#system-api-canister-status}
@@ -2232,21 +2232,6 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
         transform_instructions: nat64;
     }
     ```
-
-    The function may trap if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The function returns the cycle cost of an HTTP outcall whose execution uses up exactly the amount of resources specified by the individual fields:
-    - `request_bytes` is the sum of the byte lengths of the following components of an HTTP request:
-      - `url`
-      - `headers` - i.e., the sum of the lengths of all keys and values
-      - `body`
-      - `transform` - i.e., the sum of the transform method name length and the length of the transform context.
-
-    - `http_roundtrip_time_ms` is the amount of time between the time when the HTTP request starts being sent to the remote server and the time that the HTTP response is fully received (in milliseconds).
-
-    - `raw_response_bytes` is the length of the HTTP response.
-
-    - `transformed_response_bytes` is the length of the HTTP response after transformation.
-
-    - `transform_instructions` is the number of instructions the transform function takes.
 
 -   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
@@ -3010,15 +2995,15 @@ If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB`
 
 :::
 
-### IC method `flexible_http_request` {#ic-flexible_http_request}
+### IC method `multi_response_http_request` {#ic-multi_response_http_request}
 
-This is a variant of the [`http_request`](#ic-http_request) method that allows the caller to select how many IC replicas issue the request, and returns potentially multiple responses instead of a single one, one from each replica issuing the request. Use cases include calling HTTP endpoints that provide rapidly changing information, calling non-idempotent endpoints (by issuing the request from a single replica only), calling endpoints that provide signed data whose authenticity can be checked without trusting the endpoint, and letting the user pick a trade-off between cheaper calls (fewer replicas responding) and stronger integrity guarantees (more replicas responding).
+This is a variant of the [`http_request`](#ic-http_request) method where nodes return their individual HTTP responses to the caller instead of trying to reach consensus on the response, letting the caller do its own HTTP response processing. Use cases include calling HTTP endpoints that provide rapidly changing information (where achieving consensus s unlikely) and letting the user pick a trade-off between cheaper calls (fewer replicas requesting/responding) and stronger integrity guarantees (more replicas requesting/responding).
 
 The arguments of the call are as for `http_request`, except that:
 
-- there is an additional argument `responses_from`, which can be set to either `all_replicas` or to a particular `replica_count` with a given (positive) number of replicas. The number of replicas must not exceed the subnet size.
+- there is an additional optional argument `node_counts`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `node_counts` are set, then the caller must ensure that `1 <= min_responses <= max_responses <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `node_count` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
 
-- `max_response_bytes` argument is not needed.
+- the deprecated `max_response_bytes` argument is not supported.
 
 The other arguments, `url`, `method`, `headers`, `body`, and `transform` are the same as for `http_request`. The result is a vector of responses, with each individual response having the same structure as a `http_request` response, providing `status`, `headers`, and `body` fields.
 
