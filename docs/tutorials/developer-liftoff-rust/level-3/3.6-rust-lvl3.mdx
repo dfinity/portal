@@ -1,0 +1,112 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, candid checking, candid equality, candid equality check]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 3.6 Rust level 3
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+Candid is the interface definition language (IDL) used to describe the public API of a canister. Whether written by hand or generated from source code, a Candid interface describes the methods, argument types, and return types a canister exposes.
+
+When you build a Rust canister, the Candid interface can be automatically generated from your Rust source or developers often maintain a hand-written `.did` file alongside their code to explicitly define or document the interface.
+
+You may want to compare a hand-written `.did` file with the generated one to:
+
+- Ensure they are equivalent for testing or versioning.
+
+- Avoid mismatches that could break inter-canister calls or frontend integrations.
+
+- Confirm that changes in Rust code are reflected in the published interface.
+
+## Structural comparison
+
+Candid provides a structural equality check, meaning two interfaces are considered equal if they define the same methods with equivalent argument and return types, even if the formatting or order differs.
+
+### Using `didc`
+
+To compare two Candid files use the [Candid command-line tool](https://github.com/dfinity/candid) (`didc`):
+
+```bash
+didc check canister.did canister_from_rust.did
+```
+
+This will check if the interfaces are structurally equivalent, not just textually identical. You should ensure that:
+
+- Alias and field naming differences: Rust might flatten or rename certain types or fields. Use `#[candid::rename]` or `#[candid::alias]` to control them.
+
+- Optional fields and variants: Be careful with Rust types like `Option<T>` or enums. They must match how the hand-written Candid expresses these.
+
+- Backwards compatibility: If updating the interface, ensure the new version is still compatible with existing clients.
+
+### Writing a test function
+
+Instead of comparing two files with `didc`, you can write a test within your canister that performs the check:
+
+```rust
+#[test]
+fn test_candid_interface_compatibility() {
+    use candid_parser::utils::{service_equal, CandidSource};
+    use std::path::PathBuf;
+
+    candid::export_service!();
+    let exported_interface = __export_service();
+
+    let expected_interface =
+        PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").unwrap()).join("cycles-ledger.did");
+
+    println!(
+        "Expected interface: {}\n\n",
+        CandidSource::File(expected_interface.as_path())
+            .load()
+            .unwrap()
+            .1
+            .unwrap()
+    );
+    println!("Exported interface: {}\n\n", exported_interface);
+
+    service_equal(
+        CandidSource::Text(&exported_interface),
+        CandidSource::File(expected_interface.as_path()),
+    )
+    .expect("The assets canister interface is not compatible with the cycles-ledger.did file");
+}
+```
+
+## Example
+
+Rust source:
+
+```rust
+#[derive(candid::CandidType)]
+pub struct User {
+    pub id: u64,
+    pub name: String,
+}
+
+#[ic_cdk::query]
+fn get_user() -> User {
+    ...
+}
+```
+
+Generated Candid:
+
+```candid
+type User = record {
+  id : nat64;
+  name : text;
+};
+
+service : {
+  get_user : () -> (User) query;
+}
+```
+
+If your hand-written `.did` file defines `User` the same way, even if formatted differently, the Candid equality check will confirm they are equivalent.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

@@ -1300,18 +1300,6 @@
             "in_beta": false
           },
           {
-            "title": "Native USDC integration through CCTP",
-            "overview": "Bringing USD Coin (USDC) natively to ICP via integration with Circle's CCTP (Cross-Chain Transfer Protocol).",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": ""
-          },
-          {
             "title": "BTC ordinals indexer and inscriber",
             "overview": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help it become more decentralized.",
             "status": "",
@@ -1496,7 +1484,7 @@
         "name": "Decentralized access logs and metrics",
         "milestone_id": "Levitron",
         "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
-        "eta": "June 2025",
+        "eta": "July 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1534,7 +1522,7 @@
           {
             "title": "Generation 3 node hardware",
             "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
-            "status": "future",
+            "status": "in_progress",
             "milestone_id": "Knot"
           },
           {
@@ -1985,7 +1973,7 @@
         "status": "in_progress",
         "elements": [
           {
-            "title": "Sing in with OpenID",
+            "title": "Sign in with OpenID",
             "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
             "status": "in_progress",
             "milestone_id": "Pulse"

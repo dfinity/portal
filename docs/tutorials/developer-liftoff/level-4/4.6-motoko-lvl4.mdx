@@ -26,7 +26,7 @@ In this final Motoko module of the Developer Liftoff series, you'll learn about:
 
 ## Mutable state
 
-Every actor in Motoko uses an internal, mutable state. This internal state is private and cannot be directly shared with other actors. This is a core Motoko design feature, where mutable data is always kept private to the actor that has allocated it.
+Every actor in Motoko uses an internal, mutable state. This internal state is private and cannot be directly shared with other actors. This is a key Motoko design feature, where mutable data is always kept private to the actor that has allocated it.
 
 Mutable states are not shareable, since sharing them would mean moving an object's code among other actors and executing it remotely, which poses a security risk, or alternatively sharing the state with a bit of remote logic, which poses another risk.
 

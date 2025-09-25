@@ -1,0 +1,80 @@
+---
+keywords: [intermediate, tutorial, developer liftoff, best effort responses, bounded wait calls, bounded-wait, cycles, attach cycles]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# 2.6 Rust level 2
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+
+In the previous tutorial, [2.1: Canister calls](2.1-canister-calls.mdx), you were introduced to inter-canister calls. There, you learned about how inter-canister calls use the Rust `async/await` syntax, indicating that the calls are asynchronous.
+
+## Unbounded-wait calls
+
+Previously, you used unbounded-wait calls without knowing what they were. An unbounded-wait call tells the system to wait as long as needed for a response. This guarantees that the caller will always receive a response, successful or not.
+
+However, the response can still indicate a failure. For instance, the call might fail if the target canister doesn't exist (e.g., it was deleted), if the system is overloaded and can't deliver the call, or if the callee itself panics and fails. If the call returns an error and the callee didn't fail internally, that error guarantees the call did not execute and was cleanly rejected.
+
+For example, consider the following:
+
+```rust reference
+https://github.com/dfinity/examples/blob/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls/src/caller/src/lib.rs#L62-L80
+```
+
+[Open this example in ICP Ninja to make calls and experiment with this code](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls).
+
+A clean reject when calling `increment` means the counter hasn't changed. In general, if a call that modifies the callee's state is cleanly rejected, the state remains untouched. However, with a non-clean reject, you can't be sure what happened on the callee's side.
+
+For unbounded-wait calls, the only causes of non-clean rejects are panics or explicit rejects from the callee. These can happen intentionally, for example, when using `expect()` to enforce conditions, or unintentionally due to bugs. A non-clean reject can also occur if the callee runs out of resources like memory or cycles. For example, on the mainnet, even something as simple as incrementing a counter canister may fail with a trap if the system can't allocate enough memory to handle the request. To handle this risk, a good practice is to add a query endpoint on the callee side that lets callers check the result of state-changing operations.
+
+It's also recommended to design idempotent endpoints, which are calls that have the same effect whether executed once or multiple times. These practices are especially helpful for ingress calls from users or external applications interacting with your canister via HTTP.
+
+While unbounded-wait calls offer simple error handling, they rely on the assumption that the callee will return swiftly. An unbounded-wait call can be delayed for long periods of time by serious system load, or a pathological callee that will keep making more outcalls to keep the context alive. This creates the risk of being unable to upgrade a canister since all the canister's existing calls must return before upgrading it.
+
+To avoid this scenario, you can use bounded-wait calls, which give you more control over how long the caller waits for a response. This approach is safer, especially when dealing with unreliable or potentially buggy callees.
+
+## Bounded-wait calls
+
+Bounded-wait calls don't wait indefinitely for a response, rather they timeout after a certain period and return an error to the caller. Bounded-wait calls are also referred to as best-effort response calls.
+
+They offer two major advantages over unbounded-wait calls:
+
+1. They prevent your canister from stalling, which is especially important if your canister makes calls to untrusted or unknown canisters. This helps ensure your canister can still stop or upgrade cleanly.
+
+2. They scale more effectively, making them a better fit for high-load systems.
+
+Bounded-wait calls use a more complex error handling. With unbounded calls, non-clean rejects usually mean the callee panicked. With bounded calls, timeouts can also cause non-clean rejects—even if the callee is fine. This makes it harder to know whether the call actually ran, especially when the system is under heavy load. Bounded-wait calls are best used for read operations or for state-changing calls that follow best practices like offering a separate query endpoint for checking the result and ensuring calls are idempotent.
+
+Consider the following:
+
+```rust reference
+https://github.com/dfinity/examples/blob/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls/src/caller/src/lib.rs#L82-L99
+```
+
+[Open this example in ICP Ninja to make calls and experiment with bounded-wait calls](https://icp.ninja/editor?g=https://github.com/dfinity/examples/tree/master/rust/inter-canister-calls).
+
+## Attaching cycles to calls
+
+When a canister makes a call to another canister, it can attach cycles to the call. Cycles are transferred from the caller's cycle balance to the callee's, but only if the callee explicitly accepts them using [`msg_cycles_accept128`](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html). Any unused or unaccepted cycles are refunded to the caller.
+
+There are two main reasons why you would need to attach cycles to a call:
+
+1. Pay for processing costs: For example, using the [threshold signature API](/docs/building-apps/network-features/signatures/t-ecdsa), where a canister signs a message using a shared cryptographic key.
+
+2. Transfer cycles as assets: For example, as done by the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger/).
+
+In the following example, the `sign_message` method is called, and cycles are attached to cover the cost of the signature:
+
+```rust reference
+https://github.com/dfinity/examples/blob/f7e90c540ed94075a9dc81c8f3eff81cdcba5fd0/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
+```
+
+You can attach cycles to both bounded and unbounded wait calls. With unbounded calls, unused cycles are always refunded if the call fails. With bounded calls, cycles may be lost if the call fails with a `SysUnknown` reject code (which means it timed out).
+
+This tradeoff is usually fine for low-cost API calls like threshold signatures with test keys, which typically cost ~10 billion cycles. If you're transferring large amounts of cycles, it's safer to use unbounded calls to guarantee refunds.
+
+import TutorialFooter from "@site/src/components/TutorialFooter/";
+
+<TutorialFooter />

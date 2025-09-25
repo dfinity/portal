@@ -3,45 +3,12 @@
   "categoryDescription": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multichain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
   "elements": [
     {
-      "title": "Threshold EdDSA signing",
-      "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-      "status": "deployed",
-      "eta": "2024",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Helium"
-    },
-    {
-      "title": "Solana RPC canister",
-      "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
-      "forum": "",
-      "proposal": "",
-      "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Helium"
-    },
-    {
-      "title": "Chain Fusion supports Solana",
-      "is_milestone": true,
-      "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
-      "milestone_id": "Helium",
-      "status": "in_progress",
-      "eta": "",
-      "eta_to_render": "June 2025"
-    },
-    {
       "title": "Dogecoin integration",
       "is_milestone": true,
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
       "status": "in_progress",
-      "eta_to_render": ""
+      "eta_to_render": "October 2025"
     },
     {
       "title": "Native Dogecoin integration",

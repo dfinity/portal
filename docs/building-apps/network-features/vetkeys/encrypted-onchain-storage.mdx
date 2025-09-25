@@ -22,7 +22,9 @@ Below is an example implementation of encrypted onchain storage using the `Encry
 
 It is a **ready-to-use solution**. It offers:
 
-- **Simple, cleartext frontend APIs** for key derivation and data encryption. No need to define or manage your own cryptographic primitives.
+- **Simple frontend APIs** for key derivation and data encryption. No need to define or manage your own cryptographic primitives.
+
+- **Transparent encryption/decryption** in the frontend. Data is automatically and transparently both encrypted before storage and decrypted upon retrieval in the frontend.
 
 - **Efficiency** in design. Reduce the number of `vetKey` derivation calls, saving on compute, time, and API fees.
 
@@ -40,7 +42,7 @@ It is a **ready-to-use solution**. It offers:
 
 Each encrypted map is associated with a single vetKey and one access control scope. Regardless of how many key-value pairs it contains, only one `vetKey` is needed per map. All key-value pairs inherit the same access permissions as the map itself.
 
-An encrypted map functions similarly to a standard map in most programming languages, with keys and values represented as byte strings. However, the values are encrypted. The key difference is that encrypted maps are not meant to be used directly by the canister. Any data encrypted or decrypted by the canister is considered public. Instead, users handle encryption and decryption to maintain privacy.
+An encrypted map functions similarly to a standard map in most programming languages, with keys and values represented as byte strings. However, the values are encrypted. The key difference is that encrypted maps are not meant to be used directly by the canister. Any plaintext data in canister memory should be considered publically visible.  To maintain privacy of data in `EncryptedMaps`, encryption and decryption occurs in the frontend, and the canister only ever sees data encrypted under a key it does not know.
 
 A key advantage of `EncryptedMaps` is that encryption is entirely opaque to developers using the frontend APIs. Developers specify where the data should go, namely, the map name and key, but not how it's encrypted or decrypted. The encryption is designed to be secure, efficient, and to minimize the number of `vetKeys` that need to be fetched via the mainnet management canister.
 
@@ -61,12 +63,21 @@ Beyond the inherited features of `KeyManager`, `EncryptedMaps` has also the foll
 ### Step 1: Instantiate the `EncryptedMaps` component in a backend canister
 
 <AdornedTabs groupId="languages">
-<TabItem value="rs" label="Rust" default>
+<TabItem value="mo" label="Motoko">
 
 Below is an example of how to instantiate the `EncryptedMaps` component inside a backend canister.
 
-```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L1-L38
+```motoko no-repl reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/backend/mo/canisters/ic_vetkeys_encrypted_maps_canister/src/Main.mo#L1-L10
+```
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+Below is an example of how to instantiate the `EncryptedMaps` component inside a backend canister.
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L1-L38
 ```
 
 </TabItem>
@@ -75,14 +86,25 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 ### Step 2: Define `EncryptedMaps` canister APIs for the frontend to communicate with
 
 <AdornedTabs groupId="languages">
-<TabItem value="rs" label="Rust" default>
+<TabItem value="mo" label="Motoko">
 
-Below is an example of how to implement a backend canister API that allows the frontend to interact with the `set_user_rights` method of the `EncryptedMaps` component.
+Below is an example of how to implement a backend canister API that allows the frontend to interact with the `getEncryptedValue` method of the `EncryptedMaps` component.
 
 You can follow a similar approach to expose other methods of `EncryptedMaps` through the canister interface.
 
-```rust no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L255-L272
+```motoko no-repl reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/backend/mo/canisters/ic_vetkeys_encrypted_maps_canister/src/Main.mo#L101-L112
+```
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+Below is an example of how to implement a backend canister API that allows the frontend to interact with the `get_encrypted_value` method of the `EncryptedMaps` component.
+
+You can follow a similar approach to expose other methods of `EncryptedMaps` through the canister interface.
+
+```rust reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/backend/rs/canisters/ic_vetkeys_encrypted_maps_canister/src/lib.rs#L121-L136
 ```
 
 </TabItem>
@@ -92,14 +114,14 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 
 <AdornedTabs groupId="languages">
 
-<TabItem value="ts" label="Typescript" default>
+<TabItem value="ts" label="Typescript">
 
-Below is an example of how to implement a backend canister API that allows the frontend to interact with the `set_user_rights` method of the `EncryptedMaps` component.
+Below is an example of how to implement a backend canister API that allows the frontend to interact with the `get_encrypted_value` method of the `EncryptedMaps` component.
 
 You can follow a similar approach to expose other methods of `EncryptedMaps` through the canister interface.
 
-```ts no-repl reference
-https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308/frontend/ic_vetkeys/src/encrypted_maps/encrypted_maps_canister.ts#L100-L107
+```ts reference
+https://github.com/dfinity/vetkeys/blob/dc40657e8e894f5b9a095fcc3cc5e8f9fe5e8405/frontend/ic_vetkeys/src/encrypted_maps/encrypted_maps_canister.ts#L44-L50
 ```
 
 </TabItem>
@@ -110,7 +132,7 @@ https://github.com/dfinity/vetkeys/blob/dd255c8fa1ec0356f9448f1728ed4d6a5b736308
 Your application's frontend can communicate with a backend canister that exposes `EncryptedMaps` API methods using the following TypeScript code:
 
 <AdornedTabs groupId="languages">
-<TabItem value="ts" label="Typescript" default>
+<TabItem value="ts" label="Typescript">
 
 
 ```ts
@@ -146,20 +168,53 @@ const result = await encryptedMaps.setUserRights(mapOwner, mapName, user, access
 
 - **[Password manager](https://github.com/dfinity/vetkeys/tree/main/examples/password_manager)**: Use the default `EncryptedMaps` canister with a frontend that implements a simple password manager, where the passwords are encrypted using vetKeys.
 
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager/motoko)
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager/rust)
+
+</TabItem>
+
+</AdornedTabs>
+
 - **[Password manager with metadata](https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata)**: Store additional metadata in the canister (both user-provided and canister-generated) and include this metadata alongside the encrypted data in atomic password addition or removal operations.
 
+<AdornedTabs groupId="languages">
+
+<TabItem value="mo" label="Motoko">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata/motoko)
+
+</TabItem>
+
+<TabItem value="rs" label="Rust">
+
+[![](https://icp.ninja/assets/open.svg)](http://icp.ninja/editor?g=https://github.com/dfinity/vetkeys/tree/main/examples/password_manager_with_metadata/rust)
+
+</TabItem>
+
+</AdornedTabs>
 
 ## Extensibility
 
 A developer using `EncryptedMaps` can add new functionalities to or around `EncryptedMaps` in a few ways:
 
-- Code extensions that don't require functional modifications of `EncryptedMaps` can be implemented very simply. For example, if the developer wants to add a counter that would count how many times a particular user called a particular API.
+- Code extensions that don't require functional modifications of `EncryptedMaps` can be implemented very simply. For example, if the developer wants to add a counter that would count how many times a particular user called a particular API, they can simply choose a unique name cooresponding to the user and API call, and get/set the counter value as required.
 
-- The existing methods of `EncryptedMaps` can be used in different ways. For example, one may want to add a user to multiple keys in one go. To achieve that, the frontend and canister API would need to define the batch addition of access permissions, but there would need to be no changes to the backend `EncryptedMaps` component.
+- The existing methods of `EncryptedMaps` can be used in different ways. For example, one may want to add a user to multiple keys in one go. To achieve that, the frontend and canister API would need to define the batch addition of access permissions, but this would not require any change to the backend `EncryptedMaps` component.
 
 - The internal fields of the `EncryptedMaps` backend components are public, and thus, it is possible to add new functions to `EncryptedMaps`. For example, `EncryptedMaps` provide a method to remove user's access permissions for a key. The developer can easily implement a function that removes user access from all keys in one method.
 
 ## Resources
+
+- [Motpoko backend `EncryptedMaps` code documentation](https://mops.one/ic-vetkeys/docs/encrypted_maps/EncryptedMaps).
 
 - [Rust backend `EncryptedMaps` code documentation](https://docs.rs/ic-vetkeys/latest/ic_vetkeys/encrypted_maps/struct.EncryptedMaps.html).
 

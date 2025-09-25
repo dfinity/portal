@@ -1,11 +1,11 @@
 {
-  "categoryName": "Decentralized AI",
+  "categoryName": "AI",
   "categoryDescription": "AI and ICP have significant potential to benefit one another. First, AI and ICP together enable the self-writing Internet. Given a description of an application, AI can write the application for you and, by deploying it as an ICP smart contract, make it available to you at a URL – just like that.  Second, AI running as a smart contract on ICP addresses the problem of users having to blindly trust AI models running on centralized servers by providing transparency into data usage and response generation.",
   "elements": [
     {
       "title": "Foundational LLMs",
       "description": "AI agents are a growing paradigm in software, and the Internet Computer is uniquely positioned to be the home of AI agents. Compared to the traditional IT stack, AI agents on the Internet Computer can securely and easily manage digital assets, transact amongst each other, be fully sovereign, and be tokenized and managed by DAOs. This milestone focuses on providing access to foundational LLMs, along with basic tools to make it as simple as possible to deploy agents on the Internet Computer.",
-      "status": "in_progress",
+      "status": "deployed",
       "is_milestone": true,
       "milestone_id": "Ignition",
       "eta": "",
@@ -20,46 +20,14 @@
     {
       "title": "LLM developer experience",
       "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
-      "status": "in_progress",
+      "status": "deployed",
       "milestone_id": "Ignition"
     },
     {
       "title": "LLM workers",
       "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
-      "status": "future",
+      "status": "deployed",
       "milestone_id": "Ignition"
-    },
-    {
-      "title": "Motoko coding fine-tuned model",
-      "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
-      "status": "in_progress",
-      "milestone_id": "Vertex"
-    },
-    {
-      "title": "Model benchmarks for Motoko coding",
-      "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
-      "status": "in_progress",
-      "milestone_id": "Vertex"
-    },
-    {
-      "title": "Caffeine integration",
-      "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
-      "status": "in_progress",
-      "milestone_id": "Vertex"
-    },
-    {
-      "title": "Caffeine platform",
-      "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
-      "status": "in_progress",
-      "milestone_id": "Vertex"
-    },
-    {
-      "title": "Caffeine alpha launch – dawn of the self-writing internet",
-      "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
-      "status": "in_progress",
-      "is_milestone": true,
-      "milestone_id": "Vertex",
-      "eta_to_render": ""
     }
   ]
 }
