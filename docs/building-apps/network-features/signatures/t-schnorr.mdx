@@ -171,6 +171,48 @@ The master public keys used for Ed25519 are:
 These can be used to perform key derivation offline without requiring
 using the `schnorr_public_key` management canister call.
 
+## Offline Key Derivation
+
+These example snippets demonstrate deriving Schnorr public keys without requiring
+management canister calls, using the `ic-pub-key` Rust and TypeScript libraries.
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let canister_id = ic_pub_key::CanisterId::from_str("h5jwf-5iaaa-aaaan-qmvoa-cai")?;
+
+let args = ic_pub_key::SchnorrPublicKeyArgs {
+    canister_id: Some(canister_id),
+    derivation_path: vec![b"derivation", b"path", b"values"],
+    key_id: ic_pub_key::SchnorrKeyId {
+        algorithm: ic_pub_key::SchnorrAlgorithm::Ed25519,
+        name: "key_1".to_string(),
+    },
+};
+
+let dpk = ic_pub_key::derive_schnorr_key(&args)?;
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+const mk = PublicKeyWithChainCode.forMainnetKey('key_1');
+const canisterId = Principal.fromText('h5jwf-5iaaa-aaaan-qmvoa-cai');
+const path = DerivationPath.withCanisterPrefix(canisterId, [
+    Buffer.from('derivation'),
+    Buffer.from('path'),
+    Buffer.from('value'),
+]);
+
+// Derive the new key
+const derivedKey = mk.deriveSubkeyWithChainCode(path);
+```
+
+</TabItem>
+</AdornedTabs>
+
 ## Resources
 
 - [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
@@ -180,3 +222,7 @@ using the `schnorr_public_key` management canister call.
 - [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr).
 
 - [Threshold Schnorr sample dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-schnorr).
+
+- [Rust ic-pub-key library](https://crates.io/crates/ic-pub-key)
+
+- [TS ic-pub-key library](https://www.npmjs.com/package/@dfinity/ic-pub-key)
