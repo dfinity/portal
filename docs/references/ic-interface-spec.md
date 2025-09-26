@@ -515,21 +515,40 @@ Because this uses the lexicographic ordering of principals, and the byte disting
 
 ### Canister ranges {#state-tree-canister-ranges}
 
-The state tree contains information about the canister ranges of subnets on the Internet Computer.
+The state tree also stores the canister ID ranges of subnets on the Internet Computer in a sharded form.
 
 -   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
 
-    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
-    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
-    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
-    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
-    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
+    The set of canister IDs assigned to this subnet is represented as a **list of closed intervals of canister IDs, ordered lexicographically**.  
+    This list is then split into **non-overlapping shards**, with each shard stored under a path of the above form and encoded as CBOR (see [CBOR](#cbor)).
+
+    Specifically:
+    1. Each shard contains a non-empty list of ranges.  
+    2. The first range in the shard starts with the `<canister_id>` in its path.
+    3. The next shard (if any) begins with a strictly greater starting canister ID.  
+    4. All shards together cover the entire set of canister ID ranges for the subnet without overlap.  
+
+    **Example:** Suppose a subnet has these canister ID ranges:  
     ```
-    canister_ranges = tagged<[*canister_range]>
+    [1, 3], [5, 8], [10, 12], [20, 25]
+    ```  
+    They could be split into two shards:  
+    - `/canister_ranges/<subnet_id>/1`  → `[1, 3], [5, 8]`  
+    - `/canister_ranges/<subnet_id>/10` → `[10, 12], [20, 25]`  
+
+    Each shard is represented as a CBOR-encoded list of ranges.  
+    The encoding follows the same CDDL (see [CDDL](#cddl)) as for subnet-level canister ranges:
+
+    ```
+    canister_ranges = tagged<[*canister_range]> ; unlike before, this now represents a single shard
     canister_range = [principal principal]
     principal = bytes .size (0..29)
     tagged<t> = #6.55799(t) ; the CBOR tag
     ```
+
+    **Difference from `/subnet/<subnet_id>/canister_ranges`:**  
+    - `/subnet/<subnet_id>/canister_ranges` stores the complete set of ranges in one blob.  
+    - `/canister_ranges/<subnet_id>/<canister_id>` stores the same ranges split into consecutive shards, each identified by its starting `<canister_id>` in the path. This facilitates e.g., binary searching.
 
 ### Request status {#state-tree-request-status}
 
