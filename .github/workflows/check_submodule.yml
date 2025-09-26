@@ -19,8 +19,8 @@ jobs:
           # Submodules are very easy to accidentally overwrite with old versions.
           # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
           
-          # dfx 0.29.1
-          LATEST_SDK="d3a8c3908995ae2e434e17a45d1c8de6a32988c4"
+          # dfx 0.29.2
+          LATEST_SDK="52b98b27545528c361423981954be6bc79e645d4"
 
           # motoko new docs 7/21/2025
           LATEST_MOTOKO="3ec4d7300e3ad9af8abffe6d5c436707781c5906"
