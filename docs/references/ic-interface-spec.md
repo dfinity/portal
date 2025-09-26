@@ -1824,7 +1824,7 @@ Subsequent calls to the following functions set further attributes of that call,
 
 If a cleanup callback (of type `(env : I) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
 
-During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
+During the execution of the `cleanup` function, only a subset of the System API is available. The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
 
 If this traps (e.g. runs out of cycles), the state changes from the `cleanup` function are discarded, as usual, and no further actions are taken related to that call. Canisters likely want to avoid this from happening.
 
@@ -2204,21 +2204,26 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 ### Debugging aids
 
-In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
+Canister can produce logs available through the management canister endpoint [`fetch_canister_logs`](#ic-fetch_canister_logs).
 
 -   `ic0.debug_print : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
-    When executing in an environment that supports debugging, this copies out the data specified by `src` and `size`, and logs, prints or stores it in an environment-appropriate way. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form). The data does typically not include a terminating `\0` or `\n`.
+    This copies out the data specified by `src` and `size` and appends that data to canister logs.
+    The data can be trimmed to an implementation defined maximum size.
 
-    Semantically, this function is always a no-op, and never traps, even if the `src+size` exceeds the size of the memory, or if this function is executed from `(start)`. If the environment cannot perform the print, it just skips it.
+    This function never traps, even if the `src+size` exceeds the size of the memory (in which case system-generated data are used instead).
 
-Similarly, the System API allows the canister to effectively trap, but give some indication about why it trapped:
+Similarly, the System API allows the canister to effectively trap and give some indication about why it trapped:
 
 -   `ic0.trap : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
-    This function always traps.
+    This copies out the data specified by `src` and `size` and appends that data to canister logs.
+    The data can be trimmed to an implementation defined maximum size.
 
-    The environment may copy out the data specified by `src` and `size`, and log, print or store it in an environment-appropriate way, or include it in system-generated reject messages where appropriate. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form or substituting invalid characters).
+    Moreover, the data specified by `src` and `size` might be included in a reject message
+    (trimmed to an implementation defined maximum size and omitting bytes that are not valid UTF-8).
+
+    This function always traps.
 
 ### Outlook: Using Host References {#host-references}
 
