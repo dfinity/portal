@@ -2886,13 +2886,13 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method loads a snapshot identified by `snapshot_id` onto the canister. It fails if no snapshot with the specified `snapshot_id` can be found.
 
-The snapshot can only be loaded onto a canister that belongs to the same subnet as the canister for which the snapshot was taken.
+The snapshot can only be loaded onto a canister that belongs to the same subnet as the canister from which the snapshot is loaded.
 
 The caller must be a controller of
 
 - the canister onto which the snapshot is loaded; and
 
-- the canister for which the snapshot was taken.
+- the canister from which the snapshot is loaded.
 
 :::note
 
@@ -3014,7 +3014,7 @@ This method deletes a specified snapshot that belongs to an existing canister. A
 
 A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` or `upload_canister_snapshot_metadata` request, or if the canister itself has been deleted or run out of cycles.
 
-A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
+A snapshot may be deleted only by the controllers of the canister that the snapshot belongs to.
 
 ### IC method `fetch_canister_logs` {#ic-fetch_canister_logs}
 
@@ -6779,7 +6779,7 @@ S with
 
 #### IC Management Canister: Delete canister snapshot
 
-A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
+A snapshot may be deleted only by the controllers of the canister that the snapshot belongs to.
 
 ```html
 
