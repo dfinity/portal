@@ -740,6 +740,25 @@ An example of this error is:
 
 To fix this error, ensure that you are a controller of the canister that the snapshot belongs to.
 
+### Canister metadata no wasm module
+
+This indicates that you are trying to fetch the metdata of a canister while there is no Wasm module running on that canister.
+
+An example of this error is:
+```
+  The canister xxx-xxx has no Wasm module and hence no metadata is available.
+```
+
+### Canister metadata section not found
+
+This indicates that you are trying to fetch a metadata section that either does not exist, or that is private while you are not the controller of the canister.
+
+An example of this error is:
+```
+  The canister xxx-xxx has no metadata section with the name <metadata section name>.
+```
+
+TO fix this error, make sure the metadata section exists for the given canister and section name. Or in the case of a private section, resend the message with a principal that is the controller of the canister.
 
 [canbench]: /docs/building-apps/advanced/benchmarking
 
