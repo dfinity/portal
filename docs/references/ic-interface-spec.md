@@ -2514,7 +2514,10 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available). Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module. Loading a snapshot is described by the canister version, snapshot ID, timestamp at which the snapshot was taken, and the source of the snapshot (canister state or metadata upload). Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, snapshot restoration, or controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available).
+- Canister creations and controllers changes are described by the full new set of the canister controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+- Code deployments are described by their mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module.
+- Loading a snapshot is described by the canister ID of the canister from which the snapshot was loaded (if that canister ID is different than the canister ID onto which the snapshot is loaded), the snapshot ID, the canister version and timestamp at which the snapshot was taken (the canister version and timestamp refer to the canister from which the snapshot was loaded), and the source of the snapshot (canister state or metadata upload).
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -2902,9 +2905,13 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method loads a snapshot identified by `snapshot_id` onto the canister. It fails if no snapshot with the specified `snapshot_id` can be found.
 
-The snapshot can only be loaded onto the canister for which the snapshot was taken.
+The snapshot can only be loaded onto a canister that belongs to the same subnet as the canister from which the snapshot is loaded.
 
-Only controllers can take a snapshot of a canister and load it back to the canister.
+The caller must be a controller of
+
+- the canister onto which the snapshot is loaded; and
+
+- the canister from which the snapshot is loaded.
 
 :::note
 
@@ -3026,7 +3033,7 @@ This method deletes a specified snapshot that belongs to an existing canister. A
 
 A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` or `upload_canister_snapshot_metadata` request, or if the canister itself has been deleted or run out of cycles.
 
-A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
+A snapshot may be deleted only by the controllers of the canister that the snapshot belongs to.
 
 ### IC method `fetch_canister_logs` {#ic-fetch_canister_logs}
 
@@ -3841,8 +3848,9 @@ ChangeDetails
       module_hash : Blob;
     }
   | LoadSnapshot {
-      canister_version : CanisterVersion;
+      from_canister_id : PrincipalId;
       snapshot_id : SnapshotId;
+      canister_version : CanisterVersion;
       taken_at_timestamp : Timestamp;
       source : SnapshotSource;
     }
@@ -6384,7 +6392,7 @@ S' = S with
 #### IC Management Canister: Load canister snapshot
 
 
-Only the controllers of the given canister can load a snapshot.
+Controllers of a canister can load a snapshot taken for a canister on the same subnet and also controlled by the caller.
 
 ```html
 
@@ -6394,6 +6402,10 @@ M.callee = ic_principal
 M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
+A.snapshot_id ∈ dom(S.snapshots[Canister_id])
+S.canister_subnet[A.canister_id].subnet_id = S.canister_subnet[Canister_id].subnet_id
+M.caller ∈ S.controllers[Canister_id]
+Snapshot = S.snapshots[Canister_id][A.snapshot_id]
 
 Total_memory_usage = memory_usage_wasm_state(Snapshot.wasm_state) +
   memory_usage_raw_module(Snapshot.raw_module) +
@@ -6405,9 +6417,6 @@ if S.memory_allocation[A.canister_id] = 0:
   Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
 else:
   Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |Snapshot.wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
-
-A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
-Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 
 Mod = parse_wasm_mod(Snapshot.raw_module);
 
@@ -6464,6 +6473,10 @@ S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
 }
+if Canister_id = A.canister_id:
+  From_canister_id = null
+else:
+  From_canister_id = Canister_id
 New_canister_history = {
   total_num_changes = N + 1;
   recent_changes = H · {
@@ -6471,6 +6484,7 @@ New_canister_history = {
     canister_version = S.canister_version[A.canister_id] + 1
     origin = change_origin(M.caller, A.sender_canister_version, M.origin);
     details = LoadSnapshot {
+      from_canister_id = From_canister_id
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
@@ -6784,7 +6798,7 @@ S with
 
 #### IC Management Canister: Delete canister snapshot
 
-A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
+A snapshot may be deleted only by the controllers of the canister that the snapshot belongs to.
 
 ```html
 
