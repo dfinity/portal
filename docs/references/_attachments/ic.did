@@ -85,6 +85,29 @@ type http_request_result = record {
     body : blob;
 };
 
+type http_request_resource_report = record {
+  downloaded_bytes: opt variant { used: nat64; exceeded: reserved };
+  request_time_ms: opt variant { used: nat64; exceeded: reserved };
+  transform_instructions: opt variant { used: nat64; exceeded: reserved };
+  transformed_response_size: opt variant { used: nat64; exceeded: reserved };
+}
+
+multi_response_http_request_err = record {
+  cause: opt variant {
+    timeout : vec (principal, http_request_resource_report);
+    invalid_parameters: reserved;
+    limits_exceeded: vec (principal, http_request_resource_report);
+    out_of_cycles : vec (principal, http_request_resource_report);
+  };
+  message: text;
+}
+
+
+type multi_response_http_request_result = record {
+  ok: vec http_request_result;
+  err: multi_response_http_request_err;
+};
+
 type ecdsa_curve = variant {
     secp256k1;
 };
@@ -316,6 +339,22 @@ type http_request_args = record {
         context : blob;
     };
 };
+
+type multi_response_http_request_args = record {
+    url : text;
+    method : variant { get; head; post };
+    headers : vec http_header;
+    body : opt blob;
+    transform : opt record {
+        function : func(record { response : http_request_result; context : blob }) -> (http_request_result) query;
+        context : blob;
+    };
+    node_counts: opt record {
+      min_responses: nat64;
+      max_responses: nat64;
+      total_requests: nat64;
+    };
+}
 
 type ecdsa_public_key_args = record {
     canister_id : opt canister_id;
@@ -599,6 +638,7 @@ service ic : {
     deposit_cycles : (deposit_cycles_args) -> ();
     raw_rand : () -> (raw_rand_result);
     http_request : (http_request_args) -> (http_request_result);
+    multi_response_http_request : (multi_response_http_request_args) -> multi_response_http_request_response;
 
     // Threshold ECDSA signature
     ecdsa_public_key : (ecdsa_public_key_args) -> (ecdsa_public_key_result);
