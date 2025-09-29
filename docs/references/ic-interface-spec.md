@@ -5279,6 +5279,7 @@ S' = S with
     reserved_balance_limits[A.canister_id] = New_reserved_balance_limit
     wasm_memory_limit[A.canister_id] = New_wasm_memory_limit
     wasm_memory_threshold[A.canister_id] = New_wasm_memory_threshold
+    environment_variables[A.canister_id] = New_environment_variables
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
@@ -6414,6 +6415,7 @@ S' = S with
     reserved_balance_limits[Canister_id] = New_reserved_balance_limit
     wasm_memory_limit[Canister_id] = New_wasm_memory_limit
     wasm_memory_threshold[Canister_id] = New_wasm_memory_threshold
+    environment_variables[Canister_id] = New_environment_variables
     on_low_wasm_memory_hook_status[Canister_id] = ConditionNotSatisfied
     certified_data[Canister_id] = ""
     canister_history[Canister_id] = New_canister_history
