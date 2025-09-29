@@ -527,21 +527,40 @@ Because this uses the lexicographic ordering of principals, and the byte disting
 
 ### Canister ranges {#state-tree-canister-ranges}
 
-The state tree contains information about the canister ranges of subnets on the Internet Computer.
+The state tree also stores the canister ID ranges of subnets on the Internet Computer in a sharded form.
 
 -   `/canister_ranges/<subnet_id>/<canister_id>` (blob)
 
-    A non-empty set of canister ids assigned to the provided subnet, starting with the provided canister id and
-    ending with a canister id that is smaller than `<next_canister_id>` for the next canister id
-    in a path of the form `/canister_ranges/<subnet_id>/<next_canister_id>`
-    (in other words, the lexicographically sorted list of all canister ids assigned to the provided subnet is split into chunks starting at the provided `<canister_id>`).
-    The set of canister ids is represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
+    The set of canister IDs assigned to this subnet is represented as a **list of closed intervals of canister IDs, ordered lexicographically**.  
+    This list is then split into **non-overlapping shards**, with each shard stored under a path of the above form and encoded as CBOR (see [CBOR](#cbor)).
+
+    Specifically:
+    1. Each shard contains a non-empty list of ranges.  
+    2. The first range in the shard starts with the `<canister_id>` in its path.
+    3. The next shard (if any) begins with a strictly greater starting canister ID.  
+    4. All shards together cover the entire set of canister ID ranges for the subnet without overlap.  
+
+    **Example:** Suppose a subnet has these canister ID ranges:  
     ```
-    canister_ranges = tagged<[*canister_range]>
+    [1, 3], [5, 8], [10, 12], [20, 25]
+    ```  
+    They could be split into two shards:  
+    - `/canister_ranges/<subnet_id>/1`  → `[1, 3], [5, 8]`  
+    - `/canister_ranges/<subnet_id>/10` → `[10, 12], [20, 25]`  
+
+    Each shard is represented as a CBOR-encoded list of ranges.  
+    The encoding follows the same CDDL (see [CDDL](#cddl)) as for subnet-level canister ranges:
+
+    ```
+    canister_ranges = tagged<[*canister_range]> ; unlike before, this now represents a single shard
     canister_range = [principal principal]
     principal = bytes .size (0..29)
     tagged<t> = #6.55799(t) ; the CBOR tag
     ```
+
+    **Difference from `/subnet/<subnet_id>/canister_ranges`:**  
+    - `/subnet/<subnet_id>/canister_ranges` stores the complete set of ranges in one blob.  
+    - `/canister_ranges/<subnet_id>/<canister_id>` stores the same ranges split into consecutive shards, each identified by its starting `<canister_id>` in the path. This facilitates e.g., binary searching.
 
 ### Request status {#state-tree-request-status}
 
@@ -1826,7 +1845,7 @@ Subsequent calls to the following functions set further attributes of that call,
 
 If a cleanup callback (of type `(env : I) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
 
-During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
+During the execution of the `cleanup` function, only a subset of the System API is available. The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
 
 If this traps (e.g. runs out of cycles), the state changes from the `cleanup` function are discarded, as usual, and no further actions are taken related to that call. Canisters likely want to avoid this from happening.
 
@@ -2267,21 +2286,26 @@ These system calls allow canisters to:
 
 ### Debugging aids
 
-In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
+Canister can produce logs available through the management canister endpoint [`fetch_canister_logs`](#ic-fetch_canister_logs).
 
 -   `ic0.debug_print : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
-    When executing in an environment that supports debugging, this copies out the data specified by `src` and `size`, and logs, prints or stores it in an environment-appropriate way. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form). The data does typically not include a terminating `\0` or `\n`.
+    This copies out the data specified by `src` and `size` and appends that data to canister logs.
+    The data can be trimmed to an implementation defined maximum size.
 
-    Semantically, this function is always a no-op, and never traps, even if the `src+size` exceeds the size of the memory, or if this function is executed from `(start)`. If the environment cannot perform the print, it just skips it.
+    This function never traps, even if the `src+size` exceeds the size of the memory (in which case system-generated data are used instead).
 
-Similarly, the System API allows the canister to effectively trap, but give some indication about why it trapped:
+Similarly, the System API allows the canister to effectively trap and give some indication about why it trapped:
 
 -   `ic0.trap : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
-    This function always traps.
+    This copies out the data specified by `src` and `size` and appends that data to canister logs.
+    The data can be trimmed to an implementation defined maximum size.
 
-    The environment may copy out the data specified by `src` and `size`, and log, print or store it in an environment-appropriate way, or include it in system-generated reject messages where appropriate. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form or substituting invalid characters).
+    Moreover, the data specified by `src` and `size` might be included in a reject message
+    (trimmed to an implementation defined maximum size and omitting bytes that are not valid UTF-8).
+
+    This function always traps.
 
 ### Outlook: Using Host References {#host-references}
 
