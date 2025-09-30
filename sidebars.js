@@ -670,16 +670,16 @@ const sidebars = {
     "defi/token-standards/index",
     {
       type: "category",
-      label: "Creating tokens",
+      label: "Tutorials",
       items: [
         {
           type: "doc",
-          label: "Fungible tokens",
+          label: "Launch a token",
           id: "defi/create",
         },
         {
           type: "doc",
-          label: "Non-fungible tokens",
+          label: "Launch a NFT collection",
           id: "defi/nft-collections",
         },
       ],
