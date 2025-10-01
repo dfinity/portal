@@ -27,7 +27,7 @@ For more information, see the [Internet Identity specification](/docs/references
 
 ## Configuring alternative origins
 
-For this example, you will have two domains, **A** and **B**. **A** will be the derivation origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at `https://yourcustomdomain.com` and `https://www.yourdomain.com`.
+For this example, you will have two domains, **A** and **B**. **A** will be the derivation origin, and **B** will be the alternative domain. To help illustrate this model, consider this website, which is hosted both at `https://xxxxx.icp0.io` and `https://www.yourcustomdomain.com`.
 
 In this example, **A** would be `https://xxxxx.icp0.io`.
 
@@ -35,7 +35,7 @@ In this example, **A** would be `https://xxxxx.icp0.io`.
 
 ### Setting the derivation origin
 
-On the code for the **B** origin, you need to set the `derivationOrigin` to **A**.
+On the code for the **B** origin, you need to set the `derivationOrigin` to the AuthClient to **A**.
 
 ```typescript
 const authClient = await AuthClient.login({
@@ -43,6 +43,8 @@ const authClient = await AuthClient.login({
   derivationOrigin: "https://xxxxx.icp0.io",
 });
 ```
+
+For more details about the [login options in the AuthClient, see its documentation](https://js.icp.build/auth/latest/api/client/interfaces/authclientloginoptions#derivationorigin).
 
 ### Listing alternative origins
 
