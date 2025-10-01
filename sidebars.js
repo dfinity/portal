@@ -679,7 +679,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Launch a NFT collection",
+          label: "Launch an NFT collection",
           id: "defi/nft-collections",
         },
       ],
