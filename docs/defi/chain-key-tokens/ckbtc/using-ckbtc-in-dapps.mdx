@@ -10,172 +10,89 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Chain-key tokens" ]} />
 
-ckBTC is an ICRC-2 compliant token, meaning it supports the [ICRC-1](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards.
+ckBTC can be integrated into dapps in several ways. Integration may target the dapp developer’s own canisters or the end users of the application. The main options are:
+- allowing clients to interact with the ckBTC ledger directly,
+- enabling a canister to interact with the ckBTC ledger (for its own use or to manage user funds), and
+- supporting Bitcoin ↔ ckBTC conversion for deposits and withdrawals.
 
-To integrate ckBTC into your dapp, you can write code that uses the [ICRC-1 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1). For token transfers and account balances, ckBTC requests must be sent to the ICRC-1 ledger canister with principal ID `mxzaz-hqaaa-aaaar-qaada-cai`.
+## Ledger interaction
 
-To write canister code that makes calls to the ICRC-1 ledger, you will need to use inter-canister calls and specify the principal ID of the ICRC-1 ledger canister. Then, to interact with ckBTC, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+The [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) implements the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards.
+This means that integration with the ledger involves calling the standard endpoints for actions such as:
 
-You can deploy the ICRC-1 ledger locally for testing. [Learn more in the ICRC-1 ledger setup documentation](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
+- `icrc1_balance_of` to fetch balances,  
+- `icrc1_transfer` to transfer tokens, and
+- `icrc2_approve` / `icrc2_transfer_from` for delegated transfers.
 
-Once you have your project configured to use the ICRC-1 ledger, you can interact with it for workflows such as transferring tokens:
+There are two primary ways to interact with the ckBTC ledger:
 
-<Tabs groupId="languages">
-<TabItem value="motoko" label="Motoko" default>
+### Client calls (via agent)
+A client application (such as a frontend, CLI tool, or script) can use an **[agent](/docs/building-apps/interact-with-canisters/agents/overview)** to interact directly with the ckBTC ledger canister.
 
-```motoko
-import ckbtcLedger "canister:icrc1_ledger_canister";
-import Debug "mo:base/Debug";
-import Result "mo:base/Result";
-import Option "mo:base/Option";
-import Blob "mo:base/Blob";
-import Error "mo:base/Error";
+An **agent** is the API client layer used to call ICP canisters. For example, the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) can create an actor from a canister’s Candid interface and provides methods like `call`, `query`, and `readState`.
 
-actor {
+The following libraries simplify creating actors for the ckBTC ledger:
 
-  type Account = {
-    owner : Principal;
-    subaccount : ?[Nat8];
-  };
+- **Rust:** [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent)
+- **TypeScript:** [@dfinity/ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc)
 
-  type TransferArgs = {
-    amount : Nat;
-    toAccount : Account;
-  };
+In this model, all transactions are executed from the user’s own [account](/docs/defi/token-standards/#accounts-principals-and-subaccounts) (typically the principal without a subaccount).
 
-  public shared ({ caller }) func transfer(args : TransferArgs) : async Result.Result<ckbtcLedger.BlockIndex, Text> {
-    Debug.print(
-      "Transferring "
-      # debug_show (args.amount)
-      # " tokens to account"
-      # debug_show (args.toAccount)
-    );
+### Inter-canister calls
+A canister can also interact with the ckBTC ledger.
 
-    let transferArgs : ckbtcLedger.TransferArg = {
-      // can be used to distinguish between transactions
-      memo = null;
-      // the amount we want to transfer
-      amount = args.amount;
-      // we want to transfer tokens from the default subaccount of the canister
-      from_subaccount = null;
-      // if not specified, the default fee for the canister is used
-      fee = null;
-      // we take the principal and subaccount from the arguments and convert them into an account identifier
-      to = args.toAccount;
-      // a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller then this is set to the current ICP time
-      created_at_time = null;
-    };
+- In some cases, the canister may use ckBTC for its own purposes, such as making payments to other canisters, managing a treasury, or executing automated transfers.
+- In other cases, the canister may act on behalf of users, which requires managing user funds. This can be achieved by creating **subaccounts per user** or by **pooling all funds in a single account** and maintaining an internal balance table.
+  - It is recommended to use the [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) approval flow (`icrc2_approve` / `icrc2_transfer_from`) to move funds from a user’s wallet to the backend canister.
 
-    try {
-      // initiate the transfer
-      let transferResult = await ckbtcLedger.icrc1_transfer(transferArgs);
+Libraries are available to simplify inter-canister calls:
 
-      // check if the transfer was successful
-      switch (transferResult) {
-        case (#Err(transferError)) {
-          return #err("Couldn't transfer funds:\n" # debug_show (transferError));
-        };
-        case (#Ok(blockIndex)) { return #ok blockIndex };
-      };
-    } catch (error : Error) {
-      // catch any errors that might occur during the transfer
-      return #err("Reject message: " # Error.message(error));
-    };
-  };
-};
-```
+- **Rust:** [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk)
+- **Motoko:** [icrc1-types](https://mops.one/icrc1-types), [icrc2-types](https://mops.one/icrc2-types)
 
-</TabItem>
+Example code:
+- Motoko: [transfer](https://github.com/dfinity/examples/tree/master/motoko/token_transfer), [transfer_from](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from)
+- Rust: [transfer](https://github.com/dfinity/examples/tree/master/rust/token_transfer), [transfer_from](https://github.com/dfinity/examples/tree/master/rust/token_transfer_from)
 
-<TabItem value="rust" label="Rust" default>
+## Bitcoin ↔ ckBTC conversion
 
-```rust
-use candid::{CandidType, Deserialize, Principal};
-use icrc_ledger_types::icrc1::account::Account;
-use icrc_ledger_types::icrc1::transfer::{BlockIndex, NumTokens, TransferArg, TransferError};
-use serde::Serialize;
+Beyond ledger interactions, a dapp may also support minting and burning ckBTC by calling the **ckBTC minter canister**.
 
-#[derive(CandidType, Deserialize, Serialize)]
-pub struct TransferArgs {
-    amount: NumTokens,
-    to_account: Account,
-}
+This can be done in two ways:
 
-#[ic_cdk::update]
-async fn transfer(args: TransferArgs) -> Result<BlockIndex, String> {
-    ic_cdk::println!(
-        "Transferring {} tokens to account {}",
-        &args.amount,
-        &args.to_account,
-    );
+- **Client calls (via agent)**
+  - Any client can call the ckBTC minter canister directly.
+  - **TypeScript:** [@dfinity/ckbtc](https://www.npmjs.com/package/@dfinity/ckbtc)
 
-    let transfer_args: TransferArg = TransferArg {
-        // can be used to distinguish between transactions
-        memo: None,
-        // the amount we want to transfer
-        amount: args.amount,
-        // we want to transfer tokens from the default subaccount of the canister
-        from_subaccount: None,
-        // if not specified, the default fee for the canister is used
-        fee: None,
-        // the account we want to transfer tokens to
-        to: args.to_account,
-        // a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller then this is set to the current ICP time
-        created_at_time: None,
-    };
+- **Inter-canister calls**
+  - A backend canister can call the ckBTC minter canister as part of its logic, either for its own use or on behalf of users.
 
-    // 1. Asynchronously call another canister function using `ic_cdk::call`.
-    ic_cdk::call::<(TransferArg,), (Result<BlockIndex, TransferError>,)>(
-        // 2. Convert a textual representation of a Principal into an actual `Principal` object. The principal is the one we specified in `dfx.json`.
-        //    `expect` will panic if the conversion fails, ensuring the code does not proceed with an invalid principal.
-        Principal::from_text("mxzaz-hqaaa-aaaar-qaada-cai")
-            .expect("Could not decode the principal."),
-        // 3. Specify the method name on the target canister to be called, in this case, "icrc1_transfer".
-        "icrc1_transfer",
-        // 4. Provide the arguments for the call in a tuple, here `transfer_args` is encapsulated as a single-element tuple.
-        (transfer_args,),
-    )
-    .await // 5. Await the completion of the asynchronous call, pausing the execution until the future is resolved.
-    // 6. Apply `map_err` to transform any network or system errors encountered during the call into a more readable string format.
-    //    The `?` operator is then used to propagate errors: if the result is an `Err`, it returns from the function with that error,
-    //    otherwise, it unwraps the `Ok` value, allowing the chain to continue.
-    .map_err(|e| format!("failed to call ledger: {:?}", e))?
-    // 7. Access the first element of the tuple, which is the `Result<BlockIndex, TransferError>`, for further processing.
-    .0
-    // 8. Use `map_err` again to transform any specific ledger transfer errors into a readable string format, facilitating error handling and debugging.
-    .map_err(|e| format!("ledger transfer error {:?}", e))
-}
+Learn more about implementing this conversion flow in the [ckBTC best practices](/docs/defi/defi-best-practices).
 
-// Enable Candid export (see /docs/building-apps/developer-tools/cdks/rust/generating-candid)
-ic_cdk::export_candid!();
-```
+### Why integrate conversion into a dapp
+- Enables deposits from Bitcoin → ckBTC and withdrawals from ckBTC → Bitcoin without leaving the application.
+- Reduces friction and improves overall user experience.
 
-</TabItem>
-</Tabs>
+**Note:** Applications that integrate with [OISY](https://oisy.com) may rely on OISY to handle Bitcoin ↔ ckBTC conversion on behalf of their users, instead of implementing the conversion themselves.
 
-View the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) for more information on sending and receiving tokens.
-
-## Write a smart contract that mints and burns ckBTC
-
-When building dapps where users can deposit bitcoin to receive ckBTC or burn ckBTC to withdraw bitcoin, developers are advised to adhere to the following best practices.
-
-In order to mint ckBTC, the user must first deposit bitcoin into the Bitcoin address returned by the endpoint `get_btc_address`, which is tied to the user's prinicipal ID and possibly a subaccount.
-
-Next, the user should issue query calls to the `bitcoin_get_utxos_query` endpoint of the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister) to retrieve the unspent outputs of the Bitcoin address obtained in the first step.
-If the user does not know for which unspent outputs ckBTC has already been minted, the `get_known_utxos` query endpoint can be called on the ckBTC minter, returning the known unspent outputs for the Bitcoin address derived from the user's principal ID (and possibly a subaccount).
-
-If there is an unspent output that the ckBTC minter has not seen yet, the user can issue an update call to the `update_balance` endpoint on the ckBTC minter. The ckBTC minter will then mint ckBTC for each newly discovered unspent output.
-
-The recommended mechanism to withdraw bitcoin is to first create an [ICRC-2 approval](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md#icrc2_approve) by calling the `icrc2_approve` endpoint on the ckBTC ledger, authorizing the ckBTC minter (canister ID: `mqygn-kiaaa-aaaar-qaadq-cai`) to retrieve at least the amount that is to be withdrawn. After that, the user can call the `retrieve_btc_with_approval` endpoint on the ckBTC minter, which will create a transaction to burn the specified amount in ckBTC. When this operation succeeds, the ckBTC minter will then create a Bitcoin transaction to withdraw the corresponding amount in bitcoin to the user's specified Bitcoin address.
-
-[Learn more about ckBTC best practices](/docs/defi/defi-best-practices).
-
-## ckBTC production application examples
-
-- [ICDex](https://avjzx-pyaaa-aaaaj-aadmq-cai.raw.ic0.app/ICDex).
-
-- [ICPSwap](https://icpswap.com/).
+## Examples applications for ckBTC
 
 - [Bitcoin point of sale app](/docs/references/samples/motoko/ic-pos/).
 
-- [ICPayroll](https://ilcnp-myaaa-aaaal-qjdxa-cai.icp0.io/)
+## Some applications that integrated ckBTC
+
+- [Bitcoin Gift Cards](https://btc-gift-cards.com).
+
+- [ICLight](https://iclight.io/ICDex/ckBTC/ICP).
+
+- [ICPSwap](https://icpswap.com).
+
+- [KongSwap](https://kongswap.io).
+
+- [Liquidium.fi](https://liquidium.fi).
+
+- [Odin.Fun](https://odin.fun).
+
+- [OpenChat](https://oc.app).
+
+- [Vly Money](https://vly.money).

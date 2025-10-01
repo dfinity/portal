@@ -38,14 +38,14 @@ The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
 - The **ckBTC ledger**.
 
-| Canister / contract                                                                                   | Bitcoin mainnet                                                                                                                                                                    | Bitcoin testnet                                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)                        | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
-| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)                     | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai)                                                                          | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai)                                                                          |
-| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)                    | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)                                                                          | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai)                                                                          |
+| Canister source code                                                                | ckBTC (Bitcoin mainnet) deployment                                                                         | ckTESTBTC (Bitcoin testnet4) deployment                                                                    |
+| ----------------------------------------------------------------------------------  | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)         | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
+| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)    | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai) |
+| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)   | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai) | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai) |
 
 
-The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts.
+The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts. To simplify access to the transaction history of the ledger, a dedicated [index canister](/docs/defi/token-indexes) is deployed.
 
 The **ckBTC minter** is responsible for minting and burning ckBTC tokens. It uses the following workflow:
 
@@ -54,6 +54,11 @@ The **ckBTC minter** is responsible for minting and burning ckBTC tokens. It use
 - The ckBTC minter waits for confirmations of all Bitcoin transactions that affect the total supply of ckBTC (because of the lack of finality in Bitcoin).
 
 - For Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
+
+The ckBTC minter exposes a dashboard where you can find all the information about the minter's current state, the available UTXOs, outgoing transactions, current parameters, and the logs:
+
+- [ckBTC minter dashboard](https://mqygn-kiaaa-aaaar-qaadq-cai.raw.icp0.io/dashboard)
+- [ckTESTBTC minter dashboard](https://ml52i-qqaaa-aaaar-qaaba-cai.raw.icp0.io/dashboard)
 
 A detailed description of the ckBTC minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
@@ -71,14 +76,22 @@ Learn more in the [Bitcoin integration technical overview](/docs/references/bitc
 
 - [Chain-key tokens](https://learn.internetcomputer.org/hc/en-us/articles/34211397080980-Chain-Key-Tokens).
 
-- [ckBTC](https://github.com/dfinity/ic-js/tree/main/packages/ckbtc) JavaScript library.
-
 - [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
-- [Local development workflow](/docs/build-on-btc/using-regtest).
+- [ckBTC overview](https://dashboard.internetcomputer.org/bitcoin) on the ICP Dashboard.
+
+- [ckTESTBTC overview](https://dashboard.internetcomputer.org/testbtc) on the ICP Dashboard.
+
+- [ckbtc](https://github.com/dfinity/ic-js/tree/main/packages/ckbtc) JavaScript library for interfacing with the ckBTC minter.
+
+- [ledger-icrc](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc) JavaScript library for interfacing with the ckBTC ledger.
+
+- [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent)
 
 - [Developer Liftoff: ckBTC and Bitcoin integration](/docs/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin).
 
 - [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
 
 - [Creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+
+- [All about ckBTC](https://www.youtube.com/watch?v=cBZlTX818L8) DFINITY Twitter Space from February 2023.
