@@ -1412,6 +1412,7 @@ const redirects = `
   /showcase /ecosystem
   /sustainability /capabilities/sustainability
   /videos /news
+  /community/asia-alliance /
   /docs/search /docs/home
   /docs/security-best-practices/ /docs/building-apps/security/inter-canister-calls
   /docs/security-best-practices/introduction /docs/building-apps/security/overview
