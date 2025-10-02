@@ -48,7 +48,7 @@
     {
       "title": "NNS Neuron index",
       "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
-      "status": "future",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Nucleon"
