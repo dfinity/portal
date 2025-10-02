@@ -33,8 +33,11 @@ An **agent** is the API client layer used to call ICP canisters. For example, th
 
 The following libraries simplify creating actors for the ckBTC ledger:
 
-- Rust: [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent)
-- TypeScript: [@dfinity/ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc)
+- Rust:
+  - [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent) Agent for interfacing with ICRC-1/2 ledgers.
+  - [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) Package defining types for interfacing with ICRC-1/2 ledgers.
+- JavaScript:
+  - [@dfinity/ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc) Library for interfacing with ICRC-1/2 ledgers.
 
 In this model, all transactions are signed by the user’s [account](/docs/defi/token-standards/#accounts-principals-and-subaccounts).
 
@@ -43,16 +46,27 @@ A canister can also interact with the ckBTC ledger.
 
 - In some cases, the canister may use ckBTC for its own purposes, such as making payments to other canisters, managing a treasury, or executing automated transfers.
 - In other cases, the canister may act on behalf of users, which requires managing user funds. This can be achieved by creating **subaccounts per user** or by **pooling all funds in a single account** and maintaining an internal balance table.
-  - It is recommended to use the [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) approval flow (`icrc2_approve` / `icrc2_transfer_from`) to move funds from a user’s wallet to the backend canister.
 
 Libraries are available to simplify inter-canister calls:
 
-- Rust: [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk)
-- Motoko: [icrc2-types](https://mops.one/icrc2-types) (includes ICRC-1 types)
+- Rust:
+  - [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) Package that defines types for interfacing with ICRC-1/2 ledgers.
+  - [icrc-ledger-client](https://crates.io/crates/icrc-ledger-client) Package that uses `icrc-ledger-types` and defines functions for interfacing with ICRC-1/2 ledgers.
+  - [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk) Package that defines runtime meant to be used together with the `icrc-ledger-client` library.
+- Motoko:
+  - [icrc2-types](https://mops.one/icrc2-types) Package that defines types for interfacing with ICRC-1/2 ledgers.
 
 Example code:
-- Motoko: [transfer](https://github.com/dfinity/examples/tree/master/motoko/token_transfer), [transfer_from](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from)
-- Rust: [transfer](https://github.com/dfinity/examples/tree/master/rust/token_transfer), [transfer_from](https://github.com/dfinity/examples/tree/master/rust/token_transfer_from)
+- Rust:
+  - [token_transfer](https://github.com/dfinity/examples/tree/master/rust/token_transfer)
+  - [token_transfer_from](https://github.com/dfinity/examples/tree/master/rust/token_transfer_from)
+- Motoko:
+  - [token_transfer](https://github.com/dfinity/examples/tree/master/motoko/token_transfer)
+  - [token_transfer_from](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from)
+
+### Considerations
+- The ICRC-1/2 ledgers in many cases implement more interfaces than those defined in ICRC-1 and ICRC-2. For example the Rust libraries provided by DFINITY include additional types and functions for (proposed) standards such as [ICRC-3](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-3), [ICRC-21](https://github.com/dfinity/wg-identity-authentication/blob/main/topics/ICRC-21/icrc_21_consent_msg.md), [ICRC-103](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-103/ICRC-103.md) and [ICRC-106](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-106/ICRC-106.md).
+- The libraries mentioned above might not always cover all types and interfaces defined in a ledger's [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
 
 ## Bitcoin ↔ ckBTC conversion
 
@@ -77,22 +91,15 @@ Check out the [ckBTC API](/docs/references/ckbtc-reference) and learn more about
 
 ## Example applications for ckBTC
 
-- [Bitcoin point of sale app](/docs/references/samples/motoko/ic-pos/).
+- [ic-pos](/docs/references/samples/motoko/ic-pos/) An experimental app to demonstrate a real-world use case for ckBTC on the Internet Computer. It is a simple Point of Sale app that allows users to accept ckBTC payments.
 
 ## Some applications that integrated ckBTC
 
 - [Bitcoin Gift Cards](https://btc-gift-cards.com).
-
 - [ICLight](https://iclight.io/ICDex/ckBTC/ICP).
-
 - [ICPSwap](https://icpswap.com).
-
 - [KongSwap](https://kongswap.io).
-
 - [Liquidium.fi](https://liquidium.fi).
-
 - [Odin.Fun](https://odin.fun).
-
 - [OpenChat](https://oc.app).
-
 - [Vly Money](https://vly.money).
