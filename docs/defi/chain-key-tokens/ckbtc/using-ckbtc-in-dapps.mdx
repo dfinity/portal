@@ -27,14 +27,14 @@ This means that integration with the ledger involves calling the standard endpoi
 There are two primary ways to interact with the ckBTC ledger:
 
 ### Client calls (via agent)
-A client application (such as a frontend, CLI tool, or script) can use an **[agent](/docs/building-apps/interact-with-canisters/agents/overview)** to interact directly with the ckBTC ledger canister.
+A client application (e.g. web application) can use an [agent](/docs/building-apps/interact-with-canisters/agents/overview) to interact directly with the ckBTC ledger canister.
 
-An **agent** is the API client layer used to call ICP canisters. For example, the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) can create an actor from a canister’s Candid interface and provides methods like `call`, `query`, and `readState`.
+An **agent** is the API client layer used to call ICP canisters. For example, the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) can create an actor from the ledger’s [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts) to invoke its endpoints.
 
 The following libraries simplify creating actors for the ckBTC ledger:
 
-- **Rust:** [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent)
-- **TypeScript:** [@dfinity/ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc)
+- Rust: [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent)
+- TypeScript: [@dfinity/ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc)
 
 In this model, all transactions are executed from the user’s own [account](/docs/defi/token-standards/#accounts-principals-and-subaccounts) (typically the principal without a subaccount).
 
@@ -47,8 +47,8 @@ A canister can also interact with the ckBTC ledger.
 
 Libraries are available to simplify inter-canister calls:
 
-- **Rust:** [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk)
-- **Motoko:** [icrc1-types](https://mops.one/icrc1-types), [icrc2-types](https://mops.one/icrc2-types)
+- Rust: [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk)
+- Motoko: [icrc2-types](https://mops.one/icrc2-types) (includes ICRC-1 types)
 
 Example code:
 - Motoko: [transfer](https://github.com/dfinity/examples/tree/master/motoko/token_transfer), [transfer_from](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from)
@@ -56,13 +56,13 @@ Example code:
 
 ## Bitcoin ↔ ckBTC conversion
 
-Beyond ledger interactions, a dapp may also support minting and burning ckBTC by calling the **ckBTC minter canister**.
+Beyond ledger interactions, a dapp may also support minting and burning ckBTC by calling the [ckBTC minter canister](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai).
 
 This can be done in two ways:
 
 - **Client calls (via agent)**
   - Any client can call the ckBTC minter canister directly.
-  - **TypeScript:** [@dfinity/ckbtc](https://www.npmjs.com/package/@dfinity/ckbtc)
+  - TypeScript library: [@dfinity/ckbtc](https://www.npmjs.com/package/@dfinity/ckbtc)
 
 - **Inter-canister calls**
   - A backend canister can call the ckBTC minter canister as part of its logic, either for its own use or on behalf of users.
