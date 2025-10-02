@@ -3,38 +3,6 @@
   "categoryDescription": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
   "elements": [
     {
-      "title": "Amazing first time developer experience with ICP Ninja",
-      "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-      "status": "in_progress",
-      "is_milestone": true,
-      "milestone_id": "Atlas",
-      "eta_to_render": "September 2025"
-    },
-    {
-      "title": "Publishing projects to the ICP mainnet",
-      "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
-      "status": "deployed",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "More sample projects to get you started",
-      "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-      "status": "in_progress",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Community published projects",
-      "overview": "Show your coding skills to the community by publishing your project to the gallery.",
-      "status": "future",
-      "milestone_id": "Atlas"
-    },
-    {
-      "title": "Dark mode",
-      "overview": "Introduce dark mode for the app",
-      "status": "in_progress",
-      "milestone_id": "Atlas"
-    },
-    {
       "title": "Canister lifecycle hooks",
       "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
       "forum": "https://forum.dfinity.org/t/canister-lifecycle-hooks/17089",
