@@ -35,7 +35,7 @@ In this example, **A** would be `https://xxxxx.icp0.io`.
 
 ### Setting the derivation origin
 
-On the code for the **B** origin, you need to set the `derivationOrigin` to the AuthClient to **A**.
+If you are using Internet Identity, you are probably using [AuthClient](https://js.icp.build/auth/latest/). Therefore, on the code for the **B** origin, you need to set the `derivationOrigin` to the AuthClient to **A**.
 
 ```typescript
 const authClient = await AuthClient.login({
@@ -58,9 +58,19 @@ The response of this endpoint must be a valid JSON object with an `alternativeOr
 }
 ```
 
-#### Using the asset canister
+Requirements:
 
-If you are using the assets canister, you should place the config files in the `src/assets` directory of your frontend canister.
+* Maximum of **10** alternative origins can be listed.
+* No trailing slash or paths should appear in the URL.
+* Order doesn't matter.
+
+### Asset canister
+
+Most developers implement their frontend applications using the [Asset Canister](https://internetcomputer.org/docs/references/asset-canister). Therefore, we provide a tutorial on how to set up the alternative origins endpoint with it.
+
+#### Adding the `ii-alternative-origins` config file
+
+Place the config file in the `src/assets` directory of your frontend canister.
 
 If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
 
