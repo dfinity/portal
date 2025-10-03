@@ -82,7 +82,7 @@ To fix this error, consider installing code using [`dfx deploy`](/docs/building-
 
 
 ### Out of memory
-The canister was tried to request more memory than available during execution, causing the execution to fail.
+The canister tried to request more memory than the system can provide during execution, causing the execution to fail.
 
 An example of this error is:
 ```
@@ -91,13 +91,9 @@ An example of this error is:
 
 There are [system-wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
 
-In addition, canisters may reserve memory using the [`memory-allocation` setting][memory-allocation-setting]. In this case the canister is guaranteed to be able to use up to the allocated memory but will receive an "Out of memory" error when trying to use more than the allocated amount.
-
-To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
+To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
 To fix this error, consider:
-
-- If the canister has reached its current memory allocation, try allocating more memory.
 
 - If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
 
@@ -498,19 +494,6 @@ An example of this error is:
 ```
 
 A canister cannot be deleted while it has pending input or output messages because those messages would be lost. To fix this error, wait until the pending messages have been pulled from the queues. To ensure no new messages appear during that time, consider [stopping the canister][dfx-canister-stop].
-
-
-### Not enough memory allocation given
-The canister does not have enough memory allocation to complete a given request, or there was an attempt to lower the canister's memory allocation below the amount it already uses.
-
-An example of this error is:
-```
-  Canister was given 20000000000 memory allocation but at least 30000000000 of memory is needed.
-```
-
-A canister can set a [memory allocation][memory-allocation-setting] that guarantees it will be able to use a given amount of memory but also limits the canister memory to the allocated amount.
-
-To fix this error, consider increasing the canister's memory allocation, reducing its memory usage, or switching to best-effort memory allocation.
 
 
 ### Create canister not enough cycles
