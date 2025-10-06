@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.49.0 (2025-10-06) {$0_49_0}
+* Added support for non-replicated canister HTTP outcalls.
+
 ### 0.48.0 (2025-09-29) {$0_48_0}
 * Added support for canister environment variables in canister settings and new System API for accessing environment variables
   (`ic0.env_var_count`, `ic0.env_var_name_size`, `ic0.env_var_name_copy`, and `ic0.env_var_value_size`).
