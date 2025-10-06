@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## What is ckBTC?
 
-Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) compliant token that is backed 1:1 by BTC held 100% on the mainnet.
+Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) compliant synthetic twin token that is backed 1:1 by BTC.
 
 ckBTC does not rely on a centralized bridge to facilitate the conversion between BTC and ckBTC, which makes it substantially more secure when compared to other traditional 'wrapped' tokens.
 
@@ -41,11 +41,17 @@ The ckBTC functionality is provided through an interplay of two canisters:
 | Canister source code                                                                | ckBTC deployment (Bitcoin mainnet)                                                                         | ckTESTBTC deployment (Bitcoin testnet4)                                                                    |
 | ----------------------------------------------------------------------------------  | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)         | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
+| [Checker](https://github.com/dfinity/ic/tree/master/rs/bitcoin/checker)             | [oltsj-fqaaa-aaaar-qal5q-cai](https://dashboard.internetcomputer.org/canister/oltsj-fqaaa-aaaar-qal5q-cai) | [o6ude-eyaaa-aaaar-qal6a-cai](https://dashboard.internetcomputer.org/canister/o6ude-eyaaa-aaaar-qal6a-cai) |
 | [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)    | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai) |
+| [Archive](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/archive)  | [nbsys-saaaa-aaaar-qaaga-cai](https://dashboard.internetcomputer.org/canister/nbsys-saaaa-aaaar-qaaga-cai) | [m62lf-ryaaa-aaaar-qaacq-cai](https://dashboard.internetcomputer.org/canister/m62lf-ryaaa-aaaar-qaacq-cai) |
 | [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)   | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai) | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai) |
 
 
-The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts. To simplify access to the transaction history of the ledger, a dedicated [index canister](/docs/defi/token-indexes) is deployed.
+The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts.
+
+As the number of transactions grows, the ckBTC ledger automatically creates archive nodes holding past transactions.
+
+To simplify access to the transaction history of the ledger, a dedicated [index canister](/docs/defi/token-indexes) is deployed.
 
 The **ckBTC minter** is responsible for minting and burning ckBTC tokens. It uses the following workflow:
 
@@ -59,7 +65,7 @@ A simplified overview of the process to mint and transfer ckBTC is depicted in t
 
 ![ckBTC overview](../../_attachments/ckbtc-overview.png)
 
-**Note:** Before ckBTC is is minted/transferred to the user, the ckBTC minter performs a check for the Bitcoin address which transferred the bitcoins. A detailed description of the whole process can be found on the [Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
+**Note:** Before ckBTC is is minted to the user, the ckBTC minter performs a check for the Bitcoin address which transferred the bitcoins. A detailed description of the whole process can be found on the [Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
 
 ## Resources
 
@@ -68,6 +74,7 @@ A simplified overview of the process to mint and transfer ckBTC is depicted in t
 - [ckBTC minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter) Canister that converts BTC to ckBTC and back.
 - [Bitcoin checker](https://github.com/dfinity/ic/tree/master/rs/bitcoin/checker) Canister that checks whether the address or transaction may be associated with illicit activities.
 - [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger) Canister that implements the ICRC-1 and ICRC-2 token standard and which is used for ckBTC.
+- [Archive](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/archive) Canister that holds archived ledger transactions.
 - [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng) Canister that syncs the ledger transactions and indexes them by account.
 
 ### Dashboards
