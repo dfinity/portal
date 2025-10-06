@@ -68,6 +68,13 @@ The limits depend on the message type as shown in the following table.
 | Update calls execution threads, per subnet                                           | 4           |
 | Update calls execution threads, per canister                                         | 1           |
 
+| Canister environment variables                                                       | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Environment variables, per canister                                                  | 20          |
+| Environment variable name length                                                     | 128         |
+| Environment variable value length                                                    | 128         |
+
+
 ## Performance limits
 
 The block rate varies from 0.75 blocks per second to 1.5 blocks per second depending on the subnet and the number of nodes in the [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).

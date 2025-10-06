@@ -1,5 +1,9 @@
 ## Changelog {#changelog}
 
+### 0.48.0 (2025-09-29) {$0_48_0}
+* Added support for canister environment variables in canister settings and new System API for accessing environment variables
+  (`ic0.env_var_count`, `ic0.env_var_name_size`, `ic0.env_var_name_copy`, and `ic0.env_var_value_size`).
+
 ### 0.47.0 (2025-09-22) {$0_47_0}
 * Management canister API for downloading and uploading canister snapshots.
 

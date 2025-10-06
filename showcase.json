@@ -353,9 +353,8 @@
     "twitter": "https://x.com/bioniqMarket",
     "tags": [
       "Bitcoin",
-      "Enterprise",
-      "NFT",
       "Chain Fusion",
+      "NFT",
       "Creator Economy"
     ],
     "stats": "45,000+ users",
@@ -582,7 +581,8 @@
     "twitter": "https://twitter.com/zcloaknetwork",
     "tags": [
       "AI",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "description": "Defend trust and privacy in the age of AI by offering rapid, cost-effective, and secure zero-knowledge proof verification services for blockchains.",
     "usesInternetIdentity": false,
@@ -845,7 +845,8 @@
     "tags": [
       "Wallet",
       "Chain Fusion",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Enterprise"
     ],
     "stats": "170MAU",
     "description": "Orbit offers multi approval workflows of treasury and smart contract management for teams of any size.",
@@ -880,7 +881,7 @@
     "tags": [
       "Tools / Infrastructure",
       "Analytics",
-      "Enterprise"
+      "DeFi"
     ],
     "description": "The DevOps console home for canister monitoring and management.\n\nTrusted by 2300+ canisters including DFINITY, Liquidium, Oisy, and 18+ SNS DAOs.",
     "usesInternetIdentity": true,
@@ -3035,7 +3036,6 @@
     "submittableId": 44626241,
     "tags": [
       "Tools / Infrastructure",
-      "Enterprise",
       "AI"
     ],
     "description": "A blockchain-powered AI data marketplace enabling data providers to securely publish content and track its usage with AI agents.",
@@ -3650,8 +3650,7 @@
     "youtube": "https://www.youtube.com/@DoxaDollar",
     "tags": [
       "DeFi",
-      "Chain Fusion",
-      "Enterprise"
+      "Chain Fusion"
     ],
     "description": "Doxa is a multi-stablecoin protocol/platform with DoxaUSD and other stablecoins.",
     "usesInternetIdentity": true,
@@ -3815,35 +3814,6 @@
     "description": "Web3 social graph using a graph database built on ICP.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/relation_logo.png"
-  },
-  {
-    "id": "meddle",
-    "name": "Meddle",
-    "display": "Normal",
-    "website": "https://meddleconnect.com",
-    "github": "https://github.com/quinck-io/meddle-icp-be/",
-    "tags": [
-      "Tools / Infrastructure",
-      "Enterprise"
-    ],
-    "description": "A software-IoT product that deals with data collection from sensors and industrial machinery.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/Meddle_Logo.png"
-  },
-  {
-    "id": "rolodex",
-    "name": "rolodex",
-    "display": "Normal",
-    "website": "https://rolodex.weavechain.com/",
-    "twitter": "https://twitter.com/WeavechainWeb3",
-    "github": "https://github.com/weavechain/rolodex3",
-    "tags": [
-      "Tools / Infrastructure",
-      "Enterprise"
-    ],
-    "description": "A self-sovereign directory, giving YOU control of your contact information.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/rolodex_logo.png"
   },
   {
     "id": "zon",
@@ -4200,7 +4170,7 @@
     "github": "https://github.com/baliola/Medblock",
     "submittableId": 44389918,
     "tags": [
-      "Enterprise"
+      "Creator Economy"
     ],
     "description": "Medblock is a secure mobile app that puts medical records in patients' hands while helping hospitals manage healthcare data efficiently through blockchain technology.",
     "logo": "/img/showcase/medblock.svg"
@@ -5623,8 +5593,7 @@
     "github": "https://github.com/gianalarcon/scaffold-icp",
     "submittableId": 50383864,
     "tags": [
-      "Tools / Infrastructure",
-      "Enterprise"
+      "Tools / Infrastructure"
     ],
     "description": "Scaffold-ICP is a modern, type-safe development framework designed to accelerate Internet Computer (ICP) dApp development.",
     "usesInternetIdentity": true,
@@ -5889,7 +5858,7 @@
     "submittableId": 47180882,
     "tags": [
       "Tools / Infrastructure",
-      "Enterprise",
+      "Chain Fusion",
       "AI"
     ],
     "description": "Sela Network is a decentralized data infrastructure network powered by everyday devices where users run nodes on mobile or desktop and earn reward.",
@@ -5960,7 +5929,7 @@
     "tags": [
       "AI",
       "Tools / Infrastructure",
-      "Enterprise"
+      "DeFi"
     ],
     "description": "RhinoSpider is a peer-to-peer resource-sharing network that rewards users for contributing idle bandwidth for AI model training. ",
     "usesInternetIdentity": true,
@@ -5994,7 +5963,6 @@
     "website": "https://fnavb-oqaaa-aaaai-q3jvq-cai.icp0.io/",
     "tags": [
       "Creator Economy",
-      "Enterprise",
       "NFT"
     ],
     "description": "The ONE MILLION PIXEL BILLBOARD on ICP is a decentralised, permanent, community-owned canvas—part ad space, part art, part history.",
@@ -6065,7 +6033,6 @@
     "submittableId": 50594918,
     "tags": [
       "Tools / Infrastructure",
-      "Enterprise",
       "Creator Economy"
     ],
     "description": "WorldCloud is a platform facilitating web application hosting on the Internet Computer, 100% on-chain.",
@@ -6080,8 +6047,7 @@
     "website": "https://vybers.app/",
     "tags": [
       "Gaming",
-      "Tools / Infrastructure",
-      "Enterprise"
+      "Tools / Infrastructure"
     ],
     "description": "Users can map their vibes and favorite songs so they can have a playlist of places and songs where others can also explore.",
     "usesInternetIdentity": true,
