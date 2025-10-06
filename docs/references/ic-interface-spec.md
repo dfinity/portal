@@ -2202,14 +2202,14 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
     The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor.
 
-:::note
-
-The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers are advised to use the `ic0.cost_http_request_v2` call instead.
-
-:::
-
 -   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
+    :::note
+    
+    The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers are advised to use the `ic0.cost_http_request_v2` call instead.
+    
+    :::
+    
     The cost of a canister HTTP outcall via [`http_request`](#ic-http_request) with the pricing version set to `1` (currently the default). `request_size` is the sum of the byte lengths of the following components of an http request:
     - url
     - headers - i.e., the sum of the lengths of all keys and values 
@@ -2240,9 +2240,9 @@ The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers a
 
     - `request_time_ms` is the time that the HTTP request to the remote server may take to complete (in milliseconds).
 
-    - `raw_response_bytes` is the length of the HTTP response
+    - `raw_response_bytes` is the length of the HTTP response.
 
-    - `transformed_response_bytes` is the length of the HTTP response after transformation
+    - `transformed_response_bytes` is the length of the HTTP response after transformation.
 
     - `transform_instructions` is the number of instructions the transform function takes.
 
@@ -2959,11 +2959,11 @@ The following parameters should be supplied for the call:
 
 -   `is_replicated` - optional, selecting between replicated and non-replicated modes.
 
-:::note
-
-The `is_replicated` field is considered EXPERIMENTAL.
-
-:::
+    :::note
+    
+    The `is_replicated` field is considered EXPERIMENTAL.
+    
+    :::
 
 -   `pricing_version` - the version of the pricing mechanism for HTTP outcalls that should be applied to this call; it can be either `1` or `2`. For compatibility reasons, the default is `1`; however, version `1` is deprecated.
 

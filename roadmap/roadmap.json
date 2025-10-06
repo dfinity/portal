@@ -5,88 +5,73 @@
     "milestones": [
       {
         "name": "Load balancing & increased compute capacity",
-        "milestone_id": "Flux",
-        "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and taking checkpoints asynchronously. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
+        "milestone_id": "Fission",
+        "description": "ICP subnets can now handle greater computational loads by better managing multiple canisters and taking checkpoints asynchronously. When a subnet's workload becomes too high, the Network Nervous System (NNS) can decide to split the subnet in two, distributing the workload between them. Additionally, canister controllers can migrate individual canisters to a less-utilized subnet. These features work together to balance the load across all ICP subnets, ensuring optimal utilization and preventing overload.",
         "eta": null,
         "status": "in_progress",
         "elements": [
           {
             "title": "Asynchronous checkpointing",
             "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Flux"
+            "status": "deployed",
+            "milestone_id": "Fission"
           },
           {
             "title": "Canister migration",
             "overview": "Allows controllers to migrate a canister to another subnet, without changing its canister id. This is crucial to balance load across subnets and fully benefit from ICP’s scaling via subnets. It also allows canisters to move to another subnet which may differ in features or replication factor.",
             "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Flux"
+            "milestone_id": "Fission"
           },
           {
             "title": "Canister snapshots can be imported and exported",
             "overview": "With canister snapshots, it became possible for controllers to take a full snapshot of their canister, allowing it to revert back to this state at a later point in time. This feature is an extension to the canister snapshot functionality, allowing controllers to retrieve snapshots and upload snapshots. This would enable storing canister snapshots in a canister or off-chain, using snapshots for testing purposes in a local environment, or loading a state snapshot of canister A into another canister B. The latter can be useful for testing purposes and is also a building block towards canister migration.",
             "status": "in_progress",
-            "milestone_id": "Flux"
+            "milestone_id": "Fission"
           },
           {
             "title": "Enhance subnet capacity for active canisters",
             "overview": "Increase the maximum number of concurrently active canisters supported by a subnet. This will be achieved through optimizations to the canister scheduling algorithm, improvements to canister sandbox management, and increased memory efficiency within canister sandboxes. This enhancement is crucial for ICP scaling and more predictable handling of peak loads.",
             "status": "deployed",
-            "milestone_id": "Flux"
-          }
-        ]
-      },
-      {
-        "name": "Integrity of node state",
-        "milestone_id": "Magnetosphere",
-        "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "TEE-capable IC-OS",
-            "overview": "Adapting IC-OS to run inside SEV-SNP, ensuring it is reproducibly built, securely boots, and maintains integrity throughout its lifecycle.",
-            "status": "in_progress",
-            "milestone_id": "Magnetosphere"
+            "milestone_id": "Fission"
           },
-          {
-            "title": "TEE Upgrades",
-            "overview": "Re-architecting the upgrade process to securely handover the confidential state from the old to the new release, guaranteeing continuous integrity.",
-            "status": "in_progress",
-            "milestone_id": "Magnetosphere"
-          },
-          {
-            "title": "TEE-enabled Replica Nodes",
-            "overview": "Deploying single node machines with TEE-protection that can be used both as replicas and API boundary nodes.",
-            "status": "in_progress",
-            "milestone_id": "Magnetosphere"
-          }
-        ]
-      },
-      {
-        "name": "Load balancing via subnet splitting",
-        "milestone_id": "Fission",
-        "description": "This milestone introduces subnet splitting, which allows one subnet to split into two, each subnet hosting half of the workload of the original subnet. Whenever a subnet is overloaded, the NNS can decide to split the subnet, which helps balance load across multiple subnets and avoids overloaded subnets. The first subnet split on ICP mainnet will mark the completion of this milestone.",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
           {
             "title": "Subnet splitting with minimal downtime",
             "overview": "In a previous feature, subnet splitting became possible via a sequence of NNS proposals, which would incur significant downtime. In this feature, the goal is to make subnet splitting practically possible with minimal downtime for the subnet.",
             "status": "in_progress",
             "milestone_id": "Fission"
+          }
+        ]
+      },
+      {
+        "name": "Immutable Blob Storage",
+        "milestone_id": "Protium",
+        "description": "This milestone introduces an efficient and scalable storage solution for handling immutable data blobs for apps on the Internet Computer. It provides secure, cost-effective storage of large data with streamlined access and management.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Immutable Blob Storage Support for Caffeine",
+            "overview": "This feature enables the Immutable Blob Storage support for Caffeine “out of the box”. Developers can create canisters with immutable storage capabilities.",
+            "status": "in_progress",
+            "milestone_id": "Protium"
+          },
+          {
+            "title": "Immutable Blob Storage Service for ICP",
+            "overview": "This feature enables canisters to use an immutable blob storage service to store petabytes of data, seamlessly paying for the resource consumption in cycles.",
+            "status": "future",
+            "milestone_id": "Protium"
+          },
+          {
+            "title": "Motoko Support for Immutable Blob Storage",
+            "overview": "This feature provides Motoko developers with an easy-to-use language integration, abstracting away the complexities of blob registration and deletion.",
+            "status": "future",
+            "milestone_id": "Protium"
+          },
+          {
+            "title": "Rust Support for Immutable Blob Storage",
+            "overview": "To ensure broad adoption, this feature delivers an idiomatic Rust interface, enabling developers in the Rust ecosystem to seamlessly use the immutable blob storage.",
+            "status": "future",
+            "milestone_id": "Protium"
           }
         ]
       },
@@ -810,7 +795,7 @@
     ]
   },
   {
-    "name": "Decentralized AI",
+    "name": "AI",
     "description": "AI and ICP have significant potential to benefit one another. First, AI and ICP together enable the self-writing Internet. Given a description of an application, AI can write the application for you and, by deploying it as an ICP smart contract, make it available to you at a URL – just like that.  Second, AI running as a smart contract on ICP addresses the problem of users having to blindly trust AI models running on centralized servers by providing transparency into data usage and response generation.",
     "milestones": [
       {
@@ -818,7 +803,7 @@
         "milestone_id": "Ignition",
         "description": "AI agents are a growing paradigm in software, and the Internet Computer is uniquely positioned to be the home of AI agents. Compared to the traditional IT stack, AI agents on the Internet Computer can securely and easily manage digital assets, transact amongst each other, be fully sovereign, and be tokenized and managed by DAOs. This milestone focuses on providing access to foundational LLMs, along with basic tools to make it as simple as possible to deploy agents on the Internet Computer.",
         "eta": null,
-        "status": "in_progress",
+        "status": "deployed",
         "elements": [
           {
             "title": "LLM canister MVP",
@@ -829,13 +814,13 @@
           {
             "title": "LLM developer experience",
             "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
-            "status": "in_progress",
+            "status": "deployed",
             "milestone_id": "Ignition"
           },
           {
             "title": "LLM workers",
             "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
-            "status": "future",
+            "status": "deployed",
             "milestone_id": "Ignition"
           }
         ]
@@ -843,32 +828,26 @@
       {
         "name": "Caffeine alpha launch – dawn of the self-writing internet",
         "milestone_id": "Vertex",
-        "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
-        "eta": null,
-        "status": "in_progress",
+        "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, canister snapshots, and AI models for Motoko code generation meet, creating the self-writing internet.",
+        "eta": "July 15th, 2025",
+        "status": "deployed",
         "elements": [
           {
             "title": "Motoko coding fine-tuned model",
             "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
-            "status": "in_progress",
+            "status": "deployed",
             "milestone_id": "Vertex"
           },
           {
             "title": "Model benchmarks for Motoko coding",
             "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
-            "status": "in_progress",
-            "milestone_id": "Vertex"
-          },
-          {
-            "title": "Caffeine integration",
-            "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
-            "status": "in_progress",
+            "status": "deployed",
             "milestone_id": "Vertex"
           },
           {
             "title": "Caffeine platform",
-            "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
-            "status": "in_progress",
+            "overview": "First release of the Caffeine platform for prompt-based ICP application creation. Integrating the fine-tuned models for Motoko code generation into a chat-like user experience. Complemented by a first version of an app marketplace allowing users to publish their apps so that others can clone and evolve them.",
+            "status": "deployed",
             "milestone_id": "Vertex"
           }
         ]
@@ -916,6 +895,14 @@
         ]
       },
       {
+        "name": "Caffeine",
+        "milestone_id": "Caffeine",
+        "description": "Caffeine is the world's first commercially-available platform for creating self-writing apps.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": []
+      },
+      {
         "name": "orphans_past",
         "description": "Orphans from the past",
         "milestone_id": "Past features",
@@ -949,43 +936,10 @@
     "description": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multichain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
     "milestones": [
       {
-        "name": "Chain Fusion supports Solana",
-        "milestone_id": "Helium",
-        "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
-        "eta": "June 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Threshold EdDSA signing",
-            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-            "status": "deployed",
-            "eta": "2024",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Helium"
-          },
-          {
-            "title": "Solana RPC canister",
-            "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
-            "forum": "",
-            "proposal": "",
-            "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Helium"
-          }
-        ]
-      },
-      {
         "name": "Dogecoin integration",
         "milestone_id": "Meridian",
         "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
-        "eta": null,
+        "eta": "October 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1078,6 +1032,39 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Deuterium"
+          }
+        ]
+      },
+      {
+        "name": "Chain Fusion supports Solana",
+        "milestone_id": "Helium",
+        "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
+        "eta": "June 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Threshold EdDSA signing",
+            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
+            "status": "deployed",
+            "eta": "2024",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Helium"
+          },
+          {
+            "title": "Solana RPC canister",
+            "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
+            "forum": "",
+            "proposal": "",
+            "docs": "https://github.com/dfinity/sol-rpc-canister/blob/main/README.md",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Helium"
           }
         ]
       },
@@ -1319,11 +1306,44 @@
     "description": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
     "milestones": [
       {
+        "name": "Integrity and confidentialty of node state",
+        "milestone_id": "Magnetosphere",
+        "description": "This milestone brings Trusted Execution Environments (TEEs) to the Internet Computer to provide comprehensive security guarantees. The initial focus is on node integrity, protecting the node state from tampering and keeping sensitive key shares confidential. The work culminates in ensuring complete confidentiality of canister state, ensuring all canister data is encrypted and shielded from unauthorized access, both in memory and in storage.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "TEE-capable IC-OS",
+            "overview": "Adapting IC-OS to run inside SEV-SNP, ensuring it is reproducibly built, securely boots, and maintains integrity throughout its lifecycle.",
+            "status": "in_progress",
+            "milestone_id": "Magnetosphere"
+          },
+          {
+            "title": "TEE Upgrades",
+            "overview": "Re-architecting the upgrade process to securely handover the confidential state from the old to the new release, guaranteeing continuous integrity.",
+            "status": "in_progress",
+            "milestone_id": "Magnetosphere"
+          },
+          {
+            "title": "TEE-enabled Replica Nodes",
+            "overview": "Deploying single node machines with TEE-protection that can be used both as replicas and API boundary nodes.",
+            "status": "in_progress",
+            "milestone_id": "Magnetosphere"
+          },
+          {
+            "title": "Encrypted canister state",
+            "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
+            "status": "in_progress",
+            "milestone_id": "Magnetosphere"
+          }
+        ]
+      },
+      {
         "name": "vetKeys for decentralized key management",
         "milestone_id": "Niobium",
         "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
-        "eta": "June 2025",
-        "status": "in_progress",
+        "eta": "July 1st 2025",
+        "status": "deployed",
         "elements": [
           {
             "title": "ICP integrates the vetKeys protocol",
@@ -1331,40 +1351,24 @@
             "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
             "proposal": "",
             "docs": "https://internetcomputer.org/docs/building-apps/network-features/vetkeys/introduction",
-            "eta": "Q2 2025",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Niobium",
             "imported": true
           },
           {
-            "title": "User-space libraries and example dapps for vetKeys",
+            "title": "Developer libraries and example dapps for vetKeys",
             "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
             "forum": "",
             "proposal": "",
-            "docs": "",
+            "docs": "https://github.com/dfinity/vetkeys",
             "eta": "Q2 2025",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Niobium",
             "imported": false
-          }
-        ]
-      },
-      {
-        "name": "Confidentiality of canister states",
-        "milestone_id": "Containment",
-        "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Encrypted canister state",
-            "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
-            "status": "in_progress",
-            "milestone_id": "Containment"
           }
         ]
       },
@@ -1481,32 +1485,6 @@
     "description": "The security of ICP is based on the elimination of central points of control. A user interacting with ICP shall not need to rely on a single party. Besides architectural aspects, such as the edge infrastructure, this also encompasses operational aspects, complementing the DAO-based governance of ICP.",
     "milestones": [
       {
-        "name": "Decentralized access logs and metrics",
-        "milestone_id": "Levitron",
-        "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
-        "eta": "July 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Public API boundary node logs and metrics",
-            "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
-            "forum": "",
-            "proposal": "",
-            "status": "in_progress",
-            "milestone_id": "Levitron"
-          },
-          {
-            "title": "Privacy-preserving logs",
-            "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
-            "forum": "https://forum.dfinity.org/t/observability-with-the-new-boundary-node-architecture/41725",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/135629",
-            "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/salt_sharing",
-            "status": "deployed",
-            "milestone_id": "Levitron"
-          }
-        ]
-      },
-      {
         "name": "Generation 3 node hardware and rewards",
         "milestone_id": "Knot",
         "description": "Define the next generation node hardware, refine reward calculations, and improve network topology to enhance network performance, efficiency, and decentralization.",
@@ -1598,6 +1576,33 @@
             "in_beta": false,
             "milestone_id": "Solenoid",
             "imported": true
+          }
+        ]
+      },
+      {
+        "name": "Decentralized access logs and metrics",
+        "milestone_id": "Levitron",
+        "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
+        "eta": "July 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Public API boundary node logs and metrics",
+            "overview": "All API boundary nodes expose a WebSocket endpoint that allows anyone to directly stream canister access logs.",
+            "forum": "https://forum.dfinity.org/t/levitron-milestone-decentralized-api-boundary-node-access-logs/53773",
+            "docs": "https://internetcomputer.org/docs/building-apps/advanced/canister-access-logs",
+            "proposal": "",
+            "status": "deployed",
+            "milestone_id": "Levitron"
+          },
+          {
+            "title": "Privacy-preserving logs",
+            "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
+            "forum": "https://forum.dfinity.org/t/observability-with-the-new-boundary-node-architecture/41725",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/135629",
+            "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/salt_sharing",
+            "status": "deployed",
+            "milestone_id": "Levitron"
           }
         ]
       },
@@ -1934,7 +1939,7 @@
         "name": "Signer standards in use by ICP dapps and wallets",
         "milestone_id": "Synchrotron",
         "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
-        "eta": null,
+        "eta": "October 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1962,39 +1967,6 @@
             "is_community": true,
             "in_beta": true,
             "milestone_id": "Synchrotron"
-          }
-        ]
-      },
-      {
-        "name": "Rethinking the Internet Identity user experience",
-        "milestone_id": "Pulse",
-        "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Sign in with OpenID",
-            "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
-            "status": "in_progress",
-            "milestone_id": "Pulse"
-          },
-          {
-            "title": "Make account numbers obsolete",
-            "overview": "Account numbers are confusing and hard to remember. Explore ways to deprecate them through the use of the latest WebAuthn features.",
-            "status": "future",
-            "milestone_id": "Pulse"
-          },
-          {
-            "title": "Streamline the authentication flow",
-            "overview": "Make the authentication flow clear to the user. Avoid pitfalls and frustrations.",
-            "status": "future",
-            "milestone_id": "Pulse"
-          },
-          {
-            "title": "One identity, multiple accounts",
-            "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
-            "status": "future",
-            "milestone_id": "Pulse"
           }
         ]
       },
@@ -2084,6 +2056,39 @@
             "is_community": false,
             "in_beta": true,
             "milestone_id": "Separatrix"
+          }
+        ]
+      },
+      {
+        "name": "Rethinking the Internet Identity user experience",
+        "milestone_id": "Pulse",
+        "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
+        "eta": "September 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Sign in with OpenID",
+            "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
+            "status": "deployed",
+            "milestone_id": "Pulse"
+          },
+          {
+            "title": "Make account numbers obsolete",
+            "overview": "Account numbers are confusing and hard to remember. Explore ways to deprecate them through the use of the latest WebAuthn features.",
+            "status": "deployed",
+            "milestone_id": "Pulse"
+          },
+          {
+            "title": "Streamline the authentication flow",
+            "overview": "Make the authentication flow clear to the user. Avoid pitfalls and frustrations.",
+            "status": "deployed",
+            "milestone_id": "Pulse"
+          },
+          {
+            "title": "One identity, multiple accounts",
+            "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
+            "status": "deployed",
+            "milestone_id": "Pulse"
           }
         ]
       },
@@ -2355,11 +2360,38 @@
         ]
       },
       {
+        "name": "Zero to Degen-Hero",
+        "milestone_id": "Apex",
+        "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Ledgers as a first class citizen on ICP",
+            "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
+            "status": "future",
+            "milestone_id": "Apex"
+          },
+          {
+            "title": "Faster institutional integrations of new tokens",
+            "overview": "Support multi-token Rosetta",
+            "status": "deployed",
+            "milestone_id": "Apex"
+          },
+          {
+            "title": "Fiat on-ramp",
+            "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
+            "status": "future",
+            "milestone_id": "Apex"
+          }
+        ]
+      },
+      {
         "name": "Expanded Orbit framework",
         "milestone_id": "Echelon",
         "description": "Orbit is a secure solution for digital assets and smart contract management, and this milestone will broaden its asset management capabilities by enabling seamless integration of native tokens from other blockchains, starting with ETH and ERC-20. This will create a unified platform for treasury management, allowing users to securely sign and send transactions across multiple chains. Additionally, we will introduce automatic smart contract upgrades, ensuring that users always have access to the latest security updates and features with minimal manual intervention.",
         "eta": null,
-        "status": "in_progress",
+        "status": "future",
         "elements": [
           {
             "title": "ETH and ERC-20 integration",
@@ -2370,7 +2402,7 @@
           {
             "title": "Automatic upgrades",
             "overview": "A streamlined update system will allow users to subscribe for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
-            "status": "in_progress",
+            "status": "future",
             "milestone_id": "Echelon"
           },
           {
@@ -2386,7 +2418,7 @@
         "milestone_id": "Neutron",
         "description": "To further improve Orbit’s usability and accessibility, we will enhance the user experience through intuitive approval flows, a revamped onboarding, and a comprehensive documentation hub. These improvements will ensure the Orbit App is efficient for both individual users and teams managing their digital assets management needs.",
         "eta": null,
-        "status": "in_progress",
+        "status": "future",
         "elements": [
           {
             "title": "Documentation hub",
@@ -2403,7 +2435,7 @@
           {
             "title": "UX improvements",
             "overview": "A revamped configuration flow will simplify the setup of Orbit Station, making it easier for users of all technical levels to integrate smart contracts and manage assets.",
-            "status": "in_progress",
+            "status": "future",
             "milestone_id": "Neutron"
           }
         ]
@@ -2438,33 +2470,6 @@
             "overview": "A set of initial applications designed to showcase the power of sovereign software, serving as reference for future developers.",
             "status": "future",
             "milestone_id": "Dynamo"
-          }
-        ]
-      },
-      {
-        "name": "Zero to Degen-Hero",
-        "milestone_id": "Apex",
-        "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
-        "eta": null,
-        "status": "future",
-        "elements": [
-          {
-            "title": "Ledgers as a first class citizen on ICP",
-            "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
-            "status": "future",
-            "milestone_id": "Apex"
-          },
-          {
-            "title": "Faster institutional integrations of new tokens",
-            "overview": "Support multi-token Rosetta",
-            "status": "future",
-            "milestone_id": "Apex"
-          },
-          {
-            "title": "Fiat on-ramp",
-            "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
-            "status": "future",
-            "milestone_id": "Apex"
           }
         ]
       },
@@ -2820,130 +2825,15 @@
     "description": "ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
     "milestones": [
       {
-        "name": "Enabling governance token holdings and broader participation",
-        "milestone_id": "Neon",
-        "description": "The main focus of the Neon milestone is on expanding the user base and improving the user experience. Holding governance tokens is intuitive and seamless, ensuring that new users can quickly understand their holdings and easily explore and engage with new opportunities, such as SNS launches. Additional features aim to make the governance process more intuitive and simplify SNS DAO operations, laying the basis for the next milestone.",
-        "eta": "July 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Portfolio page",
-            "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
-            "status": "deployed",
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Periodic followee confirmation",
-            "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
-            "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
-            "forum": "https://forum.dfinity.org/t/periodic-confirmation-design/34215",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/55651",
-            "docs": "",
-            "eta": "",
-            "status": "deployed",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Stable memory for governance",
-            "overview": "Utilizing stable memory in different parts of the NNS and SNS framework will allow ICP's governance to handle a larger number of participants, preparing it for continued growth.",
-            "description": "Utilizing stable memory in different parts of the NNS and SNS framework will allow ICP's governance to handle a larger number of participants, preparing it for continued growth.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "deployed",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Large Wasm support for SNS controlled dapp canisters",
-            "overview": "This simplifies owning large dapp canisters for SNS DAO communities by a built-in process to do so in the SNS framework.",
-            "status": "deployed",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Automatic SNS framework canister upgrades",
-            "overview": "For easier management of the SNS framework canisters, allow SNS DAOs to opt-in to receive automatic upgrades to canisters as soon as they are approved and released by the NNS.",
-            "status": "deployed",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Leverage liquid democracy in SNS DAOs",
-            "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics and a notion of named or known neurons.",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Disburse maturity for NNS neurons",
-            "overview": "Unlike SNS neurons, NNS neurons spawn maturity into a newly created neuron. This feature will move to a flow where NNS neurons would also disburse maturity.",
-            "description": "In its current implementation, NNS neurons spawn maturity into a new neuron, whereas SNS DAOs disburse maturity directly into the user's account, which greatly simplifies the flow and reduces the new neurons created.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "SNS treasury management",
-            "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-            "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury, including holding other ICRC-1 tokens and SNS neurons, direct interaction with DEXs, and more.",
-            "status": "in_progress",
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Launchpad redesign",
-            "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Fiat values in the NNS dapp",
-            "overview": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
-            "description": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
-            "status": "deployed",
-            "milestone_id": "Neon"
-          },
-          {
-            "title": "Governance basic portfolio reporting capabilities",
-            "overview": "Reporting functionality that allows users to obtain summary information about their NNS neurons.",
-            "status": "deployed",
-            "milestone_id": "Neon"
-          }
-        ]
-      },
-      {
         "name": "Engaged and active DAO communities",
         "milestone_id": "Nucleon",
         "description": "This milestone focuses on boosting user involvement in governance. It aims to create a sense of belonging to DAO communities and encourage users to contribute to the liquid democracy processes. SNS communities can apply their decisions easily by proposals.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
-            "title": "SNS communities portal",
-            "overview": "A redesign of the voting interface that encourages community involvement and a sense of belonging, for example by allowing for announcement and updates.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
+            "title": "Modernized NNS dapp",
+            "overview": "A redesign of the NNS dapp will introduce a sleeker, more modern user interface and improved performance, including for users interacting with multiple DAOs. The dapp will make it easier for both new and existing users to learn about and navigate DAO functionality through cleaner design and enhanced in-app guidance.",
             "status": "future",
             "is_community": false,
             "in_beta": false,
@@ -2953,22 +2843,10 @@
             "title": "Improve staking user experience",
             "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
             "description": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
             "status": "future",
             "is_community": false,
             "in_beta": false,
             "imported": false,
-            "milestone_id": "Nucleon"
-          },
-          {
-            "title": "Guide users from swap participating to governance",
-            "overview": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false,
             "milestone_id": "Nucleon"
           },
           {
@@ -2982,19 +2860,15 @@
           {
             "title": "NNS known and named neurons",
             "overview": "Currently there are a lot of known neurons and some that only focus on a few topics. It is hard for users to find good candidates to follow / delegate their  vote to for different topics. This feature aims to improve this and to consider introducing names also for other public neurons.",
-            "status": "future",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Nucleon"
           },
           {
-            "title": "Proposal error visibility",
-            "overview": "Make it easier for SNS communities to execute decisions via proposals by making potential errors visible. For example, if an SNS proposal fails to execute, users of the NNS dapp do not see the reason for why this happened. This feature introduces user-readable error messages.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
+            "title": "NNS Neuron index",
+            "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Nucleon"
@@ -3004,12 +2878,19 @@
             "overview": "Extending the reporting functionality, for example with SNS neurons or fiat values.",
             "status": "future",
             "milestone_id": "Nucleon"
+          },
+          {
+            "title": "Archiving of NNS proposals",
+            "overview": "Storing NNS proposals long term instead of deleting them after a defined time period as done currently to increase transparency and accountability of governance.",
+            "description": "Currently, NNS proposals are only kept for a limited time and are then deleted. This feature intends to archive governance proposals to enhance transparency and accountability of the governance system.",
+            "status": "future",
+            "milestone_id": "Nucleon"
           }
         ]
       },
       {
         "name": "Council-based digital assets management",
-        "milestone_id": "Nucleus",
+        "milestone_id": "Quantum",
         "description": "This milestone integrates Orbit’s multi-approval framework with the Network Nervous System (NNS), designating the NNS as the root of trust. By having the NNS “bless” new versions, Orbit gains a robust, decentralized governance layer without requiring each council to implement its own governance from scratch.",
         "eta": null,
         "status": "future",
@@ -3018,13 +2899,13 @@
             "title": "Root of trust integration",
             "overview": "The Orbit control panel and core user interface are placed under NNS control. New versions of Orbit must be “blessed” by the NNS, ensuring a community-vetted approach to upgrades and governance.",
             "status": "future",
-            "milestone_id": "Nucleus"
+            "milestone_id": "Quantum"
           },
           {
             "title": "Public councils",
             "overview": "Projects can create open, trackable councils using Orbit’s multi approval tools. All key actions—like canister upgrades—are fully transparent, enabling end users to monitor and verify changes in real time.",
             "status": "future",
-            "milestone_id": "Nucleus"
+            "milestone_id": "Quantum"
           }
         ]
       },
@@ -3138,6 +3019,106 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Plasma"
+          }
+        ]
+      },
+      {
+        "name": "Intuitive staking and broader DAO participation",
+        "milestone_id": "Neon",
+        "description": "The Neon milestone focuses on helping users quickly understand their portfolio. New features highlight personalized insights on their staking reward potential and provide more engaging and dynamic information about DAOs, presenting users with opportunities to participate in launches. Governance participation is becoming more accessible, with simplified processes for liquidity pool integration and DAO management operations, laying the groundwork for what's next.",
+        "eta": "August 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Portfolio page",
+            "overview": "Introduce a new portfolio page for NNS dapp users where they can find an overview of their holdings and the possible actions that they can take.",
+            "status": "deployed",
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Periodic followee confirmation",
+            "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
+            "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
+            "forum": "https://forum.dfinity.org/t/periodic-confirmation-design/34215",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/55651",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Stable memory for governance",
+            "overview": "Utilizing stable memory in different parts of the NNS and SNS framework will allow ICP's governance to handle a larger number of participants, preparing it for continued growth.",
+            "description": "Utilizing stable memory in different parts of the NNS and SNS framework will allow ICP's governance to handle a larger number of participants, preparing it for continued growth.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Launchpad redesign",
+            "overview": "Launchpad is one of the central places where newcomers may find SNS DAOs. This roadmap item aims to show more interesting and dynamic information about DAOs on ICP, allowing users to find opportunities and engage with new SNS launches.",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Large Wasm support for SNS controlled dapp canisters",
+            "overview": "This simplifies owning large dapp canisters for SNS DAO communities by a built-in process to do so in the SNS framework.",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Automatic SNS framework canister upgrades",
+            "overview": "For easier management of the SNS framework canisters, allow SNS DAOs to opt-in to receive automatic upgrades to canisters as soon as they are approved and released by the NNS.",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Leverage liquid democracy in SNS DAOs",
+            "overview": "Liquid democracy is a key component of ICP's governance systems. Further leverage the potential of this mechanism in the SNS DAOs, including by introducing SNS topics.",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Fiat values in the NNS dapp",
+            "overview": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
+            "description": "It's hard to get a glance on one's SNS/ICP portfolio by only seeing the number of tokens held. This feature aims to show USD values of tokens, which also makes ordering more meaningful.",
+            "status": "deployed",
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Governance basic portfolio reporting capabilities",
+            "overview": "Reporting functionality that allows users to obtain summary information about their NNS neurons.",
+            "status": "deployed",
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "Disburse maturity for NNS neurons",
+            "overview": "Unlike SNS neurons, NNS neurons spawn maturity into a newly created neuron. This feature will move to a flow where NNS neurons would also disburse maturity.",
+            "description": "In its current implementation, NNS neurons spawn maturity into a new neuron, whereas SNS DAOs disburse maturity directly into the user's account, which greatly simplifies the flow and reduces the new neurons created.",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Neon"
+          },
+          {
+            "title": "SNS treasury management",
+            "overview": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury and focuses on interaction with DEXs.",
+            "description": "As SNS DAOs evolve, there is a need to manage their treasuries in more sophisticated ways. This roadmap item aims to extend what SNS DAOs can do with their treasury and focuses on interaction with DEXs.",
+            "status": "deployed",
+            "milestone_id": "Neon"
           }
         ]
       },
@@ -3498,56 +3479,31 @@
         "eta": "none",
         "elements": [
           {
-            "title": "NNS Neuron index",
-            "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
-            "status": "future"
-          },
-          {
             "title": "Reduce min dissolve delay to 3 months",
             "overview": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
             "description": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
             "forum": "https://forum.dfinity.org/t/reducing-the-minimum-dissolve-delay-to-3-months/32714",
             "proposal": "https://dashboard.internetcomputer.org/proposal/131010",
-            "docs": "",
-            "eta": "",
             "status": "future",
-            "is_community": true,
-            "in_beta": false
+            "is_community": true
           },
           {
             "title": "Ledger support for SNS tokens",
             "overview": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
             "description": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "Earn badges for activities",
             "overview": "Depending on different activities, reward users with badges in the NNS dapp such as #8YearGang.",
             "description": "Depending on different activities, reward users with badges in the NNS dapp such as #8YearGang.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "Allow ecosystem wallets to connect to the NNS dapp",
             "overview": "Allow ecosystem wallets to control tokens and governance neurons in the NNS dapp to foster an interoperable ICP ecosystem.",
             "description": "The ICRC signer standards are being developed in collaboration with the ICP community to enable secure, and standardized communication between canisters. Adopting ICRC signer standards will foster an ecosystem of ICP dapps where the end-user has full control over their tokens, while managing them across dapps is much simplified. The NNS dapp will open up and provide an example implementation using these standards to allow ecosystem wallets to control assets in the NNS dapp. ICP wallets and dapps are encouraged to follow suit and together create an interoperable ICP ecosystem.",
-            "status": "future",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "Manual overwriting of following-triggered votes",
@@ -3555,83 +3511,38 @@
             "description": "This feature enables manual (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron. This roadmap item is based on the community proposal 38985.",
             "forum": "https://forum.dfinity.org/t/proposal-to-enable-manual-voting-throughout-the-entire-voting-period-of-governance-proposals/9815",
             "proposal": "https://dashboard.internetcomputer.org/proposal/38985",
-            "docs": "",
-            "eta": "",
             "status": "future",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
-          },
-          {
-            "title": "Archiving of NNS proposals",
-            "overview": "Storing NNS proposals long term instead of deleting them after a defined time period as done currently to increase transparency and accountability of governance.",
-            "description": "Currently, NNS proposals are only kept for a limited time and are then deleted. This feature intends to archive governance proposals to enhance transparency and accountability of the governance system.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "is_community": true
           },
           {
             "title": "Maintain neurons’ voting history",
             "overview": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
             "description": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "Private voting",
             "overview": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
             "description": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "SNS cycles management",
             "overview": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
             "description": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "SNS swap participation with additional tokens",
             "overview": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
             "description": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           },
           {
             "title": "Neurons' Fund phase II",
             "overview": "Addresses the end-of-investment phase of the Neuron's Fund.",
             "description": "Addresses the end-of-investment phase of the Neuron's Fund.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": false,
-            "in_beta": false
+            "status": "future"
           }
         ]
       }
@@ -3668,7 +3579,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "upcoming",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Thorium",
@@ -3690,59 +3601,15 @@
           {
             "title": "Live canister metrics",
             "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
             "is_community": true,
-            "in_beta": false,
+            "status": "in_progress",
             "milestone_id": "Thorium"
-          }
-        ]
-      },
-      {
-        "name": "Amazing first time developer experience with ICP Ninja",
-        "milestone_id": "Atlas",
-        "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
+          },
           {
-            "title": "Open Caffeine projects",
-            "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
+            "title": "Canister logging extensions",
+            "overview": "This feature introduces cross-canister log fetching, enabling larger log storage and making future extensions like log levels and filtering possible — all within the Internet Computer ecosystem.",
             "status": "in_progress",
-            "milestone_id": "Atlas"
-          },
-          {
-            "title": "Generate a project with AI",
-            "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
-            "status": "in_progress",
-            "milestone_id": "Atlas"
-          },
-          {
-            "title": "More sample projects to get you started",
-            "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
-            "status": "in_progress",
-            "milestone_id": "Atlas"
-          },
-          {
-            "title": "Community published projects",
-            "overview": "Show your coding skills to the community by publishing your project to the gallery.",
-            "status": "future",
-            "milestone_id": "Atlas"
-          },
-          {
-            "title": "Structured learning through mini tutorials",
-            "overview": "Add tutorials that teach ICP programming concepts and design patterns.",
-            "status": "future",
-            "milestone_id": "Atlas"
-          },
-          {
-            "title": "Dark mode",
-            "overview": "Introduce dark mode for the app",
-            "status": "future",
-            "milestone_id": "Atlas"
+            "milestone_id": "Thorium"
           }
         ]
       },
@@ -3901,11 +3768,88 @@
         ]
       },
       {
+        "name": "Amazing first time developer experience with ICP Ninja",
+        "milestone_id": "Atlas",
+        "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
+        "eta": "September 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Publishing projects to the ICP mainnet",
+            "overview": "Users can permanently publish their projects to the ICP mainnet and manage their canisters with CycleOps. Users can use coupons or their own ICP to pay for the deployments.",
+            "status": "deployed",
+            "milestone_id": "Atlas"
+          },
+          {
+            "title": "More sample projects to get you started",
+            "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
+            "status": "deployed",
+            "milestone_id": "Atlas"
+          },
+          {
+            "title": "Community published projects",
+            "overview": "Show your coding skills to the community by publishing your project to the gallery.",
+            "status": "deployed",
+            "milestone_id": "Atlas"
+          },
+          {
+            "title": "Dark mode",
+            "overview": "Introduce dark mode for the app",
+            "status": "deployed",
+            "milestone_id": "Atlas"
+          }
+        ]
+      },
+      {
         "name": "orphans_past",
         "description": "Orphans from the past",
         "milestone_id": "Past features",
         "eta": "none",
         "elements": [
+          {
+            "title": "PoC enabling REST & JSON-centric interfaces",
+            "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "PocketIC shipped and bundled with dfx",
+            "overview": "PocketIC, the new recommended standard tool for testing of dapps, is shipped and packaged with the dfx SDK.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "dfx ergonomics",
+            "overview": "Better developer experience when using the ICP SDK.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "dfx extensions",
+            "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "Q3 2024",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "imported": true
+          },
           {
             "title": "Motoko package manager shipped with dfx",
             "overview": "Integrating the Mops package manager with dfx to improve DX.",
@@ -4185,38 +4129,14 @@
         "eta": "none",
         "elements": [
           {
-            "title": "dfx extensions",
-            "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "Q3 2024",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
-          },
-          {
-            "title": "dfx ergonomics",
-            "overview": "Better developer experience when using the ICP SDK.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
             "title": "Tutorials",
             "overview": "More and improved tutorials for faster successful onboarding of devs into the ICP ecosystem.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false
+            "status": "in_progress"
+          },
+          {
+            "title": "Open Caffeine projects",
+            "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
+            "status": "future"
           },
           {
             "title": "Streaming support for the Asset Canister",
@@ -4282,19 +4202,8 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "future",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "PocketIC shipped and bundled with dfx",
-            "overview": "PocketIC, the new recommended standard tool for testing of dapps, is shipped and packaged with the dfx SDK.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
             "status": "in_progress",
-            "is_community": false,
+            "is_community": true,
             "in_beta": false
           },
           {
@@ -4328,16 +4237,6 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "PoC enabling REST & JSON-centric interfaces",
-            "overview": "PoC libraries that enable REST and JSON-centric interfaces to ICP. This would provider a more familiar onboarding experience for Web2 devs to the ICP ecosystem.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": true,
             "in_beta": false
           },
           {
