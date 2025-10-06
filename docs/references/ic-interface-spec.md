@@ -2965,6 +2965,8 @@ The `is_replicated` field is considered EXPERIMENTAL.
 
 :::
 
+-   `pricing_version` - the version of the pricing mechanism for HTTP outcalls that should be applied to this call; it can be either `1` or `2`. For compatibility reasons, the default is `1`; however, version `1` is deprecated.
+
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
 The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
