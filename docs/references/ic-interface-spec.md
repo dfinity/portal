@@ -1519,6 +1519,12 @@ The 32-bit stable memory System API (`ic0.stable_size`, `ic0.stable_grow`, `ic0.
 
 :::
 
+:::note
+
+The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers are advised to use the `ic0.cost_http_request_v2` call instead.
+
+:::
+
 The following sections describe various System API functions, also referred to as system calls, which we summarize here.
 
 All the following functions belong to the `ic0` module (denoted by the prefix `ic0.`).
@@ -1601,6 +1607,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
     ic0.cost_create_canister : (dst : I) -> ();                                           // * s
     ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
+    ic0.cost_http_request_v2 : (params_src : I, params_size : I, dst : I) -> ();          // * s
     ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
     ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
@@ -2195,15 +2202,49 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
     The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor.
 
+:::note
+
+The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers are advised to use the `ic0.cost_http_request_v2` call instead.
+
+:::
+
 -   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
-    The cost of a canister http outcall via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
+    The cost of a canister HTTP outcall via [`http_request`](#ic-http_request) with the pricing version set to `1` (currently the default). `request_size` is the sum of the byte lengths of the following components of an http request:
     - url
     - headers - i.e., the sum of the lengths of all keys and values 
     - body
     - transform - i.e., the sum of the transform method name length and the length of the transform context
     
     `max_res_bytes` is the maximum response length the caller wishes to accept (the caller should provide the default value of `2,000,000` if no maximum response length is provided in the actual request to the management canister). 
+
+-   `ic0.cost_http_request_v2(params_src: I, params_size: I, dst : I) -> ();    I ∈ {i32, i64}`
+
+    The cost of a canister HTTP outcall via [`http_request`](#ic-http_request) with the pricing version set to `2`. The blob described by `params_src` and `params_size` must be a valid Candid encoding of a value of the following type:
+    ```
+    record {
+        request_bytes : nat64;
+        request_time_ms : nat64;
+        raw_response_bytes : nat64;
+        transformed_response_bytes : nat64;
+        transform_instructions: nat64;
+    }
+    ```
+
+    The function may trap if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The fields describe the different components of computing the cost:
+    - `request_bytes` is the sum of the byte lengths of the following components of an HTTP request:
+      - `url`
+      - `headers` - i.e., the sum of the lengths of all keys and values
+      - `body`
+      - `transform` - i.e., the sum of the transform method name length and the length of the transform context.
+
+    - `request_time_ms` is the time that the HTTP request to the remote server may take to complete (in milliseconds).
+
+    - `raw_response_bytes` is the length of the HTTP response
+
+    - `transformed_response_bytes` is the length of the HTTP response after transformation
+
+    - `transform_instructions` is the number of instructions the transform function takes.
 
 -   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
@@ -8644,6 +8685,10 @@ ic0.cost_create_canister<es>(dst: I) : () =
 
 I ∈ {i32, i64}
 ic0.cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_http_request<es>(params_src : I, params_size : I, dst : I) : ()= 
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
