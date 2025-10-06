@@ -38,7 +38,7 @@ The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
 - The **ckBTC ledger**.
 
-| Canister source code                                                                | ckBTC (Bitcoin mainnet) deployment                                                                         | ckTESTBTC (Bitcoin testnet4) deployment                                                                    |
+| Canister source code                                                                | ckBTC deployment (Bitcoin mainnet)                                                                         | ckTESTBTC deployment (Bitcoin testnet4)                                                                    |
 | ----------------------------------------------------------------------------------  | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)         | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
 | [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)    | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai) |
@@ -59,7 +59,7 @@ A simplified overview of the process to mint and transfer ckBTC is depicted in t
 
 ![ckBTC overview](../../_attachments/ckbtc-overview.png)
 
-**Note:** Before ckBTC is is minted/transferred to the user, the user needs to deposit bitcoins to the respective Bitcoin address. In addition to that, the ckBTC minter performs a check for the Bitcoin address which transferred the bitcoins. A detailed description of the whole process can be found on the [Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
+**Note:** Before ckBTC is is minted/transferred to the user, the ckBTC minter performs a check for the Bitcoin address which transferred the bitcoins. A detailed description of the whole process can be found on the [Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
 
 ## Resources
 
@@ -95,7 +95,7 @@ JavaScript:
 Rust:
 - [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) Package defining types for interfacing with ICRC-1/2 ledgers.
 - [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent) Agent that uses `icrc-ledger-types` for interfacing with ICRC-1/2 ledgers.
-- [icrc-ledger-client](https://crates.io/crates/icrc-ledger-client) Package that uses `icrc-ledger-types` and defines functions for interacting with ICRC-1/2 ledgers.
+- [icrc-ledger-client](https://crates.io/crates/icrc-ledger-client) Package that uses `icrc-ledger-types` and defines functions for interfacing with ICRC-1/2 ledgers.
 - [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk) Package that defines runtime meant to be used together with the `icrc-ledger-client` library.
 
 Motoko:
@@ -103,13 +103,13 @@ Motoko:
 
 ### Articles
 
-- [ckBTC: A Decentralized Mechanism for Efficient Bitcoin Transfers](https://medium.com/dfinity/ckbtc-a-decentralized-mechanism-for-efficient-bitcoin-transfers-42b128bc44d9) Medium article by DFINITY from April 2024.
-- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59) Medium article by DFINITY from November 2023.
-- [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e) Medium article by DFINITY from April 2023.
-- [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/ckbtc-sparks-a-new-era-on-the-internet-computer-86463a7be20f) Medium article by William Laurent from February 2023.
+- [ckBTC: A Decentralized Mechanism for Efficient Bitcoin Transfers](https://medium.com/dfinity/ckbtc-a-decentralized-mechanism-for-efficient-bitcoin-transfers-42b128bc44d9)
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59)
+- [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e)
+- [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/ckbtc-sparks-a-new-era-on-the-internet-computer-86463a7be20f)
 
 ### Videos
 
-- [Introduction to Bitcoin Integration](https://www.youtube.com/watch?v=TwOEEBtNjzU&t=2856s) Bitcoin DeFi Bootcamp by ICP from September 2025.
-- [How to use ICP as a Bitcoin L2](https://www.youtube.com/watch?v=FKvpar9U6wM&t=2869s) ICP Chain Fusion Educate - Bitcoin Edition from Septembter 2024.
-- [All about ckBTC](https://www.youtube.com/watch?v=cBZlTX818L8) DFINITY Twitter Space from February 2023.
+- [Introduction to Bitcoin Integration](https://www.youtube.com/watch?v=TwOEEBtNjzU&t=2856s)
+- [How to use ICP as a Bitcoin L2](https://www.youtube.com/watch?v=FKvpar9U6wM&t=2869s)
+- [All about ckBTC](https://www.youtube.com/watch?v=cBZlTX818L8) DFINITY Twitter Space.
