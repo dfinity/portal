@@ -176,6 +176,10 @@ async function processEventsData(records) {
         imageUrl = "/img/events/icp-edu.webp";
       }
 
+      if (parsedRecord.eventName === "Bitcoin DeFi Hackathon") {
+        imageUrl = "/img/events/defi-hackathon.webp";
+      }
+
       // If no share image is found, use a default image
       if (!imageUrl) {
         imageUrl = getDefaultEventImage(parsedRecord);
