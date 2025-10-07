@@ -4254,8 +4254,15 @@ Moreover, the signature must be valid and created with a correct key. Due to thi
 
 Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
-Submitted request
-`E : Envelope`
+Submitted request to `/api/<VERSION>/canister/<ECID>/call`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2` or `v3`.
 
 Conditions  
 
@@ -5399,17 +5406,32 @@ S with
 ```
 
 The IC method `canister_status` can also be invoked via management canister query calls.
-They are calls to `/api/v2/canister/<effective_canister_id>/query`
+They are calls to `/api/<VERSION>/canister/<ECID>/query`, where `<VERSION>` is `v2`,
 with CBOR body `Q` such that `Q.canister_id = ic_principal`.
+
+Submitted request to `/api/<VERSION>/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2`.
 
 Conditions
 
 ```html
 
+E.content = CanisterQuery Q
 Q.canister_id = ic_principal
 Q.method_name = 'canister_status'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
-A.canister_id = <effective_canister_id>
+A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+Q.sender ∈ S.controllers[A.canister_id]
 
 ```
 
@@ -5421,7 +5443,7 @@ Query response `R`:
 
 ```
 
-where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state` satisfy the following:
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
@@ -7385,21 +7407,35 @@ S with
 #### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
 
 This section specifies management canister query calls.
-They are calls to `/api/v2/canister/<effective_canister_id>/query`
+They are calls to `/api/<VERSION>/canister/<ECID>/query`, where `<VERSION>` is `v2`,
 with CBOR body `Q` such that `Q.canister_id = ic_principal`.
 
 The management canister offers the method `fetch_canister_logs`
 that can be called as a query call and
 returns logs of a requested canister.
 
+Submitted request to `/api/<VERSION>/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2`.
+
 Conditions
 
 ```html
 
+E.content = CanisterQuery Q
 Q.canister_id = ic_principal
 Q.method_name = 'fetch_canister_logs'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
-A.canister_id = <effective_canister_id>
+A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 (S[A.canister_id].canister_log_visibility = Public)
   or
   (S[A.canister_id].canister_log_visibility = Controllers and Q.sender in S[A.canister_id].controllers)
@@ -7416,7 +7452,7 @@ Query response `R`:
 
 ```
 
-where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state` satisfy the following:
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
@@ -7526,8 +7562,15 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S)
 ```
 
-Submitted request  
-`E`
+Submitted request to `/api/<VERSION>/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2`.
 
 Conditions  
 
@@ -7553,7 +7596,7 @@ Query response `R`:
     {status: "replied"; reply: {arg: Res}, signatures: Sigs}
     ```
 
-where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state` satisfy the following:
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
@@ -7581,7 +7624,7 @@ S' with
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/subnet` at `/api/v2/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v2/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
@@ -7589,8 +7632,15 @@ On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf
 
 The user can read elements of the *state tree*, using a `read_state` request to `/api/v2/canister/<ECID>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`.
 
-Submitted request to `/api/v2/canister/<ECID>/read_state`
-`E`
+Submitted request to `/api/<VERSION>/canister/<ECID>/read_state`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2`.
 
 Conditions  
 
@@ -7642,15 +7692,22 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/v2/subnet/<subnet_id>/read_state`
-`E`
+Submitted request to `/api/<VERSION>/subnet/<subnet_id>/read_state`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2`.
 
 Conditions  
 
 ```html
 
 E.content = ReadState RS
-TS = verify_envelope(E, RS.sender, S.system_time)
+verify_envelope(E, RS.sender, S.system_time)
 |E.content.nonce| <= 32
 S.system_time <= RS.ingress_expiry
 ∀ path ∈ RS.paths. may_read_path_for_subnet(S, RS.sender, path)
@@ -7671,7 +7728,7 @@ may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = True
-may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == subnet_id
+may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <subnet_id>
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
