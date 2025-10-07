@@ -6559,7 +6559,7 @@ S' = S with
 #### IC Management Canister: Load canister snapshot
 
 
-Controllers of a canister can load a snapshot taken for a canister on the same subnet and also controlled by the caller.
+Controllers of a canister can load a snapshot that belongs to a canister on the same subnet and also controlled by the caller.
 
 ```html
 
