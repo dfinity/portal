@@ -5407,7 +5407,7 @@ S with
 
 The IC method `canister_status` can also be invoked via management canister query calls.
 They are calls to `/api/v2/canister/<ECID>/query`
-with CBOR body `Q` such that `Q.canister_id = ic_principal`.
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
 
 Submitted request to `/api/v2/canister/<ECID>/query`
 
@@ -7406,7 +7406,7 @@ S with
 
 This section specifies management canister query calls.
 They are calls to `/api/v2/canister/<ECID>/query`
-with CBOR body `Q` such that `Q.canister_id = ic_principal`.
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
 
 The management canister offers the method `fetch_canister_logs`
 that can be called as a query call and
