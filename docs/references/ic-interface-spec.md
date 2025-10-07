@@ -5406,18 +5406,16 @@ S with
 ```
 
 The IC method `canister_status` can also be invoked via management canister query calls.
-They are calls to `/api/<VERSION>/canister/<ECID>/query`, where `<VERSION>` is `v2`,
+They are calls to `/api/v2/canister/<ECID>/query`
 with CBOR body `Q` such that `Q.canister_id = ic_principal`.
 
-Submitted request to `/api/<VERSION>/canister/<ECID>/query`
+Submitted request to `/api/v2/canister/<ECID>/query`
 
 ```html
 
 E : Envelope
 
 ```
-
-where `<VERSION>` is `v2`.
 
 Conditions
 
@@ -7407,22 +7405,20 @@ S with
 #### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
 
 This section specifies management canister query calls.
-They are calls to `/api/<VERSION>/canister/<ECID>/query`, where `<VERSION>` is `v2`,
+They are calls to `/api/v2/canister/<ECID>/query`
 with CBOR body `Q` such that `Q.canister_id = ic_principal`.
 
 The management canister offers the method `fetch_canister_logs`
 that can be called as a query call and
 returns logs of a requested canister.
 
-Submitted request to `/api/<VERSION>/canister/<ECID>/query`
+Submitted request to `/api/v2/canister/<ECID>/query`
 
 ```html
 
 E : Envelope
 
 ```
-
-where `<VERSION>` is `v2`.
 
 Conditions
 
@@ -7562,15 +7558,13 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S)
 ```
 
-Submitted request to `/api/<VERSION>/canister/<ECID>/query`
+Submitted request to `/api/v2/canister/<ECID>/query`
 
 ```html
 
 E : Envelope
 
 ```
-
-where `<VERSION>` is `v2`.
 
 Conditions  
 
@@ -7632,15 +7626,13 @@ On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf
 
 The user can read elements of the *state tree*, using a `read_state` request to `/api/v2/canister/<ECID>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`.
 
-Submitted request to `/api/<VERSION>/canister/<ECID>/read_state`
+Submitted request to `/api/v2/canister/<ECID>/read_state`
 
 ```html
 
 E : Envelope
 
 ```
-
-where `<VERSION>` is `v2`.
 
 Conditions  
 
@@ -7692,15 +7684,13 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/<VERSION>/subnet/<subnet_id>/read_state`
+Submitted request to `/api/v2/subnet/<subnet_id>/read_state`
 
 ```html
 
 E : Envelope
 
 ```
-
-where `<VERSION>` is `v2`.
 
 Conditions  
 
