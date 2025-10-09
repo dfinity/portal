@@ -1,0 +1,41 @@
+---
+keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3, token standards, icrc standard, tokens, standards, icrc-7, icrc-37]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# ICRC-7
+
+<MarkdownChipRow labels={["Intermediate", "Tokens"]} />
+
+ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used to create a set of NFTs, also referred to as an NFT collection. It is a minimal standard and can be thought of as the equivalent of the ICRC-1 standard but for non-fungible tokens instead of fungible tokens. This base standard intentionally excludes some functions, such as:
+
+- Reliable transaction notifications for smart contracts.
+
+- A block structure and the interface for fetching blocks.
+
+- Pre-signed transactions.
+
+ICRC-7 accounts have the same structure and follow the same overall principles as ICRC-1 accounts. ICRC-7 views the ICRC-1 `Account` as a primary concept, meaning that operations like transfers always refer to the full account and not only the principal portion. Some methods include an extra optional `from_subaccount` or `spender_subaccount` parameter that, together with the caller, forms an account to perform the respective operation on. Leaving such a `subaccount` parameter `null` is executed the same as referring to the default subaccount comprised of all zeroes.
+
+### Token metadata
+
+Available metadata entries for ICRC-7 tokens include:
+
+- `icrc7:symbol`: Type `Text` that defines the token's symbol, similar to a token's currency code.
+
+- `icrc7:name`: Type `Text` that defines the name of the token.
+
+- `icrc7:description`: Type `Text` that provides a description of the token.
+
+- `icrc7:logo`: Type `Text`, an optional URL of the token's logo image.
+
+- `icrc7:total_supply`: Type `Nat`: The current total number of tokens in existence.
+
+- `icrc7:supply_cap`: Type `Nat`, an optional maximum supply of tokens, after which minting new tokens is not possible.
+
+Additional technical metadata elements can be found in the [ICRC-7 specification](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md#icrc7_collection_metadata).
+
+[Read the full ICRC-7 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md).
