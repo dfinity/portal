@@ -6141,7 +6141,7 @@
   },
   {
     "id": "norlys",
-    "name": "norlys",
+    "name": "Norlys",
     "display": "Normal",
     "website": "https://norlys.live",
     "submittableId": 50243530,
@@ -6173,7 +6173,7 @@
   },
   {
     "id": "node_monitoring",
-    "name": "Node Monitoring Platform for the Internet Computer Protocol (ICP)",
+    "name": "Node Monitoring Platform for ICP",
     "display": "Normal",
     "website": "https://icnodemonitor.com/",
     "github": "https://github.com/Rivram-Inc/ic-node-monitor",
