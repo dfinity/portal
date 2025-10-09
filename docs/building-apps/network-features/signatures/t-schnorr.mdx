@@ -171,6 +171,21 @@ The master public keys used for Ed25519 are:
 These can be used to perform key derivation offline without requiring
 using the `schnorr_public_key` management canister call.
 
+## PocketIC Hardcoded Keys
+
+PocketIC uses hardcoded keys for testing purposes. For BIP-340 these are the same as those
+used for ECDSA:
+
+- `key_1`: `036ad6e838b46811ad79c37b2f4b854b7a05f406715b2935edc5d3251e7666977b`
+- `test_key_1`: `03cc365e15cb552589c7175717b2ac63d1050b9bb2e5aed35432b1b1be55d3abcf`
+- `dfx_test_key`: `03e6f78b1a90e361c5cc9903f73bb8acbe3bc17ad01e82554d25cf0ecd70c67484`
+
+For Ed25519 the PocketIC test keys are:
+
+- `key_1`: `db415b8eb85bd5127b0984723e0448054042cf40e7a9c262ed0cc87ecea98349`
+- `test_key_1`: `6ed9121ecf701b9e301fce17d8a65214888984e8211225691b089d6b219ec144`
+- `dfx_test_key`: `7124afcb1be5927cac0397a7447b9c3cda2a4099af62d9bc0a2c2fe42d33efe1`
+
 ## Resources
 
 - [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
