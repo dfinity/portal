@@ -696,10 +696,11 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/other/updates/release-notes/ /docs/other/updates/release-notes/
   /docs/current/developer-docs/smart-contracts/overview/trust-in-canisters /docs/building-apps/best-practices/trust-in-canisters
-  /docs/current/references/icrc1-standard /docs/defi/overview
+  /docs/current/references/icrc1-standard /docs/defi/token-standards/icrc-1
   /docs/current/developer-docs/getting-started/troubleshooting /docs/building-apps/best-practices/troubleshooting
   /docs/current/developer-docs/smart-contracts/deploy/custom-testnets /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/canbench /docs/building-apps/advanced/benchmarking
+  /docs/references/icrc1-standard /docs/defi/token-standards/icrc-1
 
   ## dfx
   /docs/current/references/cli-reference/dfx-parent /docs/building-apps/developer-tools/dfx/dfx-parent
@@ -795,10 +796,10 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/references/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/defi/create
-  /docs/current/developer-docs/integrations/icrc-1/ /docs/references/icrc1-standard
+  /docs/current/developer-docs/integrations/icrc-1/ /docs/defi/token-standards/icrc-1
   /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/defi/token-indexes/
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/defi/token-ledgers/setup/icrc1_ledger_setup
-  /docs/current/developer-docs/integrations/icrc-1/index /docs/references/icrc1-standard
+  /docs/current/developer-docs/integrations/icrc-1/index /docs/defi/token-standards/icrc-1
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/defi/token-ledgers/usage/icrc1_ledger_usage
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/index /docs/building-apps/essentials/network-overview
