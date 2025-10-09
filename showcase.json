@@ -6138,6 +6138,55 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpay.svg",
     "oneLiner": "Stripe for Web3"
+  },
+  {
+    "id": "norlys",
+    "name": "norlys",
+    "display": "Normal",
+    "website": "https://norlys.live",
+    "submittableId": 50243530,
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "stats": "15000 unique monthly user",
+    "description": "Northern Lights chasing website featuring a real-time aurora probability world map and various data products helping chasers around the world.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Norlys_logo.jpg",
+    "oneLiner": "Aurora chasing made simple."
+  },
+  {
+    "id": "marina_protocol",
+    "name": "Marina Protocol",
+    "display": "Normal",
+    "website": "https://marina-protocol.com/",
+    "twitter": "https://x.com/MARINA_PROTOCOL",
+    "submittableId": 49936259,
+    "tags": [
+      "Creator Economy",
+      "Tools / Infrastructure"
+    ],
+    "description": "Next-gen MarTech with 1.3M users in 200 countries automates Web2 events into Web3 campaigns with instant on-chain rewards and gasless onboarding.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/marina_logo.svg",
+    "oneLiner": "Marina Protocol: Redefining Web3 Reward Marketing Infrastructure."
+  },
+  {
+    "id": "node_monitoring",
+    "name": "Node Monitoring Platform for the Internet Computer Protocol (ICP)",
+    "display": "Normal",
+    "website": "https://icnodemonitor.com/",
+    "github": "https://github.com/Rivram-Inc/ic-node-monitor",
+    "youtube": "https://youtu.be/bq6Sk-SlK5E",
+    "submittableId": 47040074,
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "description": "IC Node Monitoring Tool gives real-time insight into Internet Computer nodes with global pings, uptime logs, charts, and provider overviews.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ic-node-monitor-stacked.svg",
+    "oneLiner": "One place to monitor / manage your nodes and optimize rewards."
   }
   
 ]
