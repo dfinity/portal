@@ -90,17 +90,13 @@ Inside of `src/assets`, create a `.well-known` folder, and add a file named `ii-
 The file needs to be exactly named `ii-alternative-origins`, with no file extension. The content inside will be formatted as JSON, but the file should not end with `.json`.
 :::
 
-Inside of the file, list your alternative origin for **B**. It will look something like this:
+Inside of the file, list your alternative origins for **A**, which is **B** in our example. It will look something like this:
 
 ```json title="src/assets/.well-known/ii-alternative-origins"
 {
   "alternativeOrigins": ["https://www.yourcustomdomain.com"]
 }
 ```
-
-:::info
-Make sure that you remove any trailing slash or query parameters from the origin.
-:::
 
 Now, your project should look something like this:
 
@@ -148,7 +144,7 @@ Then, configure the `.well-known` directory to be included with:
 
 This includes a general rule to not ignore the `.well-known` directory and rules to deliver the `ii-alternative-origins` with access control and content-type headers.
 
-Now, all you need to do is deploy your canister.
+Now, all you need to do is deploy your canisters (both **A** and **B**).
 
 :::info
 From now on, when you attempt to authenticate from origin **B**, you will get back the same principal you get while using **A**.
