@@ -2231,7 +2231,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     }
     ```
 
-    The function may trap if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The fields describe the different components of computing the cost:
+    The function may trap if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The function returns the cycle cost of an HTTP outcall whose execution uses up exactly the amount of resources specified by the individual fields:
     - `request_bytes` is the sum of the byte lengths of the following components of an HTTP request:
       - `url`
       - `headers` - i.e., the sum of the lengths of all keys and values
@@ -2947,7 +2947,7 @@ The following parameters should be supplied for the call:
 
 -   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt), it might contain non-ASCII characters according to [RFC-3987](https://www.ietf.org/rfc/rfc3987.txt), and its length must not exceed `8192`. The URL may specify a custom port number.
 
--   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
+-   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). If not provided, the maximum of `2MB` will be used. When the `pricing_version` is set to `1`, the call will be charged based on this parameter. When the `pricing_version` is set to `2`, this field is ignored.
 
 -   `method` - currently, only GET, HEAD, and POST are supported
 
@@ -2967,7 +2967,9 @@ The following parameters should be supplied for the call:
 
 -   `pricing_version` - the version of the pricing mechanism for HTTP outcalls that should be applied to this call; it can be either `1` or `2`. For compatibility reasons, the default is `1`; however, version `1` is deprecated.
 
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). Extraneous cycles are refunded:
+- with pricing version `1`, the difference between the attached cycles and the cost returned by the `ic0.cost_http_request` API with the appropriate parameters
+- with pricing version `2`, any attached cycles exceeding those used by the outcall execution.
 
 The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
 
