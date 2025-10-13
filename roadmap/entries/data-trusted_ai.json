@@ -1,5 +1,5 @@
 {
-  "categoryName": "Decentralized AI",
+  "categoryName": "AI",
   "categoryDescription": "AI and ICP have significant potential to benefit one another. First, AI and ICP together enable the self-writing Internet. Given a description of an application, AI can write the application for you and, by deploying it as an ICP smart contract, make it available to you at a URL – just like that.  Second, AI running as a smart contract on ICP addresses the problem of users having to blindly trust AI models running on centralized servers by providing transparency into data usage and response generation.",
   "elements": [
     {

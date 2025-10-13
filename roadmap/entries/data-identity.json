@@ -33,41 +33,8 @@
       "is_milestone": true,
       "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
       "milestone_id": "Synchrotron",
-      "eta": "Q4 2024",
       "status": "in_progress",
-      "eta_to_render": "August 2025"
-    },
-    {
-      "title": "Rethinking the Internet Identity user experience",
-      "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
-      "status": "in_progress",
-      "is_milestone": true,
-      "milestone_id": "Pulse",
-      "eta_to_render": "September 2025"
-    },
-    {
-      "title": "Sign in with OpenID",
-      "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
-      "status": "in_progress",
-      "milestone_id": "Pulse"
-    },
-    {
-      "title": "Make account numbers obsolete",
-      "overview": "Account numbers are confusing and hard to remember. Explore ways to deprecate them through the use of the latest WebAuthn features.",
-      "status": "in_progress",
-      "milestone_id": "Pulse"
-    },
-    {
-      "title": "Streamline the authentication flow",
-      "overview": "Make the authentication flow clear to the user. Avoid pitfalls and frustrations.",
-      "status": "in_progress",
-      "milestone_id": "Pulse"
-    },
-    {
-      "title": "One identity, multiple accounts",
-      "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
-      "status": "in_progress",
-      "milestone_id": "Pulse"
+      "eta_to_render": "October 2025"
     },
     {
       "title": "Disentangle identity / wallet / app",

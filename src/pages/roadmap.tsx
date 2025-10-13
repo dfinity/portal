@@ -178,6 +178,54 @@ const milestoneComponent = (
     wrapperClasses += ` order-4 mr-[100dvw]`;
   }
 
+  if (milestone.milestone_id === "Caffeine") {
+    return (
+      <article
+        key={milestone.name}
+        className={`${wrapperClasses.replace(
+          " w-[450px]",
+          "w-full md:w-[450px] !max-w-[85vw] md:max-w-[450px] "
+        )} border-[#DDF730] hover:!border-white`} // Constrain mobile width
+        style={
+          {
+            "--color": "#DDF730",
+            "--color2": color[1],
+            backgroundColor: "black",
+            hover: {
+              borderColor: "white",
+            },
+          } as React.CSSProperties
+        }
+        onClick={overlayTrigger}
+      >
+        {isOrphan ? (
+          <div className={`grow flex flex-col justify-end`}>
+            <div className="min-w-[140px]"></div>
+          </div>
+        ) : (
+          <div className="flex min-h-full gap-8 md:gap-20 relative p-2">
+            <div className="grow flex flex-col justify-between md:max-w-full max-w-[80vw]">
+              <header>
+                <h2 className="mb-0 tw-heading-5">
+                  {milestone.milestone_id == "none"
+                    ? milestoneName(milestone.name)
+                    : milestone.milestone_id}
+                </h2>
+                <p className="text-xs mb-0">
+                  <span className="">caffeine.ai</span>{" "}
+                </p>
+              </header>
+              <p className="mb-0 mt-3 font-bold word-break-normal">
+                Caffeine is the world's first commercially-available platform
+                for creating self-writing apps.
+              </p>
+            </div>
+          </div>
+        )}
+      </article>
+    );
+  }
+
   return (
     <article
       key={milestone.name}
@@ -460,7 +508,8 @@ const RoadmapPage: React.FC = () => {
                       15
                     );
                     return (
-                      milestone.elements.length > 0 &&
+                      (milestone.elements.length > 0 ||
+                        milestone.milestone_id === "Caffeine") &&
                       milestoneComponent(
                         milestone,
                         index,

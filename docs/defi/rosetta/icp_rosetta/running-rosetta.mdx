@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, rosetta, tutorial, docker, source, local cluster, validation cloud, deployment]
+keywords: [intermediate, rosetta, tutorial, docker, source, validation cloud, deployment]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -36,7 +36,7 @@ docker run \
 ```
 
 :::info
-To get `TESTICP` tokens for testing, you can use the faucet [here](https://nqoci-rqaaa-aaaap-qp53q-cai.icp0.io/). This provides test tokens without needing to use real ICP.
+To get `TESTICP` tokens for testing, you can use the faucet [here](https://faucet.internetcomputer.org/). This provides test tokens without needing to use real ICP.
 :::
 
 ### Basic Production Deployment
@@ -117,84 +117,6 @@ The `--store-location` parameter is important when running from source as it spe
 :::
 
 This method gives you the latest development version and allows for custom modifications.
-
-## Local cluster
-
-For development and testing purposes, you can set up a complete local Kubernetes cluster with monitoring tools.
-
-
-The local cluster setup provides:
-- Minikube-based Kubernetes cluster.
-- Prometheus and Grafana for monitoring.
-- cAdvisor for container metrics.
-- Both ICP and ICRC1 Rosetta services.
-
-The deployment script will help install missing dependencies:
-- Docker.
-- Minikube.
-- kubectl.
-- Helm.
-
-### Deploying production images
-
-```bash
-# Clone the IC repository
-git clone https://github.com/dfinity/ic.git
-cd ic/rs/rosetta-api/local/cluster
-
-# Deploy with default test ledgers
-./deploy.sh
-
-# Deploy pointing to specific ledgers
-./deploy.sh \
-    --icp-ledger xafvr-biaaa-aaaai-aql5q-cai \
-    --icp-symbol TESTICP \
-    --icrc1-ledger 3jkp5-oyaaa-aaaaj-azwqa-cai
-```
-
-### Deploying local images
-
-First, build the containers from within the dev container:
-
-```bash
-# Enter dev container
-./ci/container/container-run.sh
-
-# Build ICP Rosetta
-bazel build //rs/rosetta-api/icp:rosetta_image.tar
-mv bazel-bin/rs/rosetta-api/icp/rosetta_image.tar /tmp
-
-# Build ICRC1 Rosetta
-bazel build //rs/rosetta-api/icrc1:icrc_rosetta_image.tar
-mv bazel-bin/rs/rosetta-api/icrc1/icrc_rosetta_image.tar /tmp
-
-# Exit dev container
-exit
-```
-
-Then deploy the local images:
-
-```bash
-./deploy.sh \
-    --local-icp-image-tar /tmp/rosetta_image.tar \
-    --local-icrc1-image-tar /tmp/icrc_rosetta_image.tar
-```
-
-### Monitoring with Grafana
-
-Access Grafana at `http://localhost:3000` with:
-- Username: `admin`.
-- Password: `admin`.
-
-Import the dashboard using the `rosetta_load_dashboard.json` file in the cluster directory.
-
-### Cleaning up
-
-To start fresh:
-
-```bash
-./deploy.sh --clean
-```
 
 ## Validation Cloud
 
