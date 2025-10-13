@@ -7702,7 +7702,7 @@ S' with
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v3/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
@@ -7742,7 +7742,7 @@ may_read_path_for_canister(S, _, ["time"]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
-may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == <root_subnet_id>
+may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_canister(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -7767,7 +7767,7 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/v3/subnet/<subnet_id>/read_state`
+Submitted request to `/api/v3/subnet/<effective_subnet_id>/read_state`
 
 ```html
 
@@ -7800,8 +7800,8 @@ may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
-may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == <root_subnet_id>
-may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <subnet_id>
+may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
+may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_subnet_id>
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -7817,7 +7817,7 @@ state_tree(S) = {
   "time": S.system_time;
   "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
   "subnet": { subnet_id : { "public_key" : subnet_pk; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
-  "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == <root_subnet_id> };
+  "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == root_subnet_id };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
     { canister_id :
