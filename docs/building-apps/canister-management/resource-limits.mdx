@@ -37,7 +37,7 @@ The limits depend on the message type as shown in the following table.
 | <Tooltip text="A collection of nodes that run their own instance of the ICP [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
 | Subnet capacity (total memory available per subnet)                                  | 2TiB        |
-| Maximum number of snapshots per canister                                              | 1           |
+| Maximum number of snapshots per canister                                              | 10         |
 
 | Memory resource limits                                                               | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
@@ -67,6 +67,13 @@ The limits depend on the message type as shown in the following table.
 | ------------------------------------------------------------------------------------ | ----------- |
 | Update calls execution threads, per subnet                                           | 4           |
 | Update calls execution threads, per canister                                         | 1           |
+
+| Canister environment variables                                                       | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Environment variables, per canister                                                  | 20          |
+| Environment variable name length                                                     | 128         |
+| Environment variable value length                                                    | 128         |
+
 
 ## Performance limits
 
