@@ -1287,6 +1287,26 @@
     "oneLiner": "Borrow on your terms"
   },
   {
+    "id": "liquidium_foundation",
+    "name": "Liquidium Foundation - Staking for Runes",
+    "display": "Normal",
+    "website": "https://stake.liquidium.org",
+    "twitter": "https://x.com/LiquidiumFdn",
+    "github": "https://github.com/Liquidium-Inc/staking-app",
+    "youtube": "https://www.youtube.com/@LiquidiumFi",
+    "submittableId": 50143269,
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "stats": "Over 5 million tokens staked.",
+    "description": "Open source Bitcoin liquid staking protocol using ICP canisters. Stake runes, get liquid receipts. Built with Rust, Next.js. Audited by ScaleBit.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/STAKED_LIQUIDIUM.svg",
+    "oneLiner": "Open Source liquid staking application and canister for runes."
+  },
+  {
     "id": "dgdg",
     "name": "DGDG",
     "display": "Normal",
@@ -1591,6 +1611,22 @@
     "screenshots": [
       "/img/showcase/icevent_screenshot.PNG"
     ]
+  },
+  {
+    "id": "xfusion",
+    "name": "XFusion",
+    "display": "Normal",
+    "website": "https://xfusion.finance/",
+    "twitter": "https://x.com/xfusion_finance",
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "description": "Turn 10 bags into 1 token. Trade, earn, and spend across chains.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/xfusion_logo.jpg",
+    "oneLiner": "Bundle Tokens. Trade as One."
   },
   {
     "id": "piggycell",
@@ -6138,6 +6174,55 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpay.svg",
     "oneLiner": "Stripe for Web3"
+  },
+  {
+    "id": "norlys",
+    "name": "Norlys",
+    "display": "Normal",
+    "website": "https://norlys.live",
+    "submittableId": 50243530,
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "stats": "15000 unique monthly user",
+    "description": "Northern Lights chasing website featuring a real-time aurora probability world map and various data products helping chasers around the world.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Norlys_logo.jpg",
+    "oneLiner": "Aurora chasing made simple."
+  },
+  {
+    "id": "marina_protocol",
+    "name": "Marina Protocol",
+    "display": "Normal",
+    "website": "https://marina-protocol.com/",
+    "twitter": "https://x.com/MARINA_PROTOCOL",
+    "submittableId": 49936259,
+    "tags": [
+      "Creator Economy",
+      "Tools / Infrastructure"
+    ],
+    "description": "Next-gen MarTech with 1.3M users in 200 countries automates Web2 events into Web3 campaigns with instant on-chain rewards and gasless onboarding.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/marina_logo.svg",
+    "oneLiner": "Marina Protocol: Redefining Web3 Reward Marketing Infrastructure."
+  },
+  {
+    "id": "node_monitoring",
+    "name": "Node Monitoring Platform for ICP",
+    "display": "Normal",
+    "website": "https://icnodemonitor.com/",
+    "github": "https://github.com/Rivram-Inc/ic-node-monitor",
+    "youtube": "https://youtu.be/bq6Sk-SlK5E",
+    "submittableId": 47040074,
+    "tags": [
+      "Tools / Infrastructure",
+      "Analytics"
+    ],
+    "description": "IC Node Monitoring Tool gives real-time insight into Internet Computer nodes with global pings, uptime logs, charts, and provider overviews.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ic-node-monitor-stacked.svg",
+    "oneLiner": "One place to monitor / manage your nodes and optimize rewards."
   }
   
 ]
