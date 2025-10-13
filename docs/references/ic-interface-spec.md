@@ -2387,10 +2387,9 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `memory_allocation` (`nat`)
 
-    Must be a number between 0 and 2<sup>48</sup> (i.e 256TB), inclusively.
-    It indicates the maximum amount of memory that the canister is allowed to use in total (i.e., any attempt to grow memory usage beyond the memory allocation will fail) and also guarantees availability of this amount of memory.
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively.
+    It indicates an amount of memory that the canister is guaranteed to be allowed to use in total.
     If the IC cannot guarantee the requested memory allocation, for example because it is oversubscribed, then the call will be rejected.
-    If set to 0, then memory growth of the canister will have no explicit limit but will only be best-effort and subject to the available memory on the IC.
 
     Default value: 0
 
@@ -4665,18 +4664,7 @@ This transition is executed immediately after [Message execution](#rule-message-
 Conditions
 
 ```html
-Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
-  memory_usage_raw_module(S.canisters[C].raw_module) +
-  memory_usage_canister_history(S.canister_history[C]) +
-  memory_usage_chunk_store(S.chunk_store[C]) +
-  memory_usage_snapshots(S.snapshots[C])
-
-if S.memory_allocation[C] = 0:
-  Wasm_memory_capacity = S.wasm_memory_limit[C]
-else:
-  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.wasm_memory|), S.wasm_memory_limit[C])
-
-if Wasm_memory_capacity < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
+if S.wasm_memory_limit[C] < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
   if S.on_low_wasm_memory_hook_status[C] = ConditionNotSatisfied:
     On_low_wasm_memory_hook_status = Ready
   else:
@@ -4818,12 +4806,6 @@ if
     New_reserved_balance,
     Min_balance
   ) ≥ 0
-  Total_memory_usage = memory_usage_wasm_state(res.new_state) +
-    memory_usage_raw_module(S.canisters[M.receiver].raw_module) +
-    memory_usage_canister_history(S.canister_history[M.receiver]) +
-    memory_usage_chunk_store(S.chunk_store[M.receiver]) +
-    memory_usage_snapshots(S.snapshots[M.receiver])
-  (S.memory_allocation[M.receiver] = 0) or (Total_memory_usage ≤ S.memory_allocation[M.receiver])
   (Wasm_memory_limit = 0) or |res.new_state.wasm_memory| <= Wasm_memory_limit
   (res.response = NoResponse) or Ctxt.needs_to_respond
 then
@@ -5120,9 +5102,6 @@ if A.settings.controllers is not null:
 else:
   New_controllers = [M.caller]
 
-if New_memory_allocation > 0:
-  memory_usage_canister_history(New_canister_history) ≤ New_memory_allocation
-
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
 else:
@@ -5260,15 +5239,6 @@ M.caller ∈ S.controllers[A.canister_id]
      |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
      is_valid_utf8(name) and
      is_valid_utf8(value)))
-
-Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
-  memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if New_memory_allocation > 0:
-  Total_memory_usage ≤ New_memory_allocation
 
 if New_wasm_memory_limit > 0:
   |S.canisters[A.canister_id].wasm_state.wasm_memory| ≤ New_wasm_memory_limit
@@ -5664,15 +5634,6 @@ liquid_balance(S, A.canister_id) ≥ MAX_CYCLES_PER_MESSAGE
 
 liquid_balance(S', A.canister_id) ≥ 0
 
-Total_memory_usage = memory_usage_wasm_state(New_state) +
-  memory_usage_raw_module(A.wasm_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if S.memory_allocation[A.canister_id] > 0:
-  Total_memory_usage ≤ S.memory_allocation[A.canister_id]
-
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
 S.canister_history[A.canister_id] = {
@@ -5836,15 +5797,6 @@ New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
 liquid_balance(S, A.canister_id) ≥ MAX_CYCLES_PER_MESSAGE
 
 liquid_balance(S', A.canister_id) ≥ 0
-
-Total_memory_usage = memory_usage_wasm_state(New_state) +
-  memory_usage_raw_module(A.wasm_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if S.memory_allocation[A.canister_id] > 0:
-  Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
@@ -6437,9 +6389,6 @@ if A.settings.controllers is not null:
 else:
   New_controllers = [M.caller]
 
-if New_memory_allocation > 0:
-  memory_usage_canister_history(New_canister_history) ≤ New_memory_allocation
-
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
 else:
@@ -6649,17 +6598,6 @@ M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
 
-Total_memory_usage = memory_usage_wasm_state(Snapshot.wasm_state) +
-  memory_usage_raw_module(Snapshot.raw_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if S.memory_allocation[A.canister_id] = 0:
-  Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
-else:
-  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |Snapshot.wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
-
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
 
@@ -6683,7 +6621,7 @@ if Snapshot.source = MetadataUpload:
     HookConditionInSnapshotField = false
   else:
     HookConditionInSnapshotField = true
-  if Wasm_memory_capacity < |Snapshot.wasm_state.wasm_memory| + S.wasm_memory_threshold[A.canister_id]:
+  if S.wasm_memory_limit[A.canister_id] < |Snapshot.wasm_state.wasm_memory| + S.wasm_memory_threshold[A.canister_id]:
     HookConditionInSnapshotState = true
   else:
     HookConditionInSnapshotState = false
@@ -6734,13 +6672,6 @@ New_canister_history = {
 }
 
 liquid_balance(S', A.canister_id) ≥ 0
-
-if S.memory_allocation[A.canister_id] > 0:
-  memory_usage_wasm_state(New_state.wasm_state) +
-    memory_usage_raw_module(New_state.raw_module) +
-    memory_usage_canister_history(New_canister_history) +
-    memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-    memory_usage_snapshots(S.snapshots[A.canister_id]) ≤ S.memory_allocation[A.canister_id]
 
 ```
 
@@ -7226,7 +7157,7 @@ S with
 
 #### Canister out of cycles
 
-Once a canister runs out of cycles, its code is uninstalled (cf. [IC Management Canister: Code uninstallation](#rule-uninstall)), the canister changes in the canister history are dropped (their total number is preserved), and the allocations are set to zero (NB: allocations are currently not modeled in the formal model):
+Once a canister runs out of cycles, its code is uninstalled (cf. [IC Management Canister: Code uninstallation](#rule-uninstall)), the canister changes in the canister history are dropped (their total number is preserved), and the allocations are set to zero:
 
 Conditions  
 
@@ -7256,6 +7187,8 @@ S with
     canister_logs[CanisterId] = []
     canister_version[CanisterId] = S.canister_version[CanisterId] + 1
     global_timer[CanisterId] = 0
+    compute_allocation[Canister_id] = 0
+    memory_allocation[Canister_id] = 0
 
     messages = S.messages ·
       [ ResponseMessage {
