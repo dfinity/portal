@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.50.0 (2025-10-13) {$0_50_0}
+* Allow loading a canister snapshot onto a different canister on the same subnet.
+
 ### 0.49.0 (2025-10-06) {$0_49_0}
 * Added support for non-replicated canister HTTP outcalls.
 
