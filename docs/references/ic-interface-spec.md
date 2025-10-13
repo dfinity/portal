@@ -4308,7 +4308,7 @@ E : Envelope
 
 ```
 
-where `<VERSION>` is `v2` or `v3`.
+where `<VERSION>` is `v2` or `v4`.
 
 Conditions  
 
@@ -5452,10 +5452,10 @@ S with
 ```
 
 The IC method `canister_status` can also be invoked via management canister query calls.
-They are calls to `/api/v2/canister/<ECID>/query`
+They are calls to `/api/v3/canister/<ECID>/query`
 with CBOR content `Q` such that `Q.canister_id = ic_principal`.
 
-Submitted request to `/api/v2/canister/<ECID>/query`
+Submitted request to `/api/v3/canister/<ECID>/query`
 
 ```html
 
@@ -5487,7 +5487,7 @@ Query response `R`:
 
 ```
 
-where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<ECID>/read_state` satisfy the following:
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
@@ -7496,7 +7496,7 @@ The management canister offers the method `fetch_canister_logs`
 that can be called as a query call and
 returns logs of a requested canister.
 
-Submitted request to `/api/v2/canister/<ECID>/query`
+Submitted request to `/api/v3/canister/<ECID>/query`
 
 ```html
 
@@ -7642,7 +7642,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S)
 ```
 
-Submitted request to `/api/v2/canister/<ECID>/query`
+Submitted request to `/api/v3/canister/<ECID>/query`
 
 ```html
 
