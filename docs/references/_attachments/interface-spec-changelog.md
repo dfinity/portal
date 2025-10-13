@@ -5,9 +5,13 @@
 * New HTTP handler endpoints to support canister migration (by providing sharded routing table in certificates):
   `/api/v4/canister/<effective_canister_id>/call`,
   `/api/v3/canister/<effective_canister_id>/read_state`,
-  `/api/v3/subnet/<subnet_id>/read_state`, and
+  `/api/v3/subnet/<effective_subnet_id>/read_state`, and
   `/api/v3/canister/<effective_canister_id>/query`.
-* The existing HTTP handler endpoints are marked as deprecated.
+* The following existing HTTP handler endpoints are marked as deprecated:
+  `/api/v3/canister/<effective_canister_id>/call`,
+  `/api/v2/canister/<effective_canister_id>/read_state`,
+  `/api/v2/subnet/<effective_subnet_id>/read_state`, and
+  `/api/v2/canister/<effective_canister_id>/query`.
 * Paths with prefix `/subnet/<subnet_id>/canister_ranges` (legacy routing table) can only be requested via the deprecated endpoints or if `<subnet_id>` is the root subnet.
 * Paths with prefix `/canister_ranges/<subnet_id>` (sharded routing table) can only be requested via `/api/v{2,3}/subnet/.../read_state`, i.e.,
   not via `/api/v{2,3}/canister/.../read_state`.
