@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.50.0 (2025-10-13) {$0_50_0}
+* New management canister API providing canister metadata (contained in canister WASM custom sections).
+
 ### 0.49.0 (2025-10-06) {$0_49_0}
 * Added support for non-replicated canister HTTP outcalls.
 
