@@ -138,6 +138,8 @@ Verification can be done in other languages using libraries and packages that su
 
 There are two methods available for obtaining the public key associated with a particular canister ID and derivation path. The derivation process is deterministic and public; given the master public key along with the canister ID and derivation path, the same key is always produced, and no secret is required in order to compute the public key.
 
+### Offline Key Derivation
+
 The first method is to perform *offline* derivation, using one of the available libraries which implement the relevant derivation scheme. This allows derivation without having to invoke any services running on the Internet Computer. The alternative is to use *online* derivation, using a call to the management canister interface.
 
 The following snippets demonstrate deriving Schnorr public keys without requiring management canister calls, using the `ic-pub-key` Rust and TypeScript libraries.
@@ -178,6 +180,8 @@ const derivedKey = mk.deriveSubkeyWithChainCode(path);
 
 </TabItem>
 </AdornedTabs>
+
+### Online Key Derivation
 
 As an alternative to offline derivation, you can call the `schnorr_public_key` method of the IC management canister (`aaaaa-aa`). You can deploy the threshold Schnorr sample [locally](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) and use the Candid UI to call this method, or you can call this method programmatically using Motoko or Rust.
 

@@ -101,6 +101,8 @@ To verify a signature, the public key that corresponds to the private key that w
 
 There are two methods available for obtaining the public key associated with a particular canister ID and derivation path. The derivation process is deterministic and public; given the master public key along with the canister ID and derivation path, the same key is always produced, and no secret is required in order to compute the public key. The first method is *offline*: the key is computed using only local computation in a browser or other application. The other is *online*, using a call to the management canister interface.
 
+### Offline Key Derivation
+
 These example snippets demonstrate deriving keys without requiring management canister calls, using the `ic-pub-key` Rust and TypeScript libraries
 
 <AdornedTabs groupId="languages">
@@ -139,6 +141,8 @@ const derivedKey = mk.deriveSubkeyWithChainCode(path);
 
 </TabItem>
 </AdornedTabs>
+
+### Online Key Derivation
 
 For online derivation, ICP provides the `ecdsa_public_key` method to obtain public keys. This method uses the following Candid interface:
 
