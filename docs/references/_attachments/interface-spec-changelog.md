@@ -1,6 +1,7 @@
 ## Changelog {#changelog}
 
 ### 0.50.0 (2025-10-13) {$0_50_0}
+* Allow loading a canister snapshot onto a different canister on the same subnet.
 * New management canister API providing canister metadata (contained in canister WASM custom sections).
 * New HTTP handler endpoints to support canister migration (by providing sharded routing table in certificates):
   `/api/v4/canister/<effective_canister_id>/call`,
