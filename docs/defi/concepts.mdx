@@ -1,0 +1,35 @@
+---
+keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3, token standards, icrc standard, tokens, standards, icrc-7, icrc-37]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# Concepts
+
+<MarkdownChipRow labels={["Beginner"]} />
+
+## Accounts: Principals and subaccounts
+
+ICP token accounts use principals and their associated subaccount to generate an `AccountIdentifier` value to identify the account owner.
+
+ICRC-1 token accounts use an `Account` value that corresponds to the pair `(principal, subaccount)`, where a principal can have multiple accounts, and each subaccount of a principal is identified by a 32-byte string.
+
+### Principals
+
+Every token account is owned by a single principal. Principals are unique identifiers used to identify both users and canisters on ICP.
+
+### Subaccounts
+
+Each principal can have multiple accounts identified by a `32-byte` string called a **subaccount**. Subaccounts are used for organizing funds within a single principal for optimized management and transparency. Subaccounts can be used to distinguish between personal funds and business funds, or separate funds for one project from another.
+
+## ICP tokens
+
+The ICP token is the network's native token used for various utility and governance functions, such as:
+
+- Converting tokens into cycles.
+
+- Rewarding node providers for contributing resources to the network.
+
+- Rewarding neurons for staking ICP into a neuron and voting on governance proposals.
