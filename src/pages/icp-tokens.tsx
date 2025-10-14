@@ -627,6 +627,12 @@ function TokenHolders(): JSX.Element {
                 </p>
                 <div className="space-y-4">
                   <WalletCard
+                    title="ARCHIP"
+                    description="Institutional custody solution of Swiss private bank Maerki Baumann"
+                    link="https://www.archip.ch/"
+                    icon="/img/showcase/archip.png"
+                  />
+                  <WalletCard
                     title="Bitgo"
                     description="Institutional ICP custody"
                     link="https://www.bitgo.com/"
