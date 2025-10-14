@@ -1287,6 +1287,26 @@
     "oneLiner": "Borrow on your terms"
   },
   {
+    "id": "liquidium_foundation",
+    "name": "Liquidium Foundation - Staking for Runes",
+    "display": "Normal",
+    "website": "https://stake.liquidium.org",
+    "twitter": "https://x.com/LiquidiumFdn",
+    "github": "https://github.com/Liquidium-Inc/staking-app",
+    "youtube": "https://www.youtube.com/@LiquidiumFi",
+    "submittableId": 50143269,
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "stats": "Over 5 million tokens staked.",
+    "description": "Open source Bitcoin liquid staking protocol using ICP canisters. Stake runes, get liquid receipts. Built with Rust, Next.js. Audited by ScaleBit.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/STAKED_LIQUIDIUM.svg",
+    "oneLiner": "Open Source liquid staking application and canister for runes."
+  },
+  {
     "id": "dgdg",
     "name": "DGDG",
     "display": "Normal",
@@ -1591,6 +1611,22 @@
     "screenshots": [
       "/img/showcase/icevent_screenshot.PNG"
     ]
+  },
+  {
+    "id": "xfusion",
+    "name": "XFusion",
+    "display": "Normal",
+    "website": "https://xfusion.finance/",
+    "twitter": "https://x.com/xfusion_finance",
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "description": "Turn 10 bags into 1 token. Trade, earn, and spend across chains.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/xfusion_logo.jpg",
+    "oneLiner": "Bundle Tokens. Trade as One."
   },
   {
     "id": "piggycell",
