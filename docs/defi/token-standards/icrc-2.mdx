@@ -1,0 +1,33 @@
+---
+keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3, token standards, icrc standard, tokens, standards, icrc-7, icrc-37]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# ICRC-2
+
+<MarkdownChipRow labels={["Intermediate", "Tokens"]} />
+
+The ICRC-2 standard is an extension of the ICRC-1 standard that enables additional functionality for `icrc2_approve` and `icrc2_transfer_from` transactions. Since it is an extension of ICRC-1, it supports all of the ICRC-1 standard's methods and metadata. The `approve` method allows an account owner to delegate token transfers to a third party on the owner's behalf, while the `transfer_from` method enables approved token transactions to be initiated. These workflows are common in the Ethereum ecosystem through the ERC-20 token standard.
+
+The `approve` and `transfer_from` workflow uses two steps:
+
+1. First, the account owner allows another user to transfer up to X tokens from their account (A) by calling the ledger's `icrc2_approve` method.
+
+2. The user transfers up to X tokens from account A to any account through the `icrc2_transfer_from` method. The number of transfers is not limited as long as the total amount spent is below X.
+
+Example ICRC-2 tokens on ICP include:
+
+- [ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview)
+
+- [ckETH](/docs/defi/chain-key-tokens/cketh/overview)
+
+- ckUSDC
+
+View an example of a dapp for an [ICRC-2 token swap](https://github.com/dfinity/examples/tree/master/motoko/icrc2-swap).
+
+View an example of a dapp that enables the [`transfer_from` workflow](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from).
+
+[Read the full ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2).

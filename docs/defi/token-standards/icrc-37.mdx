@@ -1,0 +1,22 @@
+---
+keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3, token standards, icrc standard, tokens, standards, icrc-7, icrc-37]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# ICRC-37
+
+<MarkdownChipRow labels={["Intermediate", "Tokens"]} />
+
+The ICRC-37 standard is an extension of ICRC-7 that provides additional functionality for an approval workflow. This standard adds support for creating approvals, revoking approvals, querying approval information, and making transfers based on approvals. Token ledgers that implement ICRC-37 must implement all of the functions within ICRC-7, but ledgers that support ICRC-7 may choose whether or not to implement ICRC-37 if they intend to offer `approve` and `transfer_from` functionalities.
+### Token metadata
+
+ICRC-37 supports all metadata entries in ICRC-7 but also includes the following:
+
+- `icrc37:max_approvals_per_token_or_collection`: Type `Nat`, used to define the maximum number of active approvals the ledger implementation allows per principal or per token.
+
+- `icrc37:max_revoke_approvals`: Type `Nat`, an optional number of approvals that may be revoked.
+
+[Read the full ICRC-37 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md).
