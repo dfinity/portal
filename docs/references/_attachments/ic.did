@@ -305,6 +305,15 @@ type canister_info_result = record {
     controllers : vec principal;
 };
 
+type canister_metadata_args = record {
+    canister_id : canister_id;
+    name : text;
+};
+
+type canister_metadata_result = record {
+    value : blob;
+};
+
 type delete_canister_args = record {
     canister_id : canister_id;
 };
@@ -323,6 +332,7 @@ type http_request_args = record {
         function : func(record { response : http_request_result; context : blob }) -> (http_request_result) query;
         context : blob;
     };
+    is_replicated : opt bool;
 };
 
 type ecdsa_public_key_args = record {
@@ -602,11 +612,14 @@ service ic : {
     start_canister : (start_canister_args) -> ();
     stop_canister : (stop_canister_args) -> ();
     canister_status : (canister_status_args) -> (canister_status_result);
-    canister_info : (canister_info_args) -> (canister_info_result);
     delete_canister : (delete_canister_args) -> ();
     deposit_cycles : (deposit_cycles_args) -> ();
     raw_rand : () -> (raw_rand_result);
     http_request : (http_request_args) -> (http_request_result);
+
+    // Public canister data
+    canister_info : (canister_info_args) -> (canister_info_result);
+    canister_metadata : (canister_metadata_args) -> (canister_metadata_result);
 
     // Threshold ECDSA signature
     ecdsa_public_key : (ecdsa_public_key_args) -> (ecdsa_public_key_result);

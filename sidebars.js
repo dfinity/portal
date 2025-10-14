@@ -667,19 +667,49 @@ const sidebars = {
       label: "DeFi on ICP",
       id: "defi/overview",
     },
-    "defi/token-standards/index",
+    "defi/concepts",
     {
       type: "category",
-      label: "Creating tokens",
+      label: "Token standards",
+      link: {
+        type: "doc",
+        id: "defi/token-standards/index",
+      },
       items: [
         {
           type: "doc",
-          label: "Fungible tokens",
+          label: "ICRC-1",
+          id: "defi/token-standards/icrc-1",
+        },
+        {
+          type: "doc",
+          label: "ICRC-2",
+          id: "defi/token-standards/icrc-2",
+        },
+        {
+          type: "doc",
+          label: "ICRC-7",
+          id: "defi/token-standards/icrc-7",
+        },
+        {
+          type: "doc",
+          label: "ICRC-37",
+          id: "defi/token-standards/icrc-37",
+        }
+      ],
+    },
+    {
+      type: "category",
+      label: "Tutorials",
+      items: [
+        {
+          type: "doc",
+          label: "Launch a token",
           id: "defi/create",
         },
         {
           type: "doc",
-          label: "Non-fungible tokens",
+          label: "Launch an NFT collection",
           id: "defi/nft-collections",
         },
       ],
