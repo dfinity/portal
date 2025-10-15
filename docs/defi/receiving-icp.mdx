@@ -51,8 +51,8 @@ If you inspect the code, you'll see that the canister makes a call to the ledger
 ### 5. Explore subaccounts
 
 So far, we've called the `account()` and `balance()` endpoints of the canister to retrieve the canister's account and balance.
-However, a canister can actually have upto 2^256 different accounts, each with their own balance!
-This is especially useful in dapps to preserve privacy and to segregate funds of users.
+However, a canister can have up to 2^256 different accounts, each with their own balance!
+This is especially useful in dapps that want to segregate funds of different users.
 
 There's an additional endpoint called `subaccount()` that allows you to retrieve subaccounts of the canister.
 You can specify any two 128-bit unsigned integers to generate a subaccount.
@@ -68,4 +68,3 @@ Send `TESTICP` tokens to the different subaccounts and check the balance of each
 - You can download the code from ICP Ninja to continue developing the canister locally.
 - Instead of checking the canister's TESTICP balance, you can instead check the real ICP balance by simply changing the `LEDGER_PRINCIPAL` in the code to be the principal of the ICP ledger canister: `ryjl3-tyaaa-aaaaa-aaaba-cai`.
 - Your canister is not automatically notified whenever it receives funds. You'd need to be manually notified in your workflow by, for example, having the user call an endpoint on the canister to inform you of a deposit.
-
