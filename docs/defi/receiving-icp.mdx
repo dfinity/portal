@@ -1,0 +1,71 @@
+---
+keywords: [intermediate, defi,  tokens, deploy a token, create a token, icrc1]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Receiving ICP in a canister
+
+<MarkdownChipRow labels={["Beginner", "Tokens"]} />
+
+In this tutorial, you'll learn how to build a <GlossaryTooltip>canister</GlossaryTooltip> that can receive ICP tokens and check its balance.
+
+## Quickstart
+
+### 1. Deploy the example project
+
+- Go to [ICP Ninja](https://icp.ninja) and look for the "receive ICP" project. Click on it and then click on "Rust" backend language.
+- Click on "Run" in the upper right corner to deploy the canister.
+
+:::info
+[ICP Ninja](https://icp.ninja) allows you to quickly test the deployment of canisters on the Internet Computer.
+It's free and allows you to deploy canisters for 30 minutes.
+:::
+
+### 2. Look up the canister's account
+
+Once the canister is deployed on ICP Ninja, you should be able to see a window on the right containing all the canister's endpoints.
+
+Let's call the `account()` endpoint to retrieve the canister's account. Click on the "query" button next to that endpoint's name.
+It should return a 64-digit hexadecimal string that looks something like this:
+
+```text
+a6c0e7dc845cb5fb14c88f9b96102afea6d150ac176f33354fa6ca7e74946c98
+```
+
+### 3. Send ICP tokens to the canister's account
+
+Instead of using real ICP tokens, we'll use TESTICP, which are test version of ICP and can be obtained for free from the [faucet](https://faucet.internetcomputer.org/).
+
+- Go the faucet, input the canister's account to receive TESTICP.
+
+### 4. Check the canister's balance
+
+Just like we called the `account()` endpoint to retrieve the canister's account, we can call the `balance()` endpoint to check the canister's balance.
+Click on the "query" button next to that endpoint's name.
+It should return a number of TESTICP tokens that the canister has received.
+
+If you inspect the code, you'll see that the canister makes a call to the ledger canister of the TESTICP token to retrieve the balance of its account.
+
+### 5. Explore subaccounts
+
+So far, we've called the `account()` and `balance()` endpoints of the canister to retrieve the canister's account and balance.
+However, a canister can actually have upto 2^256 different accounts, each with their own balance!
+This is especially useful in dapps to preserve privacy and to segregate funds of users.
+
+There's an additional endpoint called `subaccount()` that allows you to retrieve subaccounts of the canister.
+You can specify any two 128-bit unsigned integers to generate a subaccount.
+In our default implementation of `account()`, we generated the subaccount at `(0, 0)`.
+
+:::tip
+Try calling the `subaccount()` endpoint with different arguments to generate different subaccounts.
+Send `TESTICP` tokens to the different subaccounts and check the balance of each subaccount using `get_balance_of_subaccount()`.
+:::
+
+## Notes
+
+- You can download the code from ICP Ninja to continue developing the canister locally.
+- Instead of checking the canister's TESTICP balance, you can instead check the real ICP balance by simply changing the `LEDGER_PRINCIPAL` in the code to be the principal of the ICP ledger canister: `ryjl3-tyaaa-aaaaa-aaaba-cai`.
+- Your canister is not automatically notified whenever it receives funds. You'd need to be manually notified in your workflow by, for example, having the user call an endpoint on the canister to inform you of a deposit.
+
