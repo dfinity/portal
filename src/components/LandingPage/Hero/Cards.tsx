@@ -52,7 +52,7 @@ export const CardsSection = () => {
             </p>
             <Link
               className="button-outline mt-6"
-              href="https://join.caffeine.ai/"
+              href="https://caffeine.ai/?utm_source=ICP-homepage&utm_medium=ICP-web&utm_campaign=GA-launch&utm_content=showcase-module"
             >
               Try it now
             </Link>
