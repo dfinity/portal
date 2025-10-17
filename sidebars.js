@@ -891,7 +891,6 @@ const sidebars = {
         "references/candid-ref",
         "references/https-outcalls-how-it-works",
         "references/ii-spec",
-        "references/icrc1-standard",
         "references/ledger",
         "references/t-sigs-how-it-works",
         "references/vc-spec",
