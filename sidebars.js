@@ -667,7 +667,37 @@ const sidebars = {
       label: "DeFi on ICP",
       id: "defi/overview",
     },
-    "defi/token-standards/index",
+    "defi/concepts",
+    {
+      type: "category",
+      label: "Token standards",
+      link: {
+        type: "doc",
+        id: "defi/token-standards/index",
+      },
+      items: [
+        {
+          type: "doc",
+          label: "ICRC-1",
+          id: "defi/token-standards/icrc-1",
+        },
+        {
+          type: "doc",
+          label: "ICRC-2",
+          id: "defi/token-standards/icrc-2",
+        },
+        {
+          type: "doc",
+          label: "ICRC-7",
+          id: "defi/token-standards/icrc-7",
+        },
+        {
+          type: "doc",
+          label: "ICRC-37",
+          id: "defi/token-standards/icrc-37",
+        }
+      ],
+    },
     {
       type: "category",
       label: "Tutorials",
@@ -861,7 +891,6 @@ const sidebars = {
         "references/candid-ref",
         "references/https-outcalls-how-it-works",
         "references/ii-spec",
-        "references/icrc1-standard",
         "references/ledger",
         "references/t-sigs-how-it-works",
         "references/vc-spec",

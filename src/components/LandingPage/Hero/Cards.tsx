@@ -37,20 +37,24 @@ export const CardsSection = () => {
       className="container-12 mt-30"
       variants={transitions.container}
     >
-      <article className="bg-black rounded-[32px] text-white  overflow-clip mt-6 md:min-h-[544px] flex flex-col justify-around">
+      <article className="bg-[#DDF730] rounded-[32px] text-[#121212]  overflow-clip mt-6 md:min-h-[544px] flex flex-col justify-around">
         <div className="flex flex-col items-stretch">
           <div className="p-1/10  md:py-1/12 pt-[15%] text-left md:text-center">
-            <img src="/img/home/caffeine.svg" alt="Caffeine" className="w-[80%] md:w-[50%] mx-auto mb-8 md:mb-0" />
+            <img
+              src="/img/home/caffeine.svg"
+              alt="Caffeine"
+              className="w-[80%] md:w-[50%] mx-auto mb-8 md:mb-0"
+            />
 
-            <p className="tw-paragraph md:tw-lead-sm mt-6 md:mt-10 mb-0 md:w-4/10 mx-auto">
-              Apply for early alpha access and be among the first to experience
-              the decentralized internet.
+            <p className="tw-paragraph md:tw-lead-sm mt-6 md:mt-10 mb-0 md:w-5/10 mx-auto">
+              Create successful apps and websites through chat — on a safe open
+              tech stack for Al that rolls back limits
             </p>
             <Link
-              className="button-outline-white-30 mt-6"
-              href="https://join.caffeine.ai/"
+              className="button-outline mt-6"
+              href="https://caffeine.ai/?utm_source=ICP-homepage&utm_medium=ICP-web&utm_campaign=GA-launch&utm_content=showcase-module"
             >
-              Apply for early access
+              Try it now
             </Link>
           </div>
         </div>
