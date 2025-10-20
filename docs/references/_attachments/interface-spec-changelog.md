@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.51.0 (2025-10-20) {$0_51_0}
+* Management canister endpoint `canister_status` can be invoked as a query call.
+
 ### 0.50.0 (2025-10-13) {$0_50_0}
 * Allow loading a canister snapshot onto a different canister on the same subnet.
 * New management canister API providing canister metadata (contained in canister WASM custom sections).
