@@ -3,7 +3,7 @@
     "id": "caffeine",
     "name": "Caffeine",
     "display": "Large",
-    "website": "https://caffeine.ai/?utm_source=ICP-web&utm_medium=&utm_campaign=ICP-ecosystem&utm_content=showcase&utm_term=",
+    "website": "https://caffeine.ai/?utm_source=ICP-ecosystem&utm_medium=ICP-web&utm_campaign=GA-launch&utm_content=showcase ",
     "twitter": "https://x.com/caffeineai",
     "tags": [
       "AI"
@@ -6223,6 +6223,23 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/ic-node-monitor-stacked.svg",
     "oneLiner": "One place to monitor / manage your nodes and optimize rewards."
+  },
+  {
+    "id": "delta_kim",
+    "name": "Delta Kim",
+    "display": "Normal",
+    "website": "https://delta.kim/en/canister-status",
+    "twitter": "https://x.com/TheDeltaKim",
+    "github": "https://github.com/delta-kim",
+    "youtube": "https://www.youtube.com/@DeltaOnICPBlockchain",
+    "tags": [
+      "Wallet",
+      "DeFi"
+    ],
+    "description": "Delta Kim is a one-stop solution built on ICP to mine Delta ($DTC) for free and managing cross-chain assets via its multi-chain wallet.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Delta Coin_logo.svg",
+    "oneLiner": "Delta Kim endeavor to be a gateway to keyless & decentralized digital money."
   }
   
 ]
