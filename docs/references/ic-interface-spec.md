@@ -2224,7 +2224,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     ```
     record {
         request_bytes : nat64;
-        request_time_ms : nat64;
+        http_roundtrip_time_ms : nat64;
         raw_response_bytes : nat64;
         transformed_response_bytes : nat64;
         transform_instructions: nat64;
@@ -2238,7 +2238,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
       - `body`
       - `transform` - i.e., the sum of the transform method name length and the length of the transform context.
 
-    - `request_time_ms` is the time that the HTTP request to the remote server may take to complete (in milliseconds).
+    - `http_roundtrip_time_ms` is the amount of time between the time when the HTTP request starts being sent to the remote server and the time that the HTTP response is fully received (in milliseconds).
 
     - `raw_response_bytes` is the length of the HTTP response.
 
