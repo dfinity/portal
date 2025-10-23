@@ -720,21 +720,6 @@
     "logo": "/img/showcase/airgap_logo.webp"
   },
   {
-    "id": "kairos",
-    "name": "Kairos",
-    "display": "Normal",
-    "website": "https://www.kairos.win/",
-    "twitter": "https://x.com/kairosdotwin",
-    "tags": [
-      "Bitcoin",
-      "DeFi",
-      "SocialFi"
-    ],
-    "description": "The first Bitcoin-denominated prediction market.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/Kairos_logo.jpg"
-  },
-  {
     "id": "taurus",
     "name": "Taurus",
     "display": "Normal",
@@ -1065,6 +1050,21 @@
     "description": "Bookie is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/bookie_logo.jpeg"
+  },
+  {
+    "id": "kairos",
+    "name": "Kairos",
+    "display": "Normal",
+    "website": "https://www.kairos.win/",
+    "twitter": "https://x.com/kairosdotwin",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "SocialFi"
+    ],
+    "description": "The first Bitcoin-denominated prediction market.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/Kairos_logo.jpg"
   },
   {
     "id": "cosmicrafts",
@@ -6273,5 +6273,4 @@
     ],
     "oneLiner": "A platform designed to simplify ICP node operations."
   }
-  
 ]
