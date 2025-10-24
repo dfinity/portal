@@ -50,7 +50,7 @@ const Hero: React.FC<{
                   animationPlayState: fontLoaded ? "running" : "paused",
                 }}
               >
-                <span className="block sm:text-left">WORLD</span>
+                <span className="block sm:text-left">A PUBLIC WORLD</span>
                 <span className="block md:ml-48">COMPUTER</span>
               </h1>
               <div className="md:ml-48">
