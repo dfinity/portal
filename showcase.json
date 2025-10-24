@@ -48,8 +48,8 @@
     "website": "https://odin.fun/",
     "twitter": "https://x.com/Odin_GodOfRunes",
     "tags": [
-      "Bitcoin",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "stats": "2,000+ BTC Volume",
     "description": "ODIN•FUN is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Lightning fast experience leveraging ICP's Chain Fusion.",
@@ -6273,5 +6273,4 @@
     ],
     "oneLiner": "A platform designed to simplify ICP node operations."
   }
-  
 ]
