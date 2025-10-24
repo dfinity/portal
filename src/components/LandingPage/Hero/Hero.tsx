@@ -65,10 +65,6 @@ const Hero: React.FC<{
                   enabling integration with multi-chain Web3 functionalities.
                 </p>
                 <div className="flex flex-row flex-wrap gap-8 mt-8 md:mt-6 items-center">
-                  <Link className={"button-white w-max"} href="/docs/home">
-                    DEVELOP
-                  </Link>
-
                   <Link
                     className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                     href="/library"
