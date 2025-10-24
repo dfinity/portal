@@ -56,8 +56,11 @@ const Hero: React.FC<{
               <div className="md:ml-48">
                 <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-full">
                   Create apps, websites and enterprise services on an open tech
-                  stack. Simply chat to AI to create 10,000x faster (try
-                  <a href="https://caffeine.ai/">caffeine.ai</a>, or write code
+                  stack. Simply chat to AI to create 10,000x faster (try&nbsp;
+                  <Link
+                    className="link-primary !text-white hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                    href="https://caffeine.ai/">
+                  caffeine.ai</Link>, or write code
                   (try <a href="https://icp.ninja/">icp.ninja</a>. Online
                   services run on a public cloud that's a decentralized network,
                   powered by a mathematically secure network protocol that
