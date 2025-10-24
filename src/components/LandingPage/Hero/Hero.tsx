@@ -58,10 +58,12 @@ const Hero: React.FC<{
                   Create apps, websites and enterprise services on an open tech
                   stack. Simply chat to AI to create 10,000x faster (try&nbsp;
                   <Link
-                    className="link-primary !text-white hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                    className="link-primary !text-white underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
                     href="https://caffeine.ai/">
-                  caffeine.ai</Link>, or write code
-                  (try <a href="https://icp.ninja/">icp.ninja</a>. Online
+                  caffeine.ai</Link>), or write code
+                  <Link
+                    className="link-primary !text-white underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                    href="https://caffeine.ai/">icp.ninja</Link>). Online
                   services run on a public cloud that's a decentralized network,
                   powered by a mathematically secure network protocol that
                   grants unprecedented levels of security and resilience, while
@@ -85,7 +87,7 @@ const Hero: React.FC<{
               </div>
               <aside
                 aria-label="Various stats"
-                className="block md:absolute mt-8 md:mt-0 top-0 -left-[min(10vw,20rem)] backdrop-blur-lg"
+                className="block md:absolute mt-8 md:mt-0 bottom-0 -left-[min(10vw,20rem)] backdrop-blur-lg"
               >
                 <div className="hover:no-underline text-white">
                   <AnimateSpawn
