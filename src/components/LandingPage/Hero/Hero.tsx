@@ -60,7 +60,7 @@ const Hero: React.FC<{
                   <Link
                     className="link-primary !text-white underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
                     href="https://caffeine.ai/">
-                  caffeine.ai</Link>), or write code
+                  caffeine.ai</Link>), or write code (try&nbsp;
                   <Link
                     className="link-primary !text-white underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
                     href="https://caffeine.ai/">icp.ninja</Link>). Online
