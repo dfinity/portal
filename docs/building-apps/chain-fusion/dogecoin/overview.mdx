@@ -1,37 +1,36 @@
 ---
-keywords: [bitcoin, btc, chain fusion, bitcoin integration, btc integration, build on bitcoin, how to build btc, btc dapps, building btc dapps, build bitcoin, bitcoin dapps, build btc dapps, build btc apps]
+keywords: [dogecoin, doge, chain fusion, dogecoin integration, doge integration, build on dogecoin, how to build doge, doge dapps, building doge dapps, build dogecoin, dogecoin dapps, build doge dapps, build doge apps]
 hide_table_of_contents: true
 ---
 
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Build on Bitcoin
+# Build on Dogecoin
 
-<MarkdownChipRow labels={["Bitcoin" ]} />
+<MarkdownChipRow labels={["Dogecoin" ]} />
 
-ICP brings smart contract functionality to Bitcoin and opens up new possibilities for dapp development.
+ICP brings smart contract functionality to Dogecoin and opens up new possibilities for dapp development.
 
-Through a protocol-level integration with the Bitcoin network, smart contracts deployed on ICP can interact with the Bitcoin network directly without using a bridge or oracle.
+Through a protocol-level integration with the Dogecoin network, smart contracts deployed on ICP can interact with the Dogecoin network directly without using a bridge or oracle.
 
-Threshold signing APIs, including [threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa) and [threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr), enable an ICP smart contract to hold assets like BTC or [sign](/docs/build-on-btc/btc-transactions/sign-transactions) and [submit transactions](/docs/build-on-btc/btc-transactions/submit-transactions) to the Bitcoin network.
+Threshold signing APIs such as [threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa) enables an ICP smart contract to hold assets like DOGE or [sign](/docs/build-on-btc/btc-transactions/sign-transactions) and [submit transactions](/docs/build-on-btc/btc-transactions/submit-transactions) to the Dogecoin network.
 
-When an ICP smart contract wants to submit a Bitcoin transaction, the following steps may occur:
+When an ICP smart contract wants to submit a Dogecoin transaction, the following steps may occur:
 
 - Request a public key from the threshold signing APIs
-- Create a Bitcoin address from the public key
-- Read unspent UTXOs from the Bitcoin API
+- Create a Dogecoin address from the public key
+- Read unspent UTXOs from the Dogecoin API
 - Build the transaction payload
 - Request a signature of the transaction hash from the threshold signing API
-- Submit the transaction to the Bitcoin API
+- Submit the transaction to the Dogecoin API
 
-The Bitcoin API relays the request to the Bitcoin network, which receives and processes the request asynchronously before returning the result of the transaction to the ICP smart contract that initially created it.
+The Dogecoin API relays the request to the Dogecoin network, which receives and processes the request asynchronously before returning the result of the transaction to the ICP smart contract that initially created it.
 
-ICP smart contracts can call the Bitcoin API to query the [Bitcoin mainnet or testnet](/docs/build-on-btc/btc-api) for network state information, UTXOs, block information, or the balance of any Bitcoin address.
+ICP smart contracts can call the Dogecoin API to query the [Dogecoin mainnet](/docs/build-on-btc/btc-api) for network state information, UTXOs, block information, or the balance of any Dogecoin address.
 
 ## Additional resources
 
-Building Bitcoin applications is not trivial. It’s beneficial to understand core Bitcoin concepts, including transactions, UTXOs, the Script language, and Bitcoin’s hash formats.
+Building Dogecoin applications is not trivial. It’s beneficial to understand core Dogecoin concepts, including transactions, UTXOs, the Script language, and Dogecoin’s hash formats.
 
 - [Mastering Bitcoin: Programming the open blockchain](https://github.com/bitcoinbook/bitcoinbook/blob/develop/BOOK.md)
 - [Learn me a Bitcoin](https://learnmeabitcoin.com)
