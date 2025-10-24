@@ -5,15 +5,20 @@ hide_table_of_contents: true
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Build on Dogecoin
+# Build on Dogecoin <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>
 
 <MarkdownChipRow labels={["Dogecoin" ]} />
 
-ICP brings smart contract functionality to Dogecoin and opens up new possibilities for dapp development.
+:::caution
+The Dogecoin integration is currently released as **beta**. While no major changes in the provided API or functionality is expected,
+Dogecoin differs in signficant ways from Bitcoin (e.g. difficulty adjustment) that may negatively impact the Dogecoin canister and warrant a period of careful observation.
+:::
 
-Through a protocol-level integration with the Dogecoin network, smart contracts deployed on ICP can interact with the Dogecoin network directly without using a bridge or oracle.
+Canister smart contracts on ICP can interact directly with the Dogecoin network. This integration is made possible through a protocol-level integration with the Dogecoin network, which allows canisters to securely interact with the Dogecoin network; and threshold ECDSA cryptography, which enables canisters to sign transactions. As a result, canisters can query the state of the Dogecoin blockchain and submit signed transactions to it.
 
-Threshold signing APIs such as [threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa) enables an ICP smart contract to hold assets like DOGE or [sign](/docs/build-on-btc/btc-transactions/sign-transactions) and [submit transactions](/docs/build-on-btc/btc-transactions/submit-transactions) to the Dogecoin network.
+- **[Dogecoin canister](https://github.com/dfinity/dogecoin-canister)**: Canisters use the API provided by the Dogecoin canister to query information about the network state, e.g., UTXOs, block information, or the balance of any Dogecoin address; and to send a transaction to the network.
+
+- **[Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa)**: A canister can have a secret key that is stored in a secure and decentralized manner using chain-key cryptography. Messages sent by the canister can be signed using this key, enabling the canister to send signed transactions to Dogecoin.
 
 When an ICP smart contract wants to submit a Dogecoin transaction, the following steps may occur:
 
@@ -24,16 +29,16 @@ When an ICP smart contract wants to submit a Dogecoin transaction, the following
 - Request a signature of the transaction hash from the threshold signing API
 - Submit the transaction to the Dogecoin API
 
-The Dogecoin API relays the request to the Dogecoin network, which receives and processes the request asynchronously before returning the result of the transaction to the ICP smart contract that initially created it.
+The Dogecoin canister relays the request to the Dogecoin network, which receives and processes the request asynchronously before returning the result of the transaction to the ICP smart contract that initially created it.
 
-ICP smart contracts can call the Dogecoin API to query the [Dogecoin mainnet](/docs/build-on-btc/btc-api) for network state information, UTXOs, block information, or the balance of any Dogecoin address.
+:::info
+Follow the [Build on Dogecoin book](https://dfinity.github.io/dogecoin-canister) to build your first smart contract interacting with Dogecoin!
+:::
 
 ## Additional resources
 
-Building Dogecoin applications is not trivial. It’s beneficial to understand core Dogecoin concepts, including transactions, UTXOs, the Script language, and Dogecoin’s hash formats.
+
+Building Dogecoin applications is not trivial. Since it is a fork of Bitcoin, understanding key Bitcoin concepts including transactions, UTXOs, the Script language, and Bitcoin’s hash formats is beneficial.
 
 - [Mastering Bitcoin: Programming the open blockchain](https://github.com/bitcoinbook/bitcoinbook/blob/develop/BOOK.md)
 - [Learn me a Bitcoin](https://learnmeabitcoin.com)
-- [Bitcoin wiki](https://en.bitcoin.it/wiki/Main_Page)
-
-
