@@ -42,25 +42,6 @@
     ]
   },
   {
-    "id": "liquidiumfi",
-    "name": "LiquidiumFi",
-    "display": "Large",
-    "website": "https://liquidium.fi/",
-    "twitter": "https://x.com/liquidiumfi",
-    "github": "https://github.com/Liquidium-Inc",
-    "tags": [
-      "Chain Fusion",
-      "DeFi",
-      "Bitcoin"
-    ],
-    "description": "Liquidium is the first truly decentralized cross-chain lending protocol. Instantly supply or borrow any asset across Bitcoin, Ethereum, and top blockchains—no bridges, no wrapping, no borders. Secure, non-custodial, and built for the future of DeFi.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/LiquidiumFi_logo.jpg",
-    "screenshots": [
-      "/img/showcase/LiqiudiumFi_screenshot.png"
-    ]
-  },
-  {
     "id": "odinfun",
     "name": "ODIN•FUN",
     "display": "Large",
@@ -78,6 +59,25 @@
       "/img/showcase/odinfun_screenshot.webp"
     ],
     "oneLiner": "Runes launchpad powered by Chain Fusion"
+  },
+  {
+    "id": "liquidiumfi",
+    "name": "LiquidiumFi",
+    "display": "Large",
+    "website": "https://liquidium.fi/",
+    "twitter": "https://x.com/liquidiumfi",
+    "github": "https://github.com/Liquidium-Inc",
+    "tags": [
+      "Chain Fusion",
+      "DeFi",
+      "Bitcoin"
+    ],
+    "description": "Liquidium is the first truly decentralized cross-chain lending protocol. Instantly supply or borrow any asset across Bitcoin, Ethereum, and top blockchains—no bridges, no wrapping, no borders. Secure, non-custodial, and built for the future of DeFi.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/LiquidiumFi_logo.jpg",
+    "screenshots": [
+      "/img/showcase/LiqiudiumFi_screenshot.png"
+    ]
   },
   {
     "id": "KongSwap",
@@ -625,6 +625,22 @@
     "oneLiner": "Own your Content - Earn Transparently!"
   },
   {
+    "id": "xfusion",
+    "name": "XFusion",
+    "display": "Normal",
+    "website": "https://xfusion.finance/",
+    "twitter": "https://x.com/xfusion_finance",
+    "tags": [
+      "DeFi",
+      "Bitcoin",
+      "Chain Fusion"
+    ],
+    "description": "Turn 10 bags into 1 token. Trade, earn, and spend across chains.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/xfusion_logo.jpg",
+    "oneLiner": "Bundle Tokens. Trade as One."
+  },
+  {
     "id": "waterneuron",
     "name": "WaterNeuron",
     "display": "Large",
@@ -1030,26 +1046,6 @@
     "description": "Sonic DEX, a multichain decentralized exchange built on the Internet Computer Protocol (ICP), offers a wide range of DeFi services. Users can easily trade tokens and perpetuals, provide liquidity, and participate in the LBP token sale. Users can engage in DAO governance, stake for rewards, and vote on platform decisions.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/sonic-dex_logo.webp"
-  },
-  {
-    "id": "bookie",
-    "name": "Bookie",
-    "display": "Normal",
-    "website": "https://www.bookie.win/exchange",
-    "twitter": "https://x.com/BookieDex",
-    "tags": [
-      "Gaming",
-      "DeFi",
-      "Bitcoin",
-      "Ethereum",
-      "NFT",
-      "Chain Fusion",
-      "Creator Economy"
-    ],
-    "stats": "1000+ Monthly Users",
-    "description": "Bookie is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/bookie_logo.jpeg"
   },
   {
     "id": "kairos",
@@ -1605,22 +1601,6 @@
     ]
   },
   {
-    "id": "xfusion",
-    "name": "XFusion",
-    "display": "Normal",
-    "website": "https://xfusion.finance/",
-    "twitter": "https://x.com/xfusion_finance",
-    "tags": [
-      "DeFi",
-      "Bitcoin",
-      "Chain Fusion"
-    ],
-    "description": "Turn 10 bags into 1 token. Trade, earn, and spend across chains.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/xfusion_logo.jpg",
-    "oneLiner": "Bundle Tokens. Trade as One."
-  },
-  {
     "id": "piggycell",
     "name": "Piggycell",
     "display": "Normal",
@@ -1960,6 +1940,26 @@
     "screenshots": [
       "/img/showcase/bitshop.webp"
     ]
+  },
+  {
+    "id": "bookie",
+    "name": "Bookie",
+    "display": "Normal",
+    "website": "https://www.bookie.win/exchange",
+    "twitter": "https://x.com/BookieDex",
+    "tags": [
+      "Gaming",
+      "DeFi",
+      "Bitcoin",
+      "Ethereum",
+      "NFT",
+      "Chain Fusion",
+      "Creator Economy"
+    ],
+    "stats": "1000+ Monthly Users",
+    "description": "Bookie is redefining online betting on the Internet Computer. Hosted completely onchain and built on the IC. Whether it's sports, lottery or arcade - users can experience transparency, security, and community-driven gambling like never before.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/bookie_logo.jpeg"
   },
   {
     "id": "oneblock",
@@ -6273,5 +6273,4 @@
     ],
     "oneLiner": "A platform designed to simplify ICP node operations."
   }
-  
 ]
