@@ -50,29 +50,38 @@ const Hero: React.FC<{
                   animationPlayState: fontLoaded ? "running" : "paused",
                 }}
               >
-                <span className="block sm:text-left">WORLD</span>
+                <span className="block md:ml-48">A PUBLIC WORLD</span>
                 <span className="block md:ml-48">COMPUTER</span>
               </h1>
               <div className="md:ml-48">
                 <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-full">
-                  The Internet Computer hosts secure, network-resident code and
-                  data. Build web apps without Big Tech and current IT.
-                  Applications are immune to cyber attacks and unstoppable,
-                  capable of processing tokens, and can run under exclusive DAO
-                  control. Build web3 social media, games, DeFi, multichain
-                  apps, secure front-ends, ledgers, enterprise apps, and AI
-                  models. TCP/IP connected software. ICP hosts software.
+                  Create apps, websites and enterprise services on an open tech
+                  stack. Simply chat to AI to create 10,000x faster (try&nbsp;
+                  <Link
+                    className="link-primary !text-white underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                    href="https://caffeine.ai/">
+                  caffeine.ai</Link>), or write code (try&nbsp;
+                  <Link
+                    className="link-primary !text-white underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                    href="https://icp.ninja/">icp.ninja</Link>). Online
+                  services run on a public cloud that's a decentralized network,
+                  powered by a mathematically secure network protocol that
+                  grants unprecedented levels of security and resilience, while
+                  enabling integration with multi-chain Web3 functionalities.
                 </p>
                 <div className="flex flex-row flex-wrap gap-8 mt-8 md:mt-6 items-center">
-                  <Link className={"button-white w-max"} href="/docs/home">
-                    DEVELOP
-                  </Link>
-
                   <Link
                     className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                     href="/library"
                   >
                     <LinkArrowRight /> <span>Guides, decks and papers</span>
+                  </Link>
+
+                  <Link
+                    className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                    href="/docs/home"
+                  >
+                    <LinkArrowRight /> <span>Developer Quick Start</span>
                   </Link>
                 </div>
               </div>
