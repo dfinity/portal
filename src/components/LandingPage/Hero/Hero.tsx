@@ -35,7 +35,7 @@ const Hero: React.FC<{
         >
           <HomeAnimation />
           <div className="container-8">
-            <div className="relative mx-auto px-0 md:pl-16 md:pr-8">
+            <div className="relative mx-auto px-0">
               <h1
                 className="
                 animate-fade-up 
@@ -50,7 +50,7 @@ const Hero: React.FC<{
                   animationPlayState: fontLoaded ? "running" : "paused",
                 }}
               >
-                <span className="block md:ml-48">A PUBLIC WORLD</span>
+                <span className="block">A PUBLIC WORLD</span>
                 <span className="block md:ml-48">COMPUTER</span>
               </h1>
               <div className="md:ml-48">
@@ -87,7 +87,7 @@ const Hero: React.FC<{
               </div>
               <aside
                 aria-label="Various stats"
-                className="block md:absolute mt-8 md:mt-0 bottom-0 -left-[min(10vw,20rem)] backdrop-blur-lg"
+                className="block md:absolute mt-8 md:mt-0 top-[108px] -left-[min(10vw,20rem)] backdrop-blur-lg"
               >
                 <div className="hover:no-underline text-white">
                   <AnimateSpawn
