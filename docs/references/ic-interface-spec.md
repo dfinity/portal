@@ -3216,6 +3216,10 @@ A single log is a record with the following fields:
 - `timestamp_nanos` (`nat64`): the timestamp as nanoseconds since 1970-01-01 at which the log was recorded;
 - `content` (`blob`): the actual content of the log;
 
+To filter canister logs, an optional filter can be provided and have one of the following variants:
+- `by_idx` (`record { start : nat64; end : nat64 }`): only logs are returned whose `idx` is within the provided range (`start` and `end` are inclusive);
+- `by_timestamp_nanos` (`record { start : nat64; end : nat64 }`): only logs are returned whose `timestamp_nanos` is within the provided range (`start` and `end` are inclusive).
+
 :::warning
 
 The response of a query comes from a single replica, and is therefore not appropriate for security-sensitive applications.
@@ -7533,13 +7537,20 @@ A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
   or
   (S[A.canister_id].canister_log_visibility = AllowedViewers Principals and (Q.sender in S[A.canister_id].controllers or Q.sender in Principals))
 
+if A.filter = by_idx Range:
+  Canister_logs = { Log | Log ∈ S.canister_logs[A.canister_id] ∧ Range.start <= Log.idx ∧ Log.idx <= Range.end }
+else if A.filter = by_timestamp_nanos Range:
+  Canister_logs = { Log | Log ∈ S.canister_logs[A.canister_id] ∧ Range.start <= Log.timestamp_nanos ∧ Log.timestamp_nanos <= Range.end }
+else:
+  Canister_logs = S.canister_logs[A.canister_id]
+
 ```
 
 Query response `R`:
 
 ```html
 
-{status: "replied"; reply: {arg: candid(S.canister_logs[A.canister_id])}, signatures: Sigs}
+{status: "replied"; reply: {arg: candid(Canister_logs)}, signatures: Sigs}
 
 ```
 
