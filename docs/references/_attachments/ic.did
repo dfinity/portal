@@ -70,6 +70,15 @@ type change_details = variant {
     controllers_change : record {
         controllers : vec principal;
     };
+    rename_canister : record {
+        canister_id : principal;
+        total_num_changes : nat64;
+        rename_to : record {
+            canister_id : principal;
+            version : nat64;
+            total_num_changes : nat64;
+        };
+    };
 };
 
 type change = record {
