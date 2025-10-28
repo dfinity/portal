@@ -48,8 +48,8 @@
     "website": "https://odin.fun/",
     "twitter": "https://x.com/Odin_GodOfRunes",
     "tags": [
-      "Bitcoin",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Bitcoin"
     ],
     "stats": "2,000+ BTC Volume",
     "description": "ODIN•FUN is the fastest way to trade tokens on Bitcoin. Create tokens in seconds. Buy and sell tokens on a pump fun style bonding curve at lightning speed. Deposit and withdraw liquidity as fast as you can click in our built-in AMM. Lightning fast experience leveraging ICP's Chain Fusion.",
@@ -2575,21 +2575,6 @@
     "logo": "/img/showcase/zondax-logo.svg",
     "screenshots": [
       "/img/showcase/vault-k8s.jpg"
-    ]
-  },
-  {
-    "id": "ubin",
-    "name": "ubin",
-    "display": "Normal",
-    "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Allows you to seamlessly launch your file storage smart contracts on ICP and interact with them via a file explorer in the browser.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/asset-app_logo.png",
-    "screenshots": [
-      "/img/showcase/asset-app.jpg"
     ]
   },
   {
@@ -6272,6 +6257,109 @@
       "/img/showcase/node_moditor_screenshot.png"
     ],
     "oneLiner": "A platform designed to simplify ICP node operations."
+  },
+  {
+    "id": "Identify",
+    "name": "Identify - Sign in with OAuth2",
+    "display": "Normal",
+    "website": "https://login.f0i.de",
+    "twitter": "https://x.com/roadblock_icp",
+    "github": "https://github.com/f0i/identify",
+    "youtube": "https://youtu.be/0SnN-TN4-B0",
+    "submittableId": 50101060,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Identify is an authentication provider for the Internet Computer, supporting sign in with Google, GitHub, X, Auth0, Zitadel, LinkedIn, Discord, etc.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/identify_logo.svg",
+    "oneLiner": "Authentication provider for the Internet Computer"
+  },
+  {
+    "id": "doors_os",
+    "name": "Dooor OS",
+    "display": "Normal",
+    "website": "https://www.dooor.ai/",
+    "twitter": "https://x.com/dooor_ai",
+    "submittableId": 50127686,
+    "tags": [
+      "AI",
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Decentralized AI governance infrastructure using ICP canisters for transparent, auditable orchestration of privacy-preserving AI across TEEs.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/Doors_logo.svg",
+    "oneLiner": "Privacy-preserving AI governance infrastructure orchestrated by ICP."
+  },
+  {
+    "id": "ubin",
+    "name": "uBin",
+    "display": "Normal",
+    "website": "https://ubin.app",
+    "twitter": "https://x.com/uBinHQ",
+    "youtube": "https://youtube.com/RealDanMcCoy",
+    "submittableId": 48622548,
+    "tags": [
+      "Creator Economy",
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "description": "Create your own storage space on a state of the art, independent network of datacenters to store your important data without worry.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/uBin_logo.svg",
+    "oneLiner": "A decentralized cloud storage service where you truly own your data."
+  },
+  {
+    "id": "ic_rmcp_sdk",
+    "name": "IC-RMCP SDK",
+    "display": "Normal",
+    "website": "https://github.com/ByteSmithLabs/ic-rmcp",
+    "twitter": "https://x.com/bytesmith_labs",
+    "github": "https://github.com/ByteSmithLabs/ic-rmcp",
+    "youtube": "https://www.youtube.com/@ByteSmithLabs",
+    "submittableId": 50373374,
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "description": "A Rust SDK for building MCP server on canister.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ic_rmcp_sdk_logo.jpg",
+    "oneLiner": "Build Model Context Protocol (MCP) on canister with Rust."
+  },
+  {
+    "id": "beatswap_oracle",
+    "name": "BeatSwap Oracle",
+    "display": "Normal",
+    "website": "https://beatswap.io/",
+    "twitter": "https://x.com/BeatXswap",
+    "github": "https://github.com/beatswap-labs",
+    "submittableId": 50599948,
+    "tags": [
+      "Creator Economy",
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "stats": "330,000+ users and over 3,000,000 transactions, averaging 100,000 transactions per day.",
+    "description": "BeatSwap is a full-stack Web3 platform turning IP-Rights into verified RWA for community engagement and decentralized trading.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/BeatSwap_logo.jpg",
+    "oneLiner": "BeatSwap is the world's first full-stack Web3 platform for IPR RWA."
+  },
+  {
+    "id": "ic_rusqlite",
+    "name": "ic-rusqlite",
+    "display": "Normal",
+    "website": "https://github.com/wasm-forge/ic-rusqlite",
+    "github": "https://github.com/wasm-forge/ic-rusqlite",
+    "submittableId": 50224203,
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "The `ic-rusqlite` is a convenience package to enable work with SQLite directly inside your Rust canister.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/ic-rusqlite_logo.svg",
+    "oneLiner": "Use `ic-rusqlite` to enable SQLite on the Internet Computer."
   }
-  
 ]
