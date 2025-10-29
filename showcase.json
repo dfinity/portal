@@ -6307,7 +6307,7 @@
     ],
     "description": "Create your own storage space on a state of the art, independent network of datacenters to store your important data without worry.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/uBin_logo.svg",
+    "logo": "/img/showcase/uBin_logo_updated.jpg",
     "oneLiner": "A decentralized cloud storage service where you truly own your data."
   },
   {
@@ -6362,5 +6362,4 @@
     "logo": "/img/showcase/ic-rusqlite_logo.svg",
     "oneLiner": "Use `ic-rusqlite` to enable SQLite on the Internet Computer."
   }
-  
 ]
