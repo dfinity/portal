@@ -174,7 +174,9 @@ If you have trouble finding it, you can just use the following URL and replace t
 
 ## Update a known neuron
 
-To update a known neuron, follow the same process for registering a known neuron (the RegisterKnownNeuron proposal type). Note that both the neuron id and the known neuron name should be the same as the existing known neuron. More specifically, if there is an existing known neuron with name `n1` and id 123, a `RegisterKnownNeuron` proposal with name `n1` and id 456 would fail.
+To update a known neuron, follow the same process for registering a known neuron, the RegisterKnownNeuron proposal type, using the known neuron's ID to identify which neuron you want to update. 
+You can update any of the self-declared information about the neuron, including the neuron's name. 
+Note that a given known neuron name cannot be transferred to another neuron ID through this proposal. For example, if there is an existing known neuron with name `n1` and ID 123, a `RegisterKnownNeuron` proposal with name `n1` must have ID 123 and would fail with ID 456. 
 
 ## Deregister a known neuron
 
