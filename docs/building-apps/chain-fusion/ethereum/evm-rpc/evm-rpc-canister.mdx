@@ -11,11 +11,9 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
 
-:::caution
+:::info
 
-For creating and signing transactions, using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) provides a more seamless workflow. Requests made using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) are not replicated between more than one RPC provider, but that is acceptable when submitting signed transactions.
-
-For querying token balances, verifying that transactions have the right number of confirmations, or other workflows that rely on replicated responses, using the EVM-RPC canister directly provides a better experience.
+The [EVM RPC client](https://docs.rs/evm_rpc_client/) crate provides a more seamless experience when interacting with the EVM RPC canister from Rust code.
 
 :::
 
@@ -31,7 +29,7 @@ The following JSON-RPC methods are available as part of the canister's [Candid i
 - [`eth_sendRawTransaction`](https://docs.alchemy.com/reference/eth-sendrawtransaction): Submits a signed transaction to the Ethereum network.
 - [`eth_call`](https://docs.alchemy.com/reference/eth-call): Query the state of a smart contract.
 
-Other RPC methods, including those specific to non-Ethereum networks, may be accessed using the canister's `request` method.
+Other RPC methods, including those specific to non-Ethereum networks, may be accessed using the canister's `multi_request` method.
 
 ## Supported RPC providers
 
@@ -119,13 +117,9 @@ dfx deploy evm_rpc --network ic --argument '(record {})'
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
 
-### `ic-alloy`
+### EVM RPC Client
 
-The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact with the EVM RPC canister from Rust code. It simplifies the code necessary to perform common EVM operations.
-
-The `ic-alloy-toolkit` includes a collection of examples demonstrating how `ic-alloy` can be used.
-
-[View the `ic-alloy` documentation for more information](https://o7kje-7yaaa-aaaal-qnaua-cai.icp0.io).
+The [`evm_rpc_client`](https://crates.io/crates/evm_rpc_client) Rust crate can be used to interact with the EVM RPC canister from Rust code. It simplifies the code necessary to perform common EVM operations and allows working with the [Alloy](https://alloy.rs/) library.
 
 ## Get event logs
 
