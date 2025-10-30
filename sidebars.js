@@ -397,6 +397,11 @@ const sidebars = {
           id: "build-on-btc/index",
         },
         {
+          type: "doc",
+          label: "Dogecoin",
+          id: "building-apps/chain-fusion/dogecoin/overview",
+        },
+        {
           type: "category",
           label: "Ethereum & EVM chains",
           link: {
@@ -892,7 +897,6 @@ const sidebars = {
         "references/candid-ref",
         "references/https-outcalls-how-it-works",
         "references/ii-spec",
-        "references/icrc1-standard",
         "references/ledger",
         "references/t-sigs-how-it-works",
         "references/vc-spec",
