@@ -15,7 +15,7 @@ In this tutorial, you'll learn how to build a <GlossaryTooltip>canister</Glossar
 
 ### 1. Deploy the example project
 
-- Go to [ICP Ninja](https://icp.ninja) and look for the "receive ICP" project. Click on it and then click on "Rust" backend language.
+- Clone the [Receive ICP](https://icp.ninja/projects/receive-icp) project from ICP Ninja by choosing "Rust" as the backend language.
 - Click on "Run" in the upper right corner to deploy the canister.
 
 :::info
@@ -28,27 +28,36 @@ It's free and allows you to deploy canisters for 30 minutes.
 Once the canister is deployed on ICP Ninja, you should be able to see a window on the right containing all the canister's endpoints.
 
 Let's call the `account()` endpoint to retrieve the canister's account. Click on the "query" button next to that endpoint's name.
-It should return a 64-digit hexadecimal string that looks something like this:
+It should return a 64-character hexadecimal string that looks something like this:
 
 ```text
 a6c0e7dc845cb5fb14c88f9b96102afea6d150ac176f33354fa6ca7e74946c98
 ```
 
-### 3. Send ICP tokens to the canister's account
-
-Instead of using real ICP tokens, we'll use TESTICP, which are test version of ICP and can be obtained for free from the [faucet](https://faucet.internetcomputer.org/).
-
-- Go the faucet, input the canister's account to receive TESTICP.
-
-### 4. Check the canister's balance
+### 3. Check the canister's balance
 
 Just like we called the `account()` endpoint to retrieve the canister's account, we can call the `balance()` endpoint to check the canister's balance.
 Click on the "query" button next to that endpoint's name.
-It should return a number of TESTICP tokens that the canister has received.
+It should return a number of TESTICP tokens that the canister currently holds.
 
 If you inspect the code, you'll see that the canister makes a call to the ledger canister of the TESTICP token to retrieve the balance of its account.
 
-### 5. Explore subaccounts
+:::info
+Typically, the balance of the canister would be 0. But, you may find that the balance already has some TESTICP tokens.
+This is because we're deploying the example on ICP Ninja, where projects can be reused by multiple users.
+:::
+
+### 4. Send ICP tokens to the canister's account
+
+Instead of using real ICP tokens, we're using TESTICP, which are test versions of ICP and can be obtained for free from the [faucet](https://faucet.internetcomputer.org/).
+
+Go the faucet and input the canister's account to receive TESTICP.
+
+### 5. Check the canister's balance again
+
+Call the `balance()` endpoint again to check the canister's balance. It should now return a higher number of TESTICP tokens.
+
+### 6. Explore subaccounts
 
 So far, we've called the `account()` and `balance()` endpoints of the canister to retrieve the canister's account and balance.
 However, a canister can have up to 2^256 different accounts, each with their own balance!
