@@ -1581,6 +1581,7 @@ defaulting to `I = i32` if the canister declares no memory.
 
     ic0.subnet_self_size : () -> I;                                                       // *
     ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
+    ic0.subnet_self_node_count : () -> i32;                                            // *
 
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
@@ -1812,9 +1813,10 @@ A canister can learn about its own identity:
 
 A canister can learn about the subnet it is running on:
 
--   `ic0.subnet_self_size : () → I` and `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+-   `ic0.subnet_self_size : () → I`, `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`, and `ic0.subnet_self_node_count : () -> i32`
 
-    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running.
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running, and to retrieve the number of nodes that are currently on the subnet.
+
 
 ### Canister status {#system-api-canister-status}
 
@@ -3006,6 +3008,34 @@ The Internet Computer mainnet supports requests to both IPv6 and IPv4 destinatio
 If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
+
+### IC method `multi_response_http_request` {#ic-multi_response_http_request}
+
+This is a variant of the [`http_request`](#ic-http_request) method where nodes return their individual HTTP responses to the caller instead of trying to reach consensus on the response, letting the caller do its own HTTP response processing. Use cases include calling HTTP endpoints that provide rapidly changing information (where achieving consensus s unlikely) and letting the user pick a trade-off between cheaper calls (fewer replicas requesting/responding) and stronger integrity guarantees (more replicas requesting/responding).
+
+The arguments of the call are as for `http_request`, except that:
+
+- there is an additional optional argument `node_counts`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `node_counts` are set, then the caller must ensure that `1 <= min_responses <= max_responses <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `node_count` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
+
+- the deprecated `max_response_bytes` argument is not supported.
+
+The other arguments, `url`, `method`, `headers`, `body`, and `transform` are the same as for `http_request`. The result is a vector of responses, with each individual response having the same structure as a `http_request` response, providing `status`, `headers`, and `body` fields.
+
+As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when a `replica_count` of 1 is used in `responses_from`. The request restrictions are also the same as for the `http_request` method:
+
+- The total number of bytes in the request must not exceed `2MB` (`2,000,000`) bytes.
+
+- Only the `GET`, `HEAD`, and `POST` methods are supported.
+
+- The number of headers must not exceed `64`.
+
+- The number of bytes representing a header name or value must not exceed `8KiB`.
+
+- The total number of bytes representing the header names and values must not exceed `48KiB`.
+
+The response from the remote server must not exceed `2MB`. Moreover, the total size of the result, that is, the sum of the responses returned by the different replicas (possibly after the transform function), must also not exceed 2MB.
+
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The upfront cycles cost covers a call that maxes out the resource usage during processing, for example, hitting the `2MB` limit on the size of the response. The unused cycles are then refunded to the caller.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
