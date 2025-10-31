@@ -465,6 +465,15 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
+                href="https://caffeine.ai/"
+              >
+                CREATE USING AI
+                <LinkArrowRight />
+              </Link>
+            </p>
+             <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
                 href="https://icp.ninja/"
               >
                 INSTANT WEB IDE
@@ -496,11 +505,6 @@ const DocsHomePage: FC = () => {
               autonomous.
             </div>
           </div>
-        </div>
-        <div className="px-6 py-0 md:p-10 border md:mx-auto md:min-w-[900px] sm:col-span-2 relative z-2 md:-mt-10">
-          <QueryClientProvider client={queryClient}>
-            <NetworkStats></NetworkStats>
-          </QueryClientProvider>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 relative z-2">

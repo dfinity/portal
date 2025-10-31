@@ -626,19 +626,19 @@ Users have the ability to learn about the hash of the canister's module, its cur
 
 The concrete mechanism that users use to send requests to the Internet Computer is via an HTTPS API, which exposes four endpoints to handle interactions, plus one for diagnostics:
 
--   At `/api/v2/canister/<effective_canister_id>/call` the user can submit update calls that are asynchronous and might change the IC state.
+-   At `/api/v2/canister/<effective_canister_id>/call`, the user can submit update calls that are asynchronous and might change the IC state.
 
--   At `/api/v3/canister/<effective_canister_id>/call` the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
+-   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
 
--   At `/api/v2/canister/<effective_canister_id>/read_state` or `/api/v2/subnet/<subnet_id>/read_state` the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
+-   At `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, and `/api/v3/subnet/<effective_subnet_id>/read_state`, the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
 
--   At `/api/v2/canister/<effective_canister_id>/query` the user can perform (synchronous, non-state-changing) query calls.
+-   At `/api/v2/canister/<effective_canister_id>/query` (deprecated) and `/api/v3/canister/<effective_canister_id>/query`, the user can perform (synchronous, non-state-changing) query calls.
 
 -   At `/api/v2/status` the user can retrieve status information about the Internet Computer.
 
 In these paths, the `<effective_canister_id>` is the [textual representation](#textual-ids) of the [*effective* canister id](#http-effective-canister-id).
 
-Requests to `/api/v2/canister/<effective_canister_id>/call`, `/api/v3/canister/<effective_canister_id>/call`, `/api/v2/canister/<effective_canister_id>/read_state`, `/api/v2/subnet/<subnet_id>/read_state`, and `/api/v2/canister/<effective_canister_id>/query` are POST requests with a CBOR-encoded request body, which consists of a authentication envelope (as per [Authentication](#authentication)) and request-specific content as described below.
+Requests to `/api/.../call`, `/api/.../read_state`, and `/api/.../query` are POST requests with a CBOR-encoded request body, which consists of a authentication envelope (as per [Authentication](#authentication)) and request-specific content as described below.
 
 :::note
 
@@ -741,7 +741,7 @@ If an implementation specific timeout for the request is reached while the repli
 
 ### Request: Call {#http-call}
 
-In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
@@ -779,7 +779,13 @@ The HTTP response to this request can have the following forms:
 
 -   5xx HTTP status when the server has encountered an error or is otherwise incapable of performing the request. The request might succeed if retried at a later time.
 
-This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for cycle balance change due to message execution).
+If the `certificate` includes a subnet delegation (see [Delegation](#certification-delegation)), then
+
+- for requests to `/api/v3/canister/<effective_canister_id>/call`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at the path of the form `/subnet/<subnet_id>/canister_ranges`,
+
+- for requests to `/api/v4/canister/<effective_canister_id>/call`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at a path with prefix `/canister_ranges/<subnet_id>`.
+
+This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for transient state such as cycle balance, canister logs, and canister version).
 
 ### Request: Asynchronous Call {#http-async-call}
 
@@ -811,7 +817,7 @@ The HTTP response to this request can have the following responses:
 
 -   5xx HTTP status when the server has encountered an error or is otherwise incapable of performing the request. The request might succeed if retried at a later time.
 
-This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for cycle balance change due to message execution).
+This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for transient state such as cycle balance, canister logs, and canister version).
 
 :::note
 
@@ -823,13 +829,13 @@ The functionality exposed via the [The IC management canister](#ic-management-ca
 
 :::note
 
-Requesting paths with the prefix `/canister_ranges` and `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/canister_ranges` and `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/canister_ranges` and `/subnet` at `/api/v3/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/canister_ranges` and `/subnet` to `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
-On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v2/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
+On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v3/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`. The subnet form should be used when the information to be retrieved is subnet specific, i.e., when requesting paths with the prefix `/time`, `/canister_ranges`, or `/subnet`, and the subnet form must be used when requesting paths of the form `/subnet/<subnet_id>/metrics`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to read parts of the [The system state tree](#state-tree), the user makes a POST request to `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, or `/api/v3/subnet/<effective_subnet_id>/read_state`. The subnet form should be used when the information to be retrieved is subnet specific, i.e., when requesting paths with the prefix `/time`, `/canister_ranges`, or `/subnet`, and the subnet form must be used when requesting paths of the form `/subnet/<subnet_id>/metrics`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `read_state`
 
@@ -851,13 +857,21 @@ In the following, we list properties of the returned certificate and specify con
 
 If the `certificate` includes a subnet delegation (see [Delegation](#certification-delegation)), then
 
-- for requests to `/api/v2/canister/<effective_canister_id>/read_state`, the `<effective_canister_id>` must be included in the delegation's canister id range,
+- for requests to `/api/v2/canister/<effective_canister_id>/read_state`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at the path of the form `/subnet/<subnet_id>/canister_ranges`,
 
-- for requests to `/api/v2/subnet/<subnet_id>/read_state`, the `<subnet_id>` must match the delegation's subnet id.
+- for requests to `/api/v3/canister/<effective_canister_id>/read_state`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at a path with prefix `/canister_ranges/<subnet_id>`,
+
+- for requests to `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`, the `<effective_subnet_id>` must match the delegation's subnet id.
 
 The returned certificate reveals all values whose path has a requested path as a prefix except for
 
--   paths with prefix `/subnet/<subnet_id>/node` which are only contained in the returned certificate if `<effective_canister_id>` belongs to the canister ranges of the subnet `<subnet_id>`, i.e., if `<effective_canister_id>` belongs to the value at the path `/subnet/<subnet_id>/canister_ranges` in the state tree.
+-   paths with prefix `/subnet/<subnet_id>/canister_ranges` which are only contained in the returned certificate
+
+    - for requests to `/api/v2/canister/<effective_canister_id>/read_state` (deprecated) and `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated);
+
+    - if `<subnet_id>` is the root subnet ID;
+
+-   paths with prefix `/subnet/<subnet_id>/metrics` and `/subnet/<subnet_id>/node` which are only contained in the returned certificate if `<effective_canister_id>` belongs to the canister ranges of the subnet `<subnet_id>`, i.e., if `<effective_canister_id>` belongs to the value at a path with prefix `/canister_ranges/<subnet_id>` in the state tree, or if `<effective_subnet_id>` matches `<subnet_id>`.
 
 The returned certificate also always reveals `/time`, even if not explicitly requested.
 
@@ -878,11 +892,15 @@ All requested paths must have the following form:
 
 -   `/api_boundary_nodes`, `/api_boundary_nodes/<node_id>`, `/api_boundary_nodes/<node_id>/domain`,  `/api_boundary_nodes/<node_id>/ipv4_address`, `/api_boundary_nodes/<node_id>/ipv6_address`. Can always be requested.
 
--   `/canister_ranges/<subnet_id>`. Can always be requested.
+-   `/canister_ranges/<subnet_id>`. Can only be requested at `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
--   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/canister_ranges`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
+-   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
--   `/subnet/<subnet_id>/metrics`. Can be requested at `/api/v2/subnet/<subnet_id>/read_state` (i.e., if the `<subnet_id>` in the URL matches the `<subnet_id>` in the paths). Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state`.
+-   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is the root subnet ID. Can always be requested.
+
+-   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is not the root subnet ID. Can be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v2/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v3/canister/<effective_canister_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`.
+
+-   `/subnet/<subnet_id>/metrics`. Can only be requested at `/api/v2/subnet/<subnet_id>/read_state` and `/api/v3/subnet/<subnet_id>/read_state` (i.e., if `<effective_subnet_id>` matches `<subnet_id>`). In particular, cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
 -   `/request_status/<request_id>`, `/request_status/<request_id>/status`, `/request_status/<request_id>/reply`, `/request_status/<request_id>/reject_code`, `/request_status/<request_id>/reject_message`, `/request_status/<request_id>/error_code`. Can be requested if no path with such a prefix exists in the state tree or
 
@@ -906,7 +924,11 @@ All requested paths must have the following form:
 
     -   `<name>` is a private custom section and the sender of the read state request is a controller of the canister.
 
-Moreover, all paths with prefix `/request_status/<request_id>` must refer to the same request ID `<request_id>`.
+Moreover,
+
+- all paths with prefix `/request_status/<request_id>` must refer to the same request ID `<request_id>`; and
+
+- all paths with prefix `/canister_ranges/<subnet_id>` must refer to the same subnet ID `<subnet_id>`.
 
 If a path cannot be requested, then the HTTP response to the read state request is undefined.
 
@@ -928,7 +950,7 @@ The following limits apply to the evaluation of a query call:
 
 -   The wall clock time spent on evaluation of a query call is at most `MAX_WALL_CLOCK_TIME_COMPOSITE_QUERY`.
 
-In order to make a query call to a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/query`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to make a query call to a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/query` (deprecated) or `/api/v3/canister/<effective_canister_id>/query`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `"query"`.
 
@@ -981,13 +1003,13 @@ A successful response to a query call (200 HTTP status) contains a list with one
 
 -   `identity` (`principal`): the principal of the node producing the signature.
 
-Given a query (the `content` map from the request body) `Q`, a response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state`, the following predicate describes when the returned response `R` is correctly signed:
+Given a query (the `content` map from the request body) `Q`, a response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<effective_canister_id>/read_state`, the following predicate describes when the returned response `R` is correctly signed:
 
 ```
 verify_response(Q, R, Cert)
   = verify_cert(Cert) ∧
     ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId ∧ lookup(["subnet",SubnetId,"canister_ranges"], Cert) = Found Ranges) ∨
-     (SubnetId = Cert.delegation.subnet_id ∧ lookup(["subnet",SubnetId,"canister_ranges"], Cert.delegation.certificate) = Found Ranges)) ∧
+     (Cert.delegation ≠ NoDelegation ∧ SubnetId = Cert.delegation.subnet_id ∧ lookup*(["canister_ranges",SubnetId], Cert.delegation.certificate) = Ranges)) ∧
     effective_canister_id ∈ Ranges ∧
     ∀ {timestamp: T, signature: Sig, identity: NodeId} ∈ R.signatures.
       lookup(["subnet",SubnetId,"node",NodeId,"public_key"], Cert) = Found PK ∧
@@ -2528,6 +2550,7 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 ### IC method `canister_status` {#ic-canister_status}
 
 This method can be called by canisters as well as by external users via ingress messages.
+This method can also be called by external users via non-replicated (query) calls, but it cannot be called from composite query calls.
 
 Indicates various information about the canister. It contains:
 
@@ -2608,7 +2631,7 @@ Provides the history of the canister, its current module SHA-256 hash, and its c
 The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, loading a snapshot, controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available).
 - Canister creation is described by the full set of controllers along with a [hash of the environment variables](#hash-of-map), if environment variables were specified. The order of controllers stored in the canister history may vary depending on the implementation.
 - Code deployment is described by its mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module.
-- Loading a snapshot is described by the snapshot ID, the canister version and timestamp at which the snapshot was taken, and the source of the snapshot (canister state or metadata upload).
+- Loading a snapshot is described by the canister ID of the canister from which the snapshot was loaded (if that canister ID is different than the canister ID onto which the snapshot is loaded), the snapshot ID, the canister version and timestamp at which the snapshot was taken (the canister version and timestamp refer to the canister from which the snapshot was loaded), and the source of the snapshot (canister state or metadata upload).
 - Controllers change is described by the full new set of controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
@@ -2628,6 +2651,27 @@ The returned response contains the following fields:
 -   `module_hash`: the SHA-256 hash of the currently installed canister module (or `null` if the canister is empty).
 
 -   `controllers`: the current set of canister controllers. The order of returned controllers may vary depending on the implementation.
+
+### IC method `canister_metadata` {#ic-canister_metadata}
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+Provides access to canister's metadata contained in custom sections whose names have the form `icp:public <name>` or `icp:private <name>`
+(see [Canister module format](#canister-module-format) for requirements on custom sections).
+
+Every canister can retrieve public metadata (in custom sections whose names have the form `icp:public <name>`) of every other canister (including itself).
+Only controllers of a canister can access its private metadata (in custom sections whose names have the form `icp:private <name>`).
+
+The following parameters should be supplied for the call:
+
+-   `canister_id` (`principal`): the canister ID of the canister to retrieve metadata from.
+
+-   `name` (`text`): identifies canister's metadata contained in a custom section whose name has the form `icp:public <name>` or `icp:private <name>`
+    (note that a canister cannot have custom sections with both `icp:public <name>` or `icp:private <name>` as names for the same `<name>`, see [Canister module format](#canister-module-format)).
+
+The returned response contains the following fields:
+
+-   `value` (`blob`): the content of canister's metadata identified by the given `name`.
 
 ### IC method `stop_canister` {#ic-stop_canister}
 
@@ -3019,9 +3063,13 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method loads a snapshot identified by `snapshot_id` onto the canister. It fails if no snapshot with the specified `snapshot_id` can be found.
 
-The snapshot can only be loaded onto the canister for which the snapshot was taken.
+The snapshot can only be loaded onto a canister that belongs to the same subnet as the canister from which the snapshot is loaded.
 
-Only controllers can take a snapshot of a canister and load it back to the canister.
+The caller must be a controller of
+
+- the canister onto which the snapshot is loaded; and
+
+- the canister from which the snapshot is loaded.
 
 :::note
 
@@ -3143,11 +3191,11 @@ This method deletes a specified snapshot that belongs to an existing canister. A
 
 A snapshot cannot be found if it was never created, it was previously deleted, replaced by a new snapshot through a `take_canister_snapshot` or `upload_canister_snapshot_metadata` request, or if the canister itself has been deleted or run out of cycles.
 
-A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
+A snapshot may be deleted only by the controllers of the canister that the snapshot belongs to.
 
 ### IC method `fetch_canister_logs` {#ic-fetch_canister_logs}
 
-This method can only be called by external users via non-replicated calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
+This method can only be called by external users via non-replicated (query) calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
 
 Given a canister ID as input, this method returns a vector of logs of that canister including its trap messages.
 The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
@@ -3440,6 +3488,9 @@ find_label(l, _)                                                 = Unknown
 
 ```
 
+Given a path `prefix`, we define `lookup*(prefix, cert)` to be the concatenation of all values at paths with the given prefix,
+i.e., for every `path` of the form `path = prefix · _` with `lookup(path, cert) = Found v`.
+
 The IC will only produce well-formed state trees, and the above algorithm assumes well-formed trees. These have the property that labeled subtrees appear in strictly increasing order of labels, and are not mixed with leaves. More formally:
 
     well_formed(tree) =
@@ -3490,7 +3541,7 @@ extract_der : Blob -> Blob
 
 implements DER decoding of the public key, following [RFC5480](https://datatracker.ietf.org/doc/html/rfc5480) using OID 1.3.6.1.4.1.44668.5.3.1.2.1 for the algorithm and 1.3.6.1.4.1.44668.5.3.2.1 for the curve.
 
-Delegations are *scoped*, i.e., they indicate which set of canister principals the delegatee subnet may certify for. This set can be obtained from a delegation `d` using `lookup(["subnet",d.subnet_id,"canister_ranges"],d.certificate)`, which must be present, and is encoded as described in [Subnet information](#state-tree-subnet). The various applications of certificates describe if and how the subnet scope comes into play.
+Delegations are *scoped*, i.e., they indicate which set of canister principals the delegatee subnet may certify for. This set can be obtained from a delegation `d` using `lookup*(["canister_ranges",d.subnet_id],d.certificate)`. See [lookup]{#lookup} for the definition of `lookup*` and [Canister ranges](#state-tree-canister-ranges) for the description of the encoding used. The various applications of certificates describe if and how the subnet scope comes into play.
 
 ### Encoding of certificates {#certification-encoding}
 
@@ -3853,7 +3904,7 @@ A reference implementation would likely maintain a separate list of `messages` f
 
 #### API requests
 
-We distinguish between API requests (type `Request`) passed to `/api/v2/…/call` and `/api/v3/…/call`, which may be present in the IC state, and the *read-only* API requests passed to `/api/v2/…/read_state` and `/api/v2/…/query`, which are only ephemeral.
+We distinguish between API requests (type `Request`) passed to `/api/v2/…/call` and `/api/v4/…/call`, which may be present in the IC state, and the *read-only* API requests passed to `/api/v3/…/read_state` and `/api/v3/…/query`, which are only ephemeral.
 
 These are the read-only messages:
 ```
@@ -3959,8 +4010,9 @@ ChangeDetails
       module_hash : Blob;
     }
   | LoadSnapshot {
-      canister_version : CanisterVersion;
+      from_canister_id : PrincipalId;
       snapshot_id : SnapshotId;
+      canister_version : CanisterVersion;
       taken_at_timestamp : Timestamp;
       source : SnapshotSource;
     }
@@ -4192,11 +4244,11 @@ The following is an incomplete list of invariants that should hold for the abstr
 
 Based on this abstract notion of the state, we can describe the behavior of the IC. There are three classes of behaviors:
 
--   Potentially state changing API requests that are submitted via `/api/v2/…/call` and `/api/v3/…/call`. These transitions describe checks that the request must pass to be considered received.
+-   Potentially state changing API requests that are submitted via `/api/v2/…/call` and `/api/v4/…/call`. These transitions describe checks that the request must pass to be considered received.
 
 -   Spontaneous transitions that model the internal behavior of the IC, by describing conditions on the state that allow the transition to happen, and the state after.
 
--   Responses to reads (i.e. `/api/v2/…/read_state` and `/api/v2/…/query`). By definition, these do *not* change the state of the IC, and merely describe the response based on the read request (or query, respectively) and the current state.
+-   Responses to reads (i.e. `/api/v3/…/read_state` and `/api/v3/…/query`). By definition, these do *not* change the state of the IC, and merely describe the response based on the read request (or query, respectively) and the current state.
 
 The state transitions are not complete with regard to error handling. For example, the behavior of sending a request to a non-existent canister is not specified here. For now, we trust implementors to make sensible decisions there.
 
@@ -4238,7 +4290,7 @@ is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_princip
 
 #### API Request submission {#api-request-submission}
 
-After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v4/canister/<ECID>/call`
 and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
 This can only happen if the target canister is not frozen and
@@ -4252,8 +4304,15 @@ Moreover, the signature must be valid and created with a correct key. Due to thi
 
 Finally, the system time (of the replica receiving the HTTP request) must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
-Submitted request
-`E : Envelope`
+Submitted request to `/api/<VERSION>/canister/<ECID>/call`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2` or `v4`.
 
 Conditions  
 
@@ -5288,11 +5347,57 @@ S' = S with
 
 The controllers of a canister can obtain detailed information about the canister.
 
-The `Memory_usage` is the (in this specification underspecified) total size of storage in bytes.
+Given a state `S` and `Canister_id`, we define
 
-The `Memory_metrics` are the (in this specification underspecified) detailed metrics on the memory consumption of the canister (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
+```html
 
-The `idle_cycles_burned_per_day` is the idle consumption of resources in cycles per day.
+canister_status(S, Canister_id) =
+    {
+      status = simple_status(S.canister_status[Canister_id]);
+      settings = {
+        controllers = S.controllers[Canister_id];
+        compute_allocation = S.compute_allocation[Canister_id];
+        memory_allocation = S.memory_allocation[Canister_id];
+        freezing_threshold = S.freezing_threshold[Canister_id];
+        reserved_cycles_limit = S.reserved_balance_limit[Canister_id];
+        wasm_memory_limit = S.wasm_memory_limit[Canister_id];
+        wasm_memory_threshold = S.wasm_memory_threshold[Canister_id];
+        environment_variables = S.environment_variables[Canister_id];
+      }
+      module_hash =
+        if S.canisters[Canister_id] = EmptyCanister
+        then null
+        else opt (SHA-256(S.canisters[Canister_id].raw_module));
+      memory_size = Memory_usage;
+      memory_metrics = Memory_metrics;
+      cycles = S.balances[Canister_id];
+      reserved_cycles = S.reserved_balances[Canister_id]
+      idle_cycles_burned_per_day = idle_cycles_burned_rate(
+        S.compute_allocation[Canister_id],
+        S.memory_allocation[Canister_id],
+        memory_usage_wasm_state(S.canisters[Canister_id].wasm_state) +
+          memory_usage_raw_module(S.canisters[Canister_id].raw_module) +
+          memory_usage_canister_history(S.canister_history[Canister_id]) +
+          memory_usage_chunk_store(S.chunk_store[Canister_id]) +
+          memory_usage_snapshots(S.snapshots[Canister_id]),
+        S.freezing_threshold[Canister_id],
+        S.canister_subnet[Canister_id].subnet_size,
+      );
+      query_stats = noise(SUM {{num_calls_total: 1,
+                                num_instructions_total: single_query_stats.num_instructions,
+                                request_payload_bytes_total: single_query_stats.request_payload_bytes,
+                                response_payload_bytes_total: single_query_stats.response_payload_bytes} |
+                               single_query_stats <- S.query_stats[Canister_id];
+                               single_query_stats.timestamp <= S.time[Canister_id] - T})
+    }
+
+```
+
+where
+- `Memory_usage` is the (in this specification underspecified) total canister memory usage in bytes;
+- `Memory_metrics` are the (in this specification underspecified) detailed metrics on the memory consumption of the canister (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details);
+- `T` is an (in this specification underspecified) time delay of query statistics and `noise` is an (in this specification underspecified) probabilistic function
+modelling information loss due to aggregating query statistics in a distributed system.
 
 Conditions  
 
@@ -5315,51 +5420,55 @@ S with
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
-        response = candid({
-          status = simple_status(S.canister_status[A.canister_id]);
-          settings = {
-            controllers = S.controllers[A.canister_id];
-            compute_allocation = S.compute_allocation[A.canister_id];
-            memory_allocation = S.memory_allocation[A.canister_id];
-            freezing_threshold = S.freezing_threshold[A.canister_id];
-            reserved_cycles_limit = S.reserved_balance_limit[A.canister_id];
-            wasm_memory_limit = S.wasm_memory_limit[A.canister_id];
-            wasm_memory_threshold = S.wasm_memory_threshold[A.canister_id];
-            environment_variables = S.environment_variables[A.canister_id];
-          }
-          module_hash =
-            if S.canisters[A.canister_id] = EmptyCanister
-            then null
-            else opt (SHA-256(S.canisters[A.canister_id].raw_module));
-          memory_size = Memory_usage;
-          memory_metrics = Memory_metrics;
-          cycles = S.balances[A.canister_id];
-          reserved_cycles = S.reserved_balances[A.canister_id]
-          idle_cycles_burned_per_day = idle_cycles_burned_rate(
-            S.compute_allocation[A.canister_id],
-            S.memory_allocation[A.canister_id],
-            memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
-              memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
-              memory_usage_canister_history(S.canister_history[A.canister_id]) +
-              memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-              memory_usage_snapshots(S.snapshots[A.canister_id]),
-            S.freezing_threshold[A.canister_id],
-            S.canister_subnet[A.canister_id].subnet_size,
-          );
-          query_stats = noise(SUM {{num_calls_total: 1,
-                                    num_instructions_total: single_query_stats.num_instructions,
-                                    request_payload_bytes_total: single_query_stats.request_payload_bytes,
-                                    response_payload_bytes_total: single_query_stats.response_payload_bytes} |
-                                   single_query_stats <- S.query_stats[A.canister_id];
-                                   single_query_stats.timestamp <= S.time[A.canister_id] - T})
-        })
+        response = candid(canister_status(S, A.canister_id))
         refunded_cycles = M.transferred_cycles
       }
 
 ```
 
-where `T` is an unspecified time delay of query statistics and `noise` is an unspecified probabilistic function
-modelling information loss due to aggregating query statistics in a distributed system.
+The IC method `canister_status` can also be invoked via management canister query calls.
+They are calls to `/api/v3/canister/<ECID>/query`
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
+
+Submitted request to `/api/v3/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+Conditions
+
+```html
+
+E.content = CanisterQuery Q
+Q.canister_id = ic_principal
+Q.method_name = 'canister_status'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+Q.arg = candid(A)
+A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+Q.sender ∈ S.controllers[A.canister_id]
+
+```
+
+Query response `R`:
+
+```html
+
+{status: "replied"; reply: {arg: candid(canister_status(S, A.canister_id))}, signatures: Sigs}
+
+```
+
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
+
+```html
+
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
 
 #### IC Management Canister: Canister information
 
@@ -5396,6 +5505,44 @@ S with
             then null
             else opt (SHA-256(S.canisters[A.canister_id].raw_module));
           controllers = S.controllers[A.canister_id];
+        })
+        refunded_cycles = M.transferred_cycles
+      }
+
+```
+
+#### IC Management Canister: Canister metadata
+
+Every canister can retrieve public metadata of every other canister (including itself)
+and private metadata of canisters controlled by the caller.
+
+Conditions  
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ CallMessage M' | FuncMessage M' ∈ Older_messages. M'.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'canister_metadata'
+M.arg = candid(A)
+A.name ∈ dom(S.canisters[A.canister_id].public_custom_sections) ∨ (A.name ∈ dom(S.canisters[A.canister_id].private_custom_sections) ∧ M.caller ∈ S.controllers[A.canister_id])
+if A.name ∈ dom(S.canisters[A.canister_id].public_custom_sections):
+  Content = S.canisters[A.canister_id].public_custom_sections[A.name]
+else:
+  Content = S.canisters[A.canister_id].private_custom_sections[A.name]
+
+```
+
+State after  
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = candid({
+          value = Content;
         })
         refunded_cycles = M.transferred_cycles
       }
@@ -6503,7 +6650,7 @@ S' = S with
 #### IC Management Canister: Load canister snapshot
 
 
-Only the controllers of the given canister can load a snapshot.
+Controllers of a canister can load a snapshot that belongs to a canister on the same subnet and also controlled by the caller.
 
 ```html
 
@@ -6513,9 +6660,10 @@ M.callee = ic_principal
 M.method_name = 'load_canister_snapshot'
 M.arg = candid(A)
 M.caller ∈ S.controllers[A.canister_id]
-
-A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
-Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
+A.snapshot_id ∈ dom(S.snapshots[Canister_id])
+S.canister_subnet[A.canister_id].subnet_id = S.canister_subnet[Canister_id].subnet_id
+M.caller ∈ S.controllers[Canister_id]
+Snapshot = S.snapshots[Canister_id][A.snapshot_id]
 
 Mod = parse_wasm_mod(Snapshot.raw_module);
 
@@ -6572,6 +6720,10 @@ S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
 }
+if Canister_id = A.canister_id:
+  From_canister_id = null
+else:
+  From_canister_id = Canister_id
 New_canister_history = {
   total_num_changes = N + 1;
   recent_changes = H · {
@@ -6579,6 +6731,7 @@ New_canister_history = {
     canister_version = S.canister_version[A.canister_id] + 1
     origin = change_origin(M.caller, A.sender_canister_version, M.origin);
     details = LoadSnapshot {
+      from_canister_id = From_canister_id
       snapshot_id = A.snapshot_id
       canister_version = Snapshot.canister_version
       taken_at_timestamp = Snapshot.take_at_timestamp
@@ -6885,7 +7038,7 @@ S with
 
 #### IC Management Canister: Delete canister snapshot
 
-A snapshot may be deleted only by the controllers of the canister for which the snapshot was taken.
+A snapshot may be deleted only by the controllers of the canister that the snapshot belongs to.
 
 ```html
 
@@ -7280,21 +7433,33 @@ S with
 #### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
 
 This section specifies management canister query calls.
-They are calls to `/api/v2/canister/<effective_canister_id>/query`
-with CBOR body `Q` such that `Q.canister_id = ic_principal`.
+They are calls to `/api/v3/canister/<ECID>/query`
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
 
 The management canister offers the method `fetch_canister_logs`
 that can be called as a query call and
 returns logs of a requested canister.
 
+Submitted request to `/api/v3/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
 Conditions
 
 ```html
 
+E.content = CanisterQuery Q
 Q.canister_id = ic_principal
 Q.method_name = 'fetch_canister_logs'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
-A.canister_id = effective_canister_id
+A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 (S[A.canister_id].canister_log_visibility = Public)
   or
   (S[A.canister_id].canister_log_visibility = Controllers and Q.sender in S[A.canister_id].controllers)
@@ -7311,11 +7476,11 @@ Query response `R`:
 
 ```
 
-where the query `Q`, the response `R`, and a certificate `Cert'` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state` satisfy the following:
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
-verify_response(Q, R, Cert') ∧ lookup(["time"], Cert') = Found S.system_time // or "recent enough"
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
 
 ```
 
@@ -7323,7 +7488,7 @@ verify_response(Q, R, Cert') ∧ lookup(["time"], Cert') = Found S.system_time /
 
 This section specifies query calls `Q` whose `Q.canister_id` is a non-empty canister `S.canisters[Q.canister_id]`. Query calls to the management canister, i.e., `Q.canister_id = ic_principal`, are specified in Section [Canister logs](#ic-mgmt-canister-fetch-canister-logs).
 
-Canister query calls to `/api/v2/canister/<ECID>/query` can be executed directly. They can only be executed against non-empty canisters which have a status of `Running` and are also not frozen.
+Canister query calls to `/api/v3/canister/<ECID>/query` can be executed directly. They can only be executed against non-empty canisters which have a status of `Running` and are also not frozen.
 
 In query and composite query methods evaluated on the target canister of the query call, a certificate is provided to the canister that is valid, contains a current state tree (or "recent enough"; the specification is currently vague about how old the certificate may be), and reveals the canister's [Certified Data](#system-api-certified-data).
 
@@ -7421,8 +7586,13 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S)
 ```
 
-Submitted request  
-`E`
+Submitted request to `/api/v3/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
 
 Conditions  
 
@@ -7448,11 +7618,11 @@ Query response `R`:
     {status: "replied"; reply: {arg: Res}, signatures: Sigs}
     ```
 
-where the query `Q`, the response `R`, and a certificate `Cert'` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state` satisfy the following:
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
-verify_response(Q, R, Cert') ∧ lookup(["time"], Cert') = Found S.system_time // or "recent enough"
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
 
 ```
 
@@ -7476,16 +7646,21 @@ S' with
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v2/canister/<effective_canister_id>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v2/subnet/<subnet_id>/read_state`.
+Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
-On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v2/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
+On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v3/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-The user can read elements of the *state tree*, using a `read_state` request to `/api/v2/canister/<ECID>/read_state` or `/api/v2/subnet/<subnet_id>/read_state`.
+The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<effective_subnet_id>/read_state`.
 
-Submitted request to `/api/v2/canister/<ECID>/read_state`
-`E`
+Submitted request to `/api/v3/canister/<ECID>/read_state`
+
+```html
+
+E : Envelope
+
+```
 
 Conditions  
 
@@ -7508,11 +7683,10 @@ A record with
 The predicate `may_read_path_for_canister` is defined as follows, implementing the access control outlined in [Request: Read state](#http-read-state):
 ```
 may_read_path_for_canister(S, _, ["time"]) = True
-may_read_path_for_canister(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
-may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = True
+may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_canister(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -7537,15 +7711,20 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/v2/subnet/<subnet_id>/read_state`
-`E`
+Submitted request to `/api/v3/subnet/<effective_subnet_id>/read_state`
+
+```html
+
+E : Envelope
+
+```
 
 Conditions  
 
 ```html
 
 E.content = ReadState RS
-TS = verify_envelope(E, RS.sender, S.system_time)
+verify_envelope(E, RS.sender, S.system_time)
 |E.content.nonce| <= 32
 S.system_time <= RS.ingress_expiry
 ∀ path ∈ RS.paths. may_read_path_for_subnet(S, RS.sender, path)
@@ -7565,8 +7744,8 @@ may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
-may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = True
-may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == subnet_id
+may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
+may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_subnet_id>
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -7581,7 +7760,8 @@ where `state_tree` constructs a labeled tree from the IC state `S` and the (so f
 state_tree(S) = {
   "time": S.system_time;
   "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
-  "subnet": { subnet_id : { "public_key" : subnet_pk; "canister_ranges" : subnet_ranges; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
+  "subnet": { subnet_id : { "public_key" : subnet_pk; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
+  "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == root_subnet_id };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
     { canister_id :
