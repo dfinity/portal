@@ -4028,7 +4028,8 @@ ChangeDetails
           canister_id : PrincipalId;
           version : Nat;
           total_num_changes : Nat;
-      }
+      };
+      requested_by : PrincipalId;
   }
 Change = {
   timestamp_nanos : Timestamp;
@@ -7360,6 +7361,7 @@ S with
 The system canister migration orchestrator (we denote its canister ID by `Canister_migration_orchestrator`)
 can perform canister renaming of a canister with canister ID `Canister_id`
 to a new canister ID `New_canister_id`.
+The actual caller of the corresponding canister migration orchestrator's endpoint who requested canister renaming is denoted by `Caller`.
 We denote the system canister migration orchestrator version when performing the renaming by `Canister_migration_orchestrator_version`.
 
 Conditions
@@ -7392,7 +7394,8 @@ New_canister_history = {
         canister_id = New_canister_id;
         version = S.canister_version[New_canister_id];
         total_num_changes = S.canister_history[New_canister_id].total_num_changes;
-      }
+      };
+      requested_by = Caller;
     };
   };
 }
