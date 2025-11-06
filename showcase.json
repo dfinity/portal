@@ -6371,14 +6371,10 @@
       "Bitcoin",
       "DeFi"
     ],
-    "description": "Multi-chain DeFi platform bridging Bitcoin native and Counterparty assets with the Internet Computer Protocol (ICP) for secure, decentralized trading.\n\nFeatures Bitcoin wallet authentication via Sign-In With Bitcoin (SIWB), enabling seamless cross-chain liquidity pools and trustless asset swaps without centralized custody.","stats": "Launching on testnet",
+    "description": "Multi-chain DeFi platform bridging Bitcoin native and Counterparty assets with the Internet Computer Protocol (ICP) for secure, decentralized trading.\n\nFeatures Bitcoin wallet authentication via Sign-In With Bitcoin (SIWB), enabling seamless cross-chain liquidity pools and trustless asset swaps without centralized custody.",
     "logo": "/img/showcase/dexpad_logo.webp",
     "usesInternetIdentity": false,
     "video": "https://youtu.be/1P7CdMbYfoY",
-    "authOrigins": [
-      "https://dex.srcpad.pro",
-      "https://testnet-dex.srcpad.pro"
-    ],
     "twitter": "https://x.com/srcpad_pro",
     "youtube": "https://www.youtube.com/@dex-pad"
   }
