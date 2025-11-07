@@ -48,7 +48,16 @@ The `sign_with_schnorr` endpoint takes a full message to sign as input rather th
 
 ## Signing messages
 
-Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister. Note that, in some cases, a signature may be computed when requested, but not returned to the requesting canister. Thus, canisters should not rely on the signature not existing even if the signing request fails. Furthermore, signatures (including Ed25519) are non-deterministic and a different signature may be computed every time it is requested.
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister. Note that, in some cases, a signature may be computed when requested and known to some (potentially malicious replicas), even though the requesting canister receives an error. Canisters should not rely on the signature not existing in these cases. The table below shows these cases when using different types of inter-canister calls.
+
+| Response                | Bounded-wait call                                     | Unbounded-wait call                                   |
+|-------------------------|-------------------------------------------------------|-------------------------------------------------------|
+| Reply (no error)        | Signature returned                                    | Signature returned                                    |
+| `SYS_UNKNOWN` reject    | Signature not returned, may be known to some replicas | Not possible                                          |
+| `CANISTER_ERROR` reject | Signature not returned, may be known to some replicas | Signature not returned, may be known to some replicas |
+| Other reject            | Signature not returned, guaranteed not to exist       | Signature not returned, guaranteed not to exist       |
+
+Furthermore, signatures (including Ed25519) are non-deterministic and a different signature may be computed every time it is requested.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
