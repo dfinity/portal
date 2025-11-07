@@ -8,16 +8,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-By default, all canisters on the Internet Computer are accessible through the domain `icp0.io` and their canister ID. In addition to that default domain, one can also make a canister accessible under a custom domain using one of the following approaches:
+By default, all canisters on the Internet Computer are accessible through the domain `icp0.io` and their canister ID. In addition to that default domain, one can also make a canister accessible under a custom domain by register the domain with the custom domains service of HTTP gateways. All you need, is to acquire a domain through any registry, such as NameCheap or GoDaddy. Then, you simply have to configure the DNS records of your domain, and the custom domains service takes care of obtaining a certificate, renewing the certificate before its expiration, and SEO.
 
-- [Register the domain with the HTTP gateways](#custom-domains-on-the-http-gateways).
-- [Hosting the domain on your own infrastructure](#custom-domains-using-your-own-infrastructure).
+:::info
 
-For both approaches, you need to acquire a domain through any registry, such as NameCheap or GoDaddy.
+These docs describe the API of the new, redesigned custom domain service. You can find the old docs [here](./using-custom=domains-legacy.mdx).
 
-The two approaches differ in the ease of use and configurability. When registering the domain with the HTTP gateways, you simply have to configure the DNS records of the custom domain, and the HTTP gateways take care of obtaining a certificate, renewing the certificate before its expiration, and SEO.
-
-When hosting the domain on your own infrastructure, you need to obtain and renew the certificates and provide your own infrastructure with support for the [HTTP gateway protocol](../../../references/http-gateway-protocol-spec.md). However, there is more configuration flexibility using this approach.
+:::
 
 ## Register the domain with the HTTP gateways
 
@@ -27,7 +24,7 @@ By following the steps below, you can host your canister under your custom domai
 
   - Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the HTTP gateways.
 
-  - Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
+  - Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
 
   - Add a `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the HTTP gateways to acquire the certificate.
 
@@ -45,7 +42,7 @@ Make sure to disable any certificate/SSL/TLS offering of your DNS provider (e.g.
 
 :::info
 
-In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `CUSTOM_DOMAIN.icp1.io`. The [custom DNS configuration guide](./dns-setup.mdx) provides detailed instructions for three popular registrars.
+In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `CUSTOM_DOMAIN.icp1.io`. The [custom DNS configuration guide](./dns-setup.mdx) provides detailed instructions for three popular registrars.
 
 :::
 
@@ -78,7 +75,7 @@ By default, `dfx` excludes all files and directories whose names start with a `.
 │ │ │ │ └──ic-domains
 ```
 
-Then, open the `ic-domains` file and insert your domain names. To use multiple custom domains and their subdomains with a single canister, simply list each one of them on a newline in the `ic-domains` file:
+Then, open the `ic-domains` file and insert your domain names. To use multiple custom domains and their subdomains with a single canister, simply list each one of them on a newline in the `ic-domains` file:
 
 ```sh
 custom-domain1.com
@@ -104,65 +101,104 @@ Configure the `.well-known` directory to be included by writing the following co
 
 - #### Step 3: Deploy the updated canister.
 
-- #### Step 4: Register the domain with the HTTP gateways by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
+- #### Step 4: (Optional) Validate your domain configuration before registering.
+
+You can validate that your DNS records and canister configuration are correct by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain:
 
 ```sh
-curl -sL -X POST \
-    -H 'Content-Type: application/json' \
-    https://icp0.io/registrations \
-    --data @- <<EOF
-    {
-      "name": "CUSTOM_DOMAIN"
-    }
-EOF
+curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN/validate | jq
 ```
 
-If the call was successful, you will get a JSON response that contains the request ID in the body, which you can use to query the status of your registration request:
+If the validation is successful, you will get a JSON response like:
 
+```json
+{
+  "status": "success",
+  "message": "Domain is eligible for registration: DNS records are valid and canister ownership is verified",
+  "data": {
+    "domain": "CUSTOM_DOMAIN",
+    "canister_id": "CANISTER_ID",
+    "validation_status": "valid"
+  }
+}
 ```
-{"id":"REQUEST_ID"}
-```
 
-In case the call failed, you will get an error message indicating the reason for the failure:
+If validation fails, you will get an error message indicating what needs to be fixed. Common validation errors include:
 
-**Missing DNS CNAME record**: The `CNAME` entry for the `_acme-challenge` subdomain is missing.
+- **Missing DNS CNAME record**: The `CNAME` entry for the `_acme-challenge` subdomain is missing.
+- **Missing DNS TXT record**: The `TXT` entry for the `_canister-id` subdomain is missing.
+- **Invalid DNS TXT record**: The content of the `TXT` entry is not a valid canister ID.
+- **More than one DNS TXT record**: There are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
+- **Failed to retrieve known domains**: The `ic-domains` file is not accessible under `.well-known/ic-domains`.
+- **Domain is missing from list of known domains**: The custom domain is missing from the `ic-domains` file.
 
-**Existing DNS TXT challenge record**: The DNS record already contains a `TXT` entry for the `_acme-challenge` subdomain. Remove it and try again.
-
-**Missing DNS TXT record**: The `TXT` entry for the `_canister-id` subdomain is missing.
-
-**Invalid DNS TXT record**: The content of the `TXT` entry is not a valid canister ID.
-
-**More than one DNS TXT record**: There are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
-
-**Failed to retrieve known domains**: The `ic-domains` file is not accessible under `.well-known/ic-domains`.
-
-**Domain is missing from list of known domains**: The custom domain is missing from the `ic-domains` file.
-
-**Rate limit exceeded for apex domain**: Too many registration requests have been submitted for the apex domain. Try again later. You can submit at most 5 registration requests per apex domain and hour.
-
-- #### Step 5: Processing the registration can take several minutes.
-
-Track the progress of your registration request by issuing the following command and replacing `REQUEST_ID` with the ID you received in the previous step.
+- #### Step 5: Register the domain with the HTTP gateways by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
 
 ```sh
-curl -sL -X GET \
-    https://icp0.io/registrations/REQUEST_ID
+curl -sL -X POST https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
 ```
 
-The status will be one of the following:
+If the call was successful, you will get a JSON response like:
 
-`PendingOrder`: The registration request has been submitted and is waiting to be picked up.
+```json
+{
+  "status": "success",
+  "message": "Domain registration request accepted and may take a few minutes to process",
+  "data": {
+    "domain": "CUSTOM_DOMAIN",
+    "canister_id": "CANISTER_ID"
+  }
+}
+```
 
-`PendingChallengeResponse`: The certificate has been ordered.
+In case the call failed, you will get an error response indicating the reason for the failure like:
 
-`PendingAcmeApproval`: The challenge has been completed.
+```json
+{
+  "status": "error",
+  "message": "Domain registration request failed",
+  "data": {
+    "domain": "CUSTOM_DOMAIN"
+  },
+  "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."}
+```
 
-`Available`: The registration request has been successfully processed.
+Common errors include:
 
-`Failed`: The registration request failed.
+- **bad_request**: Invalid domain format, missing DNS records, or validation errors.
+- **conflict**: Certificate already exists for this domain, or another task is already in progress.
+- **internal_server_error**: An unexpected error occurred. Please try again later or contact support.
 
-- #### Step 6: Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all HTTP gateways.
+- #### Step 6: Processing the registration can take several minutes.
+
+Track the progress of your registration request by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain:
+
+```sh
+curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
+```
+
+The response will include a `registration_status` field with one of the following values:
+
+- `registering`: The registration request has been submitted and is being processed.
+- `registered`: The domain has been successfully registered and has a valid certificate.
+- `expired`: The domain registration has expired.
+- `failed`: The registration request failed. The error message will indicate what went wrong.
+
+Example response:
+
+```json
+{
+  "status": "success",
+  "message": "Registration status of the domain",
+  "data": {
+    "domain": "CUSTOM_DOMAIN",
+    "canister_id": "CANISTER_ID",
+    "registration_status": "registering"
+  }
+}
+```
+
+- #### Step 7: Once your registration status becomes `registered`, wait a few minutes for the certificate to become available on all HTTP gateways.
 
 After that, you should be able to access your canister using the custom domain.
 
@@ -172,11 +208,11 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 
 ### DNS configuration
 
-| Record Type | Host  | Value  |
+| Record Type | Host  | Value  |
 | ------------- | ----------------------------- | ------------------------------------ |
-| `CNAME` | foo.bar.com | foo.bar.com.icp1.io  |
-| `TXT` | \_canister-id.foo.bar.com | hwvjt-wqaaa-aaaam-qadra-cai  |
-| `CNAME` | \_acme-challenge.foo.bar.com  | \_acme-challenge.foo.bar.com.icp2.io |
+| `CNAME` | foo.bar.com | foo.bar.com.icp1.io  |
+| `TXT` | \_canister-id.foo.bar.com | hwvjt-wqaaa-aaaam-qadra-cai  |
+| `CNAME` | \_acme-challenge.foo.bar.com  | \_acme-challenge.foo.bar.com.icp2.io |
 
 :::info
 
@@ -209,26 +245,46 @@ foo.bar.com
 
 - #### Step 3: Deploy the updated canister.
 
-- #### Step 4: Start the registration process.
+- #### Step 4: (Optional) Validate your domain configuration.
+
+```sh
+curl -sL -X GET https://icp0.io/custom-domains/v1/foo.bar.com/validate | jq
+```
+
+- #### Step 5: Start the registration process.
 
 ```sh
 curl -sL -X POST \
-    -H 'Content-Type: application/json' \
-    https://icp0.io/registrations \
-    --data @- <<EOF
-    {
-        "name": "foo.bar.com"
-    }
-EOF
+    https://icp0.io/custom-domains/v1/foo.bar.com | jq
+```
+
+- #### Step 6: Check the registration status.
+
+```sh
+curl -sL -X GET https://icp0.io/custom-domains/v1/foo.bar.com | jq
 ```
 
 ### Troubleshooting
 
 When you are running into issues trying to register your custom domain, try the following troubleshooting steps:
 
-- Check your DNS configuration using a tool like [`dig`](https://linux.die.net/man/1/dig) or [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup). For example, to check the `TXT` record with the canister ID, you can run `dig TXT _canister-id.CUSTOM_DOMAIN`. In particular, make sure that there are no extra entries (e.g., multiple `TXT` records for the `_canister-id`-subdomain).
+- Use the validate endpoint to check your DNS configuration and canister setup before attempting registration:
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN/validate | jq
+  ```
+  This will provide detailed error messages about what needs to be fixed.
+
+- Check your DNS configuration using a tool like [`dig`](https://linux.die.net/man/1/dig) or [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup). For example, to check the `TXT` record with the canister ID, you can run `dig TXT _canister-id.CUSTOM_DOMAIN`. In particular, make sure that there are no extra entries (e.g., multiple `TXT` records for the `_canister-id`-subdomain).
+
 - Check that there are no `TXT` records for the `_acme-challenge-subdomain` (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left over from previous ACME challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL-certificate offerings from your domain provider to remove these records.
+
 - Check the `ic-domains` file by downloading it directly from your canister (e.g., by opening `CANISTER_ID.icp0.io/.well-known/ic-domains` in your browser or using `curl CANISTER_ID.icp0.io/.well-known/ic-domains` in your terminal).
+
+- Check the registration status to see the current state of your domain:
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
+  ```
+  This will show you the current `registration_status` and any associated error messages.
 
 :::info
 
@@ -244,55 +300,77 @@ const agent = await HttpAgent.create({ host });
 
 ## Updating a custom domain
 
-In case you want to update the domain to point to a different canister, you first need to update the DNS record of your domain, then notify a [HTTP gateway](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure):
+In case you want to update the domain to point to a different canister, you first need to update the DNS record of your domain, then notify the custom domains service:
 
 - #### Step 1: Update the `TXT` entry to contain the new canister ID for the `_canister-id` subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`).
 
-- #### Step 2: Notify a HTTP gateway of the change using a `PUT` request and the ID of your registration (`REQUEST_ID`).
+- #### Step 2: Update the domain registration using a `PATCH` request with the domain name in the path.
 
 ```sh
-curl -sL -X PUT \
-    https://icp0.io/registrations/REQUEST_ID
+curl -sL -X PATCH https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
 ```
 
-:::info
+If the call was successful, you will get a JSON response like:
 
-In case you forgot the ID of your registration, you can just submit another registration request for your domain, and the HTTP gateway will return the corresponding ID.
+```json
+{
+  "status": "success",
+  "message": "Update domain registration request accepted and may take a few minutes to process",
+  "data": {
+    "domain": "CUSTOM_DOMAIN",
+    "canister_id": "CANISTER_ID"
+  }
+}
+```
 
-:::
+- #### Step 3: Check the registration status to track the update progress.
+
+```sh
+curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN
+```
 
 ## Removing a custom domain
 
-In case you want to remove your domain, you just need to remove the DNS records and notify a HTTP gateway:
+In case you want to remove your domain, you just need to remove the DNS records and notify the custom domains service:
 
 - #### Step 1: Remove the `TXT` entry containing the canister ID for the `_canister-id` subdomain (e.g., `_canister-id.CUSTOM_DOMAIN`) and the `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`).
-- #### Step 2: Notify a HTTP gateway of the removal using a `DELETE` request.
+
+- #### Step 2: Notify the custom domains service of the removal using a `DELETE` request with the domain name in the path.
 
 ```sh
-curl -sL -X DELETE \
-    https://icp0.io/registrations/REQUEST_ID
+curl -sL -X DELETE https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
 ```
 
-:::info
+If the call was successful, you will get a JSON response like:
 
-In case you forgot the ID of your registration, you can just submit another registration request for your domain, and the HTTP gateway will return the corresponding ID.
+```json
+{
+  "status": "success",
+  "message": "Delete domain registration request accepted and may take a few minutes to process",
+  "data": {
+    "domain": "CUSTOM_DOMAIN"
+  }
+}
+```
 
-:::
+- #### Step 3: Check the registration status to confirm the deletion.
 
-## Custom domains using your own infrastructure
+```sh
+curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN
+```
 
-- #### Step 1: Deploy your canister to ICP and note the canister ID.
+If the domain has been successfully deleted, you will receive a `404 Not Found` response and a JSON body like:
 
-- #### Step 2: Clone the [official ICP repo](https://github.com/dfinity/ic), checkout the commit `2304690ca1d241d9ce6e19a427a18de9aac95b82` and navigate to the [service worker folder](https://github.com/dfinity/ic/tree/2304690ca1d241d9ce6e19a427a18de9aac95b82/typescript/service-worker) located under `ic/typescript/service-worker`.
-
-- #### Step 3: Map your domain to the canister ID by adding your domain-to-canister mapping to `hostnameCanisterIdMap` in the file [`service-worker/src/sw/domains/static.ts`](https://github.com/dfinity/ic/blob/2304690ca1d241d9ce6e19a427a18de9aac95b82/typescript/service-worker/src/sw/domains/static.ts).
-
-- #### Step 4: Build the service worker according to the instructions in `service-worker/README.md`. The output should be:
-    - An `index.html`,.
-    - A minified `.js` file.
-    - A `.map` file.
-- #### Step 5: Host the assets (`index.html`, `.js` and `.map` files) from a server or CDN and point your custom domain name at this server.
-- #### Step 6: Test.
+```json
+{
+  "status": "error",
+  "message": "Registration status request failed",
+  "data": {
+    "domain": "CUSTOM_DOMAIN"
+  },
+  "errors": "not_found: Domain CUSTOM_DOMAIN not found"
+}
+```
 
 :::caution
 
