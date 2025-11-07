@@ -47,21 +47,26 @@ function sortDesktopProjects(
   const sorted: EnrichedShowcaseProjects = [];
   const columns = 4;
 
-  const promoSlots = [8 - 1, 20 - 3, 32 - 2, 48 - 4, 64 - 1];
+  // add submit project promo card at the beginning for prominent position
+  if (small.length > 0) {
+    small.unshift("promo");
+  }
+
+  const promoSlots = [12 - 1, 24 - 3, 36 - 2, 52 - 4, 68 - 1];
 
   for (let i = 0; i < promoSlots.length; i++) {
     const slot = promoSlots[i];
     if (small.length >= slot) {
-      // 1st promo: Submit project, 2nd promo: Newsletter, 3rd & 4th promo: Submit project, 5th promo (last): Newsletter
+      // Additional promos: 1st: Submit project, 2nd: Newsletter, 3rd & 4th: Submit project, 5th (last): Newsletter
       const cardType =
         i === 1 || i === promoSlots.length - 1 ? "newsletter" : "promo";
       small.splice(slot, 0, cardType);
     }
   }
 
-  // add report card after the 1st promo card
-  if (small.length >= 8) {
-    small.splice(0, 0, "report");
+  // add report card at a less prominent position (after position 28)
+  if (small.length >= 28) {
+    small.splice(28, 0, "report");
   }
 
   while (true) {
@@ -282,21 +287,20 @@ const ReportCard = () => {
     <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
       <div className="flex flex-col gap-2">
         <h3 className="tw-title-sm text-[35px] mb-0">
-          ICP Chain Fusion Ecosystem Report 2024
+          ICP Ecosystem Resource Hub
         </h3>
         <p className="tw-paragraph text-white/60 flex-1 mb-12">
-          The ICP Chain Fusion Ecosystem Report recaps the most substantial
-          ecosystem achievements from 2024 as well as zooms in on several
-          success stories from within the Chain Fusion ecosystem.
+          Check out our one-stop destination to explore, build, and grow within
+          the ICP community.
         </p>
         <Link
-          className="button-white link link-with-icon !gap-4"
-          href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
+          className="button-white link link-with-icon"
+          href="https://dfinityorg.notion.site/icp-ecosystem-hub"
           target="_blank"
           rel="noopener noreferrer"
-          download
         >
-          <Download /> Download Report
+          Visit Resource Hub
+          <LinkArrowUpRight />
         </Link>
       </div>
     </div>
@@ -388,7 +392,7 @@ function ShowcasePage(): JSX.Element {
       description="Explore a showcase of curated projects built by the Internet Computer ecosystem. This continually growing list features the newest projects, all built with blockchain. Try out decentralized social media, dapps and more. Only possible on the IC. "
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-showcase.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ecosystem.png"></ShareMeta>
       <main
         className="overflow-hidden relative"
         style={{
@@ -464,7 +468,7 @@ function ShowcasePage(): JSX.Element {
               See a project missing? All community members are invited to submit
               their projects to this page.
             </p>
-            <p className="mb-0">
+            <p className="mb-2">
               <Link
                 href="https://airtable.com/appyWBGCHaZoTzKTN/pagyIkYq3EiBEV0jt/form"
                 target="_blank"
@@ -472,6 +476,17 @@ function ShowcasePage(): JSX.Element {
                 className="link-primary link-with-icon"
               >
                 Submit your project
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                href="https://dfinityorg.notion.site/icp-ecosystem-hub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-primary link-with-icon"
+              >
+                ICP Ecosystem Resource Hub
                 <LinkArrowUpRight />
               </Link>
             </p>

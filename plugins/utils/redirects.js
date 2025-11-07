@@ -98,7 +98,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/access-control /docs/motoko/icp-features/caller-identification
   /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/icp-features/candid-serialization
   /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/motoko/home
-  /docs/current/developer-docs/backend/motoko/sample-apps /samples
+  /docs/current/developer-docs/backend/motoko/sample-apps http://icp.ninja/
   /docs/current/developer-docs/backend/motoko/mo-doc /docs/motoko/motoko-tooling/mo-doc
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/motoko/home
@@ -696,10 +696,11 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/other/updates/release-notes/ /docs/other/updates/release-notes/
   /docs/current/developer-docs/smart-contracts/overview/trust-in-canisters /docs/building-apps/best-practices/trust-in-canisters
-  /docs/current/references/icrc1-standard /docs/defi/overview
+  /docs/current/references/icrc1-standard /docs/defi/token-standards/icrc-1
   /docs/current/developer-docs/getting-started/troubleshooting /docs/building-apps/best-practices/troubleshooting
   /docs/current/developer-docs/smart-contracts/deploy/custom-testnets /docs/building-apps/developing-canisters/custom-networks
   /docs/current/developer-docs/developer-tools/off-chain/canbench /docs/building-apps/advanced/benchmarking
+  /docs/references/icrc1-standard /docs/defi/token-standards/icrc-1
 
   ## dfx
   /docs/current/references/cli-reference/dfx-parent /docs/building-apps/developer-tools/dfx/dfx-parent
@@ -795,10 +796,10 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/references/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/defi/create
-  /docs/current/developer-docs/integrations/icrc-1/ /docs/references/icrc1-standard
+  /docs/current/developer-docs/integrations/icrc-1/ /docs/defi/token-standards/icrc-1
   /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/defi/token-indexes/
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/defi/token-ledgers/setup/icrc1_ledger_setup
-  /docs/current/developer-docs/integrations/icrc-1/index /docs/references/icrc1-standard
+  /docs/current/developer-docs/integrations/icrc-1/index /docs/defi/token-standards/icrc-1
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/defi/token-ledgers/usage/icrc1_ledger_usage
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/building-apps/authentication/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/index /docs/building-apps/essentials/network-overview
@@ -1157,7 +1158,7 @@ const redirects = `
   /docs/developers-guide/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/icp-ninja
   /docs/developers-guide/reinstalling-dfx /docs/building-apps/getting-started/install
-  /docs/developers-guide/sample-apps /samples
+  /docs/developers-guide/sample-apps http://icp.ninja/
   /docs/developers-guide/sdk-guide.html /docs/building-apps/getting-started/install
   /docs/developers-guide/sdk-guide /docs/building-apps/getting-started/install
   /docs/developers-guide/troubleshooting /docs/building-apps/getting-started/troubleshooting
@@ -1191,66 +1192,66 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/building-apps/getting-started/install
 
   ## Samples
-  /docs/samples/codelabs/data-persistence /samples
+  /docs/samples/codelabs/data-persistence http://icp.ninja/
   /docs/current/developer-docs/daos/nns/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/current/developer-docs/defi/tokens/icrc-1/ /docs/defi/token-standards/
   /docs/current/developer-docs/integrations/http-requests /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/nns/nns-app-quickstart https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/language-guide/compiler-ref.html /docs/motoko/language-manual
   /docs/current/motoko/main/motokolimbajul /docs/motoko/home
-  /docs/samples/codelabs/minimalistic-motoko-dapp /samples
-  /docs/samples/codelabs/minimalistic-rust-dapp /samples
-  /docs/samples/codelabs /samples
-  /docs/samples/codelabs/simple-nft /samples
-  /docs/samples/codelabs/static-website /samples
-  /docs/samples/deploying-your-first-bitcoin-dapp /samples
-  /docs/samples/encrypted-notes/ /samples
-  /docs/samples/ /samples
-  /docs/samples/game-of-life /samples
-  /docs/samples/host-a-webgame /samples
-  /docs/samples/host-a-website /samples
-  /docs/samples/internet-identity-sample /samples
-  /docs/samples/nft /samples
-  /docs/current/samples/actor-reference /samples
-  /docs/current/samples/hello/ /samples
-  /docs/current/samples/phonebook /samples
-  /docs/current/samples/counter /samples
-  /docs/current/samples/dao/ /samples
-  /docs/current/samples/dex/ /samples
-  /docs/current/samples/pos /samples
-  /docs/current/samples/t-ecdsa-sample /samples
-  /docs/current/samples/vetkd-encrypted-notes /samples
-  /docs/samples/overview /samples
-  /docs/current/samples/overview /samples
-  /docs/references/samples/ADDING_AN_EXAMPLE /samples
-  /docs/references/samples/archive/motoko/actor_reference/ /samples
-  /docs/references/samples/archive/motoko/auth_client_demo/ /samples
-  /docs/references/samples/archive/motoko/calc/ /samples
-  /docs/references/samples/archive/motoko/defi/ /samples
+  /docs/samples/codelabs/minimalistic-motoko-dapp http://icp.ninja/
+  /docs/samples/codelabs/minimalistic-rust-dapp http://icp.ninja/
+  /docs/samples/codelabs http://icp.ninja/
+  /docs/samples/codelabs/simple-nft http://icp.ninja/
+  /docs/samples/codelabs/static-website http://icp.ninja/
+  /docs/samples/deploying-your-first-bitcoin-dapp http://icp.ninja/
+  /docs/samples/encrypted-notes/ http://icp.ninja/
+  /docs/samples/ http://icp.ninja/
+  /docs/samples/game-of-life http://icp.ninja/
+  /docs/samples/host-a-webgame http://icp.ninja/
+  /docs/samples/host-a-website http://icp.ninja/
+  /docs/samples/internet-identity-sample http://icp.ninja/
+  /docs/samples/nft http://icp.ninja/
+  /docs/current/samples/actor-reference http://icp.ninja/
+  /docs/current/samples/hello/ http://icp.ninja/
+  /docs/current/samples/phonebook http://icp.ninja/
+  /docs/current/samples/counter http://icp.ninja/
+  /docs/current/samples/dao/ http://icp.ninja/
+  /docs/current/samples/dex/ http://icp.ninja/
+  /docs/current/samples/pos http://icp.ninja/
+  /docs/current/samples/t-ecdsa-sample http://icp.ninja/
+  /docs/current/samples/vetkd-encrypted-notes http://icp.ninja/
+  /docs/samples/overview http://icp.ninja/
+  /docs/current/samples/overview http://icp.ninja/
+  /docs/references/samples/ADDING_AN_EXAMPLE http://icp.ninja/
+  /docs/references/samples/archive/motoko/actor_reference/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/auth_client_demo/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/calc/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/defi/ http://icp.ninja/
   /docs/references/samples/archive/motoko/dip721-nft-container/ /samples 
-  /docs/references/samples/archive/motoko/echo/ /samples
-  /docs/references/samples/archive/motoko/factorial/ /samples
-  /docs/references/samples/archive/motoko/hello-world/ /samples
-  /docs/references/samples/archive/motoko/hello/ /samples
-  /docs/references/samples/archive/motoko/ios-notifications/ /samples
-  /docs/references/samples/archive/motoko/persistent-storage/ /samples
-  /docs/references/samples/archive/motoko/phone-book/ /samples
-  /docs/references/samples/archive/motoko/quicksort/ /samples
-  /docs/references/samples/archive/motoko/simple-to-do/ /samples
-  /docs/references/samples/c/adventure  /samples
-  /docs/references/samples/c/qr  /samples
-  /docs/references/samples/c/reverse /samples
-  /docs/references/samples/hosting/ /samples
-  /docs/references/samples/hosting/godot-html5-template/ /samples
-  /docs/references/samples/hosting/react/ /samples
-  /docs/references/samples/hosting/unity-webgl-template/ /samples
-  /docs/references/samples/native-apps/unity_ii_applink  /samples
-  /docs/references/samples/native-apps/unity_ii_deeplink  /samples
-  /docs/references/samples/native-apps/unity_ii_universallink /samples
-  /docs/references/samples/svelte/svelte-motoko-starter  /samples
-  /docs/references/samples/svelte/svelte-starter  /samples
-  /docs/references/samples/svelte/sveltekit-starter /samples
-  /docs/references/samples/wasm/counter /samples
+  /docs/references/samples/archive/motoko/echo/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/factorial/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/hello-world/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/hello/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/ios-notifications/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/persistent-storage/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/phone-book/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/quicksort/ http://icp.ninja/
+  /docs/references/samples/archive/motoko/simple-to-do/ http://icp.ninja/
+  /docs/references/samples/c/adventure  http://icp.ninja/
+  /docs/references/samples/c/qr  http://icp.ninja/
+  /docs/references/samples/c/reverse http://icp.ninja/
+  /docs/references/samples/hosting/ http://icp.ninja/
+  /docs/references/samples/hosting/godot-html5-template/ http://icp.ninja/
+  /docs/references/samples/hosting/react/ http://icp.ninja/
+  /docs/references/samples/hosting/unity-webgl-template/ http://icp.ninja/
+  /docs/references/samples/native-apps/unity_ii_applink  http://icp.ninja/
+  /docs/references/samples/native-apps/unity_ii_deeplink  http://icp.ninja/
+  /docs/references/samples/native-apps/unity_ii_universallink http://icp.ninja/
+  /docs/references/samples/svelte/svelte-motoko-starter  http://icp.ninja/
+  /docs/references/samples/svelte/svelte-starter  http://icp.ninja/
+  /docs/references/samples/svelte/sveltekit-starter http://icp.ninja/
+  /docs/references/samples/wasm/counter http://icp.ninja/
 
   ## Misc
   /docs/current/developer-docs/backend/candid/generating-candid/ /docs/building-apps/developer-tools/cdks/rust/generating-candid
@@ -1284,8 +1285,8 @@ const redirects = `
   /docs/current/motoko/main/base/rbtree /docs/motoko/base/RBTree
   /docs/defi/chain-key-tokens/ /docs/defi/chain-key-tokens/overview
   /docs/current/references/cli-reference/dfx-ledger/ /docs/building-apps/developer-tools/dfx/dfx-ledger
-  /docs/current/samples/deploying-your-first-bitcoin-dapp /samples
-  /docs/current/samples/host-a-website/ /samples
+  /docs/current/samples/deploying-your-first-bitcoin-dapp http://icp.ninja/
+  /docs/current/samples/host-a-website/ http://icp.ninja/
   /features/serve-web-content/ /capabilities
   /docs/tutorials/developer-liftoff/level-0/dev-env /docs/tutorials/developer-liftoff/level-0/tooling
   /docs/tutorials/developer-liftoff/level-0/intro-canisters /docs/tutorials/developer-liftoff/level-0/intro-languages
@@ -1346,7 +1347,7 @@ const redirects = `
   /docs/building-apps/getting-started/ /docs/building-apps/getting-started/quickstart
   /docs/candid-guide/candid-howto /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/building-apps/getting-started/quickstart /docs/building-apps/getting-started/quickstart
-  /developers-guide/tutorials/phonebook.html /samples
+  /developers-guide/tutorials/phonebook.html http://icp.ninja/
   /docs/current/tokenomics/identity-auth/ /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
   /docs /docs/home
@@ -1412,6 +1413,7 @@ const redirects = `
   /showcase /ecosystem
   /sustainability /capabilities/sustainability
   /videos /news
+  /community/asia-alliance https://dfinity.org/alliance
   /docs/search /docs/home
   /docs/security-best-practices/ /docs/building-apps/security/inter-canister-calls
   /docs/security-best-practices/introduction /docs/building-apps/security/overview

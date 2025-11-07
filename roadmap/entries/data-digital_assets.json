@@ -16,10 +16,36 @@
       "status": "in_progress",
       "milestone_id": "Nexus"
     },
+        {
+      "title": "Zero to Degen-Hero",
+      "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Apex",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Ledgers as a first class citizen on ICP",
+      "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Faster institutional integrations of new tokens",
+      "overview": "Support multi-token Rosetta",
+      "status": "deployed",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Fiat on-ramp",
+      "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
     {
       "title": "Expanded Orbit framework",
       "description": "Orbit is a secure solution for digital assets and smart contract management, and this milestone will broaden its asset management capabilities by enabling seamless integration of native tokens from other blockchains, starting with ETH and ERC-20. This will create a unified platform for treasury management, allowing users to securely sign and send transactions across multiple chains. Additionally, we will introduce automatic smart contract upgrades, ensuring that users always have access to the latest security updates and features with minimal manual intervention.",
-      "status": "in_progress",
+      "status": "future",
       "is_milestone": true,
       "milestone_id": "Echelon",
       "eta_to_render": ""
@@ -33,7 +59,7 @@
     {
       "title": "Automatic upgrades",
       "overview": "A streamlined update system will allow users to subscribe for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
-      "status": "in_progress",
+      "status": "future",
       "milestone_id": "Echelon"
     },
     {
@@ -45,7 +71,7 @@
     {
       "title": "Orbit Wallet v1",
       "description": "To further improve Orbit’s usability and accessibility, we will enhance the user experience through intuitive approval flows, a revamped onboarding, and a comprehensive documentation hub. These improvements will ensure the Orbit App is efficient for both individual users and teams managing their digital assets management needs.",
-      "status": "in_progress",
+      "status": "future",
       "is_milestone": true,
       "milestone_id": "Neutron",
       "eta_to_render": ""
@@ -65,34 +91,8 @@
     {
       "title": "UX improvements",
       "overview": "A revamped configuration flow will simplify the setup of Orbit Station, making it easier for users of all technical levels to integrate smart contracts and manage assets.",
-      "status": "in_progress",
+      "status": "future",
       "milestone_id": "Neutron"
-    },
-        {
-      "title": "Zero to Degen-Hero",
-      "description": "This milestone aims at boosting the ICP DeFi ecosystem by simplifying the discovery of new tokens, creating more transparency into who controls ledgers, and a more streamlined user experience between DeFi dapps.",
-      "status": "in_progress",
-      "is_milestone": true,
-      "milestone_id": "Apex",
-      "eta_to_render": ""
-    },
-    {
-      "title": "Ledgers as a first class citizen on ICP",
-      "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
-      "status": "future",
-      "milestone_id": "Apex"
-    },
-    {
-      "title": "Faster institutional integrations of new tokens",
-      "overview": "Support multi-token Rosetta",
-      "status": "in_progress",
-      "milestone_id": "Apex"
-    },
-    {
-      "title": "Fiat on-ramp",
-      "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
-      "status": "future",
-      "milestone_id": "Apex"
     },
     {
       "title": "Decentralized marketplace for sovereign apps",

@@ -186,6 +186,38 @@
       "eta": "2024-06-18",
       "status": "deployed",
       "eta_to_render": "June 18, 2024"
+    },
+    {
+      "title": "Rethinking the Internet Identity user experience",
+      "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
+      "status": "deployed",
+      "is_milestone": true,
+      "milestone_id": "Pulse",
+      "eta_to_render": "September 2025"
+    },
+    {
+      "title": "Sign in with OpenID",
+      "overview": "Implement the OpenID standard and let users sign in with their existing email accounts.",
+      "status": "deployed",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "Make account numbers obsolete",
+      "overview": "Account numbers are confusing and hard to remember. Explore ways to deprecate them through the use of the latest WebAuthn features.",
+      "status": "deployed",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "Streamline the authentication flow",
+      "overview": "Make the authentication flow clear to the user. Avoid pitfalls and frustrations.",
+      "status": "deployed",
+      "milestone_id": "Pulse"
+    },
+    {
+      "title": "One identity, multiple accounts",
+      "overview": "Internet Identity provides users with the tools to manage multiple accounts.",
+      "status": "deployed",
+      "milestone_id": "Pulse"
     }
   ]
 }

@@ -1,5 +1,44 @@
 ## Changelog {#changelog}
 
+### 0.51.0 (2025-10-20) {$0_51_0}
+* Management canister endpoint `canister_status` can be invoked as a query call.
+
+### 0.50.0 (2025-10-13) {$0_50_0}
+* Allow loading a canister snapshot onto a different canister on the same subnet.
+* New management canister API providing canister metadata (contained in canister WASM custom sections).
+* New HTTP handler endpoints to support canister migration (by providing sharded routing table in certificates):
+  `/api/v4/canister/<effective_canister_id>/call`,
+  `/api/v3/canister/<effective_canister_id>/read_state`,
+  `/api/v3/subnet/<effective_subnet_id>/read_state`, and
+  `/api/v3/canister/<effective_canister_id>/query`.
+* The following existing HTTP handler endpoints are marked as deprecated:
+  `/api/v3/canister/<effective_canister_id>/call`,
+  `/api/v2/canister/<effective_canister_id>/read_state`,
+  `/api/v2/subnet/<effective_subnet_id>/read_state`, and
+  `/api/v2/canister/<effective_canister_id>/query`.
+* Paths with prefix `/subnet/<subnet_id>/canister_ranges` (legacy routing table) can only be requested via the deprecated endpoints or if `<subnet_id>` is the root subnet.
+* Paths with prefix `/canister_ranges/<subnet_id>` (sharded routing table) can only be requested via `/api/v{2,3}/subnet/.../read_state`, i.e.,
+  not via `/api/v{2,3}/canister/.../read_state`.
+* All paths with prefix `/canister_ranges/<subnet_id>` must refer to the same subnet ID `<subnet_id>`.
+
+### 0.49.0 (2025-10-06) {$0_49_0}
+* Added support for non-replicated canister HTTP outcalls.
+
+### 0.48.0 (2025-09-29) {$0_48_0}
+* Added support for canister environment variables in canister settings and new System API for accessing environment variables
+  (`ic0.env_var_count`, `ic0.env_var_name_size`, `ic0.env_var_name_copy`, and `ic0.env_var_value_size`).
+
+### 0.47.0 (2025-09-22) {$0_47_0}
+* Management canister API for downloading and uploading canister snapshots.
+
+### 0.46.0 (2025-08-25) {$0_46_0}
+* The management canister method `canister_status` returns two new fields: `version` indicating the canister version, and `ready_for_migration` indicating whether a canister's queues are empty and its streams flushed. The value only makes sense when the canister status is `stopped`. 
+* Canister history provides the source of a snapshot in the entry for loading the snapshot.
+
+### 0.45.0 (2025-08-18) {$0_45_0}
+* Canister ranges of every subnet are now available at a dedicated prefix `/canister_ranges` in the state tree,
+  facilitating fragmentation due to canister migration.
+
 ### 0.44.0 (2025-08-11) {$0_44_0}
 * The management canister method `subnet_info` returns a new field `registry_version` providing the registry version of the corresponding subnet.
 

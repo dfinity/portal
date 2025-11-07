@@ -8,7 +8,7 @@
       "description": "With this milestone, chain fusion is extended to offer support for Dogecoin, allowing canister smart contracts to hold and transfer Dogecoin in a decentralized way.",
       "milestone_id": "Meridian",
       "status": "in_progress",
-      "eta_to_render": "September 2025"
+      "eta_to_render": "October 2025"
     },
     {
       "title": "Native Dogecoin integration",

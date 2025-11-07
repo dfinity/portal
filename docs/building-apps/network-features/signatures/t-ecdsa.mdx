@@ -107,7 +107,53 @@ Note that, in some cases, a signature may be computed when requested and known t
 ## Obtaining public keys
 
 To verify a signature, the public key that corresponds to the private key that was used to sign the message is needed. Furthermore, the public key can be used to derive addresses controlled by the canister on various blockchain networks.
-ICP provides the `ecdsa_public_key` method to obtain public keys. This method uses the following Candid interface:
+
+There are two methods available for obtaining the public key associated with a particular canister ID and derivation path. The derivation process is deterministic and public; given the master public key along with the canister ID and derivation path, the same key is always produced, and no secret is required in order to compute the public key. The first method is *offline*: the key is computed using only local computation in a browser or other application. The other is *online*, using a call to the management canister interface.
+
+### Offline Key Derivation
+
+These example snippets demonstrate deriving keys without requiring management canister calls, using the `ic-pub-key` Rust and TypeScript libraries
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let canister_id = ic_pub_key::CanisterId::from_str("h5jwf-5iaaa-aaaan-qmvoa-cai")?;
+
+let args = ic_pub_key::EcdsaPublicKeyArgs {
+    canister_id: Some(canister_id),
+    derivation_path: vec![b"derivation", b"path", b"values"],
+    key_id: ic_pub_key::EcdsaKeyId {
+        curve: ic_pub_key::EcdsaCurve::Secp256k1,
+        name: "key_1".to_string(),
+    },
+};
+
+let dpk = ic_pub_key::derive_ecdsa_key(&args)?;
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+const mk = PublicKeyWithChainCode.forMainnetKey('key_1');
+const canisterId = Principal.fromText('h5jwf-5iaaa-aaaan-qmvoa-cai');
+const path = DerivationPath.withCanisterPrefix(canisterId, [
+    Buffer.from('derivation'),
+    Buffer.from('path'),
+    Buffer.from('value'),
+]);
+
+// Derive the new key
+const derivedKey = mk.deriveSubkeyWithChainCode(path);
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Online Key Derivation
+
+For online derivation, ICP provides the `ecdsa_public_key` method to obtain public keys. This method uses the following Candid interface:
 
 ```candid
 type ecdsa_public_key_args = record {
@@ -149,6 +195,8 @@ https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_e
 
 ## Master Public Keys
 
+### Mainnet Keys
+
 The master public keys used for ECDSA with secp256k1 are:
 
 - `key_1`: `02121bc3a5c38f38ca76487c72007ebbfd34bc6c4cb80a671655aa94585bbd0a02`
@@ -156,6 +204,14 @@ The master public keys used for ECDSA with secp256k1 are:
 
 These can be used to perform key derivation offline without requiring
 using the `ecdsa_public_key` management canister call.
+
+### PocketIC Test Keys
+
+PocketIC uses hardcoded keys for testing purposes. These are:
+
+- `key_1`: `036ad6e838b46811ad79c37b2f4b854b7a05f406715b2935edc5d3251e7666977b`
+- `test_key_1`: `03cc365e15cb552589c7175717b2ac63d1050b9bb2e5aed35432b1b1be55d3abcf`
+- `dfx_test_key`: `03e6f78b1a90e361c5cc9903f73bb8acbe3bc17ad01e82554d25cf0ecd70c67484`
 
 ## Resources
 
@@ -166,3 +222,7 @@ using the `ecdsa_public_key` management canister call.
 - [Threshold ECDSA sample dapp - Motoko](https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/).
 
 - [Threshold ECDSA sample dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa).
+
+- [Rust ic-pub-key library](https://crates.io/crates/ic-pub-key)
+
+- [TS ic-pub-key library](https://www.npmjs.com/package/@dfinity/ic-pub-key)
