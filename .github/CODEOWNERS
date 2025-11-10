@@ -22,7 +22,7 @@ docs/defi/chain-key-tokens/ @dfinity/cross-chain-team @dfinity/editorial
 docs/building-apps/chain-fusion/ @dfinity/cross-chain-team @dfinity/editorial
 
 # ProdSec
-docs/building-apps/best-practices/security/ @dfinity/product-security @dfinity/editorial
+docs/building-apps/security/ @dfinity/product-security @dfinity/editorial
 docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security @dfinity/editorial
 src/pages/security-advisories.tsx @dfinity/product-security @dfinity/editorial
 
