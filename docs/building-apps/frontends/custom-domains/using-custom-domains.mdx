@@ -8,7 +8,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-By default, all canisters on the Internet Computer are accessible through the domain `icp0.io` and their canister ID. In addition to that default domain, one can also make a canister accessible under a custom domain by register the domain with the custom domains service of HTTP gateways. All you need, is to acquire a domain through any registry, such as NameCheap or GoDaddy. Then, you simply have to configure the DNS records of your domain, and the custom domains service takes care of obtaining a certificate, renewing the certificate before its expiration, and SEO.
+By default, all canisters on the Internet Computer are accessible via the icp0.io domain using their canister ID. In addition to this default setup, you can also make a canister available under a custom domain by registering it through the custom domains service of the HTTP gateways.
+
+To do this, simply acquire a domain from any registrar (e.g., Namecheap or GoDaddy) and configure its DNS records as instructed. After that, the custom domains service handles the rest: it automatically obtains and renews SSL certificates, manages their expiration, and ensures proper SEO support.
 
 :::info
 
@@ -28,179 +30,179 @@ By following the steps below, you can host your canister under your own domain u
 
   - Add a `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the HTTP gateways to acquire the certificate.
 
-:::caution
+  :::caution
 
-These records must be configured before continuing with the next steps.
+  These records must be configured before continuing with the next steps.
 
-:::
+  :::
 
-:::caution
+  :::caution
 
-Make sure to disable any certificate/SSL/TLS offering of your DNS provider (e.g., [Universal SSL by Cloudflare](./dns-setup.mdx#cloudflare)) as they interfere with the custom domain registration and can even prevent certificate renewal.
+  Make sure to disable any certificate/SSL/TLS offering of your DNS provider (e.g., [Universal SSL by Cloudflare](./dns-setup.mdx#cloudflare)) as they interfere with the custom domain registration and can even prevent certificate renewal.
 
-:::
+  :::
 
-:::info
+  :::info
 
-In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `CUSTOM_DOMAIN.icp1.io`. The [custom DNS configuration guide](./dns-setup.mdx) provides detailed instructions for three popular registrars.
+  In many cases, it is not possible to set a `CNAME` record for the top of a domain, the Apex record. In this case, DNS providers support so-called `CNAME` flattening. To this end, these DNS providers offer flattened record types, such as `ANAME` or `ALIAS` records, which can be used instead of the `CNAME` to `CUSTOM_DOMAIN.icp1.io`. The [custom DNS configuration guide](./dns-setup.mdx) provides detailed instructions for three popular registrars.
 
-:::
+  :::
 
 - #### Step 2: Create a file named `ic-domains` in your canister under the `.well-known` directory containing the custom domain.
 
-The `.well-known` directory with the `ic-domains` file should be placed within the canister files, not at the root, such as:
+  Create a file named `ic-domains` within your canister’s frontend source. The structure might look like this:
 
-```
-├── dfx.json
-├── package.json
-├── src
-│ ├── project_frontend
-│ │ ├── src
-│ │ │ ├── .well-known
-│ │ │ │ └── ic-domains
-```
+  ```
+  ├── dfx.json
+  ├── package.json
+  ├── src
+  │ ├── project_frontend
+  │ │ ├── src
+  │ │ │ ├── .well-known
+  │ │ │ │ └── ic-domains
+  ```
 
-The location of the files should allow your frontend framework to include the files during the build process.
+  Make sure the .well-known directory is part of your build output so it’s included when the canister is deployed.
 
-By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. To include the `ic-domains` file, you need to create an additional file, called `.ic-assets.json5` inside the same top-level directory as the `.well-known` directory:
+  Open the ic-domains file and list your custom domains—one per line. You can include multiple domains and subdomains:
 
-```
-├── dfx.json
-├── package.json
-├── src
-│ ├── project_frontend
-│ │ ├── src
-│ │ │ ├── .ic-assets.json5
-│ │ │ ├── .well-known
-│ │ │ │ └──ic-domains
-```
+  ```sh
+  custom-domain1.com
+  subdomain1.custom-domain1.com
+  subdomain2.custom-domain1.com
+  custom-domain2.com
+  subdomain1.custom-domain3.com
+  custom-domain4.com
+  ```
 
-Then, open the `ic-domains` file and insert your domain names. To use multiple custom domains and their subdomains with a single canister, simply list each one of them on a newline in the `ic-domains` file:
+  For example, `subdomain1` could stand for `www`.
 
-```sh
-custom-domain1.com
-subdomain1.custom-domain1.com
-subdomain2.custom-domain1.com
-custom-domain2.com
-subdomain1.custom-domain3.com
-custom-domain4.com
-```
+  By default, `dfx` ignores hidden files and directories (those starting with a dot). To ensure the `.well-known` directory and `ic-domains file are deployed, create a file named `.ic-assets.json5` in the same directory:
 
-For example, `subdomain1` could stand for `www`.
+  ```
+  ├── dfx.json
+  ├── package.json
+  ├── src
+  │ ├── project_frontend
+  │ │ ├── src
+  │ │ │ ├── .ic-assets.json5
+  │ │ │ ├── .well-known
+  │ │ │ │ └──ic-domains
+  ```
 
-Configure the `.well-known` directory to be included by writing the following configuration into the `.ic-assets.json5` file:
+  Add the following configuration to `.ic-assets.json5`:
 
-```
-[
-  {
-    "match": ".well-known",
-    "ignore": false
-  }
-]
-```
+  ```
+  [
+    {
+      "match": ".well-known",
+      "ignore": false
+    }
+  ]
+  ```
 
 - #### Step 3: Deploy the updated canister.
 
 - #### Step 4: (Optional) Validate your domain configuration before registering.
 
-You can validate that your DNS records and canister configuration are correct by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain:
+  You can validate that your DNS records and canister configuration are correct by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain:
 
-```sh
-curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN/validate | jq
-```
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN/validate | jq
+  ```
 
-If the validation is successful, you will get a JSON response like:
+  If the validation is successful, you will get a JSON response like:
 
-```json
-{
-  "status": "success",
-  "message": "Domain is eligible for registration: DNS records are valid and canister ownership is verified",
-  "data": {
-    "domain": "CUSTOM_DOMAIN",
-    "canister_id": "CANISTER_ID",
-    "validation_status": "valid"
+  ```json
+  {
+    "status": "success",
+    "message": "Domain is eligible for registration: DNS records are valid and canister ownership is verified",
+    "data": {
+      "domain": "CUSTOM_DOMAIN",
+      "canister_id": "CANISTER_ID",
+      "validation_status": "valid"
+    }
   }
-}
-```
+  ```
 
-If validation fails, you will get an error message indicating what needs to be fixed. Common validation errors include:
+  If validation fails, you will get an error message indicating what needs to be fixed. Common validation errors include:
 
-- **Missing DNS CNAME record**: The `CNAME` entry for the `_acme-challenge` subdomain is missing.
-- **Missing DNS TXT record**: The `TXT` entry for the `_canister-id` subdomain is missing.
-- **Invalid DNS TXT record**: The content of the `TXT` entry is not a valid canister ID.
-- **More than one DNS TXT record**: There are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
-- **Failed to retrieve known domains**: The `ic-domains` file is not accessible under `.well-known/ic-domains`.
-- **Domain is missing from list of known domains**: The custom domain is missing from the `ic-domains` file.
+  - **Missing DNS CNAME record**: The `CNAME` entry for the `_acme-challenge` subdomain is missing.
+  - **Missing DNS TXT record**: The `TXT` entry for the `_canister-id` subdomain is missing.
+  - **Invalid DNS TXT record**: The content of the `TXT` entry is not a valid canister ID.
+  - **More than one DNS TXT record**: There are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
+  - **Failed to retrieve known domains**: The `ic-domains` file is not accessible under `.well-known/ic-domains`.
+  - **Domain is missing from list of known domains**: The custom domain is missing from the `ic-domains` file.
 
 - #### Step 5: Register the domain with the HTTP gateways by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain.
 
-```sh
-curl -sL -X POST https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
-```
+  ```sh
+  curl -sL -X POST https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
+  ```
 
-If the call was successful, you will get a JSON response like:
+  If the call was successful, you will get a JSON response like:
 
-```json
-{
-  "status": "success",
-  "message": "Domain registration request accepted and may take a few minutes to process",
-  "data": {
-    "domain": "CUSTOM_DOMAIN",
-    "canister_id": "CANISTER_ID"
+  ```json
+  {
+    "status": "success",
+    "message": "Domain registration request accepted and may take a few minutes to process",
+    "data": {
+      "domain": "CUSTOM_DOMAIN",
+      "canister_id": "CANISTER_ID"
+    }
   }
-}
-```
+  ```
 
-In case the call failed, you will get an error response indicating the reason for the failure like:
+  In case the call failed, you will get an error response indicating the reason for the failure like:
 
-```json
-{
-  "status": "error",
-  "message": "Domain registration request failed",
-  "data": {
-    "domain": "CUSTOM_DOMAIN"
-  },
-  "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."}
-```
+  ```json
+  {
+    "status": "error",
+    "message": "Domain registration request failed",
+    "data": {
+      "domain": "CUSTOM_DOMAIN"
+    },
+    "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."}
+  ```
 
-Common errors include:
+  Common errors include:
 
-- **bad_request**: Invalid domain format, missing DNS records, or validation errors.
-- **conflict**: Certificate already exists for this domain, or another task is already in progress.
-- **internal_server_error**: An unexpected error occurred. Please try again later or contact support.
+  - **bad_request**: Invalid domain format, missing DNS records, or validation errors.
+  - **conflict**: Certificate already exists for this domain, or another task is already in progress.
+  - **internal_server_error**: An unexpected error occurred. Please try again later or contact support.
 
 - #### Step 6: Processing the registration can take several minutes.
 
-Track the progress of your registration request by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain:
+  Track the progress of your registration request by issuing the following command and replacing `CUSTOM_DOMAIN` with your custom domain:
 
-```sh
-curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
-```
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
+  ```
 
-The response will include a `registration_status` field with one of the following values:
+  The response will include a `registration_status` field with one of the following values:
 
-- `registering`: The registration request has been submitted and is being processed.
-- `registered`: The domain has been successfully registered and has a valid certificate.
-- `expired`: The domain registration has expired.
-- `failed`: The registration request failed. The error message will indicate what went wrong.
+  - `registering`: The registration request has been submitted and is being processed.
+  - `registered`: The domain has been successfully registered and has a valid certificate.
+  - `expired`: The domain registration has expired.
+  - `failed`: The registration request failed. The error message will indicate what went wrong.
 
-Example response:
+  Example response:
 
-```json
-{
-  "status": "success",
-  "message": "Registration status of the domain",
-  "data": {
-    "domain": "CUSTOM_DOMAIN",
-    "canister_id": "CANISTER_ID",
-    "registration_status": "registering"
+  ```json
+  {
+    "status": "success",
+    "message": "Registration status of the domain",
+    "data": {
+      "domain": "CUSTOM_DOMAIN",
+      "canister_id": "CANISTER_ID",
+      "registration_status": "registering"
+    }
   }
-}
-```
+  ```
 
 - #### Step 7: Once your registration status becomes `registered`, wait a few minutes for the certificate to become available on all HTTP gateways.
 
-After that, you should be able to access your canister using the custom domain.
+  After that, you should be able to access your canister using the custom domain.
 
 ## Example
 
@@ -228,41 +230,40 @@ Some DNS providers do not require you to specify the main domain (`bar.com`). Fo
 
 - #### Step 1: Create the `ic-domains` file with the following content in the `.well-known` directory:
 
-```
-foo.bar.com
-```
+  ```
+  foo.bar.com
+  ```
 
 - #### Step 2: Create the `.ic-assets.json` file at the root of the canister source:
 
-```
-[
-  {
-    "match": ".well-known",
-    "ignore": false
-  }
-]
-```
+  ```
+  [
+    {
+      "match": ".well-known",
+      "ignore": false
+    }
+  ]
+  ```
 
 - #### Step 3: Deploy the updated canister.
 
 - #### Step 4: (Optional) Validate your domain configuration.
 
-```sh
-curl -sL -X GET https://icp0.io/custom-domains/v1/foo.bar.com/validate | jq
-```
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/foo.bar.com/validate | jq
+  ```
 
 - #### Step 5: Start the registration process.
 
-```sh
-curl -sL -X POST \
-    https://icp0.io/custom-domains/v1/foo.bar.com | jq
-```
+  ```sh
+  curl -sL -X POST https://icp0.io/custom-domains/v1/foo.bar.com | jq
+  ```
 
 - #### Step 6: Check the registration status.
 
-```sh
-curl -sL -X GET https://icp0.io/custom-domains/v1/foo.bar.com | jq
-```
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/foo.bar.com | jq
+  ```
 
 ### Troubleshooting
 
@@ -306,28 +307,28 @@ In case you want to update the domain to point to a different canister, you firs
 
 - #### Step 2: Update the domain registration using a `PATCH` request with the domain name in the path.
 
-```sh
-curl -sL -X PATCH https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
-```
+  ```sh
+  curl -sL -X PATCH https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
+  ```
 
-If the call was successful, you will get a JSON response like:
+  If the call was successful, you will get a JSON response like:
 
-```json
-{
-  "status": "success",
-  "message": "Update domain registration request accepted and may take a few minutes to process",
-  "data": {
-    "domain": "CUSTOM_DOMAIN",
-    "canister_id": "CANISTER_ID"
+  ```json
+  {
+    "status": "success",
+    "message": "Update domain registration request accepted and may take a few minutes to process",
+    "data": {
+      "domain": "CUSTOM_DOMAIN",
+      "canister_id": "CANISTER_ID"
+    }
   }
-}
-```
+  ```
 
 - #### Step 3: Check the registration status to track the update progress.
 
-```sh
-curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN
-```
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN
+  ```
 
 ## Removing a custom domain
 
@@ -337,40 +338,40 @@ In case you want to remove your domain, you just need to remove the DNS records 
 
 - #### Step 2: Notify the custom domains service of the removal using a `DELETE` request with the domain name in the path.
 
-```sh
-curl -sL -X DELETE https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
-```
+  ```sh
+  curl -sL -X DELETE https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN | jq
+  ```
 
-If the call was successful, you will get a JSON response like:
+  If the call was successful, you will get a JSON response like:
 
-```json
-{
-  "status": "success",
-  "message": "Delete domain registration request accepted and may take a few minutes to process",
-  "data": {
-    "domain": "CUSTOM_DOMAIN"
+  ```json
+  {
+    "status": "success",
+    "message": "Delete domain registration request accepted and may take a few minutes to process",
+    "data": {
+      "domain": "CUSTOM_DOMAIN"
+    }
   }
-}
-```
+  ```
 
 - #### Step 3: Check the registration status to confirm the deletion.
 
-```sh
-curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN
-```
+  ```sh
+  curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN
+  ```
 
-If the domain has been successfully deleted, you will receive a `404 Not Found` response and a JSON body like:
+  If the domain has been successfully deleted, you will receive a `404 Not Found` response and a JSON body like:
 
-```json
-{
-  "status": "error",
-  "message": "Registration status request failed",
-  "data": {
-    "domain": "CUSTOM_DOMAIN"
-  },
-  "errors": "not_found: Domain CUSTOM_DOMAIN not found"
-}
-```
+  ```json
+  {
+    "status": "error",
+    "message": "Registration status request failed",
+    "data": {
+      "domain": "CUSTOM_DOMAIN"
+    },
+    "errors": "not_found: Domain CUSTOM_DOMAIN not found"
+  }
+  ```
 
 :::caution
 
