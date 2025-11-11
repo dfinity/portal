@@ -707,6 +707,7 @@ const sidebars = {
       type: "category",
       label: "Tutorials",
       items: [
+        "defi/receiving-icp",
         {
           type: "doc",
           label: "Launch a token",
