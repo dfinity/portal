@@ -57,7 +57,7 @@ Canisters can sign messages with threshold Schnorr without holding the Schnorr k
 | `CANISTER_ERROR` reject | Signature not returned, may be known to some replicas | Signature not returned, may be known to some replicas |
 | Other reject            | Signature not returned, guaranteed not to exist       | Signature not returned, guaranteed not to exist       |
 
-Furthermore, signatures (including Ed25519) are non-deterministic and a different signature may be computed every time it is requested.
+Furthermore, signatures (including Ed25519) are **non-deterministic** and a different signature may be computed every time it is requested.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
