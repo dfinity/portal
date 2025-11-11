@@ -3,18 +3,35 @@
   "categoryDescription": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
   "elements": [
     {
-      "title": "Confidentiality of canister states",
-      "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
-      "status": "in_progress",
+      "title": "Integrity and confidentialty of node state",
       "is_milestone": true,
-      "milestone_id": "Containment",
-      "eta_to_render": ""
+      "description": "This milestone brings Trusted Execution Environments (TEEs) to the Internet Computer to provide comprehensive security guarantees. The initial focus is on node integrity, protecting the node state from tampering and keeping sensitive key shares confidential. The work culminates in ensuring complete confidentiality of canister state, ensuring all canister data is encrypted and shielded from unauthorized access, both in memory and in storage.",
+      "milestone_id": "Magnetosphere",
+      "status": "in_progress"
+    },
+    {
+      "title": "TEE-capable IC-OS",
+      "overview": "Adapting IC-OS to run inside SEV-SNP, ensuring it is reproducibly built, securely boots, and maintains integrity throughout its lifecycle.",
+      "status": "in_progress",
+      "milestone_id": "Magnetosphere"
+    },
+    {
+      "title": "TEE Upgrades",
+      "overview": "Re-architecting the upgrade process to securely handover the confidential state from the old to the new release, guaranteeing continuous integrity.",
+      "status": "in_progress",
+      "milestone_id": "Magnetosphere"
+    },
+    {
+      "title": "TEE-enabled Replica Nodes",
+      "overview": "Deploying single node machines with TEE-protection that can be used both as replicas and API boundary nodes.",
+      "status": "in_progress",
+      "milestone_id": "Magnetosphere"
     },
     {
       "title": "Encrypted canister state",
       "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
       "status": "in_progress",
-      "milestone_id": "Containment"
+      "milestone_id": "Magnetosphere"
     },
     {
       "title": "Disaster recovery for SEV-SNP-enabled subnets",

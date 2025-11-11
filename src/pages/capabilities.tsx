@@ -364,18 +364,17 @@ function FeaturesPage() {
                 variants={transitions.item}
                 className="tw-heading-4 md:tw-heading-3 mb-4 "
               >
-                Internet Identity — Web3 auth using WebAuthn
+                Internet Identity — Secure and Convenient Authentication
               </motion.h3>
               <motion.p
                 className="tw-paragraph md:tw-lead-sm  mb-6 text-white-80"
                 variants={transitions.item}
               >
-                The Internet Computer blockchain has replaced the username and
-                password model with a more advanced and much more secure method
-                of cryptographic authentication that is more convenient, works
-                across all of a user's devices, and helps protect user privacy.
-                Based on W3C's Web Authentication (WebAuthn) Web standard. Using
-                hardware-based user key protection.
+                Internet Identity is the modern successor to the username and
+                password model, using a more advanced and secure method powered
+                by passkeys and WebAuthn. Passkeys allow you to sign in with a
+                convenient method, like your device's screen lock. For ease of
+                use, you can also sign in with your Google Account.
               </motion.p>
               <motion.p className="mb-0" variants={transitions.item}>
                 <Link
