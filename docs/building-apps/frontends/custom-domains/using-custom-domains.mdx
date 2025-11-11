@@ -32,12 +32,6 @@ By following the steps below, you can host your canister under your own domain u
 
   :::caution
 
-  These records must be configured before continuing with the next steps.
-
-  :::
-
-  :::caution
-
   Make sure to disable any certificate/SSL/TLS offering of your DNS provider (e.g., [Universal SSL by Cloudflare](./dns-setup.mdx#cloudflare)) as they interfere with the custom domain registration and can even prevent certificate renewal.
 
   :::
@@ -110,6 +104,12 @@ By following the steps below, you can host your canister under your own domain u
   ```sh
   curl -sL -X GET https://icp0.io/custom-domains/v1/CUSTOM_DOMAIN/validate | jq
   ```
+
+  :::info
+
+  All commands also work without `jq`. `jq` is simply a suggestion for convenience as it formats the JSON output nicely.
+
+  :::
 
   If the validation is successful, you will get a JSON response like:
 
