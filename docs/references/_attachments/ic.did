@@ -100,20 +100,20 @@ type http_request_resource_report = record {
   transformed_response_size: opt variant { used: nat64; exceeded: reserved };
 }
 
-multi_response_http_request_err = record {
+flexible_http_request_err = record {
   cause: opt variant {
     timeout : vec (principal, http_request_resource_report);
     invalid_parameters: reserved;
     limits_exceeded: vec (principal, http_request_resource_report);
     out_of_cycles : vec (principal, http_request_resource_report);
+    responses_too_large : vec (prinicipal, nat64);
   };
   message: text;
 }
 
-
-type multi_response_http_request_result = record {
+type flexible_http_request_result = record {
   ok: vec http_request_result;
-  err: multi_response_http_request_err;
+  err: flexible_http_request_err;
 };
 
 type ecdsa_curve = variant {
@@ -350,7 +350,7 @@ type http_request_args = record {
     pricing_version : opt nat32;
 };
 
-type multi_response_http_request_args = record {
+type flexible_http_request_args = record {
     url : text;
     method : variant { get; head; post };
     headers : vec http_header;
@@ -648,7 +648,7 @@ service ic : {
     deposit_cycles : (deposit_cycles_args) -> ();
     raw_rand : () -> (raw_rand_result);
     http_request : (http_request_args) -> (http_request_result);
-    multi_response_http_request : (multi_response_http_request_args) -> multi_response_http_request_response;
+    flexible_http_request : (flexible_http_request_args) -> flexible_http_request_response;
 
     // Threshold ECDSA signature
     ecdsa_public_key : (ecdsa_public_key_args) -> (ecdsa_public_key_result);

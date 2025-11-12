@@ -2230,8 +2230,34 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
         raw_response_bytes : nat64;
         transformed_response_bytes : nat64;
         transform_instructions: nat64;
+        outcall_type : opt variant {
+            fully_replicated: reserved;
+            non_replicated: reserved;
+            flexible: opt record {
+                min_responses: nat64;
+                max_responses: nat64;
+                total_requests: nat64;
+            }
+        }
     }
     ```
+
+    The function may trap if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The function returns the cycle cost of an HTTP outcall whose execution uses up exactly the amount of resources specified by the individual fields:
+    - `request_bytes` is the sum of the byte lengths of the following components of an HTTP request:
+      - `url`
+      - `headers` - i.e., the sum of the lengths of all keys and values
+      - `body`
+      - `transform` - i.e., the sum of the transform method name length and the length of the transform context.
+
+    - `http_roundtrip_time_ms` is the amount of time between the time when the HTTP request starts being sent to the remote server and the time that the HTTP response is fully received (in milliseconds).
+
+    - `raw_response_bytes` is the length of the HTTP response.
+
+    - `transformed_response_bytes` is the length of the HTTP response after transformation.
+
+    - `transform_instructions` is the number of instructions the transform function takes.
+
+    - `outcall_type` is the type of HTTP outcall issued: a fully replicated call (made through the `http_request` endpoint with `is_replicated` set to `null` or `opt false`), non-replicated (made through `http_request` with `is_replicated` set to `opt true`), or flexible (made through the `flexible_http_request` endpoint). When the `flexible` outcall variant is selected, it can optionally be supplemented with the `min_responses`, `max_responses`, and `total_requests` parameters provided to the endpoint.
 
 -   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
@@ -2995,13 +3021,13 @@ If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB`
 
 :::
 
-### IC method `multi_response_http_request` {#ic-multi_response_http_request}
+### IC method `flexible_http_request` {#ic-flexible_http_request}
 
 This is a variant of the [`http_request`](#ic-http_request) method where nodes return their individual HTTP responses to the caller instead of trying to reach consensus on the response, letting the caller do its own HTTP response processing. Use cases include calling HTTP endpoints that provide rapidly changing information (where achieving consensus s unlikely) and letting the user pick a trade-off between cheaper calls (fewer replicas requesting/responding) and stronger integrity guarantees (more replicas requesting/responding).
 
 The arguments of the call are as for `http_request`, except that:
 
-- there is an additional optional argument `node_counts`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `node_counts` are set, then the caller must ensure that `1 <= min_responses <= max_responses <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `node_count` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
+- there is an additional optional argument `node_counts`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `node_counts` are set, then the caller must ensure that `0 <= min_responses <= max_responses <= total_requests` and `1 <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `node_counts` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
 
 - the deprecated `max_response_bytes` argument is not supported.
 
@@ -3022,6 +3048,18 @@ As for `http_request`, the endpoint specified by the provided `url` should be id
 The response from the remote server must not exceed `2MB`. Moreover, the total size of the result, that is, the sum of the responses returned by the different replicas (possibly after the transform function), must also not exceed 2MB.
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The upfront cycles cost covers a call that maxes out the resource usage during processing, for example, hitting the `2MB` limit on the size of the response. The unused cycles are then refunded to the caller.
+
+The method may return an error of the `flexible_http_request_err` type. The error includes an error message, and may also include a variant describing the error cause:
+
+- `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout. The value is accompanied by a vector of available resource reports at the point when the timeout went off.
+
+- `invalid_parameters`, indicating that the parameters to the call violated one of the conditions.
+
+- `limits_exceeded`, indicating that less than `min_responses` from the nodes were available, and that the other nodes exceeded some of the system-defined resource limits while the processing of the outcall. The resource reports of the individual nodes are provided (as a pair of node ID and the report).
+
+- `out_of_cycles` indicating that less than `min_responses` from the nodes were available, and that the provided cycles were not sufficient for some of the other nodes to cover their resources. The resource reports of the individual nodes are provided (as a pair of node ID and the report).
+
+- `responses_too_large` : indicating that no combination of at least `min_responses` available responses could fit into the 2MB total limit. The sizes of available responses at each replica are reported.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
