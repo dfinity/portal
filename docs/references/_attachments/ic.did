@@ -98,18 +98,18 @@ type http_request_resource_report = record {
   request_time_ms: opt variant { used: nat64; exceeded: reserved };
   transform_instructions: opt variant { used: nat64; exceeded: reserved };
   transformed_response_size: opt variant { used: nat64; exceeded: reserved };
-}
+};
 
-flexible_http_request_err = record {
+type flexible_http_request_err = record {
   cause: opt variant {
-    timeout : vec (principal, http_request_resource_report);
+    timeout : vec record { principal; http_request_resource_report; };
     invalid_parameters: reserved;
-    limits_exceeded: vec (principal, http_request_resource_report);
-    out_of_cycles : vec (principal, http_request_resource_report);
-    responses_too_large : vec (prinicipal, nat64);
+    limits_exceeded: vec record { principal; http_request_resource_report; };
+    out_of_cycles : vec record { principal; http_request_resource_report; };
+    responses_too_large : vec record { principal; nat64; };
   };
   message: text;
-}
+};
 
 type flexible_http_request_result = record {
   ok: vec http_request_result;
@@ -364,7 +364,7 @@ type flexible_http_request_args = record {
       max_responses: nat64;
       total_requests: nat64;
     };
-}
+};
 
 type ecdsa_public_key_args = record {
     canister_id : opt canister_id;
@@ -648,7 +648,7 @@ service ic : {
     deposit_cycles : (deposit_cycles_args) -> ();
     raw_rand : () -> (raw_rand_result);
     http_request : (http_request_args) -> (http_request_result);
-    flexible_http_request : (flexible_http_request_args) -> flexible_http_request_response;
+    flexible_http_request : (flexible_http_request_args) -> (flexible_http_request_result);
 
     // Threshold ECDSA signature
     ecdsa_public_key : (ecdsa_public_key_args) -> (ecdsa_public_key_result);
