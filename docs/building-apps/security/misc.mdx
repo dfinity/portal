@@ -160,6 +160,16 @@ fn random_bytes(size: u32) -> RandomBytesResult {
 - Once the seed is initialized, the outcome of all future `random_bytes` is predictable to anyone having the seed (node providers), as the PRNG is deterministic. This breaks the unpredictable property of secure randomness. Hence, to balance security vs. performance, we recommend frequently reseeding the PRNG on a timer. The example above already does this with a duration of **1 hour**. However, based on the sensitivity of their dapp, developers can choose an appropriate reseeding interval by setting `SEEDING_INTERVAL`.
 - The `random_bytes` must **always** be an `update` method, so the PRNG can preserve the state and offer unique randomness on every request.
 
+## Verify that your canister doesn't export malicious endpoints
+
+### Security concern
+
+Malicious code that could for example be introduced through a library in a supply chain attack could maliciously export canister endpoints, potentially leading to exposure of sensitive data, malicious canister state changes, or denial of service.
+
+### Recommendation
+
+Verify in your CI pipeline that the endpoints a canister's WASM exports are legitimate and as intended. [The `ic-wasm check-endpoints` command can be used for that purpose](https://github.com/dfinity/ic-wasm/blob/main/README.md#check-endpoints).
+
 ## Test your canister code even in the presence of system API calls
 
 ### Security concern
