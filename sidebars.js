@@ -397,6 +397,11 @@ const sidebars = {
           id: "build-on-btc/index",
         },
         {
+          type: "doc",
+          label: "Dogecoin",
+          id: "building-apps/chain-fusion/dogecoin/overview",
+        },
+        {
           type: "category",
           label: "Ethereum & EVM chains",
           link: {
@@ -452,7 +457,7 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "What are security best practices?",
+              label: "Overview",
               id: "building-apps/security/overview",
             },
             {

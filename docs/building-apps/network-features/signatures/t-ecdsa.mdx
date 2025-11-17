@@ -95,6 +95,15 @@ https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_e
 </TabItem>
 </AdornedTabs>
 
+Note that, in some cases, a signature may be computed when requested and known to some (potentially malicious replicas), even though the requesting canister receives an error. Canisters should not rely on the signature not existing in these cases. The table below shows these cases when using different types of inter-canister calls.
+
+| Response                | Bounded-wait call                                     | Unbounded-wait call                                   |
+|-------------------------|-------------------------------------------------------|-------------------------------------------------------|
+| Reply (no error)        | Signature returned                                    | Signature returned                                    |
+| `SYS_UNKNOWN` reject    | Signature not returned, may be known to some replicas | Not possible                                          |
+| `CANISTER_ERROR` reject | Signature not returned, may be known to some replicas | Signature not returned, may be known to some replicas |
+| Other reject            | Signature not returned, guaranteed not to exist       | Signature not returned, guaranteed not to exist       |
+
 ## Obtaining public keys
 
 To verify a signature, the public key that corresponds to the private key that was used to sign the message is needed. Furthermore, the public key can be used to derive addresses controlled by the canister on various blockchain networks.
