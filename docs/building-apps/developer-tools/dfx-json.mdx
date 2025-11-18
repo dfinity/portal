@@ -189,7 +189,7 @@ Other fields applicable to all canister types include:
 
     - **`log_visibility`**: Defines access control for the canister's logs. Can be `"public"`, `"controllers"`, or an object with `"allowed_viewers": ["<principal>", ...]`.
 
-    - **`memory_allocation`** (`Byte`): Max memory (in bytes) for the canister. Can be integer or string with units (i.e. `72`, "2KB", or "4 MiB").
+    - **`memory_allocation`** (`Byte`): Memory (in bytes) guaranteed to be available for the canister. Can be integer or string with units (i.e. `72`, "2KB", or "4 MiB").
 
     - **`reserved_cycles_limit`** (`uint128 | null`): Upper limit of reserved cycles. Reserved cycles are cycles that the system sets aside for future use by the canister. If a subnet's storage exceeds 750 GiB, then every time a canister allocates new storage bytes, the system sets aside some amount of cycles from the main balance of the canister. These reserved cycles will be used to cover future payments for the newly allocated bytes. The reserved cycles are not transferable and the amount of reserved cycles depends on how full the subnet is.\n\nA setting of 0 means that the canister will trap if it tries to allocate new storage while the subnet's memory usage exceeds 750 GiB.
 
