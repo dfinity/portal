@@ -11,19 +11,19 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Beginner", "Cycles"]} />
 
-As discussed in [tokens and cycles](/docs/building-apps/getting-started/tokens-and-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
+As discussed in [tokens and cycles](/building-apps/getting-started/tokens-and-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
 Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers can manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**.
 
 :::caution
-Please note that the cycles wallet will be removed from `dfx` in a future release. We recommend using the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger) feature instead, which simplifies the cycles management workflow.
+Please note that the cycles wallet will be removed from `dfx` in a future release. We recommend using the [cycles ledger](/defi/token-ledgers/cycles-ledger) feature instead, which simplifies the cycles management workflow.
 :::
 
 The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister <GlossaryTooltip>principal</GlossaryTooltip> of the cycles wallet instead of your user principal.
 
 For the purposes of using the local development environment, the SDK automatically creates a default cycles wallet for you in every project, and most of the operations performed using the cycles wallet happen behind the scenes. For example, the cycles wallet acts on your behalf to register canister principals and deploy canisters in the local development environment.
 
-In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about [how to use `dfx wallet`](/docs/building-apps/developer-tools/dfx/dfx-wallet).
+In a production environment, however, you need to explicitly register and transfer cycles to new canisters, specify the principals that can act as custodians, and manage the principals with ownership rights. You can perform some of these tasks using the default cycles wallet dapp running in a web browser. Depending on the specific action you want to take, you can also perform these cycle and canister management tasks by running `dfx wallet` commands in a terminal or by calling methods in the default cycles wallet canister directly. You can learn more about [how to use `dfx wallet`](/building-apps/developer-tools/dfx/dfx-wallet).
 
 You should keep in mind, however, that calls to the cycles wallet canister are executed using the cycles wallet principal associated with the currently selected user identity. Depending on your currently selected identity and whether the principal associated with that identity has been added as a controller or a custodian for a wallet, you might see different results or be denied access to a specific method.
 
@@ -58,7 +58,7 @@ A **controller** is the most privileged role, and a principal assigned to the co
 
 -   Create canisters and additional cycles wallets.
 
-A canister can have a [maximum of 10 controllers](/docs/references/ic-interface-spec#ic-create_canister).
+A canister can have a [maximum of 10 controllers](/references/ic-interface-spec#ic-create_canister).
 
 ### Custodians
 
@@ -79,7 +79,7 @@ Authorizing a principal as a custodian does not automatically grant the principa
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/building-apps/getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 </Tabs>
@@ -159,7 +159,7 @@ The command returns the balance using Candid format as a record with an amount f
 
 After you have used the `dfx identity deploy-wallet` command to create a cycles wallet canister tied to an identity, you can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
 
-For more details, see the [dfx wallet reference](/docs/building-apps/developer-tools/dfx/dfx-wallet).
+For more details, see the [dfx wallet reference](/building-apps/developer-tools/dfx/dfx-wallet).
 
 You can also view the [Candid file for the cycles wallet](https://github.com/dfinity/cycles-wallet/blob/main/wallet/src/lib.did).
 
@@ -237,20 +237,20 @@ dfx wallet deauthorize PRINCIPAL_ID --network ic // Mainnet
 
 For reference information and examples that illustrate using `dfx wallet` commands, select an appropriate command.
 
-- [`add-controller`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-add-controller): Add a controller using the selected identity's principal.
-- [`addresses`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-addresses): Displays the address book of the cycles wallet.
-- [`authorize`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-authorize): Authorize a custodian by principal for the selected identity's cycles wallet.
-- [`balance`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-balance): Displays the cycles wallet balance of the selected identity.
-- [`controllers`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-controllers): Displays a list of the selected identity's cycles wallet controllers.
-- [`custodians`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-custodians):    Displays a list of the selected identity's cycles wallet custodians.
-- [`deauthorize`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-deauthorize): Deauthorize a cycles wallet custodian using the custodian's principal.
-- [`help`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-help): Displays a usage message and the help of the given subcommand(s).
-- [`name`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-name): Returns the name of the cycles wallet if you've used the dfx wallet set-name command.
-- [`redeem-faucet-coupon`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-redeem-faucet-coupon): Redeem a code at the cycles faucet.
-- [`remove-controller`](/docs/building-apps/developer-tools/dfx/dfx-wallet#remove-controller): Removes a specified controller from the selected identity's cycles wallet.
-- [`send`](/docs/building-apps/developer-tools/dfx/dfx-wallet#send): Sends a specified amount of cycles from the selected identity's cycles wallet to another cycles wallet using the destination wallet canister ID.
-- [`set-name`](/docs/building-apps/developer-tools/dfx/dfx-wallet#set-name): Specify a name for your cycles wallet.
-- [`upgrade`](/docs/building-apps/developer-tools/dfx/dfx-wallet#upgrade): Upgrade the cycles wallet's Wasm module to the current Wasm bundled with `dfx`.
+- [`add-controller`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-add-controller): Add a controller using the selected identity's principal.
+- [`addresses`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-addresses): Displays the address book of the cycles wallet.
+- [`authorize`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-authorize): Authorize a custodian by principal for the selected identity's cycles wallet.
+- [`balance`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-balance): Displays the cycles wallet balance of the selected identity.
+- [`controllers`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-controllers): Displays a list of the selected identity's cycles wallet controllers.
+- [`custodians`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-custodians):    Displays a list of the selected identity's cycles wallet custodians.
+- [`deauthorize`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-deauthorize): Deauthorize a cycles wallet custodian using the custodian's principal.
+- [`help`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-help): Displays a usage message and the help of the given subcommand(s).
+- [`name`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-name): Returns the name of the cycles wallet if you've used the dfx wallet set-name command.
+- [`redeem-faucet-coupon`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-redeem-faucet-coupon): Redeem a code at the cycles faucet.
+- [`remove-controller`](/building-apps/developer-tools/dfx/dfx-wallet#remove-controller): Removes a specified controller from the selected identity's cycles wallet.
+- [`send`](/building-apps/developer-tools/dfx/dfx-wallet#send): Sends a specified amount of cycles from the selected identity's cycles wallet to another cycles wallet using the destination wallet canister ID.
+- [`set-name`](/building-apps/developer-tools/dfx/dfx-wallet#set-name): Specify a name for your cycles wallet.
+- [`upgrade`](/building-apps/developer-tools/dfx/dfx-wallet#upgrade): Upgrade the cycles wallet's Wasm module to the current Wasm bundled with `dfx`.
 
 ## Additional methods
 

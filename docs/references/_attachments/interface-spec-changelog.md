@@ -1,9 +1,9 @@
 ## Changelog {#changelog}
 
-### 0.51.0 (2025-10-20) {$0_51_0}
+### 0.51.0 (2025-10-20)
 * Management canister endpoint `canister_status` can be invoked as a query call.
 
-### 0.50.0 (2025-10-13) {$0_50_0}
+### 0.50.0 (2025-10-13)
 * Allow loading a canister snapshot onto a different canister on the same subnet.
 * New management canister API providing canister metadata (contained in canister WASM custom sections).
 * New HTTP handler endpoints to support canister migration (by providing sharded routing table in certificates):
@@ -21,90 +21,90 @@
   not via `/api/v{2,3}/canister/.../read_state`.
 * All paths with prefix `/canister_ranges/<subnet_id>` must refer to the same subnet ID `<subnet_id>`.
 
-### 0.49.0 (2025-10-06) {$0_49_0}
+### 0.49.0 (2025-10-06)
 * Added support for non-replicated canister HTTP outcalls.
 
-### 0.48.0 (2025-09-29) {$0_48_0}
+### 0.48.0 (2025-09-29)
 * Added support for canister environment variables in canister settings and new System API for accessing environment variables
   (`ic0.env_var_count`, `ic0.env_var_name_size`, `ic0.env_var_name_copy`, and `ic0.env_var_value_size`).
 
-### 0.47.0 (2025-09-22) {$0_47_0}
+### 0.47.0 (2025-09-22)
 * Management canister API for downloading and uploading canister snapshots.
 
-### 0.46.0 (2025-08-25) {$0_46_0}
+### 0.46.0 (2025-08-25)
 * The management canister method `canister_status` returns two new fields: `version` indicating the canister version, and `ready_for_migration` indicating whether a canister's queues are empty and its streams flushed. The value only makes sense when the canister status is `stopped`. 
 * Canister history provides the source of a snapshot in the entry for loading the snapshot.
 
-### 0.45.0 (2025-08-18) {$0_45_0}
+### 0.45.0 (2025-08-18)
 * Canister ranges of every subnet are now available at a dedicated prefix `/canister_ranges` in the state tree,
   facilitating fragmentation due to canister migration.
 
-### 0.44.0 (2025-08-11) {$0_44_0}
+### 0.44.0 (2025-08-11)
 * The management canister method `subnet_info` returns a new field `registry_version` providing the registry version of the corresponding subnet.
 
-### 0.43.0 (2025-07-17) {$0_43_0}
+### 0.43.0 (2025-07-17)
 * VetKD API is considered stable.
 
-### 0.42.0 (2025-06-06) {#0_42_0}
+### 0.42.0 (2025-06-06)
 * New system API `ic0.root_key_{size, copy}` for fetching the public key of the IC root key.
 
-### 0.41.0 (2025-06-02) {#0_41_0}
+### 0.41.0 (2025-06-02)
 * Management canister API for threshold key derivation (vetKD).
 
-### 0.40.0 (2025-05-30) {#0_40_0}
+### 0.40.0 (2025-05-30)
 * Non-ASCII characters are allowed in the URL of canister http outcalls.
 * The transformed response size of canister http outcalls must not exceeded `max_response_bytes` (if provided).
 
-### 0.39.0 (2025-05-07) {#0_39_0}
+### 0.39.0 (2025-05-07)
 * Threshold Schnorr API, composite query methods, and canister logs management canister API are considered stable.
 
-### 0.38.0 (2025-04-18) {#0_38_0}
+### 0.38.0 (2025-04-18)
 * Reverted a lower bound of one week on the canister's freezing threshold.
 
-### 0.37.0 (2025-04-11) {#0_37_0}
+### 0.37.0 (2025-04-11)
 * Introduced a lower bound of one week on the canister's freezing threshold.
 
-### 0.36.0 (2025-03-31) {#0_36_0}
+### 0.36.0 (2025-03-31)
 * Bounded-wait calls.
 
-### 0.35.0 (2025-03-20) {#0_35_0}
+### 0.35.0 (2025-03-20)
 * New system API `ic0.canister_liquid_cycle_balance128` returning the current amount of cycles that is available for spending in calls and execution.
 * A canister can have multiple snapshots.
 
-### 0.34.0 (2025-03-07) {#0_34_0}
+### 0.34.0 (2025-03-07)
 * New canister method `canister_on_low_wasm_memory` invoked when the canister is low on main memory according to a new `wasm_memory_threshold` in canister settings.
 * New system APIs `ic0.cost_call`, `ic0.cost_create_canister`, `ic0.cost_http_request`, `ic0.cost_sign_with_ecdsa`, `ic0.cost_sign_with_schnorr`, and `ic0.cost_vetkd_derive_encrypted_key` for cycles cost calculation.
 * New field `memory_metrics` providing detailed metrics on the memory consumption of a canister in the response of the management canister's `canister_status` endpoint.
 
-### 0.33.0 (2025-02-12) {#0_33_0}
+### 0.33.0 (2025-02-12)
 * New system API `ic0.subnet_self_size` and `ic0.subnet_self_copy`.
 
-### 0.32.0 (2025-01-23) {#0_32_0}
+### 0.32.0 (2025-01-23)
 * Allow accepting and burning cycles in replicated queries.
 
-### 0.31.0 (2025-01-09) {#0_31_0}
+### 0.31.0 (2025-01-09)
 * Add support for Schnorr auxiliary inputs
 
-### 0.30.0 (2024-11-19) {#0_30_0}
+### 0.30.0 (2024-11-19)
 * Add management canister endpoint `subnet_info`.
 * Support for wasm64: 64-bit system API.
 
-### 0.29.0 (2024-11-14) {#0_29_0}
+### 0.29.0 (2024-11-14)
 * Allow anonymous query and read state requests with invalid `ingress_expiry`.
 * Add allowed viewers variant to canister log visibility.
 * Deprecate the Bitcoin API of the management canister.
 
-### 0.28.0 (2024-10-11) {#0_28_0}
+### 0.28.0 (2024-10-11)
 * Add new management canister methods for canister snapshot support.
 
-### 0.27.0 (2024-09-20) {#0_27_0}
+### 0.27.0 (2024-09-20)
 * EXPERIMENTAL: Management canister API to fetch Bitcoin block headers.
 * Synchronous update call API at `/api/v3/canister/.../call`.
 
-### 0.26.0 (2024-07-23) {#0_26_0}
+### 0.26.0 (2024-07-23)
 * EXPERIMENTAL: Management canister API for threshold Schnorr signatures.
 
-### 0.25.0 (2024-06-14) {#0_25_0}
+### 0.25.0 (2024-06-14)
 * Query call statistics.
 * New `wasm_memory_persistence` option for canister upgrades.
 * Rename `num_blocks_total` to `num_blocks_proposed_total` in node metrics served by the management canister.
@@ -113,12 +113,12 @@
 * 32-bit stable memory System API is marked DEPRECATED.
 * Remove the management canister query calls `bitcoin_get_balance_query` and `bitcoin_get_utxos_query`.
 
-### 0.24.0 (2024-04-23) {#0_24_0}
+### 0.24.0 (2024-04-23)
 * Wrap chunk hash for install chunked code in a record and rename `storage_canister` to `store_canister`.
 * Update subnet read state request conditions on requested paths.
 * Fix: allow inter-canister calls (requests) to be spontaneously rejected in the abstract spec.
 
-### 0.23.0 (2024-03-06) {#0_23_0}
+### 0.23.0 (2024-03-06)
 * The maximum length of a nonce in an ingress message is 32 bytes.
 * Update specification of responses from the endpoint `/api/v2/status`.
 * Stop canister calls might be rejected upon timeout.
@@ -131,7 +131,7 @@
 * Calls to frozen canisters are rejected with `SYS_TRANSIENT` instead of `CANISTER_ERROR`.
 * Add API boundary nodes information into the certified state tree.
 
-### 0.22.0 (2023-11-15) {#0_22_0}
+### 0.22.0 (2023-11-15)
 * Add metrics on subnet usage into the certified state tree and a new HTTP endpoint `/api/v2/subnet/<subnet_id>/read_state` for retrieving them.
 * Add management canister methods to support installing large WebAssembly modules split into chunks.
 * Add a system API method to determine if the canister is running in replicated or non-replicated mode.
@@ -142,7 +142,7 @@
 * Update the computation of the representation-independent hash for the case of maps with nested maps.
 * Remove `senders` field from user delegations.
 
-### 0.21.0 (2023-09-18) {#0_21_0}
+### 0.21.0 (2023-09-18)
 * Canister cycle balance cannot decrease below the freezing limit after executing `install_code` on the management canister.
 * System API calls `ic0.msg_caller_size` and `ic0.msg_caller_copy` can be called in all contexts except for (start) function.
 * Added note on confidentiality of values in the certified state tree.
@@ -152,13 +152,13 @@
 * Added node public keys to certified state and node signatures to query call responses.
 * Added a new mode for canister upgrades skipping pre-upgrade method's execution.
 
-### 0.20.0 (2023-07-11) {#0_20_0}
+### 0.20.0 (2023-07-11)
 * IC Bitcoin API, ECDSA API, canister HTTPS outcalls API, and 128-bit cycles System API are considered stable.
 * Add conditions on requested paths in read state requests.
 * Add composite queries.
 * Specify that the canister version is incremented upon every successful message execution except for successful message execution of a query method.
 
-### 0.19.0 (2023-06-08) {#0_19_0}
+### 0.19.0 (2023-06-08)
 * canister version can be specified in some management canister calls (canister creation, canister code changes, canister settings changes)
 * IC records canister history (canister creation, canister code changes, and canister controllers changes)
 * added a new `canister_info` management canister call returning current module hash, current controllers, and canister history
@@ -175,21 +175,21 @@
 * all `/request_status/<request_id>` paths must refer to the same `request_id` in a `read_state` request
 * IC protocol execution error conditions (such as failing `inspect_message` method of a canister) are returned as 200 HTTP responses with a cbor body describing the error (instead of 4xx or 5xx HTTP responses)
 
-### 0.18.9 (2022-12-06) {#0_18_9}
+### 0.18.9 (2022-12-06)
 * Global timers
 * Canister version
 * Clarifications for HTTP requests & Bitcoin integration costs
 
-### 0.18.8 (2022-11-09) {#0_18_8}
+### 0.18.8 (2022-11-09)
 * Updated HTTP request API
 * Canister status available to canister
 * 64-bit stable memory is no longer experimental
 
-### 0.18.7 (2022-09-27) {#0_18_7}
+### 0.18.7 (2022-09-27)
 * HTTP request API
 * Reserved principals
 
-### 0.18.6 (2022-08-09) {#0_18_6}
+### 0.18.6 (2022-08-09)
 * Canister access to performance metrics
 * Query calls are rejected when the canister is frozen
 * Support for implementation-specific error codes for requests
@@ -197,12 +197,12 @@
 * Update effective canister id checks in certificate delegations
 * Formal model in Isabelle
 
-### 0.18.5 (2022-07-08) {#0_18_5}
+### 0.18.5 (2022-07-08)
 * Idle consumption of resources in cycles per day can be obtain via `canister_status` method of the management canister
 * Include the HTTP Gateway Protocol in this spec
 * Clarifications in definition of cycles consumption
 
-### 0.18.4 (2022-06-20) {#0_18_4}
+### 0.18.4 (2022-06-20)
 
 * Canister cycle balances are represented by 128 bits, and no system-defined upper limit exists anymore
 * Canister modules can be gzip-encoded
@@ -210,30 +210,30 @@
 * EXPERIMENTAL: Canister API for accessing Bitcoin transactions
 * EXPERIMENTAL: Canister API for threshold ECDSA signatures
 
-### 0.18.3 (2022-01-10) {#0_18_3}
+### 0.18.3 (2022-01-10)
 
 * New System API which uses 128-bit values to represent the amount of cycles
 * Subnet delegations include a canister id scope
 
-### 0.18.2 (2021-09-29) {#0_18_2}
+### 0.18.2 (2021-09-29)
 
 * Canister heartbeat
 * Terminology changes
 * Support for 64-bit stable memory
 
 
-### 0.18.1 (2021-08-04) {#0_18_1}
+### 0.18.1 (2021-08-04)
 
 * Support RSA PKCS#1 v1.5 signatures in web authentication
 * Spec clarification: Fix various typos and improve textual clarity
 
 
-### 0.18.0 (2021-05-18) {#0_18_0}
+### 0.18.0 (2021-05-18)
 
 * A canister has a set of controllers, instead of always one
 
 
-### 0.17.0 (2021-04-22) {#0_17_0}
+### 0.17.0 (2021-04-22)
 
 * Canister Signatures are introduced
 * Spec clarification: the signature in the WebAuthn scheme is prefixed by the CBOR self-identifying tag
@@ -241,14 +241,14 @@
 * Canister settings in `create_canister` and `update_settings`. `install_code` no longer takes allocation settings.
 * A freezing threshold can be configured via the canister settings
 
-### 0.16.1 (2021-04-14) {#0_16_1}
+### 0.16.1 (2021-04-14)
 * The cleanup callback is introduced
 
-### 0.16.0 (2021-03-25) {#0_16_0}
+### 0.16.0 (2021-03-25)
 
 * New http v2 API that allows for stateless boundary nodes
 
-### 0.15.6 (2021-03-25) {#0_15_6}
+### 0.15.6 (2021-03-25)
 
 * The system may impose limits on the number of globals and functions
 * No ingress messages towards empty canisters are accepted
@@ -256,12 +256,12 @@
 * A memory allocation of `0` means “best effort”
 
 
-### 0.15.5 (2021-03-11) {#0_15_5}
+### 0.15.5 (2021-03-11)
 
 * deposit_cycles(): any caller allowed
 
 
-### 0.15.4 (2021-03-04) {#0_15_4}
+### 0.15.4 (2021-03-04)
 
 * Ingress message filtering
 * Add ECDSA signatures on curve secp256k1
@@ -269,27 +269,27 @@
   called in all contexts.
 
 
-### 0.15.3 (2021-02-26) {#0_15_3}
+### 0.15.3 (2021-02-26)
 
 * Expose module hash and controller via `read_state`
 
 
-### 0.15.2 (2021-02-09) {#0_15_2}
+### 0.15.2 (2021-02-09)
 
 * The document is renamed to “Internet Computer Interface Spec”
 
 
-### 0.15.0 (2020-12-17) {#0_15_0}
+### 0.15.0 (2020-12-17)
 
 * Support for raw Ed25519 keys is removed
 
 
-### 0.14.1 (2020-12-08) {#0_14_1}
+### 0.14.1 (2020-12-08)
 
 * The default `memory_allocation` becomes unspecified
 
 
-### 0.14.0 (2020-11-18) {#0_14_0}
+### 0.14.0 (2020-11-18)
  
 * Support for funds is scaled back to only support cycles
 * The `ic0.msg_cycles_accept` system call now returns the actually accepted
@@ -297,82 +297,82 @@
 * The `provisional_` management calls are introduced
 
 
-### 0.13.2 (2020-11-12) {#0_13_2}
+### 0.13.2 (2020-11-12)
 
 * The `ic0.canister_status` system call
 
 
-### 0.13.1 (2020-11-06) {#0_13_1}
+### 0.13.1 (2020-11-06)
 
 * Delegation between user public keys
 
 
-### 0.13.0 (2020-10-19) {#0_13_0}
+### 0.13.0 (2020-10-19)
 
 * Certification (also removes “request-status” request)
 
 
-### 0.12.2 (2020-10-23) {#0_12_2}
+### 0.12.2 (2020-10-23)
 
 * User authentication method based on WebAuthn is introduced
 * User authentication can use ECDSA
 * Public keys are DER-encoded
 
 
-### 0.12.1 (2020-10-16) {#0_12_1}
+### 0.12.1 (2020-10-16)
 
 * Return more information in the `canister_status` management call
 
 
-### 0.12.0 (2020-10-13) {#0_12_0}
+### 0.12.0 (2020-10-13)
 
 * Anonymous requests must have the sender field set
 
 
-### 0.11.1 (2020-10-01) {#0_11_1}
+### 0.11.1 (2020-10-01)
 
 * The `deposit_funds` call
 
 
-### 0.11.0 (2020-09-23) {#0_11_0}
+### 0.11.0 (2020-09-23)
 
 * Inter-canister calls are now performed using a builder-like API
 * Support for funds (balances and transfers)
 
 
-### 0.10.3 (2020-09-21) {#v0_10_3}
+### 0.10.3 (2020-09-21)
 
 * The anonymous user is introduced
 
 
-### 0.10.1 (2020-09-01) {#v0_10_1}
+### 0.10.1 (2020-09-01)
 
 * Forward-port changes from 0.9.3
 
 
-### 0.10.0 (2020-08-06) {#v0_10_0}
+### 0.10.0 (2020-08-06)
 
 * Users can set/update a memory allocation when installing/upgrading a canister.
 * The `expiry` field is added to requests
 
 
-### 0.9.3 (2020-09-01) {#v0_9_3}
+### 0.9.3 (2020-09-01)
 
 * The management canister supports the `raw_rand` method
 
 
-### 0.9.2 (2020-08-05) {#v0_9_2}
+### 0.9.2 (2020-08-05)
 
 * Canister controllers can stop/start canisters and can query their status.
 * Canister controllers can delete canisters
 
 
-### 0.9.1 (2020-07-20) {#v0_9_1}
+### 0.9.1 (2020-07-20)
 
 * Forward-port changes from 0.8.2
 
 
-### 0.9.0 (2020-07-15) {#v0_9_0}
+### 0.9.0 (2020-07-15)
 
 * Introduction of a domain separator (again)
 * The calculation of “derived ids” has changed
@@ -380,34 +380,34 @@
 * The textual representation of principals has changed
 
 
-### 0.8.2 (2020-07-17) {#v0_8_2}
+### 0.8.2 (2020-07-17)
 
 * Installing code via `reinstall` works also on the empty canister
 
 
-### 0.8.1 (2020-07-10) {#v0_8_1}
+### 0.8.1 (2020-07-10)
 
 * Reflect refined process in README and intro.
 * `ic0.time` added
 
 
-### 0.8.0 (2020-06-23) {#v0_8_0}
+### 0.8.0 (2020-06-23)
 
 * Revert the introduction of a domain separator
 
 
-### 0.6.2 (2020-06-23) {#v0_6_2}
+### 0.6.2 (2020-06-23)
 
 * Fix meaning-changing typos in `ic.did`
 
 
-### 0.6.0 (2020-06-08) {#v0_6_0}
+### 0.6.0 (2020-06-08)
 
 * Make all canister ids system-chosen
 * HTTP requests for management features are removed
 
 
-### 0.4.0 (2020-05-25) {#v0_4_0}
+### 0.4.0 (2020-05-25)
 
 * (editorial) the term “principal” is now used for the _id_ of a canister or
   user, not the canister or user itself
@@ -416,28 +416,28 @@
 * The IC management canister is introduced
 
 
-### 0.2.16 (2020-05-29) {#v0_2_16}
+### 0.2.16 (2020-05-29)
 
 * More tests about calls from query methods
 
 
-### 0.2.14 (2020-05-14) {#v0_2_14}
+### 0.2.14 (2020-05-14)
 
 * Bugfix: Mode should be `reinstall`, not `replace`
 
 
-### 0.2.8 (2020-04-23) {#v0_2_8}
+### 0.2.8 (2020-04-23)
 
 * Include section with CDDL description
 
 
-### 0.2.4 (2020-03-23) {#v0_2_4}
+### 0.2.4 (2020-03-23)
 
 * simplify versioning (only three components), skip 0.2.2 to avoid confusion with 0.2.0.2
 * Clarification: `reply` field is always present
 * General cleanup based on front-to-back reading
 
 
-### 0.2.0.0 (2020-03-11) {#v0_2_0_0}
+### 0.2.0.0 (2020-03-11)
 
 * This is the first release. Subsequent releases will include a changelog.

@@ -2,7 +2,6 @@ import React from "react";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import { useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
 import NavbarItem from "@theme/NavbarItem";
-import { useIsDocs } from "@site/src/hooks/useIsDocs";
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -16,17 +15,9 @@ export default function NavbarMobilePrimaryMenu() {
   // Should we allow providing a different list of items?
   let items = useNavbarItems();
 
-  const { isDocsPage } = useIsDocs();
-
-  if (isDocsPage) {
-    items = items.filter(
-      (item) => item.position !== "right" && item.type !== "search"
-    );
-  } else {
-    items = items.filter(
-      (item) => item.position !== "left" && item.type !== "search"
-    );
-  }
+  items = items.filter(
+    (item) => item.position !== "right" && item.type !== "search"
+  );
 
   /*
     Menu items are transformed in docusaurus.config.js to be displayed in a 2 column grid.

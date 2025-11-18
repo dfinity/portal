@@ -5,8 +5,8 @@
  */
 @use "sass:meta";
 
-@import "~katex/dist/katex.min.css";
-@import "fonts.css";
+@import "katex/dist/katex.min.css";
+@import "./fonts.css";
 
 /* You can override the default Infima variables here. */
 html[data-theme='dark']:root,
@@ -263,15 +263,15 @@ abbr[title] {
 }
 
 /* imports */
-@import "./animate.scss";
-@import "./blog.scss";
-@import "./code.scss";
-@import "./navbar.scss";
-@import "./scrollbar.scss";
-@import "./sidebar.scss";
-@import "./subnav.scss";
-@import "./map.scss";
-@import "./spinner.scss";
+@include meta.load-css("animate.scss");
+@include meta.load-css("blog.scss");
+@include meta.load-css("code.scss");
+@include meta.load-css("navbar.scss");
+@include meta.load-css("scrollbar.scss");
+@include meta.load-css("sidebar.scss");
+@include meta.load-css("subnav.scss");
+@include meta.load-css("map.scss");
+@include meta.load-css("spinner.scss");
 
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
@@ -440,7 +440,7 @@ div[class^="announcementBarContent"] {
   position: absolute;
   inset: 0;
   content: "";
-  background-image: url(/img/youtube-play-button.svg);
+  background-image: url(/static/img/youtube-play-button.svg);
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;

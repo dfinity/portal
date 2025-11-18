@@ -3,7 +3,7 @@ import type { _SERVICE } from "../../../../search/src/declarations/search/search
 import { idlFactory } from "./idlFactory.js";
 
 export const createActor = (canisterId: string) => {
-  const agent = new HttpAgent({
+  const agent = HttpAgent.createSync({
     host: `https://${canisterId}.ic0.app`,
   });
 

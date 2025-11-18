@@ -2,8 +2,8 @@ import {
   HtmlClassNameProvider,
   ThemeClassNames,
 } from "@docusaurus/theme-common";
-import { DocsSidebarProvider } from "@docusaurus/theme-common/internal";
-import DocPageLayout from "@theme/DocPage/Layout";
+import { DocsSidebarProvider } from "@docusaurus/plugin-content-docs/client";
+import DocPageLayout from "@theme/DocRoot/Layout";
 import clsx from "clsx";
 import React, { createContext } from "react";
 
