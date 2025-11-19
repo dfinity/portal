@@ -457,7 +457,7 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "What are security best practices?",
+              label: "Overview",
               id: "building-apps/security/overview",
             },
             {

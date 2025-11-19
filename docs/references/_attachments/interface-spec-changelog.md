@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.52.0 (2025-11-17) {$0_52_0}
+* Canister memory allocation does not limit canister memory usage.
+
 ### 0.51.0 (2025-10-20) {$0_51_0}
 * Management canister endpoint `canister_status` can be invoked as a query call.
 
