@@ -2191,7 +2191,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
     This will return `1` when called from a query or composite query method on the target canister of a query call.
 
-    This will return `0` for update methods, if a query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call), and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
+    This will return `0` for update methods, if a query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call) or as canister http outcall transform, and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
 
 -   `ic0.data_certificate_size : () → I` and `ic0.data_certificate_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
