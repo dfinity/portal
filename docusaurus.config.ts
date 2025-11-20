@@ -200,17 +200,18 @@ const config: Config = {
     customWebpack,
     matomoPlugin,
     tailwindPlugin,
-    externalRedirectsPlugin({
-      redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
-    }),
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        fromExtensions: ["html", "md"],
-        redirects: getRedirects(),
-        createRedirects: (existingPath) => getSplatRedirects(existingPath),
-      },
-    ],
+    // redirects outcommented for now, we need to decide how to deal with this first
+    // externalRedirectsPlugin({
+    //   redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
+    // }),
+    // [
+    //   "@docusaurus/plugin-client-redirects",
+    //   {
+    //     fromExtensions: ["html", "md"],
+    //     redirects: getRedirects(),
+    //     createRedirects: (existingPath) => getSplatRedirects(existingPath),
+    //   },
+    // ],
   ],
 
   presets: [
