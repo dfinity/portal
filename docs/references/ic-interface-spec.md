@@ -1550,8 +1550,8 @@ Given a canister module, the value of `I ∈ {i32, i64}` is derived from the bit
 defaulting to `I = i32` if the canister declares no memory.
 
 ```
-    ic0.msg_arg_data_size : () -> I;                                                      // I U RQ NRQ CQ Ry CRy F
-    ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ CQ Ry CRy F
+    ic0.msg_arg_data_size : () -> I;                                                      // I U RQ NRQ TQ CQ Ry CRy F
+    ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ TQ CQ Ry CRy F
     ic0.msg_caller_size : () -> I;                                                        // *
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt
@@ -1560,9 +1560,9 @@ defaulting to `I = i32` if the canister declares no memory.
 
     ic0.msg_deadline : () -> i64;                                                         // U Q CQ Ry Rt CRy CRt
 
-    ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ CQ Ry Rt CRy CRt
-    ic0.msg_reply : () -> ();                                                             // U RQ NRQ CQ Ry Rt CRy CRt
-    ic0.msg_reject : (src : I, size : I) -> ();                                           // U RQ NRQ CQ Ry Rt CRy CRt
+    ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ TQ CQ Ry Rt CRy CRt
+    ic0.msg_reply : () -> ();                                                             // U RQ NRQ TQ CQ Ry Rt CRy CRt
+    ic0.msg_reject : (src : I, size : I) -> ();                                           // U RQ NRQ TQ CQ Ry Rt CRy CRt
 
     ic0.msg_cycles_available128 : (dst : I) -> ();                                        // U RQ Rt Ry
     ic0.msg_cycles_refunded128 : (dst : I) -> ();                                         // Rt Ry
@@ -1667,6 +1667,8 @@ The comment after each function lists from where these functions may be invoked:
 
 -   `NRQ`: from `canister_query …` in non-replicated mode
 
+-   `TQ`: from `canister_query …` in canister http outcall transform
+
 -   `CQ`: from `canister_composite_query …`
 
 -   `Ry`: from a reply callback
@@ -1687,7 +1689,7 @@ The comment after each function lists from where these functions may be invoked:
 
 -   `T`: from *system task* (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`)
 
--   `*` = `I G U RQ NRQ CQ Ry Rt CRy CRt C CC F T` (NB: Not `(start)`)
+-   `*` = `I G U RQ NRQ TQ CQ Ry Rt CRy CRt C CC F T` (NB: Not `(start)`)
 
 If the canister invokes a system call from somewhere else, it will trap.
 
@@ -2175,7 +2177,7 @@ For each canister, the IC keeps track of "certified data", a canister-defined bl
 
     Copies the public key (a DER-encoded BLS key) of the IC root key of this instance of the Internet Computer Protocol to the canister.
 
-    This traps in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
+    This traps in non-replicated mode (NRQ, TQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
 
 -   `ic0.certified_data_set : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
@@ -2189,7 +2191,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
     This will return `1` when called from a query or composite query method on the target canister of a query call.
 
-    This will return `0` for update methods, if a query or composite query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call), and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
+    This will return `0` for update methods, if a query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call) or as canister http outcall transform, and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
 
 -   `ic0.data_certificate_size : () → I` and `ic0.data_certificate_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
@@ -3210,7 +3212,7 @@ A snapshot may be deleted only by the controllers of the canister that the snaps
 This method can only be called by external users via non-replicated (query) calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
 
 Given a canister ID as input, this method returns a vector of logs of that canister including its trap messages.
-The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
+The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, TQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
 The total size of all returned logs does not exceed 4KiB.
 If new logs are added resulting in exceeding the maximum total log size of 4KiB, the oldest logs will be removed.
 Logs persist across canister upgrades and they are deleted if the canister is reinstalled or uninstalled.
@@ -8385,12 +8387,12 @@ The pseudo-code below does *not* explicitly enforce the restrictions of which im
 ```
 I ∈ {i32, i64}
 ic0.msg_arg_data_size<es>() : I =
-  if es.context ∉ {I, U, RQ, NRQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {I, U, RQ, NRQ, TQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
   return |es.params.arg|
 
 I ∈ {i32, i64}
 ic0.msg_arg_data_copy<es>(dst : I, offset : I, size : I) =
-  if es.context ∉ {I, U, RQ, NRQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {I, U, RQ, NRQ, TQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.arg)
 
 I ∈ {i32, i64}
@@ -8425,19 +8427,19 @@ ic0.msg_deadline<es>() : i64 =
 
 I ∈ {i32, i64}
 ic0.msg_reply_data_append<es>(src : I, size : I) =
-  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, NRQ, TQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.reply_params.arg := es.reply_params.arg · copy_from_canister<es>(src, size)
 
 ic0.msg_reply<es>() =
-  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, NRQ, TQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.response := Reply (es.reply_params.arg)
   es.cycles_available := 0
 
 I ∈ {i32, i64}
 ic0.msg_reject<es>(src : I, size : I) =
-  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, NRQ, TQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.response := Reject (CANISTER_REJECT, copy_from_canister<es>(src, size))
   es.cycles_available := 0
@@ -8755,7 +8757,7 @@ ic0.is_controller<es>(src : I, size : I) : (result: i32) =
     Trap {cycles_used = es.cycles_used;}
 
 ic0.in_replicated_execution<es>() : i32 =
-  if es.params.sysenv.certificate = NoCertificate
+  if es.context ∈ {I, G, U, RQ, Ry, Rt, C, T, s}
   then return 1
   else return 0
 
