@@ -1,4 +1,3 @@
-import React from "react";
 import { Chip } from "@site/src/components/Chip/Chip";
 import { ChipRow } from "@site/src/components/Chip/ChipRow";
 

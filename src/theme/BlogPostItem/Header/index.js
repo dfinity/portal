@@ -1,4 +1,3 @@
-import React from "react";
 import BlogPostItemHeaderTitle from "@theme/BlogPostItem/Header/Title";
 
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client';

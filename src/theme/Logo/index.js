@@ -2,7 +2,6 @@ import Link from "@docusaurus/Link";
 import { useThemeConfig, useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import React from "react";
 
 export default function Logo(props) {
   const {

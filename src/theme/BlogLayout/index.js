@@ -5,7 +5,7 @@ import {
 import { DocsSidebarProvider } from "@docusaurus/plugin-content-docs/client";
 import DocPageLayout from "@theme/DocRoot/Layout";
 import clsx from "clsx";
-import React, { createContext } from "react";
+import { createContext } from "react";
 
 export const BlogContext = createContext({ tags: [], setTags: () => {} });
 

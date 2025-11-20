@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import CustomNotFoundPage from "../pages/notfound";
 import { trackEvent } from "../utils/matomo";

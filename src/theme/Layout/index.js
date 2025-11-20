@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 import ErrorBoundary from "@docusaurus/ErrorBoundary";
 import { PageMetadata, ThemeClassNames } from "@docusaurus/theme-common";

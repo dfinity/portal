@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import Footer from '@theme-original/DocItem/Footer';
 
 import { FeedbackButton } from 'pushfeedback-react';
