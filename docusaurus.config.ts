@@ -294,11 +294,11 @@ const config: Config = {
                 label: "Wiki",
                 href: "https://wiki.internetcomputer.org/",
               },
-              {
-                label: "Node Providers",
-                href: "/node-providers",
-                target: "_self",
-              },
+              // {
+              //   label: "Node Providers",
+              //   href: "/node-providers",
+              //   target: "_self",
+              // },
               {
                 label: "Dashboard",
                 href: "https://dashboard.internetcomputer.org/",
