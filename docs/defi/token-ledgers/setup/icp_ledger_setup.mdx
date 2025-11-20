@@ -32,7 +32,7 @@ An account on the ICP ledger is represented and stored as an `AccountIdentifier`
 
 You can think of principal IDs as a rough equivalent to the hash of a user’s public key for chains like Bitcoin or Ethereum. The corresponding secret key is used to sign messages and authenticate to the ledger canister.
 
-An ICP ledger account belongs to and is controlled by the account owner, who must have a valid principal ID. Accounts cannot be owned by two or more principals (no "joint accounts"). However, since a principal can also refer to a canister, canisters with multiple [controllers](/docs/building-apps/canister-management/control) can be used as joint accounts, in which case the `AccountIdentifier` is derived from the canister’s principal.
+An ICP ledger account belongs to and is controlled by the account owner, who must have a valid principal ID. Accounts cannot be owned by two or more principals (no "joint accounts"). However, since a principal can also refer to a canister, canisters with multiple [controllers](/building-apps/canister-management/control) can be used as joint accounts, in which case the `AccountIdentifier` is derived from the canister’s principal.
 
 :::info Why does the ledger use `AccountIdentifier`s and not just principal IDs?
 
@@ -43,7 +43,7 @@ Accounts allow a principal to control multiple accounts (subaccounts). While thi
 
 There are two ways of deploying an ICP ledger locally:
 
-1. Use [`dfx nns`](/docs/building-apps/developer-tools/dfx/dfx-nns) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will install an instance of the ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straightforward, but also heavyweight.
+1. Use [`dfx nns`](/building-apps/developer-tools/dfx/dfx-nns) to deploy the entire NNS locally. Since the ICP ledger is part of the NNS, this command will install an instance of the ICP ledger with canister ID `ryjl3-tyaaa-aaaaa-aaaba-cai`. This solution is fast and straightforward, but also heavyweight.
 
 2. Deploy the ICP ledger locally using the canister's Wasm and Candid files. This method gives you more control over the deployment and it is lightweight. For instance, you can define the `minting account`, you have control over the initialization arguments, and you have control over which Wasm version of the ICP ledger you want to interact with.
 
@@ -51,7 +51,7 @@ There are two ways of deploying an ICP ledger locally:
 :::caution
 The ICP ledger is not meant to be used for other token deployments.
 
-If you want to deploy your own token, read the [guide on setting up an ICRC-1 ledger](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
+If you want to deploy your own token, read the [guide on setting up an ICRC-1 ledger](/defi/token-ledgers/setup/icrc1_ledger_setup).
 :::
 
 ### Using `dfx nns install`
@@ -209,7 +209,7 @@ This `dfx.json` file defines the init arguments for the ledger canister:
 - Sets the transfer fee to 0.0001 ICP.
 - Names the token `Local ICP` with ticker symbol `LICP`.
 
-You can also pass init args to the canister [using the command line](/docs/building-apps/developer-tools/advanced-dfx/init-args/#using-init_arg) or by [storing them in a file](/docs/building-apps/developer-tools/advanced-dfx/init-args/#using-an-init_arg_file), then referencing that file in your `dfx.json` configuration:
+You can also pass init args to the canister [using the command line](/building-apps/developer-tools/advanced-dfx/init-args/#using-init_arg) or by [storing them in a file](/building-apps/developer-tools/advanced-dfx/init-args/#using-an-init_arg_file), then referencing that file in your `dfx.json` configuration:
 
 ```json
 {
@@ -237,7 +237,7 @@ You can also pass init args to the canister [using the command line](/docs/build
 }
 ```
 
-[Learn more about init args](/docs/building-apps/developing-canisters/deploy/).
+[Learn more about init args](/building-apps/developing-canisters/deploy/).
 
 - #### Step 6: Start a local development environment.
 
@@ -273,4 +273,4 @@ Or, you can interact with it using the Candid UI by navigating to the Candid URL
 http://127.0.0.1:4943/?canisterId=bnz7o-iuaaa-aaaaa-qaaaa-cai&id=ryjl3-tyaaa-aaaaa-aaaba-cai
 ```
 
-[Learn more about interacting with the ICP ledger](/docs/defi/token-ledgers/usage/icp_ledger_usage).
+[Learn more about interacting with the ICP ledger](/defi/token-ledgers/usage/icp_ledger_usage).

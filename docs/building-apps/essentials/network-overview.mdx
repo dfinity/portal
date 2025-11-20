@@ -13,13 +13,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 **The Internet Computer is the first "World Computer" network. It enables you to build web applications and internet services using a 100% decentralized platform without Big Tech and traditional IT. While traditional blockchains struggle to store a single phone photo onchain, ICP already hosts social networks, multiple ledgers, AI, and much more, fully onchain.**
 
 
-It is designed to give applications near-native performance and scalability while maintaining the security of decentralized execution. [Smart contracts](/docs/building-apps/essentials/canisters) on ICP can [host web assets](/docs/building-apps/frontends/uploading-serving-assets), [hold tokens](/docs/defi/create), and serve HTTP requests from users. They can also interact with [RPC nodes](/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview) on other blockchains and Web2 servers through secure [HTTP requests](/docs/building-apps/network-features/using-http/https-outcalls/overview), seamlessly and securely integrating with other ecosystems.
+It is designed to give applications near-native performance and scalability while maintaining the security of decentralized execution. [Smart contracts](/building-apps/essentials/canisters) on ICP can [host web assets](/building-apps/frontends/uploading-serving-assets), [hold tokens](/defi/create), and serve HTTP requests from users. They can also interact with [RPC nodes](/building-apps/chain-fusion/ethereum/evm-rpc/overview) on other blockchains and Web2 servers through secure [HTTP requests](/building-apps/network-features/using-http/https-outcalls/overview), seamlessly and securely integrating with other ecosystems.
 
 ## Subnets
 
 The ICP network is made up of multiple blockchain instances called subnets. Each subnet is a set of decentralized nodes running the network’s consensus algorithm among themselves. They build their own chain of blocks and execute smart contracts. Subnets run in parallel to one another. Smart contracts deployed on one subnet can communicate with smart contracts on another subnet through messages.
 
-Subnets have different sizes, which determine the cost of running smart contracts on that subnet. Subnet size also impacts the time to finality, replication factor for smart contracts, and security. Currently, subnets contain between 13 and 40 geographically distributed nodes. However, there can also be localized subnets to support applications that need to [comply with local regulations](/docs/building-apps/developing-canisters/deploy-specific-subnet) (GDPR compliance, etc.).
+Subnets have different sizes, which determine the cost of running smart contracts on that subnet. Subnet size also impacts the time to finality, replication factor for smart contracts, and security. Currently, subnets contain between 13 and 40 geographically distributed nodes. However, there can also be localized subnets to support applications that need to [comply with local regulations](/building-apps/developing-canisters/deploy-specific-subnet) (GDPR compliance, etc.).
 
 [Learn more about subnets](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation).
 
@@ -35,7 +35,7 @@ Node providers on ICP must be voted on by the network’s governance. This ensur
 
 ## Canister smart contracts
 
-In the context of ICP, smart contracts are referred to as [canisters](/docs/building-apps/essentials/canisters). When a canister is deployed to the network, it gets deployed to a subnet and replicated across all nodes of that subnet.
+In the context of ICP, smart contracts are referred to as [canisters](/building-apps/essentials/canisters). When a canister is deployed to the network, it gets deployed to a subnet and replicated across all nodes of that subnet.
 
 ICP uses WebAssembly (Wasm) as the virtual machine for executing canisters, allowing developers to write canisters in their programming language of choice, including JavaScript, TypeScript, Rust, Python, or Motoko.
 
@@ -45,17 +45,17 @@ ICP embraces scalability and runs canisters in parallel. In that regard, caniste
 
 ## Chain-key cryptography
 
-Chain-key cryptography is a suite of cryptographic mechanisms that facilitate many of ICP’s unique features and capabilities. One of these cryptographic mechanisms is [threshold signing](/docs/references/t-sigs-how-it-works), enabling each ICP subnet to have a fixed public key and corresponding private key that is not stored on a single node, nor is it ever available on any node. Instead, it is split into multiple secret shares and distributed over all nodes using threshold cryptography.
+Chain-key cryptography is a suite of cryptographic mechanisms that facilitate many of ICP’s unique features and capabilities. One of these cryptographic mechanisms is [threshold signing](/references/t-sigs-how-it-works), enabling each ICP subnet to have a fixed public key and corresponding private key that is not stored on a single node, nor is it ever available on any node. Instead, it is split into multiple secret shares and distributed over all nodes using threshold cryptography.
 
 Nodes can collectively sign messages to users and other subnets using these secret shares. This makes validation of the state and results trivial for users, since all they need to do is verify the digital signature against the fixed public key.
 
-[Chain-key signatures](/docs/defi/chain-key-tokens/overview) are another component of chain-key cryptography that allows smart contracts to sign transactions targeted specifically at other blockchain networks like [Bitcoin](/docs/build-on-btc/) and [Ethereum](/docs/building-apps/chain-fusion/ethereum/overview). These transactions are submitted directly to the target chains without needing a bridge or oracle to facilitate the communication.
+[Chain-key signatures](/defi/chain-key-tokens/overview) are another component of chain-key cryptography that allows smart contracts to sign transactions targeted specifically at other blockchain networks like [Bitcoin](/build-on-btc/) and [Ethereum](/building-apps/chain-fusion/ethereum/overview). These transactions are submitted directly to the target chains without needing a bridge or oracle to facilitate the communication.
 
 [Learn more about chain-key cryptography](https://learn.internetcomputer.org/hc/en-us/articles/34209497587732-Chain-Key-Signatures).
 
 ## Governance
 
-ICP is governed by a decentralized autonomous organization (DAO) community called the [Network Nervous System (NNS)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview). It is implemented as a set of canisters running on ICP itself. Community members can participate in the network’s governance by [staking ICP tokens in neurons](/docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron) in return for voting power. All operational changes to ICP go through voting.
+ICP is governed by a decentralized autonomous organization (DAO) community called the [Network Nervous System (NNS)](https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview). It is implemented as a set of canisters running on ICP itself. Community members can participate in the network’s governance by [staking ICP tokens in neurons](/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron) in return for voting power. All operational changes to ICP go through voting.
 
 The NNS automatically executes proposals that have passed voting, which ensures that nodes run the same version of the protocol and thus avoids hard forks.
 

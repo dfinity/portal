@@ -21,11 +21,11 @@ To interact with the Ethereum network or another EVM-compatible network, a devel
 
 1. [Generate a public key](./generating-addresses.mdx): To sign and submit transactions, your canister will need a public key. You will also need this public key to generate an Ethereum wallet address.
 
-2. [Sign a transaction](./signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/references/t-sigs-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
+2. [Sign a transaction](./signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/references/t-sigs-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
 
-3. [Submit a transaction](./submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
+3. [Submit a transaction](./submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
 
-4. [Read information from the Ethereum network](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister): Information from the Ethereum network can be queried using RPC methods such as:
+4. [Read information from the Ethereum network](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister): Information from the Ethereum network can be queried using RPC methods such as:
 
    - `eth_getBlockByNumber`: Returns information about a given block.
 
@@ -37,9 +37,9 @@ To interact with the Ethereum network or another EVM-compatible network, a devel
 
    - `eth_getLogs`: Returns the logs of a specified block or transaction.
 
-Each of these steps can be executed programmatically within a smart contract that is deployed on ICP. View the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation to see code examples for each RPC method.
+Each of these steps can be executed programmatically within a smart contract that is deployed on ICP. View the [EVM RPC canister](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation to see code examples for each RPC method.
 
-Additional sample projects can be found in the [EVM RPC](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) canister documentation.
+Additional sample projects can be found in the [EVM RPC](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) canister documentation.
 
 ## Integrating with Ethereum
 
@@ -47,11 +47,11 @@ The Ethereum integration can be incorporated into dapps for several purposes, su
 
 ## Using ckETH
 
-Chain-key Ethereum (ckETH) is a digital twin token of Ethereum that is backed 1:1 with Ethereum held within an ICP smart contract. ckETH tokens comply with the [ICRC token standard](/docs/defi/chain-key-tokens/cketh/overview).
+Chain-key Ethereum (ckETH) is a digital twin token of Ethereum that is backed 1:1 with Ethereum held within an ICP smart contract. ckETH tokens comply with the [ICRC token standard](/defi/chain-key-tokens/cketh/overview).
 
 ckETH and other chain-key tokens can be interacted with in the same manner as other ICRC tokens. There aren't any special workflow steps, parameters, or smart contract types that must be used to integrate with chain-key tokens such as ckETH.
 
-[Learn more about ckETH](/docs/defi/chain-key-tokens/cketh/overview).
+[Learn more about ckETH](/defi/chain-key-tokens/cketh/overview).
 
 ## Using ckERC20 tokens
 
@@ -59,7 +59,7 @@ ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum
 
 ## Resources
 
-- [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
+- [EVM RPC canister](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
 - [Generating addresses](./generating-addresses.mdx).
 
@@ -67,4 +67,4 @@ ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum
 
 - [Submitting transactions](./submit-transactions.mdx).
 
-- [ckETH](/docs/defi/chain-key-tokens/cketh/overview).
+- [ckETH](/defi/chain-key-tokens/cketh/overview).

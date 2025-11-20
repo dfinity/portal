@@ -19,7 +19,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are charged for every action that a canister performs.
 
-To obtain cycles, the network's utility token, ICP, must be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](/docs/references/glossary#x) to make canister costs predictable and independent of the price of ICP. 1 trillion cycles always correspond to 1 XDR.
+To obtain cycles, the network's utility token, ICP, must be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](/references/glossary#x) to make canister costs predictable and independent of the price of ICP. 1 trillion cycles always correspond to 1 XDR.
 
 Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to canisters, and create canisters with cycles.
 
@@ -35,7 +35,7 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <AdornedTabs>
-<TabItem label="Prerequisites">
+<TabItem value="prereq" label="Prerequisites">
 
 <input type="checkbox"/> Before you start, verify that you have set up your developer environment according to the instructions in <a href="/tutorials/developer-liftoff/level-1/1.2-dev-env"> 1.2 Developer environment setup</a>.
 
@@ -140,7 +140,7 @@ dfx cycles convert --amount AMOUNT --network=ic
 
 :::info Calculating how many cycles you need
 
-The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/docs/building-apps/essentials/gas-cost).
+The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/building-apps/essentials/gas-cost) or use the [cycles pricing calculator](/building-apps/essentials/gas-cost).
 
 :::
 

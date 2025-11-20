@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/OztLHEilyuc?si=pEXWrE4fGyMsSBOH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-In a previous module, [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly learned about certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
+In a previous module, [2.2: Advanced canister calls](/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly learned about certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
 
 Recall that certified variables are used as a way for queries to return an authenticated response that can be validated and trusted, since query calls do not go through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus). This is useful for workflows that require additional layers of authentication, such as applications that handle financial data or important records. For users of the application, they can trust that the information they're interacting with and receiving from the application is trustworthy and secure.
 
@@ -69,11 +69,11 @@ To certify data, a canister uses the following workflow:
 
 A canister can interact with and change its certified data by calling the following API methods:
 
-- [`ic0.certified_data_set : (src: i32, size : i32) -> ()`](/docs/references/ic-interface-spec#system-api-certified-data): This method can be used to update the canister's certified data. Data cannot be larger than 32 bytes.
+- [`ic0.certified_data_set : (src: i32, size : i32) -> ()`](/references/ic-interface-spec#system-api-certified-data): This method can be used to update the canister's certified data. Data cannot be larger than 32 bytes.
 
-- [`ic0.data_certificate_present : () -> i32`](/docs/references/ic-interface-spec#system-api-certified-data): This method returns a `1` if a certificate is present or a `0` if not.
+- [`ic0.data_certificate_present : () -> i32`](/references/ic-interface-spec#system-api-certified-data): This method returns a `1` if a certificate is present or a `0` if not.
 
-- [`ic0.data_certificate_size : () -> i32`](/docs/references/ic-interface-spec#system-api-certified-data) and [`ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ()`](/docs/references/ic-interface-spec#system-api-certified-data): These methods are used to copy the certificate for the current value of the certified data to the canister.
+- [`ic0.data_certificate_size : () -> i32`](/references/ic-interface-spec#system-api-certified-data) and [`ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ()`](/references/ic-interface-spec#system-api-certified-data): These methods are used to copy the certificate for the current value of the certified data to the canister.
 
 ## How developers can certify data
 
@@ -99,7 +99,7 @@ On ICP, there is a built-in `http_request` query method. This method uses inform
 
 When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) and a value equal to the asset's certificate.
 
-More information can be found in the [HTTP gateway protocol specification](/docs/references/http-gateway-protocol-spec).
+More information can be found in the [HTTP gateway protocol specification](/references/http-gateway-protocol-spec).
 
 ### Example
 

@@ -50,7 +50,7 @@ The `dfx.json` file in the root directory defines the canisters that make up the
 ```json title=dfx.json file=../../../references/samples/motoko/hello_world/dfx.json
 ```
 
-Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+Learn more about [dfx.json](/building-apps/developer-tools/dfx-json).
 
 </TabItem>
 
@@ -82,7 +82,7 @@ The `dfx.json` file in the root directory defines the canisters that make up the
 ```json title=dfx.json file=../../../references/samples/rust/hello_world/dfx.json
 ```
 
-Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+Learn more about [dfx.json](/building-apps/developer-tools/dfx-json).
 
 ### Cargo.toml
 
@@ -180,7 +180,7 @@ On ICP, an application's frontend is created through these steps:
 
 2. The project's `dfx.json` file defines the frontend canister and specifies it as `"type": "asset"`.
 
-3. When the project is deployed, `dfx` deploys an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to the canister. It then adds an API client called the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/overview) to the frontend assets and uploads all assets to the canister. The ICP JavaScript agent facilitates the communication between the frontend and the backend. In general, ICP agents are libraries for interacting with canisters' public interfaces.
+3. When the project is deployed, `dfx` deploys an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to the canister. It then adds an API client called the [ICP JavaScript agent](/building-apps/interact-with-canisters/agents/overview) to the frontend assets and uploads all assets to the canister. The ICP JavaScript agent facilitates the communication between the frontend and the backend. In general, ICP agents are libraries for interacting with canisters' public interfaces.
 
 ## How does the frontend communicate with the backend?
 

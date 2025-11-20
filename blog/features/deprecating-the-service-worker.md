@@ -10,7 +10,7 @@ image: /img/blog/deprecating-the-service-worker.png
 
 ## Introduction
 
-The DFINITY Foundation would like to propose deprecating the Internet Computer Service Worker in favor of ICX Proxy on the DFINITY hosted [Boundary Nodes](https://wiki.internetcomputer.org/wiki/Boundary_Nodes). We believe that this change will have dramatic improvements to end user and developer experience while reducing complexity in the Internet Computer’s [HTTP Gateway Protocol](/docs/references/ic-interface-spec#http-gateway), without reducing security or changing trust assumptions.
+The DFINITY Foundation would like to propose deprecating the Internet Computer Service Worker in favor of ICX Proxy on the DFINITY hosted [Boundary Nodes](https://wiki.internetcomputer.org/wiki/Boundary_Nodes). We believe that this change will have dramatic improvements to end user and developer experience while reducing complexity in the Internet Computer’s [HTTP Gateway Protocol](/references/ic-interface-spec#http-gateway), without reducing security or changing trust assumptions.
 
 Keep reading to learn more about why we believe this is the right path forward and the roadmap that we are suggesting for this transition.
 
@@ -32,7 +32,7 @@ Presently, there are three distinct implementations of this protocol: the Servic
 
 ### The Service Worker
 
-The Service Worker operates on `{canisterId}.ic0.app` and `{canisterId}.icp0.io` URLs as well as [Boundary Node hosted custom domains](/docs/building-apps/frontends/custom-domains/using-custom-domains). For example, Internet Identity can be accessed via the Service Worker using the following URLs:
+The Service Worker operates on `{canisterId}.ic0.app` and `{canisterId}.icp0.io` URLs as well as [Boundary Node hosted custom domains](/building-apps/frontends/custom-domains/using-custom-domains). For example, Internet Identity can be accessed via the Service Worker using the following URLs:
 
 - [rdmx6-jaaaa-aaaaa-aaadq-cai.ic0.app](https://rdmx6-jaaaa-aaaaa-aaadq-cai.ic0.app/)
 - [rdmx6-jaaaa-aaaaa-aaadq-cai.icp0.io](https://rdmx6-jaaaa-aaaaa-aaadq-cai.icp0.io/)
@@ -188,7 +188,7 @@ The goal of the short term roadmap is to make a relatively quick transition to I
 
 **Timeline:** From present day up to 2-3 weeks.
 
-This is the current phase that we are in now. We are currently working on gathering metrics for the size of [streamed response bodies](/docs/references/http-gateway-protocol-spec#response-body-streaming). This is important because these responses are currently not verified by ICX Proxy. We would suggest gathering these metrics for the next couple of weeks in order to make an educated decision about the next step of the transition.
+This is the current phase that we are in now. We are currently working on gathering metrics for the size of [streamed response bodies](/references/http-gateway-protocol-spec#response-body-streaming). This is important because these responses are currently not verified by ICX Proxy. We would suggest gathering these metrics for the next couple of weeks in order to make an educated decision about the next step of the transition.
 
 #### Limited certified response body streaming
 

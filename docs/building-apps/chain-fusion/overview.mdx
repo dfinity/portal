@@ -54,18 +54,18 @@ The following examples illustrate the variety of use cases enabled by Chain Fusi
 
 Smart contracts on ICP are called canisters. In addition to unparalleled compute and storage capabilities (see above), canisters can make use of protocol primitives that are not natively available on other chains. For example:
 
-- Canisters can request [randomness](/docs/references/system-canisters/management-canister/#retrieving-randomness) from the protocol, which is useful in applications where fairness or unpredictability is required.
+- Canisters can request [randomness](/references/system-canisters/management-canister/#retrieving-randomness) from the protocol, which is useful in applications where fairness or unpredictability is required.
 
-- [Timers](/docs/building-apps/network-features/periodic-tasks-timers) let canisters manage their tasks by initiating specific actions periodically without depending on any external actors.
+- [Timers](/building-apps/network-features/periodic-tasks-timers) let canisters manage their tasks by initiating specific actions periodically without depending on any external actors.
 
-- Full Web 2 integration allows canisters to both expose [HTTP interfaces](/docs/building-apps/network-features/using-http/https-outcalls/overview) and call [HTTP APIs hosted on the web](/docs/building-apps/network-features/using-http/https-outcalls/overview).
+- Full Web 2 integration allows canisters to both expose [HTTP interfaces](/building-apps/network-features/using-http/https-outcalls/overview) and call [HTTP APIs hosted on the web](/building-apps/network-features/using-http/https-outcalls/overview).
 
 ### Key management and signing
 
-A key feature of the ICP’s Chain Fusion capabilities is [threshold signing](/docs/building-apps/network-features/signatures/t-ecdsa/). This feature allows canisters to control accounts on other blockchains. The private keys that are used to sign transactions are never accessible in a single physical place but are securely distributed as shares among a group of nodes performing a threshold signing protocol to generate signatures on behalf of a canister.
+A key feature of the ICP’s Chain Fusion capabilities is [threshold signing](/building-apps/network-features/signatures/t-ecdsa/). This feature allows canisters to control accounts on other blockchains. The private keys that are used to sign transactions are never accessible in a single physical place but are securely distributed as shares among a group of nodes performing a threshold signing protocol to generate signatures on behalf of a canister.
 
 :::info
-Threshold signing is also referred to as [chain-key cryptography](/docs/references/glossary#c).
+Threshold signing is also referred to as [chain-key cryptography](/references/glossary#c).
 :::
 
 ### Integrations
@@ -80,7 +80,7 @@ A canister’s interaction with external blockchains requires submitting transac
 
 A key question we must answer to fully understand the security of ICP's Chain Fusion capabilities is: whom do users place trust in when using the presented infrastructure?
 
-ICP’s decentralization is rooted in the replicated execution and state of canisters which depends on the honesty of a supermajority of [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) [nodes](/docs/building-apps/essentials/network-overview#nodes). These nodes are sourced from various identifiable and DAO-approved providers that operate in globally distributed data centers.
+ICP’s decentralization is rooted in the replicated execution and state of canisters which depends on the honesty of a supermajority of [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) [nodes](/building-apps/essentials/network-overview#nodes). These nodes are sourced from various identifiable and DAO-approved providers that operate in globally distributed data centers.
 
 In the case of direct chain integration, the only trust assumption needed is that a supermajority of subnet nodes are honest and in [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus). In case of integration via RPC, users additionally need to trust RPC node providers. While this is seen as less secure than a direct integration that involves running a full node, it's currently deemed an acceptable trade-off (due to a reliance on replicated results from multiple independent providers).
 
@@ -391,15 +391,15 @@ For a fully working example, view the [Chain Fusion starter project](https://git
 
 There are several building blocks available to augment non-ICP smart contracts with ICP’s Chain Fusion capabilities or to leverage Chain Fusion in existing ICP dapps:
 
-- **Chain-key tokens**: Using the primitives described above, DFINITY has built canisters implementing the [ICRC-2](https://github.com/dfinity/ICRC) token standard to represent native Bitcoin, Ethereum, and ERC-20 tokens on ICP: [ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview), [ckETH](/docs/defi/chain-key-tokens/cketh/overview), and [ckERC20](/docs/defi/chain-key-tokens/ckerc20/overview). These tokens are digital twins of their corresponding native token and are backed 1:1 by the native assets which are managed 100% onchain through a canister smart contract without any intermediaries.
+- **Chain-key tokens**: Using the primitives described above, DFINITY has built canisters implementing the [ICRC-2](https://github.com/dfinity/ICRC) token standard to represent native Bitcoin, Ethereum, and ERC-20 tokens on ICP: [ckBTC](/defi/chain-key-tokens/ckbtc/overview), [ckETH](/defi/chain-key-tokens/cketh/overview), and [ckERC20](/defi/chain-key-tokens/ckerc20/overview). These tokens are digital twins of their corresponding native token and are backed 1:1 by the native assets which are managed 100% onchain through a canister smart contract without any intermediaries.
 
-- **[EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an onchain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
+- **[EVM RPC canister](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an onchain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
 
-- **[Threshold signatures](/docs/references/t-sigs-how-it-works)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
+- **[Threshold signatures](/references/t-sigs-how-it-works)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
 
-- **[HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview)**: Replicated calls into external web services.
+- **[HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview)**: Replicated calls into external web services.
 
-- **[Bitcoin API](/docs/references/bitcoin-how-it-works)**: A protocol API that allows canisters to interact with the Bitcoin blockchain directly.
+- **[Bitcoin API](/references/bitcoin-how-it-works)**: A protocol API that allows canisters to interact with the Bitcoin blockchain directly.
 
 ## Resources
 

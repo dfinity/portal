@@ -20,7 +20,7 @@ In this Motoko level, you'll look into caller identification, adding access cont
 
 Motoko's shared functions support a form of caller identification, allowing for the principal associated with the caller of a function to be returned. Recall that a principal is a unique identifier associated with an identity or canister. Principals can be used to implement basic access control for an application.
 
-In Motoko, recall that the `shared` keyword is used to declare a shared function and that a **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned. A shared function's arguments and return value(s) must also be shared types. Shared functions can declare an optional parameter of type `{caller : Principal}`. This was covered in more detail in [2.6: Motoko level 2](/docs/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
+In Motoko, recall that the `shared` keyword is used to declare a shared function and that a **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned. A shared function's arguments and return value(s) must also be shared types. Shared functions can declare an optional parameter of type `{caller : Principal}`. This was covered in more detail in [2.6: Motoko level 2](/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
 
 To demonstrate this, consider the following function:
 
@@ -92,7 +92,7 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <AdornedTabs>
-<TabItem label="Prerequisites">
+<TabItem value="prereq" label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.

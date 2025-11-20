@@ -12,7 +12,7 @@ import Tabs from '@theme/Tabs';
 
 An **agent** is an API client used to interact with ICP. The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) is used to interact with the public ICP API endpoints and canisters deployed on ICP. The ICP JavaScript agent provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
 
-Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Raw calls are supported but not recommended per best practices.
+Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/building-apps/interact-with-canisters/candid/candid-concepts). Raw calls are supported but not recommended per best practices.
 
 ## Installation
 
@@ -32,7 +32,7 @@ npm i --save @dfinity/agent
 
 ## Authentication
 
-The ICP JavaScript agent supports authentication through `auth-client`, which uses the [Internet Identity service](/docs/building-apps/authentication/overview).
+The ICP JavaScript agent supports authentication through `auth-client`, which uses the [Internet Identity service](/building-apps/authentication/overview).
 
 First, install the `auth-client` package:
 
@@ -198,9 +198,9 @@ defaultAgent.replaceIdentity(await authClient.getIdentity());
 
 The ICP JavaScript agent supports the following methods for making calls to ICP:
 
-- `call`: Used to make [update calls](/docs/building-apps/interact-with-canisters/advanced-calls).
+- `call`: Used to make [update calls](/building-apps/interact-with-canisters/advanced-calls).
 
-- `query`: Used to make [query calls](/docs/building-apps/interact-with-canisters/advanced-calls).
+- `query`: Used to make [query calls](/building-apps/interact-with-canisters/advanced-calls).
 
 - `readState`: Used to read state information from the ICP replica.
 
@@ -237,7 +237,7 @@ This method is defined in [packages/agent/src/agent/api.ts:200](https://github.c
 
 Parameters for this method are:
 
-- `canisterId`: The canister's principal ID in the format `string`. Note that sending a query to the [management canister](/docs/references/system-canisters/management-canister) is not supported, as it has no meaning from an agent.
+- `canisterId`: The canister's principal ID in the format `string`. Note that sending a query to the [management canister](/references/system-canisters/management-canister) is not supported, as it has no meaning from an agent.
 
 - `options`: Options used to create and send the query. Possible options are defined in [QueryFields](https://agent-js.icp.xyz/agent/interfaces/QueryFields.html).
 

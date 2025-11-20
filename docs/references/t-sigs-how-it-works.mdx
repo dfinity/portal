@@ -29,7 +29,7 @@ From a canister root key, an unlimited number of t-sig keys can be derived for t
 
 - For ECDSA and BIP340, the key derivation uses a backward-compatible extension of the BIP-32 (non-hardened) key derivation mechanism. The extension allows not only 32-bit integers but also arbitrary-length byte arrays to be used as input for each level of the key derivation function. See the level 1 keys based on the canister root key and greater in the below figure illustrating the derivation of further canisters.
 
-- For Ed25519, the key derivation is a custom mechanism for hierarchical key derivation that improves upon the existing solutions, which are either incompatible with this use case because they are using hardened key derivation or they are unnecessarily complex. More details can be found in the [interface specification](/docs/references/ic-interface-spec#ed25519-key-derivation).
+- For Ed25519, the key derivation is a custom mechanism for hierarchical key derivation that improves upon the existing solutions, which are either incompatible with this use case because they are using hardened key derivation or they are unnecessarily complex. More details can be found in the [interface specification](/references/ic-interface-spec#ed25519-key-derivation).
 
 The derivation of further t-sig public keys from a canister root key can be done without the involvement of ICP as well to facilitate certain use cases.
 
@@ -55,13 +55,13 @@ The following Schnorr master keys are currently deployed:
 ## Threshold signature APIs
 
 Next, this guide gives an overview of the APIs for threshold signatures.
-For the authoritative specification, the reader is referred to the corresponding part of the Internet Computer interface specification for [ECDSA](/docs/references/ic-interface-spec#ic-ecdsa_public_key) and [Schnorr](/docs/references/ic-interface-spec#ic-schnorr_public_key).
+For the authoritative specification, the reader is referred to the corresponding part of the Internet Computer interface specification for [ECDSA](/references/ic-interface-spec#ic-ecdsa_public_key) and [Schnorr](/references/ic-interface-spec#ic-schnorr_public_key).
 The ECDSA API comprises two methods: `ecdsa_public_key` for retrieving threshold ECDSA public keys and `sign_with_ecdsa` for requesting threshold ECDSA signatures to be computed from the subnet holding the secret-shared private threshold ECDSA key.
 The Schnorr API comprises two methods: `schnorr_public_key` for retrieving threshold Schnorr public keys and `sign_with_schnorr` for requesting threshold Schnorr signatures to be computed from the subnet holding the secret-shared private threshold Schnorr key. If the signing request returns a reject response whose reject code is `SYS_UNKNOWN` or `CANISTER_ERROR`, the signature may exist in the system even though it's not returned to the requesting canister. Thus, canisters should not rely on the signature not existing in these cases.
 
 Each API call refers to a t-sig master key by virtue of a 2-part identifier comprising a curve or algorithm and a key ID as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
-- [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key): This method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path.
+- [`ecdsa_public_key`](/references/ic-interface-spec#ic-ecdsa_public_key): This method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path.
 
 If the `canister_id` is unspecified, it will default to the canister ID of the caller.
 The `derivation_path` is a vector of variable-length byte strings.
@@ -71,14 +71,14 @@ For curve `secp256k1`, the public key is derived using a generalization of BIP32
 The return result is an extended public key consisting of an ECDSA `public_key`, encoded in SEC1 compressed form, and a `chain_code`, which can be used to deterministically derive child keys of the `public_key`.
 This call requires that the ECDSA feature is enabled and that the `canister_id` meets the requirement of a canister ID. Otherwise it will be rejected.
 
-- [`sign_with_ecdsa`](/docs/references/ic-interface-spec#ic-ecdsa_public_key): This method returns a new ECDSA signature of the given `message_hash` that can be separately verified against a derived ECDSA public key.
+- [`sign_with_ecdsa`](/references/ic-interface-spec#ic-ecdsa_public_key): This method returns a new ECDSA signature of the given `message_hash` that can be separately verified against a derived ECDSA public key.
 This call requires that the ECDSA feature is enabled, the caller is a canister, and `message_hash` is 32 bytes long. Otherwise it will be rejected.
 
 This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id` and the same `derivation_path` and `key_id` used here.<br/>
 
 The signatures are encoded as the concatenation of the SEC1 encodings of the two values `r` and `s`. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.<br/>
 
-- [`schnorr_public_key`](/docs/references/ic-interface-spec#ic-sign_with_schnorr): Returns a Schnorr public key for the given canister using the given derivation path.
+- [`schnorr_public_key`](/references/ic-interface-spec#ic-sign_with_schnorr): Returns a Schnorr public key for the given canister using the given derivation path.
 This call requires that the Schnorr feature is enabled and the `canister_id` meets the requirement of a canister ID. Otherwise it will be rejected.
 
 If the `canister_id` is unspecified, it will default to the canister ID of the caller.
@@ -90,9 +90,9 @@ The return value is an extended Schnorr public key consisting of a Schnorr `publ
 For algorithm `bip340secp256k1`, the public key is derived using the generalization of BIP32 defined in [ia.cr/2021/1330, Appendix D](https://ia.cr/2021/1330). To derive (non-hardened) [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)-compatible public keys, each byte string (blob) in the `derivation_path` must be a 4-byte big-endian encoding of an unsigned integer less than 231. If the `derivation_path` contains a byte string that is not a 4-byte big-endian encoding of an unsigned integer less than 231, then a derived public key will be returned, but that key derivation process will not be compatible with the [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) standard.
 The public key is encoded in [SEC1](https://www.secg.org/sec1-v2.pdf) compressed form. To use BIP32 public keys to verify BIP340 Schnorr signatures, the first byte of the (33-byte) SEC1-encoded public key must be removed (see [BIP-340, Public Key Conversion](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki#public-key-conversion)).
 
-For algorithm `ed25519`, the public key is derived using a custom mechanism for hierarchical key derivation that, just as in extended BIP32, takes a vector of byte strings as input. The public key is encoded in standard 32-byte compressed form (see [RFC8032, 5.1.2 Encoding](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2)) More details about the derivation mechanism can be found in the [interface specification](/docs/references/ic-interface-spec#ed25519-key-derivation).
+For algorithm `ed25519`, the public key is derived using a custom mechanism for hierarchical key derivation that, just as in extended BIP32, takes a vector of byte strings as input. The public key is encoded in standard 32-byte compressed form (see [RFC8032, 5.1.2 Encoding](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2)) More details about the derivation mechanism can be found in the [interface specification](/references/ic-interface-spec#ed25519-key-derivation).
 
-- [`sign_with_schnorr`](/docs/references/ic-interface-spec#ic-ecdsa_public_key): Returns a new Schnorr signature of the given `message` of arbitrary size that can be separately verified against a derived Schnorr public key.
+- [`sign_with_schnorr`](/references/ic-interface-spec#ic-ecdsa_public_key): Returns a new Schnorr signature of the given `message` of arbitrary size that can be separately verified against a derived Schnorr public key.
 This call requires that the Schnorr feature is enabled and the caller is a canister. Otherwise it will be rejected.
 
 This public key can be obtained by calling `schnorr_public_key` with the caller's `canister_id` and the same `derivation_path` and `key_id` used here.

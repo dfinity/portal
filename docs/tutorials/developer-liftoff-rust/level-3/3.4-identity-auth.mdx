@@ -17,9 +17,9 @@ First, let's clearly define the identity and authentication terminology on ICP:
 
 - **Developer identity**: Created using `dfx`. It contains a private/public key pair and has a `principal` data type derived from the public key. It can be compared to a Bitcoin or Ethereum wallet address.
 
-- **Principals**: Generic identifiers that are used for users, canisters, and potentially other future concepts. You can learn more in the IC [specification](/docs/references/ic-interface-spec#principal).
+- **Principals**: Generic identifiers that are used for users, canisters, and potentially other future concepts. You can learn more in the IC [specification](/references/ic-interface-spec#principal).
 
-- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the [ledger](/docs/defi/token-standards/) specification.
+- **Account identifier**: The identifier associated with your ICP ledger account, as specified in the [ledger](/defi/token-standards/) specification.
 
 - **Wallets**: Used to store forms of currency or other assets, such as cycles, ICP, or NFTs.
 
@@ -41,7 +41,7 @@ A different identity is issued for each dapp a user authenticates to and cannot 
 
 An implementation of the WebAuthn API is used to prove your identity to Internet Identity by signing a challenge issued by Internet Identity. Once signed, Internet Identity issues 'delegations' on the user's behalf, which are signed by with the delegation's own keys. This private material never leaves the user's device, as it is stored in the local hardware securely. 
 
-For more details on how the Internet Identity architecture works, please refer to the [official Internet Identity specification](/docs/references/ic-interface).
+For more details on how the Internet Identity architecture works, please refer to the [official Internet Identity specification](/references/ic-interface).
 
 ## Creating an Internet Identity
 
@@ -95,7 +95,7 @@ In the file, you will see the code that initializes and creates the AuthClient, 
 
 This code does the following:
 
-- First, it creates an `AuthClient` instance using `AuthClient.create()`. This is from the [`auth-client`](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent#authentication) library used for handling authentication with Internet Identity.
+- First, it creates an `AuthClient` instance using `AuthClient.create()`. This is from the [`auth-client`](/current/developer-docs/developer-tools/off-chain/agents/javascript-agent#authentication) library used for handling authentication with Internet Identity.
 
 - It gets the user's identity from the `authClient`.
 

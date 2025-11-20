@@ -93,7 +93,7 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <AdornedTabs>
-<TabItem label="Prerequisites">
+<TabItem value="prereq" label="Prerequisites">
 
 :::caution
 This example is currently not available in ICP Ninja and must be run locally with `dfx`.
@@ -143,7 +143,7 @@ Open the `dfx.json` file in the project's directory and replace the existing con
 }
 ```
 
-Next, you'll use the `minter` identity you created in the last module, [4.1 Using the ICP ledger](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger). If you need to export the `minter` identity's principal again, run the commands:
+Next, you'll use the `minter` identity you created in the last module, [4.1 Using the ICP ledger](/tutorials/developer-liftoff/level-4/4.1-icp-ledger). If you need to export the `minter` identity's principal again, run the commands:
 
 ```bash
 dfx identity use minter
@@ -161,7 +161,7 @@ export TOKEN_SYMBOL="DLTK"
 
 The environment variable `TOKEN_SYMBOL` is the token's ticker symbol, and the `TOKEN_NAME` variable is the token's full name.
 
-Then, set the identity that you want to use to deploy the ledger. In the previous module [4.1 Using the ICP ledger](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger), you used the `DevLiftoff` identity, which you'll use again:
+Then, set the identity that you want to use to deploy the ledger. In the previous module [4.1 Using the ICP ledger](/tutorials/developer-liftoff/level-4/4.1-icp-ledger), you used the `DevLiftoff` identity, which you'll use again:
 
 ```bash
 dfx identity use DevLiftoff
