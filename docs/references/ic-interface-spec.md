@@ -2433,6 +2433,13 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: `controllers`.
 
+-   `log_memory_limit` (`nat`)
+
+    Must be equal to 4096 and indicates the maximum amount of memory used for canister logs.
+    Oldest canister logs are purged if the total memory used for canister logs exceeds this value.
+
+    Default value: `4096`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -3211,8 +3218,8 @@ This method can only be called by external users via non-replicated (query) call
 
 Given a canister ID as input, this method returns a vector of logs of that canister including its trap messages.
 The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
-The total size of all returned logs does not exceed 4KiB.
-If new logs are added resulting in exceeding the maximum total log size of 4KiB, the oldest logs will be removed.
+The total size of all returned logs does not exceed the value `log_memory_limit` in canister settings.
+Oldest canister logs are purged if the total memory used for canister logs exceeds the value `log_memory_limit` in canister settings.
 Logs persist across canister upgrades and they are deleted if the canister is reinstalled or uninstalled.
 
 The log visibility is defined in the `log_visibility` field of `canister_settings` and can be one of the following variants:
@@ -4098,6 +4105,7 @@ S = {
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;
   canister_log_visibility: CanisterId ↦ CanisterLogVisibility;
+  canister_log_memory_limit: CanisterId ↦ Nat;
   canister_logs: CanisterId ↦ [CanisterLog];
   query_stats: CanisterId ↦ [QueryStats];
   system_time : Timestamp
@@ -4206,6 +4214,7 @@ The initial state of the IC is
   certified_data = ();
   canister_history = ();
   canister_log_visibility = ();
+  canister_log_memory_limit = ();
   canister_logs = ();
   query_stats = ();
   system_time = T;
@@ -5184,6 +5193,11 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.log_memory_limit is not null:
+  New_canister_log_memory_limit = A.settings.log_memory_limit
+else:
+  New_canister_log_memory_limit = 4096
+
 ```
 
 State after  
@@ -5211,6 +5225,7 @@ S' = S with
     query_stats[Canister_id] = []
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_log_memory_limit[Canister_id] = New_canister_log_memory_limit
     canister_logs[Canister_id] = []
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
@@ -5346,6 +5361,8 @@ S' = S with
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
+    if A.settings.log_memory_limit is not null:
+      canister_log_memory_limit[A.canister_id] = A.settings.log_memory_limit
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
@@ -6293,6 +6310,7 @@ S with
     certified_data[A.canister_id] = (deleted)
     canister_history[A.canister_id] = (deleted)
     canister_log_visibility[A.canister_id] = (deleted)
+    canister_log_memory_limit[A.canister_id] = (deleted)
     canister_logs[A.canister_id] = (deleted)
     query_stats[A.canister_id] = (deleted)
     chunk_store[A.canister_id] = (deleted)
@@ -6525,6 +6543,11 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.log_memory_limit is not null:
+  New_canister_log_memory_limit = A.settings.log_memory_limit
+else:
+  New_canister_log_memory_limit = 4096
+
 ```
 
 State after  
@@ -6550,6 +6573,7 @@ S' = S with
     certified_data[Canister_id] = ""
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_log_memory_limit[Canister_id] = New_canister_log_memory_limit
     canister_logs[Canister_id] = []
     query_stats[CanisterId] = []
     messages = Older_messages · Younger_messages ·
@@ -7420,16 +7444,19 @@ S with
 
 ```
 
-#### Trimming canister logs
+#### Purging canister logs
 
-Canister logs can be trimmed if their total length exceeds 4KiB.
+Oldest canister logs are purged if the total memory used for canister logs exceeds the value `log_memory_limit` in canister settings.
+
+The (unspecified) function `canister_log_memory_usage(logs)` models the total memory used by `logs`.
 
 Conditions
 
 ```html
 
 S.canister_logs[CanisterId] = Older_logs · Newer_logs
-SUM { |l| | l <- Older_logs } > 4KiB
+canister_log_memory_usage(Older_logs · Newer_logs) > S.canister_log_memory_limit[CanisterId]
+canister_log_memory_usage(Newer_logs) ≤ S.canister_log_memory_limit[CanisterId]
 
 ```
 
