@@ -3052,7 +3052,7 @@ Cycles to pay for the call must be explicitly transferred with the call, i.e., t
 The method may return an error of the `flexible_http_request_err` type. The error includes an error message, and may also include a variant describing the error cause. The causes may include:
 - an optional "global" error preventing the successful response from being created:
 
-    - `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout. The value is accompanied by a vector of available resource reports at the point when the timeout went off.
+    - `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout.
 
     - `invalid_parameters`, indicating that the parameters to the call violated one of the conditions.
 
