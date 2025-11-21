@@ -94,8 +94,8 @@ type http_request_result = record {
 };
 
 type http_request_resource_report = record {
-  downloaded_bytes: opt variant { used: nat64; exceeded: reserved };
-  request_time_ms: opt variant { used: nat64; exceeded: reserved };
+  raw_response_bytes: opt variant { used: nat64; exceeded: reserved };
+  http_roundtrip_time_ms: opt variant { used: nat64; exceeded: reserved };
   transform_instructions: opt variant { used: nat64; exceeded: reserved };
   transformed_response_size: opt variant { used: nat64; exceeded: reserved };
 };
@@ -112,7 +112,7 @@ type flexible_http_request_err = record {
       node_id: principal;
       cause : opt variant {
         limit_exceeded : opt variant {
-          http_roundtrip_time : reserved;
+          http_roundtrip_time_ms : reserved;
           raw_response_bytes : reserved;
           transform_instructions : reserved;
           transformed_response_bytes : reserved;
