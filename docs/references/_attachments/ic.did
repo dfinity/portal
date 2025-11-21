@@ -102,11 +102,28 @@ type http_request_resource_report = record {
 
 type flexible_http_request_err = record {
   cause: opt variant {
-    timeout : vec record { principal; http_request_resource_report; };
-    invalid_parameters: reserved;
-    limits_exceeded: vec record { principal; http_request_resource_report; };
-    out_of_cycles : vec record { principal; http_request_resource_report; };
-    responses_too_large : vec record { principal; nat64; };
+    global_err: opt variant {
+      invalid_parameters : reserved;
+      timeout : reserved;
+      out_of_cycles : reserved;
+      responses_too_large : reserved;
+    };
+    local_errs : vec record {
+      node: principal;
+      cause : opt variant {
+        limit_exceeded : opt variant {
+          request_time : reserved;
+          response_bytes : reserved;
+          transform_instructions : reserved;
+          transformed_response_bytes : reserved;
+        };
+        out_of_cycles : reserved;
+      };
+    };
+  };
+  resource_reports: vec record {
+    node: principal;
+    report: http_request_resource_report;
   };
   message: text;
 };
