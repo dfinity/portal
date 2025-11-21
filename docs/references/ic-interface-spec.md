@@ -3049,7 +3049,8 @@ The response from the remote server must not exceed `2MB`. Moreover, the total s
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The upfront cycles cost covers a call that maxes out the resource usage during processing, for example, hitting the `2MB` limit on the size of the response. The unused cycles are then refunded to the caller.
 
-The method may return an error of the `flexible_http_request_err` type. The error includes an error message, and may also include a variant describing the error cause. The causes may include:
+The method may return an error of the `flexible_http_request_err` type. The error includes a textual error message, and the available reports on resources used by nodes for processing the outcall. It may also include a variant describing the error cause. The causes describe:
+
 - an optional "global" error preventing the successful response from being created:
 
     - `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout.
@@ -3060,13 +3061,11 @@ The method may return an error of the `flexible_http_request_err` type. The erro
 
     - `responses_too_large` : indicating that no combination of at least `min_responses` available responses could fit into the 2MB total limit.
 
-- local errors, where the processing was unsuccessful at some nodes. For each such node, the possible error is reported:
+- a vector of local errors, where the processing was unsuccessful at some nodes. For each such node, the possible error is reported:
 
     - `limits_exceeded`, indicating the node exceeded one of the system-defined resource limits while the processing the outcall.
 
     - `out_of_cycles`, indicating that the this node's portion of the attached cycles was not enough to cover the resources used for processing the outcall.
-
-Additionally, the available reports on resources used by nodes for processing the outcall are provided. A simple textual representation of the error is also returned.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
