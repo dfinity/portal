@@ -109,7 +109,7 @@ type flexible_http_request_err = record {
       responses_too_large : reserved;
     };
     local_errs : vec record {
-      node: principal;
+      node_id: principal;
       cause : opt variant {
         limit_exceeded : opt variant {
           request_time : reserved;
