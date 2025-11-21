@@ -3033,7 +3033,7 @@ The arguments of the call are as for `http_request`, except that:
 
 The other arguments, `url`, `method`, `headers`, `body`, and `transform` are the same as for `http_request`. The result is a vector of responses, with each individual response having the same structure as a `http_request` response, providing `status`, `headers`, and `body` fields.
 
-As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when a `replica_count` of 1 is used in `responses_from`. The request restrictions are also the same as for the `http_request` method:
+As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when `total_requests` is set to 1 in `node_counts`. The request restrictions are also the same as for the `http_request` method:
 
 - The total number of bytes in the request must not exceed `2MB` (`2,000,000`) bytes.
 
