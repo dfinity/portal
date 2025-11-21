@@ -2,9 +2,11 @@
 keywords: [beginner, query calls, queries, composite queries, query call, making a query, call a canister with query]
 ---
 
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import TabItem from "@theme/TabItem";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Query calls
@@ -23,11 +25,11 @@ It is possible to execute a query call as an update. In such a case, the query s
 
 ## Making query calls with `dfx`
 
-To make a query call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--query` flag:
+To make a query call to a canister, use the [`dfx canister call`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--query` flag:
 
 - `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
-- `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
+- `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/building-apps/developing-canisters/deploy#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
 
 - `dfx canister call --query <canister-name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
 

@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import TabItem, { Props as TabItemProps } from "@theme/TabItem";
 
 export interface AdornedTabItemProps extends TabItemProps {

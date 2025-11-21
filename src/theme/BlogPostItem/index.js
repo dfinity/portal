@@ -1,9 +1,8 @@
-import { useBlogPost } from "@docusaurus/theme-common/internal";
+import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import clsx from "clsx";
-import React from "react";
 // apply a bottom margin in list view
 function useContainerClassName() {
   const { isBlogPostPage } = useBlogPost();

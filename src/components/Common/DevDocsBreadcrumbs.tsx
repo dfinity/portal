@@ -11,11 +11,9 @@ export function DevDocsBreadcrumbs() {
   const breadcrumbs = useMemo(() => {
     const parts = location.pathname
       .split("/")
-      .filter((item) => item !== "docs" && item !== "current")
-      .filter(Boolean)
       .map((part) => {
         return {
-          href: withBaseUrl(`docs/${part}`),
+          href: withBaseUrl(`${part}`),
           label: part.replace(/\W|\s+/g, " "),
         };
       });

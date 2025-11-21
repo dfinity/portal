@@ -1,6 +1,5 @@
 import Head from "@docusaurus/Head";
 import { css } from "@site/src/utils/dummy-css";
-import React from "react";
 
 const DarkHeroStyles = ({ bgColor = "var(--ifm-color-primary)" }) => {
   return (

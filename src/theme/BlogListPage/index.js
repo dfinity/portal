@@ -1,4 +1,3 @@
-import React, { useContext, useEffect } from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import {

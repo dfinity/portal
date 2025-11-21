@@ -5,11 +5,7 @@ import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import ShareMeta from "../components/Common/ShareMeta";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
-import { ShowcaseCard } from "../components/Common/Card";
-import Newsletter from "../components/Common/Newsletter/Newsletter";
 
 const MotionLink = motion(Link);
 

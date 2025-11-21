@@ -1,4 +1,3 @@
-import React from "react";
 import { ThemeClassNames, useThemeConfig } from "@docusaurus/theme-common";
 import clsx from "clsx";
 import DocSidebarNavbarItem from "@theme/NavbarItem/DocSidebarNavbarItem";

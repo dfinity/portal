@@ -34,15 +34,15 @@ Consider growth factors like increased data usage, concurrent users, or increase
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
 
-Refer to the [topping up cycles page](/docs/building-apps/canister-management/topping-up) to learn how to top-up cycles effectively.
+Refer to the [topping up cycles page](/building-apps/canister-management/topping-up) to learn how to top-up cycles effectively.
 
-Refer to the [cycles estimate](/docs/building-apps/essentials/gas-cost) page to estimate cycle usage.
+Refer to the [cycles estimate](/building-apps/essentials/gas-cost) page to estimate cycle usage.
 
 ### Recommendation: Manage cycle depletion.
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, ensuring at least 90 to 180 days' worth of cycles for proactive management.
 
-Refer to [this resource](/docs/building-apps/canister-management/topping-up#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister.
+Refer to [this resource](/building-apps/canister-management/topping-up#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister.
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
 
@@ -50,9 +50,9 @@ To make sure you won’t get surprised by a high cycle burn rate or hitting an i
 
 Optimize canister implementation to avoid unnecessary costs.
 
-Use [canister timers](/docs/building-apps/network-features/periodic-tasks-timers) over plain heartbeats for reduced daily costs.
+Use [canister timers](/building-apps/network-features/periodic-tasks-timers) over plain heartbeats for reduced daily costs.
 
-Use [efficient data storage techniques](/docs/building-apps/best-practices/storage).
+Use [efficient data storage techniques](/building-apps/best-practices/storage).
 
 ### Recommendation: Paginate large data query requests.
 

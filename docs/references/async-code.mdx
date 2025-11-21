@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 
-The ICP allows canisters to seamlessly interact with other canisters by calling their methods, just like external users call canisters. When writing canisters, you will need to issue such inter-canister calls for operations such as transferring tokens or accessing certain system functionality through the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister).
+The ICP allows canisters to seamlessly interact with other canisters by calling their methods, just like external users call canisters. When writing canisters, you will need to issue such inter-canister calls for operations such as transferring tokens or accessing certain system functionality through the [management canister](/current/developer-docs/smart-contracts/advanced-features/management-canister).
 
 This remote procedure call (RPC) mechanism, based on a request-response paradigm, will feel familiar if you are coming from Ethereum or other smart contract enabled blockchains, but there are also important differences that you should understand:
 
@@ -20,43 +20,43 @@ This remote procedure call (RPC) mechanism, based on a request-response paradigm
 
 - The requests are not guaranteed to be delivered. This allows the system to use its resources more optimally overall, but again differs from Ethereum and many other blockchains, and needs to be handled correctly. Moreover, calls can be made in either **bounded-wait** or **unbounded-wait** modes. The former is better suited for a wider range of trust assumptions, supports a higher volume of messages and is much more resilient under high system load, but in this mode the "true" response is not guaranteed to be delivered, and can be masked by a system generated error response instead.
 
-- ICP canisters can be written in any language that compiles into Wasm. The caller and callee canisters can be written in different languages and need some common data format to exchange messages. While the ICP doesn't enforce a data format, [Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts) is the de facto standard.
+- ICP canisters can be written in any language that compiles into Wasm. The caller and callee canisters can be written in different languages and need some common data format to exchange messages. While the ICP doesn't enforce a data format, [Candid](/building-apps/interact-with-canisters/candid/candid-concepts) is the de facto standard.
 
 ## Service discovery
 
-Before you can call other canisters that are not part of your project, you need to learn the available endpoints (methods) that you can call, as well as their arguments and return values. Candid serves both as a data format and an interface description language. The IC SDK will by default bundle the interface description (if available) in the `candid:service` metadata section of the canister code. For example, you can examine the interface of the ICP ledger canister (whose principal is `ryjl3-tyaaa-aaaaa-aaaba-cai`) using [`dfx`](/docs/building-apps/getting-started/install).
+Before you can call other canisters that are not part of your project, you need to learn the available endpoints (methods) that you can call, as well as their arguments and return values. Candid serves both as a data format and an interface description language. The IC SDK will by default bundle the interface description (if available) in the `candid:service` metadata section of the canister code. For example, you can examine the interface of the ICP ledger canister (whose principal is `ryjl3-tyaaa-aaaaa-aaaba-cai`) using [`dfx`](/building-apps/getting-started/install).
 
 ```bash
 dfx canister metadata ryjl3-tyaaa-aaaaa-aaaba-cai candid:service --network ic
 ```
 
-If you are using Candid, you should also write or generate service description files for your own canisters so that other canisters and external applications can easily call into your canister. See the [Candid documentation](/docs/current/developer-docs/smart-contracts/candid/candid-howto) for more instructions.
+If you are using Candid, you should also write or generate service description files for your own canisters so that other canisters and external applications can easily call into your canister. See the [Candid documentation](/current/developer-docs/smart-contracts/candid/candid-howto) for more instructions.
 
-When the canister authors support it, remote canisters can also be made "pullable", such that you can easily test against the canisters locally. See the [dfx documentation](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json#pullable-canisters) for more details.
+When the canister authors support it, remote canisters can also be made "pullable", such that you can easily test against the canisters locally. See the [dfx documentation](/current/developer-docs/developer-tools/cli-tools/dfx-json#pullable-canisters) for more details.
 
 ## Performing inter-canister calls
 
 Once you know the endpoints you want to call, in most cases you will want to use the CDK of your language to perform the calls. The CDK will generally take care of Candid encoding and decoding, and provide an `async/await` based syntax for your inter-canister calls. Refer to the language documentation
-([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister), [Typescript](https://demergent-labs.github.io/azle/), [Python](https://demergent-labs.github.io/kybra/))
+([Motoko](/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/current/developer-docs/backend/rust/intercanister), [Typescript](https://demergent-labs.github.io/azle/), [Python](https://demergent-labs.github.io/kybra/))
 for more details.
 
 
 ### Low-level API
 
-Under the hood, the CDKs use the low-level Wasm API to perform inter-canister calls and set appropriate callbacks to handle responses. Most users will not need to interact with this API directly, but you can find more details in the [Internet Computer interface specification](/docs/references/ic-interface-spec/#system-api-call) if you need to perform workflows or use functionality that might not be directly exposed by your CDK or if you intend to implement a CDK yourself.
+Under the hood, the CDKs use the low-level Wasm API to perform inter-canister calls and set appropriate callbacks to handle responses. Most users will not need to interact with this API directly, but you can find more details in the [Internet Computer interface specification](/references/ic-interface-spec/#system-api-call) if you need to perform workflows or use functionality that might not be directly exposed by your CDK or if you intend to implement a CDK yourself.
 
 
 ### Attaching cycles
 
-[Cycles](/docs/current/developer-docs/gas-cost) are the currency in which canisters pay for their resource usage. Canisters can send some of the cycles they hold to other canisters. This can be done either by directly attaching cycles to any call to the target canister, or by calling the dedicated [`deposit_cycles`](/docs/references/ic-interface-spec/#ic-deposit_cycles) method of the management canister and attaching the cycles there. In the former way of attaching cycles (not using `deposit_cycles`), the target canister must explicitly accept part or all of the sent cycles when processing the call; the remainder is refunded to the caller.
+[Cycles](/current/developer-docs/gas-cost) are the currency in which canisters pay for their resource usage. Canisters can send some of the cycles they hold to other canisters. This can be done either by directly attaching cycles to any call to the target canister, or by calling the dedicated [`deposit_cycles`](/references/ic-interface-spec/#ic-deposit_cycles) method of the management canister and attaching the cycles there. In the former way of attaching cycles (not using `deposit_cycles`), the target canister must explicitly accept part or all of the sent cycles when processing the call; the remainder is refunded to the caller.
 
 :::info
 Note that cycles may get dropped when using bounded-wait calls. See the section on [bounded- vs unbounded-wait calls](#ic-call-types) for more details.
 :::
 
-Some endpoints require the caller to attach cycles to the call. For example, the [threshold signature](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa) operations of the management canister require cycles to be attached. Requiring cycles can be used to implement a "direct gas" model, as opposed to the default ["reverse gas"](/docs/current/developer-docs/gas-cost) model of ICP.
+Some endpoints require the caller to attach cycles to the call. For example, the [threshold signature](/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa) operations of the management canister require cycles to be attached. Requiring cycles can be used to implement a "direct gas" model, as opposed to the default ["reverse gas"](/current/developer-docs/gas-cost) model of ICP.
 
-Refer to the language documentation ([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister),  [Typescript](/docs/current/developer-docs/backend/typescript/), [Python](/docs/current/developer-docs/backend/python/)) for details on how to send and accept cycles.
+Refer to the language documentation ([Motoko](/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/current/developer-docs/backend/rust/intercanister),  [Typescript](/current/developer-docs/backend/typescript/), [Python](/current/developer-docs/backend/python/)) for details on how to send and accept cycles.
 
 ## Bounded- vs unbounded-wait calls {#ic-call-types}
 
@@ -74,7 +74,7 @@ Unbounded-wait calls require the caller to handle one error condition (unknown c
 Here are some guidelines how to choose between the two types of calls:
 
 * Always prefer bounded-wait calls for calls that don't change the state of the callee, i.e., reads.
-* For endpoints that change the state of the callee, the best practice is to make such endpoints amenable to [safe retries](/docs/building-apps/best-practices/idempotency) (e.g., by making them idempotent). Note that making user-facing endpoints amenable to safe retries is a good idea anyway, as it's needed to safely handle external user calls. Use bounded-wait calls for such endpoints, and handle the additional edge cases.
+* For endpoints that change the state of the callee, the best practice is to make such endpoints amenable to [safe retries](/building-apps/best-practices/idempotency) (e.g., by making them idempotent). Note that making user-facing endpoints amenable to safe retries is a good idea anyway, as it's needed to safely handle external user calls. Use bounded-wait calls for such endpoints, and handle the additional edge cases.
 * Use unbounded-wait calls for endpoints that mutate state and do not enable safe retries, or calls that perform larger cycle transfers. As mentioned, bounded-wait calls lose cycles attached to requests/responses that are dropped. Be aware of the limitations of unbounded-wait calls listed above. If safe upgrades are needed, consider using a stateless proxy canister (see the [security best practices](https://internetcomputer.org/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) for more information).
 
 ## `async/await` syntax, concurrency and state changes
@@ -97,4 +97,4 @@ Second, canister methods that use inter-canister calls are **not atomic**. A fai
 
 For these reasons, you should understand how the CDK for your language of choice desugars the `async/await` syntax into Wasm code in order to write correct code in the presence of inter-canister calls. In particular, you should understand where the message handler boundaries are, since these are both "commit points" for state changes and also potential interleaving points for concurrent executions.
 
-A [separate document](/docs/references/message-execution-properties) contains more details on interleaving/commit points and message execution properties. Refer to the [security best practices](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) for advice on how to handle concurrency and state rollback issues correctly. Finally, refer to the CDK documentation for your language to learn more about desugaring of `async/await` and interleaving/commit points.
+A [separate document](/references/message-execution-properties) contains more details on interleaving/commit points and message execution properties. Refer to the [security best practices](/current/developer-docs/security/security-best-practices/inter-canister-calls) for advice on how to handle concurrency and state rollback issues correctly. Finally, refer to the CDK documentation for your language to learn more about desugaring of `async/await` and interleaving/commit points.

@@ -4,11 +4,11 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react';
 import {
   ThemeClassNames,
 } from '@docusaurus/theme-common';
-import { useSidebarBreadcrumbs, useHomePageRoute } from '@docusaurus/theme-common/internal';
+import { useHomePageRoute } from '@docusaurus/theme-common/internal';
+import { useSidebarBreadcrumbs } from '@docusaurus/plugin-content-docs/client';
 import styles from './styles.module.css';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';

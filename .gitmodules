@@ -9,9 +9,6 @@
 	path = submodules/internetidentity
 	url = https://github.com/dfinity/internet-identity.git
 	branch = main
-[submodule "submodules/samples"]
-	path = submodules/samples
-	url = https://github.com/dfinity/examples.git
 [submodule "submodules/dfxvm"]
 	path = submodules/dfxvm
 	url = https://github.com/dfinity/dfxvm.git

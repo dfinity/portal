@@ -1,5 +1,5 @@
 import SearchOverlay from "@site/src/components/Common/Search/Search";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AskAIWidget } from "@site/src/components/DocsHome/AskAIWidget";
 

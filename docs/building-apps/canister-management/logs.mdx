@@ -21,7 +21,7 @@ The <GlossaryTooltip>canister</GlossaryTooltip> logging feature is designed to p
 
 - Queries, only if called in replicated mode.
 
-A canister's controller is able to retrieve the canister's logs, even when executions trap, using [`dfx canister logs <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-logs):
+A canister's controller is able to retrieve the canister's logs, even when executions trap, using [`dfx canister logs <canister-name>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-logs):
 
 ```
 dfx canister logs <canister-name>
@@ -33,7 +33,7 @@ Non-replicated calls are not currently supported for logging.
 
 ## Log visibility
 
-By default, a canister's logs are only visible to the controllers of the canister. A canister's logs can be made public by updating the canister's settings with the [`dfx canister update-settings`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) command:
+By default, a canister's logs are only visible to the controllers of the canister. A canister's logs can be made public by updating the canister's settings with the [`dfx canister update-settings`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) command:
 
 ```bash
 dfx canister update-settings <canister-name> --log-visibility public

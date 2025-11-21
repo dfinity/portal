@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import Link from "@docusaurus/Link";
 
 export interface CarouselCard {

@@ -1,4 +1,3 @@
-import React, { ReactElement } from "react";
 import { Tooltip } from "./Tooltip";
 import { useGlossary } from "@site/src/context/GlossaryProvider";
 

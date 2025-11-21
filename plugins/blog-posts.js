@@ -3,15 +3,16 @@ const path = require("path");
 const logger = require("@docusaurus/logger");
 const {
   parseBlogFileName,
-} = require("@docusaurus/plugin-content-blog/lib/blogUtils");
+} = require("@docusaurus/plugin-content-blog/src/blogUtils");
 const {
   getFileCommitDate,
   normalizeUrl,
-  parseMarkdownString,
+  parseMarkdownFile,
+  DEFAULT_PARSE_FRONT_MATTER
 } = require("@docusaurus/utils");
 const glob = require("glob");
 
-function postDate(frontMatter, pathName, parsedPathNameDate) {
+async function postDate(frontMatter, pathName, parsedPathNameDate) {
   if (frontMatter.date) {
     if (frontMatter.date instanceof Date) {
       return frontMatter.date;
@@ -31,21 +32,9 @@ function postDate(frontMatter, pathName, parsedPathNameDate) {
 
   // fallback to git commit date
   try {
-    return getFileCommitDate(pathName, { age: "oldest" }).date;
-  } catch {
-    return fs.statSync(pathName).birthtime;
-  }
-}
-
-function parseBlogPostMarkdownFile(blogSourceAbsolute) {
-  const markdownString = fs.readFileSync(blogSourceAbsolute, "utf-8");
-  try {
-    return parseMarkdownString(markdownString, {
-      removeContentTitle: true,
-    });
+    return (await getFileCommitDate(pathName, { age: "oldest" })).date;
   } catch (err) {
-    logger.error`Error while parsing blog post file path=${blogSourceAbsolute}.`;
-    throw err;
+    return fs.statSync(pathName).birthtime;
   }
 }
 
@@ -93,18 +82,18 @@ const BlogPostsPlugin = async function (context) {
       )) {
         const relativePath = path.relative(blogDir, postAbsolute);
 
-        const { frontMatter, contentTitle } =
-          parseBlogPostMarkdownFile(postAbsolute);
+        const markdownString = fs.readFileSync(postAbsolute, 'utf-8');
+        const { frontMatter, contentTitle } = await parseMarkdownFile({filePath: postAbsolute, fileContent: markdownString, parseFrontMatter: DEFAULT_PARSE_FRONT_MATTER, removeContentTitle: true});
 
         let parsedFileName = parseBlogFileName(relativePath);
-        const date = postDate(frontMatter, postAbsolute, parsedFileName.date);
+        const date = await postDate(frontMatter, postAbsolute, parsedFileName.date);
 
         const slug = frontMatter.slug ?? parsedFileName.slug;
 
         const permalink = normalizeUrl([baseUrl, routeBasePath, slug]);
 
         const title =
-          frontMatter.title ?? contentTitle ?? parsedBlogFileName.text;
+          frontMatter.title ?? contentTitle ?? parsedFileName.text;
 
         const formattedDate = formatBlogPostDate(
           i18n.currentLocale,

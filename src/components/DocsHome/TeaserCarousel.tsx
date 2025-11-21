@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
 import Link from "@docusaurus/Link";
 import { Swiper, SwiperSlide } from "swiper/react";

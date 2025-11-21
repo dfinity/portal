@@ -34,7 +34,7 @@ A minimal example to make a `GET` HTTP request. The purpose of this dapp is only
 
 - `get_icp_usd_exchange() -> String` returns a `String`, but this is not necessary. In this tutorial, this is done for easier testing.
 - The `lib.rs` file uses [http_request](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request.html) which is a convenient Rust CDK method that already sends cycles to the management canister under the hood. It knows how many cycles to send for a 13-node [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) in most cases. If your HTTPS outcall needs more cycles, you should use the [http_request_with_cycles()](https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/fn.http_request_with_cycles.html) method and explicitly call the cycles needed.
-- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](/docs/references/ic-interface-spec#ic-http_request), but it is not strictly the same.
+- The Rust CDK method `http_request` used above wraps the management canister method [`http_request`](/references/ic-interface-spec#ic-http_request), but it is not strictly the same.
 
 To use HTTPS outcalls, you must update the canister's Candid file:
 

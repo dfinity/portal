@@ -1,16 +1,12 @@
 import Link from "@docusaurus/Link";
 import React, { FC, ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
-import { NetworkStats } from "./NetworkStats";
-import Blog from "./Blog";
 import {
   CarouselCard,
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
 import LinkArrowUpRight from "../Common/Icons/LinkArrowUpRight";
-
-const queryClient = new QueryClient();
+import Blog from "./Blog";
 
 const links = [
   {
@@ -57,7 +53,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/motoko/home"
+        href="/motoko/home"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Motoko docs"
       >
@@ -81,7 +77,7 @@ const languagesTiles: TileDescriptor[] = [
     invertIconDarkMode: true,
     action: (
       <Link
-        href="/docs/building-apps/developer-tools/cdks/rust/intro-to-rust"
+        href="/building-apps/developer-tools/cdks/rust/intro-to-rust"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Rust docs"
       >
@@ -174,7 +170,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/building-apps/chain-fusion/supported-chains"
+        href="/building-apps/chain-fusion/supported-chains"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="View the docs"
       >
@@ -203,7 +199,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/build-on-btc/"
+        href="/build-on-btc/"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Bitcoin integration"
       >
@@ -228,7 +224,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/building-apps/chain-fusion/ethereum/overview"
+        href="/building-apps/chain-fusion/ethereum/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Ethereum integration"
       >
@@ -257,7 +253,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/defi/chain-key-tokens/overview"
+        href="/defi/chain-key-tokens/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about chain-key tokens"
       >
@@ -285,7 +281,7 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/tutorials/developer-liftoff/"
+          href="/tutorials/developer-liftoff/"
         >
           Start tutorials
           <LinkArrowRight />
@@ -304,7 +300,7 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/tutorials/hackathon-prep-course/"
+          href="/tutorials/hackathon-prep-course/"
         >
           Start course
           <LinkArrowRight />
@@ -483,7 +479,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/building-apps/getting-started/quickstart"
+                href="/building-apps/getting-started/quickstart"
               >
                 SDK BUILD
                 <LinkArrowRight />
@@ -516,7 +512,7 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               className="button-primary rounded-2xl"
-              href="/docs/building-apps/developer-tools/cdks/"
+              href="/building-apps/developer-tools/cdks/"
             >
               View all
             </Link>
@@ -547,7 +543,7 @@ const DocsHomePage: FC = () => {
           </p>
           <Link
             className="button-primary rounded-2xl"
-            href="/docs/building-apps/chain-fusion/overview"
+            href="/building-apps/chain-fusion/overview"
           >
             LEARN MORE
           </Link>

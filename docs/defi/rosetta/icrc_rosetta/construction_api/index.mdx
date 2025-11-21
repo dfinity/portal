@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
 
-The construction API allows for offline signing of transactions and then posting them on ICP at a later point in time. It is recommended to first go through [flow of operations](/docs/defi/rosetta/icp_rosetta/construction_api/operations-flow) of the construction API to gain an understanding of how it works, what endpoints to call with what parameters, and where the user has to take action upon receiving certain responses.
+The construction API allows for offline signing of transactions and then posting them on ICP at a later point in time. It is recommended to first go through [flow of operations](/defi/rosetta/icp_rosetta/construction_api/operations-flow) of the construction API to gain an understanding of how it works, what endpoints to call with what parameters, and where the user has to take action upon receiving certain responses.
 
 Currently, the construction API of Rosetta supports only one category of transactions, which is the transfer of assets. According to the ICRC-1 and ICRC-2 standards, this can be done in the following ways:
 - [Direct transfers](#direct-transfer-of-tokens): This is the most basic functionality. In accordance with the ICRC-1 standard, you can use Rosetta to transfer ICRC tokens.
@@ -16,7 +16,7 @@ Currently, the construction API of Rosetta supports only one category of transac
 
 ## Approve a spender
 
-This section will show you how to use the ICRC Rosetta implementation to authorize a spender to spend your ICRC-1 tokens. Make sure you are familiar with the [flow of operations](/docs/defi/rosetta/icp_rosetta/construction_api/operations-flow) for Rosetta.
+This section will show you how to use the ICRC Rosetta implementation to authorize a spender to spend your ICRC-1 tokens. Make sure you are familiar with the [flow of operations](/defi/rosetta/icp_rosetta/construction_api/operations-flow) for Rosetta.
 The request types used for making direct transfers are `APPROVE` and `SPENDER`. They consist of two operations, one for the approve operation and another for the spender operation.
 
 :::info
