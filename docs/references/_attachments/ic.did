@@ -112,7 +112,7 @@ type flexible_http_request_err = record {
       node_id: principal;
       cause : opt variant {
         limit_exceeded : opt variant {
-          request_time : reserved;
+          http_roundtrip_time : reserved;
           response_bytes : reserved;
           transform_instructions : reserved;
           transformed_response_bytes : reserved;
