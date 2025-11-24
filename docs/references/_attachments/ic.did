@@ -128,7 +128,7 @@ type flexible_http_request_err = record {
   message: text;
 };
 
-type flexible_http_request_result = record {
+type flexible_http_request_result = variant {
   ok: vec http_request_result;
   err: flexible_http_request_err;
 };
