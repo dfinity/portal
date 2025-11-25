@@ -33,6 +33,7 @@ docs/building-apps/essentials/message-execution.mdx @dfinity/team-dsm @dfinity/e
 docs/building-apps/network-features/simd.mdx @dfinity/team-dsm @dfinity/editorial
 docs/building-apps/network-features/periodic-tasks-timers.mdx @dfinity/team-dsm @dfinity/editorial
 docs/building-apps/canister-management/backtraces.mdx @dfinity/team-dsm @dfinity/editorial
+docs/building-apps/advanced/canister-migration.mdx @dfinity/team-dsm @dfinity/editorial
 
 # Boundary Node
 docs/building-apps/frontends/custom-domains/ @dfinity/boundary-node @dfinity/editorial
