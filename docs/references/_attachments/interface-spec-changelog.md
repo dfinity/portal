@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.53.0 (2025-11-24)
+* New execution context `TQ` for canister http transform functions to specify that no IC certificate is available in such executions.
+
 ### 0.52.0 (2025-11-17)
 * Canister memory allocation does not limit canister memory usage.
 
