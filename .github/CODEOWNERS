@@ -42,12 +42,12 @@ docs/building-apps/advanced/canister-access-logs.mdx @dfinity/boundary-node @dfi
 docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust @dfinity/editorial
 
 # The Interface Specification
-docs/references/_attachments/certificates.cddl @dfinity/canister-os
-docs/references/_attachments/http-gateway.did @dfinity/canister-os
-docs/references/_attachments/ic.did @dfinity/canister-os
-docs/references/_attachments/interface-spec-changelog.md @dfinity/canister-os
-docs/references/_attachments/requests.cddl @dfinity/canister-os
-docs/references/http-gateway-protocol-spec.md @dfinity/canister-os
-docs/references/ic-interface-spec.md @dfinity/canister-os
+docs/references/_attachments/certificates.cddl @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
+docs/references/_attachments/http-gateway.did @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
+docs/references/_attachments/ic.did @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
+docs/references/_attachments/interface-spec-changelog.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
+docs/references/_attachments/requests.cddl @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
+docs/references/http-gateway-protocol-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
+docs/references/ic-interface-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
 
 
