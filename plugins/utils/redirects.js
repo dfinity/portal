@@ -1143,7 +1143,7 @@ const redirects = `
   /developers-guide/basic-syntax-rules /motoko/language-manual
   /developers-guide/cli-reference/ /building-apps/developer-tools/dfx/
   /developers-guide/computation-and-storage-costs.html /building-apps/essentials/gas-cost
-  /developers-guide/concepts/bitcoin-integration /bitcoin
+  /developers-guide/concepts/bitcoin-integration https://internetcomputer.org/bitcoin
   /developers-guide/concepts/concepts-intro /building-apps/essentials/network-overview
   /developers-guide/concepts/ /building-apps/essentials/network-overview
   /developers-guide/concepts/what-is-ic /building-apps/essentials/network-overview
