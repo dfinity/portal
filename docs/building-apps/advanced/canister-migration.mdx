@@ -4,7 +4,7 @@ keywords: [intermediate, dfx, load balancing, migration]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Canister migration
+# Canister Migration
 
 <MarkdownChipRow labels={["Intermediate"]} />
 
@@ -38,9 +38,9 @@ It is recommended to preserve the snapshot of the migrated canister (and also it
 
 **WARNING**: Make sure to create a snapshot of the migrated canister before proceeding with the following commands since they will destroy the migrated canister's state.
 
-To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/docs/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet).
+To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/docs/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet) (the canister ID must be provided explicitly, i.e., the argument of `dfx identity deploy-wallet` must not be a canister name).
 
-To actually migrate cycles from the migrated canister, we start the migrated canister using [`dfx canister start`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-start) and then we use [`dfx canister deposit-cycles`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-deposit-cycles) specifying the migrated canister as `--wallet` and the replaced canister as the canister to which cycles should be deposited.
+To actually migrate cycles from the migrated canister, we use [`dfx canister deposit-cycles`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-deposit-cycles) specifying the migrated canister as `--wallet` (the canister ID must be provided explicitly, i.e., the argument of `--wallet` must not be a canister name) and the replaced canister as the canister to which cycles should be deposited.
 
 Make sure to leave at least 10T cycles in the migrated canister to pay for canister ID migration (described in the next section) and additionally enough cycles to pay for the migrated canister's resource consumption up until its canister ID migration. You can check out the migrated canister's resource cycles consumption as "idle" cycles consumption (per day) using [`dfx canister status`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status).
 
@@ -57,7 +57,7 @@ Canister ID migration is expected to take at least 6 minutes. You can check out 
 # Example
 
 Here's a complete example runbook for canister migration.
-The migrated canister is `uqqxf-5h777-77774-qaaaa-cai` and the replaced canister ID is `ahree-maaaa-aaaar-q777q-cai`.
+The migrated canister ID is `uqqxf-5h777-77774-qaaaa-cai` and the replaced canister ID is `ahree-maaaa-aaaar-q777q-cai`.
 ```
 # Canister State Migration
 $ dfx canister stop migrated
