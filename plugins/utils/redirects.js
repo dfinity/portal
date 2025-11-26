@@ -103,7 +103,6 @@ const redirects = `
   /current/developer-docs/backend/motoko/0.11.0-migration-guide https://github.com/dfinity/motoko/blob/master/doc/attic/0.11.0-migration-guide
   /current/motoko/main/about-this-guide /motoko/home
   /motoko/fundamentals/messaging /references/async-code
-  /motoko/main/motoko /motoko/home
   /current/motoko/main/base/array /motoko/base/Array
   /current/motoko/main/base/buffer /motoko/base/Buffer
   /current/motoko/main/base/char /motoko/base/Char
@@ -122,7 +121,7 @@ const redirects = `
   /current/motoko/main/base/debug /motoko/base/Debug
   /current/motoko/main/base/int8 /motoko/base/Int8
   /current/motoko/main/base/nat /motoko/base/Nat
-  /rust/main/motoko-packages/databases /home
+  /rust/main/motoko-packages/databases /
   /current/motoko/main/motoko-introduction /motoko/home
   /current/motoko/main/motoko /motoko/home
   /current/motoko/main/basic-concepts /motoko/fundamentals/actors/actors-async
@@ -663,7 +662,6 @@ const redirects = `
   /references/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/cli-reference
 
   ## Dev tools
-  /developers/ /home
   /current/developer-docs/deploy/computation-and-storage-costs /building-apps/essentials/gas-cost
   /current/developer-docs/deploy/custom-domain /building-apps/frontends/custom-domains/using-custom-domains
   /current/developer-docs/developer-tools/cli-tools/dfx-json-reference /building-apps/developer-tools/dfx-json-reference
@@ -1267,15 +1265,12 @@ const redirects = `
   /current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args /building-apps/developing-canisters/deploy
   /current/references/security/general-security-best-practices /building-apps/security/overview
   /current/references/security/ /building-apps/security/overview
-  /current/developer-docs/use-cases/ /home
+  /current/developer-docs/use-cases/ /
   /current/developer-docs/interact-with-canisters/agents/javascript-agent /building-apps/interact-with-canisters/agents/javascript-agent
   /current/developer-docs/starter-kits /building-apps/getting-started/quickstart
   /current/developer-docs/web-apps/application-frontends/serving-static-asset /building-apps/frontends/uploading-serving-assets
   /building-apps/frontends/custom-domains/ /building-apps/frontends/custom-domains/using-custom-domains
   /current/developer-docs/glossary /references/glossary
-  /BTC /bitcoin
-  /chain-fusion /chainfusion
-  /alliance https://dfinity.org/alliance
   /current/developer-docs/backend/actors-programming /building-apps/essentials/canisters
   /current/developer-docs/backend/rust/rust-canister-quickstart /building-apps/developer-tools/cdks/rust/intro-to-rust
   /current/developer-docs/deploy/cycles /building-apps/essentials/gas-cost
@@ -1287,7 +1282,6 @@ const redirects = `
   /current/references/cli-reference/dfx-ledger/ /building-apps/developer-tools/dfx/dfx-ledger
   /current/samples/deploying-your-first-bitcoin-dapp http://icp.ninja/
   /current/samples/host-a-website/ http://icp.ninja/
-  /features/serve-web-content/ /capabilities
   /tutorials/developer-liftoff/level-0/dev-env /tutorials/developer-liftoff/level-0/tooling
   /tutorials/developer-liftoff/level-0/intro-canisters /tutorials/developer-liftoff/level-0/intro-languages
   /tutorials/developer-liftoff/level-0/intro-languages /tutorials/developer-liftoff/level-0/tooling
@@ -1310,14 +1304,10 @@ const redirects = `
   /current/developer-docs/smart-contracts/candid /building-apps/interact-with-canisters/candid/candid-concepts
   /motoko/version /building-apps/getting-started/install
   /references/ /references/ic-interface-spec
-  /ecosystem.json /ecosystem
-  /ethereum /chainfusion
-  /img/ /home
-  /olympus /
   /defi /defi/overview
   /current/tokenomics/nns/nns-staking-voting-rewards/ https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /download.html /home
-  /ic-identity-guide/what-is-ic-identity.html /home
+  /download.html /
+  /ic-identity-guide/what-is-ic-identity.html https://internetcomputer.org/internet-identity
   /language-guide/style.html /motoko/home
   /current/tutorials/developer-journey/level-5/5.2-icp-eth-tutorial /tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial
   /current/tutorials/developer-journey/level-5/5.4-nft-tutorial /tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
@@ -1325,7 +1315,7 @@ const redirects = `
   /current/tutorials/developer-liftoff/level-5/5.1-vetkeys-tutorial /tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial
   /current/tutorials/developer-liftoff/level-5/5.2-icp-eth-tutorial /tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial
   /current/tutorials/developer-liftoff/level-5/5.4-nft-tutorial /tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
-  /introduction/ /home
+  /introduction/ /
   /rust/ /building-apps/developer-tools/cdks/rust/intro-to-rust
   /current/developer-docs/integrations/bitcoin/btc-address-management /build-on-btc/btc-transactions/generate-addresses
   /rust/main/ /building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -1333,12 +1323,10 @@ const redirects = `
   /current/developer-docs/functionality/bitcoin /build-on-btc/
   /current/developer-docs/build/cdks/azle-demergent-labs https://demergent-labs.github.io/azle/
   /candid-guide/candid-intro.html /building-apps/interact-with-canisters/candid/candid-concepts
-  /current/home /home
-  /building /home
-  /introduction/welcome.html /home
+  /current/home /
+  /building /
+  /introduction/welcome.html /
   /rust-guide/rust-quickstart.html /building-apps/developer-tools/cdks/rust/intro-to-rust
-  /install.sh) /building-apps/getting-started/install
-  /become-a-member /news
   /agent /building-apps/interact-with-canisters/agents/overview
   /base-libraries/int.html /motoko/home
   /base-libraries/iter.html /motoko/home
@@ -1347,22 +1335,21 @@ const redirects = `
   /building-apps/getting-started/ /building-apps/getting-started/quickstart
   /candid-guide/candid-howto /building-apps/interact-with-canisters/candid/candid-concepts
   /current/building-apps/getting-started/quickstart /building-apps/getting-started/quickstart
-  /developers-guide/tutorials/phonebook.html http://icp.ninja/
   /current/tokenomics/identity-auth/ /building-apps/authentication/integrate-internet-identity
   /current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
-  /docs /home
+  /docs /
   /current/references/ii-spec /references/ii-spec
   /download /building-apps/getting-started/install
   /eveloper-docs/developer-tools/cli-tools/dfxvm/cli-reference/dfxvm/dfxvm-update /building-apps/developer-tools/dfxvm/dfxvm-update
-  /http-middleware /home
+  /http-middleware /
   /ic-identity-guide/auth-how-to.html /building-apps/authentication/integrate-internet-identity/
   /ic-identity-guide/ /building-apps/authentication/overview
   /ic-interface-spec /references/ic-interface-spec
-  /ic-overview  /home
+  /ic-overview  /
   /integration/ledger-quick-start.html /defi/token-ledgers/setup/icp_ledger_setup
   /integration/ledger-quick-start /defi/token-standards/
   /interface-spec /references/ic-interface-spec
-  /introduction/welcome /home
+  /introduction/welcome /
   /language-guide/cycles.html /building-apps/getting-started/tokens-and-cycles
   /language-guide/ /motoko/base/
   /language-guide/language-manual.html /motoko/home
@@ -1370,54 +1357,12 @@ const redirects = `
   /languages/languages-overview /building-apps/essentials/canisters
   /local-quickstart.html /building-apps/getting-started/install
   /network-quickstart.html /building-apps/getting-started/install
-  /operators-guide/ops-guide /home
-  /videos-tutorials /home
-  /education /education-hub
-  /features/ /capabilities
-  /features/green /capabilities/sustainability
-  /grants https://dfinity.org/grants
-  /how-it-works https://learn.internetcomputer.org/
-  /howitworks https://learn.internetcomputer.org/
-  /howitworks/ https://learn.internetcomputer.org/
-  /how-it-works/chain-key-technology https://learn.internetcomputer.org/hc/en-us/articles/34209486239252-Chain-Key-Cryptography
-  /how-it-works/network-nervous-system-nns https://learn.internetcomputer.org/hc/en-us/articles/33692645961236-Overview
-  /how-it-works/chain-key-tokens https://learn.internetcomputer.org/hc/en-us/articles/34211397080980-Chain-Key-Tokens
-  /how-it-works/tokenomics https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
-  /how-it-works/web-authentication-identity https://internetcomputer.org/internet-identity
-  /how-it-works/smart-contracts-serve-the-web https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts
-  /how-it-works/sns https://learn.internetcomputer.org/hc/en-us/articles/34084394684564-SNS-Service-Nervous-System
-  /how-it-works/threshold-ecdsa-signing https://learn.internetcomputer.org/hc/en-us/articles/34209497587732-Chain-Key-Signatures
-  /how-it-works/canister-lifecycle https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts
-  /how-it-works/message-routing https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing
-  /how-it-works/motoko /motoko/home
-  /how-it-works/architecture-of-the-internet-computer https://learn.internetcomputer.org/hc/en-us/articles/33694833025172-How-Does-ICP-Work
-  /how-it-works/consensus https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus
-  /how-it-works/execution-layer https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer
-  /how-it-works/bitcoin-integration https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration
-  /how-it-works/boundary-nodes https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure
-  /how-it-works/core-ic-protocol-overview https://learn.internetcomputer.org/hc/en-us/articles/34206453538964-Blockchain-Protocol
-  /how-it-works/response-certification https://learn.internetcomputer.org/hc/en-us/articles/34214090576404-Certified-Communication
-  /how-it-works/scalability https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation
-  /how-it-works/upgrades https://learn.internetcomputer.org/hc/en-us/articles/34210120121748-Chain-Evolution
-  /how-it-works/asset-certification https://learn.internetcomputer.org/hc/en-us/articles/34214090576404-Certified-Communication
-  /how-it-works/fault-tolerance https://learn.internetcomputer.org/hc/en-us/articles/34210647901460-Fault-Tolerance
-  /how-it-works/peer-to-peer-p2p https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer
-  /icp-event /events
-  /icp-newsletter /news
-  /language-guide/ /tutorials/developer-liftoff/level-0/intro-languages
-  /language-guide/index /tutorials/developer-liftoff/level-0/intro-languages
-  /live-sessions https://dfinity.org/events-and-news/#videos-live-sessions
-  /multichain /chainfusion
-  /ois /sns
-  /openchat /sns
-  /showcase /ecosystem
-  /sustainability /capabilities/sustainability
-  /videos /news
-  /community/asia-alliance https://dfinity.org/alliance
-  /search /home
+  /operators-guide/ops-guide https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation
+  /videos-tutorials /
+  /search /
   /security-best-practices/ /building-apps/security/inter-canister-calls
   /security-best-practices/introduction /building-apps/security/overview
-  /support /home
+  /support /
   /token-holders/ /defi/overview
   /token-holders/nns-app-quickstart.html /building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
   /token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
@@ -1523,14 +1468,8 @@ const redirects = `
   /current/developer-docs/backend/python/ https://demergent-labs.github.io/kybra/
   /current/developer-docs/backend/reproducible-builds /building-apps/best-practices/reproducible-builds
   /current/developer-docs/backend/resource-limits /building-apps/canister-management/resource-limits
-  /apis/site/proxy /references/http-gateway-protocol-spec
-  /base-libraries/ /motoko/base/
-  /basics /what-is-the-ic
-  /bitcoin-integration /bitcoin
-  /bootcamp /education-hub
   /current/blog/features/vetkey-primer /references/vetkeys-overview
   /current/references/ingress-messages/ /building-apps/essentials/message-execution
-  /blog/features/vetkey-primer /references/vetkeys-overview
   /building-apps/network-features/encryption/vetkeys /building-apps/network-features/vetkeys/introduction
   /building-apps/network-features/encryption/using-vetkeys /building-apps/network-features/vetkeys/demos/send_file_to_eth
   /current/developer-docs/build/backend/rust/ /building-apps/developer-tools/cdks/rust/intro-to-rust
