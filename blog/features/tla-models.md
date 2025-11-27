@@ -42,4 +42,4 @@ Check out the technical tutorial [here](https://mynosefroze.com/blog/2023-08-09-
 Learn more about the Internet Computer: internetcomputer.org
 Follow the tech on Twitter: @DFINITYDev
 
-Start building on the Internet Computer: [Developer Docs](/docs/home).
+Start building on the Internet Computer: [Developer Docs](/).

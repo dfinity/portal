@@ -9,9 +9,9 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/building-apps/getting-started/tokens-and-cycles).
+Canister smart contracts consume resources to execute methods, respond to or send messages, store data, and use special features like [HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview). Each resource costs **cycles**. Developers obtain cycles by converting ICP tokens into cycles using [`dfx`](/building-apps/getting-started/tokens-and-cycles).
 
-The price of cycles is fixed against the price of [XDR](/docs/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of May 22, 2025, the [exchange rate for 1 XDR = $1.35](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
+The price of cycles is fixed against the price of [XDR](/references/glossary#x), where 1 trillion cycles equals 1 XDR. As of May 22, 2025, the [exchange rate for 1 XDR = $1.35](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx). The exchange rate for USD/XDR may vary.
 
 To estimate how much a project might cost, you can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/).
 
@@ -23,7 +23,7 @@ This model gives end users a smooth, Web2-like experience since they don't need 
 
 One downside of the reverse gas model is that it requires ongoing maintenance. Canisters must have their cycles balances maintained and regularly topped up because a canister will be removed from the network if it runs out of cycles.
 
-To prevent a canister from running out of cycles, a [freezing threshold](/docs/building-apps/canister-management/settings/#freezing-threshold) can be set that pauses a canister's execution if the cycles balance is expected to fall below a certain amount, or[ topping up a canister](/docs/building-apps/canister-management/topping-up) can be automated using tools like [CycleOps](https://cycleops.dev/).
+To prevent a canister from running out of cycles, a [freezing threshold](/building-apps/canister-management/settings/#freezing-threshold) can be set that pauses a canister's execution if the cycles balance is expected to fall below a certain amount, or[ topping up a canister](/building-apps/canister-management/topping-up) can be automated using tools like [CycleOps](https://cycleops.dev/).
 
 Learn more about the [reverse gas model](/capabilities/reverse-gas).
 
@@ -53,7 +53,7 @@ Additionally, they must pay for any ingress messages they receive, including ing
 
 [Xnet](https://mmapped.blog/posts/08-ic-xnet) calls are charged to the sending canister.
 
-More information about responsible canisters can be found on the [cycles calculation reference page.](/docs/references/cycles-cost-formulas)
+More information about responsible canisters can be found on the [cycles calculation reference page.](/references/cycles-cost-formulas)
 
 ### Canister creation
 
@@ -65,9 +65,9 @@ A canister can receive messages from users and other canisters. Messaging fees a
 
 - Query calls: Free.
 
-- [Inter-canister calls](/docs/building-apps/interact-with-canisters/advanced-calls#inter-canister-calls): 260K base fee, plus 1K cycles per byte, paid by the sending canister.
+- [Inter-canister calls](/building-apps/interact-with-canisters/advanced-calls#inter-canister-calls): 260K base fee, plus 1K cycles per byte, paid by the sending canister.
 
-- [Ingress messages](/docs/building-apps/essentials/message-execution): 1.2M base fee, plus 2K cycles per byte, paid by the receiving canister.
+- [Ingress messages](/building-apps/essentials/message-execution): 1.2M base fee, plus 2K cycles per byte, paid by the receiving canister.
 
 
 ### Execution and compute allocation
@@ -90,11 +90,11 @@ Setting even 1% compute allocation provides a significant advantage over caniste
 
 Compute is a finite resource and is priced as such. The allocatable compute capacity is 299% per subnet. The current fee for 1% compute allocation per second is 10M cycles (approximately $0.0000135 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M \* 100 cycles per second.
 
-[View the cost calculation formula for more information about how costs are calculated](/docs/references/cycles-cost-formulas).
+[View the cost calculation formula for more information about how costs are calculated](/references/cycles-cost-formulas).
 
 ### Storage
 
-Canisters pay for the storage used by both their [Wasm memory](/docs/building-apps/canister-management/storage#heap-memory) and [stable memory](/docs/building-apps/canister-management/storage#stable-memory). Cost is calculated based on the amount of storage and time duration, such that storing 1 GiB for 1 second costs 127k cycles, which amounts to \~4T cycles (approximately $5.35 USD) for storing 1 GiB for 1 year.
+Canisters pay for the storage used by both their [Wasm memory](/building-apps/canister-management/storage#heap-memory) and [stable memory](/building-apps/canister-management/storage#stable-memory). Cost is calculated based on the amount of storage and time duration, such that storing 1 GiB for 1 second costs 127k cycles, which amounts to \~4T cycles (approximately $5.35 USD) for storing 1 GiB for 1 year.
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 
@@ -132,57 +132,57 @@ Hence, the canister’s reserved cycles balance might only increase when setting
 
 Certain network features incur a special cost based on the feature’s unique infrastructure and functionality. These features include:
 
-- [**HTTPS outcalls**](/docs/references/cycles-cost-formulas#https-outcalls)
+- [**HTTPS outcalls**](/references/cycles-cost-formulas#https-outcalls)
 
-- [**Bitcoin API**](/docs/references/bitcoin-how-it-works)
+- [**Bitcoin API**](/references/bitcoin-how-it-works)
 
-- [**Chain-key signing API**](/docs/references/t-sigs-how-it-works/): Threshold signatures, including threshold ECDSA and threshold Schnorr.
+- [**Chain-key signing API**](/references/t-sigs-how-it-works/): Threshold signatures, including threshold ECDSA and threshold Schnorr.
 
-- [**EVM RPC canister**](/docs/building-apps/chain-fusion/ethereum/overview)
+- [**EVM RPC canister**](/building-apps/chain-fusion/ethereum/overview)
 
 
 ## Errors related to cycles
 
 Common errors related to cycles include:
 
-- [Insufficient cycles in memory grow](/docs/references/execution-errors#insufficient-cycles-in-memory-grow).
+- [Insufficient cycles in memory grow](/references/execution-errors#insufficient-cycles-in-memory-grow).
 
-- [Reserved cycles limit exceeded in memory grow](/docs/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-grow).
+- [Reserved cycles limit exceeded in memory grow](/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-grow).
 
-- [Insufficient cycles in message memory grow](/docs/references/execution-errors#insufficient-cycles-in-message-memory-grow).
+- [Insufficient cycles in message memory grow](/references/execution-errors#insufficient-cycles-in-message-memory-grow).
 
-- [Insufficient cycles in compute allocation](/docs/references/execution-errors#insufficient-cycles-in-compute-allocation).
+- [Insufficient cycles in compute allocation](/references/execution-errors#insufficient-cycles-in-compute-allocation).
 
-- [Insufficient cycles in memory allocation](/docs/references/execution-errors#insufficient-cycles-in-memory-allocation).
+- [Insufficient cycles in memory allocation](/references/execution-errors#insufficient-cycles-in-memory-allocation).
 
-- [Insufficient cycles in memory grow](/docs/references/execution-errors#insufficient-cycles-in-memory-grow-1).
+- [Insufficient cycles in memory grow](/references/execution-errors#insufficient-cycles-in-memory-grow-1).
 
-- [Reserved cycles limit exceeded in memory allocation](/docs/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-allocation).
+- [Reserved cycles limit exceeded in memory allocation](/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-allocation).
 
-- [Install code not enough cycles](/docs/references/execution-errors#install-code-not-enough-cycles).
+- [Install code not enough cycles](/references/execution-errors#install-code-not-enough-cycles).
 
-- [Create canister not enough cycles](/docs/references/execution-errors#create-canister-not-enough-cycles).
+- [Create canister not enough cycles](/references/execution-errors#create-canister-not-enough-cycles).
 
 
 ## **Resources**
 
 ### Monitoring cycles usage
 
-- [Check your canister's cycles balance](/docs/building-apps/canister-management/topping-up#checking-the-cycles-balance-of-a-canister).
+- [Check your canister's cycles balance](/building-apps/canister-management/topping-up#checking-the-cycles-balance-of-a-canister).
 
 - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
 
 ### Getting cycles back from a canister
 
-- To withdraw cycles from a canister, the [canister must be deleted](/docs/tutorials/developer-liftoff/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
+- To withdraw cycles from a canister, the [canister must be deleted](/tutorials/developer-liftoff/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
 
 
 ### Topping up canisters
 
-- [Top up your canisters](/docs/building-apps/canister-management/topping-up).
-- [Cycles management services](/docs/building-apps/canister-management/topping-up#using-a-cycles-management-service).
+- [Top up your canisters](/building-apps/canister-management/topping-up).
+- [Cycles management services](/building-apps/canister-management/topping-up#using-a-cycles-management-service).
 
 ### Counting instructions
-- [Motoko function `countInstructions`](/docs/motoko/base/ExperimentalInternetComputer#function-countinstructions).
-- [IC interface specification](/docs/references/ic-interface-spec#system-api-performance-counter).
+- [Motoko function `countInstructions`](/motoko/base/ExperimentalInternetComputer#function-countinstructions).
+- [IC interface specification](/references/ic-interface-spec#system-api-performance-counter).

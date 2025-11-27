@@ -29,17 +29,17 @@ A query method can be called as both an update or a query, whereas update method
 | Executed on all nodes of a [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) | Executed on a single node |
 | Cost cycles | Free |
 
-See the reference on [ingress messages](/docs/building-apps/interact-with-canisters/advanced-calls) for a more technical discussion of this topic.
+See the reference on [ingress messages](/building-apps/interact-with-canisters/advanced-calls) for a more technical discussion of this topic.
 
 ## Making update calls with `dfx`
 
-To make an update call to a canister, use the [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--update` flag:
+To make an update call to a canister, use the [`dfx canister call`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--update` flag:
 
 - `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local development environment must be running to deploy and call a canister locally. Start it with `dfx start --background`.
 
-- `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+- `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/building-apps/developing-canisters/deploy#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 
-- `dfx canister call --update <canister-name> <method_name> --network=ic`: Make an update call to a canister deployed on the mainnet. Update calls will cost [cycles](/docs/building-apps/essentials/gas-cost).
+- `dfx canister call --update <canister-name> <method_name> --network=ic`: Make an update call to a canister deployed on the mainnet. Update calls will cost [cycles](/building-apps/essentials/gas-cost).
 
 ## Making update calls from within canisters
 
@@ -69,9 +69,9 @@ A number of errors could occur in the above flow. The following are examples of 
    1. The node is offline.
    2. An execution pre-processing error (status `200` in case of the async call) occurs.
    3. The node is incapable of handling the request (status `5xx`).
-4. It could be that status responses are never received. For example, a malicious boundary node could block the status response. Thus, the agent would never see a [status like `received`, `processing`, etc.](/docs/references/ic-interface-spec#state-tree-request-status) upon calling `read_state`.
+4. It could be that status responses are never received. For example, a malicious boundary node could block the status response. Thus, the agent would never see a [status like `received`, `processing`, etc.](/references/ic-interface-spec#state-tree-request-status) upon calling `read_state`.
 5. The certificate in the `read_state` response could be invalid. For example, it could be malformed or have an invalid signature.
-6. Finally, the call could be `rejected` (see [rejected status](/docs/references/ic-interface-spec#state-tree-request-status) and [reject codes](/docs/references/ic-interface-spec#reject-codes)).
+6. Finally, the call could be `rejected` (see [rejected status](/references/ic-interface-spec#state-tree-request-status) and [reject codes](/references/ic-interface-spec#reject-codes)).
 
 When seeing errors 2-5, the call may still be successfully executed. For example, the users might lose network connectivity, or a malicious boundary node or replica could return an error but still successfully execute the request. Only if a `rejected` response is received along with a valid certificate, the subnet guarantees that the call hasn’t been executed and never will be.
 
@@ -87,11 +87,11 @@ In this situation, it is indistinguishable if the call was successful, but all i
 
 ### Recommendations and best practices for secure update call handling
 
-The best way to handle the aforementioned errors is to implement safe retries using idempotent calls. Idempotency and several patterns to achieve it are discussed in the [best practices on safe retries and idempotency](/docs/building-apps/best-practices/idempotency).
+The best way to handle the aforementioned errors is to implement safe retries using idempotent calls. Idempotency and several patterns to achieve it are discussed in the [best practices on safe retries and idempotency](/building-apps/best-practices/idempotency).
 
 It may not always be possible to make call endpoints idempotent. For example, an endpoint that is not under the developer’s control may simply not have this property. In this case, there is still a secure way to retry the calls by relying on built-in deduplication based on request IDs, as we describe below. However, the guarantees in this case are weaker compared to using idempotent calls.
 
-ICP provides a built-in deduplication feature. Namely, if two calls with identical [request id](/docs/references/ic-interface-spec#request-ids) are made, the message is processed at most once. For two calls to have the same `request_id`, they must have the same values for all fields: `request_type`, `sender`, `nonce`, `canister_id`, `method_name`, `arg`, and **ingress_expiry**. This gives idempotency, but only until the [`ingress_expiry`](/docs/references/ic-interface-spec#authentication) is reached, at which point the message expires and ICP [may remove the `request_id` from the system state tree](/docs/references/ic-interface-spec#state-tree-request-status). This isn't an issue since the same request will not be accepted later, as it expired. Thus, such requests can be safely retried analogously to how it is done for [idempotent calls](/docs/building-apps/best-practices/idempotency#idempotent-canister-apis), see the illustration on that page.
+ICP provides a built-in deduplication feature. Namely, if two calls with identical [request id](/references/ic-interface-spec#request-ids) are made, the message is processed at most once. For two calls to have the same `request_id`, they must have the same values for all fields: `request_type`, `sender`, `nonce`, `canister_id`, `method_name`, `arg`, and **ingress_expiry**. This gives idempotency, but only until the [`ingress_expiry`](/references/ic-interface-spec#authentication) is reached, at which point the message expires and ICP [may remove the `request_id` from the system state tree](/references/ic-interface-spec#state-tree-request-status). This isn't an issue since the same request will not be accepted later, as it expired. Thus, such requests can be safely retried analogously to how it is done for [idempotent calls](/building-apps/best-practices/idempotency#idempotent-canister-apis), see the illustration on that page.
 
 As ICP rejects `ingress_expiry` that is too far in the future, the time window for retrying is limited. To maximize the window, one can maximize `ingress_expiry` in this case and time out the retries after `ingress_expiry` as well.
 

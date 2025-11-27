@@ -1,3 +1,0 @@
----
-title: Core IC Protocol
----

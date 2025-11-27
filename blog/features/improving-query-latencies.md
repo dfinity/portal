@@ -111,5 +111,5 @@ The new functionality is transparent and available on all the subnets and local 
 
 - [Source code of the Internet Computer query cache implementation](https://github.com/dfinity/ic/)
 
-- [The Internet Computer interface specification: Synchronicity across nodes](/docs/references/ic-interface-spec#synchronicity-across-nodes)
+- [The Internet Computer interface specification: Synchronicity across nodes](/references/ic-interface-spec#synchronicity-across-nodes)
 

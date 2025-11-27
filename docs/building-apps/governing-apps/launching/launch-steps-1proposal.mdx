@@ -60,7 +60,7 @@ dfx sns prepare-canisters add-nns-root $CANISTER_ID
 ```
 
 Handing over the dapp's canisters might require additional actions; for example, removing any special permissions that the dapp's developers may have had prior to the decentralization effort.
-One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/docs/building-apps/governing-apps/managing/sns-asset-canister) documentation for more details.
+One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/building-apps/governing-apps/managing/sns-asset-canister) documentation for more details.
 
 ```bash
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'

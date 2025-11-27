@@ -37,7 +37,7 @@ SegWit addresses can be of three types:
 
 To generate a Bitcoin address that can only be spent by a specific smart contract or a specific caller of a smart contract, you need to derive the address from the smart contract's public key.
 
-An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) demonstrates how to generate a `P2PKH` address from a smart contract's public key.
+An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/references/ic-interface-spec#ic-ecdsa_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) demonstrates how to generate a `P2PKH` address from a smart contract's public key.
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -58,7 +58,7 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/service/g
 
 ## Generating addresses with threshold Schnorr
 
-A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/references/ic-interface-spec#ic-schnorr_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) demonstrates how to generate two different types of `P2TR` addresses from a smart contract's public key: a key-only address and an address using a key or script.
+A Schnorr public key can be retrieved using the [`schnorr_public_key`](/references/ic-interface-spec#ic-schnorr_public_key) system API endpoint. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) demonstrates how to generate two different types of `P2TR` addresses from a smart contract's public key: a key-only address and an address using a key or script.
 
 #### Generating a key-only P2TR address
 
@@ -110,6 +110,6 @@ Learn more about Bitcoin addresses using Schnorr:
 
 - Taproot scripts [BIP342](https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki).
 
-[Learn more about the `ecdsa_public_key` API](/docs/references/ic-interface-spec#ic-ecdsa_public_key).
+[Learn more about the `ecdsa_public_key` API](/references/ic-interface-spec#ic-ecdsa_public_key).
 
-[Learn more about the `schnorr_public_key` API](/docs/references/ic-interface-spec#ic-schnorr_public_key).
+[Learn more about the `schnorr_public_key` API](/references/ic-interface-spec#ic-schnorr_public_key).
