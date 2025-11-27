@@ -19,7 +19,7 @@ Canister snapshots are supported in `dfx` version 0.23.0 and newer.
 
 ## Creating a snapshot
 
-To create a snapshot, first the canister must be stopped. Then, use the [`dfx canister snapshot create <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-create) command:
+To create a snapshot, first the canister must be stopped. Then, use the [`dfx canister snapshot create <canister-name>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-create) command:
 
 ```
 dfx canister stop <canister-name>
@@ -41,7 +41,7 @@ Currently, only 10 snapshots per canister can be saved.
 
 To take a snapshot of a canister on the mainnet, include the flag `--network ic` in the two commands shown above.
 
-The snapshot ID can be used to load the snapshot at a later time. To list all snapshots saved for a canister, use the command [`dfx canister snapshot list <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-list):
+The snapshot ID can be used to load the snapshot at a later time. To list all snapshots saved for a canister, use the command [`dfx canister snapshot list <canister-name>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-list):
 
 ```
 dfx canister snapshot list <canister-name>
@@ -58,7 +58,7 @@ dfx canister snapshot list <canister-name>
 
 ## Loading a snapshot
 
-To load a saved snapshot, first the canister must be stopped. Then, use the [`dfx canister snapshot load <canister-name> <snapshot-id>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-load) command:
+To load a saved snapshot, first the canister must be stopped. Then, use the [`dfx canister snapshot load <canister-name> <snapshot-id>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-load) command:
 
 ```
 dfx canister stop <canister-name>
@@ -69,7 +69,7 @@ Loading a snapshot will replace the canister's current code and data with the sn
 
 ## Deleting snapshots
 
-To delete a saved snapshot, use the command [`dfx canister snapshot delete <canister-name> <snapshot-id>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-delete)
+To delete a saved snapshot, use the command [`dfx canister snapshot delete <canister-name> <snapshot-id>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-delete)
 
 ```
 dfx canister snapshot delete <canister-name> <snapshot-id>
@@ -79,9 +79,9 @@ dfx canister snapshot delete <canister-name> <snapshot-id>
 
 Common errors related to canister snapshots include:
 
-- [Canister snapshot not found](/docs/references/execution-errors#canister-snapshot-not-found).
+- [Canister snapshot not found](/references/execution-errors#canister-snapshot-not-found).
 
-- [Canister snapshot invalid ownership](/docs/references/execution-errors#canister-snapshot-invalid-ownership).
+- [Canister snapshot invalid ownership](/references/execution-errors#canister-snapshot-invalid-ownership).
 
 ## Recovering a canister that does not have controllers
 
@@ -89,4 +89,4 @@ If a canister is unable to be upgraded via any of the canister's existing contro
 
 ## Resources
 
-- [`dfx canister snapshot` reference documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-create).
+- [`dfx canister snapshot` reference documentation](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-create).

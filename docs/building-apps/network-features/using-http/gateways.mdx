@@ -32,7 +32,7 @@ On ICP, an HTTP request goes through the following lifecycle:
 
 7. If the canister requests it, the gateway sends the request again via an update call to the canister's `http_request_update` method. The update call goes through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) on the subnet.
 
-8. If the response size [exceeds the maximum response size](/docs/building-apps/canister-management/resource-limits), the HTTP gateway fetches additional response body data through query calls.
+8. If the response size [exceeds the maximum response size](/building-apps/canister-management/resource-limits), the HTTP gateway fetches additional response body data through query calls.
 
 9. The HTTP gateway validates the response's certificate, if applicable.
 
@@ -52,11 +52,11 @@ The ICP HTTP gateway protocol enables conventional HTTP clients to interact with
 
 There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content.
 
-DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](/docs/building-apps/frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
+DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](/building-apps/frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
 
 Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY-controlled gateways, but this is not well supported yet.
 
-For a more secure solution, it is possible to run your own HTTP gateway instance locally. Additional details can be found in the [HTTP gateway specification](/docs/references/http-gateway-protocol-spec).
+For a more secure solution, it is possible to run your own HTTP gateway instance locally. Additional details can be found in the [HTTP gateway specification](/references/http-gateway-protocol-spec).
 
 ### Running a local HTTP gateway
 
@@ -94,13 +94,13 @@ This will result in a log entry of:
 
 ## Outgoing HTTP requests
 
-For outgoing HTTP requests, the [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) feature should be used.
+For outgoing HTTP requests, the [HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) feature should be used.
 
 ## Incoming HTTP requests
 
 Every HTTP request first goes to `http_request`, and only if you return `upgrade: true` will it be upgraded and re-called as `http_request_update`. The HTTP method (`GET`, `POST`) does not matter.
 
-View the [HTTP Candid interface reference](/docs/references/http-gateway-protocol-spec#canister-http-interface) for more information.
+View the [HTTP Candid interface reference](/references/http-gateway-protocol-spec#canister-http-interface) for more information.
 
 ### `GET` requests
 
@@ -136,7 +136,7 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.que
 
 ### `POST` requests
 
-HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/references/http-gateway-protocol-spec#upgrade-to-update-calls).
+HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/references/http-gateway-protocol-spec#upgrade-to-update-calls).
 
 The following examples display how to configure the `http_request_update` method within your canister.
 
@@ -171,15 +171,15 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.upd
 
 ## Resources
 
-- [HTTP gateway specification](/docs/references/http-gateway-protocol-spec)
+- [HTTP gateway specification](/references/http-gateway-protocol-spec)
 
 - [HTTP gateway Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34211943471892-HTTP-Gateway-Protocol)
 
-- [HTTPS outcalls: `GET`](/docs/building-apps/network-features/using-http/https-outcalls/get)
+- [HTTPS outcalls: `GET`](/building-apps/network-features/using-http/https-outcalls/get)
 
-- [HTTPS outcalls: `POST`](/docs/building-apps/network-features/using-http/https-outcalls/post)
+- [HTTPS outcalls: `POST`](/building-apps/network-features/using-http/https-outcalls/post)
 
-- [HTTPS outcalls: technology overview](/docs/references/https-outcalls-how-it-works)
+- [HTTPS outcalls: technology overview](/references/https-outcalls-how-it-works)
 
 - [Motoko certified cache example](https://github.com/krpeacock/certified-cache)
 

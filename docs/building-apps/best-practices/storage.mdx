@@ -23,7 +23,7 @@ Ultimately, the form of memory you choose to utilize for your canister will depe
 |Persistence     | Does not persist across upgrades | Data is preserved and persists across upgrades |
 |Performance     | Fast read/write operations | Slightly decreased read/write operations |
 
-[Learn more about canister storage](/docs/building-apps/canister-management/storage).
+[Learn more about canister storage](/building-apps/canister-management/storage).
 
 ### Recommendation: Use stable memory directly.
 
@@ -52,7 +52,7 @@ If you expect to store significant amounts of data, anticipate expanding your da
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
-6. Be mindful of calling an [actor class]((/docs/motoko/actors-async), as the overhead is similar to that of installing a fresh canister.
+6. Be mindful of calling an [actor class]((/motoko/actors-async), as the overhead is similar to that of installing a fresh canister.
 
 #### Rust
 

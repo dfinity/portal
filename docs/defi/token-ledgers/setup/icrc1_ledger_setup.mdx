@@ -22,7 +22,7 @@ These transactions represent either:
 
 - **Burning ICRC tokens** , which eliminates them from existence.
 
-- **Approving ICRC tokens** to be spent by some other `Account`, and/or **transferring ICRC tokens from** a previously approved `Account`. Approve and transfer workflows are supported in ICRC-2 compatible ledgers. [Learn more about token standards](/docs/defi/token-standards).
+- **Approving ICRC tokens** to be spent by some other `Account`, and/or **transferring ICRC tokens from** a previously approved `Account`. Approve and transfer workflows are supported in ICRC-2 compatible ledgers. [Learn more about token standards](/defi/token-standards).
 
 If you are testing your project in a local development environment, you won't be able to test it using an ICRC ledger that is deployed on the mainnet. You'll need to deploy it locally for testing, then deploy it to the mainnet for production when you have validated that it works as intended.
 
@@ -48,7 +48,7 @@ The ICRC-1 ledger used in this guide is a reference implementation used to demon
 
 ### Step 1: Open a project.
 
-Create a [new `dfx` project](/docs/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
+Create a [new `dfx` project](/building-apps/developer-tools/dfx/dfx-new) or open an existing project.
 
 ### Step 2: Obtain the latest ledger Wasm and Candid files.
 
@@ -151,11 +151,11 @@ The following options configure the archiving settings of the ledger. In case op
 
 For production deployments, it is recommended to set the values [similarly to what is done for SNS ledgers](https://github.com/dfinity/ic/blob/98fa250f488163fc5d94079c4acd81ba55761bd6/rs/sns/init/src/lib.rs#L600-L613).
 
-- `CONTROLLER_ID`: The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/building-apps/canister-management/control) of the archive canisters.
+- `CONTROLLER_ID`: The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/building-apps/canister-management/control) of the archive canisters.
 
 - `TRIGGER_THRESHOLD`: The number of blocks to archive when the trigger threshold is exceeded.
 
-- `CYCLES_FOR_ARCHIVE_CREATION`: The number of cycles that will be sent to the archive canister when it is created. Note that this needs to cover [the cost for canister creation](/docs/building-apps/essentials/gas-cost), and the installation of the canister. If the value is set too low, archiving is effectively disabled.
+- `CYCLES_FOR_ARCHIVE_CREATION`: The number of cycles that will be sent to the archive canister when it is created. Note that this needs to cover [the cost for canister creation](/building-apps/essentials/gas-cost), and the installation of the canister. If the value is set too low, archiving is effectively disabled.
 
 - `NUM_BLOCKS_TO_ARCHIVE`: The number of blocks that will be archived. If this is set to zero, archiving is effectively disabled.
 
@@ -188,7 +188,7 @@ Replace the existing content in the `dfx.json` with the following, updating the 
 }
 ```
 
-Alternatively, you can pass these init arguments to the canister through the command line or through a dedicated init arg file. [Learn more about canister init arguments](/docs/building-apps/developer-tools/advanced-dfx/init-args).
+Alternatively, you can pass these init arguments to the canister through the command line or through a dedicated init arg file. [Learn more about canister init arguments](/building-apps/developer-tools/advanced-dfx/init-args).
 
 ### Step 7: Start a local development environment.
 
@@ -222,7 +222,7 @@ Or, you can interact with it using the Candid UI by navigating to the Candid URL
 http://127.0.0.1:4943/?canisterId=bnz7o-iuaaa-aaaaa-qaaaa-cai&id=ss2fx-dyaaa-aaaar-qacoq-cai
 ```
 
-[Learn more about interacting with ICRC ledgers](/docs/defi/token-ledgers/usage/icrc1_ledger_usage).
+[Learn more about interacting with ICRC ledgers](/defi/token-ledgers/usage/icrc1_ledger_usage).
 
 ## Ledger test suite
 

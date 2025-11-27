@@ -27,9 +27,9 @@ This means that integration with the ledger involves calling the standard endpoi
 There are two primary ways to interact with the ckBTC ledger:
 
 ### Client calls (via agent)
-A client application (e.g. web application) can use an [agent](/docs/building-apps/interact-with-canisters/agents/overview) to interact directly with the ckBTC ledger canister.
+A client application (e.g. web application) can use an [agent](/building-apps/interact-with-canisters/agents/overview) to interact directly with the ckBTC ledger canister.
 
-An **agent** is the API client layer used to call ICP canisters. For example, the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) can create an actor from the ledger’s [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts) to invoke its endpoints.
+An **agent** is the API client layer used to call ICP canisters. For example, the [ICP JavaScript agent](/building-apps/interact-with-canisters/agents/javascript-agent) can create an actor from the ledger’s [Candid interface](/building-apps/interact-with-canisters/candid/candid-concepts) to invoke its endpoints.
 
 The following libraries simplify creating actors for the ckBTC ledger:
 
@@ -39,7 +39,7 @@ The following libraries simplify creating actors for the ckBTC ledger:
 - JavaScript:
   - [@dfinity/ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc) Library for interfacing with ICRC-1/2 ledgers.
 
-In this model, all transactions are signed by the user’s [account](/docs/defi/token-standards/#accounts-principals-and-subaccounts).
+In this model, all transactions are signed by the user’s [account](/defi/token-standards/#accounts-principals-and-subaccounts).
 
 ### Inter-canister calls
 A canister can also interact with the ckBTC ledger.
@@ -66,7 +66,7 @@ Example code:
 
 ### Considerations
 - The ICRC-1/2 ledgers in many cases implement more interfaces than those defined in ICRC-1 and ICRC-2. For example the Rust libraries provided by DFINITY include additional types and functions for (proposed) standards such as [ICRC-3](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-3), [ICRC-21](https://github.com/dfinity/wg-identity-authentication/blob/main/topics/ICRC-21/icrc_21_consent_msg.md), [ICRC-103](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-103/ICRC-103.md) and [ICRC-106](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-106/ICRC-106.md).
-- The libraries mentioned above might not always cover all types and interfaces defined in a ledger's [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
+- The libraries mentioned above might not always cover all types and interfaces defined in a ledger's [Candid interface](/building-apps/interact-with-canisters/candid/candid-concepts).
 
 ## Bitcoin ↔ ckBTC conversion
 
@@ -81,7 +81,7 @@ This can be done in two ways:
 - **Inter-canister calls**
   - A backend canister can call the ckBTC minter canister as part of its logic, either for its own use or on behalf of users.
 
-Check out the [ckBTC API](/docs/references/ckbtc-reference) and learn more about implementing this conversion flow in the [ckBTC best practices](/docs/defi/defi-best-practices).
+Check out the [ckBTC API](/references/ckbtc-reference) and learn more about implementing this conversion flow in the [ckBTC best practices](/defi/defi-best-practices).
 
 ### Why integrate conversion into a dapp
 - Enables deposits from Bitcoin → ckBTC and withdrawals from ckBTC → Bitcoin without leaving the application.
@@ -91,7 +91,7 @@ Check out the [ckBTC API](/docs/references/ckbtc-reference) and learn more about
 
 ## Example applications for ckBTC
 
-- [ic-pos](/docs/references/samples/motoko/ic-pos/) An experimental app to demonstrate a real-world use case for ckBTC on the Internet Computer. It is a simple Point of Sale app that allows users to accept ckBTC payments.
+- [ic-pos](/references/samples/motoko/ic-pos/) An experimental app to demonstrate a real-world use case for ckBTC on the Internet Computer. It is a simple Point of Sale app that allows users to accept ckBTC payments.
 
 ## Some applications that integrated ckBTC
 

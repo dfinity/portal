@@ -875,7 +875,7 @@ There are a few important, security-critical considerations to make when adding 
 
 - **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensure that no method that would change a relevant condition can be executed during the validator and target method.
 
-See more [security best practices](/docs/building-apps/security/overview).
+See more [security best practices](/building-apps/security/overview).
 
 ### Handling generic proposals
 
@@ -1021,11 +1021,11 @@ quill send message.json
 
 ### Case study: Adding a generic proposal [we can add this again when we checked it works]
 
-The [SNS asset canister](/docs/building-apps/governing-apps/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister.
+The [SNS asset canister](/building-apps/governing-apps/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister.
 
 The problem: To commit changes to the asset canister associated with a dapp under SNS control, you need to use generic proposals.
 
-To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](/docs/building-apps/governing-apps/managing/sns-asset-canister#sns-genericnervoussystemfunctions).
+To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](/building-apps/governing-apps/managing/sns-asset-canister#sns-genericnervoussystemfunctions).
 
 See the code for the [`commit_proposed_batch`](https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264) function:
 
