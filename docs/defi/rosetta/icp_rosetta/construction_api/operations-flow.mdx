@@ -29,7 +29,7 @@ For the purpose of this guide, you need to have a private key available with whi
 The Rosetta architecture is built so that no private keys are ever sent to Rosetta. All the signing and thus handling of private keys can be done offline.
 :::
 
-Rosetta supports multiple types of keys. The two that are used most often are `Edwards2559` and `Secp256k1`. If you want to use Rosetta together with `dfx`, you will be using `ECDSA` keys with an `Secp256k1` curve type. For a guide on how to create a new identity, you can look at the relevant `dfx` [section](/docs/building-apps/developer-tools/dfx/dfx-identity).
+Rosetta supports multiple types of keys. The two that are used most often are `Edwards2559` and `Secp256k1`. If you want to use Rosetta together with `dfx`, you will be using `ECDSA` keys with an `Secp256k1` curve type. For a guide on how to create a new identity, you can look at the relevant `dfx` [section](/building-apps/developer-tools/dfx/dfx-identity).
 For this guide we will be using the `identity.pem` that is created with `dfx identity new`.
 
 ## Construction API endpoints
@@ -191,8 +191,8 @@ These are comprised of two types of metadata:
     - `ingress_start`: This field stipulates from which point in time onwards the request should be valid. If not set, this field will be set to the current time by Rosetta.
     - `ingress_end`: This field determines until when the request will be valid. The returned unsigned transaction is only valid until this point in time.
 - Request-specific metadata: These are options that can be set for specific request types. For ICP Rosetta, they are relevant for `TRANSACTION` request types.
-    - `memo`: See the [section](/docs/defi/token-standards/) for `memo` for the ICP ledger.
-    - `created_at_time`: See the [section](/docs/defi/token-standards/) for `created_at_time` for the ICP ledger.
+    - `memo`: See the [section](/defi/token-standards/) for `memo` for the ICP ledger.
+    - `created_at_time`: See the [section](/defi/token-standards/) for `created_at_time` for the ICP ledger.
 
 ### Payloads-return structure
 

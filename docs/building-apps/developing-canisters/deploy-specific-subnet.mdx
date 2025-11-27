@@ -13,11 +13,11 @@ A [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-S
 
 The replica is implemented by a number of software components that, as a bundle, replicate state and computation across all of the nodes in a subnet blockchain.
 
-Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain-key](/docs/references/glossary#c) cryptography to delegate its authority to the various subnets.
+Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain-key](/references/glossary#c) cryptography to delegate its authority to the various subnets.
 
-Subnets allow ICP to scale indefinitely. The problem with traditional blockchains (and individual subnets) is that they are limited by the computing power of a single node machine because every node has to run everything that happens on the blockchain to participate in the [consensus](/docs/references/glossary#c) algorithm. Running multiple independent subnets in parallel allows the Internet Computer to break through this single-machine barrier.
+Subnets allow ICP to scale indefinitely. The problem with traditional blockchains (and individual subnets) is that they are limited by the computing power of a single node machine because every node has to run everything that happens on the blockchain to participate in the [consensus](/references/glossary#c) algorithm. Running multiple independent subnets in parallel allows the Internet Computer to break through this single-machine barrier.
 
-Not every canister has the same security, size, or feature requirements, therefore not every subnet has the same configuration. The `system` subnet (which contains the [NNS](/docs/references/glossary#n) and several other critical services), for example, does not charge any cycles for its canisters, because those canisters should be available in all circumstances. Other subnets can have different features enabled or disabled, such as the subnet running the canisters for the Bitcoin integration.
+Not every canister has the same security, size, or feature requirements, therefore not every subnet has the same configuration. The `system` subnet (which contains the [NNS](/references/glossary#n) and several other critical services), for example, does not charge any cycles for its canisters, because those canisters should be available in all circumstances. Other subnets can have different features enabled or disabled, such as the subnet running the canisters for the Bitcoin integration.
 
 There are four types of subnets: application, system, fiduciary, and the European subnet.
 
@@ -53,7 +53,7 @@ There are currently three system subnets:
 
 - [`tdb26`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe) hosts the 14 canisters that make up the NNS.
 
-- [`uzr34`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe) hosts the canisters for [Internet Identity](/docs/building-apps/authentication/overview), the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger), the [exchange rate canister](/docs/references/system-canisters/) and the dashboard, and stores the backup threshold signature keys.
+- [`uzr34`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe) hosts the canisters for [Internet Identity](/building-apps/authentication/overview), the [cycles ledger](/defi/token-ledgers/cycles-ledger), the [exchange rate canister](/references/system-canisters/) and the dashboard, and stores the backup threshold signature keys.
 
 - [`w4rem`](https://dashboard.internetcomputer.org/subnet/w4rem-dv5e3-widiz-wbpea-kbttk-mnzfm-tzrc7-svcj3-kbxyb-zamch-hqe) hosts the canisters for the Bitcoin integration.
 

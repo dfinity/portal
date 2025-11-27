@@ -23,7 +23,7 @@ However, build tools aren’t perfect and may fail to ensure reproducible builds
 
 ICP does not allow you to access the Wasm module of an arbitrary canister. This is a design decision, as developers might want to keep some code private. However, ICP does allow anyone to access the SHA-256 of the Wasm module.
 
-To obtain this hash, you must first note the canister ID of the canister whose code you want to check. For example, to check the code of the Internet Identity canister, the canister ID is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this data is using [`dfx`](/docs/building-apps/getting-started/install) from a command line through the command:
+To obtain this hash, you must first note the canister ID of the canister whose code you want to check. For example, to check the code of the Internet Identity canister, the canister ID is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this data is using [`dfx`](/building-apps/getting-started/install) from a command line through the command:
 
 ```bash
 dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
@@ -68,7 +68,7 @@ Before building your code, you should document the build environment you are usi
 
 -   Note your local machine's operating system and its version.
 
--   If you are using the IC SDK, note the version used. You can install arbitrary versions of the IC SDK using [`dfxvm`](/docs/building-apps/developer-tools/dfxvm/dfxvm-install).
+-   If you are using the IC SDK, note the version used. You can install arbitrary versions of the IC SDK using [`dfxvm`](/building-apps/developer-tools/dfxvm/dfxvm-install).
 
 -   If you are building Motoko code in a way other than `dfx build`, note the version of `moc` you are using.
 
