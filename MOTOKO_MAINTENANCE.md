@@ -15,8 +15,6 @@ Replace `static/moc-interpreter-0.14.0.js` with `static/moc_interpreter-0.14.1.j
 
 Edit `static/load_moc.ts` to use the correct version of the interpreter and base libs.
 
-When a new version of `moc` is shipped with `dfx`, update the `README.md` and `/docs/building-apps/getting-started/install` pages to reflect the new `moc` and `dfx` versions.
-
 ```
 git add -u
 git commit -m "chore: updating moc version shipped with dfx"
