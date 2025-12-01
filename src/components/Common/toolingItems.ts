@@ -340,4 +340,13 @@ export const communityToolingItems = [
       github: "https://github.com/icpcs/motokopilot-vscode",
     },
   },
+{
+    title: "Motoko Zed",
+    tags: ["plugin", "development"],
+    description: "Motoko and Candid language support for Zed.",
+    links: {
+      external: "https://zed.dev/extensions/motoko",
+      github: "https://github.com/perforate-org/zed-motoko",
+    },
+  },
 ];
