@@ -3060,7 +3060,7 @@ This method takes a snapshot of the specified canister. A snapshot consists of t
 
 A `take_canister_snapshot` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created.
 
-It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen.
+It's important to note that a new snapshot might increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. This issue can be mitigated by uninstalling code of the canister via the optional `uninstall_code` parameter after a new snapshot has been successfully created.
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
@@ -3070,6 +3070,8 @@ It's important to stop a canister before taking a snapshot to ensure that all ou
 It is expected that the canister controllers (or their tooling) do this separately.
 
 :::
+
+The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 ### IC method `load_canister_snapshot` {#ic-load_canister_snapshot}
 
@@ -6604,7 +6606,6 @@ S with
 Only the controllers of the given canister can take a snapshot. 
 A snapshot will be identified internally by a system-generated opaque `Snapshot_id`.
 
-
 ```html
 
 S.messages = Older_messages · CallMessage M · Younger_messages
@@ -6617,6 +6618,8 @@ if A.replace_snapshot is not null:
   A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
 else:
   |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
+
+A.uninstall_code = null or A.uninstall_code = false
 
 New_snapshot = Snapshot {
   source = TakenFromCanister;
@@ -6640,7 +6643,7 @@ New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
 liquid_balance(S', A.canister_id) ≥ 0
 ```
 
-State after  
+State after
 
 ```html
 
@@ -6658,6 +6661,103 @@ S' = S with
         }));
         refunded_cycles = M.transferred_cycles;
       }
+
+```
+
+It is also possible to atomically uninstall code after taking a snapshot; in particular, the canister memory usage is updated atomically and thus it does not grow significantly (ignoring some potential constant overhead for certified variables which are not accounted for by canister memory usage, but are accounted for in canister snapshot memory usage).
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'take_canister_snapshot'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+S.canister_history[A.canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+if A.replace_snapshot is not null:
+  A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
+else:
+  |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
+
+A.uninstall_code = true
+
+New_snapshot = Snapshot {
+  source = TakenFromCanister;
+  take_at_timestamp = S.time[A.canister_id];
+  raw_module = S.canisters[A.canister_id].raw_module;
+  wasm_state = S.canisters[A.canister_id].wasm_state;
+  chunk_store = S.chunk_store[A.canister_id];
+  canister_version = S.canister_version[A.canister_id];
+  certified_data = S.certified_data[A.canister_id];
+  global_timer = S.global_timer[A.canister_id];
+  on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id];
+}
+New_snapshots = S.snapshots[A.canister_id] with
+  A.replace_snapshot = (undefined)
+  Snapshot_id = New_snapshot
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, S.canisters[A.canister_id])
+New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
+New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
+New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
+
+liquid_balance(S', A.canister_id) ≥ 0
+```
+
+State after
+
+```html
+
+S' = S with
+    snapshots[A.canister_id] = New_snapshots
+    balances[A.canister_id] = New_balance
+    reserved_balances[A.canister_id] = New_reserved_balance
+
+    canisters[A.canister_id] = EmptyCanister
+    certified_data[A.canister_id] = ""
+    chunk_store = ()
+    canister_history[A.canister_id] = {
+      total_num_changes = N + 1;
+      recent_changes = H · {
+          timestamp_nanos = S.time[A.canister_id];
+          canister_version = S.canister_version[A.canister_id] + 1
+          origin = change_origin(M.caller, A.sender_canister_version, M.origin);
+          details = CodeUninstall;
+        };
+    }
+    canister_logs[A.canister_id] = []
+    canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
+    global_timer[A.canister_id] = 0
+
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin;
+        response = Reply (candid({
+          id = Snapshot_id;
+          taken_at_timestamp = S.time[A.canister_id];
+          total_size = memory_usage_snapshots([Snapshot_id → New_snapshot]);
+        }));
+        refunded_cycles = M.transferred_cycles;
+      } ·
+      [ ResponseMessage {
+          origin = Ctxt.origin
+          response = Reject (CANISTER_REJECT, <implementation-specific>)
+          refunded_cycles = Ctxt.available_cycles
+        }
+      | Ctxt_id ↦ Ctxt ∈ S.call_contexts
+      , Ctxt.canister = A.canister_id
+      , Ctxt.needs_to_respond = true
+      ]
+
+    for Ctxt_id ↦ Ctxt ∈ S.call_contexts:
+      if Ctxt.canister = A.canister_id:
+        call_contexts[Ctxt_id].deleted := true
+        call_contexts[Ctxt_id].needs_to_respond := false
+        call_contexts[Ctxt_id].available_cycles := 0
 
 ```
 
