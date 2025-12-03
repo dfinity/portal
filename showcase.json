@@ -637,7 +637,7 @@
     ],
     "description": "Turn 10 bags into 1 token. Trade, earn, and spend across chains.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/xfusion_logo.jpg",
+    "logo": "/img/showcase/xfusion_logo_new.jpg",
     "oneLiner": "Bundle Tokens. Trade as One."
   },
   {
@@ -6363,19 +6363,20 @@
     "oneLiner": "Use `ic-rusqlite` to enable SQLite on the Internet Computer."
   },
   {
-    "id": "dexpad",
-    "name": "DEXPAD",
-    "website": "https://dex.srcpad.pro",
+    "id": "Chainfusion_nftbridge",
+    "name": "ChainFusion NFT Bridge",
+    "display": "Normal",
+    "website": "https://uuj6p-miaaa-aaaam-abe7q-cai.icp0.io/",
+    "twitter": "https://x.com/SurplusVentures",
+    "github": "https://github.com/DevSurplusVentures/99react",
+    "submittableId": 49801059,
     "tags": [
       "Chain Fusion",
-      "Bitcoin",
-      "DeFi"
+      "NFT",
+      "Tools / Infrastructure"
     ],
-    "description": "Multi-chain DeFi platform bridging Bitcoin native and Counterparty assets with the Internet Computer Protocol (ICP) for secure, decentralized trading.\n\nFeatures Bitcoin wallet authentication via Sign-In With Bitcoin (SIWB), enabling seamless cross-chain liquidity pools and trustless asset swaps without centralized custody.",
-    "logo": "/img/showcase/dexpad_logo.webp",
-    "usesInternetIdentity": false,
-    "video": "https://youtu.be/1P7CdMbYfoY",
-    "twitter": "https://x.com/srcpad_pro",
-    "youtube": "https://www.youtube.com/@dex-pad"
+    "description": "Bridge EVM and Solana NFTs to the Internet Computer and out to remote EVMs and Solana networks.",
+    "usesInternetIdentity": true,
+    "oneLiner": "ChainFusion NFTs"
   }
 ]
