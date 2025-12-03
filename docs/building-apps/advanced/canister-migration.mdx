@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 # Overview
 
 *Canister migration* refers to moving a canister (called the "migrated" canister) from one subnet (called "source" subnet) to another subnet (called "target" subnet).
-This tutorial covers migrating the canister state (WASM, main and stable memory, etc.), cycles, and canister ID (principal).
+This tutorial covers migrating the canister settings, state (WASM, main and stable memory, etc.), cycles, and canister ID (principal).
 Transient state (canister logs and history) and cycles reserved for storage cannot be migrated from one subnet to another.
 
 The target subnet must contain a canister (called the "replaced" canister) that is used as a placeholder throughout canister migration.
@@ -20,6 +20,10 @@ For instance, this canister can be created using [`dfx canister create`](/docs/b
 # Requirements
 
 The following tutorial assumes `dfx` at version at least 0.30.0.
+
+# Canister Settings Migration
+
+Canister settings can be migrated using [`dfx canister update-settings`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) specifying the migrated canister as `--sync-with` and the replaced canister as the canister whose settings are updated.
 
 # Canister State Migration
 
@@ -59,6 +63,17 @@ Canister ID migration is expected to take at least 6 minutes. You can check out 
 Here's a complete example runbook for canister migration.
 The migrated canister ID is `uqqxf-5h777-77774-qaaaa-cai` and the replaced canister ID is `ahree-maaaa-aaaar-q777q-cai`.
 ```
+# Canister Settings Migration
+$ dfx canister update-settings replaced --sync-with migrated
+Canister settings: migrated
+...
+
+WARNING!
+You are trying to sync settings from 'migrated' to 'replaced'.
+Do you want to proceed? yes/No
+yes
+Synced settings from 'migrated' to 'replaced'.
+
 # Canister State Migration
 $ dfx canister stop migrated
 Stopping code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
