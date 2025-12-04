@@ -198,7 +198,7 @@ canister.query("account_balance")
 
 ## Response verification
 
-When using the [certified queries](/docs/building-apps/interact-with-canisters/advanced-calls/) feature, the agent must verify that the certificate returned with the query response is valid. A certificate consists of a tree, a signature on the tree's root hash that is valid under a public key, and an optional delegation linking the public key to the root public key. To validate the root hash, the agent uses the `HashTree` module.
+When using the [certified queries](/building-apps/interact-with-canisters/advanced-calls/) feature, the agent must verify that the certificate returned with the query response is valid. A certificate consists of a tree, a signature on the tree's root hash that is valid under a public key, and an optional delegation linking the public key to the root public key. To validate the root hash, the agent uses the `HashTree` module.
 
 Below is an example annotated with notes that explains how to verify responses using the `HashTree` module:
 

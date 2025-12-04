@@ -13,9 +13,9 @@ A <GlossaryTooltip>canister</GlossaryTooltip> is managed by a list of controller
 
 When a canister is created, the default controller list contains the developer identity used to create the canister. Additional controllers can be specified during canister creation, or they can be added in the future.
 
-To specify a different controller upon canister creation, use the [`dfx canister create --controller <controller>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create) command.
+To specify a different controller upon canister creation, use the [`dfx canister create --controller <controller>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create) command.
 
-To update a canister's controllers after the canister has been created, the [`dfx canister update-settings`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) command can be used with the `--add-controller <controller>` or `--remove-controller <controller>` flag to add or remove controllers, respectively.
+To update a canister's controllers after the canister has been created, the [`dfx canister update-settings`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) command can be used with the `--add-controller <controller>` or `--remove-controller <controller>` flag to add or remove controllers, respectively.
 
 ## Actions available only to controllers
 
@@ -49,7 +49,7 @@ The [Launchtrail canister](https://github.com/spinner-cash/launchtrail) can be u
 
 ### Decentralized autonomous organization (DAO)
 
-A canister is controlled by a DAO, and all upgrades and administrative actions are decided by a vote of the DAO members. The most common DAO model for applications on the Internet Computer is the [Service Nervous System (SNS)](/docs/building-apps/governing-apps/index.mdx).
+A canister is controlled by a DAO, and all upgrades and administrative actions are decided by a vote of the DAO members. The most common DAO model for applications on the Internet Computer is the [Service Nervous System (SNS)](/building-apps/governing-apps/index.mdx).
 
 The system canisters on ICP are controlled by the Network Nervous System (NNS) root canister, which allows administration of the canisters by NNS proposals.
 
@@ -61,4 +61,4 @@ A canister has no controller and is immutable. On ICP, this model is often calle
 
 Common errors related to controllers include:
 
-- [Invalid controller](/docs/references/execution-errors#invalid-controller).
+- [Invalid controller](/references/execution-errors#invalid-controller).

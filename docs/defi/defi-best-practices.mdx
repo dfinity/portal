@@ -22,17 +22,17 @@ When developing applications that utilize tokens, or when deploying your own tok
 
 #### Recommendation: Include appropriate metadata for your token.
 
-Better metadata results in a better user experience and wallet integration. [Learn more about metadata](/docs/tutorials/hackathon-prep-course/integrating-with-tokens#icrc-1-tokens).
+Better metadata results in a better user experience and wallet integration. [Learn more about metadata](/tutorials/hackathon-prep-course/integrating-with-tokens#icrc-1-tokens).
 
 ## Transaction deduplication
 
-#### Recommendation: Use the `created_at_time` and `memo` parameters to make transaction calls [idempotent](/docs/building-apps/best-practices/idempotency#id-deduplication).
+#### Recommendation: Use the `created_at_time` and `memo` parameters to make transaction calls [idempotent](/building-apps/best-practices/idempotency#id-deduplication).
 
 #### Recommendation: Implement a time window for deduplication using the ICRC configuration parameter `TX_WINDOW`.
 
 #### Recommendation: Consider capacity limits for your deduplication store.
 
-There is a limit for the number of deduplicated transactions that can be stored in the [deduplication store](/docs/building-apps/best-practices/idempotency#id-deduplication). Transactions are rejected once this store is full until older transactions expire at the end of the time window.
+There is a limit for the number of deduplicated transactions that can be stored in the [deduplication store](/building-apps/best-practices/idempotency#id-deduplication). Transactions are rejected once this store is full until older transactions expire at the end of the time window.
 
 ## Embedding standards into existing ledgers
 
@@ -48,7 +48,7 @@ There is a limit for the number of deduplicated transactions that can be stored 
 
 #### Recommendation: Fully test inter-canister calls and rollbacks.
 
-Issues with [inter-canister calls](/docs/building-apps/security/overview) can lead to time-of-check, time-of-use, or double spending security bugs.
+Issues with [inter-canister calls](/building-apps/security/overview) can lead to time-of-check, time-of-use, or double spending security bugs.
 
 #### Recommendation: Certify query responses if they are relevant for security.
 

@@ -17,15 +17,15 @@ import '/src/components/CenterImages/center.scss';
 
 ICP is the native token of the Internet Computer. It has two key functionalities on the network:
 
-1. ICP tokens are converted into cycles, which are then used to pay for canister computation and resources. This process was covered in [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles).
+1. ICP tokens are converted into cycles, which are then used to pay for canister computation and resources. This process was covered in [1.4 Acquiring and using cycles](/tutorials/developer-liftoff/level-1/1.4-using-cycles).
 
-2. NNS participants are rewarded in ICP tokens for staking ICP in neurons and actively participating in voting. You'll dive deeper into NNS rewards in [4.4 NNS governance and staking](/docs/tutorials/developer-liftoff/level-4/4.4-nns-governance).
+2. NNS participants are rewarded in ICP tokens for staking ICP in neurons and actively participating in voting. You'll dive deeper into NNS rewards in [4.4 NNS governance and staking](/tutorials/developer-liftoff/level-4/4.4-nns-governance).
 
 To interact with the ICP token, a specialized canister known as the ICP ledger canister is used. It holds ledger accounts and records a traceable history of all ICP transactions.
 
 In this tutorial, you'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it. To test a project that integrates with the ICP ledger before deploying it to the mainnet for production use, you will need to deploy a local instance of the ICP ledger canister. The local instance will not have the history and balances that the mainnet ICP ledger contains.
 
-The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, an ICRC ledger will need to be used. That ledger is covered in the module [4.2 ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, an ICRC ledger will need to be used. That ledger is covered in the module [4.2 ICRC tokens](/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
 ## Accounts
 
@@ -57,7 +57,7 @@ To deploy the ICP ledger canister locally, there are two workflows:
 
 - Deploy the ICP ledger canister locally using its Wasm file. This is the method that will be used in this tutorial since it provides greater control over the canister's deployment, such as defining the ledger's minting account, customizing the initialization arguments, and choosing which Wasm version of the ledger to use.
 
-The ICP ledger canister running on the mainnet is not meant to be used for other token deployments. To develop a new token or ledger, the ICRC ledger can be used, which will be covered in a [future module](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+The ICP ledger canister running on the mainnet is not meant to be used for other token deployments. To develop a new token or ledger, the ICRC ledger can be used, which will be covered in a [future module](/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
@@ -223,7 +223,7 @@ dfx ledger transfer --amount AMOUNT --memo MEMO RECEIVER_ACCOUNT_ID
 Replace `AMOUNT` with the number of tokens to transfer, `MEMO` with a 64-bit numeric value, and `RECEIVER_ACCOUNT_ID` with the account ID to receive the tokens.
 
 :::info
-`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
+`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
 :::
 
 :::caution
@@ -293,9 +293,9 @@ After navigating to this URL in a web browser, the Candid UI will resemble the f
 
 ## Resources
 
-[Learn how to use `nns-js` to interact with the ledger from the web application](/docs/defi/overview).
+[Learn how to use `nns-js` to interact with the ledger from the web application](/defi/overview).
 
-[Learn how to use the `ic-cdk` to make inter-canister calls to the ICP ledger](/docs/defi/overview).
+[Learn how to use the `ic-cdk` to make inter-canister calls to the ICP ledger](/defi/overview).
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 

@@ -19,7 +19,7 @@ Application frontends exist in the following forms:
 
 - A frontend canister that communicates with backend canister(s) to provide a full-stack dapp.
 
-- Backend canisters that communicate with an external frontend application that isn't hosted on ICP. To facilitate this communication, [the ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) can be used. [Learn more about the JS request API](/docs/building-apps/interact-with-canisters/agents/javascript-agent).
+- Backend canisters that communicate with an external frontend application that isn't hosted on ICP. To facilitate this communication, [the ICP JavaScript agent](/building-apps/interact-with-canisters/agents/javascript-agent) can be used. [Learn more about the JS request API](/building-apps/interact-with-canisters/agents/javascript-agent).
 
 - A frontend canister that doesn't communicate with any backend canisters and only provides web assets.
 
@@ -31,11 +31,11 @@ The typical development workflow for creating an application frontend is:
 
 3. The developer deploys the project. `dfx` will compile the frontend asset files into an asset canister.
 
-4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/building-apps/frontends/custom-domains/using-custom-domains) if one has been registered for the canister.
+4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/building-apps/frontends/custom-domains/using-custom-domains) if one has been registered for the canister.
 
 5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
 
-6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/building-apps/interact-with-canisters/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
 ### Limitations
 Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
@@ -49,7 +49,7 @@ To configure a canister to implement these methods, a canister must be defined i
 
 ## Frontend canister templates
 
-All projects created with [`dfx new`](/docs/building-apps/developer-tools/dfx/dfx-new) have the option to include a template frontend canister containing code using one of the following frameworks: SvelteKit, React, Vue, or Vanilla JS. These templates are available in `dfx` versions 0.17.0 and newer.
+All projects created with [`dfx new`](/building-apps/developer-tools/dfx/dfx-new) have the option to include a template frontend canister containing code using one of the following frameworks: SvelteKit, React, Vue, or Vanilla JS. These templates are available in `dfx` versions 0.17.0 and newer.
 
 For asset canisters created by `dfx new`, the default configuration will resemble the following:
 
@@ -128,16 +128,16 @@ let path = HttpCertificationPath::wildcard("/js");
 
 404 pages can only be served as raw content currently.
 
-[Learn more about the HTTP certification library](/docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http).
+[Learn more about the HTTP certification library](/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http).
 
 ## Resources
 
-- [Asset canister architecture reference](/docs/references/asset-canister).
+- [Asset canister architecture reference](/references/asset-canister).
 
-- Using [raw HTML and JavaScript](/docs/motoko/home) to display a simple HTML entry page.
+- Using [raw HTML and JavaScript](/motoko/home) to display a simple HTML entry page.
 
 - [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko) template example.
 
 - [Vite + SvelteKit + Motoko](https://github.com/letmejustputthishere/vite-sveltekit-motoko-ii/tree/main) template example.
 
-- Deploying an [existing Next.js application](/docs/building-apps/frontends/existing-frontend) as a frontend canister.
+- Deploying an [existing Next.js application](/building-apps/frontends/existing-frontend) as a frontend canister.

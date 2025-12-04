@@ -21,12 +21,12 @@ The Internet Computer Protocol has been integrated with the Bitcoin protocol to 
 
 ### Chain-key signatures
 
-Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols and therefore can receive and hold bitcoin and other assets. Canisters can also create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation, as they, for example, also comprise protocols for secure [distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/docs/references/t-sigs-how-it-works/).
+Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols and therefore can receive and hold bitcoin and other assets. Canisters can also create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation, as they, for example, also comprise protocols for secure [distributed key generation](https://learn.internetcomputer.org/hc/en-us/articles/34209540682644-Subnet-Keys-and-Subnet-Signatures) and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/references/t-sigs-how-it-works/).
 
 The chain-key signature protocols expose an API on the management canister, whereas the Bitcoin integration endpoints are made available through the [Bitcoin canister](https://github.com/dfinity/bitcoin-canister).
 The low-level APIs are designed around the concepts of Bitcoin UTXOs and transactions, are nontrivial to use, and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA and Schnorr signature APIs are also generically useful for any use case, e.g., integrations with other blockchains such as Ethereum.
 
-This page gives a high-level overview of the above-mentioned technology behind the direct Bitcoin integration. For details, the reader is referred to the [Bitcoin page on the Internet Computer Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration) as well as the [threshold signatures documentation page](/docs/references/t-sigs-how-it-works/).
+This page gives a high-level overview of the above-mentioned technology behind the direct Bitcoin integration. For details, the reader is referred to the [Bitcoin page on the Internet Computer Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration) as well as the [threshold signatures documentation page](/references/t-sigs-how-it-works/).
 
 ### Components
 
@@ -59,7 +59,7 @@ The Bitcoin functionality, including threshold signatures, is available in all s
 
 ### Local SDK
 
-In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](/docs/building-apps/getting-started/install) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA APIs.
+In the typical canister development workflow, canisters on ICP are compiled and run in the local environment using the [IC SDK](/building-apps/getting-started/install) during their development. Thus, the IC SDK is the first stage, or environment, of the development workflow. The IC SDK has been enabled to support both the Bitcoin integration and threshold ECDSA APIs.
 
 In contrast to ICP deployments of the feature, which integrate with Bitcoin testnet and Bitcoin mainnet, respectively, the SDK integrates with a locally running `bitcoind` node in regression testing (regtest) mode. Using `bitcoind` in regtest mode is the preferred way for Bitcoin development. Both development and automated testing of smart contracts are first done in the local environment with this setup.
 
@@ -113,4 +113,4 @@ To start building your own apps with Bitcoin, see the following tutorials:
 
 - [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
 
-- [Local development](/docs/build-on-btc/using-regtest).
+- [Local development](/build-on-btc/using-regtest).

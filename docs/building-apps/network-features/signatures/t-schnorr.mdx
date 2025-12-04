@@ -61,7 +61,7 @@ Furthermore, signatures (including Ed25519) are **non-deterministic** and a diff
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
-The `sign_with_schnorr` method requires cycles to be attached. [Learn more about threshold Schnorr costs](/docs/building-apps/essentials/gas-cost).
+The `sign_with_schnorr` method requires cycles to be attached. [Learn more about threshold Schnorr costs](/building-apps/essentials/gas-cost).
 
 To deploy code using the `sign_with_schnorr` method, you will need to specify the correct `key_ID` for the environment in the canister's source code. The following key IDs are supported:
 
@@ -248,7 +248,7 @@ For Ed25519 the PocketIC test keys are:
 
 - [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
 
-- [Threshold Schnorr API](/docs/references/ic-interface-spec#ic-schnorr_public_key).
+- [Threshold Schnorr API](/references/ic-interface-spec#ic-schnorr_public_key).
 
 - [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr).
 

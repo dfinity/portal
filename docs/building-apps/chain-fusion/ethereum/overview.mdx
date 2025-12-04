@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Smart contracts on ICP can directly interact with the Ethereum network and other networks that are using the Ethereum Virtual Machine (EVM), such as Polygon and Avalanche. This integration is possible thanks to ICP's HTTPS outcalls and threshold ECDSA features, which allow Ethereum transactions to be queried and ICP smart contracts to sign and submit transactions to Ethereum.
 
-- **[Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. Messages sent by the smart contract can be signed using this key, enabling signed transactions to be sent to Ethereum from the smart contract.
+- **[Threshold ECDSA](/building-apps/network-features/signatures/t-ecdsa)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. Messages sent by the smart contract can be signed using this key, enabling signed transactions to be sent to Ethereum from the smart contract.
 
 - **[HTTPS outcalls](https://internetcomputer.org/https-outcalls)**: To query information from Ethereum and other EVM networks, HTTPS outcalls are used. HTTPS outcalls can obtain information from external sources. In this integration, they're used to obtain data from JSON-RPC services by querying Ethereum's transactions, addresses, and block information. To facilitate JSON-RPC calls, the EVM RPC canister has been created and deployed on the mainnet, providing an API endpoint that smart contracts can use.
 
@@ -22,11 +22,11 @@ This enables functionality similar to traditional Ethereum dapps, including quer
 
 Beyond the Ethereum blockchain, this canister also has partial support for Polygon, Avalanche, and other popular EVM networks. Check out [ChainList.org](https://chainlist.org/?testnets=true) for an extensive list of compatible networks and RPC providers.
 
-You can [learn how to use the EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
+You can [learn how to use the EVM RPC canister](/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
 ## ckETH
 
-ICP implements a smart contract that uses threshold ECDSA and chain-key cryptography to provide a [**ckETH**](/docs/defi/chain-key-tokens/cketh/overview) token (chain-key ETH) that is backed 1:1 by ETH.
+ICP implements a smart contract that uses threshold ECDSA and chain-key cryptography to provide a [**ckETH**](/defi/chain-key-tokens/cketh/overview) token (chain-key ETH) that is backed 1:1 by ETH.
 
 The primary value of chain-key tokens, such as ckETH, is that they can be transferred with a low finality time (within seconds) and for a fraction of the cost of a transaction on the token's native network (in this instance, an ETH transaction on Ethereum).
 

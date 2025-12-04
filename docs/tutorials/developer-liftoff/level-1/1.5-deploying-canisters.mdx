@@ -16,7 +16,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <iframe width="660" height="415" src="https://www.youtube.com/embed/OKbxWiA0QR8?si=hPUzZWR0PJ2XRCru" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
 :::danger
-If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
+If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
 :::
 
 Now that you have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for your <GlossaryTooltip>canister</GlossaryTooltip>'s resources, you can deploy a dapp on the mainnet. When a canister is deployed to the mainnet, its code will be hosted on one of the mainnet's subnets and replicated across every node within that subnet. The canister will be hosted on the mainnet until it is manually uninstalled by the developer or until it runs out of cycles and is uninstalled automatically.
@@ -36,12 +36,12 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 ## Deploying to the mainnet
 
 :::danger
-If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
+If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
 :::
 
-To deploy your dapp to the mainnet, first assure that your terminal window is open and you've navigated into the directory of a project, such as the simple "Hello, world!" dapp that you created in module [0.6 Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) or a project downloaded from [ICP Ninja](https://icp.ninja).
+To deploy your dapp to the mainnet, first assure that your terminal window is open and you've navigated into the directory of a project, such as the simple "Hello, world!" dapp that you created in module [0.6 Introduction to dfx](/tutorials/developer-liftoff/level-0/intro-dfx) or a project downloaded from [ICP Ninja](https://icp.ninja).
 
-This tutorial will use the "Hello, world!" dapp from module [0.6 Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx).
+This tutorial will use the "Hello, world!" dapp from module [0.6 Introduction to dfx](/tutorials/developer-liftoff/level-0/intro-dfx).
 
 Now it's time to register, build, and deploy your dapp. First, let's check to make sure you have an active connection to the mainnet. Run the command:
 
@@ -64,7 +64,7 @@ Now, you can deploy your dapp to the mainnet by running the following command:
 dfx deploy --network ic
 ```
 
-In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. This tutorial series covered these in module [0.6: Deploying your first dapp](/docs/tutorials/developer-liftoff/level-0/06-first-dapp).
+In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. This tutorial series covered these in module [0.6: Deploying your first dapp](/tutorials/developer-liftoff/level-0/06-first-dapp).
 
 Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
 
@@ -104,7 +104,7 @@ Now, let's use your dapp! To access the dapp's frontend, open the "Frontend cani
     hello_world_frontend: https://75wat-qqaaa-aaaak-apbsa-cai.icp0.io/
 ```
 
-When you open this URL in your web browser, you will see the app's frontend user interface. Your dapp is hosted 100% onchain, does not rely on your [local development environment](/docs/building-apps/test/pocket-ic) to keep running, and you can send this URL to your friends and get them to use your app!
+When you open this URL in your web browser, you will see the app's frontend user interface. Your dapp is hosted 100% onchain, does not rely on your [local development environment](/building-apps/test/pocket-ic) to keep running, and you can send this URL to your friends and get them to use your app!
 
 :::caution
 To avoid burning through your cycles, once you are finished with this tutorial, consider stopping your project's canisters with the `dfx canister stop` command.

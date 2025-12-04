@@ -22,9 +22,9 @@ Users must have confidence that:
 
 The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected or claimed functionality and only this functionality.
 
-Second, ensure that the Wasm module the canister runs has been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/docs/building-apps/best-practices/reproducible-builds).
+Second, ensure that the Wasm module the canister runs has been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/building-apps/best-practices/reproducible-builds).
 
-Additionally, developers can utilize the [canister history](/docs/building-apps/canister-management/history) feature to track changes to the canister's Wasm module hash.
+Additionally, developers can utilize the [canister history](/building-apps/canister-management/history) feature to track changes to the canister's Wasm module hash.
 
 ## Confidence that the canister behavior will not unexpectedly change
 
@@ -44,7 +44,7 @@ Finally, a somewhat more useful solution is to pass control of the canister to a
 
 ## Verifying a canister's controllers
 
-A user can verify the list of controllers for a canister using [`dfx canister info`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-info):
+A user can verify the list of controllers for a canister using [`dfx canister info`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-info):
 
 ```
 dfx canister info <canister-id> --network ic
