@@ -28,4 +28,4 @@ In addition to the two endpoints, the boundary nodes provide to access the IC, t
 
 ## Go Even Deeper
 
-[Boundary Nodes on the IC Wiki](https://wiki.internetcomputer.org/wiki/Boundary_Nodes)
+[Edge Infrastructure on the Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure)

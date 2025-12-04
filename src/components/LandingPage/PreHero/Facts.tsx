@@ -288,7 +288,7 @@ export const Facts = () => {
             <div className="tw-heading-6 inline-flex">
               ETH equivalent TX/s
               <Link
-                href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
+                href="https://learn.internetcomputer.org/hc/en-us/articles/39158902116884-Not-All-Transactions-Are-Equal"
                 title="Read more: Not all transactions are equal"
                 className="text-white hover:text-white-60 hover:no-underline flex items-center ml-2"
               >
