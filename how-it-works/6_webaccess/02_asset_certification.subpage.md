@@ -23,6 +23,6 @@ When a canister issues a response along with its certificate, a [HTTP Gateway](/
 
 For more information on certification, check [Certified Variables](/how-it-works/response-certification/).
 
-[Asset Certification Wiki Article](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification)
+[Asset Certification Learn Hub Article](https://learn.internetcomputer.org/hc/en-us/articles/34276431179412-Asset-Certification)
 
 [Rust Canister Development Security Best Practices](/docs/building-apps/security/data-integrity-and-authenticity#use-http-asset-certification-and-avoid-serving-your-dapp-through-rawicp0io)

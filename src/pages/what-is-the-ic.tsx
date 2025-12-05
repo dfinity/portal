@@ -145,7 +145,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance"
+                  href="https://learn.internetcomputer.org/hc/en-us/articles/39320190051348-Performance"
                 >
                   <DocsIcon /> Learn more about ICP performance.
                 </Link>

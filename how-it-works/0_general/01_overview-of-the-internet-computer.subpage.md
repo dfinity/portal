@@ -23,7 +23,7 @@ Canister smart contracts are more powerful than the smart contracts on other blo
 * Canisters can be updated and evolve, much like regular software. DAO-based governance schemes can make this upgrade process secure and decentralized.
 * Using Internet Identity, canisters can authenticate users based on private keys contained in secure hardware modules using the [*Web Authentication (WebAuthn)* protocol](https://www.w3.org/TR/webauthn-2/). This secure authentication service, called *Internet Identity*, is implemented as a smart contract as well and provides its services to other smart contracts.
 
-See more on [canister smart contracts](https://wiki.internetcomputer.org/wiki/Canister_smart_contract) on the IC wiki.
+See more on [canister smart contracts](https://learn.internetcomputer.org/hc/en-us/articles/34210839162004-Canister-Smart-Contracts) on the Learn Hub.
 
 ## Subnet architecture
 
