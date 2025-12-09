@@ -23,7 +23,7 @@ jobs:
 
     environment:
       name: "Internet Computer Mainnet"
-      url: ${{ fromJson(steps.get-url.outputs.url) }}
+      url: ${{ steps.get-url.outputs.url }}
 
     steps:
       - uses: actions/checkout@v2
@@ -70,5 +70,5 @@ jobs:
       - name: Get URL
         id: get-url
         run: |
-          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').raw.ic0.app"
-          echo "::set-output name=url::\"$URL\""
+          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').icp0.io"
+          echo "url=$URL" >> $GITHUB_OUTPUT
