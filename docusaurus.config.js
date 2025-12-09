@@ -150,7 +150,7 @@ const config = {
   scripts: [
     {
       src: "https://widget.kapa.ai/kapa-widget.bundle.js",
-      "data-website-id": "08910249-851f-465b-b60f-238d84e1afc1",
+      "data-website-id": "73cafe70-9be1-494b-bd31-b849fc29799f",
       "data-bot-protection-mechanism": "hcaptcha",
       "data-project-name": "Internet Computer",
       "data-project-color": "#172234",
