@@ -164,14 +164,12 @@ const redirects = `
   # Motoko old -> new docs
 
   /motoko /motoko/home
-  /motoko/main/base/ /motoko/base/
-  /current/motoko/main/base/ /motoko/base/
+  /motoko/main/base /motoko/base/
+  /current/motoko/main/base /motoko/base/
   /motoko/main/base/Array /motoko/base/Array
   /current/motoko/main/base/Array /motoko/base/Array
   /motoko/main/base/array /motoko/base/Array
   /current/motoko/main/base/array /motoko/base/Array
-  /motoko/main/base/Array/ /motoko/base/Array
-  /current/motoko/main/base/Array/ /motoko/base/Array
   /motoko/main/base/AssocList /motoko/base/AssocList
   /current/motoko/main/base/AssocList /motoko/base/AssocList
   /motoko/main/base/Blob /motoko/base/Blob
@@ -190,8 +188,6 @@ const redirects = `
   /current/motoko/main/base/Char /motoko/base/Char
   /motoko/main/base/Debug /motoko/base/Debug
   /current/motoko/main/base/Debug /motoko/base/Debug
-  /motoko/main/base/Debug/ /motoko/base/Debug
-  /current/motoko/main/base/Debug/ /motoko/base/Debug
   /motoko/main/base/Deque /motoko/base/Deque
   /current/motoko/main/base/Deque /motoko/base/Deque
   /motoko/main/base/Error /motoko/base/Error
@@ -216,8 +212,6 @@ const redirects = `
   /current/motoko/main/base/HashMap /motoko/base/HashMap
   /motoko/main/base/hashmap /motoko/base/HashMap
   /current/motoko/main/base/hashmap /motoko/base/HashMap
-  /motoko/main/base/HashMap/ /motoko/base/HashMap
-  /current/motoko/main/base/HashMap/ /motoko/base/HashMap
   /motoko/main/base/Heap /motoko/base/Heap
   /current/motoko/main/base/Heap /motoko/base/Heap
   /motoko/main/base/Int /motoko/base/Int
@@ -238,8 +232,6 @@ const redirects = `
   /current/motoko/main/base/IterType /motoko/base/IterType
   /motoko/main/base/List /motoko/base/List
   /current/motoko/main/base/List /motoko/base/List
-  /motoko/main/base/List/ /motoko/base/List
-  /current/motoko/main/base/List/ /motoko/base/List
   /motoko/main/base/Nat /motoko/base/Nat
   /current/motoko/main/base/Nat /motoko/base/Nat
   /motoko/main/base/Nat16 /motoko/base/Nat16
@@ -268,8 +260,6 @@ const redirects = `
   /current/motoko/main/base/Principal /motoko/base/Principal
   /motoko/main/base/principal /motoko/base/Principal
   /current/motoko/main/base/principal /motoko/base/Principal
-  /motoko/main/base/Principal/ /motoko/base/Principal
-  /current/motoko/main/base/Principal/ /motoko/base/Principal
   /motoko/main/base/Random /motoko/base/Random
   /current/motoko/main/base/Random /motoko/base/Random
   /motoko/main/base/random /motoko/base/Random
@@ -288,8 +278,6 @@ const redirects = `
   /current/motoko/main/base/Time /motoko/base/Time
   /motoko/main/base/time /motoko/base/Time
   /current/motoko/main/base/time /motoko/base/Time
-  /motoko/main/base/Time/ /motoko/base/Time
-  /current/motoko/main/base/Time/ /motoko/base/Time
   /motoko/main/base/Timer /motoko/base/Timer
   /current/motoko/main/base/Timer /motoko/base/Timer
   /motoko/main/base/Trie /motoko/base/Trie
@@ -364,8 +352,6 @@ const redirects = `
   /current/motoko/main/reference/generating-docs /motoko/motoko-tooling/mo-doc
   /motoko/main/reference/language-manual /motoko/language-manual
   /current/motoko/main/reference/language-manual /motoko/language-manual
-  /motoko/main/reference/language-manual/ /motoko/language-manual
-  /current/motoko/main/reference/language-manual/ /motoko/language-manual
   /motoko/main/reference/motoko-grammar /motoko/style
   /current/motoko/main/reference/motoko-grammar /motoko/style
   /motoko/main/reference/style /motoko/style
@@ -392,8 +378,6 @@ const redirects = `
   /current/motoko/main/writing-motoko/candid-ui /motoko/icp-features/candid-serialization
   /motoko/main/writing-motoko/control-flow /motoko/fundamentals/control-flow/basic-control-flow
   /current/motoko/main/writing-motoko/control-flow /motoko/fundamentals/control-flow/basic-control-flow
-  /motoko/main/writing-motoko/control-flow/ /motoko/fundamentals/control-flow/basic-control-flow
-  /current/motoko/main/writing-motoko/control-flow/ /motoko/fundamentals/control-flow/basic-control-flow
   /motoko/main/writing-motoko/errors /motoko/fundamentals/error-handling
   /current/motoko/main/writing-motoko/errors /motoko/fundamentals/error-handling
   /motoko/main/writing-motoko/heartbeats /motoko/icp-features/system-functions
@@ -422,8 +406,6 @@ const redirects = `
   /current/motoko/main/writing-motoko/pipes /motoko/fundamentals/basic-syntax/operators
   /motoko/main/writing-motoko/query-functions /motoko/fundamentals/types/functions
   /current/motoko/main/writing-motoko/query-functions /motoko/fundamentals/types/functions
-  /motoko/main/writing-motoko/query-functions/ /motoko/fundamentals/types/functions
-  /current/motoko/main/writing-motoko/query-functions/ /motoko/fundamentals/types/functions
   /motoko/main/writing-motoko/randomness /motoko/icp-features/randomness
   /current/motoko/main/writing-motoko/randomness /motoko/icp-features/randomness
   /motoko/main/writing-motoko/recursive-types /motoko/fundamentals/types/advanced-types
@@ -1337,7 +1319,6 @@ const redirects = `
   /current/building-apps/getting-started/quickstart /building-apps/getting-started/quickstart
   /current/tokenomics/identity-auth/ /building-apps/authentication/integrate-internet-identity
   /current/tokenomics/ https://learn.internetcomputer.org/hc/en-us/articles/34090810571284-Tokenomics
-  /docs /
   /current/references/ii-spec /references/ii-spec
   /download /building-apps/getting-started/install
   /eveloper-docs/developer-tools/cli-tools/dfxvm/cli-reference/dfxvm/dfxvm-update /building-apps/developer-tools/dfxvm/dfxvm-update
@@ -1410,14 +1391,8 @@ const redirects = `
   /current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /building-apps/developer-tools/cdks/rust/intro-to-rust
   /current/developer-docs/build/cdks/ /building-apps/developer-tools/cdks/
   /current/developer-docs/build/cdks/motoko-dfinity /building-apps/developer-tools/cdks/
-  /current/developer-docs/build/cdks/motoko-dfinity/language-manual /motoko/language-manual
-  /current/developer-docs/build/cdks/motoko-dfinity/motoko/ /motoko/home
-  /current/developer-docs/build/backend/define-an-actor /motoko/fundamentals/actors/actors-async
   /current/developer-docs/build/cdks/motoko-dfinity/actor-classes /motoko/fundamentals/actors/actors-async
   /current/developer-docs/build/cdks/motoko-dfinity/actors-async /motoko/fundamentals/actors/actors-async
-  /current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /motoko/base/Iter
-  /current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /motoko/base/IterType
-  /current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /motoko/home
   /current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /motoko/home
   /current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /motoko/fundamentals/pattern-matching
   /current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /building-apps/canister-management/upgrade
@@ -1425,9 +1400,7 @@ const redirects = `
   /current/developer-docs/build/cdks/motoko-dfinity/language-manual /motoko/language-manual
   /current/developer-docs/build/cdks/motoko-dfinity/motoko/ /motoko/home
   /current/developer-docs/build/backend/define-an-actor /motoko/fundamentals/actors/actors-async
-  /current/developer-docs/build/cdks/motoko-dfinity/actor-classes /motoko/fundamentals/actors/actors-async
   /motoko/fundamentals/async-actors /motoko/fundamentals/actors/actors-async
-  /current/developer-docs/build/cdks/motoko-dfinity/actors-async /motoko/fundamentals/actors/actors-async
   /current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /motoko/base/Iter
   /current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /motoko/base/IterType
   /current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /motoko/home
@@ -1478,7 +1451,6 @@ const redirects = `
   /current/developer-docs/build/languages/motoko/quickstart/01-intro /motoko/home
   /current/motoko/base/Array /motoko/base/Array
   /motoko/getting-started/motoko-introduction /motoko/home
-  /quickstart/local-quickstart /building-apps/getting-started/quickstart
   /references/supported-signatures /references/t-sigs-how-it-works
 `
 
