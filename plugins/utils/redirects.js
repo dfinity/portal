@@ -22,6 +22,7 @@ const redirects = `
   ## /current/quill/* https://github.com
   ##
   ##
+  /docs/* /:splat
   /current/developer-docs/developer-tools/cli-tools/cli-reference/* /building-apps/developer-tools/dfx:splat
   /current/tutorials/developer-journey/* /tutorials/developer-liftoff/:splat
   /current/tutorials/developer-liftoff/* /tutorials/developer-liftoff/:splat
@@ -44,6 +45,9 @@ const redirects = `
   ## /current/developer-docs/hello-world /building-apps/getting-started/quickstart
   ##
   ##
+
+  ## Docs Home
+  /docs/home /
 
   ## IC spec
   /current/references/ic-interface-spec /references/ic-interface-spec
