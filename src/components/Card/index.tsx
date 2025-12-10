@@ -87,4 +87,3 @@ const Card: FC = () => (
 );
 
 export default Card;
-

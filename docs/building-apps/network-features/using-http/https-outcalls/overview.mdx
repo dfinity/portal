@@ -12,21 +12,21 @@ Canisters can make a request to a URL using [HTTPS outcalls](https://internetcom
 
 HTTPS outcalls enable a wide range of applications. For example, oracle services can directly integrate with ICP in a trustless manner, and dapps can provide user notifications or anything else that requires communication with servers on the Internet.
 
-Some examples of onchain oracle-like services that obtain data from off-chain sources through HTTP outcalls include the [EVM RPC canister](/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview), the [exchange rate canister](/docs/references/system-canisters/) and the [Orally dapp](https://kclew-uiaaa-aaaal-qbuiq-cai.ic0.app/sybil).
+Some examples of onchain oracle-like services that obtain data from off-chain sources through HTTP outcalls include the [EVM RPC canister](/building-apps/chain-fusion/ethereum/evm-rpc/overview), the [exchange rate canister](/references/system-canisters/) and the [Orally dapp](https://kclew-uiaaa-aaaal-qbuiq-cai.ic0.app/sybil).
 
 ## How it works
 
 The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
 
-In order for a canister to use HTTPS outcalls, it needs to call the system API of ICP. Canisters can call into the system API by sending messages to [the ICP management canister](/docs/references/ic-interface-spec#ic-management-canister) using the identifier `"aaaaa-aa"`.
+In order for a canister to use HTTPS outcalls, it needs to call the system API of ICP. Canisters can call into the system API by sending messages to [the ICP management canister](/references/ic-interface-spec#ic-management-canister) using the identifier `"aaaaa-aa"`.
 
-[Cycles](/docs/building-apps/essentials/gas-cost) used to pay for the call must be explicitly transferred with the call. They are not deducted from the caller's balance implicitly.
+[Cycles](/building-apps/essentials/gas-cost) used to pay for the call must be explicitly transferred with the call. They are not deducted from the caller's balance implicitly.
 
-For detailed information on how it works, please refer to the [HTTPS outcalls reference documentation](/docs/references/https-outcalls-how-it-works).
+For detailed information on how it works, please refer to the [HTTPS outcalls reference documentation](/references/https-outcalls-how-it-works).
 
 ## The API for sending HTTPS outcalls
 
-As per the [Internet Computer interface specification](/docs/references/ic-interface-spec), a canister can use the `http_request` method by [following specification](/docs/references/ic-interface-spec#ic-http_request):
+As per the [Internet Computer interface specification](/references/ic-interface-spec), a canister can use the `http_request` method by [following specification](/references/ic-interface-spec#ic-http_request):
 
 ### The request
 The following parameters should be supplied within the request:
@@ -60,5 +60,5 @@ Refer to the following examples of HTTPS outcalls implementations in canisters:
 - Fetch price information for DeFi protocols using the [exchange rate canister](https://github.com/dfinity/exchange-rate-canister).
 - Communicate with other chains using the [EVM RPC canister](https://github.com/internet-computer-protocol/evm-rpc-canister).
 - Fetch information about Bitcoin Ordinals and Bitcoin Meta-Protocols using the [Ordinals canister](https://github.com/sardariuss/ordinals_canister).
-- [Minimal sample code of making a `GET` request](/docs/building-apps/network-features/using-http/https-outcalls/get).
-- [Minimal sample code of making a `POST` request](/docs/building-apps/network-features/using-http/https-outcalls/post).
+- [Minimal sample code of making a `GET` request](/building-apps/network-features/using-http/https-outcalls/get).
+- [Minimal sample code of making a `POST` request](/building-apps/network-features/using-http/https-outcalls/post).

@@ -32,7 +32,7 @@ Once a user has deposited funds, the tokens deposited can be swapped from one to
 
 In this example, the token swap canister simply swaps all deposits for two users. `user_a`'s entire token balance of `token_a` is given to `user_b`, and `user_b`'s entire token balance of `token_b` is given to `user_a`.
 
-This example will use ICRC-2 tokens. To learn more about ICRC tokens, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+This example will use ICRC-2 tokens. To learn more about ICRC tokens, refer to the previous module [4.2: ICRC tokens](/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
@@ -77,9 +77,9 @@ In this project's configuration, you can see the definition of three canisters:
 
 - The `swap` canister: This canister provides the deposit, swap, and withdraw functionality for the project's ICRC-2 tokens. It uses the source code found at `src/swap/main.mo`.
 
-- The `token_a` canister: This canister is used to create `token_a`, an ICRC-2 token. This canister uses the most recent ICRC ledger Wasm and Candid files. To learn more about the ICRC Wasm and Candid files, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+- The `token_a` canister: This canister is used to create `token_a`, an ICRC-2 token. This canister uses the most recent ICRC ledger Wasm and Candid files. To learn more about the ICRC Wasm and Candid files, refer to the previous module [4.2: ICRC tokens](/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
-- The `token_b` canister: The canister is used to create `token_b`, an ICRC-2 token. This canister uses the most recent ICRC ledger Wasm and Candid files. To learn more about the ICRC Wasm and Candid files, refer to the previous module [4.2: ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+- The `token_b` canister: The canister is used to create `token_b`, an ICRC-2 token. This canister uses the most recent ICRC ledger Wasm and Candid files. To learn more about the ICRC Wasm and Candid files, refer to the previous module [4.2: ICRC tokens](/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
 Next, open the `src/swap/main.mo` file and review its contents. This code has been annotated with notes to explain the program's functionality:
 

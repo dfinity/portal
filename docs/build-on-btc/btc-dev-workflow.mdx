@@ -11,16 +11,16 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 To build Bitcoin dapps on ICP, a developer needs to make calls and submit transactions to the Bitcoin network from their ICP smart contract.
 
-Before you start building your dapp, you will need to [set up a local development environment with Bitcoin support](/docs/build-on-btc/btc-dev-env).
+Before you start building your dapp, you will need to [set up a local development environment with Bitcoin support](/build-on-btc/btc-dev-env).
 
 Developers should expect to implement the following workflows within their code to build a Bitcoin dapp:
 
-- [Generate a Bitcoin address](/docs/build-on-btc/btc-transactions/generate-addresses). Bitcoin addresses are necessary for your dapp to sign transactions and hold assets like BTC. An ICP smart contract can have multiple addresses that have been generated with different signature types, i.e., ECDSA and Schnorr.
+- [Generate a Bitcoin address](/build-on-btc/btc-transactions/generate-addresses). Bitcoin addresses are necessary for your dapp to sign transactions and hold assets like BTC. An ICP smart contract can have multiple addresses that have been generated with different signature types, i.e., ECDSA and Schnorr.
 
-- [Create a Bitcoin transaction](/docs/build-on-btc/btc-transactions/create-transactions). Bitcoin transactions spend unspent transaction outputs (UTXOs) and create new UTXOs. A UTXO is the output of a Bitcoin transaction. It exists until it is used as the input of another transaction.
+- [Create a Bitcoin transaction](/build-on-btc/btc-transactions/create-transactions). Bitcoin transactions spend unspent transaction outputs (UTXOs) and create new UTXOs. A UTXO is the output of a Bitcoin transaction. It exists until it is used as the input of another transaction.
 
-- [Sign the transaction](/docs/build-on-btc/btc-transactions/sign-transactions) using one of the supported [threshold signature](/docs/references/t-sigs-how-it-works) APIs. All inputs of a transaction must be signed before the transaction can be submitted to the Bitcoin network.
+- [Sign the transaction](/build-on-btc/btc-transactions/sign-transactions) using one of the supported [threshold signature](/references/t-sigs-how-it-works) APIs. All inputs of a transaction must be signed before the transaction can be submitted to the Bitcoin network.
 
-- [Submit the transaction](/docs/build-on-btc/btc-transactions/submit-transactions) by sending a request to the Bitcoin API that specifies the `blob` of the transaction and the target Bitcoin network (mainnet or testnet4).
+- [Submit the transaction](/build-on-btc/btc-transactions/submit-transactions) by sending a request to the Bitcoin API that specifies the `blob` of the transaction and the target Bitcoin network (mainnet or testnet4).
 
-- [Read information from the Bitcoin network](/docs/build-on-btc/read-state), such as transaction details or address balances.
+- [Read information from the Bitcoin network](/build-on-btc/read-state), such as transaction details or address balances.

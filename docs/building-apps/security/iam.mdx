@@ -16,7 +16,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 ### Recommendation
 
-- The caller of every canister call the caller can be identified. The calling [principal](/docs/references/ic-interface-spec#principal) can be accessed using the system API’s methods [`ic0.msg_caller_size` and `ic0.msg_caller_copy`](/docs/references/ic-interface-spec#system-api-imports). If an identity provider such as Internet Identity is used, [the principal is the user identity for this specific origin](/docs/references/ii-spec#identity-design-and-data-model). If some actions (e.g., access to user’s account data or account-specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call. An example in Rust can be found below:
+- The caller of every canister call the caller can be identified. The calling [principal](/references/ic-interface-spec#principal) can be accessed using the system API’s methods [`ic0.msg_caller_size` and `ic0.msg_caller_copy`](/references/ic-interface-spec#system-api-imports). If an identity provider such as Internet Identity is used, [the principal is the user identity for this specific origin](/references/ii-spec#identity-design-and-data-model). If some actions (e.g., access to user’s account data or account-specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call. An example in Rust can be found below:
 
 ```rust
 // Let pk be the public key of a principal that is allowed to perform
@@ -64,7 +64,7 @@ fn caller() -> Result<Principal, String> {
 
 ### Security concern
 
-The correct execution of [`canister_inspect_message`](/docs/references/ic-interface-spec#system-api-inspect-message) is not guaranteed because it is executed by a single node, and if that node is malicious, it can simply skip this check. In that case the update call would be executed without any message inspection checks.
+The correct execution of [`canister_inspect_message`](/references/ic-interface-spec#system-api-inspect-message) is not guaranteed because it is executed by a single node, and if that node is malicious, it can simply skip this check. In that case the update call would be executed without any message inspection checks.
 
 Also note that for inter-canister calls, `canister_inspect_message` is not invoked.
 
@@ -112,12 +112,12 @@ A [short presentation](https://www.youtube.com/watch?v=iRmpCkzC6iI&t=1863s) can 
 
 ### Security concern
 
-Internet Identity has a standardized way for web applications to request authentication of a user. This [client authentication protocol](/docs/references/ii-spec#client-authentication-protocol) allows a client dapp frontend to obtain a delegation signed by the Internet Identity for a locally generated session key pair. Using this delegation in combination with the session key allows the dapp frontend to make authenticated calls towards the backend canister. Such calls need to be digitally signed by the session private key. The IC will verify the signature and verify if there is a delegation (or chain of delegations) from the II key to the session public key.
+Internet Identity has a standardized way for web applications to request authentication of a user. This [client authentication protocol](/references/ii-spec#client-authentication-protocol) allows a client dapp frontend to obtain a delegation signed by the Internet Identity for a locally generated session key pair. Using this delegation in combination with the session key allows the dapp frontend to make authenticated calls towards the backend canister. Such calls need to be digitally signed by the session private key. The IC will verify the signature and verify if there is a delegation (or chain of delegations) from the II key to the session public key.
 
 The II client authentication protocol leverages the browser’s `postMessage` API to communicate between the client origin and the II origin. This protocol allows II to authenticate the origin of the authorization request using the hostname.
 
 :::info
-Note that as part of the client authentication protocol, a dapp can specify an alternative origin by following the [alternative frontend origins](/docs/references/ii-spec#alternative-frontend-origins) requirements.
+Note that as part of the client authentication protocol, a dapp can specify an alternative origin by following the [alternative frontend origins](/references/ii-spec#alternative-frontend-origins) requirements.
 :::
 
 Upon successful authentication, II will return a delegation for the principal derived from the users’ II for the specific frontend origin. This serves two purposes. First, a client dapp can’t use this delegation on other dapps to impersonate the user. Second, multiple client dapps can’t correlate user behavior across dapps, thereby reducing privacy. A dapp with a different frontend origin won’t be able to request authentication for your dapp, which provides protection against certain phishing attacks.
@@ -230,7 +230,7 @@ MA -->> U: <<Success>>
 
 * Introduce an intermediate session key that is generated and stored by the web app proxy frontend.
 * Initiate the II client authentication protocol using this intermediate session key. By using a new session key that the attacker can’t control, the delegation issued by II would no longer be usable by the attacker if it were stolen in step 8, as the attacker doesn’t have access to the intermediate session private key.
-* [Create a delegation chain](/docs/references/ic-interface-spec#authentication) to allow the mobile application to use their session key. The delegation chain consists of two delegations as shown in the figure below. The first one delegates from the II canister key to the intermediate key and is generated by the II canister. The second one delegates from the intermediate key to the mobile app public key and is signed by the proxy frontend’s intermediate session private key. Note, this means the intermediate key can impersonate the user. Since the proxy frontend is served from the IC, it can be trusted to handle this key properly. It is up to the developer to ensure the confidentiality of this key. For example, using the WebCrypto API to create unextractable keys as is used internally by the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Ideally, this intermediate key is short-lived to reduce the risk of exposure.
+* [Create a delegation chain](/references/ic-interface-spec#authentication) to allow the mobile application to use their session key. The delegation chain consists of two delegations as shown in the figure below. The first one delegates from the II canister key to the intermediate key and is generated by the II canister. The second one delegates from the intermediate key to the mobile app public key and is signed by the proxy frontend’s intermediate session private key. Note, this means the intermediate key can impersonate the user. Since the proxy frontend is served from the IC, it can be trusted to handle this key properly. It is up to the developer to ensure the confidentiality of this key. For example, using the WebCrypto API to create unextractable keys as is used internally by the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Ideally, this intermediate key is short-lived to reduce the risk of exposure.
 
 ![Delegation Chain](./_attachments/ii_mobile_delegation_chain.png)
 * Return the delegation chain to the mobile app using [app links](https://developer.android.com/training/app-links) on Android and [universal links](https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content) on iOS. These mechanisms bind the domain name/hostname to the mobile app, which prevents an attacker from using a malicious mobile app to receive the delegation chain. The domain-to-mobile app binding occurs through a JSON file that has to be hosted under the `/.well-known` directory of your web application. See [iOS](https://developer.apple.com/documentation/xcode/supporting-associated-domains)

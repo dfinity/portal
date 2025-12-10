@@ -783,6 +783,11 @@ div[class^="announcementBarContent"] {
   display: none;
 }
 
+button,
+.button {
+  cursor: pointer;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

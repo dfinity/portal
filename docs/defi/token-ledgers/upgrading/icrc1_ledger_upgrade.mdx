@@ -11,8 +11,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 The ICRC-1 **ledger suite** consists of the following canisters:
 
-- A [ledger canister](/docs/defi/token-ledgers/setup/icrc1_ledger_setup) that manages token balances, transfers, and approval mechanisms.
-- An (optional) [index canister](/docs/defi/token-indexes) that provides efficient querying of balances and transaction histories.
+- A [ledger canister](/defi/token-ledgers/setup/icrc1_ledger_setup) that manages token balances, transfers, and approval mechanisms.
+- An (optional) [index canister](/defi/token-indexes) that provides efficient querying of balances and transaction histories.
 - An (optional) archive canister that stores historical transaction data.
 
 To add new features and fix bugs, it is recommended to periodically upgrade the canisters.
@@ -75,7 +75,7 @@ Within each release, the recommended upgrade order is:
 
 Prior to upgrading production ledgers, test the upgrade path by first installing the same production ledger canister version either on a local setup or on a test canister on the mainnet. Populate the state with a reasonably large number of transactions. Then, upgrade that to the new version and verify that the upgrade was successful by checking that the module hash changed to match the new version and follow the [Verifying upgrades](#verifying-upgrades) steps.
 
-Before performing the actual upgrade in production, consider taking a [snapshot](/docs/current/developer-docs/smart-contracts/maintain/snapshots) of the canister so that it can be restored in case of issues.
+Before performing the actual upgrade in production, consider taking a [snapshot](/building-apps/canister-management/snapshots) of the canister so that it can be restored in case of issues.
 Note that restoring a canister snapshot will result in the loss of any transactions that may have been performed since the snapshot was taken.
 If an index canister is installed, it can be used to verify that the blocks and balances match what is stored in the ledger.
 
@@ -105,7 +105,7 @@ If the currently installed version is not known, the recommended next version is
 - The aforementioned version writes the serialized ledger state to stable memory using a [MemoryManager](https://github.com/dfinity/stable-structures/blob/69ed47f9b5001af67d650c714cd56ec3ee0ef2bb/src/memory_manager.rs). This is a prerequisite for migrating ledger-internal data structures to [stable structures](https://github.com/dfinity/stable-structures/tree/main) in subsequent ledger releases. Upgrading to this version from any prior release should be possible.
 - If installing this version results in an error due to compatibility issues, this is most likely because the deployed ledger version is based on a later release. In this case, the recommended approach is to try with the subsequent releases until the upgrade succeeds.
 
-### Step 3: For each canister in the ledger suite, in [the order specified above](#component-upgrade-order), test the upgrade, take a snapshot, perform the upgrade, and then [verify the upgrade](/docs/defi/token-ledgers/upgrading/icrc1_ledger_upgrade#verifying-upgrades).
+### Step 3: For each canister in the ledger suite, in [the order specified above](#component-upgrade-order), test the upgrade, take a snapshot, perform the upgrade, and then [verify the upgrade](/defi/token-ledgers/upgrading/icrc1_ledger_upgrade#verifying-upgrades).
 
 In case of issues, consider either:
 

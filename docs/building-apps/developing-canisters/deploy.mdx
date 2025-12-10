@@ -18,11 +18,11 @@ Canister smart contracts can be deployed to different development environments:
 
 - The local environment created by `dfx`. In this environment, PocketIC is used to customize testing parameters like subnet type or canister memory allocation.
 
-- A custom [local network](/docs/building-apps/developing-canisters/custom-networks).
+- A custom [local network](/building-apps/developing-canisters/custom-networks).
 
 - The playground on the mainnet, which is a testnet-like sandbox environment. No cycles are required to deploy and run your canisters on the playground, but they will be removed after 20 minutes.
 
-- The mainnet, designed for production use. This deployment method will cost [cycles](/docs/building-apps/essentials/gas-cost).
+- The mainnet, designed for production use. This deployment method will cost [cycles](/building-apps/essentials/gas-cost).
 
 Verify you are in your project's directory and the canisters you'd like to deploy are configured in the project's `dfx.json` file. Then deploy your canisters using the `dfx deploy` command:
 
@@ -38,13 +38,13 @@ However, tools such as [ICP Ninja](https://icp.ninja) (a web IDE) and the playgr
 
 For most developers, the playground option can be used. For more advanced developers and use cases, there are two possible options for a testnet-like environment:
 
-- [Custom playgrounds](/docs/building-apps/developing-canisters/custom-networks): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
+- [Custom playgrounds](/building-apps/developing-canisters/custom-networks): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
 
-- [Custom `dfx` networks](/docs/building-apps/developing-canisters/custom-networks): The `dfx` named network feature can be used to create custom networks that can be used for testing segmented from other projects deployed locally.
+- [Custom `dfx` networks](/building-apps/developing-canisters/custom-networks): The `dfx` named network feature can be used to create custom networks that can be used for testing segmented from other projects deployed locally.
 
 ## Deploying a canister with initialization arguments
 
-Initialization arguments are initial configuration parameters that the canister's installation expects in order to install the code correctly. One example of a canister that requires these Candid initialization arguments is the [ICP ledger canister](/docs/defi/token-ledgers/setup/icp_ledger_setup).
+Initialization arguments are initial configuration parameters that the canister's installation expects in order to install the code correctly. One example of a canister that requires these Candid initialization arguments is the [ICP ledger canister](/defi/token-ledgers/setup/icp_ledger_setup).
 
 You can set a canister's init arguments when the canister is deployed by passing the `--argument` flag:
 

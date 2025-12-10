@@ -61,7 +61,7 @@ The `dfx.json` file in the root directory defines the canisters that make up the
 ```json title=dfx.json file=../../references/samples/motoko/hello_world/dfx.json
 ```
 
-Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+Learn more about [dfx.json](/building-apps/developer-tools/dfx-json).
 
 ## Backend​
 
@@ -70,13 +70,13 @@ Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
 
 Let’s breakdown what this code does:
 
-1. The code first defines an [actor](/docs/motoko/actors-async) named `HelloWorld`. An actor is an object that can hold state and interact with the world through message passing.
+1. The code first defines an [actor](/motoko/actors-async) named `HelloWorld`. An actor is an object that can hold state and interact with the world through message passing.
 
-2. Then, it defines a [stable variable](/docs/building-apps/canister-management/upgrade) called `greeting`. Stable variables are used to store data that will persist across canister upgrades. [Learn more about upgrading canisters.](/docs/building-apps/canister-management/upgrade)
+2. Then, it defines a [stable variable](/building-apps/canister-management/upgrade) called `greeting`. Stable variables are used to store data that will persist across canister upgrades. [Learn more about upgrading canisters.](/building-apps/canister-management/upgrade)
 
-3. Next, an [update method](/docs/building-apps/interact-with-canisters/update-calls) called `setGreeting` is defined. Update methods alter the state of the canister. This method specifically will update the text stored in the `greeting` variable.
+3. Next, an [update method](/building-apps/interact-with-canisters/update-calls) called `setGreeting` is defined. Update methods alter the state of the canister. This method specifically will update the text stored in the `greeting` variable.
 
-4. Lastly, a [query method](/docs/building-apps/interact-with-canisters/query-calls) called `greet` is defined. Query methods are read-only operations and simply return data from the canister. They cannot alter the canister’s state. This query method will return the text stored in `greeting`, followed by the text passed to the method. This method’s syntax can be broken down and explained further:
+4. Lastly, a [query method](/building-apps/interact-with-canisters/query-calls) called `greet` is defined. Query methods are read-only operations and simply return data from the canister. They cannot alter the canister’s state. This query method will return the text stored in `greeting`, followed by the text passed to the method. This method’s syntax can be broken down and explained further:
 
     - `public`: Enables the method to be publicly callable by users or other canisters.
   
@@ -151,7 +151,7 @@ On ICP, an application's frontend is created through these steps:
 
 2. The project's `dfx.json` file defines the frontend canister and specifies it as `"type": "asset"`.
 
-3. When the project is deployed, `dfx` deploys an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to the canister. It then adds an API client called the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/overview) to the frontend assets and uploads all assets to the canister. The ICP JavaScript agent facilitates the communication between the frontend and the backend. In general, ICP agents are libraries for interacting with canisters' public interfaces.
+3. When the project is deployed, `dfx` deploys an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to the canister. It then adds an API client called the [ICP JavaScript agent](/building-apps/interact-with-canisters/agents/overview) to the frontend assets and uploads all assets to the canister. The ICP JavaScript agent facilitates the communication between the frontend and the backend. In general, ICP agents are libraries for interacting with canisters' public interfaces.
 
 ## Backend and frontend communication​
 

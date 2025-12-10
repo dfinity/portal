@@ -14,7 +14,7 @@ Candid provides a language-agnostic way to interact with <GlossaryTooltip>canist
 :::info
 While Candid is a robust, type-safe, and future-proof way to facilitate communication between canisters, it is not required. Arbitrary bytes can be exchanged if all canisters that are part of the communication stream are designed to understand them (such that they are using the same underlying protocol, written in the same language, etc.).
 
-[Learn more in the Candid reference documentation](/docs/references/candid-ref).
+[Learn more in the Candid reference documentation](/references/candid-ref).
 :::
 
 By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with ICP from a terminal using the IC SDK, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language.
@@ -27,7 +27,7 @@ Candid types can be used to describe a service via a Candid service description 
 
 If you write a canister in Motoko, the compiler automatically generates a Candid description when you compile the program. If you use `dfx`, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are auto-generated, it is recommended that you do not manually edit them; they will be overwritten in the next `dfx build`.
 
-For canisters written in Rust, the Candid extractor tool can be used with the Rust [IC CDK](https://crates.io/crates/ic-cdk) versions `0.11.0` and newer. View the full instructions for using the [Candid extractor](/docs/building-apps/developer-tools/cdks/rust/generating-candid).
+For canisters written in Rust, the Candid extractor tool can be used with the Rust [IC CDK](https://crates.io/crates/ic-cdk) versions `0.11.0` and newer. View the full instructions for using the [Candid extractor](/building-apps/developer-tools/cdks/rust/generating-candid).
 
 ### Writing `.did` files
 
@@ -42,7 +42,7 @@ service : {
 };
 ```
 
-[Learn more about supported data types in the Candid reference documentation](/docs/references/candid-ref#supported-types).
+[Learn more about supported data types in the Candid reference documentation](/references/candid-ref#supported-types).
 
 ### Splitting interface descriptions across multiple files (Motoko)
 
@@ -106,7 +106,7 @@ service address_book : {
 }
 ```
 
-This annotation indicates that the `get_address` method can be invoked as an ICP **query call**. As discussed in [query and update methods](/docs/building-apps/interact-with-canisters/advanced-calls), a query provides an efficient way to retrieve information from a canister without going through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), so being able to identify a method as a query is one of the key benefits of using Candid to interact with ICP.
+This annotation indicates that the `get_address` method can be invoked as an ICP **query call**. As discussed in [query and update methods](/building-apps/interact-with-canisters/advanced-calls), a query provides an efficient way to retrieve information from a canister without going through [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus), so being able to identify a method as a query is one of the key benefits of using Candid to interact with ICP.
 
 ## Encoding and decoding
 
@@ -181,7 +181,7 @@ Services can safely evolve in the following ways:
 
 -   Existing result types may be *changed*, but only to a *subtype* of the previous type.
 
-For information about the supertypes and subtypes of a given type, see the corresponding [reference](/docs/references/candid-ref) section for that type.
+For information about the supertypes and subtypes of a given type, see the corresponding [reference](/references/candid-ref) section for that type.
 
 Let’s look at a concrete example of how a service might evolve. Consider a service with the following API:
 
@@ -282,9 +282,9 @@ For more information, refer to the blog post on [Candid for engineers](https://m
 
 ### Command line
 
-To interact with a service, use [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call).
+To interact with a service, use [`dfx canister call`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call).
 
-To pass Candid arguments to the `dfx canister call` command, please refer to the [Candid reference](/docs/references/candid-ref), or, for Candid arguments too long to fit the command line, please use the `--argument-file` flag.
+To pass Candid arguments to the `dfx canister call` command, please refer to the [Candid reference](/references/candid-ref), or, for Candid arguments too long to fit the command line, please use the `--argument-file` flag.
 
 You can also omit the arguments and let the IC SDK generate a random value that matches the method type.
 
@@ -307,7 +307,7 @@ At this time, it is not possible to disable the Candid UI from being installed a
 
 ### Interact with a service from a Motoko canister
 
-If you are writing a canister in Motoko, the Motoko compiler automatically translates the signature of your canister’s top-level `actor` or `actor class` into a Candid description, and the `dfx build` command ensures that the service description is properly referenced where it needs to be. It ensures that the canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the canister's method natively. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/docs/references/candid-ref) reference section.
+If you are writing a canister in Motoko, the Motoko compiler automatically translates the signature of your canister’s top-level `actor` or `actor class` into a Candid description, and the `dfx build` command ensures that the service description is properly referenced where it needs to be. It ensures that the canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the canister's method natively. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/references/candid-ref) reference section.
 
 Motoko canisters auto-generate a Candid description file, located in your project build directory at `.dfx/local/canisters/hello/hello.did`.
 
@@ -315,21 +315,21 @@ Motoko canisters auto-generate a Candid description file, located in your projec
 
 If you write a canister in Rust, the `dfx build` command ensures that the service description is properly referenced where it needs to be. However, you need to write the Candid service description manually, following the conventions described in the [Candid specification](https://github.com/dfinity/candid/blob/master/spec/Candid.md#core-grammar).
 
-The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the canister's method natively. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/docs/references/candid-ref) reference section.
+The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the canister's method natively. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/references/candid-ref) reference section.
 
 There is also an experimental feature to generate a Candid service description automatically; see this [test case](https://github.com/dfinity/candid/blob/master/rust/candid/tests/types.rs#L99) as an example.
 
-For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/main/examples) and the [Rust tutorials](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/main/examples) and the [Rust tutorials](/building-apps/developer-tools/cdks/rust/intro-to-rust).
 
 ### Interact with a service from JavaScript
 
 The [dfinity/agent npm package](https://www.npmjs.com/package/@dfinity/agent) includes support for importing canisters using Candid.
 
-When the import dependency of a canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js` by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the canister's method natively. For additional information on the type mapping between Candid and JavaScript, you can consult the [supported types](/docs/references/candid-ref) reference section.
+When the import dependency of a canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js` by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the canister's method natively. For additional information on the type mapping between Candid and JavaScript, you can consult the [supported types](/references/candid-ref) reference section.
 
 ## Publish Candid interfaces privately
 
-By default, `dfx` makes the `candid:service` metadata information public to promote interoperability and make it convenient to use the Candid UI. The Candid UI reads this metadata to determine the interface of your canister. It doesn’t publish any more information than what is already public. This metadata can be returned through the [`dfx canister metadata`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-metadata) command:
+By default, `dfx` makes the `candid:service` metadata information public to promote interoperability and make it convenient to use the Candid UI. The Candid UI reads this metadata to determine the interface of your canister. It doesn’t publish any more information than what is already public. This metadata can be returned through the [`dfx canister metadata`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-metadata) command:
 
 ```
 dfx canister metadata <canister_id> candid:service
