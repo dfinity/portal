@@ -152,7 +152,7 @@ const PreHero: React.FC<{
                     INTERNET COMPUTER DASHBOARD
                   </Link>
                   <Link
-                    href="https://wiki.internetcomputer.org/wiki/L1_comparison"
+                    href="https://learn.internetcomputer.org/hc/en-us/articles/39314351721492-Performance-Comparison"
                     className="link-primary-light link-with-icon"
                   >
                     Comparison of Layer-1 blockchains

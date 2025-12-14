@@ -31,7 +31,7 @@ To prevent Denial of Service (DoS) attacks, nodes will only request and accept c
 
 ## Go even deeper
 
-[P2P on the IC wiki](<https://wiki.internetcomputer.org/wiki/IC_P2P_(peer_to_peer)_layer>)
+[P2P on the Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34207428453140-Peer-to-peer)
 
 [Blogpost on P2P](https://medium.com/dfinity/secure-scalability-the-internet-computers-peer-to-peer-layer-6662d451f2cc)
 

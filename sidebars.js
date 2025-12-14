@@ -1,5 +1,7 @@
 // @ts-check
 
+const defiSidebar = require('./docs/defi/sidebar');
+
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   build: [
@@ -397,6 +399,11 @@ const sidebars = {
           id: "build-on-btc/index",
         },
         {
+          type: "doc",
+          label: "Dogecoin",
+          id: "building-apps/chain-fusion/dogecoin/overview",
+        },
+        {
           type: "category",
           label: "Ethereum & EVM chains",
           link: {
@@ -452,7 +459,7 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "What are security best practices?",
+              label: "Overview",
               id: "building-apps/security/overview",
             },
             {
@@ -661,164 +668,7 @@ const sidebars = {
     },
   ],
 
-  defi: [
-    {
-      type: "doc",
-      label: "DeFi on ICP",
-      id: "defi/overview",
-    },
-    "defi/token-standards/index",
-    {
-      type: "category",
-      label: "Tutorials",
-      items: [
-        {
-          type: "doc",
-          label: "Launch a token",
-          id: "defi/create",
-        },
-        {
-          type: "doc",
-          label: "Launch an NFT collection",
-          id: "defi/nft-collections",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Ledgers",
-      items: [
-        {
-          type: "category",
-          label: "ICP ledger",
-          items: [
-            "defi/token-ledgers/setup/icp_ledger_setup",
-            "defi/token-ledgers/usage/icp_ledger_usage",
-          ],
-        },
-        {
-          type: "category",
-          label: "ICRC ledger",
-          items: [
-            "defi/token-ledgers/setup/icrc1_ledger_setup",
-            "defi/token-ledgers/usage/icrc1_ledger_usage",
-            "defi/token-ledgers/upgrading/icrc1_ledger_upgrade",
-          ],
-        },
-        "defi/token-ledgers/cycles-ledger",
-        "defi/token-integrations/index",
-      ],
-    },
-    "defi/token-indexes/index",
-    "defi/defi-best-practices",
-    {
-      type: "category",
-      label: "Chain-key tokens",
-      link: {
-        type: "doc",
-        id: "defi/chain-key-tokens/overview",
-      },
-      items: [
-        {
-          type: "category",
-          label: "ckBTC",
-          link: {
-            type: "doc",
-            id: "defi/chain-key-tokens/ckbtc/overview",
-          },
-          items: ["defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps"],
-        },
-        {
-          type: "category",
-          label: "ckETH",
-          link: {
-            type: "doc",
-            id: "defi/chain-key-tokens/cketh/overview",
-          },
-          items: ["defi/chain-key-tokens/cketh/using-cketh-in-dapps"],
-        },
-        {
-          type: "category",
-          label: "ckERC20",
-          link: {
-            type: "doc",
-            id: "defi/chain-key-tokens/ckerc20/overview",
-          },
-          items: [
-            "defi/chain-key-tokens/ckerc20/making-transactions",
-            "defi/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
-            "defi/chain-key-tokens/ckerc20/creating-new-ckerc20",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Rosetta",
-      items: [
-        {
-          type: "category",
-          label: "ICP Rosetta",
-          link: {
-            type: "doc",
-            id: "defi/rosetta/icp_rosetta/index",
-          },
-          items: [
-            "defi/rosetta/icp_rosetta/running-rosetta",
-            {
-              type: "doc",
-              label: "Data API",
-              id: "defi/rosetta/icp_rosetta/data_api/index",
-            },
-            {
-              type: "category",
-              label: "Construction API",
-              link: {
-                type: "doc",
-                id: "defi/rosetta/icp_rosetta/construction_api/index",
-              },
-              items: [
-                "defi/rosetta/icp_rosetta/construction_api/operations-flow",
-                "defi/rosetta/icp_rosetta/construction_api/staking",
-                "defi/rosetta/icp_rosetta/construction_api/voting",
-              ],
-            },
-            {
-              type: "doc",
-              label: "Example scripts",
-              id: "defi/rosetta/icp_rosetta/examples",
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "ICRC Rosetta",
-          link: {
-            type: "doc",
-            id: "defi/rosetta/icrc_rosetta/index",
-          },
-          items: [
-            "defi/rosetta/icrc_rosetta/running-rosetta",
-            {
-              type: "doc",
-              label: "Data API",
-              id: "defi/rosetta/icrc_rosetta/data_api/index",
-            },
-            {
-              type: "doc",
-              label: "Construction API",
-              id: "defi/rosetta/icrc_rosetta/construction_api/index",
-            },
-            {
-              type: "doc",
-              label: "Example scripts",
-              id: "defi/rosetta/icrc_rosetta/examples",
-            },
-          ],
-        },
-      ],
-    },
-  ],
+  defi: defiSidebar,
 
   btc: [
     "build-on-btc/index",
@@ -861,7 +711,6 @@ const sidebars = {
         "references/candid-ref",
         "references/https-outcalls-how-it-works",
         "references/ii-spec",
-        "references/icrc1-standard",
         "references/ledger",
         "references/t-sigs-how-it-works",
         "references/vc-spec",

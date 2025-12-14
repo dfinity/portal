@@ -5,7 +5,7 @@ keywords: [advanced, governance, tutorial, nns, known neurons, named neurons, ne
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 
-# Registering a known neuron
+# Known neuron management
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Tutorial"]} />
 
@@ -64,10 +64,9 @@ It might be useful for known neurons to **focus on fewer topics and commit to al
 
 
 ## Register the known neuron
-To register a neuron as a know neuron, you need to submit a NNS proposal. The proposal can be submitted by any neuron that has at
-least 25 ICP staked.
+To register a neuron as a known neuron, you need to submit an NNS proposal. The proposal can be submitted by any neuron that has at least 25 ICP staked.
 For simplicity, we assume in the following example that the neuron to be registered was created on the NNS dapp and that the same neuron is
-used to submit the proposal.
+used to submit the proposal. To use a different neuron to propose, please refer to the section "Use a different neuron as the proposer".
 
 - ### Step 1: Download and install `dfx`
 
@@ -111,25 +110,45 @@ To submit the proposal, customize the following template in a text editor, then 
 You can run it by pasting the customized template into your terminal.
 
 ```
-NEURON_ID="your neuron ID" # Set to your neuron ID copied in the previous step
+KNOWN_NEURON_ID="your neuron ID" # Set to your neuron ID copied in the previous step
+PROPOSER_NEURON_ID="$KNOWN_NEURON_ID"
 NEW_NAME="desired known neuron name here" # Customize
 NEW_DESCRIPTION="desired known neuron name description here" # customize
 PROPOSAL_TITLE="Make $NEURON_ID a known neuron (${NEW_NAME})"
 PROPOSAL_SUMMARY="add the proposal proposal summary here" # customize
 PROPOSAL_URL="link to forum post" # customize to whatever url you want to be listed in the proposal, like a link to the forum post
-dfx canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {RegisterKnownNeuron = record {id = opt record { id = ${NEURON_ID}: nat64}; known_neuron_data = opt record {name = \"${NEW_NAME}\"; description = opt \"${NEW_DESCRIPTION}\"}}}}}})"
+LINKS=(
+    "https://some.website"
+)
+TOPICS=(
+    "Topic1"
+    "Topic2"
+) # customize
 
+TOPICS_FORMATTED=$(printf 'opt variant { %s }; ' "${TOPICS[@]}" | sed 's/; $//')
+dfx canister call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${PROPOSER_NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {RegisterKnownNeuron = record {id = opt record { id = ${KNOWN_NEURON_ID}: nat64}; known_neuron_data = opt record {name = \"${NEW_NAME}\"; description = opt \"${NEW_DESCRIPTION}\"; links = opt vec {${LINKS_FORMATTED}}; committed_topics = opt vec {${TOPICS_FORMATTED}}}}}}}})"
 ```
 
 Here is a concrete example for reference:
 ```
-NEURON_ID="12664007384337444895"
+KNOWN_NEURON_ID="12664007384337444895"
+PROPOSER_NEURON_ID="$KNOWN_NEURON_ID"
 NEW_NAME="Testname"
 NEW_DESCRIPTION="I like the NNS DAO"
-PROPOSAL_TITLE="Make $NEURON_ID a known neuron (${NEW_NAME})"
+PROPOSAL_TITLE="Make $KNOWN_NEURON_ID a known neuron (${NEW_NAME})"
 PROPOSAL_SUMMARY="Hi everyone. I would like to become a known neuron. Find more information about me on the linked forum post."
 PROPOSAL_URL="https://forum.dfinity.org/link-to-post/3074"
-dfx canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {RegisterKnownNeuron = record {id = opt record { id = ${NEURON_ID}: nat64}; known_neuron_data = opt record {name = \"${NEW_NAME}\"; description = opt \"${NEW_DESCRIPTION}\"}}}}}})"
+LINKS=(
+    "https://example.com"
+    "https://example.org"
+)
+LINKS_FORMATTED=$(printf '"%s"; ' "${LINKS[@]}" | sed 's/; $//')
+TOPICS=(
+    "Governance"
+    "NetworkEconomics"
+)
+TOPICS_FORMATTED=$(printf 'opt variant { %s }; ' "${TOPICS[@]}" | sed 's/; $//')
+dfx canister call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${PROPOSER_NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {RegisterKnownNeuron = record {id = opt record { id = ${KNOWN_NEURON_ID}: nat64}; known_neuron_data = opt record {name = \"${NEW_NAME}\"; description = opt \"${NEW_DESCRIPTION}\"; links = opt vec {${LINKS_FORMATTED}}; committed_topics = opt vec {${TOPICS_FORMATTED}}}}}}}})"
 
 ```
 
@@ -152,3 +171,28 @@ What you see after `id =` is the ID of the proposal you just submitted, which ot
 It should appear on the [dashboard](https://dashboard.internetcomputer.org/governance) shortly.
 If you have trouble finding it, you can just use the following URL and replace the number at the end with the ID of the proposal you just made (without the underscores):
  https://dashboard.internetcomputer.org/proposal/129666.
+
+## Update a known neuron
+
+To update a known neuron, follow the same process for registering a known neuron, the RegisterKnownNeuron proposal type, using the known neuron's ID to identify which neuron you want to update. 
+You can update any of the self-declared information about the neuron, including the neuron's name. 
+Note that a given known neuron name cannot be transferred to another neuron ID through this proposal. For example, if there is an existing known neuron with name `n1` and ID 123, a `RegisterKnownNeuron` proposal with name `n1` must have ID 123 and would fail with ID 456. 
+
+## Deregister a known neuron
+
+To deregister a known neuron, use the `DeregisterKnownNeuron` proposal type. Below is an example:
+
+```
+KNOWN_NEURON_ID="12664007384337444895"
+PROPOSER_NEURON_ID="$KNOWN_NEURON_ID"
+NEW_NAME="Testname"
+NEW_DESCRIPTION="Please deregister my neuron as known neuron"
+PROPOSAL_TITLE="Deregister $KNOWN_NEURON_ID as a known neuron"
+PROPOSAL_SUMMARY="Hi everyone. I would like to stop being a known neuron. Find more information about me on the linked forum post."
+PROPOSAL_URL="https://forum.dfinity.org/link-to-post/3074"
+dfx canister call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron "( record { id = opt record { id = ${PROPOSER_NEURON_ID}: nat64}; command = opt variant { MakeProposal = record { title = opt \"${PROPOSAL_TITLE}\"; url = \"${PROPOSAL_URL}\"; summary = \"${PROPOSAL_SUMMARY}\"; action = opt variant {DeregisterKnownNeuron = record {id = opt record { id = ${KNOWN_NEURON_ID}: nat64}}}}}})"
+```
+
+## Use a different neuron as the proposer
+
+Note that the above examples all assume the proposer neuron is the same neuron to be registered/updated/deregistered as known neuron, for simplicity. However, it's also possible to use a different neuron as the proposer - just change `PROPOSER_NEURON_ID="$KNOWN_NEURON_ID"` to another neuron id.

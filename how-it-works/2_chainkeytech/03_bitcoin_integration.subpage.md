@@ -27,7 +27,7 @@ The [IC management canister interface](/docs/references/ic-interface-spec#ic-man
 
 In this figure, a canister first requests the balance and then the UTXOs of a Bitcoin address. Next, it calls the fee endpoint to get recent fees. Lastly, the canister builds a Bitcoin transaction using some of the UTXOs as inputs. For each input, the ECDSA API is called to obtain the required signatures. Finally, the transaction is submitted.
 
-[Bitcoin integration wiki page](https://wiki.internetcomputer.org/wiki/Bitcoin_integration).
+[Bitcoin integration Learn Hub page](https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration).
 
 [Bitcoin canister source code](https://github.com/dfinity/bitcoin-canister).
 

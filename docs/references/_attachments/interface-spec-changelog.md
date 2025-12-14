@@ -1,5 +1,32 @@
 ## Changelog {#changelog}
 
+### 0.53.0 (2025-11-24) {$0_53_0}
+* New execution context `TQ` for canister http transform functions to specify that no IC certificate is available in such executions.
+
+### 0.52.0 (2025-11-17) {$0_52_0}
+* Canister memory allocation does not limit canister memory usage.
+
+### 0.51.0 (2025-10-20) {$0_51_0}
+* Management canister endpoint `canister_status` can be invoked as a query call.
+
+### 0.50.0 (2025-10-13) {$0_50_0}
+* Allow loading a canister snapshot onto a different canister on the same subnet.
+* New management canister API providing canister metadata (contained in canister WASM custom sections).
+* New HTTP handler endpoints to support canister migration (by providing sharded routing table in certificates):
+  `/api/v4/canister/<effective_canister_id>/call`,
+  `/api/v3/canister/<effective_canister_id>/read_state`,
+  `/api/v3/subnet/<effective_subnet_id>/read_state`, and
+  `/api/v3/canister/<effective_canister_id>/query`.
+* The following existing HTTP handler endpoints are marked as deprecated:
+  `/api/v3/canister/<effective_canister_id>/call`,
+  `/api/v2/canister/<effective_canister_id>/read_state`,
+  `/api/v2/subnet/<effective_subnet_id>/read_state`, and
+  `/api/v2/canister/<effective_canister_id>/query`.
+* Paths with prefix `/subnet/<subnet_id>/canister_ranges` (legacy routing table) can only be requested via the deprecated endpoints or if `<subnet_id>` is the root subnet.
+* Paths with prefix `/canister_ranges/<subnet_id>` (sharded routing table) can only be requested via `/api/v{2,3}/subnet/.../read_state`, i.e.,
+  not via `/api/v{2,3}/canister/.../read_state`.
+* All paths with prefix `/canister_ranges/<subnet_id>` must refer to the same subnet ID `<subnet_id>`.
+
 ### 0.49.0 (2025-10-06) {$0_49_0}
 * Added support for non-replicated canister HTTP outcalls.
 

@@ -1,0 +1,45 @@
+---
+keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3, token standards, icrc standard, tokens, standards, icrc-7, icrc-37]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# ICRC-1
+
+<MarkdownChipRow labels={["Intermediate", "Tokens"]} />
+
+The ICRC-1 standard is for fungible tokens on ICP. It is considered the 'base' standard and intentionally **excludes** certain features and functions, such as:
+
+- Reliable transaction notifications for smart contracts.
+
+- A block structure and the interface for fetching blocks.
+
+- Pre-signed transactions.
+
+ICRC-1 supports extensions of this standard to implement these missing functions, and the `icrc1_supported_standards` endpoint can be queried to return the name of all supported extensions.
+
+### Token metadata
+
+Token metadata is used to provide information about the token, such as the name, symbol, or fee. Available metadata entries for ICRC-1 tokens include:
+
+- `icrc1:symbol`: The token's currency code, such as `variant { Text = "XTKN" }`.
+
+- `icrc1:name`: The token's name, such as `variant { Text = "Test Token" }`.
+
+- `icrc1:decimals`: The number of decimals used by the token, such as `variant { Nat = 8 }`.
+
+- `icrc1:fee`: The token's default transfer fee, such as `variant { Nat = 10_000 }`.
+
+Example ICRC-1 tokens on ICP include:
+
+- [EXE](https://icpex.org/token/detail/rh2pm-ryaaa-aaaan-qeniq-cai)
+
+- [HOT](https://icpex.org/token/detail/6rdgd-kyaaa-aaaaq-aaavq-cai)
+
+- [PANDA](https://icpex.org/token/detail/druyg-tyaaa-aaaaq-aactq-cai)
+
+View an example dapp for [ICRC-1 transfers](https://github.com/dfinity/examples/tree/master/motoko/token_transfer).
+
+[Read the full ICRC-1 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
