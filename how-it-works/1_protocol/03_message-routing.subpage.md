@@ -81,6 +81,6 @@ Note that without state synchronization it might practically not be possible for
 
 ## Go even deeper
 
-Check out the [wiki page](https://wiki.internetcomputer.org/wiki/IC_message_routing_layer) describing the message routing layer in more detail.
+Check out the [Learn Hub page](https://learn.internetcomputer.org/hc/en-us/articles/34208241927316-Message-Routing) describing the message routing layer in more detail.
 
 [![Watch youtube video](https://img.youtube.com/vi/YexfeByBXlo/0.jpg)](https://www.youtube.com/watch?v=YexfeByBXlo)

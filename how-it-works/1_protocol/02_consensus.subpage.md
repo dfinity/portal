@@ -70,7 +70,7 @@ In a given round, the logic of the protocol guarantees that a node will always o
 
 [Extended Abstract published at PODC'22](//assets.ctfassets.net/ywqk17d3hsnp/1Gutwfrd1lMgiUBJZGCdUG/d3ea7730aba0a4b793741681463239f5/podc-2022-cr.pdf)
 
-[Consensus on the IC wiki](https://wiki.internetcomputer.org/wiki/IC_consensus_layer)
+[Consensus on the Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus)
 
 <!-- https://img.youtube.com/vi/vVLRRYh3JYo/0.jpg -->
 

@@ -10,7 +10,7 @@ image: /img/blog/deprecating-the-service-worker.png
 
 ## Introduction
 
-The DFINITY Foundation would like to propose deprecating the Internet Computer Service Worker in favor of ICX Proxy on the DFINITY hosted [Boundary Nodes](https://wiki.internetcomputer.org/wiki/Boundary_Nodes). We believe that this change will have dramatic improvements to end user and developer experience while reducing complexity in the Internet Computer’s [HTTP Gateway Protocol](/docs/references/ic-interface-spec#http-gateway), without reducing security or changing trust assumptions.
+The DFINITY Foundation would like to propose deprecating the Internet Computer Service Worker in favor of ICX Proxy on the DFINITY hosted [Boundary Nodes](https://learn.internetcomputer.org/hc/en-us/articles/34212818609684-ICP-Edge-Infrastructure). We believe that this change will have dramatic improvements to end user and developer experience while reducing complexity in the Internet Computer’s [HTTP Gateway Protocol](/docs/references/ic-interface-spec#http-gateway), without reducing security or changing trust assumptions.
 
 Keep reading to learn more about why we believe this is the right path forward and the roadmap that we are suggesting for this transition.
 

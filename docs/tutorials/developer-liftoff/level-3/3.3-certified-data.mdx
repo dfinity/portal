@@ -63,7 +63,7 @@ To certify data, a canister uses the following workflow:
 
 2. Then, the canister computes the root hash of the tree and calls `ic0.certified_data_set` with the bytes of the hash as the argument.
 
-3. Lastly, a [`#IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) header is added to each certified HTTP response.
+3. Lastly, a [`#IC-Certificate`](https://learn.internetcomputer.org/hc/en-us/articles/34276431179412-Asset-Certification) header is added to each certified HTTP response.
 
 ### Certified data API methods
 
@@ -97,7 +97,7 @@ let getCertificate : () -> ?Blob
 
 On ICP, there is a built-in `http_request` query method. This method uses information related to an HTTP request as the input and outputs an HTTP response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTP requests, this method should be implemented.
 
-When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) and a value equal to the asset's certificate.
+When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://learn.internetcomputer.org/hc/en-us/articles/34276431179412-Asset-Certification) and a value equal to the asset's certificate.
 
 More information can be found in the [HTTP gateway protocol specification](/docs/references/http-gateway-protocol-spec).
 
