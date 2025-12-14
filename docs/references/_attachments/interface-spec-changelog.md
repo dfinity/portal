@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.54.0 (2025-12-15) {$0_54_0}
+* The management canister's endpoint `take_canister_snapshot` can uninstall code atomically after taking canister snapshot.
+
 ### 0.53.0 (2025-11-24) {$0_53_0}
 * New execution context `TQ` for canister http transform functions to specify that no IC certificate is available in such executions.
 
