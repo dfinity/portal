@@ -1554,7 +1554,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ TQ CQ Ry CRy F
     ic0.msg_caller_size : () -> I;                                                        // *
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
-    ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt
+    ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt C
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
 
@@ -1729,9 +1729,9 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
 -   `ic0.msg_reject_code : () → i32`
 
-    Returns the reject code, if the current function is invoked as a reject callback.
+    Returns the reject code, if the current function is invoked as a reject callback or as a cleanup callback of a reject callback.
 
-    It returns the special "no error" code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
+    It returns the special "no error" code `0` if the callback is a reply callback or a cleanup callback of a reply callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
 -   `ic0.msg_reject_msg_size : () → I` and `ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
@@ -8406,7 +8406,7 @@ ic0.msg_caller_copy(dst : I, offset : I, size : I) =
   copy_to_canister<es>(dst, offset, size, es.params.caller)
 
 ic0.msg_reject_code<es>() : i32 =
-  if es.context ∉ {Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {Ry, Rt, CRy, CRt, C} then Trap {cycles_used = es.cycles_used;}
   es.params.reject_code
 
 I ∈ {i32, i64}
