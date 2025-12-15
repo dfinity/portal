@@ -2390,7 +2390,7 @@ The optional `settings` parameter can be used to set the following settings:
 -   `memory_allocation` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively.
-    It indicates an amount of memory that the canister is guaranteed to be allowed to use in total.
+    It indicates an amount of memory in bytes that the canister is guaranteed to be allowed to use in total.
     If the IC cannot guarantee the requested memory allocation, for example because it is oversubscribed, then the call will be rejected.
 
     Default value: 0
@@ -2415,7 +2415,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `wasm_memory_limit` (`nat`)
 
-    Must be a number between 0 and 2<sup>48</sup>-1 (i.e., 256TB), inclusively, and indicates the upper limit on the WASM heap memory consumption of the canister.
+    Must be a number between 0 and 2<sup>48</sup>-1 (i.e., 256TB), inclusively, and indicates the upper limit on the WASM heap memory consumption of the canister in bytes.
 
     An operation (update method, canister init, canister post_upgrade) that causes the WASM heap memory consumption to exceed this limit will trap.
     The WASM heap memory limit is ignored for query methods, response callback handlers, global timers, heartbeats, and canister pre_upgrade.
@@ -2566,7 +2566,9 @@ Indicates various information about the canister. It contains:
 
     -   The controllers of the canister. The order of returned controllers may vary depending on the implementation.
 
-    -   The compute and memory allocation of the canister.
+    -   The compute allocation of the canister.
+
+    -   The memory allocation of the canister in bytes.
 
     -   The freezing threshold of the canister in seconds.
 
