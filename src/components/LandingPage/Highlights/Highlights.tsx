@@ -97,10 +97,10 @@ const Highlights: React.FC = () => {
               </p>
               <p className="mb-0">
                 <Link
-                  href="https://wiki.internetcomputer.org/wiki/Proof_of_Useful_Work"
+                  href="https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus"
                   className="link-white link-with-icon"
                 >
-                  Wiki explanation of Proof of Useful Work <LinkArrowUpRight />
+                  Learn Hub explanation of Proof of Useful Work <LinkArrowUpRight />
                 </Link>
               </p>
             </div>

@@ -54,7 +54,7 @@ The dapps running on the Internet Computer seamlessly integrate into the Web 2.0
 
 [HTTP Gateway Protocol](/docs/references/ic-interface-spec#http-gateway)
 
-[Web Serving Wiki Article](https://wiki.internetcomputer.org/wiki/Web_Serving)
+[HTTP Gateway Protocol in Learn Hub](https://learn.internetcomputer.org/hc/en-us/articles/34211943471892-HTTP-Gateway-Protocol)
 
 [![Watch youtube video](https://i.ytimg.com/vi/JAQ1dkFvfPI/maxresdefault.jpg)](https://www.youtube.com/watch?v=JAQ1dkFvfPI)
 
