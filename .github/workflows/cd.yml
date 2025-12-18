@@ -5,7 +5,7 @@ name: CD
 
 on:
   push:
-    branches: [dev-docs]
+    branches: [master]
 
   repository_dispatch:
     types: redeploy
