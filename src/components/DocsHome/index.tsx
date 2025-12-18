@@ -454,7 +454,7 @@ const DocsHomePage: FC = () => {
     <div className="flex flex-col gap-10 docshome">
       <section className="flex flex-col gap-10">
         
-        <div className="tile bg-white/70 border-white rounded-lg border border-solid p-4 justify-between px-8 py-10 md:p-10 sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
+        <div className="tile border-white rounded-lg border border-solid p-4 justify-between px-8 py-10 md:p-10 sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-8">
             Quick Start
           </h1>
