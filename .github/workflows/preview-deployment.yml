@@ -90,11 +90,6 @@ jobs:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
           DFX_WARNING: -mainnet_plaintext_identity
           POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
       - name: Report build error

@@ -13,7 +13,7 @@ In addition to queries and updates, there are advanced types of calls that can b
 
 ## Certified queries
 
-Certified queries ensure the integrity of the data being retrieved. They use use [certified variables](/docs/references/samples/motoko/cert-var/) to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call and then read via a query call.
+Certified queries ensure the integrity of the data being retrieved. They use use [certified variables](/references/samples/motoko/cert-var/) to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call and then read via a query call.
 
 ## Replicated queries
 
@@ -22,13 +22,13 @@ Replicated queries, also referred to as the "query-as-update" execution model, a
 
 ## Inter-canister calls
 
-[Inter-canister calls](/docs/references/async-code/) are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
+[Inter-canister calls](/references/async-code/) are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
 
 One example of inter-canister calls is the [parallel calls Motoko example](https://github.com/dfinity/examples/tree/master/motoko/parallel_calls).
 
 Learn more about inter-canister calls:
 
-- [Making inter-canister calls with Rust](/docs/building-apps/developer-tools/cdks/rust/intercanister/)
+- [Making inter-canister calls with Rust](/building-apps/developer-tools/cdks/rust/intercanister/)
 
 ## Authorized calls
 
@@ -40,4 +40,4 @@ Authorized calls that return a value of `()` indicate that the function was succ
 
 On the protocol level, calls on ICP use `blobs` to describe arguments and results passed to and returned from canisters. It's typically easier to use an [interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
 
-While any IDL can be used for this purpose, most canisters on ICP use [Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts), a specialized IDL that is developed for ICP.
+While any IDL can be used for this purpose, most canisters on ICP use [Candid](/building-apps/interact-with-canisters/candid/candid-concepts), a specialized IDL that is developed for ICP.

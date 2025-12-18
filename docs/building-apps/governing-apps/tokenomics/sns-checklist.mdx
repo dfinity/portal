@@ -76,7 +76,7 @@ The documentation page [SNS predeployment considerations](./predeployment-consid
 # 2. Technical prep & testing
 
 ## 2.1. Security review
-In general, it is considered best practice to conduct a security review, including the fixing of risky findings. Guidance on [security best practices](/docs/building-apps/security/overview). It should be explained to what extent security reviews are relevant for the dapp and what kind of security reviews have been conducted for the dapp, if applicable.
+In general, it is considered best practice to conduct a security review, including the fixing of risky findings. Guidance on [security best practices](/building-apps/security/overview). It should be explained to what extent security reviews are relevant for the dapp and what kind of security reviews have been conducted for the dapp, if applicable.
 
 ## 2.2. Open sourcing
 If the dapp is not already open-sourced, it should be open-sourced before the SNS launch—actually before the decentralization proposals are created. A dapp is not truly decentralized if the source code is not shared with the community. Open sourcing the code gives the community an opportunity to evaluate the dapp before the SNS launch and after the launch, where upgrades must be voted on. It’s hard to make a meaningful voting decision without having full visibility into the code, and without the visibility, it will also not be possible to verify the code and assess the impact it will have before voting.
@@ -84,7 +84,7 @@ If the dapp is not already open-sourced, it should be open-sourced before the SN
 ## 2.3. Create a reproducible build
 It should be possible to create a reproducible build from the open-sourced code for the same reasons as open-sourcing the code. Providing the build and deploy instructions enables the community to evaluate the dapp and the code before voting on the SNS launch proposal, and after the decentralization, where upgrades must be voted on, the upgrades can be verified and tested by the community before voting.
 
-Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The [documentation](/docs/building-apps/best-practices/reproducible-builds) provides more information how reproducible builds can be created using Docker.
+Provide the build and deploy instructions with the source code. Ideally the instructions are a part of the code repository README file, and if that’s not the case, a link to the instructions should be available in the README file. In order to be able to create a reproducible build, the build environment needs to be reproducible. The [documentation](/building-apps/best-practices/reproducible-builds) provides more information how reproducible builds can be created using Docker.
 
 ## 2.4. Test the SNS launch 
 It is recommended to conduct a local test of the SNS launch process. By doing so, you can simulate the complete SNS initial token swap process also from the user’s perspective via the NNS frontend dapp. [View detailed instructions on how to set up SNS locally for testing are available](https://github.com/dfinity/ic/blob/master/rs/sns/testing/README.md).

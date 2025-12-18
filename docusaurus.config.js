@@ -2,29 +2,19 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const dotenv = require("dotenv");
-const isDev = process.env.NODE_ENV === "development";
 dotenv.config({ path: ".env.local" });
 
 const versions = require("./versions.json");
 const lightCodeTheme = require("./codeblock-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
-const cryptoPricePlugin = require("./plugins/crypto-price");
-const xdrPricePlugin = require("./plugins/xdr-price");
-const icpXdrPricePlugin = require("./plugins/icp-xdr-price");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
-const roadmapDataPlugin = require("./plugins/roadmap-data");
 const blogPostsPlugin = require("./plugins/blog-posts");
 const externalRedirectsPlugin = require("./plugins/external-redirects");
-const whatIsIcpDataPlugin = require("./plugins/what-is-the-ic-cards");
-const howItWorksCardsPlugin = require("./plugins/howitworks-cards");
-const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
-const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getSplatRedirects,
   getRedirects,
@@ -32,11 +22,6 @@ const {
   getExternalRedirects,
 } = require("./plugins/utils/redirects");
 const fs = require("fs");
-const validateShowcasePlugin = require("./plugins/validate-showcase.js");
-const contentfulPlugin = require("./plugins/contentful");
-const snsDataPlugin = require("./plugins/sns-data");
-const airtablePlugin = require("./plugins/airtable");
-const youtubePlugin = require("./plugins/youtube");
 
 const remarkPlugins = [
   math,
@@ -71,35 +56,35 @@ const subnavItems = [
     position: "left",
     sidebarId: "build",
     label: "Building apps",
-    activeBasePath: "/docs/build/",
+    activeBasePath: "/build/",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "defi",
     label: "DeFi",
-    activeBasePath: "/docs/defi/",
+    activeBasePath: "/defi/",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "btc",
     label: "Build on Bitcoin",
-    activeBasePath: "/docs/build-on-btc/",
+    activeBasePath: "/build-on-btc/",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "motoko",
     label: "Motoko",
-    activeBasePath: "/docs/motoko/",
+    activeBasePath: "/motoko/",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "references",
     label: "References",
-    activeBasePath: "/docs/references/",
+    activeBasePath: "/references/",
   },
   {
     type: "dropdown",
@@ -138,434 +123,6 @@ const subnavItems = [
    */
 ].filter(Boolean);
 
-/** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
-const marketingNav = {
-  mainItems: [
-    {
-      name: "Learn",
-      auxItems: [
-        {
-          name: "Videos on youtube",
-          href: "https://www.youtube.com/dfinity",
-        },
-        { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
-        {
-          name: "White paper",
-          href: "https://internetcomputer.org/whitepapers/The%20Internet%20Computer%20for%20Geeks.pdf",
-        },
-        {
-          name: "History of ICP",
-          href: "https://wiki.internetcomputer.org/wiki/History",
-        },
-      ],
-
-      sections: [
-        {
-          name: "Start Here",
-          items: [
-            // {
-            //   name: "The Basics",
-            //   href: "/basics",
-            //   description: "New to ICP? Read this first",
-            // },
-            {
-              name: "What is ICP",
-              href: "/what-is-the-ic",
-              description: "Get to know ",
-            },
-            {
-              name: "Capabilities",
-              href: "/capabilities",
-              description: "Transforming the internet",
-            },
-            {
-              name: "Learn Hub",
-              href: "https://learn.internetcomputer.org",
-              description: "Expand your ICP knowledge",
-            },
-            {
-              name: "ICP Dashboard",
-              href: "https://dashboard.internetcomputer.org/",
-              description: "Track key metrics",
-            },
-            {
-              name: "ICP Roadmap",
-              href: "/roadmap",
-              description: "Highlighting upcoming milestones",
-            },
-            /*
-            {
-              name: "ICP Learn Hub",
-              href: "https://csojb-wiaaa-aaaal-qjftq-cai.icp0.io/",
-              description: "Overview of the technology",
-            },*/
-            {
-              name: "Sustainability",
-              href: "/capabilities/sustainability",
-              description: "Building green, efficient tech",
-            },
-            {
-              name: "Library",
-              href: "/library",
-              description: "Resources to get you started",
-            },
-            /*
-            {
-              name: "ICP as a Bitcoin L2",
-              href: "/bitcoin-integration",
-              description: "Bringing smart contracts to Bitcoin",
-            },*/
-            /*{
-              name: "Ethereum Integration",
-              href: "/ethereum-integration",
-              description: "Native ETH on Internet Computer",
-            },*/
-            /*
-            {
-              name: "HTTPS Outcalls",
-              href: "/https-outcalls",
-              description: "Connecting smart contracts to Web2",
-            },*/
-          ],
-          featured: {
-            title: "Chain Fusion",
-            href: "/chainfusion",
-            image: "/img/nav/featured-chainfusion.webp",
-          },
-        },
-      ],
-
-      socialIcons: [
-        {
-          label: "Github",
-          href: "https://github.com/dfinity",
-          iconUrl: "/img/svgIcons/purple/github.svg",
-        },
-        {
-          label: "Discord",
-          href: "https://discord.internetcomputer.org",
-          iconUrl: "/img/svgIcons/purple/discord.svg",
-        },
-        {
-          label: "X",
-          href: "https://twitter.com/dfinitydev",
-          iconUrl: "/img/svgIcons/purple/twitter.svg",
-        },
-        {
-          label: "Forum",
-          href: "https://forum.dfinity.org/",
-          iconUrl: "/img/svgIcons/purple/forum.svg",
-        },
-      ],
-    },
-    {
-      name: "Use",
-      auxItems: [
-        {
-          name: "Create an internet identity",
-          href: "https://identity.ic0.app/",
-        },
-        { name: "NNS and Staking", href: "https://nns.ic0.app/" },
-      ],
-
-      sections: [
-        {
-          name: "Step into Web3",
-          items: [
-            {
-              name: "Explore dApps",
-              href: "/ecosystem",
-              description: "Jump into the ICP Ecosystem",
-            },
-            {
-              name: "Use cases",
-              href: "/use-cases",
-              description: "Built for the real world",
-            },
-            {
-              name: "ICP Token",
-              href: "/icp-tokens",
-              description: "How to buy native Utility Token",
-            },
-            {
-              name: "Internet Identity",
-              href: "/internet-identity",
-              description: "Web3 authentication",
-            },
-            {
-              name: "Staking & Governance",
-              href: "/nns",
-              description: "Govern and get rewards",
-            },
-            {
-              name: "AI on ICP",
-              href: "/ai",
-              description: "Run AI models as real smart contracts",
-            },
-            /*
-            {
-              name: "DAOs on ICP",
-              href: "/sns",
-              description: "Community-owned services",
-            },*/
-            /*
-            {
-              name: "Enterprise Cloud 3.0",
-              href: "/enterprise",
-              description: "Extend Web2 software with blockchain",
-            },*/
-            /*
-            {
-              name: "Gaming",
-              href: "/gaming",
-              description: "Paradigm shift in Web3 gaming",
-            },*/
-            /*
-            {
-              name: "SoFi",
-              href: "/social-media-dapps",
-              description: "Reclaim social media",
-            },*/
-            /*
-            {
-              name: "DeFi",
-              href: "/defi",
-              description: "Onchain swaps",
-            },*/
-            /*
-            {
-              name: "NFTs",
-              href: "/nft",
-              description: "NFT’s live fully onchain",
-            },*/
-          ],
-          featured: {
-            title: "Run AI models as real smart contracts",
-            href: "/ai",
-            image: "/img/nav/featured-ai.webp",
-          },
-        },
-        // {
-        //   name: "Interoperability",
-        //   items: [
-        //     {
-        //       name: "ckBTC",
-        //       href: "/ckbtc",
-        //       description: "Bitcoin on Web3",
-        //     },
-        //   ],
-        //   featured: {
-        //     title: "ckETH coming soon",
-        //     image: "/img/nav/featured-interoperability.webp",
-        //   },
-        // },
-      ],
-
-      socialIcons: [
-        {
-          label: "Github",
-          href: "https://github.com/dfinity",
-          iconUrl: "/img/svgIcons/purple/github.svg",
-        },
-        {
-          label: "Discord",
-          href: "https://discord.internetcomputer.org",
-          iconUrl: "/img/svgIcons/purple/discord.svg",
-        },
-        {
-          label: "X",
-          href: "https://twitter.com/dfinitydev",
-          iconUrl: "/img/svgIcons/purple/twitter.svg",
-        },
-        {
-          label: "Forum",
-          href: "https://forum.dfinity.org/",
-          iconUrl: "/img/svgIcons/purple/forum.svg",
-        },
-      ],
-    },
-    {
-      name: "Develop",
-      auxItems: [
-        {
-          name: "Feedback Board",
-          href: "https://dx.internetcomputer.org/",
-        },
-        { name: "Developer grants", href: "https://dfinity.org/grants" },
-        {
-          name: "Using cycles",
-          href: "/docs/building-apps/getting-started/tokens-and-cycles",
-        },
-      ],
-
-      sections: [
-        {
-          name: "Start Coding",
-          items: [
-            {
-              name: "Developer Docs",
-              href: "/docs/home",
-              description: "Find the resources you need quickly",
-            },
-            {
-              name: "Web IDE",
-              href: "https://icp.ninja",
-              description: "Deploy your first dapp with ICP.Ninja",
-            },
-            {
-              name: "Programming languages",
-              description: "ICP supports multiple languages",
-              href: "/docs/building-apps/essentials/canisters",
-            },
-            {
-              name: "Build on BTC",
-              description: "Leveraging Chain Fusion Technology",
-              href: "/bitcoin",
-            },
-            {
-              name: "Hackathons",
-              description: "Join like-minded hackers",
-              href: "https://dfinity.org/hackathons",
-            },
-            {
-              name: "Education Hub",
-              href: "/education-hub",
-              description: "Comprehensive Learning Resources",
-            },
-            {
-              name: "Developer Forum",
-              href: "https://forum.dfinity.org/",
-              description: "Join discussions",
-            },
-          ],
-          featured: {
-            title: "Developer Docs",
-            href: "/docs/home",
-            image: "/img/nav/featured-building.webp",
-          },
-        },
-      ],
-
-      socialIcons: [
-        {
-          label: "Github",
-          href: "https://github.com/dfinity",
-          iconUrl: "/img/svgIcons/purple/github.svg",
-        },
-        {
-          label: "Discord",
-          href: "https://discord.internetcomputer.org",
-          iconUrl: "/img/svgIcons/purple/discord.svg",
-        },
-        {
-          label: "X",
-          href: "https://twitter.com/dfinitydev",
-          iconUrl: "/img/svgIcons/purple/twitter.svg",
-        },
-        {
-          label: "Forum",
-          href: "https://forum.dfinity.org/",
-          iconUrl: "/img/svgIcons/purple/forum.svg",
-        },
-      ],
-    },
-    {
-      name: "Participate",
-      auxItems: [
-        {
-          name: "Community grants",
-          href: "https://dfinity.org/community-grants/",
-        },
-        {
-          name: "Help & Support",
-          href: "https://support.dfinity.org/hc/en-us",
-        },
-      ],
-
-      sections: [
-        {
-          name: "Get Involved",
-          items: [
-            {
-              name: "Sovereign network",
-              href: "/node-providers",
-              description: "Become a Node Provider",
-            },
-            {
-              name: "Events",
-              href: "/events",
-              description: "Meet fellow Web3 enthusiasts",
-            },
-            {
-              name: "News",
-              href: "/news",
-              description: "Stay up to date",
-            },
-            {
-              name: "ICP community",
-              href: "https://linktr.ee/icp_hubs_network",
-              description: "Join the global community",
-            },
-            {
-              name: "Community Blog",
-              href: "https://medium.com/dfinity",
-              description: "Keep up to date",
-            },
-            {
-              name: "ICP Alliance",
-              href: "https://dfinity.org/alliance",
-              description: "Lead the Next Web",
-            },
-          ],
-          featured: {
-            title: "ICP Alliance",
-            subtitle: "Lead the Next Web",
-            href: "https://dfinity.org/alliance",
-            image: "/img/nav/featured-alliance.webp",
-          },
-        },
-      ],
-
-      socialIcons: [
-        {
-          label: "Github",
-          href: "https://github.com/dfinity",
-          iconUrl: "/img/svgIcons/purple/github.svg",
-        },
-        {
-          label: "Discord",
-          href: "https://discord.internetcomputer.org",
-          iconUrl: "/img/svgIcons/purple/discord.svg",
-        },
-        {
-          label: "X",
-          href: "https://twitter.com/dfinitydev",
-          iconUrl: "/img/svgIcons/purple/twitter.svg",
-        },
-        {
-          label: "Forum",
-          href: "https://forum.dfinity.org/",
-          iconUrl: "/img/svgIcons/purple/forum.svg",
-        },
-      ],
-    },
-  ],
-  auxItems: [
-    {
-      name: "ICP Dashboard",
-      href: "https://dashboard.internetcomputer.org/",
-    },
-    {
-      name: "Developer Grants",
-      href: "https://dfinity.org/grants",
-    },
-    {
-      name: "Help & Support",
-      href: "https://support.dfinity.org/hc/en-us",
-    },
-  ],
-};
-
 function getImageDataUrl(url) {
   return `data:image/svg+xml;base64,${fs.readFileSync(url).toString("base64")}`;
 }
@@ -586,7 +143,6 @@ const config = {
   projectName: "portal",
   customFields: {
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
-    marketingNav,
   },
   markdown: {
     mermaid: true,
@@ -594,7 +150,7 @@ const config = {
   scripts: [
     {
       src: "https://widget.kapa.ai/kapa-widget.bundle.js",
-      "data-website-id": "08910249-851f-465b-b60f-238d84e1afc1",
+      "data-website-id": "73cafe70-9be1-494b-bd31-b849fc29799f",
       "data-bot-protection-mechanism": "hcaptcha",
       "data-project-name": "Internet Computer",
       "data-project-color": "#172234",
@@ -617,22 +173,8 @@ const config = {
     "docusaurus-plugin-sass",
     customWebpack,
     tailwindPlugin,
-    cryptoPricePlugin,
-    icpXdrPricePlugin,
-    xdrPricePlugin,
-    homeShowcaseProjectsPlugin,
-    howItWorksArticlesPlugin,
-    howItWorksCardsPlugin,
-    votingRewardsPlugin,
-    roadmapDataPlugin,
-    whatIsIcpDataPlugin,
     matomoPlugin,
     blogPostsPlugin,
-    contentfulPlugin,
-    snsDataPlugin,
-    airtablePlugin,
-    youtubePlugin,
-    validateShowcasePlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),
@@ -653,6 +195,8 @@ const config = {
       /** @type {import("@docusaurus/preset-classic").Options} */
       ({
         docs: {
+          path: "docs",
+          routeBasePath: "/",
           lastVersion: versions[0],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
@@ -737,20 +281,6 @@ const config = {
       subnav: {
         items: subnavItems,
       },
-
-      // announcementBar:
-      //   isDev || isDeployPreview
-      //     ? {
-      //         id: "local_dev",
-      //         content: isDeployPreview
-      //           ? `You are currently viewing a preview of this <a href="${
-      //               process.env.PR_URL || "https://github.com/dfinity/portal"
-      //             }">Pull Request</a>.`
-      //           : 'You are currently locally editing the Developer Portal. Contributing guidelines are available <a href="https://github.com/dfinity/portal#contributing">here</a>.',
-      //         textColor: "#091E42",
-      //         isCloseable: false,
-      //       }
-      //     : undefined,
 
       footer: {
         links: [

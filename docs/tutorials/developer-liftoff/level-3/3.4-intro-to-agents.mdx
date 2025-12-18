@@ -18,7 +18,7 @@ import '/src/components/CenterImages/center.scss';
 
 On ICP, an **agent** is a library used to make calls to ICP's public interface.
 
-One of the first responsibilities of an agent is to structure data. As was discussed in previous modules, such as [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), calls to ICP can be an update or a query call. An agent submits a `POST` request to a canister's API at the URL `/api/v2/canister/<canister_id>/call`. This `POST` request contains the following components:
+One of the first responsibilities of an agent is to structure data. As was discussed in previous modules, such as [2.2: Advanced canister calls](/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), calls to ICP can be an update or a query call. An agent submits a `POST` request to a canister's API at the URL `/api/v2/canister/<canister_id>/call`. This `POST` request contains the following components:
 
 - `request_type`.
 - Authentication, comprised of the `sender`, `nonce`, and `ingress_expiry`.
@@ -51,7 +51,7 @@ When an agent encodes these identities as a principal, they attach a suffix byte
 
 ## Available agents
 
-Currently, there are two agents developed by DFINITY: the [ICP JavaScript/TypeScript](/docs/building-apps/interact-with-canisters/agents/javascript-agent) agent and the [ICP Rust](/docs/building-apps/interact-with-canisters/agents/overview) agent.
+Currently, there are two agents developed by DFINITY: the [ICP JavaScript/TypeScript](/building-apps/interact-with-canisters/agents/javascript-agent) agent and the [ICP Rust](/building-apps/interact-with-canisters/agents/overview) agent.
 
 Additionally, there are several community-supported agents, including:
 
@@ -124,7 +124,7 @@ Now, let's view the contents of the Candid interface file for the `random_maze` 
 
 Recall that this Candid interface specification defines a service interface with a single method. The single method, `generate` accepts a single argument of type `Nat` and returns type `Text`. This is because you will enter a number (`Nat`) to generate the maze, which will then be displayed using emoji characters of type `Text`. Recall that unless a call is defined as a query, all calls are treated as an update call by default.
 
-In JavaScript, type `Text` maps to type `String`. You can see a full mapping list of Candid types and their JavaScript equivalents in the [Candid types reference](/docs/references/candid-ref).
+In JavaScript, type `Text` maps to type `String`. You can see a full mapping list of Candid types and their JavaScript equivalents in the [Candid types reference](/references/candid-ref).
 
 Next, let's look at the `src/declarations/random_maze/random_maze.did.d.ts` file:
 
@@ -185,7 +185,7 @@ Enter a value, then select 'Generate!' You will see a random maze generated in t
 
 ![Random maze generated](../_attachments/random_maze2.png)
 
-That'll wrap things up for this module! You can read more about agents, such as the [Node.js agent](/docs/building-apps/interact-with-canisters/agents/overview).
+That'll wrap things up for this module! You can read more about agents, such as the [Node.js agent](/building-apps/interact-with-canisters/agents/overview).
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 
