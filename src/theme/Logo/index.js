@@ -31,7 +31,7 @@ export default function Logo(props) {
             viewBox="0 0 219 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="!h-[32px] md:!h-[40px]"
+            className="!h-[32px] md:!h-[32px]"
           >
             <title>{alt}</title>
             <style>
