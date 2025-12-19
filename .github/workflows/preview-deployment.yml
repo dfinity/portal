@@ -84,9 +84,9 @@ jobs:
 
           dfx canister --network ic create --all
           time dfx build --network ic portal
-          dfx canister --network ic install portal --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
+          dfx canister --network ic install portal --mode=reinstall --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
 
-          time icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
+          # time icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
 
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
