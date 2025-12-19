@@ -3062,7 +3062,7 @@ This method takes a snapshot of the specified canister. A snapshot consists of t
 
 A `take_canister_snapshot` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created.
 
-It's important to note that a new snapshot might increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. This issue can be mitigated by uninstalling code of the canister via the optional `uninstall_code` parameter after a new snapshot has been successfully created.
+It's important to note that a new snapshot might increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. This issue can be mitigated by uninstalling code of the canister via the optional `uninstall_code` parameter after a new snapshot has been successfully created. The exact semantics of uninstalling code is described in the section on the IC method [`uninstall_code`](#ic-uninstall_code).
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
