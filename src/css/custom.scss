@@ -64,7 +64,7 @@ html.docs-wrapper[data-theme='dark'] {
   --icp-on-surface: var(--icp-white);
   --icp-on-surface--inverted: var(--icp-black);
 
-  --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
+  --icp-surface-box: oklch(from var(--icp-raven) calc(l + .01) c h);
   --icp-on-surface-box: var(--icp-white);
 
   --icp-surface-highlight: var(--icp-surface-box);
