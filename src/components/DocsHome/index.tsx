@@ -452,44 +452,13 @@ const footerCards: Array<CarouselCard> = [
 const DocsHomePage: FC = () => {
   return (
     <div className="flex flex-col gap-10 docshome">
-      <section className="flex flex-col gap-8">
-        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
-          <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
-
-          <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
+      <section className="flex flex-col gap-10">
+        
+        <div className="tile border-white rounded-lg border border-solid p-4 justify-between px-8 py-10 md:p-10 sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
+          <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-8">
             Quick Start
           </h1>
-
-          <div className={"flex flex-row gap-2 flex-wrap items-end"}>
-            <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="https://caffeine.ai/"
-              >
-                CREATE USING AI
-                <LinkArrowRight />
-              </Link>
-            </p>
-             <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="https://icp.ninja/"
-              >
-                INSTANT WEB IDE
-                <LinkArrowRight />
-              </Link>
-            </p>
-            <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="/building-apps/getting-started/quickstart"
-              >
-                SDK BUILD
-                <LinkArrowRight />
-              </Link>
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-12 tw-lead">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-4 mb-8 tw-lead">
             <div className="mb-auto">
               Become a “World Computer” developer who builds sovereign social
               media, games, enterprise apps, AI, Web3, DeFi and _
@@ -504,6 +473,39 @@ const DocsHomePage: FC = () => {
               autonomous.
             </div>
           </div>
+
+
+          <div className={"flex flex-row gap-2 flex-wrap items-end"}>
+            <p className="mb-0">
+              <Link
+                className="button-primary button-with-icon"
+                href="https://caffeine.ai/"
+              >
+                CREATE USING AI
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+             <p className="mb-0">
+              <Link
+                className="button-primary button-with-icon"
+                href="https://icp.ninja/"
+              >
+                INSTANT WEB IDE
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                className="button-primary button-with-icon"
+                href="/building-apps/getting-started/quickstart"
+              >
+                SDK BUILD
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
+
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 relative z-2">
@@ -514,7 +516,7 @@ const DocsHomePage: FC = () => {
               API docs have you covered.
             </p>
             <Link
-              className="button-primary rounded-2xl"
+              className="button-ghost rounded-2xl"
               href="/building-apps/developer-tools/cdks/"
             >
               View all
@@ -568,9 +570,9 @@ const DocsHomePage: FC = () => {
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
         ))}
       </div>
-      <section className="bg-infinite">
-        <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
-          <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
+      <section className="bg-black">
+        <section className="docs-contribute -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] py-10 md:pt-14 md:pb-20">
+          <div className="docs-contribute-card tile rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
             <div className="md:flex-[4] md:flex md:flex-col items-start">
               <div className="tw-heading-6 mb-10">
                 Contribute to the
@@ -589,7 +591,7 @@ const DocsHomePage: FC = () => {
                 href="https://github.com/dfinity/portal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button-outline-white"
+                className="docs-contribute-button"
               >
                 Contribute
               </Link>
@@ -597,7 +599,7 @@ const DocsHomePage: FC = () => {
             <div className="flex flex-col gap-2 md:flex-[5]">
               {links.map(({ label, href }) => (
                 <Link
-                  className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
+                  className="docs-contribute-link px-8 py-6 tw-heading-6 flex justify-between items-center gap-4 border rounded-lg hover:no-underline"
                   href={href}
                   key={label}
                 >
