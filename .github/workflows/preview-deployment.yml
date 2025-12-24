@@ -36,7 +36,7 @@ jobs:
       - name: Install DFX
         uses: dfinity/setup-dfx@main
         with:
-          dfx-version: 0.30.2-beta.0
+          dfx-version: 0.30.2-beta.1
 
       - name: Cache icx-asset binary
         id: cache-icx-asset-bin
