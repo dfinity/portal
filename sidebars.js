@@ -258,6 +258,7 @@ const sidebars = {
       type: "category",
       label: "Advanced development",
       items: [
+        "building-apps/advanced/canister-migration",
         "building-apps/advanced/using-third-party-canisters",
         "building-apps/advanced/benchmarking",
         {
