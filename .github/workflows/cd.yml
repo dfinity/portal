@@ -65,7 +65,7 @@ jobs:
         run: npm install
 
       - name: Deploy to Mainnet
-        run: dfx deploy --network=ic --no-wallet portal --verbose
+        run: dfx deploy --network=ic --no-wallet portal --verbose --yes
         env:
           DFX_WARNING: -mainnet_plaintext_identity
 
