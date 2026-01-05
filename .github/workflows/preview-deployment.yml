@@ -35,6 +35,8 @@ jobs:
 
       - name: Install DFX
         uses: dfinity/setup-dfx@main
+        with:
+          dfx-version: 0.30.2-beta.1
 
       - name: Cache icx-asset binary
         id: cache-icx-asset-bin
@@ -82,7 +84,7 @@ jobs:
 
           dfx canister --network ic create --all
           time dfx build --network ic portal
-          dfx canister --network ic install portal --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
+          dfx canister --network ic install portal --mode=reinstall --yes --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
 
           time icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
 
