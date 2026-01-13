@@ -92,15 +92,14 @@ const subnavItems = [
     label: "Resources",
     items: [
       {
-        label: "Awesome Internet Computer",
-        href: "https://github.com/dfinity/awesome-internet-computer#readme",
-      },
-      {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Grants", href: "https://dfinity.org/grants" },
+      {
+        label: "Awesome Internet Computer",
+        href: "https://github.com/dfinity/awesome-internet-computer#readme",
+      },
       {
         label: "ICP Ninja",
         href: "https://icp.ninja",
@@ -113,6 +112,14 @@ const subnavItems = [
         label: "ICP Developer Discord",
         href: "https://discord.internetcomputer.org",
       },
+      {
+        label: "DFINITYDev on X",
+        href: "https://x.com/DFINITYDev",
+      },
+      {
+        label: "Developer Grants",
+        href: "https://dfinity.org/grants"
+      }
     ],
   },
   /**
