@@ -23,7 +23,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/motoko/install"
+        href="/motoko/install"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite outline outline-2 outline-black flex items-center justify-center text-center"
         title="Download and install Motoko"
       >
