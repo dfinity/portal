@@ -287,27 +287,25 @@ const config = {
           {
             items: [
               {
-                label: "Internet Computer Association",
-                href: "https://lbbne-haaaa-aaaam-absda-cai.icp0.io/",
+                label: "Dashboard",
+                href: "https://dashboard.internetcomputer.org/",
               },
               {
-                label: "Wiki",
-                href: "https://wiki.internetcomputer.org/",
+                label: "Learn Hub",
+                href: "https://learn.internetcomputer.org/",
               },
               {
                 label: "Node Providers",
-                href: "/node-providers",
-                target: "_self",
+                href: "https://internetcomputer.org/node-providers",
               },
               {
-                label: "Dashboard",
-                href: "https://dashboard.internetcomputer.org/",
+                label: "Developer Grants",
+                href: "https://dfinity.org/grants"
               },
             ],
           },
           {
             items: [
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",
                 href: "https://support.dfinity.org/hc/en-us",
