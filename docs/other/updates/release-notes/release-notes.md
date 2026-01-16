@@ -2,6 +2,7 @@
 
 | Version | Release Notes                                                       | Migration Guide                                                                                            |
 |---------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| 0.30.2  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.30.2) |                                                                                                            |
 | 0.30.1  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.30.1) |                                                                                                            |
 | 0.29.2  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.29.2) |                                                                                                            |
 | 0.29.1  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.29.1) |                                                                                                            |
