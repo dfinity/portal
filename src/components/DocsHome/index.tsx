@@ -13,23 +13,21 @@ const queryClient = new QueryClient();
 
 const links = [
   {
-    label: "Events & News",
-    href: "https://dfinity.org/events-and-news/",
+    label: "Join the Dev Forum",
+    href: "https://forum.dfinity.org"
   },
   {
-    label: "Technical Working Groups",
-    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
-  },
-  { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
-  {
-    label: "Dev Discord Office Hours",
+    label: "Join the Dev Discord",
     href: "https://discord.internetcomputer.org",
   },
   {
-    label: "Developer Grants and Bounties",
+    label: "Bug Bounty Program",
+    href: "https://dfinity.org/bug-bounty/"
+  },
+  {
+    label: "Developer Grants",
     href: "https://dfinity.org/grants/",
   },
-  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
 ];
 
 interface TileDescriptor {
@@ -90,7 +88,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
   },
   {
-    label: "Typescript",
+    label: "TypeScript",
     description:
       "Code in the language of the web, TypeScript and JavaScript, using Azle.",
     icon: (
@@ -103,38 +101,38 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="https://demergent-labs.github.io/azle//"
+        href="https://github.com/demergent-labs/azle"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to TypeScript docs"
       >
-        <span className={"md:hidden"}>Go to TypeScript docs</span>
+        <span className={"md:hidden"}>Go to Azle</span>
         <LinkArrowRight />
       </Link>
     ),
   },
   {
-    label: "Solidity",
+    label: "C++",
     description:
-      "Deploy Solidity smart contracts on the Internet Computer with Bitfinity.",
+      "Code in C++ using the CDK known as icpp-pro.",
     icon: (
       <img
-        src="/img/docs/solidity.webp"
-        alt="Solidity docs for the Internet Computer"
+        src="/img/docs/cpp.png"
+        alt="icpp-pro docs for the Internet Computer"
         className="w-10 h-10"
         loading="lazy"
       />
     ),
     action: (
       <Link
-        href="https://docs.bitfinity.network/"
+        href="https://github.com/icppWorld/icpp-pro"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Solidity docs"
+        title="Go to icpp-pro docs"
       >
-        <span className={"md:hidden"}>Go to Solidity docs</span>
+        <span className={"md:hidden"}>Go to icpp-pro</span>
         <LinkArrowRight />
       </Link>
     ),
-  },
+  }
 ];
 
 
@@ -410,44 +408,27 @@ function TeaserCardFooter({
   );
 }
 
-const footerCards: Array<CarouselCard> = [
-  {
-    title: (
-      <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
-    ),
-    subtitle: (
-      <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
-    ),
-    backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
-    cta: (
-      <Link
-        className="button-transparent button-with-icon pl-0"
-        href="https://twitter.com/DFINITYDev"
-      >
-        Follow now
-        <LinkArrowRight />
-      </Link>
-    ),
-    mainImage: "/img/docs/teaser-cards/main-0.svg",
-  },
-  {
-    title: <h2 className={"text-white"}>Developer office hours on Discord</h2>,
-    subtitle: (
-      <p className={"text-white"}>Every Wednesday 9AM CET/CEST and 8AM PST/PDT</p>
-    ),
-    backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
-    cta: (
-      <Link
-        className="button-transparent button-with-icon pl-0"
-        href="https://discord.internetcomputer.org"
-      >
-        Join Discord
-        <LinkArrowRight />
-      </Link>
-    ),
-    mainImage: "/img/docs/teaser-cards/main-2.svg",
-  },
-];
+// const footerCards: Array<CarouselCard> = [
+//   {
+//     title: (
+//       <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
+//     ),
+//     subtitle: (
+//       <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
+//     ),
+//     backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
+//     cta: (
+//       <Link
+//         className="button-transparent button-with-icon pl-0"
+//         href="https://twitter.com/DFINITYDev"
+//       >
+//         Follow now
+//         <LinkArrowRight />
+//       </Link>
+//     ),
+//     mainImage: "/img/docs/teaser-cards/main-0.svg",
+//   }
+// ];
 
 const DocsHomePage: FC = () => {
   return (
@@ -565,11 +546,11 @@ const DocsHomePage: FC = () => {
       <section>
         <Blog />
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
+      {/* <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
         {footerCards.map((card, index) => (
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
         ))}
-      </div>
+      </div> */}
       <section className="bg-black">
         <section className="docs-contribute -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] py-10 md:pt-14 md:pb-20">
           <div className="docs-contribute-card tile rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">

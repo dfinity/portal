@@ -92,15 +92,14 @@ const subnavItems = [
     label: "Resources",
     items: [
       {
-        label: "Awesome Internet Computer",
-        href: "https://github.com/dfinity/awesome-internet-computer#readme",
-      },
-      {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Grants", href: "https://dfinity.org/grants" },
+      {
+        label: "Awesome Internet Computer",
+        href: "https://github.com/dfinity/awesome-internet-computer#readme",
+      },
       {
         label: "ICP Ninja",
         href: "https://icp.ninja",
@@ -113,6 +112,14 @@ const subnavItems = [
         label: "ICP Developer Discord",
         href: "https://discord.internetcomputer.org",
       },
+      {
+        label: "DFINITYDev on X",
+        href: "https://x.com/DFINITYDev",
+      },
+      {
+        label: "Developer Grants",
+        href: "https://dfinity.org/grants"
+      }
     ],
   },
   /**
@@ -287,27 +294,25 @@ const config = {
           {
             items: [
               {
-                label: "Internet Computer Association",
-                href: "https://lbbne-haaaa-aaaam-absda-cai.icp0.io/",
+                label: "Dashboard",
+                href: "https://dashboard.internetcomputer.org/",
               },
               {
-                label: "Wiki",
-                href: "https://wiki.internetcomputer.org/",
+                label: "Learn Hub",
+                href: "https://learn.internetcomputer.org/",
               },
               {
                 label: "Node Providers",
-                href: "/node-providers",
-                target: "_self",
+                href: "https://internetcomputer.org/node-providers",
               },
               {
-                label: "Dashboard",
-                href: "https://dashboard.internetcomputer.org/",
+                label: "Developer Grants",
+                href: "https://dfinity.org/grants"
               },
             ],
           },
           {
             items: [
-              { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",
                 href: "https://support.dfinity.org/hc/en-us",
