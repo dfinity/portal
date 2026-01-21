@@ -2514,6 +2514,18 @@ The `wasm_module` field specifies the canister module to be installed. The syste
 
 -   If the `wasm_module` starts with byte sequence `[0x1f, 0x8b, 0x08]`, the system parses `wasm_module` as a gzip-compressed WebAssembly binary.
 
+The optional `preconditions` parameter can contain preconditions for this call to succeed: all provided preconditions must be satisfied,
+otherwise the call fails without any changes to the canister. The supported preconditions are:
+
+-   `stopped` (`opt bool`)
+
+    If set to `opt true`, then the canister status must be stopped.
+
+-   `total_num_changes` (`opt nat64`)
+
+    If provided, then the total number of canister changes that have been ever recorded in the history (as returned by the [IC Method `canister_info`](#ic-canister_info))
+    must match the provided value.
+
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 This method traps if the canister's cycle balance decreases below the canister's freezing limit after executing the method.
@@ -2526,12 +2538,12 @@ This method installs code that had previously been uploaded in chunks.
 
 Only controllers of the target canister can call this method.
 
-The `mode`, `arg`, and `sender_canister_version` parameters are as for `install_code`.
+The `mode`, `arg`, `preconditions`, and `sender_canister_version` parameters are as for `install_code`.
 The `target_canister` specifies the canister where the code should be installed.
 The optional `store_canister` specifies the canister in whose chunk storage the chunks are stored (this parameter defaults to `target_canister` if not specified).
 For the call to succeed, the caller must be a controller of the `store_canister` or the caller must be the `store_canister`. The `store_canister` must be on the same subnet as the target canister.
 
-The `chunk_hashes_list` specifies a list of hash values `[h1,...,hk]` with `k <= MAX_CHUNKS_IN_LARGE_WASM`. The system looks up in the chunk store of `store_canister` (or that of the target canister if `store_canister` is not specified) blobs corresponding to `h1,...,hk` and concatenates them to obtain a blob of bytes referred to as `wasm_module` in `install_code`. It then checks that the SHA-256 hash of `wasm_module` is equal to the `wasm_module_hash` parameter and calls `install_code` with parameters `(record {mode; target_canister; wasm_module; arg; sender_canister_version})`.
+The `chunk_hashes_list` specifies a list of hash values `[h1,...,hk]` with `k <= MAX_CHUNKS_IN_LARGE_WASM`. The system looks up in the chunk store of `store_canister` (or that of the target canister if `store_canister` is not specified) blobs corresponding to `h1,...,hk` and concatenates them to obtain a blob of bytes referred to as `wasm_module` in `install_code`. It then checks that the SHA-256 hash of `wasm_module` is equal to the `wasm_module_hash` parameter and calls `install_code` with parameters `(record {mode; target_canister; wasm_module; arg; preconditions; sender_canister_version})`.
 
 ### IC method `uninstall_code` {#ic-uninstall_code}
 
@@ -5681,6 +5693,16 @@ Private_custom_sections = parse_private_custom_sections(A.wasm_module);
 (A.mode = install and S.canisters[A.canister_id] = EmptyCanister) or A.mode = reinstall
 M.caller ∈ S.controllers[A.canister_id]
 
+S.canister_history[A.canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+if A.preconditions.stopped = opt true:
+  S.canister_status[A.canister_id] = Stopped
+if A.preconditions.total_num_changes is not null:
+  A.preconditions.total_num_changes = N
+
 dom(Mod.update_methods) ∩ dom(Mod.query_methods) = ∅
 dom(Mod.update_methods) ∩ dom(Mod.composite_query_methods) = ∅
 dom(Mod.query_methods) ∩ dom(Mod.composite_query_methods) = ∅
@@ -5717,10 +5739,6 @@ liquid_balance(S', A.canister_id) ≥ 0
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
-S.canister_history[A.canister_id] = {
-  total_num_changes = N;
-  recent_changes = H;
-}
 New_canister_history = {
   total_num_changes = N + 1;
   recent_changes = H · {
@@ -5791,6 +5809,16 @@ Public_custom_sections = parse_public_custom_sections(A.wasm_module)
 Private_custom_sections = parse_private_custom_sections(A.wasm_module)
 M.caller ∈ S.controllers[A.canister_id]
 S.canisters[A.canister_id] = { wasm_state = Old_state; module = Old_module, …}
+
+S.canister_history[A.canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+if A.preconditions.stopped = opt true:
+  S.canister_status[A.canister_id] = Stopped
+if A.preconditions.total_num_changes is not null:
+  A.preconditions.total_num_changes = N
 
 dom(Mod.update_methods) ∩ dom(Mod.query_methods) = ∅
 dom(Mod.update_methods) ∩ dom(Mod.composite_query_methods) = ∅
@@ -5881,10 +5909,6 @@ liquid_balance(S', A.canister_id) ≥ 0
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
-S.canister_history[A.canister_id] = {
-  total_num_changes = N;
-  recent_changes = H;
-}
 New_canister_history = {
   total_num_changes = N + 1;
   recent_changes = H · {
@@ -5959,7 +5983,7 @@ wasm_module = S.chunk_store[store_canister][h1] || ... || S.chunk_store[store_ca
 A.wasm_module_hash = SHA-256(wasm_module)
 M' = M with
     method_name = 'install_code'
-    arg = candid(record {A.mode; A.target_canister; wasm_module; A.arg; A.sender_canister_version})
+    arg = candid(record {A.mode; A.target_canister; wasm_module; A.arg; A.preconditions; A.sender_canister_version})
 
 ```
 
