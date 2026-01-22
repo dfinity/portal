@@ -103,7 +103,10 @@ Created a wallet canister on the "local" network for user ... with ID "uqqxf-5h7
 $ dfx canister deposit-cycles --wallet uqqxf-5h777-77774-qaaaa-cai 89_000_000_000_000 replaced
 Depositing 89000000000000 cycles onto replaced
 Deposited 89000000000000 cycles.
-$ dfx identity set-wallet "${WALLET}"
+$ dfx identity set-wallet "${WALLET}" --force
+Skipping verification of availability of the canister on the network due to --force...
+Setting wallet for identity ... on network 'local' to id 'uqqxf-5h777-77774-qaaaa-cai'
+Wallet set successfully.
 
 # Canister ID Migration
 $ dfx canister stop migrated
