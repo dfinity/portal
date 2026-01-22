@@ -15,7 +15,7 @@ This tutorial covers migrating the canister settings, state (WASM, main and stab
 Transient state (canister logs and history) and cycles reserved for storage cannot be migrated from one subnet to another.
 
 The target subnet must contain a canister (called the "replaced" canister) that is used as a placeholder throughout canister migration.
-For instance, this canister can be created using [`dfx canister create`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
+For instance, this canister can be created using [`dfx canister create`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
 
 # Requirements
 
@@ -23,15 +23,15 @@ The following tutorial assumes `dfx` at version at least 0.31.0-beta.0.
 
 # Canister Settings Migration
 
-Canister settings can be migrated using [`dfx canister update-settings`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) specifying the migrated canister as `--sync-with` and the replaced canister as the canister whose settings are updated.
+Canister settings can be migrated using [`dfx canister update-settings`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) specifying the migrated canister as `--sync-with` and the replaced canister as the canister whose settings are updated.
 
 # Canister State Migration
 
-The canister state of the migrated canister must first be captured by [creating a canister snapshot](/docs/building-apps/canister-management/snapshots/#creating-a-snapshot).
+The canister state of the migrated canister must first be captured by [creating a canister snapshot](/building-apps/canister-management/snapshots/#creating-a-snapshot).
 
-The canister snapshot can then be downloaded to a local file directory using [`dfx canister snapshot download`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-download).
+The canister snapshot can then be downloaded to a local file directory using [`dfx canister snapshot download`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-download).
 
-Next the canister snapshot can be uploaded to the replaced canister using [`dfx canister snapshot upload`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-upload).
+Next the canister snapshot can be uploaded to the replaced canister using [`dfx canister snapshot upload`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-upload).
 
 Finally the canister snapshot can be [loaded](/docs/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#loading-a-snapshot) to the replaced canister.
 
@@ -42,23 +42,23 @@ It is recommended to preserve the snapshot of the migrated canister (and also it
 
 **WARNING**: Make sure to create a snapshot of the migrated canister before proceeding with the following commands since they will destroy the migrated canister's state.
 
-To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/docs/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet) (the canister ID must be provided explicitly, i.e., the argument of `dfx identity deploy-wallet` must not be a canister name). It is recommended to check and remember the current wallet using [`dfx identity get-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-get-wallet) before running `dfx identity deploy-wallet` (to prevent forgetting the canister ID of the currently configured wallet if applicable).
+To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet) (the canister ID must be provided explicitly, i.e., the argument of `dfx identity deploy-wallet` must not be a canister name). It is recommended to check and remember the current wallet using [`dfx identity get-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-get-wallet) before running `dfx identity deploy-wallet` (to prevent forgetting the canister ID of the currently configured wallet if applicable).
 
-To actually migrate cycles from the migrated canister, we use [`dfx canister deposit-cycles`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-deposit-cycles) specifying the migrated canister as `--wallet` (the canister ID must be provided explicitly, i.e., the argument of `--wallet` must not be a canister name) and the replaced canister as the canister to which cycles should be deposited.
+To actually migrate cycles from the migrated canister, we use [`dfx canister deposit-cycles`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-deposit-cycles) specifying the migrated canister as `--wallet` (the canister ID must be provided explicitly, i.e., the argument of `--wallet` must not be a canister name) and the replaced canister as the canister to which cycles should be deposited.
 
 Finally, restore your previous wallet using [`dfx identity set-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-set-wallet) and the wallet canister ID obtained previously using `dfx identity get-wallet`.
 
-Make sure to leave at least 10T cycles in the migrated canister to pay for canister ID migration (described in the next section) and additionally enough cycles to pay for the migrated canister's resource consumption up until its canister ID migration. You can check out the migrated canister's resource cycles consumption as "idle" cycles consumption (per day) using [`dfx canister status`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status).
+Make sure to leave at least 10T cycles in the migrated canister to pay for canister ID migration (described in the next section) and additionally enough cycles to pay for the migrated canister's resource consumption up until its canister ID migration. You can check out the migrated canister's resource cycles consumption as "idle" cycles consumption (per day) using [`dfx canister status`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status).
 
 # Canister ID Migration
 
 **WARNING**: Make sure that the migrated canister's state has been loaded to the replaced canister (see the above section on Canister State Migration) before proceeding with canister ID migration since it will destroy the migrated canister's state.
 
-To prepare for canister ID migration, we stop both the migrated and replaced canisters using [`dfx canister stop`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop).
+To prepare for canister ID migration, we stop both the migrated and replaced canisters using [`dfx canister stop`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop).
 
-Then we can kick off canister ID migration using [`dfx canister migrate-id`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migrate-id) specifying the migrated canister ID as the canister ID to migrate and the replaced canister ID as `--replace`.
+Then we can kick off canister ID migration using [`dfx canister migrate-id`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migrate-id) specifying the migrated canister ID as the canister ID to migrate and the replaced canister ID as `--replace`.
 
-Canister ID migration is expected to take at least 6 minutes. You can check out its status using [`dfx canister migration-status`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migration-status).
+Canister ID migration is expected to take at least 6 minutes. You can check out its status using [`dfx canister migration-status`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migration-status).
 
 # Example
 
