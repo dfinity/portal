@@ -42,9 +42,11 @@ It is recommended to preserve the snapshot of the migrated canister (and also it
 
 **WARNING**: Make sure to create a snapshot of the migrated canister before proceeding with the following commands since they will destroy the migrated canister's state.
 
-To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/docs/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet) (the canister ID must be provided explicitly, i.e., the argument of `dfx identity deploy-wallet` must not be a canister name).
+To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/docs/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet) (the canister ID must be provided explicitly, i.e., the argument of `dfx identity deploy-wallet` must not be a canister name). It is recommended to check and remember the current wallet using [`dfx identity get-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-get-wallet) before running `dfx identity deploy-wallet` (to prevent forgetting the canister ID of the currently configured wallet if applicable).
 
 To actually migrate cycles from the migrated canister, we use [`dfx canister deposit-cycles`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-deposit-cycles) specifying the migrated canister as `--wallet` (the canister ID must be provided explicitly, i.e., the argument of `--wallet` must not be a canister name) and the replaced canister as the canister to which cycles should be deposited.
+
+Finally, restore your previous wallet using [`dfx identity set-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-set-wallet) and the wallet canister ID obtained previously using `dfx identity get-wallet`.
 
 Make sure to leave at least 10T cycles in the migrated canister to pay for canister ID migration (described in the next section) and additionally enough cycles to pay for the migrated canister's resource consumption up until its canister ID migration. You can check out the migrated canister's resource cycles consumption as "idle" cycles consumption (per day) using [`dfx canister status`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status).
 
@@ -95,11 +97,13 @@ $ dfx canister uninstall-code migrated
 Uninstalling code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
 $ dfx canister start migrated
 Starting code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
+$ WALLET="$(dfx identity get-wallet)"
 $ dfx identity deploy-wallet uqqxf-5h777-77774-qaaaa-cai
 Created a wallet canister on the "local" network for user ... with ID "uqqxf-5h777-77774-qaaaa-cai"
 $ dfx canister deposit-cycles --wallet uqqxf-5h777-77774-qaaaa-cai 89_000_000_000_000 replaced
 Depositing 89000000000000 cycles onto replaced
 Deposited 89000000000000 cycles.
+$ dfx identity set-wallet "${WALLET}"
 
 # Canister ID Migration
 $ dfx canister stop migrated
