@@ -4,7 +4,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Reference"]} />
 
-This page outlines how **vetKeys** work and how they are integrated into the Internet Computer. While some of the information here isn’t necessary for using vetKeys, it provides helpful background for technically inclined readers who want to better understand the underlying cryptography and system design. [Learn more about what vetKeys are](/docs/building-apps/network-features/vetkeys/introduction) and how to use them in your canister.
+This page outlines how **vetKeys** work and how they are integrated into the Internet Computer. While some of the information here isn’t necessary for using vetKeys, it provides helpful background for technically inclined readers who want to better understand the underlying cryptography and system design. [Learn more about what vetKeys are](/building-apps/network-features/vetkeys/introduction) and how to use them in your canister.
 
 ## What is vetKD?
 
@@ -22,7 +22,7 @@ At the core of vetKeys there is a cryptographic protocol called [verifiably encr
 
 ## Protocol overview
 
-The Internet Computer integrates the vetKD protocol as a threshold key derivation service operated by vetkD-enabled subnets. Each such subnet maintains a vetKD master key that is threshold-shared among its nodes and generated using a [distributed key generation protocol](/docs/references/vetkeys-overview#master-key-generation). The protocol involves three main actors:
+The Internet Computer integrates the vetKD protocol as a threshold key derivation service operated by vetkD-enabled subnets. Each such subnet maintains a vetKD master key that is threshold-shared among its nodes and generated using a [distributed key generation protocol](/references/vetkeys-overview#master-key-generation). The protocol involves three main actors:
 
 * **Users**: Typically interacting through a dapp frontend. They request derived keys and provide a public key for secure delivery.  
 * **Canisters**: Perform access control and forward user requests to the vetKD protocol using the system API.  
@@ -35,7 +35,7 @@ The protocol proceeds as follows:
 
 1. **Transport key generation:** The user generates a fresh key pair, which is referred to as a *transport* key pair. The public key is sent to the canister to be used for encrypting the derived key. The user may also supply an *input* argument of the vetKD key derivation call, such as a key ID or a session identifier, which determines the derived key and can later be used for the verification of the encrypted vetKey.  
 
-2. **Access control and routing:** The canister authenticates the user and enforces any access control policies (e.g. whether the user is allowed to derive the key for the given input). If the request is authorized, the canister invokes the [vetKD system API](/docs/building-apps/network-features/vetkeys/api), specifying:  
+2. **Access control and routing:** The canister authenticates the user and enforces any access control policies (e.g. whether the user is allowed to derive the key for the given input). If the request is authorized, the canister invokes the [vetKD system API](/building-apps/network-features/vetkeys/api), specifying:  
    * **Context:** used to domain-separate the key derivation requests. This could be a key purpose, a user ID, or other application-specific identifier.   
    * **Input:** application-specific data that serves as the basis for key derivation. It can be provided by the user or determined by the canister, depending on the use case.  
    * **Transport public key:** the user’s public key, used to encrypt the derived key.  
@@ -75,6 +75,6 @@ To provide a scalable and efficient key derivation service, the Internet Compute
 
 ![vetKD public key derivation](./_attachments/vetkd_derivation.png)
 
-Instead, the system derives a single canister-level master key from the subnet’s vetKD master key using an additive key derivation scheme, similar to those used for [threshold ECDSA and Schnorr](/docs/references/t-sigs-how-it-works#key-derivation). Each canister can then derive additional subkeys by specifying a *context*, such as a user identifier or key purpose. This context acts as a domain separator, ensuring that derived subkeys are isolated and application-specific, even though they originate from the same canister master key. The canister master _public_ key can be obtained by calling the `vetkd_public_key` system API with an empty context. Subkeys can be retrieved onchain by calling the same API with a non-empty context, or computed off-chain from the canister master public key using a key derivation library ([Rust](https://docs.rs/ic-vetkeys/latest/ic_vetkeys/), [Typescript](https://dfinity.github.io/vetkeys/modules/_dfinity_vetkeys.html)). 
+Instead, the system derives a single canister-level master key from the subnet’s vetKD master key using an additive key derivation scheme, similar to those used for [threshold ECDSA and Schnorr](/references/t-sigs-how-it-works#key-derivation). Each canister can then derive additional subkeys by specifying a *context*, such as a user identifier or key purpose. This context acts as a domain separator, ensuring that derived subkeys are isolated and application-specific, even though they originate from the same canister master key. The canister master _public_ key can be obtained by calling the `vetkd_public_key` system API with an empty context. Subkeys can be retrieved onchain by calling the same API with a non-empty context, or computed off-chain from the canister master public key using a key derivation library ([Rust](https://docs.rs/ic-vetkeys/latest/ic_vetkeys/), [Typescript](https://dfinity.github.io/vetkeys/modules/_dfinity_vetkeys.html)). 
 
 Each canister-level key can then be used in the vetKD protocol to derive user-requested keys by calling the `vetkd_derive_key` system API and specifying the corresponding context. To do so, the canister supplies an input, typically user-generated or application-specific data, that serves as the basis for the derived key. This input does not need to be random or secret. Since the key derivation process is deterministic (given the same canister, context, and input), the input can effectively serve as an identifier for the derived key within the application.

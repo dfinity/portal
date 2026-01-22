@@ -122,7 +122,7 @@ After this step, the pulled dependencies can be deployed on a local replica usin
 
 ## Conclusion
 
-The `dfx deps` feature is available in dfx versions `0.14.1` and newer. You can learn more from our [developer documentation](/docs/building-apps/advanced/using-third-party-canisters), which includes an interactive example you can use to test the feature for yourself.
+The `dfx deps` feature is available in dfx versions `0.14.1` and newer. You can learn more from our [developer documentation](/building-apps/advanced/using-third-party-canisters), which includes an interactive example you can use to test the feature for yourself.
 
 As always, please let us know if you have any feedback either through our [forum](https://forum.dfinity.org/) or [Discord server](https://discord.com/invite/5PJMmmETQB).
 

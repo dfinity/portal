@@ -12,12 +12,6 @@ By default, all canisters on the Internet Computer are accessible via the icp0.i
 
 To do this, simply acquire a domain from any registrar (e.g., Namecheap or GoDaddy) and configure its DNS records as instructed. After that, the custom domains service handles the rest: it automatically obtains and renews SSL certificates, manages their expiration, and ensures proper SEO support.
 
-:::info
-
-These docs describe the API of the new, redesigned custom domain service. You can find the old docs [here](./using-custom-domains-legacy.mdx).
-
-:::
-
 ## Register your domain as a custom domain
 
 By following the steps below, you can host your canister under your own domain using the custom domain service provided by the HTTP gateways. First, the configuration steps are described, then an [example is used to illustrate these steps](#concrete-example), followed by some instructions on [troubleshooting](#troubleshooting).
@@ -375,6 +369,6 @@ In case you want to remove your domain, you just need to remove the DNS records 
 
 :::caution
 
-For frontends that use Internet Identity (II) to authenticate users, the principals provided by II depend on the domain from which the login request was started. If you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [alternative origins](/docs/building-apps/authentication/alternative-origins).
+For frontends that use Internet Identity (II) to authenticate users, the principals provided by II depend on the domain from which the login request was started. If you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [alternative origins](/building-apps/authentication/alternative-origins).
 
 :::
