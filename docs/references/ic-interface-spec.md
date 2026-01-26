@@ -3086,13 +3086,13 @@ This is a variant of the [`http_request`](#ic-http_request) method where nodes r
 
 The arguments of the call are as for `http_request`, except that:
 
-- there is an additional optional argument `node_counts`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `node_counts` are set, then the caller must ensure that `0 <= min_responses <= max_responses <= total_requests` and `1 <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `node_counts` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
+- there is an additional optional argument `replication`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `replication` are set, then the caller must ensure that `0 <= min_responses <= max_responses <= total_requests` and `1 <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `replication` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
 
 - the deprecated `max_response_bytes` argument is not supported.
 
 The other arguments, `url`, `method`, `headers`, `body`, and `transform` are the same as for `http_request`. The result is a vector of responses, with each individual response having the same structure as a `http_request` response, providing `status`, `headers`, and `body` fields.
 
-As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when `total_requests` is set to 1 in `node_counts`. The request restrictions are also the same as for the `http_request` method:
+As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when `total_requests` is set to 1 in `replication`. The request restrictions are also the same as for the `http_request` method:
 
 - The total number of bytes in the request must not exceed `2MB` (`2,000,000`) bytes.
 

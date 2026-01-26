@@ -386,7 +386,7 @@ type flexible_http_request_args = record {
         function : func(record { response : http_request_result; context : blob }) -> (http_request_result) query;
         context : blob;
     };
-    node_counts: opt record {
+    replication: opt record {
       min_responses: nat64;
       max_responses: nat64;
       total_requests: nat64;
