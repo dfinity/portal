@@ -25,7 +25,7 @@ However, this feature is almost nonexistent when developing a decentralized appl
 
 ---
 
-This is where the [Motoko programming language](/docs/motoko/home) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/building-apps/canister-management/upgrade) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
+This is where the [Motoko programming language](/motoko/home) comes in. With quick compilation times, module-based imports, and [stable variable](/building-apps/canister-management/upgrade) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
 
 Over the past six months, DFINITY has adopted full-stack live reloading in our internal Motoko projects, saving a huge amount of development time and allowing us to quickly try lots of different ideas to improve the end-user experience of our Internet Computer dapps.
 
@@ -63,13 +63,13 @@ Once you’ve installed the tool, run `mo-dev --help` to view usage examples and
 
 ## Candid UI
 
-Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
+Let’s say you’re developing a Motoko smart contract using the [Candid UI](/building-apps/interact-with-canisters/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
 
 ```sh
 mo-dev --deploy -y
 ```
 
-The `-y` flag automatically responds “yes” to prompts from [dfx](/docs/building-apps/developer-tools/dfx/dfx-deploy) about upgrading the canister interface (potentially clearing canister data). Feel free to include or omit this depending on your use case.
+The `-y` flag automatically responds “yes” to prompts from [dfx](/building-apps/developer-tools/dfx/dfx-deploy) about upgrading the canister interface (potentially clearing canister data). Feel free to include or omit this depending on your use case.
 
 ## Full-Stack Dapp
 
@@ -100,7 +100,7 @@ With this project configuration, `npm start` will run the Vite and Motoko dev se
 
 Another benefit of this configuration is that anyone can run the dev server without needing to globally install the `mo-dev` command, which is great for encouraging open-source contributions or working as part of a team.
 
-This project configuration will be included by default in the upcoming changes to the [dfx new](/docs/building-apps/developer-tools/dfx/dfx-new) command.
+This project configuration will be included by default in the upcoming changes to the [dfx new](/building-apps/developer-tools/dfx/dfx-new) command.
 
 `mo-dev` ships with a test runner compatible with third-party libraries such as motoko-matchers.
 
@@ -163,7 +163,7 @@ CI=true mo-dev --generate --deploy
 Here are a few miscellaneous tips which might come in handy while working with `mo-dev`:
 
 * Live reloading works when switching Git branches, which is useful to keep in mind for code reviews and pair programming.
-* If you’ve used [dfx generate](/docs/building-apps/developer-tools/dfx/dfx-generate), you might have encountered a common catch-22 where both `dfx generate` and `dfx deploy` require running each other first. `mo-dev --generate --deploy` automatically handles this situation for you.
+* If you’ve used [dfx generate](/building-apps/developer-tools/dfx/dfx-generate), you might have encountered a common catch-22 where both `dfx generate` and `dfx deploy` require running each other first. `mo-dev --generate --deploy` automatically handles this situation for you.
 * You can define custom live-reload logic using `mo-dev --exec <command>`.
 
 ---

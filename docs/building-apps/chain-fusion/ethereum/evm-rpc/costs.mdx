@@ -11,7 +11,7 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
 
-Each call made to the EVM RPC canister costs [cycles](/docs/building-apps/getting-started/tokens-and-cycles).
+Each call made to the EVM RPC canister costs [cycles](/building-apps/getting-started/tokens-and-cycles).
 
 JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivalent to approximately $0.0001 - $0.001 USD.
 
@@ -34,7 +34,7 @@ The following formula shows how to calculate the cycles cost for an RPC request:
   * rpc_services // Number of RPC services used to check consistency
 ```
 
-The total cost for an RPC request (assuming a 1kB request, 1kB response, 34-node subnet, and 1 [XDR](/docs/building-apps/essentials/gas-cost) = $1.336610 USD)
+The total cost for an RPC request (assuming a 1kB request, 1kB response, 34-node subnet, and 1 [XDR](/building-apps/essentials/gas-cost) = $1.336610 USD)
 is ~ $0.00051 USD.
 
 Note that the cost is multiplied by the number of RPC services used for the consistency logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.

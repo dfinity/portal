@@ -8,13 +8,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
-Canisters are created with [`dfx canister create`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create). They are initially empty and do not contain program code. The code must be [compiled](/docs/building-apps/developing-canisters/what-are-canisters) into Wasm and [installed](/docs/building-apps/developing-canisters/what-are-canisters) into the empty canister before it can be deployed.
+Canisters are created with [`dfx canister create`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create). They are initially empty and do not contain program code. The code must be [compiled](/building-apps/developing-canisters/what-are-canisters) into Wasm and [installed](/building-apps/developing-canisters/what-are-canisters) into the empty canister before it can be deployed.
 
 <div class="text--center">
 <img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
 </div>
 
-Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
+Settings can be configured while creating a canister using optional flags. [View the full list of settings](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
 
 :::info
 Canister creation is done automatically in the background of the `dfx deploy` command. However, there may be certain workflows where creating an empty canister is necessary.
@@ -42,5 +42,5 @@ When a canister is created, the following steps happen:
 
 Common errors related to canister creation include:
 
-- [Canister not found](/docs/references/execution-errors#canister-not-found).
-- [Maximum number of canisters reached](/docs/references/execution-errors#maximum-number-of-canisters-reached).
+- [Canister not found](/references/execution-errors#canister-not-found).
+- [Maximum number of canisters reached](/references/execution-errors#maximum-number-of-canisters-reached).

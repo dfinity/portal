@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/9BfDy3VNxu8?si=0FHL0c_CSGQzdfSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-In the previous tutorial where you [created your first dapp](/docs/tutorials/developer-liftoff/level-0/first-dapp), you briefly learned about query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
+In the previous tutorial where you [created your first dapp](/tutorials/developer-liftoff/level-0/first-dapp), you briefly learned about query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
 
 Let's first define the different types of canister calls and how they differ from one another:
 
@@ -23,7 +23,7 @@ Let's first define the different types of canister calls and how they differ fro
 
 - **Update calls** are able to alter the canister's state. They are executed on all nodes of a subnet since the result must go through the subnet's [consensus](https://learn.internetcomputer.org/hc/en-us/articles/34207558615956-Consensus) process. Update calls are submitted and answered asynchronously.
 
-- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via [ingress messages](/docs/building-apps/essentials/message-execution) using `dfx` or through an agent such as a browser front-end. They cannot be invoked by other canisters.
+- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via [ingress messages](/building-apps/essentials/message-execution) using `dfx` or through an agent such as a browser front-end. They cannot be invoked by other canisters.
 
 - **Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
 
@@ -45,11 +45,11 @@ Want to take a deeper dive? Check out an [in-depth look at the ICP execution mod
 
 ## Query calls
 
-Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that hosting the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that hosting the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
 Setting functions as query functions where appropriate can be an effective way to improve application performance, as query calls are returned faster than update calls. However, compared to update calls, the trade-off of a query call's increased performance is decreased security, since their response is not verified through consensus.
 
-The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the call's response is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
+The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the call's response is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/tutorials/developer-liftoff/level-3/3.3-certified-data).
 
 ### Example `query` call
 
@@ -99,7 +99,7 @@ Certified variables enable queries to return an authenticated response that can 
 
 Certification happens at the canister level. A certified variable in a canister can be set using an update call. After the certified variable is set, its value and certification can then be read using query calls.
 
-You'll dive deeper into certified variables in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
+You'll dive deeper into certified variables in a future module, [3.3: Certified variables](/tutorials/developer-liftoff/level-3/3.3-certified-data).
 
 ## Composite queries
 

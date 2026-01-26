@@ -1,5 +1,15 @@
 ## Changelog {#changelog}
 
+### 0.54.0 (2025-12-15) {$0_54_0}
+* The management canister's endpoint `take_canister_snapshot` can uninstall code atomically after taking canister snapshot.
+* The canister system API `ic0.msg_reject_code` is available in cleanup callbacks.
+
+### 0.53.0 (2025-11-24) {$0_53_0}
+* New execution context `TQ` for canister http transform functions to specify that no IC certificate is available in such executions.
+
+### 0.52.0 (2025-11-17) {$0_52_0}
+* Canister memory allocation does not limit canister memory usage.
+
 ### 0.51.0 (2025-10-20) {$0_51_0}
 * Management canister endpoint `canister_status` can be invoked as a query call.
 

@@ -377,7 +377,7 @@ Notice that now the value of `c` is set to `init` rather than set to `0`, to ref
 
 When a canister receives an ingress message, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_message` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted.
 
-`canister_inspect_message` is not used for HTTP query calls, inter-canister calls, or calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/docs/building-apps/security/iam#do-not-rely-on-ingress-message-inspection) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks.
+`canister_inspect_message` is not used for HTTP query calls, inter-canister calls, or calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/building-apps/security/iam#do-not-rely-on-ingress-message-inspection) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks.
 
 Message inspection is designed to mitigate some denial of service attacks, since it drains canisters of their cycles for placing unsolicited calls that are rejected.
 
@@ -546,7 +546,7 @@ actor {
 
 This call site returns more detailed errors, such as 'There is no todo with that ID,' or 'You've already completed this todo,' which is much more useful than 'Something went wrong.'
 
-[Learn more about working with `Option` and `Result` types](/docs/motoko/error-handling#working-with-optionresult).
+[Learn more about working with `Option` and `Result` types](/motoko/error-handling#working-with-optionresult).
 
 ### Asynchronous errors
 
@@ -595,13 +595,13 @@ actor {
 
 ## Resources
 
-- [Motoko mutable state](/docs/motoko/state).
+- [Motoko mutable state](/motoko/state).
 
-- [Motoko message inspection](/docs/motoko/messaging).
+- [Motoko message inspection](/motoko/messaging).
 
-- [Local object classes](/docs/motoko/fundamentals/types/objects-classes).
+- [Local object classes](/motoko/fundamentals/types/objects-classes).
 
-- [Motoko error handling](/docs/motoko/error-handling).
+- [Motoko error handling](/motoko/error-handling).
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 

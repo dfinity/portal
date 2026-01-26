@@ -88,7 +88,7 @@ ICP currently targets a throughput of 2B instructions per thread per second.
 
 ## Additional notes
 
-The expiration time of an ingress message is specified by the [agent](/docs/building-apps/interact-with-canisters/agents/overview) making the request and can be up to 5 minutes.
+The expiration time of an ingress message is specified by the [agent](/building-apps/interact-with-canisters/agents/overview) making the request and can be up to 5 minutes.
 
 The Internet Computer Protocol may reject WebAssembly modules for reasons such as:
 
@@ -100,4 +100,4 @@ The Internet Computer Protocol may reject WebAssembly modules for reasons such a
 - The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20_000.
 - The total size of the exported custom sections exceeds 1MiB.
 
-More information regarding these restrictions can be found in the [Internet Computer interface specification](/docs/references/ic-interface-spec#system-api-module).
+More information regarding these restrictions can be found in the [Internet Computer interface specification](/references/ic-interface-spec#system-api-module).

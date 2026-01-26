@@ -14,7 +14,7 @@ Before a transaction can be sent to the Bitcoin network, each input must be sign
 
 ## Threshold ECDSA
 
-Canisters can sign transactions with threshold ECDSA through the [`sign_with_ecdsa`](/docs/build-on-btc/btc-api) method.
+Canisters can sign transactions with threshold ECDSA through the [`sign_with_ecdsa`](/build-on-btc/btc-api) method.
 
 The following snippet shows a simplified example of how to sign a Bitcoin transaction for the special case where all the inputs are referencing outpoints that are owned by `own_address` and `own_address` is a `P2PKH` address.
 
@@ -37,7 +37,7 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/p2pkh.rs#
 
 ## Threshold Schnorr
 
-Canisters can sign transactions with threshold Schnorr through the [`sign_with_schnorr`](/docs/build-on-btc/btc-api) method.
+Canisters can sign transactions with threshold Schnorr through the [`sign_with_schnorr`](/build-on-btc/btc-api) method.
 
 ### Signing P2TR key path transactions
 
@@ -83,6 +83,6 @@ https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/p2tr.rs#L
 
 ## Resources
 
-[Learn more about threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa).
+[Learn more about threshold ECDSA](/building-apps/network-features/signatures/t-ecdsa).
 
-[Learn more about threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr).
+[Learn more about threshold Schnorr](/building-apps/network-features/signatures/t-schnorr).

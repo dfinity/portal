@@ -12,11 +12,11 @@ How you interact with the ICP ledger is dependent on whether you want to interac
 
 ## From the command line
 
-[`dfx ledger`](/docs/building-apps/developer-tools/dfx/dfx-ledger) is a convenience command to interact with the ICP ledger canister and related functionality from the CLI. It only exposes a subset of the ICP ledger functionality, namely `balance` and `transfer`.
+[`dfx ledger`](/building-apps/developer-tools/dfx/dfx-ledger) is a convenience command to interact with the ICP ledger canister and related functionality from the CLI. It only exposes a subset of the ICP ledger functionality, namely `balance` and `transfer`.
 
-`dfx` does not come with an ICP ledger instance installed locally by default. To use this command, you will need to install the [ICP ledger locally](/docs/defi/token-ledgers/setup/icp_ledger_setup).
+`dfx` does not come with an ICP ledger instance installed locally by default. To use this command, you will need to install the [ICP ledger locally](/defi/token-ledgers/setup/icp_ledger_setup).
 
-View the [`dfx ledger`](/docs/building-apps/developer-tools/dfx/dfx-ledger) documentation for all available arguments and flags.
+View the [`dfx ledger`](/building-apps/developer-tools/dfx/dfx-ledger) documentation for all available arguments and flags.
 
 You can also use the `dfx canister call` command, which is a generic command for calling any function's methods, not specifically the ICP ledger's methods.
 
@@ -28,7 +28,7 @@ dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai symbol '()'
 
 You can find all available methods listed within the ICP ledger canister's Candid file or you can view the [mainnet ICP ledger canister on the dashboard](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
 
-[View a more detailed description of the data types used in these commands](/docs/references/ledger#_getting_ledger_blocks).
+[View a more detailed description of the data types used in these commands](/references/ledger#_getting_ledger_blocks).
 
 ## From a web application
 
@@ -76,11 +76,11 @@ let res: String = ic_cdk::call::Call::bounded_wait(ledger_id, "icrc1_name")
   .unwrap();
 ```
 
-View the [inter-canister call documentation](/docs/building-apps/developer-tools/cdks/rust/intercanister) to learn more about inter-canister calls.
+View the [inter-canister call documentation](/building-apps/developer-tools/cdks/rust/intercanister) to learn more about inter-canister calls.
 
 ## The ICP ledger's ICRC endpoints
 
-As explained in the [token standards documentation](/docs/defi/token-standards/), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
+As explained in the [token standards documentation](/defi/token-standards/), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
 
 To interact with the ICRC-1 and ICRC-2 endpoints of the ICP ledger canister, the Rust crate [icrc-ledger-types](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/) can be used. This crate can be used for any canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e., ICRC-2, ICRC-3, etc).
 
@@ -173,7 +173,7 @@ If you want a canister to receive payment in ICP, you need to make sure that the
 
 There is a [chartered working group](https://forum.dfinity.org/t/announcing-technical-working-groups/11781) on ledger and tokenization that is focused on defining a standard ledger token interface and payment flows.
 
-The sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/references/ledger#_getting_ledger_blocks) of the ledger.
+The sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/references/ledger#_getting_ledger_blocks) of the ledger.
 
 The following diagram shows a simplified illustration of this pattern.
 

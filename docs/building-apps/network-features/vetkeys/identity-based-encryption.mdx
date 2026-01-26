@@ -29,7 +29,7 @@ The underlying design of the vetKD protocol is based on a threshold-variant of [
 
 - Canisters can enforce access control, ensuring that users are only able to request keys for their own identities.
 
-IBE works differently than the [distributed key management service (DKMS)](/docs/building-apps/network-features/vetkeys/dkms). In DKMS, one or more users share the same symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an asymmetric encryption scheme. Anyone can encrypt messages to a given identity, but only the holder of the corresponding decryption key can decrypt them.
+IBE works differently than the [distributed key management service (DKMS)](/building-apps/network-features/vetkeys/dkms). In DKMS, one or more users share the same symmetric key, and only those users can encrypt and decrypt data using that key. In contrast, IBE is an asymmetric encryption scheme. Anyone can encrypt messages to a given identity, but only the holder of the corresponding decryption key can decrypt them.
 
 ## How to use IBE
 
@@ -123,7 +123,7 @@ The transport public key used for the call is a temporary, throwaway key generat
 ### Step 4: Obtain the IBE private key and decrypt data in the frontend
 Obtain the encrypted data from the canister or another storage location. Decrypt the IBE-encrypted data in the frontend using the [`@dfinity/vetkeys` frontend library](https://dfinity.github.io/vetkeys/classes/_dfinity_vetkeys.IbeCiphertext.html#decrypt).
 
-For a detailed overview of the basic flow for obtaining `vetKeys`, refer to the [API documentation](/docs/building-apps/network-features/vetkeys/api).
+For a detailed overview of the basic flow for obtaining `vetKeys`, refer to the [API documentation](/building-apps/network-features/vetkeys/api).
 
 
 <AdornedTabs groupId="languages">
