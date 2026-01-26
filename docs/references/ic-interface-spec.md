@@ -7380,8 +7380,16 @@ Conditions
 
 ```html
 
+not (S.canister_subnet[Canister_id] = S.canister_subnet[New_canister_id])
+
+Caller ∈ S.controllers[Canister_id]
+Caller ∈ S.controllers[New_canister_id]
+
+Canister_migration_orchestrator ∈ S.controllers[Canister_id]
+Canister_migration_orchestrator ∈ S.controllers[New_canister_id]
+
 S.canister_status[Canister_id] = Stopped
-S.canister_status[New_Canister_id] = Stopped
+S.canister_status[New_canister_id] = Stopped
 
 ∀ Snapshot_id. S.snapshots[Canister_id][Snapshot_id] = null
 
