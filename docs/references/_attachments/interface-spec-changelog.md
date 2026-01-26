@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.55.0 (2025-01-26) {$0_55_0}
+* Support for canister renaming (required for canister ID migration from one subnet to another subnet).
+
 ### 0.54.0 (2025-12-15) {$0_54_0}
 * The management canister's endpoint `take_canister_snapshot` can uninstall code atomically after taking canister snapshot.
 * The canister system API `ic0.msg_reject_code` is available in cleanup callbacks.
