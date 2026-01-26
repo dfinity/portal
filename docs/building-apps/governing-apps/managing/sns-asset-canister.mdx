@@ -61,7 +61,7 @@ dfx deploy assets
 ### Deploying on the mainnet
 
 :::info
-To deploy to the mainnet, you will need a wallet that contains cycles. [Learn more about cycles wallets](/docs/building-apps/canister-management/topping-up).
+To deploy to the mainnet, you will need a wallet that contains cycles. [Learn more about cycles wallets](/building-apps/canister-management/topping-up).
 :::
 
 To deploy your asset canister to the mainnet, the following command can be used:
@@ -164,7 +164,7 @@ To use a generic proposal, first this new proposal type has to be "registered" i
 
 To submit a new `AddGenericNervousSystemFunction` SNS Proposal to support the `commit_proposed_batch` API, the target canister ID should be the asset canister (that is updated in the update steps below), and the target function is `commit_proposed_batch`. The validate function should be `validate_commit_proposed_batch`.
 
-The [`ExecuteGenericNervousSystemFunction`](/docs/building-apps/governing-apps/managing/making-proposals#executegenericnervoussystemfunction) SNS proposal is used to execute the newly registered proposal. To submit an `ExecuteGenericNervousSystemFunction` SNS Proposal with the output from `dfx deploy FRONTEND_CANISTER_NAME --network ic --by-proposal`, see the update steps below.
+The [`ExecuteGenericNervousSystemFunction`](/building-apps/governing-apps/managing/making-proposals#executegenericnervoussystemfunction) SNS proposal is used to execute the newly registered proposal. To submit an `ExecuteGenericNervousSystemFunction` SNS Proposal with the output from `dfx deploy FRONTEND_CANISTER_NAME --network ic --by-proposal`, see the update steps below.
 
 ## Submitting an SNS proposal to upgrade an asset canister
 

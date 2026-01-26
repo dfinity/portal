@@ -12,7 +12,7 @@ import Tabs from "@theme/Tabs";
 
 This section will give you an overview of how ICP staking on the Internet Computer using Rosetta works.
 
-This guide assumes you are familiar with the [flow of operations](/docs/defi/rosetta/icp_rosetta/construction_api/operations-flow).
+This guide assumes you are familiar with the [flow of operations](/defi/rosetta/icp_rosetta/construction_api/operations-flow).
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -143,7 +143,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: a
 
 Staking requires transferring tokens to a sub-account of the governance canister. To complete the transfer, you need to know both your ICP ledger account identifier (source of the transfer) and the account identifier of the governance sub-account (destination of the transfer).
 Make sure you have enough ICP in your source account to make the transfer to the governance canister.
-To derive the account identifier of your public key, you can look at how the [derive endpoint works](/docs/defi/rosetta/icp_rosetta/construction_api/operations-flow).
+To derive the account identifier of your public key, you can look at how the [derive endpoint works](/defi/rosetta/icp_rosetta/construction_api/operations-flow).
 
 ### Deriving the governance canister account identifier
 
@@ -151,7 +151,7 @@ For neuron creation on the Internet Computer, the process begins with the transf
 This address, while earmarked for a future neuron, does not yet represent an active neuron until the governance canister acknowledges the deposit.
 It's crucial to understand that, at this juncture, the neuron has not been created; the address is simply a placeholder for the future neuron.
 By transferring the ICP tokens directly to this designated address, you effectively earmark them for neuron creation.
-However, the governance canister must be notified of this transfer to activate the neuron. This process is done in the [next step of the guide](/docs/defi/rosetta/icp_rosetta/construction_api/staking).
+However, the governance canister must be notified of this transfer to activate the neuron. This process is done in the [next step of the guide](/defi/rosetta/icp_rosetta/construction_api/staking).
 Once the governance canister is aware, it uses the transferred tokens at the specified address to formally establish the neuron.
 
 You can derive the governance canister account identifier you need to send ICP similarly to how you derive your own account identifier.
@@ -346,7 +346,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: a
 
 ```
 
-After that, you can fetch the [neuron info](/docs/defi/rosetta/icp_rosetta/construction_api/staking) and it should display that it is now in `DISSOLVING` state.
+After that, you can fetch the [neuron info](/defi/rosetta/icp_rosetta/construction_api/staking) and it should display that it is now in `DISSOLVING` state.
 
 ```json
 {
@@ -554,7 +554,7 @@ You may have to install another version of OpenSSL (for example, through *brew*)
 The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some noncritical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
 The neuron you are trying to add a hotkey for must not have more than 10 hotkeys already linked to it.
 
-The command has two forms: one form accepts an [ICP principal](/docs/references/ic-interface-spec) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
+The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Add a principal as a hotkey
 
@@ -667,7 +667,7 @@ When you call `NeuronInfo` afterwards you can see the hotkey added to the list o
 ## Removing hotkeys from a neuron
 
 The `REMOVE_HOTKEY` operation removes a previously added hotkey from the neuron.
-The command has two forms: one form accepts an [ICP principal](/docs/references/ic-interface-spec) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
+The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Remove a principal as a hotkey
 
@@ -795,7 +795,7 @@ If you then check the neuron you will see that it changed state from `DISSOLVED`
 | Minimal access level | hotkey |
 
 In this section of the staking tutorial you will learn how to fetch information about an existing neuron.
-There are a few variations to this that depend on whether you are the controller of the neuron or whether you are using a [hotkey](/docs/defi/rosetta/icp_rosetta/construction_api/staking).
+There are a few variations to this that depend on whether you are the controller of the neuron or whether you are using a [hotkey](/defi/rosetta/icp_rosetta/construction_api/staking).
 
 ### Calling `NeuronInfo` as a controller
 

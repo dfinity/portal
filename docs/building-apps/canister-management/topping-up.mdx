@@ -15,11 +15,11 @@ Anyone can top-up any canister deployed to ICP; you do not need to be the owner 
 
 There are a few different ways to top-up canisters:
 
-- Using [`dfx cycles top-up`](/docs/building-apps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up).
+- Using [`dfx cycles top-up`](/building-apps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up).
 
 - Through the [NNS frontend dapp](https://nns.ic0.app).
 
-- Through a [third-party service](/docs/building-apps/canister-management/topping-up) (e.g., https://cycleops.dev).
+- Through a [third-party service](/building-apps/canister-management/topping-up) (e.g., https://cycleops.dev).
 
 ### Number of cycles
 
@@ -43,7 +43,7 @@ The following examples will demonstrate how to interact with and top-up a canist
 
 ### Checking the cycles balance of a canister
 
-Canister cycles balances are available through the [`dfx canister status`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status) command. They are not exposed publicly by default; you can only see them if you are the controller of a canister.
+Canister cycles balances are available through the [`dfx canister status`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status) command. They are not exposed publicly by default; you can only see them if you are the controller of a canister.
 
 ```bash
 dfx canister status jqylk-byaaa-aaaal-qbymq-cai --network=ic
@@ -71,7 +71,7 @@ Canisters can check their balance programmatically.
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-Motoko canisters can use the [ExperimentalCycles library](/docs/motoko/base/ExperimentalCycles) to interact with cycles.
+Motoko canisters can use the [ExperimentalCycles library](/motoko/base/ExperimentalCycles) to interact with cycles.
 
 </TabItem>
 
@@ -84,11 +84,11 @@ Rust canisters can use the function `canister_balance128()` from the [Rust IC CD
 
 ### Option 1: If you have ICP on your account
 
-If you have ICP associated with your [developer identity](/docs/building-apps/getting-started/identities) you can use [`dfx ledger top-up`](/docs/building-apps/developer-tools/dfx/dfx-ledger) to convert some ICP into cycles, then top-up a canister with those cycles:
+If you have ICP associated with your [developer identity](/building-apps/getting-started/identities) you can use [`dfx ledger top-up`](/building-apps/developer-tools/dfx/dfx-ledger) to convert some ICP into cycles, then top-up a canister with those cycles:
 
 ### Option 2: If you have cycles
 
-If you already have cycles, you can top-up a canister with the command [`dfx cycles top-up`](/docs/building-apps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up):
+If you already have cycles, you can top-up a canister with the command [`dfx cycles top-up`](/building-apps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up):
 
 ```bash
 dfx cycles top-up jqylk-byaaa-aaaal-qbymq-cai 1T --network ic
@@ -102,7 +102,7 @@ The cycles wallet will be removed from `dfx` in a future release.
 It is recommended to use the cycles ledger instead.
 :::
 
-Cycles wallets are canisters like any other. If you have a cycles wallet you control via `dfx`, there is another option for sending cycles from your cycles wallet to a canister of your choice: [`dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`](/docs/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-send).
+Cycles wallets are canisters like any other. If you have a cycles wallet you control via `dfx`, there is another option for sending cycles from your cycles wallet to a canister of your choice: [`dfx wallet send [OPTIONS] <DESTINATION> <AMOUNT>`](/building-apps/developer-tools/dfx/dfx-wallet#dfx-wallet-send).
 
 [Learn more about the cycles wallet](cycles-wallet.mdx).
 
@@ -120,7 +120,7 @@ You can also top-up any canister via the [NNS frontend dapp](https://nns.ic0.app
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles.
 
-[Learn more about freezing thresholds](/docs/building-apps/canister-management/settings#freezing-threshold).
+[Learn more about freezing thresholds](/building-apps/canister-management/settings#freezing-threshold).
 
 ## Using a cycles management service
 

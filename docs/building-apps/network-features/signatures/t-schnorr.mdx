@@ -20,11 +20,11 @@ Specifically, threshold Schnorr signatures on ICP provide:
 
 - Support for Ed25519 signatures, which are used by chains such as Solana, Cardano, Polkadot, and Ripple. Ed25519 is also a popular signature scheme outside of blockchains for Web2 functions such as signing X.509 certificates.
 
-- Provide higher signature throughput than threshold ECDSA signatures.
+- Higher signature throughput than threshold ECDSA signatures.
 
-- Allow canisters to obtain their own Schnorr public key and address, unlocking the ability for them to derive addresses on other chains, then authorize and submit transactions on those chains.
+- The possibility for canisters to obtain their own Schnorr public key and address, unlocking the ability for them to derive addresses on other chains, then authorize and submit transactions on those chains.
 
-- Enable Schnorr signatures to be computed on arbitrary messages.
+- The ability to create Schnorr signatures to be computed on arbitrary messages.
 
 ## Signing messages and transactions
 
@@ -48,11 +48,20 @@ The `sign_with_schnorr` endpoint takes a full message to sign as input rather th
 
 ## Signing messages
 
-Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation). When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister. Note that, in some cases, a signature may be computed when requested and known to some (potentially malicious replicas), even though the requesting canister receives an error. Canisters should not rely on the signature not existing in these cases. The table below shows these cases when using different types of inter-canister calls.
+
+| Response                | Bounded-wait call                                     | Unbounded-wait call                                   |
+|-------------------------|-------------------------------------------------------|-------------------------------------------------------|
+| Reply (no error)        | Signature returned                                    | Signature returned                                    |
+| `SYS_UNKNOWN` reject    | Signature not returned, may be known to some replicas | Not possible                                          |
+| `CANISTER_ERROR` reject | Signature not returned, may be known to some replicas | Signature not returned, may be known to some replicas |
+| Other reject            | Signature not returned, guaranteed not to exist       | Signature not returned, guaranteed not to exist       |
+
+Furthermore, signatures (including Ed25519) are **non-deterministic** and a different signature may be computed every time it is requested.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
-The `sign_with_schnorr` method requires cycles to be attached. [Learn more about threshold Schnorr costs](/docs/building-apps/essentials/gas-cost).
+The `sign_with_schnorr` method requires cycles to be attached. [Learn more about threshold Schnorr costs](/building-apps/essentials/gas-cost).
 
 To deploy code using the `sign_with_schnorr` method, you will need to specify the correct `key_ID` for the environment in the canister's source code. The following key IDs are supported:
 
@@ -136,7 +145,54 @@ Verification can be done in other languages using libraries and packages that su
 
 ## Obtaining public keys
 
-To obtain public keys, you will need to call the `schnorr_public_key` method of the IC management canister (`aaaaa-aa`). You can deploy the threshold Schnorr sample [locally](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) and use the Candid UI to call this method, or you can call this method programmatically using Motoko or Rust.
+There are two methods available for obtaining the public key associated with a particular canister ID and derivation path. The derivation process is deterministic and public; given the master public key along with the canister ID and derivation path, the same key is always produced, and no secret is required in order to compute the public key.
+
+### Offline Key Derivation
+
+The first method is to perform *offline* derivation, using one of the available libraries which implement the relevant derivation scheme. This allows derivation without having to invoke any services running on the Internet Computer. The alternative is to use *online* derivation, using a call to the management canister interface.
+
+The following snippets demonstrate deriving Schnorr public keys without requiring management canister calls, using the `ic-pub-key` Rust and TypeScript libraries.
+
+<AdornedTabs groupId="languages">
+<TabItem value="rs" label="Rust" default>
+
+```rust
+let canister_id = ic_pub_key::CanisterId::from_str("h5jwf-5iaaa-aaaan-qmvoa-cai")?;
+
+let args = ic_pub_key::SchnorrPublicKeyArgs {
+    canister_id: Some(canister_id),
+    derivation_path: vec![b"derivation", b"path", b"values"],
+    key_id: ic_pub_key::SchnorrKeyId {
+        algorithm: ic_pub_key::SchnorrAlgorithm::Ed25519,
+        name: "key_1".to_string(),
+    },
+};
+
+let dpk = ic_pub_key::derive_schnorr_key(&args)?;
+```
+
+</TabItem>
+<TabItem value="ts" label="Typescript">
+
+```ts
+const mk = PublicKeyWithChainCode.forMainnetKey('key_1');
+const canisterId = Principal.fromText('h5jwf-5iaaa-aaaan-qmvoa-cai');
+const path = DerivationPath.withCanisterPrefix(canisterId, [
+    Buffer.from('derivation'),
+    Buffer.from('path'),
+    Buffer.from('value'),
+]);
+
+// Derive the new key
+const derivedKey = mk.deriveSubkeyWithChainCode(path);
+```
+
+</TabItem>
+</AdornedTabs>
+
+### Online Key Derivation
+
+As an alternative to offline derivation, you can call the `schnorr_public_key` method of the IC management canister (`aaaaa-aa`). You can deploy the threshold Schnorr sample [locally](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) and use the Candid UI to call this method, or you can call this method programmatically using Motoko or Rust.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -158,12 +214,14 @@ https://github.com/dfinity/examples/blob/master/rust/threshold-schnorr/src/schno
 
 ## Master Public Keys
 
-The master public keys used for BIP-340 are:
+### Mainnet Keys
+
+On the mainnet, the master public keys used for BIP-340 are:
 
 - `key_1`: `02246e29785f06d37a8a50c49f6152a34df74738f8c13a44f59fef4cbe90eb13ac`
 - `test_key_1`: `037a651a2e5ef3d1ef63e84c4c4caa029fa4a43a347a91e4d84a8e846853d51be1`
 
-The master public keys used for Ed25519 are:
+On the mainnet, the master public keys used for Ed25519 are:
 
 - `key_1`: `476374d9df3a8af28d3164dc2422cff894482eadd1295290b6d9ad92b2eeaa5c`
 - `test_key_1`: `6c0824beb37621bcca6eecc237ed1bc4e64c9c59dcb85344aa7f9cc8278ee31f`
@@ -171,12 +229,31 @@ The master public keys used for Ed25519 are:
 These can be used to perform key derivation offline without requiring
 using the `schnorr_public_key` management canister call.
 
+### PocketIC Test Keys
+
+PocketIC uses hardcoded keys for testing purposes. For BIP-340 these are the same as those
+used for ECDSA:
+
+- `key_1`: `036ad6e838b46811ad79c37b2f4b854b7a05f406715b2935edc5d3251e7666977b`
+- `test_key_1`: `03cc365e15cb552589c7175717b2ac63d1050b9bb2e5aed35432b1b1be55d3abcf`
+- `dfx_test_key`: `03e6f78b1a90e361c5cc9903f73bb8acbe3bc17ad01e82554d25cf0ecd70c67484`
+
+For Ed25519 the PocketIC test keys are:
+
+- `key_1`: `db415b8eb85bd5127b0984723e0448054042cf40e7a9c262ed0cc87ecea98349`
+- `test_key_1`: `6ed9121ecf701b9e301fce17d8a65214888984e8211225691b089d6b219ec144`
+- `dfx_test_key`: `7124afcb1be5927cac0397a7447b9c3cda2a4099af62d9bc0a2c2fe42d33efe1`
+
 ## Resources
 
 - [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
 
-- [Threshold Schnorr API](/docs/references/ic-interface-spec#ic-schnorr_public_key).
+- [Threshold Schnorr API](/references/ic-interface-spec#ic-schnorr_public_key).
 
 - [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr).
 
 - [Threshold Schnorr sample dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-schnorr).
+
+- [Rust ic-pub-key library](https://crates.io/crates/ic-pub-key)
+
+- [TS ic-pub-key library](https://www.npmjs.com/package/@dfinity/ic-pub-key)

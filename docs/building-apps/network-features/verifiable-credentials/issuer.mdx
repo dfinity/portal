@@ -41,16 +41,16 @@ Next, the issuer API endpoint `derivation_origin` is called by the identity prov
 
 If the issuer doesn't rely on alternative derivation origins, then it must return the canister's URL: `https://<issuer-canister-id>.icp0.io`.
 
-If the issuer relies on the [alternative derivation origins](/docs/references/ii-spec#alternative-frontend-origins) feature, the endpoint must return the same value for the `derivationOrigin` when logging in.
+If the issuer relies on the [alternative derivation origins](/references/ii-spec#alternative-frontend-origins) feature, the endpoint must return the same value for the `derivationOrigin` when logging in.
 
-The returned value is subject to verification via .well-known/ii-alternative-origins, as described in the [alternative origins documentation](/docs/references/ii-spec#alternative-frontend-origins).
+The returned value is subject to verification via .well-known/ii-alternative-origins, as described in the [alternative origins documentation](/references/ii-spec#alternative-frontend-origins).
 
 ```rust reference
 https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/issuer/src/main.rs#L659-L675
 ```
 
 :::info
-The returned derivation origin is subject to verification via `.well-known/ii-alternative-origins`, as described in the [feature description](/docs/references/ii-spec#alternative-frontend-origins).
+The returned derivation origin is subject to verification via `.well-known/ii-alternative-origins`, as described in the [feature description](/references/ii-spec#alternative-frontend-origins).
 :::
 
 ### Step 3: Prepare the credentials (`prepare_credential`)
@@ -66,7 +66,7 @@ https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af378983
 :::info
 The value of `prepared_context` is used to transfer information between the `prepare_credential` and `get_credential` steps. It is up to the issuer API to decide on the content of this field since the issuer API creates `prepared_context` and is the only entity that consumes it.
 
-For example, when using [canister signatures](/docs/references/ic-interface-spec#canister-signatures)
+For example, when using [canister signatures](/references/ic-interface-spec#canister-signatures)
 `prepared_context` contains a time-stamped and unsigned VC, for which the canister signature will be available through the `get_credential` call.
 :::
 

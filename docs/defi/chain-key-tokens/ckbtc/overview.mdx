@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## What is ckBTC?
 
-Chain-key Bitcoin (ckBTC) is an [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)-compliant token that is backed 1:1 by BTC held 100% on the mainnet.
+Chain-key Bitcoin (ckBTC) is an [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) compliant synthetic twin token that is backed 1:1 by BTC.
 
 ckBTC does not rely on a centralized bridge to facilitate the conversion between BTC and ckBTC, which makes it substantially more secure when compared to other traditional 'wrapped' tokens.
 
@@ -38,14 +38,20 @@ The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
 - The **ckBTC ledger**.
 
-| Canister / contract                                                                                   | Bitcoin mainnet                                                                                                                                                                    | Bitcoin testnet                                                                                                                                                                     |
-| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)                        | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
-| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)                     | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai)                                                                          | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai)                                                                          |
-| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)                    | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)                                                                          | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai)                                                                          |
+| Canister source code                                                                | ckBTC deployment (Bitcoin mainnet)                                                                         | ckTESTBTC deployment (Bitcoin testnet4)                                                                    |
+| ----------------------------------------------------------------------------------  | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)         | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
+| [Checker](https://github.com/dfinity/ic/tree/master/rs/bitcoin/checker)             | [oltsj-fqaaa-aaaar-qal5q-cai](https://dashboard.internetcomputer.org/canister/oltsj-fqaaa-aaaar-qal5q-cai) | [o6ude-eyaaa-aaaar-qal6a-cai](https://dashboard.internetcomputer.org/canister/o6ude-eyaaa-aaaar-qal6a-cai) |
+| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)    | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai) |
+| [Archive](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/archive)  | [nbsys-saaaa-aaaar-qaaga-cai](https://dashboard.internetcomputer.org/canister/nbsys-saaaa-aaaar-qaaga-cai) | [m62lf-ryaaa-aaaar-qaacq-cai](https://dashboard.internetcomputer.org/canister/m62lf-ryaaa-aaaar-qaacq-cai) |
+| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)   | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai) | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai) |
 
 
 The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts.
+
+As the number of transactions grows, the ckBTC ledger automatically creates archive nodes holding past transactions.
+
+To simplify access to the transaction history of the ledger, a dedicated [index canister](/defi/token-indexes) is deployed.
 
 The **ckBTC minter** is responsible for minting and burning ckBTC tokens. It uses the following workflow:
 
@@ -55,30 +61,62 @@ The **ckBTC minter** is responsible for minting and burning ckBTC tokens. It use
 
 - For Bitcoin retrieval requests, the ckBTC minter burns ckBTC before transferring the corresponding BTC amount (minus fees) using a regular Bitcoin transaction.
 
-A detailed description of the ckBTC minter can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
-
 A simplified overview of the process to mint and transfer ckBTC is depicted in the following figure.
 
 ![ckBTC overview](../../_attachments/ckbtc-overview.png)
 
-Learn more in the [Bitcoin integration technical overview](/docs/references/bitcoin-how-it-works).
+**Note:** Before ckBTC is is minted to the user, the ckBTC minter performs a check for the Bitcoin address which transferred the bitcoins. A detailed description of the whole process can be found on the [Wiki](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
 
 ## Resources
 
-- [ckBTC API reference](/docs/references/ckbtc-reference).
+### Source Code
 
-- [Bitcoin integration: technology overview](/docs/references/bitcoin-how-it-works).
+- [ckBTC minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter) Canister that converts BTC to ckBTC and back.
+- [Bitcoin checker](https://github.com/dfinity/ic/tree/master/rs/bitcoin/checker) Canister that checks whether the address or transaction may be associated with illicit activities.
+- [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger) Canister that implements the ICRC-1 and ICRC-2 token standard and which is used for ckBTC.
+- [Archive](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/archive) Canister that holds archived ledger transactions.
+- [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng) Canister that syncs the ledger transactions and indexes them by account.
 
-- [Chain-key tokens](https://learn.internetcomputer.org/hc/en-us/articles/34211397080980-Chain-Key-Tokens).
+### Dashboards
 
-- [ckBTC](https://github.com/dfinity/ic-js/tree/main/packages/ckbtc) JavaScript library.
+- [ckBTC on the ICP Dashboard](https://dashboard.internetcomputer.org/bitcoin) Provides an overview of all ckBTC-related information, including total supply, tracked UTXOs, synced Bitcoin block height, ckBTC canisters, and recent transactions.
+- [ckTESTBTC on the ICP Dashboard](https://dashboard.internetcomputer.org/testbtc) Similar to the ckBTC dashboard, just for ckTESTBTC.
 
-- [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
+- [ckBTC minter](https://mqygn-kiaaa-aaaar-qaadq-cai.raw.icp0.io/dashboard) The minters own dashboard that provides all the information about the minter's current state, the available UTXOs, outgoing transactions, current parameters, and the logs.
+- [ckTESTBTC minter](https://ml52i-qqaaa-aaaar-qaaba-cai.raw.icp0.io/dashboard) Similar to the ckBTC minter dashboard, just for ckTESTBTC.
 
-- [Local development workflow](/docs/build-on-btc/using-regtest).
+### Docs & Tutorials
 
-- [Developer Liftoff: ckBTC and Bitcoin integration](/docs/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin).
+- [ckBTC technical deep dive](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin)
+- [ckBTC API reference](/references/ckbtc-reference)
+- [Bitcoin integration: technology overview](/references/bitcoin-how-it-works)
+- [Chain-key tokens](https://learn.internetcomputer.org/hc/en-us/articles/34211397080980-Chain-Key-Tokens)
+- [Developer Liftoff: ckBTC and Bitcoin integration](/tutorials/developer-liftoff/level-4/4.3-ckbtc-and-bitcoin)
 
-- [Deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin).
+### Libraries
 
-- [Creating a ckBTC point of sale dapp](https://github.com/dfinity/examples/tree/master/motoko/ic-pos).
+JavaScript:
+- [ckbtc](https://www.npmjs.com/package/@dfinity/ckbtc) Library for interfacing with the ckBTC minter.
+- [ledger-icrc](https://www.npmjs.com/package/@dfinity/ledger-icrc) Library for interfacing with ICRC-1/2 ledgers.
+
+Rust:
+- [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) Package defining types for interfacing with ICRC-1/2 ledgers.
+- [icrc-ledger-agent](https://crates.io/crates/icrc-ledger-agent) Agent that uses `icrc-ledger-types` for interfacing with ICRC-1/2 ledgers.
+- [icrc-ledger-client](https://crates.io/crates/icrc-ledger-client) Package that uses `icrc-ledger-types` and defines functions for interfacing with ICRC-1/2 ledgers.
+- [icrc-ledger-client-cdk](https://crates.io/crates/icrc-ledger-client-cdk) Package that defines runtime meant to be used together with the `icrc-ledger-client` library.
+
+Motoko:
+- [icrc2-types](https://mops.one/icrc2-types) Motoko package that defines types for interfacing with ICRC-1/2 ledgers.
+
+### Articles
+
+- [ckBTC: A Decentralized Mechanism for Efficient Bitcoin Transfers](https://medium.com/dfinity/ckbtc-a-decentralized-mechanism-for-efficient-bitcoin-transfers-42b128bc44d9)
+- [How ckBTC Solves the Dilemma of Blockchain Bridges](https://medium.com/dfinity/how-ckbtc-solves-the-dilemma-of-blockchain-bridges-ee8e0b72ee59)
+- [Chain-Key Bitcoin: A Decentralized Bitcoin Twin](https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e)
+- [ckBTC Sparks a New Era on the Internet Computer](https://medium.com/dfinity/ckbtc-sparks-a-new-era-on-the-internet-computer-86463a7be20f)
+
+### Videos
+
+- [Introduction to Bitcoin Integration](https://www.youtube.com/watch?v=TwOEEBtNjzU&t=2856s)
+- [How to use ICP as a Bitcoin L2](https://www.youtube.com/watch?v=FKvpar9U6wM&t=2869s)
+- [All about ckBTC](https://www.youtube.com/watch?v=cBZlTX818L8) DFINITY Twitter Space.

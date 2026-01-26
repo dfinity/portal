@@ -30,7 +30,7 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 
 ### Security concern
 
-Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](/docs/references/ic-interface-spec#global-timer) states this as follows:
+Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](/references/ic-interface-spec#global-timer) states this as follows:
 
 > "The timer is also deactivated upon changes to the canister's Wasm module (calling install_code or uninstall_code methods of the management canister or if the canister runs out of cycles). In particular, the function canister_global_timer won't be scheduled again unless the canister sets the global timer again (using the System API function ic0.global_timer_set)."
 
@@ -48,6 +48,6 @@ Using the Rust CDK, the recurring timer is also lost on upgrade as explained in 
 
 - In Motoko canisters, global timers should be set up in the actor initializer for canister installation or reinstallation. Canister-wide timers should be set in the `post_upgrade` hook for upgrades, as timers do not survive upgrades and must be explicitly set up thereafter.
 
-- See the Motoko documentation on [recurringTimer](/docs/motoko/base/Timer#function-recurringtimer).
+- See the Motoko documentation on [recurringTimer](/motoko/base/Timer#function-recurringtimer).
 
 - See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).

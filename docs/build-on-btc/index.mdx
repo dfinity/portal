@@ -14,7 +14,7 @@ ICP brings smart contract functionality to Bitcoin and opens up new possibilitie
 
 Through a protocol-level integration with the Bitcoin network, smart contracts deployed on ICP can interact with the Bitcoin network directly without using a bridge or oracle.
 
-Threshold signing APIs, including [threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa) and [threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr), enable an ICP smart contract to hold assets like BTC or [sign](/docs/build-on-btc/btc-transactions/sign-transactions) and [submit transactions](/docs/build-on-btc/btc-transactions/submit-transactions) to the Bitcoin network.
+Threshold signing APIs, including [threshold ECDSA](/building-apps/network-features/signatures/t-ecdsa) and [threshold Schnorr](/building-apps/network-features/signatures/t-schnorr), enable an ICP smart contract to hold assets like BTC or [sign](/build-on-btc/btc-transactions/sign-transactions) and [submit transactions](/build-on-btc/btc-transactions/submit-transactions) to the Bitcoin network.
 
 When an ICP smart contract wants to submit a Bitcoin transaction, the following steps may occur:
 
@@ -27,7 +27,7 @@ When an ICP smart contract wants to submit a Bitcoin transaction, the following 
 
 The Bitcoin API relays the request to the Bitcoin network, which receives and processes the request asynchronously before returning the result of the transaction to the ICP smart contract that initially created it.
 
-ICP smart contracts can call the Bitcoin API to query the [Bitcoin mainnet or testnet](/docs/build-on-btc/btc-api) for network state information, UTXOs, block information, or the balance of any Bitcoin address.
+ICP smart contracts can call the Bitcoin API to query the [Bitcoin mainnet or testnet](/build-on-btc/btc-api) for network state information, UTXOs, block information, or the balance of any Bitcoin address.
 
 ## Additional resources
 

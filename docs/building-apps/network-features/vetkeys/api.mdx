@@ -6,7 +6,7 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 Verifiably encrypted threshold key derivation (vetKD) is a distributed protocol for securely deriving cryptographic keys, referred to as  _vetKeys_. 
 The vetKD API allows canisters to request vetKeys derived using this protocol. Since the key derivation is deterministic, the same inputs will produce the same key, allowing canisters to retrieve keys reliably. Canisters can generate an unlimited number of unique keys by providing different inputs. 
 
-Below is a summary of the vetKD API methods and their parameters, described in [Candid notation](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
+Below is a summary of the vetKD API methods and their parameters, described in [Candid notation](/building-apps/interact-with-canisters/candid/candid-concepts).
 
 ```candid
   // Derives keys based on the provided inputs.
@@ -36,7 +36,7 @@ Below is a summary of the vetKD API methods and their parameters, described in [
   }) -> (record { public_key : blob; });
 ```
 
-The full vetKD API specification can be found in the [IC interface specification](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
+The full vetKD API specification can be found in the [IC interface specification](/references/ic-interface-spec#ic-vetkd_public_key).
 
 ## Available master keys
 
@@ -291,8 +291,16 @@ let key1 = MasterPublicKey.deserialize(Uint8Array.fromHex(key1_bytes));
 Using the `MasterPublicKey` is is possible to perform offline key
 derivation as described above in the section "Offline Key Derivation".
 
+## PocketIC Test Keys
+
+PocketIC contains hardcoded keys for testing purposes, which are:
+
+`key_1`: `8c800b5cff00463d26e8167369168827f1e48f4d8d60f71dd6a295580f65275b5f5f8e6a792c876b2c72492136530d0710a27522ee63977a76216c3cef9e70bfcb45b88736fc62142e7e0737848ce06cbb1f45a4a6a349b142ae5cf7853561e0`
+`test_key_1`: `9069b82c7aae418cef27678291e7f2cb1a008a500eceba7199bffca12421b07c158987c6a22618af3d1958738b2835691028801f7663d311799733286c557c8979184bb62cb559a4d582fca7d2e48b860f08ed6641aef66a059ec891889a6218`
+`dfx_test_key`: `b181c14cf9d04ba45d782c0067a44b0aaa9fc2acf94f1a875f0dae801af4f80339a7e6bf8b09fcf993824c8df3080b3f1409b688ca08cbd44d2cb28db9899f4aa3b5f06b9174240448e10be2f01f9f80079ea5431ce2d11d1c8d1c775333315f`
+
 ## Resources
 
-- [IC Interface Specification: `vetkd_derive_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_derive_key).
-- [IC Interface Specification: `vetkd_public_key`](https://internetcomputer.org/docs/references/ic-interface-spec#ic-vetkd_public_key).
+- [IC Interface Specification: `vetkd_derive_key`](/references/ic-interface-spec#ic-vetkd_derive_key).
+- [IC Interface Specification: `vetkd_public_key`](/references/ic-interface-spec#ic-vetkd_public_key).
 - [VetKD utility library](https://github.com/dfinity/vetkd)

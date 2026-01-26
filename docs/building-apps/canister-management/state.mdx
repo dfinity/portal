@@ -15,9 +15,9 @@ Although canisters are normally placed in the Running state by default, there ar
 
 To modify the state of a canister:
 
-- [`dfx canister status <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status): Check if the canister is `Running`, `Stopping`, or `Stopped`. This command also returns details about the canister's settings.
+- [`dfx canister status <canister-name>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status): Check if the canister is `Running`, `Stopping`, or `Stopped`. This command also returns details about the canister's settings.
 
-- [`dfx canister stop <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop): Stop the canister. The canister's status will change to `Stopping` if it has in-flight messages that must be addressed before it can be stopped.
+- [`dfx canister stop <canister-name>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop): Stop the canister. The canister's status will change to `Stopping` if it has in-flight messages that must be addressed before it can be stopped.
 
-- [`dfx canister start <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-start): Start the canister. After a canister has been stopped with `dfx canister stop`, the only way to restart it is through `dfx canister start`. Other commands, such as `dfx deploy`, do not start the canister if it has been manually stopped.
+- [`dfx canister start <canister-name>`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-start): Start the canister. After a canister has been stopped with `dfx canister stop`, the only way to restart it is through `dfx canister start`. Other commands, such as `dfx deploy`, do not start the canister if it has been manually stopped.
 
