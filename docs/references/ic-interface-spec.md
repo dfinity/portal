@@ -1832,7 +1832,7 @@ This function allows a canister to find out if it is running, stopping or stoppe
 
 ### Canister version {#system-api-canister-version}
 
-For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister's code, settings, running status (Running, Stopping, Stopped), cycles balance, and memory (WASM and stable memory), i.e., upon every successful management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, replicated query methods, response callbacks, heartbeats, and global timers. The system can arbitrarily increment the canister version also if the canister's code, settings, running status, and memory do not change.
+For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister ID, canister's code, settings, running status (Running, Stopping, Stopped), cycles balance, and memory (WASM and stable memory), i.e., upon every successful canister renaming, management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, replicated query methods, response callbacks, heartbeats, and global timers. The system can also arbitrarily increment the canister version at any time.
 
 -   `ic0.canister_version : () → i64`
 
@@ -2632,11 +2632,12 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, loading a snapshot, controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available).
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, loading a snapshot, controllers change, canister renaming). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available).
 - Canister creation is described by the full set of controllers along with a [hash of the environment variables](#hash-of-map), if environment variables were specified. The order of controllers stored in the canister history may vary depending on the implementation.
 - Code deployment is described by its mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module.
 - Loading a snapshot is described by the canister ID of the canister from which the snapshot was loaded (if that canister ID is different than the canister ID onto which the snapshot is loaded), the snapshot ID, the canister version and timestamp at which the snapshot was taken (the canister version and timestamp refer to the canister from which the snapshot was loaded), and the source of the snapshot (canister state or metadata upload).
 - Controllers change is described by the full new set of controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+- Canister renaming is described by the canister ID and the total number of canister changes before renaming as well as the canister ID, the canister version, and the total number of canister changes of the new canister ID. Because only a dedicated NNS canister can perform canister renaming, the actual principal who requested canister renaming is recorded in a separate field `requested_by`. The total number of canister changes reported by the IC method `canister_info` is overriden to the total number of canister changes of the new canister ID. Canister changes referring to the canister ID before renaming are preserved.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -4036,6 +4037,16 @@ ChangeDetails
     }
   | ControllersChange {
       controllers: [PrincipalId];
+  }
+  | RenameCanister {
+      canister_id : PrincipalId;
+      total_num_changes : Nat;
+      rename_to : {
+          canister_id : PrincipalId;
+          version : Nat;
+          total_num_changes : Nat;
+      };
+      requested_by : PrincipalId;
   }
 Change = {
   timestamp_nanos : Timestamp;
@@ -7391,6 +7402,114 @@ S with
         call_contexts[Ctxt_id].deleted := true
         call_contexts[Ctxt_id].needs_to_respond := false
         call_contexts[Ctxt_id].available_cycles := 0
+
+```
+
+#### Canister renaming
+
+The system canister migration orchestrator (we denote its canister ID by `Canister_migration_orchestrator`)
+can perform canister renaming of a canister with canister ID `Canister_id`
+to a new canister ID `New_canister_id`.
+The actual caller of the corresponding canister migration orchestrator's endpoint who requested canister renaming is denoted by `Caller`.
+We denote the system canister migration orchestrator version when performing the renaming by `Canister_migration_orchestrator_version`.
+
+Conditions
+
+```html
+
+not (S.canister_subnet[Canister_id] = S.canister_subnet[New_canister_id])
+
+Caller ∈ S.controllers[Canister_id]
+Caller ∈ S.controllers[New_canister_id]
+
+Canister_migration_orchestrator ∈ S.controllers[Canister_id]
+Canister_migration_orchestrator ∈ S.controllers[New_canister_id]
+
+S.canister_status[Canister_id] = Stopped
+S.canister_status[New_canister_id] = Stopped
+
+∀ Snapshot_id. S.snapshots[Canister_id][Snapshot_id] = null
+
+S.canister_history[Canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+New_canister_history = {
+  total_num_changes = S.canister_history[New_canister_id].total_num_changes + 1;
+  recent_changes = H · {
+    timestamp_nanos = S.time[Canister_id];
+    canister_version = max(S.canister_version[New_canister_id], S.canister_version[Canister_id]) + 1;
+    origin = FromCanister {
+      canister_id = Canister_migration_orchestrator
+      canister_version = Canister_migration_orchestrator_version
+    };
+    details = RenameCanister {
+      canister_id = Canister_id;
+      total_num_changes = N;
+      rename_to = {
+        canister_id = New_canister_id;
+        version = S.canister_version[New_canister_id];
+        total_num_changes = S.canister_history[New_canister_id].total_num_changes;
+      };
+      requested_by = Caller;
+    };
+  };
+}
+
+```
+
+State after
+
+```html
+
+S with
+  canisters[New_canister_id] = S.canisters[Canister_id]
+  canisters[Canister_id] = (deleted)
+  snapshots[New_canister_id] = {}
+  snapshots[Canister_id] = (deleted)
+  controllers[New_canister_id] = S.controllers[Canister_id]
+  controllers[Canister_id] = (deleted)
+  compute_allocation[New_canister_id] = S.compute_allocation[Canister_id]
+  compute_allocation[Canister_id] = (deleted)
+  memory_allocation[New_canister_id] = S.memory_allocation[Canister_id]
+  memory_allocation[Canister_id] = (deleted)
+  freezing_threshold[New_canister_id] = S.freezing_threshold[Canister_id]
+  freezing_threshold[Canister_id] = (deleted)
+  canister_status[New_canister_id] = S.canister_status[Canister_id]
+  canister_status[Canister_id] = (deleted)
+  canister_version[New_canister_id] = max(S.canister_version[New_canister_id], S.canister_version[Canister_id]) + 1
+  canister_version[Canister_id] = (deleted)
+  canister_subnet[New_canister_id] = S.canister_subnet[Canister_id]
+  canister_subnet[Canister_id] = (deleted)
+  time[New_canister_id] = S.time[Canister_id]
+  time[Canister_id] = (deleted)
+  global_timer[New_canister_id] = S.global_timer[Canister_id]
+  global_timer[Canister_id] = (deleted)
+  balances[New_canister_id] = S.balances[Canister_id]
+  balances[Canister_id] = (deleted)
+  reserved_balances[New_canister_id] = S.reserved_balances[Canister_id]
+  reserved_balances[Canister_id] = (deleted)
+  reserved_balance_limits[New_canister_id] = S.reserved_balance_limits[Canister_id]
+  reserved_balance_limits[Canister_id] = (deleted)
+  wasm_memory_limit[New_canister_id] = S.wasm_memory_limit[Canister_id]
+  wasm_memory_limit[Canister_id] = (deleted)
+  wasm_memory_threshold[New_canister_id] = S.wasm_memory_threshold[Canister_id]
+  wasm_memory_threshold[Canister_id] = (deleted)
+  environment_variables[New_canister_id] = S.environment_variables[Canister_id]
+  environment_variables[Canister_id] = (deleted)
+  on_low_wasm_memory_hook_status[New_canister_id] = S.on_low_wasm_memory_hook_status[Canister_id]
+  on_low_wasm_memory_hook_status[Canister_id] = (deleted)
+  certified_data[New_canister_id] = S.certified_data[Canister_id]
+  certified_data[Canister_id] = (deleted)
+  canister_history[New_canister_id] = New_canister_history
+  canister_history[Canister_id] = (deleted)
+  canister_log_visibility[New_canister_id] = S.canister_log_visibility[Canister_id]
+  canister_log_visibility[Canister_id] = (deleted)
+  canister_logs[New_canister_id] = S.canister_logs[Canister_id]
+  canister_logs[Canister_id] = (deleted)
+  query_stats[New_canister_id] = S.query_stats[Canister_id]
+  query_stats[Canister_id] = (deleted)
 
 ```
 
