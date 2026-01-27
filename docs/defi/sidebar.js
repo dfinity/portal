@@ -85,6 +85,67 @@ const defiSidebar = [
   "defi/defi-best-practices",
   {
     type: "category",
+    label: "Chain Fusion",
+    link: {
+      type: "doc",
+      id: "defi/chain-fusion/overview",
+    },
+    items: [
+      "defi/chain-fusion/supported-chains",
+      {
+        type: "doc",
+        label: "Bitcoin",
+        id: "build-on-btc/index",
+      },
+      {
+        type: "doc",
+        label: "Dogecoin",
+        id: "defi/chain-fusion/dogecoin/overview",
+      },
+      {
+        type: "category",
+        label: "Ethereum & EVM chains",
+        link: {
+          type: "doc",
+          id: "defi/chain-fusion/ethereum/overview",
+        },
+        items: [
+          "defi/chain-fusion/ethereum/using-eth/eth-comparison",
+          "defi/chain-fusion/ethereum/using-eth/eth-dev-workflow",
+          {
+            type: "category",
+            label: "Interacting with Ethereum",
+            items: [
+              "defi/chain-fusion/ethereum/using-eth/generating-addresses",
+              "defi/chain-fusion/ethereum/using-eth/signing-transactions",
+              "defi/chain-fusion/ethereum/using-eth/submit-transactions",
+            ],
+          },
+          {
+            type: "category",
+            label: "EVM RPC canister",
+            link: {
+              type: "doc",
+              id: "defi/chain-fusion/ethereum/evm-rpc/overview",
+            },
+            items: [
+              "defi/chain-fusion/ethereum/evm-rpc/how-it-works",
+              "defi/chain-fusion/ethereum/evm-rpc/evm-rpc-canister",
+              "defi/chain-fusion/ethereum/evm-rpc/costs",
+            ],
+          },
+        ],
+      },
+      {
+        type: "doc",
+        label: "Solana",
+        id: "defi/chain-fusion/solana/overview",
+      },
+      "defi/chain-fusion/examples",
+    ],
+  },
+  {
+    type: "category",
     label: "Chain-key tokens",
     link: {
       type: "doc",
