@@ -49,11 +49,9 @@ Compared to DKMS, IBE works differently. In DKMS, one or more users share **the 
 A special variant of IBE is called timelock encryption. It allows a sender to encrypt to a specific timestamp, ensuring that the recipient can only decrypt after the specific time has passed. Canisters can enforce this time-based access control by requesting threshold decryption of a ciphertext only after a predetermined expiry time, keeping sensitive information secret until the appropriate moment. This makes it possible to implement time-sensitive applications, like secret-bid auctions, time-locked documents, dead-man switches, and delayed reveal NFTs.
 Timelock encryption also serves as a key building block for protecting against maximal extractable value (MEV). By keeping transaction details confidential until after block inclusion, it prevents adversaries from doing front-running and reordering of transactions.
 
-## Externally verifiable randomness
+## [Externally verifiable randomness](/building-apps/network-features/vetkeys/verifiable-random-function)
 
 vetKeys can also function as a Verifiable Random Function (VRF). This means that canisters can generate randomness that is not only unpredictable and tamperproof but also publicly verifiable. Trusted randomness is a critical building block for a wide range of decentralized applications, including trustless online lotteries, fair casino games, and GameFi experiences where outcomes must be demonstrably fair. It also plays a key role in NFT ecosystems, for example, in assigning randomized traits or rarities during minting, or enabling dynamic, chance-based in-game interactions.
-
-The corresponding documentation will be added soon.
 
 ## Resources
 
