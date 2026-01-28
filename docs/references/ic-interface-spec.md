@@ -3106,7 +3106,7 @@ As for `http_request`, the endpoint specified by the provided `url` should be id
 
 The response from the remote server must not exceed `2MB`. Moreover, the total size of the result, that is, the sum of the responses returned by the different replicas (possibly after the transform function), must also not exceed 2MB.
 
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The upfront cycles cost covers a call that maxes out the resource usage during processing, for example, hitting the `2MB` limit on the size of the response. The unused cycles are then refunded to the caller.
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The upfront cycles cost should cover a call that maxes out the resource usage during processing, for example, hitting the `2MB` limit on the size of the response. The unused cycles are then refunded to the caller.
 
 The method may return an error of the `flexible_http_request_err` type. The error includes a textual error message, and the available reports on resources used by nodes for processing the outcall. It may also include a variant describing the error cause. The causes describe:
 
