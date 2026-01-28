@@ -387,9 +387,9 @@ type flexible_http_request_args = record {
         context : blob;
     };
     replication: opt record {
-      min_responses: nat64;
-      max_responses: nat64;
-      total_requests: nat64;
+      min_responses: nat32;
+      max_responses: nat32;
+      total_requests: nat32;
     };
 };
 

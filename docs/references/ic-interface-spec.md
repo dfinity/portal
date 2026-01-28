@@ -2258,9 +2258,9 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
             fully_replicated: reserved;
             non_replicated: reserved;
             flexible: opt record {
-                min_responses: nat64;
-                max_responses: nat64;
-                total_requests: nat64;
+                min_responses: nat32;
+                max_responses: nat32;
+                total_requests: nat32;
             }
         }
     }
