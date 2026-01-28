@@ -2266,7 +2266,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     }
     ```
 
-    The function may trap if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The function returns the cycle cost of an HTTP outcall whose execution uses up exactly the amount of resources specified by the individual fields:
+    The function traps if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The function returns the cycle cost of an HTTP outcall whose execution uses up exactly the amount of resources specified by the individual fields:
     - `request_bytes` is the sum of the byte lengths of the following components of an HTTP request:
       - `url`
       - `headers` - i.e., the sum of the lengths of all keys and values
@@ -3082,11 +3082,11 @@ If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB`
 
 ### IC method `flexible_http_request` {#ic-flexible_http_request}
 
-This is a variant of the [`http_request`](#ic-http_request) method where nodes return their individual HTTP responses to the caller instead of trying to reach consensus on the response, letting the caller do its own HTTP response processing. Use cases include calling HTTP endpoints that provide rapidly changing information (where achieving consensus s unlikely) and letting the user pick a trade-off between cheaper calls (fewer replicas requesting/responding) and stronger integrity guarantees (more replicas requesting/responding).
+This is a variant of the [`http_request`](#ic-http_request) method where nodes return their individual HTTP responses to the caller instead of trying to reach consensus on the response, letting the caller do its own HTTP response processing. Use cases include calling HTTP endpoints that provide rapidly changing information (where achieving consensus is unlikely) and letting the user pick a trade-off between cheaper calls (fewer replicas requesting/responding) and stronger integrity guarantees (more replicas requesting/responding).
 
 The arguments of the call are as for `http_request`, except that:
 
-- there is an additional optional argument `replication`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `replication` are set, then the caller must ensure that `0 <= min_responses <= max_responses <= total_requests` and `1 <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `replication` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
+- there is an additional optional argument `replication`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `replication` is set, then the caller must ensure that `0 <= min_responses <= max_responses <= total_requests` and `1 <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `replication` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
 
 - the deprecated `max_response_bytes` argument is not supported.
 
@@ -3124,7 +3124,7 @@ The method may return an error of the `flexible_http_request_err` type. The erro
 
     - `limits_exceeded`, indicating the node exceeded one of the system-defined resource limits while the processing the outcall.
 
-    - `out_of_cycles`, indicating that the this node's portion of the attached cycles was not enough to cover the resources used for processing the outcall.
+    - `out_of_cycles`, indicating that this node's portion of the attached cycles was not enough to cover the resources used for processing the outcall.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
