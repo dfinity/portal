@@ -99,6 +99,7 @@ type http_request_resource_report = record {
   http_roundtrip_time_ms: opt variant { used: nat64; exceeded: reserved };
   transform_instructions: opt variant { used: nat64; exceeded: reserved };
   transformed_response_bytes: opt variant { used: nat64; exceeded: reserved };
+  cycles: opt variant { used: nat; exceeded: reserved };
 };
 
 type flexible_http_request_err = record {
@@ -107,16 +108,11 @@ type flexible_http_request_err = record {
     timeout : reserved;
     out_of_cycles : reserved;
     responses_too_large : reserved;
-    other : record { code: text; message: text };
   };
   node_details : vec record {
     node_id: principal;
     report: http_request_resource_report;
-    failure_reason: opt variant {
-      limit_exceeded;
-      out_of_cycles;
-      other : record { code: text; message: text };
-    };
+    error: opt record { code: text; message: text };
   };
   message: text;
 };
