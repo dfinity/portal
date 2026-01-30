@@ -3108,9 +3108,9 @@ The response from the remote server must not exceed `2MB`. Moreover, the total s
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The unused cycles are then refunded to the caller.
 
-The method may return an error of the `flexible_http_request_err` type. The error includes a textual error message, and the available reports on resources used by nodes for processing the outcall. It may also include a variant describing the error cause. The causes describe:
+The method may return an error of the `flexible_http_request_err` type. The error includes a textual error message, an optional global error code, and a vector of resource reports from individual nodes.
 
-- an optional "global" error preventing the successful response from being created:
+The `global_error` field describes why the aggregate call failed to meet the requirements:
 
     - `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout.
 
@@ -3120,11 +3120,13 @@ The method may return an error of the `flexible_http_request_err` type. The erro
 
     - `responses_too_large` : indicating that no combination of at least `min_responses` available responses could fit into the 2MB total limit.
 
-- a vector of local errors, where the processing was unsuccessful at some nodes. For each such node, the possible error is reported:
+The `node_details` vector provides visibility into the execution on specific nodes. Each entry contains:
 
-    - `limits_exceeded`, indicating the node exceeded one of the system-defined resource limits while the processing the outcall.
+    - `node_id`.
 
-    - `out_of_cycles`, indicating that this node's portion of the attached cycles was not enough to cover the resources used for processing the outcall.
+    - `report`: A detailed accounting of resources (bytes, instructions, time, and cycles) used by the node. Note: If a node fails due to a resource limit or running out of cycles, the corresponding field in this report will be set to `exceeded` rather than `used`.
+
+    - `error`: An optional record containing a `code` and `message`. This is populated only when the node encounters a functional failure.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
@@ -8717,6 +8719,11 @@ I ∈ {i32, i64}
 ic0.subnet_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.sysenv.subnet_id)
+
+I ∈ {i32, i64}
+ic0.subnet_self_node_count<es>() : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  return es.params.sysenv.subnet_size
 
 ic0.canister_cycle_balance<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
