@@ -63,9 +63,6 @@ jobs:
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
-      - name: Install Dependencies
-        run: npm install
-
       - name: Deploy to Mainnet
         run: icp deploy portal -e ic
 

@@ -61,10 +61,11 @@ jobs:
           # install and deploy
           git submodule update --init
           time npm install
+          time npm run build
 
           export PREVIEW_CANISTER_ID=$canister_id
 
-          # Deploy the canister (build + install in one step)
+          # Deploy the canister (assets are already built)
           time icp deploy portal -e ic --mode reinstall
 
         env:
