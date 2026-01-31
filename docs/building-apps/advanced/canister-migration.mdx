@@ -1,0 +1,122 @@
+---
+keywords: [intermediate, dfx, load balancing, migration]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Canister Migration
+
+<MarkdownChipRow labels={["Intermediate"]} />
+
+# Overview
+
+*Canister migration* refers to moving a canister (called the "migrated" canister) from one subnet (called "source" subnet) to another subnet (called "target" subnet).
+This tutorial covers migrating the canister settings, state (WASM, main and stable memory, etc.), cycles, and canister ID (principal).
+Transient state (canister logs and history) and cycles reserved for storage cannot be migrated from one subnet to another.
+
+The target subnet must contain a canister (called the "replaced" canister) that is used as a placeholder throughout canister migration.
+For instance, this canister can be created using [`dfx canister create`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
+
+# Requirements
+
+The following tutorial assumes `dfx` at version at least 0.31.0-beta.0.
+
+# Canister Settings Migration
+
+Canister settings can be migrated using [`dfx canister update-settings`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) specifying the migrated canister as `--sync-with` and the replaced canister as the canister whose settings are updated.
+
+# Canister State Migration
+
+The canister state of the migrated canister must first be captured by [creating a canister snapshot](/building-apps/canister-management/snapshots/#creating-a-snapshot).
+
+The canister snapshot can then be downloaded to a local file directory using [`dfx canister snapshot download`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-download).
+
+Next the canister snapshot can be uploaded to the replaced canister using [`dfx canister snapshot upload`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-upload).
+
+Finally the canister snapshot can be [loaded](/docs/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#loading-a-snapshot) to the replaced canister.
+
+The loaded canister snapshot of the replaced canister must be deleted using [`dfx canister snapshot delete`](/docs/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#deleting-a-snapshot) before proceeding with canister ID migration (see below).
+It is recommended to preserve the snapshot of the migrated canister (and also its copy in a local file directory) to facilitate disaster recovery.
+
+# Canister Cycles Migration
+
+**WARNING**: Make sure to create a snapshot of the migrated canister before proceeding with the following commands since they will destroy the migrated canister's state.
+
+To prepare for cycles migration, we first uninstall the migrated canister using [`dfx canister uninstall-code`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-uninstall-code) and then we deploy the cycles wallet (WASM) to the migrated canister using [`dfx identity deploy-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-deploy-wallet) (the canister ID must be provided explicitly, i.e., the argument of `dfx identity deploy-wallet` must not be a canister name). It is recommended to check and remember the current wallet using [`dfx identity get-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-get-wallet) before running `dfx identity deploy-wallet` (to prevent forgetting the canister ID of the currently configured wallet if applicable).
+
+To actually migrate cycles from the migrated canister, we use [`dfx canister deposit-cycles`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-deposit-cycles) specifying the migrated canister as `--wallet` (the canister ID must be provided explicitly, i.e., the argument of `--wallet` must not be a canister name) and the replaced canister as the canister to which cycles should be deposited.
+
+Finally, restore your previous wallet using [`dfx identity set-wallet`](/building-apps/developer-tools/dfx/dfx-identity#dfx-identity-set-wallet) and the wallet canister ID obtained previously using `dfx identity get-wallet`.
+
+Make sure to leave at least 10T cycles in the migrated canister to pay for canister ID migration (described in the next section) and additionally enough cycles to pay for the migrated canister's resource consumption up until its canister ID migration. You can check out the migrated canister's resource cycles consumption as "idle" cycles consumption (per day) using [`dfx canister status`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status).
+
+# Canister ID Migration
+
+**WARNING**: Make sure that the migrated canister's state has been loaded to the replaced canister (see the above section on Canister State Migration) before proceeding with canister ID migration since it will destroy the migrated canister's state.
+
+To prepare for canister ID migration, we stop both the migrated and replaced canisters using [`dfx canister stop`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop).
+
+Then we can kick off canister ID migration using [`dfx canister migrate-id`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migrate-id) specifying the migrated canister ID as the canister ID to migrate and the replaced canister ID as `--replace`.
+
+Canister ID migration is expected to take at least 6 minutes. You can check out its status using [`dfx canister migration-status`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migration-status).
+
+# Example
+
+Here's a complete example runbook for canister migration.
+The migrated canister ID is `uqqxf-5h777-77774-qaaaa-cai` and the replaced canister ID is `ahree-maaaa-aaaar-q777q-cai`.
+```
+# Canister Settings Migration
+$ dfx canister update-settings replaced --sync-with migrated
+Canister settings: migrated
+...
+
+WARNING!
+You are trying to sync settings from 'migrated' to 'replaced'.
+Do you want to proceed? yes/No
+yes
+Synced settings from 'migrated' to 'replaced'.
+
+# Canister State Migration
+$ dfx canister stop migrated
+Stopping code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
+$ dfx canister snapshot create migrated
+Created a new snapshot of canister migrated. Snapshot ID: 0000000000000000ffffffffff9000000101
+$ dfx canister snapshot download --dir snapshot_dir migrated 0000000000000000ffffffffff9000000101
+Snapshot 0000000000000000ffffffffff9000000101 in canister migrated saved to 'snapshot_dir'
+$ dfx canister snapshot upload --dir snapshot_dir replaced
+Uploaded a snapshot of canister replaced. Snapshot ID: 0000000000000000000000000230ffff0101
+$ dfx canister stop replaced
+Stopping code for canister replaced, with canister_id ahree-maaaa-aaaar-q777q-cai
+$ dfx canister snapshot load replaced 0000000000000000000000000230ffff0101
+Loaded snapshot 0000000000000000000000000230ffff0101 in canister replaced
+$ dfx canister snapshot delete replaced 0000000000000000000000000230ffff0101
+Deleted snapshot 0000000000000000000000000230ffff0101 from canister replaced
+
+# Canister Cycles Migration
+$ dfx canister uninstall-code migrated
+Uninstalling code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
+$ dfx canister start migrated
+Starting code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
+$ WALLET="$(dfx identity get-wallet)"
+$ dfx identity deploy-wallet uqqxf-5h777-77774-qaaaa-cai
+Created a wallet canister on the "local" network for user ... with ID "uqqxf-5h777-77774-qaaaa-cai"
+$ dfx canister deposit-cycles --wallet uqqxf-5h777-77774-qaaaa-cai 89_000_000_000_000 replaced
+Depositing 89000000000000 cycles onto replaced
+Deposited 89000000000000 cycles.
+$ dfx identity set-wallet "${WALLET}" --force
+Skipping verification of availability of the canister on the network due to --force...
+Setting wallet for identity ... on network 'local' to id 'uqqxf-5h777-77774-qaaaa-cai'
+Wallet set successfully.
+
+# Canister ID Migration
+$ dfx canister stop migrated
+Stopping code for canister migrated, with canister_id uqqxf-5h777-77774-qaaaa-cai
+$ dfx canister stop replaced
+Stopping code for canister replaced, with canister_id ahree-maaaa-aaaar-q777q-cai
+$ dfx canister migrate-id migrated --replace replaced
+WARNING!
+Canister 'migrated' will be removed from its own subnet. Continue?
+Do you want to proceed? yes/No
+yes
+Migration succeeded at 2026-01-22 10:50:36 UTC
+```
