@@ -2,6 +2,7 @@
 project.todo
 docs.json
 .dfx
+.icp/cache/
 output.json
 node_modules
 .venv

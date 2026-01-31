@@ -11,7 +11,7 @@ from ic.candid import encode, Types
 # Interact with preview canister pool: https://github.com/dfinity/preview-canister-pool
 #
 
-private_key = base64.b64decode(os.environ["DFX_IDENTITY_PREVIEW"]).decode("utf-8")
+private_key = base64.b64decode(os.environ["ICP_IDENTITY_PREVIEW"]).decode("utf-8")
 pool_id = os.environ["POOL_CANISTER_ID"]
 
 identity = Identity.from_pem(private_key)
