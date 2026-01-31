@@ -1,0 +1,10 @@
+canisters:
+  - name: portal
+    recipe:
+      type: '@dfinity/asset-canister'
+      configuration:
+        version: 0.30.2
+        build:
+          - npm install
+          - npm run build
+        dir: build
