@@ -58,14 +58,9 @@ jobs:
 
           echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
 
-          # install and deploy
+          # Deploy the canister (recipe handles build steps)
           git submodule update --init
-          time npm install
-          time npm run build
-
           export PREVIEW_CANISTER_ID=$canister_id
-
-          # Deploy the canister (assets are already built)
           time icp deploy portal -e ic --mode reinstall
 
         env:
