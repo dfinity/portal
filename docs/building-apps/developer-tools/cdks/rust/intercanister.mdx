@@ -185,7 +185,7 @@ To summarize, bounded-wait calls will time out after a while, but you might not 
 
 A canister can attach [cycles](/building-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
 
-Moreover, the management canister provides a special method called `deposit_cycles`, which takes a target canister as a parameter. When called, `deposit_cycles` simply accepts all the attached cycles and deposits them to the target canister's balance.
+Moreover, the management canister provides a special method called `deposit_cycles`, which takes a target canister as an argument. When called, `deposit_cycles` simply accepts all the attached cycles and deposits them to the target canister's balance.
 
 Below is an example that shows how to attach cycles to a `deposit_cycles` call.
 
@@ -204,11 +204,11 @@ Balance: 4_560_238_047_511 Cycles
 Balance: 4_562_236_725_265 Cycles
 ```
 
-The balances you see will obviously differ. As you see, here the counter's balance has increased by a little less than 2 billion; the difference is used up by the running costs of the counter, which are continually charged while the canister is active.
+The balances you see will obviously differ. As you see, here the counter's balance has increased by a little less than 2 billion; the difference is used up by the running costs of the counter canister, which are continually charged while the canister is active.
 
 Cycles can be attached to both bounded and unbounded wait calls. In case of an error, where the call doesn't make it to the callee, the cycles will eventually be refunded. For bounded-wait calls, this may happen asynchronously, after the error is returned.
 
-In general, bounded-wait calls are sufficient and recommended for cycle deposits. However, since there isn't a bulletproof way to check whether `deposit_cycles` succeeded or not in case of a `SYS_UNKNOWN`, applications which need to do error handling on `deposit_cycles` calls (for examples, DEXes which trade wrapped cycles) may want to use unbounded-wait calls instead.
+In general, bounded-wait calls are sufficient and recommended for cycle deposits. However, since there isn't a bulletproof way to check whether `deposit_cycles` succeeded or not in case of a `SYS_UNKNOWN`, applications that need to do error handling on `deposit_cycles` calls (for examples, DEXes that trade wrapped cycles) may want to use unbounded-wait calls instead.
 
 ## Further reading
 
