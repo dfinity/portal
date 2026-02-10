@@ -43,6 +43,7 @@ const defiSidebar = [
     label: "Tutorials",
     items: [
       "defi/receiving-icp",
+      "defi/fetching-exchange-rates",
       {
         type: "doc",
         label: "Launch a token",
