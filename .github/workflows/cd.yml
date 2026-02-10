@@ -36,7 +36,7 @@ jobs:
 
       - name: Install ICP-CLI
         run: |
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/dfinity/icp-cli/releases/download/v0.1.0-beta.6/icp-cli-installer.sh | sh
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/dfinity/icp-cli/releases/download/v0.1.0/icp-cli-installer.sh | sh
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
 
       - name: Setup Identity
