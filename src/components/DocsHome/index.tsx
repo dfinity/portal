@@ -13,23 +13,21 @@ const queryClient = new QueryClient();
 
 const links = [
   {
-    label: "Events & News",
-    href: "https://dfinity.org/events-and-news/",
+    label: "Join the Dev Forum",
+    href: "https://forum.dfinity.org"
   },
   {
-    label: "Technical Working Groups",
-    href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
-  },
-  { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
-  {
-    label: "Dev Discord Office Hours",
+    label: "Join the Dev Discord",
     href: "https://discord.internetcomputer.org",
   },
   {
-    label: "Developer Grants and Bounties",
+    label: "Bug Bounty Program",
+    href: "https://dfinity.org/bug-bounty/"
+  },
+  {
+    label: "Developer Grants",
     href: "https://dfinity.org/grants/",
   },
-  { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
 ];
 
 interface TileDescriptor {
@@ -90,7 +88,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
   },
   {
-    label: "Typescript",
+    label: "TypeScript",
     description:
       "Code in the language of the web, TypeScript and JavaScript, using Azle.",
     icon: (
@@ -103,38 +101,38 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="https://demergent-labs.github.io/azle//"
+        href="https://github.com/demergent-labs/azle"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to TypeScript docs"
       >
-        <span className={"md:hidden"}>Go to TypeScript docs</span>
+        <span className={"md:hidden"}>Go to Azle</span>
         <LinkArrowRight />
       </Link>
     ),
   },
   {
-    label: "Solidity",
+    label: "C++",
     description:
-      "Deploy Solidity smart contracts on the Internet Computer with Bitfinity.",
+      "Code in C++ using the CDK known as icpp-pro.",
     icon: (
       <img
-        src="/img/docs/solidity.webp"
-        alt="Solidity docs for the Internet Computer"
+        src="/img/docs/cpp.png"
+        alt="icpp-pro docs for the Internet Computer"
         className="w-10 h-10"
         loading="lazy"
       />
     ),
     action: (
       <Link
-        href="https://docs.bitfinity.network/"
+        href="https://github.com/icppWorld/icpp-pro"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Solidity docs"
+        title="Go to icpp-pro docs"
       >
-        <span className={"md:hidden"}>Go to Solidity docs</span>
+        <span className={"md:hidden"}>Go to icpp-pro</span>
         <LinkArrowRight />
       </Link>
     ),
-  },
+  }
 ];
 
 
@@ -410,86 +408,38 @@ function TeaserCardFooter({
   );
 }
 
-const footerCards: Array<CarouselCard> = [
-  {
-    title: (
-      <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
-    ),
-    subtitle: (
-      <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
-    ),
-    backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
-    cta: (
-      <Link
-        className="button-transparent button-with-icon pl-0"
-        href="https://twitter.com/DFINITYDev"
-      >
-        Follow now
-        <LinkArrowRight />
-      </Link>
-    ),
-    mainImage: "/img/docs/teaser-cards/main-0.svg",
-  },
-  {
-    title: <h2 className={"text-white"}>Developer office hours on Discord</h2>,
-    subtitle: (
-      <p className={"text-white"}>Every Wednesday 9AM CET/CEST and 8AM PST/PDT</p>
-    ),
-    backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
-    cta: (
-      <Link
-        className="button-transparent button-with-icon pl-0"
-        href="https://discord.internetcomputer.org"
-      >
-        Join Discord
-        <LinkArrowRight />
-      </Link>
-    ),
-    mainImage: "/img/docs/teaser-cards/main-2.svg",
-  },
-];
+// const footerCards: Array<CarouselCard> = [
+//   {
+//     title: (
+//       <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
+//     ),
+//     subtitle: (
+//       <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
+//     ),
+//     backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
+//     cta: (
+//       <Link
+//         className="button-transparent button-with-icon pl-0"
+//         href="https://twitter.com/DFINITYDev"
+//       >
+//         Follow now
+//         <LinkArrowRight />
+//       </Link>
+//     ),
+//     mainImage: "/img/docs/teaser-cards/main-0.svg",
+//   }
+// ];
 
 const DocsHomePage: FC = () => {
   return (
     <div className="flex flex-col gap-10 docshome">
-      <section className="flex flex-col gap-8">
-        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
-          <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
-
-          <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
+      <section className="flex flex-col gap-10">
+        
+        <div className="tile border-white rounded-lg border border-solid p-4 justify-between px-8 py-10 md:p-10 sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
+          <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-8">
             Quick Start
           </h1>
-
-          <div className={"flex flex-row gap-2 flex-wrap items-end"}>
-            <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="https://caffeine.ai/"
-              >
-                CREATE USING AI
-                <LinkArrowRight />
-              </Link>
-            </p>
-             <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="https://icp.ninja/"
-              >
-                INSTANT WEB IDE
-                <LinkArrowRight />
-              </Link>
-            </p>
-            <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="/building-apps/getting-started/quickstart"
-              >
-                SDK BUILD
-                <LinkArrowRight />
-              </Link>
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-12 tw-lead">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-4 mb-8 tw-lead">
             <div className="mb-auto">
               Become a “World Computer” developer who builds sovereign social
               media, games, enterprise apps, AI, Web3, DeFi and _
@@ -504,6 +454,39 @@ const DocsHomePage: FC = () => {
               autonomous.
             </div>
           </div>
+
+
+          <div className={"flex flex-row gap-2 flex-wrap items-end"}>
+            <p className="mb-0">
+              <Link
+                className="button-primary button-with-icon"
+                href="https://caffeine.ai/"
+              >
+                CREATE USING AI
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+             <p className="mb-0">
+              <Link
+                className="button-primary button-with-icon"
+                href="https://icp.ninja/"
+              >
+                INSTANT WEB IDE
+                <LinkArrowUpRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                className="button-primary button-with-icon"
+                href="/building-apps/getting-started/quickstart"
+              >
+                SDK BUILD
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
+
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 relative z-2">
@@ -514,7 +497,7 @@ const DocsHomePage: FC = () => {
               API docs have you covered.
             </p>
             <Link
-              className="button-primary rounded-2xl"
+              className="button-ghost rounded-2xl"
               href="/building-apps/developer-tools/cdks/"
             >
               View all
@@ -563,14 +546,14 @@ const DocsHomePage: FC = () => {
       <section>
         <Blog />
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
+      {/* <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
         {footerCards.map((card, index) => (
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
         ))}
-      </div>
-      <section className="bg-infinite">
-        <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
-          <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
+      </div> */}
+      <section className="bg-black">
+        <section className="docs-contribute -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] py-10 md:pt-14 md:pb-20">
+          <div className="docs-contribute-card tile rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
             <div className="md:flex-[4] md:flex md:flex-col items-start">
               <div className="tw-heading-6 mb-10">
                 Contribute to the
@@ -589,7 +572,7 @@ const DocsHomePage: FC = () => {
                 href="https://github.com/dfinity/portal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button-outline-white"
+                className="docs-contribute-button"
               >
                 Contribute
               </Link>
@@ -597,7 +580,7 @@ const DocsHomePage: FC = () => {
             <div className="flex flex-col gap-2 md:flex-[5]">
               {links.map(({ label, href }) => (
                 <Link
-                  className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
+                  className="docs-contribute-link px-8 py-6 tw-heading-6 flex justify-between items-center gap-4 border rounded-lg hover:no-underline"
                   href={href}
                   key={label}
                 >
