@@ -13,7 +13,7 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 
 <MarkdownChipRow labels={["Advanced", "vetKeys", "Identity-based encryption", "Timelock"]} />
 
-A special variant of [identity-based encryption (IBE)](/docs/building-apps/network-features/vetkeys/identity-based-encryption) is called timelock encryption.  
+A special variant of [identity-based encryption (IBE)](/building-apps/network-features/vetkeys/identity-based-encryption) is called timelock encryption.  
 It enables a sender to encrypt data to a specific timestamp, ensuring that the recipient can only decrypt it after the specified time has passed.
 
 Canisters enforce this time-based access control by initiating threshold decryption of a ciphertext only after a predefined expiry time. This mechanism ensures that sensitive information remains secret until the appropriate moment.
@@ -52,7 +52,7 @@ Timelock encryption can be categorized into two categories depending on whether 
 1. User-side decryption: The user performs the decryption, ensuring the plaintext remains private. This is suitable for use cases such as delayed private messages or private-data release.
 2. Canister-side decryption: The canister performs the decryption to reveal the plaintext. Since canisters do not currently support private or confidential execution, any data they decrypt should be treated as publicly visible. This model is suitable for use cases like time-delayed announcements, secret-bid auctions, or public lotteries, where the decrypted information is meant to be accessible to all users. 
 
-The first category is essentially the same as [IBE](/docs/building-apps/network-features/vetkeys/identity-based-encryption), with additional restrictions on when the decryption key can be obtained by the authorized users.
+The first category is essentially the same as [IBE](/building-apps/network-features/vetkeys/identity-based-encryption), with additional restrictions on when the decryption key can be obtained by the authorized users.
 This can be as simple as checking if enough time has passed and either returning the key or an error to the user.
 Therefore, this documentation explains how to integrate the second category of timelock encryption into a dapp. 
 

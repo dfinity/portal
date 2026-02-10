@@ -1550,19 +1550,19 @@ Given a canister module, the value of `I ∈ {i32, i64}` is derived from the bit
 defaulting to `I = i32` if the canister declares no memory.
 
 ```
-    ic0.msg_arg_data_size : () -> I;                                                      // I U RQ NRQ CQ Ry CRy F
-    ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ CQ Ry CRy F
+    ic0.msg_arg_data_size : () -> I;                                                      // I U RQ NRQ TQ CQ Ry CRy F
+    ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ TQ CQ Ry CRy F
     ic0.msg_caller_size : () -> I;                                                        // *
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
-    ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt
+    ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt C
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
 
     ic0.msg_deadline : () -> i64;                                                         // U Q CQ Ry Rt CRy CRt
 
-    ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ CQ Ry Rt CRy CRt
-    ic0.msg_reply : () -> ();                                                             // U RQ NRQ CQ Ry Rt CRy CRt
-    ic0.msg_reject : (src : I, size : I) -> ();                                           // U RQ NRQ CQ Ry Rt CRy CRt
+    ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ TQ CQ Ry Rt CRy CRt
+    ic0.msg_reply : () -> ();                                                             // U RQ NRQ TQ CQ Ry Rt CRy CRt
+    ic0.msg_reject : (src : I, size : I) -> ();                                           // U RQ NRQ TQ CQ Ry Rt CRy CRt
 
     ic0.msg_cycles_available128 : (dst : I) -> ();                                        // U RQ Rt Ry
     ic0.msg_cycles_refunded128 : (dst : I) -> ();                                         // Rt Ry
@@ -1667,6 +1667,8 @@ The comment after each function lists from where these functions may be invoked:
 
 -   `NRQ`: from `canister_query …` in non-replicated mode
 
+-   `TQ`: from `canister_query …` in canister http outcall transform
+
 -   `CQ`: from `canister_composite_query …`
 
 -   `Ry`: from a reply callback
@@ -1687,7 +1689,7 @@ The comment after each function lists from where these functions may be invoked:
 
 -   `T`: from *system task* (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`)
 
--   `*` = `I G U RQ NRQ CQ Ry Rt CRy CRt C CC F T` (NB: Not `(start)`)
+-   `*` = `I G U RQ NRQ TQ CQ Ry Rt CRy CRt C CC F T` (NB: Not `(start)`)
 
 If the canister invokes a system call from somewhere else, it will trap.
 
@@ -1727,9 +1729,9 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
 -   `ic0.msg_reject_code : () → i32`
 
-    Returns the reject code, if the current function is invoked as a reject callback.
+    Returns the reject code, if the current function is invoked as a reject callback or as a cleanup callback of a reject callback.
 
-    It returns the special "no error" code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
+    It returns the special "no error" code `0` if the callback is a reply callback or a cleanup callback of a reply callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
 -   `ic0.msg_reject_msg_size : () → I` and `ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
@@ -1830,7 +1832,7 @@ This function allows a canister to find out if it is running, stopping or stoppe
 
 ### Canister version {#system-api-canister-version}
 
-For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister's code, settings, running status (Running, Stopping, Stopped), cycles balance, and memory (WASM and stable memory), i.e., upon every successful management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, replicated query methods, response callbacks, heartbeats, and global timers. The system can arbitrarily increment the canister version also if the canister's code, settings, running status, and memory do not change.
+For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister ID, canister's code, settings, running status (Running, Stopping, Stopped), cycles balance, and memory (WASM and stable memory), i.e., upon every successful canister renaming, management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, replicated query methods, response callbacks, heartbeats, and global timers. The system can also arbitrarily increment the canister version at any time.
 
 -   `ic0.canister_version : () → i64`
 
@@ -2175,7 +2177,7 @@ For each canister, the IC keeps track of "certified data", a canister-defined bl
 
     Copies the public key (a DER-encoded BLS key) of the IC root key of this instance of the Internet Computer Protocol to the canister.
 
-    This traps in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
+    This traps in non-replicated mode (NRQ, TQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)).
 
 -   `ic0.certified_data_set : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
@@ -2189,7 +2191,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
     This will return `1` when called from a query or composite query method on the target canister of a query call.
 
-    This will return `0` for update methods, if a query or composite query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call), and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
+    This will return `0` for update methods, if a query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call) or as canister http outcall transform, and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
 
 -   `ic0.data_certificate_size : () → I` and `ic0.data_certificate_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
@@ -2387,10 +2389,9 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `memory_allocation` (`nat`)
 
-    Must be a number between 0 and 2<sup>48</sup> (i.e 256TB), inclusively.
-    It indicates the maximum amount of memory that the canister is allowed to use in total (i.e., any attempt to grow memory usage beyond the memory allocation will fail) and also guarantees availability of this amount of memory.
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively.
+    It indicates an amount of memory in bytes that the canister is guaranteed to be allowed to use in total.
     If the IC cannot guarantee the requested memory allocation, for example because it is oversubscribed, then the call will be rejected.
-    If set to 0, then memory growth of the canister will have no explicit limit but will only be best-effort and subject to the available memory on the IC.
 
     Default value: 0
 
@@ -2414,7 +2415,7 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `wasm_memory_limit` (`nat`)
 
-    Must be a number between 0 and 2<sup>48</sup>-1 (i.e., 256TB), inclusively, and indicates the upper limit on the WASM heap memory consumption of the canister.
+    Must be a number between 0 and 2<sup>48</sup>-1 (i.e., 256TB), inclusively, and indicates the upper limit on the WASM heap memory consumption of the canister in bytes.
 
     An operation (update method, canister init, canister post_upgrade) that causes the WASM heap memory consumption to exceed this limit will trap.
     The WASM heap memory limit is ignored for query methods, response callback handlers, global timers, heartbeats, and canister pre_upgrade.
@@ -2565,7 +2566,9 @@ Indicates various information about the canister. It contains:
 
     -   The controllers of the canister. The order of returned controllers may vary depending on the implementation.
 
-    -   The compute and memory allocation of the canister.
+    -   The compute allocation of the canister.
+
+    -   The memory allocation of the canister in bytes.
 
     -   The freezing threshold of the canister in seconds.
 
@@ -2629,11 +2632,12 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 Provides the history of the canister, its current module SHA-256 hash, and its current controllers. Every canister can call this method on every other canister (including itself). Users cannot call this method.
 
-The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, loading a snapshot, controllers change). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available).
+The canister history consists of a list of canister changes (canister creation, code uninstallation, code deployment, loading a snapshot, controllers change, canister renaming). Every canister change consists of the system timestamp at which the change was performed, the canister version after performing the change, the change's origin (a user or a canister), and its details. The change origin includes the principal (called *originator* in the following) that initiated the change and, if the originator is a canister, the originator's canister version when the originator initiated the change (if available).
 - Canister creation is described by the full set of controllers along with a [hash of the environment variables](#hash-of-map), if environment variables were specified. The order of controllers stored in the canister history may vary depending on the implementation.
 - Code deployment is described by its mode (code install, code reinstall, code upgrade) and the SHA-256 hash of the newly deployed canister module.
 - Loading a snapshot is described by the canister ID of the canister from which the snapshot was loaded (if that canister ID is different than the canister ID onto which the snapshot is loaded), the snapshot ID, the canister version and timestamp at which the snapshot was taken (the canister version and timestamp refer to the canister from which the snapshot was loaded), and the source of the snapshot (canister state or metadata upload).
 - Controllers change is described by the full new set of controllers after the change. The order of controllers stored in the canister history may vary depending on the implementation.
+- Canister renaming is described by the canister ID and the total number of canister changes before renaming as well as the canister ID, the canister version, and the total number of canister changes of the new canister ID. Because only a dedicated NNS canister can perform canister renaming, the actual principal who requested canister renaming is recorded in a separate field `requested_by`. The total number of canister changes reported by the IC method `canister_info` is overriden to the total number of canister changes of the new canister ID. Canister changes referring to the canister ID before renaming are preserved.
 
 The system can drop the oldest canister changes from the list to keep its length bounded (at least `20` changes are guaranteed to remain in the list). The system also drops all canister changes if the canister runs out of cycles.
 
@@ -2737,7 +2741,13 @@ This call requires that an ECDSA key with ID `key_id` was generated by the IC. O
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
-This method returns a new [ECDSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.
+This method returns a new [ECDSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) signature of the given `message_hash` that can be separately verified against a derived ECDSA public key. This public key can be obtained by calling `ecdsa_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here. 
+
+:::note
+
+If the signing request returns a reject response whose reject code is `SYS_UNKNOWN` or `CANISTER_ERROR`, the signature may exist in the system even though it's not returned to the requesting canister. Thus, canisters should not rely on the signature not existing in these cases.
+
+:::
 
 The signatures are encoded as the concatenation of the [SEC1](https://www.secg.org/sec1-v2.pdf) encodings of the two values r and s. For curve `secp256k1`, this corresponds to 32-byte big-endian encoding.
 
@@ -2839,11 +2849,17 @@ This method can only be called by canisters, i.e., it cannot be called by extern
 
 This method returns a Schnorr signature of the given `message` that can be verified against a (derived) public key obtained by calling `schnorr_public_key` using the caller's `canister_id` and the given `derivation_path` and `key_id`.
 
+:::note
+
+If the signing request returns a reject response whose reject code is `SYS_UNKNOWN` or `CANISTER_ERROR`, the signature may exist in the system even though it's not returned to the requesting canister. Thus, canisters should not rely on the signature not existing in these cases.
+
+:::
+
 The encoding of the signature depends on the key ID's `algorithm`:
 
 -   For algorithm `bip340secp256k1`, the signature is encoded in 64 bytes according to [BIP340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki).
 
--   For algorithm `ed25519`, the signature is encoded in 64 bytes according to [RFC8032, 5.1.6 Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6).
+-   For algorithm `ed25519`, the signature is encoded in 64 bytes according to [RFC8032, 5.1.6 Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6). Note that the returned signature is **non-deterministic** and a different signature may be computed every time it is requested.
 
 This call requires that a Schnorr key with ID `key_id` was generated by the IC and the signing functionality for that key was enabled. Otherwise, the call is rejected.
 
@@ -3047,7 +3063,7 @@ This method takes a snapshot of the specified canister. A snapshot consists of t
 
 A `take_canister_snapshot` call creates a new snapshot. However, the call might fail if the maximum number of snapshots per canister is reached. This error can be avoided by providing an existing snapshot ID via the optional `replace_snapshot` parameter. That existing snapshot will be deleted once a new snapshot has been successfully created.
 
-It's important to note that a new snapshot will increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen.
+It's important to note that a new snapshot might increase the memory footprint of the canister. Thus, the canister's balance must have a sufficient amount of cycles so that the canister does not become frozen. This issue can be mitigated by uninstalling code of the canister via the optional `uninstall_code` parameter after a new snapshot has been successfully created. The exact semantics of uninstalling code is described in the section on the IC method [`uninstall_code`](#ic-uninstall_code).
 
 Only controllers can take a snapshot of a canister and load it back to the canister.
 
@@ -3057,6 +3073,8 @@ It's important to stop a canister before taking a snapshot to ensure that all ou
 It is expected that the canister controllers (or their tooling) do this separately.
 
 :::
+
+The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 ### IC method `load_canister_snapshot` {#ic-load_canister_snapshot}
 
@@ -3199,7 +3217,7 @@ A snapshot may be deleted only by the controllers of the canister that the snaps
 This method can only be called by external users via non-replicated (query) calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
 
 Given a canister ID as input, this method returns a vector of logs of that canister including its trap messages.
-The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
+The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, TQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
 The total size of all returned logs does not exceed 4KiB.
 If new logs are added resulting in exceeding the maximum total log size of 4KiB, the oldest logs will be removed.
 Logs persist across canister upgrades and they are deleted if the canister is reinstalled or uninstalled.
@@ -4024,6 +4042,16 @@ ChangeDetails
   | ControllersChange {
       controllers: [PrincipalId];
   }
+  | RenameCanister {
+      canister_id : PrincipalId;
+      total_num_changes : Nat;
+      rename_to : {
+          canister_id : PrincipalId;
+          version : Nat;
+          total_num_changes : Nat;
+      };
+      requested_by : PrincipalId;
+  }
 Change = {
   timestamp_nanos : Timestamp;
   canister_version : CanisterVersion;
@@ -4682,18 +4710,7 @@ This transition is executed immediately after [Message execution](#rule-message-
 Conditions
 
 ```html
-Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
-  memory_usage_raw_module(S.canisters[C].raw_module) +
-  memory_usage_canister_history(S.canister_history[C]) +
-  memory_usage_chunk_store(S.chunk_store[C]) +
-  memory_usage_snapshots(S.snapshots[C])
-
-if S.memory_allocation[C] = 0:
-  Wasm_memory_capacity = S.wasm_memory_limit[C]
-else:
-  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.wasm_memory|), S.wasm_memory_limit[C])
-
-if Wasm_memory_capacity < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
+if S.wasm_memory_limit[C] < |S.canisters[C].wasm_state.wasm_memory| + S.wasm_memory_threshold[C]:
   if S.on_low_wasm_memory_hook_status[C] = ConditionNotSatisfied:
     On_low_wasm_memory_hook_status = Ready
   else:
@@ -4835,12 +4852,6 @@ if
     New_reserved_balance,
     Min_balance
   ) ≥ 0
-  Total_memory_usage = memory_usage_wasm_state(res.new_state) +
-    memory_usage_raw_module(S.canisters[M.receiver].raw_module) +
-    memory_usage_canister_history(S.canister_history[M.receiver]) +
-    memory_usage_chunk_store(S.chunk_store[M.receiver]) +
-    memory_usage_snapshots(S.snapshots[M.receiver])
-  (S.memory_allocation[M.receiver] = 0) or (Total_memory_usage ≤ S.memory_allocation[M.receiver])
   (Wasm_memory_limit = 0) or |res.new_state.wasm_memory| <= Wasm_memory_limit
   (res.response = NoResponse) or Ctxt.needs_to_respond
 then
@@ -5137,9 +5148,6 @@ if A.settings.controllers is not null:
 else:
   New_controllers = [M.caller]
 
-if New_memory_allocation > 0:
-  memory_usage_canister_history(New_canister_history) ≤ New_memory_allocation
-
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
 else:
@@ -5277,15 +5285,6 @@ M.caller ∈ S.controllers[A.canister_id]
      |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
      is_valid_utf8(name) and
      is_valid_utf8(value)))
-
-Total_memory_usage = memory_usage_wasm_state(S.canisters[A.canister_id].wasm_state) +
-  memory_usage_raw_module(S.canisters[A.canister_id].raw_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if New_memory_allocation > 0:
-  Total_memory_usage ≤ New_memory_allocation
 
 if New_wasm_memory_limit > 0:
   |S.canisters[A.canister_id].wasm_state.wasm_memory| ≤ New_wasm_memory_limit
@@ -5731,15 +5730,6 @@ liquid_balance(S, A.canister_id) ≥ MAX_CYCLES_PER_MESSAGE
 
 liquid_balance(S', A.canister_id) ≥ 0
 
-Total_memory_usage = memory_usage_wasm_state(New_state) +
-  memory_usage_raw_module(A.wasm_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if S.memory_allocation[A.canister_id] > 0:
-  Total_memory_usage ≤ S.memory_allocation[A.canister_id]
-
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
 S.canister_history[A.canister_id] = {
@@ -5903,15 +5893,6 @@ New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
 liquid_balance(S, A.canister_id) ≥ MAX_CYCLES_PER_MESSAGE
 
 liquid_balance(S', A.canister_id) ≥ 0
-
-Total_memory_usage = memory_usage_wasm_state(New_state) +
-  memory_usage_raw_module(A.wasm_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if S.memory_allocation[A.canister_id] > 0:
-  Total_memory_usage ≤ S.memory_allocation[A.canister_id]
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.wasm_memory| <= S.wasm_memory_limit[A.canister_id]
 
@@ -6504,9 +6485,6 @@ if A.settings.controllers is not null:
 else:
   New_controllers = [M.caller]
 
-if New_memory_allocation > 0:
-  memory_usage_canister_history(New_canister_history) ≤ New_memory_allocation
-
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
 else:
@@ -6645,7 +6623,6 @@ S with
 Only the controllers of the given canister can take a snapshot. 
 A snapshot will be identified internally by a system-generated opaque `Snapshot_id`.
 
-
 ```html
 
 S.messages = Older_messages · CallMessage M · Younger_messages
@@ -6658,6 +6635,8 @@ if A.replace_snapshot is not null:
   A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
 else:
   |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
+
+A.uninstall_code = null or A.uninstall_code = false
 
 New_snapshot = Snapshot {
   source = TakenFromCanister;
@@ -6681,7 +6660,7 @@ New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
 liquid_balance(S', A.canister_id) ≥ 0
 ```
 
-State after  
+State after
 
 ```html
 
@@ -6699,6 +6678,103 @@ S' = S with
         }));
         refunded_cycles = M.transferred_cycles;
       }
+
+```
+
+It is also possible to atomically uninstall code after taking a snapshot; in particular, the canister memory usage is updated atomically and thus it does not grow significantly (ignoring some potential constant overhead for certified variables which are not accounted for by canister memory usage, but are accounted for in canister snapshot memory usage).
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'take_canister_snapshot'
+M.arg = candid(A)
+M.caller ∈ S.controllers[A.canister_id]
+S.canister_history[A.canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+if A.replace_snapshot is not null:
+  A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
+else:
+  |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
+
+A.uninstall_code = true
+
+New_snapshot = Snapshot {
+  source = TakenFromCanister;
+  take_at_timestamp = S.time[A.canister_id];
+  raw_module = S.canisters[A.canister_id].raw_module;
+  wasm_state = S.canisters[A.canister_id].wasm_state;
+  chunk_store = S.chunk_store[A.canister_id];
+  canister_version = S.canister_version[A.canister_id];
+  certified_data = S.certified_data[A.canister_id];
+  global_timer = S.global_timer[A.canister_id];
+  on_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id];
+}
+New_snapshots = S.snapshots[A.canister_id] with
+  A.replace_snapshot = (undefined)
+  Snapshot_id = New_snapshot
+Cycles_reserved = cycles_to_reserve(S, A.canister_id, S.compute_allocation[A.canister_id], S.memory_allocation[A.canister_id], New_snapshots, EmptyCanister)
+New_balance = S.balances[A.canister_id] - Cycles_used - Cycles_reserved
+New_reserved_balance = S.reserved_balances[A.canister_id] + Cycles_reserved
+New_reserved_balance ≤ S.reserved_balance_limits[A.canister_id]
+
+liquid_balance(S', A.canister_id) ≥ 0
+```
+
+State after
+
+```html
+
+S' = S with
+    snapshots[A.canister_id] = New_snapshots
+    balances[A.canister_id] = New_balance
+    reserved_balances[A.canister_id] = New_reserved_balance
+
+    canisters[A.canister_id] = EmptyCanister
+    certified_data[A.canister_id] = ""
+    chunk_store = ()
+    canister_history[A.canister_id] = {
+      total_num_changes = N + 1;
+      recent_changes = H · {
+          timestamp_nanos = S.time[A.canister_id];
+          canister_version = S.canister_version[A.canister_id] + 1
+          origin = change_origin(M.caller, A.sender_canister_version, M.origin);
+          details = CodeUninstall;
+        };
+    }
+    canister_logs[A.canister_id] = []
+    canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
+    global_timer[A.canister_id] = 0
+
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin;
+        response = Reply (candid({
+          id = Snapshot_id;
+          taken_at_timestamp = S.time[A.canister_id];
+          total_size = memory_usage_snapshots([Snapshot_id → New_snapshot]);
+        }));
+        refunded_cycles = M.transferred_cycles;
+      } ·
+      [ ResponseMessage {
+          origin = Ctxt.origin
+          response = Reject (CANISTER_REJECT, <implementation-specific>)
+          refunded_cycles = Ctxt.available_cycles
+        }
+      | Ctxt_id ↦ Ctxt ∈ S.call_contexts
+      , Ctxt.canister = A.canister_id
+      , Ctxt.needs_to_respond = true
+      ]
+
+    for Ctxt_id ↦ Ctxt ∈ S.call_contexts:
+      if Ctxt.canister = A.canister_id:
+        call_contexts[Ctxt_id].deleted := true
+        call_contexts[Ctxt_id].needs_to_respond := false
+        call_contexts[Ctxt_id].available_cycles := 0
 
 ```
 
@@ -6720,17 +6796,6 @@ S.canister_subnet[A.canister_id].subnet_id = S.canister_subnet[Canister_id].subn
 M.caller ∈ S.controllers[Canister_id]
 Snapshot = S.snapshots[Canister_id][A.snapshot_id]
 
-Total_memory_usage = memory_usage_wasm_state(Snapshot.wasm_state) +
-  memory_usage_raw_module(Snapshot.raw_module) +
-  memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-  memory_usage_snapshots(S.snapshots[A.canister_id])
-
-if S.memory_allocation[A.canister_id] = 0:
-  Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
-else:
-  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |Snapshot.wasm_state.wasm_memory|), S.wasm_memory_limit[A.canister_id])
-
 Mod = parse_wasm_mod(Snapshot.raw_module);
 
 |Snapshot.wasm_state.globals| = |Mod.initial_globals|
@@ -6751,7 +6816,7 @@ if Snapshot.source = MetadataUpload:
     HookConditionInSnapshotField = false
   else:
     HookConditionInSnapshotField = true
-  if Wasm_memory_capacity < |Snapshot.wasm_state.wasm_memory| + S.wasm_memory_threshold[A.canister_id]:
+  if S.wasm_memory_limit[A.canister_id] < |Snapshot.wasm_state.wasm_memory| + S.wasm_memory_threshold[A.canister_id]:
     HookConditionInSnapshotState = true
   else:
     HookConditionInSnapshotState = false
@@ -6807,13 +6872,6 @@ New_canister_history = {
 }
 
 liquid_balance(S', A.canister_id) ≥ 0
-
-if S.memory_allocation[A.canister_id] > 0:
-  memory_usage_wasm_state(New_state.wasm_state) +
-    memory_usage_raw_module(New_state.raw_module) +
-    memory_usage_canister_history(New_canister_history) +
-    memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
-    memory_usage_snapshots(S.snapshots[A.canister_id]) ≤ S.memory_allocation[A.canister_id]
 
 ```
 
@@ -7299,7 +7357,7 @@ S with
 
 #### Canister out of cycles
 
-Once a canister runs out of cycles, its code is uninstalled (cf. [IC Management Canister: Code uninstallation](#rule-uninstall)), the canister changes in the canister history are dropped (their total number is preserved), and the allocations are set to zero (NB: allocations are currently not modeled in the formal model):
+Once a canister runs out of cycles, its code is uninstalled (cf. [IC Management Canister: Code uninstallation](#rule-uninstall)), the canister changes in the canister history are dropped (their total number is preserved), and the allocations are set to zero:
 
 Conditions  
 
@@ -7329,6 +7387,8 @@ S with
     canister_logs[CanisterId] = []
     canister_version[CanisterId] = S.canister_version[CanisterId] + 1
     global_timer[CanisterId] = 0
+    compute_allocation[Canister_id] = 0
+    memory_allocation[Canister_id] = 0
 
     messages = S.messages ·
       [ ResponseMessage {
@@ -7346,6 +7406,114 @@ S with
         call_contexts[Ctxt_id].deleted := true
         call_contexts[Ctxt_id].needs_to_respond := false
         call_contexts[Ctxt_id].available_cycles := 0
+
+```
+
+#### Canister renaming
+
+The system canister migration orchestrator (we denote its canister ID by `Canister_migration_orchestrator`)
+can perform canister renaming of a canister with canister ID `Canister_id`
+to a new canister ID `New_canister_id`.
+The actual caller of the corresponding canister migration orchestrator's endpoint who requested canister renaming is denoted by `Caller`.
+We denote the system canister migration orchestrator version when performing the renaming by `Canister_migration_orchestrator_version`.
+
+Conditions
+
+```html
+
+not (S.canister_subnet[Canister_id] = S.canister_subnet[New_canister_id])
+
+Caller ∈ S.controllers[Canister_id]
+Caller ∈ S.controllers[New_canister_id]
+
+Canister_migration_orchestrator ∈ S.controllers[Canister_id]
+Canister_migration_orchestrator ∈ S.controllers[New_canister_id]
+
+S.canister_status[Canister_id] = Stopped
+S.canister_status[New_canister_id] = Stopped
+
+∀ Snapshot_id. S.snapshots[Canister_id][Snapshot_id] = null
+
+S.canister_history[Canister_id] = {
+  total_num_changes = N;
+  recent_changes = H;
+}
+
+New_canister_history = {
+  total_num_changes = S.canister_history[New_canister_id].total_num_changes + 1;
+  recent_changes = H · {
+    timestamp_nanos = S.time[Canister_id];
+    canister_version = max(S.canister_version[New_canister_id], S.canister_version[Canister_id]) + 1;
+    origin = FromCanister {
+      canister_id = Canister_migration_orchestrator
+      canister_version = Canister_migration_orchestrator_version
+    };
+    details = RenameCanister {
+      canister_id = Canister_id;
+      total_num_changes = N;
+      rename_to = {
+        canister_id = New_canister_id;
+        version = S.canister_version[New_canister_id];
+        total_num_changes = S.canister_history[New_canister_id].total_num_changes;
+      };
+      requested_by = Caller;
+    };
+  };
+}
+
+```
+
+State after
+
+```html
+
+S with
+  canisters[New_canister_id] = S.canisters[Canister_id]
+  canisters[Canister_id] = (deleted)
+  snapshots[New_canister_id] = {}
+  snapshots[Canister_id] = (deleted)
+  controllers[New_canister_id] = S.controllers[Canister_id]
+  controllers[Canister_id] = (deleted)
+  compute_allocation[New_canister_id] = S.compute_allocation[Canister_id]
+  compute_allocation[Canister_id] = (deleted)
+  memory_allocation[New_canister_id] = S.memory_allocation[Canister_id]
+  memory_allocation[Canister_id] = (deleted)
+  freezing_threshold[New_canister_id] = S.freezing_threshold[Canister_id]
+  freezing_threshold[Canister_id] = (deleted)
+  canister_status[New_canister_id] = S.canister_status[Canister_id]
+  canister_status[Canister_id] = (deleted)
+  canister_version[New_canister_id] = max(S.canister_version[New_canister_id], S.canister_version[Canister_id]) + 1
+  canister_version[Canister_id] = (deleted)
+  canister_subnet[New_canister_id] = S.canister_subnet[Canister_id]
+  canister_subnet[Canister_id] = (deleted)
+  time[New_canister_id] = S.time[Canister_id]
+  time[Canister_id] = (deleted)
+  global_timer[New_canister_id] = S.global_timer[Canister_id]
+  global_timer[Canister_id] = (deleted)
+  balances[New_canister_id] = S.balances[Canister_id]
+  balances[Canister_id] = (deleted)
+  reserved_balances[New_canister_id] = S.reserved_balances[Canister_id]
+  reserved_balances[Canister_id] = (deleted)
+  reserved_balance_limits[New_canister_id] = S.reserved_balance_limits[Canister_id]
+  reserved_balance_limits[Canister_id] = (deleted)
+  wasm_memory_limit[New_canister_id] = S.wasm_memory_limit[Canister_id]
+  wasm_memory_limit[Canister_id] = (deleted)
+  wasm_memory_threshold[New_canister_id] = S.wasm_memory_threshold[Canister_id]
+  wasm_memory_threshold[Canister_id] = (deleted)
+  environment_variables[New_canister_id] = S.environment_variables[Canister_id]
+  environment_variables[Canister_id] = (deleted)
+  on_low_wasm_memory_hook_status[New_canister_id] = S.on_low_wasm_memory_hook_status[Canister_id]
+  on_low_wasm_memory_hook_status[Canister_id] = (deleted)
+  certified_data[New_canister_id] = S.certified_data[Canister_id]
+  certified_data[Canister_id] = (deleted)
+  canister_history[New_canister_id] = New_canister_history
+  canister_history[Canister_id] = (deleted)
+  canister_log_visibility[New_canister_id] = S.canister_log_visibility[Canister_id]
+  canister_log_visibility[Canister_id] = (deleted)
+  canister_logs[New_canister_id] = S.canister_logs[Canister_id]
+  canister_logs[Canister_id] = (deleted)
+  query_stats[New_canister_id] = S.query_stats[Canister_id]
+  query_stats[Canister_id] = (deleted)
 
 ```
 
@@ -8451,12 +8619,12 @@ The pseudo-code below does *not* explicitly enforce the restrictions of which im
 ```
 I ∈ {i32, i64}
 ic0.msg_arg_data_size<es>() : I =
-  if es.context ∉ {I, U, RQ, NRQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {I, U, RQ, NRQ, TQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
   return |es.params.arg|
 
 I ∈ {i32, i64}
 ic0.msg_arg_data_copy<es>(dst : I, offset : I, size : I) =
-  if es.context ∉ {I, U, RQ, NRQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {I, U, RQ, NRQ, TQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.arg)
 
 I ∈ {i32, i64}
@@ -8470,7 +8638,7 @@ ic0.msg_caller_copy(dst : I, offset : I, size : I) =
   copy_to_canister<es>(dst, offset, size, es.params.caller)
 
 ic0.msg_reject_code<es>() : i32 =
-  if es.context ∉ {Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {Ry, Rt, CRy, CRt, C} then Trap {cycles_used = es.cycles_used;}
   es.params.reject_code
 
 I ∈ {i32, i64}
@@ -8491,19 +8659,19 @@ ic0.msg_deadline<es>() : i64 =
 
 I ∈ {i32, i64}
 ic0.msg_reply_data_append<es>(src : I, size : I) =
-  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, NRQ, TQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.reply_params.arg := es.reply_params.arg · copy_from_canister<es>(src, size)
 
 ic0.msg_reply<es>() =
-  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, NRQ, TQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.response := Reply (es.reply_params.arg)
   es.cycles_available := 0
 
 I ∈ {i32, i64}
 ic0.msg_reject<es>(src : I, size : I) =
-  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, NRQ, TQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.response := Reject (CANISTER_REJECT, copy_from_canister<es>(src, size))
   es.cycles_available := 0
@@ -8821,7 +8989,7 @@ ic0.is_controller<es>(src : I, size : I) : (result: i32) =
     Trap {cycles_used = es.cycles_used;}
 
 ic0.in_replicated_execution<es>() : i32 =
-  if es.params.sysenv.certificate = NoCertificate
+  if es.context ∈ {I, G, U, RQ, Ry, Rt, C, T, s}
   then return 1
   else return 0
 

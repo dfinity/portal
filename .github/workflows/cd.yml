@@ -23,7 +23,7 @@ jobs:
 
     environment:
       name: "Internet Computer Mainnet"
-      url: ${{ fromJson(steps.get-url.outputs.url) }}
+      url: ${{ steps.get-url.outputs.url }}
 
     steps:
       - uses: actions/checkout@v2
@@ -36,6 +36,8 @@ jobs:
 
       - name: Install DFX
         uses: dfinity/setup-dfx@main
+        with:
+          dfx-version: 0.29.2
 
       - name: Dump Identity
         run: |
@@ -63,17 +65,12 @@ jobs:
         run: npm install
 
       - name: Deploy to Mainnet
-        run: dfx deploy --network=ic --no-wallet portal
+        run: dfx deploy --network=ic --no-wallet portal --verbose --yes
         env:
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           DFX_WARNING: -mainnet_plaintext_identity
 
       - name: Get URL
         id: get-url
         run: |
-          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').raw.ic0.app"
-          echo "::set-output name=url::\"$URL\""
+          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').icp0.io"
+          echo "url=$URL" >> $GITHUB_OUTPUT

@@ -16,9 +16,9 @@ The Internet Computer (ICP) is a transparent and secure blockchain network that 
 
 ## Deploy your first canister smart contract
 
-To begin developing applications on ICP, the tool [ICP Ninja](https://icp.ninja) provides a browser-based development environment that can be accessed from anywhere using any device. It is a free platform that doesn't require you to [download tools](/docs/building-apps/getting-started/install), create or authenticate with an [identity](/docs/building-apps/getting-started/identities), or obtain [cycles](/docs/building-apps/getting-started/tokens-and-cycles).
+To begin developing applications on ICP, the tool [ICP Ninja](https://icp.ninja) provides a browser-based development environment that can be accessed from anywhere using any device. It is a free platform that doesn't require you to [download tools](/building-apps/getting-started/install), create or authenticate with an [identity](/building-apps/getting-started/identities), or obtain [cycles](/building-apps/getting-started/tokens-and-cycles).
 
-ICP Ninja does, however, impose a few [restrictions](/docs/building-apps/developer-tools/icp-ninja#limitations) that should be noted when using it. It is not designed to develop and deploy applications for long-term, production use.
+ICP Ninja does, however, impose a few [restrictions](/building-apps/developer-tools/icp-ninja#limitations) that should be noted when using it. It is not designed to develop and deploy applications for long-term, production use.
 
 ### Application architecture
 
@@ -30,7 +30,7 @@ Typically, service-based dapps that don't include a frontend UI work well as sin
 
 The default project architecture has two canisters:
 
-- **Backend canister**: Used to store the application’s data and to provide endpoints to access and modify the data. Backend canisters can be written in [a variety of different languages](/docs/building-apps/developer-tools/cdks/) (Motoko, Rust, TypeScript, and more).
+- **Backend canister**: Used to store the application’s data and to provide endpoints to access and modify the data. Backend canisters can be written in [a variety of different languages](/building-apps/developer-tools/cdks/) (Motoko, Rust, TypeScript, and more).
 
 - **Frontend canister**: Used to store the web assets for the application’s user interface.
 
@@ -63,7 +63,7 @@ The `dfx.json` file defines the application's canister and its source code file.
 ```json title="dfx.json" file=../../references/samples/motoko/backend_only/dfx.json
 ```
 
-Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
+Learn more about [dfx.json](/building-apps/developer-tools/dfx-json).
 
 ### `backend/app.mo`
 
@@ -91,7 +91,7 @@ Additionally, there are several other terms regarding calls that you will come a
 
 **Inter-canister calls** are used to make calls between different canisters.
 
-[Learn more about canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
+[Learn more about canister calls](/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
 
 :::info
 If you want to learn more about this code, you can right-click within ICP Ninja and select "Ask AI - Explain" to get a more detailed breakdown of the code's syntax and components.
@@ -110,7 +110,7 @@ https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp1.io/?id=6kwk6-qqaaa-aaaab-qbmga-cai
 ⏰ Your dapp will be available for 20 minutes
 ```
 
-Open the "Backend Internet Computer URL" in your web browser. This will open a [Candid API](/docs/building-apps/interact-with-canisters/candid/candid-concepts) interface you can use to call the method `greet` defined in the backend.
+Open the "Backend Internet Computer URL" in your web browser. This will open a [Candid API](/building-apps/interact-with-canisters/candid/candid-concepts) interface you can use to call the method `greet` defined in the backend.
 
 In the input box, insert "ICP," then select "Query." The backend canister will process the call and return the response defined in the method. Since the method is defined as a `query` method, the canister simply returns data; it does not alter the canister's state.
 
@@ -124,4 +124,4 @@ You can edit the `app.mo` file to return a different greeting, such as:
 return "Hello, " # name # "! This is my first canister on ICP!";
 ```
 
-Then click "Redeploy" to [upgrade](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters) your canister's code. Once deployed, you can test the `greet` method in the Candid API, and it should return your new greeting.
+Then click "Redeploy" to [upgrade](/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters) your canister's code. Once deployed, you can test the `greet` method in the Candid API, and it should return your new greeting.

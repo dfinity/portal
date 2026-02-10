@@ -72,7 +72,7 @@ used to submit the proposal. To use a different neuron to propose, please refer 
 
 It is not possible to submit proposals through the NNS dapp. Therefore, you must use a command line tool called `dfx`.`dfx` is only natively supported on Mac and Linux, but it can be installed on Windows using WSL.
 
-To install `dfx`, follow the [installation instructions](/docs/building-apps/getting-started/install#installing-dfx).
+To install `dfx`, follow the [installation instructions](/building-apps/getting-started/install#installing-dfx).
 
 Here are the instructions for Mac and Linux:
 
@@ -91,7 +91,7 @@ For this, you can register the principal that you have on your computer as a
 [**hot key**](https://learn.internetcomputer.org/hc/en-us/articles/34084120668692-NNS-Neurons#neuron-attributes)
 of the neuron. Hot keys have the permission to vote and submit proposals for the neuron.
 
-Run `dfx identity get-principal` to get the principal ID that corresponds to your current [developer identity](/docs/building-apps/getting-started/identities). The following steps will refer to this as your "dfx principal".
+Run `dfx identity get-principal` to get the principal ID that corresponds to your current [developer identity](/building-apps/getting-started/identities). The following steps will refer to this as your "dfx principal".
 It should output some text that looks something like this: `hnswe-crhc7-funvc-qqkg4-pk3j4-vxfhs-ckf2o-i56yb-frent-vl7vk-3qe`.
 
 Then, go back to the NNS dapp. On the "Neuron Staking" page, click “Add Hotkey” on for your neuron.
@@ -174,7 +174,9 @@ If you have trouble finding it, you can just use the following URL and replace t
 
 ## Update a known neuron
 
-To update a known neuron, follow the same process for registering a known neuron (the RegisterKnownNeuron proposal type). Note that both the neuron id and the known neuron name should be the same as the existing known neuron. More specifically, if there is an existing known neuron with name `n1` and id 123, a `RegisterKnownNeuron` proposal with name `n1` and id 456 would fail.
+To update a known neuron, follow the same process for registering a known neuron, the RegisterKnownNeuron proposal type, using the known neuron's ID to identify which neuron you want to update. 
+You can update any of the self-declared information about the neuron, including the neuron's name. 
+Note that a given known neuron name cannot be transferred to another neuron ID through this proposal. For example, if there is an existing known neuron with name `n1` and ID 123, a `RegisterKnownNeuron` proposal with name `n1` must have ID 123 and would fail with ID 456. 
 
 ## Deregister a known neuron
 

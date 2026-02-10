@@ -16,6 +16,10 @@ This example will demonstrate how to call an example counter canister, which pro
 3. Setting the counter to an arbitrary value.
 4. Setting the counter to an arbitrary value while returning the previous value.
 
+:::note
+The Internet Computer supports two types of inter-canister calls: bounded- and unbounded-wait calls. This tutorial shows both, but in general, we recommend to use bounded-wait calls wherever possible for scalability and robustness reasons.
+:::
+
 ## Prerequisites
 
 To follow along, clone the [Git examples repository](https://github.com/dfinity/examples). The code for this tutorial is in the `rust/inter-canister-calls` directory, where you can find the completed code in the `caller` package. Note that this example uses the alpha version of the Rust CDK.
@@ -71,7 +75,7 @@ To illustrate, let's look at the following example, where it first calls the `se
 https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L41-L59
 ```
 
-Let's try this out. As shown below, you can also pass the arguments directly to `dfx` instead of using the menu by encoding [Candid values](/docs/building-apps/interact-with-canisters/candid/candid-concepts) manually.
+Let's try this out. As shown below, you can also pass the arguments directly to `dfx` instead of using the menu by encoding [Candid values](/building-apps/interact-with-canisters/candid/candid-concepts) manually.
 
 ```bash
 dfx canister call caller set_then_get "( principal \"`dfx canister id counter`\", 7 : nat )"
@@ -89,7 +93,7 @@ This behavior enables much higher concurrent throughput between different canist
 
 This also holds true for the effects on the `caller` canister itself. In particular, a caller that panics after making a call can end up in an inconsistent state. This is not an issue for the examples demonstrated so far, as the caller's internal state doesn't exist and thus can't become inconsistent.
 
-For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/docs/references/async-code), [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls).
+For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/references/async-code), [properties of call execution](/references/message-execution-properties) and [security best practices](/building-apps/security/security-best-practices/inter-canister-calls).
 
 :::info
 To summarize, the Internet Computer has an asynchronous messaging model that is different from Ethereum and many other blockchains. While it improves [scalability](https://learn.internetcomputer.org/hc/en-us/articles/34576974172692-Evolution-Scaling), you need to understand the implications, especially around when and how state is persisted.
@@ -123,7 +127,7 @@ dfx canister call counter get
 (8: nat)
 ```
 
-However, on the mainnet, without further precautions even incrementing our simple counter canister may trap because it fails to allocate memory for processing the request. To cope, the [best practice](/docs/building-apps/best-practices/idempotency) is to modify the callee to provide an endpoint that allows callers to query the result of state-changing calls. Furthermore, where possible, it is also good practice to make endpoints *idempotent*, where executing a call twice (and thus also multiple times) has the same effect as executing it just once, allowing the caller to simply retry its call. Such practices are also helpful for ingress calls, i.e., for outside users and applications interacting with your application over HTTP.
+However, on the mainnet, without further precautions even incrementing our simple counter canister may trap because it fails to allocate memory for processing the request. To cope, the [best practice](/building-apps/best-practices/idempotency) is to modify the callee to provide an endpoint that allows callers to query the result of state-changing calls. Furthermore, where possible, it is also good practice to make endpoints *idempotent*, where executing a call twice (and thus also multiple times) has the same effect as executing it just once, allowing the caller to simply retry its call. Such practices are also helpful for ingress calls, i.e., for outside users and applications interacting with your application over HTTP.
 
 Unbounded-wait calls thus can provide a simple error handling semantics, as long as you are very confident that the callee won't trap, or you for some reason don't care about the cases of the callee trapping. However, the fact that these calls will wait for as long as it takes to receive a response means that they don't return for as long as the callee is delaying providing an answer. In the case of buggy (or even malicious) callees, the caller may end up waiting forever. This can block the caller from upgrading cleanly, since a clean upgrade requires all of the caller's outstanding calls to complete. As an alternative, you can use *bounded-wait* calls, as demonstrated next.
 
@@ -171,48 +175,46 @@ dfx canister call caller stubborn_set "( principal \"`dfx canister id counter`\"
 (variant { Ok })
 ```
 
-The Rust CDK provides helpful functions such as `is_clean_reject` and `is_immediately_retryable` to help with error handling. Under the hood, this interprets the different reject codes generated by the system. If you have more knowledge of how your canister works, you may be able to provide a more precise interpretation for your use case. Consult the [interface specification](/docs/references/ic-interface-spec/) and its section on [reject codes](/docs/references/ic-interface-spec/#reject-codes) for more details.
+The Rust CDK provides helpful functions such as `is_clean_reject` and `is_immediately_retryable` to help with error handling. Under the hood, this interprets the different reject codes generated by the system. If you have more knowledge of how your canister works, you may be able to provide a more precise interpretation for your use case. Consult the [interface specification](/references/ic-interface-spec/) and its section on [reject codes](/references/ic-interface-spec/#reject-codes) for more details.
 
 :::info
 To summarize, bounded-wait calls will time out after a while, but you might not know whether the callee executed the call or not. Use them for reads or endpoints that are idempotent or provide a way to query their results.
 :::
 
-## Attaching cycles: canister signatures
+## Attaching cycles: depositing cycles
 
-A canister can attach [cycles](/docs/building-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
+A canister can attach [cycles](/building-apps/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
 
-Cycle transfers are generally either used to pay for the callee's costs of processing the call or to move and store cycles as assets. An example where they are used to pay for call processing costs is the IC [threshold signature feature](/docs/building-apps/network-features/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger/).
+Moreover, the management canister provides a special method called `deposit_cycles`, which takes a target canister as an argument. When called, `deposit_cycles` simply accepts all the attached cycles and deposits them to the target canister's balance.
 
-Below is a threshold signature example that shows how to attach cycles to a call:
+Below is an example that shows how to attach cycles to a `deposit_cycles` call.
 
 ```rust reference
-https://github.com/dfinity/examples/blob/945e77d5f7f91dd1d8357b4b7cbc3a11708e8803/rust/inter-canister-calls/src/caller/src/lib.rs#L138-L187        
+https://github.com/dfinity/examples/blob/2a3fd0b56369738218186f75389890ed116f258f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L153
 ```
 
-Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local development environment.
+Let's test this by instructing `send_cycles` to send two billion of the caller's available cycles to the counter.
 
 ```bash
-dfx canister call caller sign_message '("Some text to be signed")'
-(
-  variant {
-    Ok = "394b7250ab7a088238fae3af9b60fec521584ac8c874b2ca72e6b950cda509452f307006693c342636afb5b2cb7a395106cc04365bd499c0064f5842a0bdbe2f"
-  },
-)
+ % dfx canister status counter | grep Balance
+Balance: 4_560_238_047_511 Cycles
+% dfx canister call caller send_cycles "( principal \"`dfx canister id counter`\", 2_000_000_000: nat64 )"
+(variant { Ok })
+% dfx canister status counter | grep Balance
+Balance: 4_562_236_725_265 Cycles
 ```
 
-Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. As the example notes, refunds do not happen for bounded-wait calls that result in an error with the `SysUnknown` reject code, which is the code issued when the system decides to stop waiting for a response.
+The balances you see will obviously differ. As you see, here the counter's balance has increased by a little less than 2 billion; the difference is used up by the running costs of the counter canister, which are continually charged while the canister is active.
 
-However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (10 billion cycles for signatures with the test key). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/references/async-code) for more details.
+Cycles can be attached to both bounded and unbounded wait calls. In case of an error, where the call doesn't make it to the callee, the cycles will eventually be refunded. For bounded-wait calls, this may happen asynchronously, after the error is returned.
 
-:::info
-To summarize, you can transfer cycles to the callee by attaching them to a bounded- or unbounded-wait call. Bounded-wait calls may drop the attached cycles, so avoid using them for large cycle amounts.
-:::
+In general, bounded-wait calls are sufficient and recommended for cycle deposits. However, since there isn't a bulletproof way to check whether `deposit_cycles` succeeded or not in case of a `SYS_UNKNOWN`, applications that need to do error handling on `deposit_cycles` calls (for examples, DEXes that trade wrapped cycles) may want to use unbounded-wait calls instead.
 
 ## Further reading
 
-More details on how inter-canister calls execute and how the different call types work is provided in the documentation on [inter-canister calls and async code](/docs/references/async-code). Also consult the documentation on [properties of call execution](/docs/references/message-execution-properties) and [security best practices](/docs/building-apps/security/security-best-practices/inter-canister-calls). To allow your callers to handle call errors robustly, follow the [best practice](/docs/building-apps/best-practices/idempotency) document on retries and idempotency.
+More details on how inter-canister calls execute and how the different call types work is provided in the documentation on [inter-canister calls and async code](/references/async-code). Also consult the documentation on [properties of call execution](/references/message-execution-properties) and [security best practices](/building-apps/security/security-best-practices/inter-canister-calls). To allow your callers to handle call errors robustly, follow the [best practice](/building-apps/best-practices/idempotency) document on retries and idempotency.
 
-As noted in the above examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) as your canister, you can also use [composite query calls](/docs/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
+As noted in the above examples, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) as your canister, you can also use [composite query calls](/building-apps/interact-with-canisters/query-calls) methods instead of update methods.
 
-For a real-life example of how to handle errors when calling canisters, see the [ICRC-1 examples](/docs/defi/token-ledgers/usage/icrc1_ledger_usage)
+For a real-life example of how to handle errors when calling canisters, see the [ICRC-1 examples](/defi/token-ledgers/usage/icrc1_ledger_usage). The [`ic-call-chaos`](https://crates.io/crates/ic-call-chaos) library helps test the correctness of error handling in your code. The [`ic-call-retry`](https://crates.io/crates/ic-call-retry) library provides retries on errors. The [`ic-safe-upgrades`](https://crates.io/crates/ic-safe-upgrades) library implements error handling when trying to upgrade canisters from other canisters.
 
