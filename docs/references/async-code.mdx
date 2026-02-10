@@ -50,10 +50,6 @@ Under the hood, the CDKs use the low-level Wasm API to perform inter-canister ca
 
 [Cycles](/building-apps/essentials/gas-cost) are the currency in which canisters pay for their resource usage. Canisters can send some of the cycles they hold to other canisters. This can be done either by directly attaching cycles to any call to the target canister, or by calling the dedicated [`deposit_cycles`](/references/ic-interface-spec/#ic-deposit_cycles) method of the management canister and attaching the cycles there. In the former way of attaching cycles (not using `deposit_cycles`), the target canister must explicitly accept part or all of the sent cycles when processing the call; the remainder is refunded to the caller.
 
-:::info
-Note that cycles may get dropped when using bounded-wait calls. See the section on [bounded- vs unbounded-wait calls](#ic-call-types) for more details.
-:::
-
 Some endpoints require the caller to attach cycles to the call. For example, the [threshold signature](/building-apps/network-features/signatures/t-ecdsa) operations of the management canister require cycles to be attached. Requiring cycles can be used to implement a "direct gas" model, as opposed to the default ["reverse gas"](/building-apps/essentials/gas-cost#the-reverse-gas-model) model of ICP.
 
 Refer to the language documentation ([Motoko](/motoko/fundamentals/actors/messaging#inter-canister-calls), [Rust](/building-apps/developer-tools/cdks/rust/intercanister),  [Typescript](https://demergent-labs.github.io/azle/), [Python](https://demergent-labs.github.io/kybra/)) for details on how to send and accept cycles.
@@ -75,7 +71,7 @@ Here are some guidelines how to choose between the two types of calls:
 
 * Always prefer bounded-wait calls for calls that don't change the state of the callee, i.e., reads.
 * For endpoints that change the state of the callee, the best practice is to make such endpoints amenable to [safe retries](/building-apps/best-practices/idempotency) (e.g., by making them idempotent). Note that making user-facing endpoints amenable to safe retries is a good idea anyway, as it's needed to safely handle external user calls. Use bounded-wait calls for such endpoints, and handle the additional edge cases.
-* Use unbounded-wait calls for endpoints that mutate state and do not enable safe retries, or calls that perform larger cycle transfers. As mentioned, bounded-wait calls lose cycles attached to requests/responses that are dropped. Be aware of the limitations of unbounded-wait calls listed above. If safe upgrades are needed, consider using a stateless proxy canister (see the [security best practices](/building-apps/security/inter-canister-calls) for more information).
+* Use unbounded-wait calls for endpoints that mutate state and do not enable safe retries. Be aware of the limitations of unbounded-wait calls listed above. If safe upgrades of the caller are needed, consider using a stateless proxy canister (see the [security best practices](/building-apps/security/inter-canister-calls) for more information).
 
 ## `async/await` syntax, concurrency and state changes
 
