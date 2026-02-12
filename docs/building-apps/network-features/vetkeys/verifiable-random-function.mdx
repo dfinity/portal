@@ -1,0 +1,75 @@
+---
+keywords: [advanced, concept, random, randomness, onchain randomness, raw_rand]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+
+# Verifiable Random Functions
+
+<MarkdownChipRow labels={["Advanced", "vetKeys", "Verifiable Random Functions"]} />
+
+## Overview
+
+The *verifiable* property of a vetKey allows it to be used as a Verifiable Random Function (VRF).
+
+A Verifiable Random Function (VRF) produces pseudorandom outputs that can be publicly verified as correctly computed. The vetKeys protocol, which is built on [threshold BLS signatures](/building-apps/network-features/vetkeys/bls-signatures), provides VRF functionality to decentralized applications running on the Internet Computer.
+
+### How Threshold BLS Signatures Enable VRFs
+
+BLS signatures have several properties which combine to enable VRFs:
+
+* Unpredictable: Outputs cannot be predicted before the threshold of nodes collaborates to compute them.
+* Unique: Each input maps to exactly one valid output, preventing manipulation of randomness.
+* Publically Verifiable: Anyone can confirm the VRF output correctness using only the public key and the input-output pair.
+
+## Use of Derivation Identifiers
+
+The vetKeys protocol takes two distinct inputs, namely `input` and `context`. The `context` string is used to derive a unique BLS key specific to the canister and context, while the `input` is used as the input to the BLS signature algorithm.
+
+These derivation inputs allow an application to produce an unlimited number of independent VRF outputs, by varying the two values. Keep in mind that, if the same `context` and `input` are used as in some prior invocation, then the identical output will be returned.
+
+This enables a number of possible use pattersn, including:
+
+* Per-user randomness: Derive outputs using user principal IDs, giving each user a unique, verifiable random value (e.g., for personalized rewards or seeding user-specific game state).
+* Per-event randomness: Use an event identifier (lottery round number, block height, game session ID) as the derivation ID to produce fresh randomness for each occurrence.
+* Namespaced outputs: Combine application-specific prefixes with identifiers to isolate randomness across different subsystems or contracts.
+
+Here is a short example of using the VRF functionality available in the `vetkeys` Rust crate
+
+<AdornedTabs groupId="languages">
+
+<TabItem value="rust" label="Rust">
+
+```rust
+let key_id = VetKDKeyId {
+    curve: VetKDCurve::Bls12_381_G2,
+    name: "key_1".to_string(),
+};
+
+let drawing_id = 802;
+let input = format!("drawing-number-{}", drawing_id).as_bytes();
+let context = b"pick-the-winner";
+
+// Returns a VrfOutput struct
+let vrf = ic_vetkeys::compute_vrf(&input, context, key_id);
+
+// Returns a 32-byte hash which is provably random
+let output = vrf.output();
+
+/*
+Now choose a winner for this round in some way, for example by
+treating the output is a 256-bit integer, reducing it modulo the
+number of entrants, then choosing that entrant as the winner.
+*/
+```
+</TabItem>
+
+</AdornedTabs>
+
+## Resources
+
+- [vetKeys Rust and TS libraries](https://github.com/dfinity/vetkeys)
+  contains helper functions for creating, using, and verifying VRFs
