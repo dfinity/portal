@@ -49,7 +49,7 @@ jobs:
 
           # request preview canister from the pool
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          pip install ic-py
+          pip install icp-py-core
           canister_id=$(python3 .github/workflows/scripts/request-canister.py $pull_number)
 
           # Create icp-cli canister ID mapping for ic environment

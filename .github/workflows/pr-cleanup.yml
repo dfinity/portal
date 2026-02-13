@@ -19,7 +19,7 @@ jobs:
           python-version: "3.10"
       - run: |
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          pip install ic-py
+          pip install icp-py-core
           python3 .github/workflows/scripts/release-canister.py $pull_number
         env:
           ICP_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}

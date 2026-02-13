@@ -367,6 +367,7 @@ const sidebars = {
             "building-apps/network-features/vetkeys/bls-signatures",
             "building-apps/network-features/vetkeys/identity-based-encryption",
             "building-apps/network-features/vetkeys/timelock-encryption",
+            "building-apps/network-features/vetkeys/verifiable-random-function",
           ],
         },
         "building-apps/network-features/randomness",
