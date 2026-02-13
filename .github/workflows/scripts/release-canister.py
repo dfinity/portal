@@ -1,5 +1,6 @@
 import os
 import sys
+import traceback
 
 if len(sys.argv) != 2:
   print("Usage: python3 release-canister.py <ref>")
@@ -13,4 +14,9 @@ for v in ["DFX_IDENTITY_PREVIEW","POOL_CANISTER_ID"]:
 
 from pool import release_canister
 
-release_canister()
+try:
+  release_canister()
+except Exception as e:
+  print(f"release-canister.py: failed to release canister: {e}", file=sys.stderr)
+  traceback.print_exc(file=sys.stderr)
+  exit(1)
