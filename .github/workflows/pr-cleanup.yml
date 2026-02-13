@@ -22,7 +22,7 @@ jobs:
           pip install icp-py-core
           python3 .github/workflows/scripts/release-canister.py $pull_number
         env:
-          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+          ICP_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
           POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
 
       - uses: actions/github-script@v6

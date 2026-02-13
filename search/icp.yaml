@@ -1,0 +1,7 @@
+canisters:
+  - name: search
+    recipe:
+      type: '@dfinity/rust@v3.0.0'
+      configuration:
+        candid: src/search_canister/candid.did
+        package: search_canister
