@@ -1,10 +1,7 @@
-from ic.client import Client
-from ic.identity import Identity
-from ic.agent import Agent
+from icp_core import Agent, Client, Identity, encode, Types
 import os
 import sys
 import base64
-from ic.candid import encode, Types
 
 
 #
@@ -20,11 +17,14 @@ agent = Agent(identity, client)
 
 def release_canister():
   res = agent.update_raw(
-      pool_id, "release_canister", encode([{'type': Types.Text, 'value': sys.argv[1]}]))
+      pool_id, "release_canister", encode([{'type': Types.Text, 'value': sys.argv[1]}]),
+      verify_certificate=False)
   return res
 
 
 def request_canister():
   res = agent.update_raw(
-      pool_id, "request_canister", encode([{'type': Types.Text, 'value': sys.argv[1]}]), Types.Principal)
+      pool_id, "request_canister", encode([{'type': Types.Text, 'value': sys.argv[1]}]),
+      return_type=Types.Principal,
+      verify_certificate=False)
   return res
