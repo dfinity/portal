@@ -24,6 +24,8 @@ docs/building-apps/chain-fusion/ @dfinity/defi-team @dfinity/editorial
 # ProdSec
 docs/building-apps/security/ @dfinity/product-security @dfinity/editorial
 docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security @dfinity/editorial
+docs/references/advanced-ingress-messages.mdx @dfinity/product-security @dfinity/editorial
+docs/references/message-execution-properties.mdx @dfinity/product-security @dfinity/editorial
 src/pages/security-advisories.tsx @dfinity/product-security @dfinity/editorial
 
 # Execution
