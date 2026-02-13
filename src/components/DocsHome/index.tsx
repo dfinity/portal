@@ -408,28 +408,6 @@ function TeaserCardFooter({
   );
 }
 
-// const footerCards: Array<CarouselCard> = [
-//   {
-//     title: (
-//       <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
-//     ),
-//     subtitle: (
-//       <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
-//     ),
-//     backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
-//     cta: (
-//       <Link
-//         className="button-transparent button-with-icon pl-0"
-//         href="https://twitter.com/DFINITYDev"
-//       >
-//         Follow now
-//         <LinkArrowRight />
-//       </Link>
-//     ),
-//     mainImage: "/img/docs/teaser-cards/main-0.svg",
-//   }
-// ];
-
 const DocsHomePage: FC = () => {
   return (
     <div className="flex flex-col gap-10 docshome">
