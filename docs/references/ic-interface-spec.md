@@ -1541,6 +1541,12 @@ The 32-bit stable memory System API (`ic0.stable_size`, `ic0.stable_grow`, `ic0.
 
 :::
 
+:::note
+
+The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers are advised to use the `ic0.cost_http_request_v2` call instead.
+
+:::
+
 The following sections describe various System API functions, also referred to as system calls, which we summarize here.
 
 All the following functions belong to the `ic0` module (denoted by the prefix `ic0.`).
@@ -1581,6 +1587,7 @@ defaulting to `I = i32` if the canister declares no memory.
 
     ic0.subnet_self_size : () -> I;                                                       // *
     ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
+    ic0.subnet_self_node_count : () -> i32;                                            // *
 
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
@@ -1623,6 +1630,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
     ic0.cost_create_canister : (dst : I) -> ();                                           // * s
     ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
+    ic0.cost_http_request_v2 : (params_src : I, params_size : I, dst : I) -> ();          // * s
     ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> i32;     // * s
     ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> i32;     // * s
     ic0.cost_vetkd_derive_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> i32;  // * s
@@ -1814,9 +1822,10 @@ A canister can learn about its own identity:
 
 A canister can learn about the subnet it is running on:
 
--   `ic0.subnet_self_size : () → I` and `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+-   `ic0.subnet_self_size : () → I`, `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`, and `ic0.subnet_self_node_count : () -> i32`
 
-    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running.
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running, and to retrieve the number of nodes that are currently on the subnet.
+
 
 ### Canister status {#system-api-canister-status}
 
@@ -2221,13 +2230,58 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
-    The cost of a canister http outcall via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
+    :::note
+    
+    The `ic0.cost_http_request` System API call is DEPRECATED. Canister developers are advised to use the `ic0.cost_http_request_v2` call instead.
+    
+    :::
+    
+    The cost of a canister HTTP outcall via [`http_request`](#ic-http_request) with the pricing version set to `1` (currently the default). `request_size` is the sum of the byte lengths of the following components of an http request:
     - url
     - headers - i.e., the sum of the lengths of all keys and values 
     - body
     - transform - i.e., the sum of the transform method name length and the length of the transform context
     
     `max_res_bytes` is the maximum response length the caller wishes to accept (the caller should provide the default value of `2,000,000` if no maximum response length is provided in the actual request to the management canister). 
+
+-   `ic0.cost_http_request_v2(params_src: I, params_size: I, dst : I) -> ();    I ∈ {i32, i64}`
+
+    The cost of a canister HTTP outcall via [`http_request`](#ic-http_request) with the pricing version set to `2`. The blob described by `params_src` and `params_size` must be a valid Candid encoding of a value of the following type:
+    ```
+    record {
+        request_bytes : nat64;
+        http_roundtrip_time_ms : nat64;
+        raw_response_bytes : nat64;
+        transformed_response_bytes : nat64;
+        transform_instructions: nat64;
+        outcall_type : opt variant {
+            fully_replicated: reserved;
+            non_replicated: reserved;
+            flexible: opt record {
+                min_responses: nat32;
+                max_responses: nat32;
+                total_requests: nat32;
+            }
+        }
+    }
+    ```
+
+    The function traps if `params_src` and `params_size` do not describe a valid Candid encoding of a value of the above type, or if the encoding contains additional fields other than the ones above. The function returns the cycle cost of an HTTP outcall whose execution uses up exactly the amount of resources specified by the individual fields:
+    - `request_bytes` is the sum of the byte lengths of the following components of an HTTP request:
+      - `url`
+      - `headers` - i.e., the sum of the lengths of all keys and values
+      - `body`
+      - `transform` - i.e., the sum of the transform method name length and the length of the transform context.
+
+    - `http_roundtrip_time_ms` is the amount of time between the time when the HTTP request starts being sent to the remote server and the time that the HTTP response is fully received (in milliseconds).
+
+    - `raw_response_bytes` is the length of the HTTP response.
+
+    - `transformed_response_bytes` is the length of the HTTP response after transformation.
+
+    - `transform_instructions` is the number of instructions the transform function takes.
+
+    - `outcall_type` is the type of HTTP outcall issued: a fully replicated call (made through the `http_request` endpoint with `is_replicated` set to `null` or `opt false`), non-replicated (made through `http_request` with `is_replicated` set to `opt true`), or flexible (made through the `flexible_http_request` endpoint). When the `flexible` outcall variant is selected, it can optionally be supplemented with the `min_responses`, `max_responses`, and `total_requests` parameters provided to the endpoint.
 
 -   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> i32`; `I ∈ {i32, i64}`
 
@@ -2966,7 +3020,7 @@ The following parameters should be supplied for the call:
 
 -   `url` - the requested URL. The URL must be valid according to [RFC-3986](https://www.ietf.org/rfc/rfc3986.txt), it might contain non-ASCII characters according to [RFC-3987](https://www.ietf.org/rfc/rfc3987.txt), and its length must not exceed `8192`. The URL may specify a custom port number.
 
--   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
+-   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). If not provided, the maximum of `2MB` will be used. When the `pricing_version` is set to `1`, the call will be charged based on this parameter. When the `pricing_version` is set to `2`, this field is ignored.
 
 -   `method` - currently, only GET, HEAD, and POST are supported
 
@@ -2978,13 +3032,17 @@ The following parameters should be supplied for the call:
 
 -   `is_replicated` - optional, selecting between replicated and non-replicated modes.
 
-:::note
+    :::note
+    
+    The `is_replicated` field is considered EXPERIMENTAL.
+    
+    :::
 
-The `is_replicated` field is considered EXPERIMENTAL.
+-   `pricing_version` - the version of the pricing mechanism for HTTP outcalls that should be applied to this call; it can be either `1` or `2`. For compatibility reasons, the default is `1`; however, version `1` is deprecated.
 
-:::
-
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). Extraneous cycles are refunded:
+- with pricing version `1`, the difference between the attached cycles and the cost returned by the `ic0.cost_http_request` API with the appropriate parameters
+- with pricing version `2`, any attached cycles exceeding those used by the outcall execution.
 
 The returned response (and the response provided to the `transform` function, if specified) contains the following fields:
 
@@ -3022,6 +3080,54 @@ The Internet Computer mainnet supports requests to both IPv6 and IPv4 destinatio
 If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB` response will be charged for, which is expensive in terms of cycles. Always set the parameter to a reasonable upper bound of the expected (network and transformed) response size to not incur unnecessary cycles costs for your request.
 
 :::
+
+### IC method `flexible_http_request` {#ic-flexible_http_request}
+
+This is a variant of the [`http_request`](#ic-http_request) method where nodes return their individual HTTP responses to the caller instead of trying to reach consensus on the response, letting the caller do its own HTTP response processing. Use cases include calling HTTP endpoints that provide rapidly changing information (where achieving consensus is unlikely) and letting the user pick a trade-off between cheaper calls (fewer replicas requesting/responding) and stronger integrity guarantees (more replicas requesting/responding).
+
+The arguments of the call are as for `http_request`, except that:
+
+- there is an additional optional argument `replication`. When set, the caller can specify how many nodes should issue an HTTP outcall, the minimum number of HTTP responses from nodes in order for the outcall to succeed (`min_responses`), and the maximum number of HTTP responses the caller is willing to receive as the result of the outcall (`max_responses`). That is, a successful HTTP outcall is guaranteed to return between `min_responses` and `max_responses`. If `replication` is set, then the caller must ensure that `0 <= min_responses <= max_responses <= total_requests` and `1 <= total_requests <= N`, where `N` is the number of the nodes on the caller's subnet, otherwise the call will fail. The caller may use the `ic0.subnet_self_node_count` System API call to determine `N`. If `replication` is not provided, the defaults of `floor(2 / 3 * N) + 1`, `N` and `N` are used for `min_responses`, `max_responses` and `total_requests`.
+
+- the deprecated `max_response_bytes` argument is not supported.
+
+The other arguments, `url`, `method`, `headers`, `body`, and `transform` are the same as for `http_request`. The result is a vector of responses, with each individual response having the same structure as a `http_request` response, providing `status`, `headers`, and `body` fields.
+
+As for `http_request`, the endpoint specified by the provided `url` should be idempotent. The one exception is when `total_requests` is set to 1 in `replication`. The request restrictions are also the same as for the `http_request` method:
+
+- The total number of bytes in the request must not exceed `2MB` (`2,000,000`) bytes.
+
+- Only the `GET`, `HEAD`, and `POST` methods are supported.
+
+- The number of headers must not exceed `64`.
+
+- The number of bytes representing a header name or value must not exceed `8KiB`.
+
+- The total number of bytes representing the header names and values must not exceed `48KiB`.
+
+The response from the remote server must not exceed `2MB`. Moreover, the total size of the result, that is, the sum of the responses returned by the different replicas (possibly after the transform function), must also not exceed 2MB.
+
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). The unused cycles are then refunded to the caller.
+
+The method may return an error of the `flexible_http_request_err` type. The error includes a textual error message, an optional global error code, and a vector of resource reports from individual nodes.
+
+The `global_error` field describes why the aggregate call failed to meet the requirements:
+
+    - `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout.
+
+    - `invalid_parameters`, indicating that the parameters to the call violated one of the conditions.
+
+    - `out_of_cycles` indicating that the attached cycles were not enough to cover the processing of at least `min_responses`.
+
+    - `responses_too_large` : indicating that no combination of at least `min_responses` available responses could fit into the 2MB total limit.
+
+The `node_details` vector provides visibility into the execution on specific nodes. Each entry contains:
+
+    - `node_id`.
+
+    - `report`: A detailed accounting of resources (bytes, instructions, time, and cycles) used by the node. Note: If a node fails due to a resource limit or running out of cycles, the corresponding field in this report will be set to `exceeded` rather than `used`.
+
+    - `error`: An optional record containing a `code` and `message`. This is populated only when the node encounters a functional failure.
 
 ### IC method `node_metrics_history` {#ic-node_metrics_history}
 
@@ -8733,6 +8839,11 @@ ic0.subnet_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.sysenv.subnet_id)
 
+I ∈ {i32, i64}
+ic0.subnet_self_node_count<es>() : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  return es.params.sysenv.subnet_size
+
 ic0.canister_cycle_balance<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   if es.balance >= 2^64 then Trap {cycles_used = es.cycles_used;}
@@ -8992,6 +9103,10 @@ ic0.cost_create_canister<es>(dst: I) : () =
 
 I ∈ {i32, i64}
 ic0.cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_http_request_v2<es>(params_src : I, params_size : I, dst : I) : ()= 
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
