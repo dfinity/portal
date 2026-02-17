@@ -4077,6 +4077,10 @@ CanisterLogVisibility
   = Controllers
   | Public
   | AllowedViewers [Principal]
+CanisterSnapshotVisibility
+  = Controllers
+  | Public
+  | AllowedViewers [Principal]
 CanisterLog = {
   idx : Nat;
   timestamp_nanos : Nat;
@@ -4130,6 +4134,7 @@ S = {
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;
   canister_log_visibility: CanisterId ↦ CanisterLogVisibility;
+  canister_snapshot_visibility: CanisterId ↦ CanisterSnapshotVisibility;
   canister_logs: CanisterId ↦ [CanisterLog];
   query_stats: CanisterId ↦ [QueryStats];
   system_time : Timestamp
@@ -4238,6 +4243,7 @@ The initial state of the IC is
   certified_data = ();
   canister_history = ();
   canister_log_visibility = ();
+  canister_snapshot_visibility = ();
   canister_logs = ();
   query_stats = ();
   system_time = T;
@@ -5216,6 +5222,10 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -5243,6 +5253,7 @@ S' = S with
     query_stats[Canister_id] = []
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
@@ -5378,6 +5389,8 @@ S' = S with
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
+    if A.settings.snapshot_visibility is not null:
+      canister_snapshot_visibility[A.canister_id] = A.settings.snapshot_visibility
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
@@ -6325,6 +6338,7 @@ S with
     certified_data[A.canister_id] = (deleted)
     canister_history[A.canister_id] = (deleted)
     canister_log_visibility[A.canister_id] = (deleted)
+   canister_snapshot_visibility[A.canister_id] = (deleted)
     canister_logs[A.canister_id] = (deleted)
     query_stats[A.canister_id] = (deleted)
     chunk_store[A.canister_id] = (deleted)
@@ -6557,6 +6571,10 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -6582,6 +6600,7 @@ S' = S with
     certified_data[Canister_id] = ""
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     query_stats[CanisterId] = []
     messages = Older_messages · Younger_messages ·
@@ -7521,6 +7540,8 @@ S with
   canister_history[Canister_id] = (deleted)
   canister_log_visibility[New_canister_id] = S.canister_log_visibility[Canister_id]
   canister_log_visibility[Canister_id] = (deleted)
+  canister_snapshot_visibility[New_canister_id] = S.canister_snapshot_visibility[Canister_id]
+  canister_snapshot_visibility[Canister_id] = (deleted)
   canister_logs[New_canister_id] = S.canister_logs[Canister_id]
   canister_logs[Canister_id] = (deleted)
   query_stats[New_canister_id] = S.query_stats[Canister_id]
@@ -7680,6 +7701,7 @@ S with
 
 ```
 
+[//]: # (TODO DEFI-2667: describe `read_canister_snapshot_metadata` and `read_canister_snapshot_data` similarly?)
 #### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
 
 This section specifies management canister query calls.
