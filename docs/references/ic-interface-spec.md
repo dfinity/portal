@@ -6930,7 +6930,7 @@ S' = S with
 
 #### IC Management Canister: Read snapshot metadata
 
-Only the controllers of the given canister can read metadata of its snapshots.
+Access to the metadata of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6939,7 +6939,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_metadata'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -6976,7 +6980,7 @@ S with
 
 #### IC Management Canister: Read snapshot data
 
-Only the controllers of the given canister can read (binary) data of its snapshots.
+Access to the (binary) data of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6985,7 +6989,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_data'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -7701,7 +7709,6 @@ S with
 
 ```
 
-[//]: # (TODO DEFI-2667: describe `read_canister_snapshot_metadata` and `read_canister_snapshot_data` similarly?)
 #### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
 
 This section specifies management canister query calls.
