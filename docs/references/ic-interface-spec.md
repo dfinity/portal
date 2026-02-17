@@ -2435,6 +2435,15 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: `controllers`.
 
+-   `snapshot_visibility` (`snapshot_visibility`)
+
+    Controls who can access the canister's snapshots through the `read_canister_snapshot_metadata` and `read_canister_snapshot_data` endpoints of the management canister. Can be one of:
+    - `controllers`: Only the canister's controllers can read its snapshots
+    - `public`: Anyone can read the canister's snapshots
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read its snapshots, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -3103,7 +3112,10 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read metadata of a snapshot of that canister.
+Who is allowed to read the metadata of a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots metadata
+- `public`: Anyone can read the canister's snapshots metadata
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots metadata, the maximum length of the list is 10
 
 This method returns all metadata of a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3135,7 +3147,10 @@ The state of the global timer and on low wasm memory hook are `null` for existin
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read data of a snapshot of that canister.
+Who is allowed to read a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots
+- `public`: Anyone can read the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots, the maximum length of the list is 10
 
 This method returns a requested kind of (binary) data from a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
