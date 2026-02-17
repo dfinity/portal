@@ -2437,7 +2437,12 @@ The optional `settings` parameter can be used to set the following settings:
 
 -   `snapshot_visibility` (`snapshot_visibility`)
 
-    Controls who can access the canister's snapshots through the `read_canister_snapshot_metadata` and `read_canister_snapshot_data` endpoints of the management canister. Can be one of:
+    Controls who can access the canister's snapshots through the following endpoints of the management canister:
+    - `read_canister_snapshot_metadata`
+    - `read_canister_snapshot_data`
+    - `list_canister_snapshots`
+
+    Can be one of:
     - `controllers`: Only the canister's controllers can read its snapshots
     - `public`: Anyone can read the canister's snapshots
     - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read its snapshots, the maximum length of the list is 10
@@ -3215,7 +3220,12 @@ It's important to note that uploading a chunk to the WASM chunk store of the sna
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots.
+This method lists the snapshots of the canister identified by `canister_id`.
+
+Who is allowed to list the snapshots of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can list its snapshots
+- `public`: Anyone can list the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can list the snapshots, the maximum length of the list is 10
 
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
@@ -7172,7 +7182,7 @@ S' = S with
 
 #### IC Management Canister: List canister snapshots
 
-Only the controllers of the given canister can get a list of the existing snapshots.
+Access to the list of the existing snapshots of a canister is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -7181,7 +7191,12 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'list_canister_snapshots'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
+
 
 Snapshots = [{
   id = Snapshot_id;
