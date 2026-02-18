@@ -58,7 +58,7 @@ jobs:
 
           echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
 
-          # Deploy the canister (recipe handles build steps)
+          # Deploy the canister
           git submodule update --init
           export PREVIEW_CANISTER_ID=$canister_id
           time icp deploy portal -e ic --mode reinstall
