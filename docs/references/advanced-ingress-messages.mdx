@@ -21,7 +21,7 @@ This page discusses ICP's ingress message APIs. While these APIs are defined in 
 ICP supports several types of calls, as defined in the [HTTPS interface specification](/references/ic-interface-spec#http-interface). These include query and update calls.
 
 ## Query calls
-Queries don't modify a canister's state and are answered and signed by a single replica. Responses can be obtained within milliseconds, but they are typically not signed by the subnet, meaning a malicious replica or boundary node could arbitrarily modify the response.
+Queries don't modify a canister's state and are answered and signed by a single replica. Responses can be obtained within milliseconds, but they are typically not signed by the subnet, unless they are explicitly signed e.g. using certified variables, see below. If responses are not signed by the subnet, a  malicious replica or boundary node could arbitrarily modify the response.
 
 Some applications may have higher authenticity requirements for query responses. For example, if a dapp queries a proposal description that the user then votes on, it may not be acceptable that the result could be tampered with, as it could trick users to vote in the attacker's favor. As an alternative, you can issue query calls as update calls instead. While that's easy to implement, it makes the calls significantly slower.
 
