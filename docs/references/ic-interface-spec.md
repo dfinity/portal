@@ -2944,9 +2944,7 @@ In the replicated mode, the responses for all identical requests must match, too
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request (both in replicated and non-replicated modes). Only the transformed response will be available to the calling canister.
 
-Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests in both replicated and non-replicated mode. Additionally, the `PUT` and `DELETE` methods are supported in non-replicated mode only.
-
-`PUT` and `DELETE` are restricted to non-replicated mode to avoid confusing race conditions that may occur in replicated execution. For example, if first a `DELETE` outcall for resource R is made, directly followed by a `PUT` or `POST` outcall for R, in replicated mode it may happen that R is actually deleted after the `PUT`/`POST` outcall has finished, because the IC does not necessarily wait for all outcalls to complete before a result is delivered back to the canister: The IC only waits for sufficient calls to complete to reach consensus on the result.
+Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Additionally, the `PUT` and `DELETE` methods are supported in non-replicated mode only. `PUT` and `DELETE` are restricted to non-replicated mode to avoid confusing race conditions that may occur with replicated execution.
 
 It is important to note the following for the usage of the `POST` method:
 
