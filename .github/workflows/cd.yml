@@ -34,43 +34,40 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install DFX
-        uses: dfinity/setup-dfx@main
-        with:
-          dfx-version: 0.29.2
-
-      - name: Dump Identity
+      - name: Install ICP-CLI
         run: |
-          mkdir -p ~/.config/dfx/identity/default
-          echo $DFX_IDENTITY_DESIGN_TEAM | base64 -d > ~/.config/dfx/identity/default/identity.pem
-          sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/dfinity/icp-cli/releases/download/v0.1.0/icp-cli-installer.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Setup Identity
+        run: |
+          mkdir -p ~/.local/share/icp-cli/identity/keys
+          echo $ICP_IDENTITY_PORTAL_DEPLOY | base64 -d > ~/.local/share/icp-cli/identity/keys/portal-deploy.pem
+          sed -i 's/\\r\\n/\r\n/g' ~/.local/share/icp-cli/identity/keys/portal-deploy.pem
+          icp identity import portal-deploy --from-pem ~/.local/share/icp-cli/identity/keys/portal-deploy.pem --storage plaintext
+          icp identity default portal-deploy
         env:
-          DFX_IDENTITY_DESIGN_TEAM: ${{ secrets.DFX_IDENTITY_DESIGN_TEAM }}
+          ICP_IDENTITY_PORTAL_DEPLOY: ${{ secrets.DFX_IDENTITY_DESIGN_TEAM }}
 
       - name: Check Canister Balance
         run: |
-          balance=$(dfx canister --network ic status portal 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
+          balance=$(icp canister status portal -e ic 2>&1 >/dev/null | grep Balance: | sed 's/[^0-9]//g')
           LANG=en_US.UTF-8
           balance_formatted=$(echo $balance | awk '{printf "%'\''d\n", $0}')
           echo "Canister balance: $balance_formatted"
           if [ "5000000000000" -gt "$balance" ]; then
-            canister_id=$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic')
-            template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel internetcomputer.org canister \`$canister_id\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`dfx ledger --network ic top-up $canister_id --amount 5.0\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
+            canister_id=$(cat "$GITHUB_WORKSPACE/.icp/data/mappings/ic.ids.json" | jq -r '.portal')
+            template="{ \"channel\": \"C04EGHHU9U2\", \"blocks\": [ { \"type\": \"section\", \"text\": { \"type\": \"mrkdwn\", \"text\": \"@channel internetcomputer.org canister \`$canister_id\` balance is \`$balance_formatted\`.\n\nTop it up by\n- running \`icp canister top-up $canister_id --amount 5t -e ic\`\n- or by adding the canister on the NNS and sending cycles to it.\" } } ]}"
             curl --data "$template" -H "Content-type: application/json"  -H "Authorization: Bearer $SLACK_TOKEN" -X POST https://slack.com/api/chat.postMessage -o /dev/null
           fi
         env:
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
-      - name: Install Dependencies
-        run: npm install
-
       - name: Deploy to Mainnet
-        run: dfx deploy --network=ic --no-wallet portal --verbose --yes
-        env:
-          DFX_WARNING: -mainnet_plaintext_identity
+        run: icp deploy portal -e ic
 
       - name: Get URL
         id: get-url
         run: |
-          URL="https://$(cat "$GITHUB_WORKSPACE/canister_ids.json" | jq -r '.portal.ic').icp0.io"
+          URL="https://$(cat "$GITHUB_WORKSPACE/.icp/data/mappings/ic.ids.json" | jq -r '.portal').icp0.io"
           echo "url=$URL" >> $GITHUB_OUTPUT
