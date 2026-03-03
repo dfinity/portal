@@ -618,7 +618,7 @@ type cycles_consumed = record {
   compute_allocation : nat;
   ingress_induction : nat;
   instructions : nat;
-  request_and_response_transmissio : nat;
+  request_and_response_transmission : nat;
   uninstall : nat;
   canister_creation : nat;
   ecdsa_outcalls : nat;
