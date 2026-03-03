@@ -2588,7 +2588,9 @@ Indicates various information about the canister. It contains:
 
     -   The reserved cycles limit of the canister, i.e., the maximum number of cycles that can be in the canister's reserved balance after increasing the canister's memory allocation and/or actual memory usage.
 
-    -   The canister log visibility of the canister.
+    -   The visibility of the canister's logs.
+
+    -   The visibility of the canister's snapshots.
 
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
