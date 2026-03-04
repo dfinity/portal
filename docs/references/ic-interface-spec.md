@@ -3245,7 +3245,7 @@ Replica-signed queries may improve security because the recipient can verify the
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method returns a set of canister related metrics for the requested canister, like cycles consumed by different use cases.
+This method returns a set of canister related metrics for the requested canister, like cycles consumed by different use cases. These metrics should be counters that report the accumulated respective amount since the canister was created.
 
 Only controllers of the canister or subnet admins can call this method.
 
