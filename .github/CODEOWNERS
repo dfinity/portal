@@ -14,12 +14,12 @@ submodules/sdk @dfinity/sdk
 submodules/motoko @dfinity/languages
 
 # FI
-docs/defi/ @dfinity/defi-team @dfinity/editorial
-docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/defi-team @dfinity/sdk
+docs/defi/ @dfinity/defi @dfinity/editorial
+docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/defi @dfinity/sdk
 
 # Cross chain
-docs/defi/chain-key-tokens/ @dfinity/defi-team @dfinity/editorial
-docs/building-apps/chain-fusion/ @dfinity/defi-team @dfinity/editorial
+docs/defi/chain-key-tokens/ @dfinity/defi @dfinity/editorial
+docs/building-apps/chain-fusion/ @dfinity/defi @dfinity/editorial
 
 # ProdSec
 docs/building-apps/security/ @dfinity/product-security @dfinity/editorial
