@@ -543,9 +543,11 @@ const DocsHomePage: FC = () => {
         </div>
       </div>
 
+      {/* remove the blog section 
       <section>
         <Blog />
       </section>
+      */}
       {/* <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
         {footerCards.map((card, index) => (
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
