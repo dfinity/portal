@@ -636,16 +636,12 @@ type cycles_metrics = record {
   cycles_consumed : cycles_consumed;
 }
 
-type canister_metrics = record {
-  cycles_metrics : cycles_metrics;
-}
-
 type canister_metrics_args = record {
   canister_id : canister_id;
 }
 
 type canister_metrics_result = record {
-  canister_metrics : canister_metrics;
+  cycles_metrics : cycles_metrics;
 }
 
 service ic : {
