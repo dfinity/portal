@@ -224,6 +224,7 @@ const config = {
           rehypePlugins,
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
+        blog: false,
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
         },
