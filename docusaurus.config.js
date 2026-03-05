@@ -11,7 +11,6 @@ const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
-const blogPostsPlugin = require("./plugins/blog-posts");
 const externalRedirectsPlugin = require("./plugins/external-redirects");
 const math = require("remark-math");
 const katex = require("rehype-katex");
@@ -181,7 +180,6 @@ const config = {
     customWebpack,
     tailwindPlugin,
     matomoPlugin,
-    blogPostsPlugin,
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),
@@ -225,13 +223,6 @@ const config = {
           remarkPlugins,
           rehypePlugins,
           editUrl: "https://github.com/dfinity/portal/edit/master/",
-        },
-        blog: {
-          path: "blog",
-          blogSidebarCount: "ALL",
-          postsPerPage: "ALL",
-          remarkPlugins,
-          rehypePlugins,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
