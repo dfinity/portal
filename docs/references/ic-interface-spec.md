@@ -3221,7 +3221,7 @@ A snapshot may be deleted only by the controllers of the canister that the snaps
 
 ### IC method `fetch_canister_logs` {#ic-fetch_canister_logs}
 
-This method can only be called by external users via non-replicated (query) calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
+This method can only be called by external users via non-replicated (query) calls or by canisters (via replicated calls), i.e., it cannot be called by external users via replicated (update) calls and it cannot be called from composite query calls.
 
 Given a canister ID as input, this method returns a vector of logs of that canister including its trap messages.
 The canister logs are *not* collected in canister methods running in non-replicated mode (NRQ, TQ, CQ, CRy, CRt, CC, and F modes, as defined in [Overview of imports](#system-api-imports)) and the canister logs are *purged* when the canister is reinstalled or uninstalled.
@@ -7218,6 +7218,95 @@ S with
 
 ```
 
+#### IC Management Canister: Canister logs {#ic-mgmt-canister-fetch-canister-logs}
+
+Given a state `S`, `Canister_id`, and `Sender`, we define
+
+```html
+
+canister_logs(S, Canister_id) = S.canister_logs[A.canister_id]
+fetch_canister_logs_cost(S, Canister_id) = <implementation-specific>
+is_sender_authorized(S, Canister_id, Sender) =
+  (S[Canister_id].canister_log_visibility = Public)
+  or
+  (S[Canister_id].canister_log_visibility = Controllers and Sender in S[Canister_id].controllers)
+  or
+  (S[Canister_id].canister_log_visibility = AllowedViewers Principals and (Sender in S[Canister_id].controllers or Sender in Principals))
+
+```
+
+Conditions
+
+```html
+
+S.messages = Older_messages · CallMessage M · Younger_messages
+(M.queue = Unordered) or (∀ CallMessage M' | FuncMessage M' ∈ Older_messages. M'.queue ≠ M.queue)
+M.callee = ic_principal
+M.method_name = 'fetch_canister_logs'
+M.arg = candid(A)
+fetch_canister_logs_cost(S, A.canister_id) <= M.transferred_cycles
+is_sender_authorized(S, A.canister_id, M.caller)
+
+```
+
+State after
+
+```html
+
+S with
+    messages = Older_messages · Younger_messages ·
+      ResponseMessage {
+        origin = M.origin
+        response = candid(canister_logs(S, A.canister_id))
+        refunded_cycles = M.transferred_cycles - fetch_canister_logs_cost(S, A.canister_id)
+      }
+
+```
+
+The IC method `fetch_canister_logs` can also be invoked via management canister query calls.
+They are calls to `/api/v3/canister/<ECID>/query`
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
+
+Submitted request to `/api/v3/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+Conditions
+
+```html
+
+E.content = CanisterQuery Q
+Q.canister_id = ic_principal
+Q.method_name = 'fetch_canister_logs'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+Q.arg = candid(A)
+A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+is_sender_authorized(S, A.canister_id, Q.sender)
+
+```
+
+Query response `R`:
+
+```html
+
+{status: "replied"; reply: {arg: candid(canister_logs(S, A.canister_id))}, signatures: Sigs}
+
+```
+
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
+
+```html
+
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
+
 #### Callback invocation
 
 When an inter-canister call has been responded to, we can queue the call to the callback.
@@ -7689,60 +7778,6 @@ State after
 
 S with
     canister_logs[CanisterId] = Newer_logs
-
-```
-
-#### IC Management Canister: Canister logs (query call) {#ic-mgmt-canister-fetch-canister-logs}
-
-This section specifies management canister query calls.
-They are calls to `/api/v3/canister/<ECID>/query`
-with CBOR content `Q` such that `Q.canister_id = ic_principal`.
-
-The management canister offers the method `fetch_canister_logs`
-that can be called as a query call and
-returns logs of a requested canister.
-
-Submitted request to `/api/v3/canister/<ECID>/query`
-
-```html
-
-E : Envelope
-
-```
-
-Conditions
-
-```html
-
-E.content = CanisterQuery Q
-Q.canister_id = ic_principal
-Q.method_name = 'fetch_canister_logs'
-|Q.nonce| <= 32
-is_effective_canister_id(E.content, ECID)
-S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
-Q.arg = candid(A)
-A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
-(S[A.canister_id].canister_log_visibility = Public)
-  or
-  (S[A.canister_id].canister_log_visibility = Controllers and Q.sender in S[A.canister_id].controllers)
-  or
-  (S[A.canister_id].canister_log_visibility = AllowedViewers Principals and (Q.sender in S[A.canister_id].controllers or Q.sender in Principals))
-
-```
-
-Query response `R`:
-
-```html
-
-{status: "replied"; reply: {arg: candid(S.canister_logs[A.canister_id])}, signatures: Sigs}
-
-```
-
-where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
-
-```html
-
-verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
 
 ```
 
