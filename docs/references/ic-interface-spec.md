@@ -805,7 +805,7 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
-    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature) and the issuing canister and seed *must* be consistent with the principal in the `sender` attribute.
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature). The field `sender_pubkey` (see [Authentication](#authentication)) must be equal to the public key of the [canister signature](#canister-signature).
 
 The HTTP response to this request can have the following responses:
 
@@ -972,7 +972,7 @@ In order to make a query call to a canister, the user makes a POST request to `/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
-    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature) and the issuing canister and seed *must* be consistent with the principal in the `sender` attribute.
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature). The field `sender_pubkey` (see [Authentication](#authentication)) must be equal to the public key of the [canister signature](#canister-signature).
 
 The HTTP response to this request can have the following forms:
 
