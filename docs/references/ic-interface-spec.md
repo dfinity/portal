@@ -1745,8 +1745,10 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
 -   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_sender_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_sender_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
-    Auxiliary information about the caller as provided by the canister with which the caller's identity is associated. (These functions only apply if the caller is a self-authenticating principal authenticated by canister signatures.)
-    The `caller_info_data` may include information such as identity attributes of the caller. The caller info is always empty in system tasks.
+    Auxiliary information about the caller as provided by the canister with which the caller's identity is associated.
+    (These functions only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. In particular, they return empty values in system tasks or when called by another canister.)
+
+    The `caller_info_data` may include information such as identity attributes of the caller.
     The `_sender_` functions return the canister id of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
     This can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
 
