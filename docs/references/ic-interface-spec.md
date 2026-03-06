@@ -1566,8 +1566,10 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ TQ CQ Ry CRy F
     ic0.msg_caller_size : () -> I;                                                        // *
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
-    ic0.msg_caller_info_size : () -> I;                                                   // *
-    ic0.msg_caller_info_copy : (dst : I, offset : I, size : I) -> ();                     // *
+    ic0.msg_caller_info_data_size : () -> I;                                              // *
+    ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) -> ();                // *
+    ic0.msg_caller_info_sender_size : () -> I;                                            // *
+    ic0.msg_caller_info_sender_copy : (dst : I, offset : I, size : I) -> ();              // *
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt C
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
@@ -1741,9 +1743,11 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade. During a system task (heartbeat or global timer), this is the id of the management canister.
 
--   `ic0.msg_caller_info_size : () → I` and `ic0.msg_caller_info_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+-   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_sender_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_sender_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
-    Auxiliary information about the caller. This may include information such as identity attributes of the caller. The caller info is always empty in system tasks.
+    Auxiliary information about the caller as provided by the canister with which the caller's identity is associated. (These functions only apply if the caller is a self-authenticating principal authenticated by canister signatures.)
+    The `caller_info_data` may include information such as identity attributes of the caller. The caller info is always empty in system tasks.
+    The `_sender_` functions return the canister id of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
     This can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
 
 -   `ic0.msg_reject_code : () → i32`
