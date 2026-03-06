@@ -2631,6 +2631,8 @@ Only the controllers of the canister or the canister itself can request its stat
 
     * `snapshots_size`: Represents the memory consumed by all snapshots that belong to this canister.
 
+    * `log_memory_store_size`: Represents the memory used by the canister log memory store of the canister.
+
 All sizes are expressed in bytes.
 
 ### IC method `canister_info` {#ic-canister_info}
