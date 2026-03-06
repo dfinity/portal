@@ -13,23 +13,18 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Dump Identity
+      - name: Setup Identity
         run: |
-          mkdir -p ~/.config/dfx/identity/default
-          echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
+          mkdir -p ~/.local/share/icp-cli/identity/keys
+          echo $ICP_IDENTITY_PREVIEW | base64 -d > ~/.local/share/icp-cli/identity/keys/search-updater.pem
+          sed -i 's/\\r\\n/\r\n/g' ~/.local/share/icp-cli/identity/keys/search-updater.pem
         env:
-          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+          ICP_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
 
       - name: Build website
         run: |
           npm install
           npm run build
-        env:
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
       - name: Remove redirect pages
         run: |
@@ -45,4 +40,4 @@ jobs:
           cd search
 
           cargo run --release --bin search-cli -- index ../docs.json stopwords.txt output.json
-          cargo run --release --bin search-cli -- upload output.json stopwords.txt 5qden-jqaaa-aaaam-abfpa-cai ~/.config/dfx/identity/default/identity.pem
+          cargo run --release --bin search-cli -- upload output.json stopwords.txt 5qden-jqaaa-aaaam-abfpa-cai ~/.local/share/icp-cli/identity/keys/search-updater.pem

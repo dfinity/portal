@@ -32,7 +32,7 @@ You can find all available methods for your ICRC-1 ledger within the ICRC-1 ledg
 
 For ledgers that support ICRC-2, you can also call ICRC-2 methods. ICRC-2 methods include those for `approve` workflows. For specifics, see the [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2#icrc2_approve).
 
-View the [`dfx canister call` documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) for more information on calling canister methods.
+View the [`dfx canister call` documentation](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) for more information on calling canister methods.
 
 ## From a web application
 
@@ -64,7 +64,7 @@ const data = await metadata({});
 
 ## From inter-canister calls via `ic-cdk`
 
-When calling into arbitrary ICRC-1 ledgers, it is recommended that you use [bounded wait (aka best-effort response) calls](/docs/references/async-code). These calls ensure that your canister does not get stuck waiting for a response from the ledger.
+When calling into arbitrary ICRC-1 ledgers, it is recommended that you use [bounded wait (aka best-effort response) calls](/references/async-code). These calls ensure that your canister does not get stuck waiting for a response from the ledger.
 
 Below is an example that demonstrates how to fetch the transfer fee from an ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister. This example includes retry logic to handle errors when possible.
 
@@ -107,7 +107,7 @@ where
 }
 ```
 
-Below is an example that demonstrates transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](/docs/references/icrc1-standard#transaction-deduplication-) of ICRC-1 ledgers. However, if the transaction keeps failing beyond the deduplication window, the transaction state will be unknown and you will need to perform manual recovery.
+Below is an example that demonstrates transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1#transaction_deduplication) of ICRC-1 ledgers. However, if the transaction keeps failing beyond the deduplication window, the transaction state will be unknown and you will need to perform manual recovery.
 
 ```rust
 pub enum TransferErrorCause {

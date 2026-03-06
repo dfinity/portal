@@ -70,27 +70,27 @@ but they are supported in the same way as Ethereum through the EVM RPC canister.
 
 | Chain     | Authentication                                                         | Available Integrations                                                                                                                         | Assets                                                                                                                                          |
 | --------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Aptos     | [ECDSA, EdDSA](https://aptos.dev/en/network/blockchain/accounts) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |    |
-| Arweave   | [Not yet supported](https://github.com/ArweaveTeam/arweave/issues/486) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |    |
-| Avalanche | [ECDSA](https://docs.avax.network/reference/standards/cryptographic-primitives) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |   |
-| Bitcoin   | [ECDSA, Schnorr](/docs/build-on-btc/btc-transactions/generate-addresses) | Direct | [ckBTC](/docs/defi/chain-key-tokens/ckbtc/overview)  |    |
-| Cardano   | ECDSA, EdDSA, Schnorr | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |     |
-| Cosmos    | [ECDSA, EdDSA](https://docs.cosmos.network/v0.50/learn/beginner/accounts) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview)  |     |
-| Dogecoin  | ECDSA  | [CK-Doge Canister](https://github.com/ldclabs/ck-doge) |   |
-| Ethereum  | [ECDSA](/docs/building-apps/chain-fusion/ethereum/using-eth/generating-addresses) | [EVM RPC](/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview.mdx), [ic-web3-rs](https://github.com/horizonx-tech/ic-web3-rs) | [ckETH](/docs/defi/chain-key-tokens/cketh/overview), [ckERC20](/docs/defi/chain-key-tokens/ckerc20/overview)  |
-| Filecoin  | [ECDSA](https://spec.filecoin.io/algorithms/crypto/signatures/)| [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |     |
-| Hedera    | [ECDSA, EdDSA](https://docs.hedera.com/hedera/core-concepts/keys-and-signatures)| [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |      |
-| Kaspa     | [ECDSA](https://github.com/kaspanet/go-secp256k1/blob/master/ecdsa_privkey.go) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |     |
-| Monero    | [EdDSA](https://getmonero.dev/cryptography/asymmetric/edwards25519.html) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |      |
-| NEAR      | EdDSA | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |      |
-| Polkadot  | [ECDSA, EdDSA](https://wiki.polkadot.network/docs/learn-cryptography) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |     |
-| Solana    | [EdDSA](https://solana.com/docs/core/accounts#account)  | [SOL RPC](https://github.com/dfinity/sol-rpc-canister) <span style={{ display: 'inline-block', verticalAlign: 'super' }}><AlphaChip /></span> | gSOL <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span> |
-| Stacks    | [ECDSA](https://github.com/stacks-network/keylib-py)| [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |      |
-| Stellar   | [EdDSA](https://developers.stellar.org/docs/smart-contracts/smart-wallets#secp256r1) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |     |
-| Sui       | ECDSA, EdDSA | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |     |
-| XRP       | [ECDSA, EdDSA](https://xrpl.org/docs/concepts/accounts/cryptographic-keys/#signing-algorithms) | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |    |
-| Toncoin   | EdDSA  | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview) |       |
-| TRON      | [ECDSA](https://github.com/tronprotocol/tips/issues/120)  | [RPC via HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview)  |      |
+| Aptos     | [ECDSA, EdDSA](https://aptos.dev/en/network/blockchain/accounts) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |    |
+| Arweave   | [Not yet supported](https://github.com/ArweaveTeam/arweave/issues/486) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |    |
+| Avalanche | [ECDSA](https://docs.avax.network/reference/standards/cryptographic-primitives) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |   |
+| Bitcoin   | [ECDSA, Schnorr](/build-on-btc/btc-transactions/generate-addresses) | Direct | [ckBTC](/defi/chain-key-tokens/ckbtc/overview)  |    |
+| Cardano   | ECDSA, EdDSA, Schnorr | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |     |
+| Cosmos    | [ECDSA, EdDSA](https://docs.cosmos.network/v0.50/learn/beginner/accounts) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview)  |     |
+| Dogecoin  | [ECDSA](https://dfinity.github.io/dogecoin-canister)  | [Direct](/building-apps/chain-fusion/dogecoin/overview) | ckDOGE (upcoming)  |
+| Ethereum  | [ECDSA](/building-apps/chain-fusion/ethereum/using-eth/generating-addresses) | [EVM RPC](/building-apps/chain-fusion/ethereum/evm-rpc/overview.mdx), [ic-web3-rs](https://github.com/horizonx-tech/ic-web3-rs) | [ckETH](/defi/chain-key-tokens/cketh/overview), [ckERC20](/defi/chain-key-tokens/ckerc20/overview)  |
+| Filecoin  | [ECDSA](https://spec.filecoin.io/algorithms/crypto/signatures/)| [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |     |
+| Hedera    | [ECDSA, EdDSA](https://docs.hedera.com/hedera/core-concepts/keys-and-signatures)| [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |      |
+| Kaspa     | [ECDSA](https://github.com/kaspanet/go-secp256k1/blob/master/ecdsa_privkey.go) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |     |
+| Monero    | [EdDSA](https://getmonero.dev/cryptography/asymmetric/edwards25519.html) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |      |
+| NEAR      | EdDSA | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |      |
+| Polkadot  | [ECDSA, EdDSA](https://wiki.polkadot.network/docs/learn-cryptography) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |     |
+| Solana    | [EdDSA](https://solana.com/docs/core/accounts#account)  | [SOL RPC](https://github.com/dfinity/sol-rpc-canister) |  |
+| Stacks    | [ECDSA](https://github.com/stacks-network/keylib-py)| [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |      |
+| Stellar   | [EdDSA](https://developers.stellar.org/docs/smart-contracts/smart-wallets#secp256r1) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |     |
+| Sui       | ECDSA, EdDSA | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |     |
+| XRP       | [ECDSA, EdDSA](https://xrpl.org/docs/concepts/accounts/cryptographic-keys/#signing-algorithms) | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |    |
+| Toncoin   | EdDSA  | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview) |       |
+| TRON      | [ECDSA](https://github.com/tronprotocol/tips/issues/120)  | [RPC via HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview)  |      |
 
 
 ### Looking for a chain that is not listed?
@@ -101,6 +101,6 @@ methods or signature schemes are supported.
 
 ## Resources
 
-- [HTTPS outcalls](/docs/building-apps/network-features/using-http/https-outcalls/overview).
+- [HTTPS outcalls](/building-apps/network-features/using-http/https-outcalls/overview).
 
-- [Threshold signatures](/docs/references/t-sigs-how-it-works).
+- [Threshold signatures](/references/t-sigs-how-it-works).

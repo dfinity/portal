@@ -14,43 +14,43 @@ Developer tools are used to create, manage, and interact with canisters. They ca
 
 A canister development kit (CDK) is an adapter used by `dfx` to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters.
 
-[Motoko](/docs/motoko/home) is ICP's native programming language. It is installed with the IC SDK.
+[Motoko](/motoko/home) is ICP's native programming language. It is installed with the IC SDK.
 
-The [Rust CDK](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
+The [Rust CDK](/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
 
 There are several community-contributed and maintained CDKs for languages such as:
 
-- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/).
+- [icpp-pro](https://github.com/icppWorld/icpp-pro) - C++ CDK.
 
-- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle//).
+- [Azle](https://github.com/demergent-labs/azle) - TypeScript CDK.
 
-- [Bitfinity EVM for Solidity](https://docs.bitfinity.network/).
+- [Kybra](https://github.com/demergent-labs/kybra) - Python CDK.
 
-- [C++ CDK](https://docs.icpp.world/).
+- [moonbit-ic-cdk](https://github.com/eliezhao/moonbit-ic-cdk) - MoonBit CDK.
 
 ## Command line tools
 
 ### `dfx`
 
-[`dfx`](/docs/building-apps/developer-tools/dfx/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
+[`dfx`](/building-apps/developer-tools/dfx/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
 
-`dfx` supports [local development](/docs/building-apps/developing-canisters/deploy) and deployment through the [`dfx start`](/docs/building-apps/developer-tools/dfx/) command, which runs a local development environment using [PocketIC](/docs/building-apps/test/pocket-ic) that can be used to deploy and test canisters on your local machine.
+`dfx` supports [local development](/building-apps/developing-canisters/deploy) and deployment through the [`dfx start`](/building-apps/developer-tools/dfx/) command, which runs a local development environment using [PocketIC](/building-apps/test/pocket-ic) that can be used to deploy and test canisters on your local machine.
 
 To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands.
 
-- [Install `dfx`](/docs/building-apps/getting-started/install).
+- [Install `dfx`](/building-apps/getting-started/install).
 
-- [`dfx` documentation](/docs/building-apps/developer-tools/dfx/).
+- [`dfx` documentation](/building-apps/developer-tools/dfx/).
 
 - [IC SDK GitHub repo](https://github.com/dfinity/sdk).
 
 ### `dfxvm`
 
-[`dfxvm`](/docs/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
+[`dfxvm`](/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
 
-- [Install `dfxvm`](/docs/building-apps/getting-started/install#installing-dfx).
+- [Install `dfxvm`](/building-apps/getting-started/install#installing-dfx).
 
-- [`dfxvm` documentation](/docs/building-apps/developer-tools/dfxvm/dfxvm-default).
+- [`dfxvm` documentation](/building-apps/developer-tools/dfxvm/dfxvm-default).
 
 - [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
 
@@ -60,4 +60,4 @@ ICP Ninja is a web-based IDE designed specifically for building and deploying IC
 
 - [ICP Ninja homepage](https://icp.ninja/).
 
-- [ICP Ninja documentation](/docs/building-apps/developer-tools/icp-ninja).
+- [ICP Ninja documentation](/building-apps/developer-tools/icp-ninja).

@@ -13,7 +13,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-System time is a publicly exposed and verified part of the [IC state tree](/docs/references/ic-interface-spec#state-tree). System time is expressed in nanoseconds since `1970-01-01` and indicates the time at which the state is current. It is exposed at `/time`, and all partial state trees include a timestamp.
+System time is a publicly exposed and verified part of the [IC state tree](/references/ic-interface-spec#state-tree). System time is expressed in nanoseconds since `1970-01-01` and indicates the time at which the state is current. It is exposed at `/time`, and all partial state trees include a timestamp.
 
 System time observed by the <GlossaryTooltip>canister</GlossaryTooltip> is monotonically increasing, even across canister upgrades. Since the ICP network is decentralized, the system times of different canisters are unrelated, and there is no notion of a timezone, sometimes resulting in calls appearing to travel back in time.
 
@@ -205,7 +205,7 @@ The difference between these two, in nanoseconds, will be returned:
 
 ## Resources
 
-- [Motoko `Time` documentation](/docs/motoko/base/Time/)
+- [Motoko `Time` documentation](/motoko/base/Time/)
 
 - [`time` Mops package](https://mops.one/time)
 

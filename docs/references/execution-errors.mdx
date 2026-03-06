@@ -37,7 +37,7 @@ An example of this error is:
 
 Instruction limits differ depending on the message type and can be found in the [documentation on resource limits][limits].
 
-To fix this error, consider using tools such as the [performance counter API](/docs/references/samples/rust/performance_counters/) or [canbench][canbench] to determine which sections of code are using significant instructions and optimize them.
+To fix this error, consider using tools such as the [performance counter API](/references/samples/rust/performance_counters/) or [canbench][canbench] to determine which sections of code are using significant instructions and optimize them.
 
 
 ### Trapped
@@ -61,7 +61,7 @@ An example of this error is:
   Canister called `ic0.trap` with message: <Canister error message>
 ```
 
-When encountering an error, canisters may choose to fail with an error message by calling the [`ic0.trap` API](/docs/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDKs will insert calls to this API when panicking.
+When encountering an error, canisters may choose to fail with an error message by calling the [`ic0.trap` API](/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDKs will insert calls to this API when panicking.
 
 To fix this error, consider testing the canister to see if certain inputs can trigger panics.
 
@@ -74,15 +74,15 @@ An example of this error is:
   Attempted to execute a message, but the canister contains no Wasm module.
 ```
 
-Canisters can [exist without having Wasm code installed](/docs/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed or if it has been [uninstalled](/docs/references/ic-interface-spec#ic-uninstall_code).
+Canisters can [exist without having Wasm code installed](/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed or if it has been [uninstalled](/references/ic-interface-spec#ic-uninstall_code).
 
 To better diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module, the "Module hash" field will be non-null.
 
-To fix this error, consider installing code using [`dfx deploy`](/docs/building-apps/developer-tools/dfx/dfx-deploy), or the APIs for [`install_code`](/docs/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/docs/references/ic-interface-spec#ic-install_chunked_code).
+To fix this error, consider installing code using [`dfx deploy`](/building-apps/developer-tools/dfx/dfx-deploy), or the APIs for [`install_code`](/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/references/ic-interface-spec#ic-install_chunked_code).
 
 
 ### Out of memory
-The canister was tried to request more memory than available during execution, causing the execution to fail.
+The canister tried to request more memory than the system can provide during execution, causing the execution to fail.
 
 An example of this error is:
 ```
@@ -91,13 +91,9 @@ An example of this error is:
 
 There are [system-wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
 
-In addition, canisters may reserve memory using the [`memory-allocation` setting][memory-allocation-setting]. In this case the canister is guaranteed to be able to use up to the allocated memory but will receive an "Out of memory" error when trying to use more than the allocated amount.
-
-To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
+To diagnose this error, use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
 To fix this error, consider:
-
-- If the canister has reached its current memory allocation, try allocating more memory.
 
 - If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
 
@@ -114,7 +110,7 @@ An example of this error is:
   Canister tried to allocate pages reserved for upgrading older versions of Motoko.
 ```
 
-Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/building-apps/developer-tools/dfx/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
+Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/building-apps/developer-tools/dfx/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
 
 To fix this error, upgrade to the [latest version of `dfx`](https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation) which will use a newer version of Motoko.
 
@@ -211,7 +207,7 @@ An example of this error is:
   Canister violated contract: "ic0.call_new" cannot be executed in non-replicated query mode.
 ```
 
-Certain system APIs are only available in certain types of messages. For an overview of when each system API can be used, see [the ICP spec](/docs/references/ic-interface-spec#system-api-imports).
+Certain system APIs are only available in certain types of messages. For an overview of when each system API can be used, see [the ICP spec](/references/ic-interface-spec#system-api-imports).
 
 This error could occur because the canister is trying to do something in a query that is only allowed in a composite query (e.g., making a call) or doing something in a composite query that is only allowed in an update (e.g., setting a timer). If this is the case, consider changing the type of call to one that allows the API.
 
@@ -257,7 +253,7 @@ An example of this error is:
   Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
 ```
 
-Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/docs/motoko/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
+Method names are generally short (similar to function names), so it is likely a bug in the calling canister that creates a name that is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](/motoko/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
 
 
 ### Canister made a call with too large a payload
@@ -399,7 +395,7 @@ An example of this error is:
   Sender's ID: zzz-zzz
 ```
 
-Each canister has a number of [controllers](/docs/building-apps/canister-management/control) and certain actions (e.g., updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/references/glossary#p) that is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
+Each canister has a number of [controllers](/building-apps/canister-management/control) and certain actions (e.g., updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/references/glossary#p) that is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
 
 
 ### Canister not found
@@ -421,9 +417,9 @@ An example of this error is:
   Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
 ```
 
-[Installing](/docs/building-apps/essentials/canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
+[Installing](/building-apps/essentials/canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
 
-If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](/docs/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
+If the intention is to update the Wasm module without wiping the state, then an [upgrade](/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
 
 
 ### Subnet compute capacity oversubscribed
@@ -498,19 +494,6 @@ An example of this error is:
 ```
 
 A canister cannot be deleted while it has pending input or output messages because those messages would be lost. To fix this error, wait until the pending messages have been pulled from the queues. To ensure no new messages appear during that time, consider [stopping the canister][dfx-canister-stop].
-
-
-### Not enough memory allocation given
-The canister does not have enough memory allocation to complete a given request, or there was an attempt to lower the canister's memory allocation below the amount it already uses.
-
-An example of this error is:
-```
-  Canister was given 20000000000 memory allocation but at least 30000000000 of memory is needed.
-```
-
-A canister can set a [memory allocation][memory-allocation-setting] that guarantees it will be able to use a given amount of memory but also limits the canister memory to the allocated amount.
-
-To fix this error, consider increasing the canister's memory allocation, reducing its memory usage, or switching to best-effort memory allocation.
 
 
 ### Create canister not enough cycles
@@ -641,14 +624,14 @@ An example of this error is:
 To fix this error, increase the reserved cycles limit to be above the reported reserved cycles balance.
 
 ### Wasm chunk store error
-There was an error while executing a method to manipulate the canister's [Wasm chunk store](/docs/references/ic-interface-spec#ic-upload_chunk) (e.g., `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
+There was an error while executing a method to manipulate the canister's [Wasm chunk store](/references/ic-interface-spec#ic-upload_chunk) (e.g., `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
 
 An example of this error is:
 ```
   Error from Wasm chunk store: Cannot upload chunk. At least 10000000 additional cycles are required.
 ```
 
-To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles or using the [`stored_chunks` API](/docs/references/ic-interface-spec#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
+To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles or using the [`stored_chunks` API](/references/ic-interface-spec#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
 
 
 ### Canister snapshot not found

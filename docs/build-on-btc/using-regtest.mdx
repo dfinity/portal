@@ -13,7 +13,7 @@ import { OsType, useOs } from "/src/hooks/useOs";
 
 Before using the local Bitcoin regtest instance, you will need to:
 
-- [x] [Setup the local developer environment](/docs/build-on-btc/btc-dev-env).
+- [x] [Setup the local developer environment](/build-on-btc/btc-dev-env).
 
 - [x] Clone the `@dfinity/examples` repo: `git clone https://github.com/dfinity/examples.git`
 
@@ -30,7 +30,7 @@ cd examples/rust/basic_bitcoin
 ```
 
 :::caution
-When you set up your [developer environment](/docs/build-on-btc/btc-dev-env), if you created the subdirectory for your `bitcoin_data` files in another project's directory, you either need to [make them again or copy them](/docs/build-on-btc/btc-dev-env#step-2-create-a-subdirectory-for-bitcoin-data) into this project's folder.
+When you set up your [developer environment](/build-on-btc/btc-dev-env), if you created the subdirectory for your `bitcoin_data` files in another project's directory, you either need to [make them again or copy them](/build-on-btc/btc-dev-env#step-2-create-a-subdirectory-for-bitcoin-data) into this project's folder.
 :::
 
 Then start the local Bitcoin regtest network:
@@ -50,7 +50,7 @@ dfx deploy basic_bitcoin --argument '(variant { regtest })'
 
 ### Generating a Bitcoin address
 
-The Bitcoin network uses different types of addresses (e.g., P2PKH, P2SH), most of which can be generated from an ECDSA public key. The `basic_bitcoin` example implements a function for generating a P2PKH address using the [`ecdsa_public_key`](/docs/references/ic-interface-spec#ic-ecdsa_public_key) API endpoint.
+The Bitcoin network uses different types of addresses (e.g., P2PKH, P2SH), most of which can be generated from an ECDSA public key. The `basic_bitcoin` example implements a function for generating a P2PKH address using the [`ecdsa_public_key`](/references/ic-interface-spec#ic-ecdsa_public_key) API endpoint.
 
 You can call this function from the command line:
 

@@ -13,7 +13,7 @@ interface TileDescriptor {
 const singleTile: TileDescriptor = {
   label: "Need help?",
   description:
-    "Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:",
+    "Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? Ask AI or reach out to ICP developers via Discord or the Forum:",
   icon: (
     <img
       src="/img/docs/Badges.png"
@@ -23,16 +23,9 @@ const singleTile: TileDescriptor = {
     />
   ),
   links: [
+    { text: "Ask AI", href: "https://internetcomputer.org/ai" },
     { text: "Developer Discord", href: "https://discord.internetcomputer.org" },
-    { text: "Developer Liftoff forum discussion", href: "https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893" },
-    { text: "Developer tooling working group", href: "https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich" },
-    { text: "Motoko Bootcamp - The DAO Adventure", href: "https://github.com/motoko-bootcamp/dao-adventure" },
-    { text: "Motoko Bootcamp - Discord community", href: "https://discord.gg/YbksCUxdzk" },
-    { text: "Motoko developer working group", href: "https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich" },
-    { text: "Upcoming events and conferences", href: "https://dfinity.org/events-and-news/)" },
-    { text: "Upcoming hackathons", href: "https://dfinity.org/hackathons/" },
-    { text: "Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat.", href: "https://discord.internetcomputer.org" },
-    { text: "Submit your feedback to the ICP Developer feedback board", href: "https://dx.internetcomputer.org" },
+    { text: "Developer Forum", href: "https://forum.dfinity.org" },
   ],
 };
 

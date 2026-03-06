@@ -16,11 +16,11 @@ Ordinals are available through an open-source [GitHub project](https://github.co
 
 ## Ordinals on ICP
 
-Canisters deployed on ICP can sign and submit transactions directly to the Bitcoin network through ICP's Bitcoin integration and [threshold signatures](/docs/references/t-sigs-how-it-works). Specifically, for a canister to inscribe Ordinals, it must sign transactions using [threshold Schnorr signatures](/docs/references/t-sigs-how-it-works#deuterium-schnorr-release-beta) and have a [Bitcoin taproot address](/docs/build-on-btc/btc-transactions/generate-addresses#generating-addresses-with-threshold-schnorr).
+Canisters deployed on ICP can sign and submit transactions directly to the Bitcoin network through ICP's Bitcoin integration and [threshold signatures](/references/t-sigs-how-it-works). Specifically, for a canister to inscribe Ordinals, it must sign transactions using [threshold Schnorr signatures](/references/t-sigs-how-it-works#deuterium-schnorr-release-beta) and have a [Bitcoin taproot address](/build-on-btc/btc-transactions/generate-addresses#generating-addresses-with-threshold-schnorr).
 
 ## Inscribing an Ordinal
 
-To inscribe an Ordinal through a canister on ICP, first you will need to call the `schnorr_public_key` API to obtain a Schnorr public key. This public key will be used to generate a Bitcoin taproot (P2TR) address for your canister. A taproot address is required to sign and submit Ordinal inscription transactions on Bitcoin. [Learn more about Bitcoin taproot addresses](/docs/build-on-btc/btc-transactions/generate-addresses#generating-addresses-with-threshold-schnorr).
+To inscribe an Ordinal through a canister on ICP, first you will need to call the `schnorr_public_key` API to obtain a Schnorr public key. This public key will be used to generate a Bitcoin taproot (P2TR) address for your canister. A taproot address is required to sign and submit Ordinal inscription transactions on Bitcoin. [Learn more about Bitcoin taproot addresses](/build-on-btc/btc-transactions/generate-addresses#generating-addresses-with-threshold-schnorr).
 
 Once you have generated a taproot address for your canister, you will need to write a canister method that creates an inscription transaction, then signs that transaction with your canister's Schnorr public key. Here's an example of an inscription transaction written in Rust:
 

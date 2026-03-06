@@ -32,3 +32,6 @@ unlighthouse.config.ts
 .netlify
 /roadmap/roadmap.json
 /roadmap/roadmap.d.ts
+
+# ICP-CLI local/cache files (keep .icp/data/mappings/ for IC mainnet IDs)
+.icp/cache/

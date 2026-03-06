@@ -24,17 +24,17 @@ The **EVM RPC** canister is used for communicating with [Ethereum](https://ether
 
 - Querying the state of a smart contract.
 
-:::caution
 
-For creating and signing transactions, using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) provides a more seamless workflow. Requests made using [`ic-alloy`](https://ic-alloy.dev/getting-started.html) are not replicated between more than one RPC provider, but that is acceptable when submitting signed transactions.
 
-For querying token balances, verifying that transactions have the right number of confirmations, or other workflows that rely on replicated responses, using the EVM-RPC canister directly provides a better experience.
+:::info
+
+The [EVM RPC client](https://docs.rs/evm_rpc_client/) crate provides a more seamless experience when interacting with the EVM RPC canister from Rust code and allows working with the [Alloy](https://alloy.rs) library.
 
 :::
 
 To use the EVM RPC canister, you can send requests to the [instance deployed on the mainnet](https://dashboard.internetcomputer.org/canister/7hfb6-caaaa-aaaar-qadga-cai), or you can fork the source code and deploy your own instance of the canister.
 
-The source code for this project is available on GitHub ([internet-computer-protocol/evm-rpc-canister](https://github.com/internet-computer-protocol/evm-rpc-canister) ⭐️) under the Apache 2.0 license.
+The source code for this project is available on GitHub ([dfinity/evm-rpc-canister](https://github.com/dfinity/evm-rpc-canister)) under the Apache 2.0 license.
 
 ## Goal
 
@@ -80,12 +80,12 @@ To provide a solution for developers, the production EVM RPC canister is configu
 
 ## Costs
 
-Calls made to the EVM RPC canister cost [cycles](/docs/building-apps/getting-started/tokens-and-cycles). The cost per request is generally similar to making the equivalent [HTTPS outcalls](/docs/references/https-outcalls-how-it-works#pricing) in your own canister.
+Calls made to the EVM RPC canister cost [cycles](/building-apps/getting-started/tokens-and-cycles). The cost per request is generally similar to making the equivalent [HTTPS outcalls](/references/https-outcalls-how-it-works#pricing) in your own canister.
 
 Learn more about the [costs of EVM RPC requests](costs.mdx).
 
 ## Deployed canister
 
-The EVM RPC canister runs on the 34-node [fiduciary subnet](/docs/building-apps/developing-canisters/create) with the following principal: [`7hfb6-caaaa-aaaar-qadga-cai`](https://dashboard.internetcomputer.org/canister/7hfb6-caaaa-aaaar-qadga-cai).
+The EVM RPC canister runs on the 34-node [fiduciary subnet](/building-apps/developing-canisters/create) with the following principal: [`7hfb6-caaaa-aaaar-qadga-cai`](https://dashboard.internetcomputer.org/canister/7hfb6-caaaa-aaaar-qadga-cai).
 
 Refer to the [GitHub repository](https://github.com/internet-computer-protocol/evm-rpc-canister?tab=readme-ov-file#reproducible-builds) for information on how to verify the hash of the deployed WebAssembly module.

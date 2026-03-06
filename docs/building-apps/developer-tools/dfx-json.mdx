@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["dfx", "Reference"]} />
 
-Every project created and deployed with `dfx` requires a `dfx.json` file to be present in the project's root directory. The `dfx.json` file configures the project's settings, such as the canisters in the project, their name, type, and source file, default project build settings, and other configuration parameters such as Wasm optimizations. This page will detail some of the most common configuration options. For a full list of the possible configuration settings in `dfx.json`, view the [`dfx.json` schema](/docs/building-apps/developer-tools/dfx-json-reference).
+Every project created and deployed with `dfx` requires a `dfx.json` file to be present in the project's root directory. The `dfx.json` file configures the project's settings, such as the canisters in the project, their name, type, and source file, default project build settings, and other configuration parameters such as Wasm optimizations. This page will detail some of the most common configuration options. For a full list of the possible configuration settings in `dfx.json`, view the [`dfx.json` schema](/building-apps/developer-tools/dfx-json-reference).
 
 ## Default `dfx.json` file
 
@@ -189,7 +189,7 @@ Other fields applicable to all canister types include:
 
     - **`log_visibility`**: Defines access control for the canister's logs. Can be `"public"`, `"controllers"`, or an object with `"allowed_viewers": ["<principal>", ...]`.
 
-    - **`memory_allocation`** (`Byte`): Max memory (in bytes) for the canister. Can be integer or string with units (i.e. `72`, "2KB", or "4 MiB").
+    - **`memory_allocation`** (`Byte`): Memory (in bytes) guaranteed to be available for the canister. Can be integer or string with units (i.e. `72`, "2KB", or "4 MiB").
 
     - **`reserved_cycles_limit`** (`uint128 | null`): Upper limit of reserved cycles. Reserved cycles are cycles that the system sets aside for future use by the canister. If a subnet's storage exceeds 750 GiB, then every time a canister allocates new storage bytes, the system sets aside some amount of cycles from the main balance of the canister. These reserved cycles will be used to cover future payments for the newly allocated bytes. The reserved cycles are not transferable and the amount of reserved cycles depends on how full the subnet is.\n\nA setting of 0 means that the canister will trap if it tries to allocate new storage while the subnet's memory usage exceeds 750 GiB.
 
@@ -379,7 +379,7 @@ Other fields applicable to all canister types include:
 
 ### `networks`
 
-**Description**: Define custom local networks. [Learn more about custom network definitions and configurations](/docs/building-apps/developing-canisters/custom-networks).
+**Description**: Define custom local networks. [Learn more about custom network definitions and configurations](/building-apps/developing-canisters/custom-networks).
 
 
 **Example:**
@@ -441,5 +441,5 @@ Other fields applicable to all canister types include:
 
 ## Further reading
 
-There are several workflow-specific `dfx.json` configuration options detailed in the full [`dfx.json` schema](/docs/building-apps/developer-tools/dfx-json-reference).
+There are several workflow-specific `dfx.json` configuration options detailed in the full [`dfx.json` schema](/building-apps/developer-tools/dfx-json-reference).
 

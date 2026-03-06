@@ -31,7 +31,7 @@ By default, a canister's stable memory is empty. The maximum storage limit for s
 
 Storage cost is calculated based on the GiB of storage used by a canister per second, costing `127_000` <GlossaryTooltip>cycles</GlossaryTooltip> on a 13-node [subnet](https://learn.internetcomputer.org/hc/en-us/articles/34209955782420-Subnet-Creation) and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.43 and $1.13, respectively, for storing 1 GiB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both.
 
-[Learn more about storage costs](/docs/building-apps/essentials/gas-cost).
+[Learn more about storage costs](/building-apps/essentials/gas-cost).
 
 ## Storage handling in different languages
 
@@ -113,8 +113,7 @@ To utilize stable memory when upgrading a Rust canister, the following workflow 
 
 Common errors related to canister memory include:
 
-- [Out of memory](/docs/references/execution-errors#out-of-memory).
-- [Memory access limit exceeded](/docs/references/execution-errors#memory-access-limit-exceeded).
-- [Wasm memory limit exceeded](/docs/references/execution-errors#wasm-memory-limit-exceeded).
-- [Not enough memory allocation given](/docs/references/execution-errors#not-enough-memory-allocation-given).
-- [Wasm chunk store error](/docs/references/execution-errors#wasm-chunk-store-error).
+- [Out of memory](/references/execution-errors#out-of-memory).
+- [Memory access limit exceeded](/references/execution-errors#memory-access-limit-exceeded).
+- [Wasm memory limit exceeded](/references/execution-errors#wasm-memory-limit-exceeded).
+- [Wasm chunk store error](/references/execution-errors#wasm-chunk-store-error).

@@ -117,7 +117,7 @@ As mentioned already further above, there are multiple possible extensions under
 
 ## Coding HTTPS outcalls
 
-Next, this guide provides important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application, as you need to consider aspects like responses going through consensus and the idempotency of `POST` requests. Refer to the API definition of the feature in [the Internet Computer interface specification](/docs/references/ic-interface-spec#ic-http_request) for more information.
+Next, this guide provides important information for engineers who want to use canister HTTP requests in their canister smart contracts. Using canister HTTP requests is somewhat harder in the general case than doing HTTP requests in a regular enterprise application, as you need to consider aspects like responses going through consensus and the idempotency of `POST` requests. Refer to the API definition of the feature in [the Internet Computer interface specification](/references/ic-interface-spec#ic-http_request) for more information.
 
 ### Recipe for coding a canister HTTP call
 
@@ -170,7 +170,7 @@ Developers new to the feature are likely to run into certain problems in the beg
 
 ### Pricing
 
-[View the cycles cost for an HTTPS outcall request](/docs/references/cycles-cost-formulas#https-outcalls).
+[View the cycles cost for an HTTPS outcall request](/references/cycles-cost-formulas#https-outcalls).
 The cycles provided with the call must be sufficient for covering the cost of the request; excessive cycles are returned to the caller.
 
 The current pricing is defined to be rather conservative (expensive), and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTPS outcall with a small response, like the ones used for querying financial APIs, only costs fractions of a USD cent, which is substantially cheaper than fees charged for a call by oracles on most blockchains.

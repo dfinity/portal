@@ -88,9 +88,9 @@ The order of messages in the queue depends on the implementation; it is not nece
 
 ### Canister storage
 
-There are two types of [storage](/docs/building-apps/canister-management/storage) available to a canister: Wasm memory and stable memory. Wasm memory is automatically used for heap-allocated objects and has a maximum size limitation of 6GiB. Both 32-bit and 64-bit heap storage are supported. A canister upgrade clears the Wasm memory.
+There are two types of [storage](/building-apps/canister-management/storage) available to a canister: Wasm memory and stable memory. Wasm memory is automatically used for heap-allocated objects and has a maximum size limitation of 6GiB. Both 32-bit and 64-bit heap storage are supported. A canister upgrade clears the Wasm memory.
 
-Stable memory is 64-bit with a maximum size limitation of 500GiB. Functions can access a canister’s stable memory by calling special [system functions](/docs/references/ic-interface-spec#system-api-stable-memory). Stable memory is preserved across canister upgrades.
+Stable memory is 64-bit with a maximum size limitation of 500GiB. Functions can access a canister’s stable memory by calling special [system functions](/references/ic-interface-spec#system-api-stable-memory). Stable memory is preserved across canister upgrades.
 
 The system automatically commits all memory modifications, both Wasm and stable, after the successful execution of a message. If a message execution fails, the changes are not committed.
 
@@ -102,12 +102,12 @@ Each call to another canister consists of two messages: the outgoing call messag
 
 ### Cycles balance
 
-Canisters pay for execution in [cycles](/docs/building-apps/essentials/gas-cost). The cost of execution depends on the number and type of executed Wasm instructions. The system charges this cost to the cycles balance of the canister for both successful and failed executions.
+Canisters pay for execution in [cycles](/building-apps/essentials/gas-cost). The cost of execution depends on the number and type of executed Wasm instructions. The system charges this cost to the cycles balance of the canister for both successful and failed executions.
 
 ### Controllers
 
-[Controllers](/docs/building-apps/canister-management/control) are principals who have permission to perform system-level operations on the canister, such as stopping, starting, upgrading it, etc. Both users and canisters can be configured as controllers. If the canister has no controllers, then it is immutable; the Wasm code cannot be upgraded and changed.
+[Controllers](/building-apps/canister-management/control) are principals who have permission to perform system-level operations on the canister, such as stopping, starting, upgrading it, etc. Both users and canisters can be configured as controllers. If the canister has no controllers, then it is immutable; the Wasm code cannot be upgraded and changed.
 
 ### Settings
 
-Canisters have various settings and flags that can be modified by the controllers of the canister. For example, a controller can set the canister’s compute allocation, memory allocation, or cycles freezing threshold. [View the full list of canister settings](/docs/references/ic-interface-spec#ic-create_canister).
+Canisters have various settings and flags that can be modified by the controllers of the canister. For example, a controller can set the canister’s compute allocation, memory allocation, or cycles freezing threshold. [View the full list of canister settings](/references/ic-interface-spec#ic-create_canister).

@@ -38,7 +38,7 @@ Canister developers often require access to secure randomness in their canisters
 * **Unbiased:** The value shouldn't be influenced by anyone.
 * **Unpredictable:** The value is unknown to anyone before it is generated.
 
-ICP exposes the system API [`raw_rand`](/docs/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer#h_01JJC3095KD0SV7YXMKNEE8YHZ). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy, such as current time.
+ICP exposes the system API [`raw_rand`](/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://learn.internetcomputer.org/hc/en-us/articles/34208985618836-Execution-Layer#h_01JJC3095KD0SV7YXMKNEE8YHZ). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy, such as current time.
 
 To illustrate the usage of `raw_rand`, two examples in Motoko and Rust can be found below, including the benefits and caveats around using them.
 
@@ -155,10 +155,20 @@ fn random_bytes(size: u32) -> RandomBytesResult {
 - This method scales for large random bytes, as `raw_rand` needs to be called only once, and subsequent PRNG computation is local to the canister.
 
 #### Caveats:
-- The `setup_randomness` must **always** be initialized in both the `init` and `post_upgrade` hook as `init` [is not invoked during a canister upgrade](/docs/references/ic-interface-spec#system-api-upgrades).
+- The `setup_randomness` must **always** be initialized in both the `init` and `post_upgrade` hook as `init` [is not invoked during a canister upgrade](/references/ic-interface-spec#system-api-upgrades).
 - The `init` and `post_upgrade` methods don't allow async calls, and thus a timer is immediately scheduled to seed the randomness.
 - Once the seed is initialized, the outcome of all future `random_bytes` is predictable to anyone having the seed (node providers), as the PRNG is deterministic. This breaks the unpredictable property of secure randomness. Hence, to balance security vs. performance, we recommend frequently reseeding the PRNG on a timer. The example above already does this with a duration of **1 hour**. However, based on the sensitivity of their dapp, developers can choose an appropriate reseeding interval by setting `SEEDING_INTERVAL`.
 - The `random_bytes` must **always** be an `update` method, so the PRNG can preserve the state and offer unique randomness on every request.
+
+## Verify that your canister doesn't export malicious endpoints
+
+### Security concern
+
+Malicious code that could for example be introduced through a library in a supply chain attack could maliciously export canister endpoints, potentially leading to exposure of sensitive data, malicious canister state changes, or denial of service.
+
+### Recommendation
+
+Verify in your CI pipeline that the endpoints a canister's WASM exports are legitimate and as intended. [The `ic-wasm check-endpoints` command can be used for that purpose](https://github.com/dfinity/ic-wasm/blob/main/README.md#check-endpoints).
 
 ## Test your canister code even in the presence of system API calls
 
@@ -248,7 +258,7 @@ It should be possible to verify that a canister does what it claims to do. ICP p
 
 ### Recommendation
 
-Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/docs/building-apps/best-practices/reproducible-builds).
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/building-apps/best-practices/reproducible-builds).
 
 ## Don’t rely on time being strictly monotonic
 

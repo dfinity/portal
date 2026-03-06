@@ -20,13 +20,13 @@ Currently, ICP supports an integration with the Bitcoin network that includes th
 
 ## Bitcoin integration architecture
 
-ICP's direct integration with Bitcoin uses a novel protocol for chain-key signatures based on **threshold signatures**. [Threshold ECDSA](/docs/references/t-sigs-how-it-works/) and threshold Schnorr are protocol suites that include several features like [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/docs/references/t-sigs-how-it-works/#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/docs/references/t-sigs-how-it-works/#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
+ICP's direct integration with Bitcoin uses a novel protocol for chain-key signatures based on **threshold signatures**. [Threshold ECDSA](/references/t-sigs-how-it-works/) and threshold Schnorr are protocol suites that include several features like [key generation](https://csrc.nist.gov/glossary/term/key_generation), [periodic key re-sharing](https://www.youtube.com/watch?v=gKUi-2T7tdc), [computing pre-signatures](/references/t-sigs-how-it-works/#:~:text=Computing%20pre%2Dsignatures%2C%20signing%3A,requests%20to%20precompute%20pre%20signatures), [XNet key re-sharing](/references/t-sigs-how-it-works/#:~:text=XNet%20key%20re,source%20subnet%20uses), and public key retrieval.
 
 On a high level, subnets that have ECDSA and Schnorr enabled hold a master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA or Schnorr keys. It is important to know that an ECDSA or Schnorr private key only exists in a secret-shared form during its lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
 
-The Developer Liftoff will dive deeper into threshold signatures in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/references/t-sigs-how-it-works/).
+The Developer Liftoff will dive deeper into threshold signatures in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/references/t-sigs-how-it-works/).
 
-On the protocol level, the [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration) and chain-key signatures each expose an API on the management canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA and Schnorr signature APIs can be used for other workflows, such as the integration with other blockchains like Ethereum.
+On the protocol level, the [Bitcoin integration](https://learn.internetcomputer.org/hc/en-us/articles/34211154520084-Bitcoin-Integration) and chain-key signatures each expose an API on the management canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA and Schnorr signature APIs can be used for other workflows, such as the integration with other blockchains like Ethereum.
 
 Through ICP's integration with the Bitcoin network, canisters deployed on ICP are able to receive, hold, and send bitcoin. Each of these functions utilizes transactions on the Bitcoin network and allows canisters to act as if they are users on the Bitcoin network.
 
@@ -303,7 +303,7 @@ dfx canister call basic_bitcoin get_balance '("n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8
 ## Resources
 
 - [ckBTC wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
-- [ckBTC developer documentation page](/docs/defi/chain-key-tokens/ckbtc/overview).
+- [ckBTC developer documentation page](/defi/chain-key-tokens/ckbtc/overview).
 - [Bitcoin integration GitHub repository](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter).
 
 import TutorialFooter from "@site/src/components/TutorialFooter/";
