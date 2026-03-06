@@ -2435,6 +2435,20 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: `controllers`.
 
+-   `snapshot_visibility` (`snapshot_visibility`)
+
+    Controls who can access the canister's snapshots through the following endpoints of the management canister:
+    - `read_canister_snapshot_metadata`
+    - `read_canister_snapshot_data`
+    - `list_canister_snapshots`
+
+    Can be one of:
+    - `controllers`: Only the canister's controllers can read its snapshots
+    - `public`: Anyone can read the canister's snapshots
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read its snapshots, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -2574,7 +2588,9 @@ Indicates various information about the canister. It contains:
 
     -   The reserved cycles limit of the canister, i.e., the maximum number of cycles that can be in the canister's reserved balance after increasing the canister's memory allocation and/or actual memory usage.
 
-    -   The canister log visibility of the canister.
+    -   The visibility of the canister's logs.
+
+    -   The visibility of the canister's snapshots.
 
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
@@ -3103,7 +3119,10 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read metadata of a snapshot of that canister.
+Who is allowed to read the metadata of a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots metadata
+- `public`: Anyone can read the canister's snapshots metadata
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots metadata, the maximum length of the list is 10
 
 This method returns all metadata of a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3135,7 +3154,10 @@ The state of the global timer and on low wasm memory hook are `null` for existin
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read data of a snapshot of that canister.
+Who is allowed to read a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots
+- `public`: Anyone can read the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots, the maximum length of the list is 10
 
 This method returns a requested kind of (binary) data from a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3200,7 +3222,12 @@ It's important to note that uploading a chunk to the WASM chunk store of the sna
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots.
+This method lists the snapshots of the canister identified by `canister_id`.
+
+Who is allowed to list the snapshots of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can list its snapshots
+- `public`: Anyone can list the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can list the snapshots, the maximum length of the list is 10
 
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
@@ -4062,6 +4089,10 @@ CanisterLogVisibility
   = Controllers
   | Public
   | AllowedViewers [Principal]
+CanisterSnapshotVisibility
+  = Controllers
+  | Public
+  | AllowedViewers [Principal]
 CanisterLog = {
   idx : Nat;
   timestamp_nanos : Nat;
@@ -4115,6 +4146,7 @@ S = {
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;
   canister_log_visibility: CanisterId ↦ CanisterLogVisibility;
+  canister_snapshot_visibility: CanisterId ↦ CanisterSnapshotVisibility;
   canister_logs: CanisterId ↦ [CanisterLog];
   query_stats: CanisterId ↦ [QueryStats];
   system_time : Timestamp
@@ -4223,6 +4255,7 @@ The initial state of the IC is
   certified_data = ();
   canister_history = ();
   canister_log_visibility = ();
+  canister_snapshot_visibility = ();
   canister_logs = ();
   query_stats = ();
   system_time = T;
@@ -5201,6 +5234,10 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -5228,6 +5265,7 @@ S' = S with
     query_stats[Canister_id] = []
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
@@ -5363,6 +5401,8 @@ S' = S with
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
+    if A.settings.snapshot_visibility is not null:
+      canister_snapshot_visibility[A.canister_id] = A.settings.snapshot_visibility
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
@@ -6310,6 +6350,7 @@ S with
     certified_data[A.canister_id] = (deleted)
     canister_history[A.canister_id] = (deleted)
     canister_log_visibility[A.canister_id] = (deleted)
+   canister_snapshot_visibility[A.canister_id] = (deleted)
     canister_logs[A.canister_id] = (deleted)
     query_stats[A.canister_id] = (deleted)
     chunk_store[A.canister_id] = (deleted)
@@ -6542,6 +6583,10 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -6567,6 +6612,7 @@ S' = S with
     certified_data[Canister_id] = ""
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     query_stats[CanisterId] = []
     messages = Older_messages · Younger_messages ·
@@ -6896,7 +6942,7 @@ S' = S with
 
 #### IC Management Canister: Read snapshot metadata
 
-Only the controllers of the given canister can read metadata of its snapshots.
+Access to the metadata of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6905,7 +6951,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_metadata'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -6942,7 +6992,7 @@ S with
 
 #### IC Management Canister: Read snapshot data
 
-Only the controllers of the given canister can read (binary) data of its snapshots.
+Access to the (binary) data of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6951,7 +7001,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_data'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -7130,7 +7184,7 @@ S' = S with
 
 #### IC Management Canister: List canister snapshots
 
-Only the controllers of the given canister can get a list of the existing snapshots.
+Access to the list of the existing snapshots of a canister is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -7139,7 +7193,12 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'list_canister_snapshots'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
+
 
 Snapshots = [{
   id = Snapshot_id;
@@ -7506,6 +7565,8 @@ S with
   canister_history[Canister_id] = (deleted)
   canister_log_visibility[New_canister_id] = S.canister_log_visibility[Canister_id]
   canister_log_visibility[Canister_id] = (deleted)
+  canister_snapshot_visibility[New_canister_id] = S.canister_snapshot_visibility[Canister_id]
+  canister_snapshot_visibility[Canister_id] = (deleted)
   canister_logs[New_canister_id] = S.canister_logs[Canister_id]
   canister_logs[Canister_id] = (deleted)
   query_stats[New_canister_id] = S.query_stats[Canister_id]
