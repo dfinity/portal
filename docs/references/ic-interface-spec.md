@@ -3235,8 +3235,8 @@ A single log is a record with the following fields:
 - `content` (`blob`): the actual content of the log;
 
 To filter canister logs, an optional filter can be provided and have one of the following variants:
-- `by_idx` (`record { start : nat64; end : nat64 }`): only logs are returned whose `idx` is within the provided range (`start` is inclusive, but `end` are exclusive);
-- `by_timestamp_nanos` (`record { start : nat64; end : nat64 }`): only logs are returned whose `timestamp_nanos` is within the provided range (`start` is inclusive, but `end` are exclusive).
+- `by_idx` (`record { start : nat64; end : nat64 }`): only logs are returned whose `idx` is within the provided range (`start` is inclusive, but `end` is exclusive);
+- `by_timestamp_nanos` (`record { start : nat64; end : nat64 }`): only logs are returned whose `timestamp_nanos` is within the provided range (`start` is inclusive, but `end` is exclusive).
 
 :::warning
 
