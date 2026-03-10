@@ -494,6 +494,10 @@ The state tree contains information about the topology of the Internet Computer.
 
     The public key of the subnet (a DER-encoded BLS key, see [Certification](#certification))
 
+-   `/subnet/<subnet_id>/type` (text)
+
+    The subnet type of the subnet. Possible values are "application", "system", "verified_application", and "cloud_engine" (without quotes).
+
 -   `/subnet/<subnet_id>/canister_ranges` (blob)
 
     The set of canister ids assigned to this subnet, represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
@@ -894,7 +898,7 @@ All requested paths must have the following form:
 
 -   `/canister_ranges/<subnet_id>`. Can only be requested at `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
--   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
+-   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/type`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
 -   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is the root subnet ID. Can always be requested.
 
@@ -7921,6 +7925,7 @@ may_read_path_for_canister(S, _, ["time"]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_canister(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_canister(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid]) = True
@@ -7979,6 +7984,7 @@ may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_subnet(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_subnet_id>
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
@@ -7995,7 +8001,7 @@ where `state_tree` constructs a labeled tree from the IC state `S` and the (so f
 state_tree(S) = {
   "time": S.system_time;
   "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
-  "subnet": { subnet_id : { "public_key" : subnet_pk; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
+  "subnet": { subnet_id : { "public_key" : subnet_pk; "type" : <implementation-specific> ; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
   "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == root_subnet_id };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
