@@ -1574,8 +1574,8 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
     ic0.msg_caller_info_data_size : () -> I;                                              // *
     ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) -> ();                // *
-    ic0.msg_caller_info_sender_size : () -> I;                                            // *
-    ic0.msg_caller_info_sender_copy : (dst : I, offset : I, size : I) -> ();              // *
+    ic0.msg_caller_info_signer_size : () -> I;                                            // *
+    ic0.msg_caller_info_signer_copy : (dst : I, offset : I, size : I) -> ();              // *
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt C
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
