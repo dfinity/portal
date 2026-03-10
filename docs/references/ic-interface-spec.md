@@ -2944,7 +2944,7 @@ In the replicated mode, the responses for all identical requests must match, too
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request (both in replicated and non-replicated modes). Only the transformed response will be available to the calling canister.
 
-Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
+Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Additionally, the `PUT` and `DELETE` methods are supported in non-replicated mode only. `PUT` and `DELETE` are restricted to non-replicated mode to avoid confusing race conditions that may occur with replicated execution.
 
 It is important to note the following for the usage of the `POST` method:
 
@@ -2968,7 +2968,7 @@ The following parameters should be supplied for the call:
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
--   `method` - currently, only GET, HEAD, and POST are supported
+-   `method` - currently, `GET`, `HEAD`, and `POST` are supported. Additionally, `PUT` and `DELETE` are supported in non-replicated mode only.
 
 -   `headers` - list of HTTP request headers and their corresponding values
 
