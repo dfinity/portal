@@ -745,15 +745,21 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
-
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call.
 
 -   `arg` (`blob`): Argument to pass to the canister method.
 
-The HTTP response to this request can have the following forms:
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature). The field `sender_pubkey` (see [Authentication](#authentication)) must be equal to the public key of the [canister signature](#canister-signature).
+
+-The HTTP response to this request can have the following forms:
 
 -   200 HTTP status with a non-empty body. This status is returned if the canister call completed within an implementation-specific timeout or was rejected within an implementation-specific timeout.
     
