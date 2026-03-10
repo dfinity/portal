@@ -2,7 +2,6 @@ import Link from "@docusaurus/Link";
 import React, { FC, ReactNode } from "react";
 import { QueryClient } from "react-query";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
-import Blog from "./Blog";
 import {
   CarouselCard,
   TeaserCard,
@@ -543,9 +542,6 @@ const DocsHomePage: FC = () => {
         </div>
       </div>
 
-      <section>
-        <Blog />
-      </section>
       {/* <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
         {footerCards.map((card, index) => (
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
