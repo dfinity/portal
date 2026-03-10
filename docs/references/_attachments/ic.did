@@ -632,16 +632,12 @@ type cycles_consumed = record {
   vetkd : nat;
 }
 
-type cycles_metrics = record {
-  cycles_consumed : cycles_consumed;
-}
-
 type canister_metrics_args = record {
   canister_id : canister_id;
 }
 
 type canister_metrics_result = record {
-  cycles_metrics : cycles_metrics;
+  cycles_consumed : cycles_consumed;
 }
 
 service ic : {
