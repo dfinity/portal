@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.56.0 (2025-03-09) {$0_56_0}
+* Support for the HTTP methods `PUT` and `DELETE` in canister `http_request` in non-replicated mode.
+
 ### 0.55.0 (2025-01-26) {$0_55_0}
 * Support for canister renaming (required for canister ID migration from one subnet to another subnet).
 
