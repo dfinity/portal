@@ -294,6 +294,13 @@ const redirects = `
   /current/motoko/main/base/trieset /motoko/base/TrieSet
   /motoko/main/base/TrieSet /motoko/base/TrieSet
   /current/motoko/main/base/TrieSet /motoko/base/TrieSet
+  # Motoko base -> core (recommended standard library)
+  /motoko/base/Debug /motoko/core/Debug
+  /motoko/base/Timer /motoko/core/Timer
+  /motoko/base/Random /motoko/core/Random
+  /motoko/base/ExperimentalCycles /motoko/core/Cycles
+  /motoko/base/ExperimentalInternetComputer /motoko/core/InternetComputer
+
   /motoko/main/canister-maintenance/compatibility /motoko/home
   /current/motoko/main/canister-maintenance/compatibility /motoko/home
   /motoko/main/canister-maintenance/cycles /building-apps/getting-started/tokens-and-cycles
