@@ -485,6 +485,7 @@ const redirects = `
   /current/developer-docs/defi/nfts/overview https://internetcomputer.zendesk.com/hc/en-us
   /current/developer-docs/defi/overview /defi/overview
   /current/developer-docs/defi/token_integrations/ /defi/overview
+  /building-apps/chain-fusion/* /defi/chain-fusion/:splat
 
   ## Rosetta
   /current/developer-docs/defi/rosetta/overview /defi/rosetta/icp_rosetta/
