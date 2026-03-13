@@ -8455,7 +8455,7 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_query <method>`, and has value
     ```
-    query_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer,, sysenv, available) → λ wasm_state →
+    query_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with {
