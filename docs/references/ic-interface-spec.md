@@ -757,7 +757,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
-    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator. The field `sender_pubkey` (see [Authentication](#authentication)) must be equal to the public key of the [canister signature](#canister-signature).
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 -The HTTP response to this request can have the following forms:
 
