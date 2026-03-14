@@ -7863,7 +7863,7 @@ Composite query methods can call query methods and composite query methods up to
 
 We define an auxiliary method that handles calls from composite query methods by performing a call graph traversal. It can also be (trivially) invoked for query methods that do not make further calls.
 ```
-composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, Method_name, Arg) =
+composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Caller_info_data, Caller_info_signer, Canister_id, Method_name, Arg) =
   let Mod = S.canisters[Canister_id].module
   let Cert <- { Cert | verify_cert(Cert) and
                        lookup(["canister", Canister_id, "certified_data"], Cert) = Found S.certified_data[Canister_id] and
@@ -7901,7 +7901,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      if liquid_balance(S, Canister_id) < 0
      then
        Return (Reject (SYS_TRANSIENT, <implementation-specific>), Cycles, S)
-     let R = F(Arg, Caller, Env)(W)
+     let R = F(Arg, Caller, Caller_info_data, Caller_info_signer, Env)(W)
      if R = Trap trap
      then Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles - trap.cycles_used, S)
      else if R = Return {new_state = W'; new_calls = Calls; response = Response; cycles_used = Cycles_used}
@@ -7923,14 +7923,14 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               if S.canister_subnet[Canister_id].subnet_id ≠ S.canister_subnet[Call.callee].subnet_id
               then
                  Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S) // calling to another subnet
-              let (Response', Cycles', S') = composite_query_helper(S, Cycles, Depth + 1, Root_canister_id, Canister_id, Call.callee, Call.method_name, Call.arg)
+              let (Response', Cycles', S') = composite_query_helper(S, Cycles, Depth + 1, Root_canister_id, Canister_id, "", "", Call.callee, Call.method_name, Call.arg)
               Cycles := Cycles'
               S := S'
               if Cycles < MAX_CYCLES_PER_RESPONSE
               then
                  Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S) // composite query out of cycles
               Env.Cert = NoCertificate // no certificate available in composite query callbacks
-              let F' = Mod.composite_callbacks(Call.callback, Response', Env)
+              let F' = Mod.composite_callbacks(Call.callback, Caller, Caller_info_data, Caller_info_signer, Response', Env)
               let R'' = F'(W')
               if R'' = Trap trap''
               then Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles - trap''.cycles_used, S)
