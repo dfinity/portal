@@ -4403,7 +4403,8 @@ Conditions
 
 E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
 if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
-  verify_signature E.sender_pubkey E.content.sender_info.sig ("\x0Eic-sender-info" · E.content.sender_info.info)
+  if not (E.content.sender_info = null):
+    verify_signature E.sender_pubkey E.content.sender_info.sig ("\x0Eic-sender-info" · E.content.sender_info.info)
 else:
   E.content.sender_info = null
 if E.content.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
@@ -5575,7 +5576,8 @@ S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
-  verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
 else:
   Q.sender_info = null
 Q.sender ∈ S.controllers[A.canister_id]
@@ -7821,7 +7823,8 @@ S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
-  verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
 else:
   Q.sender_info = null
 (S[A.canister_id].canister_log_visibility = Public)
@@ -7965,7 +7968,8 @@ Conditions
 E.content = CanisterQuery Q
 Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
-  verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
 else:
   Q.sender_info = null
 |Q.nonce| <= 32
