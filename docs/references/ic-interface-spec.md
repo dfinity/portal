@@ -745,15 +745,21 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
-
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call.
 
 -   `arg` (`blob`): Argument to pass to the canister method.
 
-The HTTP response to this request can have the following forms:
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
+
+-The HTTP response to this request can have the following forms:
 
 -   200 HTTP status with a non-empty body. This status is returned if the canister call completed within an implementation-specific timeout or was rejected within an implementation-specific timeout.
     
@@ -793,13 +799,19 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
-
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call
 
 -   `arg` (`blob`): Argument to pass to the canister method
+
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 The HTTP response to this request can have the following responses:
 
@@ -954,13 +966,19 @@ In order to make a query call to a canister, the user makes a POST request to `/
 
 -   `request_type` (`text`): Always `"query"`.
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication).
-
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call.
 
 -   `arg` (`blob`): Argument to pass to the canister method.
+
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication).
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 The HTTP response to this request can have the following forms:
 
@@ -1554,6 +1572,10 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ TQ CQ Ry CRy F
     ic0.msg_caller_size : () -> I;                                                        // *
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
+    ic0.msg_caller_info_data_size : () -> I;                                              // U RQ NRQ CQ Ry Rt CRy CRt C CC F
+    ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) -> ();                // U RQ NRQ CQ Ry Rt CRy CRt C CC F
+    ic0.msg_caller_info_signer_size : () -> I;                                            // U RQ NRQ CQ Ry Rt CRy CRt C CC F
+    ic0.msg_caller_info_signer_copy : (dst : I, offset : I, size : I) -> ();              // U RQ NRQ CQ Ry Rt CRy CRt C CC F
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt C
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
@@ -1726,6 +1748,17 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 -   `ic0.msg_caller_size : () → I` and `ic0.msg_caller_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade. During a system task (heartbeat or global timer), this is the id of the management canister.
+
+-   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_sender_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_sender_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    Auxiliary information about the caller as provided by the canister with which the caller's identity is associated (i.e., the public key of the canister signature is equal to the public key of the caller's identity).
+    These functions only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. They return empty values when the caller is another canister.
+
+    The `caller_info_data` may include information such as identity attributes of the caller.
+    The `_sender_` functions return the canister id of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
+    This can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
+
+    These functions trap in `canister_init`, `canister_post_upgrade`, `canister_pre_upgrade`, canister http outcall transform, the `(start)` module initialization function, and system tasks (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`).
 
 -   `ic0.msg_reject_code : () → i32`
 
@@ -3689,6 +3722,12 @@ calculates self-authenticating ids.
 
 The function
 ```
+canister_signature_pk : Principal -> Blob -> PublicKey
+```
+calculates the public key of a [canister signature](#canister-signatures).
+
+The function
+```
 mk_derived_id : Principal -> Blob -> Principal
 mk_derived_id p nonce = H(|p| · p · nonce) · 0x03
 ```
@@ -3734,6 +3773,8 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
 
     Arg = Blob;
     CallerId = Principal;
+    CallerInfoData = Blob;
+    CallerInfoSigner = Blob;
 
     Timestamp = Nat;
     CanisterVersion = Nat;
@@ -3819,15 +3860,15 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
         new_global_timer : NoGlobalTimer | Nat;
         cycles_used : Nat;
       }
-      update_methods : MethodName ↦ ((Arg, CallerId, Deadline, Env, AvailableCycles) -> UpdateFunc)
-      query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
-      composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
+      update_methods : MethodName ↦ ((Arg, CallerId, CallerInfoData, CallerInfoSigner, Deadline, Env, AvailableCycles) -> UpdateFunc)
+      query_methods : MethodName ↦ ((Arg, CallerId, CallerInfoData, CallerInfoSigner, Env) -> QueryFunc)
+      composite_query_methods : MethodName ↦ ((Arg, CallerId, CallerInfoData, CallerInfoSigner, Env) -> CompositeQueryFunc)
       heartbeat : (Env) -> SystemTaskFunc
       global_timer : (Env) -> SystemTaskFunc
       on_low_wasm_memory : (Env) -> SystemTaskFunc
-      callbacks : (Callback, Response, Deadline, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
-      composite_callbacks : (Callback, Response, Env) -> UpdateFunc
-      inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
+      callbacks : (Callback, CallerId, CallerInfoData, CallerInfoSigner, Response, Deadline, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
+      composite_callbacks : (Callback, CallerId, CallerInfoData, CallerInfoSigner, Response, Env) -> UpdateFunc
+      inspect_message : (MethodName, WasmState, Arg, CallerId, CallerInfoData, CallerInfoSigner, Env) -> Trap | Return {
         status : Accept | Reject;
       }
     }
@@ -3858,6 +3899,10 @@ Request = {
     nonce : Blob;
     ingress_expiry : Nat;
     sender : UserId;
+    sender_info : {
+      info : Blob;
+      sig : Blob;
+    };
     canister_id : CanisterId;
     method_name : Text;
     arg : Blob;
@@ -3898,6 +3943,8 @@ Message
   = CallMessage {
       origin : CallOrigin;
       caller : Principal;
+      caller_info_data : Blob;
+      caller_info_signer : Blob;
       callee : CanisterId;
       method_name : Text;
       arg : Blob;
@@ -3906,6 +3953,9 @@ Message
     }
   | FuncMessage {
       call_context : CallId;
+      caller : Principal;
+      caller_info_data : Blob;
+      caller_info_signer : Blob;
       receiver : CanisterId;
       entry_point : EntryPoint;
       queue : Queue;
@@ -3939,6 +3989,10 @@ APIReadRequest
     nonce : Blob;
     ingress_expiry : Nat;
     sender : UserId;
+    sender_info : {
+      info : Blob;
+      sig : Blob;
+    };
     canister_id : CanisterId;
     method_name : Text;
     arg : Blob;
@@ -4348,6 +4402,21 @@ Conditions
 ```html
 
 E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (E.content.sender_info = null):
+    verify_signature E.sender_pubkey E.content.sender_info.sig ("\x0Eic-sender-info" · E.content.sender_info.info)
+else:
+  E.content.sender_info = null
+if E.content.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+  if E.content.sender_info = null:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+  else:
+    Caller_info_data = E.content.sender_info.info
+    Caller_info_signer = Signing_canister_id
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
 |E.content.nonce| <= 32
 E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
@@ -4390,7 +4459,7 @@ liquid_balance(S, E.content.canister_id) ≥ 0
     canister_version = S.canister_version[E.content.canister_id];
   }
   S.canisters[E.content.canister_id].module.inspect_message
-    (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Env) = Return {status = Accept;}
+    (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Caller_info_data, Caller_info_signer, Env) = Return {status = Accept;}
 )
 
 ```
@@ -4448,6 +4517,17 @@ S.requests[R] = (Received, ECID)
 S.system_time <= R.ingress_expiry
 C = S.canisters[R.canister_id]
 
+if R.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+  if R.sender_info = null:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+  else:
+    Caller_info_data = R.sender_info.info
+    Caller_info_signer = Signing_canister_id
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
+
 ```
 
 State after  
@@ -4460,6 +4540,8 @@ S with
       CallMessage {
         origin = FromUser { request = R };
         caller = R.sender;
+        caller_info_data = Caller_info_data;
+        caller_info_signer = Caller_info_signer;
         callee = R.canister_id;
         method_name = R.method_name;
         arg = R.arg;
@@ -4557,6 +4639,9 @@ S with
       Older_messages ·
       FuncMessage {
         call_context = Ctxt_id;
+        caller = CM.caller;
+        caller_info_data = CM.caller_info_data;
+        caller_info_signer = CM.caller_info_signer;
         receiver = CM.callee;
         entry_point = PublicMethod CM.method_name CM.caller CM.arg;
         queue = CM.queue;
@@ -4596,6 +4681,9 @@ S with
     messages =
       FuncMessage {
         call_context = Ctxt_id;
+        caller = ic_principal;
+        caller_info_data = "";
+        caller_info_signer = "";
         receiver = C;
         entry_point = Heartbeat;
         queue = Queue { from = System; to = C };
@@ -4637,6 +4725,9 @@ S with
     messages =
       FuncMessage {
         call_context = Ctxt_id;
+        caller = ic_principal;
+        caller_info_data = "";
+        caller_info_signer = "";
         receiver = C;
         entry_point = GlobalTimer;
         queue = Queue { from = System; to = C };
@@ -4678,6 +4769,9 @@ S with
     messages =
       FuncMessage {
         call_context = Ctxt_id;
+        caller = ic_principal;
+        caller_info_data = "";
+        caller_info_signer = "";
         receiver = C;
         entry_point = OnLowWasmMemory;
         queue = Queue { from = System; to = C };
@@ -4775,19 +4869,19 @@ Env = {
 
 Available = Ctxt.available_cycles
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = Mod.update_methods[Name](Arg, Caller, Deadline, Env, Available)
+  F = Mod.update_methods[Name](Arg, M.caller, M.caller_info_data, M.caller_info_signer, Deadline, Env, Available)
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = S.wasm_memory_limit[M.receiver]
 )
 or
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = query_as_update(Mod.query_methods[Name], Arg, Caller, Env, Available)
+  F = query_as_update(Mod.query_methods[Name], Arg, M.caller, M.caller_info_data, M.caller_info_signer, Env, Available)
   New_canister_version = S.canister_version[M.receiver]
   Wasm_memory_limit = 0
 )
 or
 ( M.entry_point = Callback Callback Response RefundedCycles
-  F = Mod.callbacks(Callback, Response, Deadline, RefundedCycles, Env, Available)
+  F = Mod.callbacks(Callback, M.caller, M.caller_info_data, M.caller_info_signer, Response, Deadline, RefundedCycles, Env, Available)
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = 0
 )
@@ -4867,6 +4961,8 @@ then
 
           };
           caller = M.receiver;
+          caller_info_data = "";
+          caller_info_signer = "";
           callee = call.callee;
           method_name = call.method_name;
           arg = call.arg;
@@ -4936,8 +5032,8 @@ validate_sender_canister_version(new_calls, canister_version_from_system) =
 
 The functions `query_as_update` and `system_task_as_update` turns a query function (note that composite query methods cannot be called when executing a message during this transition) resp the heartbeat or global timer into an update function; this is merely a notational trick to simplify the rule:
 ```
-query_as_update(f, arg, caller, env, available) = λ wasm_state →
-  match f(arg, caller, env, available)(wasm_state) with
+query_as_update(f, arg, caller, caller_info_data, caller_info_signer, env, available) = λ wasm_state →
+  match f(arg, caller, caller_info_data, caller_info_signer, env, available)(wasm_state) with
     Trap trap → Trap trap
     Return res → Return {
       new_state = wasm_state;
@@ -5479,6 +5575,11 @@ is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+else:
+  Q.sender_info = null
 Q.sender ∈ S.controllers[A.canister_id]
 
 ```
@@ -7211,9 +7312,32 @@ RM.origin = FromCanister {
     deadline = D
   }
 Ctxt_id ∈ dom(S.call_contexts)
-not S.call_contexts[Ctxt_id].deleted
-S.call_contexts[Ctxt_id].canister ∈ dom(S.balances)
+Ctxt = S.call_contexts[Ctxt_id]
+not Ctxt.deleted
+Ctxt.canister ∈ dom(S.balances)
 D ≠ Expired _
+
+Caller = if Ctxt.origin = FromUser { request = R }:
+  R.sender
+else if Ctxt.origin = FromCanister { calling_context = Calling_ctxt, …}:
+  S.call_contexts[Calling_ctxt].canister
+else:
+  ic_principal
+
+if Ctxt.origin = FromUser { request = R }:
+  if R.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+    if R.sender_info = null:
+      Caller_info_data = ""
+      Caller_info_signer = ""
+    else:
+      Caller_info_data = R.sender_info.data
+      Caller_info_signer = Signing_canister_id
+  else:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
 
 ```
 
@@ -7228,6 +7352,9 @@ S with
       Older_messages ·
       FuncMessage {
         call_context = Ctxt_id
+        caller = Caller
+        caller_info_data = Caller_info_data
+        caller_info_signer = Caller_info_signer
         receiver = S.call_contexts[Ctxt_id].canister
         entry_point = Callback Callback RM.response RM.refunded_cycles
         queue = Unordered
@@ -7695,6 +7822,11 @@ is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+else:
+  Q.sender_info = null
 (S[A.canister_id].canister_log_visibility = Public)
   or
   (S[A.canister_id].canister_log_visibility = Controllers and Q.sender in S[A.canister_id].controllers)
@@ -7731,7 +7863,7 @@ Composite query methods can call query methods and composite query methods up to
 
 We define an auxiliary method that handles calls from composite query methods by performing a call graph traversal. It can also be (trivially) invoked for query methods that do not make further calls.
 ```
-composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, Method_name, Arg) =
+composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Caller_info_data, Caller_info_signer, Canister_id, Method_name, Arg) =
   let Mod = S.canisters[Canister_id].module
   let Cert <- { Cert | verify_cert(Cert) and
                        lookup(["canister", Canister_id, "certified_data"], Cert) = Found S.certified_data[Canister_id] and
@@ -7769,7 +7901,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      if liquid_balance(S, Canister_id) < 0
      then
        Return (Reject (SYS_TRANSIENT, <implementation-specific>), Cycles, S)
-     let R = F(Arg, Caller, Env)(W)
+     let R = F(Arg, Caller, Caller_info_data, Caller_info_signer, Env)(W)
      if R = Trap trap
      then Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles - trap.cycles_used, S)
      else if R = Return {new_state = W'; new_calls = Calls; response = Response; cycles_used = Cycles_used}
@@ -7791,14 +7923,14 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               if S.canister_subnet[Canister_id].subnet_id ≠ S.canister_subnet[Call.callee].subnet_id
               then
                  Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S) // calling to another subnet
-              let (Response', Cycles', S') = composite_query_helper(S, Cycles, Depth + 1, Root_canister_id, Canister_id, Call.callee, Call.method_name, Call.arg)
+              let (Response', Cycles', S') = composite_query_helper(S, Cycles, Depth + 1, Root_canister_id, Canister_id, "", "", Call.callee, Call.method_name, Call.arg)
               Cycles := Cycles'
               S := S'
               if Cycles < MAX_CYCLES_PER_RESPONSE
               then
                  Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S) // composite query out of cycles
               Env.Cert = NoCertificate // no certificate available in composite query callbacks
-              let F' = Mod.composite_callbacks(Call.callback, Response', Env)
+              let F' = Mod.composite_callbacks(Call.callback, Caller, Caller_info_data, Caller_info_signer, Response', Env)
               let R'' = F'(W')
               if R'' = Trap trap''
               then Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles - trap''.cycles_used, S)
@@ -7835,20 +7967,36 @@ Conditions
 
 E.content = CanisterQuery Q
 Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+else:
+  Q.sender_info = null
 |Q.nonce| <= 32
 is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+
+if Q.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+  if Q.sender_info = null:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+  else:
+    Caller_info_data = Q.sender_info.info
+    Caller_info_signer = Signing_canister_id
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
 
 ```
 
 Query response `R`:
 
--   if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Q.canister_id, Q.method_name, Q.arg) = (Reject (RejectCode, RejectMsg), _, S')` then
+-   if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Caller_info_data, Caller_info_signer, Q.canister_id, Q.method_name, Q.arg) = (Reject (RejectCode, RejectMsg), _, S')` then
     ```
     {status: "rejected"; reject_code: RejectCode; reject_message: RejectMsg; error_code: <implementation-specific>, signatures: Sigs}
     ```
 
--   Else if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Q.canister_id, Q.method_name, Q.arg) = (Reply Res, _, S')` then
+-   Else if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Caller_info_data, Caller_info_signer, Q.canister_id, Q.method_name, Q.arg) = (Reply Res, _, S')` then
     ```
     {status: "replied"; reply: {arg: Res}, signatures: Sigs}
     ```
@@ -8047,6 +8195,8 @@ We can model the execution of WebAssembly functions as stateful functions that h
 Params = {
   arg : NoArg | Blob;
   caller : Principal;
+  caller_info_data : Blob;
+  caller_info_signer : Blob;
   reject_code : 0 | SYS_FATAL | SYS_TRANSIENT | …;
   reject_message : Text;
   sysenv : Env;
@@ -8099,6 +8249,8 @@ liquid_balance(es) =
     empty_params = {
       arg = NoArg;
       caller = ic_principal;
+      caller_info_data = "";
+      caller_info_signer = "";
       reject_code = 0;
       reject_message = "";
       sysenv = (undefined);
@@ -8277,12 +8429,14 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `update_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_update <method>`, and has value
     ```
-    update_methods[method] = λ (arg, caller, deadline, sysenv, available) → λ wasm_state →
+    update_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, deadline, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with {
               arg = arg;
               caller = caller;
+              caller_info_data = caller_info_data;
+              caller_info_signer = caller_info_signer;
               deadline = deadline;
               sysenv;
           }
@@ -8305,10 +8459,16 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_query <method>`, and has value
     ```
-    query_methods[method] = λ (arg, caller, sysenv, available) → λ wasm_state →
+    query_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
-          params = empty_params with { arg = arg; caller = caller; sysenv }
+          params = empty_params with {
+              arg = arg;
+              caller = caller;
+              caller_info_data = caller_info_data;
+              caller_info_signer = caller_info_signer;
+              sysenv
+          }
           balance = sysenv.balance
           cycles_available = available
           context = Q
@@ -8325,10 +8485,16 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `composite_query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_composite_query <method>`, and has value
     ```
-    composite_query_methods[method] = λ (arg, caller, sysenv) → λ wasm_state →
+    composite_query_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, sysenv) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
-          params = empty_params with { arg = arg; caller = caller; sysenv }
+          params = empty_params with {
+              arg = arg;
+              caller = caller;
+              caller_info_data = caller_info_data;
+              caller_info_signer = caller_info_signer;
+              sysenv
+          }
           balance = sysenv.balance
           context = CQ
         }
@@ -8427,8 +8593,11 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 -   The function `callbacks` of the `CanisterModule` is defined as follows
     ```
     I ∈ {i32, i64}
-    callbacks = λ(callbacks, response, deadline, refunded_cycles, sysenv, available) → λ wasm_state →
+    callbacks = λ(callbacks, caller, caller_info_data, caller_info_signer, response, deadline, refunded_cycles, sysenv, available) → λ wasm_state →
       let params0 = empty_params with {
+        caller = caller;
+        caller_info_data = caller_info_data;
+        caller_info_signer = caller_info_signer;
         sysenv;
         cycles_refunded = refund_cycles;
         deadline;
@@ -8470,6 +8639,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
       let es' = ref { empty_execution_state with
         wasm_state = wasm_state;
+        params = params;
+        balance = sysenv.balance - es.cycles_used;
         context = C;
       }
       try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
@@ -8489,8 +8660,11 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 -   The function `composite_callbacks` of the `CanisterModule` is defined as follows
     ```
     I ∈ {i32, i64}
-    composite_callbacks = λ(callbacks, response, sysenv) → λ wasm_state →
+    composite_callbacks = λ(callbacks, caller, caller_info_data, caller_info_signer, response, sysenv) → λ wasm_state →
       let params0 = empty_params with {
+        caller = caller;
+        caller_info_data = caller_info_data;
+        caller_info_signer = caller_info_signer;
         sysenv
       }
       let (fun, env, params, context) = match response with
@@ -8526,6 +8700,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
       let es' = ref { empty_execution_state with
         wasm_state = wasm_state;
+        params = params;
+        balance = sysenv.balance - es.cycles_used;
         context = CC;
       }
       try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
@@ -8543,18 +8719,20 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
     If the WebAssembly module does not export a function called under the name `canister_inspect_message`, then access is always granted:
     ```
-    inspect_message = λ (method_name, wasm_state, arg, caller, sysenv) →
+    inspect_message = λ (method_name, wasm_state, arg, caller, caller_info_data, caller_info_signer, sysenv) →
       Return {status = Accept;}
     ```
 
     Otherwise, if the WebAssembly module exports a function `func` under the name `canister_inspect_message`, it is
     ```
-    inspect_message = λ (method_name, wasm_state, arg, caller, sysenv) →
+    inspect_message = λ (method_name, wasm_state, arg, caller, caller_info_data, caller_info_signer, sysenv) →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with {
             arg = arg;
             caller = caller;
+            caller_info_data = caller_info_data;
+            caller_info_signer = caller_info_signer;
             method_name = method_name;
             sysenv
           }
@@ -8625,6 +8803,26 @@ I ∈ {i32, i64}
 ic0.msg_caller_copy(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.caller)
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_data_size<es>() : I =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  return |es.params.caller_info_data|
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_data_copy(dst : I, offset : I, size : I) =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.params.caller_info_data)
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_signer_size<es>() : I =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  return |es.params.caller_info_signer|
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_signer_copy(dst : I, offset : I, size : I) =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.params.caller_info_signer)
 
 ic0.msg_reject_code<es>() : i32 =
   if es.context ∉ {Ry, Rt, CRy, CRt, C} then Trap {cycles_used = es.cycles_used;}
