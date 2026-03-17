@@ -79,6 +79,7 @@ query-response = tagged<{
 
 sender-info = {
   info : bytes
+  signer : principal
   sig : signature
 }
 

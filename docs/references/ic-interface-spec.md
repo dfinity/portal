@@ -757,6 +757,8 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
+    -   `signer` (`blob`, required): The principal of the signing canister.
+
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 -The HTTP response to this request can have the following forms:
@@ -810,6 +812,8 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 -   `sender_info` (`map`, optional): Map with fields:
 
     -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `signer` (`blob`, required): The principal of the signing canister.
 
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
@@ -977,6 +981,8 @@ In order to make a query call to a canister, the user makes a POST request to `/
 -   `sender_info` (`map`, optional): Map with fields:
 
     -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `signer` (`blob`, required): The principal of the signing canister.
 
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
