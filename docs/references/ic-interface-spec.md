@@ -411,7 +411,7 @@ This section makes forward references to other concepts in this document, in par
 
     where `signing_canister_id` is the id of the signing canister and `reconstruct` is a function that computes a root-hash for the tree.
 
-    -   If the `certificate` includes a subnet delegation, then the `signing_canister_id` must be included in the delegation's canister id range (see [Delegation](#certification-delegation)).
+    -   If the `certificate` includes a subnet delegation, then the `signing_canister_id` must be included in the delegation's canister id range (see [Delegation](#certification-delegation)), and the subnet type (obtained by looking up `/subnet/<subnet_id>/type` in the delegation's certificate) *must not* be `cloud_engine`.
 
     -   The `tree` must be a `well_formed` tree with
         ```
