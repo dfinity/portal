@@ -625,11 +625,8 @@ type cycles_consumed = record {
   // during the uninstallation of the canister.
   uninstall : nat;
   canister_creation : nat;
-  ecdsa_outcalls : nat;
   http_outcalls : nat;
   burned_cycles : nat;
-  schnorr_outcalls : nat;
-  vetkd : nat;
 }
 
 type canister_metrics_args = record {
