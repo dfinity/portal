@@ -372,6 +372,19 @@ ICP [limits][limits] the number of Wasm instructions that each function body is 
 To fix this error, consider breaking the large function up into multiple smaller functions.
 
 
+### Wasm module function name too large
+The canister's Wasm module contains a function with a name that is too large.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module contains a function at index 7 with name 'very_long_function_name...' of size 1500000 bytes that exceeds the maximum allowed size of 1048576 bytes.
+```
+
+ICP [limits][limits] the length of each function name in a Wasm module to 1 MiB. This error indicates that a function name exceeds this limit.
+
+To fix this error, try using shorter function names.
+
+
 ### Wasm module code section too large
 The total size of all the function bodies in the canister's Wasm module is too large.
 
