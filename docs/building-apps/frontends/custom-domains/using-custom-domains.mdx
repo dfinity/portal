@@ -14,7 +14,7 @@ To do this, simply acquire a domain from any registrar (e.g., Namecheap or GoDad
 
 ## Register your domain as a custom domain
 
-By following the steps below, you can host your canister under your own domain using the custom domain service provided by the HTTP gateways. First, the configuration steps are described, then an [example is used to illustrate these steps](#concrete-example), followed by some instructions on [troubleshooting](#troubleshooting).
+By following the steps below, you can host your canister under your own domain using the custom domain service provided by the HTTP gateways. First, the configuration steps are described, then an [example is used to illustrate these steps](#example), followed by some instructions on [troubleshooting](#troubleshooting).
 
 - #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
 
@@ -164,7 +164,8 @@ By following the steps below, you can host your canister under your own domain u
     "data": {
       "domain": "CUSTOM_DOMAIN"
     },
-    "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."}
+    "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."
+  }
   ```
 
   Common errors include:
@@ -236,7 +237,7 @@ Some DNS providers do not require you to specify the main domain (`bar.com`). Fo
   foo.bar.com
   ```
 
-- #### Step 2: Create the `.ic-assets.json` file at the root of the canister source:
+- #### Step 2: Create the `.ic-assets.json5` file alongside the `.well-known` directory (see [Step 2](#step-2-create-a-file-named-ic-domains-in-your-canister-under-the-well-known-directory-containing-the-custom-domain) for placement details):
 
   ```
   [
@@ -291,7 +292,7 @@ When you are running into issues trying to register your custom domain, try the 
 
 :::info
 
-You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `icp0.io`. To configure your agent, it will look something like this:
+You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `icp0.app`. To configure your agent, it will look something like this:
 
 ```ts
 // Point to icp-api for the mainnet. Leaving host undefined will work for localhost
