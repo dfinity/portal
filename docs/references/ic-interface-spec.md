@@ -3114,8 +3114,6 @@ The `global_error` field describes why the aggregate call failed to meet the req
 
     - `timeout`, meaning that less than `min_responses` from the nodes have been collected before some system-defined timeout.
 
-    - `invalid_parameters`, indicating that the parameters to the call violated one of the conditions.
-
     - `out_of_cycles` indicating that the attached cycles were not enough to cover the processing of at least `min_responses`.
 
     - `responses_too_large` : indicating that no combination of at least `min_responses` available responses could fit into the 2MB total limit.
