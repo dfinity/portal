@@ -388,67 +388,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Chain Fusion",
-      link: {
-        type: "doc",
-        id: "building-apps/chain-fusion/overview",
-      },
-      items: [
-        "building-apps/chain-fusion/supported-chains",
-        {
-          type: "doc",
-          label: "Bitcoin",
-          id: "build-on-btc/index",
-        },
-        {
-          type: "doc",
-          label: "Dogecoin",
-          id: "building-apps/chain-fusion/dogecoin/overview",
-        },
-        {
-          type: "category",
-          label: "Ethereum & EVM chains",
-          link: {
-            type: "doc",
-            id: "building-apps/chain-fusion/ethereum/overview",
-          },
-          items: [
-            "building-apps/chain-fusion/ethereum/using-eth/eth-comparison",
-            "building-apps/chain-fusion/ethereum/using-eth/eth-dev-workflow",
-            {
-              type: "category",
-              label: "Interacting with Ethereum",
-              items: [
-                "building-apps/chain-fusion/ethereum/using-eth/generating-addresses",
-                "building-apps/chain-fusion/ethereum/using-eth/signing-transactions",
-                "building-apps/chain-fusion/ethereum/using-eth/submit-transactions",
-              ],
-            },
-            {
-              type: "category",
-              label: "EVM RPC canister",
-              link: {
-                type: "doc",
-                id: "building-apps/chain-fusion/ethereum/evm-rpc/overview",
-              },
-              items: [
-                "building-apps/chain-fusion/ethereum/evm-rpc/how-it-works",
-                "building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister",
-                "building-apps/chain-fusion/ethereum/evm-rpc/costs",
-              ],
-            },
-          ],
-        },
-        {
-          type: "doc",
-          label: "Solana",
-          id: "building-apps/chain-fusion/solana/overview",
-        },
-        "building-apps/chain-fusion/examples",
-      ],
-    },
-    {
-      type: "category",
       label: "Security",
       link: {
         type: "doc",
