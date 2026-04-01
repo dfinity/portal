@@ -494,6 +494,10 @@ The state tree contains information about the topology of the Internet Computer.
 
     The public key of the subnet (a DER-encoded BLS key, see [Certification](#certification))
 
+-   `/subnet/<subnet_id>/type` (text)
+
+    The subnet type of the subnet. Possible values are "application", "system", "verified_application", and "cloud_engine" (without quotes).
+
 -   `/subnet/<subnet_id>/canister_ranges` (blob)
 
     The set of canister ids assigned to this subnet, represented as a list of closed intervals of canister ids, ordered lexicographically, and encoded as CBOR (see [CBOR](#cbor)) according to this CDDL (see [CDDL](#cddl)):
@@ -894,7 +898,7 @@ All requested paths must have the following form:
 
 -   `/canister_ranges/<subnet_id>`. Can only be requested at `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
--   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
+-   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/type`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
 -   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is the root subnet ID. Can always be requested.
 
@@ -908,11 +912,11 @@ All requested paths must have the following form:
 
     -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
+-   `/canister/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/controllers`. Can be requested if `<canister_id>` matches `<effective_canister_id>`. The order of controllers in the value at this path may vary depending on the implementation.
+-   `/canister/<canister_id>/controllers`. Can be requested if `<canister_id>` matches `<effective_canister_id>`. The order of controllers in the value at this path may vary depending on the implementation.
 
--   `/canisters/<canister_id>/metadata/<name>`. Can be requested if `<canister_id>` matches `<effective_canister_id>`, `<name>` is encoded in UTF-8, and
+-   `/canister/<canister_id>/metadata/<name>`. Can be requested if `<canister_id>` matches `<effective_canister_id>`, `<name>` is encoded in UTF-8, and
 
     -   canister with canister id `<canister_id>` does not exist or
 
@@ -932,7 +936,7 @@ Moreover,
 
 If a path cannot be requested, then the HTTP response to the read state request is undefined.
 
-Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canisters themselves via the System API (see [Certified data](#system-api-certified-data)).
+Note that the paths `/canister/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canisters themselves via the System API (see [Certified data](#system-api-certified-data)).
 
 See [The system state tree](#state-tree) for details on the state tree.
 
@@ -2960,7 +2964,7 @@ In the replicated mode, the responses for all identical requests must match, too
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request (both in replicated and non-replicated modes). Only the transformed response will be available to the calling canister.
 
-Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
+Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Additionally, the `PUT` and `DELETE` methods are supported in non-replicated mode only. `PUT` and `DELETE` are restricted to non-replicated mode to avoid confusing race conditions that may occur with replicated execution.
 
 It is important to note the following for the usage of the `POST` method:
 
@@ -2984,7 +2988,7 @@ The following parameters should be supplied for the call:
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
--   `method` - currently, only GET, HEAD, and POST are supported
+-   `method` - currently, `GET`, `HEAD`, and `POST` are supported. Additionally, `PUT` and `DELETE` are supported in non-replicated mode only.
 
 -   `headers` - list of HTTP request headers and their corresponding values
 
@@ -7982,6 +7986,7 @@ may_read_path_for_canister(S, _, ["time"]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_canister(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_canister(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid]) = True
@@ -8040,6 +8045,7 @@ may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_subnet(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_subnet_id>
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
@@ -8056,7 +8062,7 @@ where `state_tree` constructs a labeled tree from the IC state `S` and the (so f
 state_tree(S) = {
   "time": S.system_time;
   "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
-  "subnet": { subnet_id : { "public_key" : subnet_pk; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
+  "subnet": { subnet_id : { "public_key" : subnet_pk; "type" : <implementation-specific> ; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
   "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == root_subnet_id };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
