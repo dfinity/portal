@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.57.0 (2025-03-30) {$0_57_0}
+* Added canister snapshot visibility settings.
+
 ### 0.56.0 (2025-03-16) {$0_56_0}
 * Support for the HTTP methods `PUT` and `DELETE` in canister `http_request` in non-replicated mode.
 * Added subnet type to the certified state tree at the path `/subnet/<subnet_id>/type`.
