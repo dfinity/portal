@@ -1755,7 +1755,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade. During a system task (heartbeat or global timer), this is the id of the management canister.
 
--   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_sender_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_sender_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+-   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_signer_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_signer_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     Auxiliary information about the caller as provided by the canister with which the caller's identity is associated (i.e., the public key of the canister signature is equal to the public key of the caller's identity).
     These functions only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. They return empty values when the caller is another canister.
