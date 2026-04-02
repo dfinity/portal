@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.58.0 (2025-04-01) {$0_58_0}
+* Added subnet admins who can start, stop, uninstall, delete a canister and request its status.
+
 ### 0.55.0 (2025-01-26) {$0_55_0}
 * Support for canister renaming (required for canister ID migration from one subnet to another subnet).
 
