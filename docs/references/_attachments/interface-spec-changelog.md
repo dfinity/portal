@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.58.0 (2025-04-01) {$0_58_0}
+* Added subnet admins who can start, stop, uninstall, delete a canister and request its status.
+
 ### 0.57.0 (2025-03-30) {$0_57_0}
 * Added canister snapshot visibility settings.
 
