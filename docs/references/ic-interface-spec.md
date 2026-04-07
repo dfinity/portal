@@ -7302,6 +7302,50 @@ S with
 
 ```
 
+The IC method `canister_metrics` can also be invoked via management canister query calls.
+They are calls to `/api/v3/canister/<ECID>/query`
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
+
+Submitted request to `/api/v3/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+Conditions
+
+```html
+
+E.content = CanisterQuery Q
+Q.canister_id = ic_principal
+Q.method_name = 'canister_metrics'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+Q.arg = candid(A)
+A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+Q.sender ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
+
+```
+
+Query response `R`:
+
+```html
+
+{status: "replied"; reply: {arg: candid(canister_status(S, A.canister_id))}, signatures: Sigs}
+
+```
+
+where the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
+
+```html
+
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
+
 
 #### Callback invocation
 
