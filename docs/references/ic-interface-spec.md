@@ -1048,7 +1048,7 @@ It must be contained in the canister ranges of a subnet, otherwise the correspon
 
 -   If the request is an update call to the Management Canister (`aaaaa-aa`), then:
 
-    -   If the call is to the `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
+    -   If the call is to the `create_canister` or `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
 
     -   If the call is to the `install_chunked_code` method and the `arg` is a Candid-encoded record with a `target_canister` field of type `principal`, then the effective canister id must be that principal.
 
@@ -2371,7 +2371,7 @@ The binary encoding of arguments and results are as per Candid specification.
 
 ### IC method `create_canister` {#ic-create_canister}
 
-This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+This method can only be called by canisters and subnet admins, i.e., it cannot be called by external users who are not subnet admins via ingress messages.
 
 Before deploying a canister, the administrator of the canister first has to register it with the IC, to get a canister id (with an empty canister behind it), and then separately install the code.
 
@@ -2472,7 +2472,7 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
 
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). (No cycles are required on subnets that have a non-empty list of subnet admins.)
 
 ### IC method `update_settings` {#ic-update_settings}
 
@@ -4349,6 +4349,7 @@ delegation_targets(D)
 
 A `Request` has an effective canister id according to the rules in [Effective canister id](#http-effective-canister-id):
 ```
+is_effective_canister_id(Request {canister_id = ic_principal, method = create_canister, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
@@ -4403,6 +4404,11 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.sender ∈ S.controllers[CanisterId] ∪ S.subnet_admins[S.canister_subnet[CanisterId]]
   E.content.method_name ∈
     { "start_canister", "stop_canister", "uninstall_code", "delete_canister", "canister_status" }
+) ∨ (
+  E.content.canister_id = ic_principal
+  E.content.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+  E.content.method_name ∈
+    { "create_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
   E.content.method_name ∈
