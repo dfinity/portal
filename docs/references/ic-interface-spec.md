@@ -1761,7 +1761,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
     These functions only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. They return empty values when the caller is another canister.
 
     The `caller_info_data` may include information such as identity attributes of the caller.
-    The `_sender_` functions return the canister id of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
+    The `_signer_` functions return the canister id of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
     This can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
 
     These functions trap in `canister_init`, `canister_post_upgrade`, `canister_pre_upgrade`, canister http outcall transform, the `(start)` module initialization function, and system tasks (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`).
