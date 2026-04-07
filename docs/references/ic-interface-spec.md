@@ -7334,7 +7334,7 @@ Query response `R`:
 
 ```html
 
-{status: "replied"; reply: {arg: candid(canister_status(S, A.canister_id))}, signatures: Sigs}
+{status: "replied"; reply: {arg: candid(<implementation-specific>)}, signatures: Sigs}
 
 ```
 
