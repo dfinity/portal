@@ -5528,7 +5528,7 @@ is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
-Q.sender ∈ S.controllers[A.canister_id]
+Q.sender ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
