@@ -742,6 +742,7 @@ const sidebars = {
       ],
     },
     "references/async-code",
+    "references/advanced-ingress-messages",
     "references/execution-errors",
     "references/message-execution-properties",
     "references/using-hsm-with-identities",

@@ -21,6 +21,8 @@ Query calls, also referred to as non-replicated queries, are executed on a singl
 
 It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a **replicated query**.
 
+See the reference on [ingress messages](/references/advanced-ingress-messages) for a more technical discussion of this topic.
+
 ## Making query calls with `dfx`
 
 To make a query call to a canister, use the [`dfx canister call`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call) command with the `--query` flag:

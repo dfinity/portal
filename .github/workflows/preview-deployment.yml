@@ -33,64 +33,38 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install DFX
-        uses: dfinity/setup-dfx@main
-        with:
-          dfx-version: 0.29.2
-
-      - name: Cache icx-asset binary
-        id: cache-icx-asset-bin
-        uses: actions/cache@v3
-        with:
-          path: sdk/target/release/icx-asset
-          key: icxassetbin-master
-          restore-keys: |
-            icxassetbin-
-
-      - name: Install icx-asset
-        if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
+      - name: Install ICP-CLI
         run: |
-          rm -rf sdk
-          git clone --depth 1 https://github.com/dfinity/sdk.git
-          cd sdk
-          cargo build -p icx-asset --release
-
-      - name: Add icx-asset to path
-        run: |
-          echo "`pwd`/sdk/target/release/" >> $GITHUB_PATH
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/dfinity/icp-cli/releases/download/v0.1.0/icp-cli-installer.sh | sh
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
 
       - name: "Build & Deploy"
         run: |
-          mkdir -p ~/.config/dfx/identity/default
-
-          echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
-          sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
+          # Setup identity
+          mkdir -p ~/.local/share/icp-cli/identity/keys
+          echo $ICP_IDENTITY_PREVIEW | base64 -d > ~/.local/share/icp-cli/identity/keys/preview-deploy.pem
+          sed -i 's/\\r\\n/\r\n/g' ~/.local/share/icp-cli/identity/keys/preview-deploy.pem
+          icp identity import preview-deploy --from-pem ~/.local/share/icp-cli/identity/keys/preview-deploy.pem --storage plaintext
+          icp identity default preview-deploy
 
           # request preview canister from the pool
           pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           pip install icp-py-core
           canister_id=$(python3 .github/workflows/scripts/request-canister.py $pull_number)
 
-          # overwrite canister id in dfx.json
-          echo "{\"portal\":{\"ic\":\"$canister_id\"}}" > canister_ids.json
+          # Create icp-cli canister ID mapping for ic environment
+          mkdir -p .icp/data/mappings
+          echo "{\"portal\":\"$canister_id\"}" > .icp/data/mappings/ic.ids.json
 
           echo "PREVIEW_CANISTER_ID=$canister_id" >> $GITHUB_ENV
 
-          # install and deploy
+          # Deploy the canister
           git submodule update --init
-          time npm install
-
           export PREVIEW_CANISTER_ID=$canister_id
-
-          dfx canister --network ic create --all
-          time dfx build --network ic portal
-          dfx canister --network ic install portal --mode=reinstall --yes --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
-
-          time icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
+          time icp deploy portal -e ic --mode reinstall
 
         env:
-          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
-          DFX_WARNING: -mainnet_plaintext_identity
+          ICP_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
           POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 

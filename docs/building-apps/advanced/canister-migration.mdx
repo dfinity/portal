@@ -33,9 +33,9 @@ The canister snapshot can then be downloaded to a local file directory using [`d
 
 Next the canister snapshot can be uploaded to the replaced canister using [`dfx canister snapshot upload`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-upload).
 
-Finally the canister snapshot can be [loaded](/docs/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#loading-a-snapshot) to the replaced canister.
+Finally the canister snapshot can be [loaded](/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#loading-a-snapshot) to the replaced canister.
 
-The loaded canister snapshot of the replaced canister must be deleted using [`dfx canister snapshot delete`](/docs/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#deleting-a-snapshot) before proceeding with canister ID migration (see below).
+The loaded canister snapshot of the replaced canister must be deleted using [`dfx canister snapshot delete`](/tutorials/developer-liftoff-rust/level-3/3.3-canister-snapshots/#deleting-a-snapshot) before proceeding with canister ID migration (see below).
 It is recommended to preserve the snapshot of the migrated canister (and also its copy in a local file directory) to facilitate disaster recovery.
 
 # Canister Cycles Migration
@@ -59,6 +59,17 @@ To prepare for canister ID migration, we stop both the migrated and replaced can
 Then we can kick off canister ID migration using [`dfx canister migrate-id`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migrate-id) specifying the migrated canister ID as the canister ID to migrate and the replaced canister ID as `--replace`.
 
 Canister ID migration is expected to take at least 6 minutes. You can check out its status using [`dfx canister migration-status`](/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-migration-status).
+
+After a successful canister ID migration, the canister history of the migrated canister consists of
+the canister history of the replaced canister followed by a `rename_canister` entry containing
+- `canister_id`: the replaced canister ID;
+- `total_num_changes`: the canister history length of the replaced canister before canister ID migration;
+- `rename_to`: the migrated canister ID, its canister version, and its canister history length before canister ID migration;
+- `requested_by`: the principal who requested canister ID migration (e.g., the user identity invoking `dfx canister migrate-id`).
+
+Canister history entries of the migrated canister produced before canister ID migration are not available
+after a successful canister ID migration. They have to be fetched before triggering canister ID migration
+and their completeness can be checked using their number `total_num_changes` in the `rename_to` field of the `rename_canister` entry.
 
 # Example
 
