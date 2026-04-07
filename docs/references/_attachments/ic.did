@@ -629,8 +629,8 @@ type cycles_consumed = record {
   request_and_response_transmission : nat;
   // This metric applies to canisters that ran out of cycles. In particular,
   // uninstalling code explicitly would not result in this metric being updated.
-  // In fact, others would be updated in that case, e.g. instructions consumed
-  // during the uninstallation of the canister.
+  // In fact, others might be updated in that case, e.g. cycles for ingress induction
+  // if the uninstallation of the canister was requested via an ingress message.
   uninstall : nat;
   canister_creation : nat;
   http_outcalls : nat;
