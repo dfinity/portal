@@ -4396,8 +4396,11 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.arg = candid({canister_id = CanisterId, …})
   E.content.sender ∈ S.controllers[CanisterId]
   E.content.method_name ∈
-    { "install_code", "install_chunked_code", "update_settings", "upload_chunk", "clear_chunk_store",
-      "stored_chunks", "read_canister_snapshot_metadata", "read_canister_snapshot_data", "upload_canister_snapshot_metadata", "upload_canister_snapshot_data", "provisional_top_up_canister" }
+    { "install_code", "install_chunked_code", "update_settings",
+      "upload_chunk", "stored_chunks", "clear_chunk_store",
+      "take_canister_snapshot", "load_canister_snapshot", "list_canister_snapshots", "delete_canister_snapshot",
+      "read_canister_snapshot_metadata", "read_canister_snapshot_data", "upload_canister_snapshot_metadata", "upload_canister_snapshot_data",
+      "provisional_top_up_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
   E.content.arg = candid({canister_id = CanisterId, …})
