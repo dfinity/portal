@@ -14,12 +14,12 @@ submodules/sdk @dfinity/sdk
 submodules/motoko @dfinity/languages
 
 # FI
-docs/defi/ @dfinity/defi @dfinity/editorial
-docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/defi @dfinity/sdk
+docs/defi/  @dfinity/editorial
+docs/defi/token-ledgers/cycles-ledger.mdx  @dfinity/sdk
 
 # Cross chain
-docs/defi/chain-key-tokens/ @dfinity/defi @dfinity/editorial
-docs/building-apps/chain-fusion/ @dfinity/defi @dfinity/editorial
+docs/defi/chain-key-tokens/  @dfinity/editorial
+docs/building-apps/chain-fusion/  @dfinity/editorial
 
 # ProdSec
 docs/building-apps/security/ @dfinity/product-security @dfinity/editorial
@@ -53,4 +53,5 @@ docs/references/_attachments/requests.cddl @dfinity/interface-spec @dfinity/team
 docs/references/http-gateway-protocol-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
 docs/references/ic-interface-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
 
-
+# Editorial can approve everything
+* @dfinity/editorial
