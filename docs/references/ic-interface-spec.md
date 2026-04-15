@@ -630,9 +630,9 @@ Users have the ability to learn about the hash of the canister's module, its cur
 
 The concrete mechanism that users use to send requests to the Internet Computer is via an HTTPS API, which exposes four endpoints to handle interactions, plus one for diagnostics:
 
--   At `/api/v2/canister/<effective_canister_id>/call`, the user can submit update calls that are asynchronous and might change the IC state.
+-   At `/api/v2/canister/<effective_canister_id>/call` and `/api/v2/subnet/<effective_subnet_id>/call`, the user can submit update calls that are asynchronous and might change the IC state.
 
--   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
+-   At `/api/v3/canister/<effective_canister_id>/call` (deprecated), `/api/v4/canister/<effective_canister_id>/call`, and `/api/v4/subnet/<effective_subnet_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
 
 -   At `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, and `/api/v3/subnet/<effective_subnet_id>/read_state`, the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
 
@@ -640,7 +640,7 @@ The concrete mechanism that users use to send requests to the Internet Computer 
 
 -   At `/api/v2/status` the user can retrieve status information about the Internet Computer.
 
-In these paths, the `<effective_canister_id>` is the [textual representation](#textual-ids) of the [*effective* canister id](#http-effective-canister-id).
+In these paths, the `<effective_canister_id>` is the [textual representation](#textual-ids) of the [*effective* canister id](#http-effective-canister-id) and the `<effective_subnet_id>` is the [textual representation](#textual-ids) of the [*effective* subnet id](#http-effective-subnet-id).
 
 Requests to `/api/.../call`, `/api/.../read_state`, and `/api/.../query` are POST requests with a CBOR-encoded request body, which consists of a authentication envelope (as per [Authentication](#authentication)) and request-specific content as described below.
 
@@ -745,7 +745,7 @@ If an implementation specific timeout for the request is reached while the repli
 
 ### Request: Call {#http-call}
 
-In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated), `/api/v4/canister/<effective_canister_id>/call`, or `/api/v4/subnet/<effective_subnet_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
@@ -793,7 +793,7 @@ This request type can *also* be used to call a query method (but not a composite
 
 ### Request: Asynchronous Call {#http-async-call}
 
-In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call` or `/api/v2/subnet/<effective_subnet_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
@@ -910,7 +910,7 @@ All requested paths must have the following form:
 
     -   the sender of the original request referenced by `<request_id>` is the same as the sender of the read state request and
 
-    -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>`.
+    -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>` (for requests to `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`), or the effective subnet id of the original request referenced by `<request_id>` matches `<effective_subnet_id>` (for requests to `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`).
 
 -   `/canister/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
 
@@ -1073,6 +1073,10 @@ The Internet Computer blockchain mainnet does not support `provisional_create_ca
 In development instances of the Internet Computer Protocol (e.g. testnets), the effective canister id of a request submitted to a node must be a canister id from the canister ranges of the subnet to which the node belongs.
 
 :::
+
+### Effective subnet id {#http-effective-subnet-id}
+
+The `<effective_subnet_id>` in the URL paths of update call requests is only supported for calls to the `create_canister` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet on which the new canister will be created.
 
 ### Authentication {#authentication}
 
@@ -4356,9 +4360,16 @@ is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({cani
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
 
+#### Effective subnet ids
+
+A `Request` has an effective subnet id according to the rules in [Effective subnet id](#http-effective-subnet-id):
+```
+is_effective_subnet_id(Request {canister_id = ic_principal, method = create_canister, …}, s)
+```
+
 #### API Request submission {#api-request-submission}
 
-After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v4/canister/<ECID>/call`
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call`, `/api/v4/canister/<ECID>/call`, `/api/v2/subnet/<ESID>/call`, or `/api/v4/subnet/<ESID>/call`
 and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
 This can only happen if the target canister is not frozen and
@@ -4460,6 +4471,39 @@ S with
 This is not instantaneous (the IC takes some time to agree it accepts the request) nor guaranteed (a node could just drop the request, or maybe it did not pass validation). But once the request has entered the IC state like this, it will be acted upon.
 
 :::
+
+Submitted request to `/api/<VERSION>/subnet/<ESID>/call`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v2` or `v4`.
+
+Conditions
+
+```html
+
+verify_envelope(E, E.content.sender, S.system_time)
+|E.content.nonce| <= 32
+E.content ∉ dom(S.requests)
+S.system_time <= E.content.ingress_expiry
+is_effective_subnet_id(E.content, ESID)
+E.content.sender ∈ S.subnet_admins[ESID]
+E.content.method_name = "create_canister"
+
+```
+
+State after
+
+```html
+
+S with
+    requests[E.content] = (Received, ESID)
+
+```
 
 #### Request rejection
 
@@ -8089,6 +8133,13 @@ may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_s
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
+may_read_path_for_subnet(S, _, ["request_status", Rid]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "status"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "reply"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_code"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_message"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "error_code"]) =
+  ∀ (R ↦ (_, ESID')) ∈ dom(S.requests). hash_of_map(R) = Rid => RS.sender == R.sender ∧ <effective_subnet_id> == ESID'
 may_read_path_for_subnet(S, _, _) = False
 ```
 The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that has a path in `RS.paths` or `["time"]` as a prefix, we have
