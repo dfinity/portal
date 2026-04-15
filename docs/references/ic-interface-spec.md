@@ -793,7 +793,7 @@ This request type can *also* be used to call a query method (but not a composite
 
 ### Request: Asynchronous Call {#http-async-call}
 
-In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call` or `/api/v2/subnet/<effective_subnet_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call`. The endpoint `/api/v2/subnet/<effective_subnet_id>/call` is not a general asynchronous call endpoint: it is only valid for management-canister `create_canister` requests and requires subnet-admin authorization. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
