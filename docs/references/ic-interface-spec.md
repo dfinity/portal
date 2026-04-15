@@ -4491,7 +4491,8 @@ verify_envelope(E, E.content.sender, S.system_time)
 E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
 is_effective_subnet_id(E.content, ESID)
-E.content.sender ∈ S.subnet_admins[ESID]
+let SN = the unique subnet in S.subnets such that SN.subnet_id = ESID
+E.content.sender ∈ S.subnet_admins[SN]
 E.content.method_name = "create_canister"
 
 ```
