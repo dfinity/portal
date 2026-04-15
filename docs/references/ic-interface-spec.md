@@ -4493,6 +4493,7 @@ S.system_time <= E.content.ingress_expiry
 is_effective_subnet_id(E.content, ESID)
 let SN = the unique subnet in S.subnets such that SN.subnet_id = ESID
 E.content.sender ∈ S.subnet_admins[SN]
+E.content.canister_id = ic_principal
 E.content.method_name = "create_canister"
 
 ```
@@ -8029,13 +8030,13 @@ S' with
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<effective_subnet_id>/read_state`.
+Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<ESID>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v3/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<effective_subnet_id>/read_state`.
+The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<ESID>/read_state`.
 
 Submitted request to `/api/v3/canister/<ECID>/read_state`
 
@@ -8095,7 +8096,7 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/v3/subnet/<effective_subnet_id>/read_state`
+Submitted request to `/api/v3/subnet/<ESID>/read_state`
 
 ```html
 
@@ -8108,10 +8109,11 @@ Conditions
 ```html
 
 E.content = ReadState RS
-verify_envelope(E, RS.sender, S.system_time)
+TS = verify_envelope(E, RS.sender, S.system_time)
 |E.content.nonce| <= 32
 S.system_time <= RS.ingress_expiry
 ∀ path ∈ RS.paths. may_read_path_for_subnet(S, RS.sender, path)
+∀ (["request_status", Rid] · _) ∈ RS.paths.  ∀ R ∈ dom(S.requests). hash_of_map(R) = Rid => R.canister_id ∈ TS
 
 ```
 
@@ -8130,7 +8132,7 @@ may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
-may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_subnet_id>
+may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <ESID>
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -8140,7 +8142,7 @@ may_read_path_for_subnet(S, _, ["request_status", Rid, "reply"]) =
 may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_code"]) =
 may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_message"]) =
 may_read_path_for_subnet(S, _, ["request_status", Rid, "error_code"]) =
-  ∀ (R ↦ (_, ESID')) ∈ dom(S.requests). hash_of_map(R) = Rid => RS.sender == R.sender ∧ <effective_subnet_id> == ESID'
+  ∀ (R ↦ (_, ESID')) ∈ dom(S.requests). hash_of_map(R) = Rid => RS.sender == R.sender ∧ <ESID> == ESID'
 may_read_path_for_subnet(S, _, _) = False
 ```
 The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that has a path in `RS.paths` or `["time"]` as a prefix, we have
