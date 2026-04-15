@@ -12,6 +12,8 @@ const tailwindPlugin = require("./plugins/tailwind");
 const matomoPlugin = require("./plugins/matomo");
 const customWebpack = require("./plugins/custom-webpack");
 const externalRedirectsPlugin = require("./plugins/external-redirects");
+// TODO remove this when https://github.com/caffeinelabs/motoko/pull/6022 is merged
+const patchSubmodules = require("./plugins/patch-submodules");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 const {
@@ -177,6 +179,7 @@ const config = {
   ],
   plugins: [
     "docusaurus-plugin-sass",
+    patchSubmodules,
     customWebpack,
     tailwindPlugin,
     matomoPlugin,
