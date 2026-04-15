@@ -630,9 +630,9 @@ Users have the ability to learn about the hash of the canister's module, its cur
 
 The concrete mechanism that users use to send requests to the Internet Computer is via an HTTPS API, which exposes four endpoints to handle interactions, plus one for diagnostics:
 
--   At `/api/v2/canister/<effective_canister_id>/call` and `/api/v2/subnet/<effective_subnet_id>/call`, the user can submit update calls that are asynchronous and might change the IC state.
+-   At `/api/v2/canister/<effective_canister_id>/call`, the user can submit update calls that are asynchronous and might change the IC state. At `/api/v2/subnet/<effective_subnet_id>/call`, the user can only submit the restricted subnet-scoped update call described by the [effective subnet id](#http-effective-subnet-id) rules.
 
--   At `/api/v3/canister/<effective_canister_id>/call` (deprecated), `/api/v4/canister/<effective_canister_id>/call`, and `/api/v4/subnet/<effective_subnet_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
+-   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status. At `/api/v4/subnet/<effective_subnet_id>/call`, the user can only submit the restricted subnet-scoped update call described by the [effective subnet id](#http-effective-subnet-id) rules.
 
 -   At `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, and `/api/v3/subnet/<effective_subnet_id>/read_state`, the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
 
