@@ -745,7 +745,7 @@ If an implementation specific timeout for the request is reached while the repli
 
 ### Request: Call {#http-call}
 
-In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated), `/api/v4/canister/<effective_canister_id>/call`, or `/api/v4/subnet/<effective_subnet_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The `/api/v4/subnet/<effective_subnet_id>/call` form is not a general-purpose call endpoint; it is only supported for management-canister `create_canister` calls that are routed by subnet. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
