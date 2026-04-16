@@ -96,6 +96,10 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       {
+        label: "icp CLI",
+        href: "https://cli.internetcomputer.org",
+      },
+      {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },

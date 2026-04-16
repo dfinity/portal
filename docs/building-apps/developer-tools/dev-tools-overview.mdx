@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, developer tools, dev tools, overview]
+keywords: [beginner, developer tools, dev tools, overview, icp-cli, icp, dfx]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -10,35 +10,40 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Developer tools are used to create, manage, and interact with canisters. They can come in several formats, such as command line tools, onchain and off-chain libraries, and integrated development environments. For ICP developers, there are tools within each of these categories available for you to utilize when developing your ICP canisters.
 
-## Canister development kits (CDKs)
-
-A canister development kit (CDK) is an adapter used by `dfx` to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters.
-
-[Motoko](/motoko/home) is ICP's native programming language. It is installed with the IC SDK.
-
-The [Rust CDK](/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
-
-There are several community-contributed and maintained CDKs for languages such as:
-
-- [icpp-pro](https://github.com/icppWorld/icpp-pro) - C++ CDK.
-
-- [Azle](https://github.com/demergent-labs/azle) - TypeScript CDK.
-
-- [Kybra](https://github.com/demergent-labs/kybra) - Python CDK.
-
-- [moonbit-ic-cdk](https://github.com/eliezhao/moonbit-ic-cdk) - MoonBit CDK.
-
 ## Command line tools
 
-### `dfx`
+### `icp` CLI (recommended)
 
-[`dfx`](/building-apps/developer-tools/dfx/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
+[`icp`](https://cli.internetcomputer.org) is the primary command-line tool for building and deploying applications on the Internet Computer. It is the successor to `dfx` and is the recommended tool for all new projects.
+
+Key capabilities:
+
+- Create, build, deploy, and manage canisters
+- Deploy to local development environments and mainnet
+- Manage developer identities and cycles
+- Full migration guide from `dfx` available at [cli.internetcomputer.org/docs/migration](https://cli.internetcomputer.org/docs/migration)
+
+- [Install `icp` CLI](/building-apps/getting-started/install#icp-cli-recommended).
+
+- [`icp` CLI documentation](https://cli.internetcomputer.org).
+
+- [icp-cli GitHub repo](https://github.com/dfinity/icp-cli).
+
+### `dfx` — legacy CLI
+
+:::caution
+
+`dfx` is the legacy CLI. New projects should use the [`icp` CLI](#icp-cli-recommended) above. Existing `dfx` projects can migrate using the [migration guide](https://cli.internetcomputer.org/docs/migration).
+
+:::
+
+[`dfx`](/building-apps/developer-tools/dfx/) was the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
 
 `dfx` supports [local development](/building-apps/developing-canisters/deploy) and deployment through the [`dfx start`](/building-apps/developer-tools/dfx/) command, which runs a local development environment using [PocketIC](/building-apps/test/pocket-ic) that can be used to deploy and test canisters on your local machine.
 
 To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands.
 
-- [Install `dfx`](/building-apps/getting-started/install).
+- [Install `dfx`](/building-apps/getting-started/install#ic-sdk-dfx--legacy).
 
 - [`dfx` documentation](/building-apps/developer-tools/dfx/).
 
@@ -53,6 +58,24 @@ To deploy canisters to the mainnet or make calls to canisters already deployed o
 - [`dfxvm` documentation](/building-apps/developer-tools/dfxvm/dfxvm-default).
 
 - [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
+
+## Canister development kits (CDKs)
+
+A canister development kit (CDK) is an adapter used by the CLI to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters.
+
+[Motoko](/motoko/home) is ICP's native programming language. It is installed with the IC SDK.
+
+The [Rust CDK](/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
+
+There are several community-contributed and maintained CDKs for languages such as:
+
+- [icpp-pro](https://github.com/icppWorld/icpp-pro) - C++ CDK.
+
+- [Azle](https://github.com/demergent-labs/azle) - TypeScript CDK.
+
+- [Kybra](https://github.com/demergent-labs/kybra) - Python CDK.
+
+- [moonbit-ic-cdk](https://github.com/eliezhao/moonbit-ic-cdk) - MoonBit CDK.
 
 ## ICP Ninja
 

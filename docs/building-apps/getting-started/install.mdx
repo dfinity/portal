@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, getting started, tutorial, tools, installing tools, install dfx, dfx, dfxvm, setup dfx, setup environment, install]
+keywords: [beginner, getting started, tutorial, tools, installing tools, install icp, icp-cli, icp, install dfx, dfx, dfxvm, setup dfx, setup environment, install]
 hide_table_of_contents: true
 ---
 
@@ -9,17 +9,49 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import { OsType, useOs } from "/src/hooks/useOs";
 
-# Install the IC SDK
+# Install developer tools
 
 <MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
-The IC SDK is a software development kit used to develop applications on your local machine and to deploy them to ICP. It is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
-
-:::danger
+:::tip
 
 If you followed a [quick start](/building-apps/getting-started/quickstart) guide, you can skip this step.
 
 :::
+
+## icp CLI (recommended)
+
+`icp` is the primary command-line tool for building and deploying applications on the Internet Computer. It is the successor to `dfx` and is the recommended tool for all new projects.
+
+```bash
+npm install -g @icp-sdk/icp-cli @icp-sdk/ic-wasm
+```
+
+For Motoko projects, also install the Motoko package manager:
+
+```bash
+npm install -g ic-mops
+```
+
+Confirm installation:
+
+```bash
+icp --version
+```
+
+Full documentation and additional install methods (Homebrew, shell script) are available at **[cli.internetcomputer.org](https://cli.internetcomputer.org)**.
+
+---
+
+## IC SDK (`dfx`) — legacy
+
+:::caution
+
+`dfx` is the legacy CLI. New projects should use the [`icp` CLI](#icp-cli-recommended) above. If you have an existing `dfx` project, see the [dfx → icp migration guide](https://cli.internetcomputer.org/docs/migration).
+
+:::
+
+The IC SDK is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
 
 <AdornedTabs defaultValue={useOs().current}>
 <TabItem value={OsType.Linux} label="Linux">
