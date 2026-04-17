@@ -13,6 +13,10 @@ const queryClient = new QueryClient();
 
 const links = [
   {
+    label: "ICP vs AWS & Vercel — The Cloud That Can't Shut You Down",
+    href: "/alternatives",
+  },
+  {
     label: "Events & News",
     href: "https://dfinity.org/events-and-news/",
   },

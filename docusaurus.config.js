@@ -113,6 +113,10 @@ const subnavItems = [
         label: "ICP Developer Discord",
         href: "https://discord.internetcomputer.org",
       },
+      {
+        label: "ICP vs AWS / Vercel",
+        href: "/alternatives",
+      },
     ],
   },
   /**
