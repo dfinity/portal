@@ -630,7 +630,7 @@ Users have the ability to learn about the hash of the canister's module, its cur
 
 The concrete mechanism that users use to send requests to the Internet Computer is via an HTTPS API, which exposes four endpoints to handle interactions, plus one for diagnostics:
 
--   At `/api/v2/canister/<effective_canister_id>/call`, the user can submit update calls that are asynchronous and might change the IC state. At `/api/v2/subnet/<effective_subnet_id>/call`, the user can only submit the restricted subnet-scoped update call described by the [effective subnet id](#http-effective-subnet-id) rules.
+-   At `/api/v2/canister/<effective_canister_id>/call`, the user can submit update calls that are asynchronous and might change the IC state.
 
 -   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status. At `/api/v4/subnet/<effective_subnet_id>/call`, the user can only submit the restricted subnet-scoped update call described by the [effective subnet id](#http-effective-subnet-id) rules.
 
@@ -793,7 +793,7 @@ This request type can *also* be used to call a query method (but not a composite
 
 ### Request: Asynchronous Call {#http-async-call}
 
-In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call`. The endpoint `/api/v2/subnet/<effective_subnet_id>/call` is not a general asynchronous call endpoint: it is only valid for management-canister `create_canister` requests and requires subnet-admin authorization. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
@@ -4369,7 +4369,7 @@ is_effective_subnet_id(Request {canister_id = ic_principal, method = create_cani
 
 #### API Request submission {#api-request-submission}
 
-After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call`, `/api/v4/canister/<ECID>/call`, `/api/v2/subnet/<ESID>/call`, or `/api/v4/subnet/<ESID>/call`
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call`, `/api/v4/canister/<ECID>/call`, or `/api/v4/subnet/<ESID>/call`
 and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
 This can only happen if the target canister is not frozen and
@@ -4480,7 +4480,7 @@ E : Envelope
 
 ```
 
-where `<VERSION>` is `v2` or `v4`.
+where `<VERSION>` is `v4`.
 
 Conditions
 
