@@ -3118,6 +3118,8 @@ The `global_error` field describes why the aggregate call failed to meet the req
 
     - `responses_too_large` : indicating that no combination of at least `min_responses` available responses could fit into the 2MB total limit.
 
+    - `too_many_rejects` : indicating that more than `total_requests - min_responses` nodes returned reject responses, so at least `min_responses` successful responses can never be collected.
+
 The `node_details` vector provides visibility into the execution on specific nodes. Each entry contains:
 
     - `node_id`.
