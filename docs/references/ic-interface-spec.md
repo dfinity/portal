@@ -298,7 +298,7 @@ The canister status can be used to control whether the canister is processing ca
 
 In all cases, calls to the [management canister](#ic-management-canister) are processed, regardless of the state of the managed canister.
 
-The controllers of the canister can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status) (NB: this call returns additional information, such as the cycle balance of the canister). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
+The controllers of the canister or subnet admins can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status) (NB: this call returns additional information, such as the cycle balance of the canister). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
 
 :::note
 
@@ -912,11 +912,11 @@ All requested paths must have the following form:
 
     -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
+-   `/canister/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/controllers`. Can be requested if `<canister_id>` matches `<effective_canister_id>`. The order of controllers in the value at this path may vary depending on the implementation.
+-   `/canister/<canister_id>/controllers`. Can be requested if `<canister_id>` matches `<effective_canister_id>`. The order of controllers in the value at this path may vary depending on the implementation.
 
--   `/canisters/<canister_id>/metadata/<name>`. Can be requested if `<canister_id>` matches `<effective_canister_id>`, `<name>` is encoded in UTF-8, and
+-   `/canister/<canister_id>/metadata/<name>`. Can be requested if `<canister_id>` matches `<effective_canister_id>`, `<name>` is encoded in UTF-8, and
 
     -   canister with canister id `<canister_id>` does not exist or
 
@@ -936,7 +936,7 @@ Moreover,
 
 If a path cannot be requested, then the HTTP response to the read state request is undefined.
 
-Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canisters themselves via the System API (see [Certified data](#system-api-certified-data)).
+Note that the paths `/canister/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canisters themselves via the System API (see [Certified data](#system-api-certified-data)).
 
 See [The system state tree](#state-tree) for details on the state tree.
 
@@ -1048,7 +1048,7 @@ It must be contained in the canister ranges of a subnet, otherwise the correspon
 
 -   If the request is an update call to the Management Canister (`aaaaa-aa`), then:
 
-    -   If the call is to the `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
+    -   If the call is to the `create_canister` or `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
 
     -   If the call is to the `install_chunked_code` method and the `arg` is a Candid-encoded record with a `target_canister` field of type `principal`, then the effective canister id must be that principal.
 
@@ -2371,7 +2371,7 @@ The binary encoding of arguments and results are as per Candid specification.
 
 ### IC method `create_canister` {#ic-create_canister}
 
-This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+This method can only be called by canisters and subnet admins, i.e., it cannot be called by external users who are not subnet admins via ingress messages.
 
 Before deploying a canister, the administrator of the canister first has to register it with the IC, to get a canister id (with an empty canister behind it), and then separately install the code.
 
@@ -2439,6 +2439,20 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: `controllers`.
 
+-   `snapshot_visibility` (`snapshot_visibility`)
+
+    Controls who can access the canister's snapshots through the following endpoints of the management canister:
+    - `read_canister_snapshot_metadata`
+    - `read_canister_snapshot_data`
+    - `list_canister_snapshots`
+
+    Can be one of:
+    - `controllers`: Only the canister's controllers can read its snapshots
+    - `public`: Anyone can read the canister's snapshots
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read its snapshots, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -2458,7 +2472,7 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
 
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). (No cycles are required on subnets that have a non-empty list of subnet admins.)
 
 ### IC method `update_settings` {#ic-update_settings}
 
@@ -2543,7 +2557,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method removes a canister's code and state, making the canister *empty* again.
 
-Only controllers of the canister can uninstall code.
+Only controllers of the canister or subnet admins can uninstall code.
 
 Uninstalling a canister's code will reject all calls that the canister has not yet responded to, and drop the canister's code and state. Outstanding responses to the canister will not be processed, even if they arrive after code has been installed again. Cycles attached to such responses will still be refunded though.
 
@@ -2578,7 +2592,9 @@ Indicates various information about the canister. It contains:
 
     -   The reserved cycles limit of the canister, i.e., the maximum number of cycles that can be in the canister's reserved balance after increasing the canister's memory allocation and/or actual memory usage.
 
-    -   The canister log visibility of the canister.
+    -   The visibility of the canister's logs.
+
+    -   The visibility of the canister's snapshots.
 
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
@@ -2608,7 +2624,7 @@ Indicates various information about the canister. It contains:
 
     * `response_payload_bytes_total`: the total number of query and composite query response payload (reply data or reject message) bytes.
 
-Only the controllers of the canister or the canister itself can request its status.
+Only the controllers of the canister or the canister itself or subnet admins can request its status.
 
 #### Memory Metrics {#ic-canister_status-memory_metrics}
 
@@ -2686,7 +2702,7 @@ The returned response contains the following fields:
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
+The controllers of a canister or subnet admins may stop a canister (e.g., to prepare for a canister upgrade).
 
 When this method successfully returns, then the canister status is `stopped` at that point.
 However, note that the canister might be restarted at any time due to a concurrent call.
@@ -2703,7 +2719,7 @@ The execution of this method proceeds as follows:
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-A canister may be started by its controllers.
+A canister may be started by its controllers or subnet admins.
 
 If the canister status was `stopped` or `stopping` then the canister status is simply set to `running`. In the latter case all `stop_canister` calls which are processing fail (and are rejected).
 
@@ -2715,7 +2731,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method deletes a canister from the IC.
 
-Only controllers of the canister can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
+Only controllers of the canister or subnet admins can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
 
 ### IC method `deposit_cycles` {#ic-deposit_cycles}
 
@@ -3107,7 +3123,10 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read metadata of a snapshot of that canister.
+Who is allowed to read the metadata of a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots metadata
+- `public`: Anyone can read the canister's snapshots metadata
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots metadata, the maximum length of the list is 10
 
 This method returns all metadata of a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3139,7 +3158,10 @@ The state of the global timer and on low wasm memory hook are `null` for existin
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read data of a snapshot of that canister.
+Who is allowed to read a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots
+- `public`: Anyone can read the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots, the maximum length of the list is 10
 
 This method returns a requested kind of (binary) data from a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3204,7 +3226,12 @@ It's important to note that uploading a chunk to the WASM chunk store of the sna
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots.
+This method lists the snapshots of the canister identified by `canister_id`.
+
+Who is allowed to list the snapshots of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can list its snapshots
+- `public`: Anyone can list the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can list the snapshots, the maximum length of the list is 10
 
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
@@ -4066,6 +4093,10 @@ CanisterLogVisibility
   = Controllers
   | Public
   | AllowedViewers [Principal]
+CanisterSnapshotVisibility
+  = Controllers
+  | Public
+  | AllowedViewers [Principal]
 CanisterLog = {
   idx : Nat;
   timestamp_nanos : Nat;
@@ -4119,6 +4150,7 @@ S = {
   certified_data: CanisterId ↦ Blob;
   canister_history: CanisterId ↦ CanisterHistory;
   canister_log_visibility: CanisterId ↦ CanisterLogVisibility;
+  canister_snapshot_visibility: CanisterId ↦ CanisterSnapshotVisibility;
   canister_logs: CanisterId ↦ [CanisterLog];
   query_stats: CanisterId ↦ [QueryStats];
   system_time : Timestamp
@@ -4227,12 +4259,14 @@ The initial state of the IC is
   certified_data = ();
   canister_history = ();
   canister_log_visibility = ();
+  canister_snapshot_visibility = ();
   canister_logs = ();
   query_stats = ();
   system_time = T;
   call_contexts = ();
   messages = [];
   root_key = PublicKey;
+  subnet_admins = ();
 }
 ```
 
@@ -4315,6 +4349,7 @@ delegation_targets(D)
 
 A `Request` has an effective canister id according to the rules in [Effective canister id](#http-effective-canister-id):
 ```
+is_effective_canister_id(Request {canister_id = ic_principal, method = create_canister, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
@@ -4361,10 +4396,22 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.arg = candid({canister_id = CanisterId, …})
   E.content.sender ∈ S.controllers[CanisterId]
   E.content.method_name ∈
-    { "install_code", "install_chunked_code", "uninstall_code", "update_settings", "start_canister", "stop_canister",
-      "canister_status", "delete_canister", "upload_chunk", "clear_chunk_store", "stored_chunks",
+    { "install_code", "install_chunked_code", "update_settings",
+      "upload_chunk", "stored_chunks", "clear_chunk_store",
+      "take_canister_snapshot", "load_canister_snapshot", "list_canister_snapshots", "delete_canister_snapshot",
       "read_canister_snapshot_metadata", "read_canister_snapshot_data", "upload_canister_snapshot_metadata", "upload_canister_snapshot_data",
       "provisional_top_up_canister" }
+) ∨ (
+  E.content.canister_id = ic_principal
+  E.content.arg = candid({canister_id = CanisterId, …})
+  E.content.sender ∈ S.controllers[CanisterId] ∪ S.subnet_admins[S.canister_subnet[CanisterId]]
+  E.content.method_name ∈
+    { "start_canister", "stop_canister", "uninstall_code", "delete_canister", "canister_status" }
+) ∨ (
+  E.content.canister_id = ic_principal
+  E.content.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+  E.content.method_name ∈
+    { "create_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
   E.content.method_name ∈
@@ -5205,6 +5252,10 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -5232,6 +5283,7 @@ S' = S with
     query_stats[Canister_id] = []
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
@@ -5367,6 +5419,8 @@ S' = S with
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
+    if A.settings.snapshot_visibility is not null:
+      canister_snapshot_visibility[A.canister_id] = A.settings.snapshot_visibility
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
@@ -5441,7 +5495,7 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'canister_status'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id] ∪ {A.canister_id}
+M.caller ∈ S.controllers[A.canister_id] ∪ {A.canister_id} ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -5483,7 +5537,7 @@ is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
-Q.sender ∈ S.controllers[A.canister_id]
+Q.sender ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6000,7 +6054,7 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'uninstall_code'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
@@ -6075,7 +6129,7 @@ M.callee = ic_principal
 M.method_name = 'stop_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Running
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6100,7 +6154,7 @@ M.callee = ic_principal
 M.method_name = 'stop_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopping Origins
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6156,7 +6210,7 @@ M.callee = ic_principal
 M.method_name = 'stop_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopped
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6214,7 +6268,7 @@ M.callee = ic_principal
 M.method_name = 'start_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Running or S.canister_status[A.canister_id] = Stopped
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6246,7 +6300,7 @@ M.callee = ic_principal
 M.method_name = 'start_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopping Origins
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6285,7 +6339,7 @@ M.callee = ic_principal
 M.method_name = 'delete_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopped
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6314,6 +6368,7 @@ S with
     certified_data[A.canister_id] = (deleted)
     canister_history[A.canister_id] = (deleted)
     canister_log_visibility[A.canister_id] = (deleted)
+   canister_snapshot_visibility[A.canister_id] = (deleted)
     canister_logs[A.canister_id] = (deleted)
     query_stats[A.canister_id] = (deleted)
     chunk_store[A.canister_id] = (deleted)
@@ -6546,6 +6601,10 @@ if A.settings.log_visibility is not null:
 else:
   New_canister_log_visibility = Controllers
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -6571,6 +6630,7 @@ S' = S with
     certified_data[Canister_id] = ""
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     query_stats[CanisterId] = []
     messages = Older_messages · Younger_messages ·
@@ -6900,7 +6960,7 @@ S' = S with
 
 #### IC Management Canister: Read snapshot metadata
 
-Only the controllers of the given canister can read metadata of its snapshots.
+Access to the metadata of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6909,7 +6969,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_metadata'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -6946,7 +7010,7 @@ S with
 
 #### IC Management Canister: Read snapshot data
 
-Only the controllers of the given canister can read (binary) data of its snapshots.
+Access to the (binary) data of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6955,7 +7019,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_data'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -7134,7 +7202,7 @@ S' = S with
 
 #### IC Management Canister: List canister snapshots
 
-Only the controllers of the given canister can get a list of the existing snapshots.
+Access to the list of the existing snapshots of a canister is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -7143,7 +7211,12 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'list_canister_snapshots'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
+
 
 Snapshots = [{
   id = Snapshot_id;
@@ -7510,6 +7583,8 @@ S with
   canister_history[Canister_id] = (deleted)
   canister_log_visibility[New_canister_id] = S.canister_log_visibility[Canister_id]
   canister_log_visibility[Canister_id] = (deleted)
+  canister_snapshot_visibility[New_canister_id] = S.canister_snapshot_visibility[Canister_id]
+  canister_snapshot_visibility[Canister_id] = (deleted)
   canister_logs[New_canister_id] = S.canister_logs[Canister_id]
   canister_logs[Canister_id] = (deleted)
   query_stats[New_canister_id] = S.query_stats[Canister_id]
@@ -7517,7 +7592,7 @@ S with
 
 ```
 
-#### Time progressing, cycle consumption, and canister version increments
+#### Time progressing, cycle consumption, canister version increments and subnet admins updates
 
 Time progresses. Abstractly, it does so independently for each canister, and in unspecified intervals.
 
@@ -7599,7 +7674,7 @@ S with
 
 ```
 
-Finally, the canister version can be incremented arbitrarily:
+Additionally, the canister version can be incremented arbitrarily:
 
 Conditions  
 
@@ -7618,6 +7693,30 @@ S with
     canister_version[CanisterId] = N1
 
 ```
+
+Finally, subnet admins can be changed arbirtrarily: 
+
+Conditions  
+
+```html
+
+SA0 = S.subnet_admins
+SA1 != SA0
+
+```
+
+State after  
+
+```html
+
+S with
+    subnet_admins = SA1
+
+```
+
+:::note
+
+In production, subnet admins can be set via the Subnet Rental Canister which is not modeled in this document.
 
 #### Trimming canister history
 

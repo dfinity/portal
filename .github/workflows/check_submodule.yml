@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           submodules: recursive
           fetch-depth: 0
@@ -23,7 +23,7 @@ jobs:
           LATEST_SDK="17743e4b337550ed9f9439189599fe6d75f9e90d"
 
           # motoko docs 0.16.3
-          LATEST_MOTOKO="0d60c0f415c8f9330d881f551ef978fcf5afb353"
+          LATEST_MOTOKO="57671b62e81d47463c69fb738f93cb95343acbcc"
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
