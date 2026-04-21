@@ -53,4 +53,7 @@ docs/references/_attachments/requests.cddl @dfinity/interface-spec @dfinity/team
 docs/references/http-gateway-protocol-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
 docs/references/ic-interface-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
 
+# Editorial can approve everything
+* @dfinity/editorial
+
 
