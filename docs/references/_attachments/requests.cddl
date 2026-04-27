@@ -30,7 +30,7 @@ call-request-content = {
   canister_id : principal
   method_name : text
   arg : bytes
-  sender_info : sender-info
+  ? sender_info : sender-info
 }
 
 ; A request as submitted to /api/v2/.../read_state
@@ -61,7 +61,7 @@ query-content = {
   canister_id : principal
   method_name : text
   arg : bytes
-  sender_info : sender-info
+  ? sender_info : sender-info
 }
 
 ; The response, as returned from /api/v2/.../query
