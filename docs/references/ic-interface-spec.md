@@ -757,7 +757,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
-    -   `signer` (`blob`, required): The principal of the signing canister.
+    -   `signer` (`blob`, required): The principal of the signing canister. This must be equal to the canister ID encoded in the `sender_pubkey`, i.e. the `signing_canister_id` component of the canister signature public key, as described in [canister signature](#canister-signature).
 
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
@@ -813,7 +813,7 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
-    -   `signer` (`blob`, required): The principal of the signing canister.
+    -   `signer` (`blob`, required): The principal of the signing canister. This must be equal to the canister ID encoded in the `sender_pubkey`, i.e. the `signing_canister_id` component of the canister signature public key, as described in [canister signature](#canister-signature).
 
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
@@ -982,7 +982,7 @@ In order to make a query call to a canister, the user makes a POST request to `/
 
     -   `info` (`blob`, required): The sender information passed to the canister.
 
-    -   `signer` (`blob`, required): The principal of the signing canister.
+    -   `signer` (`blob`, required): The principal of the signing canister. This must be equal to the canister ID encoded in the `sender_pubkey`, i.e. the `signing_canister_id` component of the canister signature public key, as described in [canister signature](#canister-signature).
 
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
