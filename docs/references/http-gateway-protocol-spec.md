@@ -24,35 +24,18 @@ An HTTP request by an HTTP client is handled by these steps:
 
 ## Canister ID Resolution
 
-The HTTP Gateway needs to know the canister ID of the canister to talk to, and obtains that information from the hostname as follows:
+The HTTP Gateway needs to determine the canister ID for each incoming request before it can forward the request to the Internet Computer. The mechanism by which the canister ID is resolved is not prescribed by this specification and may vary across implementations. Some examples of how a canister ID can be obtained include:
 
-1. If the hostname is in the following table, use the given canister ids:
+- Extracted from the hostname (e.g., a canister ID encoded as a subdomain).
+- Looked up via DNS (e.g., a TXT record at a well-known subdomain).
+- Retrieved from a static mapping configured in the gateway.
+- Provided via an HTTP response header returned during a pre-flight lookup.
 
-   | Hostname             | Canister id                   |
-   | -------------------- | ----------------------------- |
-   | `identity.ic0.app`   | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
-   | `nns.ic0.app`        | `qoctq-giaaa-aaaaa-aaaea-cai` |
-   | `dscvr.one`          | `h5aet-waaaa-aaaab-qaamq-cai` |
-   | `dscvr.ic0.app`      | `h5aet-waaaa-aaaab-qaamq-cai` |
-   | `personhood.ic0.app` | `g3wsl-eqaaa-aaaan-aaaaa-cai` |
+If the HTTP Gateway cannot determine a canister ID for a request, it may handle the request as a standard Web2 request or return an error, depending on the implementation.
 
-2. Check whether the hostname is _raw_ (e.g., `<name>.raw.ic0.app`). If it is the case, fail and handle the request as a Web2 request, otherwise, continue.
+## API Boundary Node Resolution
 
-3. Check whether the canister ID is embedded in the hostname by splitting the hostname and finding the first occurrence of a valid canister ID from the right. If there is a canister ID embedded in the hostname, use it.
-
-4. Check whether the canister is hosted on the IC using a custom domain. There are two options:
-
-   - Check whether there is a TXT record containing a canister ID at the `_canister-id`-subdomain (e.g., to see whether `foo.com` is hosted on the IC, make a DNS lookup for the TXT record of `_canister-id.foo.com`) and use the specified canister ID;
-
-   - Make a `HEAD` request to the hostname. If the response contains an `x-ic-canister-id` header, use the value of this header as the canister ID.
-
-5. Else fail and handle the request as a Web2 request.
-
-If the hostname was of the form `<name>.ic0.app`, it is a _safe_ hostname; if it was of the form `<name>.raw.ic0.app`, it is a _raw_ hostname. Note that other domains may also be used to access canisters, such as `icp0.io`. The same logic concerning _raw_ domains can also be applied to these alternative domains.
-
-## API Gateway Resolution
-
-An API Gateway forwards Candid encoded HTTP requests to the relevant replica node. Any requests to the Internet Computer made by an HTTP Gateway are forwarded through these API gateways. The hostname of the API gateways is always `icp-api.io`.
+An API Boundary Node forwards Candid encoded HTTP requests to the relevant replica node. Any requests to the Internet Computer made by an HTTP Gateway are forwarded through these API boundary nodes. The hostname of the API boundary nodes is always `icp-api.io`.
 
 ## HTTP Request Encoding
 
@@ -82,7 +65,7 @@ The full [Candid](https://github.com/dfinity/candid/blob/master/spec/Candid.md) 
 
 ## Query Calls
 
-The encoded HTTP request is sent as a query call according to the [HTTPS Interface](/references/ic-interface-spec#http-query) via the API Gateway resolved according to [API Gateway Resolution](#api-gateway-resolution).
+The encoded HTTP request is sent as a query call according to the [HTTPS Interface](/references/ic-interface-spec#http-query) via the API Boundary Node resolved according to [API Boundary Node Resolution](#api-boundary-node-resolution).
 
 ## HTTP Response Decoding
 
