@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           submodules: recursive
           fetch-depth: 0
@@ -19,11 +19,11 @@ jobs:
           # Submodules are very easy to accidentally overwrite with old versions.
           # To make submodule updates more explicit and to prevent accidental changes we check the revisions explicitly here.
           
-          # dfx 0.31.0
-          LATEST_SDK="17743e4b337550ed9f9439189599fe6d75f9e90d"
+          # dfx 0.32.0
+          LATEST_SDK="126ffc8bb765d621d83cd5f4bfc98f7801762f2d"
 
           # motoko docs 0.16.3
-          LATEST_MOTOKO="0d60c0f415c8f9330d881f551ef978fcf5afb353"
+          LATEST_MOTOKO="57671b62e81d47463c69fb738f93cb95343acbcc"
 
           # Get current submodule commits
           SDK_HASH=$(git submodule status submodules/sdk | awk '{print $1}')
