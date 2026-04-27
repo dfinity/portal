@@ -761,7 +761,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
     -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signature), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
--The HTTP response to this request can have the following forms:
+The HTTP response to this request can have the following forms:
 
 -   200 HTTP status with a non-empty body. This status is returned if the canister call completed within an implementation-specific timeout or was rejected within an implementation-specific timeout.
     
