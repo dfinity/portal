@@ -745,7 +745,7 @@ If an implementation specific timeout for the request is reached while the repli
 
 ### Request: Call {#http-call}
 
-In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The `/api/v4/subnet/<effective_subnet_id>/call` form is not a general-purpose call endpoint; it is only supported for calls for calls to the `create_canister` method of the Management Canister (`aaaaa-aa`). The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The `/api/v4/subnet/<effective_subnet_id>/call` form is not a general-purpose call endpoint; it is only supported for canister creation calls to the Management Canister (`aaaaa-aa`). The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
 
@@ -1097,7 +1097,7 @@ In development instances of the Internet Computer Protocol (e.g. testnets), the 
 
 ### Effective subnet id {#http-effective-subnet-id}
 
-The `<effective_subnet_id>` in the URL paths of update call requests is only supported for calls to the `create_canister` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet on which the new canister will be created. The `<effective_subnet_id>` in the URL paths of query requests is only supported for calls to the `list_canisters` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet whose canisters are listed.
+The `<effective_subnet_id>` in the URL paths of update call requests is only supported for canister creation calls to the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet on which the new canister will be created. The `<effective_subnet_id>` in the URL paths of query requests is only supported for calls to the `list_canisters` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet whose canisters are listed.
 
 ### Authentication {#authentication}
 
@@ -4386,6 +4386,7 @@ is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_princip
 A `Request` has an effective subnet id according to the rules in [Effective subnet id](#http-effective-subnet-id):
 ```
 is_effective_subnet_id(Request {canister_id = ic_principal, method = create_canister, …}, s)
+is_effective_subnet_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, s)
 is_effective_subnet_id(CanisterQuery {canister_id = ic_principal, method = list_canisters, …}, s)
 ```
 
@@ -4516,7 +4517,7 @@ is_effective_subnet_id(E.content, ESID)
 let SN = the unique subnet in S.subnets such that SN.subnet_id = ESID
 E.content.sender ∈ S.subnet_admins[SN]
 E.content.canister_id = ic_principal
-E.content.method_name = "create_canister"
+E.content.method_name = "create_canister" ∨ E.content.method_name = "provisional_create_canister_with_cycles"
 
 ```
 
