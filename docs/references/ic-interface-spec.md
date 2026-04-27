@@ -7884,7 +7884,7 @@ Query response `R`:
 
 ```
 
-where `CanisterIdRanges` is the list of all canister IDs on the subnet encoded as consecutive ranges (excluding deleted canisters), and the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
+where `CanisterIdRanges` is the list of all canister IDs on the subnet encoded as consecutive canister ID ranges (excluding deleted canisters), and the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
 
 ```html
 
