@@ -4371,7 +4371,7 @@ A `Request` has an effective canister id according to the rules in [Effective ca
 ```
 is_effective_canister_id(Request {canister_id = ic_principal, method = create_canister, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, p)
-is_effective_canister_id(Request {canister_id = ic_principal, method = list_canisters, …}, p)
+is_effective_canister_id(CanisterQuery {canister_id = ic_principal, method = list_canisters, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
