@@ -1762,11 +1762,11 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 -   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_signer_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_signer_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     Auxiliary information about the caller as provided by the canister with which the caller's identity is associated (i.e., the public key of the canister signature is equal to the public key of the caller's identity).
-    These functions only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. They return empty values when the caller is another canister.
+    These functions can only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. In particular, they always return empty values when the caller is another canister.
 
     The `caller_info_data` may include information such as identity attributes of the caller.
-    The `_signer_` functions return the canister id of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
-    This can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
+    The `_signer_` functions return the canister ID of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
+    This auxiliary information can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
 
     These functions trap in `canister_init`, `canister_post_upgrade`, `canister_pre_upgrade`, canister http outcall transform, the `(start)` module initialization function, and system tasks (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`).
 
