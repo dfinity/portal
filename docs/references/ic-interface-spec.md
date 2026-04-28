@@ -1058,6 +1058,8 @@ It must be contained in the canister ranges of a subnet, otherwise the correspon
 
 -   If the request is a query call to the Management Canister (`aaaaa-aa`), then:
 
+    -   If the call is to the `list_canisters` method, then any principal can be used as the effective canister id for this call.
+
     -   If the `arg` is a Candid-encoded record with a `canister_id` field of type `principal`, then the effective canister id must be that principal.
 
     -   Otherwise, the call is rejected by the system independently of the effective canister id.
@@ -3272,6 +3274,24 @@ Replica-signed queries may improve security because the recipient can verify the
 
 :::
 
+### IC method `list_canisters` {#ic-list_canisters}
+
+This method can only be called by external users with subnet admin privileges via non-replicated (query) calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
+
+This method returns the list of all canisters on the subnet as consecutive canister ID ranges. Deleted canisters are not included in the result.
+
+A canister ID range is a record with the following fields:
+
+- `start` (`principal`): the first canister ID in the range (inclusive);
+- `end` (`principal`): the last canister ID in the range (inclusive).
+
+:::warning
+
+The response of a query comes from a single replica, and is therefore not appropriate for security-sensitive applications.
+Replica-signed queries may improve security because the recipient can verify the response comes from the correct subnet.
+
+:::
+
 ## The IC Bitcoin API {#ic-bitcoin-api}
 
 The Bitcoin API exposed by the management canister is DEPRECATED.
@@ -4351,6 +4371,7 @@ A `Request` has an effective canister id according to the rules in [Effective ca
 ```
 is_effective_canister_id(Request {canister_id = ic_principal, method = create_canister, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, p)
+is_effective_canister_id(CanisterQuery {canister_id = ic_principal, method = list_canisters, …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, method = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
@@ -7822,9 +7843,58 @@ verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // 
 
 ```
 
+#### IC Management Canister: List canisters (query call) {#ic-mgmt-canister-list-canisters}
+
+This section specifies the `list_canisters` management canister query call.
+It is a call to `/api/v3/canister/<ECID>/query`
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
+
+The management canister offers the method `list_canisters`
+that can be called as a query call by subnet admins and
+returns the list of all canisters on the subnet as consecutive canister ID ranges.
+
+Submitted request to `/api/v3/canister/<ECID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+Conditions
+
+```html
+
+E.content = CanisterQuery Q
+Q.canister_id = ic_principal
+Q.method_name = 'list_canisters'
+|Q.nonce| <= 32
+is_effective_canister_id(E.content, ECID)
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+verify_envelope(E, Q.sender, S.system_time)
+Q.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+
+```
+
+Query response `R`:
+
+```html
+
+{status: "replied"; reply: {arg: candid({canisters: CanisterIdRanges})}, signatures: Sigs}
+
+```
+
+where `CanisterIdRanges` is the list of all canister IDs on the subnet encoded as consecutive canister ID ranges (excluding deleted canisters), and the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
+
+```html
+
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
+
 #### Query call {#query-call}
 
-This section specifies query calls `Q` whose `Q.canister_id` is a non-empty canister `S.canisters[Q.canister_id]`. Query calls to the management canister, i.e., `Q.canister_id = ic_principal`, are specified in Section [Canister logs](#ic-mgmt-canister-fetch-canister-logs).
+This section specifies query calls `Q` whose `Q.canister_id` is a non-empty canister `S.canisters[Q.canister_id]`. Query calls to the management canister, i.e., `Q.canister_id = ic_principal`, are specified in Sections [Canister status](#ic-management-canister-canister-status), [Canister logs](#ic-mgmt-canister-fetch-canister-logs), and [List canisters](#ic-mgmt-canister-list-canisters).
 
 Canister query calls to `/api/v3/canister/<ECID>/query` can be executed directly. They can only be executed against non-empty canisters which have a status of `Running` and are also not frozen.
 
