@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.59.0 (2025-04-20) {$0_59_0}
+* Canister signatures from canisters on subnets of type `cloud_engine` are not valid.
+
 ### 0.58.0 (2025-04-01) {$0_58_0}
 * Added subnet admins who can start, stop, uninstall, delete a canister and request its status.
 
