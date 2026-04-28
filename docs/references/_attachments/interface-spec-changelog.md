@@ -1,6 +1,12 @@
 ## Changelog {#changelog}
 
 ### 0.59.0 (2025-04-27) {$0_59_0}
+* Update and query calls by users authenticated via canister signatures can carry
+  auxiliary information signed by a canister signature issued by the same canister.
+  That information is passed via a new `sender_info` field of the user HTTP request
+  and available to the callee via new system API  `ic0.msg_caller_info_data_size`,
+  `ic0.msg_caller_info_data_copy`, `ic0.msg_caller_info_signer_size`, and
+  `ic0.msg_caller_info_signer_copy`.
 * Added query call for subnet admins to list all canisters on a subnet.
 
 ### 0.58.0 (2025-04-01) {$0_58_0}
