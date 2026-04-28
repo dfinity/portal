@@ -8083,7 +8083,7 @@ Q.method_name = 'list_canisters'
 |Q.nonce| <= 32
 is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
-Q.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
+Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 Q.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
 
 ```
