@@ -8101,16 +8101,16 @@ Q.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
 
 ```
 
-for calls to `/api/v3/canister/<ECID>/read_state` and
+for calls to `/api/v3/canister/<ECID>/query` and
 
 ```html
 
 is_effective_subnet_id(E.content, ESID)
-Q.sender ∈ S.subnet_admins[S.canister_subnet[ESID]]
+Q.sender ∈ S.subnet_admins[ESID]
 
 ```
 
-for calls to `/api/v4/subnet/<ESID>/read_state`.
+for calls to `/api/v4/subnet/<ESID>/query`.
 
 Query response `R`:
 
