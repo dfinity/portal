@@ -8385,7 +8385,7 @@ may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
-may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <ESID>
+may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == ESID
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
@@ -8395,7 +8395,7 @@ may_read_path_for_subnet(S, _, ["request_status", Rid, "reply"]) =
 may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_code"]) =
 may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_message"]) =
 may_read_path_for_subnet(S, _, ["request_status", Rid, "error_code"]) =
-  ∀ (R ↦ (_, ESID')) ∈ dom(S.requests). hash_of_map(R) = Rid => RS.sender == R.sender ∧ <ESID> == ESID'
+  ∀ (R ↦ (_, ESID')) ∈ dom(S.requests). hash_of_map(R) = Rid => RS.sender == R.sender ∧ ESID == ESID'
 may_read_path_for_subnet(S, _, _) = False
 ```
 The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that has a path in `RS.paths` or `["time"]` as a prefix, we have
