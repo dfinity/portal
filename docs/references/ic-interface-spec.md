@@ -912,7 +912,7 @@ All requested paths must have the following form:
 
     -   the sender of the original request referenced by `<request_id>` is the same as the sender of the read state request and
 
-    -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>` (for requests to `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`), or the effective subnet id of the original request referenced by `<request_id>` matches `<effective_subnet_id>` (for requests to `/api/v3/subnet/<effective_subnet_id>/read_state`).
+    -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>` (for requests to `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`), or the effective subnet id of the original request referenced by `<request_id>` matches `<effective_subnet_id>` (for requests to `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`).
 
 -   `/canister/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
 
