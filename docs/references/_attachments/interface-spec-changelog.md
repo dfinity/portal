@@ -7,6 +7,7 @@
   and available to the callee via new system API  `ic0.msg_caller_info_data_size`,
   `ic0.msg_caller_info_data_copy`, `ic0.msg_caller_info_signer_size`, and
   `ic0.msg_caller_info_signer_copy`.
+* Added query call for subnet admins to list all canisters on a subnet.
 
 ### 0.58.0 (2025-04-01) {$0_58_0}
 * Added subnet admins who can start, stop, uninstall, delete a canister and request its status.
