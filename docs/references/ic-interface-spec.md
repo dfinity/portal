@@ -8064,14 +8064,15 @@ verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // 
 #### IC Management Canister: List canisters (query call) {#ic-mgmt-canister-list-canisters}
 
 This section specifies the `list_canisters` management canister query call.
-It is a call to `/api/v3/canister/<ECID>/query`
+It is a call to `/api/v3/canister/<EPID>/query` or `/api/v3/subnet/<EPID>/query`
+(`EPID` stands for "effective principal ID")
 with CBOR content `Q` such that `Q.canister_id = ic_principal`.
 
 The management canister offers the method `list_canisters`
 that can be called as a query call by subnet admins and
 returns the list of all canisters on the subnet as consecutive canister ID ranges.
 
-Submitted request to `/api/v3/canister/<ECID>/query`
+Submitted request to `/api/v3/canister/<EPID>/query` or `/api/v3/subnet/<EPID>/query`
 
 ```html
 
@@ -8087,10 +8088,10 @@ E.content = CanisterQuery Q
 Q.canister_id = ic_principal
 Q.method_name = 'list_canisters'
 |Q.nonce| <= 32
-is_effective_canister_id(E.content, ECID)
+is_effective_canister_id(E.content, EPID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
-Q.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+Q.sender ∈ S.subnet_admins[S.canister_subnet[EPID]]
 
 ```
 
@@ -8102,13 +8103,23 @@ Query response `R`:
 
 ```
 
-where `CanisterIdRanges` is the list of all canister IDs on the subnet encoded as consecutive canister ID ranges (excluding deleted canisters), and the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` satisfy the following:
+where `CanisterIdRanges` is the list of all canister IDs on the subnet encoded as consecutive canister ID ranges (excluding deleted canisters), and the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<EPID>/read_state` or `/api/v3/subnet/<EPID>/read_state` satisfy the following:
 
 ```html
 
 verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
 
 ```
+
+for calls to `/api/v3/canister/<EPID>/read_state` and
+
+```html
+
+verify_subnet_response(Q, R, Cert, EPID) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
+
+for calls to `/api/v3/subnet/<EPID>/read_state`.
 
 #### Query call {#query-call}
 
