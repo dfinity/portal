@@ -4456,10 +4456,10 @@ delegation_targets(D)
 
 A `Request` has an effective canister id according to the rules in [Effective canister id](#http-effective-canister-id):
 ```
-is_effective_canister_id(Request {canister_id = ic_principal, method_name = create_canister, …}, p)
-is_effective_canister_id(Request {canister_id = ic_principal, method_name = provisional_create_canister_with_cycles, …}, p)
-is_effective_canister_id(CanisterQuery {canister_id = ic_principal, method_name = list_canisters, …}, p)
-is_effective_canister_id(Request {canister_id = ic_principal, method_name = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method_name = "create_canister", …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method_name = "provisional_create_canister_with_cycles", …}, p)
+is_effective_canister_id(CanisterQuery {canister_id = ic_principal, method_name = "list_canisters", …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method_name = "install_chunked_code", arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
@@ -4468,9 +4468,9 @@ is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_princip
 
 A `Request` has an effective subnet id according to the rules in [Effective subnet id](#http-effective-subnet-id):
 ```
-is_effective_subnet_id(Request {canister_id = ic_principal, method_name = create_canister, …}, s)
-is_effective_subnet_id(Request {canister_id = ic_principal, method_name = provisional_create_canister_with_cycles, …}, s)
-is_effective_subnet_id(CanisterQuery {canister_id = ic_principal, method_name = list_canisters, …}, s)
+is_effective_subnet_id(Request {canister_id = ic_principal, method_name = "create_canister", …}, s)
+is_effective_subnet_id(Request {canister_id = ic_principal, method_name = "provisional_create_canister_with_cycles", …}, s)
+is_effective_subnet_id(CanisterQuery {canister_id = ic_principal, method_name = "list_canisters", …}, s)
 ```
 
 #### API Request submission {#api-request-submission}
@@ -5177,7 +5177,7 @@ Note that returning does *not* imply that the call associated with this message 
 The function `validate_sender_canister_version` checks that `sender_canister_version` matches the actual canister version of the sender in all calls to the methods of the management canister that take `sender_canister_version`:
 ```
 validate_sender_canister_version(new_calls, canister_version_from_system) =
-  ∀ call ∈ new_calls. (call.callee = ic_principal and (call.method_name = 'create_canister' or call.method_name = 'update_settings' or call.method_name = 'install_code' or call.method_name = `install_chunked_code` or call.method_name = 'uninstall_code' or call.method_name = 'provisional_create_canister_with_cycles') and call.arg = candid(A) and A.sender_canister_version = n) => n = canister_version_from_system
+  ∀ call ∈ new_calls. (call.callee = ic_principal and (call.method_name = "create_canister" or call.method_name = "update_settings" or call.method_name = "install_code" or call.method_name = "install_chunked_code" or call.method_name = "uninstall_code" or call.method_name = "provisional_create_canister_with_cycles") and call.arg = candid(A) and A.sender_canister_version = n) => n = canister_version_from_system
 ```
 
 The functions `query_as_update` and `system_task_as_update` turns a query function (note that composite query methods cannot be called when executing a message during this transition) resp the heartbeat or global timer into an update function; this is merely a notational trick to simplify the rule:
