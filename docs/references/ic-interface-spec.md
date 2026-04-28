@@ -1072,7 +1072,7 @@ For subnet queries to `/api/v3/subnet/<effective_subnet_id>/query`:
 
 ```
 verify_subnet_response(Q, R, Cert, SubnetId)
-  = verify_cert(Cert) ∧
+  = verify_cert(Cert) ∧ SubnetId = effective_subnet_id ∧
     ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId) ∨
      (Cert.delegation ≠ NoDelegation ∧ SubnetId = Cert.delegation.subnet_id)) ∧
     verify_node_signatures(Q, R, Cert, SubnetId)
