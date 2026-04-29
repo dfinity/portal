@@ -1,0 +1,42 @@
+schema: spec-driven
+
+context: |
+  # ICP Developer Portal (@dfinity/portal)
+
+  Official documentation portal for the Internet Computer Protocol (ICP),
+  hosted at https://internetcomputer.org
+
+  ## Tech Stack
+  - **Framework**: Docusaurus v2.4.3 (classic preset)
+  - **UI**: React 16.14.0, TypeScript 4.6.2
+  - **Styling**: SCSS + Tailwind CSS, custom Docusaurus theme
+  - **Markdown**: MDX with remark-math, PlantUML, Mermaid, code-import
+  - **Build**: Webpack (custom plugins), Babel
+  - **Deployment**: ICP asset canister (icp.yaml)
+  - **Search**: Custom Rust canister (search/) + Kapa.ai widget
+  - **Analytics**: Matomo
+  - **Submodules**: sdk, motoko, internet-identity, examples, dfxvm, response-verification
+
+  ## Key Conventions
+  - Documentation lives in docs/ with MDX format
+  - Sidebar navigation defined in sidebars.js
+  - Custom Docusaurus theme overrides in src/theme/
+  - Reusable React components in src/components/
+  - Custom plugins in plugins/
+  - Blog posts in blog/ (features/ and news-and-updates/)
+  - Static assets in static/ (images, fonts, Motoko WASM interpreter)
+  - Git submodules provide synced content from upstream repos
+
+rules:
+  proposal:
+    - Keep proposals focused on specific documentation areas or portal features
+    - Reference existing Docusaurus/React patterns when proposing UI changes
+    - Consider impact on navigation structure (sidebars.js) for doc changes
+  tasks:
+    - Group tasks by affected area (docs, components, theme, plugins, config)
+    - Include file paths for all affected files
+    - Note any sidebar or navigation changes needed
+  spec:
+    - Organize specs by domain (infrastructure, docs, ui, search, blog)
+    - Reference Docusaurus v2 conventions where applicable
+    - Include sidebar configuration for documentation specs
