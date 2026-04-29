@@ -37,8 +37,8 @@ To understand mutable state, let's take a look at an example where an actor's pr
 Immutable variables use the `let` syntax when being declared:
 
 ```motoko
-import Text "mo:base/Text";
-import Nat "mo:base/Nat";
+import Text "mo:core/Text";
+import Nat "mo:core/Nat";
 
 actor {
   let textImmutable  : Text = "Developer Liftoff";
@@ -49,8 +49,8 @@ actor {
 Mutable variables use the `var` syntax when being declared:
 
 ```motoko no-repl
-import Text "mo:base/Text";
-import Nat "mo:base/Nat";
+import Text "mo:core/Text";
+import Nat "mo:core/Nat";
 
 actor {
   var pairMutable : (Text, Nat) = (textImmutable, numImmutable);
@@ -75,7 +75,7 @@ An actor processes calls by performing updates on its internal mutable variables
 When data is read from the actor's state, each mutable and immutable variable will look alike; however, they will behave differently. For example, consider the following variable declarations:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   let x : Nat = 0
@@ -86,7 +86,7 @@ actor {
 and:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   var x : Nat = 0
@@ -102,7 +102,7 @@ In the mutable variable definition using `var`, each occurrence of the variable 
 `let` bound variables are more fundamental to a program. To demonstrate why, consider the following `var` bound variable that uses a single element, a mutable array, that is bound to itself using a `let` bound variable:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   var x : Nat       = 0 ;
@@ -115,9 +115,9 @@ In this example, instead of declaring `x` as a mutable variable that initially h
 It is important to note that the read/write syntax for mutable arrays is not as readable as `var` bound variables; therefore, reading and writing to variable `x` will be easier than variable `y`.
 
 :::info
-The Motoko standard library provides an Array library that can be used for both mutable and immutable arrays. This library can be imported with the statement:
+The Motoko core library provides an **Array** module for immutable arrays and a **VarArray** module for mutable arrays. Import them with:
 
-`import Array "mo:base/Array";`
+`import Array "mo:core/Array";` and `import VarArray "mo:core/VarArray";`
 :::
 
 ### Immutable arrays
@@ -127,7 +127,7 @@ Before going deeper into mutable arrays, first let's cover immutable arrays, whi
 For example, consider the following immutable array:
 
 ```motoko no-repl
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   let a : [Nat] = [1, 2, 3] ;
@@ -137,7 +137,7 @@ actor {
 Then, to read from this array you can use the traditional bracket syntax of `[` and `]` to read the desired index:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   let x : Nat = a[2] + a[0] ;
@@ -153,7 +153,7 @@ Mutable arrays cannot be used in place of immutable ones, since the Motoko defin
 To declare a mutable array, the `[var _]` syntax is used. Note that this uses the `var` keyword for both the expression and types:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   let a : [var Nat] = [var 1, 2, 3] ;
@@ -162,15 +162,15 @@ actor {
 
 This array holds three numbers with type `Nat`. These three values can be updated, but the number of entries cannot.
 
-To declare a mutable array with a dynamic size, such that the number of entries within the array can be updated, the following `Array_init` syntax can be used:
+To declare a mutable array with a dynamic size, such that the number of entries within the array can be updated, use the **VarArray** module from the core library (in core, `Array.init` was removed; use `VarArray` for mutable arrays):
 
 ```motoko no-repl
-import Nat "mo:base/Nat";
-import Array "mo:base/Array";
+import Nat "mo:core/Nat";
+import VarArray "mo:core/VarArray";
 
 actor {
-  ar size : Nat;
-  let x : [var Nat] = Array.init<Nat>(size, 5);
+  let size : Nat = 10;
+  let x : [var Nat] = VarArray.tabulate<Nat>(size, func(_) = 5);
 }
 ```
 
@@ -180,7 +180,7 @@ Using this syntax, this mutable array will have `size` number of entries, each w
 x[2] := 42;
 ```
 
-Using this syntax, each entry can be updated via an assignment to that individual entry. In this example, the index entry of `2` gets updated from equaling `52` to equal `42`.
+Using this syntax, each entry can be updated via an assignment to that individual entry. In this example, the index entry of `2` gets updated from `5` to `42`.
 
 :::caution
 
@@ -214,7 +214,7 @@ First, let's clearly define the difference between object and actor classes:
 For example, let's look at the following object declaration of the object `counter`:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   object counter {
@@ -257,7 +257,7 @@ In Motoko, object subtyping refers to objects that may have various types. Objec
 To demonstrate an example of subtyping, let's use a simple counter with a more general type that uses fewer public functions:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   object bumpCounter {
@@ -307,7 +307,7 @@ If a function expects to receive an object using the first type `({ bump: () →
 An object class is a package of entities that share a common name. For example, let's define a class example for counters that start at zero:
 
 ```motoko no-repl
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
  class Counter() {
@@ -342,7 +342,7 @@ actor{
 In comparison, the same results can be achieved by using a constructor function to return an object:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
   func Counter() : { inc : () -> Nat } =
@@ -358,7 +358,7 @@ actor {
 In your object class, you initialized counter functions to start with a value of zero. If you want to initialize the counter with a value other than zero, you can pass a data argument into the constructor function:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor {
 class Counter(init : Nat) {
@@ -405,8 +405,8 @@ system func inspect({}) : Bool { false }
 In comparison, the following `inspect` function example declines all messages where the principal value is anonymous:
 
 ```motoko
-import Principal "mo:base/Principal";
-import Bool "mo:base/Bool";
+import Principal "mo:core/Principal";
+import Bool "mo:core/Bool";
 
 actor {
   system func inspect({ caller : Principal }) : Bool {
@@ -418,7 +418,7 @@ actor {
 Messages can also be declined based on their raw size in bytes (of their arguments prior to any decoding from the Candid binary to the Motoko value), such as:
 
 ```motoko
-import Bool "mo:base/Bool";
+import Bool "mo:core/Bool";
 
 actor {
   system func inspect({ arg : Blob }) : Bool {
@@ -447,7 +447,7 @@ Motoko error handling best practices recommend using `Option` and `Result` error
 If a function wants to return the value of type `A` or signal an error, it can return a value of option type `?A`; the `null` value can designate the error. For example, consider the following `markDone` function that returns an async value of `?Seconds`.
 
 ```motoko no-repl
-import Time "mo:base/Time";
+import Time "mo:core/Time";
 
 actor {
   public shared func markDoneOption(id : TodoId) : async ?Seconds {
@@ -467,8 +467,8 @@ Then, you can use the following error call site:
 
 
 ```motoko no-repl
-import Int "mo:base/Int";
-import Text "mo:base/Text";
+import Int "mo:core/Int";
+import Text "mo:core/Text";
 
 actor {
   public shared func doneTodo2(id : Todo.TodoId) : async Text {
@@ -497,8 +497,8 @@ type Result<Ok, Err> = { #ok : Ok; #err : Err }
 Since `Result` includes the `Err` type parameters, the `Result` type allows you to select the type used to describe errors. Consider the following example that uses `Result` variants to signal errors:
 
 ```motoko no-repl
-import Result "mo:base/Result";
-import Time "mo:base/Time";
+import Result "mo:core/Result";
+import Time "mo:core/Time";
 
 actor {
   public shared func markDoneResult(id : TodoId) : async Result.Result<Seconds, TodoError> {
@@ -522,9 +522,9 @@ actor {
 Then, you can use the following error call site:
 
 ```motoko no-repl
-import Time "mo:base/Time";
-import Text "mo:base/Text";
-import Int "mo:base/Int";
+import Time "mo:core/Time";
+import Text "mo:core/Text";
+import Int "mo:core/Int";
 
 actor {
   public shared func doneTodo3(id : Todo.TodoId) : async Text {
@@ -555,7 +555,7 @@ Asynchronous errors are a restricted form of exception error handling. Since Mot
 Asynchronous error handling generally should only be used for catching and signaling unexpected, irrecoverable failures. If a failure can be handled by the caller, it should return a `Result` instead. The following example demonstrates a form of asynchronous error handling:
 
 ```motoko no-repl
-import Time "mo:base/Time";
+import Time "mo:core/Time";
 
 actor {
   public shared func markDoneException(id : TodoId) : async Seconds {
@@ -579,7 +579,7 @@ actor {
 Then, you can use the following error call site:
 
 ```motoko no-repl
-import Text "mo:base/Text";
+import Text "mo:core/Text";
 
 actor {
   public shared func doneTodo4(id : Todo.TodoId) : async Text {
