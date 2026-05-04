@@ -1123,7 +1123,7 @@ In development instances of the Internet Computer Protocol (e.g. testnets), the 
 
 ### Effective subnet id {#http-effective-subnet-id}
 
-The `<effective_subnet_id>` in the URL paths of update call requests is only supported for canister creation calls to the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet on which the new canister will be created. The `<effective_subnet_id>` in the URL paths of query requests is only supported for calls to the `list_canisters` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet whose canisters are listed.
+The `<effective_subnet_id>` in the URL paths of update call requests is only supported for canister creation calls to the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet on which the new canister will be created. The `<effective_subnet_id>` in the URL paths of query call requests is only supported for calls to the `list_canisters` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet whose canisters are listed.
 
 ### Authentication {#authentication}
 
