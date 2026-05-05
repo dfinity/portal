@@ -8110,7 +8110,7 @@ Q.sender ∈ S.subnet_admins[ESID]
 
 ```
 
-for calls to `/api/v4/subnet/<ESID>/query`.
+for calls to `/api/v3/subnet/<ESID>/query`.
 
 Query response `R`:
 
