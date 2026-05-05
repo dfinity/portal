@@ -511,6 +511,15 @@ type fetch_canister_logs_result = record {
     canister_log_records : vec canister_log_record;
 };
 
+type canister_id_range = record {
+    start : canister_id;
+    end : canister_id;
+};
+
+type list_canisters_result = record {
+    canisters : vec canister_id_range;
+};
+
 type read_canister_snapshot_metadata_args = record {
     canister_id : canister_id;
     snapshot_id : snapshot_id;
