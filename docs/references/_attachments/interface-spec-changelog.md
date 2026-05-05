@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.60.0 (2025-05-04) {$0_60_0}
+* Canister signatures from canisters on subnets of type `cloud_engine` are not valid.
+
 ### 0.59.0 (2025-04-27) {$0_59_0}
 * Update and query calls by users authenticated via canister signatures can carry
   auxiliary information signed by a canister signature issued by the same canister.
