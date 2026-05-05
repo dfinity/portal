@@ -708,6 +708,9 @@ service ic : {
     // canister logging
     fetch_canister_logs : (fetch_canister_logs_args) -> (fetch_canister_logs_result) query;
 
+    // subnet admin methods
+    list_canisters : () -> (list_canisters_result) query;
+
     // Returns canister related metrics
     canister_metrics: (canister_metrics_args) -> (canister_metrics_result) query;
 };

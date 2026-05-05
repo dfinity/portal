@@ -3281,6 +3281,21 @@ This method returns a set of canister related metrics for the requested canister
 Only controllers of the canister or subnet admins can call this method.
 
 
+### IC method `canister_metrics` {#ic-canister_metrics}
+
+This method can be called by canisters as well as by external users via ingress messages.
+
+This method returns a set of canister related metrics for the requested canister, like cycles consumed by different use cases. These metrics should be counters (i.e. monotonically increasing values) that report the accumulated respective amount since the canister was created for new canisters or since the metrics introduction for existing canisters.
+
+Only controllers of the canister or subnet admins can call this method.
+
+:::warning
+
+The response of a query comes from a single replica, and is therefore not appropriate for security-sensitive applications.
+Replica-signed queries may improve security because the recipient can verify the response comes from the correct subnet.
+
+:::
+
 ## The IC Bitcoin API {#ic-bitcoin-api}
 
 The Bitcoin API exposed by the management canister is DEPRECATED.
@@ -4412,6 +4427,11 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.sender ∈ S.controllers[CanisterId] ∪ S.subnet_admins[S.canister_subnet[CanisterId]]
   E.content.method_name ∈
     { "start_canister", "stop_canister", "uninstall_code", "delete_canister", "canister_status", "canister_metrics" }
+) ∨ (
+  E.content.canister_id = ic_principal
+  E.content.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+  E.content.method_name ∈
+    { "create_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
   E.content.method_name ∈
