@@ -8398,7 +8398,7 @@ Conditions
 E.content = ReadState RS
 TS = verify_envelope(E, RS.sender, S.system_time)
 |E.content.nonce| <= 32
-S.system_time <= RS.ingress_expiry
+S.system_time <= RS.ingress_expiry or RS.sender = anonymous_id
 ∀ path ∈ RS.paths. may_read_path_for_subnet(S, RS.sender, path)
 ∀ (["request_status", Rid] · _) ∈ RS.paths.  ∀ R ∈ dom(S.requests). hash_of_map(R) = Rid => R.canister_id ∈ TS
 
