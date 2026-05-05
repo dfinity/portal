@@ -666,6 +666,8 @@ service ic : {
     start_canister : (start_canister_args) -> ();
     stop_canister : (stop_canister_args) -> ();
     canister_status : (canister_status_args) -> (canister_status_result) query;
+    // Returns canister related metrics
+    canister_metrics: (canister_metrics_args) -> (canister_metrics_result) query;
     delete_canister : (delete_canister_args) -> ();
     deposit_cycles : (deposit_cycles_args) -> ();
     raw_rand : () -> (raw_rand_result);
@@ -719,7 +721,4 @@ service ic : {
 
     // subnet admin methods
     list_canisters : () -> (list_canisters_result) query;
-
-    // Returns canister related metrics
-    canister_metrics: (canister_metrics_args) -> (canister_metrics_result) query;
 };
