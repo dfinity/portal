@@ -2,6 +2,9 @@
 
 ### 0.60.0 (2025-05-04) {$0_60_0}
 * Canister signatures from canisters on subnets of type `cloud_engine` are not valid.
+* New HTTP endpoints for update calls (to create a canister by subnet admins) and
+  query calls (to list all canisters on a subnet by subnet admins) whose URL contains
+  the (effective) subnet ID on which the canister is created or whose canisters should be enumerated.
 
 ### 0.59.0 (2025-04-27) {$0_59_0}
 * Update and query calls by users authenticated via canister signatures can carry
