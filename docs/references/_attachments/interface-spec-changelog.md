@@ -1,5 +1,30 @@
 ## Changelog {#changelog}
 
+### 0.60.0 (2025-05-04) {$0_60_0}
+* Canister signatures from canisters on subnets of type `cloud_engine` are not valid.
+* New HTTP endpoints for update calls (to create a canister by subnet admins) and
+  query calls (to list all canisters on a subnet by subnet admins) whose URL contains
+  the (effective) subnet ID on which the canister is created or whose canisters should be enumerated.
+
+### 0.59.0 (2025-04-27) {$0_59_0}
+* Update and query calls by users authenticated via canister signatures can carry
+  auxiliary information signed by a canister signature issued by the same canister.
+  That information is passed via a new `sender_info` field of the user HTTP request
+  and available to the callee via new system API  `ic0.msg_caller_info_data_size`,
+  `ic0.msg_caller_info_data_copy`, `ic0.msg_caller_info_signer_size`, and
+  `ic0.msg_caller_info_signer_copy`.
+* Added query call for subnet admins to list all canisters on a subnet.
+
+### 0.58.0 (2025-04-01) {$0_58_0}
+* Added subnet admins who can start, stop, uninstall, delete a canister and request its status.
+
+### 0.57.0 (2025-03-30) {$0_57_0}
+* Added canister snapshot visibility settings.
+
+### 0.56.0 (2025-03-16) {$0_56_0}
+* Support for the HTTP methods `PUT` and `DELETE` in canister `http_request` in non-replicated mode.
+* Added subnet type to the certified state tree at the path `/subnet/<subnet_id>/type`.
+
 ### 0.55.0 (2025-01-26) {$0_55_0}
 * Support for canister renaming (required for canister ID migration from one subnet to another subnet).
 

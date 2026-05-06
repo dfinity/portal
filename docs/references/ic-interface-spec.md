@@ -298,7 +298,7 @@ The canister status can be used to control whether the canister is processing ca
 
 In all cases, calls to the [management canister](#ic-management-canister) are processed, regardless of the state of the managed canister.
 
-The controllers of the canister can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status) (NB: this call returns additional information, such as the cycle balance of the canister). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
+The controllers of the canister or subnet admins can initiate transitions between these states using [`stop_canister`](#ic-stop_canister) and [`start_canister`](#ic-start_canister), and query the state using [`canister_status`](#ic-canister_status) (NB: this call returns additional information, such as the cycle balance of the canister). The canister itself can also query its state using [`ic0.canister_status`](#system-api-canister-status).
 
 :::note
 
@@ -411,7 +411,7 @@ This section makes forward references to other concepts in this document, in par
 
     where `signing_canister_id` is the id of the signing canister and `reconstruct` is a function that computes a root-hash for the tree.
 
-    -   If the `certificate` includes a subnet delegation, then the `signing_canister_id` must be included in the delegation's canister id range (see [Delegation](#certification-delegation)).
+    -   If the `certificate` includes a subnet delegation, then the `signing_canister_id` must be included in the delegation's canister id range (see [Delegation](#certification-delegation)), and the subnet type (obtained by looking up the path `/subnet/<subnet_id>/type` in the delegation's certificate) *must* be present and it *must not* be `cloud_engine`.
 
     -   The `tree` must be a `well_formed` tree with
         ```
@@ -493,6 +493,10 @@ The state tree contains information about the topology of the Internet Computer.
 -   `/subnet/<subnet_id>/public_key` (blob)
 
     The public key of the subnet (a DER-encoded BLS key, see [Certification](#certification))
+
+-   `/subnet/<subnet_id>/type` (text)
+
+    The subnet type of the subnet. Possible values are "application", "system", "verified_application", and "cloud_engine" (without quotes).
 
 -   `/subnet/<subnet_id>/canister_ranges` (blob)
 
@@ -628,15 +632,15 @@ The concrete mechanism that users use to send requests to the Internet Computer 
 
 -   At `/api/v2/canister/<effective_canister_id>/call`, the user can submit update calls that are asynchronous and might change the IC state.
 
--   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status.
+-   At `/api/v3/canister/<effective_canister_id>/call` (deprecated) and `/api/v4/canister/<effective_canister_id>/call`, the user can submit update calls and get a synchronous HTTPS response with a certificate for the call status. At `/api/v4/subnet/<effective_subnet_id>/call`, the user can only submit the restricted subnet-scoped update call described by the [effective subnet id](#http-effective-subnet-id) rules.
 
 -   At `/api/v2/canister/<effective_canister_id>/read_state` (deprecated), `/api/v2/subnet/<effective_subnet_id>/read_state` (deprecated), `/api/v3/canister/<effective_canister_id>/read_state`, and `/api/v3/subnet/<effective_subnet_id>/read_state`, the user can read various information about the state of the Internet Computer. In particular, they can poll for the status of a call here.
 
--   At `/api/v2/canister/<effective_canister_id>/query` (deprecated) and `/api/v3/canister/<effective_canister_id>/query`, the user can perform (synchronous, non-state-changing) query calls.
+-   At `/api/v2/canister/<effective_canister_id>/query` (deprecated) and `/api/v3/canister/<effective_canister_id>/query`, the user can perform (synchronous, non-state-changing) query calls. At `/api/v3/subnet/<effective_subnet_id>/query`, the user can only perform the restricted subnet-scoped query call described by the [effective subnet id](#http-effective-subnet-id) rules.
 
 -   At `/api/v2/status` the user can retrieve status information about the Internet Computer.
 
-In these paths, the `<effective_canister_id>` is the [textual representation](#textual-ids) of the [*effective* canister id](#http-effective-canister-id).
+In these paths, the `<effective_canister_id>` is the [textual representation](#textual-ids) of the [*effective* canister id](#http-effective-canister-id) and the `<effective_subnet_id>` is the [textual representation](#textual-ids) of the [*effective* subnet id](#http-effective-subnet-id).
 
 Requests to `/api/.../call`, `/api/.../read_state`, and `/api/.../query` are POST requests with a CBOR-encoded request body, which consists of a authentication envelope (as per [Authentication](#authentication)) and request-specific content as described below.
 
@@ -741,17 +745,25 @@ If an implementation specific timeout for the request is reached while the repli
 
 ### Request: Call {#http-call}
 
-In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to call a canister, the user makes a POST request to `/api/v3/canister/<effective_canister_id>/call` (deprecated) or `/api/v4/canister/<effective_canister_id>/call`. The `/api/v4/subnet/<effective_subnet_id>/call` form is not a general-purpose call endpoint; it is only supported for canister creation calls to the Management Canister (`aaaaa-aa`). The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `call`
-
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call.
 
 -   `arg` (`blob`): Argument to pass to the canister method.
+
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `signer` (`blob`, required): The principal of the signing canister. This must be equal to the canister ID encoded in the `sender_pubkey`, i.e. the `signing_canister_id` component of the canister signature public key, as described in [canister signature](#canister-signatures).
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signatures), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 The HTTP response to this request can have the following forms:
 
@@ -783,7 +795,9 @@ If the `certificate` includes a subnet delegation (see [Delegation](#certificati
 
 - for requests to `/api/v3/canister/<effective_canister_id>/call`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at the path of the form `/subnet/<subnet_id>/canister_ranges`,
 
-- for requests to `/api/v4/canister/<effective_canister_id>/call`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at a path with prefix `/canister_ranges/<subnet_id>`.
+- for requests to `/api/v4/canister/<effective_canister_id>/call`, the `<effective_canister_id>` must be included in a canister id range of the delegation's subnet id in the delegation's certificate at a path with prefix `/canister_ranges/<subnet_id>`,
+
+- for requests to `/api/v4/subnet/<effective_subnet_id>/call`, the `<effective_subnet_id>` must match the delegation's subnet id.
 
 This request type can *also* be used to call a query method (but not a composite query method). A user may choose to go this way, instead of via the faster and cheaper [Request: Query call](#http-query) below, if they want to get a *certified* response. Note that the canister state will not be changed by sending a call request type for a query method (except for transient state such as cycle balance, canister logs, and canister version).
 
@@ -793,13 +807,21 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
-
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call
 
 -   `arg` (`blob`): Argument to pass to the canister method
+
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `signer` (`blob`, required): The principal of the signing canister. This must be equal to the canister ID encoded in the `sender_pubkey`, i.e. the `signing_canister_id` component of the canister signature public key, as described in [canister signature](#canister-signatures).
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signatures), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 The HTTP response to this request can have the following responses:
 
@@ -894,7 +916,7 @@ All requested paths must have the following form:
 
 -   `/canister_ranges/<subnet_id>`. Can only be requested at `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`. Cannot be requested at `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`.
 
--   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
+-   `/subnet`, `/subnet/<subnet_id>`, `/subnet/<subnet_id>/public_key`, `/subnet/<subnet_id>/type`, `/subnet/<subnet_id>/node`, `/subnet/<subnet_id>/node/<node_id>`, `/subnet/<subnet_id>/node/<node_id>/public_key`. Can always be requested.
 
 -   `/subnet/<subnet_id>/canister_ranges`, where `<subnet_id>` is the root subnet ID. Can always be requested.
 
@@ -906,13 +928,13 @@ All requested paths must have the following form:
 
     -   the sender of the original request referenced by `<request_id>` is the same as the sender of the read state request and
 
-    -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>`.
+    -   the effective canister id of the original request referenced by `<request_id>` matches `<effective_canister_id>` (for requests to `/api/v2/canister/<effective_canister_id>/read_state` and `/api/v3/canister/<effective_canister_id>/read_state`), or the effective subnet id of the original request referenced by `<request_id>` matches `<effective_subnet_id>` (for requests to `/api/v2/subnet/<effective_subnet_id>/read_state` and `/api/v3/subnet/<effective_subnet_id>/read_state`).
 
--   `/canisters/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
+-   `/canister/<canister_id>/module_hash`. Can be requested if `<canister_id>` matches `<effective_canister_id>`.
 
--   `/canisters/<canister_id>/controllers`. Can be requested if `<canister_id>` matches `<effective_canister_id>`. The order of controllers in the value at this path may vary depending on the implementation.
+-   `/canister/<canister_id>/controllers`. Can be requested if `<canister_id>` matches `<effective_canister_id>`. The order of controllers in the value at this path may vary depending on the implementation.
 
--   `/canisters/<canister_id>/metadata/<name>`. Can be requested if `<canister_id>` matches `<effective_canister_id>`, `<name>` is encoded in UTF-8, and
+-   `/canister/<canister_id>/metadata/<name>`. Can be requested if `<canister_id>` matches `<effective_canister_id>`, `<name>` is encoded in UTF-8, and
 
     -   canister with canister id `<canister_id>` does not exist or
 
@@ -932,7 +954,7 @@ Moreover,
 
 If a path cannot be requested, then the HTTP response to the read state request is undefined.
 
-Note that the paths `/canisters/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canisters themselves via the System API (see [Certified data](#system-api-certified-data)).
+Note that the paths `/canister/<canister_id>/certified_data` are not accessible with this method; these paths are only exposed to the canisters themselves via the System API (see [Certified data](#system-api-certified-data)).
 
 See [The system state tree](#state-tree) for details on the state tree.
 
@@ -950,17 +972,25 @@ The following limits apply to the evaluation of a query call:
 
 -   The wall clock time spent on evaluation of a query call is at most `MAX_WALL_CLOCK_TIME_COMPOSITE_QUERY`.
 
-In order to make a query call to a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/query` (deprecated) or `/api/v3/canister/<effective_canister_id>/query`. The request body consists of an authentication envelope with a `content` map with the following fields:
+In order to make a query call to a canister, the user makes a POST request to `/api/v2/canister/<effective_canister_id>/query` (deprecated) or `/api/v3/canister/<effective_canister_id>/query`. The `/api/v3/subnet/<effective_subnet_id>/query` form is not a general-purpose query endpoint; it is only supported for calls to the `list_canisters` method of the Management Canister (`aaaaa-aa`). The request body consists of an authentication envelope with a `content` map with the following fields:
 
 -   `request_type` (`text`): Always `"query"`.
-
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication).
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
 -   `method_name` (`text`): Name of the canister method to call.
 
 -   `arg` (`blob`): Argument to pass to the canister method.
+
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication).
+
+-   `sender_info` (`map`, optional): Map with fields:
+
+    -   `info` (`blob`, required): The sender information passed to the canister.
+
+    -   `signer` (`blob`, required): The principal of the signing canister. This must be equal to the canister ID encoded in the `sender_pubkey`, i.e. the `signing_canister_id` component of the canister signature public key, as described in [canister signature](#canister-signatures).
+
+    -   `sig` (`blob`, required): Signature to authenticate the `info` field. This signature *must* be a [canister signature](#canister-signatures), using the 15 bytes `\x0Eic-sender-info` as the domain separator for the payload, and  *must* verify using `sender_pubkey` as the canister signature public key.
 
 The HTTP response to this request can have the following forms:
 
@@ -1003,15 +1033,13 @@ A successful response to a query call (200 HTTP status) contains a list with one
 
 -   `identity` (`principal`): the principal of the node producing the signature.
 
-Given a query (the `content` map from the request body) `Q`, a response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<effective_canister_id>/read_state`, the following predicate describes when the returned response `R` is correctly signed:
+Given a query (the `content` map from the request body) `Q`, a response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<effective_canister_id>/read_state` (or `/api/v3/subnet/<effective_subnet_id>/read_state` for subnet queries), the following predicates describe when the returned response `R` is correctly signed.
+
+The common node signature verification logic is captured in:
 
 ```
-verify_response(Q, R, Cert)
-  = verify_cert(Cert) ∧
-    ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId ∧ lookup(["subnet",SubnetId,"canister_ranges"], Cert) = Found Ranges) ∨
-     (Cert.delegation ≠ NoDelegation ∧ SubnetId = Cert.delegation.subnet_id ∧ lookup*(["canister_ranges",SubnetId], Cert.delegation.certificate) = Ranges)) ∧
-    effective_canister_id ∈ Ranges ∧
-    ∀ {timestamp: T, signature: Sig, identity: NodeId} ∈ R.signatures.
+verify_node_signatures(Q, R, Cert, SubnetId)
+  = ∀ {timestamp: T, signature: Sig, identity: NodeId} ∈ R.signatures.
       lookup(["subnet",SubnetId,"node",NodeId,"public_key"], Cert) = Found PK ∧
       if R.status = "replied" then
         verify_signature PK Sig ("\x0Bic-response" · hash_of_map({
@@ -1029,6 +1057,27 @@ verify_response(Q, R, Cert)
           request_id: hash_of_map(Q)}))
 ```
 
+For canister queries to `/api/v3/canister/<effective_canister_id>/query`:
+
+```
+verify_response(Q, R, Cert)
+  = verify_cert(Cert) ∧
+    ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId ∧ lookup(["subnet",SubnetId,"canister_ranges"], Cert) = Found Ranges) ∨
+     (Cert.delegation ≠ NoDelegation ∧ SubnetId = Cert.delegation.subnet_id ∧ lookup*(["canister_ranges",SubnetId], Cert.delegation.certificate) = Ranges)) ∧
+    effective_canister_id ∈ Ranges ∧
+    verify_node_signatures(Q, R, Cert, SubnetId)
+```
+
+For subnet queries to `/api/v3/subnet/<effective_subnet_id>/query`:
+
+```
+verify_subnet_response(Q, R, Cert, SubnetId)
+  = verify_cert(Cert) ∧ SubnetId = effective_subnet_id ∧
+    ((Cert.delegation = NoDelegation ∧ SubnetId = RootSubnetId) ∨
+     (Cert.delegation ≠ NoDelegation ∧ SubnetId = Cert.delegation.subnet_id)) ∧
+    verify_node_signatures(Q, R, Cert, SubnetId)
+```
+
 where `RootSubnetId` is the a priori known principal of the root subnet. Moreover, all timestamps in `R.signatures`, the certificate `Cert`, and its optional delegation must be "recent enough".
 
 :::note
@@ -1044,7 +1093,7 @@ It must be contained in the canister ranges of a subnet, otherwise the correspon
 
 -   If the request is an update call to the Management Canister (`aaaaa-aa`), then:
 
-    -   If the call is to the `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
+    -   If the call is to the `create_canister` or `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
 
     -   If the call is to the `install_chunked_code` method and the `arg` is a Candid-encoded record with a `target_canister` field of type `principal`, then the effective canister id must be that principal.
 
@@ -1053,6 +1102,8 @@ It must be contained in the canister ranges of a subnet, otherwise the correspon
     -   Otherwise, the call is rejected by the system independently of the effective canister id.
 
 -   If the request is a query call to the Management Canister (`aaaaa-aa`), then:
+
+    -   If the call is to the `list_canisters` method, then any principal can be used as the effective canister id for this call.
 
     -   If the `arg` is a Candid-encoded record with a `canister_id` field of type `principal`, then the effective canister id must be that principal.
 
@@ -1069,6 +1120,10 @@ The Internet Computer blockchain mainnet does not support `provisional_create_ca
 In development instances of the Internet Computer Protocol (e.g. testnets), the effective canister id of a request submitted to a node must be a canister id from the canister ranges of the subnet to which the node belongs.
 
 :::
+
+### Effective subnet id {#http-effective-subnet-id}
+
+The `<effective_subnet_id>` in the URL paths of update call requests is only supported for canister creation calls to the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet on which the new canister will be created. The `<effective_subnet_id>` in the URL paths of query call requests is only supported for calls to the `list_canisters` method of the Management Canister (`aaaaa-aa`). In this case, the `<effective_subnet_id>` specifies the subnet whose canisters are listed.
 
 ### Authentication {#authentication}
 
@@ -1554,6 +1609,10 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ TQ CQ Ry CRy F
     ic0.msg_caller_size : () -> I;                                                        // *
     ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
+    ic0.msg_caller_info_data_size : () -> I;                                              // U RQ NRQ CQ Ry Rt CRy CRt C CC F
+    ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) -> ();                // U RQ NRQ CQ Ry Rt CRy CRt C CC F
+    ic0.msg_caller_info_signer_size : () -> I;                                            // U RQ NRQ CQ Ry Rt CRy CRt C CC F
+    ic0.msg_caller_info_signer_copy : (dst : I, offset : I, size : I) -> ();              // U RQ NRQ CQ Ry Rt CRy CRt C CC F
     ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt C
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
@@ -1726,6 +1785,17 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 -   `ic0.msg_caller_size : () → I` and `ic0.msg_caller_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade. During a system task (heartbeat or global timer), this is the id of the management canister.
+
+-   `ic0.msg_caller_info_data_size : () → I`, `ic0.msg_caller_info_signer_size : () → I` and `ic0.msg_caller_info_data_copy : (dst : I, offset : I, size : I) → ()`; and `ic0.msg_caller_info_signer_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    Auxiliary information about the caller as provided by the canister with which the caller's identity is associated (i.e., the public key of the canister signature is equal to the public key of the caller's identity).
+    These functions can only return non-empty values if the caller is a self-authenticating principal authenticated by canister signatures. In particular, they always return empty values when the caller is another canister.
+
+    The `caller_info_data` may include information such as identity attributes of the caller.
+    The `_signer_` functions return the canister ID of the canister providing the signature, and the `_data_` functions return the data provided by the canister.
+    This auxiliary information can only be set if the caller principal is derived from the public key corresponding to a canister signature, and it is guaranteed to be properly signed by the issuing canister.
+
+    These functions trap in `canister_init`, `canister_post_upgrade`, `canister_pre_upgrade`, canister http outcall transform, the `(start)` module initialization function, and system tasks (`canister_heartbeat` or `canister_global_timer` or `canister_on_low_wasm_memory`).
 
 -   `ic0.msg_reject_code : () → i32`
 
@@ -2367,7 +2437,7 @@ The binary encoding of arguments and results are as per Candid specification.
 
 ### IC method `create_canister` {#ic-create_canister}
 
-This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+This method can only be called by canisters and subnet admins, i.e., it cannot be called by external users who are not subnet admins via ingress messages.
 
 Before deploying a canister, the administrator of the canister first has to register it with the IC, to get a canister id (with an empty canister behind it), and then separately install the code.
 
@@ -2442,6 +2512,20 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: `4096`.
 
+-   `snapshot_visibility` (`snapshot_visibility`)
+
+    Controls who can access the canister's snapshots through the following endpoints of the management canister:
+    - `read_canister_snapshot_metadata`
+    - `read_canister_snapshot_data`
+    - `list_canister_snapshots`
+
+    Can be one of:
+    - `controllers`: Only the canister's controllers can read its snapshots
+    - `public`: Anyone can read the canister's snapshots
+    - `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read its snapshots, the maximum length of the list is 10
+
+    Default value: `controllers`.
+
 -   `wasm_memory_threshold` (`nat`)
 
     Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
@@ -2461,7 +2545,7 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
 
-Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls). (No cycles are required on subnets that have a non-empty list of subnet admins.)
 
 ### IC method `update_settings` {#ic-update_settings}
 
@@ -2546,7 +2630,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method removes a canister's code and state, making the canister *empty* again.
 
-Only controllers of the canister can uninstall code.
+Only controllers of the canister or subnet admins can uninstall code.
 
 Uninstalling a canister's code will reject all calls that the canister has not yet responded to, and drop the canister's code and state. Outstanding responses to the canister will not be processed, even if they arrive after code has been installed again. Cycles attached to such responses will still be refunded though.
 
@@ -2581,7 +2665,9 @@ Indicates various information about the canister. It contains:
 
     -   The reserved cycles limit of the canister, i.e., the maximum number of cycles that can be in the canister's reserved balance after increasing the canister's memory allocation and/or actual memory usage.
 
-    -   The canister log visibility of the canister.
+    -   The visibility of the canister's logs.
+
+    -   The visibility of the canister's snapshots.
 
     -   The WASM heap memory limit of the canister in bytes (the value of `0` means that there is no explicit limit).
 
@@ -2611,7 +2697,7 @@ Indicates various information about the canister. It contains:
 
     * `response_payload_bytes_total`: the total number of query and composite query response payload (reply data or reject message) bytes.
 
-Only the controllers of the canister or the canister itself can request its status.
+Only the controllers of the canister or the canister itself or subnet admins can request its status.
 
 #### Memory Metrics {#ic-canister_status-memory_metrics}
 
@@ -2691,7 +2777,7 @@ The returned response contains the following fields:
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-The controllers of a canister may stop a canister (e.g., to prepare for a canister upgrade).
+The controllers of a canister or subnet admins may stop a canister (e.g., to prepare for a canister upgrade).
 
 When this method successfully returns, then the canister status is `stopped` at that point.
 However, note that the canister might be restarted at any time due to a concurrent call.
@@ -2708,7 +2794,7 @@ The execution of this method proceeds as follows:
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-A canister may be started by its controllers.
+A canister may be started by its controllers or subnet admins.
 
 If the canister status was `stopped` or `stopping` then the canister status is simply set to `running`. In the latter case all `stop_canister` calls which are processing fail (and are rejected).
 
@@ -2720,7 +2806,7 @@ This method can be called by canisters as well as by external users via ingress 
 
 This method deletes a canister from the IC.
 
-Only controllers of the canister can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
+Only controllers of the canister or subnet admins can delete it and the canister must already be stopped. Deleting a canister cannot be undone, any state stored on the canister is permanently deleted and its cycles are discarded. Once a canister is deleted, its ID cannot be reused.
 
 ### IC method `deposit_cycles` {#ic-deposit_cycles}
 
@@ -2953,7 +3039,7 @@ In the replicated mode, the responses for all identical requests must match, too
 
 For this reason, the calling canister can supply a transformation function, which the IC uses to let the canister sanitize the responses from such unique values. The transformation function is executed separately on the corresponding response received for a request (both in replicated and non-replicated modes). Only the transformed response will be available to the calling canister.
 
-Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests.
+Currently, the `GET`, `HEAD`, and `POST` methods are supported for HTTP requests. Additionally, the `PUT` and `DELETE` methods are supported in non-replicated mode only. `PUT` and `DELETE` are restricted to non-replicated mode to avoid confusing race conditions that may occur with replicated execution.
 
 It is important to note the following for the usage of the `POST` method:
 
@@ -2977,7 +3063,7 @@ The following parameters should be supplied for the call:
 
 -   `max_response_bytes` - optional, specifies the maximal size of the response in bytes. If provided, the value must not exceed `2MB` (`2,000,000B`). The call will be charged based on this parameter. If not provided, the maximum of `2MB` will be used.
 
--   `method` - currently, only GET, HEAD, and POST are supported
+-   `method` - currently, `GET`, `HEAD`, and `POST` are supported. Additionally, `PUT` and `DELETE` are supported in non-replicated mode only.
 
 -   `headers` - list of HTTP request headers and their corresponding values
 
@@ -3112,7 +3198,10 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read metadata of a snapshot of that canister.
+Who is allowed to read the metadata of a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots metadata
+- `public`: Anyone can read the canister's snapshots metadata
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots metadata, the maximum length of the list is 10
 
 This method returns all metadata of a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3144,7 +3233,10 @@ The state of the global timer and on low wasm memory hook are `null` for existin
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-Only controllers of a canister can read data of a snapshot of that canister.
+Who is allowed to read a snapshot of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can read its snapshots
+- `public`: Anyone can read the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read snapshots, the maximum length of the list is 10
 
 This method returns a requested kind of (binary) data from a snapshot identified by `snapshot_id` of the canister identified by `canister_id`. It fails if no snapshot with the specified `snapshot_id` can be found for that canister.
 
@@ -3209,7 +3301,12 @@ It's important to note that uploading a chunk to the WASM chunk store of the sna
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots.
+This method lists the snapshots of the canister identified by `canister_id`.
+
+Who is allowed to list the snapshots of that canister is determined by the field `snapshot_visibility` in `canister_settings` and can be one of the following variants:
+- `controllers`: Only the canister's controllers can list its snapshots
+- `public`: Anyone can list the canister's snapshots
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can list the snapshots, the maximum length of the list is 10
 
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
@@ -3242,6 +3339,24 @@ A single log is a record with the following fields:
 - `idx` (`nat64`): the unique sequence number of the log for this particular canister;
 - `timestamp_nanos` (`nat64`): the timestamp as nanoseconds since 1970-01-01 at which the log was recorded;
 - `content` (`blob`): the actual content of the log;
+
+:::warning
+
+The response of a query comes from a single replica, and is therefore not appropriate for security-sensitive applications.
+Replica-signed queries may improve security because the recipient can verify the response comes from the correct subnet.
+
+:::
+
+### IC method `list_canisters` {#ic-list_canisters}
+
+This method can only be called by external users with subnet admin privileges via non-replicated (query) calls, i.e., it cannot be called by canisters, cannot be called via replicated calls, and cannot be called from composite query calls.
+
+This method returns the list of all canisters on the subnet as consecutive canister ID ranges. Deleted canisters are not included in the result.
+
+A canister ID range is a record with the following fields:
+
+- `start` (`principal`): the first canister ID in the range (inclusive);
+- `end` (`principal`): the last canister ID in the range (inclusive).
 
 :::warning
 
@@ -3698,6 +3813,12 @@ calculates self-authenticating ids.
 
 The function
 ```
+canister_signature_pk : Principal -> Blob -> PublicKey
+```
+calculates the public key of a [canister signature](#canister-signatures).
+
+The function
+```
 mk_derived_id : Principal -> Blob -> Principal
 mk_derived_id p nonce = H(|p| · p · nonce) · 0x03
 ```
@@ -3743,6 +3864,8 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
 
     Arg = Blob;
     CallerId = Principal;
+    CallerInfoData = Blob;
+    CallerInfoSigner = Blob;
 
     Timestamp = Nat;
     CanisterVersion = Nat;
@@ -3828,15 +3951,15 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
         new_global_timer : NoGlobalTimer | Nat;
         cycles_used : Nat;
       }
-      update_methods : MethodName ↦ ((Arg, CallerId, Deadline, Env, AvailableCycles) -> UpdateFunc)
-      query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
-      composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
+      update_methods : MethodName ↦ ((Arg, CallerId, CallerInfoData, CallerInfoSigner, Deadline, Env, AvailableCycles) -> UpdateFunc)
+      query_methods : MethodName ↦ ((Arg, CallerId, CallerInfoData, CallerInfoSigner, Env) -> QueryFunc)
+      composite_query_methods : MethodName ↦ ((Arg, CallerId, CallerInfoData, CallerInfoSigner, Env) -> CompositeQueryFunc)
       heartbeat : (Env) -> SystemTaskFunc
       global_timer : (Env) -> SystemTaskFunc
       on_low_wasm_memory : (Env) -> SystemTaskFunc
-      callbacks : (Callback, Response, Deadline, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
-      composite_callbacks : (Callback, Response, Env) -> UpdateFunc
-      inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
+      callbacks : (Callback, CallerId, CallerInfoData, CallerInfoSigner, Response, Deadline, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
+      composite_callbacks : (Callback, CallerId, CallerInfoData, CallerInfoSigner, Response, Env) -> UpdateFunc
+      inspect_message : (MethodName, WasmState, Arg, CallerId, CallerInfoData, CallerInfoSigner, Env) -> Trap | Return {
         status : Accept | Reject;
       }
     }
@@ -3867,6 +3990,11 @@ Request = {
     nonce : Blob;
     ingress_expiry : Nat;
     sender : UserId;
+    sender_info : {
+      info : Blob;
+      signer : Blob;
+      sig : Blob;
+    };
     canister_id : CanisterId;
     method_name : Text;
     arg : Blob;
@@ -3907,6 +4035,8 @@ Message
   = CallMessage {
       origin : CallOrigin;
       caller : Principal;
+      caller_info_data : Blob;
+      caller_info_signer : Blob;
       callee : CanisterId;
       method_name : Text;
       arg : Blob;
@@ -3915,6 +4045,9 @@ Message
     }
   | FuncMessage {
       call_context : CallId;
+      caller : Principal;
+      caller_info_data : Blob;
+      caller_info_signer : Blob;
       receiver : CanisterId;
       entry_point : EntryPoint;
       queue : Queue;
@@ -3948,6 +4081,11 @@ APIReadRequest
     nonce : Blob;
     ingress_expiry : Nat;
     sender : UserId;
+    sender_info : {
+      info : Blob;
+      signer : Blob;
+      sig : Blob;
+    };
     canister_id : CanisterId;
     method_name : Text;
     arg : Blob;
@@ -4071,6 +4209,10 @@ CanisterLogVisibility
   = Controllers
   | Public
   | AllowedViewers [Principal]
+CanisterSnapshotVisibility
+  = Controllers
+  | Public
+  | AllowedViewers [Principal]
 CanisterLog = {
   idx : Nat;
   timestamp_nanos : Nat;
@@ -4106,6 +4248,7 @@ S = {
   canisters : CanisterId ↦ CanState;
   snapshots: CanisterId ↦ SnapshotId ↦ Snapshot;
   controllers : CanisterId ↦ Set Principal;
+  subnet_admins : SubnetId ↦ Set Principal;
   compute_allocation : CanisterId ↦ Nat;
   memory_allocation : CanisterId ↦ Nat;
   freezing_threshold : CanisterId ↦ Nat;
@@ -4125,6 +4268,7 @@ S = {
   canister_history: CanisterId ↦ CanisterHistory;
   canister_log_visibility: CanisterId ↦ CanisterLogVisibility;
   canister_log_memory_limit: CanisterId ↦ Nat;
+  canister_snapshot_visibility: CanisterId ↦ CanisterSnapshotVisibility;
   canister_logs: CanisterId ↦ [CanisterLog];
   query_stats: CanisterId ↦ [QueryStats];
   system_time : Timestamp
@@ -4234,12 +4378,14 @@ The initial state of the IC is
   canister_history = ();
   canister_log_visibility = ();
   canister_log_memory_limit = ();
+  canister_snapshot_visibility = ();
   canister_logs = ();
   query_stats = ();
   system_time = T;
   call_contexts = ();
   messages = [];
   root_key = PublicKey;
+  subnet_admins = ();
 }
 ```
 
@@ -4322,15 +4468,26 @@ delegation_targets(D)
 
 A `Request` has an effective canister id according to the rules in [Effective canister id](#http-effective-canister-id):
 ```
-is_effective_canister_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, p)
-is_effective_canister_id(Request {canister_id = ic_principal, method = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method_name = "create_canister", …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method_name = "provisional_create_canister_with_cycles", …}, p)
+is_effective_canister_id(CanisterQuery {canister_id = ic_principal, method_name = "list_canisters", …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method_name = "install_chunked_code", arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
 
+#### Effective subnet ids
+
+A `Request` has an effective subnet id according to the rules in [Effective subnet id](#http-effective-subnet-id):
+```
+is_effective_subnet_id(Request {canister_id = ic_principal, method_name = "create_canister", …}, s)
+is_effective_subnet_id(Request {canister_id = ic_principal, method_name = "provisional_create_canister_with_cycles", …}, s)
+is_effective_subnet_id(CanisterQuery {canister_id = ic_principal, method_name = "list_canisters", …}, s)
+```
+
 #### API Request submission {#api-request-submission}
 
-After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v4/canister/<ECID>/call`
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call`, `/api/v4/canister/<ECID>/call`, or `/api/v4/subnet/<ESID>/call`
 and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
 This can only happen if the target canister is not frozen and
@@ -4359,6 +4516,22 @@ Conditions
 ```html
 
 E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (E.content.sender_info = null):
+    verify_signature E.sender_pubkey E.content.sender_info.sig ("\x0Eic-sender-info" · E.content.sender_info.info)
+    E.content.sender_info.signer = Signing_canister_id
+else:
+  E.content.sender_info = null
+if E.content.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+  if E.content.sender_info = null:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+  else:
+    Caller_info_data = E.content.sender_info.info
+    Caller_info_signer = Signing_canister_id
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
 |E.content.nonce| <= 32
 E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
@@ -4368,10 +4541,22 @@ liquid_balance(S, E.content.canister_id) ≥ 0
   E.content.arg = candid({canister_id = CanisterId, …})
   E.content.sender ∈ S.controllers[CanisterId]
   E.content.method_name ∈
-    { "install_code", "install_chunked_code", "uninstall_code", "update_settings", "start_canister", "stop_canister",
-      "canister_status", "delete_canister", "upload_chunk", "clear_chunk_store", "stored_chunks",
+    { "install_code", "install_chunked_code", "update_settings",
+      "upload_chunk", "stored_chunks", "clear_chunk_store",
+      "take_canister_snapshot", "load_canister_snapshot", "list_canister_snapshots", "delete_canister_snapshot",
       "read_canister_snapshot_metadata", "read_canister_snapshot_data", "upload_canister_snapshot_metadata", "upload_canister_snapshot_data",
       "provisional_top_up_canister" }
+) ∨ (
+  E.content.canister_id = ic_principal
+  E.content.arg = candid({canister_id = CanisterId, …})
+  E.content.sender ∈ S.controllers[CanisterId] ∪ S.subnet_admins[S.canister_subnet[CanisterId]]
+  E.content.method_name ∈
+    { "start_canister", "stop_canister", "uninstall_code", "delete_canister", "canister_status" }
+) ∨ (
+  E.content.canister_id = ic_principal
+  E.content.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+  E.content.method_name ∈
+    { "create_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
   E.content.method_name ∈
@@ -4401,7 +4586,7 @@ liquid_balance(S, E.content.canister_id) ≥ 0
     canister_version = S.canister_version[E.content.canister_id];
   }
   S.canisters[E.content.canister_id].module.inspect_message
-    (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Env) = Return {status = Accept;}
+    (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Caller_info_data, Caller_info_signer, Env) = Return {status = Accept;}
 )
 
 ```
@@ -4420,6 +4605,46 @@ S with
 This is not instantaneous (the IC takes some time to agree it accepts the request) nor guaranteed (a node could just drop the request, or maybe it did not pass validation). But once the request has entered the IC state like this, it will be acted upon.
 
 :::
+
+Submitted request to `/api/<VERSION>/subnet/<ESID>/call`
+
+```html
+
+E : Envelope
+
+```
+
+where `<VERSION>` is `v4`.
+
+Conditions
+
+```html
+
+E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (E.content.sender_info = null):
+    verify_signature E.sender_pubkey E.content.sender_info.sig ("\x0Eic-sender-info" · E.content.sender_info.info)
+    E.content.sender_info.signer = Signing_canister_id
+else:
+  E.content.sender_info = null
+|E.content.nonce| <= 32
+E.content ∉ dom(S.requests)
+S.system_time <= E.content.ingress_expiry
+is_effective_subnet_id(E.content, ESID)
+E.content.sender ∈ S.subnet_admins[ESID]
+E.content.canister_id = ic_principal
+E.content.method_name = "create_canister" ∨ E.content.method_name = "provisional_create_canister_with_cycles"
+
+```
+
+State after
+
+```html
+
+S with
+    requests[E.content] = (Received, ESID)
+
+```
 
 #### Request rejection
 
@@ -4459,6 +4684,17 @@ S.requests[R] = (Received, ECID)
 S.system_time <= R.ingress_expiry
 C = S.canisters[R.canister_id]
 
+if R.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+  if R.sender_info = null:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+  else:
+    Caller_info_data = R.sender_info.info
+    Caller_info_signer = Signing_canister_id
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
+
 ```
 
 State after  
@@ -4471,6 +4707,8 @@ S with
       CallMessage {
         origin = FromUser { request = R };
         caller = R.sender;
+        caller_info_data = Caller_info_data;
+        caller_info_signer = Caller_info_signer;
         callee = R.canister_id;
         method_name = R.method_name;
         arg = R.arg;
@@ -4568,6 +4806,9 @@ S with
       Older_messages ·
       FuncMessage {
         call_context = Ctxt_id;
+        caller = CM.caller;
+        caller_info_data = CM.caller_info_data;
+        caller_info_signer = CM.caller_info_signer;
         receiver = CM.callee;
         entry_point = PublicMethod CM.method_name CM.caller CM.arg;
         queue = CM.queue;
@@ -4607,6 +4848,9 @@ S with
     messages =
       FuncMessage {
         call_context = Ctxt_id;
+        caller = ic_principal;
+        caller_info_data = "";
+        caller_info_signer = "";
         receiver = C;
         entry_point = Heartbeat;
         queue = Queue { from = System; to = C };
@@ -4648,6 +4892,9 @@ S with
     messages =
       FuncMessage {
         call_context = Ctxt_id;
+        caller = ic_principal;
+        caller_info_data = "";
+        caller_info_signer = "";
         receiver = C;
         entry_point = GlobalTimer;
         queue = Queue { from = System; to = C };
@@ -4689,6 +4936,9 @@ S with
     messages =
       FuncMessage {
         call_context = Ctxt_id;
+        caller = ic_principal;
+        caller_info_data = "";
+        caller_info_signer = "";
         receiver = C;
         entry_point = OnLowWasmMemory;
         queue = Queue { from = System; to = C };
@@ -4786,19 +5036,19 @@ Env = {
 
 Available = Ctxt.available_cycles
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = Mod.update_methods[Name](Arg, Caller, Deadline, Env, Available)
+  F = Mod.update_methods[Name](Arg, M.caller, M.caller_info_data, M.caller_info_signer, Deadline, Env, Available)
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = S.wasm_memory_limit[M.receiver]
 )
 or
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = query_as_update(Mod.query_methods[Name], Arg, Caller, Env, Available)
+  F = query_as_update(Mod.query_methods[Name], Arg, M.caller, M.caller_info_data, M.caller_info_signer, Env, Available)
   New_canister_version = S.canister_version[M.receiver]
   Wasm_memory_limit = 0
 )
 or
 ( M.entry_point = Callback Callback Response RefundedCycles
-  F = Mod.callbacks(Callback, Response, Deadline, RefundedCycles, Env, Available)
+  F = Mod.callbacks(Callback, M.caller, M.caller_info_data, M.caller_info_signer, Response, Deadline, RefundedCycles, Env, Available)
   New_canister_version = S.canister_version[M.receiver] + 1
   Wasm_memory_limit = 0
 )
@@ -4878,6 +5128,8 @@ then
 
           };
           caller = M.receiver;
+          caller_info_data = "";
+          caller_info_signer = "";
           callee = call.callee;
           method_name = call.method_name;
           arg = call.arg;
@@ -4942,13 +5194,13 @@ Note that returning does *not* imply that the call associated with this message 
 The function `validate_sender_canister_version` checks that `sender_canister_version` matches the actual canister version of the sender in all calls to the methods of the management canister that take `sender_canister_version`:
 ```
 validate_sender_canister_version(new_calls, canister_version_from_system) =
-  ∀ call ∈ new_calls. (call.callee = ic_principal and (call.method = 'create_canister' or call.method = 'update_settings' or call.method = 'install_code' or call.method = `install_chunked_code` or call.method = 'uninstall_code' or call.method = 'provisional_create_canister_with_cycles') and call.arg = candid(A) and A.sender_canister_version = n) => n = canister_version_from_system
+  ∀ call ∈ new_calls. (call.callee = ic_principal and (call.method_name = "create_canister" or call.method_name = "update_settings" or call.method_name = "install_code" or call.method_name = "install_chunked_code" or call.method_name = "uninstall_code" or call.method_name = "provisional_create_canister_with_cycles") and call.arg = candid(A) and A.sender_canister_version = n) => n = canister_version_from_system
 ```
 
 The functions `query_as_update` and `system_task_as_update` turns a query function (note that composite query methods cannot be called when executing a message during this transition) resp the heartbeat or global timer into an update function; this is merely a notational trick to simplify the rule:
 ```
-query_as_update(f, arg, caller, env, available) = λ wasm_state →
-  match f(arg, caller, env, available)(wasm_state) with
+query_as_update(f, arg, caller, caller_info_data, caller_info_signer, env, available) = λ wasm_state →
+  match f(arg, caller, caller_info_data, caller_info_signer, env, available)(wasm_state) with
     Trap trap → Trap trap
     Return res → Return {
       new_state = wasm_state;
@@ -5217,6 +5469,10 @@ if A.settings.log_memory_limit is not null:
 else:
   New_canister_log_memory_limit = 4096
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -5245,6 +5501,7 @@ S' = S with
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
     canister_log_memory_limit[Canister_id] = New_canister_log_memory_limit
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
@@ -5382,6 +5639,8 @@ S' = S with
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
     if A.settings.log_memory_limit is not null:
       canister_log_memory_limit[A.canister_id] = A.settings.log_memory_limit
+    if A.settings.snapshot_visibility is not null:
+      canister_snapshot_visibility[A.canister_id] = A.settings.snapshot_visibility
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin
@@ -5456,7 +5715,7 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'canister_status'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id] ∪ {A.canister_id}
+M.caller ∈ S.controllers[A.canister_id] ∪ {A.canister_id} ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -5498,7 +5757,13 @@ is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
-Q.sender ∈ S.controllers[A.canister_id]
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+    Q.sender_info.signer = Signing_canister_id
+else:
+  Q.sender_info = null
+Q.sender ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6015,7 +6280,7 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'uninstall_code'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
@@ -6090,7 +6355,7 @@ M.callee = ic_principal
 M.method_name = 'stop_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Running
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6115,7 +6380,7 @@ M.callee = ic_principal
 M.method_name = 'stop_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopping Origins
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6171,7 +6436,7 @@ M.callee = ic_principal
 M.method_name = 'stop_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopped
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6229,7 +6494,7 @@ M.callee = ic_principal
 M.method_name = 'start_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Running or S.canister_status[A.canister_id] = Stopped
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6261,7 +6526,7 @@ M.callee = ic_principal
 M.method_name = 'start_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopping Origins
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6300,7 +6565,7 @@ M.callee = ic_principal
 M.method_name = 'delete_canister'
 M.arg = candid(A)
 S.canister_status[A.canister_id] = Stopped
-M.caller ∈ S.controllers[A.canister_id]
+M.caller ∈ S.controllers[A.canister_id] ∪ S.subnet_admins[S.canister_subnet[A.canister_id]]
 
 ```
 
@@ -6330,6 +6595,7 @@ S with
     canister_history[A.canister_id] = (deleted)
     canister_log_visibility[A.canister_id] = (deleted)
     canister_log_memory_limit[A.canister_id] = (deleted)
+    canister_snapshot_visibility[A.canister_id] = (deleted)
     canister_logs[A.canister_id] = (deleted)
     query_stats[A.canister_id] = (deleted)
     chunk_store[A.canister_id] = (deleted)
@@ -6567,6 +6833,10 @@ if A.settings.log_memory_limit is not null:
 else:
   New_canister_log_memory_limit = 4096
 
+if A.settings.snapshot_visibility is not null:
+  New_canister_snapshot_visibility = A.settings.snapshot_visibility
+else:
+  New_canister_snapshot_visibility = Controllers
 ```
 
 State after  
@@ -6593,6 +6863,7 @@ S' = S with
     canister_history[Canister_id] = New_canister_history
     canister_log_visibility[Canister_id] = New_canister_log_visibility
     canister_log_memory_limit[Canister_id] = New_canister_log_memory_limit
+    canister_snapshot_visibility[Canister_id] = New_canister_snapshot_visibility
     canister_logs[Canister_id] = []
     query_stats[CanisterId] = []
     messages = Older_messages · Younger_messages ·
@@ -6922,7 +7193,7 @@ S' = S with
 
 #### IC Management Canister: Read snapshot metadata
 
-Only the controllers of the given canister can read metadata of its snapshots.
+Access to the metadata of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6931,7 +7202,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_metadata'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -6968,7 +7243,7 @@ S with
 
 #### IC Management Canister: Read snapshot data
 
-Only the controllers of the given canister can read (binary) data of its snapshots.
+Access to the (binary) data of a canister snapshot is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -6977,7 +7252,11 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'read_canister_snapshot_data'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
 
 A.snapshot_id ∈ dom(S.snapshots[A.canister_id])
 Snapshot = S.snapshots[A.canister_id][A.snapshot_id]
@@ -7156,7 +7435,7 @@ S' = S with
 
 #### IC Management Canister: List canister snapshots
 
-Only the controllers of the given canister can get a list of the existing snapshots.
+Access to the list of the existing snapshots of a canister is determined by the canister settings `canister_snapshot_visibility`.
 
 ```html
 
@@ -7165,7 +7444,12 @@ S.messages = Older_messages · CallMessage M · Younger_messages
 M.callee = ic_principal
 M.method_name = 'list_canister_snapshots'
 M.arg = candid(A)
-M.caller ∈ S.controllers[A.canister_id]
+(S[A.canister_id].canister_snapshot_visibility = Public)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = Controllers and M.caller in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_snapshot_visibility = AllowedViewers Principals and (M.caller in S[A.canister_id].controllers or M.caller in Principals))
+
 
 Snapshots = [{
   id = Snapshot_id;
@@ -7289,6 +7573,12 @@ is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 Q.arg = candid(A)
 A.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+    Q.sender_info.signer = Signing_canister_id
+else:
+  Q.sender_info = null
 is_sender_authorized(S, A.canister_id, Q.sender)
 
 ```
@@ -7326,9 +7616,32 @@ RM.origin = FromCanister {
     deadline = D
   }
 Ctxt_id ∈ dom(S.call_contexts)
-not S.call_contexts[Ctxt_id].deleted
-S.call_contexts[Ctxt_id].canister ∈ dom(S.balances)
+Ctxt = S.call_contexts[Ctxt_id]
+not Ctxt.deleted
+Ctxt.canister ∈ dom(S.balances)
 D ≠ Expired _
+
+Caller = if Ctxt.origin = FromUser { request = R }:
+  R.sender
+else if Ctxt.origin = FromCanister { calling_context = Calling_ctxt, …}:
+  S.call_contexts[Calling_ctxt].canister
+else:
+  ic_principal
+
+if Ctxt.origin = FromUser { request = R }:
+  if R.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+    if R.sender_info = null:
+      Caller_info_data = ""
+      Caller_info_signer = ""
+    else:
+      Caller_info_data = R.sender_info.info
+      Caller_info_signer = Signing_canister_id
+  else:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
 
 ```
 
@@ -7343,6 +7656,9 @@ S with
       Older_messages ·
       FuncMessage {
         call_context = Ctxt_id
+        caller = Caller
+        caller_info_data = Caller_info_data
+        caller_info_signer = Caller_info_signer
         receiver = S.call_contexts[Ctxt_id].canister
         entry_point = Callback Callback RM.response RM.refunded_cycles
         queue = Unordered
@@ -7621,6 +7937,8 @@ S with
   canister_history[Canister_id] = (deleted)
   canister_log_visibility[New_canister_id] = S.canister_log_visibility[Canister_id]
   canister_log_visibility[Canister_id] = (deleted)
+  canister_snapshot_visibility[New_canister_id] = S.canister_snapshot_visibility[Canister_id]
+  canister_snapshot_visibility[Canister_id] = (deleted)
   canister_logs[New_canister_id] = S.canister_logs[Canister_id]
   canister_logs[Canister_id] = (deleted)
   query_stats[New_canister_id] = S.query_stats[Canister_id]
@@ -7628,7 +7946,7 @@ S with
 
 ```
 
-#### Time progressing, cycle consumption, and canister version increments
+#### Time progressing, cycle consumption, canister version increments and subnet admins updates
 
 Time progresses. Abstractly, it does so independently for each canister, and in unspecified intervals.
 
@@ -7710,7 +8028,7 @@ S with
 
 ```
 
-Finally, the canister version can be incremented arbitrarily:
+Additionally, the canister version can be incremented arbitrarily:
 
 Conditions  
 
@@ -7729,6 +8047,30 @@ S with
     canister_version[CanisterId] = N1
 
 ```
+
+Finally, subnet admins can be changed arbirtrarily: 
+
+Conditions  
+
+```html
+
+SA0 = S.subnet_admins
+SA1 != SA0
+
+```
+
+State after  
+
+```html
+
+S with
+    subnet_admins = SA1
+
+```
+
+:::note
+
+In production, subnet admins can be set via the Subnet Rental Canister which is not modeled in this document.
 
 #### Trimming canister history
 
@@ -7783,9 +8125,86 @@ S with
 
 ```
 
+#### IC Management Canister: List canisters (query call) {#ic-mgmt-canister-list-canisters}
+
+This section specifies the `list_canisters` management canister query call.
+It is a call to `/api/v3/canister/<ECID>/query` or `/api/v3/subnet/<ESID>/query`
+with CBOR content `Q` such that `Q.canister_id = ic_principal`.
+
+The management canister offers the method `list_canisters`
+that can be called as a query call by subnet admins and
+returns the list of all canisters on the subnet as consecutive canister ID ranges.
+
+Submitted request to `/api/v3/canister/<ECID>/query` or `/api/v3/subnet/<ESID>/query`
+
+```html
+
+E : Envelope
+
+```
+
+Conditions
+
+```html
+
+E.content = CanisterQuery Q
+Q.canister_id = ic_principal
+Q.method_name = 'list_canisters'
+|Q.nonce| <= 32
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+
+```
+
+and
+
+```html
+
+is_effective_canister_id(E.content, ECID)
+Q.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
+
+```
+
+for calls to `/api/v3/canister/<ECID>/query` and
+
+```html
+
+is_effective_subnet_id(E.content, ESID)
+Q.sender ∈ S.subnet_admins[ESID]
+
+```
+
+for calls to `/api/v3/subnet/<ESID>/query`.
+
+Query response `R`:
+
+```html
+
+{status: "replied"; reply: {arg: candid({canisters: CanisterIdRanges})}, signatures: Sigs}
+
+```
+
+where `CanisterIdRanges` is the list of all canister IDs on the subnet encoded as consecutive canister ID ranges (excluding deleted canisters), and the query `Q`, the response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<ESID>/read_state` satisfy the following:
+
+```html
+
+verify_response(Q, R, Cert) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
+
+for calls to `/api/v3/canister/<ECID>/read_state` and
+
+```html
+
+verify_subnet_response(Q, R, Cert, ESID) ∧ lookup(["time"], Cert) = Found S.system_time // or "recent enough"
+
+```
+
+for calls to `/api/v3/subnet/<ESID>/read_state`.
+
 #### Query call {#query-call}
 
-This section specifies query calls `Q` whose `Q.canister_id` is a non-empty canister `S.canisters[Q.canister_id]`. Query calls to the management canister, i.e., `Q.canister_id = ic_principal`, are specified in Section [Canister logs](#ic-mgmt-canister-fetch-canister-logs).
+This section specifies query calls `Q` whose `Q.canister_id` is a non-empty canister `S.canisters[Q.canister_id]`. Query calls to the management canister, i.e., `Q.canister_id = ic_principal`, are specified in Sections [Canister status](#ic-management-canister-canister-status), [Canister logs](#ic-mgmt-canister-fetch-canister-logs), and [List canisters](#ic-mgmt-canister-list-canisters).
 
 Canister query calls to `/api/v3/canister/<ECID>/query` can be executed directly. They can only be executed against non-empty canisters which have a status of `Running` and are also not frozen.
 
@@ -7795,7 +8214,7 @@ Composite query methods can call query methods and composite query methods up to
 
 We define an auxiliary method that handles calls from composite query methods by performing a call graph traversal. It can also be (trivially) invoked for query methods that do not make further calls.
 ```
-composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, Method_name, Arg) =
+composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Caller_info_data, Caller_info_signer, Canister_id, Method_name, Arg) =
   let Mod = S.canisters[Canister_id].module
   let Cert <- { Cert | verify_cert(Cert) and
                        lookup(["canister", Canister_id, "certified_data"], Cert) = Found S.certified_data[Canister_id] and
@@ -7833,7 +8252,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
      if liquid_balance(S, Canister_id) < 0
      then
        Return (Reject (SYS_TRANSIENT, <implementation-specific>), Cycles, S)
-     let R = F(Arg, Caller, Env)(W)
+     let R = F(Arg, Caller, Caller_info_data, Caller_info_signer, Env)(W)
      if R = Trap trap
      then Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles - trap.cycles_used, S)
      else if R = Return {new_state = W'; new_calls = Calls; response = Response; cycles_used = Cycles_used}
@@ -7855,14 +8274,14 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               if S.canister_subnet[Canister_id].subnet_id ≠ S.canister_subnet[Call.callee].subnet_id
               then
                  Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S) // calling to another subnet
-              let (Response', Cycles', S') = composite_query_helper(S, Cycles, Depth + 1, Root_canister_id, Canister_id, Call.callee, Call.method_name, Call.arg)
+              let (Response', Cycles', S') = composite_query_helper(S, Cycles, Depth + 1, Root_canister_id, Canister_id, "", "", Call.callee, Call.method_name, Call.arg)
               Cycles := Cycles'
               S := S'
               if Cycles < MAX_CYCLES_PER_RESPONSE
               then
                  Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles, S) // composite query out of cycles
               Env.Cert = NoCertificate // no certificate available in composite query callbacks
-              let F' = Mod.composite_callbacks(Call.callback, Response', Env)
+              let F' = Mod.composite_callbacks(Call.callback, Caller, Caller_info_data, Caller_info_signer, Response', Env)
               let R'' = F'(W')
               if R'' = Trap trap''
               then Return (Reject (CANISTER_ERROR, <implementation-specific>), Cycles - trap''.cycles_used, S)
@@ -7899,20 +8318,37 @@ Conditions
 
 E.content = CanisterQuery Q
 Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
+if E.sender_pubkey = canister_signature_pk Signing_canister_id Seed:
+  if not (Q.sender_info = null):
+    verify_signature E.sender_pubkey Q.sender_info.sig ("\x0Eic-sender-info" · Q.sender_info.info)
+    Q.sender_info.signer = Signing_canister_id
+else:
+  Q.sender_info = null
 |Q.nonce| <= 32
 is_effective_canister_id(E.content, ECID)
 S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
+
+if Q.sender = mk_self_authenticating_id (canister_signature_pk Signing_canister_id Seed):
+  if Q.sender_info = null:
+    Caller_info_data = ""
+    Caller_info_signer = ""
+  else:
+    Caller_info_data = Q.sender_info.info
+    Caller_info_signer = Signing_canister_id
+else:
+  Caller_info_data = ""
+  Caller_info_signer = ""
 
 ```
 
 Query response `R`:
 
--   if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Q.canister_id, Q.method_name, Q.arg) = (Reject (RejectCode, RejectMsg), _, S')` then
+-   if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Caller_info_data, Caller_info_signer, Q.canister_id, Q.method_name, Q.arg) = (Reject (RejectCode, RejectMsg), _, S')` then
     ```
     {status: "rejected"; reject_code: RejectCode; reject_message: RejectMsg; error_code: <implementation-specific>, signatures: Sigs}
     ```
 
--   Else if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Q.canister_id, Q.method_name, Q.arg) = (Reply Res, _, S')` then
+-   Else if `composite_query_helper(S, MAX_CYCLES_PER_QUERY, 0, Q.canister_id, Q.sender, Caller_info_data, Caller_info_signer, Q.canister_id, Q.method_name, Q.arg) = (Reply Res, _, S')` then
     ```
     {status: "replied"; reply: {arg: Res}, signatures: Sigs}
     ```
@@ -7945,13 +8381,13 @@ S' with
 
 :::note
 
-Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<effective_subnet_id>/read_state`.
+Requesting paths with the prefix `/subnet` at `/api/v3/canister/<ECID>/read_state` might be deprecated in the future. Hence, users might want to point their requests for paths with the prefix `/subnet` to `/api/v3/subnet/<ESID>/read_state`.
 
 On the IC mainnet, the root subnet ID `tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe` can be used to retrieve the list of all IC mainnet's subnets by requesting the prefix `/subnet` at `/api/v3/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe/read_state`.
 
 :::
 
-The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<effective_subnet_id>/read_state`.
+The user can read elements of the *state tree*, using a `read_state` request to `/api/v3/canister/<ECID>/read_state` or `/api/v3/subnet/<ESID>/read_state`.
 
 Submitted request to `/api/v3/canister/<ECID>/read_state`
 
@@ -7985,6 +8421,7 @@ may_read_path_for_canister(S, _, ["time"]) = True
 may_read_path_for_canister(S, _, ["subnet"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_canister(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
 may_read_path_for_canister(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_canister(S, _, ["subnet", sid, "node", nid]) = True
@@ -8010,7 +8447,7 @@ may_read_path_for_canister(S, _, _) = False
 
 where `UTF8(name)` holds if `name` is encoded in UTF-8.
 
-Submitted request to `/api/v3/subnet/<effective_subnet_id>/read_state`
+Submitted request to `/api/v3/subnet/<ESID>/read_state`
 
 ```html
 
@@ -8023,10 +8460,11 @@ Conditions
 ```html
 
 E.content = ReadState RS
-verify_envelope(E, RS.sender, S.system_time)
+TS = verify_envelope(E, RS.sender, S.system_time)
 |E.content.nonce| <= 32
 S.system_time <= RS.ingress_expiry
 ∀ path ∈ RS.paths. may_read_path_for_subnet(S, RS.sender, path)
+∀ (["request_status", Rid] · _) ∈ RS.paths.  ∀ R ∈ dom(S.requests). hash_of_map(R) = Rid => R.canister_id ∈ TS
 
 ```
 
@@ -8043,11 +8481,19 @@ may_read_path_for_subnet(S, _, ["canister_ranges", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "public_key"]) = True
+may_read_path_for_subnet(S, _, ["subnet", sid, "type"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "canister_ranges"]) = sid == root_subnet_id
-may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == <effective_subnet_id>
+may_read_path_for_subnet(S, _, ["subnet", sid, "metrics"]) = sid == ESID
 may_read_path_for_subnet(S, _, ["subnet", sid, "node"]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid]) = True
 may_read_path_for_subnet(S, _, ["subnet", sid, "node", nid, "public_key"]) = True
+may_read_path_for_subnet(S, _, ["request_status", Rid]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "status"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "reply"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_code"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "reject_message"]) =
+may_read_path_for_subnet(S, _, ["request_status", Rid, "error_code"]) =
+  ∀ (R ↦ (_, ESID')) ∈ S.requests. hash_of_map(R) = Rid => RS.sender == R.sender ∧ ESID == ESID'
 may_read_path_for_subnet(S, _, _) = False
 ```
 The response is a certificate `cert`, as specified in [Certification](#certification), which passes `verify_cert` (assuming `S.root_key` as the root of trust), and where for every `path` documented in [The system state tree](#state-tree) that has a path in `RS.paths` or `["time"]` as a prefix, we have
@@ -8059,7 +8505,7 @@ where `state_tree` constructs a labeled tree from the IC state `S` and the (so f
 state_tree(S) = {
   "time": S.system_time;
   "canister_ranges": { subnet_id : { canister_id : ranges | the lexicographically sorted list of ranges in subnet_ranges is split into chunks starting at canister_id } | (subnet_id, _, subnet_ranges, _) ∈ subnets };
-  "subnet": { subnet_id : { "public_key" : subnet_pk; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
+  "subnet": { subnet_id : { "public_key" : subnet_pk; "type" : <implementation-specific> ; "metrics" : <implementation-specific>; "node": { node_id : { "public_key" : node_pk } | (node_id, node_pk) ∈ subnet_nodes } } | (subnet_id, subnet_pk, subnet_ranges, subnet_nodes) ∈ subnets };
   "subnet": { subnet_id : { "canister_ranges" : subnet_ranges } | (subnet_id, _, subnet_ranges, _) ∈ subnets ∧ subnet_id == root_subnet_id };
   "request_status": { request_id(R): request_status_tree(T) | (R ↦ (T, _)) ∈ S.requests };
   "canister":
@@ -8111,6 +8557,8 @@ We can model the execution of WebAssembly functions as stateful functions that h
 Params = {
   arg : NoArg | Blob;
   caller : Principal;
+  caller_info_data : Blob;
+  caller_info_signer : Blob;
   reject_code : 0 | SYS_FATAL | SYS_TRANSIENT | …;
   reject_message : Text;
   sysenv : Env;
@@ -8163,6 +8611,8 @@ liquid_balance(es) =
     empty_params = {
       arg = NoArg;
       caller = ic_principal;
+      caller_info_data = "";
+      caller_info_signer = "";
       reject_code = 0;
       reject_message = "";
       sysenv = (undefined);
@@ -8341,12 +8791,14 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `update_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_update <method>`, and has value
     ```
-    update_methods[method] = λ (arg, caller, deadline, sysenv, available) → λ wasm_state →
+    update_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, deadline, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with {
               arg = arg;
               caller = caller;
+              caller_info_data = caller_info_data;
+              caller_info_signer = caller_info_signer;
               deadline = deadline;
               sysenv;
           }
@@ -8369,10 +8821,16 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_query <method>`, and has value
     ```
-    query_methods[method] = λ (arg, caller, sysenv, available) → λ wasm_state →
+    query_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
-          params = empty_params with { arg = arg; caller = caller; sysenv }
+          params = empty_params with {
+              arg = arg;
+              caller = caller;
+              caller_info_data = caller_info_data;
+              caller_info_signer = caller_info_signer;
+              sysenv
+          }
           balance = sysenv.balance
           cycles_available = available
           context = Q
@@ -8389,10 +8847,16 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `composite_query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_composite_query <method>`, and has value
     ```
-    composite_query_methods[method] = λ (arg, caller, sysenv) → λ wasm_state →
+    composite_query_methods[method] = λ (arg, caller, caller_info_data, caller_info_signer, sysenv) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
-          params = empty_params with { arg = arg; caller = caller; sysenv }
+          params = empty_params with {
+              arg = arg;
+              caller = caller;
+              caller_info_data = caller_info_data;
+              caller_info_signer = caller_info_signer;
+              sysenv
+          }
           balance = sysenv.balance
           context = CQ
         }
@@ -8491,8 +8955,11 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 -   The function `callbacks` of the `CanisterModule` is defined as follows
     ```
     I ∈ {i32, i64}
-    callbacks = λ(callbacks, response, deadline, refunded_cycles, sysenv, available) → λ wasm_state →
+    callbacks = λ(callbacks, caller, caller_info_data, caller_info_signer, response, deadline, refunded_cycles, sysenv, available) → λ wasm_state →
       let params0 = empty_params with {
+        caller = caller;
+        caller_info_data = caller_info_data;
+        caller_info_signer = caller_info_signer;
         sysenv;
         cycles_refunded = refund_cycles;
         deadline;
@@ -8534,6 +9001,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
       let es' = ref { empty_execution_state with
         wasm_state = wasm_state;
+        params = params;
+        balance = sysenv.balance - es.cycles_used;
         context = C;
       }
       try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
@@ -8553,8 +9022,11 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 -   The function `composite_callbacks` of the `CanisterModule` is defined as follows
     ```
     I ∈ {i32, i64}
-    composite_callbacks = λ(callbacks, response, sysenv) → λ wasm_state →
+    composite_callbacks = λ(callbacks, caller, caller_info_data, caller_info_signer, response, sysenv) → λ wasm_state →
       let params0 = empty_params with {
+        caller = caller;
+        caller_info_data = caller_info_data;
+        caller_info_signer = caller_info_signer;
         sysenv
       }
       let (fun, env, params, context) = match response with
@@ -8590,6 +9062,8 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
       let es' = ref { empty_execution_state with
         wasm_state = wasm_state;
+        params = params;
+        balance = sysenv.balance - es.cycles_used;
         context = CC;
       }
       try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
@@ -8607,18 +9081,20 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
     If the WebAssembly module does not export a function called under the name `canister_inspect_message`, then access is always granted:
     ```
-    inspect_message = λ (method_name, wasm_state, arg, caller, sysenv) →
+    inspect_message = λ (method_name, wasm_state, arg, caller, caller_info_data, caller_info_signer, sysenv) →
       Return {status = Accept;}
     ```
 
     Otherwise, if the WebAssembly module exports a function `func` under the name `canister_inspect_message`, it is
     ```
-    inspect_message = λ (method_name, wasm_state, arg, caller, sysenv) →
+    inspect_message = λ (method_name, wasm_state, arg, caller, caller_info_data, caller_info_signer, sysenv) →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with {
             arg = arg;
             caller = caller;
+            caller_info_data = caller_info_data;
+            caller_info_signer = caller_info_signer;
             method_name = method_name;
             sysenv
           }
@@ -8689,6 +9165,26 @@ I ∈ {i32, i64}
 ic0.msg_caller_copy(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.caller)
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_data_size<es>() : I =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  return |es.params.caller_info_data|
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_data_copy(dst : I, offset : I, size : I) =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.params.caller_info_data)
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_signer_size<es>() : I =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  return |es.params.caller_info_signer|
+
+I ∈ {i32, i64}
+ic0.msg_caller_info_signer_copy(dst : I, offset : I, size : I) =
+  if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt, C, CC, F} then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.params.caller_info_signer)
 
 ic0.msg_reject_code<es>() : i32 =
   if es.context ∉ {Ry, Rt, CRy, CRt, C} then Trap {cycles_used = es.cycles_used;}

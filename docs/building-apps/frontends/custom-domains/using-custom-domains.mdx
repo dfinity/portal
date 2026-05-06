@@ -14,7 +14,7 @@ To do this, simply acquire a domain from any registrar (e.g., Namecheap or GoDad
 
 ## Register your domain as a custom domain
 
-By following the steps below, you can host your canister under your own domain using the custom domain service provided by the HTTP gateways. First, the configuration steps are described, then an [example is used to illustrate these steps](#concrete-example), followed by some instructions on [troubleshooting](#troubleshooting).
+By following the steps below, you can host your canister under your own domain using the custom domain service provided by the HTTP gateways. First, the configuration steps are described, then an [example is used to illustrate these steps](#example), followed by some instructions on [troubleshooting](#troubleshooting).
 
 - #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
 
@@ -38,7 +38,28 @@ By following the steps below, you can host your canister under your own domain u
 
 - #### Step 2: Create a file named `ic-domains` in your canister under the `.well-known` directory containing the custom domain.
 
-  Create a file named `ic-domains` within your canister’s frontend source. The structure might look like this:
+  Create a file named `ic-domains` within your canister's frontend assets. The `.well-known` directory must end up in your build output so it's included when the canister is deployed.
+
+  :::caution
+
+  **If you created your project with `dfx new`**, place the `.well-known` directory in `public/`, not `src/`. The default template uses Vite, which compiles files in `src/` during the build — they won't be served as-is. Only files in `public/` are copied unchanged to `dist/`, which is the directory the asset canister serves.
+
+  :::
+
+  For projects created with `dfx new`, the structure should look like this:
+
+  ```
+  ├── dfx.json
+  ├── package.json
+  ├── src
+  │ ├── project_frontend
+  │ │ ├── public
+  │ │ │ ├── .ic-assets.json5
+  │ │ │ ├── .well-known
+  │ │ │ │ └── ic-domains
+  ```
+
+  For projects with a custom build setup where the asset canister serves directly from the source directory:
 
   ```
   ├── dfx.json
@@ -50,9 +71,7 @@ By following the steps below, you can host your canister under your own domain u
   │ │ │ │ └── ic-domains
   ```
 
-  Make sure the .well-known directory is part of your build output so it’s included when the canister is deployed.
-
-  Open the ic-domains file and list your custom domains—one per line. You can include multiple domains and subdomains:
+  Open the `ic-domains` file and list your custom domains—one per line. You can include multiple domains and subdomains:
 
   ```sh
   custom-domain1.com
@@ -65,22 +84,9 @@ By following the steps below, you can host your canister under your own domain u
 
   For example, `subdomain1` could stand for `www`.
 
-  By default, `dfx` ignores hidden files and directories (those starting with a dot). To ensure the `.well-known` directory and `ic-domains file are deployed, create a file named `.ic-assets.json5` in the same directory:
+  By default, `dfx` ignores hidden files and directories (those starting with a dot). To ensure the `.well-known` directory and `ic-domains` file are deployed, you need a `.ic-assets.json5` file containing the following configuration:
 
-  ```
-  ├── dfx.json
-  ├── package.json
-  ├── src
-  │ ├── project_frontend
-  │ │ ├── src
-  │ │ │ ├── .ic-assets.json5
-  │ │ │ ├── .well-known
-  │ │ │ │ └──ic-domains
-  ```
-
-  Add the following configuration to `.ic-assets.json5`:
-
-  ```
+  ```json5
   [
     {
       "match": ".well-known",
@@ -88,6 +94,8 @@ By following the steps below, you can host your canister under your own domain u
     }
   ]
   ```
+
+  Place this file alongside the `.well-known` directory. If you used `dfx new`, the template already includes a `.ic-assets.json5` in the `public/` directory — add the rule above to it.
 
 - #### Step 3: Deploy the updated canister.
 
@@ -156,7 +164,8 @@ By following the steps below, you can host your canister under your own domain u
     "data": {
       "domain": "CUSTOM_DOMAIN"
     },
-    "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."}
+    "errors": "conflict: Another task for CUSTOM_DOMAIN is already in progress. Please retry after it completes."
+  }
   ```
 
   Common errors include:
@@ -228,7 +237,7 @@ Some DNS providers do not require you to specify the main domain (`bar.com`). Fo
   foo.bar.com
   ```
 
-- #### Step 2: Create the `.ic-assets.json` file at the root of the canister source:
+- #### Step 2: Create the `.ic-assets.json5` file alongside the `.well-known` directory (see [Step 2](#step-2-create-a-file-named-ic-domains-in-your-canister-under-the-well-known-directory-containing-the-custom-domain) for placement details):
 
   ```
   [
@@ -283,7 +292,7 @@ When you are running into issues trying to register your custom domain, try the 
 
 :::info
 
-You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `icp0.io`. To configure your agent, it will look something like this:
+You may need to specify a `host` in your frontend code when you are using a custom domain, as the `HttpAgent` may not be able to automatically infer the host like it can on `icp0.io` and `icp0.app`. To configure your agent, it will look something like this:
 
 ```ts
 // Point to icp-api for the mainnet. Leaving host undefined will work for localhost

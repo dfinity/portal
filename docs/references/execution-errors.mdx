@@ -372,6 +372,19 @@ ICP [limits][limits] the number of Wasm instructions that each function body is 
 To fix this error, consider breaking the large function up into multiple smaller functions.
 
 
+### Wasm module function name too large
+The canister's Wasm module contains a function with a name that is too large.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module contains a function at index 7 with name 'very_long_function_name...' of size 1500000 bytes that exceeds the maximum allowed size of 1048576 bytes.
+```
+
+ICP [limits][limits] the length of each function name in a Wasm module to 1 MiB. This error indicates that a function name exceeds this limit.
+
+To fix this error, try using shorter function names.
+
+
 ### Wasm module code section too large
 The total size of all the function bodies in the canister's Wasm module is too large.
 
@@ -745,24 +758,24 @@ An example of this error is:
 
 To fix this error, make sure the metadata section exists for the given canister and section name. In the case of a private section, make sure the message is signed by a principal that is a controller of the canister.
 
-[canbench]: /docs/building-apps/advanced/benchmarking
+[canbench]: /building-apps/advanced/benchmarking
 
-[canister-status-api]: /docs/references/ic-interface-spec#ic-canister_status
+[canister-status-api]: /references/ic-interface-spec#ic-canister_status
 
-[compute-allocation]:/docs/building-apps/developer-tools/dfx/dfx-canister/#allocating-message-processing
+[compute-allocation]:/building-apps/developer-tools/dfx/dfx-canister/#allocating-message-processing
 
 [dashboard-subnets]: https://dashboard.internetcomputer.org/subnets
 
-[dfx-canister-status]:/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status
+[dfx-canister-status]:/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status
 
-[dfx-canister-stop]:/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop
+[dfx-canister-stop]:/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-stop
 
 [ic-wasm]: https://github.com/dfinity/ic-wasm
 
-[limits]:/docs/building-apps/canister-management/resource-limits#resource-constraints-and-limits
+[limits]:/building-apps/canister-management/resource-limits#resource-constraints-and-limits
 
-[memory-allocation-setting]:/docs/building-apps/developer-tools/dfx/dfx-canister/#options-8
+[memory-allocation-setting]:/building-apps/developer-tools/dfx/dfx-canister/#options-8
 
-[setting-freezing-threshold]:/docs/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
+[setting-freezing-threshold]:/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
 
-[topping-up]:/docs/building-apps/canister-management/topping-up/
+[topping-up]:/building-apps/canister-management/topping-up/
