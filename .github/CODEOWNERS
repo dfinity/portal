@@ -1,21 +1,22 @@
+# Editorial can approve everything
 * @dfinity/editorial
 
 # Certain areas of documentation must be owned by the respective teams
 
 # DX
-docs/other/updates/release-notes/ @dfinity/dx
+docs/other/updates/release-notes/ @dfinity/dx @dfinity/editorial
 docs/building-apps/interact-with-canisters/agents/ @dfinity/dx @dfinity/editorial
 docs/building-apps/developer-tools/cdks/ @dfinity/dx @dfinity/editorial
 
 # SDK
-submodules/sdk @dfinity/sdk
+submodules/sdk @dfinity/sdk @dfinity/editorial
 
 # Motoko
-submodules/motoko @dfinity/languages
+submodules/motoko @dfinity/languages @dfinity/editorial
 
 # FI
 docs/defi/ @dfinity/defi @dfinity/editorial
-docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/defi @dfinity/sdk
+docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/defi @dfinity/sdk @dfinity/editorial
 
 # Cross chain
 docs/defi/chain-key-tokens/ @dfinity/defi @dfinity/editorial
@@ -45,15 +46,10 @@ docs/building-apps/advanced/canister-access-logs.mdx @dfinity/boundary-node @dfi
 docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust @dfinity/editorial
 
 # The Interface Specification
-docs/references/_attachments/certificates.cddl @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-docs/references/_attachments/http-gateway.did @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-docs/references/_attachments/ic.did @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-docs/references/_attachments/interface-spec-changelog.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-docs/references/_attachments/requests.cddl @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-docs/references/http-gateway-protocol-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-docs/references/ic-interface-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus
-
-# Editorial can approve everything
-* @dfinity/editorial
-
-
+docs/references/_attachments/certificates.cddl @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
+docs/references/_attachments/http-gateway.did @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
+docs/references/_attachments/ic.did @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
+docs/references/_attachments/interface-spec-changelog.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
+docs/references/_attachments/requests.cddl @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
+docs/references/http-gateway-protocol-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
+docs/references/ic-interface-spec.md @dfinity/interface-spec @dfinity/team-dsm @dfinity/consensus @dfinity/editorial
