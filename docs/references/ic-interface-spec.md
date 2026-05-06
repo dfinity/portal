@@ -2712,6 +2712,21 @@ Only the controllers of the canister or the canister itself or subnet admins can
 
 All sizes are expressed in bytes.
 
+### IC method `canister_metrics` {#ic-canister_metrics}
+
+This method can be called by external users with subnet admin privileges via ingress messages or non-replicated (query) calls. It can also be called by canisters in replicated mode, i.e. no composite query calls are allowed.
+
+This method returns a set of canister related metrics for the requested canister, like cycles consumed by different use cases. These metrics should be counters (i.e. monotonically increasing values) that report the accumulated respective amount since the canister was created for new canisters or since the metrics introduction for existing canisters.
+
+Only controllers of the canister or subnet admins can call this method.
+
+:::warning
+
+The response of a query comes from a single replica, and is therefore not appropriate for security-sensitive applications.
+Replica-signed queries may improve security because the recipient can verify the response comes from the correct subnet.
+
+:::
+
 ### IC method `canister_info` {#ic-canister_info}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
@@ -3348,21 +3363,6 @@ A canister ID range is a record with the following fields:
 
 - `start` (`principal`): the first canister ID in the range (inclusive);
 - `end` (`principal`): the last canister ID in the range (inclusive).
-
-:::warning
-
-The response of a query comes from a single replica, and is therefore not appropriate for security-sensitive applications.
-Replica-signed queries may improve security because the recipient can verify the response comes from the correct subnet.
-
-:::
-
-### IC method `canister_metrics` {#ic-canister_metrics}
-
-This method can be called by external users with subnet admin privileges via ingress messages or non-replicated (query) calls. It can also be called by canisters in replicated mode, i.e. no composite query calls are allowed.
-
-This method returns a set of canister related metrics for the requested canister, like cycles consumed by different use cases. These metrics should be counters (i.e. monotonically increasing values) that report the accumulated respective amount since the canister was created for new canisters or since the metrics introduction for existing canisters.
-
-Only controllers of the canister or subnet admins can call this method.
 
 :::warning
 
