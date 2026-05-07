@@ -2541,8 +2541,6 @@ The optional `settings` parameter can be used to set the following settings:
 
     Default value: `null` (i.e., no environment variables provided).
 
-If `log_memory_limit` is set, `memory_allocation` may not be set in the same call.
-
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
@@ -2556,8 +2554,6 @@ This method can be called by canisters as well as by external users via ingress 
 Only *controllers* of the canister can update settings. See [IC method](#ic-create_canister) for a description of settings.
 
 Not including a setting in the `settings` record means not changing that field. The defaults described above are only relevant during canister creation.
-
-If `log_memory_limit` is set, `memory_allocation` may not be set in the same call.
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
@@ -3500,8 +3496,6 @@ The IC Provisional API for creating canisters and topping up canisters out of th
 This method can be called by canisters as well as by external users via ingress messages.
 
 As a provisional method on development instances, the `provisional_create_canister_with_cycles` method is provided. It behaves as `create_canister`, but initializes the canister's balance with `amount` fresh cycles (using `DEFAULT_PROVISIONAL_CYCLES_BALANCE` if `amount = null`). If `specified_id` is provided, the canister is created under this id. Note that canister creation using `create_canister` or `provisional_create_canister_with_cycles` with `specified_id = null` can fail after calling `provisional_create_canister_with_cycles` with provided `specified_id`. In that case, canister creation should be retried.
-
-If `log_memory_limit` is set, `memory_allocation` may not be set in the same call.
 
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
@@ -5407,7 +5401,6 @@ SubnetId ∈ Subnets
      |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
      is_valid_utf8(name) and
      is_valid_utf8(value)))
-(A.settings.log_memory_limit is null or A.settings.memory_allocation is null)
 
 if A.settings.controllers is not null:
   New_controllers = A.settings.controllers
@@ -5562,7 +5555,6 @@ M.caller ∈ S.controllers[A.canister_id]
      |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
      is_valid_utf8(name) and
      is_valid_utf8(value)))
-(A.settings.log_memory_limit is null or A.settings.memory_allocation is null)
 
 if New_wasm_memory_limit > 0:
   |S.canisters[A.canister_id].wasm_state.wasm_memory| ≤ New_wasm_memory_limit
@@ -6767,7 +6759,6 @@ Canister_id ∉ dom(S.canisters)
      |value| ≤ MAX_ENV_VAR_VALUE_LENGTH and
      is_valid_utf8(name) and
      is_valid_utf8(value)))
-(A.settings.log_memory_limit is null or A.settings.memory_allocation is null)
 
 if A.specified_id is not null:
   Canister_id = A.specified_id
