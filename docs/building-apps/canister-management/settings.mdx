@@ -13,7 +13,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior. Only a controller of the canister can read and modify a canister's settings.
 
-Currently, there are nine canister setting fields:
+Currently, there are ten canister setting fields:
 
 1. `controllers`: The list of controllers of the canister.
 2. `compute_allocation`: Amount of compute that the canister has allocated.
@@ -22,8 +22,9 @@ Currently, there are nine canister setting fields:
 5. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
 6. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
 7. `log_visibility`: Controls who can read the canister logs.
-8. `wasm_memory_threshold`: A threshold that triggers the "on low wasm memory" hook when the canister's remaining wasm memory falls below the provided value. 
-9. `environment_variables`: A set of key-value pairs that configure canister behavior without code changes.
+8. `snapshot_visibility`: Controls who can read the canister's snapshots.
+9. `wasm_memory_threshold`: A threshold that triggers the "on low wasm memory" hook when the canister's remaining Wasm memory falls below the provided value.
+10. `environment_variables`: A set of key-value pairs that configure canister behavior without code changes.
 
 ## Viewing current settings
 
@@ -197,11 +198,36 @@ In the future, the default value will be set to 3GiB.
 
 ## Log visibility
 
-The `log_visibility` field in a canister's settings can take one of two possible values: `controllers` or `public`.
-`Controllers` means that only the controllers of the canister can fetch its logs using the `fetch_canister_logs` endpoint of the management canister.
-`Public` means that the logs are public and everyone is able to fetch the logs using the `fetch_canister_logs` endpoint of the management canister.
+The `log_visibility` field in a canister's settings controls who can access the canister's logs through the `fetch_canister_logs` endpoint of the management canister. It can take one of three possible values:
+- `controllers`: Only the controllers of the canister can fetch its logs.
+- `public`: Anyone can fetch the canister's logs.
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can fetch logs. The maximum length of the list is 10.
 
 The default value of the field is `controllers`.
+
+## Snapshot visibility
+
+The `snapshot_visibility` field in a canister's settings controls who can access the canister's snapshots through the following management canister endpoints:
+- `read_canister_snapshot_metadata`
+- `read_canister_snapshot_data`
+- `list_canister_snapshots`
+
+It can take one of three possible values:
+- `controllers`: Only the controllers of the canister can read its snapshots.
+- `public`: Anyone can read the canister's snapshots.
+- `allowed_viewers` (`vec principal`): Only principals in the provided list and the canister's controllers can read its snapshots. The maximum length of the list is 10.
+
+The default value of the field is `controllers`.
+
+## Wasm memory threshold
+
+The `wasm_memory_threshold` field in a canister's settings sets a threshold on the canister's remaining Wasm memory in bytes. When the remaining Wasm memory (i.e., `wasm_memory_limit` minus current Wasm memory usage) falls below this threshold, the system schedules the execution of the ["on low wasm memory"](/references/ic-interface-spec#on-low-wasm-memory) hook.
+
+The default value of the field is 0 bytes, which means the hook is never scheduled.
+
+## Environment variables
+
+The `environment_variables` field in a canister's settings is a set of key-value pairs where both keys and values are UTF-8 encoded strings. These variables are accessible to the canister during execution and can be used to configure canister behavior without code changes. Each key must be unique.
 
 ## Errors related to canister settings
 
