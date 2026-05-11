@@ -350,6 +350,8 @@ The allowed signature schemes for web authentication are
 
 -   [**RSA PKCS\#1v1.5 (RSASSA-PKCS1-v1\_5)**](https://datatracker.ietf.org/doc/html/rfc8017#section-8.2), using SHA-256 as hash function.
 
+-   [**EdDSA**](https://datatracker.ietf.org/doc/html/rfc8032) on curve Ed25519.
+
 The signature is calculated by using the payload as the challenge in the web authentication assertion.
 
 The signature is checked by verifying that the `challenge` field contains the [base64url encoding](https://datatracker.ietf.org/doc/html/rfc4648#section-5) of the payload, and that `signature` verifies on `authenticatorData · SHA-256(utf8(clientDataJSON))`, as specified in the [WebAuthn w3c recommendation](https://www.w3.org/TR/webauthn/#op-get-assertion).
@@ -382,7 +384,7 @@ You can also view the wrapping in [an online ASN.1 JavaScript decoder](https://l
 
     -   `client_data_json` (`text`): WebAuthn client data in JSON representation.
 
-    -   `signature` (`blob`): Signature as specified in the [WebAuthn w3c recommendation](https://www.w3.org/TR/webauthn/#signature-attestation-types), which means DER encoding in the case of an ECDSA signature.
+    -   `signature` (`blob`): Signature as specified in the [WebAuthn w3c recommendation](https://www.w3.org/TR/webauthn/#signature-attestation-types), which means DER encoding in the case of an ECDSA signature, and the 64-byte concatenation `R || s` as defined in [RFC 8032, Section 5.1.6](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6) in the case of an EdDSA signature on curve Ed25519.
 
 #### Canister signatures {#canister-signatures}
 
