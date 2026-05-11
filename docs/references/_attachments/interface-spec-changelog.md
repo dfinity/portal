@@ -1,11 +1,5 @@
 ## Changelog {#changelog}
 
-### 0.61.0 (2026-05-11) {$0_61_0}
-* WebAuthn signatures may use EdDSA on curve Ed25519, in addition to ECDSA P-256 (SHA-256)
-  and RSA PKCS#1v1.5 (SHA-256). The corresponding COSE public key encoding is
-  `kty=OKP`, `alg=EdDSA`, `crv=Ed25519`. EdDSA signatures are the raw 64-byte
-  `R || s` concatenation defined in RFC 8032 §5.1.6 (not DER-wrapped).
-
 ### 0.60.0 (2025-05-04) {$0_60_0}
 * Canister signatures from canisters on subnets of type `cloud_engine` are not valid.
 * New HTTP endpoints for update calls (to create a canister by subnet admins) and
