@@ -26,7 +26,7 @@ jobs:
       - name: Setup Identity
         run: |
           mkdir -p ~/.local/share/icp-cli/identity/keys
-          echo $ICP_IDENTITY_PORTAL_DEPLOY | base64 -d > ~/.local/share/icp-cli/identity/keys/portal-deploy.pem
+          echo $ICP_IDENTITY_PORTAL_DEPLOY > ~/.local/share/icp-cli/identity/keys/portal-deploy.pem
           sed -i 's/\\r\\n/\r\n/g' ~/.local/share/icp-cli/identity/keys/portal-deploy.pem
           icp identity import portal-deploy --from-pem ~/.local/share/icp-cli/identity/keys/portal-deploy.pem --storage plaintext
           icp identity default portal-deploy
