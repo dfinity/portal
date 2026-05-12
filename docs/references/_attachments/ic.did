@@ -648,11 +648,11 @@ type cycles_consumed = record {
 
 type canister_metrics_args = record {
   canister_id : canister_id;
-}
+};
 
 type canister_metrics_result = record {
   cycles_consumed : cycles_consumed;
-}
+};
 
 service ic : {
     create_canister : (create_canister_args) -> (create_canister_result);

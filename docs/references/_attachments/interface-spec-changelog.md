@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.61.0 (2025-05-18) {$0_61_0}
+* New management canister endpoint `canister_metrics`.
+
 ### 0.60.0 (2025-05-04) {$0_60_0}
 * Canister signatures from canisters on subnets of type `cloud_engine` are not valid.
 * New HTTP endpoints for update calls (to create a canister by subnet admins) and
