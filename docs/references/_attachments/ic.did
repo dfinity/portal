@@ -644,7 +644,7 @@ type cycles_consumed = record {
   canister_creation : nat;
   http_outcalls : nat;
   burned_cycles : nat;
-}
+};
 
 type canister_metrics_args = record {
   canister_id : canister_id;
