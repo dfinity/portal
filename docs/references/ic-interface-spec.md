@@ -7486,7 +7486,7 @@ S with
 
 Only the controllers of the given canister or subnet admins can get metrics about it.
 
-``html
+```html
 
 S.messages = Older_messages · CallMessage M · Younger_messages
 (M.queue = Unordered) or (∀ msg ∈ Older_messages. msg.queue ≠ M.queue)
