@@ -4564,11 +4564,6 @@ liquid_balance(S, E.content.canister_id) ≥ 0
     { "create_canister" }
 ) ∨ (
   E.content.canister_id = ic_principal
-  E.content.sender ∈ S.subnet_admins[S.canister_subnet[ECID]]
-  E.content.method_name ∈
-    { "create_canister" }
-) ∨ (
-  E.content.canister_id = ic_principal
   E.content.method_name ∈
     { "provisional_create_canister_with_cycles" }
 ) ∨ (
