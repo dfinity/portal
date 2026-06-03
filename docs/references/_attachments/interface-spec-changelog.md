@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.62.0 (2025-06-03) {$0_62_0}
+* Support for the HTTP method `PATCH` in canister `http_request` in non-replicated mode.
+
 ### 0.61.0 (2025-05-18) {$0_61_0}
 * New management canister endpoint `canister_metrics`.
 
