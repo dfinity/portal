@@ -22,13 +22,6 @@ docs/defi/token-ledgers/cycles-ledger.mdx @dfinity/defi @dfinity/sdk @dfinity/ed
 docs/defi/chain-key-tokens/ @dfinity/defi @dfinity/editorial
 docs/building-apps/chain-fusion/ @dfinity/defi @dfinity/editorial
 
-# ProdSec
-docs/building-apps/security/ @dfinity/product-security @dfinity/editorial
-docs/building-apps/best-practices/idempotency.mdx @dfinity/product-security @dfinity/editorial
-docs/references/advanced-ingress-messages.mdx @dfinity/product-security @dfinity/editorial
-docs/references/message-execution-properties.mdx @dfinity/product-security @dfinity/editorial
-src/pages/security-advisories.tsx @dfinity/product-security @dfinity/editorial
-
 # Execution
 docs/references/execution-errors.mdx @dfinity/team-dsm @dfinity/editorial
 docs/building-apps/interact-with-canisters/advanced-calls.mdx @dfinity/team-dsm @dfinity/editorial
