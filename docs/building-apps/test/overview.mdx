@@ -40,7 +40,7 @@ There are three types of testing:
 
 Unit testing refers to testing a single function or component of a piece of code by itself, thus testing a single *unit* of the code. Unit testing does not take into consideration how the single unit functions with other components of the application. The scope of unit testing is more narrow compared to other types of testing and is designed to catch bugs or errors that may occur for each individual unit of the application's code.
 
-In Motoko, the [base library](https://github.com/dfinity/motoko-base/tree/master/test) contains files that can be used for unit testing. Most testing files utilize the Motoko Matchers test library to provide testing functionality. Motoko Matchers also includes a package for executing unit tests within canisters.
+In Motoko, the [core library](https://github.com/caffeinelabs/motoko-core) (the recommended standard library) contains modules and patterns used in unit testing. Many projects also use the Motoko Matchers test library for testing functionality. Motoko Matchers includes a package for executing unit tests within canisters.
 
 For tests that use large datasets or have long-running test batches, Motoko also provides the [BigTest library](https://github.com/matthewhammer/motoko-bigtest).
 

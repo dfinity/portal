@@ -57,7 +57,7 @@ This project can be opened in [ICP Ninja](https://icp.ninja/s/JwL2z) or you can 
 ### Defining a stable variable
 
 ```motoko title="src/stable_storage_example_backend/main.mo"
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor Counter {
 
@@ -108,7 +108,7 @@ dfx canister stop stable_storage_example_backend
 Then, let's alter the code of your canister. To keep things simple, you're going to change the counter increment value from '1' to '3'. Your altered code looks like this:
 
 ```motoko title="src/stable_storage_example_backend/main.mo"
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 actor Counter {
 

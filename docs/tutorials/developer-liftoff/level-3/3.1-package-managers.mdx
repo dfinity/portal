@@ -28,7 +28,7 @@ ICP Ninja supports adding Mops packages to projects. For example, open the [Flyi
 # Motoko dependencies (https://mops.one/)
 
 [dependencies]
-base = "0.14.1"
+core = "0.0.0"  # Check latest version at https://mops.one/core. Prefer core over base for new projects.
 ```
 
 Simply edit this file with any Mops packages you'd like to use within your project. For example:
@@ -105,23 +105,19 @@ You will also be prompted to choose if you'd like to use a GitHub workflow. This
 
 ### Adding packages to `mops.toml`.
 
-To install a package with Mops, you need to specify the package in the `mops.toml` file within your project. To add a package to this file, you can use the command `maps add` and then the package name:
+To install a package with Mops, you need to specify the package in the `mops.toml` file within your project. To add a package to this file, you can use the command `mops add` and then the package name. For the recommended standard library (core):
 
 ```bash
-mops add base
+mops add core
 ```
 
 Or, you can add packages directly from GitHub by specifying the repository's URL:
 
 ```bash
-mops add https://github.com/dfinity/motoko-base
+mops add https://github.com/caffeinelabs/motoko-core
 ```
 
-You can also specify the branch, commit hash, or tag by adding `#<branch/tag/hash>`:
-
-```bash
-mops add https://github.com/dfinity/motoko-base#moc-0.9.1
-```
+You can also specify the branch, commit hash, or tag by adding `#<branch/tag/hash>`. For existing projects using the older base library, see the [base-to-core migration guide](https://docs.internetcomputer.org/motoko/base-core-migration).
 
 If you have a locally stored package, you can put the source files inside your project's directory and then add them by specifying the path:
 
@@ -148,15 +144,15 @@ If you develop a package that you'd like to publish so other developers can use 
 Once a package has been installed, you can import it into your Motoko code file using the line `import PackageName "mo:<package_name>";`, such as:
 
 ```motoko title="src/character_count/main.mo"
-import Text "mo:base/Text";
-import Bool "mo:base/Bool";
+import Text "mo:core/Text";
+import Bool "mo:core/Bool";
 
 actor characterCount {
 
-    public func test(text: Text) : async Bool {
-        let size = Text.size(text);
-        return size % 2 == 0;
-    };
+    public func test(text: Text) : async Bool {
+        let size = Text.size(text);
+        return size % 2 == 0;
+    };
 };
 ```
 

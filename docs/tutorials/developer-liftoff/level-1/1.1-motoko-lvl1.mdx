@@ -61,20 +61,22 @@ let z = do {
 
 The variable `z` now stores the result value of `3` and can be called by additional methods.
 
-Next, let's look at using and importing the base Motoko library.
+Next, let's look at using and importing the Motoko standard library.
 
-## Using the base library
+## Using the core library
 
-Motoko is designed to minimize built-in types and operations, so whenever possible, the Motoko base library provides the necessary operations and types for developers to utilize.
+The recommended standard library for Motoko is **core** ([mops.one/core](https://mops.one/core), [changelog](https://github.com/caffeinelabs/motoko-core/blob/main/Changelog.md)). The older **base** library is still supported; see the [base-to-core migration guide](https://docs.internetcomputer.org/motoko/base-core-migration) when moving to core.
 
-The base library includes a selection of modules that focus on the core features of Motoko. The base library is still under development and is expected to grow in size as additional features are developed.
+Motoko is designed to minimize built-in types and operations, so whenever possible, the Motoko core library provides the necessary operations and types for developers to utilize.
 
-To import the base library, the `import` keyword can be used at the start of your Motoko code file. After the `import` keyword, you need to provide a **local module name** and a **file path** that the import declaration can use to locate the imported module.
+The core library includes a selection of modules that focus on the essential features of Motoko and is the actively maintained standard library.
+
+To import the core library, the `import` keyword can be used at the start of your Motoko code file. After the `import` keyword, you need to provide a **local module name** and a **file path** that the import declaration can use to locate the imported module.
 
 For example, to import a local module named 'Debug,' you can use the following import statement:
 
 ```motoko no-repl no-repl
-import Debug "mo:base/Debug";
+import Debug "mo:core/Debug";
 ```
 
 Then, to use this imported library, you can call the module with a line of code such as:
@@ -83,7 +85,7 @@ Then, to use this imported library, you can call the module with a line of code 
 Debug.print("Hello world!");
 ```
 
-In this demonstration, you import Motoko code, indicated by the `mo:` prefix, then specify the `base/` path, indicating that you are using the base library, followed by the module's file name, `Debug.mo`. Note that the `.mo` extension is not included in the import statement.
+In this demonstration, you import Motoko code, indicated by the `mo:` prefix, then specify the `core/` path, indicating that you are using the core library, followed by the module's file name, `Debug.mo`. Note that the `.mo` extension is not included in the import statement.
 
 Additionally, you can import Motoko code and other modules using their relative paths. For example, if you have a Motoko program named `types.mo` that you'd like to import into your Motoko file, you can use the following import declaration:
 
@@ -91,7 +93,7 @@ Additionally, you can import Motoko code and other modules using their relative 
 import Types "./types";
 ```
 
-In this import declaration, you don't need to include the `mo:` prefix or the `base/` path, since you are importing a module from a local relative path rather than the base library.
+In this import declaration, you don't need to include the `mo:` prefix or the `core/` path, since you are importing a module from a local relative path rather than the core library.
 
 ## Declarations and expressions
 
@@ -241,7 +243,7 @@ Additionally, Motoko supports the following user-defined non-primitive value for
 Earlier, recall that you printed a value using the imported `Debug` library:
 
 ```motoko no-repl
-import Debug "mo:base/Debug";
+import Debug "mo:core/Debug";
 Debug.print("hello world");
 ```
 
@@ -254,7 +256,7 @@ Next, let's look at transforming a Motoko value into a human-readable text strin
 The `debug_show` primitive value permits converting a large class of values into type `Text` values. For example, let's convert three values of type `Text`, `Nat`, and `Text` into human-readable text:
 
 ```motoko no-repl
-import Debug "mo:base/Debug";
+import Debug "mo:core/Debug";
 Debug.print(debug_show(("hello", 42, "world")))
 ```
 

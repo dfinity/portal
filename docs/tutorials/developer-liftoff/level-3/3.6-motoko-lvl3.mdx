@@ -25,7 +25,7 @@ In Motoko, recall that the `shared` keyword is used to declare a shared function
 To demonstrate this, consider the following function:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 shared(msg) func inc() : async () {
   // ... msg.caller ...
@@ -37,7 +37,7 @@ The shared function `inc()` specifies a `msg` parameter, a record, and the `msg.
 Additionally, the caller of an actor class can be returned using the same syntax on the actor class declaration, such as:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 shared(msg) actor class Counter(init : Nat) {
   // ... msg.caller ...
@@ -47,7 +47,7 @@ shared(msg) actor class Counter(init : Nat) {
 To further this example, imagine a scenario where you have a `Counter` actor that you want to restrict access to. You can modify the original code so that only the `principal` that installed the actor can modify it by recording the `principal` that installed the actor and binding it to an `owner` variable, then checking that the caller of each method is equal to the `owner` variable:
 
 ```motoko
-import Nat "mo:base/Nat";
+import Nat "mo:core/Nat";
 
 shared(msg) actor class Counter(init : Nat) {
 
@@ -126,121 +126,121 @@ dfx identity use owner
 Then, write the code that sets up the simple access control dapp. Open the `src/access_hello_backend/main.mo` file in your code editor and replace the existing content with the following code:
 
 ```motoko title="src/access_hello_backend/main.mo"
-// Start by importing the base modules:
+// Start by importing the core library modules (AssocList was removed in core; use Map instead):
 
-import AssocList "mo:base/AssocList";
-import Error "mo:base/Error";
-import List "mo:base/List";
+import Error "mo:core/Error";
+import Iter "mo:core/Iter";
+import Map "mo:core/Map";
+import Principal "mo:core/Principal";
 
 // Then, declare your shared actor class, which defines three role-based greetings to display using an if/else statement:
 
 shared({ caller = initializer }) actor class() {
 
-    public shared({ caller }) func greet(name : Text) : async Text {
-        if (has_permission(caller, #assign_role)) {
-            return "Hello, " # name # ". You have a role with administrative privileges."
-        } else if (has_permission(caller, #lowest)) {
-            return "Welcome, " # name # ". You have an authorized account. Would you like to play a game?";
-        } else {
-            return "Greetings, " # name # ". Nice to meet you!";
-        }
-    };
+    public shared({ caller }) func greet(name : Text) : async Text {
+        if (has_permission(caller, #assign_role)) {
+            return "Hello, " # name # ". You have a role with administrative privileges."
+        } else if (has_permission(caller, #lowest)) {
+            return "Welcome, " # name # ". You have an authorized account. Would you like to play a game?";
+        } else {
+            return "Greetings, " # name # ". Nice to meet you!";
+        }
+    };
 
     // Next, define the custom types `Role` and `Permission`:
-    public type Role = {
-        #owner;
-        #admin;
-        #authorized;
-    };
+    public type Role = {
+        #owner;
+        #admin;
+        #authorized;
+    };
 
-    public type Permission = {
-        #assign_role;
-        #lowest;
-    };
+    public type Permission = {
+        #assign_role;
+        #lowest;
+    };
 
-    // Define stable variables to store a list of principals and their associated role:
-    private stable var roles: AssocList.AssocList<Principal, Role> = List.nil();
-    private stable var role_requests: AssocList.AssocList<Principal, Role> = List.nil();
+    // Define stable mutable maps from Principal to Role (core Map replaces the old AssocList pattern):
+    private stable let roles = Map.empty<Principal, Role>();
+    private stable let role_requests = Map.empty<Principal, Role>();
 
-    // Create a function that checks if principal `a` equals principal `b`:
-    func principal_eq(a: Principal, b: Principal): Bool {
-        return a == b;
-    };
-
-    // Define a function to get the principal's current role, first by checking if the principal is the initializer of the canister, then by checking the list that stores principals and their associated roles:
-
-    func get_role(pal: Principal) : ?Role {
-        if (pal == initializer) {
-            ?#owner;
-        } else {
-            AssocList.find<Principal, Role>(roles, pal, principal_eq);
-        }
-    };
+    // Define a function to get the principal's current role, first by checking if the principal is the initializer of the canister, then by looking up in the roles map:
+    func get_role(pal: Principal) : ?Role {
+        if (pal == initializer) {
+            ?#owner;
+        } else {
+            Map.get(roles, Principal.compare, pal);
+        }
+    };
 
     // Then, determine if a principal has a role with permissions:
-    func has_permission(pal: Principal, perm : Permission) : Bool {
-        let role = get_role(pal);
-        switch (role, perm) {
-            case (?#owner or ?#admin, _) true;
-            case (?#authorized, #lowest) true;
-            case (_, _) false;
-        }
-    };
+    func has_permission(pal: Principal, perm : Permission) : Bool {
+        let role = get_role(pal);
+        switch (role, perm) {
+            case (?#owner or ?#admin, _) true;
+            case (?#authorized, #lowest) true;
+            case (_, _) false;
+        }
+    };
 
     // Define a function that rejects any unauthorized principals:
-    func require_permission(pal: Principal, perm: Permission) : async () {
-        if ( has_permission(pal, perm) == false ) {
-            throw Error.reject( "unauthorized" );
-        }
-    };
+    func require_permission(pal: Principal, perm: Permission) : async () {
+        if ( has_permission(pal, perm) == false ) {
+            throw Error.reject( "unauthorized" );
+        }
+    };
 
     // Define a function to assign a new role to a principal:
-    public shared({ caller }) func assign_role( assignee: Principal, new_role: ?Role ) : async () {
-        await require_permission( caller, #assign_role );
+    public shared({ caller }) func assign_role( assignee: Principal, new_role: ?Role ) : async () {
+        await require_permission( caller, #assign_role );
 
-        switch new_role {
-            case (?#owner) {
-                throw Error.reject( "Cannot assign anyone to be the owner" );
-            };
-            case (_) {};
-        };
-        if (assignee == initializer) {
-            throw Error.reject( "Cannot assign a role to the canister owner" );
-        };
-        roles := AssocList.replace<Principal, Role>(roles, assignee, principal_eq, new_role).0;
-        role_requests := AssocList.replace<Principal, Role>(role_requests, assignee, principal_eq, null).0;
-    };
+        switch new_role {
+            case (?#owner) {
+                throw Error.reject( "Cannot assign anyone to be the owner" );
+            };
+            case (_) {};
+        };
+        if (assignee == initializer) {
+            throw Error.reject( "Cannot assign a role to the canister owner" );
+        };
+        switch new_role {
+            case (?r) { Map.add(roles, Principal.compare, assignee, r) };
+            case null { ignore Map.take(roles, Principal.compare, assignee) };
+        };
+        ignore Map.take(role_requests, Principal.compare, assignee);
+    };
 
-    public shared({ caller }) func request_role( role: Role ) : async Principal {
-        role_requests := AssocList.replace<Principal, Role>(role_requests, caller, principal_eq, ?role).0;
-        return caller;
-    };
+    public shared({ caller }) func request_role( role: Role ) : async Principal {
+        Map.add(role_requests, Principal.compare, caller, role);
+        return caller;
+    };
 
     // Return the principal of the message caller/user identity:
-    public shared({ caller }) func callerPrincipal() : async Principal {
-        return caller;
-    };
+    public shared({ caller }) func callerPrincipal() : async Principal {
+        return caller;
+    };
 
     // Return the role of the message caller/user identity:
-    public shared({ caller }) func my_role() : async ?Role {
-        return get_role(caller);
-    };
+    public shared({ caller }) func my_role() : async ?Role {
+        return get_role(caller);
+    };
 
-    public shared({ caller }) func my_role_request() : async ?Role {
-        AssocList.find<Principal, Role>(role_requests, caller, principal_eq);
-    };
+    public shared({ caller }) func my_role_request() : async ?Role {
+        Map.get(role_requests, Principal.compare, caller);
+    };
 
-    public shared({ caller }) func get_role_requests() : async List.List<(Principal,Role)> {
-        await require_permission( caller, #assign_role );
-        return role_requests;
-    };
+    public shared({ caller }) func get_role_requests() : async [(Principal, Role)] {
+        await require_permission( caller, #assign_role );
+        Iter.toArray(Map.entries(role_requests));
+    };
 
-    public shared({ caller }) func get_roles() : async List.List<(Principal,Role)> {
-        await require_permission( caller, #assign_role );
-        return roles;
-    };
+    public shared({ caller }) func get_roles() : async [(Principal, Role)] {
+        await require_permission( caller, #assign_role );
+        Iter.toArray(Map.entries(roles));
+    };
 };
 ```
+
+This example uses the **core** library's `Map` to store principal-to-role mappings (the older **base** library used `AssocList`; see the [base-to-core migration guide](https://docs.internetcomputer.org/motoko/base-core-migration) for details).
 
 The key components of this dapp are:
 
@@ -382,7 +382,7 @@ In Motoko, **pattern matching** is a feature for testing and deconstructing stru
 The input in this callee is an anonymous object, which is then deconstructed into the object's three `Text` fields that are bound to the identifiers `first`, `mid`, and `last`. These values can be freely used in the block that forms the body of the function.
 
 ```motoko
-import Text "mo:base/Text";
+import Text "mo:core/Text";
 
 actor {
     func fullName({ first : Text; mid : Text; last : Text }) : Text {

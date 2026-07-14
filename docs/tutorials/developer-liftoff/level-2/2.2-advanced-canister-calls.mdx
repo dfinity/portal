@@ -56,7 +56,7 @@ The amount of security your dapp needs depends on your dapp's use case and funct
 Queries are defined by the function modifier `query` in Motoko. Below is a simple query call used with a query the current time from the network:
 
 ```motoko
-import Time "mo:base/Time";
+import Time "mo:core/Time";
 
 actor QueryCall {
 
@@ -80,8 +80,8 @@ In comparison to query calls, update calls have the opposite trade-off of perfor
 Update calls are not defined with a function modifier in Motoko like query calls are. Below is a simple update call that counts the number of characters within the inputted string, updates the value of the variable `size`, then returns a `true` or `false` value if that number of characters is divisible by 2.
 
 ```motoko
-import Text "mo:base/Text";
-import Bool "mo:base/Bool";
+import Text "mo:core/Text";
+import Bool "mo:core/Bool";
 
 actor countCharacters {
     public func test(text : Text) : async Bool {
